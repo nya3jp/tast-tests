@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a2e24f_f7f3f978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c30e8bba_0b34987d",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02c56011_cad2de1e",
@@ -88,6 +112,24 @@
       "writtenOn": "2022-02-09T14:22:11Z",
       "side": 1,
       "message": "It is recommended to add the individual contributor name. Maybe mxcai@ can be added here?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354f4108_ff5a529f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c56011_cad2de1e",
       "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +151,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf50699_53d9f1b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d04260e_22cd8e12",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f727dce_1557e3ab",
@@ -122,6 +182,24 @@
       "writtenOn": "2022-02-09T14:22:11Z",
       "side": 1,
       "message": "Can we have comment where this comes from?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac89627_746d37ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "not sure how to describ this, I got this app id from actually install the app in my device.",
+      "parentUuid": "4f727dce_1557e3ab",
       "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +229,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ebb8856_a89c0748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "Tried to use the browserfixt, however the setup code in the browserfixt uses the LaunchWithURL that cleans up the user directory when trying to launch lacros browser, which causes issue because this test uses lacros keep alive, and clean up user directory makes the connection failed.",
+      "parentUuid": "521cc14c_5c8c8a52",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 17
+      },
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ad5d733_411072bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
         "patchSetId": 2
@@ -162,6 +264,24 @@
       "writtenOn": "2022-02-09T14:22:11Z",
       "side": 1,
       "message": "nit: defer l.Close() pls (explicit l.Close below won\u0027t be called on failure.)",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb91ef0d_8c84edaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "adding the defer here causes the test failure. I think it\u0027s because it try to close the lacros again after it\u0027s already been closed.\nhere is the error message:\n2022-02-10T09:37:29.690788Z [09:37:29.570] Error at usercode.go:28: Panic: runtime error: invalid memory address or nil pointer dereference\n2022-02-10T09:37:29.690887Z [09:37:29.570] Stack trace:\nPanic\n        at chromiumos/tast/internal/usercode.ErrorOnPanic.func1 (usercode.go:28)\n        at chromiumos/tast/internal/usercode.SafeCall.func2.1.1 (usercode.go:101)\n        at chromiumos/tast/internal/usercode.SafeCall.func2.1 (usercode.go:107)\n        at runtime.gopanic (panic.go:969)\n        at runtime.panicmem (panic.go:212)\n        at runtime.sigpanic (signal_unix.go:742)\n        at chromiumos/tast/local/chrome/internal/driver.(*Session).Close (session.go:84)\n        at chromiumos/tast/local/chrome/lacros.(*Lacros).Close (lacros.go:69)",
+      "parentUuid": "1ad5d733_411072bc",
       "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +303,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c418700_3d35620a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a43e6eb_b40cc3ea",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e8c1f70_73168906",
@@ -196,6 +334,24 @@
       "writtenOn": "2022-02-09T14:22:11Z",
       "side": 1,
       "message": "clarification: do you need to wait for the state transition here? Or are they on the same page and no wait is needed?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02dadf7_3ba6696e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "in terms of the install icon click and the install button click? They are in the same page, after clicking the icon, the bubble will show up and we can click the button immediatly.",
+      "parentUuid": "0e8c1f70_73168906",
       "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -223,6 +379,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7df6dc_a3fba7c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee14ce3_21732bdb",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b55db3f_0c680169",
@@ -236,6 +416,24 @@
       "writtenOn": "2022-02-09T14:22:11Z",
       "side": 1,
       "message": "nit: dup line (with just below)?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb490bc_bd23c676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2022-02-10T09:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b55db3f_0c680169",
       "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
