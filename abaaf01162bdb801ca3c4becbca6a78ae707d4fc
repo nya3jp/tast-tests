@@ -70,6 +70,30 @@
       },
       "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752cc9c9_3d6c1418",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:24:28Z",
+      "side": 1,
+      "message": "So, as we came up with consensus to hold it on, can we drop lacros.CloseTarget/IsTargetAvailable?\n\nI think l.Browser().*() should work. (and better to migrate into it). WDYT?",
+      "parentUuid": "8f9259c3_79bd1dec",
+      "range": {
+        "startLine": 109,
+        "startChar": 59,
+        "endLine": 109,
+        "endChar": 79
+      },
+      "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
