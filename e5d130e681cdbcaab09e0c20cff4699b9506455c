@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e529d0_030f5d13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-10T21:20:09Z",
+      "side": 1,
+      "message": "Assume you checked that the rest of the tests still work fine \n\nTEST\u003dphonehub.*",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515abc57_8de5222d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/message_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-10T21:20:09Z",
+      "side": 1,
+      "message": "Can change this to notneeded. I synced with dan and jon and for phonehub, we will only need a lacros variant for the recent tabs test case",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "675a498a_3fbad958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/message_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-10T21:20:09Z",
+      "side": 1,
+      "message": "https://www.youtube.com/watch?v\u003drblYSKz_VnI",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7be40a_8e06cd81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/message_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-10T21:20:09Z",
+      "side": 1,
+      "message": "We have 2 manual test for something similar to this. The \"inline reply\" ones\nhttps://testtracker.googleplex.com/testplans/details/590\n\nCould put this somewhere useful for cienet to reuse when they get to those tests",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3f0413_aadad2fc",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-10T21:20:09Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure I wrote this code somewhere else. That comment sounds like me :) \n\nSince you need to read multiple arrays, is using a struct cleaner?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00347888_bea50d6f",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-10T21:20:09Z",
+      "side": 1,
+      "message": "The amount of steps to turn on phone hub is ridiculous 😄",
+      "range": {
+        "startLine": 265,
+        "startChar": 26,
+        "endLine": 265,
+        "endChar": 53
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
