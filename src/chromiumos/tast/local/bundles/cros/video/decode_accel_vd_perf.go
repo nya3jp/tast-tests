@@ -23,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures hardware video decode performance of media::VideoDecoders by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx-video@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "av1_1080p_30fps",

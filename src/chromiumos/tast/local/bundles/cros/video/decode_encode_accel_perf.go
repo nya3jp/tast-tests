@@ -35,7 +35,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Simulates video chat performance by simultaneously decoding and encoding a 30fps 1080p video",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8, caps.HWEncodeVP8},
 		Data: []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json",
 			"crowd-1920x1080.vp9.webm", "crowd-1920x1080.yuv.json"},
