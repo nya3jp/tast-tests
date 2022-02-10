@@ -33,6 +33,23 @@
       "message": "Okay, if the Tast owners are all on vacation (do they all work in Japan where today is a holiday?) then I will just keep Tetsui Ohkubo as reviewer.",
       "revId": "e599079f647489ab6165dc289da6c0fa747818fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a607de0_9ccca115",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T19:19:26Z",
+      "side": 1,
+      "message": "[side note: weird, I was not in vacation]\n\nI\u0027m not so sure about this change. There other apps that depends on ths ArcApValidityTest. See:\n\nhttps://source.corp.google.com/search?q\u003dorg.chromium.arc.testapp.appvaliditytast\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\n\nEither update all needed files (double-check with ARC team that renaming it is expected)... or I wouldn\u0027t make this change\n\n\n",
+      "revId": "e599079f647489ab6165dc289da6c0fa747818fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
