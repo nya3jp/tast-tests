@@ -16,6 +16,29 @@
       "message": "Eliot, Hidehiko, can you give another look to follow up our sync? It keeps Close() consistent for all packages semantically so test writers don\u0027t have to deal with discrepancies. It\u0027s functionally the same as the `closerBrowser` closure from `browserfixt.SetUp`.",
       "revId": "ecc8ce17aa1cb804dfa5959a9d4a490024732933",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4747020_75572b1a",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:31:09Z",
+      "side": 1,
+      "message": "I think this is difficult semantics, and breaking the abstraction layer, as callers have to know what will this do. I still believe this way would be confusing. We shouldn\u0027t change the behavior for ash/lacros. We shouldn\u0027t introduce a method just to make a code look \"similar\".\n\nIf we\u0027d introduce Browser.Close(), we should come up with the clear common semantics regardless of lacros/ash. We didn\u0027t introduce it, because we didn\u0027t come up with the clear semantics unfortunately.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 109
+      },
+      "revId": "ecc8ce17aa1cb804dfa5959a9d4a490024732933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
