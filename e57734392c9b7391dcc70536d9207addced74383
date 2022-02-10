@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b31a73a_900c84a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:16:25Z",
+      "side": 1,
+      "message": "Did not realise I was adding comments here everytime 😕  let me resolve and move along.",
+      "parentUuid": "e024f224_1638392f",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3040fa5_267fb213",
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "ping on this small nit. 😊",
       "parentUuid": "a3040fa5_267fb213",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "508bb626_497f79ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5edc6da1_d1e2573d",
       "range": {
         "startLine": 133,
         "startChar": 0,
