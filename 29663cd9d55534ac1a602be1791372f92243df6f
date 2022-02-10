@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e0ae581_1314d072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-10T13:08:07Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "29663cd9d55534ac1a602be1791372f92243df6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e63fa71_7e6f5d2e",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-10T13:08:07Z",
+      "side": 1,
+      "message": "I see that this does not return with a bool, which makes it harder to see if the account is not there, or there was an error with the request.\nWith this limitation, I don\u0027t know if this check can be improved.",
+      "range": {
+        "startLine": 257,
+        "startChar": 21,
+        "endLine": 257,
+        "endChar": 27
+      },
+      "revId": "29663cd9d55534ac1a602be1791372f92243df6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
