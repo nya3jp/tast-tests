@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1d0e87_cd182040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/stop_launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-02-10T17:25:36Z",
+      "side": 1,
+      "message": "Done. It could be AutoLoginBailout and RestructedBailout tests.",
+      "parentUuid": "46495bb3_aee154fc",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "ff12636053c72275aa007b51724403392792fd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a057747_1cbdffd7",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-04T12:41:22Z",
       "side": 1,
       "message": "Why do we need restart Chrome once more?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "ff12636053c72275aa007b51724403392792fd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef53d4c6_4d55052f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/stop_launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-02-10T17:25:36Z",
+      "side": 1,
+      "message": "yixie@ has fixed that. No need now.",
+      "parentUuid": "0a057747_1cbdffd7",
       "range": {
         "startLine": 85,
         "startChar": 0,
