@@ -98,6 +98,24 @@
       "parentUuid": "57e5a046_b4a41b42",
       "revId": "a43dbee5d61f853d2c66b8e4f690e5bbe1d0465e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd0993e_ec93b3bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-02-10T00:34:23Z",
+      "side": 1,
+      "message": "Ack. Thanks for the context.\n\nYeah, I\u0027d use another bug for that entire suite of tests (typec.Mode*) since they check different things from the EC compared to typec.Basic",
+      "parentUuid": "3f14f353_432fe7d7",
+      "revId": "a43dbee5d61f853d2c66b8e4f690e5bbe1d0465e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
