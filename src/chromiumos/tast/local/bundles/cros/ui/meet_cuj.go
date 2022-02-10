@@ -213,8 +213,7 @@ func init() {
 				cam:         true,
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
-			Fixture:           "loggedInToCUJUser",
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, caps.HWDecodeVP8},
+			Fixture: "loggedInToCUJUser",
 		}, {
 			// 49p with vp9 video codec.
 			Name:    "49p_vp9",
