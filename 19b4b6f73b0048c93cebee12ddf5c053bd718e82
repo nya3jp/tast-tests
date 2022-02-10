@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bd8a5331_5a8d1974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-02-10T00:58:40Z",
+      "side": 1,
+      "message": "Got it, I think it should be okay in this case.",
+      "parentUuid": "b8740186_6b6ad1b0",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "19b4b6f73b0048c93cebee12ddf5c053bd718e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8b1a9364_0b5e2f65",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-10T00:54:39Z",
       "side": 1,
       "message": "FYI: Inside this function, it waits a certain time for the IME to be installed and activated. The wait time can be differentiated on IME in case any new IME fails due to installation delay.",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "19b4b6f73b0048c93cebee12ddf5c053bd718e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c4dae2_67a3bf4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-02-10T00:58:40Z",
+      "side": 1,
+      "message": "Got it. I think the default delay works. There is a bug with IME switching right now, but it\u0027s not time related. I tested it with my feature flag enabled and it all passes with the default delay.",
+      "parentUuid": "8b1a9364_0b5e2f65",
       "range": {
         "startLine": 179,
         "startChar": 1,
@@ -77,6 +125,30 @@
       "writtenOn": "2022-02-10T00:52:08Z",
       "side": 1,
       "message": "nit: Failed to verify PK transliteration typing",
+      "range": {
+        "startLine": 212,
+        "startChar": 28,
+        "endLine": 212,
+        "endChar": 37
+      },
+      "revId": "19b4b6f73b0048c93cebee12ddf5c053bd718e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8dcaefc_2a2e6c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-02-10T00:58:40Z",
+      "side": 1,
+      "message": "oops",
+      "parentUuid": "1bc5eaeb_a69e74fd",
       "range": {
         "startLine": 212,
         "startChar": 28,
