@@ -39,6 +39,30 @@
       },
       "revId": "8f1d090def4468bf9963bf63db8aa0f536ac09f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7275ece_22adff91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Thanks Eric for the suggestion. I refactor the forwarder block into cros_server_util.go. \nI left grpcServerPort block in the test code: tast lint prevents from passing testing.State to other function, so there is very little saving with moving the remaining `strconv.Atoi(portStr)` call.",
+      "parentUuid": "aa2b1d12_7d8993a8",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "8f1d090def4468bf9963bf63db8aa0f536ac09f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

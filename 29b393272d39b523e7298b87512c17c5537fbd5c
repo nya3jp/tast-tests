@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90445cff_479131da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea26c17_5e959159",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40902938_24872fcd",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-05T16:31:29Z",
       "side": 1,
       "message": "is \"collector\" more suitable here?",
+      "range": {
+        "startLine": 16,
+        "startChar": 79,
+        "endLine": 16,
+        "endChar": 91
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df850c9_739bce75",
+        "filename": "src/chromiumos/tast/local/common/shared_object.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Thanks. I reworded the sentence.",
+      "parentUuid": "40902938_24872fcd",
       "range": {
         "startLine": 16,
         "startChar": 79,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc62388_8c5de2f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25323b81_98dd133b",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee157ce9_e13f7825",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-05T16:31:29Z",
       "side": 1,
       "message": "Should this be \"LoginMode_NO_LOGIN\" to \"TryReuseSession\"?",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3040794_7cdab2eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "There is a method in chrome that decides whether the sessions is reusable. The main factors are username, options and extension. \nHere, we attempt to specify the exact same inputs as \"fake_login\" test case so TryReuseSession can trigger the reuse. I rename this test to make sure that it follows the \"fake_login\" test.",
+      "parentUuid": "ee157ce9_e13f7825",
       "range": {
         "startLine": 53,
         "startChar": 18,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60ebe58_dc0d0990",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b17c94_85c0ac89",
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df5b7b87_c69f6f55",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-02-05T16:31:29Z",
       "side": 1,
       "message": "nit: missing space here",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6c48c5_ef89ccf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5b7b87_c69f6f55",
       "range": {
         "startLine": 77,
         "startChar": 2,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43151bfe_72bc6940",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1fc74c3_07879865",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32715d11_f3f84351",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-02-05T16:31:29Z",
       "side": 1,
       "message": "nit: How about \"CrOS server process\" to make the log more helpful?",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52b4996_5ca73e4e",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32715d11_f3f84351",
       "range": {
         "startLine": 60,
         "startChar": 48,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c8f5e3_ba711d6e",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf78dc8_3ab6e610",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e811febd_579d194a",
@@ -215,6 +425,30 @@
       "writtenOn": "2022-02-05T16:31:29Z",
       "side": 1,
       "message": "nit: missing space here",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e54859_e9cc9af0",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e811febd_579d194a",
       "range": {
         "startLine": 100,
         "startChar": 2,
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67970d85_11d4405f",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160f96cd_5dd5c1c5",
+      "range": {
+        "startLine": 13,
+        "startChar": 55,
+        "endLine": 13,
+        "endChar": 75
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86ba8034_71588626",
@@ -261,6 +519,30 @@
       "writtenOn": "2022-02-05T16:31:29Z",
       "side": 1,
       "message": "There\u0027s a \"try_reuse_session\" in the NewRequest, \nit seems we can also \"attach\" to a Chrome session?\nDo we want to address this in the method name and docstring?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf3439c_5ff35221",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-10T00:59:15Z",
+      "side": 1,
+      "message": "Thanks, I changed docstring to describe the reuse scenario.\n\nAbout the methods name, I would like to keep that as \"New\" to be more aligned in the lingo used in chrome.",
+      "parentUuid": "86ba8034_71588626",
       "range": {
         "startLine": 15,
         "startChar": 5,
