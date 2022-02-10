@@ -37,8 +37,19 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          assistant.VerboseLoggingEnabled(),
+		Params: []testing.Param{
+			{
+				Name:              "assistant_key",
+				Val:               assistant.AccelAssistantKey,
+				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
+			},
+			{
+				Name:              "search_plus_a",
+				Val:               assistant.AccelSearchPlusA,
+				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
+			},
+		},
 	})
 }
 
@@ -46,6 +57,7 @@ func init() {
 // and hiding assistant suggestion chips upon executing a query and clicking on
 // suggestions.
 func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
+	accel := s.Param().(assistant.Accelerator)
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -87,7 +99,7 @@ func SuggestionChipAnimationPerf(ctx context.Context, s *testing.State) {
 			tconn,
 			time.Second,
 			func(ctx context.Context) error {
-				return runQueriesAndClickSuggestions(ctx, tconn)
+				return runQueriesAndClickSuggestions(ctx, tconn, accel)
 			},
 			"Ash.Assistant.AnimationSmoothness.SuggestionChip",
 		)
@@ -118,17 +130,17 @@ func runQueryAndClickSuggestion(tconn *chrome.TestConn, query string) action.Act
 	}
 }
 
-func toggleAssistantWithHotkey(tconn *chrome.TestConn) action.Action {
+func toggleAssistantWithHotkey(tconn *chrome.TestConn, accel assistant.Accelerator) action.Action {
 	return func(ctx context.Context) error {
-		return assistant.ToggleUIWithHotkey(ctx, tconn)
+		return assistant.ToggleUIWithHotkey(ctx, tconn, accel)
 	}
 }
 
-func runQueriesAndClickSuggestions(ctx context.Context, tconn *chrome.TestConn) error {
+func runQueriesAndClickSuggestions(ctx context.Context, tconn *chrome.TestConn, accel assistant.Accelerator) error {
 	return uiauto.Combine("toggle ui and run queries and click suggestion chip",
-		toggleAssistantWithHotkey(tconn),
+		toggleAssistantWithHotkey(tconn, accel),
 		runQueryAndClickSuggestion(tconn, "Mount Kilimanjaro"),
 		runQueryAndClickSuggestion(tconn, "Mount Everest"),
-		toggleAssistantWithHotkey(tconn),
+		toggleAssistantWithHotkey(tconn, accel),
 	)(ctx)
 }
