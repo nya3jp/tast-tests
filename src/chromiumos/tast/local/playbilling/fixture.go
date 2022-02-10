@@ -25,13 +25,13 @@ const (
 	userVar         = "arc.PlayBillingUser"
 	passVar         = "arc.PlayBillingPass"
 	assetLinksVar   = "arc.PlayBillingAssetLinks"
-	apk             = "ArcPlayBillingTestPWA_20210517.apk"
+	apk             = "ArcPlayBillingTestPWA_20220210.apk"
 	icon            = "play_billing_icon.png"
 	index           = "play_billing_index.html"
 	manifest        = "play_billing_manifest.json"
 	payments        = "play_billing_payments.js"
 	service         = "play_billing_service.js"
-	localServerPort = 80
+	localServerPort = 8080
 )
 
 // pwaFiles are data files required to serve the Play Billing PWA.
