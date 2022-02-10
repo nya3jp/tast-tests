@@ -27,7 +27,7 @@ func init() {
 			"hiroh@chromium.org", // Underlying binary author.
 			"chromeos-gfx-video@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome", "video_decoder_legacy_supported"},
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",
