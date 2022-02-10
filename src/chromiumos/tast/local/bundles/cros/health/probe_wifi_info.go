@@ -13,7 +13,6 @@ import (
 )
 
 type wirelessInteface struct {
-	IEEEStandard      string `json:"ieee_standard"`
 	InterfaceName     string `json:"interface_name"`
 	PowerManagementOn bool   `json:"power_management_on"`
 }
@@ -51,9 +50,6 @@ func ProbeWifiInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get WIFI telemetry info: ", err)
 	}
 	for _, interfaces := range wifi.NetworkInterfaces {
-		if interfaces.WirelessInterfaces.IEEEStandard == "" {
-			s.Fatal("Failed to get IEEEStandard")
-		}
 		if interfaces.WirelessInterfaces.InterfaceName == "" {
 			s.Fatal("Failed to get InterfaceName")
 		}
