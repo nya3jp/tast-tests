@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "65719f80_24c172e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-02-10T00:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972dda3f_940374a0",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "a43dbee5d61f853d2c66b8e4f690e5bbe1d0465e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79dadf81_f6c0a391",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2022-02-09T19:04:06Z",
       "side": 1,
       "message": "Patch LGTM, but I must ask: are you running typec.ModeCrash.manual? That needs a TBT dock and a display.\n\nAlso, this CL and code is not related to b:213260357 (which is about typec.Basic, a CQ test)",
+      "revId": "a43dbee5d61f853d2c66b8e4f690e5bbe1d0465e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f14f353_432fe7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-02-10T00:04:34Z",
+      "side": 1,
+      "message": "ok I was using that bug to track all typec issues:   https://b.corp.google.com/issues/213260357#comment11\n\nwe can file a separate bug if that\u0027 useful.\n\n\nI was more interested in typec.ModeCrash.smoke results and their failure modes.",
+      "parentUuid": "57e5a046_b4a41b42",
       "revId": "a43dbee5d61f853d2c66b8e4f690e5bbe1d0465e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
