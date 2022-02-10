@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84269fec_b4f0fc00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Yes, getting the scaffolding here first. Aiming to have move, rename, delete as well.",
+      "parentUuid": "96a8853c_a94cf598",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa7f6a8_654e7ea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Yes agree. Unfortunately when I just inline the testCopyOperation as a Val I get a runtime panic, e.g.\n```\ntype smbFileOperationTestFunc func(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, files *filesapp.FilesApp)\n\nfunc SMBFileOperations(ctx context.Context, s *testing.State) {\n\tfixt :\u003d s.FixtValue().(smb.FixtureData)\n\ttestFunc :\u003d s.Param().(smbFileOperationTestFunc)\n```\nMy first incantation of this worked (with no type definition), e.g.\n```\nfunc SMBFileOperations(ctx context.Context, s *testing.State) {\n\tfixt :\u003d s.FixtValue().(smb.FixtureData)\n\ttestFunc :\u003d s.Param().(func(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, files *filesapp.FilesApp))\n```\nHappy for either, which do you prefer?",
+      "parentUuid": "1c8d20d3_7b77db20",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1f3acca_ce1f426e",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-10T05:58:39Z",
       "side": 1,
       "message": "nit: using kb for consistency.",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4309675_09dcffbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1f3acca_ce1f426e",
       "range": {
         "startLine": 42,
         "startChar": 56,
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16affe1_5304213c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b7eb2f_25dce95d",
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31822e0d_88ce34d4",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-02-10T05:58:39Z",
       "side": 1,
       "message": "nit: Mixed use \"Failed to do sth\" and \"Failed doing\". Nice to use `Failed to do sth` for consistency.",
+      "range": {
+        "startLine": 84,
+        "startChar": 11,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91eb432c_b755ba4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31822e0d_88ce34d4",
       "range": {
         "startLine": 84,
         "startChar": 11,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2c9e0a1_5ed10c02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24876ac7_c44a8a4d",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d279edbf_6586121a",
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99269090_6887899c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d279edbf_6586121a",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad88d88f_6ff28eea",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-02-10T05:58:39Z",
       "side": 1,
       "message": "nit: Nice to make a line return for good readability.",
+      "range": {
+        "startLine": 111,
+        "startChar": 29,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3e4702_b4ceb987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T06:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad88d88f_6ff28eea",
       "range": {
         "startLine": 111,
         "startChar": 29,
