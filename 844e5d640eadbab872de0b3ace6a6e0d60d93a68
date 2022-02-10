@@ -153,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28de661f_5b3051d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T19:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb90ba9c_67a79ea2",
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e9fa05b_6ac5ae89",
@@ -190,6 +208,30 @@
       "side": 1,
       "message": "The way I see this is .. it\u0027d rather be more clear for Browser abstraction (not just for Ash or Lacros). Since the porting guidelines encourage to use Browser over Lacros in tests, it\u0027d be natural to have these utils in Browser (thus, browserutil) and use them in tests along with a Browser instance.\n\nHere are some examples that would find it useful:\n- https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3399870/comments/0b0b7284_7e85fcbc\n- https://crrev.com/c/3399870\n- https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go\n\n+Georg for any thoughts? Do you think your pending CL https://crrev.com/c/3341459 finds this CL and a POC https://crrev.com/c/3430743 useful?",
       "parentUuid": "7e9fa05b_6ac5ae89",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "504f7486_a5ad4986",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T19:28:06Z",
+      "side": 1,
+      "message": "Removed CloseAboutBlank\nAdded CloseWindow that is a generalized version of CloseAboutBlank instead.\nRemoved a new util package, instead added to existing browserfixt package",
+      "parentUuid": "1d31d208_9daf716c",
       "range": {
         "startLine": 21,
         "startChar": 0,
