@@ -94,6 +94,30 @@
       },
       "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3852fe93_621717c1",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T18:02:01Z",
+      "side": 1,
+      "message": "I would mistakenly have took that as a Go for adding those to both Browser and Lacros. Sure, we can remove CloseTarget/IsTargetAvailable from Lacros while adding them to Browser. As you mentioned test writers should be able to still access it through l.Browser().\u003cmethods\u003e instead. Please let me know if there is anything else to address.",
+      "parentUuid": "752cc9c9_3d6c1418",
+      "range": {
+        "startLine": 109,
+        "startChar": 59,
+        "endLine": 109,
+        "endChar": 79
+      },
+      "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
