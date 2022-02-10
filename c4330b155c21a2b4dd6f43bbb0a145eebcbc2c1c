@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a8eb03_8dc40b3a",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T06:07:11Z",
+      "side": 1,
+      "message": "I do not see any reason in this CL to make it public.",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a710daba_def8243c",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T06:07:11Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 90
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593c7b30_a6a08eb7",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T06:07:11Z",
+      "side": 1,
+      "message": "You can still use constant variable for consistency. Use private variable you do not want to expose it yet.",
+      "range": {
+        "startLine": 46,
+        "startChar": 20,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc7a391_9cda685b",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T06:07:11Z",
+      "side": 1,
+      "message": "should this be a private function?",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b1ec3c_401a5f6c",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T06:07:11Z",
+      "side": 1,
+      "message": "The impl does not match the name. How about countExistingTabs",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
