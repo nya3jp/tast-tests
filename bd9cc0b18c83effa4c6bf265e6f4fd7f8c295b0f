@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75dd0048_303dbac9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:45:03Z",
+      "side": 1,
+      "message": "nit (missed it before): add commit body in the CL",
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eafb80f_7dfcad6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:45:03Z",
+      "side": 1,
+      "message": "nit: ...and I\u0027d remove these comments since they add a bit of confusion.\n\nor directly if `crosConn` is just an Ash connection just rename it to `ashConn`, and there is no need to add the comment then",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc90a48c_98bfbd0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:45:03Z",
+      "side": 1,
+      "message": "this is confusing.\n\nin L106 `lacros` has the value of the Fixture.\nBut in L108 `lacros` is a Browser.\nAnd then in L113 you call `lacros.TestAPIConn(ctx)` which is almost identical to `lacros.TestAPIConn()` from L107, but they are different things.\n\nSo, use different names.",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 8
+      },
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cc859c_17db2c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:45:03Z",
+      "side": 1,
+      "message": "also, since the Lacros Fixture already has a Chrome(), I wonder whether this can be replaced with:\n\n   browserConn \u003d fixture.Chrome().TestAPIConn().\n   \n \nIf that works, then the fixture can be replaced with:\n\n```\n} else if lacros, ok :\u003d s.FixtValue().(lacrosfixt.FixtValue); ok {\n  crosConn \u003d lacros.TestAPIConn(ctx)\n  browserConn \u003d lacros.Chrome().TestAPIConn(ctx)\n}\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

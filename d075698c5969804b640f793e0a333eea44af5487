@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a211e66f_d47fdd3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:45:03Z",
+      "side": 1,
+      "message": "Ok. I think it might not be needed, but since so many tests are doing this, let\u0027s keep it this way.",
+      "parentUuid": "2e699118_9870c1e4",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa11dbf3_378706d2",
