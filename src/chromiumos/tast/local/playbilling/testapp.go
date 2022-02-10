@@ -28,8 +28,8 @@ type TestApp struct {
 }
 
 const (
-	appID              = "dlbmfdiobcnhnfocmenonncepnmhpckd"
-	localServerAddress = "http://127.0.0.1/"
+	appID              = "obcppbejhdfcplncjdlmagmpfjhmipii"
+	localServerAddress = "http://127.0.0.1:8080/"
 	uiTimeout          = 10 * time.Second
 )
 
