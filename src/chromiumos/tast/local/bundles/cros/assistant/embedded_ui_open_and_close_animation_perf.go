@@ -29,17 +29,28 @@ func init() {
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          chrome.LoggedIn(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name:              "assistant_key",
+				Val:               assistant.AccelAssistantKey,
+				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
+			},
+			{
+				Name:              "search_plus_a",
+				Val:               assistant.AccelSearchPlusA,
+				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
+			},
+		},
 	})
 }
 
 // openAndCloseEmbeddedUI opens/closes the Launcher-embedded Assistant UI via hotkey.
 // The only possible state change of Launcher it can trigger is between peeking and closed.
-func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
+func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn, accel assistant.Accelerator) error {
 	// Closed->Peeking.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
 		return errors.Wrap(err, "failed to open the embedded UI")
 	}
 
@@ -48,7 +59,7 @@ func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	// Peeking->Closed.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
 		return errors.Wrap(err, "failed to close the embedded UI")
 	}
 
@@ -60,6 +71,7 @@ func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) {
+	accel := s.Param().(assistant.Accelerator)
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -112,7 +124,7 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 
 		histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second,
 			func(ctx context.Context) error {
-				return openAndCloseEmbeddedUI(ctx, tconn)
+				return openAndCloseEmbeddedUI(ctx, tconn, accel)
 			},
 			"Apps.StateTransition.AnimationSmoothness.Peeking.ClamshellMode",
 			"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode")
