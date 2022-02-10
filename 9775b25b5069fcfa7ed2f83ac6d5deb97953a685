@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1c591e_094dc62c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-02-10T00:25:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f87cef5c_975f77d8",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 75
+      },
+      "revId": "9775b25b5069fcfa7ed2f83ac6d5deb97953a685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85cad746_e8669241",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-09T06:46:22Z",
       "side": 1,
       "message": "Refer to above code to install IME.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "9775b25b5069fcfa7ed2f83ac6d5deb97953a685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8dd3341_39a76d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-02-10T00:25:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cad746_e8669241",
       "range": {
         "startLine": 173,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a457b9_c24004d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-02-10T00:25:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0d8f781_02bfceab",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 22
+      },
+      "revId": "9775b25b5069fcfa7ed2f83ac6d5deb97953a685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23a18c0b_29bd38b6",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-02-09T06:46:22Z",
       "side": 1,
       "message": "nit: Comment finishes with full stop. The same to below.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 77
+      },
+      "revId": "9775b25b5069fcfa7ed2f83ac6d5deb97953a685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14c0236_9f623fc4",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-02-10T00:25:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23a18c0b_29bd38b6",
       "range": {
         "startLine": 191,
         "startChar": 0,
