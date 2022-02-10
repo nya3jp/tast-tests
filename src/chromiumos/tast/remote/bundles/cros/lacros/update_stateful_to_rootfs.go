@@ -18,6 +18,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testCase struct {
+	skew    *version.Version
+	isValid bool // true if it's a valid supportnig skew
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UpdateStatefulToRootfs,
@@ -29,18 +34,33 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.lacros.UpdateTestService"},
 		// lacrosComponent is a runtime var to specify a name of the component which Stateful Lacros is provisioned to.
 		Vars: []string{"lacrosComponent"},
-		// TODO(crbug.com/1258214): Add a parameterized test for an edge case.
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
-			Val:               version.New(0, 0, 1000, 0), // 0 major -1000 build version skew from rootfs-lacros
+			Val: testCase{
+				skew:    version.New(0, 0, 1000, 0), // 0 major -1000 build version skew from rootfs-lacros
+				isValid: true,
+			},
 		}, {
 			Name:              "unstable",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
-			Val:               version.New(0, 0, 1000, 0), // 0 major -1000 build version skew from rootfs-lacros
+			Val: testCase{
+				skew:    version.New(0, 0, 1000, 0), // 0 major -1000 build version skew from rootfs-lacros
+				isValid: true,
+			},
 		}, {
 			Name:              "no_skew",
 			ExtraSoftwareDeps: []string{"lacros_stable"},
-			Val:               version.New(0, 0, 0, 0), // no skew. rootfs-lacros and stateful-lacros will be the same version. rootfs-lacros should be used.
+			Val: testCase{
+				skew:    version.New(0, 0, 0, 0), // no skew. rootfs-lacros and stateful-lacros will be the same version. rootfs-lacros should be used.
+				isValid: true,
+			},
+		}, {
+			Name:              "invalid_skew",
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			Val: testCase{
+				skew:    version.New(10, 0, 0, 0), // invalid skew; -10 milestone older than ash-chrome. if stateful-lacros is incompatible with ash-chrome, rootfs-lacros should be used.
+				isValid: false,
+			},
 		}},
 		Timeout: 5 * time.Minute,
 	})
@@ -67,16 +87,16 @@ func UpdateStatefulToRootfs(ctx context.Context, s *testing.State) {
 	}
 
 	statefulLacrosVersion := rootfsLacrosVersion
-	skew := s.Param().(*version.Version)
+	skew := s.Param().(testCase).skew
+	isValid := s.Param().(testCase).isValid
 	statefulLacrosVersion.Decrement(skew)
 	s.Logf("Versions: ash=%s rootfs-lacros=%s stateful-lacros=%s", ashVersion.GetString(), rootfsLacrosVersion.GetString(), statefulLacrosVersion.GetString())
 	if !statefulLacrosVersion.IsValid() {
 		s.Fatal("Invalid Stateful Lacros version: ", statefulLacrosVersion)
 	} else if statefulLacrosVersion.IsNewerThan(rootfsLacrosVersion) {
 		s.Fatalf("Invalid Stateful Lacros version: %v, should be older than or equal to Rootfs: %v", statefulLacrosVersion, rootfsLacrosVersion)
-	} else if !statefulLacrosVersion.IsSkewValid(ashVersion) {
-		// TODO(crbug.com/1258138): Check version skew once implemented in production.
-		s.Fatalf("Invalid Stateful Lacros version: %v, should be compatible with supported version skews for Ash: %v", statefulLacrosVersion, ashVersion)
+	} else if isValid != statefulLacrosVersion.IsSkewValid(ashVersion) {
+		s.Fatalf("Invalid Stateful Lacros version: %v, not expected skew to Ash: %v, should be a valid skew? %v", statefulLacrosVersion, ashVersion, isValid)
 	}
 
 	// Get the component to override from the runtime var. Defaults to Lacros dev channel.
