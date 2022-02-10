@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aeeb7c9_7ec6ee39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-10T06:18:22Z",
+      "side": 1,
+      "message": "The change is a part of a larger plan (https://docs.google.com/document/d/1RCuzRmv7dlVuidQqoWZsXy1sn3zFADNjfgzfVyK6EcQ/edit#) to improve play UI testing stability.",
+      "revId": "80fe099ea1b79c0e761d44a0921d567231b8fa95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
