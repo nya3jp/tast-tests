@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec590ad_c349a104",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-10T17:19:01Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "915e1856c50387fc1699a8d840641e115d973995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6dc35f2_924353a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-10T17:19:01Z",
+      "side": 1,
+      "message": "nit: Needs update.",
+      "range": {
+        "startLine": 146,
+        "startChar": 6,
+        "endLine": 146,
+        "endChar": 110
+      },
+      "revId": "915e1856c50387fc1699a8d840641e115d973995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5654676_8babd3e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-10T17:19:01Z",
+      "side": 1,
+      "message": "IIRC |video_decoder_legacy_supported| will be false on QC\nbecause we never took the time to implement the VDA \nalternative, so we should remove it as well to enable\nthis test to run on Trogdor/Herobrine.",
+      "range": {
+        "startLine": 152,
+        "startChar": 49,
+        "endLine": 152,
+        "endChar": 82
+      },
+      "revId": "915e1856c50387fc1699a8d840641e115d973995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94691e35_d45dca05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-10T17:19:01Z",
+      "side": 1,
+      "message": "nit: Also here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 110
+      },
+      "revId": "915e1856c50387fc1699a8d840641e115d973995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c52a9881_971fb6fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-10T17:19:01Z",
+      "side": 1,
+      "message": "nit: Remove? So that it may run on qualcomm.",
+      "range": {
+        "startLine": 113,
+        "startChar": 48,
+        "endLine": 113,
+        "endChar": 56
+      },
+      "revId": "915e1856c50387fc1699a8d840641e115d973995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
