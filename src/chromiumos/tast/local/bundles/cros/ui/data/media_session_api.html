@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>MediaSessionAPI</title>
+</head>
+
+<body>
+
+  <audio controls loop>
+    <source src="five_minute_audio_20211116.mp3" sizes="72x72" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <script>
+    const audio = document.querySelector('audio');
+    const withArtworkTitle = 'test audio (with artwork)'
+    const withoutArtworkTitle = 'test audio (without artwork)'
+
+    function getTitleWithArtwork(artwork) {
+      return (artwork) ? withArtworkTitle : withoutArtworkTitle
+    }
+
+    function newMediaMetadataWithImage() {
+      return new MediaMetadata({
+        title: withArtworkTitle,
+        artist: 'test artist',
+        album: 'test album',
+        artwork: [
+          { src: "Lenna.png", sizes: '512x512', type: 'image/png' },
+        ]
+      });
+    }
+
+    function newMediaMetadataWithoutImage() {
+      return new MediaMetadata({
+        title: withoutArtworkTitle,
+        artist: 'test artist',
+        album: 'test album',
+        artwork: [],
+      });
+    }
+
+    selectMedia = new Array(newMediaMetadataWithImage(), newMediaMetadataWithoutImage())
+
+    function resetMediaSession(idx) {
+      idx = idx % selectMedia.length
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = selectMedia[idx];
+
+        navigator.mediaSession.setActionHandler('pause', () => { audio.pause(); });
+        navigator.mediaSession.setActionHandler('play', () => { audio.play(); });
+        navigator.mediaSession.setActionHandler('seekbackward', () => { audio.currentTime -= 10; });
+        navigator.mediaSession.setActionHandler('seekforward', () => { audio.currentTime += 10; });
+        navigator.mediaSession.setActionHandler('previoustrack', () => { resetAudio(idx - 1); });
+        navigator.mediaSession.setActionHandler('nexttrack', () => { resetAudio(idx + 1); });
+      }
+    }
+
+    function resetAudio(idx) {
+      audio.currentTime = 0;
+      audio.play()
+        .then(_ => resetMediaSession(idx))
+        .catch(error => log(error));
+    }
+    resetMediaSession(0);
+  </script>
+</body>
+
+</html>
