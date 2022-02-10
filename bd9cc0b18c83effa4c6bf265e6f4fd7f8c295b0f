@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d7dbcc3_920cbea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T19:34:20Z",
+      "side": 1,
+      "message": "update:\nWhat about calling the private test connection: `ptconn`, and keep using `tconn` for the public test connection?\n\nThe issue with `browserConn` is that it can be confused with a `Chrome` instance",
+      "parentUuid": "4eafb80f_7dfcad6d",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc90a48c_98bfbd0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
         "patchSetId": 7
