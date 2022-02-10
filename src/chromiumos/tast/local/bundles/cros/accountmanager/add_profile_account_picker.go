@@ -7,6 +7,7 @@ package accountmanager
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -86,7 +87,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	}
 
 	// Open a new tab
-	conn, err := cs.NewConn(ctx, "chrome://newtab")
+	conn, err := cs.NewConn(ctx, "chrome://version/")
 	if err != nil {
 		s.Fatal("Failed to open a new tab in Lacros browser: ", err)
 	}
@@ -108,11 +109,6 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	finishAddProfileHeading := nodewith.Name("Chrome browser sync is on").Role(role.Heading).Ancestor(finishAddProfileRoot)
 	doneButton := nodewith.Name("Done").Role(role.Button).Focusable().Ancestor(finishAddProfileRoot)
 
-	// Nodes that belong to the new profile:
-	newProfileWindow := nodewith.NameContaining("Google Chrome").Role(role.Window).Focused()
-	// The menu should contain the username of the secondary account.
-	newProfileMenu := nodewith.NameStartingWith("Accounts and sync").NameContaining(username).Role(role.Menu)
-
 	if err := uiauto.Combine("Add a profile",
 		uiauto.Combine("Click a button to add a profile",
 			ui.WaitUntilExists(profileToolbarButton),
@@ -131,12 +127,26 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 			ui.WaitUntilExists(doneButton),
 			ui.LeftClick(doneButton),
 		),
-		uiauto.Combine("Check that the new profile was created and belongs to the correct account",
-			ui.WaitUntilExists(newProfileWindow),
-			ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
-			ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
-			ui.WaitUntilExists(newProfileMenu),
-		),
+	)(ctx); err != nil {
+		s.Fatal("Failed to create a new profile for secondary account: ", err)
+	}
+
+	// There are two Chrome windows open. Find the window of the new profile:
+	// the name shouldn't contain "About Version" (unlike the first profile).
+	newProfileWindow, err := accountmanager.GetChromeProfileWindow(ctx, tconn, func(node uiauto.NodeInfo) bool {
+		return !strings.Contains(node.Name, "About Version")
+	})
+	if err != nil {
+		s.Fatal("Failed to find new Chrome window: ", err)
+	}
+
+	// Make sure that a new profile was added for the correct account
+	if err := uiauto.Combine("Check that the new profile belongs to the correct account",
+		ui.WaitUntilExists(newProfileWindow),
+		ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
+		ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
+		// The menu should contain the username of the secondary account.
+		ui.WaitUntilExists(nodewith.NameStartingWith("Accounts and sync").NameContaining(username).Role(role.Menu)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to create a new profile for secondary account: ", err)
 	}
