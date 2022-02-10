@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d88836_d14daa1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-10T02:53:52Z",
+      "side": 1,
+      "message": "I\u0027d recommend defining this as a type for better readability, especially if you plan on adding more parameters later on.",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 44,
+        "endChar": 124
+      },
+      "revId": "e6ae376d0db1073a053ecbddfea859d5066a56d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
