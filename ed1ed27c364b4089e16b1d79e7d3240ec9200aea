@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32fb87c2_194ad2ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-10T01:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e479a3fc_17863f6a",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f301eb5_c63a4e28",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-09T14:29:14Z",
       "side": 1,
       "message": "To prevent goroutine leaks, can we do\n\n```\nvar wg sync.WaitGroup\n\nhandlePipeLines :\u003d func(...) {\n  wg.Add(1)\n  ...\n  go func() {\n    ...\n    wg.Done()\n  }()\n}\ndefer wg.Wait()\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 4
+      },
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "addd94ac_04626780",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-10T01:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f301eb5_c63a4e28",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ce66ce_4b311987",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-10T01:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c2dd9f_541615bf",
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeb6861f_cc10fa87",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-02-09T14:29:14Z",
       "side": 1,
       "message": "Same here. Can we kill and wait the command in defer?",
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ce58e8_f2ce1661",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-10T01:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb6861f_cc10fa87",
       "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
