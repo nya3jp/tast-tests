@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19696216_c2614339",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:54:45Z",
+      "side": 1,
+      "message": "+2  % nit",
+      "revId": "8f0386bf29d4efa6f1d1ba4c5a2ce19f65e940f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899a9616_e42b8834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:54:45Z",
+      "side": 1,
+      "message": "nit: ditto below... add comment that points to the line-of-code that returns that string",
+      "range": {
+        "startLine": 64,
+        "startChar": 105,
+        "endLine": 64,
+        "endChar": 126
+      },
+      "revId": "8f0386bf29d4efa6f1d1ba4c5a2ce19f65e940f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6f7782_85f95ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname_invalid_address.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T18:54:45Z",
+      "side": 1,
+      "message": "while you are here:\nthis looks flaky... if the program that returns this error changes a bit, the test will fail.\n\nCould you add a link to the line-of-code that return the string?\ne.g, something like this:\n\n```\n // Taken from here:\n // http://cs/chromeos_public/src/third_party/chromiumos-overlay/net-dns/avahi/files/avahi-0.7-cache-host-name-record-A.patch;l\u003d90;rcl\u003d188c59c9a2375638974db524bf830a266f616e8c\n const avahiInvalidAddrError \u003d \"Failed to resolve hostname INVALID_ADDRESS.local (interface -1, protocol -1, flags 0, IPv4 yes, IPv6 no)\"\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 80,
+        "endLine": 44,
+        "endChar": 184
+      },
+      "revId": "8f0386bf29d4efa6f1d1ba4c5a2ce19f65e940f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
