@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1e32122b_f0fab693",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-10T22:13:35Z",
+      "side": 1,
+      "message": "Thank you Miguel. Good to know that option. I was just thinking of chain CL, but I think it doesn\u0027t apply due to being in different repo. \n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#CQ-DEPEND\n\nLearned many syntax restrictions here. \n\n- Cq-Depend has to be in the same paragraph as Change-Id.\n- CQ-DEPEND\u003d is no longer supported.\n- Expected \u0027Cq-Depend:\u0027 or \u0027CQ-DEPEND\u003d\u0027.",
+      "parentUuid": "2b613053_06d00c97",
+      "revId": "477a992f0dc9dec69373c5b2bda436381eba78d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "25d7ef8d_99df0a7b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
