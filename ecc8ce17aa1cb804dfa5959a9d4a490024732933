@@ -39,6 +39,30 @@
       },
       "revId": "ecc8ce17aa1cb804dfa5959a9d4a490024732933",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78b12483_57e31ec1",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T18:19:27Z",
+      "side": 1,
+      "message": "The intention is that (Browser).Close doesn\u0027t really change any functional behaviors for ash-chrome and lacros-chrome on purpose as you and I are concerned, but provide a consistent API that does the same as today.\n\nExample (as you see in this CL) users may expect as below\n```\ncr :\u003d chrome.New(...)\nbr, ... :\u003d browserfixt.SetUp(...)\ndefer br.Close()  # cleanup browser part of ash-chrome or lacros-chrome. same as closerBrowser\ndefer cr.Close()  # cleanup non-browser part of ash-chrome\n```\n\nWhen it comes to implementation, Chrome and Lacros should know how to close itself, so should be able to pass a Closer into Browser when instantiating Browser.\nHowever, since it is inherently a cosmetic change on API, I\u0027m open to any suggestion. Please feel free to advise.",
+      "parentUuid": "b4747020_75572b1a",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 109
+      },
+      "revId": "ecc8ce17aa1cb804dfa5959a9d4a490024732933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
