@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f387eea_bda69136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-10T04:05:39Z",
+      "side": 1,
+      "message": "I have one comment. Please take a look.",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a902f7_b67f0be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-10T04:05:39Z",
+      "side": 1,
+      "message": "Why do you need to take a pointer? Will \n\nfunc takeScreenshot(out string) uiauto.Action\n\nwork?",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
