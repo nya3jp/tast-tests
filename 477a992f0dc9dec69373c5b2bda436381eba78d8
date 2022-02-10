@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b613053_06d00c97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-10T21:55:48Z",
+      "side": 1,
+      "message": "nit: We should add here \n  Cq-Depends: chromium:3448872\n  \nor some such, so crrev/c/3448872 is landed first.",
+      "revId": "477a992f0dc9dec69373c5b2bda436381eba78d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "25d7ef8d_99df0a7b",
