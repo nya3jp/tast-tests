@@ -204,6 +204,36 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:   "nearbyShareDataUsageOnlineNoOneWebRtcOnly",
+		Desc:   "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'. CrOS feature flags configured such that WebRTC is the only upgrade medium",
+		Parent: "nearbyShareGAIALoginWebRtcOnly",
+		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, false),
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:   "nearbyShareDataUsageOnlineNoOneWlanOnly",
+		Desc:   "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'. CrOS feature flags configured such that WLAN is the only upgrade medium",
+		Parent: "nearbyShareGAIALoginWlanOnly",
+		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, false),
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
 }
 
 type nearbyShareFixture struct {
