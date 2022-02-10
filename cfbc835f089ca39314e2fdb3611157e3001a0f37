@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1932228_f7bacedd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-10T03:12:54Z",
+      "side": 1,
+      "message": "LGTM, other than the existing unresolved comments",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a56d4d88_6dfa7baa",
@@ -251,6 +268,23 @@
       "writtenOn": "2022-02-09T15:08:58Z",
       "side": 1,
       "message": "you can return so foundTarget is no longer needed.\n\nditto for below.",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9010d2_016fcc44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-10T03:12:54Z",
+      "side": 1,
+      "message": "Ditto to hidehiko\u0027s comment above",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
