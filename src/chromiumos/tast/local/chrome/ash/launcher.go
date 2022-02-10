@@ -104,7 +104,7 @@ func saveImageAsPng(filename string, img image.Image) error {
 func generateFakeAppNames(numFakeApps int) []string {
 	fakeAppNames := make([]string, numFakeApps)
 	for i := 0; i < numFakeApps; i++ {
-		fakeAppNames[i] = fmt.Sprintf("fake_%d", i)
+		fakeAppNames[i] = fmt.Sprintf("fake app %d", i)
 	}
 	return fakeAppNames
 }
