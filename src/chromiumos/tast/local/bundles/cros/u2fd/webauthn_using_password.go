@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -8,15 +8,12 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/u2fd/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -24,13 +21,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebauthnUsingPIN,
+		Func:         WebauthnUsingPassword,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Checks that WebAuthn using PIN succeeds",
+		Desc:         "Checks that WebAuthn using password succeeds",
 		Contacts: []string{
 			"hcyang@google.com",
 			"cros-hwsec@chromium.org",
-			"martinkr@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "gsc"},
@@ -38,7 +34,7 @@ func init() {
 	})
 }
 
-func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
+func WebauthnUsingPassword(ctx context.Context, s *testing.State) {
 	if err := upstart.CheckJob(ctx, "u2fd"); err != nil {
 		s.Fatal("u2fd isn't started: ", err)
 	}
@@ -51,44 +47,23 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 
 	const (
-		username   = fixtures.Username
-		password   = fixtures.Password
-		PIN        = "123456"
-		autosubmit = true
+		username = fixtures.Username
+		password = fixtures.Password
 	)
-
-	fdms, err := fakedms.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start FakeDMS: ", err)
-	}
-	defer fdms.Stop(ctx)
-
-	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
 
 	opts := []chrome.Option{
 		chrome.FakeLogin(chrome.Creds{User: username, Pass: password}),
 		// Enable device event log in Chrome logs for validation.
-		chrome.ExtraArgs("--vmodule=device_event_log*=1"),
-		chrome.DMSPolicy(fdms.URL)}
+		chrome.ExtraArgs("--vmodule=device_event_log*=1")}
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to log in by Chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
-	pinPolicies := []policy.Policy{
-		&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
-		&policy.PinUnlockAutosubmitEnabled{Val: true}}
-
-	if err := policyutil.ServeAndVerify(ctx, fdms, cr, pinPolicies); err != nil {
-		s.Fatal("Failed to update policies: ", err)
-	}
-
-	tconn, err := util.SetUpUserPIN(ctx, cr, PIN, password, autosubmit)
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to set up PIN: ", err)
+		s.Fatal("Failed to get test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -99,9 +74,9 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	authCallback := func(ctx context.Context, ui *uiauto.Context) error {
-		// Type PIN into ChromeOS WebAuthn dialog. Autosubmitted.
-		if err := keyboard.Type(ctx, PIN); err != nil {
-			return errors.Wrap(err, "failed to type PIN into ChromeOS auth dialog")
+		// Type password into ChromeOS WebAuthn dialog.
+		if err := keyboard.Type(ctx, password+"\n"); err != nil {
+			return errors.Wrap(err, "failed to type password into ChromeOS auth dialog")
 		}
 		return nil
 	}
