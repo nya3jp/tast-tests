@@ -63,6 +63,30 @@
       },
       "revId": "54c882f4a340cf5fa6bb0d28e18dfcbdbe387cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1ef8ad_7fd0b81a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-10T11:21:01Z",
+      "side": 1,
+      "message": "For the sake of consistency, i vote for sw.js, because we use that name in unit and browser tests, too.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/telemetry/api/base_telemetry_extension_browser_test.cc;drc\u003dc75da21019250df74ef000ee4591dd8978e06767;l\u003d61",
+      "parentUuid": "9174aa20_0660240b",
+      "range": {
+        "startLine": 116,
+        "startChar": 68,
+        "endLine": 116,
+        "endChar": 73
+      },
+      "revId": "54c882f4a340cf5fa6bb0d28e18dfcbdbe387cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
