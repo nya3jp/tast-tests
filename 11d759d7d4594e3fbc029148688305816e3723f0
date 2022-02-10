@@ -204,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6b4415_56d02b5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:13:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ac89627_746d37ba",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "521cc14c_5c8c8a52",
@@ -288,6 +306,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aee89749_d96f3036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:13:39Z",
+      "side": 1,
+      "message": "Yes, so, although it is not clean, you need to track it.\n\nlacrosClosed :\u003d false\ndefer func() {\n  if !lacrosClosed {\n    if err :\u003d l.Close(); err !\u003d nil {\n      s.Error(...)\n    }\n  }\n}()\n\n... // at L93\nif err :\u003d l.Close(); err !\u003d nil {\n  ...\n}\nlacrosClosed \u003d true",
+      "parentUuid": "cb91ef0d_8c84edaa",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a43e6eb_b40cc3ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
         "patchSetId": 2
@@ -352,6 +388,24 @@
       "side": 1,
       "message": "in terms of the install icon click and the install button click? They are in the same page, after clicking the icon, the bubble will show up and we can click the button immediatly.",
       "parentUuid": "0e8c1f70_73168906",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3caedefd_db77b11f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:13:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d02dadf7_3ba6696e",
       "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
