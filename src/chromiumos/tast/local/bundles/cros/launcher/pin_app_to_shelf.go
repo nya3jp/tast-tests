@@ -37,22 +37,36 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "install2Apps",
 		Params: []testing.Param{{
+			Name: "productivity_launcher_clamshell_mode",
+			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+		}, {
 			Name: "clamshell_mode",
-			Val:  false,
+			Val:  launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+		}, {
+			Name:              "productivity_launcher_tablet_mode",
+			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
 			Name:              "tablet_mode",
-			Val:               true,
+			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		},
-		},
+		}},
 	})
 }
 
 // PinAppToShelf tests if pinning application onto shelf behaves correctly.
 func PinAppToShelf(ctx context.Context, s *testing.State) {
-	tabletMode := s.Param().(bool)
+	testCase := s.Param().(launcher.TestCase)
+	tabletMode := testCase.TabletMode
+	productivityLauncher := testCase.ProductivityLauncher
+	var opts = s.FixtValue().([]chrome.Option)
+	if productivityLauncher {
+		opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"))
+	} else {
+		opts = append(opts, chrome.DisableFeatures("ProductivityLauncher"))
+	}
 
-	cr, err := chrome.New(ctx, s.FixtValue().([]chrome.Option)...)
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start chrome: ", err)
 	}
@@ -75,6 +89,17 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Open the Launcher and go to Apps list page.
+	if productivityLauncher && !tabletMode {
+		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open bubble launcher: ", err)
+		}
+	} else {
+		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open Expanded Application list view: ", err)
+		}
+	}
+
 	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
@@ -85,15 +110,15 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	app4 := apps.Settings
 	app5 := apps.Help
 
-	// Open the Launcher and go to Apps list page.
-	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-		// Open the Launcher and go to Apps list page again for clamshell mode.
-		s.Fatal("Failed to open Expanded Application list view: ", err)
+	var container *nodewith.Finder
+	if productivityLauncher && !tabletMode {
+		container = nodewith.ClassName(launcher.BubbleAppsGridViewClass)
+	} else {
+		container = nodewith.ClassName(launcher.PagedAppsGridViewClass)
 	}
-
 	// Pin three apps from the launcher by select "Pin to shelf" on the context menu but do not open them.
 	// Then, verify all three applications is on the shelf and existing pinned apps go to the left.
-	if err := pinApps(ctx, tconn, []apps.App{app1, app2, app3}); err != nil {
+	if err := pinApps(ctx, tconn, []apps.App{app1, app2, app3}, container); err != nil {
 		s.Fatal("Pin apps to the shelf from the launcher: ", err)
 	}
 
@@ -186,7 +211,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 
 	// Unpin an app that's not running, and verify it gets removed from shelf.
-	if err := launcher.UnpinAppFromShelf(tconn, app3)(ctx); err != nil {
+	if err := launcher.UnpinAppFromShelf(tconn, app3, container)(ctx); err != nil {
 		s.Fatalf("Failed to unpin app %q from shelf", app3.Name)
 	}
 
@@ -216,13 +241,13 @@ func getAppIndexInShelf(items []*ash.ShelfItem, name string) (int, error) {
 }
 
 // pinApps pins a list of applications onto the shelf.
-func pinApps(ctx context.Context, tconn *chrome.TestConn, apps []apps.App) error {
+func pinApps(ctx context.Context, tconn *chrome.TestConn, apps []apps.App, container *nodewith.Finder) error {
 	prevLocations, err := buttonLocations(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "cannot get location for buttons")
 	}
 	for _, app := range apps {
-		if err := launcher.PinAppToShelf(tconn, app)(ctx); err != nil {
+		if err := launcher.PinAppToShelf(tconn, app, container)(ctx); err != nil {
 			return errors.Wrapf(err, "fail to pin app %q to shelf", app.Name)
 		}
 
