@@ -110,6 +110,54 @@
       },
       "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec52792_a6fca7c1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-10T15:49:57Z",
+      "side": 1,
+      "message": "Adding `Focusable` to `entireDesktopButton` didn\u0027t seem to work.",
+      "parentUuid": "911eb41f_e3cac486",
+      "range": {
+        "startLine": 130,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 152
+      },
+      "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547e5acc_d8e6c01a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-10T15:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0af1fd35_4019fa11",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
