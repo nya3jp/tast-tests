@@ -16,6 +16,46 @@
       "message": "Hidehiko, Eliot, can you PTAL to follow up our sync? Much appreciated,",
       "revId": "87c29e3c6cd2d6eb53900d66bce44560f49e200e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fa0af7_8635ab1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-10T03:43:22Z",
+      "side": 1,
+      "message": "looks fine to me, defer to hidehiko@",
+      "revId": "87c29e3c6cd2d6eb53900d66bce44560f49e200e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb84afd6_e42c859f",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-10T03:43:22Z",
+      "side": 1,
+      "message": "Is a similar api available in chrome.Chrome?",
+      "range": {
+        "startLine": 86,
+        "startChar": 18,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "87c29e3c6cd2d6eb53900d66bce44560f49e200e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
