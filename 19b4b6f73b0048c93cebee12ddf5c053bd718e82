@@ -16,6 +16,52 @@
       "message": "thanks!",
       "revId": "19b4b6f73b0048c93cebee12ddf5c053bd718e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8740186_6b6ad1b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T00:52:08Z",
+      "side": 1,
+      "message": "FYI: Using this precondition `NonVKClamshell`, it can possibly reuse the same chrome session from other tests. Bring your attention that test expectations should not be affected by Chrome State (such as ML).\n\nAlternatively, you can use NonVKClamshellReset precondition, which restart Chrome between each test that is slow but clean.\n\nLastly, if you want the test share same Chrome session internally but separate from other tests. You can use NonVKClamshellReset precondition, then move params inside the test case running as subtest.",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "19b4b6f73b0048c93cebee12ddf5c053bd718e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc5eaeb_a69e74fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_transliteration_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T00:52:08Z",
+      "side": 1,
+      "message": "nit: Failed to verify PK transliteration typing",
+      "range": {
+        "startLine": 212,
+        "startChar": 28,
+        "endLine": 212,
+        "endChar": 37
+      },
+      "revId": "19b4b6f73b0048c93cebee12ddf5c053bd718e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
