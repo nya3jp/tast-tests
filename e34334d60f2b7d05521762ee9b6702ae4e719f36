@@ -33,6 +33,23 @@
       "message": "shadow reviewer lgtm",
       "revId": "e34334d60f2b7d05521762ee9b6702ae4e719f36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b670fca_3bd58d04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-10T12:07:15Z",
+      "side": 1,
+      "message": "LGTM. Always happy to see files being deleted :)) ",
+      "revId": "e34334d60f2b7d05521762ee9b6702ae4e719f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
