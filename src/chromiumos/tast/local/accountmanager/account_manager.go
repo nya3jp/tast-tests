@@ -40,6 +40,37 @@ func GetAddAccountDialog() *nodewith.Finder {
 	return nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
 }
 
+// GetChromeWindow returns a nodewith.Finder to the Chrome window.
+func GetChromeWindow() *nodewith.Finder {
+	return nodewith.NameContaining("Google Chrome").Role(role.Window).HasClass("BrowserRootView")
+}
+
+// GetChromeProfileWindow returns a nodewith.Finder to the Chrome window which
+// matches the provided condition.
+func GetChromeProfileWindow(ctx context.Context, tconn *chrome.TestConn, condition func(uiauto.NodeInfo) bool) (*nodewith.Finder, error) {
+	profileWindow := GetChromeWindow()
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+
+	var result *nodewith.Finder
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		profileInfos, err := ui.NodesInfo(ctx, profileWindow)
+		if err != nil {
+			return testing.PollBreak(errors.Wrapf(err, "failed to get info for %v", profileWindow.Pretty()))
+		}
+		for i := range profileInfos {
+			if condition(profileInfos[i]) {
+				result = profileWindow.Name(profileInfos[i].Name)
+				return nil
+			}
+		}
+		return errors.Errorf("failed to find the Chrome window matching the condition: %v windows were checked", len(profileInfos))
+	}, &testing.PollOptions{Timeout: DefaultUITimeout}); err != nil {
+		return nil, errors.Wrap(err, "failed to find the Chrome window matching the condition")
+	}
+
+	return result, nil
+}
+
 // AddAccount adds an account in-session. Account addition dialog should be already open.
 func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password string) error {
 	// Set up keyboard.
@@ -130,7 +161,8 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	return nil
 }
 
-// CheckArcToggleStatus compares the state of the "ARC toggle" in the account addition flow with the expected value.
+// CheckArcToggleStatus compares the state of the "ARC toggle" in the account
+// addition flow with the expected value.
 func CheckArcToggleStatus(ctx context.Context, tconn *chrome.TestConn, brType browser.Type, expectedVal bool) error {
 	if brType != browser.TypeLacros {
 		// The feature is applied only if Lacros is enabled.
@@ -250,7 +282,8 @@ func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, d *andro
 	return true, nil
 }
 
-// RemoveAccountFromOSSettings removes a secondary account from OS Settings. The "More actions" menu should be already open for that account.
+// RemoveAccountFromOSSettings removes a secondary account from OS Settings.
+// The "More actions" menu should be already open for that account.
 func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, brType browser.Type) error {
 	testing.ContextLog(ctx, "Removing account")
 
@@ -280,7 +313,9 @@ func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, br
 	return nil
 }
 
-// TestCleanup removes all secondary accounts in-session. Should be called at the beginning of the test, so that results of the previous test don't interfere with the current test.
+// TestCleanup removes all secondary accounts in-session. Should be called at
+// the beginning of the test, so that results of the previous test don't
+// interfere with the current test.
 func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, brType browser.Type) error {
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
