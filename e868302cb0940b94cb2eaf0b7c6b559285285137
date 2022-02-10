@@ -22,6 +22,30 @@
       },
       "revId": "e868302cb0940b94cb2eaf0b7c6b559285285137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "230190a5_822b3cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-10T07:44:16Z",
+      "side": 0,
+      "message": "Sorry, forgot to delete this when submitting (I deleted this for local testing on my DUT which isn\u0027t in the listed hardware).\n\nFixed, thanks!",
+      "parentUuid": "349e3b96_8bfb20ef",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "e868302cb0940b94cb2eaf0b7c6b559285285137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
