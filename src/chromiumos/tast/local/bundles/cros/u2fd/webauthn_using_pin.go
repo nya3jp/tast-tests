@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -99,6 +100,19 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	authCallback := func(ctx context.Context, ui *uiauto.Context) error {
+		// Check if the UI is correct.
+		var node *nodewith.Finder
+		// The accessibility namings of these two corresponding fields are different: one uses specific class name,
+		// another uses normal "Views" classname with explicitly set name.
+		if autosubmit {
+			node = nodewith.Name("Enter your PIN")
+		} else {
+			node = nodewith.ClassName("LoginPinInputView")
+		}
+		found, err := ui.IsNodeFound(ctx, node)
+		if err != nil || !found {
+			return errors.Wrap(err, "failed to find the pin input field")
+		}
 		// Type PIN into ChromeOS WebAuthn dialog. Autosubmitted.
 		if err := keyboard.Type(ctx, PIN); err != nil {
 			return errors.Wrap(err, "failed to type PIN into ChromeOS auth dialog")

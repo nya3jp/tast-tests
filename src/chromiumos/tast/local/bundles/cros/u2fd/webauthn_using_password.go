@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/upstart"
@@ -74,8 +75,13 @@ func WebauthnUsingPassword(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	authCallback := func(ctx context.Context, ui *uiauto.Context) error {
+		// Check if the UI is correct.
+		found, err := ui.IsNodeFound(ctx, nodewith.ClassName("LoginPasswordView"))
+		if err != nil || !found {
+			return errors.Wrap(err, "failed to find the password input field")
+		}
 		// Type password into ChromeOS WebAuthn dialog.
-		if err := keyboard.Type(ctx, password+"\n"); err != nil {
+		if err = keyboard.Type(ctx, password+"\n"); err != nil {
 			return errors.Wrap(err, "failed to type password into ChromeOS auth dialog")
 		}
 		return nil
