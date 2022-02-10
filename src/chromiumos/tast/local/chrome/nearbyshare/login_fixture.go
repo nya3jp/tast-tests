@@ -16,9 +16,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type mediums int
+
+const (
+	defaultMediums mediums = iota
+	webRTCAndWLAN
+	webRTCOnly
+	wlanOnly
+)
+
 // NewNearbyShareLogin creates a fixture that logs in and enables Nearby Share.
 // Note that nearbyShareGAIALogin inherits from nearbyShareAndroidSetup.
-func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled, useAndroidAccount bool) testing.FixtureImpl {
+func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled, useAndroidAccount bool, m mediums) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.EnableFeatures("GwpAsanMalloc", "GwpAsanPartitionAlloc"),
 		chrome.DisableFeatures("SplitSettingsSync"),
@@ -31,6 +40,15 @@ func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled, useAndroidAccoun
 		defaultNearbyOpts = append(defaultNearbyOpts, chrome.EnableFeatures("BluetoothAdvertisementMonitoring"),
 			chrome.EnableFeatures("NearbySharingBackgroundScanning"))
 	}
+	switch m {
+	case webRTCAndWLAN:
+		defaultNearbyOpts = append(defaultNearbyOpts, chrome.EnableFeatures("NearbySharingWebRtc"), chrome.EnableFeatures("NearbySharingWifiLan"))
+	case webRTCOnly:
+		defaultNearbyOpts = append(defaultNearbyOpts, chrome.EnableFeatures("NearbySharingWebRtc"), chrome.DisableFeatures("NearbySharingWifiLan"))
+	case wlanOnly:
+		defaultNearbyOpts = append(defaultNearbyOpts, chrome.DisableFeatures("NearbySharingWebRtc"), chrome.EnableFeatures("NearbySharingWifiLan"))
+	}
+
 	return &nearbyShareLoginFixture{
 		opts:              defaultNearbyOpts,
 		arcEnabled:        arcEnabled,
@@ -63,7 +81,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(false, false, false),
+		Impl:   NewNearbyShareLogin(false, false, false, defaultMediums),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
@@ -87,7 +105,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(false, false, true),
+		Impl:   NewNearbyShareLogin(false, false, true, defaultMediums),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
@@ -106,12 +124,12 @@ func init() {
 
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareGAIALoginBackgroundScanningEnabled",
-		Desc: "CrOS login with GAIA and Nearby Share flags enabled",
+		Desc: "CrOS login with GAIA; Nearby Share and Background scanning flags enabled",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(false, true, false),
+		Impl:   NewNearbyShareLogin(false, true, false, defaultMediums),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
@@ -136,7 +154,7 @@ func init() {
 			"arc-app-dev@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(true, false, false),
+		Impl:   NewNearbyShareLogin(true, false, false, defaultMediums),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
@@ -147,6 +165,72 @@ func init() {
 			keepState,
 		},
 		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginWebRTCAndWLAN",
+		Desc: "CrOS login with GAIA; use WebRTC and WLAN upgrade mediums",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetup",
+		Impl:   NewNearbyShareLogin(false, false, false, webRTCAndWLAN),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginWebRTCOnly",
+		Desc: "CrOS login with GAIA; only use WebRTC upgrade medium",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetup",
+		Impl:   NewNearbyShareLogin(false, false, false, webRTCOnly),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginWLANOnly",
+		Desc: "CrOS login with GAIA; only use WLAN upgrade medium",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetup",
+		Impl:   NewNearbyShareLogin(false, false, false, wlanOnly),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,

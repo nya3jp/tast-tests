@@ -78,6 +78,10 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 	for _, flag := range req.EnabledFlags {
 		nearbyOpts = append(nearbyOpts, chrome.EnableFeatures(flag))
 	}
+	testing.ContextLog(ctx, req.DisabledFlags)
+	for _, flag := range req.DisabledFlags {
+		nearbyOpts = append(nearbyOpts, chrome.DisableFeatures(flag))
+	}
 
 	cr, err := chrome.New(ctx, nearbyOpts...)
 	if err != nil {
