@@ -16,6 +16,24 @@
       "message": "Should this be PoolBreak?\nui.NodesInfo succeeds even when there is no matching node (returning an empty slice), and this err would probably indicate some unexpected issue with the testing.",
       "revId": "37e5a7c286919073ad4e03f3c6e34c51d27cd98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62955c21_b4aa9d3e",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-10T09:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ba1a63_dd33f056",
+      "revId": "37e5a7c286919073ad4e03f3c6e34c51d27cd98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
