@@ -50,6 +50,24 @@
       "message": "nit: pull `1` out into a constant that can be referenced here, below, and in the comment above. That should make it a bit easier to follow and remove the \u0027magic\u0027 1.",
       "revId": "ba6602c6d99f40c0eb8c2d41c7a12b3a62210c11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9584891a_44fd422a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-02-10T15:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f1e815_af1e6767",
+      "revId": "ba6602c6d99f40c0eb8c2d41c7a12b3a62210c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
