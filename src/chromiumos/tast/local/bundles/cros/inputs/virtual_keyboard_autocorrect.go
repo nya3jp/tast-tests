@@ -116,6 +116,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
 		s.Fatalf("Failed to install and set input method to %q: %v: ", inputMethod, err)
 	}
+	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 
