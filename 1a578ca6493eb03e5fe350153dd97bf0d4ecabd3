@@ -260,6 +260,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5cd9d1c_85cd4061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "You can split the test to 2 e.g. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_japanese_input_mode.go?l\u003d36\n\nStableModels is a shortlist of boards that intended to run in CQ presubmit. The rest boards are informational only. Split the test to 2 provides a clear view once the test is stable enough to promote.",
+      "parentUuid": "dea22a59_160daafe",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91d51002_ba07c2a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
         "patchSetId": 2

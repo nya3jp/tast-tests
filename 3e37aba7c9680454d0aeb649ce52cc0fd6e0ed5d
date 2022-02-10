@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e91ffd_0e4f075f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "uc :\u003d s.PreValue().(pre.PreData).UserContext",
+      "revId": "3e37aba7c9680454d0aeb649ce52cc0fd6e0ed5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9879ebb3_193aeca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "sorry, missed this part in last review. By default it is normal mode.\n\nits, err :\u003d testserver.Launch(ctx, cr, tconn)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to launch inputs test server: \", err)\n}\ndefer its.Close()",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "3e37aba7c9680454d0aeb649ce52cc0fd6e0ed5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4f4eb4_e737b157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "nit: using `im`(input method) instead of `kb`(keyboard)",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 10
+      },
+      "revId": "3e37aba7c9680454d0aeb649ce52cc0fd6e0ed5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc55756_52b12865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)\n\nInput method attribute needs to be maintained after change.",
+      "revId": "3e37aba7c9680454d0aeb649ce52cc0fd6e0ed5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8cb99e_91e5bd3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "User context can be retrieved from precondition as suggested in another comment.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 141
+      },
+      "revId": "3e37aba7c9680454d0aeb649ce52cc0fd6e0ed5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f4d2a5_5bb47cc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "Voice \u0026 handwriting and float VK tests are already covered in corresponding tests. This test case only verifies Virtual keyboard keys excluding tool menu.",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 5
+      },
+      "revId": "3e37aba7c9680454d0aeb649ce52cc0fd6e0ed5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7801deb0_392bec84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:42:35Z",
+      "side": 1,
+      "message": "As commented before, CJK input relies on back-end suggestion, it does not exactly mapping the key on the keyboard. \nA relative clean solution to check each key works would be 1:1 mapping:\n\n1.clearInputField\n2.tapKey(a)\n3.validateField(し)\n\nThis method applies to all below tests.",
+      "range": {
+        "startLine": 166,
+        "startChar": 33,
+        "endLine": 166,
+        "endChar": 233
+      },
+      "revId": "3e37aba7c9680454d0aeb649ce52cc0fd6e0ed5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
