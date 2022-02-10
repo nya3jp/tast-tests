@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type videoDecodeAccelVdTestParam struct {
@@ -110,6 +111,7 @@ func init() {
 			Name:              "vp9_keyframe_spatial_layers",
 			Val:               videoDecodeAccelVdTestParam{dataPath: "keyframe_spatial_layers_180p_360p.vp9.ivf"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}, {
 			Name:              "av1_odd_dimension",

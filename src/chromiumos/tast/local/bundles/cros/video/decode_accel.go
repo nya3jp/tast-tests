@@ -149,7 +149,8 @@ func init() {
 			Name:              "vp9_keyframe_spatial_layers",
 			Val:               videoDecodeAccelTestParam{dataPath: "keyframe_spatial_layers_180p_360p.vp9.ivf"},
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi", "video_decoder_legacy_supported"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}},
 	})
