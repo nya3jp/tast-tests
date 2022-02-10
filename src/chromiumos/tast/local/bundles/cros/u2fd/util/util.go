@@ -80,16 +80,18 @@ func verifyPINUnlock(ctx context.Context, tconn *chrome.TestConn, PIN string, au
 func AssertMakeCredentialSuccess(ctx context.Context, logReader *syslog.ChromeReader) error {
 	const makeCredentialSuccessLine = "Make credential status: 1"
 
+	// TODO(b/210418148): After we used internal site for testing, don't read log messages to determine
+	// whether operation is successful.
 	if pollErr := testing.Poll(ctx, func(ctx context.Context) error {
 		entry, err := logReader.Read()
 		if err != nil {
 			return err
 		}
-		if strings.Contains(entry.Content, makeCredentialSuccessLine) {
+		if strings.HasSuffix(entry.Content, makeCredentialSuccessLine) {
 			return nil
 		}
 		return errors.New("result not found yet")
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); pollErr != nil {
+	}, &testing.PollOptions{Timeout: 60 * time.Second}); pollErr != nil {
 		return errors.Wrap(pollErr, "MakeCredential did not succeed")
 	}
 	return nil
@@ -99,16 +101,18 @@ func AssertMakeCredentialSuccess(ctx context.Context, logReader *syslog.ChromeRe
 func AssertGetAssertionSuccess(ctx context.Context, logReader *syslog.ChromeReader) error {
 	const getAssertionSuccessLine = "GetAssertion status: 1"
 
+	// TODO(b/210418148): After we used internal site for testing, don't read log messages to determine
+	// whether operation is successful.
 	if pollErr := testing.Poll(ctx, func(ctx context.Context) error {
 		entry, err := logReader.Read()
 		if err != nil {
 			return err
 		}
-		if strings.Contains(entry.Content, getAssertionSuccessLine) {
+		if strings.HasSuffix(entry.Content, getAssertionSuccessLine) {
 			return nil
 		}
 		return errors.New("result not found yet")
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); pollErr != nil {
+	}, &testing.PollOptions{Timeout: 60 * time.Second}); pollErr != nil {
 		return pollErr
 	}
 	return nil
