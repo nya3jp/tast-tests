@@ -123,6 +123,18 @@ func OpenExpandedView(tconn *chrome.TestConn) uiauto.Action {
 		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelShiftSearch); err != nil {
 			return errors.Wrap(err, "failed to switch to fullscreen")
 		}
+
+		// If bubble launcher exists (in clamshell mode with productivity launcher enabled), wait for its location to stabilize.
+		// Otherwise, wait for the launcher to transition to fullscreen state.
+		bubbleLauncher := nodewith.ClassName("AppListBubbleView")
+		if err := ui.WaitUntilExists(bubbleLauncher)(ctx); err == nil {
+			if err := ui.WaitForLocation(bubbleLauncher)(ctx); err != nil {
+				return errors.Wrap(err, "failed waiting for bubble launcher")
+			}
+			return nil
+
+		}
+
 		if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
 			return errors.Wrap(err, "failed to switch the state to 'FullscreenAllApps'")
 		}
@@ -245,29 +257,29 @@ func LaunchApp(tconn *chrome.TestConn, appName string) uiauto.Action {
 	ui := uiauto.New(tconn)
 	return uiauto.Combine(fmt.Sprintf("LaunchApp(%s)", appName),
 		OpenExpandedView(tconn),
-		ui.FocusAndWait(AppItemViewFinder(appName)),
-		ui.LeftClick(AppItemViewFinder(appName)),
+		ui.FocusAndWait(AppItemViewFinder(appName).First()),
+		ui.LeftClick(AppItemViewFinder(appName).First()),
 	)
 }
 
 // PinAppToShelf return a function that pins an app from the expanded launcher to shelf.
-func PinAppToShelf(tconn *chrome.TestConn, app apps.App) uiauto.Action {
+func PinAppToShelf(tconn *chrome.TestConn, app apps.App, container *nodewith.Finder) uiauto.Action {
 	ui := uiauto.New(tconn)
 	return uiauto.Combine(fmt.Sprintf("PinAppToShelf(%+q)", app),
 		OpenExpandedView(tconn),
-		ui.FocusAndWait(AppItemViewFinder(app.Name)),
-		ui.RightClick(AppItemViewFinder(app.Name)),
+		ui.FocusAndWait(AppItemViewFinder(app.Name).Ancestor(container)),
+		ui.RightClick(AppItemViewFinder(app.Name).Ancestor(container)),
 		ui.LeftClick(nodewith.Name("Pin to shelf").ClassName("MenuItemView")),
 	)
 }
 
 // UnpinAppFromShelf return a function that unpins an app from the shelf using a context menu in the expanded launcher UI.
-func UnpinAppFromShelf(tconn *chrome.TestConn, app apps.App) uiauto.Action {
+func UnpinAppFromShelf(tconn *chrome.TestConn, app apps.App, container *nodewith.Finder) uiauto.Action {
 	ui := uiauto.New(tconn)
 	return uiauto.Combine(fmt.Sprintf("UnpinAppFromShelf(%+q)", app),
 		OpenExpandedView(tconn),
-		ui.FocusAndWait(AppItemViewFinder(app.Name)),
-		ui.RightClick(AppItemViewFinder(app.Name)),
+		ui.FocusAndWait(AppItemViewFinder(app.Name).Ancestor(container)),
+		ui.RightClick(AppItemViewFinder(app.Name).Ancestor(container)),
 		ui.LeftClick(nodewith.Name("Unpin from shelf").ClassName("MenuItemView")),
 	)
 }
@@ -756,17 +768,13 @@ func GetFolderSize(ctx context.Context, tconn *chrome.TestConn, folder *nodewith
 // Assumes that there is no folder open, and may not work if a folder is opened.
 func IsItemOnCurrentPage(ctx context.Context, tconn *chrome.TestConn, item *nodewith.Finder) (bool, error) {
 	ui := uiauto.New(tconn)
-	itemLocation, err := ui.Location(ctx, item)
+	ui.WaitForLocation(item)(ctx)
+	info, err := ui.Info(ctx, item)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get location for the item")
+		return false, errors.Wrap(err, "failed to get item info")
 	}
 
-	gridLocation, err := ui.Location(ctx, nodewith.ClassName("AppsGridView"))
-	if err != nil {
-		return false, errors.Wrap(err, "failed to get location for the AppsGridView")
-	}
-
-	return gridLocation.Contains(*itemLocation), nil
+	return !info.State[state.Offscreen], nil
 }
 
 // ScrollBubbleLauncherDuringItemDragUntilItemVisible moves the pointer to top or the bottom of the app list bubble view, which is expected to scroll the view.
