@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a8853c_a94cf598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "Assume you will add more flavors here.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8d20d3_7b77db20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "This looks very weird. Why not just provide the function name here:\n\nVal: testCopyOperation",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f3acca_ce1f426e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "nit: using kb for consistency.",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b7eb2f_25dce95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31822e0d_88ce34d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "nit: Mixed use \"Failed to do sth\" and \"Failed doing\". Nice to use `Failed to do sth` for consistency.",
+      "range": {
+        "startLine": 84,
+        "startChar": 11,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24876ac7_c44a8a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d279edbf_6586121a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "kb.AccelAction(\"Ctrl+V\")\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/keyboard.go?l\u003d314",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad88d88f_6ff28eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T05:58:39Z",
+      "side": 1,
+      "message": "nit: Nice to make a line return for good readability.",
+      "range": {
+        "startLine": 111,
+        "startChar": 29,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
