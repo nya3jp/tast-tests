@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349e3b96_8bfb20ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-10T05:34:16Z",
+      "side": 0,
+      "message": "Why deleting this?",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "e868302cb0940b94cb2eaf0b7c6b559285285137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
