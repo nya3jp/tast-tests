@@ -39,7 +39,7 @@ func init() {
 // The only possible state change of Launcher it can trigger is between peeking and closed.
 func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 	// Closed->Peeking.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, assistant.AccelAssistantKey); err != nil {
 		return errors.Wrap(err, "failed to open the embedded UI")
 	}
 
@@ -48,7 +48,7 @@ func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	// Peeking->Closed.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, assistant.AccelAssistantKey); err != nil {
 		return errors.Wrap(err, "failed to close the embedded UI")
 	}
 
