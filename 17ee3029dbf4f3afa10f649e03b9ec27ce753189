@@ -45,6 +45,54 @@
       },
       "revId": "17ee3029dbf4f3afa10f649e03b9ec27ce753189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85e5ef2_badc7648",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T22:30:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e32cbda_193d8242",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "17ee3029dbf4f3afa10f649e03b9ec27ce753189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ea2fd5_66692e91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T22:30:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f70328_4b1afb21",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "17ee3029dbf4f3afa10f649e03b9ec27ce753189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
