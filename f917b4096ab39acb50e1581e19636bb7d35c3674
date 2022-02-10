@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e3d861_fbc7770a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T20:13:47Z",
+      "side": 1,
+      "message": "This is an end-to-end test to prevent crbug/1292957. PTAL",
+      "revId": "f917b4096ab39acb50e1581e19636bb7d35c3674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
