@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1c68cc_fa86ef44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T19:05:44Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "cccc7f94078293adc505142171259942b65f9bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47024617_492c2e58",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-10T19:05:44Z",
+      "side": 1,
+      "message": "nit, optional (here and in L466): Unless it is needed, I\u0027d not put \"debug\" messages in public APIs.\n\nIf there is an error, it is returned, and then logged.\nIf there is no error, it is assumed that it was successful",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 60
+      },
+      "revId": "cccc7f94078293adc505142171259942b65f9bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
