@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c230acdd_66183467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:03:35Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "d5fc28f869b39d2dbc925a566f5940de7176ea7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c07506d_0369c44e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:03:35Z",
+      "side": 1,
+      "message": "style;\n\nret, err :\u003d svo.HasCCD(ctx)\nif err !\u003d nil {\n  s.Fatal(...)\n}\nif ret {\n  if err :\u003d svo.SetOnOff(...); err !\u003d nil {\n    ...",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "d5fc28f869b39d2dbc925a566f5940de7176ea7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

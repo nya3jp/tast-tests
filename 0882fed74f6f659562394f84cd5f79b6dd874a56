@@ -94,6 +94,30 @@
       },
       "revId": "0882fed74f6f659562394f84cd5f79b6dd874a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0638c256_610f529a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-10T17:03:35Z",
+      "side": 1,
+      "message": "Here it is \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Fixtures\n\ncould you add TODO?",
+      "parentUuid": "dc66ea14_634cd7d2",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 42
+      },
+      "revId": "0882fed74f6f659562394f84cd5f79b6dd874a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
