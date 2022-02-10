@@ -143,13 +143,13 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
 		}, {
-			// Run with HW decoder using VA-API only because only the HW decoder can decode SVC stream correctly today.
 			// Decode VP9 spatial-SVC stream. Precisely the structure in the stream is called k-SVC, where spatial-layers are at key-frame only.
 			// The structure is used in Hangouts Meet. go/vp9-svc-hangouts for detail.
 			Name:              "vp9_keyframe_spatial_layers",
 			Val:               videoDecodeAccelTestParam{dataPath: "keyframe_spatial_layers_180p_360p.vp9.ivf"},
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi", "video_decoder_legacy_supported"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}},
 	})
