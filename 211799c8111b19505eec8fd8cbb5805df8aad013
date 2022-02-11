@@ -22,6 +22,30 @@
       },
       "revId": "211799c8111b19505eec8fd8cbb5805df8aad013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "369fc654_035d57db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginapi/launch_managed_guest_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-11T01:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7c8079_0e8c866a",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "211799c8111b19505eec8fd8cbb5805df8aad013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
