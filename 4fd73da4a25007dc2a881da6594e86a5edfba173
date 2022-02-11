@@ -16,6 +16,24 @@
       "message": "Have you considered removing ash.CloseWindow and use the new one instead? Otherwise we will have to maintain two different implementations.",
       "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0f0f48_8ddcf8a6",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-11T18:01:24Z",
+      "side": 1,
+      "message": "Thanks for the review! Initially I just wanted to generalize lacros.CloseAboutBlank for Browser, so this takes a `br` arg and a `url` arg for convenience use by tests to close a browser window with a given url.\n\nHowever, I\u0027m not sure if this could completely replace ash.CloseWindow in that \n- ash.CloseWindow is a method of Window that can\u0027t do the same thing without making more func calls to enumerate windows matching a given url and\n- this CloseWindow just depends on Browser abstract methods, doesn\u0027t even need a tconn from ash unlike ash.CloseWindow. Moving this to ash package would also mean that `ash` should start depending on `browser` package which is not the case today.\n\nWith that in mind, some considerations that I can think of are\na) if `ash` is okay to have a dependency to `browser` (and also replace `cs ConnSource` in ash with `browser`) this could be added as a new ash.CloseWindows (\u0027s\u0027 at the end) that is well paired with the ash.CreateWindows that has existed.\nb) or leaving it here but renaming to something clearer like `CloseWindowByURL`?",
+      "parentUuid": "a2dbddf7_ce284e1a",
+      "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
