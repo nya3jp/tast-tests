@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -65,7 +64,7 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Cras object: ", err)
 	}
 
-	vh, err := volume.NewVolumeHelper(ctx)
+	vh, err := audio.NewVolumeHelper(ctx)
 	if err != nil {
 		s.Fatal("Failed to create the volumeHelper: ", err)
 	}

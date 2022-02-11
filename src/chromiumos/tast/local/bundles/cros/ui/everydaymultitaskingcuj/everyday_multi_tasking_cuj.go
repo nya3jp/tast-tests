@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
@@ -64,7 +64,7 @@ type runResources struct {
 	kb        *input.KeyboardEventWriter
 	topRow    *input.TopRowLayout
 	ui        *uiauto.Context
-	vh        *volume.Helper
+	vh        *audio.Helper
 	uiHandler cuj.UIActionHandler
 	recorder  *cuj.Recorder
 }
@@ -118,7 +118,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		}
 	}
 
-	vh, err := volume.NewVolumeHelper(ctx)
+	vh, err := audio.NewVolumeHelper(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the volumeHelper")
 	}
