@@ -122,6 +122,24 @@
       "parentUuid": "07c2ba15_465f5ab8",
       "revId": "947608dd089fc6c1dafde1e24374044781072092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb31bb6_69f964a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-11T14:32:45Z",
+      "side": 1,
+      "message": "Looks like I had the DUT in some weird state when it failed. Now I ran it a few more times and didn\u0027t see the error. Let\u0027s see if it\u0027ll show up on tastboard :D",
+      "parentUuid": "5be91cce_d3a03765",
+      "revId": "947608dd089fc6c1dafde1e24374044781072092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
