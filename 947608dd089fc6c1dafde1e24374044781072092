@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c4e76d8_13c6a2c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-11T10:08:54Z",
+      "side": 1,
+      "message": "This command will fail if oobe_config_save is not running and that\u0027s fine.",
+      "parentUuid": "097532b6_84e3570c",
+      "revId": "947608dd089fc6c1dafde1e24374044781072092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ae836cf_6213382f",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-11T09:04:46Z",
       "side": 1,
       "message": "Check for error. Same for the next line.",
+      "revId": "947608dd089fc6c1dafde1e24374044781072092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c2ba15_465f5ab8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-11T10:08:54Z",
+      "side": 1,
+      "message": "Huh. StopChromeAndFakeDMS always fails, probably because Chrome is lost during enrollment. I don\u0027t think this is this tests fault, or is it?",
+      "parentUuid": "1ae836cf_6213382f",
       "revId": "947608dd089fc6c1dafde1e24374044781072092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
