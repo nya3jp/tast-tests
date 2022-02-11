@@ -104,6 +104,12 @@ type differ struct {
 	triage      string
 }
 
+// fixTwoDigitVersionNumber prefixes any two-digit milestone with a 0, to
+// maintain lexicographic ordering (eg. R98 -> R098).
+func fixTwoDigitVersionNumber(v string) string {
+	return regexp.MustCompile(`R([0-9][0-9])-`).ReplaceAllString(v, "R0$1-")
+}
+
 // NewDiffer creates a differ for a new instance of chrome with configuration specified in cfg.
 func NewDiffer(ctx context.Context, state screenshotState, cfg Config) (Differ, error) {
 	var d = &differ{state: state, config: cfg}
@@ -187,25 +193,20 @@ func (d *differ) initialize(ctx context.Context) error {
 	}
 
 	params := map[string]string{
-		"board":               release[lsbrelease.Board],
-		"device_scale_factor": fmt.Sprintf("%.2f", displayMode.DeviceScaleFactor),
-		"display_zoom_factor": fmt.Sprintf("%.2f", info.DisplayZoomFactor),
-		// Fuzzy matcher is a bit weird. Instead of "no more than <max different pixels> with difference of more than <delta>",
-		// it means "no more than <max different pixels> differing, and no individual pixel has more than <delta> difference."
-		// If we want to accept an image with all pixels off by one, this needs to be at least the number of pixels in the image.
-		"fuzzy_max_different_pixels": "999999999",
-		"image_matching_algorithm":   "fuzzy",
-		"cpu_arch":                   cpuInfo["Architecture"],
-		"cpu_model":                  modelName,
-		"cpu_vendor":                 cpuInfo["Vendor ID"],
-		"name_suffix":                nameSuffix,
-		"region":                     region,
-		"resolution":                 fmt.Sprintf("%dx%d", displayMode.WidthInNativePixels, displayMode.HeightInNativePixels),
-		"sub_pixel_antialiasing":     currentSubPixelAntialiasingMethod(),
-		"scale":                      fmt.Sprintf("%.2f", uiScale),
-		"tablet_mode":                fmt.Sprintf("%t", tabletMode),
-		"test_group":                 d.state.TestName(),
-		"version":                    release[lsbrelease.Version],
+		"board":                  release[lsbrelease.Board],
+		"device_scale_factor":    fmt.Sprintf("%.2f", displayMode.DeviceScaleFactor),
+		"display_zoom_factor":    fmt.Sprintf("%.2f", info.DisplayZoomFactor),
+		"cpu_arch":               cpuInfo["Architecture"],
+		"cpu_model":              modelName,
+		"cpu_vendor":             cpuInfo["Vendor ID"],
+		"name_suffix":            nameSuffix,
+		"region":                 region,
+		"resolution":             fmt.Sprintf("%dx%d", displayMode.WidthInNativePixels, displayMode.HeightInNativePixels),
+		"sub_pixel_antialiasing": currentSubPixelAntialiasingMethod(),
+		"scale":                  fmt.Sprintf("%.2f", uiScale),
+		"tablet_mode":            fmt.Sprintf("%t", tabletMode),
+		"test_group":             d.state.TestName(),
+		"version":                release[lsbrelease.Version],
 	}
 
 	dir, ok := testing.ContextOutDir(ctx)
@@ -259,7 +260,7 @@ func (d *differ) initialize(ctx context.Context) error {
 		build := release[lsbrelease.BuilderPath]
 		d.testMode = postsubmit
 		d.goldArgs = append(baseArgs, []string{
-			"--commit_id", strings.Split(build, "/")[1],
+			"--commit_id", fixTwoDigitVersionNumber(strings.Split(build, "/")[1]),
 			"--commit_metadata", fmt.Sprintf("gs://chromeos-image-archive/%s/manifest.xml", build)}...)
 	} else {
 		d.testMode = local
@@ -519,8 +520,16 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	windowBoundsPX := coords.ConvertBoundsFromDPToPX(windowBoundsDP, d.uiScale)
 
 	testArgs = append(testArgs,
-		"--add-test-optional-key", fmt.Sprintf("cropped_resolution:%dx%d", boundsPx.Width, boundsPx.Height),
+		// Note: image matching algorithm and parameters should be fed as optional keys, not in keys.json,
+		// despite the fact that it doesn't depend on any additional data here.
+		"--add-test-optional-key", "image_matching_algorithm:fuzzy",
+		// Fuzzy matcher is a bit weird. Instead of "no more than <max different pixels> with difference of more than <delta>",
+		// it means "no more than <max different pixels> differing, and no individual pixel has more than <delta> difference."
+		// If we want to accept an image with all pixels off by one, this needs to be at least the number of pixels in the image.
+		"--add-test-optional-key", "fuzzy_max_different_pixels:999999999",
 		"--add-test-optional-key", fmt.Sprintf("fuzzy_pixel_delta_threshold:%d", options.PixelDeltaThreshold),
+
+		"--add-test-optional-key", fmt.Sprintf("cropped_resolution:%dx%d", boundsPx.Width, boundsPx.Height),
 		"--add-test-optional-key", fmt.Sprintf("screenshot_name:%s", screenshotName),
 		"--add-test-optional-key", fmt.Sprintf("window_size:%dx%d", windowBoundsPX.Width, windowBoundsPX.Height),
 		"--add-test-optional-key", fmt.Sprintf("window_state:%s", windowState),
