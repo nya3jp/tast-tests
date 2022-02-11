@@ -16,6 +16,29 @@
       "message": "Comments have been addressed. Please, have another look.",
       "revId": "b52a2f55515ae625a9c97b7a81c6480f48c07340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a3a60b_5cb4d4cd",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-11T05:23:22Z",
+      "side": 1,
+      "message": "I guess we could not guarantee that the expected package is listed as the first package.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 18
+      },
+      "revId": "b52a2f55515ae625a9c97b7a81c6480f48c07340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
