@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00b7fad2_d056b98d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-11T20:06:35Z",
+      "side": 1,
+      "message": "Instead of trying to restart servod, let\u0027s see if we can get the servod team to fix the problem.\n\nIf you give me a script that will make servod exit every time, I\u0027ll push the issue to the team.",
+      "revId": "f5455f831712e8be945644752b1387a9da8298ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "152c5024_ad7d06c6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
         "patchSetId": 1
