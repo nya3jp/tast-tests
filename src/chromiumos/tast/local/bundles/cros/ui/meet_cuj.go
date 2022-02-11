@@ -39,7 +39,6 @@ import (
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type meetLayoutType string
@@ -60,7 +59,6 @@ type meetTest struct {
 	jamboard    bool                 // Whether it is running with a Jamboard window.
 	split       bool                 // Whether it is in split screen mode. It can not be true if docs is false.
 	cam         bool                 // Whether the camera is on or not.
-	power       bool                 // Whether to collect power metrics.
 	duration    time.Duration        // Duration of the meet call. Must be less than test timeout.
 	useLacros   bool                 // Whether to use lacros browser.
 	tracing     bool                 // Whether to turn on tracing.
@@ -68,7 +66,7 @@ type meetTest struct {
 	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
 }
 
-const defaultTestTimeout = 7 * time.Minute
+const defaultTestTimeout = 10 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -90,7 +88,7 @@ func init() {
 		Params: []testing.Param{{
 			// Base case. Note this runs a 30 min meet call.
 			Name:    "4p",
-			Timeout: 37 * time.Minute,
+			Timeout: 40 * time.Minute,
 			Val: meetTest{
 				num:      4,
 				layout:   meetLayoutTiled,
@@ -163,30 +161,6 @@ func init() {
 				docs:   true,
 				split:  true,
 				cam:    true,
-			},
-			Fixture: "loggedInToCUJUser",
-		}, {
-			// 4p power test.
-			Name:              "power_4p",
-			Timeout:           defaultTestTimeout,
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: meetTest{
-				num:    4,
-				layout: meetLayoutTiled,
-				cam:    true,
-				power:  true,
-			},
-			Fixture: "loggedInToCUJUser",
-		}, {
-			// 16p power test.
-			Name:              "power_16p",
-			Timeout:           defaultTestTimeout,
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: meetTest{
-				num:    16,
-				layout: meetLayoutTiled,
-				cam:    true,
-				power:  true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -264,18 +238,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Determines the meet call duration. Use the meet duration specified in
-	// test param if there is one. Otherwise, default to 2 minutes for the base
-	// calls, 3 min for calls with doc or jamboard, or 5 min for power tests.
-	meetTimeout := 2 * time.Minute
+	// test param if there is one. Otherwise, default to 5 minutes.
+	meetTimeout := 5 * time.Minute
 	if meet.duration != 0 {
 		meetTimeout = meet.duration
-	} else {
-		if meet.docs || meet.jamboard {
-			meetTimeout = 3 * time.Minute
-		}
-		if meet.power {
-			meetTimeout = 5 * time.Minute
-		}
 	}
 	s.Log("Run meeting for ", meetTimeout)
 
@@ -372,16 +338,17 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	tweakPerfValues := func(pv *perf.Values) error { return nil }
-	if meet.power {
-		s.Log("Preparing for power metrics collection")
-
-		// Setup needs to happen before power.TestMetrics() to disable wifi first
-		// so that the thermal sensor for wifi is excluded from the metrics.
-		sup, cleanup := setup.New("meet call power")
-		sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-			Wifi:       setup.DisableWifiInterfaces,
-			Battery:    setup.ForceBatteryDischarge,
-			NightLight: setup.DisableNightLight}))
+	s.Log("Preparing for power metrics collection")
+	// Setup needs to happen before power.TestMetrics() to disable wifi first
+	// so that the thermal sensor for wifi is excluded from the metrics.
+	if cleanup, err := setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+		Wifi:       setup.DisableWifiInterfaces,
+		Battery:    setup.ForceBatteryDischarge,
+		NightLight: setup.DisableNightLight,
+	}); err != nil {
+		s.Log("Power setup failed (but this failure is expected on some devices): ", err)
+		s.Log("Power metrics will not be collected")
+	} else {
 		defer func() {
 			if err := cleanup(closeCtx); err != nil {
 				s.Error("Cleanup meet power setup failed: ", err)
