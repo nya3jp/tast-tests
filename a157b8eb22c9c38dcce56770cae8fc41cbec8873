@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8d6dbb_6caa883b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-11T05:06:21Z",
+      "side": 1,
+      "message": "Could we use ash.ForEachWindow?https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d499?q\u003dash.WaitForCondition\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2F\n\n```\nif err :\u003d ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {\n  if !w.BoundsInRoot.Equals(initialBoundsMap[w.ID]) {\n    return errors.Wrapf(err, \"got window bounds %v; want %v\", w.BoundsInRoot, initialBounds)\n  }\n  return nil\n}); err !\u003d nil {\n  return err\n}\n```",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "a157b8eb22c9c38dcce56770cae8fc41cbec8873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
