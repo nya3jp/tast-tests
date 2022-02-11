@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd3b5f5_6e864153",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-02-11T06:39:17Z",
+      "side": 1,
+      "message": "Not sure I agree with that statement. careena is failing 100% of the time, drawman is similar. Those should be fixed before promoting the test",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "5f35e8c15857cfaa2817978d60b9a9c0b2c39f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
