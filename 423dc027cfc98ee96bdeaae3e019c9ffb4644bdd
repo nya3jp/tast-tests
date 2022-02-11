@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be838df_a632fde6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-11T13:03:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91157c1_b3514f74",
+      "range": {
+        "startLine": 274,
+        "startChar": 26,
+        "endLine": 274,
+        "endChar": 32
+      },
+      "revId": "423dc027cfc98ee96bdeaae3e019c9ffb4644bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43ef6a5e_104cc040",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-02-11T12:44:14Z",
       "side": 1,
       "message": "nit: no need for empty line.",
+      "revId": "423dc027cfc98ee96bdeaae3e019c9ffb4644bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b749f9_902d1911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-11T13:03:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ef6a5e_104cc040",
       "revId": "423dc027cfc98ee96bdeaae3e019c9ffb4644bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f7d5ad_95771e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-11T13:03:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "212cc3e5_c545cc9d",
+      "revId": "423dc027cfc98ee96bdeaae3e019c9ffb4644bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5709aff_d1eae99d",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-02-11T12:44:14Z",
       "side": 1,
       "message": "You can return with a `nil` here. It is better to split the error handling into 2.",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 12
+      },
+      "revId": "423dc027cfc98ee96bdeaae3e019c9ffb4644bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50259ea8_fba9c2ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-11T13:03:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5709aff_d1eae99d",
       "range": {
         "startLine": 349,
         "startChar": 2,
