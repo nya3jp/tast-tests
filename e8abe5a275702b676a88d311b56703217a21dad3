@@ -16,6 +16,69 @@
       "message": "PTAL 😊",
       "revId": "e8abe5a275702b676a88d311b56703217a21dad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1fe1aa_17c5d51f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-11T13:11:21Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e8abe5a275702b676a88d311b56703217a21dad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13fa8f1_70100574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-11T13:11:21Z",
+      "side": 1,
+      "message": "```\nif certExists, err :\u003d checkIfCertificateExists(ctx, cr, br, tconn, autofillCreditCardCaCertName, autofillCreditCardCaCertAuthName); err !\u003d nil {\n\treturn err\n} else if certExists {\n\treturn nil\n}\n```",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 2
+      },
+      "revId": "e8abe5a275702b676a88d311b56703217a21dad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645a27b7_c11b7573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-11T13:11:21Z",
+      "side": 1,
+      "message": "nit: you can compress it like in the example above.",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 0
+      },
+      "revId": "e8abe5a275702b676a88d311b56703217a21dad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
