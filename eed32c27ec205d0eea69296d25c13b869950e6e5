@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a192b6ba_79e27a7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-11T08:49:31Z",
+      "side": 1,
+      "message": "How about: enable DFS when SpectrumManagement presented in AP config\n\nand split hostapd error handing improvement part to another CL:\nimprove error handling for hostapd start",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30533ba2_faabfc2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-11T08:49:31Z",
+      "side": 1,
+      "message": ". But ieee80211h, which is the hostapd setting for DFS, is not turned on now.",
+      "range": {
+        "startLine": 9,
+        "startChar": 80,
+        "endLine": 9,
+        "endChar": 164
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4138b35_bf8f005f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-11T08:49:31Z",
+      "side": 1,
+      "message": "ieee80211h",
+      "range": {
+        "startLine": 9,
+        "startChar": 113,
+        "endLine": 9,
+        "endChar": 123
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f396aa3b_bfe776cb",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-11T08:49:31Z",
+      "side": 1,
+      "message": "Why separate the logic into two defer funcs?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 5
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ff796f_69ff7eb6",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-11T08:49:31Z",
+      "side": 1,
+      "message": "; first error:",
+      "range": {
+        "startLine": 223,
+        "startChar": 68,
+        "endLine": 223,
+        "endChar": 90
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f8a357_454f3212",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-11T08:49:31Z",
+      "side": 1,
+      "message": "firstReadyErr",
+      "range": {
+        "startLine": 228,
+        "startChar": 21,
+        "endLine": 228,
+        "endChar": 24
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
