@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8caf3d_bec43534",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-11T07:25:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75dd0048_303dbac9",
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eafb80f_7dfcad6d",
@@ -65,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f1104c_e4002add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-11T07:25:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7dbcc3_920cbea2",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc90a48c_98bfbd0d",
@@ -88,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39daf59e_ed5f3aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-11T07:25:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc90a48c_98bfbd0d",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 8
+      },
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85cc859c_17db2c70",
@@ -101,6 +167,30 @@
       "writtenOn": "2022-02-10T18:45:03Z",
       "side": 1,
       "message": "also, since the Lacros Fixture already has a Chrome(), I wonder whether this can be replaced with:\n\n   browserConn \u003d fixture.Chrome().TestAPIConn().\n   \n \nIf that works, then the fixture can be replaced with:\n\n```\n} else if lacros, ok :\u003d s.FixtValue().(lacrosfixt.FixtValue); ok {\n  crosConn \u003d lacros.TestAPIConn(ctx)\n  browserConn \u003d lacros.Chrome().TestAPIConn(ctx)\n}\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9addcd60_441fde1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-11T07:25:36Z",
+      "side": 1,
+      "message": "Unfortunately, the Chrome() in the lacros fixture refers to ash chrome and not lacros chrome. I think lacros chrome needs to be explicitly launched via browserfixt.SetUp.",
+      "parentUuid": "85cc859c_17db2c70",
       "range": {
         "startLine": 113,
         "startChar": 3,
