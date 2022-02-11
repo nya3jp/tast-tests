@@ -37,7 +37,7 @@ func Capability(ctx context.Context, s *testing.State) {
 	hasUSB := len(usbCams) > 0
 
 	// Detect MIPI cameras.
-	mipiCams, err := testutil.GetMIPICamerasFromCrOSCameraTool(ctx)
+	mipiCams, err := testutil.MIPICamerasFromCrOSCameraTool(ctx)
 	if err != nil {
 		s.Fatal("Failed to get MIPI cameras: ", err)
 	}
