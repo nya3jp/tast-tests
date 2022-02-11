@@ -16,6 +16,80 @@
       "message": "Hello Kyle, could you take a look at this change as well? Thank you doubly! :)",
       "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9351786a_db0c5d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:09:46Z",
+      "side": 1,
+      "message": "You can actually just leave this in, no need to remove it down the road. Most UI tests keep logging for the UI tree even if they\u0027re stable, it\u0027s good to have in case the test ever does start failing.\n\nThere\u0027s also a function to include a screenshot (something like DumpUITreeWithScreenshotOnError), you might find that useful too!",
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d277cc_fa2442c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:09:46Z",
+      "side": 1,
+      "message": "I\u0027d recommend using this pattern to reserve time to run the deferred functions:\n```\n// Reserve ten seconds for cleanup.\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```\nUse ctx normally in the function, and use cleanupCtx in any deferred functions",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb1ba6d_c7164df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:09:46Z",
+      "side": 1,
+      "message": "I\u0027d move `defer faillog.DumpUITreeOnError()` right after this line. Defers are LIFO so as it is right now, the Settings app will be closed before the UI tree is saved and there won\u0027t be anything meaningful to see",
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b1a975_c656f8e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:09:46Z",
+      "side": 1,
+      "message": "same comments as above (keep this even when stable, move after `defer app.Close`",
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
