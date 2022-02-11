@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb2ca75f_fc00d6cb",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-11T04:25:21Z",
+      "side": 1,
+      "message": "nit: I think these fields can be omitted as they default to false to improve readability",
+      "range": {
+        "startLine": 41,
+        "startChar": 55,
+        "endLine": 41,
+        "endChar": 110
+      },
+      "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eae0a53_ebb413dc",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-11T04:25:21Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 42,
+        "startChar": 47,
+        "endLine": 42,
+        "endChar": 88
+      },
+      "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d72d3ef8_d0b642e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey_search_plus_a.go",
         "patchSetId": 3
