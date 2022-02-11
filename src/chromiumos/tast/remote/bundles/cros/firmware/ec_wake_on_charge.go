@@ -82,7 +82,9 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
 				defer cancelWaitConnect()
 
-				if err := h.WaitConnect(waitConnectCtx); err != nil {
+				var opts []firmware.WaitConnectOption
+				opts = append(opts, firmware.FromHibernation)
+				if err := h.WaitConnect(waitConnectCtx, opts...); err != nil {
 					errors.Wrap(err, "failed to reconnect to DUT")
 				}
 				// Cr50 goes to sleep during hibernation, and when DUT wakes, CCD state might be locked.
@@ -194,6 +196,11 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
 				s.Fatal("Failed to set lid state: ", err)
 			}
+		}
+
+		// Delay for some time to ensure lid was properly closed, or opened.
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
 		}
 
 		var deviceHasHibernated bool
