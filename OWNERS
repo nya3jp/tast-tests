@@ -34,6 +34,10 @@ tbegin@chromium.org
 vsavu@google.com
 yamaguchi@chromium.org
 
+# CUJs
+xiyuan@chromium.org
+yichenz@chromium.org
+
 # Green Stainless team
 # They frequently send changes to demote/disable flaky tests. Those changes are
 # exempted from Tast reviews since they are trivial test attribute changes
