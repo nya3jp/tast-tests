@@ -33,10 +33,14 @@ const prodGAIASignInURLPrefix = "https://accounts.google.com/"
 // Prefix of the staging GAIA sign in URL.
 const stagingGAIASignInURLPrefix = "https://gaiastaging.corp.google.com/"
 
+// Prefix of the sandbox GAIA sign in URL.
+const sandboxGAIASignInURLPrefix = "https://accounts.sandbox.google.com/"
+
 // isGAIASignInURL checks if the given URL string is for GAIA sign in.
 func isGAIASignInURL(u string) bool {
 	return strings.HasPrefix(u, prodGAIASignInURLPrefix) ||
-		strings.HasPrefix(u, stagingGAIASignInURLPrefix)
+		strings.HasPrefix(u, stagingGAIASignInURLPrefix) ||
+		strings.HasPrefix(u, sandboxGAIASignInURLPrefix)
 }
 
 // waitForSingleGAIAWebView waits until it finds a matching WebView target with
@@ -90,9 +94,10 @@ func MatchSignInGAIAWebView(ctx context.Context, sess *driver.Session) cdputil.T
 				}
 				href = bases[0].href;
 				return (href.indexOf(%q) == 0 ||
+					href.indexOf(%q) == 0 ||
 					href.indexOf(%q) == 0);
 			})()
-		`, prodGAIASignInURLPrefix, stagingGAIASignInURLPrefix)
+		`, prodGAIASignInURLPrefix, stagingGAIASignInURLPrefix, sandboxGAIASignInURLPrefix)
 		if err = gaiaConn.Eval(ctx, jsEval, &isGAIA); err != nil {
 			return false
 		}
