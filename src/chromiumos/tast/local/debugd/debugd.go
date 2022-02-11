@@ -260,6 +260,25 @@ func (d *Debugd) DRMTraceSnapshot(ctx context.Context, snapshotType DRMTraceSnap
 	return nil
 }
 
+// GetPerfOutputV2 calls debugd's GetPerfOutputV2 D-Bus method.
+func (d *Debugd) GetPerfOutputV2(ctx context.Context, quipperArgs []string, disableCPUIdle bool, output *os.File) (uint64, error) {
+	var sessionID uint64
+	c := d.call(ctx, "GetPerfOutputV2", quipperArgs, disableCPUIdle, dbus.UnixFD(output.Fd()))
+	if c.Err != nil {
+		return 0, errors.Wrap(c.Err, "failed to call GetPerfOutputV2")
+	}
+	err := c.Store(&sessionID)
+	return sessionID, err
+}
+
+// StopPerf calls debugd's StopPerf D-Bus method.
+func (d *Debugd) StopPerf(ctx context.Context, sessionID uint64) error {
+	if err := d.call(ctx, "StopPerf", sessionID).Err; err != nil {
+		return errors.Wrap(err, "failed to call StopPerf")
+	}
+	return nil
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (d *Debugd) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return d.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
