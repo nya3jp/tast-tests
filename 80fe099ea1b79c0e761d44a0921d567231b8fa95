@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c81df3_c3a8b22d",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-11T05:19:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "af37237c_3d0dc2b4",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "80fe099ea1b79c0e761d44a0921d567231b8fa95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f14cc30_3c409d17",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c9c8e6_ef9d9b0f",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-11T05:19:56Z",
+      "side": 1,
+      "message": "In fixture\u0027s current state (hardcoded apk), it\u0027s unlikely. However, we plan to make it generic. In this scenario we don\u0027t control the packages people install and there is a possibility we can have packages with matching names, e.g. `tast.play_billing` and `tast.play_billing_new` will both be listed when we use `tast.play_billing` as filter. I\u0027ll adjust the code to account for that.",
+      "parentUuid": "1f14cc30_3c409d17",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 7
+      },
+      "revId": "80fe099ea1b79c0e761d44a0921d567231b8fa95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a9ca8c1_1ee04a6c",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-02-10T06:33:58Z",
       "side": 1,
       "message": "In such cases, the general msg is: Failed to verify the package name, got %s, want %",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "80fe099ea1b79c0e761d44a0921d567231b8fa95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36aaf6fa_786a0dec",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-11T05:19:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a9ca8c1_1ee04a6c",
       "range": {
         "startLine": 128,
         "startChar": 4,
