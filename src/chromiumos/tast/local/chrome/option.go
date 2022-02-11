@@ -94,6 +94,16 @@ func GAIALogin(creds Creds) Option {
 	}
 }
 
+// UseSandboxGaia returns an Option that can be passed to New to instruct use
+// the sandbox instance of Gaia.
+// NOTE: Only works with the Gaia-based login options.
+func UseSandboxGaia() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.UseSandboxGaia = true
+		return nil
+	}
+}
+
 var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 // GAIALoginPool returns an Option that can be passed to New to perform a real

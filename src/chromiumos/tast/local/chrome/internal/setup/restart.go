@@ -103,6 +103,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	// Enable verbose logging on gaia_auth_fetcher to help debug some login failures. See crbug.com/1166530
 	if cfg.LoginMode() == config.GAIALogin {
 		args = append(args, "--vmodule=gaia_auth_fetcher=1")
+		if cfg.UseSandboxGaia() {
+			args = append(args, "--gaia-url=https://accounts.sandbox.google.com")
+		}
 	}
 	if cfg.SkipForceOnlineSignInForTesting() {
 		args = append(args, "--skip-force-online-signin-for-testing")
