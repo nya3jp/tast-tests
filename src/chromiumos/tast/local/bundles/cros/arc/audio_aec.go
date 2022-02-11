@@ -25,9 +25,10 @@ func init() {
 			"judyhsiao@chromium.org",         // Author
 		},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      2 * time.Minute,
-		Fixture:      "arcBooted",
+		// Disable this test case as AEC is currently disabled in ARCVM. (b/201378884)
+		Attr:    []string{},
+		Timeout: 2 * time.Minute,
+		Fixture: "arcBooted",
 	})
 }
 
