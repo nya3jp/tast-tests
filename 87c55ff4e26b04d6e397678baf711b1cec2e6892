@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f60efd_480f451f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-11T22:57:15Z",
+      "side": 1,
+      "message": "The underlying screen recording API leverages on screen navigation to start the Screen recording, the same way how end users would start recording. The mutex is there to make sure that no other threads are interacting with chrome when we start recording.\n\nI think you did touch on a potentially more important problem which is the scope of recording. Screen recording is limited to the time when the user is logged in and does not go beyond the boundary of a chrome session. \n\nI will log a debug and a TODO to do some research if recordings can go beyond chrome session.",
+      "parentUuid": "a1dbbf64_1a58f0f6",
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b18fcde6_5b97da99",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-05T18:16:25Z",
       "side": 1,
       "message": "Why we need this check?\nIt seems totally equal to `svc.fileName \u003d req.FileName`.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e1e692_bb69772d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-11T22:57:15Z",
+      "side": 1,
+      "message": "Users have the option of not providing a location `req.FileName`. The API will generate a temporary location and return to the user.\n\nI have modified the API comments to indicate that.",
+      "parentUuid": "b18fcde6_5b97da99",
       "range": {
         "startLine": 69,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "987aefd3_42f176b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-11T22:57:15Z",
+      "side": 1,
+      "message": "The Tast_lint took out the spaces.  I am with you that with space it looks better.",
+      "parentUuid": "4da04092_93c6d6b4",
+      "range": {
+        "startLine": 103,
+        "startChar": 59,
+        "endLine": 103,
+        "endChar": 62
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "116ec9d3_e429a58a",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-02-05T18:16:25Z",
       "side": 1,
       "message": "This service seems not related to \"Nearby Share feature\".",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d674f33c_8f41ef7f",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-11T22:57:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116ec9d3_e429a58a",
       "range": {
         "startLine": 13,
         "startChar": 56,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6593637_546521ac",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-11T22:57:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e0e006_a9314264",
+      "range": {
+        "startLine": 20,
+        "startChar": 65,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8b70c43_f9348ccf",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-02-05T18:16:25Z",
       "side": 1,
       "message": "Would you consider to add the docstring about this can be empty and ScreenRecorderService will use tmemp file path for it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df24aa9_4d975cbe",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-11T22:57:15Z",
+      "side": 1,
+      "message": "Thanks. Added to both API and requests.",
+      "parentUuid": "a8b70c43_f9348ccf",
       "range": {
         "startLine": 25,
         "startChar": 0,
