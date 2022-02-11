@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b5ef5e_3cc68698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-02-11T22:12:32Z",
+      "side": 1,
+      "message": "Nit: maybe update this to say v4l2StatefulDecodeArgs?",
+      "range": {
+        "startLine": 1343,
+        "startChar": 5,
+        "endLine": 1343,
+        "endChar": 19
+      },
+      "revId": "042cf1af3468bb261198302a5e9f0b1b753757c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
