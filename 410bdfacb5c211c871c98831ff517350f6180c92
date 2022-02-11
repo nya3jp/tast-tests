@@ -164,6 +164,30 @@
       },
       "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd508919_ca691a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey_search_plus_a.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-02-11T21:29:15Z",
+      "side": 1,
+      "message": "FYI:\n\nWIP CL for hwdep is https://crrev.com/c/3457602. I\u0027m currently asking the infra team for the hwdep at cros-boxster-discuss.",
+      "parentUuid": "5e0abdbc_a831cf9d",
+      "range": {
+        "startLine": 49,
+        "startChar": 62,
+        "endLine": 49,
+        "endChar": 78
+      },
+      "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
