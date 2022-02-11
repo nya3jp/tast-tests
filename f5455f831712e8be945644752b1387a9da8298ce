@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "525be22b_2dea73c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-02-11T14:38:52Z",
+      "side": 1,
+      "message": "I\u0027m marking this cl as work-in-progress for discussion, and to demonstrate the proof of concept. ",
+      "revId": "f5455f831712e8be945644752b1387a9da8298ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "152c5024_ad7d06c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-02-11T14:38:52Z",
+      "side": 1,
+      "message": "I\u0027ll need to export the arguments as test variables so that they can be modified per the lab\u0027s environment, and passed in to start a servo host.",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 105
+      },
+      "revId": "f5455f831712e8be945644752b1387a9da8298ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
