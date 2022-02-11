@@ -231,19 +231,11 @@ func (a *AndroidNearbyDevice) AwaitReceiverAccept(ctx context.Context, timeout t
 	if err != nil {
 		return "", errors.Wrap(err, "failed waiting for onAwaitingReceiverAccept event to know that Android sender has connected to receiver")
 	}
-	// Sample response: {"result":{"callbackId":"1-4","name":"onAwaitingReceiverAccept","data":{"token":"3365","connectionTimeMs":X}},...}
-	// Unmarshall 'result' to a map instead of building a matching struct just to get one value.
-	var result map[string]interface{}
-	if err := json.Unmarshal(res.Result, &result); err != nil {
-		return "", errors.Wrap(err, "failed to read result map from json response")
-	}
 
-	// The token value is in another map called 'data' within the 'result' map.
-	data, ok := result["data"]
+	token, ok := res.Data["token"]
 	if !ok {
-		return "", errors.Wrap(err, "'data' map didn't exist in onAwaitingReceiverAccept response's result field")
+		return "", errors.New("onAwaitingReceiverAccept event did not include a token")
 	}
-	token := data.(map[string]interface{})["token"]
 	tokenStr, ok := token.(string)
 	if !ok {
 		return "", errors.Wrap(err, "share token in onAwaitingReceiverAccept response was not a string")
