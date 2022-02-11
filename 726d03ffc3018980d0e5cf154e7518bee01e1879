@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8ca2b3_f2f40f6c",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-02-11T11:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8342e28_e4addc04",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 8
+      },
+      "revId": "726d03ffc3018980d0e5cf154e7518bee01e1879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6daf77e_c8b4be35",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-11T11:15:37Z",
       "side": 1,
       "message": "nit: wrap this error\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 166,
+        "startChar": 14,
+        "endLine": 166,
+        "endChar": 17
+      },
+      "revId": "726d03ffc3018980d0e5cf154e7518bee01e1879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "975e0e1e_56b41cd9",
+        "filename": "src/chromiumos/tast/local/camera/testutil/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-02-11T11:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6daf77e_c8b4be35",
       "range": {
         "startLine": 166,
         "startChar": 14,
