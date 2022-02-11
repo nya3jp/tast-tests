@@ -74,6 +74,17 @@ type CrasNode struct {
 	NodeVolume uint64
 }
 
+// VolumeState contains the metadata of volume state in Cras.
+// Currently fields which are actually needed by tests are defined.
+// Please find src/third_party/adhd/cras/dbus_bindings/org.chromium.cras.Control.xml
+// for the meaning of each fields.
+type VolumeState struct {
+	OutputVol      int
+	OutputMute     bool
+	InputMute      bool
+	OutputUserMute bool
+}
+
 // GetNodes calls cras.Control.GetNodes over D-Bus.
 func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 	call := c.call(ctx, "GetNodes")
@@ -195,6 +206,24 @@ func (c *Cras) SetActiveNodeByType(ctx context.Context, nodeType string) error {
 // SetOutputNodeVolume calls cras.Control.SetOutputNodeVolume over D-Bus.
 func (c *Cras) SetOutputNodeVolume(ctx context.Context, node CrasNode, volume int) error {
 	return c.call(ctx, "SetOutputNodeVolume", node.ID, volume).Err
+}
+
+// GetVolumeState calls cras.Control.GetVolumeState over D-Bus.
+func (c *Cras) GetVolumeState(ctx context.Context) (*VolumeState, error) {
+	var vol int32
+	var outputMute, inputMute, outputUserMute bool
+
+	err := c.call(ctx, "GetVolumeState").Store(&vol, &outputMute, &inputMute, &outputUserMute)
+	if err != nil {
+		return &VolumeState{}, err
+	}
+
+	return &VolumeState{
+		OutputVol:      int(vol),
+		OutputMute:     outputMute,
+		InputMute:      inputMute,
+		OutputUserMute: outputUserMute,
+	}, nil
 }
 
 // WaitForDeviceUntil waits until any cras node meets the given condition.
