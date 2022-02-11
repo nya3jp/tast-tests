@@ -46,6 +46,23 @@
       },
       "revId": "5f35e8c15857cfaa2817978d60b9a9c0b2c39f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6c7635_0ab35230",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-11T22:25:09Z",
+      "side": 1,
+      "message": "LGTM for tast-owners, once you work out with your own team if this is actually ready or not.",
+      "revId": "5f35e8c15857cfaa2817978d60b9a9c0b2c39f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
