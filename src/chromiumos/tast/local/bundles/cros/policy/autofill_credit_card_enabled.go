@@ -37,6 +37,8 @@ import (
 const autofillCreditCardCertFile = "autofill_credit_card_enabled_certificate.pem"
 const autofillCreditCardKeyFile = "autofill_credit_card_enabled_key.pem"
 const autofillCreditCardCaCertFile = "autofill_credit_card_enabled_cacert.pem"
+const autofillCreditCardCaCertName = "TastCA"
+const autofillCreditCardCaCertAuthName = "org-Google"
 const autofillCreditCardHTMLFile = "autofill_credit_card_enabled.html"
 
 func init() {
@@ -245,9 +247,63 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 	}
 }
 
+// checkIfCertificateExists checks whether the certificate that is tried to add already exists.
+func checkIfCertificateExists(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn, certName, authOrgName string) (bool, error) {
+	ui := uiauto.New(tconn)
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return false, err
+	}
+	defer kb.Close()
+
+	policyutil.SettingsPage(ctx, cr, br, "certificates")
+	authorities := nodewith.Name("Authorities").Role(role.Tab)
+	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
+
+	if err := uiauto.Combine("open correct tab",
+		ui.WaitUntilExists(authorities),
+		ui.LeftClick(authorities),
+		ui.WaitUntilExists(authTabText),
+	)(ctx); err != nil {
+		return false, err
+	}
+
+	googleCertCollapsiblePanel := nodewith.Name(authOrgName).Role(role.InlineTextBox)
+
+	// Authority of the cert doesnt exist, so cert also cannot exist.
+	if err := ui.Exists(googleCertCollapsiblePanel)(ctx); err != nil {
+		return false, nil
+	}
+
+	if err := uiauto.Combine("open collapsible panel to check if the cert is there",
+		ui.MakeVisible(googleCertCollapsiblePanel),
+		ui.LeftClick(googleCertCollapsiblePanel),
+		kb.AccelAction("Tab"),
+		kb.AccelAction("Enter"),
+	)(ctx); err != nil {
+		return false, err
+	}
+
+	certificateText := nodewith.Name(certName).Role(role.StaticText)
+	// The actual cert doesnt exist.
+	if err := ui.Exists(certificateText)(ctx); err != nil {
+		return false, nil
+	}
+
+	return true, nil
+}
+
 // configureChromeToAcceptCertificate sets Chrome's certificate settings.
 // TODO(crbug.com/1293286): Re-use isolatedapp.ConfigureChromeToAcceptCertificate() instead when it has been moved to a directory which is accessible from here.
 func configureChromeToAcceptCertificate(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn, caCertDataPath string) error {
+
+	// Check if the cert already exists -> No need to add again.
+	certExists, err := checkIfCertificateExists(ctx, cr, br, tconn, autofillCreditCardCaCertName, autofillCreditCardCaCertAuthName)
+	if err == nil && certExists {
+		return nil
+	}
+
 	// Copy the certificate file to a local Downloads directory.
 	bytesRead, err := ioutil.ReadFile(caCertDataPath)
 	if err != nil {
@@ -287,23 +343,9 @@ func configureChromeToAcceptCertificate(ctx context.Context, cr *chrome.Chrome, 
 		return err
 	}
 
-	// Ensure that the certificate was actually added successfully.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return err
-	}
-	defer kb.Close()
-
-	googleCertCollapsiblePanel := nodewith.Name("org-Google").Role(role.InlineTextBox)
-	certificateText := nodewith.Name("TastCA").Role(role.StaticText)
-	if err := uiauto.Combine("ensure certificate was added successfully",
-		ui.WaitUntilExists(googleCertCollapsiblePanel),
-		ui.MakeVisible(googleCertCollapsiblePanel),
-		ui.LeftClick(googleCertCollapsiblePanel),
-		kb.AccelAction("Tab"),
-		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(certificateText),
-	)(ctx); err != nil {
+	// Check if addition was successful.
+	certExists2, err := checkIfCertificateExists(ctx, cr, br, tconn, autofillCreditCardCaCertName, autofillCreditCardCaCertAuthName)
+	if err != nil || !certExists2 {
 		return err
 	}
 	return nil
