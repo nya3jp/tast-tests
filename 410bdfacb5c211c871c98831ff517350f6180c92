@@ -22,6 +22,30 @@
       },
       "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999be146_f9297fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey_search_plus_a.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-02-11T02:46:50Z",
+      "side": 1,
+      "message": "Thank you for catching this! I wasn\u0027t aware that Search+A is not usable with Google branded devices. I\u0027ll disable this test with Google branded devices.",
+      "parentUuid": "d72d3ef8_d0b642e2",
+      "range": {
+        "startLine": 49,
+        "startChar": 62,
+        "endLine": 49,
+        "endChar": 78
+      },
+      "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
