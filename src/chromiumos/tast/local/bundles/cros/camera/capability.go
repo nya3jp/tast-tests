@@ -30,7 +30,7 @@ func Capability(ctx context.Context, s *testing.State) {
 	}
 
 	// Detect USB cameras.
-	usbCams, err := testutil.GetUSBCamerasFromV4L2Test(ctx)
+	usbCams, err := testutil.USBCamerasFromV4L2Test(ctx)
 	if err != nil {
 		s.Fatal("Failed to get USB cameras: ", err)
 	}

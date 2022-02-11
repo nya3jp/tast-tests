@@ -57,7 +57,7 @@ func V4L2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test list: ", err)
 	}
 
-	usbCams, err := testutil.GetUSBCamerasFromV4L2Test(ctx)
+	usbCams, err := testutil.USBCamerasFromV4L2Test(ctx)
 	if err != nil {
 		s.Fatal("Failed to get USB cameras: ", err)
 	}
