@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: PersistentAuthSession,
-		Desc: "Test guest sessions with auth session API",
+		Desc: "Test new create/prepare API for persistent vault with auth session",
 		Contacts: []string{
 			"dlunev@chromium.org",
 			"hardikgoyal@chromium.org",
