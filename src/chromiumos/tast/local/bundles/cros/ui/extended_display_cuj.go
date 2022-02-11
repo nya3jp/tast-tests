@@ -35,8 +35,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			"ui.cuj_mode", // Optional. Use "tablet" to force the tablet mode. Other values will be be taken as "clamshell".
-
+			"ui.cuj_mode",               // Optional. Use "tablet" to force the tablet mode. Other values will be be taken as "clamshell".
 			"ui.chameleon_addr",         // Only needed when using chameleon board as extended display.
 			"ui.chameleon_display_port", // The port connected as extended display. Default is 3.
 		},
@@ -45,7 +44,7 @@ func init() {
 				Name:    "plus_video_youtube_web",
 				Timeout: 10 * time.Minute,
 				Val: extendedDisplayCUJParam{
-					tier: cuj.Plus,
+					tier: cuj.Basic, // Extended display plus tier test uses basic tier test of video CUJ.
 					app:  videocuj.YoutubeWeb,
 				},
 			},

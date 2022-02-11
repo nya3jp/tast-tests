@@ -91,7 +91,7 @@ var basicVideoSrc = []videoSrc{
 	},
 }
 
-var plusVideoSrc = []videoSrc{
+var premiumVideoSrc = []videoSrc{
 	{
 		cuj.YoutubeStadiaGDCVideoURL,
 		"Stadia GDC 2019 Gaming Announcement",
@@ -175,8 +175,8 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	}
 
 	videoSources := basicVideoSrc
-	if tier == cuj.Plus {
-		videoSources = plusVideoSrc
+	if tier == cuj.Premium {
+		videoSources = premiumVideoSrc
 	}
 
 	// Give 5 seconds to clean up device objects connected to UI Automator server resources.
