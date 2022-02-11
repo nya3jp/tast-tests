@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3487b337_6d89336d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 0,
+      "message": "while you are here, could you put all `const` under a `const` guard. e.g:\n\n```\nconst (\n   // TODO(b/...) parse ...\n   ampCount \u003d 2\n   \n   // crasStopTimne...\n   crasStopTimeFile \u003d ...\n)\n```\n\nIt is Ok to leave `calibYamlFile` outside if it cannot be put inside it.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "94e77bba0a9cf1efd09a5408aaa43db007e13874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

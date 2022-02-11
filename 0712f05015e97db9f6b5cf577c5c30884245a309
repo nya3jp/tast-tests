@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd408d1_f3b782ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 1,
+      "message": "huge nit: remove",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "0712f05015e97db9f6b5cf577c5c30884245a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3c8dfe_f5475806",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 1,
+      "message": "nit, optional: I\u0027d use the word \"calibration\" instead of \"calib\"... at first, I wasn\u0027t sure if \"calib\" was something specific to a sound card, or just \"calibration\".",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "0712f05015e97db9f6b5cf577c5c30884245a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79150fdc_f345859b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 1,
+      "message": "add description for this const. Not clear what it is. Is it the content of the file?\nIf this is the content, then just rename it: `calibYAMLContent` or `calibYAMLFileContent`",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "0712f05015e97db9f6b5cf577c5c30884245a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176f38bc_e56eb646",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 1,
+      "message": "nit: calibYamlFile -\u003e calibYAMLFile\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "0712f05015e97db9f6b5cf577c5c30884245a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e7a2a0_860787f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 1,
+      "message": "nit: add docstring",
+      "revId": "0712f05015e97db9f6b5cf577c5c30884245a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0898fa_0ffade1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 1,
+      "message": "huge nit: to avoid confusion I\u0027d use the variable name `file` or `f` or `fileName` or `name` or `calibFile` or `calibName`... but `calib` alone  could mean \"calibration data\" or \"calibration content\"",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 7
+      },
+      "revId": "0712f05015e97db9f6b5cf577c5c30884245a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f275e52a_b10c5b2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:47:58Z",
+      "side": 1,
+      "message": "needed? calibYamlFile doesn\u0027t have any format string",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 34
+      },
+      "revId": "0712f05015e97db9f6b5cf577c5c30884245a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
