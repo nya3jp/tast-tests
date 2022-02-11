@@ -20,7 +20,7 @@ func init() {
 		Func:         TraceReplay,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Replay glxgears trace file in Crostini VM",
-		Contacts:     []string{"chromeos-gfx@google.com", "tutankhamen@google.com", "ddmail@google.com", "ihf@google.com"},
+		Contacts:     []string{"chromeos-gfx@google.com", "ddmail@google.com", "ihf@google.com"},
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "no_borealis_host", "vm_host", "no_qemu"},
 		// We assign it to two different group in order to run it against pool:suite and pool:cros_av_analysis.
 		Attr: []string{"group:mainline", "group:graphics", "graphics_trace", "graphics_perbuild", "graphics_av_analysis"},
