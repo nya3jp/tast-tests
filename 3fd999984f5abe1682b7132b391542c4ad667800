@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cca9940d_43bf9d2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:30:17Z",
+      "side": 1,
+      "message": "LGTM with small suggestion",
+      "revId": "3fd999984f5abe1682b7132b391542c4ad667800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622db3d0_23ef683b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:30:17Z",
+      "side": 1,
+      "message": "I\u0027d just use ui.Exists here, it simplifies the error handling. If you want to include some time to wait for the node to exist (might be more stable), you can also use ui.WaitUntilExists",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "3fd999984f5abe1682b7132b391542c4ad667800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7225de8_e7944d1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:30:17Z",
+      "side": 1,
+      "message": "same here, ui.Exists or ui.WaitUntilExists are probably better",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "3fd999984f5abe1682b7132b391542c4ad667800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
