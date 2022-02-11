@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2b08ee_3ac9f7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-11T17:30:10Z",
+      "side": 1,
+      "message": "This means we would skip boards [1] that do not support battery force discharging. I am not sure whether this is okay. \n\n[1] https://source.corp.google.com/h/chromium/chromiumos/platform/tast/+/00e5ccc135279e71036da3ebf9ee7a1d4ccd97b6:src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d819;drc\u003d00e5ccc135279e71036da3ebf9ee7a1d4ccd97b6;bpv\u003d0;bpt\u003d0",
+      "revId": "1c7b7bc6e4f677803d8ee907cccf885baa6c9e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
