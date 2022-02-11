@@ -69,6 +69,12 @@ func (vh *Helper) GetVolume(ctx context.Context) (int, error) {
 	return int(vh.activeNode.NodeVolume), nil
 }
 
+// IsMuted gets the mute status of the user.
+func (vh *Helper) IsMuted(ctx context.Context) (bool, error) {
+	volstate, err := vh.cras.GetVolumeState(ctx)
+	return volstate.OutputUserMute, err
+}
+
 // VerifyVolumeChanged verifies volume is changed before and after calling doChange().
 func (vh *Helper) VerifyVolumeChanged(ctx context.Context, doChange func() error) error {
 	prevVolume, err := vh.GetVolume(ctx)

@@ -11,13 +11,26 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/arc/apputil/vlc"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf"
 	"chromiumos/tast/testing"
+)
+
+type volumeControl string
+
+const (
+	volumeUp     volumeControl = "volume up"
+	volumeDown   volumeControl = "volume down"
+	volumeMute   volumeControl = "mute"
+	volumeUnMute volumeControl = "unmute"
+	volumeReset  volumeControl = "reset volume"
 )
 
 func init() {
@@ -33,6 +46,8 @@ func init() {
 		Timeout:      10 * time.Minute,
 	})
 }
+
+const audioFilesPlayingDefaultVol = 50
 
 // AudioFilesPlaying plays audio files via ARC++ app VLC player and verifies audio volume level is changed based on volume controls.
 func AudioFilesPlaying(ctx context.Context, s *testing.State) {
@@ -94,12 +109,52 @@ func AudioFilesPlaying(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to launch app %q: %v", vlc.AppName, err)
 	}
 
-	if err := playAudioFiles(ctx, vlcPlayer, files); err != nil {
+	vh, err := audio.NewVolumeHelper(ctx)
+	if err != nil {
+		s.Fatal("Failed to new a volume helper: ", err)
+	}
+
+	topRow, err := input.KeyboardTopRowLayout(ctx, kb)
+	if err != nil {
+		s.Fatal("Failed to obtain the top-row layout: ", err)
+	}
+	volumeAction := map[volumeControl]uiauto.Action{
+		volumeUp:     kb.AccelAction(topRow.VolumeUp),
+		volumeDown:   kb.AccelAction(topRow.VolumeDown),
+		volumeMute:   kb.AccelAction(topRow.VolumeMute),
+		volumeUnMute: kb.AccelAction(topRow.VolumeUp),
+		volumeReset:  func(ctx context.Context) error { return vh.SetVolume(ctx, audioFilesPlayingDefaultVol) },
+	}
+
+	s.Log("Get initial volume state")
+	volume, muted, err := getVolumeState(ctx, vh)
+	if err != nil {
+		s.Fatal("Failed to get volume state: ", err)
+	}
+	defer func(ctx context.Context) {
+		vh.SetVolume(ctx, volume)
+		if muted {
+			volumeAction[volumeMute](ctx)
+		} else {
+			volumeAction[volumeUnMute](ctx)
+		}
+	}(cleanupCtx)
+	s.Logf("Initial volume state: [volume: %d, muted: %t]", volume, muted)
+
+	s.Log("Set volume to default state")
+	if err := volumeAction[volumeUnMute](ctx); err != nil {
+		s.Fatal("Failed to set default unmute: ", err)
+	}
+	if err := volumeAction[volumeReset](ctx); err != nil {
+		s.Fatal("Failed to set default volume: ", err)
+	}
+
+	if err := playAudioFiles(ctx, vh, volumeAction, vlcPlayer, files); err != nil {
 		s.Fatal("Failed to play audio: ", err)
 	}
 }
 
-func playAudioFiles(ctx context.Context, vlcPlayer *vlc.Vlc, files map[string]string) error {
+func playAudioFiles(ctx context.Context, vh *audio.Helper, volumeAction map[volumeControl]uiauto.Action, vlcPlayer *vlc.Vlc, files map[string]string) error {
 	testing.ContextLog(ctx, "Enter audio folder")
 	if err := vlcPlayer.EnterAudioFolder(ctx); err != nil {
 		testing.ContextLog(ctx, "Not entering audio folder or already in the folder")
@@ -109,6 +164,71 @@ func playAudioFiles(ctx context.Context, vlcPlayer *vlc.Vlc, files map[string]st
 		if err := vlcPlayer.PlayAudio(ctx, filename); err != nil {
 			return err
 		}
+
+		// Mute action must be the last one since volume can't be changed after muted.
+		vcs := []volumeControl{volumeUp, volumeDown, volumeMute}
+		testing.ContextLog(ctx, "Change volume: ", vcs)
+		if err := pressAndCheckVolumeChange(ctx, vh, volumeAction, vcs); err != nil {
+			return errors.Wrapf(err, "failed to change volume by pressing %+v", vcs)
+		}
+
+		testing.ContextLog(ctx, "Unmute")
+		if err := volumeAction[volumeUnMute](ctx); err != nil {
+			return errors.Wrap(err, "failed to unmute")
+		}
+
+		volume, muted, err := getVolumeState(ctx, vh)
+		if err != nil {
+			return err
+		}
+		testing.ContextLogf(ctx, "Volume state after unmute: [volume: %d, muted: %t]", volume, muted)
 	}
 	return nil
+}
+
+func pressAndCheckVolumeChange(ctx context.Context, vh *audio.Helper, volumeAction map[volumeControl]uiauto.Action, controls []volumeControl) error {
+	for _, vc := range controls {
+		volumeBefore, err := vh.GetVolume(ctx)
+		if err != nil {
+			return err
+		}
+
+		if volumeBefore == 100 || volumeBefore == 0 {
+			if err := vh.SetVolume(ctx, audioFilesPlayingDefaultVol); err != nil {
+				return err
+			}
+			volumeBefore = audioFilesPlayingDefaultVol
+		}
+
+		if err := volumeAction[vc](ctx); err != nil {
+			return err
+		}
+
+		volumeAfter, mutedAfter, err := getVolumeState(ctx, vh)
+		if err != nil {
+			return err
+		}
+
+		testing.ContextLogf(ctx, "Volume changed from %d to %d, muted: %t", volumeBefore, volumeAfter, mutedAfter)
+		switch vc {
+		case volumeUp, volumeDown:
+			if volumeAfter == volumeBefore {
+				return errors.Errorf("volume level did not changed, expecting %v", vc)
+			}
+		case volumeMute:
+			if !mutedAfter {
+				return errors.New("system audio is not mute")
+			}
+		}
+	}
+	return nil
+}
+
+func getVolumeState(ctx context.Context, vh *audio.Helper) (vol int, muted bool, err error) {
+	vol, err = vh.GetVolume(ctx)
+	if err != nil {
+		return
+	}
+	muted, err = vh.IsMuted(ctx)
+	return
 }
