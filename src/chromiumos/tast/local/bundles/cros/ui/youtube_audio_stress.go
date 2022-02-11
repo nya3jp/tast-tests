@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -29,8 +28,9 @@ type videoDuration struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: YoutubeAudioStress,
-		Desc: "Plays YouTube video streaming and checks if the audio is being routed through onboard speaker",
+		Func:         YoutubeAudioStress,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Plays YouTube video streaming and checks if the audio is being routed through onboard speaker",
 		Contacts: []string{
 			"ambalavanan.m.m@intel.com",
 			"andrescj@google.com",
@@ -96,7 +96,7 @@ func YoutubeAudioStress(ctx context.Context, s *testing.State) {
 		s.Error("Failed to create Cras object: ", err)
 	}
 
-	vh, err := volume.NewVolumeHelper(ctx)
+	vh, err := audio.NewVolumeHelper(ctx)
 	if err != nil {
 		s.Error("Failed to create the volumeHelper: ", err)
 	}

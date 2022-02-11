@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -25,6 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         YoutubeMultiTab,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Plays YouTube video on multiple tabs concurrently, checks for significant frame drops and if the audio is being routed through expected device",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "andrescj@google.com", "intel-chrome-system-automation-team@intel.com", "chromeos-gfx-video@google.com"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.Speaker()),
@@ -58,7 +58,7 @@ func YoutubeMultiTab(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Cras object: ", err)
 	}
 
-	vh, err := volume.NewVolumeHelper(ctx)
+	vh, err := audio.NewVolumeHelper(ctx)
 	if err != nil {
 		s.Fatal("Failed to create the volumeHelper: ", err)
 	}
