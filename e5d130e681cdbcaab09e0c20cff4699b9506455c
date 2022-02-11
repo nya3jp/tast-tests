@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1221f9_9376fea4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T22:10:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e529d0_030f5d13",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "515abc57_8de5222d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-10T21:20:09Z",
       "side": 1,
       "message": "Can change this to notneeded. I synced with dan and jon and for phonehub, we will only need a lacros variant for the recent tabs test case",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80cb4e89_ab07850a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/message_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T22:10:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "515abc57_8de5222d",
       "range": {
         "startLine": 26,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c866e73_ca73b935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/message_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T22:10:27Z",
+      "side": 1,
+      "message": ":D",
+      "parentUuid": "675a498a_3fbad958",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac7be40a_8e06cd81",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-10T21:20:09Z",
       "side": 1,
       "message": "We have 2 manual test for something similar to this. The \"inline reply\" ones\nhttps://testtracker.googleplex.com/testplans/details/590\n\nCould put this somewhere useful for cienet to reuse when they get to those tests",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d349a53d_15d29a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/message_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T22:10:27Z",
+      "side": 1,
+      "message": "It might not be directly reusable, general support for notification actions is a bit more complicated. This works because I made sure it\u0027s the only notification present at the time. I made a small task to improve this later:\nhttps://b.corp.google.com/issues/219079076",
+      "parentUuid": "ac7be40a_8e06cd81",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8a5e7a_9cab0d4c",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T22:10:27Z",
+      "side": 1,
+      "message": "yeah we can generalize the first part of the response parsing. made a follow-up CL here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3457168/1",
+      "parentUuid": "6b3f0413_aadad2fc",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00347888_bea50d6f",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-02-10T21:20:09Z",
       "side": 1,
       "message": "The amount of steps to turn on phone hub is ridiculous 😄",
+      "range": {
+        "startLine": 265,
+        "startChar": 26,
+        "endLine": 265,
+        "endChar": 53
+      },
+      "revId": "e5d130e681cdbcaab09e0c20cff4699b9506455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7526d6c5_6e625b54",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T22:10:27Z",
+      "side": 1,
+      "message": "lol at least we can do this step with adb!",
+      "parentUuid": "00347888_bea50d6f",
       "range": {
         "startLine": 265,
         "startChar": 26,
