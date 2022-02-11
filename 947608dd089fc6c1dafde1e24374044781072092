@@ -16,6 +16,40 @@
       "message": "Required Chrome changes were just in time to land in M100. 😊\nThe first versions this test will work with are M101 -\u003e M100.\n\nI learnt that tests should be as easy to read as possible, so I didn\u0027t put anything into functions.",
       "revId": "947608dd089fc6c1dafde1e24374044781072092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097532b6_84e3570c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-11T09:04:46Z",
+      "side": 1,
+      "message": "Check for error like below.",
+      "revId": "947608dd089fc6c1dafde1e24374044781072092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae836cf_6213382f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-11T09:04:46Z",
+      "side": 1,
+      "message": "Check for error. Same for the next line.",
+      "revId": "947608dd089fc6c1dafde1e24374044781072092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
