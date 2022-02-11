@@ -17,7 +17,7 @@ import (
 
 const (
 	preUpdateTimeoutN2M  = 2 * time.Minute
-	postUpdateTimeoutN2M = 2 * time.Minute
+	postUpdateTimeoutN2M = 3 * time.Minute
 )
 
 func init() {
