@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab1bd5d_be87122e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/fake_enrollment_real_gaia.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-11T09:11:18Z",
+      "side": 1,
+      "message": "This is a bad policy since it\u0027s set to true for all enterprise users by default. Maybe DefaultSearchProviderEnabled ?",
+      "range": {
+        "startLine": 77,
+        "startChar": 31,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "9729cc388d3d12f00ea4dda8c2ae5b8811b93612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
