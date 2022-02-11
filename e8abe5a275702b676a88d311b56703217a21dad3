@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6730f7ca_e58caaf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-11T13:52:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13fa8f1_70100574",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 2
+      },
+      "revId": "e8abe5a275702b676a88d311b56703217a21dad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "645a27b7_c11b7573",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-11T13:11:21Z",
       "side": 1,
       "message": "nit: you can compress it like in the example above.",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 0
+      },
+      "revId": "e8abe5a275702b676a88d311b56703217a21dad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef98131f_cf6e5227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-11T13:52:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "645a27b7_c11b7573",
       "range": {
         "startLine": 349,
         "startChar": 1,
