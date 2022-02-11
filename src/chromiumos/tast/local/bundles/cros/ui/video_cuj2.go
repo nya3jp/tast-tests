@@ -34,8 +34,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			// Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
-			"ui.cuj_mode",
+			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
 		},
 		Params: []testing.Param{
 			{
@@ -55,10 +54,10 @@ func init() {
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
-				Name:    "plus_youtube_web",
+				Name:    "premium_youtube_web",
 				Timeout: 12 * time.Minute,
 				Val: videoCUJParam{
-					tier: cuj.Plus,
+					tier: cuj.Premium,
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
@@ -87,10 +86,10 @@ func init() {
 					app:  videocuj.YoutubeApp,
 				},
 			}, {
-				Name:    "plus_youtube_app",
+				Name:    "premium_youtube_app",
 				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
-					tier: cuj.Plus,
+					tier: cuj.Premium,
 					app:  videocuj.YoutubeApp,
 				},
 			}, {
