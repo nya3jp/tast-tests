@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b72526_42b86052",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T18:53:45Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a utility to check enabled feature flags in Tast. We could probably add one but this looks fine too.",
+      "parentUuid": "e000eb7b_cf88b067",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 30
+      },
+      "revId": "c9be86d4306b8a8f25df30709db5f93e2499e515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9512c85e_01501198",
