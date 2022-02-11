@@ -210,7 +210,7 @@ func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *tes
 	if _, err := updateClient.CheckForUpdate(updateCtx, &aupb.UpdateRequest{
 		OmahaUrl: fmt.Sprintf("http://127.0.0.1:%s/update?critical_update=True", nebraska.Port),
 	}); err != nil {
-		return errors.Wrap(err, "failed to check for updates")
+		return errors.Wrap(err, "failed to update")
 	}
 
 	return nil

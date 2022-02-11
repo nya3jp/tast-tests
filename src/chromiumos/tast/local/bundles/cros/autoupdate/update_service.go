@@ -10,6 +10,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"regexp"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -53,6 +55,11 @@ func (u *UpdateService) CheckForUpdate(ctx context.Context, req *aupb.UpdateRequ
 
 	cmd := testexec.CommandContext(ctx, "update_engine_client", args...)
 
+	// Ensure update engine is up and running.
+	if err := ensureUpdateEngineReady(ctx); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to ensure update engine is ready")
+	}
+
 	testing.ContextLog(ctx, "Starting the update")
 	_, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -60,6 +67,41 @@ func (u *UpdateService) CheckForUpdate(ctx context.Context, req *aupb.UpdateRequ
 	}
 
 	return &empty.Empty{}, nil
+}
+
+func ensureUpdateEngineReady(ctx context.Context) error {
+	statusRegexp, err := regexp.Compile(`CURRENT_OP=(.*)`)
+	if err != nil {
+		return errors.Wrap(err, "failed to compile the regexp")
+	}
+
+	latestStatus := ""
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Redefine cmd every time, as the Output function can be called only once on it.
+		cmd := testexec.CommandContext(ctx, "update_engine_client", "--status")
+		output, err := cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get update engine status, latest polled status was %q", latestStatus)
+		}
+
+		// We expect CURRENT_OP=UPDATE_STATUS_IDLE.
+		result := statusRegexp.FindStringSubmatch(string(output))
+		if result == nil || len(result) != 2 {
+			return errors.New("failed to find CURRENT_OP in status output")
+		}
+
+		latestStatus = result[1]
+		if latestStatus != "UPDATE_STATUS_IDLE" {
+			return errors.Wrapf(err, "update engine is not ready yet, current status is %q", latestStatus)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // LSBReleaseContent gets the content of /etc/lsb-release.
