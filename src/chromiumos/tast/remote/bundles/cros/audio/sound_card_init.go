@@ -32,13 +32,27 @@ func init() {
 	})
 }
 
-const soundCardInitTimeout = 10 * time.Second
+const (
+	soundCardInitTimeout = time.Minute
 
-// soundCardInitRunTimeFile is the file stores previous sound_card_init run time.
-const soundCardInitRunTimeFile = "/var/lib/sound_card_init/%s/run"
+	// TODO(b/171217019): parse sound_card_init yaml to get ampCount.
+	ampCount = 2
 
-// crasStopTimeFile is the file stores previous CRAS stop time.
-const crasStopTimeFile = "/var/lib/cras/stop"
+	// soundCardInitRunTimeFile is the file stores previous sound_card_init run time.
+	soundCardInitRunTimeFile = "/var/lib/sound_card_init/%s/run"
+
+	// crasStopTimeFile is the file stores previous CRAS stop time.
+	crasStopTimeFile = "/var/lib/cras/stop"
+
+	// calibrationFiles is the file stores previous calibration values.
+	calibrationFiles = "/var/lib/sound_card_init/%s/calib_%d"
+
+	// calibYAMLContent is the content of calibration file.
+	calibYAMLContent = `
+---
+UseVPD
+`
+)
 
 func parseSoundCardID(dump string) (string, error) {
 	re := regexp.MustCompile(`card 0: ([a-z0-9]+) `)
@@ -50,8 +64,8 @@ func parseSoundCardID(dump string) (string, error) {
 	return m[1], nil
 }
 
+// removeSoundCardInitFiles removes all sound_card_init files.
 func removeSoundCardInitFiles(ctx context.Context, d *rpcdut.RPCDUT, soundCardID string) error {
-	// Clear all sound_card_init files.
 	fs := dutfs.NewClient(d.RPC().Conn)
 	if err := fs.Remove(ctx, crasStopTimeFile); err != nil && !os.IsNotExist(err) {
 		return errors.Wrapf(err, "failed to rm file: %s", crasStopTimeFile)
@@ -63,8 +77,26 @@ func removeSoundCardInitFiles(ctx context.Context, d *rpcdut.RPCDUT, soundCardID
 	return nil
 }
 
+// createCalibrationFiles creates the calibration files on DUT.
+func createCalibrationFiles(ctx context.Context, d *rpcdut.RPCDUT, soundCardID string, count uint) error {
+	fs := dutfs.NewClient(d.RPC().Conn)
+	for i := 0; i < int(count); i++ {
+		f := fmt.Sprintf(calibrationFiles, soundCardID, i)
+		exists, err := fs.Exists(ctx, f)
+		if err != nil {
+			return errors.Wrapf(err, "failed to stat %s", f)
+		}
+		if !exists {
+			if err := fs.WriteFile(ctx, f, []byte(calibYAMLContent), 0644); err != nil {
+				return errors.Wrapf(err, "failed to create %s", f)
+			}
+		}
+	}
+	return nil
+}
+
+// verifySoundCardInitFinished polls for sound_card_init run time file being updated, which means sound_card_init completes running.
 func verifySoundCardInitFinished(ctx context.Context, d *rpcdut.RPCDUT, soundCardID string) error {
-	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
 	fs := dutfs.NewClient(d.RPC().Conn)
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		file := fmt.Sprintf(soundCardInitRunTimeFile, soundCardID)
@@ -111,6 +143,11 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove previous files: ", err)
 	}
 
+	if err := createCalibrationFiles(ctx, d, soundCardID, ampCount); err != nil {
+		s.Fatal("Failed to create calibration files: ", err)
+	}
+
+	s.Log("Reboot the device")
 	// Reboot
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot the DUT: ", err)
