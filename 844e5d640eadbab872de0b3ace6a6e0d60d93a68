@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d5d391a_de75cc9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-11T18:10:58Z",
+      "side": 1,
+      "message": "Updated the patch set not to introduce a new package instead put this in the existing browserfixt",
+      "parentUuid": "8322a51b_1c6f8398",
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fcab776_9c13a594",
