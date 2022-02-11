@@ -260,6 +260,30 @@ func (d *Debugd) DRMTraceSnapshot(ctx context.Context, snapshotType DRMTraceSnap
 	return nil
 }
 
+// GetPerfOutput calls debugd's GetPerfOutput D-Bus method.
+func (d *Debugd) GetPerfOutput(ctx context.Context, duration uint32, quipperArgs []string) ([]byte, []byte, int, error) {
+	status := 0
+	var perfData, perfStat []byte
+	c := d.call(ctx, "GetPerfOutput", duration, quipperArgs)
+	if c.Err != nil {
+		return nil, nil, status, errors.Wrap(c.Err, "failed to call GetPerfOutput")
+	}
+	err := c.Store(&status, &perfData, &perfStat)
+	return perfData, perfStat, status, err
+}
+
+// GetPerfOutputV2 calls debugd's GetPerfOutputV2 D-Bus method.
+func (d *Debugd) GetPerfOutputV2(ctx context.Context, quipperArgs []string, disableCPUIdle bool) ([]byte, []byte, int, error) {
+	status := 0
+	var perfData, perfStat []byte
+	c := d.call(ctx, "GetPerfOutputV2", quipperArgs, disableCPUIdle)
+	if c.Err != nil {
+		return nil, nil, status, errors.Wrap(c.Err, "failed to call GetPerfOutputV2")
+	}
+	err := c.Store(&status, &perfData, &perfStat)
+	return perfData, perfStat, status, err
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (d *Debugd) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return d.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
