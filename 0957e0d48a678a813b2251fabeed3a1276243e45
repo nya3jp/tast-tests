@@ -18,6 +18,74 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a67bc2_b0156b3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T02:29:52Z",
+      "side": 1,
+      "message": "I have few suggestion. Please feel free to disagree. We can discuss. Thanks.",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6a692c_a72f7759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T02:29:52Z",
+      "side": 1,
+      "message": "Then call getScreenshot to find new elements and update the table every time you call. You can wrap the call in func.\n\n```\nfunc (ctx context.Context) error {\n   screenshots :\u003d getScreenShots()\n   if err :\u003d takeScreenshot(); err !\u003d nil {\n       return err\n   }\n   screenshotLocations[0] \u003d newScreenShot(screenshots, getScreenShots)\n}\n```\n\nAlso, please use a map instead sort and binary search to find a new element in newScreenShot.",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50195f36_1956f5a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T02:29:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you need both WaitUntilGone and EnsureGoneFor. I think you just need to call EnsureGoneFor.",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b6205f_b91dcced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T02:29:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you need both WaitUntilGone and EnsureGoneFor. I think you just need to call EnsureGoneFor.",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2a902f7_b67f0be2",
@@ -49,6 +117,41 @@
       "side": 1,
       "message": "I\u0027m fairly new to Go, but I think that will cause `out` to be a local variable so any modifications to it will not persist outside of the method scope? The goal here is that `out` will be populated with the location of the new screenshot file upon running the returned ui.Action.",
       "parentUuid": "e2a902f7_b67f0be2",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f78519_f5cc8fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T02:29:52Z",
+      "side": 1,
+      "message": "While I understand why you want to make sure the function return uiauto.Action so that you can use it for ui.Combine, I don\u0027t think it is the idiomatic to use Go. I think Go prefer a big more functional way. In addition, I don\u0027t the way to get the new screenshot file name is efficient. I will suggest an alternative. Please take a look.",
+      "parentUuid": "a4060a5c_ce153957",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91e3a6d_bdd34705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T02:29:52Z",
+      "side": 1,
+      "message": "I don\u0027t think this code is efficient because it has to sort in every iteration. Use the lookup table above to check for new element.",
       "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
