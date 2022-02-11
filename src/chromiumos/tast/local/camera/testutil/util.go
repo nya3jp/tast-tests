@@ -168,8 +168,8 @@ func CaptureDevicesFromV4L2Test(ctx context.Context) ([]string, error) {
 	return strings.Fields(string(out)), nil
 }
 
-// GetMIPICamerasFromCrOSCameraTool returns a list of MIPI camera information outputted from cros-camera-tool.
-func GetMIPICamerasFromCrOSCameraTool(ctx context.Context) ([]map[string]string, error) {
+// MIPICamerasFromCrOSCameraTool returns a list of MIPI camera information outputted from cros-camera-tool.
+func MIPICamerasFromCrOSCameraTool(ctx context.Context) ([]map[string]string, error) {
 	cmd := testexec.CommandContext(ctx, "cros-camera-tool", "modules", "list")
 	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
