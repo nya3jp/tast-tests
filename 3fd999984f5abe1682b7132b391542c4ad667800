@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5965957a_aed04d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-11T09:12:16Z",
+      "side": 1,
+      "message": "Done, used Exists because the dialog itself is already WaitUntilExists-ed, just need to verify a component of it.",
+      "parentUuid": "622db3d0_23ef683b",
+      "range": {
+        "startLine": 79,
+        "startChar": 19,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "3fd999984f5abe1682b7132b391542c4ad667800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7225de8_e7944d1b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-11T05:30:17Z",
       "side": 1,
       "message": "same here, ui.Exists or ui.WaitUntilExists are probably better",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "3fd999984f5abe1682b7132b391542c4ad667800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "affd476d_d82e121a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-11T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7225de8_e7944d1b",
       "range": {
         "startLine": 112,
         "startChar": 19,
