@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15d04976_9e9d6ee1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-11T13:50:29Z",
+      "side": 1,
+      "message": "body is still empty",
+      "parentUuid": "2a8caf3d_bec43534",
+      "revId": "bd9cc0b18c83effa4c6bf265e6f4fd7f8c295b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eafb80f_7dfcad6d",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
         "patchSetId": 7
