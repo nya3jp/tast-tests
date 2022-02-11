@@ -145,13 +145,36 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 	}
 
 	joinConf := func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Join Conference")
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
 		homeScreenLink := nodewith.Name("Return to home screen").Role(role.Link)
-		if err := ui.WithTimeout(longUITimeout).LeftClickUntil(joinNowButton, ui.WaitUntilGone(homeScreenLink))(ctx); err != nil {
-			return errors.Wrapf(err, "failed to click button to join conference within %v", longUITimeout)
+		// Some low-end devices need more time to wait "Join now" button animation loading.
+		waitJoinNowButtonStable := func(ctx context.Context) error {
+			joinForAudioButton := nodewith.Name("Join and use a phone for audio").Role(role.Button)
+			return testing.Poll(ctx, func(ctx context.Context) error {
+				joinNowLocation, err := ui.Location(ctx, joinNowButton)
+				if err != nil {
+					return errors.Wrap(err, "failed to get location of the join now button")
+				}
+				joinForAudioLocation, err := ui.Location(ctx, joinForAudioButton)
+				if err != nil {
+					return errors.Wrap(err, "failed to get location of the join for audio button")
+				}
+				joinNowButtonHeight := joinNowLocation.CenterY()
+				joinForAudioButtonHeight := joinForAudioLocation.CenterY()
+				testing.ContextLogf(ctx, "Check that the join now button (%d) should be lower than the join for audio button (%d)", joinNowButtonHeight, joinForAudioButtonHeight)
+				if joinNowButtonHeight >= joinForAudioButtonHeight {
+					return errors.Wrap(err, "the 'Join now' button is not on the correct location")
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: shortUITimeout})
 		}
-		return nil
+		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to wait for the 'Join now' button within %v", longUITimeout)
+		}
+		return uiauto.NamedAction("join conference",
+			uiauto.Combine("join conference",
+				waitJoinNowButtonStable,
+				ui.LeftClickUntil(joinNowButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(homeScreenLink))))(ctx)
 	}
 
 	// enterAccount enter account email and password.
@@ -275,11 +298,6 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			}
 		}
 
-		// Wait for the "Join now" button.
-		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
-			return errors.Wrapf(err, "Join now button didn't show for account %s", meetAccount)
-		}
 		return nil
 	}
 
