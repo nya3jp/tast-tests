@@ -211,10 +211,6 @@ func (s *Servo) ECHibernate(ctx context.Context, option HibernationOpt) error {
 					return nil
 				}(targetKeyRelease, targetKeyName)
 			}
-			// Sleep briefly before releasing all the keys to ensure EC put in hibernation mode.
-			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep")
-			}
 			return nil
 		}(ctx); err != nil {
 			return err
@@ -223,6 +219,12 @@ func (s *Servo) ECHibernate(ctx context.Context, option HibernationOpt) error {
 		if err := s.RunECCommand(ctx, "hibernate"); err != nil {
 			return errors.Wrap(err, "failed to run EC command: hibernate")
 		}
+	}
+
+	// Delay for a few seconds to allow proper propagation of the
+	// hibernation command, prior to checking EC unresponsive.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep")
 	}
 	if err := s.CheckUnresponsiveEC(ctx); err != nil {
 		return errors.Wrap(err, "while verifying whether EC is unresponsive after hibernating DUT")

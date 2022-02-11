@@ -119,6 +119,16 @@ type Helper struct {
 	powerunitHostname, powerunitOutlet, hydraHostname string
 }
 
+// WaitConnectOption includes situations to wait to connect from.
+type WaitConnectOption int
+
+const (
+	// FromHibernation alerts WaitConnect to skip
+	// on setting servo control while DUT is still
+	// in the process of waking up from hibernation.
+	FromHibernation WaitConnectOption = iota
+)
+
 // NewHelper creates a new Helper object with info from testing.State.
 // For tests that do not use a certain Helper aspect (e.g. RPC or Servo), it is OK to pass null-values (nil or "").
 func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname string) *Helper {
@@ -658,10 +668,20 @@ func (h *Helper) waitDutS0(ctx context.Context) error {
 	return nil
 }
 
+// wcOptsContain determines whether a slice of WaitConnectOption contains a specific Option.
+func wcOptsContain(opts []WaitConnectOption, contained WaitConnectOption) bool {
+	for _, v := range opts {
+		if v == contained {
+			return true
+		}
+	}
+	return false
+}
+
 // WaitConnect is similar to DUT.WaitConnect, except that it works with RO EC firmware.
 // Pass a context with a deadline if you don't want to wait forever.
 // If --var noSSH=true is set, this degrades to waiting for S0 + a sleep.
-func (h *Helper) WaitConnect(ctx context.Context) error {
+func (h *Helper) WaitConnect(ctx context.Context, opts ...WaitConnectOption) error {
 	const reconnectRetryDelay = time.Second
 
 	if err := h.RequireServo(ctx); err != nil {
@@ -672,8 +692,13 @@ func (h *Helper) WaitConnect(ctx context.Context) error {
 	}
 	testing.ContextLogf(ctx, "Waiting for %s to connect", h.DUT.HostName())
 	for {
-		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
-			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
+		// SetDUTPDDataRole might fail when DUT is still in the process
+		// of waking up from hibernation, and running any servo control
+		// during this time might cause servod to turn down.
+		if !wcOptsContain(opts, FromHibernation) {
+			if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
+				testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
+			}
 		}
 		err := h.DUT.Connect(ctx)
 		if err == nil {
