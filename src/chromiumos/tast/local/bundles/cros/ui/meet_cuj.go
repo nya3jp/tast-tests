@@ -60,15 +60,12 @@ type meetTest struct {
 	jamboard    bool                 // Whether it is running with a Jamboard window.
 	split       bool                 // Whether it is in split screen mode. It can not be true if docs is false.
 	cam         bool                 // Whether the camera is on or not.
-	power       bool                 // Whether to collect power metrics.
 	duration    time.Duration        // Duration of the meet call. Must be less than test timeout.
 	useLacros   bool                 // Whether to use lacros browser.
 	tracing     bool                 // Whether to turn on tracing.
 	validation  bool                 // Whether to add extra cpu loads before collecting metrics.
 	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
 }
-
-const defaultTestTimeout = 7 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -78,6 +75,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
+		HardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 		Vars: []string{
 			"mute",
 			"record",
@@ -90,7 +88,7 @@ func init() {
 		Params: []testing.Param{{
 			// Base case. Note this runs a 30 min meet call.
 			Name:    "4p",
-			Timeout: 37 * time.Minute,
+			Timeout: 38 * time.Minute,
 			Val: meetTest{
 				num:      4,
 				layout:   meetLayoutTiled,
@@ -101,7 +99,7 @@ func init() {
 		}, {
 			// Small meeting.
 			Name:    "4p_present_notes_split",
-			Timeout: defaultTestTimeout,
+			Timeout: 8 * time.Minute,
 			Val: meetTest{
 				num:     4,
 				layout:  meetLayoutTiled,
@@ -114,7 +112,7 @@ func init() {
 		}, {
 			// Big meeting.
 			Name:    "16p",
-			Timeout: defaultTestTimeout,
+			Timeout: 7 * time.Minute,
 			Val: meetTest{
 				num:    16,
 				layout: meetLayoutTiled,
@@ -124,7 +122,7 @@ func init() {
 		}, {
 			// Big meeting with tracing.
 			Name:    "16p_trace",
-			Timeout: defaultTestTimeout,
+			Timeout: 8 * time.Minute,
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
@@ -135,7 +133,7 @@ func init() {
 		}, {
 			// Validation test for big meeting.
 			Name:    "16p_validation",
-			Timeout: defaultTestTimeout,
+			Timeout: 8 * time.Minute,
 			Val: meetTest{
 				num:        16,
 				layout:     meetLayoutTiled,
@@ -146,7 +144,7 @@ func init() {
 		}, {
 			// Big meeting with notes.
 			Name:    "16p_notes",
-			Timeout: defaultTestTimeout,
+			Timeout: 8 * time.Minute,
 			Val: meetTest{
 				num:    16,
 				layout: meetLayoutTiled,
@@ -156,33 +154,9 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
-			// 4p power test.
-			Name:              "power_4p",
-			Timeout:           defaultTestTimeout,
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: meetTest{
-				num:    4,
-				layout: meetLayoutTiled,
-				cam:    true,
-				power:  true,
-			},
-			Fixture: "loggedInToCUJUser",
-		}, {
-			// 16p power test.
-			Name:              "power_16p",
-			Timeout:           defaultTestTimeout,
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: meetTest{
-				num:    16,
-				layout: meetLayoutTiled,
-				cam:    true,
-				power:  true,
-			},
-			Fixture: "loggedInToCUJUser",
-		}, {
 			// 16p with jamboard test.
 			Name:    "16p_jamboard",
-			Timeout: defaultTestTimeout,
+			Timeout: 7 * time.Minute,
 			Val: meetTest{
 				num:      16,
 				layout:   meetLayoutTiled,
@@ -194,7 +168,7 @@ func init() {
 		}, {
 			// Lacros 4p
 			Name:    "lacros_4p",
-			Timeout: defaultTestTimeout,
+			Timeout: 8 * time.Minute,
 			Val: meetTest{
 				num:       4,
 				layout:    meetLayoutTiled,
@@ -206,7 +180,7 @@ func init() {
 		}, {
 			// 49p with vp8 video codec.
 			Name:    "49p_vp8",
-			Timeout: defaultTestTimeout,
+			Timeout: 8 * time.Minute,
 			Val: meetTest{
 				num:         49,
 				layout:      meetLayoutTiled,
@@ -218,7 +192,7 @@ func init() {
 		}, {
 			// 49p with vp9 video codec.
 			Name:    "49p_vp9",
-			Timeout: defaultTestTimeout,
+			Timeout: 8 * time.Minute,
 			Val: meetTest{
 				num:         49,
 				layout:      meetLayoutTiled,
@@ -267,18 +241,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Determines the meet call duration. Use the meet duration specified in
-	// test param if there is one. Otherwise, default to 2 minutes for the base
-	// calls, 3 min for calls with doc or jamboard, or 5 min for power tests.
-	meetTimeout := 2 * time.Minute
+	// test param if there is one. Otherwise, default to 5 minutes.
+	meetTimeout := 5 * time.Minute
 	if meet.duration != 0 {
 		meetTimeout = meet.duration
-	} else {
-		if meet.docs || meet.jamboard {
-			meetTimeout = 3 * time.Minute
-		}
-		if meet.power {
-			meetTimeout = 5 * time.Minute
-		}
 	}
 	s.Log("Run meeting for ", meetTimeout)
 
@@ -374,44 +340,33 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	tweakPerfValues := func(pv *perf.Values) error { return nil }
-	if meet.power {
-		s.Log("Preparing for power metrics collection")
+	s.Log("Preparing for power metrics collection")
 
-		// Setup needs to happen before power.TestMetrics() to disable wifi first
-		// so that the thermal sensor for wifi is excluded from the metrics.
-		sup, cleanup := setup.New("meet call power")
-		sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-			Wifi:       setup.DisableWifiInterfaces,
-			Battery:    setup.ForceBatteryDischarge,
-			NightLight: setup.DisableNightLight}))
-		defer func() {
-			if err := cleanup(closeCtx); err != nil {
-				s.Error("Cleanup meet power setup failed: ", err)
-			}
-		}()
+	// Setup needs to happen before power.TestMetrics() to disable wifi first
+	// so that the thermal sensor for wifi is excluded from the metrics.
+	sup, cleanup := setup.New("meet call power")
+	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
+		Wifi:       setup.DisableWifiInterfaces,
+		Battery:    setup.ForceBatteryDischarge,
+		NightLight: setup.DisableNightLight}))
+	defer func() {
+		if err := cleanup(closeCtx); err != nil {
+			s.Error("Cleanup meet power setup failed: ", err)
+		}
+	}()
 
-		// Power tests need to record power metrics; they are separated from
-		// cuj.Recorder's timeline as it is for a different purpose and mixing them
-		// might cause a risk of taking too much time of collecting data.
-		timeline, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Prefix("Power."))
-		if err != nil {
-			s.Fatal("Failed to create power metrics: ", err)
-		}
-		if err = timeline.Start(ctx); err != nil {
-			s.Fatal("Failed to start power timeline: ", err)
-		}
-		if err = timeline.StartRecording(ctx); err != nil {
-			s.Fatal("Failed to start recording the power metrics: ", err)
-		}
-		tweakPerfValues = func(pv *perf.Values) error {
-			values, err := timeline.StopRecording(ctx)
-			if err != nil {
-				return err
-			}
-			pv.Merge(values)
-			return nil
-		}
+	// Power tests need to record power metrics; they are separated from
+	// cuj.Recorder's timeline as it is for a different purpose and mixing them
+	// might cause a risk of taking too much time of collecting data.
+	timeline, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Prefix("Power."))
+	if err != nil {
+		s.Fatal("Failed to create power metrics: ", err)
+	}
+	if err = timeline.Start(ctx); err != nil {
+		s.Fatal("Failed to start power timeline: ", err)
+	}
+	if err = timeline.StartRecording(ctx); err != nil {
+		s.Fatal("Failed to start recording the power metrics: ", err)
 	}
 
 	configs := []cuj.MetricConfig{
@@ -846,9 +801,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
-	if err := tweakPerfValues(pv); err != nil {
-		s.Fatal("Failed to tweak the perf values: ", err)
+	values, err := timeline.StopRecording(ctx)
+	if err != nil {
+		s.Fatal("Failed to stop recording the power metrics: ", err)
 	}
+	pv.Merge(values)
+
 	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
