@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61e7b785_0c68c6f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-11T23:52:47Z",
+      "side": 1,
+      "message": "Ahmed, thanks for confirming!\nSounds like this test needs a lacros variant and possibly a bit of refactoring in this CL or a follow-up to make that point clear.\n\nHidehiko, how do you see we can address this gracefully? Actually we touched on this in http://go/lacros-tast-api-comparison (#3th point) If I recall your suggestion correctly,\n1) Use `browser.TestConn` whenever the browser part of ash-chrome or lacros-chrome is expected.\n2) Replace `chrome.TestConn` with `ash.TestConn` for the non-browser part of ash eg, uiauto or private APIs.\n3) (Optional but not really necessary) Use `lacros.TestConn` specifically for lacros-chrome\n\nTo me, 1) is like a low hanging fruit we can take in now that is just enough to make it clear that what CreateTestNotification really needs is a conn to browser. also it can be moving out of ash package to browser or its sub-package?\n2) is like a long shot. This renaming may not be blocking anything needed for migration now. We can live with it as long as test writers can understand that chrome.TestConn is for ash-chrome alone, specifically for the non-browser side of it (to probably be renamed in the future).\nAny insights moving this CL forward? Thanks,",
+      "parentUuid": "40a78d9c_fd98f767",
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4062b1dd_8b7e36ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/notifications/smoke.go",
         "patchSetId": 3
