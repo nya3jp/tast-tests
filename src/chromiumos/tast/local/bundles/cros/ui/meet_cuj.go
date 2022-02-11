@@ -122,6 +122,16 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
+			// Even bigger meeting.
+			Name:    "49p",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:    49,
+				layout: meetLayoutTiled,
+				cam:    true,
+			},
+			Fixture: "loggedInToCUJUser",
+		}, {
 			// Big meeting with tracing.
 			Name:    "16p_trace",
 			Timeout: defaultTestTimeout,
@@ -214,18 +224,6 @@ func init() {
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
 			Fixture: "loggedInToCUJUser",
-		}, {
-			// 49p with vp9 video codec.
-			Name:    "49p_vp9",
-			Timeout: defaultTestTimeout,
-			Val: meetTest{
-				num:         49,
-				layout:      meetLayoutTiled,
-				cam:         true,
-				botsOptions: []bond.AddBotsOption{bond.WithVP9(true, true)},
-			},
-			Fixture:           "loggedInToCUJUser",
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, caps.HWDecodeVP9},
 		}},
 	})
 }
