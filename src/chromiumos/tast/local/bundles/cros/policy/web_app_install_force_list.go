@@ -7,14 +7,15 @@ package policy
 import (
 	"context"
 	"image/color"
-	"net/http"
-	"net/http/httptest"
+	"path/filepath"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -22,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/https"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -47,7 +49,10 @@ func init() {
 			"web_app_install_force_list_icon-512x512.png",
 			"web_app_install_force_list_icon-192x192-red.png",
 			"web_app_install_force_list_icon-192x192-green.png",
-			"web_app_install_force_list_no_manifest.html"},
+			"web_app_install_force_list_no_manifest.html",
+			"certificate.pem",
+			"key.pem",
+			"ca-cert.pem"},
 	})
 }
 
@@ -62,7 +67,30 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeAsh)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get TestConn: ", err)
+	}
+
+	baseDirectory, _ := filepath.Split(s.DataPath("certificate.pem"))
+	ServerConfiguration := https.ServerConfiguration{
+		ServerKeyPath:         s.DataPath("key.pem"),
+		ServerCertificatePath: s.DataPath("certificate.pem"),
+		CaCertificatePath:     s.DataPath("ca-cert.pem"),
+		HostedFilesBasePath:   baseDirectory,
+	}
+
+	https.ConfigureChromeToAcceptCertificate(ctx, ServerConfiguration, cr, br, tconn)
+	server := https.StartServer(ServerConfiguration)
+	if server.Error != nil {
+		s.Fatal("Could not start https server: ", err)
+	}
 	defer server.Close()
 
 	for _, param := range []struct {
@@ -83,7 +111,7 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 			value: &policy.WebAppInstallForceList{
 				Val: []*policy.WebAppInstallForceListValue{
 					{
-						Url:                    server.URL + "/web_app_install_force_list_index.html",
+						Url:                    server.Address + "/web_app_install_force_list_index.html",
 						DefaultLaunchContainer: "window",
 						CreateDesktopShortcut:  false,
 					},
@@ -98,13 +126,13 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 			value: &policy.WebAppInstallForceList{
 				Val: []*policy.WebAppInstallForceListValue{
 					{
-						Url:                    server.URL + "/web_app_install_force_list_index.html",
+						Url:                    server.Address + "/web_app_install_force_list_index.html",
 						DefaultLaunchContainer: "window",
 						CreateDesktopShortcut:  false,
 						CustomName:             "CUSTOM",
 						CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
 							Hash: "d8fb0f842189a95200f422452ea648ab545f2817f07a389393b63ed93aeba797",
-							Url:  server.URL + "/web_app_install_force_list_icon-192x192-red.png",
+							Url:  server.Address + "/web_app_install_force_list_icon-192x192-red.png",
 						},
 					},
 				},
@@ -119,7 +147,7 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 			value: &policy.WebAppInstallForceList{
 				Val: []*policy.WebAppInstallForceListValue{
 					{
-						Url:                    server.URL + "/web_app_install_force_list_no_manifest.html",
+						Url:                    server.Address + "/web_app_install_force_list_no_manifest.html",
 						DefaultLaunchContainer: "window",
 						CreateDesktopShortcut:  false,
 					},
@@ -134,13 +162,13 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 			value: &policy.WebAppInstallForceList{
 				Val: []*policy.WebAppInstallForceListValue{
 					{
-						Url:                    server.URL + "/web_app_install_force_list_no_manifest.html",
+						Url:                    server.Address + "/web_app_install_force_list_no_manifest.html",
 						DefaultLaunchContainer: "window",
 						CreateDesktopShortcut:  false,
 						CustomName:             "foobar",
 						CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
 							Hash: "d8fb0f842189a95200f422452ea648ab545f2817f07a389393b63ed93aeba797",
-							Url:  server.URL + "/web_app_install_force_list_icon-192x192-red.png",
+							Url:  server.Address + "/web_app_install_force_list_icon-192x192-red.png",
 						},
 					},
 				},
@@ -155,12 +183,12 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 			value: &policy.WebAppInstallForceList{
 				Val: []*policy.WebAppInstallForceListValue{
 					{
-						Url:                    server.URL + "/does_not_exist.html",
+						Url:                    server.Address + "/does_not_exist.html",
 						DefaultLaunchContainer: "window",
 						CreateDesktopShortcut:  false,
 						CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
 							Hash: "d8fb0f842189a95200f422452ea648ab545f2817f07a389393b63ed93aeba797",
-							Url:  server.URL + "/web_app_install_force_list_icon-192x192-red.png",
+							Url:  server.Address + "/web_app_install_force_list_icon-192x192-red.png",
 						},
 					},
 				},
@@ -174,13 +202,13 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 			value: &policy.WebAppInstallForceList{
 				Val: []*policy.WebAppInstallForceListValue{
 					{
-						Url:                    server.URL + "/does_not_exist.html",
+						Url:                    server.Address + "/does_not_exist.html",
 						DefaultLaunchContainer: "window",
 						CreateDesktopShortcut:  false,
 						CustomName:             "barfoo",
 						CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
 							Hash: "5a5483b279df898b75ef36b82a2953cee3e93dcf267c7dde3f5ecaad867be902",
-							Url:  server.URL + "/web_app_install_force_list_icon-192x192-green.png",
+							Url:  server.Address + "/web_app_install_force_list_icon-192x192-green.png",
 						},
 					},
 				},
@@ -190,11 +218,6 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
-			tconn, err := cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to get TestConn: ", err)
-			}
 
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
