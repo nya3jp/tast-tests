@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c196cb58_24abefe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-11T21:06:15Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "5d6bce2cfa16ea9223c291e70ecf33c02778b38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8745efc1_37b252b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-11T21:06:15Z",
+      "side": 1,
+      "message": "This part is a bit concerning that we are at the mercy of gmail\u0027s optimized compile. But I don\u0027t have a better way. :(",
+      "range": {
+        "startLine": 192,
+        "startChar": 51,
+        "endLine": 192,
+        "endChar": 66
+      },
+      "revId": "5d6bce2cfa16ea9223c291e70ecf33c02778b38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
