@@ -138,8 +138,25 @@ func (sc *SnippetClient) initialize(ctx context.Context) error {
 }
 
 // EventWaitAndGet waits for the specified event associated with the RPC that returned callbackID to appear in the snippet's event cache.
-func (sc *SnippetClient) EventWaitAndGet(ctx context.Context, callbackID, eventName string, timeout time.Duration) (*JSONRPCResponse, error) {
+func (sc *SnippetClient) EventWaitAndGet(ctx context.Context, callbackID, eventName string, timeout time.Duration) (*EventWaitAndGetResult, error) {
 	// Read the response with a slightly extended timeout. `eventWaitAndGet` won't respond until the event is posted in the snippet cache,
 	// or the timeout is reached. In the timeout case, we need to set the TCP read deadline a little later so we'll get the response before the conn times out.
-	return sc.RPC(ctx, timeout+time.Second, "eventWaitAndGet", callbackID, eventName, int(timeout.Milliseconds()))
+	res, err := sc.RPC(ctx, timeout+time.Second, "eventWaitAndGet", callbackID, eventName, int(timeout.Milliseconds()))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get eventWaitAndGet response")
+	}
+	// Sample response: {"callback_id":"1-1", "name":"eventName", "creation_time":"1642817334319", "data":{'key': 'value'}}
+	var result EventWaitAndGetResult
+	if err := json.Unmarshal(res.Result, &result); err != nil {
+		return nil, errors.Wrap(err, "failed to read result map from json response")
+	}
+	return &result, nil
+}
+
+// EventWaitAndGetResult maps the 'result' field of EventWaitAndGet's JSONRPCResponse to a format that's easier to work with.
+type EventWaitAndGetResult struct {
+	CallbackID   int                    `json:"callback_id"`
+	Name         string                 `json:"name"`
+	CreationTime int                    `json:"creation_time"`
+	Data         map[string]interface{} `json:"data"`
 }

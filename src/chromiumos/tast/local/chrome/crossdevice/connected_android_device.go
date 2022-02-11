@@ -7,7 +7,6 @@ package crossdevice
 
 import (
 	"context"
-	"encoding/json"
 	"path/filepath"
 	"strings"
 	"time"
@@ -118,20 +117,10 @@ func (c *AndroidDevice) GenerateMessageNotification(ctx context.Context, id int,
 		if err != nil {
 			return "", errors.Wrap(err, "failed to wait for replyReceived snippet event")
 		}
-
-		// Sample response: {"callback_id":"1-1", "name":"replyReceived", "creation_time":"1642817334319", "data":{'reply': 'reply text'}}
-		// Unmarshall 'result' to a map instead of building a matching struct just to get one value.
-		var result map[string]interface{}
-		if err := json.Unmarshal(res.Result, &result); err != nil {
-			return "", errors.Wrap(err, "failed to read result map from json response")
-		}
-
-		// The reply value is in another map called 'data' within the 'result' map.
-		data, ok := result["data"]
+		reply, ok := res.Data["reply"]
 		if !ok {
-			return "", errors.Wrap(err, "'data' map didn't exist in onAwaitingReceiverAccept response's result field")
+			return "", errors.New("replyReceived event did not contain a reply")
 		}
-		reply := data.(map[string]interface{})["reply"]
 		replyStr, ok := reply.(string)
 		if !ok {
 			return "", errors.Wrap(err, "reply in replyReceived's response was not a string")
