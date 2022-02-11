@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ccc216_4d53f153",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:22:13Z",
+      "side": 1,
+      "message": "this will wait for the default UI context timeout (15 seconds), consider adjusting the timeout locally here (`ui.WithTimeout(...).WaitUntilExists(...)`) if less time is sufficient",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 30
+      },
+      "revId": "c9be86d4306b8a8f25df30709db5f93e2499e515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9512c85e_01501198",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-11T05:22:13Z",
+      "side": 1,
+      "message": "super tiny nit: delete whitespace here",
+      "revId": "c9be86d4306b8a8f25df30709db5f93e2499e515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
