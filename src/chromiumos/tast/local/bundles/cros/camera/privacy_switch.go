@@ -35,7 +35,7 @@ var ctrlBusy = regexp.MustCompile(`(?m)^VIDIOC_G_EXT_CTRLS: failed: Device or re
 
 func hasPrivacySwitchControl(ctx context.Context) (bool, error) {
 
-	usbCams, err := testutil.GetUSBCamerasFromV4L2Test(ctx)
+	usbCams, err := testutil.USBCamerasFromV4L2Test(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get USB cameras")
 	}
