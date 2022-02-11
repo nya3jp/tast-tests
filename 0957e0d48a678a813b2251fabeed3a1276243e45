@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acda0a8a_3c0ebcca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-02-11T05:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6a692c_a72f7759",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50195f36_1956f5a3",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f671c1e_651578a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-02-11T05:08:24Z",
+      "side": 1,
+      "message": "If the node previously existed, `EnsureGoneFor()` should be used after `WaitUntilGone()` :)\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d412-438",
+      "parentUuid": "50195f36_1956f5a3",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41b6205f_b91dcced",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
         "patchSetId": 5
@@ -82,6 +118,24 @@
       "writtenOn": "2022-02-11T02:29:52Z",
       "side": 1,
       "message": "I don\u0027t understand why you need both WaitUntilGone and EnsureGoneFor. I think you just need to call EnsureGoneFor.",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96efd9b_be5a6343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-02-11T05:08:24Z",
+      "side": 1,
+      "message": "Same as above :)",
+      "parentUuid": "41b6205f_b91dcced",
       "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "396539a7_ce37c619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-02-11T05:08:24Z",
+      "side": 1,
+      "message": "Sounds good, modified `takeScreenshot()` to no longer return a `uiauto.Action` in which case it can return the screenshot location directly. Thanks! :)",
+      "parentUuid": "6eaff07c_5bf8491a",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f91e3a6d_bdd34705",
@@ -170,6 +242,24 @@
       "writtenOn": "2022-02-11T02:29:52Z",
       "side": 1,
       "message": "I don\u0027t think this code is efficient because it has to sort in every iteration. Use the lookup table above to check for new element.",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98576fa8_dd972b95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-02-11T05:08:24Z",
+      "side": 1,
+      "message": "It should only sort on the last poll and since slice size is \u003c\u003d 4 it should be quick but modified to use a map instead :)",
+      "parentUuid": "f91e3a6d_bdd34705",
       "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
