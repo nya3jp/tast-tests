@@ -68,6 +68,23 @@
       "message": "Should be good to submit now.",
       "revId": "4ff80260c5a4ba5a9021df0e9367538877db3a6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f4eb82_bca194c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-11T09:14:49Z",
+      "side": 1,
+      "message": "Why not have the test both parameterized and table driven? The tests cases seem identical between lacros and ash.",
+      "revId": "4ff80260c5a4ba5a9021df0e9367538877db3a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
