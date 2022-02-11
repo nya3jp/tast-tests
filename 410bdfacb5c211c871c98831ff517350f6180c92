@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72d3ef8_d0b642e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey_search_plus_a.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-02-11T01:17:40Z",
+      "side": 1,
+      "message": "Will this work on eve?\nI see there is a return:\n\n```\nelse if (accelerator.IsCmdDown() \u0026\u0026 accelerator.key_code() \u003d\u003d ui::VKEY_A) {\n    // Search+A shortcut is disabled on device with an assistant key.\n    // Currently only Google branded device has the key. Some external keyboard\n    // may report it has the key but actually not.  This would cause keyboard\n    // shortcut stops working.  So we only check the key on these branded\n    // devices.\n    if (chromeos::IsGoogleBrandedDevice() \u0026\u0026\n        ui::DeviceKeyboardHasAssistantKey()) {\n      return;\n    }\n    ...\n}\nhttps://source.chromium.org/chromium/chromium/src/+/main:ash/accelerators/accelerator_controller_impl.cc;l\u003d994?q\u003dAccelerator_controller",
+      "range": {
+        "startLine": 49,
+        "startChar": 62,
+        "endLine": 49,
+        "endChar": 78
+      },
+      "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
