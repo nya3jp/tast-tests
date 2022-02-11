@@ -16,6 +16,40 @@
       "message": "Hi Simon, ptal that I used your functions correctly.",
       "revId": "4a4d86f8392b6e65fb0c36ea3d6354853b9f76af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e04814c_9db9e099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-11T14:55:40Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "4a4d86f8392b6e65fb0c36ea3d6354853b9f76af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5f613f_6c50d6bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-11T14:55:40Z",
+      "side": 1,
+      "message": "nit: make this a const block.",
+      "revId": "4a4d86f8392b6e65fb0c36ea3d6354853b9f76af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
