@@ -22,6 +22,30 @@
       },
       "revId": "5f35e8c15857cfaa2817978d60b9a9c0b2c39f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92947da_8ff28f4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-02-11T06:45:03Z",
+      "side": 1,
+      "message": "+1. drawman looks like a fixture failure, but careena looks like a real failure.",
+      "parentUuid": "dbd3b5f5_6e864153",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "5f35e8c15857cfaa2817978d60b9a9c0b2c39f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
