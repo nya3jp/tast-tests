@@ -33,7 +33,7 @@ func init() {
 			"jintaolin@chromium.org",          // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:         []string{"group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.policy.PolicyService"},
 		Timeout:      10 * time.Minute,
