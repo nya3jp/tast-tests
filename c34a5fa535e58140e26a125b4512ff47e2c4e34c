@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28089aab_50720549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-11T15:53:14Z",
+      "side": 1,
+      "message": "Hi all,\n\nBased on our discussion with Mahmoud, we decided that it will be better to have a separate test to cover options page functionality.\n\nPTAL one more time.\n\nThanks!",
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
