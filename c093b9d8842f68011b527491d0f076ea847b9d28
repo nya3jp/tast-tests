@@ -33,6 +33,23 @@
       "message": "SGTM. We should have in-team owner after Mukai left. I did not realize that we have separate tast-tests owners.\n",
       "revId": "c093b9d8842f68011b527491d0f076ea847b9d28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc6b144_d2182ef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-11T19:54:09Z",
+      "side": 1,
+      "message": "Hidehiko-san - thoughts? We\u0027re doing a lot of CUJ work and would like to have some in-house reviewers. Both Xiyuan and Yichen have a lot of experience in authoring Tast tests.",
+      "revId": "c093b9d8842f68011b527491d0f076ea847b9d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
