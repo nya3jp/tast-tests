@@ -7,6 +7,7 @@ package apputil
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -86,6 +87,25 @@ func (app *App) Launch(ctx context.Context) error {
 
 	app.launched = true
 	return nil
+}
+
+// GetVersion gets the version of the ARC app.
+func (app *App) GetVersion(ctx context.Context) (version string, err error) {
+	out, err := app.A.Command(ctx, "dumpsys", "package", app.PkgName).Output()
+	if err != nil {
+		return "", err
+	}
+	versionNamePrefix := "versionName="
+	output := string(out)
+	splitOutput := strings.Split(output, "\n")
+	for splitLine := range splitOutput {
+		if strings.Contains(splitOutput[splitLine], versionNamePrefix) {
+			version := strings.Split(splitOutput[splitLine], "=")[1]
+			testing.ContextLogf(ctx, "Version of app %q is: %s", app.AppName, version)
+			return version, nil
+		}
+	}
+	return "", errors.New("failed to find versionName")
 }
 
 // Close cleans up the ARC app resources,
