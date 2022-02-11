@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fea9767_eced3188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/playback.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-02-11T15:37:26Z",
+      "side": 1,
+      "message": "I mostly wrote it this way to minimize the changes needed for this tast test, since the html file comes preloaded with a video element already.\n\nI did update this function a bit to make it more accurate to its name though.",
+      "parentUuid": "f1b7f133_49ce8bea",
+      "revId": "ce852b4f77fed38801dd7bf1b8dd6cad300b5cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f0cbd81_26b29780",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-10T23:18:40Z",
       "side": 1,
       "message": "Just to confirm, will the first video in the grid be muted? You didn\u0027t create it with the function you added, so it won\u0027t get manually set to muted",
+      "revId": "ce852b4f77fed38801dd7bf1b8dd6cad300b5cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f446864_ac458fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/playback.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-02-11T15:37:26Z",
+      "side": 1,
+      "message": "Yup, the first video already has the muted attribute set in the html file.",
+      "parentUuid": "9f0cbd81_26b29780",
       "revId": "ce852b4f77fed38801dd7bf1b8dd6cad300b5cb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
