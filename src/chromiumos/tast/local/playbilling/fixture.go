@@ -26,6 +26,7 @@ const (
 	passVar         = "arc.PlayBillingPass"
 	assetLinksVar   = "arc.PlayBillingAssetLinks"
 	apk             = "ArcPlayBillingTestPWA_20210517.apk"
+	packageName     = "tast.play_billing"
 	icon            = "play_billing_icon.png"
 	index           = "play_billing_index.html"
 	manifest        = "play_billing_manifest.json"
@@ -112,6 +113,16 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	// Install the test APK.
 	if err := arcDevice.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
+	}
+
+	// Verify the APK is installed.
+	packages, err := arcDevice.InstalledPackages(ctx)
+	if err != nil {
+		s.Fatal("Failed to check if APK is installed: ", err)
+	}
+
+	if _, isApkInstalled := packages[packageName]; !isApkInstalled {
+		s.Fatalf("Failed to find the package name in the list of installed packages, got %v, want it to include %s", packages, packageName)
 	}
 
 	pwaDir, err := ioutil.TempDir("", "tast-play-billing-pwa")
