@@ -108,6 +108,24 @@
       "message": "It might be better to do it with `upsart`. Victor?",
       "revId": "8eee05b73455c830c45b709b5740ddb622752813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2f7f1d_69b45e48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-11T13:59:15Z",
+      "side": 1,
+      "message": "Since this is a remote test I\u0027m not going to insist on it. stop is part of the CLI for upstart.",
+      "parentUuid": "27160307_13f2165d",
+      "revId": "8eee05b73455c830c45b709b5740ddb622752813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
