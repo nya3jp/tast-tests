@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -25,6 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         YoutubeStreamCUJ,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Plays YouTube video of different quality and checks for any frame drops and if the audio is routing through expected device",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "andrescj@google.com", "intel-chrome-system-automation-team@intel.com", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -83,7 +83,7 @@ func YoutubeStreamCUJ(ctx context.Context, s *testing.State) {
 		s.Error("Failed to create Cras object: ", err)
 	}
 
-	vh, err := volume.NewVolumeHelper(ctx)
+	vh, err := audio.NewVolumeHelper(ctx)
 	if err != nil {
 		s.Error("Failed to create the volumeHelper: ", err)
 	}
