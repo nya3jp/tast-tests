@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -87,7 +87,7 @@ func SetScreenBrightness(ctx context.Context, expectedBrightness float64) (actio
 
 // SetAudioVolume sets the audio volume to the expected percentage of the maximum volume and returns a function that restores the original volume.
 func SetAudioVolume(ctx context.Context, expectedVolumePercent int) (action.Action, error) {
-	vh, err := volume.NewVolumeHelper(ctx)
+	vh, err := audio.NewVolumeHelper(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a volumeHelper")
 	}
