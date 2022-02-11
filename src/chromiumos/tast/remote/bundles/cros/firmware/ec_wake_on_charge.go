@@ -5,13 +5,17 @@
 package firmware
 
 import (
+	"bufio"
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -171,6 +175,10 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					if err != nil {
 						s.Error("Failed to reconnect to servo: ", err)
 					}
+					s.Log("Restarting servod")
+					if err := restartServo(ctx); err != nil {
+						s.Error("Failed to restart servod: ", err)
+					}
 				}
 			}
 		}
@@ -252,4 +260,32 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to set lid state: ", err)
 		}
 	}
+}
+
+// restartServo sets up a new servo host when serovd turns down.
+func restartServo(ctx context.Context) error {
+	cmdServod := testexec.CommandContext(ctx, "sudo", "servod", "--serialname=S2010291882", "--board=coral")
+	stdout, err := cmdServod.StdoutPipe()
+	if err != nil {
+		return errors.Wrapf(err, "cannot watch stdout for %q", shutil.EscapeSlice(cmdServod.Args))
+	}
+	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdServod.Args))
+	if err := cmdServod.Start(); err != nil {
+		return errors.Wrapf(err, "%q failed", shutil.EscapeSlice(cmdServod.Args))
+	}
+	// Wait for servod to initialize.
+	sc := bufio.NewScanner(stdout)
+	for {
+		if !sc.Scan() {
+			if err := sc.Err(); err != nil {
+				return errors.Wrap(err, "error while scanning servo output")
+			}
+			continue
+		}
+		t := sc.Text()
+		if strings.Contains(t, "INFO - Listening on localhost port") {
+			break
+		}
+	}
+	return nil
 }
