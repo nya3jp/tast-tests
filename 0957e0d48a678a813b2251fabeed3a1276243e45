@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e389b1b3_dc9523e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T17:30:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f671c1e_651578a8",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41b6205f_b91dcced",
