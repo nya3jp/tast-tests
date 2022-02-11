@@ -141,6 +141,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6eaff07c_5bf8491a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-11T02:30:40Z",
+      "side": 1,
+      "message": "Typo in my commment:\nI think Go prefer a bit more functional way.",
+      "parentUuid": "e9f78519_f5cc8fcf",
+      "revId": "0957e0d48a678a813b2251fabeed3a1276243e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f91e3a6d_bdd34705",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
         "patchSetId": 5
