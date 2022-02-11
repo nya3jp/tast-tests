@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11cf79d_0aedfd3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-11T01:33:03Z",
+      "side": 1,
+      "message": "This test case demonstrates how a test wrapper can be implemented by calling tast from tast.\n\nThis test has the following constraints:\n1. It depends on a tast change that expose runtime variables to test https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3454485\n2. tast-tests \"meta\" category is not suppose to be used by tast unit test only. Need verify with tast team to see if this is the right approach to achieve the purpose.",
+      "revId": "62ae67479c017bcad94dcf1040998786c9fb503f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
