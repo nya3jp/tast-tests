@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c9dfbb_f4d95990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-11T16:46:19Z",
+      "side": 1,
+      "message": "Thanks Mahmoud for quick review!",
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e17469b4_0c4a3c55",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-02-11T16:26:41Z",
       "side": 1,
       "message": "This is from the other test :)",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 82
+      },
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a398f97_8fe9d98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-11T16:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e17469b4_0c4a3c55",
       "range": {
         "startLine": 27,
         "startChar": 17,
@@ -66,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1afb1d5d_2e2beb78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-11T16:46:19Z",
+      "side": 1,
+      "message": "WDYT about SerialNumberPermission? I was thinking about RuntimeSerialNumberPermission, but it looks too long.\n\n\u003e Achieving that through options.html is just one way to do that\nWhat are other ways?",
+      "parentUuid": "9170640c_b71e150c",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58031c4c_27a3f565",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
         "patchSetId": 3
@@ -77,6 +142,30 @@
       "writtenOn": "2022-02-11T16:26:41Z",
       "side": 1,
       "message": "I don\u0027t think this is relevant. We can verify that the extension can request the serial_number permission without having to declare the other two permissions. There is no dependency here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c65c5b_2ae25feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-11T16:46:19Z",
+      "side": 1,
+      "message": "We need to verify that we didn\u0027t have serial number permission before test started. I can remove all permissions from manifest, but it will be not similar to real life use case.",
+      "parentUuid": "58031c4c_27a3f565",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -100,6 +189,30 @@
       "writtenOn": "2022-02-11T16:26:41Z",
       "side": 1,
       "message": "nit: /s/allow/request",
+      "range": {
+        "startLine": 96,
+        "startChar": 27,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2bb75a_57396ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-11T16:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0a83132_5b804a42",
       "range": {
         "startLine": 96,
         "startChar": 27,
