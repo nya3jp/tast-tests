@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
@@ -26,6 +27,7 @@ const (
 	passVar         = "arc.PlayBillingPass"
 	assetLinksVar   = "arc.PlayBillingAssetLinks"
 	apk             = "ArcPlayBillingTestPWA_20210517.apk"
+	packageName     = "tast.play_billing"
 	icon            = "play_billing_icon.png"
 	index           = "play_billing_index.html"
 	manifest        = "play_billing_manifest.json"
@@ -112,6 +114,19 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	// Install the test APK.
 	if err := arcDevice.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
+	}
+
+	// Verify the APK is installed.
+	output, err := arcDevice.Command(ctx, "pm", "list", "packages", packageName).Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to check if APK is installed: ", err)
+	}
+
+	expectedPackageLn := fmt.Sprintf("package:%s\n", packageName)
+	isApkInstalled := strings.Contains(string(output), expectedPackageLn)
+
+	if !isApkInstalled {
+		s.Fatalf("Failed to verify the package name in the list of installed packages, got %s, want %s", output, expectedPackageLn)
 	}
 
 	pwaDir, err := ioutil.TempDir("", "tast-play-billing-pwa")
