@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strconv"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -35,6 +36,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"variations_seed_beta_chromeos.json"},
 		Vars:         []string{"fakeVariationsChannel", "useSeedOnDisk"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -150,7 +152,12 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to create Test API connection: ", err)
 		}
-		if _, err := readVariationsSeed(ctx); err != nil {
+		if err := testing.Poll(ctx, func(context.Context) error {
+			if _, err := readVariationsSeed(ctx); err != nil {
+				return errors.Wrap(err, "production variations seed not yet fetched")
+			}
+			return nil
+		}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute}); err != nil {
 			s.Fatal("Production variations seed not fetched: ", err)
 		}
 		if err := injectVariationsSeed(ctx, tconn, &testSeed); err != nil {
