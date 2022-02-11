@@ -50,6 +50,23 @@
       "message": "tast-owners@ PTAL",
       "revId": "48960ad8e69d0bd4a0843f3f04dceeee3b889052",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1636d2_3b7f1765",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-11T11:50:09Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "48960ad8e69d0bd4a0843f3f04dceeee3b889052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
