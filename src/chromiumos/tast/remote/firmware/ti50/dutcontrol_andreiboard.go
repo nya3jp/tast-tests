@@ -77,13 +77,18 @@ func (a *DUTControlAndreiboard) FlashImage(ctx context.Context, image string) (e
 		}
 	}()
 
-	req := &dutcontrol.RescueRequest{Image: imageBytes}
-	res, err := a.client.Rescue(ctx, req)
+	var args []*dutcontrol.CommandArg
+	args = append(args, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_Plain{Plain: "-p"}})
+	args = append(args, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_Plain{Plain: "Rescue"}})
+	args = append(args, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_File{File: imageBytes}})
+	req := &dutcontrol.CommandRequest{Command: "bootstrap", Args: args}
+
+	resp, err := a.client.Command(ctx, req)
 	if err != nil {
-		return errors.Wrap(err, "rescue request")
+		return errors.Wrap(err, "bootstrap request")
 	}
-	if res.Err != "" {
-		return errors.Errorf("rescue operation failed: %s", res.Err)
+	if resp.Err != "" {
+		return errors.Errorf("bootstrap operation failed: %s", resp.Err)
 	}
 	return nil
 }
