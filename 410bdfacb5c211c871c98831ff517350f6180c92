@@ -92,6 +92,30 @@
       },
       "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afab6c62_8dd32a29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey_search_plus_a.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-11T18:30:09Z",
+      "side": 1,
+      "message": "Are we going to do this via deps?",
+      "parentUuid": "999be146_f9297fcb",
+      "range": {
+        "startLine": 49,
+        "startChar": 62,
+        "endLine": 49,
+        "endChar": 78
+      },
+      "revId": "410bdfacb5c211c871c98831ff517350f6180c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
