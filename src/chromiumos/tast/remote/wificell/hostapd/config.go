@@ -430,6 +430,7 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		configure("ieee80211d", "1")             // Required for local_pwr_constraint
 		configure("local_pwr_constraint", "0")   // No local constraint
 		configure("spectrum_mgmt_required", "1") // Requires local_pwr_constraint
+		configure("ieee80211h", "1")             // Enables DFS
 	}
 	if c.BeaconInterval != 0 {
 		configure("beacon_int", strconv.Itoa(c.BeaconInterval))
