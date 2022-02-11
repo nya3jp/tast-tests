@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -107,6 +108,85 @@ func RenameDesk(ctx context.Context, s *testing.State) {
 	if err := checkDeskName(ctx, tconn, 1, desk2Name); err != nil {
 		s.Fatal("Failed to check the second desk name: ", err)
 	}
+
+	// Test 3: Add a new desk. The desk name can be edited by clicking the desk name view.
+	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
+		s.Fatal("Failed to create the third desk: ", err)
+	}
+
+	desk3NameView := nodewith.ClassName("DeskNameView").Name("Desk 3")
+	desk3Name := "Monkey"
+
+	if err := changeDeskNameByClickingNameView(ctx, tconn, desk3NameView, desk3Name); err != nil {
+		s.Fatal("Failed to change the third desk name: ", err)
+	}
+	if err := checkDeskName(ctx, tconn, 2, desk3Name); err != nil {
+		s.Fatal("Failed to check the third desk name: ", err)
+	}
+
+	desk3NameView = nodewith.ClassName("DeskNameView").Name("Monkey")
+	// Test 4: The change of the desk name will be discarded by hitting escape.
+	if err := uiauto.Combine(
+		"discard change by hitting escape",
+		ui.LeftClick(desk3NameView),
+		ui.WaitUntilExists(desk3NameView.Focused()),
+		kb.TypeAction("Random Name"),
+		kb.AccelAction("Esc"),
+	)(ctx); err != nil {
+		s.Fatal("Failed to discard the change of the third desk name: ", err)
+	}
+
+	if err := checkDeskName(ctx, tconn, 2, desk3Name); err != nil {
+		s.Fatal("Failed to check the third desk name: ", err)
+	}
+
+	// Test 5: Repeated name is allowed.
+	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
+		s.Fatal("Failed to create the fourth desk: ", err)
+	}
+
+	desk4NameView := nodewith.ClassName("DeskNameView").Name("Desk 4")
+	if err := changeDeskNameByClickingNameView(ctx, tconn, desk4NameView, desk2Name); err != nil {
+		s.Fatal("Failed to change the fourth desk name: ", err)
+	}
+	// Now, there should be two desks named Dog.
+	desksNamedDog, err := ui.NodesInfo(ctx, nodewith.ClassName("DeskNameView").Name(desk2Name))
+	if err != nil {
+		s.Fatal("Failed to get desks named Dog: ", err)
+	}
+
+	numDesksNamedDog := len(desksNamedDog)
+	if numDesksNamedDog != 2 {
+		s.Fatalf("Got %d desks named Dog, but 2 desks wanted", numDesksNamedDog)
+	}
+
+	// Test 6: update default desk name when the desk order changes.
+	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
+		s.Fatal("Failed to create the fifth desk: ", err)
+	}
+
+	desksMiniViewInfo, err := ash.FindDeskMiniViews(ctx, ui)
+	if err != nil {
+		s.Fatal("Failed to get desks mini view info: ", err)
+	}
+
+	desk4Loc := desksMiniViewInfo[3].Location
+	desk5Loc := desksMiniViewInfo[4].Location
+
+	// Swap the position of desk 4 and desk 5.
+	pc := pointer.NewMouse(tconn)
+	defer pc.Close()
+
+	if err := pc.Drag(
+		desk4Loc.CenterPoint(),
+		pc.DragTo(desk5Loc.CenterPoint(), 3*time.Second))(ctx); err != nil {
+		s.Fatal("Failed to swap desk 4 and desk 5: ", err)
+	}
+
+	// The "Desk 5" should be updated to "Desk 4" after reordering.
+	if err := checkDeskName(ctx, tconn, 3, "Desk 4"); err != nil {
+		s.Fatal("Failed to get updated default desk name: ", err)
+	}
 }
 
 // updateDeskNodesInfo updates the desks nodes by exiting and re-entering overview mode.
@@ -164,6 +244,29 @@ func checkDeskName(ctx context.Context, tconn *chrome.TestConn, id int, expected
 	deskName := deskMiniViewsInfo[id].Name
 	if deskName != fullExpectedName {
 		return errors.Errorf("desk %d name: %s is not as expected name: %s", id, deskName, fullExpectedName)
+	}
+
+	return nil
+}
+
+// changeDeskNameByClickingNameView changes a desk name to newName by clicking the deskNameView.
+func changeDeskNameByClickingNameView(ctx context.Context, tconn *chrome.TestConn, deskNameView *nodewith.Finder, newName string) error {
+	ui := uiauto.New(tconn)
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a keyboard")
+	}
+	defer kb.Close()
+
+	if err := uiauto.Combine(
+		"change a desk name by clicking its desk name view",
+		ui.LeftClick(deskNameView),
+		ui.WaitUntilExists(deskNameView.Focused()),
+		kb.TypeAction(newName),
+		kb.AccelAction("Enter"),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to change the name of the desk")
 	}
 
 	return nil
