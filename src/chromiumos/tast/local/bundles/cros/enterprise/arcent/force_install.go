@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/testing"
 )
 
 // VerifyArcPolicyForceInstalled matches ArcPolicy FORCE_INSTALLED apps list with expected packages.
@@ -46,25 +47,20 @@ func VerifyArcPolicyForceInstalled(ctx context.Context, tconn *chrome.TestConn, 
 		}
 	}
 	for _, p := range forceInstalledPackages {
-		if forceInstalled[p] {
-			delete(forceInstalled, p)
-		} else {
+		if !forceInstalled[p] {
 			return errors.Errorf("the next package is not FORCE_INSTALLED by policy: %s", p)
 		}
+		delete(forceInstalled, p)
 	}
-	if len(forceInstalled) != 0 {
-		return errors.Errorf("Extra FORCE_INSTALLED packages in ArcPolicy: %s", makeList(forceInstalled))
-	}
-	return nil
-}
 
-// makeList returns a list of keys from map.
-// TODO: there's several duplication of makeList. Unify them.
-func makeList(packages map[string]bool) []string {
-	var packagesList []string
-	for pkg := range packages {
-		packagesList = append(packagesList, pkg)
+	if len(forceInstalled) != 0 {
+		var packagesList []string
+		for pkg := range forceInstalled {
+			packagesList = append(packagesList, pkg)
+		}
+		sort.Strings(packagesList)
+		testing.ContextLogf(ctx, "WARNING: Extra FORCE_INSTALLED packages in ArcPolicy that can cause the test to timeout: %s", packagesList)
 	}
-	sort.Strings(packagesList)
-	return packagesList
+
+	return nil
 }
