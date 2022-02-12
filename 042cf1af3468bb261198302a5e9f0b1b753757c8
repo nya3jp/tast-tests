@@ -22,6 +22,30 @@
       },
       "revId": "042cf1af3468bb261198302a5e9f0b1b753757c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ad6f82_f4b68372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-12T00:36:48Z",
+      "side": 1,
+      "message": "Makes sense. Thank you Jao-ke!",
+      "parentUuid": "a0b5ef5e_3cc68698",
+      "range": {
+        "startLine": 1343,
+        "startChar": 5,
+        "endLine": 1343,
+        "endChar": 19
+      },
+      "revId": "042cf1af3468bb261198302a5e9f0b1b753757c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
