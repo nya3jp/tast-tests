@@ -46,14 +46,9 @@ func VerifyArcPolicyForceInstalled(ctx context.Context, tconn *chrome.TestConn, 
 		}
 	}
 	for _, p := range forceInstalledPackages {
-		if forceInstalled[p] {
-			delete(forceInstalled, p)
-		} else {
+		if !forceInstalled[p] {
 			return errors.Errorf("the next package is not FORCE_INSTALLED by policy: %s", p)
 		}
-	}
-	if len(forceInstalled) != 0 {
-		return errors.Errorf("Extra FORCE_INSTALLED packages in ArcPolicy: %s", makeList(forceInstalled))
 	}
 	return nil
 }
