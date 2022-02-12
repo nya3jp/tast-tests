@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be19510_f004c79a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-12T06:02:43Z",
+      "side": 1,
+      "message": "80 characters reflowing makes commit message strange. Let me change it to 72 characters reflowing.",
+      "parentUuid": "d60d64bc_40fe335d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "47ed82a118d27f7b395e5be90f666abe0eb93ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6928a7a2_41236eea",
