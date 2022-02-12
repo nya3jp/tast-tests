@@ -41,9 +41,14 @@ func init() {
 		}, {
 			Name: "delete",
 			Val:  testDeleteOperation,
+		}, {
+			Name: "unmount",
+			Val:  testUnmountOperation,
 		}},
 	})
 }
+
+const smbGuestShareName = "guestshare"
 
 type smbFileOperationTestFunc = func(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp)
 
@@ -103,7 +108,7 @@ func testCopyOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *te
 	if err := uiauto.Combine("wait for SMB to mount",
 		files.OpenDownloads(),
 		files.ClickContextMenuItem(textFile, filesapp.Copy),
-		files.OpenPath("Files - guestshare", "guestshare"),
+		files.OpenPath(filesapp.FilesTitlePrefix+smbGuestShareName, smbGuestShareName),
 		kb.AccelAction("Ctrl+V"),
 		files.WaitForFile(textFile),
 	)(ctx); err != nil {
@@ -123,7 +128,7 @@ func testRenameOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *
 	defer os.Remove(testFileLocation)
 
 	if err := uiauto.Combine("rename existing file on Samba share",
-		files.OpenDir("guestshare", filesapp.FilesTitlePrefix+"guestshare"),
+		files.OpenDir(smbGuestShareName, filesapp.FilesTitlePrefix+smbGuestShareName),
 		files.RenameFile(kb, textFile, expectedFile),
 		files.WaitForFile(expectedFile),
 	)(ctx); err != nil {
@@ -140,10 +145,29 @@ func testDeleteOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *
 	defer os.Remove(testFileLocation)
 
 	if err := uiauto.Combine("delete existing file on Samba share",
-		files.OpenDir("guestshare", filesapp.FilesTitlePrefix+"guestshare"),
+		files.OpenDir(smbGuestShareName, filesapp.FilesTitlePrefix+smbGuestShareName),
 		files.DeleteFileOrFolder(kb, textFile),
 	)(ctx); err != nil {
 		s.Fatal("Failed to delete text file: ", err)
+	}
+}
+
+func testUnmountOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp) {
+	const textFile = "test.txt"
+	testFileLocation := filepath.Join(fixture.GuestSharePath, textFile)
+	if err := createTestFile(testFileLocation); err != nil {
+		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
+	}
+	defer os.Remove(testFileLocation)
+
+	guestshareFinder := nodewith.Name(smbGuestShareName).Role(role.StaticText)
+	if err := uiauto.Combine("unmount a mounted Samba share",
+		files.LeftClick(guestshareFinder),
+		files.WaitForFile(textFile),
+		kb.AccelAction("Ctrl+Shift+E"),
+		files.WaitUntilGone(guestshareFinder),
+	)(ctx); err != nil {
+		s.Fatal("Failed to unmount the Samba share: ", err)
 	}
 }
 
