@@ -389,12 +389,12 @@ func (s *ShillService) DiscoverBSSID(ctx context.Context, request *wifi.Discover
 	if err != nil {
 		return nil, err
 	}
-	if allow {
-		if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, false); err != nil {
+	if !allow {
+		if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, true); err != nil {
 			return nil, errors.Wrap(err, "failed to set WiFi.ScanAllowRoam property")
 		}
 		defer func(ctx context.Context) {
-			if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, true); err != nil {
+			if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, false); err != nil {
 				testing.ContextLog(ctx, "Failed to restore WiFi.ScanAllowRoam property")
 			}
 		}(ctx)

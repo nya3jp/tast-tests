@@ -45,7 +45,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"mbo"},
 				Val: hostapd.BSSTMReqParams{
 					DisassocImminent: true,
-					DisassocTimer:    bssTMRoamTimeout,
+					DisassocTimer:    0, //bssTMRoamTimeout,
 					ReassocDelay:     bssTMReassocDelay,
 				},
 			},
@@ -89,15 +89,15 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 
 	runTest := func(ctx context.Context, s *testing.State, waitForScan bool) {
 		// Generate BSSIDs for the two APs.
-		mac0, err := hostapd.RandomMAC()
+		/*mac0, err := hostapd.RandomMAC()
 		if err != nil {
 			s.Fatal("Failed to generate BSSID: ", err)
-		}
+		}*/
 		mac1, err := hostapd.RandomMAC()
 		if err != nil {
 			s.Fatal("Failed to generate BSSID: ", err)
 		}
-		fromBSSID := mac0.String()
+		fromBSSID := "cc:f4:11:01:23:45"//mac0.String()
 		roamBSSID := mac1.String()
 		s.Log("AP 0 BSSID: ", fromBSSID)
 		s.Log("AP 1 BSSID: ", roamBSSID)

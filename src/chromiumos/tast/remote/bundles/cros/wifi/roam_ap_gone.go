@@ -47,8 +47,10 @@ func init() {
 				ExtraAttr: []string{"wificell_cq"},
 				// Verifies that DUT can roam between two APs in full view of it.
 				Val: roamTestcase{
-					apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20)},
-					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts1: []hostapd.Option{hostapd.Channel(157), hostapd.Mode(hostapd.Mode80211acPure), hostapd.HTCaps(hostapd.HTCapHT40Plus), hostapd.VHTCaps(hostapd.VHTCapSGI80),
+                                                hostapd.VHTChWidth(hostapd.VHTChWidth80), hostapd.VHTCenterChannel(155), hostapd.BSSID("00:13:10:95:fe:0b"), hostapd.SSID("test0000")},
+					//apOpts1:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
+					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(1), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.SSID("test0000")},
 					secConfFac: nil,
 				},
 			}, {
@@ -93,7 +95,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to configure ap, err: ", err)
 	}
-	ssid := ap1.Config().SSID
+	//ssid := ap1.Config().SSID
 	defer func(ctx context.Context) {
 		if ap1 == nil {
 			// ap1 is already deconfigured.
@@ -106,6 +108,11 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap1)
 	defer cancel()
 	s.Log("AP1 setup done")
+	
+	clientIface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		s.Fatal("Unable to get client iface")
+	}
 
 	// Schedule defer for AP2 before connection. Otherwise, we
 	// will teardown AP2 before disconnect, and the DUT might
@@ -171,7 +178,7 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 	ops = append(ops, param.apOpts2...)
 	// Override SSID and BSSID as we need the same SSID as the first AP
 	// and the BSSID that we're waiting.
-	ops = append(ops, hostapd.SSID(ssid), hostapd.BSSID(ap2BSSID))
+	ops = append(ops, hostapd.BSSID(ap2BSSID))
 	ap2, err = tf.ConfigureAP(ctx, ops, param.secConfFac)
 	if err != nil {
 		s.Fatal("Failed to configure ap, err: ", err)
@@ -198,5 +205,80 @@ func RoamAPGone(ctx context.Context, s *testing.State) {
 		Interval: time.Second,
 	}); err != nil {
 		s.Fatal("Failed to verify connection: ", err)
+	}
+
+	for i := 0; i < 5; i++ {
+	ap1, err = tf.ConfigureAP(ctx, param.apOpts1, param.secConfFac)
+	if err != nil {
+		s.Fatal("Failed to configure ap, err: ", err)
+	}
+	props1 := []*wificell.ShillProperty{
+		{
+			Property:       shillconst.ServicePropertyWiFiBSSID,
+			ExpectedValues: []interface{}{"00:13:10:95:fe:0b"},
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
+		},
+	}
+
+	waitCtx1, cancel := context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	waitForProps1, err := tf.WifiClient().ExpectShillProperty(waitCtx1, servicePath, props1, nil)
+	if err != nil {
+		s.Fatal("DUT: failed to create a property watcher, err: ", err)
+	}
+
+	if err := tf.WifiClient().DiscoverBSSID(ctx, "00:13:10:95:fe:0b", clientIface, []byte("test0000")); err != nil {
+		s.Fatal("Unable to discover roam BSSID: ", err)
+	}
+
+	if _, err := waitForProps1(); err != nil {
+		s.Fatal("Failed to roam back, err: ",err)
+	}
+	s.Log("Roamed back")
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return tf.VerifyConnection(ctx, ap1)
+	}, &testing.PollOptions{
+		Timeout:  20 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		s.Fatal("Failed to verify connection: ", err)
+	}
+
+	props = []*wificell.ShillProperty{
+		{
+			Property:       shillconst.ServicePropertyWiFiBSSID,
+			ExpectedValues: []interface{}{ap2BSSID},
+			Method:         wifi.ExpectShillPropertyRequest_ON_CHANGE,
+		},
+	}
+
+	waitCtx, cancel = context.WithTimeout(ctx, 60*time.Second)
+	defer cancel()
+	waitForProps, err = tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, nil)
+	if err != nil {
+		s.Fatal("DUT: failed to create a property watcher, err: ", err)
+	}
+	
+	// Deconfigure the initial AP.
+	if err := tf.DeconfigAP(ctx, ap1); err != nil {
+		s.Error("Failed to deconfig ap, err: ", err)
+	}
+	ap1 = nil
+	s.Log("Deconfigured AP1")
+
+	if _, err := waitForProps(); err != nil {
+		s.Fatal("DUT: failed to wait for the properties, err: ", err)
+	}
+	s.Log("DUT: roamed")
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return tf.VerifyConnection(ctx, ap2)
+	}, &testing.PollOptions{
+		Timeout:  20 * time.Second,
+		Interval: time.Second,
+	}); err != nil {
+		s.Fatal("Failed to verify connection: ", err)
+	}
 	}
 }
