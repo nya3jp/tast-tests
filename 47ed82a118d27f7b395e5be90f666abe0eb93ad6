@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60d64bc_40fe335d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-12T05:59:31Z",
+      "side": 1,
+      "message": "Reflowed commit message to 80 characters from Sublime. Title didn\u0027t need any change.",
+      "parentUuid": "dbfd2ed5_a9e8c8bb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "47ed82a118d27f7b395e5be90f666abe0eb93ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6928a7a2_41236eea",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-12T01:50:15Z",
       "side": 1,
       "message": "Actually it does two things, right? It makes all the current\nv4l2_* test cases use the stateful binary, and adds a single\ntest case for the new stateless binary.",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "47ed82a118d27f7b395e5be90f666abe0eb93ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b65a94b_2be6b1e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-12T05:59:31Z",
+      "side": 1,
+      "message": "All the current v4l2_* test cases are already using the stateful binary. But I updated the command builder name as Jao-ke suggested. So I added below description in the commit message.\n\n\nAlso, the command builder for stateful decoder is renamed from v4l2DecodeArgs to v4l2StatefulDecodeArgs. This enables it to be distinguished easily from the command builder for stateless decoder named v4l2StatelessDecodeArgs.",
+      "parentUuid": "6928a7a2_41236eea",
       "range": {
         "startLine": 9,
         "startChar": 52,
