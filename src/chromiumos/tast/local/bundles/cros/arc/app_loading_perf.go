@@ -171,7 +171,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		// TODO(b/215621884): Based on ARCVM network team's manual iperf3 bandwidth and Play
 		// Store game download tests on kukui vs. kukui-arc-r. Targeting simulated performance
 		// where VM is at ~50% of Container. Need to verify on more ARM boards with Crosbolt data.
-		tbfRateMbitArm = 1.35
+		tbfRateMbitArm = 1.60
 		// tbfLatency is amount of time a packet can be delayed by token rate before drop (int).
 		tbfLatencyMs = 18
 		// tbfBurst is the size of the bucket used by rate option (int).
@@ -260,7 +260,10 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get APK name: ", err)
 	}
 	config := apploading.TestConfig{
-		PerfValues:           finalPerfValues,
+		PerfValues: finalPerfValues,
+		// Don't disable Wifi for network test since ethernet connection in lab is not guaranteed.
+		// Otherwise tc-tbf settings will not be applied since it would have been disabled and reset.
+		WifiInterfacesMode:   setup.DoNotChangeWifiInterfaces,
 		BatteryDischargeMode: param.batteryMode,
 		ApkPath:              s.DataPath(apkName),
 		OutDir:               s.OutDir(),

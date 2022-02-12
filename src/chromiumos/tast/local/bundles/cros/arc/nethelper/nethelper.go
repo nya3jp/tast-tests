@@ -48,7 +48,7 @@ const (
 
 var (
 	cmds      = []string{iptablesCmd, ip6tablesCmd}
-	ifacesArc = []string{"arc_eth+", "arc_mlan+", "arc_wlan+", "arcbr+"}
+	ifacesArc = []string{"arc_eth+", "arc_mlan+", "arc_ns+", "arc_wlan+", "arcbr+"}
 )
 
 // Connection describes running socket server context.
@@ -218,7 +218,6 @@ func listenForClients(ctx context.Context, listener net.Listener) {
 		testing.ContextLogf(ctx, "Connection is ready %s<->%s", conn.LocalAddr().String(), conn.RemoteAddr().String())
 		go handleClient(ctx, conn)
 	}
-
 }
 
 func handleClient(ctx context.Context, conn net.Conn) {
