@@ -84,4 +84,11 @@ func Translation(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(translationResult))(ctx); err != nil {
 		s.Fatal("Quick Answers result not showing up: ", err)
 	}
+
+	// Dismiss the context menu and ensure the Quick Answers UI also dismiss.
+	if err := uiauto.Combine("Show context menu",
+		ui.LeftClick(query),
+		ui.WaitUntilGone(quickAnswers))(ctx); err != nil {
+		s.Fatal("Quick Answers result not dismissed: ", err)
+	}
 }
