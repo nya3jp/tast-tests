@@ -1,0 +1,22 @@
+{
+  "name": "Video Decode",
+  "version": "49.0.2623.87",
+  "minimum_chrome_version": "37.0.0.0",
+  "manifest_version": 2,
+  "description": "Video Decode Tast Test",
+  "offline_enabled": true,
+  "icons": {
+    "128": "icon128.png"
+  },
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "key": "REDACTED",
+  "oauth2": {
+    "client_id": "REDACTED.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/drive"]
+  },
+  "permissions": []
+}

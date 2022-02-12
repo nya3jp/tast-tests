@@ -1,0 +1,28 @@
+<html>
+<body>
+  <h1>Video</h1>
+  <video id="video" height="180" autoplay muted style="border: 1px solid;">
+  </video>
+  <h1>Canvas</h1>
+  <canvas id="canvas" width="320" height="180" style="border: 1px solid;">
+  </canvas>
+</body>
+<script type="text/javascript">
+
+var importantInfo = false;
+
+async function initialize() {
+  importantInfo = true;
+}
+
+function delay(time_ms) {
+  return new Promise(resolve => setTimeout(resolve, time_ms));
+}
+
+function isInitialized() {
+  return delay(5000).then(function() {
+      return importantInfo;
+  });
+}
+</script>
+</html>
