@@ -37,6 +37,7 @@ type TestConfig struct {
 	BatteryDischargeMode setup.BatteryDischargeMode
 	ApkPath              string
 	OutDir               string
+	WifiInterfacesMode   setup.WifiInterfacesMode
 }
 
 const (
@@ -123,7 +124,7 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 
 	// Add the default power test configuration.
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: config.BatteryDischargeMode, NightLight: setup.DisableNightLight}))
+		Wifi: config.WifiInterfacesMode, Battery: config.BatteryDischargeMode, NightLight: setup.DisableNightLight}))
 	if err := sup.Check(ctx); err != nil {
 		return 0, errors.Wrap(err, "failed to setup power test")
 	}
