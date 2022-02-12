@@ -35,11 +35,14 @@ func init() {
 		Params: []testing.Param{{
 			Name: "copy",
 			Val:  testCopyOperation,
+		}, {
+			Name: "rename",
+			Val:  testRenameOperation,
 		}},
 	})
 }
 
-type smbFileOperationTestFunc = func(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, files *filesapp.FilesApp)
+type smbFileOperationTestFunc = func(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp)
 
 func SMBFileOperations(ctx context.Context, s *testing.State) {
 	fixt := s.FixtValue().(smb.FixtureData)
@@ -83,18 +86,18 @@ func SMBFileOperations(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to press enter: ", err)
 	}
 
-	testFunc(ctx, kb, s, files)
+	testFunc(ctx, kb, s, fixt, files)
 }
 
-func testCopyOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, files *filesapp.FilesApp) {
+func testCopyOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp) {
 	const textFile = "test.txt"
 	testFileLocation := filepath.Join(filesapp.DownloadPath, textFile)
-	if err := ioutil.WriteFile(testFileLocation, []byte("blahblah"), 0644); err != nil {
+	if err := createTestFile(testFileLocation); err != nil {
 		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
 	}
 	defer os.Remove(testFileLocation)
 
-	if err := uiauto.Combine("Wait for SMB to mount",
+	if err := uiauto.Combine("wait for SMB to mount",
 		files.OpenDownloads(),
 		files.ClickContextMenuItem(textFile, filesapp.Copy),
 		files.OpenPath("Files - guestshare", "guestshare"),
@@ -103,4 +106,28 @@ func testCopyOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *te
 	)(ctx); err != nil {
 		s.Fatal("Failed to wait for SMB to mount: ", err)
 	}
+}
+
+func testRenameOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp) {
+	const (
+		textFile     = "test_old_rename.txt"
+		expectedFile = "text_new_rename.txt"
+	)
+	testFileLocation := filepath.Join(fixture.GuestSharePath, textFile)
+	if err := createTestFile(testFileLocation); err != nil {
+		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
+	}
+	defer os.Remove(testFileLocation)
+
+	if err := uiauto.Combine("rename existing file on Samba share",
+		files.OpenDir("guestshare", filesapp.FilesTitlePrefix+"guestshare"),
+		files.RenameFile(kb, textFile, expectedFile),
+		files.WaitForFile(expectedFile),
+	)(ctx); err != nil {
+		s.Fatal("Failed to rename text file: ", err)
+	}
+}
+
+func createTestFile(path string) error {
+	return ioutil.WriteFile(path, []byte("blahblah"), 0644)
 }
