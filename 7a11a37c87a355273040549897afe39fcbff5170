@@ -22,6 +22,30 @@
       },
       "revId": "7a11a37c87a355273040549897afe39fcbff5170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22215915_8e9478c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-12T02:05:25Z",
+      "side": 1,
+      "message": "It\u0027ll just fail which I think is fine, but I tested it with a 1 minute timeout which seemed to be more than enough, so I\u0027ll have fail a bit earlier.",
+      "parentUuid": "a7007cb1_93443819",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 59
+      },
+      "revId": "7a11a37c87a355273040549897afe39fcbff5170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
