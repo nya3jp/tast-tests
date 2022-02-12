@@ -38,6 +38,9 @@ func init() {
 		}, {
 			Name: "rename",
 			Val:  testRenameOperation,
+		}, {
+			Name: "delete",
+			Val:  testDeleteOperation,
 		}},
 	})
 }
@@ -125,6 +128,22 @@ func testRenameOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *
 		files.WaitForFile(expectedFile),
 	)(ctx); err != nil {
 		s.Fatal("Failed to rename text file: ", err)
+	}
+}
+
+func testDeleteOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp) {
+	const textFile = "test_delete_file.txt"
+	testFileLocation := filepath.Join(fixture.GuestSharePath, textFile)
+	if err := createTestFile(testFileLocation); err != nil {
+		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
+	}
+	defer os.Remove(testFileLocation)
+
+	if err := uiauto.Combine("Delete existing file on Samba share",
+		files.OpenDir("guestshare", filesapp.FilesTitlePrefix+"guestshare"),
+		files.DeleteFileOrFolder(kb, textFile),
+	)(ctx); err != nil {
+		s.Fatal("Failed to delete text file: ", err)
 	}
 }
 
