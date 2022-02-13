@@ -16,6 +16,40 @@
       "message": "added tast owners \n\nPTAL. Thank you.",
       "revId": "07ea5bcee036463b9adfa42aee5b3443f84dd039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baeab393_2f9d3a11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-13T23:46:08Z",
+      "side": 1,
+      "message": "What\u0027s the point of these two for loops? Do we intend to add more later?",
+      "revId": "07ea5bcee036463b9adfa42aee5b3443f84dd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68cbe00d_9e20c6e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-13T23:46:08Z",
+      "side": 1,
+      "message": "Nit: TODOs should always be associated with a bug, rather than a user.",
+      "revId": "07ea5bcee036463b9adfa42aee5b3443f84dd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
