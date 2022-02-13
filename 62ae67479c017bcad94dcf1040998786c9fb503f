@@ -34,6 +34,23 @@
       "parentUuid": "a11cf79d_0aedfd3d",
       "revId": "62ae67479c017bcad94dcf1040998786c9fb503f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f963cad8_ea0be4a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-13T18:37:48Z",
+      "side": 1,
+      "message": "Please check if this implementation is the wrapper you required. There are some constrains that we need to discuss with tast team.",
+      "revId": "62ae67479c017bcad94dcf1040998786c9fb503f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
