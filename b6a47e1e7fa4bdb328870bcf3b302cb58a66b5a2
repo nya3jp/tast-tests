@@ -16,6 +16,23 @@
       "message": "Ok test is ready. I\u0027ll have to wait for the uprev of Chrome to happen with CL:3429344 before submitting this so I\u0027ll just leave this here.",
       "revId": "b6a47e1e7fa4bdb328870bcf3b302cb58a66b5a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26aafa4e_2ce85488",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-13T21:34:30Z",
+      "side": 1,
+      "message": "This is ready for review now, the latest uprev was for version 100.0.4884.0 which includes the Chrome side change.",
+      "revId": "b6a47e1e7fa4bdb328870bcf3b302cb58a66b5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
