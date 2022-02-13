@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd07dd2_a75ffd14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-13T18:01:18Z",
+      "side": 1,
+      "message": "could you describe more backgrounds to understand your requirements?\nLinked bug also did not provide more details to me.\n\nNote: it is recommended to set up proper environment, instead of relying on the teardown.\ncf)\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown",
+      "revId": "84afa65cf72b0265c05a9c120403aa0b138eafe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
