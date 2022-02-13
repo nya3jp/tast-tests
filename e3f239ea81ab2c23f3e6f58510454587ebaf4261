@@ -16,6 +16,46 @@
       "message": "Hi all,\n\nPTAL. Thanks!",
       "revId": "e3f239ea81ab2c23f3e6f58510454587ebaf4261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7353ad_9fa927b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-13T18:05:16Z",
+      "side": 1,
+      "message": "this is difficult to see with just a quick look at here.\nCould you introduce new types here so readers can easily understand.",
+      "range": {
+        "startLine": 38,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "e3f239ea81ab2c23f3e6f58510454587ebaf4261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695d135b_2adf8433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-13T18:05:16Z",
+      "side": 1,
+      "message": "Let\u0027s flip the condition, because both code size look similar.\nAnd/or maybe it is better to split each into a method.",
+      "revId": "e3f239ea81ab2c23f3e6f58510454587ebaf4261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
