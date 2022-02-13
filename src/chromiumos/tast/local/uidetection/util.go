@@ -134,7 +134,12 @@ func equal(imgA, imgB image.Image) error {
 	for y := imgA.Bounds().Min.Y; y < imgA.Bounds().Max.Y; y++ {
 		for x := imgA.Bounds().Min.X; x < imgA.Bounds().Max.X; x++ {
 			if imgA.At(x, y) != imgB.At(x, y) {
-				return errors.Errorf("Screen has changed since the last screenshot. Images %s and %s differ at (%d, %d)", oldScreenshotFile, screenshotFile, x, y)
+				return errors.Errorf(
+					"Screen has changed since the last screenshot. Images %s and %s differ at (%d, %d)",
+					oldScreenshotFile,
+					screenshotFile,
+					x-imgA.Bounds().Min.X,
+					y-imgA.Bounds().Min.Y)
 			}
 		}
 	}
