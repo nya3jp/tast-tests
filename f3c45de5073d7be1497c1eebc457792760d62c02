@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65472c58_d6562bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-13T22:06:48Z",
+      "side": 1,
+      "message": "Not for this cl since s was defined as a parameter already. But it is generally not recommended to pass around s. Instead, an error could be returned and handled.",
+      "range": {
+        "startLine": 92,
+        "startChar": 75,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "f3c45de5073d7be1497c1eebc457792760d62c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9b9eb8_f54b2a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-13T22:06:48Z",
+      "side": 1,
+      "message": "nit: rename",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "f3c45de5073d7be1497c1eebc457792760d62c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16044752_b740a72d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-13T22:06:48Z",
+      "side": 1,
+      "message": "This func does not seem to make the code simpler?",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 19
+      },
+      "revId": "f3c45de5073d7be1497c1eebc457792760d62c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
