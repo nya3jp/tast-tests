@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8999fb45_a45a288a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa22ae85_6a09b8db",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4642a0b4_25b48985",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-09T19:21:12Z",
       "side": 1,
       "message": "Nit: Get it from arc.parentUser var",
+      "range": {
+        "startLine": 102,
+        "startChar": 53,
+        "endLine": 102,
+        "endChar": 81
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3140cfb8_d4a1334c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4642a0b4_25b48985",
       "range": {
         "startLine": 102,
         "startChar": 53,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2db059df_6361baf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "It looks like most of the tests run for android_p and android_vm: https://source.corp.google.com/search?q\u003d%22android_p%22%20%22android_vm%22\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2F\n\nNot sure what are the guidelines though. Should I not run this test for Android P?",
+      "parentUuid": "f20c6f07_1570ac7a",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae8c54de_766f5ae2",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-10T23:29:47Z",
       "side": 1,
       "message": "Use familyLinkUnicornArcPolicyLogin fixture instead.",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2725451_3d2c0ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Thanks! It works as expected now!",
+      "parentUuid": "ae8c54de_766f5ae2",
       "range": {
         "startLine": 37,
         "startChar": 12,
@@ -106,6 +202,30 @@
       "writtenOn": "2022-02-10T23:29:47Z",
       "side": 1,
       "message": "Inject the ArcEnabled policy. Example here: [1]. After you do that, there should be no need to opt-in to Play Store anymore, so you can remove this section.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_default_apps.go;l\u003d47?q\u003dfamilyLinkUnicornArcPolicyLogin",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f32f5d0_b45d7d91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19147da1_c59ebcf7",
       "range": {
         "startLine": 50,
         "startChar": 1,
@@ -165,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "736ea952_7c12ac2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "\u003e The suggestions above to inject the ArcEnabled policy\nI did that and the behavior is as expected now!\n\nShould I still run this test for Android P or should I remove this param?",
+      "parentUuid": "74e1207b_4fc6bcab",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "261eb011_8e78f0e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
         "patchSetId": 2
@@ -176,6 +320,30 @@
       "writtenOn": "2022-02-10T23:29:47Z",
       "side": 1,
       "message": "Nit: /*verifyEduSecondaryAddSuccess\u003d*/true",
+      "range": {
+        "startLine": 46,
+        "startChar": 136,
+        "endLine": 46,
+        "endChar": 140
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ebf20db_15c25209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "261eb011_8e78f0e9",
       "range": {
         "startLine": 46,
         "startChar": 136,
@@ -209,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d30082_9a7b50a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/non_educoexistence_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698a0653_b3ed177c",
+      "range": {
+        "startLine": 52,
+        "startChar": 182,
+        "endLine": 52,
+        "endChar": 187
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "742bbbab_53221658",
@@ -232,6 +424,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c4862a_548b2476",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742bbbab_53221658",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c0fed7c_afe406e9",
@@ -245,6 +461,30 @@
       "writtenOn": "2022-02-10T23:29:47Z",
       "side": 1,
       "message": "Nit: Rename this parameter to verifyEduSecondaryAddSuccess for more clarity. Same below.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "004bc7d8_5a80ae6a",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-13T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c0fed7c_afe406e9",
       "range": {
         "startLine": 37,
         "startChar": 1,
