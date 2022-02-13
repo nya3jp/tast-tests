@@ -50,6 +50,24 @@
       "message": "Hidehiko-san - thoughts? We\u0027re doing a lot of CUJ work and would like to have some in-house reviewers. Both Xiyuan and Yichen have a lot of experience in authoring Tast tests.",
       "revId": "c093b9d8842f68011b527491d0f076ea847b9d28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912a7208_6a8214e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-13T17:26:29Z",
+      "side": 1,
+      "message": "The direction is in general, LG, but could you follow the tast reviewer process?\nCould you send an email to tast-owners@ for requesting you to be shadow reviewers then full tast reviewers following the common procedure?\n\nOther teams, like Lacros/Policy teams, did so.",
+      "parentUuid": "dbc6b144_d2182ef1",
+      "revId": "c093b9d8842f68011b527491d0f076ea847b9d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
