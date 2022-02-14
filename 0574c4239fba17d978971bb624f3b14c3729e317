@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c07919_1e55b6b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299073
+      },
+      "writtenOn": "2022-02-14T21:39:40Z",
+      "side": 1,
+      "message": "Thanks for the feedback! I also added one more fixture that I initially overlooked: both WebRTC and WLAN enabled. After WLAN launches, this will be the default configuration.\n\nLet me know if you have any other concerns before I submit.",
+      "revId": "0574c4239fba17d978971bb624f3b14c3729e317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

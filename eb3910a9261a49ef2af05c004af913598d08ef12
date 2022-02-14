@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "82d96063_630df91f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1299073
+      },
+      "writtenOn": "2022-02-14T21:39:40Z",
+      "side": 1,
+      "message": "Claude tested that WLAN works using crosfleet. Is that sufficient?",
+      "parentUuid": "eb8e1346_1c4c6d1f",
+      "range": {
+        "startLine": 23,
+        "startChar": 28,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "eb3910a9261a49ef2af05c004af913598d08ef12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d2fa1110_df4f332b",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5834f19f_1b0c0420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1299073
+      },
+      "writtenOn": "2022-02-14T21:39:40Z",
+      "side": 1,
+      "message": "We expect it to be ~10x faster, or 10-20 MB/s. Because we have tests with WLAN as the _only_ upgrade medium, we just want this timeout to be short enough so that Bluetooth would timeout when transferring a 30MB file.\n\nFor now, I\u0027d keep it as is. I don\u0027t want to turn too many knobs until the WLAN tests are landed and stable.",
+      "parentUuid": "168506c7_b81f5bb5",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 66
+      },
+      "revId": "eb3910a9261a49ef2af05c004af913598d08ef12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cd3f1db_ac1208d5",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
         "patchSetId": 9
@@ -94,6 +142,30 @@
       "writtenOn": "2022-02-11T22:08:19Z",
       "side": 1,
       "message": "super tiny nit: Go style prefers consistent case for acronyms:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nif it\u0027s not too much trouble, it would be nice to replace the mixed-case instances throughout the CL",
+      "range": {
+        "startLine": 209,
+        "startChar": 45,
+        "endLine": 209,
+        "endChar": 48
+      },
+      "revId": "eb3910a9261a49ef2af05c004af913598d08ef12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1001662_b3e5f9b6",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1299073
+      },
+      "writtenOn": "2022-02-14T21:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd3f1db_ac1208d5",
       "range": {
         "startLine": 209,
         "startChar": 45,
