@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f5eed5_67cbcd21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-14T00:09:40Z",
+      "side": 1,
+      "message": "Could we hold off on this?\n\nb/218602384 will break screendiff tests for 1 business day sometime this week.",
+      "revId": "380027da8b6a3121d8ed62c1c2c5aec963c9c030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
