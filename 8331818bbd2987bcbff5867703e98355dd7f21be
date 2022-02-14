@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "963608a9_3b6c4707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-14T04:00:55Z",
+      "side": 0,
+      "message": "We remove this unused argument.",
+      "range": {
+        "startLine": 182,
+        "startChar": 23,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "8331818bbd2987bcbff5867703e98355dd7f21be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e188856_3844f851",
+        "filename": "src/chromiumos/tast/local/perf/thermal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-14T04:00:55Z",
+      "side": 0,
+      "message": "We remove this unused argument.",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "8331818bbd2987bcbff5867703e98355dd7f21be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
