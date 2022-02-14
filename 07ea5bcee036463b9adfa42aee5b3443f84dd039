@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9ff682_d6cf33aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-14T16:58:24Z",
+      "side": 1,
+      "message": "Thank you Matt. Yes, I plan to add these tests soon as we did here for v4l2 stateful decoder. \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go;l\u003d708",
+      "parentUuid": "baeab393_2f9d3a11",
+      "revId": "07ea5bcee036463b9adfa42aee5b3443f84dd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68cbe00d_9e20c6e1",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-13T23:46:08Z",
       "side": 1,
       "message": "Nit: TODOs should always be associated with a bug, rather than a user.",
+      "revId": "07ea5bcee036463b9adfa42aee5b3443f84dd039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b651f10_dc8c1883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-14T16:58:24Z",
+      "side": 1,
+      "message": "Thank you Matt for pointing this out. I was waiting for another change of mine, and it landed last week. So let me remove this TODO comment.\n\nCq-Depend: chromium:3448872",
+      "parentUuid": "68cbe00d_9e20c6e1",
       "revId": "07ea5bcee036463b9adfa42aee5b3443f84dd039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
