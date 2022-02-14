@@ -179,32 +179,6 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
-
-	// TODO(crbug.com/1216245): Remove and replace usage with "chromeLoggedIn"
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWithArchiveMount",
-		Desc:     "Logged into a user session",
-		Contacts: []string{"nya@chromium.org", "oka@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("FilesArchivemount")}, nil
-		}),
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	// TODO(crbug.com/1216245): Remove and replace usage with "chromeLoggedInGuest"
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInGuestWithArchiveMount",
-		Desc:     "Logged into a guest user session",
-		Contacts: []string{"benreich@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{GuestLogin(), EnableFeatures("FilesArchivemount")}, nil
-		}),
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
@@ -248,14 +222,6 @@ func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		if err := mountns.EnterUserSessionMountNs(ctx); err != nil {
 			s.Fatal("Failed to enter user session namespace: ", err)
 		}
-	} else {
-		// This should not be necessary, but due to the multi-threaded nature
-		// of Go and that fact that mount namespaces are assigned per thread
-		// instead of per process, calling this function makes sure that if
-		// for some reason a guest login fixture's `Setup()` executes in a
-		// different thread than `TearDown()`, the following fixture will
-		// still have a chance to enter the correct mount namespace.
-		mountns.EnterInitMountNs(ctx)
 	}
 
 	return cr
