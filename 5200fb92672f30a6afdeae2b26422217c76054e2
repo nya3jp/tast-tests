@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1b49f3_1c43b802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158284
+      },
+      "writtenOn": "2022-02-14T23:58:39Z",
+      "side": 1,
+      "message": "Test logic LGTM! +1 instead of +2 because I don\u0027t have Go/Tast readability. ",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
