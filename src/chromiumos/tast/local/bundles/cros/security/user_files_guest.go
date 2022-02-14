@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/security/userfiles"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/testing"
 )
 
@@ -23,12 +24,22 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedInGuest",
 	})
 }
 
 func UserFilesGuest(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.GuestLogin())
+	if err != nil {
+		s.Fatal("Login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
+	// Guest sessions can be mounted in a non-root mount namespace
+	// so the test needs to perform checks in that same namespace.
+	if err := mountns.EnterUserSessionMountNs(ctx); err != nil {
+		s.Fatal("Failed to enter user session namespace: ", err)
+	}
+	defer mountns.EnterInitMountNs(ctx)
 
 	userfiles.Check(ctx, s, cr.NormalizedUser())
 }
