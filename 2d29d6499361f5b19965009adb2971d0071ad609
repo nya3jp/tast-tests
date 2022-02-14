@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0115cbd3_365cb5de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:49:54Z",
+      "side": 1,
+      "message": "Yes, I see the point of allowing people to define this (hence the attribute makes sense). But we also provide certificates already with the utility functions, so it makes sense to provide these values as constants so they can be used directly.",
+      "parentUuid": "5d72e784_ade4155b",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b503c1a3_a14b3856",
