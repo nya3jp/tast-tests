@@ -37,6 +37,7 @@ const (
 	AndroidButtonClassName = "android.widget.Button"
 	notNowText             = "Not now"
 	asphaltPkgName         = "com.gameloft.android.ANMP.GloftA9HM"
+	homescapesPkgName      = "com.playrix.homescapes"
 
 	defaultTestCaseTimeout = 2 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
@@ -178,7 +179,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 			// Close the app between iterations.
 			defer func(ctx context.Context) {
-				if appPkgName == asphaltPkgName {
+				if appPkgName == asphaltPkgName || appPkgName == homescapesPkgName {
 					HandleDialogBoxes(ctx, s, d, appPkgName)
 				}
 				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
