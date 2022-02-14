@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "355f308a_be4480cf",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-14T09:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51322399_d3236c6e",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ea9d641_56dc78bc",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad306dde_854490f3",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-14T09:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ea9d641_56dc78bc",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "069c772f_7814a2d8",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-02-14T08:17:15Z",
       "side": 1,
       "message": "nit: I think it would be good to add here a comment like /* expect Acr to be enabled */\nto keep the call self explanatory. \n\nThe same in other places where we use arbitrary bool value passed into this function.",
+      "range": {
+        "startLine": 137,
+        "startChar": 87,
+        "endLine": 137,
+        "endChar": 91
+      },
+      "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e16cdbe_bc996e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-14T09:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "069c772f_7814a2d8",
       "range": {
         "startLine": 137,
         "startChar": 87,
