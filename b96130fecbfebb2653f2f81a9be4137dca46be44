@@ -39,6 +39,30 @@
       },
       "revId": "b96130fecbfebb2653f2f81a9be4137dca46be44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff74e1a6_00da43fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-14T21:30:22Z",
+      "side": 1,
+      "message": "Added comments and minimally tweaked the code because I think it\u0027s \nclearer to return as soon as any of the formats is supported, than \nto store a variable and then inspect it.\n\nRe. the not-nit, Chrome is pretty flexible when it comes to primary\nplane formats because we cannot know in advance if a given DRM\nconfiguration (i.e. format, size, other planes, internal or external\ndisplay, connector to it etc) would work -- the best way is to query\nthe DRM API directly (this is done via a page flip test). Moreover\neven if e.g. modetest lists a certain format as supported, it might\nstill break due to bugs or whatnot (I\u0027m thinking MTK). For those\nreasons Chrome is basically non-prescriptive and does what it can :/",
+      "parentUuid": "6fec7e4f_ce1c38b1",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 9
+      },
+      "revId": "b96130fecbfebb2653f2f81a9be4137dca46be44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
