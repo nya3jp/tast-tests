@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RobloxMinigameGpuBenchmark,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Captures launch metrics for Roblox",
+		Desc:         "Logs in to Roblox, loads a mini-game, and records performance metrics",
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
