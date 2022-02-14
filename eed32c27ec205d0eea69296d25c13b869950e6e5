@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfe630d_54832b32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-14T18:14:56Z",
+      "side": 1,
+      "message": "Yeah this sounds better. Thanks for the CL split callout, I\u0027ve got to get used to doing more specific CLs.\n\nSplit SpectrumManagement changes to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3461274/1",
+      "parentUuid": "a192b6ba_79e27a7f",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30533ba2_faabfc2e",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beee94e8_e466c84b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-14T18:14:56Z",
+      "side": 1,
+      "message": "I\u0027ve reworded it to make it more clear.",
+      "parentUuid": "30533ba2_faabfc2e",
+      "range": {
+        "startLine": 9,
+        "startChar": 80,
+        "endLine": 9,
+        "endChar": 164
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f6b436_ed4d6dd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-14T18:14:56Z",
+      "side": 1,
+      "message": "Thanks, my mistake.",
+      "parentUuid": "c4138b35_bf8f005f",
+      "range": {
+        "startLine": 9,
+        "startChar": 113,
+        "endLine": 9,
+        "endChar": 123
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f396aa3b_bfe776cb",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-11T08:49:31Z",
       "side": 1,
       "message": "Why separate the logic into two defer funcs?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 5
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe1e63e_a0ea208a",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-14T18:14:56Z",
+      "side": 1,
+      "message": "Ah, good call out. These were originally separate defer calls but yeah there is no need to separate it out now that it\u0027s a function.",
+      "parentUuid": "f396aa3b_bfe776cb",
       "range": {
         "startLine": 198,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f630755_210f2762",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-14T18:14:56Z",
+      "side": 1,
+      "message": "I like that better, changed.",
+      "parentUuid": "33ff796f_69ff7eb6",
+      "range": {
+        "startLine": 223,
+        "startChar": 68,
+        "endLine": 223,
+        "endChar": 90
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34f8a357_454f3212",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-02-11T08:49:31Z",
       "side": 1,
       "message": "firstReadyErr",
+      "range": {
+        "startLine": 228,
+        "startChar": 21,
+        "endLine": 228,
+        "endChar": 24
+      },
+      "revId": "eed32c27ec205d0eea69296d25c13b869950e6e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f19c68_1019a7f1",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-14T18:14:56Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "34f8a357_454f3212",
       "range": {
         "startLine": 228,
         "startChar": 21,
