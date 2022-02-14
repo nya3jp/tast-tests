@@ -63,6 +63,30 @@
       },
       "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfe939b_5e343485",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-14T04:48:37Z",
+      "side": 1,
+      "message": "You can define ui :\u003d uiauto.New(tconn), then you will be able to use all these functions.",
+      "parentUuid": "3d84e5aa_fb2513a6",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
