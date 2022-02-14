@@ -335,7 +335,7 @@ func (a *App) checkJSError(ctx context.Context, saveCameraFolderWhenFail bool) e
 		}
 		defer f.Close()
 		for _, err := range errs {
-			t := time.Unix(0, err.Time*1e6).Format("2006/01/02 15:04:05 [15:04:05.000]")
+			t := time.Unix(0, err.Time*1e6).UTC().Format("2006/01/02 15:04:05 [15:04:05.000]")
 			f.WriteString(fmt.Sprintf("%v %v:\n", t, err.ErrorType))
 			f.WriteString(err.Stack + "\n")
 		}
