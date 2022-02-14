@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d97c134_5cc7704e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-14T08:17:15Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51322399_d3236c6e",
@@ -42,6 +59,29 @@
         "startChar": 18,
         "endLine": 52,
         "endChar": 35
+      },
+      "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069c772f_7814a2d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-14T08:17:15Z",
+      "side": 1,
+      "message": "nit: I think it would be good to add here a comment like /* expect Acr to be enabled */\nto keep the call self explanatory. \n\nThe same in other places where we use arbitrary bool value passed into this function.",
+      "range": {
+        "startLine": 137,
+        "startChar": 87,
+        "endLine": 137,
+        "endChar": 91
       },
       "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
