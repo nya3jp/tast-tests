@@ -61,7 +61,7 @@ func init() {
 
 func CommandCd(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
-	cr := s.FixtValue().(crostini.FixtureData).Chrome
+	cr := s.FixtValue().(crostini.FixtureData).ParentFixtV.Chrome()
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 
