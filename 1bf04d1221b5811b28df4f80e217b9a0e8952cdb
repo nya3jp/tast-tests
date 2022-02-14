@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "29777388_0a5be6cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-02-14T17:32:28Z",
+      "side": 1,
+      "message": "Duplicated?",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "1bf04d1221b5811b28df4f80e217b9a0e8952cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1015681a_3da7b453",
@@ -14,6 +37,46 @@
       "writtenOn": "2022-02-11T23:32:37Z",
       "side": 1,
       "message": "Hi, Daisy and tast owners. Could you help me review this CL? Thanks!",
+      "revId": "1bf04d1221b5811b28df4f80e217b9a0e8952cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23b217b_a85aff8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-02-14T17:32:28Z",
+      "side": 1,
+      "message": "logic lgtm",
+      "revId": "1bf04d1221b5811b28df4f80e217b9a0e8952cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bf42c2_93252743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-02-14T17:32:28Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 143,
+        "endChar": 20
+      },
       "revId": "1bf04d1221b5811b28df4f80e217b9a0e8952cdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
