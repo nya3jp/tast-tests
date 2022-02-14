@@ -516,6 +516,17 @@ func (vkbCtx *VirtualKeyboardContext) TapMultipasteItem(itemName string) uiauto.
 	return vkbCtx.ui.LeftClick(MultipasteItemFinder.Name(itemName))
 }
 
+// SelectThenDeselectMultipasteItem returns an action selecting a multipaste item via longpress and de-selecting it with tap.
+func (vkbCtx *VirtualKeyboardContext) SelectThenDeselectMultipasteItem(touchCtx *touch.Context, itemName string) uiauto.Action {
+	itemFinder := MultipasteItemFinder.Name(itemName)
+	trashButtonFinder := KeyFinder.ClassName("trash-button")
+	return uiauto.Combine("Select then de-select item in multipaste virtual keyboard",
+		touchCtx.LongPress(itemFinder),
+		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilExists(trashButtonFinder),
+		touchCtx.Tap(itemFinder),
+		vkbCtx.ui.WithTimeout(3*time.Second).WaitUntilGone(trashButtonFinder))
+}
+
 // DeleteMultipasteItem returns an action selecting a multipaste item via longpress and deleting it.
 func (vkbCtx *VirtualKeyboardContext) DeleteMultipasteItem(touchCtx *touch.Context, itemName string) uiauto.Action {
 	itemFinder := MultipasteItemFinder.Name(itemName)

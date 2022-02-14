@@ -95,6 +95,16 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 		s.Fatal("Fail to paste text through multipaste virtual keyboard: ", err)
 	}
 
+	if err := uc.RunAction(ctx, "select then de-select item in VK multipaste clipboard",
+		vkbCtx.SelectThenDeselectMultipasteItem(touchCtx, text1),
+		&useractions.UserActionCfg{
+			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
+		},
+	); err != nil {
+		s.Fatal("Fail to long press to select and delete item: ", err)
+	}
+
 	if err := uc.RunAction(ctx, "remove item in VK multipaste clipboard",
 		vkbCtx.DeleteMultipasteItem(touchCtx, text1),
 		&useractions.UserActionCfg{
