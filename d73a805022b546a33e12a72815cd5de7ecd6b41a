@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e68a072_945366b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-14T09:25:16Z",
+      "side": 1,
+      "message": "Use DumpUITreeWithScreenshotOnError instead.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 75
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965dd540_ea3c939b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-14T09:25:16Z",
+      "side": 1,
+      "message": "Use the table driven test pattern here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests\n\nFor that also move the DumpUITreeWithScreenshotOnError to the subtests like here: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go;l\u003d110",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8566b439_30170de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-14T09:25:16Z",
+      "side": 1,
+      "message": "unexpected name for desk %d: want %s; got %s",
+      "range": {
+        "startLine": 154,
+        "startChar": 25,
+        "endLine": 154,
+        "endChar": 69
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d49970_68fd66ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-14T09:25:16Z",
+      "side": 1,
+      "message": "unexpected name for desk %d: want %s; got %s",
+      "range": {
+        "startLine": 166,
+        "startChar": 24,
+        "endLine": 166,
+        "endChar": 68
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
