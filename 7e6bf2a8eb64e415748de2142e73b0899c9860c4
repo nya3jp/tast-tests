@@ -39,6 +39,30 @@
       },
       "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d84e5aa_fb2513a6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2022-02-14T04:27:20Z",
+      "side": 1,
+      "message": "Yes, totally understand, but I think, in test code, I cannot use things such as MultipasteItemFinder, KeyFinder, WaitUntilExists and WaitUntilGone. Currently the best way I can think of is to add a function to Longpress a multipaste item, a fuction to wait for trash button exists and another function to wait for trash button gone. This feels not ideal to me, do you have any better way in mind?",
+      "parentUuid": "2e28d10a_09a13194",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
