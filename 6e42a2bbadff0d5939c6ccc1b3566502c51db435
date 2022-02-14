@@ -16,6 +16,24 @@
       "message": "Please run tast unit test: fast_build.sh -T\n\nAlso, I think the function VerifyArcPolicyForceInstalled was referenced in the three different place.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/enterprise/arc_install_logging.go\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go\n\nYour test only cover enterprise.ARCProvisioning.vm\n\nAlso, ArcSnapshotService.WaitForPackagesInMgs calls VerifyArcPolicyForceInstalled and it was referenced by multiple tests. Please run manual tests on them.\n\nAlso, I see that I am the only one in the reviewer list. I am not familiar with ARC policy testing. Please add a domain expert to the reviewer list.\n\nThanks. \n",
       "revId": "6e42a2bbadff0d5939c6ccc1b3566502c51db435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9903b8e_53b41a31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-14T23:13:51Z",
+      "side": 1,
+      "message": "Ran \u0027/fast_build.sh -T` and added the original authors of affected tests although I\u0027m the new owner.",
+      "parentUuid": "f3f18803_36572a0e",
+      "revId": "6e42a2bbadff0d5939c6ccc1b3566502c51db435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
