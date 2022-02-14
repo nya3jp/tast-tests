@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b90840c_cea2474d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T18:42:38Z",
+      "side": 1,
+      "message": "Hi all,\n\nThanks for quick review! Please take another look. Thanks!",
+      "revId": "e3f239ea81ab2c23f3e6f58510454587ebaf4261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b7353ad_9fa927b9",
@@ -48,6 +65,30 @@
       "writtenOn": "2022-02-13T18:05:16Z",
       "side": 1,
       "message": "this is difficult to see with just a quick look at here.\nCould you introduce new types here so readers can easily understand.",
+      "range": {
+        "startLine": 38,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "e3f239ea81ab2c23f3e6f58510454587ebaf4261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4af869_5aaaca9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T18:42:38Z",
+      "side": 1,
+      "message": "Thanks for suggestion. I used options function approach. PTAL.",
+      "parentUuid": "4b7353ad_9fa927b9",
       "range": {
         "startLine": 38,
         "startChar": 48,
@@ -75,6 +116,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ccc2ef_a5caf48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T18:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "695d135b_2adf8433",
+      "revId": "e3f239ea81ab2c23f3e6f58510454587ebaf4261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a987b42_e3b3682d",
@@ -88,6 +147,30 @@
       "writtenOn": "2022-02-14T10:21:43Z",
       "side": 1,
       "message": "nits:\n1) let\u0027s use f.v.ExtID here.\n2) We can omit the \";https://clients2.google.com/service/update2/crx\" part, because that is the default update link.",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 36
+      },
+      "revId": "e3f239ea81ab2c23f3e6f58510454587ebaf4261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a58d2a2f_746668dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T18:42:38Z",
+      "side": 1,
+      "message": "Thanks for suggestion!",
+      "parentUuid": "0a987b42_e3b3682d",
       "range": {
         "startLine": 188,
         "startChar": 4,
