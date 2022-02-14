@@ -16,6 +16,29 @@
       "message": "ptal?",
       "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e28d10a_09a13194",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-14T01:35:18Z",
+      "side": 1,
+      "message": "This is exactly the logic to validate in the test case, not a common function used anywhere else. So it should be just moved into MultiPaste test case.",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
