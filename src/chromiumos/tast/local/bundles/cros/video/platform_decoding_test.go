@@ -552,7 +552,7 @@ var vp8Files = map[string][]string{
 		"test_vectors/vp8/vp80-00-comprehensive-003.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-004.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-005.ivf",
-		//"test_vectors/vp8/vp80-00-comprehensive-006.ivf", // TODO(b/194908118)
+		"test_vectors/vp8/vp80-00-comprehensive-006.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-007.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-008.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-009.ivf",
@@ -560,7 +560,7 @@ var vp8Files = map[string][]string{
 		"test_vectors/vp8/vp80-00-comprehensive-011.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-012.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-013.ivf",
-		//"test_vectors/vp8/vp80-00-comprehensive-014.ivf", // TODO(b/194908118)
+		"test_vectors/vp8/vp80-00-comprehensive-014.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-015.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-016.ivf",
 		"test_vectors/vp8/vp80-00-comprehensive-017.ivf",
