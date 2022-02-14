@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c67c022_eea5c302",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-02-14T09:09:04Z",
+      "side": 1,
+      "message": "Hi Kamil, this change related to the discussion we had last week and it\u0027s ready for review. Could you PTAL? Thanks 😊",
+      "revId": "7dffe809aa8b697bbe0563159c6801303de25656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
