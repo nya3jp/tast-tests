@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03657572_fe870faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-14T12:12:48Z",
+      "side": 1,
+      "message": "LGTM with a nit",
+      "revId": "de1cc9bf2092bb86f8436dc12173cbf34a7e9d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6a2738e_7750aeee",
@@ -35,6 +52,29 @@
         "startLine": 65,
         "startChar": 0,
         "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "de1cc9bf2092bb86f8436dc12173cbf34a7e9d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faaeed4f_639a9d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_battery_data_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-14T12:12:48Z",
+      "side": 1,
+      "message": "Dumb question: Do we need any assertions between the values of sql results and |status.*|?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 88,
         "endChar": 2
       },
       "revId": "de1cc9bf2092bb86f8436dc12173cbf34a7e9d21",
