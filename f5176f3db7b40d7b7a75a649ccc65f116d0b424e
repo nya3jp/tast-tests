@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51322399_d3236c6e",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-14T08:06:56Z",
+      "side": 1,
+      "message": "In Go, function names shouldn\u0027t start with Get.",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea9d641_56dc78bc",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-14T08:06:56Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be a function.",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "f5176f3db7b40d7b7a75a649ccc65f116d0b424e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
