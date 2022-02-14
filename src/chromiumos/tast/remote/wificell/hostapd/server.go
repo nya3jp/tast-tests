@@ -149,7 +149,12 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 	ctx, cancel := s.ReserveForClose(fullCtx)
 	defer cancel()
 
-	testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
+	if s.conf.SpectrumManagement {
+		testing.ContextLogf(ctx, "Starting hostapd %s on interface %s (Note: With SpectrumManagement on this will take longer due to the regulatory DFS Channel Availability Check Time)", s.name, s.iface)
+	} else {
+		testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
+	}
+
 	// TODO(crbug.com/1047146): Remove the env part after we drop the old crypto like MD5.
 	cmdStrs := []string{
 		// Environment variables.
@@ -188,12 +193,21 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 	// Wait for hostapd to get ready.
 	readyWriter := daemonutil.NewReadyWriter(readyFunc)
 	s.wg.Add(1)
+	var firstReadyErr error
 	go func() {
+		defer func() {
+			if err := stdoutPipe.Close(); err != nil && firstReadyErr == nil {
+				firstReadyErr = errors.Wrap(err, "failed to close stdoutPipe")
+			}
+			if err := readyWriter.Close(); err != nil && firstReadyErr == nil {
+				firstReadyErr = errors.Wrap(err, "failed to close readyWriter")
+			}
+		}()
 		defer s.wg.Done()
-		defer stdoutPipe.Close()
-		defer readyWriter.Close()
 		multiWriter := io.MultiWriter(s.stdoutFile, readyWriter)
-		io.Copy(multiWriter, stdoutPipe)
+		if _, err := io.Copy(multiWriter, stdoutPipe); err != nil {
+			firstReadyErr = errors.Wrap(err, "failed to read all of stdout")
+		}
 	}()
 
 	if err := cmd.Start(); err != nil {
@@ -203,7 +217,13 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 
 	// Wait for hostapd to get ready.
 	if err := readyWriter.Wait(ctx); err != nil {
-		return err
+		if firstReadyErr != nil {
+			return errors.Wrapf(err, "failed to wait for hostapd to be ready; first error: %v", firstReadyErr)
+		}
+		return errors.Wrap(err, "failed to wait for hostapd to be ready")
+	}
+	if firstReadyErr != nil {
+		return errors.Wrap(firstReadyErr, "error raised while waiting for hostapd to be ready")
 	}
 
 	testing.ContextLog(ctx, "hostapd started")
