@@ -34,7 +34,8 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"patchpaneld", "shill_client.cc", ".*Failed to obtain service.*GetProperties.*signature.*doesn't exist.*", 0},
 		{"patchpaneld", "shill_client.cc", ".*Unable to get manager properties.*", 0},
 		{"patchpaneld", "shill_client.cc", ".*Unknown interface name eth\\d.*", 0},
-		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0}, // b/210893108
+		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},                     // b/210893108
+		{"shill", "dbus_properties_proxy.cc", ".*GetAll failed on org.freedesktop.ModemManager1.*", 0}, // b/215373366
 		// {"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                             // b/208654528
 		{"shill", "device_info.cc", ".*Add link message does not have IFLA_ADDRESS, link: rmnet_ipa0, Technology: ethernet.*", 0}, // b/208654528
 		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
@@ -49,6 +50,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PatchPanel.GetTrafficCounters.*", 0},    // b/215373366
 		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PowerManager.ChangeWifiRegDomain.*", 0}, // b/215373366
 		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.dhcpcd.Release.*", 0},                   // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.freedesktop.DBus.Properties.GetAll.*", 0},        // b/215373366
 		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                        // b/213611282
 		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                      // b/213612672
 		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                     // b/213612672
