@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa6e0fa9_20bd294f",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-14T22:31:51Z",
+      "side": 1,
+      "message": "It seems that I could not compose such fixture as I got this error: \n\nError at usercode.go:28: Panic: interface conversion: crostini.FixtureData is not lacrosfixt.FixtValue: missing method Chrome\n2022-02-14T22:20:37.609406Z [22:20:37.293] Stack trace:\nPanic\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.2 (usercode.go:28)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2.1.1 (usercode.go:101)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2.1 (usercode.go:107)\n\tat runtime.gopanic (panic.go:1038)\n\tat runtime.getitab (iface.go:91)\n\tat runtime.assertE2I (iface.go:482)\n\tat chromiumos/tast/local/chrome/browser/browserfixt.SetUpWithURL (browserfixt.go:60)\n\tat chromiumos/tast/local/bundles/cros/crostini.TestFixture2 (test_fixture2.go:86)",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 46
+      },
+      "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
