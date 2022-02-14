@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -13,6 +14,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
@@ -93,6 +96,26 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 		},
 	); err != nil {
 		s.Fatal("Fail to paste text through multipaste virtual keyboard: ", err)
+	}
+
+	ui := uiauto.New(tconn)
+	vkRootFinder := nodewith.Role(role.RootWebArea).Name("Chrome OS Virtual Keyboard")
+	NodeFinder := nodewith.Ancestor(vkRootFinder).Onscreen().Visible()
+	KeyFinder := NodeFinder.Role(role.Button)
+	MultipasteItemFinder := NodeFinder.ClassName("scrim")
+
+	if err := uc.RunAction(ctx, "select then de-select item in VK multipaste clipboard",
+		uiauto.Combine("Select then de-select item in multipaste virtual keyboard",
+			touchCtx.LongPress(MultipasteItemFinder.Name(text1)),
+			ui.WithTimeout(3*time.Second).WaitUntilExists(KeyFinder.ClassName("trash-button")),
+			vkbCtx.TapMultipasteItem(text1),
+			ui.WithTimeout(3*time.Second).WaitUntilGone(KeyFinder.ClassName("trash-button"))),
+		&useractions.UserActionCfg{
+			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
+		},
+	); err != nil {
+		s.Fatal("Fail to long press to select and delete item: ", err)
 	}
 
 	if err := uc.RunAction(ctx, "remove item in VK multipaste clipboard",
