@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing! Fixed comments",
       "revId": "962fb65b544decad05d1296e734668c18af0fbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b790d6a9_5e502ad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-14T08:19:09Z",
+      "side": 1,
+      "message": "LGTM, thanks for adding the coverage Polina!",
+      "revId": "962fb65b544decad05d1296e734668c18af0fbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
