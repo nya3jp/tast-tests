@@ -56,6 +56,30 @@
       },
       "revId": "7dffe809aa8b697bbe0563159c6801303de25656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0580bd97_a4b5da95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/history_clusters_visible.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-02-14T09:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6af7c83_a0ba2dbf",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "7dffe809aa8b697bbe0563159c6801303de25656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
