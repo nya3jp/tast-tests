@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f59ca23_b39c4359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-14T10:04:00Z",
+      "side": 1,
+      "message": "\u003e WDYT about SerialNumberPermission?\nLGTM.\n\nAnother way is to include an html page in the extension bundle that can be accessed via navigating to a URL, like: chrome-extension://{extension_id}/main.html. (This can be opened from PWA for example).\n\nI am not aware of all the ways but probably there will be other ways. Using options page is just a convenient way to do that.",
+      "parentUuid": "1afb1d5d_2e2beb78",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58031c4c_27a3f565",
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "We need to verify that we didn\u0027t have serial number permission before test started. I can remove all permissions from manifest, but it will be not similar to real life use case.",
       "parentUuid": "58031c4c_27a3f565",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf866bb7_5136a702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-14T10:04:00Z",
+      "side": 1,
+      "message": "Yes, it wouldn\u0027t be mimicking real scenario but it would verify that the permission is requested and granted, and that is the goal.\n\n\nThe way I see it, checking the other permissions takes some focus out of the main goal (request and grant the serial number permission), and moreover they are not really needed (that is they are not a precondition). I think it will be easier to follow if we do not include any permission beforehand.",
+      "parentUuid": "c5c65c5b_2ae25feb",
       "range": {
         "startLine": 52,
         "startChar": 1,
