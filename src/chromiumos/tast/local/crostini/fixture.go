@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
@@ -30,14 +31,79 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInForCrostini",
+		Desc:     "Logged into a session",
+		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts := generateChromeOpts(s)
+			// Enable ARC++ if it is supported. We do this on every
+			// supported device because some tests rely on it and this
+			// lets us reduce the number of distinct fixture. If
+			// your test relies on ARC++ you should add an appropriate
+			// software dependency.
+			if arc.Supported() {
+				opts = append(opts, chrome.ARCEnabled())
+			} else {
+				opts = append(opts, chrome.ARCDisabled())
+			}
+			return opts, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{"keepState"},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithGaiaForCrostini",
+		Desc:     "Logged into a session with Gaia user",
+		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Vars:     []string{"ui.gaiaPoolDefault", "keepState"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts := generateChromeOpts(s)
+			if arc.Supported() {
+				opts = append(opts, chrome.ARCSupported())
+				opts = append(opts, chrome.ExtraArgs(arc.DisableSyncFlags()...))
+
+			} else {
+				opts = append(opts, chrome.ARCDisabled())
+			}
+			return append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))), nil
+		}),
+		SetUpTimeout:    chrome.GAIALoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInForCrostiniWithLacros",
+		Desc:     "Logged into a session and enable Lacros",
+		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts := generateChromeOpts(s)
+			if arc.Supported() {
+				opts = append(opts, chrome.ARCEnabled())
+			} else {
+				opts = append(opts, chrome.ARCDisabled())
+			}
+			return opts, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{"keepState", lacrosfixt.LacrosDeployedBinary},
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBuster",
 		Desc:            "Install Crostini with Buster",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBuster},
-		SetUpTimeout:    chrome.LoginTimeout + installationTimeout,
-		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		SetUpTimeout:    installationTimeout,
+		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
 
 		// TODO (jinrongwu): switch to Global RunTime Variable when deprecating pre.go.
 		// The same for the rest keepState var.
@@ -50,10 +116,11 @@ func init() {
 		Desc:            "Install Crostini with Bullseye",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseye},
-		SetUpTimeout:    chrome.LoginTimeout + installationTimeout,
-		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		SetUpTimeout:    installationTimeout,
+		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
 		Vars:            []string{"keepState"},
 		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
 	})
@@ -62,11 +129,12 @@ func init() {
 		Name:            "crostiniBusterGaia",
 		Desc:            "Install Crostini with Buster in Chrome logged in with Gaia",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Impl:            &crostiniFixture{preData: preTestDataBusterGaia},
-		SetUpTimeout:    chrome.GAIALoginTimeout + installationTimeout,
-		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		Impl:            &crostiniFixture{preData: preTestDataBuster},
+		SetUpTimeout:    installationTimeout,
+		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInWithGaiaForCrostini",
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:            []string{GetContainerMetadataArtifact("buster", false), GetContainerRootfsArtifact("buster", false)},
 	})
@@ -75,11 +143,12 @@ func init() {
 		Name:            "crostiniBullseyeGaia",
 		Desc:            "Install Crostini with Bullseye in Chrome logged in with Gaia",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Impl:            &crostiniFixture{preData: preTestDataBullseyeGaia},
-		SetUpTimeout:    chrome.GAIALoginTimeout + installationTimeout,
-		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		Impl:            &crostiniFixture{preData: preTestDataBullseye},
+		SetUpTimeout:    installationTimeout,
+		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInWithGaiaForCrostini",
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
 	})
@@ -89,19 +158,33 @@ func init() {
 		Desc:            "Install Crostini with Bullseye in large container with apps installed",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Impl:            &crostiniFixture{preData: preTestDataBullseyeLC},
-		SetUpTimeout:    chrome.LoginTimeout + installationTimeout,
-		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		SetUpTimeout:    installationTimeout,
+		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
 		Vars:            []string{"keepState"},
 		Data:            []string{GetContainerMetadataArtifact("bullseye", true), GetContainerRootfsArtifact("bullseye", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeWithLacros",
+		Desc:            "Install Crostini with Bullseye and enable Lacros",
+		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseye},
+		SetUpTimeout:    installationTimeout,
+		ResetTimeout:    checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostiniWithLacros",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("bullseye", false), GetContainerRootfsArtifact("bullseye", false)},
 	})
 
 }
 
 // preTestData contains the data to set up the fixture.
 type preTestData struct {
-	loginType     loginType
 	container     containerType
 	debianVersion vm.ContainerDebianVersion
 	startedOK     bool
@@ -136,18 +219,6 @@ var preTestDataBullseye = &preTestData{
 	debianVersion: vm.DebianBullseye,
 }
 
-var preTestDataBusterGaia = &preTestData{
-	container:     normal,
-	debianVersion: vm.DebianBuster,
-	loginType:     loginGaia,
-}
-
-var preTestDataBullseyeGaia = &preTestData{
-	container:     normal,
-	debianVersion: vm.DebianBullseye,
-	loginType:     loginGaia,
-}
-
 var preTestDataBullseyeLC = &preTestData{
 	container:     largeContainer,
 	debianVersion: vm.DebianBullseye,
@@ -155,6 +226,7 @@ var preTestDataBullseyeLC = &preTestData{
 
 func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	f.postData = &PostTestData{}
+	f.cr = s.ParentValue().(chrome.HasChrome).Chrome()
 
 	// If initialization fails, this defer is used to clean-up the partially-initialized pre
 	// and copies over lxc + container boot logs.
@@ -168,43 +240,12 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		}
 	}()
 
-	opts := []chrome.Option{chrome.ARCDisabled()}
-
-	// Enable ARC++ if it is supported. We do this on every
-	// supported device because some tests rely on it and this
-	// lets us reduce the number of distinct fixture. If
-	// your test relies on ARC++ you should add an appropriate
-	// software dependency.
-	if arc.Supported() {
-		if f.preData.loginType == loginGaia {
-			opts = []chrome.Option{chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)}
-		} else {
-			opts = []chrome.Option{chrome.ARCEnabled()}
-		}
-	}
-	opts = append(opts, chrome.ExtraArgs("--vmodule=crostini*=1"))
-
-	opts = append(opts, chrome.EnableFeatures("KernelnextVMs"))
-
 	// To help identify sources of flake, we report disk usage before the test.
 	if err := reportDiskUsage(ctx); err != nil {
 		s.Log("Failed to gather disk usage: ", err)
 	}
 
-	if f.preData.loginType == loginGaia {
-		opts = append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
-	}
-
-	useLocalImage := checkKeepState(s) && terminaDLCAvailable()
-	if useLocalImage {
-		// Retain the user's cryptohome directory and previously installed VM.
-		opts = append(opts, chrome.KeepState())
-	}
 	var err error
-	if f.cr, err = chrome.New(ctx, opts...); err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-
 	if f.tconn, err = f.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
@@ -214,7 +255,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
 
-	if useLocalImage {
+	if checkKeepState(s) && terminaDLCAvailable() {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
 		if err = f.launchExitTerminal(ctx); err != nil {
 			s.Fatal("KeepState error: ", err)
@@ -364,4 +405,17 @@ func checkKeepState(s *testing.FixtState) bool {
 		return b
 	}
 	return false
+}
+
+// generateChromeOpts generates common chrome options for crostini fixtures.
+func generateChromeOpts(s *testing.FixtState) []chrome.Option {
+	opts := []chrome.Option{chrome.ExtraArgs("--vmodule=crostini*=1"), chrome.EnableFeatures("KernelnextVMs")}
+
+	useLocalImage := checkKeepState(s) && terminaDLCAvailable()
+	if useLocalImage {
+		// Retain the user's cryptohome directory and previously installed VM.
+		opts = append(opts, chrome.KeepState())
+	}
+
+	return opts
 }

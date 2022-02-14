@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
@@ -19,6 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TestFixture,
 		Desc:         "Test fixture",
+		LacrosStatus: testing.LacrosVariantExists,
 		Contacts:     []string{"jinrongwu@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
@@ -57,6 +59,14 @@ func init() {
 				ExtraHardwareDeps: crostini.CrostiniStable,
 				Fixture:           "crostiniBullseyeLargeContainer",
 				Timeout:           2 * time.Minute,
+			},
+			{
+				Name:              "lacros",
+				ExtraSoftwareDeps: []string{"dlc", "lacros"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Fixture:           "crostiniBullseyeWithLacros",
+				Timeout:           2 * time.Minute,
+				Val:               browser.TypeLacros,
 			},
 		},
 	})
