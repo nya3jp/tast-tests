@@ -70,6 +70,7 @@ func CrossOriginForbidden(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	// TODO(crbug.com/1298550): Don't rely on all files being in same directory.
 	baseDirectory, fileName := filepath.Split(s.DataPath(mainAppFile))
 	ServerConfiguration := https.ServerConfiguration{
 		Headers: map[string]string{
