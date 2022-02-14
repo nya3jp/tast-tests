@@ -16,6 +16,41 @@
       "message": "I enabled after checking that the v4l2 test now supports.  Was this also disabled because of intel not supporting?",
       "revId": "214dca6ce9994fae0bb1a6fcfef463250d460fd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fcc890d_c9d8fe4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-02-14T18:15:07Z",
+      "side": 1,
+      "message": "Hm, I don\u0027t remember that being the case, but let me confirm.",
+      "parentUuid": "69853c42_81639f0a",
+      "revId": "214dca6ce9994fae0bb1a6fcfef463250d460fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b771f0_e640fcc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-02-14T18:15:07Z",
+      "side": 1,
+      "message": "Thanks! Would you please also upload the regenerated platform_decoding.go?\n\nI\u0027ll also confirm that things work on Intel.",
+      "revId": "214dca6ce9994fae0bb1a6fcfef463250d460fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
