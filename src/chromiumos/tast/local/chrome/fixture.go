@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/logsaver"
-	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/testing"
 )
 
@@ -63,7 +62,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInGuest",
 		Desc:     "Logged into a guest user session",
@@ -76,7 +74,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInGuestForEA",
 		Desc:     "Logged into a guest user session for essential apps",
@@ -89,7 +86,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInGuestForInputs",
 		Desc:     "Logged into a guest user session for essential inputs",
@@ -217,23 +213,11 @@ func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	Lock()
 	f.cr = cr
-
-	if cr.LoginMode() == "Guest" {
-		if err := mountns.EnterUserSessionMountNs(ctx); err != nil {
-			s.Fatal("Failed to enter user session namespace: ", err)
-		}
-	}
-
 	return cr
 }
 
 func (f *loggedInFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	Unlock()
-
-	if f.cr.LoginMode() == "Guest" {
-		mountns.EnterInitMountNs(ctx)
-	}
-
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
