@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e81af8_dd8231aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-14T21:42:07Z",
+      "side": 1,
+      "message": "LGTM to me % nit",
+      "revId": "a73179897ad3473fe378514fcdf4c2223db73c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfbafb2f_61134a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2509,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-14T21:42:07Z",
+      "side": 1,
+      "message": "Should this be `_ context.Context` like ath11kReset, since it isn\u0027t used?",
+      "revId": "a73179897ad3473fe378514fcdf4c2223db73c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
