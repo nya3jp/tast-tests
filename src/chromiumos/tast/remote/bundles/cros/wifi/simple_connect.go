@@ -62,7 +62,7 @@ func init() {
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211a), ap.Channel(48)},
 				}, {
-					apOpts: []ap.Option{ap.Mode(ap.Mode80211a), ap.Channel(64)},
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211a), ap.Channel(64), ap.SpectrumManagement()},
 				}},
 			}, {
 				// Verifies that DUT can connect to an open 802.11b network on channels 1, 6, 11.
@@ -127,7 +127,7 @@ func init() {
 				Name: "80211acvht20",
 				Val: []simpleConnectTestcase{{
 					apOpts: []ap.Option{
-						ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20),
+						ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20), ap.SpectrumManagement(),
 						ap.VHTChWidth(ap.VHTChWidth20Or40),
 					},
 				}},
@@ -464,9 +464,9 @@ func init() {
 				Name:      "dfs",
 				ExtraAttr: []string{"wificell_cq"},
 				Val: []simpleConnectTestcase{{
-					apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40)},
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40), ap.SpectrumManagement()},
 				}, {
-					apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)},
+					apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40), ap.SpectrumManagement()},
 				}},
 			}, {
 				// Verifies that DUT can connect to a networks with the longest and shortest SSID.
