@@ -33,6 +33,23 @@
       "message": "Thank you Takise-san!\n\ntast-owners@: Please take a look.",
       "revId": "4e022c492a0711f9b89e34e32a37ac4692ae6c44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7e1cce_8f1c95c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-14T09:08:27Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "4e022c492a0711f9b89e34e32a37ac4692ae6c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
