@@ -513,12 +513,12 @@ var vp8Files = map[string][]string{
 		"test_vectors/vp8/inter/vp80-02-inter-1418.ivf",
 		"test_vectors/vp8/inter/vp80-02-inter-1424.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf",
-		//"test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf", //TODO(b/195790894)
+		"test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf",
-		//"test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf", //TODO(b/195790894)
+		"test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf",
