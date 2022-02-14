@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefe5fff_1cddd18e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "when comments fixed, LGTM",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11fc63d5_caf50354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "suggestion: CaCommonName or CertificateAuthorityCommonName?",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a125249d_bb8a177f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "nit: These values are part of the provided certificates. Make it a constant in https.go and use that here. (same for CaCertAuthName)",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b503c1a3_a14b3856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "suggestion: ServerCertificateOrganization?",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f273a8_e91009c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "nit: make this a const block",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6d3c1a_795068f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "use constants here too.",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da77aea_886698ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "use constants here too.",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a682f0_bf027850",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-14T15:36:00Z",
+      "side": 1,
+      "message": "see comments above concerning the name.",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
