@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4558c71_81d582f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-14T21:55:13Z",
+      "side": 0,
+      "message": "If we ever wanted to have these two tests block the CQ we would need group:mainline without informational.\n\nI think it is always good to have a few quick tests run on every release build to faster guess regressions. So graphics_perbuild seems better than nightly in this case.",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "e73c83b3da7ce650a4ccd2fca0cf45b069b216c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

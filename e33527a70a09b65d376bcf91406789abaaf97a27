@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d76fa27_f3d8bf8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-14T21:55:13Z",
+      "side": 1,
+      "message": "In principle this is what we want. But:\na) I don\u0027t understand why we didn\u0027t get a run with the latest.\nb) Unfortunately it takes the lab about one week to roll out the new control files internally. (Some bug.) So this has to wait a bit.",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "revId": "e33527a70a09b65d376bcf91406789abaaf97a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
