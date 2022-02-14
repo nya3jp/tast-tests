@@ -20,6 +20,92 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f1f6a330_48367c05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T15:55:47Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5d6bce2cfa16ea9223c291e70ecf33c02778b38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31476d3a_0ac60682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T15:55:47Z",
+      "side": 1,
+      "message": "nit: nonNegativeIntDivideAndRoundToNearest",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "5d6bce2cfa16ea9223c291e70ecf33c02778b38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6fa630f_f1dc452e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T15:55:47Z",
+      "side": 1,
+      "message": "nit: either move it inside QuickCheckCUJ before first use case or move it below QuickCheckCUJ.\n\nBTW, why you cannot use math.Round() ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "5d6bce2cfa16ea9223c291e70ecf33c02778b38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e7926f_11211ac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T15:55:47Z",
+      "side": 1,
+      "message": "Maybe just inline them since you use them only once? It\u0027s a bit hard to read the test, because you have to scroll up each time to check constant.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "5d6bce2cfa16ea9223c291e70ecf33c02778b38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8745efc1_37b252b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
         "patchSetId": 1
