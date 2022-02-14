@@ -78,6 +78,7 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get TestConn: ", err)
 	}
 
+	// TODO(crbug.com/1298550): Don't rely on all files being in same directory.
 	baseDirectory, _ := filepath.Split(s.DataPath("certificate.pem"))
 	ServerConfiguration := https.ServerConfiguration{
 		ServerKeyPath:         s.DataPath("key.pem"),
