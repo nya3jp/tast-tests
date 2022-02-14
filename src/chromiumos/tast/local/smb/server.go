@@ -7,6 +7,7 @@ package smb
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 	"syscall"
@@ -40,6 +41,10 @@ func NewServer(smbConf string) *Server {
 		"--no-process-group",    // Stop smbd from creating a process group.
 		"--configfile="+smbConf, // Pass our custom smbd.conf file.
 		"--debuglevel=5")        // Up the logging level to provide for better debugging.
+	// libsmbd-base-samba4.so which is required for smbd gets moved to
+	// /usr/local/lib64 to avoid shipping on release images. Ensure the share
+	// object is appropriately preloaded.
+	cmd.Cmd.Env = append(os.Environ(), "LD_PRELOAD=/usr/local/lib64")
 	return &Server{cmd: cmd, running: false, serverErr: make(chan error)}
 }
 
