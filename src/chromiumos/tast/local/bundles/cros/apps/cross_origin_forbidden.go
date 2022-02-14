@@ -80,6 +80,8 @@ func CrossOriginForbidden(ctx context.Context, s *testing.State) {
 		ServerCertificatePath: s.DataPath(serverCertificateFile),
 		HostedFilesBasePath:   baseDirectory,
 		CaCertificatePath:     s.DataPath(certificateAuthorityFile),
+		CaCertName:            "TastCA",
+		CaCertAuthName:        "org-Google",
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

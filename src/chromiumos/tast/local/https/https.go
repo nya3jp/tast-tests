@@ -10,6 +10,9 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
+	"path/filepath"
+
+	"github.com/influxdata/influxdb/kit/errors"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -29,6 +32,8 @@ type ServerConfiguration struct {
 	ServerCertificatePath string
 	HostedFilesBasePath   string
 	CaCertificatePath     string
+	CaCertName            string
+	CaCertAuthName        string
 }
 
 func copyFile(source, destination string) error {
@@ -112,22 +117,36 @@ ConfigureChromeToAcceptCertificate adds the specified CA certificate to the auth
 The server certificate will then be accepted by chrome without complaining about security.
 */
 func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration ServerConfiguration, chrome *chrome.Chrome, targetBrowser *browser.Browser, testConnection *chrome.TestConn) error {
+	// Check if the cert already exists -> No need to add again.
+	if certExists, err := CheckIfCertificateExists(ctx, cr, br, tconn, configuration.CaCertName, configuration.CaCertAuthName); err != nil {
+		return err
+	} else if certExists {
+		return nil
+	}
 
-	certificateDestination := filesapp.MyFilesPath + "/" + filesapp.Downloads + "/ca-cert.pem"
+	_, caCertFileName := filepath.Split(configuration.CaCertificatePath)
+
+	// Copy the certificate file to a local Downloads directory.
+	certificateDestination := filesapp.MyFilesPath + "/" + filesapp.Downloads + "/" + caCertFileName
 	copyFile(configuration.CaCertificatePath, certificateDestination)
+
+	// Add the certificate in the certificate settings.
 	policyutil.SettingsPage(ctx, chrome, targetBrowser, "certificates")
 	ui := uiauto.New(testConnection)
 	authorities := nodewith.NameContaining("Authorities").Role(role.Tab)
+	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
 	importButton := nodewith.NameContaining("Import").Role(role.Button)
-	certFileItem := nodewith.NameContaining("ca-cert.pem").First()
+	certFileItem := nodewith.NameContaining(caCertFileName).First()
 	openButton := nodewith.NameContaining("Open").Role(role.Button)
 	trust1Checkbox := nodewith.NameContaining("Trust this certificate for identifying websites").Role(role.CheckBox)
 	trust2Checkbox := nodewith.NameContaining("Trust this certificate for identifying email users").Role(role.CheckBox)
 	trust3Checkbox := nodewith.NameContaining("Trust this certificate for identifying software makers").Role(role.CheckBox)
 	okButton := nodewith.NameContaining("OK").Role(role.Button)
-	if err := uiauto.Combine("set_cerficiate",
+
+	if err := uiauto.Combine("set_cerficate",
 		ui.WaitUntilExists(authorities),
 		ui.LeftClick(authorities),
+		ui.WaitUntilExists(authTabText),
 		ui.WaitUntilExists(importButton),
 		ui.LeftClick(importButton),
 		ui.WaitUntilExists(certFileItem),
@@ -135,8 +154,6 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration Serve
 		ui.WaitUntilExists(openButton),
 		ui.LeftClick(openButton),
 		ui.WaitUntilExists(trust1Checkbox),
-		ui.WaitUntilExists(trust2Checkbox),
-		ui.WaitUntilExists(trust3Checkbox),
 		ui.WaitUntilExists(okButton),
 		ui.LeftClick(trust1Checkbox),
 		ui.LeftClick(trust2Checkbox),
@@ -145,6 +162,63 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration Serve
 	)(ctx); err != nil {
 		return err
 	}
-	return nil
 
+	// Check if addition was successful.
+	if certExists2, err := CheckIfCertificateExists(ctx, cr, br, tconn, configuration.CaCertName, configuration.CaCertAuthName); err != nil {
+		return err
+	} else if !certExists2 {
+		return errors.Errorf("failed to add certificate with name %q", configuration.CaCertName)
+	}
+
+	return nil
+}
+
+/*
+CheckIfCertificateExists checks whether the certificate that is tried to add already exists. This can be used to check before trying to re-add an existing certificate
+or after to make sure the certificate indeed got correctly added.
+*/
+func CheckIfCertificateExists(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn, certName, authOrgName string) (bool, error) {
+	ui := uiauto.New(tconn)
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return false, err
+	}
+	defer kb.Close()
+
+	policyutil.SettingsPage(ctx, cr, br, "certificates")
+	authorities := nodewith.Name("Authorities").Role(role.Tab)
+	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
+
+	if err := uiauto.Combine("open correct tab",
+		ui.WaitUntilExists(authorities),
+		ui.LeftClick(authorities),
+		ui.WaitUntilExists(authTabText),
+	)(ctx); err != nil {
+		return false, err
+	}
+
+	googleCertCollapsiblePanel := nodewith.Name(authOrgName).Role(role.InlineTextBox)
+
+	// Authority of the cert doesn't exist, so cert also cannot exist.
+	if err := ui.Exists(googleCertCollapsiblePanel)(ctx); err != nil {
+		return false, nil
+	}
+
+	if err := uiauto.Combine("open collapsible panel to check if the cert is there",
+		ui.MakeVisible(googleCertCollapsiblePanel),
+		ui.LeftClick(googleCertCollapsiblePanel),
+		kb.AccelAction("Tab"),
+		kb.AccelAction("Enter"),
+	)(ctx); err != nil {
+		return false, err
+	}
+
+	certificateText := nodewith.Name(certName).Role(role.StaticText)
+	// The actual cert doesn't exist.
+	if err := ui.Exists(certificateText)(ctx); err != nil {
+		return false, nil
+	}
+
+	return true, nil
 }
