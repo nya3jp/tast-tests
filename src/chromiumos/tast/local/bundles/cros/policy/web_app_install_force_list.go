@@ -79,12 +79,12 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 	}
 
 	baseDirectory, _ := filepath.Split(s.DataPath("certificate.pem"))
-	ServerConfiguration := https.ServerConfiguration{
+	ServerConfiguration := https.NewServerConfiguration(https.ServerConfiguration{
 		ServerKeyPath:         s.DataPath("key.pem"),
 		ServerCertificatePath: s.DataPath("certificate.pem"),
 		CaCertificatePath:     s.DataPath("ca-cert.pem"),
 		HostedFilesBasePath:   baseDirectory,
-	}
+	})
 
 	https.ConfigureChromeToAcceptCertificate(ctx, ServerConfiguration, cr, br, tconn)
 	server := https.StartServer(ServerConfiguration)
