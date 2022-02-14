@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d17cf074_a04ec3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-02-14T21:18:48Z",
+      "side": 1,
+      "message": "how this affect results stability?\nand how it used to work previously?",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 92
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
