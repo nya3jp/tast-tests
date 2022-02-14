@@ -7,10 +7,9 @@ package policy
 import (
 	"context"
 	"crypto/tls"
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"path"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -25,20 +24,18 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/https"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
-const autofillCreditCardCertFile = "autofill_credit_card_enabled_certificate.pem"
-const autofillCreditCardKeyFile = "autofill_credit_card_enabled_key.pem"
-const autofillCreditCardCaCertFile = "autofill_credit_card_enabled_cacert.pem"
-const autofillCreditCardCaCertName = "TastCA"
-const autofillCreditCardCaCertAuthName = "org-Google"
+const autofillCreditCardCertFile = "certificate.pem"
+const autofillCreditCardKeyFile = "key.pem"
+const autofillCreditCardCaCertFile = "ca-cert.pem"
 const autofillCreditCardHTMLFile = "autofill_credit_card_enabled.html"
 
 func init() {
@@ -208,8 +205,18 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to click the Save button: ", err)
 				}
 
+				baseDirectory, _ := filepath.Split(s.DataPath(autofillCreditCardCertFile))
+				serverConfiguration := https.ServerConfiguration{
+					ServerKeyPath:         s.DataPath(autofillCreditCardKeyFile),
+					ServerCertificatePath: s.DataPath(autofillCreditCardCertFile),
+					CaCertificatePath:     s.DataPath(autofillCreditCardCaCertFile),
+					HostedFilesBasePath:   baseDirectory,
+					CaCertName:            "TastCA",
+					CaCertAuthName:        "org-Google",
+				}
+
 				// Save the certificate in chrome's certificate settings.
-				if err := configureChromeToAcceptCertificate(ctx, cr, br, tconn, s.DataPath(autofillCreditCardCaCertFile)); err != nil {
+				if err := https.ConfigureChromeToAcceptCertificate(ctx, serverConfiguration, cr, br, tconn); err != nil {
 					s.Fatal("Failed to set the certificate in Chrome's settings: ", err)
 				}
 
@@ -245,110 +252,4 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
-}
-
-// checkIfCertificateExists checks whether the certificate that is tried to add already exists.
-func checkIfCertificateExists(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn, certName, authOrgName string) (bool, error) {
-	ui := uiauto.New(tconn)
-
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return false, err
-	}
-	defer kb.Close()
-
-	policyutil.SettingsPage(ctx, cr, br, "certificates")
-	authorities := nodewith.Name("Authorities").Role(role.Tab)
-	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
-
-	if err := uiauto.Combine("open correct tab",
-		ui.WaitUntilExists(authorities),
-		ui.LeftClick(authorities),
-		ui.WaitUntilExists(authTabText),
-	)(ctx); err != nil {
-		return false, err
-	}
-
-	googleCertCollapsiblePanel := nodewith.Name(authOrgName).Role(role.InlineTextBox)
-
-	// Authority of the cert doesn't exist, so cert also cannot exist.
-	if err := ui.Exists(googleCertCollapsiblePanel)(ctx); err != nil {
-		return false, nil
-	}
-
-	if err := uiauto.Combine("open collapsible panel to check if the cert is there",
-		ui.MakeVisible(googleCertCollapsiblePanel),
-		ui.LeftClick(googleCertCollapsiblePanel),
-		kb.AccelAction("Tab"),
-		kb.AccelAction("Enter"),
-	)(ctx); err != nil {
-		return false, err
-	}
-
-	certificateText := nodewith.Name(certName).Role(role.StaticText)
-	// The actual cert doesn't exist.
-	if err := ui.Exists(certificateText)(ctx); err != nil {
-		return false, nil
-	}
-
-	return true, nil
-}
-
-// configureChromeToAcceptCertificate sets Chrome's certificate settings.
-// TODO(crbug.com/1293286): Re-use isolatedapp.ConfigureChromeToAcceptCertificate() instead when it has been moved to a directory which is accessible from here.
-func configureChromeToAcceptCertificate(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn, caCertDataPath string) error {
-	// Check if the cert already exists -> No need to add again.
-	if certExists, err := checkIfCertificateExists(ctx, cr, br, tconn, autofillCreditCardCaCertName, autofillCreditCardCaCertAuthName); err != nil {
-		return err
-	} else if certExists {
-		return nil
-	}
-
-	// Copy the certificate file to a local Downloads directory.
-	bytesRead, err := ioutil.ReadFile(caCertDataPath)
-	if err != nil {
-		return err
-	}
-	ioutil.WriteFile(path.Join(filesapp.MyFilesPath, filesapp.Downloads, autofillCreditCardCaCertFile), bytesRead, 0644)
-
-	// Add the certificate in the certificate settings.
-	policyutil.SettingsPage(ctx, cr, br, "certificates")
-	authorities := nodewith.Name("Authorities").Role(role.Tab)
-	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
-	importButton := nodewith.Name("Import").Role(role.Button)
-	certFileItem := nodewith.Name(autofillCreditCardCaCertFile).First()
-	openButton := nodewith.Name("Open").Role(role.Button)
-	trust1Checkbox := nodewith.Name("Trust this certificate for identifying websites").Role(role.CheckBox)
-	trust2Checkbox := nodewith.Name("Trust this certificate for identifying email users").Role(role.CheckBox)
-	trust3Checkbox := nodewith.Name("Trust this certificate for identifying software makers").Role(role.CheckBox)
-	okButton := nodewith.Name("OK").Role(role.Button)
-
-	ui := uiauto.New(tconn)
-	if err := uiauto.Combine("set_cerficiate",
-		ui.WaitUntilExists(authorities),
-		ui.LeftClick(authorities),
-		ui.WaitUntilExists(authTabText),
-		ui.WaitUntilExists(importButton),
-		ui.LeftClick(importButton),
-		ui.WaitUntilExists(certFileItem),
-		ui.LeftClick(certFileItem),
-		ui.WaitUntilExists(openButton),
-		ui.LeftClick(openButton),
-		ui.WaitUntilExists(trust1Checkbox),
-		ui.LeftClick(trust1Checkbox),
-		ui.LeftClick(trust2Checkbox),
-		ui.LeftClick(trust3Checkbox),
-		ui.LeftClick(okButton),
-	)(ctx); err != nil {
-		return err
-	}
-
-	// Check if addition was successful.
-	if certExists2, err := checkIfCertificateExists(ctx, cr, br, tconn, autofillCreditCardCaCertName, autofillCreditCardCaCertAuthName); err != nil {
-		return err
-	} else if !certExists2 {
-		return errors.Errorf("failed to add certificate with name %q", autofillCreditCardCaCertName)
-	}
-
-	return nil
 }

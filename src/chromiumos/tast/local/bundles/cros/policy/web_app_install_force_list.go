@@ -84,6 +84,8 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 		ServerCertificatePath: s.DataPath("certificate.pem"),
 		CaCertificatePath:     s.DataPath("ca-cert.pem"),
 		HostedFilesBasePath:   baseDirectory,
+		CaCertName:            "TastCA",
+		CaCertAuthName:        "org-Google",
 	}
 
 	https.ConfigureChromeToAcceptCertificate(ctx, ServerConfiguration, cr, br, tconn)
