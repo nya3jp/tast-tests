@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5605178e_93e92b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2376,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-02-14T21:48:26Z",
+      "side": 1,
+      "message": "Is this path fixed and does not depend on the interface name such as the other paths here?",
+      "revId": "a73179897ad3473fe378514fcdf4c2223db73c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfbafb2f_61134a89",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
         "patchSetId": 2
