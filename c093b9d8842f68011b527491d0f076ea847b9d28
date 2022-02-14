@@ -86,6 +86,24 @@
       "parentUuid": "912a7208_6a8214e2",
       "revId": "c093b9d8842f68011b527491d0f076ea847b9d28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0b324e_9362a337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T03:06:22Z",
+      "side": 1,
+      "message": "\u003e ok, I just saw go/tast-shadow-review and tast/gerrit.gwsq\n\u003e \n\u003e we will probably want to follow the policy test example and limit our ownership to files in cros/ui.\n\u003e \n\u003e I\u0027m ok with following this protocol, but I\u0027m also wondering if we should revisit it? At the time this was written, there were only 2 reviewers, and now there are 2 dozen. Perhaps it\u0027s no longer desirable or appropriate to have so many top level owners, and we should have more owners of subdirectories? \n\u003e \n\nThe long term plan is to split the code review responsibility into two.\n- Code owner.\n- Tast review.\n\nThe former is something what we\u0027re already familiar with in other places. They\u0027ll be listed in OWNERS per subdirectory basis.\n\nThe latter is something like \"readability review\" concept we have in Google.\n\nEach CL will need two bits to submit into platform/tast-tests following Google\u0027s best practices.\n\n\u003e My main concern is burdening Xiyuan (who is also owner of much of chromeos) with additional reviews. Xiyuan gets the most review requests in our team, and I don\u0027t want to create additional work for him if it can be avoided. Ideally he would receive review requests for cros/ui and not the rest.\n\nI\u0027m a bit confused here. I can totally understand your concern, but listing his name to OWNERS file would increase his code review work, in general...?\n\n\u003e \n\u003e Let me know your thoughts.",
+      "parentUuid": "b16f3422_5d31335f",
+      "revId": "c093b9d8842f68011b527491d0f076ea847b9d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
