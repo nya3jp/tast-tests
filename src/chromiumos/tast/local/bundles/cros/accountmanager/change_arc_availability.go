@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -39,7 +38,7 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		VarDeps: []string{"accountmanager.username2", "accountmanager.password2"},
-		Timeout: 6 * time.Minute,
+		Timeout: 8 * time.Minute,
 	})
 }
 
@@ -83,13 +82,11 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 	removeFromARCButton := nodewith.Name("Stop using with Android apps").Role(role.MenuItem)
 	addToARCButton := nodewith.Name("Use with Android apps").Role(role.MenuItem)
 
-	// Open Account Manager page in OS Settings and find Add Google Account button.
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
-
-	// Click the button to open account addition dialog.
-	if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
+	// Open Account Manager page in OS Settings and click Add Google Account button.
+	if err := uiauto.Combine("Click Add Google Account button",
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		ui.LeftClickUntil(addAccountButton, ui.Exists(accountmanager.AddAccountDialog())),
+	)(ctx); err != nil {
 		s.Fatal("Failed to click Add Google Account button: ", err)
 	}
 
@@ -113,54 +110,35 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that account is present in ARC.
-	s.Log("Verifying that account is present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username); err != nil {
-		s.Fatal("Failed to check that account is present in ARC err: ", err)
-	} else if !present {
-		s.Fatal("Account is not present in ARC")
+	if err := accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, true /*expectedPresentInArc*/)(ctx); err != nil {
+		s.Fatal("Failed to check that account is present in ARC: ", err)
 	}
 
-	// Open OS Settings again.
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
-	// Find and click "More actions, <email>" > "Stop using with Android apps" button.
 	if err := uiauto.Combine("Remove account from ARC",
+		// Open OS Settings again.
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		// Find and click "More actions, <email>" > "Stop using with Android apps" button.
 		ui.WaitUntilExists(moreActionsButton),
 		ui.LeftClick(moreActionsButton),
 		ui.WaitUntilExists(removeFromARCButton),
 		ui.LeftClick(removeFromARCButton),
+		// Check that account is not present in ARC.
+		accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, false /*expectedPresentInArc*/),
 	)(ctx); err != nil {
 		s.Fatal("Failed to remove account from ARC: ", err)
 	}
 
-	// Check that account is not present in ARC.
-	s.Log("Verifying that account is not present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username); err != nil {
-		s.Fatal("Failed to check that account is NOT present in ARC, err: ", err)
-	} else if present {
-		s.Fatal("Account is still present in ARC")
-	}
-
-	// Open OS Settings again.
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
-	// Find and click "More actions, <email>" > "Use with Android apps" button.
 	if err := uiauto.Combine("Add account to ARC",
+		// Open OS Settings again.
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		// Find and click "More actions, <email>" > "Use with Android apps" button.
 		ui.WaitUntilExists(moreActionsButton),
 		ui.LeftClick(moreActionsButton),
 		ui.WaitUntilExists(addToARCButton),
 		ui.LeftClick(addToARCButton),
+		// Check that account is present in ARC.
+		accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, true /*expectedPresentInArc*/),
 	)(ctx); err != nil {
 		s.Fatal("Failed to add account to ARC: ", err)
-	}
-
-	// Check that account is present in ARC.
-	s.Log("Verifying that account is present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username); err != nil {
-		s.Fatal("Failed to check that account is present in ARC err: ", err)
-	} else if !present {
-		s.Fatal("Account is not present in ARC")
 	}
 }

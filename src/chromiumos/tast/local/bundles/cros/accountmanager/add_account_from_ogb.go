@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -50,7 +49,7 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		VarDeps: []string{"accountmanager.username1", "accountmanager.password1"},
-		Timeout: 6 * time.Minute,
+		Timeout: 7 * time.Minute,
 	})
 }
 
@@ -116,13 +115,12 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying that account is present in OS Settings")
-	// Open Account Manager page in OS Settings and find Add Google Account button.
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(nodewith.Name("Add Google Account").Role(role.Button))); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
 	// Find "More actions, <email>" button to make sure that account was added.
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
+	if err := uiauto.Combine("Click Add Google Account button",
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		ui.WaitUntilExists(moreActionsButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to find More actions button: ", err)
 	}
 
@@ -135,13 +133,8 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 
 	// Account is expected to be not present in ARC only if browser type is Lacros. The feature is being applied only if Lacros is enabled.
 	expectedPresentInArc := s.Param().(browser.Type) != browser.TypeLacros
-
-	presentInArc, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username)
-	if err != nil {
-		s.Fatal("Failed to check if account is present in ARC err: ", err)
-	}
-	if expectedPresentInArc != presentInArc {
-		s.Fatalf("Unexpected ARC behavior: for 'present in ARC' got %t; want %t", presentInArc, expectedPresentInArc)
+	if err := accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, expectedPresentInArc)(ctx); err != nil {
+		s.Fatalf("Failed to check if account is present in ARC, expected '%t', err: %v", expectedPresentInArc, err)
 	}
 }
 
