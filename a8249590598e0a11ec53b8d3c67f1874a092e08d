@@ -1,0 +1,357 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ce959f_8d9a7c9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "Mostly LG. Commented for the new code.\n\nAlso, I found a few misc things to improve in the old code, too, so added them (all of them are just minor stuff).\n",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a47936_c4282390",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "Could you add short doc? Specifically, what happens logOutput is set, outDir is set, and what are returned []byte, as they are not trivial.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf08b15_013cc97d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "Could you use SeparatedOutput?\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/common/testexec/testexec.go;l\u003d169",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30236958_5dd041d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "style:\n\nif err :\u003d cmd.Wait(); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "109adcd3_89b8b95c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "Here and below, if err at L83 is non-nil, we should prioritize it, rather than this one.\nYou can log via testing.ContextLog*() for this err.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad990a85_aacffaf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "could you calls f.Close() in defer here?\nOtherwise, on write error, it will be leaked.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae6646d_29faed22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "Could you use fmt.Fprintf, instead?",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "493ebc3e_811d3635",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "optional: I\u0027d recommend to add some separator here.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3defe9b9_2f8f4866",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 9
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81acfa29_b7a2dff2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "nit: could you wrap err here? (sorry, overlooked in past iterations)\n(commented same for below, though I know it may look verbose).",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6049b5a4_4ef645f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "nit: could you wrap err here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67917ef_fdd597dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "could you move this to L155?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3603814a_ced25cc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "\":\u003d\"",
+      "range": {
+        "startLine": 169,
+        "startChar": 8,
+        "endLine": 169,
+        "endChar": 9
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82640ede_6079a36c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "Could you wrap error here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599ce0a1_f7bf7774",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "could you wrap err here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb67f79_2a6899d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "could you add comment what are expected format? Examples will be useful.\nComment about group capturing is also helpful.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f836a1_b2dd7ef5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "could you wrap err here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cf2d66_f99c875c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "could you wrap err here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8640f2d_07c9d13f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-14T13:50:43Z",
+      "side": 1,
+      "message": "could you wrap err here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
