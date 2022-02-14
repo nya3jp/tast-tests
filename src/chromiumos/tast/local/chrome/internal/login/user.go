@@ -6,11 +6,15 @@ package login
 
 import (
 	"context"
+	"io"
+	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -51,6 +55,49 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 			mountType = cryptohome.Ephemeral
 		}
 		if err = cryptohome.WaitForUserMountAndValidateType(ctx, cfg.NormalizedUser(), mountType); err != nil {
+			if cfg.LoginMode() == config.GAIALogin {
+				// Backup the original error.
+				origErr := err
+
+				// Check the error message from the server side.
+				logReader, err := syslog.NewLineReader(ctx, syslog.ChromeLogFile, true, nil)
+				if err != nil {
+					return errors.Wrapf(origErr, "could not get Chrome log reader: %v", err)
+				}
+				defer logReader.Close()
+
+				for {
+					line, err := logReader.ReadLine()
+					if err != nil {
+						if err != io.EOF {
+							return errors.Wrapf(origErr, "failed to read file %v: %v", syslog.ChromeLogFile, err)
+						}
+
+						// Could not found server side authentication error.
+						// Return the error directly.
+						return origErr
+					}
+					if strings.HasSuffix(line, "Got authentication error\n") {
+						break
+					}
+				}
+
+				// Skip two lines after the authentication error.
+				for i := 0; i < 2; i++ {
+					line, err := logReader.ReadLine()
+					if err != nil {
+						return errors.Wrapf(origErr, "failed to read the authentication error: %v", err)
+					}
+				}
+
+				// Read the third line after the authentication error.
+				line, err := logReader.ReadLine()
+				if err != nil {
+					return errors.Wrapf(origErr, "failed to read the authentication error: %v", err)
+				}
+				authErr := strings.TrimSpace(line)
+				return errors.Errorf("authentication error: %v", authErr)
+			}
 			return err
 		}
 	}
