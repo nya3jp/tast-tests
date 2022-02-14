@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c41a14e_2e926a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-14T00:59:05Z",
+      "side": 1,
+      "message": "Update both occurrences, but curious if you have a link to where this is stated? I note [1] there are 71 occurrences with uppercase names and 183 lowercase [2] occurrences.\n\n[1] https://source.chromium.org/search?q\u003duiauto.Combine%5C(%5C%22%5BA-Z%5D%20case:y\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F\n[2] https://source.chromium.org/search?q\u003duiauto.Combine%5C(%5C%22%5Ba-z%5D%20case:y\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F",
+      "parentUuid": "6c9b9eb8_f54b2a66",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "f3c45de5073d7be1497c1eebc457792760d62c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16044752_b740a72d",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2022-02-13T22:06:48Z",
       "side": 1,
       "message": "This func does not seem to make the code simpler?",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 19
+      },
+      "revId": "f3c45de5073d7be1497c1eebc457792760d62c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdcaa613_01771cb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-14T00:59:05Z",
+      "side": 1,
+      "message": "This `ioutil.WriteFile` is used in 2 places (rename and copy) so I want to extract out the hardcoded text and file permissions for reuse (it is used again in the follow up tests). Would you prefer the `ioutil.WriteFile` inline with the content as a var?",
+      "parentUuid": "16044752_b740a72d",
       "range": {
         "startLine": 131,
         "startChar": 5,
