@@ -71,7 +71,7 @@ func CrossOriginForbidden(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	baseDirectory, fileName := filepath.Split(s.DataPath(mainAppFile))
-	ServerConfiguration := https.ServerConfiguration{
+	ServerConfiguration := https.NewServerConfiguration(https.ServerConfiguration{
 		Headers: map[string]string{
 			"Cross-Origin-Embedder-Policy": "require-corp",
 			"Cross-Origin-Opener-Policy":   "same-origin",
@@ -80,7 +80,7 @@ func CrossOriginForbidden(ctx context.Context, s *testing.State) {
 		ServerCertificatePath: s.DataPath(serverCertificateFile),
 		HostedFilesBasePath:   baseDirectory,
 		CaCertificatePath:     s.DataPath(certificateAuthorityFile),
-	}
+	})
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
