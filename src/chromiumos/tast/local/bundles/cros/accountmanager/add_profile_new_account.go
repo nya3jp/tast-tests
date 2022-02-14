@@ -89,7 +89,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Adding a new profile")
-	addAccountDialog := accountmanager.GetAddAccountDialog()
+	addAccountDialog := accountmanager.AddAccountDialog()
 	addProfileRoot := nodewith.Name("Set up your new Chrome profile").Role(role.RootWebArea)
 	nextButton := nodewith.Name("Next").Role(role.Button).Focusable().Ancestor(addProfileRoot)
 	if err := uiauto.Combine("Click on nextButton",

@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/action"
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -35,20 +36,15 @@ const DefaultUITimeout = 20 * time.Second
 // LongUITimeout is for interaction with webpages to make sure that page is loaded.
 const LongUITimeout = time.Minute
 
-// GetAddAccountDialog returns a root node of the system account addition dialog.
-func GetAddAccountDialog() *nodewith.Finder {
+// AddAccountDialog returns a root node of the system account addition dialog.
+func AddAccountDialog() *nodewith.Finder {
 	return nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
-}
-
-// GetChromeWindow returns a nodewith.Finder to the Chrome window.
-func GetChromeWindow() *nodewith.Finder {
-	return nodewith.NameContaining("Google Chrome").Role(role.Window).HasClass("BrowserRootView")
 }
 
 // GetChromeProfileWindow returns a nodewith.Finder to the Chrome window which
 // matches the provided condition.
 func GetChromeProfileWindow(ctx context.Context, tconn *chrome.TestConn, condition func(uiauto.NodeInfo) bool) (*nodewith.Finder, error) {
-	profileWindow := GetChromeWindow()
+	profileWindow := nodewith.NameContaining("Google Chrome").Role(role.Window).HasClass("BrowserRootView")
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
 	var result *nodewith.Finder
@@ -71,6 +67,18 @@ func GetChromeProfileWindow(ctx context.Context, tconn *chrome.TestConn, conditi
 	return result, nil
 }
 
+// OpenAccountManagerSettingsAction returns an action that opens OS Settings > Accounts.
+func OpenAccountManagerSettingsAction(tconn *chrome.TestConn, cr *chrome.Chrome) action.Action {
+	return func(ctx context.Context) error {
+		ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+		// Open Account Manager page in OS Settings and find Add Google Account button.
+		if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(nodewith.Name("Add Google Account").Role(role.Button))); err != nil {
+			return errors.Wrap(err, "failed to launch Account Manager page")
+		}
+		return nil
+	}
+}
+
 // AddAccount adds an account in-session. Account addition dialog should be already open.
 func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password string) error {
 	// Set up keyboard.
@@ -83,7 +91,7 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
 	// All nodes in the dialog should be inside the `root`.
-	root := GetAddAccountDialog()
+	root := AddAccountDialog()
 
 	// Click OK.
 	okButton := nodewith.NameRegex(regexp.MustCompile("(OK|Continue)")).Role(role.Button).Ancestor(root)
@@ -129,35 +137,26 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 		return errors.Wrap(err, "failed to click on user name")
 	}
 
-	// Enter the User Name.
-	if err := kb.Type(ctx, email+"\n"); err != nil {
-		return errors.Wrap(err, "failed to type user name")
-	}
-
-	// Enter Password.
 	passwordField := nodewith.Name("Enter your password").Role(role.TextField).Ancestor(root)
-	if err := uiauto.Combine("Click on Password",
-		ui.WaitUntilExists(passwordField),
-		ui.LeftClick(passwordField),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on password")
-	}
-
-	if err := kb.Type(ctx, password); err != nil {
-		return errors.Wrap(err, "failed to type password")
-	}
-
 	nextButton := nodewith.Name("Next").Role(role.Button).Ancestor(root)
 	iAgreeButton := nodewith.Name("I agree").Role(role.Button).Ancestor(root)
-	if err := uiauto.Combine("Agree and Finish Adding Account",
+
+	if err := uiauto.Combine("Enter email and password",
+		// Enter the User Name.
+		kb.TypeAction(email+"\n"),
+		ui.WaitUntilExists(passwordField),
+		ui.LeftClick(passwordField),
+		// Enter the Password.
+		kb.TypeAction(password),
 		ui.LeftClick(nextButton),
 		// We need to focus the button first to click at right location
 		// as it returns wrong coordinates when button is offscreen.
 		ui.FocusAndWait(iAgreeButton),
 		ui.LeftClick(iAgreeButton),
 	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to add account")
+		return errors.Wrap(err, "failed to enter email and password")
 	}
+
 	return nil
 }
 
@@ -169,7 +168,7 @@ func CheckArcToggleStatus(ctx context.Context, tconn *chrome.TestConn, brType br
 		return nil
 	}
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
-	root := GetAddAccountDialog()
+	root := AddAccountDialog()
 	toggle := nodewith.NameStartingWith("Use this account with Android apps").Role(role.ToggleButton).Ancestor(root)
 	if err := ui.WaitUntilExists(toggle)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find ARC toggle")
@@ -247,44 +246,86 @@ func openOGB(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration)
 	return nil
 }
 
-// IsAccountPresentInArc returns `true` if account is present in ARC Settings > Accounts.
-func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, d *androidui.Device, accountName string) (bool, error) {
-	const (
-		scrollClassName   = "android.widget.ScrollView"
-		textViewClassName = "android.widget.TextView"
-	)
+// CheckIsAccountPresentInArcAction returns an action that checks whether account is present in ARC depending on expectedPresentInArc parameter.
+func CheckIsAccountPresentInArcAction(tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedPresentInArc bool) action.Action {
+	return func(ctx context.Context) error {
+		const (
+			// Note: it may take long time for account to be propagated to ARC.
+			// When increasing this timeout, consider inceasing timeout of the tests which call this method.
+			arcAccountCheckTimeout = time.Minute
+			scrollClassName        = "android.widget.ScrollView"
+			textViewClassName      = "android.widget.TextView"
+		)
 
-	if err := apps.Launch(ctx, tconn, apps.AndroidSettings.ID); err != nil {
-		return false, errors.Wrap(err, "failed to launch AndroidSettings")
-	}
+		if err := apps.Launch(ctx, tconn, apps.AndroidSettings.ID); err != nil {
+			return errors.Wrap(err, "failed to launch AndroidSettings")
+		}
 
-	// Scroll until Accounts is visible.
-	scrollLayout := d.Object(androidui.ClassName(scrollClassName),
-		androidui.Scrollable(true))
-	accounts := d.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
-	if err := scrollLayout.WaitForExists(ctx, DefaultUITimeout); err == nil {
-		scrollLayout.ScrollTo(ctx, accounts)
-	}
-	if err := accounts.Click(ctx); err != nil {
-		return false, errors.Wrap(err, "failed to click Accounts in ARC settings")
-	}
+		// Scroll until Accounts is visible.
+		scrollLayout := d.Object(androidui.ClassName(scrollClassName),
+			androidui.Scrollable(true))
+		accounts := d.Object(androidui.ClassName("android.widget.TextView"),
+			androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
+		if err := scrollLayout.WaitForExists(ctx, DefaultUITimeout); err == nil {
+			scrollLayout.ScrollTo(ctx, accounts)
+		}
+		if err := accounts.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Accounts in ARC settings")
+		}
 
-	account := d.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.TextMatches(accountName), androidui.Enabled(true))
-	if err := scrollLayout.WaitForExists(ctx, DefaultUITimeout); err == nil {
-		scrollLayout.ScrollTo(ctx, account)
-	}
+		account := d.Object(androidui.ClassName("android.widget.TextView"),
+			androidui.TextMatches(accountName), androidui.Enabled(true))
 
-	if err := account.Exists(ctx); err != nil {
-		return false, nil
+		accountExists := false
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := scrollLayout.WaitForExists(ctx, 10*time.Second); err == nil {
+				scrollLayout.ScrollTo(ctx, account)
+			}
+			if err := account.Exists(ctx); err == nil {
+				accountExists = true
+				if expectedPresentInArc {
+					// The account exists and is expected to exist => success.
+					return nil
+				}
+				return testing.PollBreak(errors.New("the account is present, but expected to be gone"))
+			}
+			return errors.New("continue polling")
+		}, &testing.PollOptions{Timeout: arcAccountCheckTimeout, Interval: 2 * time.Second}); err != nil {
+			testing.ContextLog(ctx, "Finished polling with result: ", accountExists)
+		}
+
+		if expectedPresentInArc != accountExists {
+			return errors.Errorf("failed to check if account is present in ARC, expected %t, got %t", expectedPresentInArc, accountExists)
+		}
+
+		return nil
 	}
-	return true, nil
 }
 
-// RemoveAccountFromOSSettings removes a secondary account from OS Settings.
+// RemoveAccountFromOSSettings removes a secondary account with provided email from OS Settings.
+func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, brType browser.Type, email string) error {
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+	moreActionsButton := nodewith.Name("More actions, " + email).Role(role.Button)
+
+	if err := uiauto.Combine("Click More actions",
+		// Open OS Settings again.
+		OpenAccountManagerSettingsAction(tconn, cr),
+		// Find and click "More actions, <email>" button.
+		ui.WaitUntilExists(moreActionsButton),
+		ui.LeftClick(moreActionsButton),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click More actions button")
+	}
+
+	if err := removeSelectedAccountFromOSSettings(ctx, tconn, brType); err != nil {
+		return errors.Wrap(err, "failed to remove account from OS Settings")
+	}
+	return nil
+}
+
+// removeSelectedAccountFromOSSettings removes a secondary account from OS Settings.
 // The "More actions" menu should be already open for that account.
-func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, brType browser.Type) error {
+func removeSelectedAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, brType browser.Type) error {
 	testing.ContextLog(ctx, "Removing account")
 
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
@@ -320,9 +361,7 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
 	// Open Account Manager page in OS Settings.
-	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
-	_, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton))
-	if err != nil {
+	if err := OpenAccountManagerSettingsAction(tconn, cr)(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch Account Manager page")
 	}
 
@@ -352,7 +391,7 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 			return errors.Wrap(err, "failed to click More actions button")
 		}
 
-		if err := RemoveAccountFromOSSettings(ctx, tconn, brType); err != nil {
+		if err := removeSelectedAccountFromOSSettings(ctx, tconn, brType); err != nil {
 			return errors.Wrap(err, "failed to remove account from OS Setting")
 		}
 
