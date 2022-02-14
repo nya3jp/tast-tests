@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 )
@@ -22,7 +21,7 @@ import (
 // The caller should close the returned connection. e.g. defer calcConn.Close().
 func UIConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 	// Establish a Chrome connection to the Calculator app and wait for it to finish loading.
-	targetURL := fmt.Sprintf(`chrome-extension://%s/index.html`, apps.Calculator.ID)
+	targetURL := "https://calculator.apps.chrome/"
 	appConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(targetURL))
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to connect to target %q", targetURL)
