@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e5afed_81f39660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-14T02:55:45Z",
+      "side": 1,
+      "message": "It is not very clear but here is the doc: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d111",
+      "parentUuid": "0c41a14e_2e926a0c",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "f3c45de5073d7be1497c1eebc457792760d62c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16044752_b740a72d",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "This `ioutil.WriteFile` is used in 2 places (rename and copy) so I want to extract out the hardcoded text and file permissions for reuse (it is used again in the follow up tests). Would you prefer the `ioutil.WriteFile` inline with the content as a var?",
       "parentUuid": "16044752_b740a72d",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 19
+      },
+      "revId": "f3c45de5073d7be1497c1eebc457792760d62c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1831ab8_fad4abb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-14T02:55:45Z",
+      "side": 1,
+      "message": "Not really. I just thought that the content of the file is not really used and using an extra func just adds up lines. Up to you.",
+      "parentUuid": "bdcaa613_01771cb9",
       "range": {
         "startLine": 131,
         "startChar": 5,
