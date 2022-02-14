@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da019a0_1bd39238",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-14T10:19:25Z",
+      "side": 1,
+      "message": "Hello reviewers:\nWe have split the CL into 3 parts, the other two are as follow:\npart 1: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3459597\npart 2: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3459598\n\nplease review, thanks.",
+      "revId": "4ad6a8cb04f6e1db6866a95b2d07b3bec8150022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
