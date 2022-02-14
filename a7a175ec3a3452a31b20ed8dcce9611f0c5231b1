@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99551f56_84bbaa2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-02-14T23:17:54Z",
+      "side": 1,
+      "message": "It\u0027s related because the I\u0027ve removed the rescue operation from the proto rpc on the service side as well.",
+      "parentUuid": "11f0ae1b_d12f427e",
+      "revId": "a7a175ec3a3452a31b20ed8dcce9611f0c5231b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b057e600_9b1b2b8b",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-14T20:57:38Z",
       "side": 1,
       "message": "Is close and re-open still needed now that opentitantool is doing everything?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "a7a175ec3a3452a31b20ed8dcce9611f0c5231b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3380fd6_11d7f527",
+        "filename": "src/chromiumos/tast/remote/firmware/ti50/dutcontrol_andreiboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-02-14T23:17:54Z",
+      "side": 1,
+      "message": "Yea it\u0027s still needed, both the console and bootstrap rescue contends for the uart, so will encounter an error if it\u0027s already occupied by one of them.",
+      "parentUuid": "b057e600_9b1b2b8b",
       "range": {
         "startLine": 66,
         "startChar": 4,
