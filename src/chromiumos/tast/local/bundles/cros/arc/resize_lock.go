@@ -55,10 +55,6 @@ var testCases = []resizeLockTestCase{
 		fn:   testToggleImmersiveMode,
 	},
 	{
-		name: "Resize Locked App - Toggle splitview",
-		fn:   testToggleSplitView,
-	},
-	{
 		name: "Resize Locked App - Toggle PIP",
 		fn:   testPIP,
 	},
@@ -220,11 +216,6 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 // testToggleImmersiveMode verifies that a resize locked app rejects a fullscreen event.
 func testToggleImmersiveMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
 	return testChangeWindowState(ctx, tconn, a, d, cr, keyboard, ash.WMEventFullscreen, ash.WindowStateNormal)
-}
-
-// testToggleSplitView verifies that a resize locked app rejects a snap event.
-func testToggleSplitView(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
-	return testChangeWindowState(ctx, tconn, a, d, cr, keyboard, ash.WMEventSnapLeft, ash.WindowStateNormal)
 }
 
 // testChangeWindowState verifies that the given WM event transitions a resize-locked app to the expected state.
