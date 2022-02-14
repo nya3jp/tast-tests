@@ -17,9 +17,9 @@ import (
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wificell/router"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/timing"
 )
 
@@ -132,7 +132,7 @@ func (c *Config) InstallRouterCredentials(ctx context.Context, host *ssh.Conn, w
 		pathMap[tmpfile.Name()] = f.path
 	}
 
-	if _, err := linuxssh.PutFiles(ctx, host, pathMap, linuxssh.DereferenceSymlinks); err != nil {
+	if _, err := router.PutFiles(ctx, host, pathMap); err != nil {
 		return errors.Wrap(err, "unable to upload file to host")
 	}
 	return nil
