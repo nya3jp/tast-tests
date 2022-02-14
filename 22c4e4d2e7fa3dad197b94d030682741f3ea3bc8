@@ -16,6 +16,23 @@
       "message": "Soheil, please review",
       "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4afaad7_a1ba3034",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-14T09:06:02Z",
+      "side": 1,
+      "message": "Roman, PTAL",
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
