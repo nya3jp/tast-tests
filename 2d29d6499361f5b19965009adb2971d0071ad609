@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d72e784_ade4155b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-14T15:47:25Z",
+      "side": 1,
+      "message": "The library currently supports using any other certificates too bcs they only point to a path of a certificate (which can be any other certificate too if not willing to use the \"sample ones\" for some reason)? So I think it\u0027s better to be able to provide the name and org dynamically too in case used with any other than the \"sample\" certificate.",
+      "parentUuid": "a125249d_bb8a177f",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b503c1a3_a14b3856",
