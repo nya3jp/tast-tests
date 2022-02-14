@@ -51,6 +51,23 @@
       "message": "Please check if this implementation is the wrapper you required. There are some constrains that we need to discuss with tast team.",
       "revId": "62ae67479c017bcad94dcf1040998786c9fb503f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165a8114_043a08c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-02-14T03:22:52Z",
+      "side": 1,
+      "message": "This way of running the CUJs is perfect for the quick run, where total running time is expected to be relatively short. However, for the full test suite, this way would result in ~20 hours of running time, which is too much for stainless to handle. Instead, we\u0027d like to run all iterations of existing tests in one go, i.e. ui.TabSwitchCUJ2.nasic_noproxy_full with run 10 iterations of the ui.TabSwitchCUJ2.nasic_noproxy test case.",
+      "revId": "62ae67479c017bcad94dcf1040998786c9fb503f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
