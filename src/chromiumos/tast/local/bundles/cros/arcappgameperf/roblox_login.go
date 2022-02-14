@@ -27,7 +27,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Captures login metrics for Roblox",
 		Contacts:     []string{"davidwelling@google.com", "pjlee@google.com", "arc-engprod@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		// TODO(b/219524888): Disabled while CAPTCHA prevents test from completing.
+		//Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(b/206442649): Remove after initial testing is complete.
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
