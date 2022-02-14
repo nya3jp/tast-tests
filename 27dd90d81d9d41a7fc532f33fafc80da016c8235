@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4df0a84_232f3f22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-14T03:02:14Z",
+      "side": 1,
+      "message": "I re-wrote runCommandLine, it does not use CombinedOutput anymore.",
+      "parentUuid": "370ce1d3_1aac1832",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec4b9e96_5a63d2e7",

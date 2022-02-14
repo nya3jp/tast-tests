@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c7ab9e_bcfba05a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-14T03:02:14Z",
+      "side": 1,
+      "message": "Output from command line invocations is now stored in a separate output file.",
+      "parentUuid": "78ae32f9_4bd72ae9",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52c3d46e_1f54cc40",
