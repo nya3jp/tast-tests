@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69853c42_81639f0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2022-02-14T17:44:55Z",
+      "side": 1,
+      "message": "I enabled after checking that the v4l2 test now supports.  Was this also disabled because of intel not supporting?",
+      "revId": "214dca6ce9994fae0bb1a6fcfef463250d460fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
