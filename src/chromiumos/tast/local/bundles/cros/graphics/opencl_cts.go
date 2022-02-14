@@ -31,7 +31,7 @@ func init() {
 			"rjodin@chromium.org",
 			"chromeos-gfx@google.com",
 		},
-		Attr:         []string{"group:graphics", "graphics_weekly"},
+		Attr:         []string{"group:graphics", "graphics_opencl", "graphics_weekly"},
 		SoftwareDeps: []string{"vulkan"},
 		Fixture:      "graphicsNoChrome",
 		Params: []testing.Param{
