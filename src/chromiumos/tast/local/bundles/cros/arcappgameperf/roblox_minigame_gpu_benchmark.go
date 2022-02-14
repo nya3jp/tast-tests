@@ -29,7 +29,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Captures launch metrics for Roblox",
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		// TODO(b/219524888): Disabled while CAPTCHA prevents test from completing.
+		//Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
