@@ -224,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3991f9_d149cb80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/options_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-14T18:02:53Z",
+      "side": 1,
+      "message": "Made other permissions as optional in the manifest. PTAL on the latest patchset.",
+      "parentUuid": "cf866bb7_5136a702",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "c34a5fa535e58140e26a125b4512ff47e2c4e34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0a83132_5b804a42",
