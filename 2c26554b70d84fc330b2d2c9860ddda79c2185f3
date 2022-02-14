@@ -46,6 +46,30 @@
       },
       "revId": "2c26554b70d84fc330b2d2c9860ddda79c2185f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a89734_161d7dca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-02-14T23:51:23Z",
+      "side": 1,
+      "message": "Got it. I mostly wanted the fact that this change has been tested against both topologies to be listed in the TEST section for posterity purposes since it\u0027s not clear that from the commit message that this change is backwards compatible when running the test with the legacy router instead of an OpenWRT router. WDYT?",
+      "parentUuid": "21771b7f_53df3cce",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 75
+      },
+      "revId": "2c26554b70d84fc330b2d2c9860ddda79c2185f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
