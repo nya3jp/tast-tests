@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b057e600_9b1b2b8b",
+        "filename": "src/chromiumos/tast/remote/firmware/ti50/dutcontrol_andreiboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-02-14T20:57:38Z",
+      "side": 1,
+      "message": "Is close and re-open still needed now that opentitantool is doing everything?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "a7a175ec3a3452a31b20ed8dcce9611f0c5231b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
