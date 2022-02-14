@@ -7,7 +7,7 @@
 // After modified, to overwrite the old Params, run:
 // TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/remote/bundles/cros/wifi
 // To check only, run:
-// ~/trunk/src/platform/fast_build.sh -t chromiumos/tast/remote/bundles/cros/wifi
+// ~/trunk/src/platform/tast/fast_build.sh -t chromiumos/tast/remote/bundles/cros/wifi
 
 package wifi
 
@@ -49,11 +49,28 @@ func simpleConnectDocPref(text string) []string {
 
 const simpleConnectCommonSecApOpts = "ap.Mode(ap.Mode80211g), ap.Channel(1)"
 
+var dfsChannels = []int{
+	52, 56, 60, 64, 100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144,
+}
+
+func channelNeedsDfs(channel int) bool {
+	for _, ch := range dfsChannels {
+		if channel == ch {
+			return true
+		}
+	}
+	return false
+}
+
 func simpleConnect80211abg() []simpleConnectParams {
 	mkOps := func(mode string, channels ...int) []simpleConnectParamsVal {
 		p := make([]simpleConnectParamsVal, len(channels))
 		for i, ch := range channels {
-			p[i].APOpts = fmt.Sprintf("ap.Mode(ap.Mode80211%s), ap.Channel(%d)", mode, ch)
+			opts := fmt.Sprintf("ap.Mode(ap.Mode80211%s), ap.Channel(%d)", mode, ch)
+			if channelNeedsDfs(ch) {
+				opts += ", ap.SpectrumManagement()"
+			}
+			p[i].APOpts = opts
 		}
 		return p
 	}
@@ -117,7 +134,7 @@ func simpleConnect80211ac() []simpleConnectParams {
 		Name: "80211acvht20",
 		Doc:  simpleConnectDocPref("an open 802.11ac network on channel 60 with a channel width of 20MHz."),
 		Val: []simpleConnectParamsVal{{APOpts: `
-			ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20),
+			ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20), ap.SpectrumManagement(),
 			ap.VHTChWidth(ap.VHTChWidth20Or40),
 		`}},
 		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
@@ -386,8 +403,8 @@ func simpleConnectDFS() []simpleConnectParams {
 			"See: https://en.wikipedia.org/wiki/Dynamic_frequency_selection, https://en.wikipedia.org/wiki/List_of_WLAN_channels"),
 		ExtraAttr: []string{"wificell_cq"},
 		Val: []simpleConnectParamsVal{
-			{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40)"},
-			{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)"},
+			{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(120), ap.HTCaps(ap.HTCapHT40), ap.SpectrumManagement()"},
+			{APOpts: "ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40), ap.SpectrumManagement()"},
 		},
 	}}
 }
