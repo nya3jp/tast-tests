@@ -36,13 +36,13 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test for Discord that installs the app also verifies it is logged in and that the main page is open, checks Discord correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		Attr:         []string{"group:appcompat", "appcompat_release"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForDiscord,
-				CommonTests: testutil.ClamshellCommonTests,
+				CommonTests: testutil.ClamshellSmokeTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -53,7 +53,7 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForDiscord,
-				CommonTests: testutil.TouchviewCommonTests,
+				CommonTests: testutil.TouchviewSmokeTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -64,7 +64,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForDiscord,
-				CommonTests: testutil.ClamshellCommonTests,
+				CommonTests: testutil.ClamshellSmokeTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -75,7 +75,7 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForDiscord,
-				CommonTests: testutil.TouchviewCommonTests,
+				CommonTests: testutil.TouchviewSmokeTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
