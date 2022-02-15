@@ -57,6 +57,24 @@
       "parentUuid": "1d573fad_f1647085",
       "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4bd6c8_2ded5e22",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-15T05:41:27Z",
+      "side": 1,
+      "message": "That should work since it typecasts to (crostini.FixtureData)",
+      "parentUuid": "b0d964cf_bdb017d4",
+      "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
