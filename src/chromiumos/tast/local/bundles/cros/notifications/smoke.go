@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -56,7 +57,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 	defer cleanup(ctx)
 
 	s.Log("Creating notification")
-	if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, "TestNotification1", "blahhh"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, "TestNotification1", "blahhh"); err != nil {
 		s.Fatal("Failed to create test notification: ", err)
 	}
 	s.Log("Checking that notification appears")
@@ -96,7 +97,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close notification: ", err)
 	}
 	s.Log("Firing another notification while notification centre is open")
-	if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, "TestNotification2", "testttt"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, "TestNotification2", "testttt"); err != nil {
 		s.Fatal("Failed to create test notification: ", err)
 	}
 	s.Log("Closing notification from notification centre")
