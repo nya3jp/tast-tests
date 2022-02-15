@@ -6,12 +6,10 @@ package memory
 
 import (
 	"context"
-	"io/ioutil"
 	"math"
-	"strconv"
-	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/resourced"
 )
 
 // Limit allows tests to determine if memory use is close to a limit without
@@ -29,37 +27,22 @@ type Limit interface {
 
 // AvailableLimit is a Limit for ChromeOS available memory.
 type AvailableLimit struct {
-	margin int64
+	rm     *resourced.Client
+	margin uint64
 }
 
 // AvailableLimit conforms to Limit interface.
 var _ Limit = (*AvailableLimit)(nil)
 
-// readFirstInt64 reads the first integer from a file.
-func readFirstInt64(f string) (int64, error) {
-	// Files will always just be a single line, so it's OK to read everything.
-	data, err := ioutil.ReadFile(f)
-	if err != nil {
-		return 0, errors.Wrapf(err, "failed to read file %q", f)
-	}
-	firstString := strings.Split(strings.TrimSpace(string(data)), " ")[0]
-	firstInt64, err := strconv.ParseInt(firstString, 10, 64)
-	if err != nil {
-		return 0, errors.Wrapf(err, "unable to convert %q to integer", data)
-	}
-	return firstInt64, nil
-}
-
-// Distance returns the difference between available memory and the critical
+// Distance returns the difference between available memory and the provided
 // margin, in bytes. Result will be negative if available memory is below the
-// critical margin.
-func (l *AvailableLimit) Distance(_ context.Context) (int64, error) {
-	const availableMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/available"
-	availableMiB, err := readFirstInt64(availableMemorySysFile)
+// margin.
+func (l *AvailableLimit) Distance(ctx context.Context) (int64, error) {
+	availableKiB, err := l.rm.AvailableMemoryKB(ctx)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to read ChromeOS available memory")
+		return 0, err
 	}
-	return (availableMiB * MiB) - l.margin, nil
+	return int64(availableKiB*KiB) - int64(l.margin), nil
 }
 
 // AssertNotReached checks that available memory is above the margin.
@@ -69,40 +52,15 @@ func (l *AvailableLimit) AssertNotReached(ctx context.Context) error {
 		return err
 	}
 	if distance <= 0 {
-		return errors.Errorf("available memory %d is less than margin %d", distance+l.margin, l.margin)
+		return errors.Errorf("available memory %d is less than margin %d", distance+int64(l.margin), l.margin)
 	}
 	return nil
 }
 
-// CriticalMargin returns the value of ChromeOS available memory below which
-// tabs are killed, in bytes.
-func CriticalMargin() (int64, error) {
-	const marginMemorySysFile = "/sys/kernel/mm/chromeos-low_mem/margin"
-	criticalMarginMiB, err := readFirstInt64(marginMemorySysFile)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to read ChromeOS critical margin")
-	}
-	return criticalMarginMiB * MiB, nil
-}
-
 // NewAvailableLimit creates a Limit that measures how far away ChromeOS
 // available memory is from a specified margin, in bytes.
-func NewAvailableLimit(margin int64) (*AvailableLimit, error) {
-	return &AvailableLimit{margin}, nil
-}
-
-// NewAvailableCriticalLimit creates a Limit that measures how far away ChromeOS
-// is from the critical memory pressure margin. Unlike
-// NewAvailableIsCriticalLimit above, this it intended to keep ChromeOS memory
-// pressure below critical.
-func NewAvailableCriticalLimit() (*AvailableLimit, error) {
-	criticalMargin, err := CriticalMargin()
-	if err != nil {
-		return nil, err
-	}
-	return &AvailableLimit{
-		margin: criticalMargin,
-	}, nil
+func NewAvailableLimit(ctx context.Context, rm *resourced.Client, margin uint64) (*AvailableLimit, error) {
+	return &AvailableLimit{rm, margin}, nil
 }
 
 // ZoneInfoLimit is a Limit that uses /proc/zoneinfo to allow tests to
