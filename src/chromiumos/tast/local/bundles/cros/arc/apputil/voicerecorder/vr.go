@@ -9,6 +9,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -113,17 +114,129 @@ func (vr *VoiceRecorder) skipPrompts(ctx context.Context) error {
 
 // UpdateOutDir updates the output directory from default to downloads.
 func (vr *VoiceRecorder) UpdateOutDir(ctx context.Context) error {
-	return nil // To be implemented.
+	// Check path first, see if path match Download/Recorders.
+	if err := apputil.FindAndClick(vr.app.D.Object(ui.ID(tabSettingID)), defaultUITimeout)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click setting tab")
+	}
+
+	// To avoid ad blocking download location, scroll down until download location shows.
+	dashboard := vr.app.D.Object(ui.ID(dashboardID))
+	if err := dashboard.WaitForExists(ctx, defaultUITimeout); err != nil {
+		return errors.Wrap(err, "failed to go to setting page")
+	}
+
+	locPath := vr.app.D.Object(ui.ID(locPathID))
+	if err := dashboard.ScrollTo(ctx, locPath); err != nil {
+		return errors.Wrap(err, "failed to scroll to location node")
+	}
+	if err := locPath.WaitForExists(ctx, defaultUITimeout); err != nil {
+		return errors.Wrap(err, "failed to find the location node")
+	}
+
+	pathText, err := locPath.GetText(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the location path")
+	}
+
+	// If path is not set to Download folder, make the change.
+	if !strings.Contains(pathText, "Download/Recorders") {
+		testing.ContextLog(ctx, "Setting the output path")
+
+		// Open setting and set location to Download.
+		if err := uiauto.Combine("enter setting page and open location of recording",
+			apputil.FindAndClick(vr.app.D.Object(ui.ID(locSettingID)), defaultUITimeout),
+			apputil.FindAndClick(vr.app.D.Object(ui.ID(internalStorageID)), defaultUITimeout),
+			apputil.FindAndClick(vr.app.D.Object(ui.Text("Download")), defaultUITimeout),
+			apputil.FindAndClick(vr.app.D.Object(ui.ID(locSelectID)), defaultUITimeout),
+			apputil.FindAndClick(vr.app.D.Object(ui.ID(locCloseID)), defaultUITimeout),
+		)(ctx); err != nil {
+			return err
+		}
+	}
+	if err := apputil.FindAndClick(vr.app.D.Object(ui.ID(tabMainID)), defaultUITimeout)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click main tab")
+	}
+
+	return nil
 }
 
 // RecordAudio clicks on record button to record audio and returns the name of recorded file.
 func (vr *VoiceRecorder) RecordAudio(ctx context.Context) (string, error) {
-	return "", nil // To be implemented.
+	chromeui := uiauto.New(vr.app.Tconn)
+
+	// Button for starting recording and button for stoping recording are identical object.
+	// The share the same id. And there is no text or description to identify them.
+	startOrStopRecordBtn := vr.app.D.Object(ui.ID(startOrStopRecordBtnID))
+	testing.ContextLog(ctx, "Start to record sound")
+	if err := uiauto.Combine("record sound",
+		apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // First click is for starting recording sound.
+		chromeui.Sleep(10*time.Second),                               // For recording sound, sleep for some time after clicking recording button.
+		apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // Second click is for stopping recording sound.
+	)(ctx); err != nil {
+		return "", err
+	}
+
+	editFileNameDialog := vr.app.D.Object(ui.ID(editFileNameDialogID))
+	if err := editFileNameDialog.WaitForExists(ctx, defaultUITimeout); err != nil {
+		return "", errors.Wrap(err, "failed to find edit file name")
+	}
+	name, err := editFileNameDialog.GetText(ctx)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get the recorded audio file name in app %q", vr.app.AppName)
+	}
+	name = name + ".mp3"
+
+	testing.ContextLogf(ctx, "Save the file: %s", name)
+	okBtn := vr.app.D.Object(ui.Text("OK"))
+	if err := apputil.FindAndClick(okBtn, defaultUITimeout)(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to save the audio file")
+	}
+
+	return name, nil
 }
 
 // PlayFile plays a specified file.
 func (vr *VoiceRecorder) PlayFile(fileName string) uiauto.Action {
-	return func(c context.Context) error { return nil } // To be implemented.
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Enter playing page which details display on")
+		// After clicking playCurrentRecordBtn, the audio will be played automatically, the frame will be dynamic.
+		// ADB uiautomator won't get the idle state until the audio finished playing.
+		playCurrentRecordBtn := vr.app.D.Object(ui.ID(playCurrentRecordBtnID))
+		if err := apputil.FindAndClick(playCurrentRecordBtn, defaultUITimeout)(ctx); err != nil {
+			return err
+		}
+
+		fileObj := vr.app.D.Object(ui.ID(fileNameID))
+		if err := fileObj.WaitForExists(ctx, defaultUITimeout); err != nil {
+			return errors.Wrap(err, "failed to find the file name")
+		}
+
+		fnText, err := fileObj.GetText(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the file name of the record at the detail fragment")
+		}
+		if fnText != fileName {
+			return errors.New("the audio is not the one just recorded")
+		}
+		testing.ContextLogf(ctx, "Found recorded file: %s", fnText)
+
+		splitRecordBtn := vr.app.D.Object(ui.ID(splitRecordBtnID))
+		closeBtn := vr.app.D.Object(ui.Text("Close"))
+		playBtn := vr.app.D.Object(ui.ID(playBtnID))
+		startMarker := vr.app.D.Object(ui.ID(startMarkerID))
+		zoomIn := vr.app.D.Object(ui.ID(zoomInID))
+
+		// To verify if the audio is playing, enter "editing audio" page.
+		return uiauto.Combine("enter editing audio page and play",
+			apputil.FindAndClick(splitRecordBtn, defaultUITimeout),
+			apputil.ClickIfExist(closeBtn, defaultUITimeout),
+			apputil.ClickIfExist(zoomIn, defaultUITimeout), // Zoom in to let start marker disappear from screen easier.
+			apputil.ClickIfExist(zoomIn, defaultUITimeout),
+			apputil.ClickIfExist(zoomIn, defaultUITimeout),
+			apputil.FindAndClick(playBtn, defaultUITimeout),
+			func(ctx context.Context) error { return startMarker.WaitUntilGone(ctx, defaultUITimeout) }, // Wait for the audio to finish playing. If start marker doesn't disappear, it means the audio doesn't play.
+		)(ctx)
+	}
 }
 
 // DeleteAudio deletes the audio file created by RecordSound method.
