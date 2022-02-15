@@ -16,6 +16,23 @@
       "message": "ricardoq@ PTAL",
       "revId": "813a1078cf88f822b9bf86a6be3a9ebfe1afa17c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "200d8cce_f8ebae58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-15T20:04:29Z",
+      "side": 1,
+      "message": "ricardoq@ friendly ping",
+      "revId": "813a1078cf88f822b9bf86a6be3a9ebfe1afa17c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
