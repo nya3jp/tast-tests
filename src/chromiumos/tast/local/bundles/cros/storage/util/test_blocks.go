@@ -31,15 +31,16 @@ const (
 func SetupBenchmarks(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
 	testConfig := &TestConfig{ResultWriter: rw}
 
+	testing.ContextLog(ctx, "Test device: ", testParam.TestDevice)
 	// Run tests to collect metrics for boot device.
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("seq_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("seq_read"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_write_qd4"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_read_qd4"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_read"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("16k_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("16k_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("seq_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("seq_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_write_qd4"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_read_qd4"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("16k_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("16k_read"))
 
 	if testParam.IsSlcEnabled {
 		// Run tests to collect metrics for Slc device.
@@ -144,7 +145,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 
 	tasks := []func(context.Context){
 		func(ctx context.Context) {
-			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, BootDeviceFioPath)
+			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, testParam.TestDevice)
 		},
 		func(ctx context.Context) {
 			runPeriodicPowerSuspend(ctx, testParam.SkipS0iXResidencyCheck)

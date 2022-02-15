@@ -75,6 +75,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	testParam.RetentionBlockTimeout = util.DefaultRetentionBlockTimeout
 	testParam.SuspendBlockTimeout = util.DefaultSuspendBlockTimeout
 	testParam.SkipS0iXResidencyCheck = false
+	testParam.TestDevice = util.BootDeviceFioPath
 
 	if val, ok := s.Var("tast_suspend_block_timeout"); ok {
 		var err error
