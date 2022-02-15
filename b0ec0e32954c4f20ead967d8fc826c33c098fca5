@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe6b632_15ffea40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-15T08:43:34Z",
+      "side": 1,
+      "message": "LGTM for style, but please wait for Jao-ke to review as well.",
+      "revId": "b0ec0e32954c4f20ead967d8fc826c33c098fca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
