@@ -24,7 +24,7 @@ func init() {
 			"chromeos-platform-ml@google.com",
 		},
 		Attr: []string{
-			"group:mainline", "informational",
+			"group:mainline",
 		},
 		SoftwareDeps: []string{"nnapi"},
 		Params: []testing.Param{
