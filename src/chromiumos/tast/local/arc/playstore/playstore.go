@@ -159,7 +159,8 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Handle "Want to link your PayPal account" if necessary.
-		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText)).WaitForExists(ctx, defaultUITimeout); err == nil {
+		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText), ui.Enabled(true)).WaitForExists(ctx, defaultUITimeout); err == nil {
+			//if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText)).WaitForExists(ctx, defaultUITimeout); err == nil {
 			testing.ContextLog(ctx, "Want to link your paypal account does exist")
 			noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+noThanksButtonText))
 			if err := noThanksButton.WaitForExists(ctx, defaultUITimeout); err != nil {
@@ -178,8 +179,61 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Complete account setup if necessary.
-		if err := d.Object(ui.Text(accountSetupText)).WaitForExists(ctx, shortUITimeout); err == nil {
-			testing.ContextLog(ctx, "Completing account setup")
+		//if err := d.Object(ui.Text(accountSetupText), ui.Enabled(true)).WaitForExists(ctx, shortUITimeout); err == nil {
+		//accountSetUpText := d.Object(ui.Text(accountSetupText), ui.Enabled(true))
+		accountSetUpText := d.Object(ui.Text(accountSetupText))
+		if err := accountSetUpText.WaitForExists(ctx, shortUITimeout); err == nil {
+			info, err := accountSetUpText.GetText(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup getText: %v ", info)
+			}
+			testing.ContextLog(ctx, "Completing account setup getText", info)
+			info1, err := accountSetUpText.IsEnabled(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup IsEnabled(ctx) : %v ", info1)
+			}
+			testing.ContextLog(ctx, "Completing account setup IsEnabled(ctx)", info1)
+			info2, err := accountSetUpText.IsFocusable(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup IsFocusable(ctx) : %v ", info2)
+			}
+			testing.ContextLog(ctx, "Completing account setup IsFocusable(ctx)", info2)
+			info3, err := accountSetUpText.IsCheckable(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup IsCheckable(ctx) : %v ", info3)
+			}
+			testing.ContextLog(ctx, "Completing account setup IsCheckable(ctx)", info3)
+			info4, err := accountSetUpText.IsFocused(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup IsFocused(ctx) : %v ", info4)
+			}
+			testing.ContextLog(ctx, "Completing account setup IsFocused(ctx)", info4)
+			info5, err := accountSetUpText.IsChecked(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup IsChecked(ctx) : %v ", info5)
+			}
+			testing.ContextLog(ctx, "Completing account setup IsChecked(ctx)", info5)
+			info6, err := accountSetUpText.IsClickable(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup IsClickable(ctx) : %v ", info6)
+			}
+			testing.ContextLog(ctx, "Completing account setup IsClickable(ctx)", info6)
+			info7, err := accountSetUpText.IsSelected(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup IsSelected(ctx) : %v ", info7)
+			}
+			testing.ContextLog(ctx, "Completing account setup IsSelected(ctx)", info7)
+			uiElementBounds, err := accountSetUpText.GetBounds(ctx)
+			if err == nil {
+				testing.ContextLogf(ctx, "Completing account setup GetBounds(ctx) : %v ", uiElementBounds)
+			}
+			testing.ContextLog(ctx, "Completing account setup GetBounds(ctx)", uiElementBounds)
+			testing.ContextLog(ctx, "uiElementBounds: ", uiElementBounds)
+			xCoordinate := uiElementBounds.Left
+			testing.ContextLog(ctx, "Xcoordinate: ", xCoordinate)
+			yCoordinate := uiElementBounds.Top
+			testing.ContextLog(ctx, "Ycoordinate: ", yCoordinate)
+
 			continueButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+continueButtonText))
 			if err := continueButton.WaitForExists(ctx, defaultUITimeout); err != nil {
 				return testing.PollBreak(err)
