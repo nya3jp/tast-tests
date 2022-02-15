@@ -79,6 +79,21 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to remove charger")
 		}
 
+		// Verify that charging stopped before sending battery cutoff.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			chargerAttached, err := h.Servo.GetChargerAttached(ctx)
+			if err != nil {
+				return errors.Wrap(err, "error checking whether charger is attached")
+			}
+			if chargerAttached {
+				return errors.New("charger was not removed")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed to check for charger after stopping power suply")
+		}
+		s.Log("Charger is removed")
+
 		// Remove CCD watchdog for servod not to close when power supply is stopped after sending batterycutoff command.
 		s.Log("Disabling CCD watchdog")
 		if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
@@ -101,7 +116,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "unexpected EC error")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 3 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 3 * time.Second}); err != nil {
 			s.Fatal("EC did not become unresponsive: ", err)
 		}
 		s.Log("EC is unresponsive")
@@ -118,7 +133,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	confirmBoot := func(ctx context.Context) error {
 		// Wait for a connection to the DUT.
 		s.Log("Wait for SSH to DUT")
-		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 3*time.Minute)
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
@@ -161,23 +176,26 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to attach the charger: ", err)
 	}
 
-	// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes, CCD state might be locked.
-	// Open CCD after supplying power and before talking to the EC.
-	if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
-		s.Fatal("Failed to get cr50_ccd_level: ", err)
-	} else if val != servo.Open {
-		s.Logf("CCD is not open, got %q. Attempting to unlock", val)
-		if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
-			s.Fatal("Failed to unlock CCD: ", err)
-		}
-	}
-
-	// Some models need a power button press to wake up
 	// Confirm a successful boot.
 	if err := confirmBoot(ctx); err != nil {
 		s.Fatal("Failed to boot: ", err)
 	}
 	s.Log("DUT booted succesfully")
+
+	// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes, CCD state might be locked.
+	// Open CCD after supplying power and before talking to the EC.
+	if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
+		s.Fatal("While checking if servo has a CCD connection: ", err)
+	} else if hasCCD {
+		if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+			s.Fatal("Failed to get cr50_ccd_level: ", err)
+		} else if val != servo.Open {
+			s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+			if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+				s.Fatal("Failed to unlock CCD: ", err)
+			}
+		}
+	}
 
 	// If is a CHROMESLATE and a micro-servo is connected, repeat the test but wake up the DUT with power button.
 	if ffIsChromeslate && hasMicroOrC2D2 {
