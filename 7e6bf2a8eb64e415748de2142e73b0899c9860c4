@@ -87,6 +87,30 @@
       },
       "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec4e7cb_ad14d840",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2022-02-15T01:40:58Z",
+      "side": 1,
+      "message": "cool, now I have moved the actions to test code. But I think still have to copy all the Finder definition, right? Is there anyway to reuse this part?",
+      "parentUuid": "cdfe939b_5e343485",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "7e6bf2a8eb64e415748de2142e73b0899c9860c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
