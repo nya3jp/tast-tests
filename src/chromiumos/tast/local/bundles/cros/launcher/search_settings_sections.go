@@ -33,7 +33,7 @@ const settingsWindowTitle = "Settings"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchSettingsSections,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Searches for sections in OS Settings using Launcher search, and checks that the correct pages are opened",
 		Contacts: []string{
 			"anastasiian@chromium.org",

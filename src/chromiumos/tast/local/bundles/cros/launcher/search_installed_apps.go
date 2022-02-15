@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchInstalledApps,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Install apps from CWS and verify that it appears in the launcher",
 		Contacts: []string{
 			"kyle.chen@cienet.com",
