@@ -33,7 +33,7 @@ var (
 	userHashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
 
 	// authSessionIDRegexp matches the auth session ID.
-	// It would matche "auth_session_id:*"
+	// It would match "auth_session_id:*"
 	authSessionIDRegexp = regexp.MustCompile(`(auth_session_id:)(.+)(\n)`)
 )
 
@@ -834,7 +834,7 @@ func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, is
 	if m == nil {
 		return "", errors.Errorf("didn't find auth session in output %q", string(binaryMsg))
 	}
-	return string(m[2]), nil
+	return strings.TrimSpace(string(m[2])), nil
 }
 
 // AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
