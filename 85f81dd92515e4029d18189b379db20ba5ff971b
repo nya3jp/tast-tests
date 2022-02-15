@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "449a80cd_b3176a04",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-15T22:36:42Z",
+      "side": 1,
+      "message": "We do not need Lacros as primary browser here since the test uses this fixture would not interact with any browser. But please correct me if there is backend relations.",
+      "parentUuid": "aae1cf87_3c647946",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a153fec1_68b9b2e3",
@@ -54,6 +72,24 @@
       "writtenOn": "2022-02-15T10:41:17Z",
       "side": 1,
       "message": "dito",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5c24bf_2249b188",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-15T22:36:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a153fec1_68b9b2e3",
       "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
