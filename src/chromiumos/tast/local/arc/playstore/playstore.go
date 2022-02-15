@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -258,4 +260,14 @@ func InstallOrUpdateApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName s
 	}
 	testing.ContextLog(ctx, "App has already been installed; check if an update is available")
 	return installOrUpdate(ctx, a, d, pkgName, tryLimit, updateApp)
+}
+
+// InstallOrUpdateAppAndClose installs or updates an application via Play Store, closes Play Store after installation.
+// If the application is already installed, it updates the app if an update is available.
+// It will wait for the app to finish installing/updating and closes Play Store before returning.
+func InstallOrUpdateAppAndClose(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
+	if err := InstallOrUpdateApp(ctx, a, d, pkgName, tryLimit); err != nil {
+		return err
+	}
+	return optin.ClosePlayStore(ctx, tconn)
 }
