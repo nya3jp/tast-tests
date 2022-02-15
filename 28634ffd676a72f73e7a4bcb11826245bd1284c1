@@ -16,6 +16,23 @@
       "message": "Is it part of the CUJs or is it part of the automation of backlog test cases?",
       "revId": "28634ffd676a72f73e7a4bcb11826245bd1284c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d313f4cf_a4344fa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-15T00:32:41Z",
+      "side": 1,
+      "message": "I\u0027d suggest not to submit a cl which only contains the libs. Without usage, it is hard to say whether the libs make sense or not.",
+      "revId": "28634ffd676a72f73e7a4bcb11826245bd1284c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
