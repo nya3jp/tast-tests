@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"math"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -61,6 +62,30 @@ func (d DiskInfo) SlcDevice() (*Blockdevice, error) {
 	var bestMatch *Blockdevice
 	for _, device := range d.Blockdevices {
 		if bestMatch == nil || bestMatch.Size > device.Size {
+			bestMatch = device
+		}
+	}
+	return bestMatch, nil
+}
+
+// RemovableDevice returns the removable storage device from a list of available
+// devices. The method assumes at most two devices and returns the device
+// that is not the root device. If there are more than 2 devices, returns an error.
+func (d DiskInfo) RemovableDevice(ctx context.Context) (*Blockdevice, error) {
+	if d.DeviceCount() < 2 {
+		return nil, errors.Errorf("no secondary devices present: %+v", d)
+	}
+	if d.DeviceCount() > 2 {
+		return nil, errors.Errorf("more than 2 devices present: %+v", d)
+	}
+	rootDev, err := rootDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed finding root device")
+	}
+	var bestMatch *Blockdevice
+	for _, device := range d.Blockdevices {
+		devName := filepath.Join("/dev/", device.Name)
+		if bestMatch == nil && devName != rootDev {
 			bestMatch = device
 		}
 	}

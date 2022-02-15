@@ -31,15 +31,21 @@ const (
 func SetupBenchmarks(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
 	testConfig := &TestConfig{ResultWriter: rw}
 
+	testDevice := BootDeviceFioPath
+	if testParam.IsRemovable {
+		testDevice = testParam.RemovableDevice
+	}
+
+	testing.ContextLog(ctx, "Test device: ", testDevice)
 	// Run tests to collect metrics for boot device.
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("seq_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("seq_read"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_write_qd4"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_read_qd4"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_read"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("16k_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("16k_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("seq_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("seq_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("4k_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("4k_write_qd4"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("4k_read_qd4"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("4k_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("16k_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testDevice).WithJob("16k_read"))
 
 	if testParam.IsSlcEnabled {
 		// Run tests to collect metrics for Slc device.
@@ -142,9 +148,14 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 		s.Fatal("Context timeout occurs before suspend block timeout")
 	}
 
+	testDevice := BootDeviceFioPath
+	if testParam.IsRemovable {
+		testDevice = testParam.RemovableDevice
+	}
+
 	tasks := []func(context.Context){
 		func(ctx context.Context) {
-			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, BootDeviceFioPath)
+			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, testDevice)
 		},
 		func(ctx context.Context) {
 			runPeriodicPowerSuspend(ctx, testParam.SkipS0iXResidencyCheck)
