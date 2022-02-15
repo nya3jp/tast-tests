@@ -41,7 +41,15 @@ func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.Te
 		return nil, errors.Wrap(err, "failed to create new ARC UI device")
 	}
 
-	return &App{kb: kb, Tconn: tconn, A: a, D: d, AppName: appName, PkgName: pkgName, launched: false}, nil
+	return &App{
+		kb:       kb,
+		Tconn:    tconn,
+		A:        a,
+		D:        d,
+		AppName:  appName,
+		PkgName:  pkgName,
+		launched: false,
+	}, nil
 }
 
 // Install installs the ARC app with the package name.
