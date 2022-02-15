@@ -61,8 +61,24 @@ func AudioRecordAndPlayback(ctx context.Context, s *testing.State) {
 	}
 	defer vr.Close(cleanupCtx, cr, s.HasError, s.OutDir())
 
-	// To be implemented.
-	// 1. Launch the app.
-	// 2. Record audio via the app.
-	// 3. Play the recorded file.
+	s.Log("Launching the ARC++ app: ", vr.AppName())
+	if err := vr.Launch(ctx); err != nil {
+		s.Fatal("Failed to launch app: ", err)
+	}
+
+	if err := vr.UpdateOutDir(ctx); err != nil {
+		s.Fatalf("Failed to update the output dir of ARC++ app %q: %v", vr.AppName(), err)
+	}
+
+	s.Log("Recording audio")
+	audioName, err := vr.RecordAudio(ctx)
+	if err != nil {
+		s.Fatal("Failed to record audio: ", err)
+	}
+	defer vr.DeleteAudio(audioName)
+
+	s.Log("Playing back the recorded audio")
+	if err := vr.PlayFile(audioName)(ctx); err != nil {
+		s.Fatal("Failed to play the record: ", err)
+	}
 }
