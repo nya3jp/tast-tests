@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e78aa7a_5a0986e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-15T09:37:51Z",
+      "side": 1,
+      "message": "Thank you reviewers.\nSorry for the delay, the major changes of the latest PS is to make the validation of the virtual keyboard validate one key at a time as suggested.",
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
