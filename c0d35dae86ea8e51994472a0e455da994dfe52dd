@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f466a99e_63716045",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-15T22:19:06Z",
+      "side": 1,
+      "message": "Looks good\nhttps://cros-health-prod.googleplex.com/test?contact\u003d\u0026testname\u003dClvk\u0026dep\u003d",
+      "revId": "c0d35dae86ea8e51994472a0e455da994dfe52dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832aa2e3_8eaa0298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-15T22:19:06Z",
+      "side": 1,
+      "message": "Do you have plan to put api_tests to CQ? If so, leaving group:mainline and informational here so that we get some coverage on informational suite.",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "c0d35dae86ea8e51994472a0e455da994dfe52dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
