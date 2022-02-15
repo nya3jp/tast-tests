@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b65251_8b7b062d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_battery_data_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-02-15T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a2738e_7750aeee",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "de1cc9bf2092bb86f8436dc12173cbf34a7e9d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faaeed4f_639a9d53",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a58ee9_d582a01e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_battery_data_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-02-15T03:51:40Z",
+      "side": 1,
+      "message": "We can perform boundary checks for |percent| and |charge|, but not for |current| (done in PS #2). Also note that the units can be different: power.GetStatus() scales down by 10^6 for non-integral values (charge_now and current_now), but the trace data doesn\u0027t.",
+      "parentUuid": "faaeed4f_639a9d53",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "de1cc9bf2092bb86f8436dc12173cbf34a7e9d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee59d26e_5c5a9908",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-02-14T08:24:37Z",
       "side": 1,
       "message": "Please end sentence with .",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "de1cc9bf2092bb86f8436dc12173cbf34a7e9d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc26d0c_7e7392fc",
+        "filename": "src/chromiumos/tast/local/tracing/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-02-15T03:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee59d26e_5c5a9908",
       "range": {
         "startLine": 80,
         "startChar": 1,
