@@ -37,6 +37,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "449d7676_abe5515e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-02-15T10:36:27Z",
+      "side": 1,
+      "message": "+1\nIf the failure message says that the unexpected force-installed app is causing this failure, it can be fixed much faster than a timeout error caused by the order of apps.",
+      "parentUuid": "36ef1365_a2c0e104",
+      "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06df5a62_3543d9eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-02-15T10:36:27Z",
+      "side": 1,
+      "message": "Thanks for looking into it! See comments below.",
+      "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed40686a_7217e988",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
         "patchSetId": 3
@@ -48,6 +83,24 @@
       "writtenOn": "2022-02-15T09:41:45Z",
       "side": 1,
       "message": "Instead of removing the check completely, can we keep it and throw a warning message in test log? When we have timeout failures in the future we can quickly tell from logs if there are extra apps in the policy.",
+      "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b0b1fa_9d738e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-02-15T10:36:27Z",
+      "side": 1,
+      "message": "I\u0027d just fix the failure message to indicate that the problem might be with the policy on admin console itself and the updating the list of apps there may fix the issue.",
+      "parentUuid": "ed40686a_7217e988",
       "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
