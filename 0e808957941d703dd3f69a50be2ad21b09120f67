@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "594b61ee_0c86384d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T14:30:19Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5193b700_1c99e96a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T14:30:19Z",
+      "side": 1,
+      "message": "maybe \"via chrome.notification APIs\"",
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc8b7bc_d5cf59a0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T14:30:19Z",
+      "side": 1,
+      "message": "could you use TODO(crbug.com/XXX) style? Ditto for all below.",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 7
+      },
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062ee045_39b9472f",
+        "filename": "src/chromiumos/tast/local/chrome/browser/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T14:30:19Z",
+      "side": 1,
+      "message": "nit/style: as you touch this, could you move \"var id string\" to just before L53, and \"var items ...\" to just before L48? Also, could you remove unnecessary empty line at L42?",
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01448e3_0fa8109b",
+        "filename": "src/chromiumos/tast/local/chrome/browser/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T14:30:19Z",
+      "side": 1,
+      "message": "style: as you touch this function,\n\ntconn.Call(ctx, nil, `tast.promisify(chrome.notifications.clear)`, id)\n\nshould work, I think.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
