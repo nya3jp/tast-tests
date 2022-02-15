@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"math"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -20,7 +21,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var devRegExp = regexp.MustCompile(`(sda|nvme\dn\d|mmcblk\d)$`)
+var devRegExp = regexp.MustCompile(`(sd[a-z]|nvme\dn\d|mmcblk\d)$`)
 
 // Blockdevice represents information about a single storage device as reported by lsblk.
 type Blockdevice struct {
@@ -37,12 +38,18 @@ type DiskInfo struct {
 }
 
 // MainDevice returns the main storage device from a list of available devices.
-// The method returns the device with the biggest size if multiple present.
-func (d DiskInfo) MainDevice() (*Blockdevice, error) {
+// The method returns the device that matches the root device if multiple present.
+func (d DiskInfo) MainDevice(ctx context.Context) (*Blockdevice, error) {
+	rootDev, err := rootDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed finding root device")
+	}
 	var bestMatch *Blockdevice
 	for _, device := range d.Blockdevices {
-		if bestMatch == nil || bestMatch.Size < device.Size {
+		devName := filepath.Join("/dev/", device.Name)
+		if bestMatch == nil && devName == rootDev {
 			bestMatch = device
+			break
 		}
 	}
 	if bestMatch == nil {
@@ -67,6 +74,44 @@ func (d DiskInfo) SlcDevice() (*Blockdevice, error) {
 	return bestMatch, nil
 }
 
+// RemovableDevice returns the removable storage device from a list of available
+// devices. The method assumes at most two devices and returns the device
+// that is not the root device. If there are more than 2 devices, returns an error.
+func (d DiskInfo) RemovableDevice(ctx context.Context) (*Blockdevice, error) {
+	if d.DeviceCount() < 2 {
+		return nil, errors.Errorf("no secondary devices present: %+v", d)
+	}
+	if d.DeviceCount() > 2 {
+		return nil, errors.Errorf("more than 2 devices present: %+v", d)
+	}
+	rootDev, err := rootDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed finding root device")
+	}
+	var bestMatch *Blockdevice
+	for _, device := range d.Blockdevices {
+		devName := filepath.Join("/dev/", device.Name)
+		if bestMatch == nil && devName != rootDev {
+			bestMatch = device
+			break
+		}
+	}
+	if bestMatch == nil {
+		return nil, errors.Errorf("unable to identify main storage device from devices: %+v", d)
+	}
+	return bestMatch, nil
+}
+
+// AppendPartition returns the device name with the partition number appended.
+func AppendPartition(dev, partition string) string {
+	end := dev[len(dev)-1:]
+	if _, err := strconv.Atoi(end); err == nil {
+		suffix := "p" + partition
+		return dev + suffix
+	}
+	return dev + partition
+}
+
 // DeviceCount returns number of found valid block devices on the system.
 func (d DiskInfo) DeviceCount() int {
 	return len(d.Blockdevices)
@@ -74,8 +119,8 @@ func (d DiskInfo) DeviceCount() int {
 
 // CheckMainDeviceSize verifies that the size of the main storage disk is more than
 // the given minimal size. Otherwise, an error is returned.
-func (d DiskInfo) CheckMainDeviceSize(minSize int64) error {
-	device, err := d.MainDevice()
+func (d DiskInfo) CheckMainDeviceSize(ctx context.Context, minSize int64) error {
+	device, err := d.MainDevice(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed getting main storage disk")
 	}
@@ -101,8 +146,8 @@ func (d DiskInfo) SaveDiskInfo(fileName string) error {
 }
 
 // SizeInGB returns size of the main block device in whole GB's.
-func (d DiskInfo) SizeInGB() (int, error) {
-	device, err := d.MainDevice()
+func (d DiskInfo) SizeInGB(ctx context.Context) (int, error) {
+	device, err := d.MainDevice(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed getting main storage disk")
 	}
@@ -179,7 +224,7 @@ func fixedDstDrive(ctx context.Context) (string, error) {
 	return strings.TrimSpace(string(out)), nil
 }
 
-func rootDevice(ctx context.Context) (string, error) {
+var rootDevice = func(ctx context.Context) (string, error) {
 	out, err := testexec.CommandContext(ctx, "rootdev", "-s", "-d").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read root device info")

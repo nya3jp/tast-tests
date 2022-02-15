@@ -50,7 +50,7 @@ func SetupChecks(ctx context.Context, s *testing.State) {
 	}
 
 	// Checking the size of the main storage device.
-	if err := info.CheckMainDeviceSize(mainStorageDeviceMinSize); err != nil {
+	if err := info.CheckMainDeviceSize(ctx, mainStorageDeviceMinSize); err != nil {
 		s.Fatal("Main storage disk is too small: ", err)
 	}
 
@@ -66,7 +66,7 @@ func SetupChecks(ctx context.Context, s *testing.State) {
 		s.Fatal("Bad format of request disk size: ", err)
 	}
 
-	actualSizeGb, err := info.SizeInGB()
+	actualSizeGb, err := info.SizeInGB(ctx)
 	if err != nil {
 		s.Fatal("Error selecting main storage device: ", err)
 	}
@@ -90,4 +90,35 @@ func SlcDevice(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "dual qual is specified but SLC device is not present")
 	}
 	return filepath.Join("/dev/", slc.Name), nil
+}
+
+// RemovableDevice returns a removable device for external storage AVL.
+func RemovableDevice(ctx context.Context) (string, error) {
+	info, err := ReadDiskInfo(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed reading disk info")
+	}
+
+	removable, err := info.RemovableDevice(ctx)
+	if removable == nil {
+		return "", errors.Wrap(err, "removable qual is specified but removable device is not present")
+	}
+	if err != nil {
+		return "", errors.Wrap(err, "failed to set removable device")
+	}
+
+	testing.ContextLog(ctx, "Removable device: ", removable.Name)
+	dev := filepath.Join("/dev/", removable.Name)
+
+	// If the device is partitioned, use partition 1 to preserve the partition table.
+	partitionDevName := AppendPartition(dev, "1")
+	cmd := testexec.CommandContext(ctx, "fdisk", "-l", partitionDevName)
+	_, err = cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		testing.ContextLog(ctx, "Partition not found, using device ", dev)
+		return dev, nil
+	}
+	testing.ContextLog(ctx, "Partition found, using device ", partitionDevName)
+	return partitionDevName, nil
+
 }

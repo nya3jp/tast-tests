@@ -5,6 +5,7 @@
 package util
 
 import (
+	"context"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -87,15 +88,21 @@ func TestGetMainDeviceSize(t *testing.T) {
 	]
 }`
 
+	rootDevice = func(ctx context.Context) (string, error) {
+		return "/dev/sda", nil
+	}
+
+	ctx := context.Background()
+
 	info, err := parseDiskInfo([]byte(out))
 	if err != nil {
 		t.Fatal("parseDiskInfo() failed: ", err)
 	}
 
-	if err := info.CheckMainDeviceSize(5000); err != nil {
+	if err := info.CheckMainDeviceSize(ctx, 5000); err != nil {
 		t.Fatal("CheckMainDeviceSize() returned error for a valid min size: ", err)
 	}
-	if err := info.CheckMainDeviceSize(15000); err == nil {
+	if err := info.CheckMainDeviceSize(ctx, 15000); err == nil {
 		t.Fatal("CheckMainDeviceSize() didn't return error for an invalid min size: ", err)
 	}
 }
@@ -119,13 +126,19 @@ func TestMainDeviceOnly(t *testing.T) {
 		State:   "",
 	}
 
+	rootDevice = func(ctx context.Context) (string, error) {
+		return "/dev/mmcblk0", nil
+	}
+
+	ctx := context.Background()
+
 	info, err := parseDiskInfo([]byte(out))
 	if err != nil {
 		t.Fatal("parseDiskInfo() failed: ", err)
 	}
 	info = removeDisallowedDevices(info)
 
-	dev, err := info.MainDevice()
+	dev, err := info.MainDevice(ctx)
 	if err != nil {
 		t.Fatal("MainDevice() didn't return a valid main device: ", err)
 	}
@@ -167,13 +180,19 @@ func TestMainAndSlcDeviceOnly(t *testing.T) {
 		State:   "live",
 	}
 
+	rootDevice = func(ctx context.Context) (string, error) {
+		return "/dev/nvme0n2", nil
+	}
+
+	ctx := context.Background()
+
 	info, err := parseDiskInfo([]byte(out))
 	if err != nil {
 		t.Fatal("parseDiskInfo() failed: ", err)
 	}
 	info = removeDisallowedDevices(info)
 
-	main, err := info.MainDevice()
+	main, err := info.MainDevice(ctx)
 	if err != nil {
 		t.Fatal("MainDevice() didn't return a valid main device: ", err)
 	}

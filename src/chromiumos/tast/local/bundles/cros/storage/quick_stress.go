@@ -59,7 +59,7 @@ func setup(ctx context.Context, s *testing.State) {
 	s.Log("Disk info: ", info)
 
 	// Checking the size of the main storage device.
-	err = info.CheckMainDeviceSize(minDeviceSizeBytes)
+	err = info.CheckMainDeviceSize(ctx, minDeviceSizeBytes)
 	if err != nil {
 		s.Fatal("Main storage disk is too small: ", err)
 	}
