@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ef76c7_63011506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T18:03:24Z",
+      "side": 1,
+      "message": "cc\u0027ing leandre since this CL updates some lines of his code in notification.go.",
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5193b700_1c99e96a",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-02-15T14:30:19Z",
       "side": 1,
       "message": "maybe \"via chrome.notification APIs\"",
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d5d64d_f8880977",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T18:03:24Z",
+      "side": 1,
+      "message": "Done adding it to the comment.",
+      "parentUuid": "5193b700_1c99e96a",
       "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "951669d5_248d7b69",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T18:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbc8b7bc_d5cf59a0",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 7
+      },
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "062ee045_39b9472f",
@@ -75,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c1de8e8_58a28f8b",
+        "filename": "src/chromiumos/tast/local/chrome/browser/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T18:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062ee045_39b9472f",
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b01448e3_0fa8109b",
@@ -88,6 +165,30 @@
       "writtenOn": "2022-02-15T14:30:19Z",
       "side": 1,
       "message": "style: as you touch this function,\n\ntconn.Call(ctx, nil, `tast.promisify(chrome.notifications.clear)`, id)\n\nshould work, I think.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "0e808957941d703dd3f69a50be2ad21b09120f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7463cff_54f57801",
+        "filename": "src/chromiumos/tast/local/chrome/browser/notification.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T18:03:24Z",
+      "side": 1,
+      "message": "better without async? done.",
+      "parentUuid": "b01448e3_0fa8109b",
       "range": {
         "startLine": 76,
         "startChar": 1,
