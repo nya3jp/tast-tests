@@ -114,6 +114,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b14c9b41_2f07903d",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T16:28:57Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we can\u0027t make this a comment on top of the function instead. I can imagine valid uses for this where I can\u0027t think of a good alternative. E.g. a test where you launch the browser from shelf but first want to get rid of the initial browser window (in the case of Lacros). You don\u0027t have a closeBrowser closure at this point.",
+      "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9faa3e4c_237dfb0e",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
         "patchSetId": 8
