@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37a672e4_6af4c8f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-15T10:19:21Z",
+      "side": 1,
+      "message": "Thank you Miguel.\n\nSorry for not being more clear on the purpose of this test/CL. This test is part of MTA (Manual Test Automation) tests, we automate a test according to provided description/procedure (for this CL, details are in b:200987121, #comment4)\n\n\n\u003e + Local/bundles/cros/video/ and local/media folders have much, \n\u003e if not all the functionality added here as part of video.go;\n\u003e please don\u0027t duplicate code.\n`local/bundles/cros/video/` and `local/media` do have some similar codes, but the provided procedure explicitly listed to visit a page by a certain URL, makes us hard to reuse codes in `video/data/video.html` or `playback.js`.\n\n\n\u003e + I\u0027m not sure in particular what\u0027s the functionality being\n\u003e exercised by reloading the web page? Has there been issues in \n\u003e the past with video not correctly playing after a page reload?\nIIUC, this CL is to replace a manual test, we didn\u0027t found any related issue.\n\n\n\u003e + The test itself is doing a number of steps (playing, seeking, \n\u003e entering full screen etc). Those steps are tested in isolation \n\u003e in other tests in the video/ folder so this bears the question \n\u003e of what\u0027s being tested by this CL, why isn\u0027t it covered already,\n\u003e why isn\u0027t the idea here to test such functionality in isolation.\nThank you for raising this and all concerns above, I\u0027ll contact the PoC for confirmation.",
+      "parentUuid": "4d38222f_261ff173",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03a76097_e429a15e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
         "patchSetId": 2
