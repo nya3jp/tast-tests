@@ -34,6 +34,24 @@
       "parentUuid": "9fd07dd2_a75ffd14",
       "revId": "84afa65cf72b0265c05a9c120403aa0b138eafe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d35f5a_ce04ffd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T01:44:49Z",
+      "side": 1,
+      "message": "Thanks. I see. Then could you clarify it in the commit message? Maybe something like.\n\nAdds dismissing the context menu at the end of Quick answers tests, and verify it works.\n\nI was confused because the current phrase sounded to me that it is trying to ensure the environment, rather than a part of additional test main part, so I was wondering if I had some missing context.",
+      "parentUuid": "93c79957_061d5dc5",
+      "revId": "84afa65cf72b0265c05a9c120403aa0b138eafe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
