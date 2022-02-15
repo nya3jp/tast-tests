@@ -31,6 +31,7 @@ const (
 func SetupBenchmarks(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
 	testConfig := &TestConfig{ResultWriter: rw}
 
+	testing.ContextLog(ctx, "Test device: ", testParam.TestDevice)
 	// Run tests to collect metrics for boot device.
 	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("seq_write"))
 	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("seq_read"))
