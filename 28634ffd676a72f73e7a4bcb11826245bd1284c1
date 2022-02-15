@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c823e06_c468e9f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-15T00:31:30Z",
+      "side": 1,
+      "message": "Is it part of the CUJs or is it part of the automation of backlog test cases?",
+      "revId": "28634ffd676a72f73e7a4bcb11826245bd1284c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
