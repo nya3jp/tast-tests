@@ -37,7 +37,8 @@ const (
 	AndroidButtonClassName = "android.widget.Button"
 	notNowText             = "Not now"
 	asphaltPkgName         = "com.gameloft.android.ANMP.GloftA9HM"
-
+	abcKidsPkgName         = "com.rvappstudios.abc_kids_toddler_tracing_phonics"
+	abcSpellingPkgName     = "com.rvappstudios.abc.spelling.toddler.spell.phonics"
 	defaultTestCaseTimeout = 2 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
 	ShortUITimeout         = 30 * time.Second
@@ -124,13 +125,16 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
 	}
-	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-		s.Fatal("Failed to get window info: ", err)
+	/* if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+		s.Log("Failed to get window info: ", err)
 	} else if err := window.CloseWindow(ctx, tconn); err != nil {
-		s.Fatal("Failed to close app window before test cases: ", err)
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop app before test cases: ", err)
+		s.Log("Failed to close app window before test cases: ", err)
+	} */
+	/* if err := act.Stop(ctx, tconn); err != nil {
+		s.Log("Failed to stop app before test cases: ", err)
+	} */
+	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
+		s.Log("Failed to stop app before test cases: ", err)
 	}
 	s.Log("Successfully tested launching and closing the app")
 
@@ -181,13 +185,16 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 				if appPkgName == asphaltPkgName {
 					HandleDialogBoxes(ctx, s, d, appPkgName)
 				}
-				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-					s.Fatal("Failed to get window info: ", err)
+				/* if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+					s.Log("Failed to get window info: ", err)
 				} else if err := window.CloseWindow(ctx, tconn); err != nil {
-					s.Fatal("Failed to close app window: ", err)
-				}
-				if err := act.Stop(ctx, tconn); err != nil {
-					s.Fatal("Failed to stop app: ", err)
+					s.Log("Failed to close app window: ", err)
+				} */
+				/* if err := act.Stop(ctx, tconn); err != nil {
+					s.Log("Failed to stop app: ", err)
+				} */
+				if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
+					s.Log("Failed to stop app: ", err)
 				}
 			}(cleanupCtx)
 
@@ -293,8 +300,28 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
 	if err := playstore.InstallApp(ctx, a, d, appPkgName, 3); err != nil {
+		if err := a.Command(ctx, "uiautomator", "dump").Run(testexec.DumpLogOnError); err != nil {
+			s.Log("Failed to dump UIAutomator: ", err)
+		} else {
+			filename := fmt.Sprintf("screenshot-arcappcompat-failed-test.png")
+			path := filepath.Join(s.OutDir(), filename)
+			if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+				s.Log("Failed to capture screenshot: ", err)
+			}
+			filename = fmt.Sprintf("ui-dump-arcappcompat-failed-test_1.xml")
+			path = filepath.Join(s.OutDir(), filename)
+			if err := a.PullFile(ctx, "/sdcard/window_dump.xml", path); err != nil {
+				s.Log("Failed to pull UIAutomator dump: ", err)
+			}
+			filename = fmt.Sprintf("bugreport-arcappcompat-failed-test.zip")
+			path = filepath.Join(s.OutDir(), filename)
+			if err := a.BugReport(ctx, path); err != nil {
+				s.Log("Failed to get bug report: ", err)
+			}
+		}
 		s.Fatal("Failed to install app: ", err)
 	}
+
 	// To get app version name.
 	out, err := a.Command(ctx, "dumpsys", "package", appPkgName).Output()
 	if err != nil {
@@ -1092,12 +1119,15 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 
 	// Close the app.
 	s.Log("Closing the app")
-	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-		s.Fatal("Failed to get window info: ", err)
+	/* if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
+		s.Log("Failed to get window info: ", err)
 	} else if err := window.CloseWindow(ctx, tconn); err != nil {
-		s.Fatal("Failed to close app window: ", err)
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
+		s.Log("Failed to close app window: ", err)
+	} */
+	/* if err := act.Stop(ctx, tconn); err != nil {
+		s.Fatal("Failed to stop app: ", err)
+	} */
+	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to stop app: ", err)
 	}
 
