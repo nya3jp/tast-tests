@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d476bd97_2e08fcf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-15T21:39:13Z",
+      "side": 1,
+      "message": "This approach feels like it might be quite brittle (reading the logs, relying on strings, skipping N lines etc.). I wonder if a more robust approach might be setting up an autotestPrivate API to interrogate the error on failure.\n\nThere seems to be some potentially related work here [1] which returns hasValidOauth2Token, I wonder if the token is not valid we can return the oauth token error as well and leverage the autotestPrivate.loginStatus API here?\n\nWDYT?\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d1335-1337;drc\u003d91e8f57b070a67814c5a84f174f5acfc2dcce508",
+      "revId": "87725a6aafa4409bfac646c6fcd86cc483ed23ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
