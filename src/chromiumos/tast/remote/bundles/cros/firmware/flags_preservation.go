@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Checks that flag values are preserved over different power cycles",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
-		Fixture:      fixture.DevMode,
+		Fixture:      fixture.DevModeGBB,
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 	})
@@ -127,13 +127,13 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to reboot DUT by servo: ", err)
 			}
 		case "powerCycleByPressingPowerKey":
-			s.Log("Power-cycling DUT by pressing power button")
+			s.Logf("Power-cycling DUT by pressing power button for %s", h.Config.HoldPwrButtonPowerOff)
 			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 				s.Fatal("Failed to set a keypress control by servo: ", err)
 			}
 
 			s.Log("Waiting for power state to become G3")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3"); err != nil {
 				s.Fatal("Failed to get powerstates at G3: ", err)
 			}
 
@@ -178,12 +178,16 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 
 		// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes, CCD state might be locked.
 		// Open CCD after supplying power and before talking to the EC.
-		if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
-			s.Fatal("Failed to get cr50_ccd_level: ", err)
-		} else if val != servo.Open {
-			s.Logf("CCD is not open, got %q. Attempting to unlock", val)
-			if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
-				s.Fatal("Failed to unlock CCD: ", err)
+		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
+			s.Fatal("While checking if servo has a CCD connection: ", err)
+		} else if hasCCD {
+			if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+				s.Fatal("Failed to get cr50_ccd_level: ", err)
+			} else if val != servo.Open {
+				s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+				if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+					s.Fatal("Failed to unlock CCD: ", err)
+				}
 			}
 		}
 
