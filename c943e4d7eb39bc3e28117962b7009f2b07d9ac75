@@ -16,6 +16,23 @@
       "message": "Forgot to hit the \u0027send\u0027 button for my comment. Thanks Georg for your review. We\u0027ll see how we can move this forward for both of us. ",
       "revId": "c943e4d7eb39bc3e28117962b7009f2b07d9ac75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab539dd5_a06a7b01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T14:18:32Z",
+      "side": 1,
+      "message": "Hyung Tae, after rewriting my dependency CL, I no longer have an immediate use for this function right now. Do you have any? Do you still want me to land this?",
+      "revId": "c943e4d7eb39bc3e28117962b7009f2b07d9ac75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
