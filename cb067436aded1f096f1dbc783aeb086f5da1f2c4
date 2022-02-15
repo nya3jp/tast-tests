@@ -75,6 +75,24 @@
       "parentUuid": "b0d964cf_bdb017d4",
       "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc220d59_d5199c4c",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-15T07:54:37Z",
+      "side": 1,
+      "message": "It does not, there is error:\n\nError at usercode.go:28: Panic: interface conversion: interface {} is *struct { crostini.FixtureData; lacrosfixt.FixtValue }, not crostini.FixtureData\n2022-02-15T05:20:35.711530Z [05:20:35.776] Stack trace:\nPanic\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.2 (usercode.go:28)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2.1.1 (usercode.go:101)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2.1 (usercode.go:107)\n\tat runtime.gopanic (panic.go:1038)\n\tat runtime.panicdottypeE (iface.go:261)\n\tat chromiumos/tast/local/bundles/cros/crostini.TestFixture (test_fixture.go:84)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\t...\ninterface conversion: interface {} is *struct { crostini.FixtureData; lacrosfixt.FixtValue }, not crostini.FixtureData",
+      "parentUuid": "fd4bd6c8_2ded5e22",
+      "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
