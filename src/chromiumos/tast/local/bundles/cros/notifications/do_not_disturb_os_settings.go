@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -69,7 +70,7 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 	const waitForNotificationTimeout = 30 * time.Second
 
 	// Confirm that notification doesn't show when DND is toggled on.
-	if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, notificationTitle, "SHOULD NOT SHOW"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, notificationTitle, "SHOULD NOT SHOW"); err != nil {
 		s.Fatal("Failed to create test notification")
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, waitForNotificationTimeout, ash.WaitTitle(notificationTitle)); err != nil {
@@ -86,7 +87,7 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 	}
 
 	// Confirm that notification shows when DND is toggled off.
-	if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, notificationTitle, "SHOULD SHOW"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, notificationTitle, "SHOULD SHOW"); err != nil {
 		s.Fatal("Failed to create test notification")
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, waitForNotificationTimeout, ash.WaitTitle(notificationTitle)); err != nil {
