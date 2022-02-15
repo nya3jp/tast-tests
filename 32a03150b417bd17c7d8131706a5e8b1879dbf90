@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfbae833_4a7dfa3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-15T09:16:02Z",
+      "side": 1,
+      "message": "TY for reviewing, pls see comments.",
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d17cf074_a04ec3a5",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-02-14T21:18:48Z",
       "side": 1,
       "message": "how this affect results stability?\nand how it used to work previously?",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 92
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd05317_2c8dd148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-15T09:16:02Z",
+      "side": 1,
+      "message": "how this affect results stability?\n\nIt should not as \"arc_wlan0 \u003c-\u003e eth3\" routing per ArcService::AllocateAddressConfigs (https://crrev.com/c/2403300) is all internal to the device.  Our network test never actually uses external Wifi.  But if the \"arc_wlan0\" interface is disabled and reset `2022-02-11T08:08:47.471867Z [08:08:41.700] Re-enabling network interface \"arc_wlan0\"\n`, the tc-tbf settings will be gone and could explain what\u0027s happening to kukui results in Crosbolt. As hugobenichi@ mentioned in https://crrev.com/c/2403300, we use the default network through ConnectivityManager and ensure it\u0027s an \"eth\" device on the guest.  If the default network for kukui happens to be \"arc_wlanX\" on the host, then it would explain the result discrepancy between trogdor vs. kukui.  \n\nI can\u0027t repro this issue locally or using crosfleet DUT lease (see next answer).  I need to submit this speculative fix to see if it works.  Also disabling Wifi is not a typical use case in the real world which this benchmark aims to simulate.  So we shouldn\u0027t disable it even for power measurements or when running subflows.\n\n```\nHugo Benichi\nSep 13, 2020\nThe APK side should never have to hardcode anything, and it should never have to care which interface is used at the end of the day. It should just be using the default network through ConnectivityManager APIs, get an explicit android.net.Network object, and use the gateway of that network through android.net.LinkProperties.\n```\n\n[1]https://source.corp.google.com/rvc-arc/vendor/google_arc/packages/development/ArcAppLoadingTest/src/org/chromium/arc/testapp/apploading/NetworkTest.java;rcl\u003df6eefe811e2ddcf9c398b388af0c632fd53b82a0;l\u003d220\n\n\u003e\u003e and how it used to work previously?\ntc-tbf never worked for krane [2], but worked \"too well\" based on previous param tuning (https://crrev.com/c/3426335) for trogdor[3].\n\nI can\u0027t repro the issue in my home setup or with leasing a lab DUT due to crosfleet ssh bug (http://b/204612495).\n\nSince I can\u0027t repro, I am trying two speculative fixes in this CL (1. Supporting ARC netns[4] devices in case they are used with veth pairs and 2. making sure tc-tbf settings do not get reset if kukui\u0027s default network happens to be \"arc_wlanX\").\n\n[2]https://crosbolt.googleplex.com/time_series/tast.arc.AppLoadingPerf/network_score?sku_filter\u003dkakadu_ARMv8_4GB%7Ckakadu_MT8183_4GB%7Ckodama_ARMv8_4GB%7Ckodama_MT8183_4GB%7Ckrane_ARMv8_4GB%7Ckrane_MT8183_4GB\u0026suite\u003dcrosbolt\n[3]https://crosbolt.googleplex.com/time_series/tast.arc.AppLoadingPerf/network_score?sku_filter\u003dlazor_ARMv8_4GB%7Clazor_QSIP7180-Lite_4GB%7Climozeen_ARMv8_4GB%7Climozeen_QSIP7180_4GB%7Cpompom_ARMv8_4GB%7Cpompom_QSIP7180_4GB\u0026suite\u003dcrosbolt\n[4]netns - A network namespace is logically another copy of the network stack, with its own routes, firewall rules, and network devices.",
+      "parentUuid": "d17cf074_a04ec3a5",
       "range": {
         "startLine": 268,
         "startChar": 5,
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d6ec4d_d1dde98c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-15T09:16:02Z",
+      "side": 1,
+      "message": "out of scope for the purpose of this CL.  I added a separate tracking bug for the suggested clean up work: http://b/219667999",
+      "parentUuid": "58ae2d38_763a6d66",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95558843_5d4038d3",
@@ -77,6 +142,30 @@
       "writtenOn": "2022-02-15T01:02:47Z",
       "side": 1,
       "message": "I think the if check is unnecessary (since the ifacesArcSet does not appear to contain any false values) - I\u0027d recommend removing lines 110, 112 for better readability.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be102762_aef80af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-15T09:16:02Z",
+      "side": 1,
+      "message": "Ack, out of scope for the purpose of this CL.  tracking as separate cleanup work: http://b/219667999",
+      "parentUuid": "95558843_5d4038d3",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -110,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8ee39d_a1cad396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-15T09:16:02Z",
+      "side": 1,
+      "message": "Ack, out of scope for the purpose of this CL.  tracking as separate cleanup work: http://b/219667999",
+      "parentUuid": "0bec9423_e1b329fc",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 91
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3a8b35_f3ded299",
@@ -123,6 +236,30 @@
       "writtenOn": "2022-02-15T01:02:47Z",
       "side": 1,
       "message": "Move this outside of the for loop to prevent recompiling the regular expression each iteration.",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 45
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63dd518c_aba355e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-15T09:16:02Z",
+      "side": 1,
+      "message": "Ack, out of scope for the purpose of this CL.  tracking as separate cleanup work: http://b/219667999",
+      "parentUuid": "4e3a8b35_f3ded299",
       "range": {
         "startLine": 138,
         "startChar": 27,
