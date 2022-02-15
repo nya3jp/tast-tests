@@ -68,6 +68,29 @@
       "parentUuid": "343dee48_66563cff",
       "revId": "b6a47e1e7fa4bdb328870bcf3b302cb58a66b5a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dc4085_b596c46f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-15T22:48:54Z",
+      "side": 1,
+      "message": "I think you can reduce the nesting by one level, IIRC you can pass any `func(ctx conext.Context) error` into uiauto.Combine, so this could just be:\n```\nfilesAllLoaded :\u003d func(ctx context.Context) error {\n  return testing.Poll(...)\n}\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 39
+      },
+      "revId": "b6a47e1e7fa4bdb328870bcf3b302cb58a66b5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
