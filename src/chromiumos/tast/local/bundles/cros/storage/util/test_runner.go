@@ -144,3 +144,25 @@ func FunctionalRunner(ctx context.Context, s *testing.State, rw *FioResultWriter
 func MiniSoakRunner(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
 	soakTestBlock(ctx, s, rw, testParam)
 }
+
+// RemovableRunner exercises the functionality of the block.
+// It is intended to be used for removable devices.
+func RemovableRunner(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
+	for _, tc := range []struct {
+		name     string
+		function subTestFunc
+	}{
+		{
+			name:     "stressBenchmarks",
+			function: subTestFunc(SetupBenchmarks),
+		},
+		{
+			name:     "suspend",
+			function: subTestFunc(suspendTestBlock),
+		},
+	} {
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			tc.function(ctx, s, rw, testParam)
+		})
+	}
+}
