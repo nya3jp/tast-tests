@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c594177_bd0eecd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T09:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11fc63d5_caf50354",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b503c1a3_a14b3856",
@@ -101,6 +119,24 @@
       "writtenOn": "2022-02-14T15:36:00Z",
       "side": 1,
       "message": "suggestion: ServerCertificateOrganization?",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "742147d9_7c11c74f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T09:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b503c1a3_a14b3856",
       "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23612774_04e0f14c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T09:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f273a8_e91009c2",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e6d3c1a_795068f8",
@@ -135,6 +189,24 @@
       "writtenOn": "2022-02-14T15:36:00Z",
       "side": 1,
       "message": "use constants here too.",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4a9d8d_20fa7dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T09:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e6d3c1a_795068f8",
       "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "386c1644_9a3cebaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T09:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da77aea_886698ca",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25a682f0_bf027850",
@@ -169,6 +259,24 @@
       "writtenOn": "2022-02-14T15:36:00Z",
       "side": 1,
       "message": "see comments above concerning the name.",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b50a88_cbd8dd8a",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T09:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a682f0_bf027850",
       "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
