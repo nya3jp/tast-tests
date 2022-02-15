@@ -52,6 +52,23 @@
       "parentUuid": "93c79957_061d5dc5",
       "revId": "84afa65cf72b0265c05a9c120403aa0b138eafe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41dd7ab_e1d578f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T01:45:15Z",
+      "side": 1,
+      "message": "CR+2 to reduce the cross time zone round trip.",
+      "revId": "84afa65cf72b0265c05a9c120403aa0b138eafe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
