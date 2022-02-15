@@ -27,7 +27,7 @@ async function() {
 
       // Delete mojo uint64 typed properties because BigInt cannot be
       // serialized.
-      delete response.result.trafficCounterResetTime;
+      delete response.result.trafficCounterProperties;
 
       return response.result;
     },
