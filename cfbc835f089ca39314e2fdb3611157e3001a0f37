@@ -52,6 +52,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1903ce6e_a5778d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "No worries. Thanks for your review!",
+      "parentUuid": "3e844ded_114b1616",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d044ce2_fc6c4463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "a1932228_f7bacedd",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a56d4d88_6dfa7baa",
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f9ff4d_852df13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a56d4d88_6dfa7baa",
+      "range": {
+        "startLine": 43,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 84
+      },
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e728b85b_2066d495",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-02-09T15:08:58Z",
       "side": 1,
       "message": "could you move this out so that no need to compile multiple times?",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183a8744_eaa6617c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e728b85b_2066d495",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -147,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91684dc1_2625d7a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Done. Please check.",
+      "parentUuid": "ed3ad089_52ee8cc6",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3476bccf_a90ae697",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
         "patchSetId": 7
@@ -158,6 +254,24 @@
       "writtenOn": "2022-02-09T15:08:58Z",
       "side": 1,
       "message": "ditto",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec166370_24590f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3476bccf_a90ae697",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -257,6 +371,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1c92c1f_429a90d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Hmm, does that mean I couldn\u0027t add `s.Log` in these functions?\nAlthough it\u0027s not necessary... Returning all the values is an overkill...\n\nUpdated. Please check.",
+      "parentUuid": "968b3742_b6bb8690",
+      "range": {
+        "startLine": 17,
+        "startChar": 126,
+        "endLine": 17,
+        "endChar": 143
+      },
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e52e105_152c31a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
         "patchSetId": 7
@@ -268,6 +406,24 @@
       "writtenOn": "2022-02-09T15:08:58Z",
       "side": 1,
       "message": "you can return so foundTarget is no longer needed.\n\nditto for below.",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33283633_f6f14a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e52e105_152c31a8",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -285,6 +441,24 @@
       "writtenOn": "2022-02-10T03:12:54Z",
       "side": 1,
       "message": "Ditto to hidehiko\u0027s comment above",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e438da_8d850ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-02-15T07:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9010d2_016fcc44",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
