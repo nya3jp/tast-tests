@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -24,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OpenCloseSwitchApps,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks interacting with apps in the shelf",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -33,7 +34,16 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -48,11 +58,12 @@ type appInfo struct {
 
 // OpenCloseSwitchApps verifies that we can launch, switch between, and close apps from the shelf.
 func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	bt := s.Param().(browser.Type)
 
 	// Test acts different in clamshell or tablet mode.
 	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
@@ -93,14 +104,21 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
-	if err != nil {
-		s.Fatal("Could not find the Chrome app: ", err)
-	}
-
-	// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
-	if chromeApp.Name == apps.Chrome.Name {
-		chromeApp.Name = "Google Chrome"
+	var chromeApp apps.App
+	switch bt {
+	case browser.TypeAsh:
+		chromeApp, err = apps.ChromeOrChromium(ctx, tconn)
+		if err != nil {
+			s.Fatal("Could not find the Chrome app: ", err)
+		}
+		// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
+		if chromeApp.Name == apps.Chrome.Name {
+			chromeApp.Name = "Google Chrome"
+		}
+	case browser.TypeLacros:
+		chromeApp = apps.Lacros
+	default:
+		s.Fatal("Unrecognized browser type: ", bt)
 	}
 
 	// Find the shelf icon buttons.
