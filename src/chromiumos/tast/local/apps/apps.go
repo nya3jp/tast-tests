@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -410,6 +411,24 @@ func ChromeOrChromium(ctx context.Context, tconn *chrome.TestConn) (App, error) 
 		}
 	}
 	return App{}, errors.New("Neither Chrome or Chromium were found in available apps")
+}
+
+// PrimaryBrowser returns the primary browser for the current build.
+// 'Chromium' on non branded ash-chrome builds (e.g amd64-generic)
+// 'Chrome' on branded ash-chrome builds
+// 'Lacros' on branded lacros-chrome builds (eg, lacros64)
+func PrimaryBrowser(ctx context.Context, tconn *chrome.TestConn, bt browser.Type) (App, error) {
+	switch bt {
+	case browser.TypeAsh:
+		browserApp, err := ChromeOrChromium(ctx, tconn)
+		if err != nil {
+			return App{}, errors.Wrap(err, "failed to find the browser app for ash-chrome")
+		}
+		return browserApp, nil
+	case browser.TypeLacros:
+		return Lacros, nil
+	}
+	return App{}, errors.Errorf("no primary browser was found for the type (%v) in available apps", bt)
 }
 
 // InstallPWAForURL navigates to a PWA, attempts to install and returns the installed app ID.
