@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6683d61b_27445c1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-15T01:40:45Z",
+      "side": 1,
+      "message": "nit: we often drop getter prefixes in go, e.g. get, has, is. Just \"managed\" here.\nDitto for var name for telemetryExtensionFixture.",
+      "revId": "25b7ca332736e747920717e4d12445fa632b696b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
