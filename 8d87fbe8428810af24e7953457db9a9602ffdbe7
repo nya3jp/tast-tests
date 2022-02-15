@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06aedd61_bd32336a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T16:00:51Z",
+      "side": 1,
+      "message": "Hey lamzin@,\n\nAdded simonha@ as he\u0027s the original author of the https.go util, but he\u0027s not a tast-owner so will need a proper approval from you too.",
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
