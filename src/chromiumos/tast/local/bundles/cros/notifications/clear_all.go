@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -57,7 +58,7 @@ func ClearAll(ctx context.Context, s *testing.State) {
 	const n = 10
 	for i := 0; i < n; i++ {
 		title := fmt.Sprintf("%s%d", baseTitle, i)
-		if _, err := ash.CreateTestNotification(ctx, tconn, ash.NotificationTypeBasic, title, "blahhh"); err != nil {
+		if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, title, "blahhh"); err != nil {
 			s.Fatalf("Failed to create test notification %v: %v", i, err)
 		}
 		if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(title)); err != nil {
