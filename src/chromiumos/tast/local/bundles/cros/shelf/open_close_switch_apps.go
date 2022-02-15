@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -24,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OpenCloseSwitchApps,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks interacting with apps in the shelf",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -33,7 +34,16 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -48,11 +58,12 @@ type appInfo struct {
 
 // OpenCloseSwitchApps verifies that we can launch, switch between, and close apps from the shelf.
 func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	bt := s.Param().(browser.Type)
 
 	// Test acts different in clamshell or tablet mode.
 	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
@@ -92,20 +103,19 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pin Files app to the shelf: ", err)
 	}
 
-	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	// Get the expected browser app info.
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
 	if err != nil {
-		s.Fatal("Could not find the Chrome app: ", err)
+		s.Fatalf("Could not find the %v browser app: %v", bt, err)
 	}
-
 	// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
-	if chromeApp.Name == apps.Chrome.Name {
-		chromeApp.Name = "Google Chrome"
+	if browserApp.Name == apps.Chrome.Name {
+		browserApp.Name = "Google Chrome"
 	}
 
 	// Find the shelf icon buttons.
 	ui := uiauto.New(tconn)
-	chromeBtn := nodewith.ClassName("ash/ShelfAppButton").Name(chromeApp.Name)
+	chromeBtn := nodewith.ClassName("ash/ShelfAppButton").Name(browserApp.Name)
 	filesBtn := nodewith.ClassName("ash/ShelfAppButton").Name(apps.Files.Name)
 	if err := ui.WaitUntilExists(chromeBtn)(ctx); err != nil {
 		s.Fatal("Failed to find Chrome shelf button: ", err)
@@ -114,7 +124,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find Files shelf button: ", err)
 	}
 
-	chromeInfo := appInfo{chromeBtn, chromeApp.ID, "New Tab", chromeApp.Name}
+	chromeInfo := appInfo{chromeBtn, browserApp.ID, "New Tab", browserApp.Name}
 	filesInfo := appInfo{filesBtn, apps.Files.ID, "Files - My files", apps.Files.Name}
 	checkApps := []appInfo{chromeInfo, filesInfo}
 
