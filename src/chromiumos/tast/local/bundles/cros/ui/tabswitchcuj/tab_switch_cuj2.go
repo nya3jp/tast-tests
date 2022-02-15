@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -150,6 +151,10 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 }
 
 func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tconn *chrome.TestConn) error {
+	const (
+		histogramName     = "PageLoad.PaintTiming.NavigationToLargestContentfulPaint2"
+		histogramWaitTime = time.Second
+	)
 	p := tab.currentPattern
 	pn := p + 1
 	if pn == len(tab.pageInfo.contentPatterns) {
@@ -167,6 +172,13 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tc
 		}
 		testing.ContextLogf(ctx, "%s could not reach quiescence within %v, but document state has passed loading", tab.url, timeout)
 	}
+
+	h1, err := metrics.GetHistogram(ctx, tconn, histogramName)
+	if err != nil {
+		return errors.Wrap(err, "failed to get histogram")
+	}
+	testing.ContextLog(ctx, "Got LCP2 histogram: ", h1)
+
 	pattern := tab.pageInfo.contentPatterns[pn]
 	testing.ContextLogf(ctx, "Click link and navigate from %q to %q", tab.pageInfo.contentPatterns[p], pattern)
 	if err := tab.searchElementWithPatternAndClick(ctx, pattern); err != nil {
@@ -176,6 +188,15 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tc
 		}
 		return errors.Wrapf(err, "failed to click anchor on page %s", tab.url)
 	}
+
+	testing.ContextLogf(ctx, "Waiting for %v histogram update", histogramName)
+	h2, err := metrics.WaitForHistogramUpdate(ctx, tconn, histogramName, h1, histogramWaitTime)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get histogram update: ", err)
+	} else {
+		testing.ContextLog(ctx, "Got LCP2 histogram update: ", h2)
+	}
+
 	tab.currentPattern = pn
 	return nil
 }
@@ -337,6 +358,7 @@ func generateTabSwitchTargets(caseLevel Level) ([]*chromeWindow, error) {
 		return nil, errors.New("no enough web page targets to construct tabs")
 	}
 	// Shuffle the URLs to random order.
+	rand := rand.New(rand.NewSource(1))
 	rand.Shuffle(len(targets), func(i, j int) { targets[i], targets[j] = targets[j], targets[i] })
 	idx := 0
 	windows := make([]*chromeWindow, winNum)
