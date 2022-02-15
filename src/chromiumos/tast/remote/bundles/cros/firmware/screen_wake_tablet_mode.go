@@ -85,6 +85,10 @@ var convertibleKeyboardScanned = []string{
 	"dragonair",
 	"storo360",
 	"jinlon",
+	"garg360",
+	"vortininja",
+	"helios",
+	"kled",
 }
 
 func init() {
@@ -404,8 +408,8 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				s.Log("Skip because DUT does not have a lid")
 				return nil
 			}
-			s.Log("Close DUT's lid")
-			if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, string(servo.LidOpenNo)); err != nil {
+			// Emulate DUT lid closing.
+			if err := h.Servo.CloseLid(ctx); err != nil {
 				return errors.Wrap(err, "error in closing the lid")
 			}
 			s.Log("Wait for power state to become S0ix or S3")
@@ -425,8 +429,8 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 				return errors.Wrap(err, "error in sleeping before opening DUT's lid")
 			}
-			s.Log("Open DUT's lid")
-			if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, string(servo.LidOpenYes)); err != nil {
+			// Emulate DUT lid opening.
+			if err := h.Servo.OpenLid(ctx); err != nil {
 				return errors.Wrap(err, "error in opening DUT's lid")
 			}
 		}
@@ -479,7 +483,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 
 	s.Log("Tab power button to turn display off")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurShortPress); err != nil {
 			return errors.Wrap(err, "error in pressing power button")
 		}
 		if err := testing.Sleep(ctx, 1*time.Second); err != nil {

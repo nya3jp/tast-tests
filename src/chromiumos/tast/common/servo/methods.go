@@ -126,9 +126,10 @@ type KeypressDuration string
 
 // These are string values that can be passed to a KeypressControl.
 const (
-	DurTab       KeypressDuration = "tab"
-	DurPress     KeypressDuration = "press"
-	DurLongPress KeypressDuration = "long_press"
+	DurTab        KeypressDuration = "tab"
+	DurPress      KeypressDuration = "press"
+	DurShortPress KeypressDuration = "short_press"
+	DurLongPress  KeypressDuration = "long_press"
 )
 
 // Dur returns a custom duration that can be passed to KeypressWithDuration
