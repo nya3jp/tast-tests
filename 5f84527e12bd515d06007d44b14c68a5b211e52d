@@ -16,6 +16,23 @@
       "message": "Adding ricardo. I\u0027m trying to keep the same owner for all the cryptohome/authsession changes so that they build some context",
       "revId": "5f84527e12bd515d06007d44b14c68a5b211e52d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0f3416_3dfb4aeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-15T21:55:11Z",
+      "side": 1,
+      "message": "Thanks, Hardik and Ricardo!",
+      "revId": "5f84527e12bd515d06007d44b14c68a5b211e52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
