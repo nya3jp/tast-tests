@@ -16,6 +16,29 @@
       "message": "ptal?",
       "revId": "313c2a710a44baf25df8393477cdd18d148074a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267d39bf_3b46f302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-15T05:13:28Z",
+      "side": 1,
+      "message": "nit: de-select",
+      "range": {
+        "startLine": 112,
+        "startChar": 44,
+        "endLine": 112,
+        "endChar": 50
+      },
+      "revId": "313c2a710a44baf25df8393477cdd18d148074a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
