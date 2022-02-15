@@ -28,7 +28,7 @@ func init() {
 			"rjodin@chromium.org",
 			"chromeos-gfx@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{},
 		SoftwareDeps: []string{"vulkan"},
 		Fixture:      "graphicsNoChrome",
 		Params: []testing.Param{{
@@ -36,13 +36,15 @@ func init() {
 			Val: clvkTest{
 				exe: "api_tests",
 			},
-			Timeout: 1 * time.Minute,
+			Timeout:   1 * time.Minute,
+			ExtraAttr: []string{"group:graphics", "graphics_opencl", "graphics_perbuild"},
 		}, {
 			Name: "simple_test",
 			Val: clvkTest{
 				exe: "simple_test",
 			},
-			Timeout: 1 * time.Minute,
+			Timeout:   1 * time.Minute,
+			ExtraAttr: []string{"group:mainline"},
 		}},
 	})
 }
