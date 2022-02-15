@@ -22,6 +22,40 @@
       },
       "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae1cf87_3c647946",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T10:41:17Z",
+      "side": 1,
+      "message": "I believe we should be testing with Lacros as primary browser, i.e. pass the same Chrome options here as lacrosPrimary does.",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a153fec1_68b9b2e3",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T10:41:17Z",
+      "side": 1,
+      "message": "dito",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
