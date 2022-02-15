@@ -192,7 +192,10 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	filtered := paygen.FilterBoard(board).FilterDeltaType("OMAHA").FilterMilestone(milestoneM)
 	latest, err := filtered.FindLatest()
 	if err != nil {
-		s.Fatalf("Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
+		// For unreleased boards, e.g. -kernelnext it's expected that there is no
+		// image available. Mark the test as successful and skip it.
+		s.Logf("Skipping test; Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
+		return
 	}
 	rollbackVersion := latest.ChromeOSVersion
 
