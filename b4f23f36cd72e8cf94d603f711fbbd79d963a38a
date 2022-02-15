@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6ef52c_6ca59f73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T14:08:07Z",
+      "side": 1,
+      "message": "Unfortunately there\u0027s a timing issue in this CL.\nI also can\u0027t simply use lacros.LaunchFromShelf as suggested because the initial Lacros window will make it complain that the application is already running.\n\nAll in all, I\u0027m going to abandon this CL and upload a new one which avoids the whole setup code by using the ManagedBookmarks policy suggested earlier.",
+      "revId": "b4f23f36cd72e8cf94d603f711fbbd79d963a38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
