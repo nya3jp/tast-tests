@@ -22,6 +22,23 @@
       },
       "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d573fad_f1647085",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-15T03:31:16Z",
+      "side": 1,
+      "message": "Try something like this:\n\n```\nfd :\u003d FixtureData{f.cr, f.tconn, f.cont, f.kb, f.postData}\nif lv, ok :\u003d s.ParentValue().(lacrosfixt.FixtValue); ok {\n\t\t\treturn \u0026struct {\n\t\t\t\tFixtureData\n\t\t\t\tlacrosfixt.FixtValue\n\t\t\t}{\n\t\t\t\tfd,\n\t\t\t\tlv,\n\t\t\t}\n} else {\n   return fv\n}\n```\n\nYou might have to define an interface for FixtureData, but let\u0027s see if we can avoid it.\n\nWe want to create a type which can do everything lacrosfixt.FixtValue can do. Using structure embedding we should be able to avoid having to redefine everything manually.",
+      "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
