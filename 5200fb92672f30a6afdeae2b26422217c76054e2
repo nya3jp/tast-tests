@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d38222f_261ff173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-15T02:19:49Z",
+      "side": 1,
+      "message": "From a first pass, I\u0027d say:\n+ Local/bundles/cros/video/ and local/media folders have much, \nif not all the functionality added here as part of video.go;\nplease don\u0027t duplicate code.\n+ The test itself is doing a number of steps (playing, seeking, \nentering full screen etc). Those steps are tested in isolation \nin other tests in the video/ folder so this bears the question \nof what\u0027s being tested by this CL, why isn\u0027t it covered already,\nwhy isn\u0027t the idea here to test such functionality in isolation.\n+ I\u0027m not sure in particular what\u0027s the functionality being\nexercised by reloading the web page? Has there been issues in \nthe past with video not correctly playing after a page reload?",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03a76097_e429a15e",
