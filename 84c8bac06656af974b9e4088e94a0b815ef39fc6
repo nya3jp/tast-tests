@@ -16,6 +16,40 @@
       "message": "LGTM. Domain experts, please give CR+2 if you think the code is ok and testing is sufficent. Thanks.",
       "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36ef1365_a2c0e104",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368300
+      },
+      "writtenOn": "2022-02-15T09:41:45Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure if it\u0027s a good idea allowing extra apps in the test. Every few months someone would add a new force-installed app to the root domain by accident. I expect this to happen more frequently as the managedchrome.com domain continues growing. This would further slow down the already slow installation process on many low-end devices, resulting in more failures due to timeout. Eventually we will still have to remove those apps from the domain.\n\n@pbond WDYT?",
+      "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed40686a_7217e988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368300
+      },
+      "writtenOn": "2022-02-15T09:41:45Z",
+      "side": 1,
+      "message": "Instead of removing the check completely, can we keep it and throw a warning message in test log? When we have timeout failures in the future we can quickly tell from logs if there are extra apps in the policy.",
+      "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
