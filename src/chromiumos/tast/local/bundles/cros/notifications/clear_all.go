@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -24,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ClearAll,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the 'Clear all' button dismisses all notifications",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -33,7 +34,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -41,12 +50,24 @@ func init() {
 func ClearAll(ctx context.Context, s *testing.State) {
 	const uiTimeout = 30 * time.Second
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatalf("Failed to create Test API connection for %v browser: %v", bt, err)
+	}
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
@@ -58,7 +79,7 @@ func ClearAll(ctx context.Context, s *testing.State) {
 	const n = 10
 	for i := 0; i < n; i++ {
 		title := fmt.Sprintf("%s%d", baseTitle, i)
-		if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, title, "blahhh"); err != nil {
+		if _, err := browser.CreateTestNotification(ctx, bTconn, browser.NotificationTypeBasic, title, "blahhh"); err != nil {
 			s.Fatalf("Failed to create test notification %v: %v", i, err)
 		}
 		if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(title)); err != nil {

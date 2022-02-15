@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,12 +33,20 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -45,6 +54,18 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
+
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatalf("Failed to create Test API connection for %v browser: %v", bt, err)
+	}
 
 	// Launch Notification Subpage.
 	appNotificationPageHeading := nodewith.NameStartingWith("Notifications").Role(role.Heading).Ancestor(ossettings.WindowFinder)
@@ -70,7 +91,7 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 	const waitForNotificationTimeout = 30 * time.Second
 
 	// Confirm that notification doesn't show when DND is toggled on.
-	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, notificationTitle, "SHOULD NOT SHOW"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, bTconn, browser.NotificationTypeBasic, notificationTitle, "SHOULD NOT SHOW"); err != nil {
 		s.Fatal("Failed to create test notification")
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, waitForNotificationTimeout, ash.WaitTitle(notificationTitle)); err != nil {
@@ -87,7 +108,7 @@ func DoNotDisturbOSSettings(ctx context.Context, s *testing.State) {
 	}
 
 	// Confirm that notification shows when DND is toggled off.
-	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, notificationTitle, "SHOULD SHOW"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, bTconn, browser.NotificationTypeBasic, notificationTitle, "SHOULD SHOW"); err != nil {
 		s.Fatal("Failed to create test notification")
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, waitForNotificationTimeout, ash.WaitTitle(notificationTitle)); err != nil {
