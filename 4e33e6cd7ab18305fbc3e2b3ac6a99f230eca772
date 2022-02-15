@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "178245a1_839d31d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T16:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae8bd97_88c14345",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "4e33e6cd7ab18305fbc3e2b3ac6a99f230eca772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da49d398_fe393029",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-15T15:16:22Z",
       "side": 1,
       "message": "The Ash variant should not depend on Lacros.",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "4e33e6cd7ab18305fbc3e2b3ac6a99f230eca772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa08bc0_6fc23363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T16:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da49d398_fe393029",
       "range": {
         "startLine": 37,
         "startChar": 32,
