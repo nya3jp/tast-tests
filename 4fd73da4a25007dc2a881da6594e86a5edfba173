@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dfaddb2_0272f184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T11:08:37Z",
+      "side": 1,
+      "message": "!\u003d",
+      "range": {
+        "startLine": 103,
+        "startChar": 46,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2dbddf7_ce284e1a",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
         "patchSetId": 8
@@ -50,6 +73,58 @@
       "side": 1,
       "message": "If it\u0027s not a good time to have ash depend on browser removing cs ConnSource, practically speaking I\u0027m leaning to b). but please advise.",
       "parentUuid": "fe0f0f48_8ddcf8a6",
+      "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b05e2fd_2474733c",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T11:08:37Z",
+      "side": 1,
+      "message": "I didn\u0027t realize that ash.CloseWindow is a method on window. Fine with me then to keep it.",
+      "parentUuid": "fc85d842_be7425bd",
+      "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e19d75_09a9187f",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T11:08:37Z",
+      "side": 1,
+      "message": "Why does this mention about:blank?",
+      "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9faa3e4c_237dfb0e",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-15T11:08:37Z",
+      "side": 1,
+      "message": "Same here.",
       "revId": "4fd73da4a25007dc2a881da6594e86a5edfba173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
