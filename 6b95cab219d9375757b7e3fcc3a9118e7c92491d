@@ -16,6 +16,91 @@
       "message": "Adjusted commit message to stay within 72 characters per line",
       "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57e6f03_57e8953b",
+        "filename": "src/chromiumos/tast/common/wifi/security/eap/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-15T05:43:20Z",
+      "side": 1,
+      "message": "Since this is the only place this is used, and it does not use any directories, is it really necessary to write such a general PutFiles method?  Why not just call linuxssh.WriteFile in the loop for each file?",
+      "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca35651_82b084ab",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-15T05:43:20Z",
+      "side": 1,
+      "message": "How are symbolic links treated?",
+      "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ccb527_47620d27",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-15T05:43:20Z",
+      "side": 1,
+      "message": "optional: there is a lot of file and directory code here, does it need unit tests?\n\nHow did you verify that it works?",
+      "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9519dda1_b1393878",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-15T05:43:20Z",
+      "side": 1,
+      "message": "a directory containing a link to itself (is this possible?) can create an infinite loop?",
+      "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eddd0aa1_04b34842",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-15T05:43:20Z",
+      "side": 1,
+      "message": "do you need to set directory permissions on the remote host?",
+      "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
