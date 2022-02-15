@@ -103,6 +103,24 @@
       "parentUuid": "ed40686a_7217e988",
       "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03cb52fc_e678115b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arcent/force_install.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-15T18:03:38Z",
+      "side": 1,
+      "message": "In my opinion a test failure should indicate a bug in the product rather than environment being configured differently (not incorrectly). I also shared my view in http://b/186274474#comment62\n\nAn additional app \"might\" cause a timeout where as we\u0027re guaranteeing a failure with the current code. I do think having a separate domain for these tests is a good idea besides also reducing the chances of failure due to unrelated reasons.\n\nI think logging a warning is also a good idea so I updated the code to do that.",
+      "parentUuid": "a6b0b1fa_9d738e2d",
+      "revId": "84c8bac06656af974b9e4088e94a0b815ef39fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
