@@ -33,6 +33,24 @@
       "message": "Hyung Tae, after rewriting my dependency CL, I no longer have an immediate use for this function right now. Do you have any? Do you still want me to land this?",
       "revId": "c943e4d7eb39bc3e28117962b7009f2b07d9ac75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8a2388_2d8c3825",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T17:04:19Z",
+      "side": 1,
+      "message": "I thought you wanted to use a wait function for some other tests as well (weren\u0027t you looking into the ui test waiting for a browser window after keyboard shortcut is pressed?). If there is no use of it now, please feel free to abandon it. I think I\u0027ll be able to revisit this at a later time when I find use cases.",
+      "parentUuid": "ab539dd5_a06a7b01",
+      "revId": "c943e4d7eb39bc3e28117962b7009f2b07d9ac75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
