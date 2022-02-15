@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd2af69_5ecb0c28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-15T00:04:03Z",
+      "side": 1,
+      "message": "Thank you Matt for reviewing it again!\n\nI see below error message, which I think is an infra issue. \n\nLet me try CQ again.\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8822234547417542897/+/u/run_ebuild_tests/call_chromite.api.TestService_BuildTargetUnitTest/call_response:_tast-local-tests-cros_tast-local-tests-crosint/build_api_stdout\n\nhttps://ci.chromium.org/ui/p/chromeos/builders/cq/dedede-cq/b8822234547417542897/overview\n\n\u003e\u003e\u003e 14:44:55 Completed (42 of 188) chromeos-base/chromeos-ec-0.0.2-r12018::chromiumos to /build/dedede/\n\u003e\u003e\u003e 14:44:55 Jobs: 156 of 188 complete, 2 failed             Load avg: 12.9, 43.7, 63.3\n\u003e\u003e\u003e 14:44:55 Jobs: 157 of 188 complete, 2 failed             Load avg: 12.9, 43.7, 63.3\n\n * Messages for package chromeos-base/tast-local-tests-crosint-0.0.1-r9318 merged to /build/dedede/:\n * Log file: /build/dedede/tmp/portage/logs/chromeos-base:tast-local-tests-crosint-0.0.1-r9318:20220214-222336.log\n\n * ERROR: chromeos-base/tast-local-tests-crosint-0.0.1-r9318::chromeos-partner failed (test phase):\n *   (no error message)",
+      "revId": "fd47fe74f92f91080c58f54a825a2ad66c7fc3f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
