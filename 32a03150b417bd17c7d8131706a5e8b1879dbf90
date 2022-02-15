@@ -39,6 +39,98 @@
       },
       "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ae2d38_763a6d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-15T01:02:47Z",
+      "side": 1,
+      "message": "nit: I think the plus suffix is unnecessary here. I\u0027d recommend removing it and then also removing strings.TrimSuffix(i, \"+\") on line 109.",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95558843_5d4038d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-15T01:02:47Z",
+      "side": 1,
+      "message": "I think the if check is unnecessary (since the ifacesArcSet does not appear to contain any false values) - I\u0027d recommend removing lines 110, 112 for better readability.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bec9423_e1b329fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-15T01:02:47Z",
+      "side": 1,
+      "message": "Can you include an example of an interface name matched by the regular expression here? e.g. arc_eth0 -\u003e arc_eth. Also if you just need to remove the number part of the interface name I\u0027d recommend using something like regexp.MustCompile(\"[0-9]*$\") instead.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 91
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3a8b35_f3ded299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nethelper/nethelper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-15T01:02:47Z",
+      "side": 1,
+      "message": "Move this outside of the for loop to prevent recompiling the regular expression each iteration.",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 45
+      },
+      "revId": "32a03150b417bd17c7d8131706a5e8b1879dbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
