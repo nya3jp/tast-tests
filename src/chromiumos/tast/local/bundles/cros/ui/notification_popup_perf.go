@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -54,7 +55,7 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 	// then remove notification in reverse order (newer then older) to show fade out and move down animation.
 	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		for _, id := range ids {
-			if err := ash.ClearNotification(ctx, tconn, id); err != nil {
+			if err := browser.ClearNotification(ctx, tconn, id); err != nil {
 				return errors.Wrapf(err, "failed to clear notification (id: %s): ", id)
 			}
 		}
@@ -80,14 +81,14 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 func addNotifications(ctx context.Context, tconn *chrome.TestConn) ([]string, error) {
 	var ids []string
 	const uiTimeout = 30 * time.Second
-	ts := []ash.NotificationType{
-		ash.NotificationTypeBasic,
-		ash.NotificationTypeImage,
-		ash.NotificationTypeProgress,
-		ash.NotificationTypeList,
+	ts := []browser.NotificationType{
+		browser.NotificationTypeBasic,
+		browser.NotificationTypeImage,
+		browser.NotificationTypeProgress,
+		browser.NotificationTypeList,
 	}
 	for _, t := range ts {
-		id, err := ash.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification", t), "test message")
+		id, err := browser.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification", t), "test message")
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to create %s notification: ", t)
 		}

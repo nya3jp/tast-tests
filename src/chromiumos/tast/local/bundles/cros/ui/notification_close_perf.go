@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/power"
@@ -139,11 +140,11 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 
 	// Add some notifications so that notification centre shows up when opening
 	// Quick Settings.
-	notificationTypes := []ash.NotificationType{
-		ash.NotificationTypeBasic,
-		ash.NotificationTypeImage,
-		ash.NotificationTypeProgress,
-		ash.NotificationTypeList,
+	notificationTypes := []browser.NotificationType{
+		browser.NotificationTypeBasic,
+		browser.NotificationTypeImage,
+		browser.NotificationTypeProgress,
+		browser.NotificationTypeList,
 	}
 
 	// Create 12 notifications (3 groups of 4 different notifications) with 3 ARC notifications if applicable,
@@ -152,7 +153,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 		ids := make([]string, n*len(notificationTypes))
 		for i := 0; i <= n-1; i++ {
 			for idx, t := range notificationTypes {
-				if id, err := ash.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification%d", t, i), "test message"); err != nil {
+				if id, err := browser.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification%d", t, i), "test message"); err != nil {
 					s.Fatalf("Failed to create %d-th %s notification: %v", i, t, err)
 				} else {
 					var index = i*len(notificationTypes) + idx
@@ -186,7 +187,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 				// Clear the notifications one at a time.
 				for i := len(ids) - 1; i >= 0; i-- {
 					if err := testing.Poll(ctx, func(ctx context.Context) error {
-						if err := ash.ClearNotification(ctx, tconn, ids[i]); err != nil {
+						if err := browser.ClearNotification(ctx, tconn, ids[i]); err != nil {
 							return errors.Wrap(err, "failed to clear notification")
 						}
 						// Wait for stabilization / animation completion, otherwise all
