@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27deaf29_1f2e5630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-15T09:21:11Z",
+      "side": 1,
+      "message": "Discussed this offline and made values optional + added defaults in case values are not provided.",
+      "parentUuid": "0115cbd3_365cb5de",
+      "revId": "2d29d6499361f5b19965009adb2971d0071ad609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b503c1a3_a14b3856",
