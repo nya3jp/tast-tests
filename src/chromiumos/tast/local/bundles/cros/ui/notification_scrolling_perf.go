@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
@@ -79,16 +80,16 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	// We will add 5 notifications of each type so that it is enough for scrolling.
 	const n = 5
 	const uiTimeout = 30 * time.Second
-	ts := []ash.NotificationType{
-		ash.NotificationTypeBasic,
-		ash.NotificationTypeImage,
-		ash.NotificationTypeProgress,
-		ash.NotificationTypeList,
+	ts := []browser.NotificationType{
+		browser.NotificationTypeBasic,
+		browser.NotificationTypeImage,
+		browser.NotificationTypeProgress,
+		browser.NotificationTypeList,
 	}
 	for i := 0; i <= n; i++ {
 		for _, t := range ts {
 			title := fmt.Sprintf("Test%sNotification%d", t, i)
-			if _, err := ash.CreateTestNotification(ctx, tconn, t, title, "test message"); err != nil {
+			if _, err := browser.CreateTestNotification(ctx, tconn, t, title, "test message"); err != nil {
 				s.Fatalf("Failed to create %d-th %s notification: %v", i, t, err)
 			}
 			// Wait for the notification to finish creating, making sure that it is created.

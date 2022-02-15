@@ -14,6 +14,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// This file contains types and functions used to wait or close notifications in ash, which is on the receiver side of the Chrome notifications.
+// If you look for the ones used to communicate with notification on the sender side,
+// see chromiumos/tast/local/chrome/browser/notification.go instead.
+
 // Notification corresponds to the "Notification" defined in
 // autotest_private.idl.
 type Notification struct {
@@ -133,9 +137,11 @@ func WaitUntilNotificationGone(ctx context.Context, tconn *chrome.TestConn, time
 }
 
 // NotificationType describes the types of notifications you can create with chrome.notifications.create()
+// TODO: Delete this once moved to the browser package.
 type NotificationType string
 
 // As defined in https://developer.chrome.com/apps/notifications#type-TemplateType
+// TODO: Delete this once moved to the browser package.
 const (
 	NotificationTypeBasic    NotificationType = "basic"
 	NotificationTypeImage    NotificationType = "image"
@@ -145,6 +151,7 @@ const (
 
 // NotificationItem describes an individual item in a list notification.
 // As defined in https://developer.chrome.com/docs/extensions/reference/notifications/#type-NotificationItem
+// TODO: Delete this once moved to the browser package.
 type NotificationItem struct {
 	Message string `json:"message"`
 	Title   string `json:"title"`
@@ -152,6 +159,7 @@ type NotificationItem struct {
 
 // CreateTestNotification creates a notification with a custom title and message.
 // iconUrl is a required field to the chrome.notifiations.create() call so a 1px transparent data-url is hardcoded.
+// TODO: Delete this once moved to the browser package.
 func CreateTestNotification(ctx context.Context, tconn *chrome.TestConn, notificationType NotificationType, title, message string) (string, error) {
 	var id string
 	var imageURL string
@@ -189,6 +197,7 @@ func CreateTestNotification(ctx context.Context, tconn *chrome.TestConn, notific
 }
 
 // ClearNotification clear a notification with the given id.
+// TODO: Delete this once moved to the browser package.
 func ClearNotification(ctx context.Context, tconn *chrome.TestConn, id string) error {
 	if err := tconn.Call(ctx, nil,
 		`async (id) =>
