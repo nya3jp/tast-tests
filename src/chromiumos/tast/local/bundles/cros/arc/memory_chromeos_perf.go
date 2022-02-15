@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	arcMemory "chromiumos/tast/local/bundles/cros/arc/memory"
 	"chromiumos/tast/local/memory"
+	"chromiumos/tast/local/resourced"
 	"chromiumos/tast/testing"
 )
 
@@ -44,23 +44,28 @@ func init() {
 }
 
 func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
+	rm, err := resourced.NewClient(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Resource Manager client: ", err)
+	}
 	allocatedMetric := perf.Metric{Name: "allocated", Unit: "MiB", Direction: perf.BiggerIsBetter, Multiple: true}
 	allocatedP90Metric := perf.Metric{Name: "allocated_p90", Unit: "MiB", Direction: perf.BiggerIsBetter}
 	marginMetric := perf.Metric{Name: "critical_margin", Unit: "MiB"}
-	margin, err := memory.CriticalMargin()
+	margins, err := rm.MemoryMarginsKB(ctx)
 	if err != nil {
 		s.Fatal("Failed to read critical margin: ", err)
 	}
 	p := perf.NewValues()
-	p.Set(marginMetric, float64(margin)/memory.MiB)
-	c := arcMemory.NewChromeOSAllocator()
+	p.Set(marginMetric, float64(margins.CriticalKB)/memory.KiB)
+	c := memory.NewChromeOSAllocator()
 	defer c.FreeAll()
 	const epsilon = 5 * memory.MiB // We want to be consistently under the critical margin, so make the target available just inside.
 	allocated, err := c.AllocateUntil(
 		ctx,
+		rm,
 		time.Second,
 		60,
-		margin-epsilon,
+		margins.CriticalKB*memory.KiB-epsilon,
 	)
 	if err != nil {
 		s.Fatal("Failed to allocate to critical margin: ", err)

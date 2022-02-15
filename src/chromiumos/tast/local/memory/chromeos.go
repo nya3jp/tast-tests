@@ -17,7 +17,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/memory"
+	"chromiumos/tast/local/resourced"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -25,7 +25,7 @@ import (
 // ChromeOSAllocator helps test code allocate memory on ChromeOS.
 type ChromeOSAllocator struct {
 	allocated *list.List
-	size      uint
+	size      uint64
 }
 
 // NewChromeOSAllocator creates a helper to allocate memory on ChromeOS.
@@ -38,7 +38,7 @@ func NewChromeOSAllocator() *ChromeOSAllocator {
 }
 
 // Size returns the size of all allocated memory
-func (c *ChromeOSAllocator) Size() uint {
+func (c *ChromeOSAllocator) Size() uint64 {
 	return c.size
 }
 
@@ -52,8 +52,8 @@ func (c *ChromeOSAllocator) Allocate(size int) error {
 	}
 	for size > 0 {
 		mmapSize := size
-		if mmapSize > memory.MiB {
-			mmapSize = memory.MiB
+		if mmapSize > MiB {
+			mmapSize = MiB
 		}
 		size -= mmapSize
 		buffer, err := syscall.Mmap(
@@ -74,7 +74,7 @@ func (c *ChromeOSAllocator) Allocate(size int) error {
 			copy(buffer[i:], randomPage[:])
 		}
 		c.allocated.PushBack(buffer)
-		c.size += uint(len(buffer))
+		c.size += uint64(len(buffer))
 	}
 
 	return nil
@@ -82,13 +82,13 @@ func (c *ChromeOSAllocator) Allocate(size int) error {
 
 // FreeLast frees the most recently allocated buffer.
 // Returns the size of the buffer freed.
-func (c *ChromeOSAllocator) FreeLast() (int, error) {
+func (c *ChromeOSAllocator) FreeLast() (uint64, error) {
 	if c.allocated.Len() == 0 {
 		return 0, errors.New("nothing to free")
 	}
 	buffer := c.allocated.Remove(c.allocated.Back()).([]byte)
-	size := len(buffer)
-	c.size -= uint(size)
+	size := uint64(len(buffer))
+	c.size -= size
 
 	if err := syscall.Munmap(buffer); err != nil {
 		return 0, errors.Wrap(err, "unable to free buffer")
@@ -98,7 +98,7 @@ func (c *ChromeOSAllocator) FreeLast() (int, error) {
 
 // FreeAll frees all allocated buffers.
 // Returns the size of freed memory.
-func (c *ChromeOSAllocator) FreeAll() (uint, error) {
+func (c *ChromeOSAllocator) FreeAll() (uint64, error) {
 	size := c.size
 	for c.allocated.Len() > 0 {
 		if _, err := c.FreeLast(); err != nil {
@@ -137,10 +137,11 @@ func checkForOOMs(ctx context.Context, reader *syslog.Reader) error {
 // Returns the allocated memory at every attempt.
 func (c *ChromeOSAllocator) AllocateUntil(
 	ctx context.Context,
+	rm *resourced.Client,
 	attemptInterval time.Duration,
 	attempts int,
-	margin int64,
-) ([]uint, error) {
+	margin uint64,
+) ([]uint64, error) {
 	// Create a reader to scan for OOMs, we can't use syslog.Program tofilter to
 	// a specific process name because ARCVM includes the PID in the process
 	// name field.
@@ -150,16 +151,16 @@ func (c *ChromeOSAllocator) AllocateUntil(
 	}
 	defer reader.Close()
 
-	crosCrit, err := memory.NewAvailableLimit(margin)
+	crosCrit, err := NewAvailableLimit(ctx, rm, margin)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to make ChromeOS available Limit")
 	}
 	// Use NewPageReclaimLimit to avoid the Linux OOM killer. Once page reclaim
 	// starts, we are quite close to a Zone's min watermark.
-	nearOOM := memory.NewPageReclaimLimit()
-	limit := memory.NewCompositeLimit(crosCrit, nearOOM)
+	nearOOM := NewPageReclaimLimit()
+	limit := NewCompositeLimit(crosCrit, nearOOM)
 
-	allocated := make([]uint, attempts)
+	allocated := make([]uint64, attempts)
 	for attempt := 0; attempt < attempts; attempt++ {
 		for {
 			distance, err := limit.Distance(ctx)
@@ -174,18 +175,18 @@ func (c *ChromeOSAllocator) AllocateUntil(
 			// Limit allocations to 64MiB, to avoid large mmap ranges that might
 			// fail.
 			const maxAllocMiB = 64
-			allocMiB := (distance / memory.MiB) / 4
+			allocMiB := (distance / MiB) / 4
 			if allocMiB == 0 {
 				allocMiB = 1
 			} else if allocMiB > maxAllocMiB {
 				allocMiB = maxAllocMiB
 			}
-			if err = c.Allocate(int(allocMiB * memory.MiB)); err != nil {
+			if err = c.Allocate(int(allocMiB * MiB)); err != nil {
 				return nil, errors.Wrap(err, "unable to allocate")
 			}
 		}
 		allocated[attempt] = c.Size()
-		testing.ContextLogf(ctx, "Attempt %d: %d MiB", attempt, c.Size()/memory.MiB)
+		testing.ContextLogf(ctx, "Attempt %d: %d MiB", attempt, c.Size()/MiB)
 		// Available is less than target margin, but it might be much less
 		// if the system becomes unresponsive from the memory pressure we
 		// are applying. Available memory can drop much faster than the
