@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c917fc88_e4a178e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-15T00:12:15Z",
+      "side": 1,
+      "message": "Adjusted commit message to stay within 72 characters per line",
+      "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
