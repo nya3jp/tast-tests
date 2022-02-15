@@ -129,6 +129,24 @@
       "parentUuid": "67528853_741b61fe",
       "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd505f28_06005428",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-15T08:10:23Z",
+      "side": 1,
+      "message": "Yerp but you can check if the type cast succeeds and do something different in the else.",
+      "parentUuid": "ecd7ae30_f05cc7f3",
+      "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
