@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57766e8d_b3029ff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T06:03:04Z",
+      "side": 1,
+      "message": "Talked with Hidehiko in another thread.\nI\u0027ll work on a prework CL (https://crrev.com/c/3462316) to move some utils that are browser specific from the ash package to the browser package. This CL needs to be reviewed/submitted together with it.\nMarking this comment as resolved since we\u0027re working on the solution.",
+      "parentUuid": "61e7b785_0c68c6f3",
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4062b1dd_8b7e36ee",
@@ -179,6 +197,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d5d382_9d0a4079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T06:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35285af1_658df57e",
+      "range": {
+        "startLine": 81,
+        "startChar": 46,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2e02aff_7f60f6e1",
@@ -216,6 +258,30 @@
       "side": 1,
       "message": "Any thought on this? I\u0027m a kind of inclined to use *browser.TestConn for the function that needs it for browser interaction.",
       "parentUuid": "d2e02aff_7f60f6e1",
+      "range": {
+        "startLine": 156,
+        "startChar": 49,
+        "endLine": 156,
+        "endChar": 71
+      },
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80722f1d_9051f30a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-15T06:03:04Z",
+      "side": 1,
+      "message": "Marking as done since there is another comment already open about this.",
+      "parentUuid": "27e629ed_00d8ee0a",
       "range": {
         "startLine": 156,
         "startChar": 49,
