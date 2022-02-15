@@ -16,6 +16,24 @@
       "message": "Have we run this multiple times. Also does the account have the app purchased?",
       "revId": "501a18329038d0b7279321e411ede6e277ddf842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bcf8293_b84f566b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-15T22:20:42Z",
+      "side": 1,
+      "message": "yes, app needs purchase. \nChecked with Games team (Chandra). To create an account, need school or organizational account. \nCurrently we have only one account which was shared by eng team.we can only use one account on one device at a time. \nSo we could not use a same account for running on multiple devices at the same time. Skipped login part for now.",
+      "parentUuid": "b6d20890_52ec1002",
+      "revId": "501a18329038d0b7279321e411ede6e277ddf842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
