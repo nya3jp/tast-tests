@@ -182,7 +182,7 @@ var PlayStore = App{
 
 // Calculator has details about the Calculator app.
 var Calculator = App{
-	ID:   "joodangkbfjnajiiifokapkpmhfnpleo",
+	ID:   "oabkinaljpjeilageghcdlnekhphhphl",
 	Name: "Calculator",
 }
 

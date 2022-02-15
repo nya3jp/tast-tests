@@ -30,8 +30,9 @@ func init() {
 			"zafzal@google.com",
 		},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
-		Timeout:      8 * time.Minute,
+		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 	})
 }
