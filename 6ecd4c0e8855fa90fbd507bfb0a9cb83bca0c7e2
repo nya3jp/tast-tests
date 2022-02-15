@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14386344_2e2e6065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-02-15T20:58:49Z",
+      "side": 1,
+      "message": "Not it behaves as expected. LGTM ",
+      "revId": "6ecd4c0e8855fa90fbd507bfb0a9cb83bca0c7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

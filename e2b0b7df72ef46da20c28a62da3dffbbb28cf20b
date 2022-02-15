@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50a5a65a_6fa54366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-02-15T20:58:49Z",
+      "side": 1,
+      "message": "Awsome. I tried to run the test an everything looks good!\nAndroid P is ok for from my POV (and I would not block this cl on that).",
+      "parentUuid": "736ea952_7c12ac2a",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "261eb011_8e78f0e9",
