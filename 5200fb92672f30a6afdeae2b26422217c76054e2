@@ -51,6 +51,80 @@
       "parentUuid": "a8214bd6_decb82d3",
       "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148cb4c9_7f3a0787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-15T02:14:49Z",
+      "side": 1,
+      "message": "Looks mostly fine to me (shadow)",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a76097_e429a15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-15T02:14:49Z",
+      "side": 1,
+      "message": "Please add the LacrosStatus field. See the code for documentation of what it means.  I guess this test will need a lacros variation.\n\nthanks",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2398d84b_9a133642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-15T02:14:49Z",
+      "side": 1,
+      "message": "I think it\u0027s better to use the tast Data abstraction for this rather than URLs directly, e.g. will help with bisecting if these files ever change or get moved.",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51bb3d01_29cefa7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-15T02:14:49Z",
+      "side": 1,
+      "message": "Is this required? iirc go allows redefinition of err with :\u003d",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
