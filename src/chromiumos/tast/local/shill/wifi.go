@@ -54,11 +54,11 @@ func (wifi *WifiManager) SetTimeout(t time.Duration) {
 	wifi.timeout = t
 }
 
-// Interface returns the WiFi interface name.
-func (wifi *WifiManager) Interface(ctx context.Context) (string, error) {
+// Interfaces returns all the WiFi interfaces names.
+func (wifi *WifiManager) Interfaces(ctx context.Context) ([]string, error) {
 	watcher, err := wifi.m.CreateWatcher(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create a shill manager watcher")
+		return nil, errors.Wrap(err, "failed to create a shill manager watcher")
 	}
 	defer watcher.Close(ctx)
 
@@ -68,7 +68,7 @@ func (wifi *WifiManager) Interface(ctx context.Context) (string, error) {
 	for {
 		_, props, err := wifi.m.DevicesByTechnology(wCtx, TechnologyWifi)
 		if err != nil {
-			return "", errors.Wrap(err, "failed to get WiFi devices")
+			return nil, errors.Wrap(err, "failed to get WiFi devices")
 		}
 		var ifaces []string
 		for _, p := range props {
@@ -76,19 +76,31 @@ func (wifi *WifiManager) Interface(ctx context.Context) (string, error) {
 				ifaces = append(ifaces, iface)
 			}
 		}
-		// If more than one WiFi interface is found, an error is raised.
 		// If there's no WiFi interface, probe again when manager's "Devices" property is changed.
-		if len(ifaces) > 1 {
-			return "", errors.Errorf("more than one WiFi interface found: %q", ifaces)
-		} else if len(ifaces) == 1 {
-			return ifaces[0], nil
+		if len(ifaces) >= 1 {
+			return ifaces, nil
 		}
 
 		if _, err := watcher.WaitAll(wCtx, shillconst.ManagerPropertyDevices); err != nil {
-			return "", errors.Wrap(err, "failed waiting for shill devices to change")
+			return nil, errors.Wrap(err, "failed waiting for shill devices to change")
 		}
 	}
+}
 
+// Interface returns the WiFi interface name.
+func (wifi *WifiManager) Interface(ctx context.Context) (string, error) {
+	ifaces, err := wifi.Interfaces(ctx)
+	if err != nil {
+		return "", err
+	}
+
+	if len(ifaces) > 1 {
+		return "", errors.Errorf("more than one WiFi interface found: %q", ifaces)
+	} else if len(ifaces) == 0 {
+		return "", errors.New("no Wi-Fi interface")
+	}
+
+	return ifaces[0], nil
 }
 
 // Enable enables or disables the WiFi network according to the given enable flag.
