@@ -129,29 +129,6 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 				Verify(); err != nil {
 				s.Error("Unexpected OS settings state: ", err)
 			}
-
-			if param.wantChecked == checked.True {
-				// Policy unset will open the modal dialog about turning off autoclicks.
-				// We need to close it. Otherwise it messes up the next test.
-
-				if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-					s.Fatal("Failed to clean up: ", err)
-				}
-
-				// TODO(crbug.com/1197511): investigate why this is needed.
-				// Wait for a second before clicking the Yes button as the click
-				// won't be registered otherwise.
-				testing.Sleep(ctx, time.Second)
-
-				condition := func(ctx context.Context) error {
-					return ui.Gone(nodewith.Name("Are you sure you want to turn off automatic clicks?"))(ctx)
-				}
-
-				// Click until the dialog is gone.
-				if err := ui.LeftClickUntil(nodewith.Name("Yes").ClassName("MdTextButton"), condition)(ctx); err != nil {
-					s.Fatal("Failed to close the dialog: ", err)
-				}
-			}
 		})
 	}
 }
