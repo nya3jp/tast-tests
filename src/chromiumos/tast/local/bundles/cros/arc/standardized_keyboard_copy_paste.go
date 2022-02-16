@@ -22,7 +22,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test that installs an app and tests standard keyboard copy/paste functionality. Test are performed in clamshell and touchview mode. This does not test the virtual, on-screen keyboard",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:mainline"},
+		// TODO(b/218607609): dcheck failures are causing this test to fail. Mark critical after those issues are resolved.
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Fixture:      "arcBooted",
@@ -37,13 +38,11 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"informational"},
 			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
-			ExtraAttr:         []string{"informational"},
 			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
