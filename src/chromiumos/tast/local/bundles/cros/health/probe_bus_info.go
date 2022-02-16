@@ -7,9 +7,11 @@ package health
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/google/go-cmp/cmp"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
@@ -40,8 +42,6 @@ func init() {
 			Name:      "thunderbolt",
 			ExtraAttr: []string{"informational"},
 			Val:       true,
-			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
 		}, {
 			Name:              "volteer2",
 			ExtraAttr:         []string{"informational"},
@@ -53,8 +53,21 @@ func init() {
 
 func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	isDeviceConnected := false
+	isThunderboltSupport := false
 	isvProSupports := s.Param().(bool)
+
 	if isvProSupports {
+		// Checking whether device supports thunderbolt or not.
+		outFiles, err := testexec.CommandContext(ctx, "ls", "/sys/bus/thunderbolt/devices").Output()
+		if err != nil {
+			s.Log("Failed to execute ls /sys/bus/thunderbolt/devices/ command: ", err)
+		}
+		requiredFiles := []string{"0-0", "1-0", "domain0", "domain1"}
+		for _, file := range requiredFiles {
+			if strings.Contains(string(outFiles), file) {
+				isThunderboltSupport = true
+			}
+		}
 		// Checking whether the Thunderbolt device is connected or not.
 		port, _ := typecutils.CheckPortsForTBTPartner(ctx)
 		if port != -1 {
@@ -85,10 +98,16 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	}
 
 	if isvProSupports {
-		if err := validateThundeboltDevices(tbtDevs, isDeviceConnected); err != nil {
-			s.Fatal("Failed to validate Thunderbolt devices: ", err)
+		if isThunderboltSupport {
+			if err := validateThundeboltDevices(tbtDevs, isDeviceConnected); err != nil {
+				s.Fatal("Failed to validate Thunderbolt devices: ", err)
+			}
+		} else {
+			if len(tbtDevs) > 0 {
+				s.Fatal("Failed to validate empty Thunderbolt data")
+			}
+			return
 		}
-		return
 	}
 
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
