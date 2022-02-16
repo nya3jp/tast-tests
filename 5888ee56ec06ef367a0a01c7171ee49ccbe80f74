@@ -33,6 +33,29 @@
       "message": "PTAL.",
       "revId": "5888ee56ec06ef367a0a01c7171ee49ccbe80f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5abb3787_5cee35e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/ui_faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-16T22:01:03Z",
+      "side": 1,
+      "message": "IIUC, you are testing the `failog.DumpUITreeWithScreenshotOnError` function, why not directly call it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "5888ee56ec06ef367a0a01c7171ee49ccbe80f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
