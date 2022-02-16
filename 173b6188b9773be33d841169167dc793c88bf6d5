@@ -22,6 +22,30 @@
       },
       "revId": "173b6188b9773be33d841169167dc793c88bf6d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db73faac_28e1a669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-02-16T04:38:53Z",
+      "side": 1,
+      "message": "My guess is that the test wants to verify if the first part of the log is correctly dumped. (actually, the owner of this test is not here anymore so no one knows the true answer...)",
+      "parentUuid": "2dbab7c2_859c94a8",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 105
+      },
+      "revId": "173b6188b9773be33d841169167dc793c88bf6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
