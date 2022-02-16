@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/remote/firmware/fixture"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -36,6 +37,8 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
 		Fixture:      fixture.NormalMode,
 		Data:         []string{"fw-config.json"},
+		// b/111215677: CCD servo detection doesn't work on soraka.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("soraka")),
 	})
 }
 
