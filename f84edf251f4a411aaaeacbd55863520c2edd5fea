@@ -46,6 +46,30 @@
       },
       "revId": "f84edf251f4a411aaaeacbd55863520c2edd5fea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9405d842_ff65b131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_pack_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-02-16T19:09:05Z",
+      "side": 1,
+      "message": "Acked.",
+      "parentUuid": "37635af9_efb0e558",
+      "range": {
+        "startLine": 125,
+        "startChar": 35,
+        "endLine": 125,
+        "endChar": 56
+      },
+      "revId": "f84edf251f4a411aaaeacbd55863520c2edd5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
