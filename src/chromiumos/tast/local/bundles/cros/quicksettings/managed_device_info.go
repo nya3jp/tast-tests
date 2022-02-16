@@ -9,19 +9,20 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ManagedDeviceInfo,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the Quick Settings managed device info is displayed correctly",
 		Contacts: []string{
 			"leandre@chromium.org",
@@ -32,33 +33,36 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Fixture: "chromePolicyLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPolicyLoggedIn",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
+const uiTimeout = 10 * time.Second
+
 // ManagedDeviceInfo tests that the Quick Settings managed device info is displayed correctly.
 func ManagedDeviceInfo(ctx context.Context, s *testing.State) {
-	const uiTimeout = 10 * time.Second
+	// Reserve some time for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
-	// Start FakeDMS.
-	fdms, err := fakedms.New(ctx, s.OutDir())
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
 	if err != nil {
-		s.Fatal("Failed to start FakeDMS: ", err)
+		s.Fatal("Failed to open the browser: ", err)
 	}
-	defer fdms.Stop(ctx)
-
-	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
-
-	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.EnableFeatures("ManagedDeviceUIRedesign"))
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
+	defer closeBrowser(cleanupCtx)
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -93,7 +97,7 @@ func ManagedDeviceInfo(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if management page is open after clicking the button.
-	if _, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://management/")); err != nil {
+	if _, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://management/")); err != nil {
 		s.Fatal("Management page did not open: ", err)
 	}
 }
