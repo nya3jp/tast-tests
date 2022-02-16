@@ -11,7 +11,12 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
@@ -22,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ManagedDeviceInfo,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the Quick Settings managed device info is displayed correctly",
 		Contacts: []string{
 			"leandre@chromium.org",
@@ -33,6 +38,14 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -51,15 +64,33 @@ func ManagedDeviceInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 
+	// Reserve some time for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
+	bt := s.Param().(browser.Type)
+	opts := []chrome.Option{
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
-		chrome.EnableFeatures("ManagedDeviceUIRedesign"))
+		chrome.EnableFeatures("ManagedDeviceUIRedesign"),
+	}
+	var lacrosCfg *lacrosfixt.Config
+	if bt == browser.TypeLacros {
+		lacrosCfg = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(opts...))
+		lacrosOpts, err := lacrosCfg.Opts()
+		if err != nil {
+			s.Fatal("Failed to get lacros options: ", err)
+		}
+		opts = append(opts, lacrosOpts...)
+	}
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosCfg, opts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -94,7 +125,7 @@ func ManagedDeviceInfo(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if management page is open after clicking the button.
-	if _, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://management/")); err != nil {
+	if _, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://management/")); err != nil {
 		s.Fatal("Management page did not open: ", err)
 	}
 }
