@@ -41,7 +41,7 @@ func init() {
 			Name: "fmap",
 			Val: params{
 				region:   "FMAP",
-				deadline: 850,
+				deadline: 2000,
 			},
 		}, {
 			Name: "gbb",
