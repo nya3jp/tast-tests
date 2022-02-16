@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f40016b_205658ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-16T02:28:39Z",
+      "side": 1,
+      "message": "Ok that makes sense. In general, this type of large scale\nvideo tests have landed in ui/*cuj* (for Customer User\nJourneys or some such), see e.g. [1] and its sibling \nvideo_cuj2.go. I\u0027d say we should put this test there?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+      "parentUuid": "37a672e4_6af4c8f4",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03a76097_e429a15e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
         "patchSetId": 2
