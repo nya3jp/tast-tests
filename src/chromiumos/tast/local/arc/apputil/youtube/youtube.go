@@ -39,6 +39,8 @@ type Youtube struct {
 	isPremium bool
 }
 
+var _ apputil.ARCMediaPlayer = (*Youtube)(nil)
+
 // NewApp returns Youtube instance.
 func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.TestConn, a *arc.ARC) (*Youtube, error) {
 	app, err := apputil.NewApp(ctx, kb, tconn, a, AppName, PkgName)
@@ -53,8 +55,11 @@ func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.Te
 func (yt *Youtube) ClearPrompts(ctx context.Context) error {
 	testing.ContextLog(ctx, "Clearing prompts")
 
-	dismissID := idPrefix + "dismiss"
+	if err := apputil.DismissMobilePrompt(ctx, yt.Tconn); err != nil {
+		return errors.Wrap(err, "failed to dismiss 'This app is designed for mobile' prompt")
+	}
 
+	dismissID := idPrefix + "dismiss"
 	skipTrial := yt.Device.Object(ui.ID(dismissID), ui.Text("SKIP TRIAL"))
 	closePrompt := yt.Device.Object(ui.Description("Close"), ui.ClassName("android.view.ViewGroup"))
 	noThanksEle := yt.Device.Object(ui.ID(dismissID), ui.Text("NO THANKS"))
