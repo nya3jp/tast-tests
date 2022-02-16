@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d967aeb9_577c00f9",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-16T20:04:26Z",
+      "side": 1,
+      "message": "Curious, is there anyway to see whether ash-chrome or lacros-chrome is set as a primary browser without `bt browser.Type` passed in from the caller? or are we good with this?",
+      "range": {
+        "startLine": 420,
+        "startChar": 65,
+        "endLine": 420,
+        "endChar": 80
+      },
+      "revId": "76f9a40564935f9c207fae8fdcdd64c00d5bd7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
