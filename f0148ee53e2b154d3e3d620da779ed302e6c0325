@@ -16,6 +16,94 @@
       "message": "I am not sure this is the best way to split Run() but it works.\nPlease suggest me how to improve this ;)",
       "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "062b4a6d_486dd787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-16T18:26:17Z",
+      "side": 1,
+      "message": "Looks mostly good to me.",
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24c6b52_5de046cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-16T18:26:17Z",
+      "side": 1,
+      "message": "\u003e \"accomodate\" is a possible misspelling of \"accommodate\".\n\nPlease fix.",
+      "parentUuid": "111d536b_70e243d0",
+      "range": {
+        "startLine": 452,
+        "startChar": 24,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b771a3_1dc7c542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-16T18:26:17Z",
+      "side": 1,
+      "message": "\u003e \"functino\" is a possible misspelling of \"function\".\n\nPlease fix.",
+      "parentUuid": "9e0aed63_34b6daac",
+      "range": {
+        "startLine": 454,
+        "startChar": 8,
+        "endLine": 454,
+        "endChar": 16
+      },
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793f030d_6529d8e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-16T18:26:17Z",
+      "side": 1,
+      "message": "nit: It might be cleaner to fold this into the deferred func() at L463.\ni.e.\n\n  defer func() {\n    err :\u003d r.StopRecording(runCtx, cleanup)\n    if e \u003d\u003d nil \u0026\u0026 err !\u003d nil {\n      ...\n    }\n  }",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
