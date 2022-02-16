@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8537530e_8a26d068",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-16T02:19:27Z",
+      "side": 1,
+      "message": "This CL is kind of large. Is there some way we can split it up?",
+      "revId": "146701f927267c0ff955968e5901b2f2dc3999d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a42491_dbed0b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-16T02:19:27Z",
+      "side": 1,
+      "message": "What is this sleep for btw?",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 26
+      },
+      "revId": "146701f927267c0ff955968e5901b2f2dc3999d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
