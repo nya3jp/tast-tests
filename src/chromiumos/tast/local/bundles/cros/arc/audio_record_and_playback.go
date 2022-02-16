@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/apputil/voicerecorder"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf"
 	"chromiumos/tast/testing"
@@ -24,15 +24,15 @@ func init() {
 		Contacts:     []string{"sun.tsai@cienet.com", "alfredyu@cienet.com", "cienet-development@googlegroups.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc"},
-		Fixture:      mtbf.ArcLoginReuseFixture,
+		Fixture:      mtbf.LoginReuseFixture,
 		Timeout:      5 * time.Minute,
 	})
 }
 
 // AudioRecordAndPlayback records audio via ARC++ app Voice Recorder and verifies that it can playback the recorded audio file..
 func AudioRecordAndPlayback(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*arc.PreData).Chrome
-	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	a := s.FixtValue().(*mtbf.FixtValue).ARC
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
