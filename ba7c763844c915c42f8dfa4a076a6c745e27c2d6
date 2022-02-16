@@ -16,6 +16,24 @@
       "message": "Hi Abhishek,\n\nsome chips is hw2.1, its path is:\n\"/sys/kernel/debug/ath11k/wcn6855 hw2.1/simulate_fw_crash\"\nso it also need to add above path to ath11k",
       "revId": "ba7c763844c915c42f8dfa4a076a6c745e27c2d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a483d02_956e017e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-02-16T08:45:57Z",
+      "side": 1,
+      "message": "Ya, I remember now, will make that change in another CL. Thanks for catching.",
+      "parentUuid": "411225f6_99d2abfd",
+      "revId": "ba7c763844c915c42f8dfa4a076a6c745e27c2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
