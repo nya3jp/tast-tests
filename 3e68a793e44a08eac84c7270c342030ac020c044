@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308b6930_e9f00825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-16T07:40:39Z",
+      "side": 1,
+      "message": "Should these four files all exist? Or just one existence can indicate TBT support?",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "3e68a793e44a08eac84c7270c342030ac020c044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
