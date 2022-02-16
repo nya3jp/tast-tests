@@ -13,11 +13,11 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/arc/apputil/vlc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mtbf"
 	"chromiumos/tast/testing"
@@ -42,7 +42,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"format_m4a.m4a", "format_mp3.mp3", "format_ogg.ogg", "format_wav.wav"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "arc"},
-		Fixture:      mtbf.ArcLoginReuseFixture,
+		Fixture:      mtbf.LoginReuseFixture,
 		Timeout:      10 * time.Minute,
 	})
 }
@@ -51,8 +51,8 @@ const audioFilesPlayingDefaultVol = 50
 
 // AudioFilesPlaying plays audio files via ARC++ app VLC player and verifies audio volume level is changed based on volume controls.
 func AudioFilesPlaying(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*arc.PreData).Chrome
-	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	a := s.FixtValue().(*mtbf.FixtValue).ARC
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -75,13 +75,18 @@ func AudioFilesPlaying(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users Downloads path: ", err)
+	}
+
 	files := map[string]string{
 		"m4a": "format_m4a.m4a",
 		"mp3": "format_mp3.mp3",
 		"ogg": "format_ogg.ogg",
 		"wav": "format_wav.wav",
 	}
-	audioPath := filesapp.DownloadPath + "audios"
+	audioPath := downloadsPath + "audios"
 	if _, err := os.Stat(audioPath); os.IsNotExist(err) {
 		s.Log("Create folder 'audios'")
 		if err := os.Mkdir(audioPath, 0755); err != nil {
