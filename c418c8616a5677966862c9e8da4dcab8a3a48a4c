@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdda773f_17bc4819",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-16T22:48:16Z",
+      "side": 1,
+      "message": "it would be helpful to know what action failed. Can we accept actionName param to add here?",
+      "range": {
+        "startLine": 100,
+        "startChar": 62,
+        "endLine": 100,
+        "endChar": 68
+      },
+      "revId": "c418c8616a5677966862c9e8da4dcab8a3a48a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
