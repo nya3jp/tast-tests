@@ -151,6 +151,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4d68d75_48862aa3",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-16T22:24:56Z",
+      "side": 1,
+      "message": "So in that case, if these options are added now then another cl will be needed to delete them when Lacros becomes the only browser?",
+      "parentUuid": "3beac75e_e7c37b3a",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a153fec1_68b9b2e3",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 4
