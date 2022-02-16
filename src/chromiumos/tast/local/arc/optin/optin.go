@@ -81,30 +81,33 @@ func waitForTerms(ctx context.Context, conn *chrome.Conn) error {
 	return nil
 }
 
-// waitForTermsWithRetry loads the optin dialog and waits for terms of service page to load.
-func waitForTermsWithRetry(ctx context.Context, conn *chrome.Conn, maxAttempts int) error {
-	attempts := 1
+// withRetry returns a function that attempts to perform an action, if action fails, presses retry button
+// and attempts to perform the action again until action succeeds or until attempt count exceeds maxAttempts.
+func withRetry(actionName string, action func(context.Context, *chrome.Conn) error, maxAttempts int) func(context.Context, *chrome.Conn) error {
+	return func(ctx context.Context, conn *chrome.Conn) error {
+		attempts := 1
 
-	for {
-		err := waitForTerms(ctx, conn)
-		if err == nil {
-			return nil
-		}
+		for {
+			err := action(ctx, conn)
+			if err == nil {
+				return nil
+			}
 
-		if attempts >= maxAttempts {
-			return err
-		}
+			if attempts >= maxAttempts {
+				return err
+			}
 
-		testing.ContextLogf(ctx, "Attempt %d, failed to load terms of service: %v", attempts, err)
-		attempts++
+			testing.ContextLogf(ctx, "Attempt %d, failed to %s: %v", attempts, actionName, err)
+			attempts++
 
-		// Sleep briefly before retrying.
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-			return errors.Wrap(err, "failed to sleep for optin re-attempt")
-		}
+			// Sleep briefly before retrying.
+			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep for re-attempt")
+			}
 
-		if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-retry').click()", nil); err != nil {
-			return errors.Wrap(err, "failed to press the retry button")
+			if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-retry').click()", nil); err != nil {
+				return errors.Wrap(err, "failed to press the retry button")
+			}
 		}
 	}
 }
@@ -139,7 +142,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	}
 	defer conn.Close()
 
-	if err := waitForTermsWithRetry(ctx, conn, maxAttempts); err != nil {
+	if err := withRetry("load terms of service", waitForTerms, maxAttempts)(ctx, conn); err != nil {
 		return errors.Wrap(err, "failed to load terms of service")
 	}
 
@@ -148,7 +151,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	}
 
 	if wait {
-		return waitForOptin(ctx, conn)
+		return withRetry("wait for optin to complete", waitForOptin, maxAttempts)(ctx, conn)
 	}
 
 	return nil
