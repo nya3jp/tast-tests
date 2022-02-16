@@ -50,7 +50,23 @@
       "message": "[side note: weird, I was not in vacation]\n\nI\u0027m not so sure about this change. There other apps that depends on ths ArcApValidityTest. See:\n\nhttps://source.corp.google.com/search?q\u003dorg.chromium.arc.testapp.appvaliditytast\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\n\nEither update all needed files (double-check with ARC team that renaming it is expected)... or I wouldn\u0027t make this change\n\n\n",
       "revId": "e599079f647489ab6165dc289da6c0fa747818fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf205f5_a70c4c56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2022-02-16T07:51:56Z",
+      "side": 1,
+      "message": "I\u0027m no longer in the ARC team. Sorry that I forgot to update gwsq settings.",
+      "revId": "e599079f647489ab6165dc289da6c0fa747818fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
-  ],
-  "submitRequirementResults": []
+  ]
 }
