@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1efb196b_03834138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-16T02:12:14Z",
+      "side": 1,
+      "message": "Talked with Hidehiko, we\u0027ll look for having a variant of browserfixt.SetUp* that can replace ash.CreateWindow in tests instead.",
+      "revId": "63ab43356988f4322c2595f4f237b212709bb929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
