@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c2b97c_bb83ef44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-16T23:18:15Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "b5b01d8c43ec23138be9e64006c88bb6635cdf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc526ddc_06b18633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_create_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-16T23:18:15Z",
+      "side": 1,
+      "message": "nit: if the client is needed in L58, I\u0027d move this line to L57",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 47
+      },
+      "revId": "b5b01d8c43ec23138be9e64006c88bb6635cdf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
