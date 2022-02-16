@@ -16,6 +16,29 @@
       "message": "I tried running this test on DUTs that I have in common with the lab. This patch was tested to succeed for a couple times on the following devices:\n\nGrunt/kasumi360\nGrunt/Aleena\nDedede/Boten\nDedede/Storo360\nKukui/Krane\nVolteer/Delbin\nNami/Bard\nZork/Vilboz\n",
       "revId": "1ec9dc45519357c4fb92df76eed0c9b513b1deb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c1e56c_98bb5977",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-16T17:30:14Z",
+      "side": 1,
+      "message": "There is no reason to run SetDUTPDDataRole after DUT.Connect. The data role swap is just a hack to get the ethernet port visible so that DUT.Connect will succeed. If it already succeeded, then you don\u0027t need it.",
+      "range": {
+        "startLine": 704,
+        "startChar": 3,
+        "endLine": 713,
+        "endChar": 4
+      },
+      "revId": "1ec9dc45519357c4fb92df76eed0c9b513b1deb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
