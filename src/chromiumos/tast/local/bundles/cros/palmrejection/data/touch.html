@@ -1,0 +1,100 @@
+<!doctype html>
+<head>
+    <title>Palm rejection demo</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        html, body {
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: pan-x pan-y;
+        }
+        header {
+            height: 54px;
+            border-bottom: 1px solid rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+        }
+        header > h1 {
+            font-size: 18px;
+            font-weight: 500;
+            flex: 1 0 auto;
+        }
+        main {
+            touch-action: none;
+            height: calc(100vh - 54px);
+        }
+        .row {
+            display: flex;
+        }
+        .flipped .row {
+            flex-direction: row-reverse;
+        }
+        section {
+            flex: 1 0 0;
+            position: relative;
+        }
+        .divider {
+            width: 0px;
+            border-right: 1px solid rgba(0,0,0,.1);
+        }
+        .label {
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+        }
+        button {
+            background-color: #2196f3;
+            color: #fff;
+            font-family: "Roboto",  sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 0 16px;
+            height: 32px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            min-width: 64px;
+            padding: 0;
+            margin: 0;
+        }
+        .actions {
+            display: flex;
+        }
+        .actions > * {
+            margin-right: 8px;
+        }
+        .actions > *:last-child {
+            margin-right: 0;
+        }
+    </style>
+    <script type="module" src="touch.mjs"></script>
+</head>
+<body>
+    <header>
+        <h1>Palm rejection demo</h1>
+        <div class="actions">
+            <button id="flip">Flip</button>
+            <button id="clear">Clear</button>
+        </div>
+    </header>
+    <main class="row">
+        <section id="preview">
+            <div class="label">See touches here</div>
+            <div id="cancel"></div>
+            <div id="accept"></div>
+            <canvas></canvas>
+        </section>
+       <!--  <div class="divider"></div>
+        <section id="test">
+            <div class="label">Write here</div>
+        </section> -->
+    </main>
+</body>
+</html>
