@@ -187,7 +187,7 @@ func getModetestConnectorInfo(ctx context.Context, column modetestConnectorColum
 	// 71      70      connected       eDP-1           290x190         1       70
 	//
 	// We'll try to get the line that contains "eDP" string first, and get the value at |column| index.
-	cmd := "modetest -c | grep eDP | awk -e '{print $" + strconv.Itoa(int(column)) + "}'"
+	cmd := "modetest -c | grep -E 'DSI|eDP' | awk -e '{print $" + strconv.Itoa(int(column)) + "}'"
 	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", err
@@ -238,7 +238,7 @@ func getModetestModeInfo(ctx context.Context, column modetestModeInfoColumn) (st
 		return "", err
 	} else if encoderID == "0" {
 		// It means that we can't find the crtc info. So fall back to method 2.
-		cmd := "modetest -c | grep eDP -A 10 | grep preferred | awk -e '{print $" + strconv.Itoa(int(column)) + "}'"
+		cmd := "modetest -c | grep -E 'DSI|eDP' -A 10 | grep preferred | awk -e '{print $" + strconv.Itoa(int(column)) + "}'"
 		b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
 		if err != nil {
 			return "", err
