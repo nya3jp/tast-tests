@@ -39,6 +39,8 @@ type Youtube struct {
 	isPremium bool
 }
 
+var _ apputil.ARCMediaPlayer = (*Youtube)(nil)
+
 // NewApp returns Youtube instance.
 func NewApp(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.TestConn, a *arc.ARC) (*Youtube, error) {
 	app, err := apputil.NewApp(ctx, kb, tconn, a, AppName, PkgName)
