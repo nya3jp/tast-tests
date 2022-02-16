@@ -68,6 +68,7 @@ func init() {
 }
 
 func SplitViewResizePerf(ctx context.Context, s *testing.State) {
+	// cherry
 	// Reserve ten seconds for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
