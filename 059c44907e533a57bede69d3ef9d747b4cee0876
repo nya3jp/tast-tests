@@ -16,6 +16,46 @@
       "message": "Hello Kyle, whenever you have a moment could you take a look at this change? During the issue where FeaturePodIconButton was replaced by IconButton and then that was reverted, I think I had modified the class referenced and it shouldn\u0027t have been changed yet.",
       "revId": "059c44907e533a57bede69d3ef9d747b4cee0876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b380bd_3827a563",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-16T01:06:56Z",
+      "side": 1,
+      "message": "LGTM, just a minor suggestion to make the class name transition a bit smoother",
+      "revId": "059c44907e533a57bede69d3ef9d747b4cee0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36543d07_3c29e71d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-16T01:06:56Z",
+      "side": 1,
+      "message": "How about using HasClass instead? It\u0027s like NameContaining, but for the ClassName attribute, so you could do something like `HasClass(\"IconButton\")`\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d601-604\n\nIt should make the transition a little smoother, as you can just go back and update the classname once FeaturePodIconButton has been completely replaced.",
+      "range": {
+        "startLine": 53,
+        "startChar": 88,
+        "endLine": 53,
+        "endChar": 97
+      },
+      "revId": "059c44907e533a57bede69d3ef9d747b4cee0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
