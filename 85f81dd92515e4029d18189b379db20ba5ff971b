@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a740d8db_080b6e12",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-16T01:06:40Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it affect the target of xdg-open?",
+      "parentUuid": "449a80cd_b3176a04",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a153fec1_68b9b2e3",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 4
