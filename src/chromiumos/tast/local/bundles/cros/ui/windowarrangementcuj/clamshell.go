@@ -253,7 +253,6 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 		return errors.Wrapf(err, "expected more than 1 desk mini-views; found %v", deskMiniViewCount)
 	}
 	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(),
-		ui.Sleep(2*time.Second),
 		pc.DragTo(deskMiniViews[1].Location.CenterPoint(), duration))(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 	}
