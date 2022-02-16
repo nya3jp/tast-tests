@@ -79,6 +79,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "016c9ea8_1a892a95",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-16T01:21:03Z",
+      "side": 1,
+      "message": "With this fixture, the target should be the ash chrome.",
+      "parentUuid": "a740d8db_080b6e12",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a153fec1_68b9b2e3",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 4
