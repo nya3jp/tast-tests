@@ -103,6 +103,24 @@
       "parentUuid": "952148da_e4a0a22b",
       "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a47360f_99b4531d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_popup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-16T16:44:58Z",
+      "side": 1,
+      "message": "Talked with Georg in another thread. Submitting to CQ as this won\u0027t block CQ. Thanks all for the review!",
+      "parentUuid": "b0879528_682365b1",
+      "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
