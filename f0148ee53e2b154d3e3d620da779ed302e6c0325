@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd74725_b9eb56d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-16T21:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b24c6b52_5de046cb",
+      "range": {
+        "startLine": 452,
+        "startChar": 24,
+        "endLine": 452,
+        "endChar": 34
+      },
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5b771a3_1dc7c542",
@@ -83,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83837cc_b9d9fca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-16T21:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b771a3_1dc7c542",
+      "range": {
+        "startLine": 454,
+        "startChar": 8,
+        "endLine": 454,
+        "endChar": 16
+      },
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "793f030d_6529d8e1",
@@ -96,6 +144,30 @@
       "writtenOn": "2022-02-16T18:26:17Z",
       "side": 1,
       "message": "nit: It might be cleaner to fold this into the deferred func() at L463.\ni.e.\n\n  defer func() {\n    err :\u003d r.StopRecording(runCtx, cleanup)\n    if e \u003d\u003d nil \u0026\u0026 err !\u003d nil {\n      ...\n    }\n  }",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42cc5eb0_168cf109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-16T21:08:13Z",
+      "side": 1,
+      "message": "This is interesting idea, never thought of it.\n\nBut I thought of the Run() to be an example of how to integrate StartRecording/StopRecording  into existing tests. So if the test wants to do something after StopRecording, then deferred approach might not work for them.",
+      "parentUuid": "793f030d_6529d8e1",
       "range": {
         "startLine": 475,
         "startChar": 0,
