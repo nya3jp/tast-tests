@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257925f4_88101a8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355869
+      },
+      "writtenOn": "2022-02-16T09:12:06Z",
+      "side": 1,
+      "message": "The test is broken on octopus-chrome-dcheck-postsubmit and it\u0027s the only test making the bot red (https://stainless.corp.google.com/search?view\u003dlist\u0026suite\u003d%5Ebvt%5C-tast%5C-cq%24\u0026declared_name\u003ddcheck-post\u0026status\u003dWARN\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026status\u003dRUNNING\u0026status\u003dTEST_NA\u0026status\u003dNOSTATUS\u0026status\u003dNOT_RUN\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dfalse\u0026exclude_acts\u003dfalse\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\u0026first_date\u003d2022-02-14\u0026last_date\u003d2022-02-16)\n\nCould we revert this change?\n\nThe alternative is to skip it when DCHECKs are enabled by adding \"no_chrome_dcheck\" to SotfwareDeps.",
+      "revId": "7e9c87c296121b1b008bf14593d7ad246e8a8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
