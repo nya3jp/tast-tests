@@ -39,6 +39,30 @@
       },
       "revId": "7c0e4323e1c963b5cb3de8550bce2b0a8b79cc55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c7d2c2_5a46eac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-16T23:09:46Z",
+      "side": 1,
+      "message": "My guess is that the closure will refer to the same variable as the enclosing function. After we reset \"cleanup\" var  on the line below, the deferred function will see [cleanup \u003d\u003d nil] and do nothing\n\nAnd I don\u0027t get any errors from the test, so I guess it works ;)",
+      "parentUuid": "bf27ea88_a501af6e",
+      "range": {
+        "startLine": 476,
+        "startChar": 18,
+        "endLine": 476,
+        "endChar": 25
+      },
+      "revId": "7c0e4323e1c963b5cb3de8550bce2b0a8b79cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
