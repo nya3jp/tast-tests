@@ -97,6 +97,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6deef226_7bb580ec",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-16T09:57:12Z",
+      "side": 1,
+      "message": "Lacros will eventually be the only browser and we want to test the configuration that comes closest to that, so please pass the same flags that the lacrosPrimary fixture passes.\n\nThe Lacros-only configuration should also be ready for testing soon, and we will take care of migrating Lacros-Primary tests to Lacros-Only.",
+      "parentUuid": "016c9ea8_1a892a95",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a153fec1_68b9b2e3",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 4
