@@ -6,12 +6,13 @@ package health
 
 import (
 	"context"
+	"io/ioutil"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type temperatureChannelInfo struct {
@@ -46,7 +47,7 @@ type cpuInfo struct {
 	NumTotalThreads     jsontypes.Uint32         `json:"num_total_threads"`
 	TemperatureChannels []temperatureChannelInfo `json:"temperature_channels"`
 	PhysicalCPUs        []physicalCPUInfo        `json:"physical_cpus"`
-	KeylockerInfo       keylockerinfo            `json:"keylocker_info"`
+	KeylockerInfo       *keylockerinfo           `json:"keylocker_info"`
 }
 
 func init() {
@@ -62,15 +63,6 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
-		Params: []testing.Param{{
-			Val: false,
-		}, {
-			Name:      "keylocker",
-			Val:       true,
-			ExtraAttr: []string{"informational"},
-			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
-		}},
 	})
 }
 
@@ -149,10 +141,20 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 	if err := validateCPUData(&info); err != nil {
 		s.Fatalf("Failed to validate cpu data, err [%v]", err)
 	}
+	out, err := ioutil.ReadFile("/proc/crypto")
+	if err != nil {
+		s.Fatal("Failed to read /proc/crypto file: ", err)
+	}
 
-	if s.Param().(bool) {
-		if err := validateKeyLocker(&info.KeylockerInfo); err != nil {
+	// Checking whether the system supports vPro feature or not.
+	if strings.Contains(string(out), "aeskl") {
+		if err := validateKeyLocker(info.KeylockerInfo); err != nil {
 			s.Fatal("Failed to validate KeyLocker: ", err)
 		}
+	} else {
+		if info.KeylockerInfo != nil {
+			s.Fatal("Failed to validate empty memory keyLockerdata")
+		}
+
 	}
 }
