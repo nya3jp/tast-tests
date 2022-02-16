@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fea0e8d_8c5bd7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_popup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-16T16:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591644f7_a60f4949",
+      "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "952148da_e4a0a22b",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-02-16T10:24:40Z",
       "side": 1,
       "message": "Due to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1284543 you might want to make Lacros tests informational for the moment.",
+      "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0879528_682365b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_popup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-16T16:33:37Z",
+      "side": 1,
+      "message": "Yep, I was trying to set it as informational but it can\u0027t be for tests with \"group:crosbolt\". Is there any other way to run some experimental runs for crosbolt tests? I\u0027ve tested locally and it passed though.",
+      "parentUuid": "952148da_e4a0a22b",
       "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
