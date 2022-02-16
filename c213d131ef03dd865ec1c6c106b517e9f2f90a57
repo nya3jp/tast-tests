@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45f605e_19fa31f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-16T00:56:10Z",
+      "side": 1,
+      "message": "Done. Forgot to remove this.",
+      "parentUuid": "2e45c916_3812316d",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 56
+      },
+      "revId": "c213d131ef03dd865ec1c6c106b517e9f2f90a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183b00bb_da033dae",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51211af4_e911067a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-16T00:56:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "183b00bb_da033dae",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 30
+      },
+      "revId": "c213d131ef03dd865ec1c6c106b517e9f2f90a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c98dcced_1e72305d",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-16T00:30:57Z",
       "side": 1,
       "message": "do you need to test if this appConn is working?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "c213d131ef03dd865ec1c6c106b517e9f2f90a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba1f842_498b07f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-16T00:56:10Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "c98dcced_1e72305d",
       "range": {
         "startLine": 92,
         "startChar": 1,
