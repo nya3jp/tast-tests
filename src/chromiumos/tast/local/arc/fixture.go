@@ -19,6 +19,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// PreTestTimeout is the timeout duration to reset output directory before each test.
+const PreTestTimeout = 15 * time.Second
+
 // PostTestTimeout is the timeout duration to save logs after each test.
 // It's intentionally set longer than ResetTimeout because dumping 'dumpsys' takes around 20 seconds.
 const PostTestTimeout = ResetTimeout + 20*time.Second
