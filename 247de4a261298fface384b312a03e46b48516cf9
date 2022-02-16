@@ -97,6 +97,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ac9b7b9_b7a8f66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/openfile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-16T00:21:29Z",
+      "side": 1,
+      "message": "You should have the key automatically if you have the tast-tests-private repo, which requires the chrome os internal manifest\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#get-the-source-code",
+      "parentUuid": "8d1cce78_94e3a03a",
+      "range": {
+        "startLine": 167,
+        "startChar": 23,
+        "endLine": 167,
+        "endChar": 29
+      },
+      "revId": "247de4a261298fface384b312a03e46b48516cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce9f101_9199825a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/openfile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-02-16T00:21:29Z",
+      "side": 1,
+      "message": "You should have the key if you have the tast-tests-private repo, which requires the internal manifest\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#get-the-source-code",
+      "parentUuid": "8d1cce78_94e3a03a",
+      "range": {
+        "startLine": 167,
+        "startChar": 23,
+        "endLine": 167,
+        "endChar": 29
+      },
+      "revId": "247de4a261298fface384b312a03e46b48516cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d752cd57_e15260b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/openfile.go",
         "patchSetId": 1
