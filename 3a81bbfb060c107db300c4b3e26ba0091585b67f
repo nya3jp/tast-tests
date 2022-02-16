@@ -16,6 +16,24 @@
       "message": "Reading through the bug, it sounds like these test results don\u0027t show up in stainless. Is there any good way to verify that these tests aren\u0027t flaky before promoting them to CQ?",
       "revId": "3a81bbfb060c107db300c4b3e26ba0091585b67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131496eb_ec733fa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2022-02-16T01:02:36Z",
+      "side": 1,
+      "message": "It only runs on amd64-generic and betty, and recent runs as well as my tests locally pass consistently\n\namd64-generic: https://screenshot.googleplex.com/42sDWynXLVymCfe",
+      "parentUuid": "90a6c5dd_c038a065",
+      "revId": "3a81bbfb060c107db300c4b3e26ba0091585b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
