@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9366dee_79814397",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-16T23:55:07Z",
+      "side": 1,
+      "message": "nit: note that both the actions are waiting so we can just say \"optin to complete\" instead of \"waiting for\" since that is implied.",
+      "revId": "4dadb57991ef30d95ed5e10d63a8258e287e7d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
