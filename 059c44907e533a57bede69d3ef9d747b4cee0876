@@ -56,6 +56,30 @@
       },
       "revId": "059c44907e533a57bede69d3ef9d747b4cee0876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84a9e95_d141ebd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-02-16T01:20:19Z",
+      "side": 1,
+      "message": "Ah, that sounds great to me-- will use this moving forward, thank you :D",
+      "parentUuid": "36543d07_3c29e71d",
+      "range": {
+        "startLine": 53,
+        "startChar": 88,
+        "endLine": 53,
+        "endChar": 97
+      },
+      "revId": "059c44907e533a57bede69d3ef9d747b4cee0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
