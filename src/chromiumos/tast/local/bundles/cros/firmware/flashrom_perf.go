@@ -92,7 +92,7 @@ func FlashromPerf(ctx context.Context, s *testing.State) {
 		s.Error("Failed saving perf data: ", err)
 	}
 	if duration <= lowerBound || duration >= p.deadline {
-		s.Errorf("Flashrom execution outside time-bounds, %v < expected < %v ms, got = %v ms", lowerBound, p.deadline, duration)
+		s.Errorf("Flashrom read time for region %q was outside time-bounds, %v < expected < %v ms, got = %v ms", p.region, lowerBound, p.deadline, duration)
 	}
 }
 
