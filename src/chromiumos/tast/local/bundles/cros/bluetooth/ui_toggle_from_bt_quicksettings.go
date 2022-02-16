@@ -50,9 +50,9 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 
 	// TODO(b/188767517): Add unique identifiers to UI elements used in these tests
 	// Bluetooth button in the quick setting menu, when Bluetooth is on.
-	bluetoothTurnOffButton := nodewith.NameContaining("Toggle Bluetooth. Bluetooth is on").ClassName("IconButton").Role(role.ToggleButton)
+	bluetoothTurnOffButton := nodewith.NameContaining("Toggle Bluetooth. Bluetooth is on").ClassName("FeaturePodIconButton").Role(role.ToggleButton)
 	// Bluetooth button in the quick setting menu, when Bluetooth is off.
-	bluetoothTurnOnButton := nodewith.NameContaining("Toggle Bluetooth. Bluetooth is off").ClassName("IconButton").Role(role.ToggleButton)
+	bluetoothTurnOnButton := nodewith.NameContaining("Toggle Bluetooth. Bluetooth is off").ClassName("FeaturePodIconButton").Role(role.ToggleButton)
 	// Bluetooth Quick Settings UI.
 	bluetoothSettings := nodewith.ClassName("BluetoothDetailedViewLegacy")
 	// Bluetooth button in the bluetooth quick setting menu, when Bluetooth is off.
