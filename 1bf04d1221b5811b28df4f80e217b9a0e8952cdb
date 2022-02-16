@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4adaaa54_59f1265f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-02-16T17:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29777388_0a5be6cd",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "1bf04d1221b5811b28df4f80e217b9a0e8952cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1015681a_3da7b453",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -88,6 +112,30 @@
       "writtenOn": "2022-02-14T17:32:28Z",
       "side": 1,
       "message": "Duplicated",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 143,
+        "endChar": 20
+      },
+      "revId": "1bf04d1221b5811b28df4f80e217b9a0e8952cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56b99e2_374a57d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-02-16T17:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17bf42c2_93252743",
       "range": {
         "startLine": 143,
         "startChar": 12,
