@@ -34,6 +34,24 @@
       "parentUuid": "90a6c5dd_c038a065",
       "revId": "3a81bbfb060c107db300c4b3e26ba0091585b67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6284d8d_d962d948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426942
+      },
+      "writtenOn": "2022-02-16T01:03:25Z",
+      "side": 1,
+      "message": "The test is also very similar in nature to platform.NNAPI which is very solid: https://tastboard.corp.google.com/test/platform.NNAPI",
+      "parentUuid": "131496eb_ec733fa8",
+      "revId": "3a81bbfb060c107db300c4b3e26ba0091585b67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
