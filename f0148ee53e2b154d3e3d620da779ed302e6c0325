@@ -176,6 +176,30 @@
       },
       "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805813d1_d6f1544b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-16T21:10:21Z",
+      "side": 1,
+      "message": "Not an expert of go and this maybe just a personal preference that I would like to keep relevant code together. Having StartRecording and StopRecording far apart from each other makes it difficult to follow IMHO.\n\nI am okay to leave this as-is.",
+      "parentUuid": "42cc5eb0_168cf109",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "f0148ee53e2b154d3e3d620da779ed302e6c0325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
