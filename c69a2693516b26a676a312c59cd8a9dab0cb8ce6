@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dcbf640_e59099ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-02-16T16:12:03Z",
+      "side": 1,
+      "message": "That is very good to know, thank you :D",
+      "parentUuid": "7625ce62_1ae7ccb9",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb1ba6d_c7164df9",
