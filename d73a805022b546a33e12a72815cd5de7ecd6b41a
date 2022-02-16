@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39f7340_92070566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-02-16T01:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4281a1a2_bb8bba36",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 95
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e68a072_945366b4",
