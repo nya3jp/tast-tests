@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3a226d_2fde7c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-02-16T00:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e68a072_945366b4",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 75
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "965dd540_ea3c939b",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-02-14T09:25:16Z",
       "side": 1,
       "message": "Use the table driven test pattern here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests\n\nFor that also move the DumpUITreeWithScreenshotOnError to the subtests like here: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/arc_enabled.go;l\u003d110",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa48e029_c973c9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-02-16T00:59:34Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, Alexander! However, the tests of renaming desks are not only creating a desk, changing the name, and confirming the change. It also includes other tests such as discarding change, duplicated naming, updating the default desk name after reodering, etc. The test contents are not repetitive.\n\nBTW, You could see the other tests in this CL: crrev.com/c/3457172. WDYT?",
+      "parentUuid": "965dd540_ea3c939b",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ca6581_a85153b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-02-16T00:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8566b439_30170de6",
+      "range": {
+        "startLine": 154,
+        "startChar": 25,
+        "endLine": 154,
+        "endChar": 69
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6d49970_68fd66ab",
@@ -123,6 +195,30 @@
       "writtenOn": "2022-02-14T09:25:16Z",
       "side": 1,
       "message": "unexpected name for desk %d: want %s; got %s",
+      "range": {
+        "startLine": 166,
+        "startChar": 24,
+        "endLine": 166,
+        "endChar": 68
+      },
+      "revId": "d73a805022b546a33e12a72815cd5de7ecd6b41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8628b67_dcc05c76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/rename_desk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-02-16T00:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6d49970_68fd66ab",
       "range": {
         "startLine": 166,
         "startChar": 24,
