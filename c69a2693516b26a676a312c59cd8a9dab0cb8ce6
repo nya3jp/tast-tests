@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73c67a1_0c1b7bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-02-16T00:23:50Z",
+      "side": 1,
+      "message": "Okay, that sounds good to me! I will add them to other tests if they end up being necessary, but for now just added them in these ones. Definitely on board with DumpUITreeWithScreenshotOnError, thank you for the suggestion!",
+      "parentUuid": "9351786a_db0c5d5b",
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3d277cc_fa2442c7",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-02-11T05:09:46Z",
       "side": 1,
       "message": "I\u0027d recommend using this pattern to reserve time to run the deferred functions:\n```\n// Reserve ten seconds for cleanup.\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```\nUse ctx normally in the function, and use cleanupCtx in any deferred functions",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112ce088_8fd9e97a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-02-16T00:23:50Z",
+      "side": 1,
+      "message": "Okay, that sounds good to me-- this just guarantees that the context outlives the deferred calls that may rely on it?",
+      "parentUuid": "c3d277cc_fa2442c7",
       "range": {
         "startLine": 43,
         "startChar": 33,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4212fea7_4e98d079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-02-16T00:23:50Z",
+      "side": 1,
+      "message": "That SGTM, this would also potentially explain why some errors I had seen had no window open where I thought there would be one. Done!",
+      "parentUuid": "cdb1ba6d_c7164df9",
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38b1a975_c656f8e0",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-02-11T05:09:46Z",
       "side": 1,
       "message": "same comments as above (keep this even when stable, move after `defer app.Close`",
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2064b68_58551662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-02-16T00:23:50Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "38b1a975_c656f8e0",
       "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

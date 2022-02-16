@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a4273a_98b39c0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-02-16T00:23:50Z",
+      "side": 1,
+      "message": " Thank you for taking a look at this change Kyle! Went ahead and responded to the comments below and made the requested changes.",
+      "revId": "a9a2ff2699216753365e8b7ee72d5bac5c68367e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
