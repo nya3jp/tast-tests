@@ -140,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac4b566_ebbbc13b",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-16T20:48:08Z",
+      "side": 1,
+      "message": "The test doesn\u0027t really exercise much of the functionality in this function though, eg. there are no dir paths passed in.\n\nFor testing, I more meant the first two loops in the function which are just file walking on the local system.  This is where the complex logic is, and it doesn\u0027t require SSH at all as long as it is factored into another method.\n\nIn any case, as this is clearly router specific code I think it might be ok as is, but I fully expect there will be bugs when you try to use it for something more complicated.",
+      "parentUuid": "0deaaa38_ff65a2f7",
+      "revId": "6b95cab219d9375757b7e3fcc3a9118e7c92491d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9519dda1_b1393878",
