@@ -16,6 +16,29 @@
       "message": "lgtm",
       "revId": "7c0e4323e1c963b5cb3de8550bce2b0a8b79cc55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf27ea88_a501af6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-16T21:28:22Z",
+      "side": 1,
+      "message": "Isn\u0027t the same cleanup() getting run twice, one inside StopRecording at 395 the other one at L467?",
+      "range": {
+        "startLine": 476,
+        "startChar": 18,
+        "endLine": 476,
+        "endChar": 25
+      },
+      "revId": "7c0e4323e1c963b5cb3de8550bce2b0a8b79cc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
