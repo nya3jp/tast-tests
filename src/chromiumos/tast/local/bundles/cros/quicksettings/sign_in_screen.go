@@ -25,7 +25,7 @@ type testParameters struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SignInScreen,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks the Quick Settings from SignIn screen",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-system-ui-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
