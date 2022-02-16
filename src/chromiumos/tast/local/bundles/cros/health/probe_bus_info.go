@@ -7,16 +7,17 @@ package health
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/google/go-cmp/cmp"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
 	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,28 +33,28 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
-		Params: []testing.Param{{
-			Val: false,
-		}, {
-			Name:      "thunderbolt",
-			ExtraAttr: []string{"informational"},
-			Val:       true,
-			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
-		}},
 	})
 }
 
 func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	isDeviceConnected := false
-	isvProSupports := s.Param().(bool)
-	if isvProSupports {
-		// Checking whether the Thunderbolt device is connected or not.
-		port, _ := typecutils.CheckPortsForTBTPartner(ctx)
-		if port != -1 {
-			//TODO(b/209385206): For accesing the Thunderbolt device we have to disable the data protection access from UI.
-			isDeviceConnected = true
+	// Checking whether device supports thunderbolt or not.
+	outFiles, err := testexec.CommandContext(ctx, "ls", "/sys/bus/thunderbolt/devices").Output()
+	if err != nil {
+		s.Log("Failed to execute ls /sys/bus/thunderbolt/devices/ command: ", err)
+	}
+	isThunderboltSupport := false
+	requiredFiles := []string{"0-0", "1-0", "domain0", "domain1"}
+	for _, file := range requiredFiles {
+		if strings.Contains(string(outFiles), file) {
+			isThunderboltSupport = true
 		}
+	}
+	// Checking whether the Thunderbolt device is connected or not.
+	port, _ := typecutils.CheckPortsForTBTPartner(ctx)
+	if port != -1 {
+		//TODO(b/209385206): For accesing the Thunderbolt device we have to disable the data protection access from UI.
+		isDeviceConnected = true
 	}
 
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBus}
@@ -77,11 +78,14 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if isvProSupports {
+	if isThunderboltSupport {
 		if err := validateThundeboltDevices(tbtDevs, isDeviceConnected); err != nil {
 			s.Fatal("Failed to validate Thunderbolt devices: ", err)
 		}
-		return
+	} else {
+		if len(tbtDevs) > 0 {
+			s.Fatal("Failed to validate empty Thunderbolt data")
+		}
 	}
 
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
@@ -160,11 +164,11 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 }
 
 func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
+	checkInterfacesDetcted := false
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
 		}
-		checkInterfacesDetcted := false
 		if isDeviceConnected {
 			for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
 				checkInterfacesDetcted = true
