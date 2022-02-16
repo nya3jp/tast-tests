@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e45c916_3812316d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-16T00:30:57Z",
+      "side": 1,
+      "message": "this is not used, remove it? If this will be used, you may want to just use cursive.appURL, to main a single source of truth.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 56
+      },
+      "revId": "c213d131ef03dd865ec1c6c106b517e9f2f90a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183b00bb_da033dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-16T00:30:57Z",
+      "side": 1,
+      "message": "It might be better to just use apps.InstallPWAForURL() here, instead of adding an action wrapper to it. Since you are not chaining a set of actions, there is no point to convert it to an action.\n\nAlternatively, you may move `ash.WaitForChromeAppInstalled` to `cursive.Install`. And do a uiauto.Combine(\"\", Install, WaitForAppRendered, ResetState)",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 30
+      },
+      "revId": "c213d131ef03dd865ec1c6c106b517e9f2f90a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98dcced_1e72305d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-16T00:30:57Z",
+      "side": 1,
+      "message": "do you need to test if this appConn is working?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "c213d131ef03dd865ec1c6c106b517e9f2f90a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
