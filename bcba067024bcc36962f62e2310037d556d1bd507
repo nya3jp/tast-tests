@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83b2b7d8_451a933f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0465cb5b_9cb86e89",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56869412_d11491c8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-24T10:59:41Z",
       "side": 1,
       "message": "they are public interface, so could you add document what are they?\n\nAlso, as for Speed, is \"string\" the good representation here? Can we do in a better way, like numeric values etc.?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "550a8454_c1f391f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "USB device in \u0027lsusb -t\u0027 command\u0027s output is alpha-numeric combination like 480M for USB 2.0, 5000M for USB3.0. So representing Speed as string is better here.",
+      "parentUuid": "56869412_d11491c8",
       "range": {
         "startLine": 19,
         "startChar": 1,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bcd18c_472b4e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0900d309_add39d98",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01908cce_db15e24c",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-01-24T10:59:41Z",
       "side": 1,
       "message": "huge nit: preferring shorter name in general in go, maybe \"res\" is enough?",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e2beea_8bc96469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01908cce_db15e24c",
       "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "728191f4_36c718ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe04300b_02ad7288",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d3b2ddf_5f413d2e",
@@ -111,6 +213,24 @@
       "writtenOn": "2022-01-24T10:59:41Z",
       "side": 1,
       "message": "Looks inconsistent naming with ListDeviceSpeed.\nCould you appropriately name for each? Specifically, ListDeviceSpeed does not result the list of DeviceSpeed result.\n\nAlso, this function will be called as follows:\n\ntypecutil.DeviceSpeed(ctx)\n\nit\u0027s hard for me to imagine why this filters \"mass storage\" only when looking at the line above. Could you make the code more readable?",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8959b4_c9df3f4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d3b2ddf_5f413d2e",
       "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0a8a18_2128c285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1c57d03_8f137eff",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2849103_f3c32772",
@@ -149,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "720f4093_16416cca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2849103_f3c32772",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f68b98f_8d88ac32",
@@ -162,6 +318,24 @@
       "writtenOn": "2022-01-24T10:59:41Z",
       "side": 1,
       "message": "any reference of the possible values here?",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af984a0_9403bd4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f68b98f_8d88ac32",
       "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -185,6 +359,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af329e06_3d4695ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "USB device in \u0027lsusb -t\u0027 command\u0027s output is alpha-numeric combination like 480M for USB 2.0, 5000M for USB3.0. So representing Speed as string is better here.",
+      "parentUuid": "8c4f2aea_dc9cf915",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d317ac87_b99f56cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 4
@@ -196,6 +388,30 @@
       "writtenOn": "2022-01-24T10:59:41Z",
       "side": 1,
       "message": "looks wrong value. This points the only last value of speedOut (or empty if speedOut is empty). Looks just confusing, maybe drop or dump all?",
+      "range": {
+        "startLine": 229,
+        "startChar": 78,
+        "endLine": 229,
+        "endChar": 83
+      },
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c649cc7b_5b1bab17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-16T09:15:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d317ac87_b99f56cb",
       "range": {
         "startLine": 229,
         "startChar": 78,
