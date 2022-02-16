@@ -8,6 +8,7 @@ package cuj
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"path"
 	"path/filepath"
@@ -135,6 +136,18 @@ type Recorder struct {
 
 	// duration is the total running time of the recorder.
 	duration time.Duration
+
+	// Time when recording was started.
+	// Defined only for the running recorder.
+	startedAtTm time.Time
+
+	// Running recorder has these metrics recorders initialized for each metric
+	// Defined only for the running recorder.
+	mr map[*chrome.TestConn]*metrics.Recorder
+
+	// A function to clean up started recording.
+	// Defined only for the running recorder.
+	cleanup func(ctx context.Context) error
 
 	timeline           *perf.Timeline
 	gpuDataSource      *gpuDataSource
@@ -290,80 +303,137 @@ func (r *Recorder) Close(ctx context.Context) error {
 	return r.frameDataTracker.Close(ctx, r.tconn)
 }
 
-// Run conducts the test scenario f, and collects the related metrics for the
-// test scenario, and updates the internal data.
-func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (e error) {
+// StartRecording starts to record CUJ data.
+//
+// In:
+// * context to initialize data recording (and tracing if needed).
+//
+// Out:
+// * New context (with reduced timeout) that should be used to run the test
+//   function.
+// * Error
+func (r *Recorder) StartRecording(ctx context.Context) (runCtx context.Context, e error) {
+	if !r.startedAtTm.IsZero() {
+		return nil, errors.New("start requested on the started recorder")
+	}
+	if r.mr != nil || r.cleanup != nil {
+		return nil, errors.New("start requested but some paramerters are already initialized:" + fmt.Sprintf(" mr=%v, r.cleanup=%p", r.mr, r.cleanup))
+	}
+
 	const traceCleanupDuration = 2 * time.Second
-	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
-	defer cancel()
+	runCtx, cancelRunCtx := ctxutil.Shorten(ctx, traceCleanupDuration)
+	cancel := func(ctx context.Context) error {
+		cancelRunCtx()
+		return nil
+	}
+	defer func(ctx context.Context) {
+		// If this function finishes without errors, cleanup will happen in StopRecording
+		if e == nil {
+			return
+		}
+		if err := cancel(ctx); err != nil {
+			// We cannot overwrite e here.
+			testing.ContextLogf(ctx, "Failed to cleanup after StartRecording: %s", err)
+		}
+		r.cleanup = nil
+		r.startedAtTm = time.Time{} // Reset to zero.
+		r.mr = nil
+	}(ctx)
 
 	if r.traceDir != "" {
 		if err := r.cr.StartTracing(ctx,
 			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
 			browser.DisableSystrace()); err != nil {
 			testing.ContextLog(ctx, "Failed to start tracing: ", err)
-			return errors.Wrap(err, "failed to start tracing")
+			return nil, errors.Wrap(err, "failed to start tracing")
 		}
-		defer func() {
-			tr, err := r.cr.StopTracing(closeCtx)
+		stopTracing := func(ctx context.Context) error {
+			tr, err := r.cr.StopTracing(ctx)
 			if err != nil {
 				testing.ContextLog(ctx, "Failed to stop tracing: ", err)
-				if e == nil {
-					e = errors.Wrap(err, "failed to stop tracing")
-				}
-				return
+				return errors.Wrap(err, "failed to stop tracing")
 			}
 			if tr == nil || len(tr.Packet) == 0 {
 				testing.ContextLog(ctx, "No trace data is collected")
-				if e == nil {
-					e = errors.New("no trace data is collected")
-				}
-				return
+				return errors.New("no trace data is collected")
 			}
 			filename := "trace.data.gz"
-			if err := chrome.SaveTraceToFile(closeCtx, tr, filepath.Join(r.traceDir, filename)); err != nil {
+			if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(r.traceDir, filename)); err != nil {
 				testing.ContextLog(ctx, "Failed to save trace to file: ", err)
-				if e == nil {
-					e = errors.Wrap(err, "failed to save trace to file")
-				}
-				return
+				return errors.Wrap(err, "failed to save trace to file")
 			}
-		}()
-	}
-
-	// Starts metrics record per browser test connection.
-	mr := make(map[*chrome.TestConn]*metrics.Recorder)
-	for tconn, names := range r.names {
-		var err error
-		mr[tconn], err = metrics.StartRecorder(ctx, tconn, names...)
-		if err != nil {
-			return errors.Wrap(err, "failed to start metrics recorder")
+			return nil
+		}
+		cancel = func(ctx context.Context) error {
+			err := stopTracing(ctx)
+			cancelRunCtx()
+			return err
 		}
 	}
 
-	// Run test scenario.
-	tm := time.Now()
-	if err := f(ctx); err != nil {
-		return err
+	// Starts metrics record per browser test connection.
+	r.mr = make(map[*chrome.TestConn]*metrics.Recorder)
+	for tconn, names := range r.names {
+		var err error
+		r.mr[tconn], err = metrics.StartRecorder(ctx, tconn, names...)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start metrics recorder")
+		}
 	}
-	r.duration += time.Now().Sub(tm)
+	r.cleanup = cancel
+
+	// Remember when recording started.
+	r.startedAtTm = time.Now()
+
+	return runCtx, nil
+}
+
+// StopRecording stops CUJ data recording.
+//
+// In:
+// * context used to initialise recording (the one that was passed to the
+//   StartRecording above).
+// * shorted context returned from the StartRecording()
+//
+// Out:
+// * Error
+func (r *Recorder) StopRecording(ctx, runCtx context.Context) (e error) {
+	if r.startedAtTm.IsZero() {
+		return errors.New("Stop requested on the stopped recorder")
+	}
+	if r.mr == nil || r.cleanup == nil {
+		return errors.New("Stop requested but recorder was not fully started: " + fmt.Sprintf(" mr=%v, r.cleanup=%p", r.mr, r.cleanup))
+	}
+
+	defer func(ctx context.Context) {
+		err := r.cleanup(ctx)
+		if err != nil {
+			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+		}
+		if e == nil && err != nil {
+			e = errors.Wrap(err, "failed to cleanup after StopRecording")
+		}
+		r.cleanup = nil
+	}(ctx)
+	r.duration += time.Now().Sub(r.startedAtTm)
+	r.startedAtTm = time.Time{} // Reset to zero.
 
 	// Collects metrics per browser test connection.
 	var hists []*metrics.Histogram
-	for tconn, r := range mr {
-		h, err := r.Histogram(ctx, tconn)
+	for tconn, rr := range r.mr {
+		h, err := rr.Histogram(runCtx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to collect metrics")
 		}
 		hists = append(hists, h...)
 	}
+	// Reset recorders and context.
+	r.mr = nil
 
 	for _, hist := range hists {
 		if hist.TotalCount() == 0 {
 			continue
 		}
-
 		record := r.records[hist.Name]
 		record.totalCount += hist.TotalCount()
 		record.Sum += hist.Sum
@@ -383,6 +453,34 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (
 			totalRecord.jankCounts[0] += jankCounts[0]
 			totalRecord.jankCounts[1] += jankCounts[1]
 		}
+	}
+	return nil
+}
+
+// Run conducts the test scenario f, and collects the related metrics for the
+// test scenario, and updates the internal data.
+//
+// This function should be kept to the bare minimum, all relevant changes
+// should go into StartRecording()/StopRecording() to allow tests with
+// different runners to accommodate them.
+//
+// This function also serves as an example for test developers on how to
+// incorporate CUJ data recording into other tests.
+func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (e error) {
+	runCtx, err := r.StartRecording(ctx)
+	if err != nil {
+		return err
+	}
+	defer func(ctx, runCtx context.Context) {
+		err := r.StopRecording(ctx, runCtx)
+		if e == nil && err != nil {
+			e = err
+		} else if err != nil {
+			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
+		}
+	}(ctx, runCtx)
+	if err := f(runCtx); err != nil {
+		return err
 	}
 	return nil
 }
