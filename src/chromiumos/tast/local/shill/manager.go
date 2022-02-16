@@ -435,3 +435,15 @@ func (m *Manager) GetDebugLevel(ctx context.Context) (int, error) {
 func (m *Manager) RecheckPortal(ctx context.Context) error {
 	return m.Call(ctx, "RecheckPortal").Err
 }
+
+// ClaimInterface assigns the ownership of "intf" to the specified "claimer".
+// The claimer will prevent Shill to manage the device (see shill/doc/manager-api.txt).
+func (m *Manager) ClaimInterface(ctx context.Context, claimer, intf string) error {
+	return m.Call(ctx, "ClaimInterface", claimer, intf).Err
+}
+
+// ReleaseInterface takes the ownership of "intf" from the specified "claimer"
+// to give it back to Shill.
+func (m *Manager) ReleaseInterface(ctx context.Context, claimer, intf string) error {
+	return m.Call(ctx, "ReleaseInterface", claimer, intf).Err
+}
