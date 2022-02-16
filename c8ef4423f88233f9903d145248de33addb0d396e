@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51eb9542_6c847ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-16T16:15:51Z",
+      "side": 1,
+      "message": "add docstring to all non-trivial functions",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "c8ef4423f88233f9903d145248de33addb0d396e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5aabbd_b71f6c81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-16T16:15:51Z",
+      "side": 1,
+      "message": "avoid \"pipe-ing\" commands when it is rather short to do it in Go.\n\nrationale:\neven though if it is a a bit longer to do it in Go, you have better error\ncontrol when you do it from Go.\n \nIn your example, if there is an error, you wouldn\u0027t know the cause of the error: \nwas it in modetest? in the pipe? in grep?, in the shell?\n  \n\nin this particular example, it is better to call \"modetest -c\", and parse the output from Go",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 32
+      },
+      "revId": "c8ef4423f88233f9903d145248de33addb0d396e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cffbc6_d7a5df6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-16T16:15:51Z",
+      "side": 1,
+      "message": "nit, while you are here,  can you add docstring to this function (and the rest ones)?",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 267,
+        "endChar": 30
+      },
+      "revId": "c8ef4423f88233f9903d145248de33addb0d396e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
