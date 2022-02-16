@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcad318a_752a8ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T11:09:54Z",
+      "side": 1,
+      "message": "Ok for now, but in general, types should follow the actual semantics, rather than just \"because this is the format used by command line we use\" (otherwise everything will be string, which has wider range of the value than it should be).",
+      "parentUuid": "550a8454_c1f391f0",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0900d309_add39d98",
@@ -272,6 +296,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e0a0807_d81fd646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T11:09:54Z",
+      "side": 1,
+      "message": "Not done.",
+      "parentUuid": "9b0a8a18_2128c285",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2849103_f3c32772",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
         "patchSetId": 4
@@ -371,6 +413,24 @@
       "side": 1,
       "message": "USB device in \u0027lsusb -t\u0027 command\u0027s output is alpha-numeric combination like 480M for USB 2.0, 5000M for USB3.0. So representing Speed as string is better here.",
       "parentUuid": "8c4f2aea_dc9cf915",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5260ca2_0dca244a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T11:09:54Z",
+      "side": 1,
+      "message": "sorry for ambiguous comment. I meant, speed is not need to be defined here.",
+      "parentUuid": "af329e06_3d4695ca",
       "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

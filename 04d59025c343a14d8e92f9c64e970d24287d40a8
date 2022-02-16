@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e741a7a6_8e7d3b21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T11:09:54Z",
+      "side": 1,
+      "message": "looks always true. Maybe \u003d\u003d 0?",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 23
+      },
+      "revId": "04d59025c343a14d8e92f9c64e970d24287d40a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90065151_4220cd7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T11:09:54Z",
+      "side": 1,
+      "message": "could you avoid depending on command line if unneeded? Instead, could you implement the function by native go functions? io.Copy is what you\u0027ll need.",
+      "range": {
+        "startLine": 79,
+        "startChar": 35,
+        "endLine": 79,
+        "endChar": 72
+      },
+      "revId": "04d59025c343a14d8e92f9c64e970d24287d40a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ffc4a3_7871ebed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T11:09:54Z",
+      "side": 1,
+      "message": "maybe %v?",
+      "range": {
+        "startLine": 226,
+        "startChar": 55,
+        "endLine": 226,
+        "endChar": 56
+      },
+      "revId": "04d59025c343a14d8e92f9c64e970d24287d40a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
