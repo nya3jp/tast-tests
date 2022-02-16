@@ -16,6 +16,40 @@
       "message": "+amehfooz, leandre for test authors\u0027 review as well",
       "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591644f7_a60f4949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_popup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-16T10:24:40Z",
+      "side": 1,
+      "message": "Please use lacrosPrimary.",
+      "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952148da_e4a0a22b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/notification_popup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-16T10:24:40Z",
+      "side": 1,
+      "message": "Due to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1284543 you might want to make Lacros tests informational for the moment.",
+      "revId": "d24e0bce3af6fcf652eb0500f12381ea97f12e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
