@@ -103,6 +103,27 @@ const (
 	modeInfoClock                             = 12
 )
 
+func hasEmbeddedDisplay(ctx context.Context) (bool, error) {
+	b, err := testexec.CommandContext(ctx, "modetest", "-c").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, err
+	}
+
+	modetestOutput := strings.Trim(string(b), "\n")
+	// When there is a keyword like "eDP" or "DSI" in the output of modetest, it means the DUT has an eDP.
+	// An example for the output from the modetest:
+	//     id      encoder status          name            size (mm)       modes   encoders
+	//     71      70      connected       eDP-1           290x190         1       70
+	eDPKeywords := []string{"eDP", "DSI"}
+	for _, keyword := range eDPKeywords {
+		if strings.Contains(modetestOutput, keyword) {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
 func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
 	b, err := testexec.CommandContext(ctx, "modetest", "-c").Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -255,6 +276,18 @@ func getModetestModeInfo(ctx context.Context, column modetestModeInfoColumn) (st
 }
 
 func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	if hasEDP, err := hasEmbeddedDisplay(ctx); err != nil {
+		return err
+	} else if !hasEDP {
+		if EDP.DisplayWidth != nil {
+			return errors.New("There is no embedded display, but cros_healthd report DisplayWidth field")
+		}
+		if EDP.DisplayHeight != nil {
+			return errors.New("There is no embedded display, but cros_healthd report DisplayHeight field")
+		}
+		return nil
+	}
+
 	sizeRaw, err := getModetestConnectorInfo(ctx, connectorSize)
 	if err != nil {
 		return err
@@ -277,6 +310,18 @@ func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) er
 }
 
 func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	if hasEDP, err := hasEmbeddedDisplay(ctx); err != nil {
+		return err
+	} else if !hasEDP {
+		if EDP.ResolutionHorizontal != nil {
+			return errors.New("There is no embedded display, but cros_healthd report ResolutionHorizontal field")
+		}
+		if EDP.ResolutionVertical != nil {
+			return errors.New("There is no embedded display, but cros_healthd report ResolutionVertical field")
+		}
+		return nil
+	}
+
 	if horizontalRaw, err := getModetestModeInfo(ctx, modeInfoHdisplay); err != nil {
 		return err
 	} else if horizontal, err := strconv.ParseUint(horizontalRaw, 10, 32); err != nil {
@@ -295,6 +340,15 @@ func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayIn
 }
 
 func verifyEmbeddedDisplayRefreshRate(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	if hasEDP, err := hasEmbeddedDisplay(ctx); err != nil {
+		return err
+	} else if !hasEDP {
+		if EDP.RefreshRate != nil {
+			return errors.New("There is no embedded display, but cros_healthd report RefreshRate field")
+		}
+		return nil
+	}
+
 	var wantRefreshRate float64
 	if htotalRaw, err := getModetestModeInfo(ctx, modeInfoHtotal); err != nil {
 		return err
