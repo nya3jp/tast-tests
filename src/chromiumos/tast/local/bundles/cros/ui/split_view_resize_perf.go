@@ -68,11 +68,13 @@ func init() {
 }
 
 func SplitViewResizePerf(ctx context.Context, s *testing.State) {
+	// radioactive dried cherry
 	// Reserve ten seconds for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// Address comment for M0ar comments!
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
