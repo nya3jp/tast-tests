@@ -73,6 +73,17 @@ executable("multivm.Lifecycle.crostini") {
   ]
 }
 
+executable("multivm.MemoryChromeOSPerf") {
+  cflags = [
+    "-O2",
+    "-g",
+    "-std=c99",
+  ]
+  sources = [
+    "multivm.MemoryChromeOSPerf.c",
+  ]
+}
+
 executable("platform.UserCrash.crasher") {
   sources = [
     "platform.UserCrash.crasher.bomb.cc",
@@ -176,6 +187,7 @@ group("all") {
     ":graphics.GBM.gbmtest",
     ":hardware.VerifyRemoteSleep.timersignal",
     ":kernel.PerfCallgraph.graph",
+    ":multivm.MemoryChromeOSPerf",
     ":platform.UserCrash.crasher",
     ":platform.UserCrash.crasher.sym",
     ":security.AltSyscall.adjtimex",
