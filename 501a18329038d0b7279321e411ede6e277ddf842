@@ -52,6 +52,24 @@
       "parentUuid": "8bcf8293_b84f566b",
       "revId": "501a18329038d0b7279321e411ede6e277ddf842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b974b90_95520c51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-02-16T02:52:00Z",
+      "side": 1,
+      "message": "Without login we will not be able to automate any of the Full Release or Smoke cases right? What case will this test cover?",
+      "parentUuid": "5f071629_20732e1d",
+      "revId": "501a18329038d0b7279321e411ede6e277ddf842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
