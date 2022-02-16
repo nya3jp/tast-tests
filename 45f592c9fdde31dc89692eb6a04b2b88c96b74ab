@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9afb7120_b9c58758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/open_close_switch_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T10:48:08Z",
+      "side": 1,
+      "message": "ditto for lacrosPrimary?",
+      "revId": "45f592c9fdde31dc89692eb6a04b2b88c96b74ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52f7f596_a5533f08",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/open_close_switch_apps.go",
         "patchSetId": 1
@@ -14,6 +31,30 @@
       "writtenOn": "2022-02-15T23:55:10Z",
       "side": 1,
       "message": "Not blocking this CL, but just curious. Would we need to have a convenient util in `apps` or `browser` or its subpackage for this?\n`func Apps(ctx, bt browser.Type) apps.App {}`",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "45f592c9fdde31dc89692eb6a04b2b88c96b74ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced10ff7_dda412d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/open_close_switch_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-16T10:48:08Z",
+      "side": 1,
+      "message": "SGTM.\n\nNote: With Lacros Only enabled, this will fail (because name will be changed).",
+      "parentUuid": "52f7f596_a5533f08",
       "range": {
         "startLine": 107,
         "startChar": 0,
