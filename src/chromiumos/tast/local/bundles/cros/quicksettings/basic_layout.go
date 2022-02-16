@@ -36,7 +36,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BasicLayout,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that settings can be found on Quick Settings",
 		Contacts: []string{
 			"ting.chen@cienet.com",
