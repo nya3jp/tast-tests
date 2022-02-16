@@ -63,6 +63,30 @@
       },
       "revId": "c0d35dae86ea8e51994472a0e455da994dfe52dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11404acf_af883d9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-16T08:40:08Z",
+      "side": 1,
+      "message": "Because some platforms have an experimental Vulkan, api_tests fails.",
+      "parentUuid": "18171a74_f6b8baa6",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "c0d35dae86ea8e51994472a0e455da994dfe52dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
