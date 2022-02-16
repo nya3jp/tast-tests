@@ -105,7 +105,7 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	}
 
 	// ARC toggle should NOT be checked.
-	if err := accountmanager.CheckArcToggleStatus(ctx, tconn, s.Param().(browser.Type), false); err != nil {
+	if err := accountmanager.CheckARCToggleStatus(ctx, tconn, s.Param().(browser.Type), false); err != nil {
 		s.Fatal("Failed to check ARC toggle status: ", err)
 	}
 
@@ -133,7 +133,7 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 
 	// Account is expected to be not present in ARC only if browser type is Lacros. The feature is being applied only if Lacros is enabled.
 	expectedPresentInArc := s.Param().(browser.Type) != browser.TypeLacros
-	if err := accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, expectedPresentInArc)(ctx); err != nil {
+	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, expectedPresentInArc)(ctx); err != nil {
 		s.Fatalf("Failed to check if account is present in ARC, expected '%t', err: %v", expectedPresentInArc, err)
 	}
 }
