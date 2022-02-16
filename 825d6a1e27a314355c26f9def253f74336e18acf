@@ -16,6 +16,86 @@
       "message": "Thank you reviewers.\nSorry for the delay, the major changes of the latest PS is to make the validation of the virtual keyboard validate one key at a time as suggested.",
       "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9653108f_a68d2008",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-16T23:50:18Z",
+      "side": 1,
+      "message": "Still not sure if this is the best way to verify all virtual keyboard key works.\n\nAdded shend@ to review this test. Current approach seems so inefficient. \n\nbtw, do you think it is necessary to validate VK keys in TAST? ",
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed22c68e_f7113322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-16T23:50:18Z",
+      "side": 1,
+      "message": "nit: VirtualKeyboardKeys",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc997cc_77976ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-16T23:50:18Z",
+      "side": 1,
+      "message": "s.Fatalf(\"Faield to install and activate input method %q: %v\", im.Name, err)\n\nFor consistency.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 71
+      },
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea12475_0812396d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-16T23:50:18Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
