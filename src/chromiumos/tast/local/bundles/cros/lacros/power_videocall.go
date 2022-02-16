@@ -204,7 +204,7 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		for _, b := range h.Buckets {
 			if t < sampleNum95 {
 				if t+b.Count >= sampleNum95 {
-					value95 = float64(b.Min) + ((float64(b.Max) - float64(b.Min)) * (float64(sampleNum95) - float64(t)))
+					value95 = float64(b.Min) + ((float64(b.Max) - float64(b.Min)) * ((float64(sampleNum95) - float64(t)) / float64(b.Count)))
 				}
 			}
 			t = t + b.Count
