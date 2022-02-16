@@ -22,6 +22,30 @@
       },
       "revId": "c418c8616a5677966862c9e8da4dcab8a3a48a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e087e3e_13b04ad1",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-16T23:36:26Z",
+      "side": 1,
+      "message": "💯 . I was thinking about that, but there is no way in go to get the name of the function that has been passed in. And adding a separate param felt like it was bloating the signature. On the other hand, it will make it easier to read the logs in case of the failures. And this is more important in the long term.\nFixed.",
+      "parentUuid": "cdda773f_17bc4819",
+      "range": {
+        "startLine": 100,
+        "startChar": 62,
+        "endLine": 100,
+        "endChar": 68
+      },
+      "revId": "c418c8616a5677966862c9e8da4dcab8a3a48a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
