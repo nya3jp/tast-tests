@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/testing"
@@ -23,41 +24,29 @@ const (
 	// chromeLoggedInReuseFixture is a fixture name that will be registered to tast.
 	chromeLoggedInReuseFixture = "mtbfChromeLogInReuse"
 
-	// chromeLoggedInReuseArcBootedFixture is a fixture name that will be registered to tast.
-	chromeLoggedInReuseArcBootedFixture = "mtbfArcLoginReuse"
-
 	// LoginReuseFixture is a fixture name that will be registered to tast.
 	LoginReuseFixture = "mtbfLoginReuseCleanTabs"
-
-	// ArcLoginReuseFixture is a fixture name that will be registered to tast.
-	ArcLoginReuseFixture = "mtbfArcLoginResueCleanTabs"
 )
 
 // LoginReuseOptions returns the login option for MTBF tests.
 func LoginReuseOptions(accountPool string) []chrome.Option {
 	return []chrome.Option{
+		// The old filesapp (apps.Files) has memory leak issue, use the new one (apps.FilesSWA) is essential in MTBF tests.
+		// FilesSWA is the default Files App if login into DUT manually, however the default config (config.NewConfig) of `EnableFilesAppSWA` is false,
+		// therefore, need to use `EnableFilesAppSWA()`.
+		chrome.EnableFilesAppSWA(),
+		// Only the legacy launcher is being exercised in MTBF tests currently.
+		chrome.DisableFeatures("ProductivityLauncher"),
 		chrome.KeepState(),
 		chrome.ARCSupported(),
 		chrome.GAIALoginPool(accountPool),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...),
 		chrome.TryReuseSession(),
 	}
 }
 
-// ARCLoginReuseOptions returns the login option for MTBF ARC++ tests.
-func ARCLoginReuseOptions(accountPool string) []chrome.Option {
-	opt := LoginReuseOptions(accountPool)
-	return append(opt,
-		chrome.ARCSupported(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...),
-	)
-}
-
 func optionsCallBack(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 	return LoginReuseOptions(s.RequiredVar(AccountPool)), nil
-}
-
-func arcOptionsCallBack(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-	return ARCLoginReuseOptions(s.RequiredVar(AccountPool)), nil
 }
 
 func init() {
@@ -65,19 +54,8 @@ func init() {
 		Name:            chromeLoggedInReuseFixture,
 		Desc:            "Reuse the existing user login session",
 		Contacts:        []string{"xliu@cienet.com"},
-		Impl:            chrome.NewLoggedInFixture(optionsCallBack),
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{AccountPool},
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:            chromeLoggedInReuseArcBootedFixture,
-		Desc:            "Reuse the existing user login session and boot ARC",
-		Contacts:        []string{"xliu@cienet.com"},
-		Impl:            arc.NewMtbfArcBootedFixture(arcOptionsCallBack),
-		SetUpTimeout:    chrome.LoginTimeout + arc.BootTimeout,
+		Impl:            arc.NewMtbfArcBootedFixture(optionsCallBack),
+		SetUpTimeout:    chrome.GAIALoginTimeout + arc.BootTimeout + optin.OptinTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		PostTestTimeout: arc.PostTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -89,35 +67,38 @@ func init() {
 		Desc:           "Reuse the existing user login session and clean chrome tabs",
 		Contacts:       []string{"xliu@cienet.com"},
 		Parent:         chromeLoggedInReuseFixture,
-		Impl:           &mtbfCleanTabsFixture{isArcBooted: false},
-		PreTestTimeout: 4 * clearTabsTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:           ArcLoginReuseFixture,
-		Desc:           "Reuse the existing user login session and boot ARC and clean chrome tabs",
-		Contacts:       []string{"xliu@cienet.com"},
-		Parent:         chromeLoggedInReuseArcBootedFixture,
-		Impl:           &mtbfCleanTabsFixture{isArcBooted: true},
+		Impl:           &mtbfCleanTabsFixture{},
 		PreTestTimeout: 4 * clearTabsTimeout,
 	})
 }
 
 const clearTabsTimeout = 10 * time.Second
 
+// FixtValue holds information made available to tests that specify this Fixture.
+type FixtValue struct {
+	cr *chrome.Chrome
+	// ARC enables interaction with an already-started ARC environment.
+	// It cannot be closed by tests.
+	ARC *arc.ARC
+}
+
+// Chrome gets the CrOS-chrome instance.
+// Implements the chrome.HasChrome interface.
+func (f FixtValue) Chrome() *chrome.Chrome { return f.cr }
+
 type mtbfCleanTabsFixture struct {
-	cr          *chrome.Chrome
-	isArcBooted bool
+	fixtValue *FixtValue
 }
 
 func (f *mtbfCleanTabsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	parentValue := s.ParentValue()
-	if f.isArcBooted {
-		f.cr = parentValue.(*arc.PreData).Chrome
-	} else {
-		f.cr = parentValue.(*chrome.Chrome)
+
+	f.fixtValue = &FixtValue{
+		cr:  parentValue.(*arc.PreData).Chrome,
+		ARC: parentValue.(*arc.PreData).ARC,
 	}
-	return parentValue
+
+	return f.fixtValue
 }
 
 func (f *mtbfCleanTabsFixture) TearDown(ctx context.Context, s *testing.FixtState) {}
@@ -125,7 +106,7 @@ func (f *mtbfCleanTabsFixture) TearDown(ctx context.Context, s *testing.FixtStat
 func (f *mtbfCleanTabsFixture) Reset(ctx context.Context) error { return nil }
 
 func (f *mtbfCleanTabsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	if err := closeExistingAndLeftOffTabs(ctx, f.cr); err != nil {
+	if err := closeExistingAndLeftOffTabs(ctx, f.fixtValue.cr); err != nil {
 		s.Fatal("Failed to close existing and left-off tab(s): ", err)
 	}
 }
