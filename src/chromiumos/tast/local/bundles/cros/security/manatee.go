@@ -366,7 +366,7 @@ func Manatee(ctx context.Context, s *testing.State) {
 	var errorCode int32
 	var fdIn dbus.UnixFD
 	var fdOut dbus.UnixFD
-	if err := obj.CallWithContext(ctx, dbusInterface+"."+dbusMethodStartTEEApplication, 0, testTEEAppID).Store(&errorCode, &fdIn, &fdOut); err != nil {
+	if err := obj.CallWithContext(ctx, dbusInterface+"."+dbusMethodStartTEEApplication, 0, testTEEAppID, []string{}).Store(&errorCode, &fdIn, &fdOut); err != nil {
 		s.Fatal("Failed to start TEE app: ", err)
 	}
 	if errorCode != 0 {
