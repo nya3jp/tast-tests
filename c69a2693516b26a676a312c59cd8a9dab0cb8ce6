@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7625ce62_1ae7ccb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-16T01:16:07Z",
+      "side": 1,
+      "message": "Yep pretty much. It\u0027s possible for other functions in a test to use up all of the context\u0027s allotted time, in which case the deferred functions won\u0027t run since they\u0027ll be past the deadline. This makes sure there\u0027s at least 10 seconds left for the deferred functions no matter what.",
+      "parentUuid": "112ce088_8fd9e97a",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "c69a2693516b26a676a312c59cd8a9dab0cb8ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb1ba6d_c7164df9",
