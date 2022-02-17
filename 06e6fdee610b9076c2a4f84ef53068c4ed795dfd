@@ -52,6 +52,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a926078_71189bc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T07:49:43Z",
+      "side": 1,
+      "message": "Let\u0027s not to define a new Tast function for this. Please see my suggestion. Thanks.",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda30628_38da51c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T07:49:43Z",
+      "side": 1,
+      "message": "Should this package be in ui instead of meta? It only runs ui test.",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f57be4b0_409d3c70",
@@ -111,6 +145,30 @@
       "writtenOn": "2022-02-17T04:07:26Z",
       "side": 1,
       "message": "I was unable to run the test:\ntast run \u003cDUT_IP\u003e meta.RunCUJ.quickcheckcuj2_basic_unlock\n\nThe error is: \nsrc/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go:281:28: s.Vars undefined (type *\"chromiumos/tast/internal/testing\".State has no field or method Vars)\n\nAm I not running the test correctly?",
+      "range": {
+        "startLine": 287,
+        "startChar": 28,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab870ba_a0f31898",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T07:49:43Z",
+      "side": 1,
+      "message": "I just realized that this CL is related to https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3454485 which you create a new function Vars. I really don\u0027t think you needed. I suggest you use a runtime variable to specify a varsfile and used the \"-varsfile\" for running subtests.",
+      "parentUuid": "bf06bffe_7726d992",
       "range": {
         "startLine": 287,
         "startChar": 28,
