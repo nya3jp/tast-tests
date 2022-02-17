@@ -63,11 +63,15 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 	loggedInUserEmail := nodewith.Name(cr.User()).Role(role.StaticText).Ancestor(profileMenu)
 	syncIsOnMessage := nodewith.Name("Sync is on").Role(role.StaticText).Ancestor(profileMenu)
 
-	if err := uiauto.Combine("Open the toolbar and check that the user is logged in",
+	if err := uiauto.Combine("open the toolbar and check that the user is logged in",
 		ui.WaitUntilExists(profileToolbarButton),
-		ui.LeftClick(profileToolbarButton),
-		ui.WaitUntilExists(loggedInUserEmail),
-		ui.WithTimeout(1*time.Minute).WaitUntilExists(syncIsOnMessage),
+		// Sync message may show an error in the beginning, but should change to 'sync is on'.
+		ui.WithTimeout(time.Minute).LeftClickUntil(profileToolbarButton,
+			uiauto.Combine("check that the user is logged in",
+				ui.Exists(loggedInUserEmail),
+				ui.Exists(syncIsOnMessage),
+			),
+		),
 	)(ctx); err != nil {
 		s.Fatal("Failed to check that the user is logged in: ", err)
 	}
