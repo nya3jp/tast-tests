@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf06bffe_7726d992",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1408793
+      },
+      "writtenOn": "2022-02-17T04:07:26Z",
+      "side": 1,
+      "message": "I was unable to run the test:\ntast run \u003cDUT_IP\u003e meta.RunCUJ.quickcheckcuj2_basic_unlock\n\nThe error is: \nsrc/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go:281:28: s.Vars undefined (type *\"chromiumos/tast/internal/testing\".State has no field or method Vars)\n\nAm I not running the test correctly?",
+      "range": {
+        "startLine": 287,
+        "startChar": 28,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fdf1fc0_8941d846",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
         "patchSetId": 2
