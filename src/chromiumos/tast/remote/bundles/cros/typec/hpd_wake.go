@@ -228,34 +228,29 @@ func enumerateDP(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.S
 
 // getWakeCount returns the number of wake ups from the Chrome OS EC device (through which HPD wakeups are passed).
 func getWakeCount(ctx context.Context, d *dut.DUT) (int64, error) {
-	out, err := d.Conn().CommandContext(ctx, "cat", "/sys/kernel/debug/wakeup_sources").Output()
+	b := "/sys/class/chromeos/cros_ec/"
+	l, err := d.Conn().CommandContext(ctx, "readlink", b+"device").Output()
 	if err != nil {
-		return -1, errors.Wrap(err, "could not cat wakeup_sources on DUT")
+		return -1, errors.Wrap(err, "could not find cros_ec device in sysfs")
+	}
+	e, err := d.Conn().CommandContext(ctx, "dirname", strings.TrimSpace(string(l))).Output()
+	if err != nil {
+		return -1, errors.Wrap(err, "could not get dirname of cros_ec device")
+	}
+	p := b + strings.TrimSpace(string(e)) + "/wakeup/"
+	w, err := d.Conn().CommandContext(ctx, "ls", p).Output()
+	if err != nil {
+		return -1, errors.Wrap(err, "could not find wakeup class for EC device")
+	}
+	out, err := d.Conn().CommandContext(ctx, "cat", p+strings.TrimSpace((string(w)))+"/wakeup_count").Output()
+	if err != nil {
+		return -1, errors.Wrap(err, "could not cat cros_ec wakeup_count on DUT")
 	}
 
-	for _, device := range bytes.Split(out, []byte("\n")) {
-		// Search for the Chrome OS EC device.
-		if !bytes.Contains(device, []byte("GOOG0004")) {
-			continue
-		}
-
-		// The format of /sys/kernel/wakeup_sources is always of the form:
-		// name            active_count    event_count     wakeup_count ....
-		//
-		// So, we need to look for the 4th word in the line.
-		for i, word := range strings.Fields(string(device)) {
-			if i != 3 {
-				continue
-			}
-
-			count, err := strconv.ParseInt(strings.TrimSpace(word), 0, 64)
-			if err != nil {
-				return -1, errors.Wrap(err, "couldn't parse wakeup count for EC device")
-			}
-
-			return count, nil
-		}
+	count, err := strconv.ParseInt(strings.TrimSpace(string(out)), 0, 64)
+	if err != nil {
+		return -1, errors.Wrap(err, "couldn't parse wakeup count for EC device")
 	}
 
-	return -1, errors.New("no Chrome OS device found in wakeup sources list")
+	return count, nil
 }
