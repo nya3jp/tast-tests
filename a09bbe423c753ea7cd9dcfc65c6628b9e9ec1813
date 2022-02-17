@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8c1675_1e345f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T04:12:50Z",
+      "side": 1,
+      "message": "This part is not used in this cl, please move it out to another cl.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "a09bbe423c753ea7cd9dcfc65c6628b9e9ec1813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
