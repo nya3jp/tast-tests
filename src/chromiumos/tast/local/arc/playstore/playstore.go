@@ -93,9 +93,6 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		return errors.Errorf("operation %s is not supported", op)
 	}
 
-	// Wait for the app to install or update.
-	testing.ContextLogf(ctx, "Waiting for app to %s", op)
-
 	tries := 0
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		for _, val := range []struct {
@@ -145,7 +142,9 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// If the install or update button is enabled, click it.
-		if err := opButton.Exists(ctx); err == nil {
+		// Wait for the app to install or update.
+		testing.ContextLogf(ctx, "Wait for app to %s", op)
+		if err := opButton.WaitForExists(ctx, defaultUITimeout); err == nil {
 			// Limit number of tries to help mitigate Play Store rate limiting across test runs.
 			if tryLimit == -1 || tries < tryLimit {
 				tries++
@@ -203,7 +202,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 
 		// Make sure we are still on the Play Store installation page by checking whether the "open" or "play" button exists.
 		// If not, reopen the Play Store page by sending the same intent again.
-		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText))).Exists(ctx); err != nil {
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText))).WaitForExists(ctx, defaultUITimeout); err != nil {
 			testing.ContextLog(ctx, "App installation page disappeared; reopen it")
 			if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
 				return errors.Wrap(err, "failed to send intent to reopen the Play Store")
