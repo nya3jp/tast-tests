@@ -16,6 +16,24 @@
       "message": "nit: move this to a separate CL",
       "revId": "8b8c9253610de95ca4d1cf9fce41928c0ddf76f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc252b37_526fe6fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/lacros_main_profile_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-17T12:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae042a44_a9d0eb06",
+      "revId": "8b8c9253610de95ca4d1cf9fce41928c0ddf76f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
