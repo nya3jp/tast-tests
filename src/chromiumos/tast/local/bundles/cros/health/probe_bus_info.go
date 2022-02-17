@@ -7,7 +7,9 @@ package health
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"strings"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 
@@ -16,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
 	"chromiumos/tast/local/bundles/cros/typec/typecutils"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -32,16 +35,19 @@ func init() {
 			"intel-chrome-system-automation-team@intel.com",
 		},
 		Attr: []string{"group:mainline"},
+		Vars: []string{"ui.signinProfileTestExtensionManifestKey"},
 		// TODO(b/200837194): Remove this after the volteer2 issue fix.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("volteer2")),
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
-			Val: false,
+			Fixture: "crosHealthdRunning",
+			Val:     false,
 		}, {
-			Name:      "thunderbolt",
-			ExtraAttr: []string{"informational"},
-			Val:       true,
+			Name:              "thunderbolt",
+			ExtraAttr:         []string{"informational"},
+			Val:               true,
+			ExtraData:         []string{"testcert.p12"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		}, {
 			Name:              "volteer2",
 			ExtraAttr:         []string{"informational"},
@@ -71,7 +77,44 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 		// Checking whether the Thunderbolt device is connected or not.
 		port, _ := typecutils.CheckPortsForTBTPartner(ctx)
 		if port != -1 {
-			//TODO(b/209385206): For accesing the Thunderbolt device we have to disable the data protection access from UI.
+			// For accesing the Thunderbolt device we have to disable the data protection access from UI.
+			portStr := strconv.Itoa(port)
+			if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", portStr).Run(); err != nil {
+				s.Fatal("Failed to simulate unplug: ", err)
+			}
+			defer func(ctx context.Context) {
+				if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
+					s.Error("Failed to perform replug: ", err)
+				}
+			}(ctx)
+			// Get to the Chrome login screen.
+			cr, err := chrome.New(ctx,
+				chrome.DeferLogin(),
+				chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
+			if err != nil {
+				s.Fatal("Failed to start Chrome at login screen: ", err)
+			}
+			defer cr.Close(ctx)
+
+			if err := typecutils.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
+				s.Fatal("Failed to enable peripheral data access setting: ", err)
+			}
+
+			if err := cr.ContinueLogin(ctx); err != nil {
+				s.Fatal("Failed to login: ", err)
+			}
+
+			if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
+				s.Fatal("Failed to simulate replug: ", err)
+			}
+
+			err = testing.Poll(ctx, func(ctx context.Context) error {
+				return typecutils.CheckTBTDevice(true)
+			}, &testing.PollOptions{Timeout: 20 * time.Second})
+			if err != nil {
+				s.Fatal("Failed to verify Thunderbolt device connected: ", err)
+			}
+
 			isDeviceConnected = true
 		}
 	}
@@ -186,14 +229,14 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 }
 
 func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
+	checkInterfacesDetected := false
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
 		}
-		checkInterfacesDetcted := false
 		if isDeviceConnected {
 			for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
-				checkInterfacesDetcted = true
+				checkInterfacesDetected = true
 				if !interfaces.Authorized {
 					return errors.New("failed to authorize the Thunderbolt device")
 				}
@@ -221,11 +264,6 @@ func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 			}
 		}
 
-		if isDeviceConnected && !checkInterfacesDetcted {
-			return errors.New("failed to get Thunderbolt device data when the device is connected")
-
-		}
-
 		if (devices.DeviceClass) == "" {
 			return errors.New("failed to get Thunderbolt DeviceClass")
 		}
@@ -235,6 +273,11 @@ func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 		if (devices.VendorName) == "" {
 			return errors.New("failed to get Thunderbolt VendorName")
 		}
+	}
+
+	if isDeviceConnected && !checkInterfacesDetected {
+		return errors.New("failed to get Thunderbolt device data when the device is connected")
+
 	}
 	return nil
 }
