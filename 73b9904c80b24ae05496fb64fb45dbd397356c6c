@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d8759e4_4d5baa67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed4525d_82c2ed75",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9b5645b5_8f33e662",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -55,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e469b23_00013ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "For the first error, it looks like network problem not crostini or the test problem.\n\nFor the second error, I got a bit confused, there is no precondition here?",
+      "parentUuid": "726989a5_90a51044",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcb21f2d_88c556f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
         "patchSetId": 6
@@ -66,6 +102,24 @@
       "writtenOn": "2022-02-17T13:05:27Z",
       "side": 1,
       "message": "Please remove.",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18750720_2b66ea41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcb21f2d_88c556f0",
       "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +137,24 @@
       "writtenOn": "2022-02-17T13:05:27Z",
       "side": 1,
       "message": "How about \"bullseye_stable_lacros\"?\n\nAre Lacros versions of the other configurations not needed?",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4508604_cb9defe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4e74d0_fcd0c453",
       "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -124,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "814154f0_49e92619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "No, we can, because implicit typecasting does not work. \n\nAccording to go/lacros-tast-porting, browserfixt.SetUp already opened a window.",
+      "parentUuid": "7bf5339d_188fa254",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bd63fac_939f9395",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
         "patchSetId": 6
@@ -135,6 +225,24 @@
       "writtenOn": "2022-02-17T13:05:27Z",
       "side": 1,
       "message": "Please remove.",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6a3f6c_5a29b843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd63fac_939f9395",
       "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "323bd620_98900dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4256eef2_d7f72d23",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ee1e2dd_bcee3857",
@@ -169,6 +295,24 @@
       "writtenOn": "2022-02-17T13:05:27Z",
       "side": 1,
       "message": "See other file.",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9c01b1_69165b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ee1e2dd_bcee3857",
       "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

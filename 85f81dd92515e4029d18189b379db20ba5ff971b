@@ -187,6 +187,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dae4513_e57f1fdd",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:00:19Z",
+      "side": 1,
+      "message": "Then I guess we could avoid that. It is not necessary for the existing test cases because they do not use any browser.",
+      "parentUuid": "3737b30c_3fa1bad6",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a153fec1_68b9b2e3",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 4
