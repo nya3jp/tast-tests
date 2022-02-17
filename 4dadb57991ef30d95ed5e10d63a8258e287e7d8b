@@ -16,6 +16,24 @@
       "message": "nit: note that both the actions are waiting so we can just say \"optin to complete\" instead of \"waiting for\" since that is implied.",
       "revId": "4dadb57991ef30d95ed5e10d63a8258e287e7d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "430d38de_56a52177",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-17T13:26:17Z",
+      "side": 1,
+      "message": "Here is how the logs look like presently in case of a retry:\n```\nStart action load terms of service # written by uiauto.Retry\nStart action wait for optin to complete # written by uiauto.Retry\nRetry failed attempt 1: failed action wait for optin to complete: Couldn’t connect with the server. Check your network connection and try again. If you\u0027re still having trouble, try restarting your Chromebook.  # written by uiauto.Retry\nStart action wait for optin to complete # written by uiauto.Retry\nRetry succeed in attempt 2 # written by uiauto.Retry\nPlay store window is open and hence closing\n```",
+      "parentUuid": "e9366dee_79814397",
+      "revId": "4dadb57991ef30d95ed5e10d63a8258e287e7d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

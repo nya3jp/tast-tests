@@ -22,6 +22,30 @@
       },
       "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e2081b_e2bfa45f",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-17T13:26:17Z",
+      "side": 1,
+      "message": "Could you please help me understand the semantics of `uiauto.Combine` (I\u0027m struggling to find comprehensive docs and the comments are lacking the details)? I.e. what happens, if one of the actions returns an error?\nCurrent flow looks like this:\n```\n1. perform action\n1.1 if successful, continue with the flow\n1.2 else\n1.2.1 if attempts number is exceeded, fail\n1.2.2 else sleep, pressButton, increase attempt counter and repeat from #1\n```\n\nThe way I would expect `uiauto.Combine` to work is following: once an action in the sequence fails, the subsequent actions are skipped and an error is returned. If this is the case, we could potentially skip the `sleep, pressButton` part of sequence, which is essential in our case.\nAlternatively, if it performs all the actions in the sequence, even if there are errors, we will always run `sleep, pressButton`, even when sleep is not required (and we\u0027ll need to adjust `pressButton` to not fail, if no button is found).\n\nNeither of these options I see fit us, hence, the question in the beginning :) .",
+      "parentUuid": "08f9e1c5_c367c5d4",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
