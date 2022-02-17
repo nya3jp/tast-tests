@@ -551,6 +551,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1608feb6_c0640594",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T16:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0bf9f4d_c0710175",
+      "range": {
+        "startLine": 202,
+        "startChar": 16,
+        "endLine": 202,
+        "endChar": 19
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47c4b012_2311097e",
