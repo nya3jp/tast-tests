@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b491166_86965ddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532302
+      },
+      "writtenOn": "2022-02-17T10:00:23Z",
+      "side": 1,
+      "message": "@Jeremy,\n\nIt is a new CL for BootBatteryCutoff().\nThank you.",
+      "revId": "a07311ce724fcae776e3fcf1ddc81379421b5ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
