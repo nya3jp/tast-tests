@@ -12,9 +12,12 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -30,21 +33,20 @@ type testParam struct {
 	// the major/minor values, only used if touchRadiusOverride is set to true.
 	touchMajorValue int32
 	touchMinorValue int32
+	browserType     browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TabletOperations,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check if the performance around user operations for tablet mode is good enough; see also go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"xdai@chromium.org",
 			"sammiequon@chromium.org",
 			"chromeos-wmp@google.com",
-			"mukai@chromium.org", // Tast author
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		HardwareDeps: hwdep.D(
 			hwdep.InternalDisplay(),
@@ -54,30 +56,40 @@ func init() {
 		),
 		Params: []testing.Param{
 			{
+				Fixture: "chromeLoggedIn",
 				ExtraHardwareDeps: hwdep.D(
 					hwdep.SkipOnModel(perfutil.UnstableModels...),
 					// Exclude kohaku because "EnableNeuralPalmDetectionFilter" is enabled
 					// there and rejects touches for swiping right. See b/196859354.
 					hwdep.SkipOnModel("kohaku")),
-				Val: testParam{},
+				Val: testParam{browserType: browser.TypeAsh},
 			},
 			// TODO(crbug.com/1168774): remove "unstable" once we see stability on all platforms.
 			{
 				Name:              "unstable",
-				ExtraAttr:         []string{"informational"},
+				Fixture:           "chromeLoggedIn",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
-				Val:               testParam{},
+				Val:               testParam{browserType: browser.TypeAsh},
 			},
 			// Run kohaku with specific size touch. See b/196859354.
 			{
 				Name:              "kohaku",
+				Fixture:           "chromeLoggedIn",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
-				ExtraAttr:         []string{"informational"},
 				Val: testParam{
 					touchRadiusOverride: true,
 					touchMajorValue:     25,
 					touchMinorValue:     24,
+					browserType:         browser.TypeAsh,
 				},
+			},
+			{
+				Name:    "lacros",
+				Fixture: "lacrosPrimary",
+				ExtraHardwareDeps: hwdep.D(
+					hwdep.SkipOnModel(perfutil.UnstableModels...),
+					hwdep.SkipOnModel("kohaku")),
+				Val: testParam{browserType: browser.TypeLacros},
 			},
 		},
 	})
@@ -100,7 +112,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	)
 	// When custom expectation value needs to be set, modify expects here.
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the connection to the test API: ", err)
@@ -109,11 +121,15 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	if err := ash.CreateWindows(ctx, tconn, cr, "", 2); err != nil {
-		s.Fatal("Failed to create new windows: ", err)
+	paramVal := s.Param().(testParam)
+	bt := paramVal.browserType
+	br, closeBrowser, err := browserfixt.CreateWindows(ctx, s.FixtValue(), bt, tconn, "", 1)
+	if err != nil {
+		s.Fatalf("Failed to create new %v browser windows: %v", bt, err)
 	}
+	defer closeBrowser(closeCtx)
 
-	r := perfutil.NewRunner(cr.Browser())
+	r := perfutil.NewRunner(br)
 	r.Runs = 5
 	r.RunTracing = false
 
@@ -223,11 +239,18 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
 			return errors.Wrap(err, "hotseat is in an unexpected state")
 		}
+		// TODO: Unblock tapping the browser icon for lacros-chrome from the app-list. Two issues exist:
+		// - Web apps installation is not disabled, causing the lacros icon not to be on the first page of the app-list.
+		// - The lacros app icon is not working when lacros is launched from the commandline via browserfixt.SetUp()
 		ui := uiauto.New(tconn)
-		// Tap the chrome icon in the app-list to re-activate the browser window.
-		button := nodewith.ClassName("AppListItemView").NameRegex(regexp.MustCompile("^(Chrome|Chromium)$"))
+		// Tap the browser icon (either Chromium, Chrome or Lacros) in the app-list to re-activate the browser window.
+		browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+		if err != nil {
+			s.Fatalf("Could not find the %v browser app: %v", bt, err)
+		}
+		button := nodewith.ClassName("AppListItemView").NameRegex(regexp.MustCompile("^" + browserApp.Name + "$"))
 		if err := ui.WaitUntilExists(button)(ctx); err != nil {
-			return errors.Wrap(err, "failed to find the Chrome icon")
+			return errors.Wrapf(err, "failed to find the browser icon: %v", browserApp.Name)
 		}
 		loc, err := ui.Location(ctx, button)
 		if err != nil {
@@ -334,7 +357,6 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		}
 
 		// Swipe on the splitview divider to exit splitview.
-		paramVal := s.Param().(testParam)
 		if paramVal.touchRadiusOverride {
 			if err := stw.SetSize(ctx, paramVal.touchMajorValue, paramVal.touchMinorValue); err != nil {
 				return errors.Wrap(err, "failed to set size for device")
