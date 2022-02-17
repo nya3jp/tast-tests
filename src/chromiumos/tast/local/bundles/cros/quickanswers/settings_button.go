@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,8 +17,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UnitConversion,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		Func:         SettingsButton,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test Quick Answers unit conversion feature",
 		Contacts: []string{
 			"updowndota@google.com",
@@ -31,8 +31,8 @@ func init() {
 	})
 }
 
-// UnitConversion tests Quick Answers unit conversion fearture.
-func UnitConversion(ctx context.Context, s *testing.State) {
+// SettingsButton tests Quick Answers unit conversion fearture.
+func SettingsButton(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -67,20 +67,24 @@ func UnitConversion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to select units: ", err)
 	}
 
-	// Right click the selected units and ensure the Quick Answers UI shows up with the conversion result in pounds.
+	// Right click the selected units and ensure the Quick Answers UI shows up
+	// with the settings button and the conversion result in pounds.
 	quickAnswers := nodewith.ClassName("QuickAnswersView")
+	settingsButton := nodewith.ClassName("ImageButton").Name("Quick answers settings")
 	unitConversionResult := nodewith.NameContaining("110.231").ClassName("Label")
 	if err := uiauto.Combine("Show context menu",
 		ui.RightClick(units),
 		ui.WaitUntilExists(quickAnswers),
+		ui.WaitUntilExists(settingsButton),
 		ui.WaitUntilExists(unitConversionResult))(ctx); err != nil {
-		s.Fatal("Quick Answers result not showing up: ", err)
+		s.Fatal("Quick Answers card not showing up: ", err)
 	}
 
-	// Dismiss the context menu and ensure the Quick Answers UI also dismiss.
-	if err := uiauto.Combine("Dismiss context menu",
-		ui.LeftClick(units),
-		ui.WaitUntilGone(quickAnswers))(ctx); err != nil {
-		s.Fatal("Quick Answers result not dismissed: ", err)
+	// Click on the settings button and ensure the OS settings subpage show up.
+	OsSettingsQuickAnswersToggleButton := nodewith.NameContaining("Quick answers").Role(role.ToggleButton)
+	if err := uiauto.Combine("Click settings button",
+		ui.LeftClick(settingsButton),
+		ui.WaitUntilExists(OsSettingsQuickAnswersToggleButton))(ctx); err != nil {
+		s.Fatal("Quick Answers settings subpage not showing up: ", err)
 	}
 }
