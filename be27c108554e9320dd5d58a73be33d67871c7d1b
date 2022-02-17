@@ -46,6 +46,30 @@
       },
       "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2985e69_123f690f",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-17T14:07:59Z",
+      "side": 1,
+      "message": "```\n// Combine combines a list of functions from Context to error into one function.\n// Combine adds the name of the operation into the error message to clarify the step.\n// It is recommended to start the name of operations with a verb, e.g.,\n//     \"open Downloads and right click a folder\"\n// Then the failure msg would be like:\n//     \"failed to open Downloads and right click a folder on step ...\"\nfunc Combine(name string, steps ...Action) Action {\n\treturn func(ctx context.Context) error {\n\t\tfor i, f :\u003d range steps {\n\t\t\tif err :\u003d f(ctx); err !\u003d nil {\n\t\t\t\treturn errors.Wrapf(err, \"failed to %s on step %d\", name, i+1)\n\t\t\t}\n\t\t}\n\t\treturn nil\n\t}\n}\n```\n\nSo it skips executing the second function if the first one fails.",
+      "parentUuid": "13e2081b_e2bfa45f",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
