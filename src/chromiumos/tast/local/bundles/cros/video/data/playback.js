@@ -68,7 +68,9 @@ function randomizer(seed) {
 
 const random = randomizer(1);
 let number_finished_seeks = 0;
+// Only affects the first (top left) video in the grid if there are multiple.
 function randomSeek() {
+  let video = document.getElementsByClassName(videoClass)[0];
   return new Promise((resolve, reject) => {
     video.onseeked = (event) => {
       console.log(number_finished_seeks);
@@ -83,7 +85,9 @@ function randomSeek() {
   });
 }
 
+// Only affects the first (top left) video in the grid if there are multiple.
 window.addEventListener("keydown", function (event) {
+  let video = document.getElementsByClassName(videoClass)[0];
   if (event.key == 'f')
-    document.getElementById('video').requestFullscreen();
+    video.requestFullscreen();
 });
