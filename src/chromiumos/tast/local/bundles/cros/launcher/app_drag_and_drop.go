@@ -38,7 +38,7 @@ func init() {
 		}, {
 			Name:    "",
 			Val:     false,
-			Fixture: "chromeLoggedInWith100FakeApps",
+			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}},
 	})
 }
