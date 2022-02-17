@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bea7531_ab190933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T07:36:24Z",
+      "side": 1,
+      "message": "Sorry for missing that.",
+      "parentUuid": "f47ed789_09d48527",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "a09bbe423c753ea7cd9dcfc65c6628b9e9ec1813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361cb53a_0e56ad03",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "We didn\u0027t modify `playstore.go` for following reason:\n\n1. The cleanup for `playstore.InstallApp` (or `playstore.InstallOrUpdateApp`) should be `optin.ClosePlayStore`, which is not straightforward for the caller.\n2. `playstore` is only about installing/updating an app, we design `apputil` for more than that.\n3. We wrap and hide the details of `playstore` and `optin` to make it easier and simpler to manage/control any ARC++ app.\n\nWe updated the commit message to further describe the purpose and features of `apputil`.\n\nShould we still improve the `playstore.go`?",
       "parentUuid": "361cb53a_0e56ad03",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "a09bbe423c753ea7cd9dcfc65c6628b9e9ec1813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7825c5c_dc094505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T07:36:24Z",
+      "side": 1,
+      "message": "I thought this func could be used by other test, it could not?",
+      "parentUuid": "7f704970_272b45d0",
       "range": {
         "startLine": 49,
         "startChar": 16,
