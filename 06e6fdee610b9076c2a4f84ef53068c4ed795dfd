@@ -54,6 +54,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f57be4b0_409d3c70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-17T06:47:58Z",
+      "side": 1,
+      "message": "remove this comment",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 61
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f90feec_98bac92b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-17T06:47:58Z",
+      "side": 1,
+      "message": "nit: remove if empty",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf06bffe_7726d992",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
         "patchSetId": 2
@@ -111,6 +157,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a69d46e_ea8fe571",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-17T06:47:58Z",
+      "side": 1,
+      "message": "I recommend using Errorf instead of Fatalf here - you probably want all errors to be logged.",
+      "range": {
+        "startLine": 304,
+        "startChar": 6,
+        "endLine": 304,
+        "endChar": 12
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1dde5729_3e7ddbe4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
         "patchSetId": 2
@@ -122,6 +191,29 @@
       "writtenOn": "2022-02-17T02:58:25Z",
       "side": 1,
       "message": "How do you know the test is not supposed to skipped?",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a097b261_6b283bfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-17T06:47:58Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 307,
+        "startChar": 6,
+        "endLine": 307,
+        "endChar": 12
+      },
       "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
