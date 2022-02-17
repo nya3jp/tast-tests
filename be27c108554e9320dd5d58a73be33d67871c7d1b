@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f9e1c5_c367c5d4",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T11:14:19Z",
+      "side": 1,
+      "message": "I do not think you need this one. Instead, you could the following:\n1. Make waitForTerms and waitForOptin return action.Action\n2. Create a func (say pressButton) returnning action.Action and running: \n\nif err :\u003d conn.Eval(ctx, \"appWindow.contentWindow.document.getElementById(\u0027button-retry\u0027).click()\", nil); err !\u003d nil {\n    return errors.Wrap(err, \"failed to press the retry button\")\n}\n\n3. Replace calling withRetry with:\nuiauto.Retry(n, uiauto.Combine(action, sleep, pressButton))",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
