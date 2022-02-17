@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
@@ -108,6 +110,13 @@ func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// Cleanup the file _after_ the browser has been closed, to be sure that
+			// the browser is not still in the process of writing the file.
+			filePath := path.Join(filesapp.MyFilesPath, "test-file")
+			if param.wantFileSystemWrite {
+				defer os.Remove(filePath)
+			}
+
 			// Setup browser based on the chrome type.
 			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 			if err != nil {
@@ -148,7 +157,20 @@ func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
 				)(ctx); err != nil {
 					s.Error("Unable to save file using save file picker: ", err)
 				}
-				defer os.Remove(path.Join(filesapp.MyFilesPath, "test-file"))
+
+				// Wait for the file to be written to disk and check its contents.
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					fileContent, err := ioutil.ReadFile(filePath)
+					if err != nil {
+						return err
+					}
+					if string(fileContent) != "test" {
+						return errors.Errorf("File contains invalid content, expected 'test', got: %s", string(fileContent))
+					}
+					return nil
+				}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+					s.Error("Failed to check file on disk: ", err)
+				}
 			} else {
 				if err := ui.EnsureGoneFor(saveFilePickerNode, 5*time.Second)(ctx); err != nil {
 					s.Error("Save file picker opened unexpectedly: ", err)
