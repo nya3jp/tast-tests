@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2efe9b_105974bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-17T04:43:32Z",
+      "side": 1,
+      "message": "Thanks for all your suggestions!\nI add a comment for this function.\n\nFor me, I think it\u0027s still an interesting point, because I don\u0027t think the docstring is meaningful. The function name is clear, and I think the user can understand by the function signature. e.g. \nUser can expect that it\u0027ll return false when no eDP, return true when eDP exist. And if it\u0027s fail to check, error won\u0027t be nil.",
+      "parentUuid": "298f3b4e_004bde1c",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "c8ef4423f88233f9903d145248de33addb0d396e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5aabbd_b71f6c81",
