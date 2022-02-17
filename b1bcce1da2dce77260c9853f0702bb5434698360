@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "668f90b3_febf6ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T20:14:47Z",
+      "side": 1,
+      "message": "then what you want here might be:\n\n```\ndefer func() {\n    if e \u003d\u003d nil {\n        return\n    }\n    if err :\u003d cancel(); err !\u003d nil {\n        // You cannot overwrite e here.\n        testing.ContextLogf(ctx, \"failed to cleanup after StartRecording: %s\", err)\n    }\n}()\n```\n\nYou don\u0027t need to set `cancel\u003dnil` to indicate whether StartRecording fails. Checking `cancel \u003d\u003d nil` is basically equivalent to checking `e \u003d\u003d nil` (which means line 331 is unreachable).\n\nThis also helps to optimize code line 380-383.",
+      "parentUuid": "3bb28647_23094cd4",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b6295fa_26dec33b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "\u003e ctx  and  closeCtx  are mixed inside. \n\nGood point! But it seems to be an issue in the original code too.\n\nI don\u0027t know why we need a copy of the supplied |ctx| parameter (could it actually be an alias to the outside scope?), but let\u0027s pass |closeCtx| as parameterr to the stopTracing function...",
       "parentUuid": "0b6295fa_26dec33b",
+      "range": {
+        "startLine": 342,
+        "startChar": 17,
+        "endLine": 342,
+        "endChar": 31
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9514a12_be0bf28e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T20:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ffb9d38_6177909f",
       "range": {
         "startLine": 342,
         "startChar": 17,
@@ -165,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2fe616_fc782f59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T20:14:47Z",
+      "side": 1,
+      "message": "my bad, this part is fine.",
+      "parentUuid": "263681d4_b3c2e9fb",
+      "range": {
+        "startLine": 457,
+        "startChar": 1,
+        "endLine": 459,
+        "endChar": 14
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f64681c_f51e7e88",
@@ -202,6 +274,30 @@
       "side": 1,
       "message": "What if test function fails? How do we stop tracing?",
       "parentUuid": "1f64681c_f51e7e88",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d386ec_32ad7fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T20:14:47Z",
+      "side": 1,
+      "message": "normally, we defer the StopRecording func immediately after StartRecording. Otherwise currently if `f` fails, StopRecording is still not called.\n\nsomething like\n\n```\nif runCtx, cleanup, err \u003d r.StartRecording(ctx); err !\u003d nil {\n    return err\n}\n\ndefer func(ctx context.Context) {\n    err :\u003d r.StopRecording(ctx, passedCleanup)\n    if e \u003d\u003d nil \u0026\u0026 err!\u003dnil {\n        e \u003d err\n    } else if err !\u003d nil {\n        testing.ContextLogf(ctx,\"Failed to stop recording: %s\",err)\n    }\n}(runCtx)\n```\n\nThere might be a better way to construct the deferred function here.",
+      "parentUuid": "43f9bb83_ea529358",
       "range": {
         "startLine": 463,
         "startChar": 1,
