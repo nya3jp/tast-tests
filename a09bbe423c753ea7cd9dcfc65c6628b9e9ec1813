@@ -141,6 +141,30 @@
       },
       "revId": "a09bbe423c753ea7cd9dcfc65c6628b9e9ec1813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939bbbed_326769ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-17T08:40:34Z",
+      "side": 1,
+      "message": "Sorry for our mishandling, we found the check installed part is already part of `playstore.InstallApp` (or `playstore.InstallOrUpdateApp`), removed.\n\nAlso we found some tests will leave the playstore open after installing an app, so we didn’t make any changes on `playstore.go`.",
+      "parentUuid": "d7825c5c_dc094505",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "a09bbe423c753ea7cd9dcfc65c6628b9e9ec1813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
