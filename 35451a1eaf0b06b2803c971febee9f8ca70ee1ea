@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa32683_8f6b70cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-02-17T20:07:21Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "35451a1eaf0b06b2803c971febee9f8ca70ee1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a69811_e30cb514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-02-17T20:07:21Z",
+      "side": 1,
+      "message": "Was this necessary to make the test pass? Why wasn\u0027t it needed before?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "35451a1eaf0b06b2803c971febee9f8ca70ee1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
