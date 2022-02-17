@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7641148_403be656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T21:09:22Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e You cannot overwrite e here.\n\nI wonder why it worked in the original code.... Is there a link to the docs explaining this?",
+      "parentUuid": "668f90b3_febf6ad9",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b6295fa_26dec33b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 3
@@ -156,6 +180,30 @@
       "writtenOn": "2022-02-17T09:03:53Z",
       "side": 1,
       "message": "just `return runCtx, cancel, nil`, or use `cleanup` instead of `cancel` in line 359",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 28
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e225e4_e979f5e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T21:09:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "000c7ed4_e625aa80",
       "range": {
         "startLine": 378,
         "startChar": 1,
@@ -308,6 +356,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fe3bb2_63c8c023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T21:09:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42d386ec_32ad7fe7",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93123a62_e42f9631",
@@ -321,6 +393,30 @@
       "writtenOn": "2022-02-17T09:03:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3f8152_d8355eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T21:09:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93123a62_e42f9631",
       "range": {
         "startLine": 475,
         "startChar": 1,
