@@ -12,10 +12,10 @@ import (
 
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/audio/audionode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -33,10 +33,10 @@ func init() {
 		Params: []testing.Param{{
 			Name:      "internal_speaker",
 			ExtraAttr: []string{"group:mainline", "informational"},
-			Val:       "INTERNAL_SPEAKER",
+			Val:       "Speaker (internal)",
 		}, {
 			Name: "headphone",
-			Val:  "HEADPHONE",
+			Val:  "Headphone",
 		}, {
 			Name: "usb_speaker",
 			Val:  "USB",
@@ -45,8 +45,12 @@ func init() {
 }
 
 // LocalAudioPlayback generates audio file and plays it through default audio player.
+// Switching nodes via UI interactions is the recommended way, instead of using
+// cras.SetActiveNode() method, as UI will always send the preference input/output
+// devices to CRAS. Calling cras.SetActiveNode() changes the active devices for a
+// moment, but they soon are reverted by UI. See (b/191602192) for details.
 func LocalAudioPlayback(ctx context.Context, s *testing.State) {
-	expectedAudioNode := s.Param().(string)
+	expectedOutputDevice := s.Param().(string)
 	cr := s.PreValue().(*chrome.Chrome)
 
 	// Mute the device to avoid noisiness.
@@ -114,9 +118,23 @@ func LocalAudioPlayback(ctx context.Context, s *testing.State) {
 		s.Fatal("Error while waiting during sample time: ", err)
 	}
 
-	audioDeviceName, err := audionode.SetAudioNode(ctx, expectedAudioNode)
+	// Select output device.
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		s.Fatal("Failed to show Quick Settings")
+	}
+	defer quicksettings.Hide(ctx, tconn)
+	if err := quicksettings.SelectAudioOption(ctx, tconn, expectedOutputDevice); err != nil {
+		s.Fatal("Failed to select audio option: ", err)
+	}
+
+	// Get Current active node.
+	cras, err := audio.NewCras(ctx)
 	if err != nil {
-		s.Fatal("Failed to set the Audio node: ", err)
+		s.Fatal("Failed to create Cras object")
+	}
+	audioDeviceName, _, err := cras.SelectedOutputDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the selected audio device: ", err)
 	}
 
 	devName, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream)
