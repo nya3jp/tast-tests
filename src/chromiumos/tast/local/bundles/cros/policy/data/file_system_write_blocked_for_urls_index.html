@@ -5,12 +5,23 @@
   let resolve;
   window.filePickerShownPromise = new Promise(_resolve => resolve = _resolve);
 
-  document.querySelector("a").addEventListener("click", (e) => {
+  document.querySelector("a").addEventListener("click", async (e) => {
     e.preventDefault();
-    window.showSaveFilePicker({ suggestedName: 'test-file' })
-      .then(() => resolve(true))
+    let fileHandle;
+    try {
+      fileHandle = await window.showSaveFilePicker({
+        suggestedName: 'test-file'
+      });
+    } catch (err) {
       // showSaveFilePicker() throws if it fails to open due to a policy or if
       // the user closes it without saving.
-      .catch(() => resolve(false))
+      resolve(false);
+      return;
+    }
+
+    const writableStream = await fileHandle.createWritable();
+    await writableStream.write("test");
+    await writableStream.close();
+    resolve(true);
   });
 </script>
