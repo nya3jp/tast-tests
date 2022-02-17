@@ -70,6 +70,30 @@
       },
       "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50938821_90cdf91e",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-17T14:27:15Z",
+      "side": 1,
+      "message": "Thank you for confirming it Muhammad Hasan. Sorry, I should have kept navigating through the code a bit further.",
+      "parentUuid": "e2985e69_123f690f",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
