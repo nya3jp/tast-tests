@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c3eb1b9_809fda6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T21:56:23Z",
+      "side": 1,
+      "message": "I should have added more clarification here. \n\nThe reason why not to override `e` here is that if `e !\u003d nil` overwriting it in the deferred function would hide the fatal error returned by, say for example, metrics.StartRecording.\n\ni.e., assume the func fails at L 340 with error `failed to start tracing`, if we overwrite this error with the cleanup error `failed to cleanup after StartRecording`, the previous error (which should be of more concerns) is then silenced.\n\nThe cleanup tasks are generally non-fatal, thus we normally just log them, instead of failing the test.",
+      "parentUuid": "a7641148_403be656",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b6295fa_26dec33b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 3

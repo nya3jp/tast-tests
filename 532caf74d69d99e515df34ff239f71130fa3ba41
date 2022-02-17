@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af5da07_f1e60015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T21:56:23Z",
+      "side": 1,
+      "message": "thanks for addressing the comments!",
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad199e74_9b673129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T21:56:23Z",
+      "side": 1,
+      "message": "does it make sense to add a field `cleanup func() error` to `Recorder`? By doing so, instead of using it as currently:\n\n```\nrunCtx, cleanup, err :\u003d r.StartRecording(ctx)\ndefer r.StopRecording(ctx, cleanup)\n```\n\nit then becomes:\n\n```\nrunCtx, err :\u003d r.StartRecording(ctx)\ndefer r.StopRecording(runCtx)\n```\n\nwhich hides `cleanup` from usage.",
+      "range": {
+        "startLine": 310,
+        "startChar": 80,
+        "endLine": 310,
+        "endChar": 94
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15635b2_be0226b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T21:56:23Z",
+      "side": 1,
+      "message": "super-nit: just `ctx`",
+      "range": {
+        "startLine": 390,
+        "startChar": 33,
+        "endLine": 390,
+        "endChar": 39
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9deaec71_48207216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T21:56:23Z",
+      "side": 1,
+      "message": "Log the error here\n```\nif e !\u003d nil {\n    testing.ContextLogf(ctx, \"Failed to stop recording: %s\", err)\n}\n```",
+      "range": {
+        "startLine": 395,
+        "startChar": 2,
+        "endLine": 395,
+        "endChar": 3
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77712290_2e4d6317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T21:56:23Z",
+      "side": 1,
+      "message": "I would simplify these lines to:\n```\ncleanupCtx :\u003d ctx\nctx, err :\u003d r.StartRecording(ctx);\nif  err !\u003d nil {\n\teturn err\n}\ndefer r.StopRecording(cleanupCtx)\n```\n\n1, it assumes the error returned by StopRecording is non-fatal, and the error has been logged as suggested in the other comment. But if the error in StopRecording is considered fatal, then the deferred func is fine. \n\n2, the current use of context is problematic. cleanup tasks (StopRecording here) need a context with longer deadline. A formal use would be something like:\n```\ncleanupCtx :\u003d ctx // Reserve the original context for cleanup\nctx \u003d ...// Shorten the ctx for execution\n// use ctx for normal execution\n// use cleanupCtx in deferred cleanup functions.\n```\nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 454,
+        "startChar": 1,
+        "endLine": 467,
+        "endChar": 19
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
