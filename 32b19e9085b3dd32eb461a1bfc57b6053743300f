@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "830ec824_cc1ecdab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-17T08:02:41Z",
+      "side": 1,
+      "message": "Hi Patrick,\nSorry for delay due to health conidiation , i was off.\nAnd have loss the permissions to push code and got access now.\nI will address all your review comments ASAP.\n\nThanks,",
+      "parentUuid": "9c283337_809e329e",
+      "revId": "32b19e9085b3dd32eb461a1bfc57b6053743300f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "333632d9_6c179cfe",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-17T06:43:38Z",
       "side": 1,
       "message": "nit: Check",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 12
+      },
+      "revId": "32b19e9085b3dd32eb461a1bfc57b6053743300f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef16226b_b5d8b23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-17T08:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333632d9_6c179cfe",
       "range": {
         "startLine": 151,
         "startChar": 4,
