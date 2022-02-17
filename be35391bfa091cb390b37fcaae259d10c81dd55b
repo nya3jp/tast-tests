@@ -16,6 +16,138 @@
       "message": "Thanks for the fixes - LGTM ",
       "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90caa0fd_5ba7576d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "I think this utility would be more useful in src/chromiumos/tast/local/chrome/uiauto/wmp/. Everything in here seems generally useful, and the test-specific methods (verifyLocation, dragDetail) can be left in this subpackage.",
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c680ecdc_90169630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "This \"Util\" struct makes things a bit harder to understand IMO. I think it would be clearer to just have the methods accept tconn as an input, and each create their own uiauto.Context and get the resizeArea as needed.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f696973d_48a8f3b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "can this be a more specific name? it should be a window right?",
+      "range": {
+        "startLine": 120,
+        "startChar": 38,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0abf400_4483b8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "ditto here",
+      "range": {
+        "startLine": 129,
+        "startChar": 45,
+        "endLine": 129,
+        "endChar": 46
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae630ee3_387589e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "Could these functions be bound to the ResizeApp struct instead? I think that would make more sense, since the ResizeApp includes the necessary info, and having a signature like:\n```\nwindow :\u003d ResizeApp{...}\nwindow.ResizeToMin\n```\nmakes a lot of sense.",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8775c2bb_677faece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 175,
+        "startChar": 40,
+        "endLine": 175,
+        "endChar": 41
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

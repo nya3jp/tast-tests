@@ -195,6 +195,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e4c4982_9f4a349a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "I think Play Store will be accessible even on a fake login, let\u0027s see if we can avoid using GAIA here.",
+      "parentUuid": "5708a2e5_c231bf6a",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a672b85c_3c92cd89",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
         "patchSetId": 4
@@ -651,6 +669,30 @@
       "side": 1,
       "message": "\u003e Is it accessible to use the playstore as an ARC++ app?\n\nsorry, correction for a typo\nIs it acceptable to use the playstore as an ARC++ app?",
       "parentUuid": "1c330f8d_781447ba",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 25
+      },
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d5e3d3_660cb3d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-17T22:00:48Z",
+      "side": 1,
+      "message": "Yes, Play Store is an ARC++ app, confirmed with someone from ARC engprod that it\u0027s acceptable for this case. Let\u0027s go ahead and use Play Store to reduce external dependencies.",
+      "parentUuid": "55566477_9c5fa236",
       "range": {
         "startLine": 483,
         "startChar": 17,
