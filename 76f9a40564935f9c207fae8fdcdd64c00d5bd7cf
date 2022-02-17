@@ -39,6 +39,30 @@
       },
       "revId": "76f9a40564935f9c207fae8fdcdd64c00d5bd7cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7d5c8a_1e74744f",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-17T03:05:45Z",
+      "side": 1,
+      "message": "Unfortunately no convenient way ATM.\nWe can introduce autotestPrivate API. (Note the code in Chromium about checking Lacros Mode is under refactoring, so it\u0027ll be changed soon (~order of days to weeks).\n\nMaybe TODO?",
+      "parentUuid": "d967aeb9_577c00f9",
+      "range": {
+        "startLine": 420,
+        "startChar": 65,
+        "endLine": 420,
+        "endChar": 80
+      },
+      "revId": "76f9a40564935f9c207fae8fdcdd64c00d5bd7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
