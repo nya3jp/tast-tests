@@ -12,10 +12,10 @@ import (
 
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/audio/audionode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -33,10 +33,10 @@ func init() {
 		Params: []testing.Param{{
 			Name:      "internal_speaker",
 			ExtraAttr: []string{"group:mainline", "informational"},
-			Val:       "INTERNAL_SPEAKER",
+			Val:       "Speaker (internal)",
 		}, {
 			Name: "headphone",
-			Val:  "HEADPHONE",
+			Val:  "Headphone",
 		}, {
 			Name: "usb_speaker",
 			Val:  "USB",
@@ -46,7 +46,7 @@ func init() {
 
 // LocalAudioPlayback generates audio file and plays it through default audio player.
 func LocalAudioPlayback(ctx context.Context, s *testing.State) {
-	expectedAudioNode := s.Param().(string)
+	expectedOutputDevice := s.Param().(string)
 	cr := s.PreValue().(*chrome.Chrome)
 
 	// Mute the device to avoid noisiness.
@@ -114,9 +114,24 @@ func LocalAudioPlayback(ctx context.Context, s *testing.State) {
 		s.Fatal("Error while waiting during sample time: ", err)
 	}
 
-	audioDeviceName, err := audionode.SetAudioNode(ctx, expectedAudioNode)
+	if err := quicksettings.SelectAudioOption(ctx, tconn, expectedOutputDevice); err != nil {
+		s.Fatal("Failed to select audio option: ", err)
+	}
+	defer quicksettings.Hide(ctx, tconn)
+
+	// Get Currect active node
+	cras, err := audio.NewCras(ctx)
 	if err != nil {
-		s.Fatal("Failed to set the Audio node: ", err)
+		s.Fatal("Failed to create Cras object")
+	}
+	audioDeviceName, _, err := cras.SelectedOutputDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the selected audio device: ", err)
+	}
+
+	// Wait for audio node to swtich
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Error while waiting for audio node to switch: ", err)
 	}
 
 	devName, err := crastestclient.FirstRunningDevice(ctx, audio.OutputStream)

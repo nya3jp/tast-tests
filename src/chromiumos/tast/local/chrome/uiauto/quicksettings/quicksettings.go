@@ -420,11 +420,11 @@ func findSlider(ctx context.Context, tconn *chrome.TestConn, slider SliderType) 
 
 // OpenAudioSettings opens Quick Settings' audio settings page. It does nothing if the page is already open.
 func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
-	cleanup, err := ensureVisible(ctx, tconn)
+	// cleanup function not needed. Use quicksettings.Hide to close quickSettings menu.
+	_, err := ensureVisible(ctx, tconn)
 	if err != nil {
 		return err
 	}
-	defer cleanup(ctx)
 
 	audioSettingsBtn := nodewith.Role(role.Button).Name("Audio settings")
 	audioDetailedView := nodewith.ClassName("AudioDetailedView")
