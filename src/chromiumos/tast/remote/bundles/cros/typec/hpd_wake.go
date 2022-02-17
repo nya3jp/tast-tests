@@ -227,35 +227,35 @@ func enumerateDP(ctx context.Context, svo *servo.Servo, d *dut.DUT, s *testing.S
 }
 
 // getWakeCount returns the number of wake ups from the Chrome OS EC device (through which HPD wakeups are passed).
+// Uses the wakeup class object attached to the chromeos class cros_ec device in sysfs
 func getWakeCount(ctx context.Context, d *dut.DUT) (int64, error) {
-	out, err := d.Conn().CommandContext(ctx, "cat", "/sys/kernel/debug/wakeup_sources").Output()
+	base := "/sys/class/chromeos/cros_ec/"
+
+	link, err := d.Conn().CommandContext(ctx, "readlink", base+"device").Output()
 	if err != nil {
-		return -1, errors.Wrap(err, "could not cat wakeup_sources on DUT")
+		return -1, errors.Wrap(err, "could not find cros_ec device in sysfs")
 	}
 
-	for _, device := range bytes.Split(out, []byte("\n")) {
-		// Search for the Chrome OS EC device.
-		if !bytes.Contains(device, []byte("GOOG0004")) {
-			continue
-		}
-
-		// The format of /sys/kernel/wakeup_sources is always of the form:
-		// name            active_count    event_count     wakeup_count ....
-		//
-		// So, we need to look for the 4th word in the line.
-		for i, word := range strings.Fields(string(device)) {
-			if i != 3 {
-				continue
-			}
-
-			count, err := strconv.ParseInt(strings.TrimSpace(word), 0, 64)
-			if err != nil {
-				return -1, errors.Wrap(err, "couldn't parse wakeup count for EC device")
-			}
-
-			return count, nil
-		}
+	ec, err := d.Conn().CommandContext(ctx, "dirname", strings.TrimSpace(string(link))).Output()
+	if err != nil {
+		return -1, errors.Wrap(err, "could not get dirname of cros_ec device")
 	}
 
-	return -1, errors.New("no Chrome OS device found in wakeup sources list")
+	path := base + strings.TrimSpace(string(ec)) + "/wakeup/"
+	wakeup, err := d.Conn().CommandContext(ctx, "ls", path).Output()
+	if err != nil {
+		return -1, errors.Wrap(err, "could not find wakeup class for EC device")
+	}
+
+	out, err := d.Conn().CommandContext(ctx, "cat", path+strings.TrimSpace((string(wakeup)))+"/wakeup_count").Output()
+	if err != nil {
+		return -1, errors.Wrap(err, "could not cat cros_ec wakeup_count on DUT")
+	}
+
+	count, err := strconv.ParseInt(strings.TrimSpace(string(out)), 0, 64)
+	if err != nil {
+		return -1, errors.Wrap(err, "couldn't parse wakeup count for EC device")
+	}
+
+	return count, nil
 }
