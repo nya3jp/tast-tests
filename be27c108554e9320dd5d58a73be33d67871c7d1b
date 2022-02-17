@@ -142,6 +142,30 @@
       },
       "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c637714c_a12cad87",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T22:02:55Z",
+      "side": 1,
+      "message": "Sorry, I did not notice that inside the withRety, it returns immediately if the first action succeeds. There is a IfSuccessThen in uiauto: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d727\n\nI\u0027d suggest we add a func like IfFailThen to uiauto so that it could be reused.",
+      "parentUuid": "ba01b21d_ba16747d",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
