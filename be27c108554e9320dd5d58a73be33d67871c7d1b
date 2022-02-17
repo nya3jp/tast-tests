@@ -94,6 +94,30 @@
       },
       "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805df78e_e79e407f",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-17T15:36:28Z",
+      "side": 1,
+      "message": "After some thoughts, the combine approach could have worked, if there was a `uiauto.Either` monad available. Something like that: `uiauto.Retry(uiauto.Either(action, uiauto.Combine(pressButton, sleep, ui.False())))` where `ui.False` returns an action, that always returns an error.\nNot sure, if we need to go down that path in this CL, but I\u0027m more than happy to create another one, if it sounds promising.",
+      "parentUuid": "50938821_90cdf91e",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
