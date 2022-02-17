@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7da914_00874dc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-17T06:29:18Z",
+      "side": 1,
+      "message": "+2 for Tast Review % comments",
+      "revId": "146701f927267c0ff955968e5901b2f2dc3999d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba97b090_c7d8424d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-17T06:29:18Z",
+      "side": 1,
+      "message": "This test seems really long. Perhaps it is time to split it into some smaller tests, or refactor it so that this top-level method calls a set of smaller, more understandable, methods?",
+      "revId": "146701f927267c0ff955968e5901b2f2dc3999d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71a42491_dbed0b29",
@@ -36,6 +70,53 @@
         "startChar": 0,
         "endLine": 338,
         "endChar": 26
+      },
+      "revId": "146701f927267c0ff955968e5901b2f2dc3999d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3311f53_dd7850f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-17T06:29:18Z",
+      "side": 1,
+      "message": "+1, see: \nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Sleep",
+      "parentUuid": "71a42491_dbed0b29",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 26
+      },
+      "revId": "146701f927267c0ff955968e5901b2f2dc3999d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b2904da_cfaddde4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-17T06:29:18Z",
+      "side": 1,
+      "message": "This method is returning an incredible number of parameters:\n\n`return nil, nil, nil, nil, nil, nil, nil, ...`\n\nPrefer to return a struct with these as fields.\n\nFeel free to action in a follow-up CL to avoid making this CL bigger.",
+      "range": {
+        "startLine": 46,
+        "startChar": 65,
+        "endLine": 46,
+        "endChar": 196
       },
       "revId": "146701f927267c0ff955968e5901b2f2dc3999d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
