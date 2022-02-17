@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e314984_b95062a9",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33f3ff0_dbb4615b",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a18e1101_16024b4a",
@@ -104,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4856251_21fe2045",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18e1101_16024b4a",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 54
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "159e7579_822a5e66",
@@ -117,6 +165,30 @@
       "writtenOn": "2022-02-15T16:33:30Z",
       "side": 1,
       "message": "Please don\u0027t use -\u003e. Instead rewrite comment. For example:\n\"Don\u0027t add certificate if it already exists.\"\n\n\n\u003e Doc comments work best as complete sentences, which allow a wide variety of automated presentations.\nhttps://go.dev/doc/effective_go#commentary",
+      "range": {
+        "startLine": 137,
+        "startChar": 37,
+        "endLine": 137,
+        "endChar": 39
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65047613_04a63d67",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "159e7579_822a5e66",
       "range": {
         "startLine": 137,
         "startChar": 37,
@@ -173,6 +245,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d347ae3_d1acc8c8",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24eb7e68_8d9baee1",
+      "range": {
+        "startLine": 147,
+        "startChar": 27,
+        "endLine": 147,
+        "endChar": 97
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17bcca6_c373d08e",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e57acf7_081b34c7",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 23
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "583a2819_f8576578",
@@ -186,6 +306,30 @@
       "writtenOn": "2022-02-15T16:33:30Z",
       "side": 1,
       "message": "\"2\" suffix is redundant because `certExists` variable scope is just lines 138-142.",
+      "range": {
+        "startLine": 184,
+        "startChar": 14,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63c4535_172c62b5",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "583a2819_f8576578",
       "range": {
         "startLine": 184,
         "startChar": 14,
@@ -219,6 +363,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62dbf7e6_35b58f75",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b9a2599_2e78312d",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "090feb90_a2dec35f",
@@ -232,6 +400,30 @@
       "writtenOn": "2022-02-15T16:33:30Z",
       "side": 1,
       "message": "nit: returns whether the certificate exists",
+      "range": {
+        "startLine": 194,
+        "startChar": 25,
+        "endLine": 194,
+        "endChar": 91
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96346f1_a9f86926",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "090feb90_a2dec35f",
       "range": {
         "startLine": 194,
         "startChar": 25,
@@ -265,6 +457,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89dd83fe_1785192c",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93effc80_5129fc94",
+      "range": {
+        "startLine": 194,
+        "startChar": 93,
+        "endLine": 195,
+        "endChar": 65
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77bbe82_21e85157",
@@ -278,6 +494,30 @@
       "writtenOn": "2022-02-15T16:33:30Z",
       "side": 1,
       "message": "nit: Remove it. This prefix is a bit misleading. Usually CheckIf verifies that actual node presence is equal to expected value.",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 12
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d9d758_4c7fb0a7",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77bbe82_21e85157",
       "range": {
         "startLine": 197,
         "startChar": 5,
@@ -334,6 +574,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0e3b98_c3f7f2d4",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "SettingsPage doesnt return error:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/settings.go;drc\u003db065e9ec6abf2cdfb6424c2b4e163ccde0966820;l\u003d37",
+      "parentUuid": "47c4b012_2311097e",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 53
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e0b1b5f_70617b52",
@@ -347,6 +611,30 @@
       "writtenOn": "2022-02-15T16:33:30Z",
       "side": 1,
       "message": "Do you always work with Google certificates? What does authOrgName mean?\n\nMaybe rename googleCertCollapsiblePanel to smth shorter like certPanel?",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 7
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f35821_749ae431",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0b1b5f_70617b52",
       "range": {
         "startLine": 218,
         "startChar": 1,
@@ -380,6 +668,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19f0849_c3ab45d4",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done. Can you check that it is used correctly?",
+      "parentUuid": "9bd1b11d_81dcfe57",
+      "range": {
+        "startLine": 221,
+        "startChar": 55,
+        "endLine": 221,
+        "endChar": 65
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcc5c12c_9624f4c4",
@@ -403,6 +715,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea13bf0_d2d49ec3",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcc5c12c_9624f4c4",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 16
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f06343f_65500976",
@@ -416,6 +752,30 @@
       "writtenOn": "2022-02-15T16:33:30Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 236,
+        "startChar": 44,
+        "endLine": 236,
+        "endChar": 54
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2dff6b7_a55b7cda",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T15:56:27Z",
+      "side": 1,
+      "message": "Done. Can you check that it is used correctly?",
+      "parentUuid": "8f06343f_65500976",
       "range": {
         "startLine": 236,
         "startChar": 44,
