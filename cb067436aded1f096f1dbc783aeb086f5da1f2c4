@@ -189,6 +189,24 @@
       "parentUuid": "bd505f28_06005428",
       "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c6584f_da3f42e8",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-17T23:23:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f11c7d6_57ef6799",
+      "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
