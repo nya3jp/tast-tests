@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c248fb3b_f400d005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-17T06:24:56Z",
+      "side": 1,
+      "message": "Most of Critical User Journeys tests are pure UI tests and majorly based on package: `uiauto` to control UI.\n\nWe have some other slightly similar tests that are categorized as UI tests but this test was categorized as a video test.\n\nTherefore, we implemented this test majorly via JS instead of `uiauto` and we weren\u0027t place this test under `ui/*` or `ui/cuj/*`.\n\nShould we consider this test as a UI test and put this to `ui/`?",
+      "parentUuid": "7f40016b_205658ec",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03a76097_e429a15e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
         "patchSetId": 2
