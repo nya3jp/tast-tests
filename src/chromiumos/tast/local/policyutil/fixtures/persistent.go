@@ -29,23 +29,6 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:     fixture.PersistentLacrosRealUser,
-		Desc:     "Fixture settig persistent policy user for a real managed user account",
-		Contacts: []string{"anastasiian@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Vars: []string{
-			"policy.ManagedUser.user_name",
-		},
-		Impl: &persistentFixture{
-			policies:      []policy.Policy{&policy.LacrosAvailability{Val: "lacros_primary"}},
-			policyUserVar: "policy.ManagedUser.user_name",
-		},
-		SetUpTimeout:    5 * time.Second,
-		ResetTimeout:    5 * time.Second,
-		TearDownTimeout: 5 * time.Second,
-		PostTestTimeout: 5 * time.Second,
-		Parent:          fixture.FakeDMS,
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.PersistentFamilyLink,
 		Desc:     "Fixture settig persistent policy user for a Family Link account",
 		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
