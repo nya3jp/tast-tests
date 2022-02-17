@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82afd63_4bde8554",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-17T21:45:08Z",
+      "side": 1,
+      "message": "nit: The linked bug in the comment where we create the UIAutomator in the test is light on details, are you able to link to where the bug has been fixed?",
+      "range": {
+        "startLine": 10,
+        "startChar": 53,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "f8f06eb325875c484e64ee52b1799efa7b7cf9cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e337ceb7_f0405223",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-17T21:45:08Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f8f06eb325875c484e64ee52b1799efa7b7cf9cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
