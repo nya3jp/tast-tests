@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrosToCrosInContacts,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks we can successfully send files from one Cros device to another when they are in each other's contacts list",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share-remote"},

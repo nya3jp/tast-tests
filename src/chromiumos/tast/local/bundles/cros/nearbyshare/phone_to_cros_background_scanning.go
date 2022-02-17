@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhoneToCrosBackgroundScanning,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that \"Nearby Device is trying to share\" notification shows up, clicking the notification enables high-vis mode and the receive flow is successful",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",

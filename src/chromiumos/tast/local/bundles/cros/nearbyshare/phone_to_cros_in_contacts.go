@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhoneToCrosInContacts,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that we can successfully send files between contacts from Android to CrOS",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",

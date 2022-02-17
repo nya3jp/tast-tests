@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Unlock,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Signs into ChromeOS, locks device and then unlocks it with Smart Lock",
 		Contacts: []string{
 			"dhaddock@chromium.org",
