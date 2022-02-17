@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77295c26_7b810aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-17T03:09:33Z",
+      "side": 1,
+      "message": "I checked with the golang coding style[*], I think this is true when it\u0027s a top level function. It\u0027s reasonable because others may use the top-level functions.\n\nBut theses functions are not, they are only used in this file and the function name is clear enough, so I really think that we don\u0027t need additional doc string.\n\n[*] go/go-style/decisions#doc-comments",
+      "parentUuid": "af5255f7_12af1771",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "c8ef4423f88233f9903d145248de33addb0d396e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5aabbd_b71f6c81",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
         "patchSetId": 1
