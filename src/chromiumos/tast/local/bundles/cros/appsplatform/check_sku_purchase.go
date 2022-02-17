@@ -46,15 +46,6 @@ func CheckSkuPurchase(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find and click the \"Buy Test SKU\" button: ", err)
 	}
 
-	// TODO(crbug.com/1223716): The uiAutomator is not connected when created in the fixture. Create a new ui automator here until the bug is fixed.
-	arcDevice := s.FixtValue().(*playbilling.FixtData).ARC
-	uiAutomator, err := arcDevice.NewUIDevice(ctx)
-	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
-	}
-
-	testApp.SetUIAutomator(uiAutomator)
-
 	if err := testApp.BuySku(ctx); err != nil {
 		s.Fatal("Failed to click the buy button on the billing dialog: ", err)
 	}
