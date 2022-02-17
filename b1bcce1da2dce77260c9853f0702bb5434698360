@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bb28647_23094cd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T13:31:51Z",
+      "side": 1,
+      "message": "Hmmm, what if we start tracing but metrics.StartRecorder fails below?",
+      "parentUuid": "098970eb_291709ac",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b6295fa_26dec33b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-17T09:03:53Z",
       "side": 1,
       "message": "`ctx` and `closeCtx` are mixed inside. \n\nTry refactoring to\n\n```\nstopTracing :\u003d func(ctx context.Context) error {\n   ...// Only use ctx inside.\n}\n```\n\nIf you are using a ctx inside a function, it is better to pass it as an argument, instead of using ctx from the outer scope.",
+      "range": {
+        "startLine": 342,
+        "startChar": 17,
+        "endLine": 342,
+        "endChar": 31
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffb9d38_6177909f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T13:31:51Z",
+      "side": 1,
+      "message": "\u003e ctx  and  closeCtx  are mixed inside. \n\nGood point! But it seems to be an issue in the original code too.\n\nI don\u0027t know why we need a copy of the supplied |ctx| parameter (could it actually be an alias to the outside scope?), but let\u0027s pass |closeCtx| as parameterr to the stopTracing function...",
+      "parentUuid": "0b6295fa_26dec33b",
       "range": {
         "startLine": 342,
         "startChar": 17,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "263681d4_b3c2e9fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T13:31:51Z",
+      "side": 1,
+      "message": "cleanup and runCtx are needed below.\n\nI tried this:\n```\n456 func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (e error) {\n457         if runCtx, cleanup, err :\u003d r.StartRecording(ctx); err !\u003d nil {           \n458                 return err                                                       \n459         }                                                                        \n460         defer func() {                                                           \n461                 if cleanup \u003d\u003d nil {                                              \n462                         return                                                   \n463                 }                                                                \n464                 err :\u003d cleanup()                                                 \n465                 if e \u003d\u003d nil \u0026\u0026 err !\u003d nil {                                      \n466                         e \u003d errors.Wrap(err, \"failed to cleanup in Run()\")       \n467                 }                                                                \n468         }()                                                                      \n469         if err :\u003d f(runCtx); err !\u003d nil {                                        \n470                 return err                                                       \n471         }  \n            ...\n```\n\nand it reports \"undefined |cleanup|\" in line 461 and \"undefined |runCtx|\" in line 469.\n\nI tried:\n\n```\n456 func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (e error) {\n457         var cleanup func() error                                                 \n458         var runCtx context.Context                                               \n459         if runCtx, cleanup, err :\u003d r.StartRecording(ctx); err !\u003d nil {           \n460                 return err                                                       \n461         }                                                                        \n462         defer func() {                                                           \n463                 if cleanup \u003d\u003d nil {                                              \n464                         return                                                   \n465                 }                                                                \n466                 err :\u003d cleanup()                                                 \n467                 if e \u003d\u003d nil \u0026\u0026 err !\u003d nil {                                      \n468                         e \u003d errors.Wrap(err, \"failed to cleanup in Run()\")       \n469                 }                                                                \n470         }()                                                                      \n471         if err :\u003d f(runCtx); err !\u003d nil {                                        \n472                 return err                                                       \n473         }  \n            ...\n```\nand it reports \"recorder.go:459:5: runCtx declared but not used\" and \"recorder.go:459:13: cleanup declared but not used\".\n\nCould you help me to fix it?",
+      "parentUuid": "f6448546_a00bc7a5",
+      "range": {
+        "startLine": 457,
+        "startChar": 1,
+        "endLine": 459,
+        "endChar": 14
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f64681c_f51e7e88",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 3
@@ -106,6 +178,30 @@
       "writtenOn": "2022-02-17T09:03:53Z",
       "side": 1,
       "message": "I don\u0027t think you need this here, since you are doing cleanup in StopRecording",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f9bb83_ea529358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-17T13:31:51Z",
+      "side": 1,
+      "message": "What if test function fails? How do we stop tracing?",
+      "parentUuid": "1f64681c_f51e7e88",
       "range": {
         "startLine": 463,
         "startChar": 1,
