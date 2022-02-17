@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af5255f7_12af1771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-17T02:38:57Z",
+      "side": 1,
+      "message": "usually by \"trivial\" we mean getters/setters. Code that it is clear what it does by looking a quick look at it.\n\nOtherwise a docstring is needed (... I read it a while ago in the Golang coding guidelines... but I couldn\u0027t find the link... but I\u0027ll post it later if I find it...).",
+      "parentUuid": "02f05628_fcce1726",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 23
+      },
+      "revId": "c8ef4423f88233f9903d145248de33addb0d396e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5aabbd_b71f6c81",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
         "patchSetId": 1

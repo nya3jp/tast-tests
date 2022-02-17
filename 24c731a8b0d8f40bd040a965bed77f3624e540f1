@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cba9c2e_dfff3e7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-17T02:38:57Z",
+      "side": 1,
+      "message": "Thanks, I added some comments.\n\n\n[side note: I read the entire file, and a function that returns the returns the parsed output of modetest would be good, and could be called from the different functions,\nbut that\u0027s for a different CL]",
+      "revId": "24c731a8b0d8f40bd040a965bed77f3624e540f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc671db5_66090e57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-17T02:38:57Z",
+      "side": 1,
+      "message": "Probably you don\u0027t need this now.",
+      "range": {
+        "startLine": 108,
+        "startChar": 40,
+        "endLine": 108,
+        "endChar": 51
+      },
+      "revId": "24c731a8b0d8f40bd040a965bed77f3624e540f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791b10b4_4d59193b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-17T02:38:57Z",
+      "side": 1,
+      "message": "Command.Output() could fail for different reasons, but that doesn\u0027t imply that the Embedded display is not supported.\n\nReturning the error might be a good idea.",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "24c731a8b0d8f40bd040a965bed77f3624e540f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9864c46a_8fb87ff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-17T02:38:57Z",
+      "side": 1,
+      "message": "nit: from where does the \"eDP\" word come from? kernel? modetest.c?\n\nIt is a good practice to add the \"source\" of the constant when you use it in a comparison... (e.g: let\u0027s assume that in the future eDP changes )\n\ne.g:\n\n  // If \"eDP\" appears in the output, it guarantees that a embedded display is present. Source:\n  //  ... link to the source code that returns eDP...",
+      "range": {
+        "startLine": 113,
+        "startChar": 57,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "24c731a8b0d8f40bd040a965bed77f3624e540f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
