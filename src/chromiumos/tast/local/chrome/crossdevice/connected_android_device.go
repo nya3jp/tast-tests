@@ -8,11 +8,14 @@ package crossdevice
 import (
 	"context"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/mobly"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -191,6 +194,51 @@ func (c *AndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, t
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "failed waiting for desired Do Not Disturb status")
+	}
+	return nil
+}
+
+// FindMyPhoneActive returns true if the "Find my phone" alarm is ringing.
+func (c *AndroidDevice) FindMyPhoneActive(ctx context.Context) (bool, error) {
+	out, err := c.device.ShellCommand(ctx, "dumpsys", "audio").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, err
+	}
+
+	r := regexp.MustCompile("AudioPlaybackConfiguration.*state:started.*usage=USAGE_ALARM")
+	match := r.Find(out)
+	if len(match) > 0 {
+		return true, nil
+	}
+	return false, nil
+}
+
+// WaitForFindMyPhone waits for "Find my phone" to be on/off.
+func (c *AndroidDevice) WaitForFindMyPhone(ctx context.Context, active bool, timeout time.Duration) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if curr, err := c.FindMyPhoneActive(ctx); err != nil {
+			return err
+		} else if curr != active {
+			return errors.New("current 'Find my phone' status does not match the desired status")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrap(err, "failed waiting for desired 'Find my phone' status")
+	}
+	return nil
+}
+
+// ToggleScreen turns the screen off and back on again.
+// This can also be used to easily disable the loud "Find my phone" ringer in case we fail to do so from the UI.
+func (c *AndroidDevice) ToggleScreen(ctx context.Context) error {
+	if err := c.device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
+		return errors.Wrap(err, "failed to turn off the screen")
+	}
+	if err := c.device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_WAKEUP))); err != nil {
+		return errors.Wrap(err, "failed to wake screen")
+	}
+	if err := c.device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_MENU))); err != nil {
+		return errors.Wrap(err, "failed to wake screen")
 	}
 	return nil
 }
