@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c283337_809e329e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-17T06:43:38Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit\n\nclar: I noticed you have a large backlog of CLs which have been reviewed but not updated or submitted. This includes at least on CL which I reviewed some months ago. Are you still planning to submit these?",
+      "revId": "32b19e9085b3dd32eb461a1bfc57b6053743300f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333632d9_6c179cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-17T06:43:38Z",
+      "side": 1,
+      "message": "nit: Check",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 12
+      },
+      "revId": "32b19e9085b3dd32eb461a1bfc57b6053743300f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
