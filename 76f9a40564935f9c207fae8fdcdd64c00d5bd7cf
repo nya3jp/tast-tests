@@ -63,6 +63,30 @@
       },
       "revId": "76f9a40564935f9c207fae8fdcdd64c00d5bd7cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f747ba3_bd71ae0f",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-17T08:39:34Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I can explain what\u0027s exactly needed, but filed crbug/1298388 for tracking. I was wondering if this should no longer be a problem when lacros only is a thing. Marking as resolved for now.",
+      "parentUuid": "de7d5c8a_1e74744f",
+      "range": {
+        "startLine": 420,
+        "startChar": 65,
+        "endLine": 420,
+        "endChar": 80
+      },
+      "revId": "76f9a40564935f9c207fae8fdcdd64c00d5bd7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
