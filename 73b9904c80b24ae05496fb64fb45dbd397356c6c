@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed4525d_82c2ed75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "If possible please state what you ran.",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9b5645b5_8f33e662",
@@ -14,6 +31,126 @@
       "writtenOn": "2022-02-17T11:05:33Z",
       "side": 1,
       "message": "The cl is ready to review.\n\nBTW, I see error like this after all test cases succeeded: \n\nGot global error: connection to test bundle broken: rpc error: code \u003d Unknown desc \u003d run failed: chromeLoggedInForCrostini:TearDown did not return on timeout (status 1)\n\nAnybody knows the reason?",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "726989a5_90a51044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "Not immediately. I\u0027ve wanted to run your changes locally but I\u0027m not sure how. I\u0027m already getting errors when running one of the non-lacros tests:\n\n$ tast run localhost:2222 crostini.TestFixture.bullseye_stable\n\n2022-02-17T13:02:11.507757Z crostini.TestFixture.bullseye_stable [ FAIL ] [Fixture failure] crostiniBullseye: Failed to install Crostini: failed to start lxd server: failed to start lxd image server: dial udp 8.8.8.8:80: connect: network is unreachable\n2022-02-17T13:02:11.507757Z                                               [Fixture failure] crostiniBullseye: Panic: Do not call Close while precondition is being used",
+      "parentUuid": "9b5645b5_8f33e662",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb21f2d_88c556f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "Please remove.",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4e74d0_fcd0c453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "How about \"bullseye_stable_lacros\"?\n\nAre Lacros versions of the other configurations not needed?",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52fea2a_248b4f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "Can we avoid the inspection of the browser type, and just always call browserfixt.SetUp?",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd63fac_939f9395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "Please remove.",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4256eef2_d7f72d23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "How about \"bullseye_stable_lacros\" or similar?",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee1e2dd_bcee3857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-17T13:05:27Z",
+      "side": 1,
+      "message": "See other file.",
       "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
