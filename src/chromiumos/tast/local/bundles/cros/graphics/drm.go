@@ -13,8 +13,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -210,23 +208,14 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 		}},
 		Attr:    []string{"group:mainline"},
-		Fixture: "gpuWatchHangs",
+		Fixture: "graphicsNoChrome",
 	})
 }
 
 // DRM runs DRM/KMS related test via the command line.
 func DRM(ctx context.Context, s *testing.State) {
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to stop ui: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
-
-	// Shorten the test timeout so that even if the test timesout, there is still time to make sure ui service is running.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	commands := s.Param().([]string)
-	runTest(shortCtx, s, commands[0], commands[1:]...)
+	runTest(ctx, s, commands[0], commands[1:]...)
 }
 
 func getErrorLog(f *os.File) string {
