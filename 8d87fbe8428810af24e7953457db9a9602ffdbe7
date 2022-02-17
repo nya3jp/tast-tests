@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a02e90a_8e2d39ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-17T16:14:08Z",
+      "side": 1,
+      "message": "Hey lamzin@,\nWe discussed this offline with the original writer of this https.go library util (simonha@) and he promised to change the way the library works in order to fix this. Here\u0027s the bug to track that work: crbug.com/1298550. I added you as a CC there. :)",
+      "parentUuid": "31d255f9_32ab0e0c",
+      "range": {
+        "startLine": 210,
+        "startChar": 24,
+        "endLine": 210,
+        "endChar": 78
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f33f3ff0_dbb4615b",
