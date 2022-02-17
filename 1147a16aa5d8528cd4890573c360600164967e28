@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9288b72f_3118afed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-17T09:17:46Z",
+      "side": 1,
+      "message": "LGTM\nPlease address the comments before submitting.",
+      "revId": "1147a16aa5d8528cd4890573c360600164967e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77b07ee5_7d9147ee",
@@ -71,6 +88,30 @@
       "writtenOn": "2022-02-17T03:18:13Z",
       "side": 1,
       "message": "nit: Here and elsewhere: perhaps more descriptive variable names? \"b\", \"l\", \"e\" and \"p\" seem a little too spartan.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "1147a16aa5d8528cd4890573c360600164967e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2755986_2f884ccb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-17T09:17:46Z",
+      "side": 1,
+      "message": "+1 short variable names are fine but it should still be more clear from the name what they are for.",
+      "parentUuid": "0f3fe780_7f1e5199",
       "range": {
         "startLine": 231,
         "startChar": 1,
