@@ -9,25 +9,38 @@ import (
 	"fmt"
 	"strings"
 
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Exceptions,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that JavaScript exceptions are reported correctly",
 		Contacts:     []string{"chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func Exceptions(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	conn, err := cr.NewConn(ctx, "")
+	// Set up a browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	defer closeBrowser(ctx)
+
+	conn, err := br.NewConn(ctx, "")
 	if err != nil {
 		s.Fatal("Failed to create renderer: ", err)
 	}
