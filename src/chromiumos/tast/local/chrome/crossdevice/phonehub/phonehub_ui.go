@@ -112,6 +112,9 @@ var phoneHubSettingPod = nodewith.Ancestor(PhoneHubTray).Role(role.ToggleButton)
 // SilencePhonePod is the finder for Phone Hub's Silence Phone pod.
 var SilencePhonePod = phoneHubSettingPod.NameContaining("Toggle Silence phone")
 
+// LocatePhonePod is the finder for Phone Hub's "Locate phone" pod.
+var LocatePhonePod = phoneHubSettingPod.NameContaining("Toggle Locate phone")
+
 // Show opens Phone Hub if it's not already open.
 func Show(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
@@ -142,12 +145,12 @@ func Hide(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-// PhoneSilenced returns true if the "Silence phone" pod is active, and false otherwise.
-func PhoneSilenced(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+// podToggled returns true if the given setting pod is active, and false otherwise.
+func podToggled(ctx context.Context, tconn *chrome.TestConn, pod *nodewith.Finder) (bool, error) {
 	ui := uiauto.New(tconn)
-	info, err := ui.Info(ctx, SilencePhonePod)
+	info, err := ui.Info(ctx, pod)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get node info for Silence Phone pod")
+		return false, errors.Wrap(err, "failed to get node info for the setting pod")
 	}
 	if info.Checked == checked.True {
 		return true, nil
@@ -155,18 +158,18 @@ func PhoneSilenced(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	return false, nil
 }
 
-// WaitForPhoneSilenced waits for the Phone Silenced pod to be toggled on/off, since its state can be changed from the Android side.
-func WaitForPhoneSilenced(ctx context.Context, tconn *chrome.TestConn, silenced bool, timeout time.Duration) error {
+// waitForPodToggled waits for the given pod to be toggled on/off.
+func waitForPodToggled(ctx context.Context, tconn *chrome.TestConn, pod *nodewith.Finder, enabled bool, timeout time.Duration) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if curr, err := PhoneSilenced(ctx, tconn); err != nil {
+		if curr, err := podToggled(ctx, tconn, pod); err != nil {
 			return err
-		} else if curr != silenced {
-			return errors.New("current Silence Phone status does not match the desired status")
+		} else if curr != enabled {
+			return errors.New("current status does not match the desired status")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		wanted := "off"
-		if silenced {
+		if enabled {
 			wanted = "on"
 		}
 		return errors.Wrapf(err, "failed waiting for Silence Phone to be turned %v", wanted)
@@ -174,23 +177,53 @@ func WaitForPhoneSilenced(ctx context.Context, tconn *chrome.TestConn, silenced 
 	return nil
 }
 
-// ToggleSilencePhonePod toggles Phone Hub's Silence Phone pod on/off.
-func ToggleSilencePhonePod(ctx context.Context, tconn *chrome.TestConn, silence bool) error {
+// togglePod toggles the given Phone Hub pod on/off.
+func togglePod(ctx context.Context, tconn *chrome.TestConn, pod *nodewith.Finder, enable bool) error {
 	ui := uiauto.New(tconn)
-	curr, err := PhoneSilenced(ctx, tconn)
+	curr, err := podToggled(ctx, tconn, pod)
 	if err != nil {
-		return errors.Wrap(err, "failed to check current Silence Phone setting")
+		return errors.Wrap(err, "failed to check current pod setting")
 	}
-	if curr == silence {
+	if curr == enable {
 		return nil
 	}
-	if err := ui.LeftClick(SilencePhonePod)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Silence Phone pod")
+	if err := ui.LeftClick(pod)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click pod")
 	}
-	if err := WaitForPhoneSilenced(ctx, tconn, silence, 15*time.Second); err != nil {
-		return errors.Wrap(err, "failed waiting for Silence Phone pod to be toggled after clicking")
+	if err := waitForPodToggled(ctx, tconn, pod, enable, 15*time.Second); err != nil {
+		return errors.Wrap(err, "failed waiting for pod to be toggled after clicking")
 	}
 	return nil
+}
+
+// PhoneSilenced returns true if the "Silence phone" pod is active, and false otherwise.
+func PhoneSilenced(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	return podToggled(ctx, tconn, SilencePhonePod)
+}
+
+// WaitForPhoneSilenced waits for the "Phone Silenced" pod to be toggled on/off, since its state can be changed from the Android side.
+func WaitForPhoneSilenced(ctx context.Context, tconn *chrome.TestConn, silenced bool, timeout time.Duration) error {
+	return waitForPodToggled(ctx, tconn, SilencePhonePod, silenced, timeout)
+}
+
+// LocatePhoneEnabled returns true if the "Locate phone" pod is active, and false otherwise.
+func LocatePhoneEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	return podToggled(ctx, tconn, LocatePhonePod)
+}
+
+// WaitForLocatePhoneEnabled waits for the "Locate phone" pod to be toggled on/off.
+func WaitForLocatePhoneEnabled(ctx context.Context, tconn *chrome.TestConn, silenced bool, timeout time.Duration) error {
+	return waitForPodToggled(ctx, tconn, LocatePhonePod, silenced, timeout)
+}
+
+// ToggleSilencePhonePod toggles Phone Hub's "Silence Phone" pod on/off.
+func ToggleSilencePhonePod(ctx context.Context, tconn *chrome.TestConn, silence bool) error {
+	return togglePod(ctx, tconn, SilencePhonePod, silence)
+}
+
+// ToggleLocatePhonePod toggles Phone Hub's "Locate phone" pod on/off.
+func ToggleLocatePhonePod(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
+	return togglePod(ctx, tconn, LocatePhonePod, enable)
 }
 
 // FindRecentPhotosOptInButton returns a finder which locates the opt-in button for the Recent Photos feature.
