@@ -511,6 +511,24 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	// TODO(b/202926617): Remove once vp8 hardware temporal layer encoding is enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeWebCodecsWithHWVp8TemporalLayerEncoding",
+		Desc:     "Similar to chromeVideo fixture but enabling using WebCodecs API and vp8 hardware temporal layer encoding",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeWebCodecsArgs...),
+				chrome.ExtraArgs("--enable-features=VaapiVp8TemporalLayerEncoding"),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 var chromeVideoArgs = []string{
