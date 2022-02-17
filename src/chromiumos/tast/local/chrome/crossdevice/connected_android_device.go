@@ -8,6 +8,7 @@ package crossdevice
 import (
 	"context"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -191,6 +192,36 @@ func (c *AndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, t
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "failed waiting for desired Do Not Disturb status")
+	}
+	return nil
+}
+
+// FindMyPhoneActive returns true if the "Find my phone" alarm is ringing.
+func (c *AndroidDevice) FindMyPhoneActive(ctx context.Context) (bool, error) {
+	out, err := c.device.ShellCommand(ctx, "dumpsys", "audio").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, err
+	}
+
+	r := regexp.MustCompile("AudioPlaybackConfiguration.*state:started.*usage=USAGE_ALARM")
+	match := r.Find(out)
+	if len(match) > 0 {
+		return true, nil
+	}
+	return false, nil
+}
+
+// WaitForFindMyPhone waits for "Find my phone" to be on/off.
+func (c *AndroidDevice) WaitForFindMyPhone(ctx context.Context, active bool, timeout time.Duration) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if curr, err := c.FindMyPhoneActive(ctx); err != nil {
+			return err
+		} else if curr != active {
+			return errors.New("current 'Find my phone' status does not match the desired status")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrap(err, "failed waiting for desired 'Find my phone' status")
 	}
 	return nil
 }
