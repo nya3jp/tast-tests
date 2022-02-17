@@ -122,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "750ad6d6_55449ad8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T23:23:21Z",
+      "side": 1,
+      "message": "That\u0027s fine. I just didn\u0027t know the background. Thanks for letting me know.",
+      "parentUuid": "e33bd27d_1db4a383",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f57be4b0_409d3c70",
