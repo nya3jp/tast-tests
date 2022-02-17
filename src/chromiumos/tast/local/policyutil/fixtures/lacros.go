@@ -94,15 +94,26 @@ func init() {
 			if !ok {
 				return nil, errors.New("parent is not a FakeDMS fixture")
 			}
+			gaiaCreds, err := chrome.PickRandomCreds(s.RequiredVar("policy.ManagedUser.accountPool"))
+			if err != nil {
+				s.Fatal("Failed to parse managed user creds: ", err)
+			}
+			fdms.SetPersistentPolicyUser(&gaiaCreds.User)
+			if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+				s.Fatal("Failed to write policies to FakeDMS: ", err)
+			}
 			opts := []chrome.Option{chrome.DMSPolicy(fdms.URL),
-				chrome.GAIALogin(chrome.Creds{User: s.RequiredVar("policy.ManagedUser.user_name"), Pass: s.RequiredVar("policy.ManagedUser.password")}),
+				chrome.GAIALogin(gaiaCreds),
 				chrome.ExtraArgs("--disable-lacros-keep-alive")}
 			return opts, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Parent:          fixture.PersistentLacrosRealUser,
-		Vars:            []string{"policy.ManagedUser.user_name", "policy.ManagedUser.password", lacrosfixt.LacrosDeployedBinary},
+		Parent:          fixture.PersistentLacros,
+		Vars: []string{
+			"policy.ManagedUser.accountPool",
+			lacrosfixt.LacrosDeployedBinary,
+		},
 	})
 }
