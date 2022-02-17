@@ -84,7 +84,9 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("open Launcher and verify the app appears in search result",
 		launcher.Open(tconn),
 		launcher.Search(tconn, kw, cwsapp.name),
-		ui.WaitUntilExists(launcher.AppSearchFinder(cwsapp.name)),
+		func(ctx context.Context) error {
+			return ui.WaitUntilExists(launcher.CreateAppSearchFinder(ctx, tconn, cwsapp.name))(ctx)
+		},
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify that the app is in Launcher: ", err)
 	}

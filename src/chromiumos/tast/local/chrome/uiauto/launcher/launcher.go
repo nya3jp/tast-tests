@@ -58,6 +58,20 @@ const (
 	ColorSort SortType = "color sort"
 )
 
+// CreateAppSearchFinder creates a finder for an app search result in the current launcher search UI.
+// It expects the launcher search page to be open - search containers within which apps are searched depend on
+// whether productivity launcher is enabled, which is inferred from the current app list search UI state.
+func CreateAppSearchFinder(ctx context.Context, tconn *chrome.TestConn, appName string) *nodewith.Finder {
+	ui := uiauto.New(tconn)
+	// Look for results in different search containers depending on productivity launcher flag.
+	// ProductivityLauncherSearchView for productivity launcher.
+	// SearchResultPageView otherwise.
+	if err := ui.Exists(nodewith.ClassName("AppListBubbleView"))(ctx); err == nil {
+		return AppSearchFinder(appName, "ProductivityLauncherSearchView")
+	}
+	return AppSearchFinder(appName, "SearchResultPageView")
+}
+
 // SearchAndWaitForAppOpen return a function that searches for an app, launches it, and waits for it to be open.
 func SearchAndWaitForAppOpen(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, app apps.App) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("SearchAndWaitForAppOpen(%+q)", app),
@@ -79,7 +93,9 @@ func SearchAndLaunchWithQuery(tconn *chrome.TestConn, kb *input.KeyboardEventWri
 	return uiauto.Combine(fmt.Sprintf("SearchAndLaunchWithQuery(%s, %s)", query, appName),
 		Open(tconn),
 		Search(tconn, kb, query),
-		ui.WithInterval(1*time.Second).LeftClick(AppSearchFinder(appName)),
+		func(ctx context.Context) error {
+			return ui.WithInterval(1 * time.Second).LeftClick(CreateAppSearchFinder(ctx, tconn, appName))(ctx)
+		},
 	)
 }
 
@@ -88,7 +104,7 @@ func SearchAndLaunchWithQuery(tconn *chrome.TestConn, kb *input.KeyboardEventWri
 func SearchAndRightClick(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, query, appName string) uiauto.Action {
 	ui := uiauto.New(tconn)
 	menuItem := nodewith.Role(role.MenuItem).First()
-	app := AppSearchFinder(appName)
+	app := AppSearchFinder(appName, "SearchResultPageView")
 	return uiauto.Combine(fmt.Sprintf("SearchAndRightClick(%s, %s)", query, appName),
 		Open(tconn),
 		Search(tconn, kb, query),
@@ -183,8 +199,8 @@ func CloseBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
 }
 
 // AppSearchFinder returns a Finder to find the specified app in an open launcher's search results.
-func AppSearchFinder(appName string) *nodewith.Finder {
-	searchResultView := nodewith.ClassName("SearchResultPageView")
+func AppSearchFinder(appName, searchContainer string) *nodewith.Finder {
+	searchResultView := nodewith.ClassName(searchContainer)
 	return nodewith.NameStartingWith(appName + ", Installed App").Ancestor(searchResultView)
 }
 
@@ -199,7 +215,7 @@ func Search(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, query string)
 	return func(ctx context.Context) error {
 		// Click the search box.
 		ui := uiauto.New(tconn)
-		if err := ui.LeftClick(nodewith.ClassName("SearchBoxView").Role(role.Group))(ctx); err != nil {
+		if err := ui.LeftClick(nodewith.ClassName("SearchBoxView").First())(ctx); err != nil {
 			return errors.Wrap(err, "failed to click launcher searchbox")
 		}
 
