@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7198fd_8691f74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-02-17T16:41:50Z",
+      "side": 1,
+      "message": "\u003e \"Currect\" is a possible misspelling of \"Correct\" or \"Current\".\n\nFixed",
+      "parentUuid": "1e782510_b41edc94",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "14bfe1716b366c59fb8ae0880a104a0c4c946a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82978c5_adf90ff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-02-17T16:41:50Z",
+      "side": 1,
+      "message": "\u003e \"swtich\" is a possible misspelling of \"switch\".\n\nFixed",
+      "parentUuid": "ef393019_8d72b51a",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 33
+      },
+      "revId": "14bfe1716b366c59fb8ae0880a104a0c4c946a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
