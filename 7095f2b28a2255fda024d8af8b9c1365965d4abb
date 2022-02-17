@@ -50,6 +50,23 @@
       "message": "Thanks so much for your help evaluating these tests for lacros! submitting..",
       "revId": "7095f2b28a2255fda024d8af8b9c1365965d4abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b84998_79855872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-17T03:03:49Z",
+      "side": 1,
+      "message": "CQ failure doesn\u0027t seem to be relevant to this change that is quite safe to submit since it only touches on the metadata and should not affect any runtime issues. Chumping..",
+      "revId": "7095f2b28a2255fda024d8af8b9c1365965d4abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
