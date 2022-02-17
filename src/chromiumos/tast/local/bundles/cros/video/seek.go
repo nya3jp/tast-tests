@@ -33,7 +33,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"video.html"},
+		Data:         []string{"video.html", "playback.js"},
 		Params: []testing.Param{{
 			Name: "av1",
 			Val: seekTest{

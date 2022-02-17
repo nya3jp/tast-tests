@@ -33,6 +33,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{"video.html", "playback.js"},
 		Params: []testing.Param{{
 			Name: "av1",
 			Val: playParams{
@@ -42,7 +43,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			ExtraData: []string{"bear-320x240.av1.mp4"},
 			Fixture:   "chromeVideoWithHWAV1Decoding",
 		}, {
 			Name: "h264",
@@ -53,7 +54,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Fixture:           "chromeVideo",
 		}, {
@@ -65,7 +66,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
+			ExtraData: []string{"bear-320x240.vp8.webm"},
 			Fixture:   "chromeVideo",
 		}, {
 			Name: "vp9",
@@ -76,7 +77,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraData: []string{"bear-320x240.vp9.webm"},
 			Fixture:   "chromeVideo",
 		}, {
 			Name: "vp9_hdr",
@@ -87,7 +88,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
+			ExtraData: []string{"peru.8k.cut.hdr.vp9.webm"},
 			Fixture:   "chromeVideoWithHDRScreen",
 		}, {
 			Name: "av1_sw",
@@ -98,7 +99,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			ExtraData: []string{"bear-320x240.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "h264_sw",
@@ -109,7 +110,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Fixture:           "chromeVideoWithSWDecoding",
 		}, {
@@ -121,7 +122,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
+			ExtraData: []string{"bear-320x240.vp8.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_sw",
@@ -132,7 +133,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraData: []string{"bear-320x240.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_2_sw",
@@ -143,7 +144,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
+			ExtraData: []string{"bear-320x240.vp9.2.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
 		}, {
 			Name: "vp9_sw_hdr",
@@ -154,7 +155,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
-			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
+			ExtraData: []string{"peru.8k.cut.hdr.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecodingAndHDRScreen",
 		}, {
 			Name: "av1_hw",
@@ -165,7 +166,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.av1.mp4"},
+			ExtraData:         []string{"bear-320x240.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -177,7 +178,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-321x241.av1.mp4"},
+			ExtraData:         []string{"bear-321x241.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			Fixture:           "chromeVideoWithHWAV1Decoding",
 		}, {
@@ -189,7 +190,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideo",
 		}, {
@@ -201,7 +202,7 @@ func init() {
 				browserType: browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
 			Fixture:           "chromeVideoLacros",
 		}, {
@@ -213,7 +214,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.vp8.webm"},
+			ExtraData:         []string{"bear-320x240.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -225,7 +226,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-321x241.vp8.webm"},
+			ExtraData:         []string{"bear-321x241.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			Fixture:           "chromeVideo",
 		}, {
@@ -237,7 +238,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraData:         []string{"bear-320x240.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -249,7 +250,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-321x241.vp9.webm"},
+			ExtraData:         []string{"bear-321x241.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
@@ -261,7 +262,7 @@ func init() {
 				browserType: browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraData:         []string{"bear-320x240.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "lacros"},
 			Fixture:           "chromeVideoLacros",
 		}, {
@@ -273,7 +274,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
+			ExtraData: []string{"bear-320x240.vp9.2.webm"},
 			// VP9 Profile 2 is only supported by the direct Video Decoder.
 			ExtraSoftwareDeps: []string{"video_decoder_direct", caps.HWDecodeVP9_2},
 			Fixture:           "chromeVideo",
@@ -286,7 +287,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
+			ExtraData: []string{"peru.8k.cut.hdr.vp9.webm"},
 			// TODO(crbug.com/1057870): filter this by Intel SoC generation: KBL+. For now, kohaku will do.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
@@ -300,7 +301,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.hevc.mp4"},
+			ExtraData:         []string{"bear-320x240.hevc.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
@@ -312,7 +313,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.hevc10.mp4"},
+			ExtraData:         []string{"bear-320x240.hevc10.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP, "proprietary_codecs", "protected_content"},
 			Fixture:           "chromeVideoWithClearHEVCHWDecoding",
 		}, {
@@ -372,7 +373,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			ExtraData: []string{"bear-320x240.av1.mp4"},
 			Fixture:   "chromeVideoWithGuestLoginAndHWAV1Decoding",
 		}, {
 			Name: "h264_guest",
@@ -383,7 +384,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Fixture:           "chromeVideoWithGuestLogin",
 		}, {
@@ -395,7 +396,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
+			ExtraData: []string{"bear-320x240.vp8.webm"},
 			Fixture:   "chromeVideoWithGuestLogin",
 		}, {
 			Name: "vp9_guest",
@@ -406,7 +407,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraData: []string{"bear-320x240.vp9.webm"},
 			Fixture:   "chromeVideoWithGuestLogin",
 		}, {
 			Name: "av1_unmuted",
@@ -418,7 +419,7 @@ func init() {
 				unmutePlayer: true,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
+			ExtraData: []string{"bear-320x240.av1.mp4"},
 			Fixture:   "chromeVideoWithHWAV1Decoding",
 		}, {
 			Name: "h264_unmuted",
@@ -430,7 +431,7 @@ func init() {
 				unmutePlayer: true,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Fixture:           "chromeVideo",
 		}, {
@@ -443,7 +444,7 @@ func init() {
 				unmutePlayer: true,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
+			ExtraData: []string{"bear-320x240.vp8.webm"},
 			Fixture:   "chromeVideo",
 		}, {
 			Name: "vp9_unmuted",
@@ -455,7 +456,7 @@ func init() {
 				unmutePlayer: true,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraData: []string{"bear-320x240.vp9.webm"},
 			Fixture:   "chromeVideo",
 		}, {
 			Name: "h264_hw_alt",
@@ -466,7 +467,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "video_decoder_legacy_supported", "proprietary_codecs"},
 			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
@@ -478,7 +479,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.vp8.webm"},
+			ExtraData:         []string{"bear-320x240.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, "video_decoder_legacy_supported"},
 			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
@@ -490,7 +491,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
+			ExtraData:         []string{"bear-320x240.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "video_decoder_legacy_supported"},
 			Fixture:           "chromeAlternateVideoDecoder",
 		}, {
@@ -502,7 +503,7 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
+			ExtraData: []string{"bear-320x240.vp9.2.webm"},
 			// VP9 Profile 2 is only supported by the direct Video Decoder so we only
 			// want to run this case if that is not enabled by default, i.e. if the
 			// platform is configured to use the legacy video decoder by default.

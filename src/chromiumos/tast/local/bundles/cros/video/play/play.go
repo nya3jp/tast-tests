@@ -284,6 +284,13 @@ func playSeekVideo(ctx context.Context, cs ash.ConnSource, videoFile, baseURL, o
 	if err := conn.Call(ctx, nil, "playRepeatedly", videoFile); err != nil {
 		return err
 	}
+
+	// Wait until videoElement has advanced so that chrome:media-internals has
+	// time to fill in their fields.
+	if err := conn.WaitForExpr(ctx, "document.getElementsByTagName('video')[0].currentTime > 1"); err != nil {
+		return errors.Wrap(err, "failed waiting for video to advance playback")
+	}
+
 	if err := seekVideoRepeatedly(ctx, conn, outDir, numSeeks); err != nil {
 		return err
 	}
