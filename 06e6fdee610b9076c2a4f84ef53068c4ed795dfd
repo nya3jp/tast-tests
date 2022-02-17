@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb915fc5_e573cf69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T04:24:45Z",
+      "side": 1,
+      "message": "Please also make sure you run tast unit tests: fast_build.sh -T \n\nThanks.\n",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf06bffe_7726d992",
