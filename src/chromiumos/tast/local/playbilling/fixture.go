@@ -100,14 +100,13 @@ type playBillingFixture struct {
 //		...
 //	}
 type FixtData struct {
-	ARC     *arc.ARC
-	Chrome  *chrome.Chrome
 	TestApp *TestApp
 }
 
 func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	arcDevice := s.ParentValue().(*arc.PreData).ARC
 	cr := s.ParentValue().(*arc.PreData).Chrome
+	uiDevice := s.ParentValue().(*arc.PreData).UIDevice
 
 	// Install the test APK.
 	if err := arcDevice.Install(ctx, s.DataPath(apk)); err != nil {
@@ -149,12 +148,12 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		}
 	}()
 
-	testApp, err := NewTestApp(ctx, cr, arcDevice)
+	testApp, err := NewTestApp(ctx, cr, arcDevice, uiDevice)
 	if err != nil {
 		s.Fatal("Failed trying to setup test app: ", err)
 	}
 
-	return &FixtData{arcDevice, cr, testApp}
+	return &FixtData{testApp}
 }
 
 func (f *playBillingFixture) Reset(ctx context.Context) error {

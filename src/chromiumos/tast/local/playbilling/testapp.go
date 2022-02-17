@@ -39,16 +39,17 @@ type elementCoordinates struct {
 }
 
 // NewTestApp returns a reference to a new Play Billing Test App.
-func NewTestApp(ctx context.Context, cr *chrome.Chrome, arc *arc.ARC) (*TestApp, error) {
+func NewTestApp(ctx context.Context, cr *chrome.Chrome, arc *arc.ARC, d *ui.Device) (*TestApp, error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed getting Test API connection")
 	}
 
 	return &TestApp{
-		cr:     cr,
-		tconn:  tconn,
-		pbconn: nil,
+		cr:          cr,
+		tconn:       tconn,
+		pbconn:      nil,
+		uiAutomator: d,
 	}, nil
 }
 
@@ -66,11 +67,6 @@ func (ta *TestApp) Launch(ctx context.Context) error {
 	ta.pbconn = pbconn
 
 	return nil
-}
-
-// SetUIAutomator sets the uiAutomator member variable.
-func (ta *TestApp) SetUIAutomator(uiAutomator *ui.Device) {
-	ta.uiAutomator = uiAutomator
 }
 
 // OpenBillingDialog clicks a button on the PWA to launch the Play Billing UI.
