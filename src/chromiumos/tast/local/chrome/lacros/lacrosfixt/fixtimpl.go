@@ -237,6 +237,23 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{LacrosDeployedBinary},
 	})
+
+	// lacrosPrimary is a fixture to bring up Lacros as a primary browser from the rootfs partition by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosGuest",
+		Desc:     "Lacros Chrome logged into a guest user session",
+		Contacts: []string{"lacros-team@google.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.GuestLogin()}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
 }
 
 // TODO(tvignatti): how do we make sure Lacros has this flag implemented? See crrev.com/c/3304121.

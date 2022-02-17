@@ -7,27 +7,41 @@ package ui
 import (
 	"context"
 
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GuestModeExtension,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check Tast extension can be loaded in Guest mode",
 		Contacts:     []string{"benreich@chromium.org", "chromeos-engprod-syd@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedInGuest",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedInGuest",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosGuest",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func GuestModeExtension(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to set up browser: ", err)
+	}
+	defer closeBrowser(ctx)
 
 	// Attempt to open the Test API connection.
-	if _, err := cr.TestAPIConn(ctx); err != nil {
+	if _, err := br.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create Test API Connection: ", err)
 	}
 }
