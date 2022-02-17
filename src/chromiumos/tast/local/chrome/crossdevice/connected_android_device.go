@@ -8,6 +8,8 @@ package crossdevice
 import (
 	"context"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -255,4 +257,23 @@ func (c *AndroidDevice) SHA256Sum(ctx context.Context, filename string) (string,
 // RemoveMediaFile removes the media file specified by filePath from the Android device's storage and media gallery.
 func (c *AndroidDevice) RemoveMediaFile(ctx context.Context, filePath string) error {
 	return c.device.RemoveMediaFile(ctx, filePath)
+}
+
+// BatteryLevel returns the current battery level.
+func (c *AndroidDevice) BatteryLevel(ctx context.Context) (int, error) {
+	res, err := c.device.ShellCommand(ctx, "dumpsys", "battery").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to get battery status")
+	}
+
+	r := regexp.MustCompile(`level: (\d+)`)
+	m := r.FindStringSubmatch(string(res))
+	if len(m) == 0 {
+		return -1, errors.Wrap(err, "failed to extract battery percentage from adb response")
+	}
+	level, err := strconv.Atoi(m[1])
+	if err != nil {
+		return -1, errors.Wrapf(err, "failed to convert battery level %v to int", m[0])
+	}
+	return level, nil
 }

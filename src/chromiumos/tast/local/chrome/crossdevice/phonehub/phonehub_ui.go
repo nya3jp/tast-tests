@@ -6,6 +6,7 @@ package phonehub
 
 import (
 	"context"
+	"regexp"
 	"strconv"
 	"time"
 
@@ -254,4 +255,24 @@ func ToggleRecentPhotosSetting(ctx context.Context, tconn *chrome.TestConn, cr *
 	}
 
 	return nil
+}
+
+// BatteryLevel returns the battery level displayed in Phone Hub.
+func BatteryLevel(ctx context.Context, tconn *chrome.TestConn) (int, error) {
+	ui := uiauto.New(tconn)
+	battery, err := ui.Info(ctx, nodewith.Role(role.StaticText).NameContaining("Phone battery"))
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to find phone battery display")
+	}
+
+	r := regexp.MustCompile(`Phone battery (\d+)%`)
+	m := r.FindStringSubmatch(string(battery.Name))
+	if len(m) == 0 {
+		return -1, errors.Wrap(err, "failed to extract battery percentage from the UI")
+	}
+	level, err := strconv.Atoi(m[1])
+	if err != nil {
+		return -1, errors.Wrapf(err, "failed to convert battery level %v to int", m[0])
+	}
+	return level, nil
 }
