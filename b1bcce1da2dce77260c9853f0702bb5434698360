@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098970eb_291709ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T09:03:53Z",
+      "side": 1,
+      "message": "IIUC, you are doing the cleanup in StopRecording, why call `cancel` here? You probably don\u0027t need L 325-333 at all.",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6295fa_26dec33b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T09:03:53Z",
+      "side": 1,
+      "message": "`ctx` and `closeCtx` are mixed inside. \n\nTry refactoring to\n\n```\nstopTracing :\u003d func(ctx context.Context) error {\n   ...// Only use ctx inside.\n}\n```\n\nIf you are using a ctx inside a function, it is better to pass it as an argument, instead of using ctx from the outer scope.",
+      "range": {
+        "startLine": 342,
+        "startChar": 17,
+        "endLine": 342,
+        "endChar": 31
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "000c7ed4_e625aa80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T09:03:53Z",
+      "side": 1,
+      "message": "just `return runCtx, cancel, nil`, or use `cleanup` instead of `cancel` in line 359",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 28
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6448546_a00bc7a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T09:03:53Z",
+      "side": 1,
+      "message": "no need to declare the variables here. use `:\u003d` in line 460",
+      "range": {
+        "startLine": 457,
+        "startChar": 1,
+        "endLine": 459,
+        "endChar": 14
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f64681c_f51e7e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T09:03:53Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this here, since you are doing cleanup in StopRecording",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93123a62_e42f9631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-17T09:03:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
