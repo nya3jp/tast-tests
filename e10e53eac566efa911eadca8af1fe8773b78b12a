@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5095a7d_f6e204b4",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-17T23:16:24Z",
+      "side": 1,
+      "message": "Retry logic does not work for the apps that are having GB size (Example: Asphalt 9 around 2 GB size). \nWhen running tast test locally for \"tast.arcappacompat.Asphalt.vm_clamshell_mode\" test. \nI observed that, when Asphalt installation is in progress, with the current version of playstore.go, it keeps on relaunching the installation page and finally test is failing with error \"Failed to install app: failed to wait for enabled open button or play button: exist (selector\u003d{TextMatches:(?i)(open|play) ClassName:android.widget.Button Enabled:true}) failed:\".  \nSo this time out is needed for progressBar.WaitUntilGone(ctx, longUITimeout).",
+      "parentUuid": "9e8d2443_93607ab5",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb9dbf77_1ab84807",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-10T04:01:54Z",
       "side": 1,
       "message": "Doesn\u0027t this technically happen before the \"// Installation is complete once the open button or the play button is enabled.\" step below? It\u0027s in a loop that gets retried but it should be in the correct chronological order of the ideal case if possible.",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a59cb1_6fd1c209",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-17T23:16:24Z",
+      "side": 1,
+      "message": "Yes, it happens before the \"// Installation is complete once the open button or the play button is enabled.\" \nCorrected the order.",
+      "parentUuid": "cb9dbf77_1ab84807",
       "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,59 @@
       "writtenOn": "2022-02-10T04:01:54Z",
       "side": 1,
       "message": "The body of this if statement should mimic what is done above with the tryLimit, otherwise this may only get run once when in reality it should be checked on each try. Something like:\n\n```\nif err :\u003d progressBar.WaitForExists(ctx, defaultUITimeout); err \u003d\u003d nil {\n  if tryLimit \u003d\u003d -1 || tries \u003c tryLimit {\n    tries++\n    testing.ContextLog(ctx, \"Wait until progress bar is gone\")\n    if err :\u003d progressBar.WaitUntilGone(ctx, defaultUITimeout); err !\u003d nil {\n      return errors.Wrap(err, \"progress bar still exists\")\n    }\n  } else {\n    return testing.PollBreak(errors.Errorf(\"progress bar still visible after %d times\", tryLimit))\n  }\n}\n```",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aeeab66_4c8ebc41",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-17T23:16:24Z",
+      "side": 1,
+      "message": "Tried this code snippet. Test is failing with \"Failed to install app: progress bar still visible after 3 times\" error message. Looks like this trylimit logic could not be applied here.",
+      "parentUuid": "e57052a0_5d6a60b9",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf41873_1afd1ca4",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-17T23:16:24Z",
+      "side": 1,
+      "message": "Added findPercentageOfAppInstalled(ctx, d, val.currentPercentInfoClassName, val.currentInstallPercentInText) func to grab the current value of the progress bar.",
+      "parentUuid": "e9342b82_f8d390a6",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dfecc7_4fccc46b",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-17T23:16:24Z",
+      "side": 1,
+      "message": "Observed that \"Wait until progress bar is gone\" is executed on every try.\n\n`````````````````````````````````````````\n2022-02-15T23:15:28.026474Z [23:15:28.750] App installation page disappeared; reopen it\n2022-02-15T23:15:30.400565Z [23:15:31.125] Trying to hit the install button. Total attempts so far: 1\n2022-02-15T23:16:23.915846Z [23:16:24.639] Percentage of app installed so far: 18% of 2.55 GB \n2022-02-15T23:16:23.916029Z [23:16:24.639] Wait until progress bar is gone\n2022-02-15T23:18:48.000927Z [23:18:48.726] Percentage of app installed so far: 88% of 2.55 GB \n2022-02-15T23:18:48.002747Z [23:18:48.726] Wait until progress bar is gone\n2022-02-15T23:19:44.242421Z [23:19:44.966] Version name of com.gameloft.android.ANMP.GloftA9HM is: 3.3.5a\n2022-02-15T23:19:49.633408Z [23:19:50.360] Successfully tested launching and closing the app\n2022-02-15T23:19:49.646434Z [23:19:50.373] Starting subtest Launch app in Clamshell\n2022-02-15T23:19:51.597806Z [23:19:52.324] App launched successfully\n```````````````````````````````````",
       "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
