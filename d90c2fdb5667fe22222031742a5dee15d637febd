@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0048d8_0e78788c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "Commented it from tast owner perspective. Not quite familiar with the business logic itself.",
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c12cc3_73499035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "nit: local Tast is redundant.",
+      "range": {
+        "startLine": 5,
+        "startChar": 34,
+        "endLine": 5,
+        "endChar": 44
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfabea0_38ad7774",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "Redundant. This line is not required. The hardware dependency is defined in the params already.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de23b794_ce4ff0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "Looks like the only difference among the boards is to use different test data.\nYou can retrieve the board name by below:\n\n```\nlsb, err :\u003d lsbrelease.Load()\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to read lsbrelease: \", err)\n\t}\n\tboard, ok :\u003d lsb[lsbrelease.Board]\n\tif !ok {\n\t\ts.Fatal(\"Failed to find Board name in lsbrelease. lsbrelease: \", lsb)\n\t}\n```\n\nTo run this, you need to allowlist palmrejection package in lsbrelease.Load function.\n\nAfter it, you can decide which test data to use without TestParams.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a424b7_8dfaeeba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "This function is designed to read csv file. So probably should not pass through testing.State. Better to define the function as:\n\nfunc readEvtestFile(dataFile string) ([]evTestRecord, error)",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc3344e_9eb047d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "Difference between s.Error and s.Fatal. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging\n\nDo you want to continue the test after this error?",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050093c0_017adb00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 11
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8addd8fa_331d723a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "Do you want to wait for document completely loaded? \n\ne.g. \n\nif err :\u003d galleryAppConn.WaitForExpr(ctx, `document.readyState \u003d\u003d\u003d \"complete\"`); err !\u003d nil {\n\t\treturn nil, errors.Wrap(err, \"failed to wait for Gallery app to finish loading\")\n\t}",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 2
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee669f3_f23571d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "nit: this log is redundant.",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 48
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00f1d2f_629c53d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-17T02:15:27Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests\n\nI guess you probably want each data to be validated separately as a subtest. When using s.Run() to launch subtest. s.Fatal only fails the subtest and continue with the next subtest.",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
