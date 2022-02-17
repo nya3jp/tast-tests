@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Translation,
-		Desc: "Test Quick Answers unit conversion feature",
+		Func:         Translation,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		Desc:         "Test Quick Answers unit conversion feature",
 		Contacts: []string{
 			"updowndota@google.com",
 			"croissant-eng@google.com",
@@ -86,7 +87,7 @@ func Translation(ctx context.Context, s *testing.State) {
 	}
 
 	// Dismiss the context menu and ensure the Quick Answers UI also dismiss.
-	if err := uiauto.Combine("Show context menu",
+	if err := uiauto.Combine("Dismiss context menu",
 		ui.LeftClick(query),
 		ui.WaitUntilGone(quickAnswers))(ctx); err != nil {
 		s.Fatal("Quick Answers result not dismissed: ", err)
