@@ -50,6 +50,40 @@
       "message": "Adding tast-owners as I\u0027m no longer on the Chrome OS team.",
       "revId": "7b9c2e55cc5b7e285feb9000ebdd72786152b196",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0d9127_d8ded873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T18:00:44Z",
+      "side": 1,
+      "message": "Somehow this CL did not show up in my attention list. I just saw the email notification. Please check if you can add a Google contact in the contact list. It will make support easier in future. Thanks.",
+      "revId": "7b9c2e55cc5b7e285feb9000ebdd72786152b196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e826d61_f73ff8cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T18:00:44Z",
+      "side": 1,
+      "message": "Do you have a Google contact? If so, please add a Google contact. Otherwise, it will be hard to support if there is an issue.",
+      "revId": "7b9c2e55cc5b7e285feb9000ebdd72786152b196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
