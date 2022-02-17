@@ -16,6 +16,74 @@
       "message": "Invite tast owner to review and see if this is the right approach to develop a tast wrapper.",
       "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e21c96ca_3e127ee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T02:58:25Z",
+      "side": 1,
+      "message": "I have a few questions. Please take a look. Thanks.",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fdf1fc0_8941d846",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T02:58:25Z",
+      "side": 1,
+      "message": "It is just a question. Do you need to quote the value?",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8340e0_3e529600",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T02:58:25Z",
+      "side": 1,
+      "message": "if stdout, _, err :\u003d tastrun.Exec(ctx, s, \"run\", flags, param.tests); err !\u003d nil",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dde5729_3e7ddbe4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-17T02:58:25Z",
+      "side": 1,
+      "message": "How do you know the test is not supposed to skipped?",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
