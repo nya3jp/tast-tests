@@ -16,6 +16,23 @@
       "message": "Tast/Lacros LGTM. COuld you find test contacts as a reviewer, too?",
       "revId": "25349293c43f419a35db579454066a542f66676a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b511a5e7_0d893fa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-17T17:46:47Z",
+      "side": 1,
+      "message": "CQ failure doesn\u0027t seem to be relevant to this change that is quite safe to submit since it only touches on the metadata and should not affect any runtime issues. Submitting..\n",
+      "revId": "25349293c43f419a35db579454066a542f66676a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
