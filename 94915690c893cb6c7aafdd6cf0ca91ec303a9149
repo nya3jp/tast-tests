@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb8423c_d77d26a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-17T16:52:34Z",
+      "side": 1,
+      "message": "This test will fail for lacros-chrome since the feature is not yet completed, but I just wanted to confirm with you if this test can reuse the policy\u0027s fixtures. Please feel free to un\u0027cc you since this\u0027ll wait some time for the feature to be testable. Thanks,",
+      "revId": "94915690c893cb6c7aafdd6cf0ca91ec303a9149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
