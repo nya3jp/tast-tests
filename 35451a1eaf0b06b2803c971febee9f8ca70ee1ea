@@ -104,6 +104,30 @@
       },
       "revId": "35451a1eaf0b06b2803c971febee9f8ca70ee1ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b02bc347_7f564f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-17T21:26:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ab9c3ab_f7456d6e",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "35451a1eaf0b06b2803c971febee9f8ca70ee1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
