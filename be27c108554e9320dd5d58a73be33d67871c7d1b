@@ -118,6 +118,30 @@
       },
       "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba01b21d_ba16747d",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-17T15:40:00Z",
+      "side": 1,
+      "message": "I think this CL is fine as it is given the utility function doesn\u0027t meet all the requirements. I think combining different function utilities to get the same effect will be confusing for the reader. It would be much simpler if the Retry() method also accepted another function to execute onError but I don\u0027t think such refactoring is necessary.",
+      "parentUuid": "805df78e_e79e407f",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
