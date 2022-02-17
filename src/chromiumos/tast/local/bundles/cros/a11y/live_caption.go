@@ -34,7 +34,7 @@ func init() {
 			"amoylan@chromium.org",
 			"chrome-knowledge-eng@google.com",
 		},
-		Timeout:      3 * time.Minute,
+		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "ondevice_speech"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data: []string{
@@ -102,7 +102,7 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 2 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for libsoda dlc to be installed: ", err)
 	}
 
