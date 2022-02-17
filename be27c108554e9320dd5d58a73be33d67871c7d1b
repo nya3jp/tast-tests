@@ -166,6 +166,30 @@
       },
       "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593de356_8be5ddec",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-17T22:30:22Z",
+      "side": 1,
+      "message": "so if we combine functions and pass them to retry(), we will be executing the sleep and pressing retry even on the last attempt because the function evaluates the no. of attempts after the combined function has returned.\n\nIn the original implementation of this function, we would only attempt to retry in case of a failure of original function.",
+      "parentUuid": "c637714c_a12cad87",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "be27c108554e9320dd5d58a73be33d67871c7d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
