@@ -142,6 +142,19 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWith100FakeAppsLegacyLauncher",
+		Desc:     "Logged into a user session with 100 fake apps and productivity launcher disabled",
+		Contacts: []string{"tbarzic@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{DisableFeatures("ProductivityLauncher")}, nil
+		}),
+		Parent:          "install100Apps",
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsProductivityLauncher",
 		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
 		Contacts: []string{"jamescook@chromium.org"},
@@ -162,6 +175,18 @@ func init() {
 			return []Option{EnableFeatures("ProductivityLauncher", "ProductivityLauncherAnimation", "LauncherAppSort")}, nil
 		}),
 		Parent:          "install100Apps",
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithLegacyLauncher",
+		Desc:     "Logged into a user session with productivity launcher disabled",
+		Contacts: []string{"tbarzic@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{DisableFeatures("ProductivityLauncher")}, nil
+		}),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
