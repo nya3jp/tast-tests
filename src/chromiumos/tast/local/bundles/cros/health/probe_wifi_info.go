@@ -6,10 +6,12 @@ package health
 
 import (
 	"context"
+	"os"
+	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type wirelessInteface struct {
@@ -37,9 +39,8 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
-		HardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
-		Fixture:      "crosHealthdRunning",
+
+		Fixture: "crosHealthdRunning",
 	})
 }
 
@@ -49,12 +50,31 @@ func ProbeWifiInfo(ctx context.Context, s *testing.State) {
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &wifi); err != nil {
 		s.Fatal("Failed to get WIFI telemetry info: ", err)
 	}
-	for _, interfaces := range wifi.NetworkInterfaces {
-		if interfaces.WirelessInterfaces.InterfaceName == "" {
-			s.Fatal("Failed to get InterfaceName")
+	out, err := testexec.CommandContext(ctx, "iw", "dev").Output()
+	if err != nil {
+		s.Fatal("Failed to execute 'iw dev' command: ", err)
+	}
+
+	// Check whether 'Interface wlan0' is presented or not.
+	want := "Interface wlan0"
+	if got := string(out); strings.Contains(got, want) {
+		for _, ifc := range wifi.NetworkInterfaces {
+			if ifc.WirelessInterfaces.InterfaceName != "wlan0" {
+				s.Fatal("Failed to get InterfaceName")
+			}
+			if _, err := os.Stat("/sys/module/iwlmvm/parameters/power_scheme"); !os.IsNotExist(err) {
+				if !ifc.WirelessInterfaces.PowerManagementOn {
+					s.Fatal("Failed to get PowerManagementOn value as true when power_scheme present")
+				}
+			} else {
+				if ifc.WirelessInterfaces.PowerManagementOn {
+					s.Fatal("Failed to get PowerManagementOn value as false when power_scheme not present")
+				}
+			}
 		}
-		if !interfaces.WirelessInterfaces.PowerManagementOn {
-			s.Fatal("Failed to get PowerManagementOn")
+	} else {
+		if len(wifi.NetworkInterfaces) > 0 {
+			s.Fatal("Failed to validate empty NetworkInterfaces data")
 		}
 	}
 }
