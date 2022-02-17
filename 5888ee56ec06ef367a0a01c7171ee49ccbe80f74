@@ -56,6 +56,30 @@
       },
       "revId": "5888ee56ec06ef367a0a01c7171ee49ccbe80f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8011ffd3_b0a9b98e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/ui_faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-17T07:15:43Z",
+      "side": 1,
+      "message": "Because the \"faillog\" directory is hard-coded and encapsulated within the package.\nWe can hard code it in this file technically, but it\u0027d looks a bit fragile.\nOr, we can expose it, but in general it is not designed to access the log files, so I chose to use the dump function directly.\n\nActually, the problem happens in this function, so I thought it makes sense.\n\nWDYT?",
+      "parentUuid": "5abb3787_5cee35e0",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "5888ee56ec06ef367a0a01c7171ee49ccbe80f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
