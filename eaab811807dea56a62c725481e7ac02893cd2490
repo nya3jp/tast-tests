@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e946307_2ae00723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-17T12:09:31Z",
+      "side": 1,
+      "message": "nit: `signInAll` maybe?\nAnd it this case the current username should be an input as well, and calling the function as \n```\ncurrentUser :\u003d creds[len(creds)-1].User\nsignInAll(ctx, tconn, creds[:len(creds)-1], currentUser)\n```\nIt makes calling the function more complicated, but its functionality is more clear.",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "eaab811807dea56a62c725481e7ac02893cd2490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b36085_561b22f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-17T12:09:31Z",
+      "side": 1,
+      "message": "Can you add a comment on why this step is optional?",
+      "revId": "eaab811807dea56a62c725481e7ac02893cd2490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
