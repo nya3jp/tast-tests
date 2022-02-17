@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb63e6c1_37b17775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "fb915fc5_e573cf69",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bda30628_38da51c5",
@@ -82,6 +100,24 @@
       "writtenOn": "2022-02-17T07:49:43Z",
       "side": 1,
       "message": "Should this package be in ui instead of meta? It only runs ui test.",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33bd27d_1db4a383",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "We need a tast wrapper case that can call other tast tests. We found the tastrun package, which provides the feature, is only usable under \"meta\" category. More importantly, the tastrun package uses func (s *State) Meta(), which can only be used under \"meta\" category.\n\nDo you think the tastrun package can be made a common package and the restriction on (s *State) Meta() can be removed?",
+      "parentUuid": "bda30628_38da51c5",
       "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +145,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "647c5c7e_e8682906",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f57be4b0_409d3c70",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 61
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f90feec_98bac92b",
@@ -122,6 +182,30 @@
       "writtenOn": "2022-02-17T06:47:58Z",
       "side": 1,
       "message": "nit: remove if empty",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816be893_0c735066",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "asadrieh@google.com Afshin, can you propose the correct attributes for this wrapper? group:crosbot?",
+      "parentUuid": "8f90feec_98bac92b",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -179,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97c9fbd_c8af5268",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "Thanks Seewai for reviewing both CLs. I\u0027ll drop the tast CL, and let this CL uses a runtime variable \"-var\u003dvarsfile\u003d\u003c...\u003e\" to pass in a varsfile and use it to run other tast tests.",
+      "parentUuid": "fab870ba_a0f31898",
+      "range": {
+        "startLine": 287,
+        "startChar": 28,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fdf1fc0_8941d846",
@@ -196,6 +304,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58973784_4ea4c13c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "removed. use \"varsfile\".",
+      "parentUuid": "6fdf1fc0_8941d846",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c8340e0_3e529600",
@@ -209,6 +335,24 @@
       "writtenOn": "2022-02-17T02:58:25Z",
       "side": 1,
       "message": "if stdout, _, err :\u003d tastrun.Exec(ctx, s, \"run\", flags, param.tests); err !\u003d nil",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74d704f_26178101",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c8340e0_3e529600",
       "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -236,6 +380,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a33c86_8c391970",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "Thanks! Logging all errors is a good point!",
+      "parentUuid": "7a69d46e_ea8fe571",
+      "range": {
+        "startLine": 304,
+        "startChar": 6,
+        "endLine": 304,
+        "endChar": 12
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dde5729_3e7ddbe4",
@@ -253,6 +421,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5d3599_ea0f9ebc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "Thanks! Change to log the skipped tests and let other tests continue.",
+      "parentUuid": "1dde5729_3e7ddbe4",
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a097b261_6b283bfa",
@@ -266,6 +452,30 @@
       "writtenOn": "2022-02-17T06:47:58Z",
       "side": 1,
       "message": "Errorf",
+      "range": {
+        "startLine": 307,
+        "startChar": 6,
+        "endLine": 307,
+        "endChar": 12
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ca67d9_cf233250",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-17T22:54:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a097b261_6b283bfa",
       "range": {
         "startLine": 307,
         "startChar": 6,
