@@ -75,13 +75,13 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 			(ws[0].State == ash.WindowStateLeftSnapped && ws[1].State == ash.WindowStateRightSnapped) {
 			return nil
 		}
-		return errors.New("windows are not snapped yet")
+		return errors.New("browser windows are not snapped yet")
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for windows to be snapped correctly")
+		return errors.Wrap(err, "failed to wait for browser windows to be snapped correctly")
 	}
 
 	// Split view resizing by dragging the divider.
-	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
+	testing.ContextLog(ctx, "Dragging the divider with two snapped browser windows")
 	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
 	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
@@ -102,7 +102,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 	}
 
 	// Split view resizing by dragging the divider.
-	testing.ContextLog(ctx, "Dragging the divider with an overview window")
+	testing.ContextLog(ctx, "Dragging the divider between an overview window and a snapped browser window")
 	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
@@ -110,7 +110,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 	// Close the overview window.
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to find the window in the overview mode to swipe to close")
+		return errors.Wrap(err, "failed to find the browser window in the overview mode to swipe to close")
 	}
 	swipeStart := w.OverviewInfo.Bounds.CenterPoint()
 	if err := pc.Drag(swipeStart, pc.DragTo(swipeStart.Sub(coords.NewPoint(0, 200)), fast))(ctx); err != nil {
@@ -126,7 +126,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 	}
 
 	// Split view resizing by dragging the divider.
-	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
+	testing.ContextLog(ctx, "Dragging the divider between an empty overview grid and a snapped browser window")
 	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
