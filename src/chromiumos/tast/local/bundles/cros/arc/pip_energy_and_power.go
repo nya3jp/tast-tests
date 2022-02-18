@@ -187,24 +187,18 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		// To resize the PIP window as reliably as possible,
 		// use uiauto (not activity.ResizeWindow) and drag
 		// from the corner (not the ARC++ PIP resize handle).
-		const (
-			// The resizing drag begins this far from the corner
-			// outward along each dimension. This offset ensures
-			// that we drag the corner and not the resize handle.
-			pipCornerOffset = 5
-			// After the resizing drag, we move the mouse this
-			// far along each dimension, to nix resize shadows.
-			nixResizeShadow = 20
-		)
-		workAreaTopLeft := info.WorkArea.TopLeft()
+
+		// The resizing drag begins this far from the corner
+		// outward along each dimension. This offset ensures
+		// that we drag the corner and not the resize handle.
+		const pipCornerOffset = 5
+
 		if err := action.Combine(
 			"resize the PIP window",
 			mouse.Move(tconn, pipWindow.TargetBounds.TopLeft().Sub(coords.NewPoint(pipCornerOffset, pipCornerOffset)), 0),
 			mouse.Press(tconn, mouse.LeftButton),
-			mouse.Move(tconn, workAreaTopLeft, time.Second),
+			mouse.Move(tconn, info.WorkArea.TopLeft(), time.Second),
 			mouse.Release(tconn, mouse.LeftButton),
-			// Ensure that the PIP window will show no controls or resize shadows.
-			mouse.Move(tconn, workAreaTopLeft.Add(coords.NewPoint(nixResizeShadow, nixResizeShadow)), time.Second),
 		)(ctx); err != nil {
 			// Ensure releasing the mouse button.
 			if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
