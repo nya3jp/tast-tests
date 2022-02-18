@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8498fd7b_a07f7bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-18T15:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d01110_83ac5ae3",
+      "range": {
+        "startLine": 83,
+        "startChar": 19,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "6ecd4c0e8855fa90fbd507bfb0a9cb83bca0c7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6159dd7_6d3faed4",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-18T05:48:05Z",
       "side": 1,
       "message": "Nit: same here. If this is an auto-formatting issue, then do true /*verifyEduSecondaryAddSuccess*/. Put the comment after the parameter.",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "6ecd4c0e8855fa90fbd507bfb0a9cb83bca0c7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8e639b_6fe7cee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-18T15:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6159dd7_6d3faed4",
       "range": {
         "startLine": 47,
         "startChar": 43,
