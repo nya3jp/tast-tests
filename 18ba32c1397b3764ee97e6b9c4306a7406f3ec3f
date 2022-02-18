@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2059ab9_1ebdbd75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-18T09:49:07Z",
+      "side": 1,
+      "message": "preferring smaller scope, you can move them to test main function.\n\nstyle:\n\nconst (\n  defaultJSONConfigPath \u003d ...\n  gtestExecutable \u003d ...\n)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "285cd1c0_659e5a3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-18T09:49:07Z",
+      "side": 1,
+      "message": "nit: go prefers shorter name with assuming surrounding context. \"ok\" is often used in this case.\n\nstyle:\n\njsonPath :\u003d defaultJSONConfigPath\nif path, ok :\u003d s.Var(\"config\"); ok {\n  jsonPath \u003d path\n}\n\nis a common pattern, I think.",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15cd4512_2b7c047d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-18T09:49:07Z",
+      "side": 1,
+      "message": "nit/style: could you use fmt.Sprintf?\nAny concerns that \"k\" contains \"\u003d\" ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 21,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
