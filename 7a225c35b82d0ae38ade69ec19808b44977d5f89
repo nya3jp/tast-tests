@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee06c0b_77a99390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "Few comments - also, can you make sure these changes don\u0027t impact other tests that use these functions, i.e.\n\narcappgameperf.roblox_launch*\nui.TaskSwitchCUJ*\n\n",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbdec91_ca7f0abf",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "Move this back to where it was previously.",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae3ff56_71cfcbfd",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "rename to \u0027printPercentageOfAppInstalled\u0027 and move any constants you need into this function. It\u0027s a helper function that should be self contained.",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0dd884_c718e249",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "nit: missing comment",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02da9df_81ce6d17",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "can you reduce the timeout to 1 second? If it\u0027s in here then we are assuming the progress bar is displayed. We don\u0027t want this method holding up actual functionality.",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b878cdd7_e38e42c1",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "it should print only one of these logs, if the text couldn\u0027t be found then the \u0027Percentage of app installed..\u0027 message is not helpful",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1be3722d_f938d8d6",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "nit: can we make this more clear and call it \u0027installationTimeout\u0027 ?",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c112da_63a3253d",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T19:52:19Z",
+      "side": 1,
+      "message": "As mentioned above, these can move up into the helper function since they are only concerned with printing debug text, rather than being important to the installation flow.",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
