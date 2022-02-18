@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -22,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowControl,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check if the performance around window controlling is good enough; go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"oshima@chromium.org",
@@ -31,9 +33,17 @@ func init() {
 			"mukai@chromium.org", // Tast author
 		},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:      "lacros",
+			Fixture:   "lacrosPrimary",
+			ExtraAttr: []string{"informational"},
+			Val:       browser.TypeLacros,
+		}},
 	})
 }
 
@@ -54,17 +64,23 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	expects["Ash.Window.AnimationSmoothness.CrossFade.DragMaximize"] = 20
 	expects["Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize"] = 20
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the connection to the test API: ", err)
 	}
+	// Set up a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	defer closeBrowser(ctx)
+
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
 		s.Fatal("Failed to ensure into clamshell mode: ", err)
 	}
 	defer cleanup(ctx)
-	if err := ash.CreateWindows(ctx, tconn, cr, "", 8); err != nil {
+	// TODO: Check if the exactly number of windows (8) should be opened or not. browserfixt.SetUp opens an extra blank window.
+	if err := ash.CreateWindows(ctx, tconn, br, "", 8); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
 	}
 	ws, err := ash.GetAllWindows(ctx, tconn)
@@ -72,7 +88,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the windows: ", err)
 	}
 
-	r := perfutil.NewRunner(cr.Browser())
+	r := perfutil.NewRunner(br)
 	r.Runs = 5
 	r.RunTracing = false
 
