@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package policy
+package autoupdate
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	nc "chromiumos/tast/local/network/netconfig"
-	ppb "chromiumos/tast/services/cros/policy"
+	aupb "chromiumos/tast/services/cros/autoupdate"
 	"chromiumos/tast/testing"
 )
 
@@ -28,19 +28,19 @@ var psk = nc.ConfigProperties{
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			ppb.RegisterRollbackServiceServer(srv, &RollbackService{s: s})
+			aupb.RegisterRollbackServiceServer(srv, &RollbackService{s: s})
 		},
 	})
 }
 
-// RollbackService implements tast.cros.policy.RollbackService.
+// RollbackService implements tast.cros.autoupdate.RollbackService.
 type RollbackService struct {
 	s *testing.ServiceState
 }
 
 // SetUpPskNetwork sets up a simple psk network configuration on the device.
 // The device needs to be in a state so that chrome://network may be opened.
-func (r *RollbackService) SetUpPskNetwork(ctx context.Context, req *empty.Empty) (*ppb.SetUpPskResponse, error) {
+func (r *RollbackService) SetUpPskNetwork(ctx context.Context, req *empty.Empty) (*aupb.SetUpPskResponse, error) {
 	cr, err := chrome.New(ctx, chrome.KeepEnrollment())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start Chrome")
@@ -57,12 +57,12 @@ func (r *RollbackService) SetUpPskNetwork(ctx context.Context, req *empty.Empty)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to configure psk network")
 	}
-	return &ppb.SetUpPskResponse{Guid: guid}, nil
+	return &aupb.SetUpPskResponse{Guid: guid}, nil
 }
 
 // VerifyRollback checks that the device is on the enrollment screen, then logs
 // in as a normal user and verifies the previously set-up network exists.
-func (r *RollbackService) VerifyRollback(ctx context.Context, request *ppb.VerifyRollbackRequest) (*ppb.VerifyRollbackResponse, error) {
+func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.VerifyRollbackRequest) (*aupb.VerifyRollbackResponse, error) {
 	cr, err := chrome.New(ctx, chrome.DeferLogin())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to restart Chrome for testing after rollback")
@@ -94,7 +94,7 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *ppb.Verif
 		return nil, errors.Wrapf(err, "failed to get managed properties for guid %s", request.Guid)
 	}
 
-	response := &ppb.VerifyRollbackResponse{
+	response := &aupb.VerifyRollbackResponse{
 		Successful: true,
 	}
 
