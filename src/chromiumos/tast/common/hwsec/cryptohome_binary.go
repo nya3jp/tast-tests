@@ -76,6 +76,15 @@ func (c *cryptohomeBinary) chapsLockExists(ctx context.Context) (bool, error) {
 	return string(out) != "", nil
 }
 
+func (c *cryptohomeBinary) killSessionHolders(ctx context.Context, arg string) error {
+	_, err := c.runner.Run(ctx, "process_killer", "--session", arg)
+	if err != nil {
+		return errors.Wrap(err, "failed to kill processes")
+	}
+
+	return nil
+}
+
 // installAttributesGetStatus calls "cryptohome --action=install_attributes_get_status".
 func (c *cryptohomeBinary) installAttributesGetStatus(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_get_status")
@@ -235,6 +244,11 @@ func (c *cryptohomeBinary) pkcs11SystemTokenInfo(ctx context.Context) ([]byte, e
 func (c *cryptohomeBinary) pkcs11UserTokenInfo(ctx context.Context, username string) ([]byte, error) {
 	out, err := c.call(ctx, "--action=pkcs11_get_user_token_info", "--user="+username)
 	return out, err
+}
+
+// pkcs11Terminate calls "cryptohome --action=pkcs11_terminate"
+func (c *cryptohomeBinary) pkcs11Terminate(ctx context.Context, username string) ([]byte, error) {
+	return c.call(ctx, "--action=pkcs11_terminate", "--user="+username)
 }
 
 // getFirmwareManagementParameters calls "cryptohome --action=get_firmware_management_parameters".
