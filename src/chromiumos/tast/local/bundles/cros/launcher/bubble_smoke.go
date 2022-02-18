@@ -39,7 +39,8 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"jamescook@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		// TODO(https://crbug.com/1255265): Remove "informational" once stable.
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
