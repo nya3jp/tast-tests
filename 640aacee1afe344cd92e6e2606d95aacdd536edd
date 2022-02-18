@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee324180_f3e9c2e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-02-18T17:12:01Z",
+      "side": 1,
+      "message": "@lamzin@google.com, I think I\u0027ll need the +2 again since the file set has changed.",
+      "revId": "640aacee1afe344cd92e6e2606d95aacdd536edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
