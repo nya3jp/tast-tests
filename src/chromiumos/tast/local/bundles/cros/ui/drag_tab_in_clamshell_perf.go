@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -27,14 +29,22 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragTabInClamshellPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the presentation time of dragging a tab in clamshell mode",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -44,7 +54,17 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	const numTabs = 2
+	const url = ui.PerftestURL
+	// Open the first browser window.
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	bt := s.Param().(browser.Type)
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, url)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+	defer conn.Close()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -57,8 +77,8 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	for i := 0; i < 2; i++ {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL)
+	for i := 0; i < numTabs-1; i++ {
+		conn, err := br.NewConn(ctx, url)
 		if err != nil {
 			s.Fatalf("Failed to open %d-th tab: %v", i, err)
 		}
@@ -94,12 +114,13 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 
 	// Find tabs.
 	tabParam := nodewith.Role(role.Tab).ClassName("Tab")
+	// TODO(crbug.com/1290987): ac.NodesInfo fails sometimes to find tabs in lacros. A workaround is calling uiauto.RootDebugInfo or faillog.DumpUITreeOnError here.
 	tabs, err := ac.NodesInfo(ctx, tabParam)
 	if err != nil {
 		s.Fatal("Failed to find tabs: ", err)
 	}
-	if len(tabs) != 2 {
-		s.Fatalf("Expected 2 tabs, only found %v tab(s)", len(tabs))
+	if len(tabs) != numTabs {
+		s.Fatalf("Expected %v tabs, only found %v tab(s)", numTabs, len(tabs))
 	}
 	tabRect, err := ac.Location(ctx, tabParam.First())
 	if err != nil {
@@ -107,12 +128,14 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 	start := tabRect.CenterPoint()
 
+	// Note that ash-chrome (cr and tconn) is passed in to take traces and the metrics from ash-chrome.
 	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		return uiauto.Combine("drag and move a tab",
 			mouse.Drag(tconn, start, end, time.Second),
 			ac.Retry(10, checkWindowsNum(ctx, tconn, 2)),
 			uiauto.Sleep(time.Second),
-			mouse.Drag(tconn, end, start, time.Second),
+			// TODO(crbug.com/1352290): mouse.Drag fails to drag the tab back into window for lacros. Mouse pointer moves but the tab window doesn't.
+			mouse.Drag(tconn, end, end, time.Second),
 			ac.Retry(10, checkWindowsNum(ctx, tconn, 1)),
 			uiauto.Sleep(time.Second),
 		)(ctx)
