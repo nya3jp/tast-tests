@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77d1754_6cd3b82b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/sequential_consistency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-02-18T23:15:17Z",
+      "side": 1,
+      "message": "A reminder to not submit yet",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 64
+      },
+      "revId": "3cbee9cab86fb63201e7c25c1cd8ac46f988294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
