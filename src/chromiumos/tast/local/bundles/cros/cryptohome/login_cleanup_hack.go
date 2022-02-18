@@ -59,6 +59,7 @@ func LoginCleanupHack(ctx context.Context, s *testing.State) {
 	if err := syscall.Fallocate(int(file.Fd()), 0, 0, int64(fillSize)); err != nil {
 		s.Fatalf("Failed to allocate %v bytes in %s: %v", fillSize, file.Name(), err)
 	}
+	file.Close()
 
 	if err := cryptohome.UnmountVault(ctx, user); err != nil {
 		s.Fatal("Failed to unmount user vault: ", err)
