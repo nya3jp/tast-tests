@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc46994_9d145716",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-18T13:25:10Z",
+      "side": 1,
+      "message": "I\u0027d recommend to don\u0027t mix (config *ServerConfiguration) and (config ServerConfiguration) notations.\n\nSince you already have methods that modify ServerConfiguration, i.e. (*ServerConfiguration) notation, it makes sense to use everywhere pointer to ServerConfiguration instead of ServerConfiguration value",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "62ce958eee58fa21a34b72f2ea5824ff3447e887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
