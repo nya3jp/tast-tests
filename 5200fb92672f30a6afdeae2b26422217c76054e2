@@ -164,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4d6a7a_d905e54d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T10:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03a76097_e429a15e",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2398d84b_9a133642",
@@ -181,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efce117_821a4596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T10:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2398d84b_9a133642",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51bb3d01_29cefa7f",
@@ -194,6 +236,24 @@
       "writtenOn": "2022-02-15T02:14:49Z",
       "side": 1,
       "message": "Is this required? iirc go allows redefinition of err with :\u003d",
+      "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "232bd76f_a5b9194a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/html_reload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T10:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51bb3d01_29cefa7f",
       "revId": "5200fb92672f30a6afdeae2b26422217c76054e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
