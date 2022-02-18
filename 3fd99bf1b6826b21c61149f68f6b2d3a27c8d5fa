@@ -16,6 +16,138 @@
       "message": "lgtm",
       "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00fba57_409306f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-18T04:55:34Z",
+      "side": 1,
+      "message": "Approval for Tast Review % nits",
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f7a7fb_bbf6cb68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-18T04:55:34Z",
+      "side": 1,
+      "message": "optional: although variable is used over a large scope, it is used very often.\nIf you find this name too verbose, shortening it to \u0027conn\u0027 is probably fine.\n\ngo/go-style/decisions#variable-names\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c928955f_be4c1cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-18T04:55:34Z",
+      "side": 1,
+      "message": "nit: Prefer to give these struct fields more descriptive names. \nE.g. Chrome, ConnSource, TestConn...\n\nIn general, the further away from the declaration the variable is used and the fewer times it is used, the more descriptive it should be. This struct is defined quite a way away from the method, so the meaning may not be obvious.\n\ngo/go-style/decisions#variable-names\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00db8b6_703a750f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-18T04:55:34Z",
+      "side": 1,
+      "message": "nit: Public fields should have a comment.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 4
+      },
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9b197d_b4f3c67b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-18T04:55:34Z",
+      "side": 1,
+      "message": "nit: Even if you leave this as is, I believe the correct UpperCamelCase is TConn.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e8b4be_e25b4cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-18T04:55:34Z",
+      "side": 1,
+      "message": "nit: Would particularly like to see an explanation of how this is different to the other TConn.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
