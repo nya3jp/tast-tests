@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca84fb5_abbc1eb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-18T12:41:35Z",
+      "side": 1,
+      "message": "Hi, I have ran `policy.EnterpriseRollbackInPlace` and `autoupdate.EnterpriseRollbackPreviousVersion` to check there are no issues after moving the files. The former test passes (when including the related fix) and in the latter I obtain the same result as before the modification. Please check I have not missed anything, thanks!",
+      "revId": "464bdfcf25a801fa20517f08ec0aea895783aad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
