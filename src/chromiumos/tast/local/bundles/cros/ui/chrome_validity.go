@@ -38,7 +38,6 @@ func init() {
 			Name:              "lacros",
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
 		}},
 	})
