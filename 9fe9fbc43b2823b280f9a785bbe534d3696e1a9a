@@ -39,6 +39,30 @@
       },
       "revId": "9fe9fbc43b2823b280f9a785bbe534d3696e1a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7650e3a6_13a9e9cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_suspend_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-18T10:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f0e9f13_7d0bdae0",
+      "range": {
+        "startLine": 137,
+        "startChar": 20,
+        "endLine": 137,
+        "endChar": 47
+      },
+      "revId": "9fe9fbc43b2823b280f9a785bbe534d3696e1a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
