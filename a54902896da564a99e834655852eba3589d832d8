@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1489735_4bb7e981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-02-18T22:04:45Z",
+      "side": 1,
+      "message": "I think this should work but just so we are on the same page the video is 320x240 so the PiP must be at least that big in pixels when displayed. It doesnt actually have to be larger than that. (and there is probably a few pixels tolerance)",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 113
+      },
+      "revId": "a54902896da564a99e834655852eba3589d832d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
