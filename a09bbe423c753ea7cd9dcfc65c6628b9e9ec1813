@@ -189,6 +189,30 @@
       },
       "revId": "a09bbe423c753ea7cd9dcfc65c6628b9e9ec1813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d31c1db_7cfed403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T04:22:07Z",
+      "side": 1,
+      "message": "This `Install` is based on `apputil`, \n`apputil` manage ARC++ resources for callers, including the `*ui.Device`, which is a required argument to call `playstore.InstallOrUpdateApp`.\n\nWithout this function, callers have to pass `*arc.ARC`, `*ui.Device` and the package name to install an app.\n\nAlso, `playstore.InstallOrUpdateApp` has a fullness mechanism already except it won\u0027t close the PlayStore after installation.\nSome tests leave the PlayStore open after installation, we might jeopardize those tests logic if we merge the `optin.ClosePlayStore` into `playstore.InstallOrUpdateApp`.\n\nThis `func (app *App) Install` is still a highly useful helper function for callers, so I think it is not necessary to \"move\" it to `playstore`, but we could add a function under `playstore` to install an app and closes the PlayStore after installation, what do you think?",
+      "parentUuid": "7525ef03_74667720",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "a09bbe423c753ea7cd9dcfc65c6628b9e9ec1813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
