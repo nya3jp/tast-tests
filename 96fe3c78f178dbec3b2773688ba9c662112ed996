@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf63c812_159ac3cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-18T01:04:22Z",
+      "side": 1,
+      "message": "Change to \"Verify\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "96fe3c78f178dbec3b2773688ba9c662112ed996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34665f36_f59ba925",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-18T01:04:22Z",
+      "side": 1,
+      "message": "Remove \"Add \".",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "96fe3c78f178dbec3b2773688ba9c662112ed996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1899333c_af21562d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-18T01:04:22Z",
+      "side": 1,
+      "message": "Can we verify if the interface name is correct or not?",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "96fe3c78f178dbec3b2773688ba9c662112ed996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7892b6bb_79b85d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-18T01:04:22Z",
+      "side": 1,
+      "message": "On some devices, we can\u0027t find `/sys/module/iwlmvm/parameters/power_scheme` so the |PowerManagementOn| will be set to false for those cases. I think you need to check the logic [*] and implement similar one here for testing.\n\n[*]: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/diagnostics/cros_healthd/fetchers/network_interface_fetcher.cc#272",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "96fe3c78f178dbec3b2773688ba9c662112ed996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
