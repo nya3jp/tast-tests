@@ -10,6 +10,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -40,6 +41,10 @@ type Chart struct {
 	dir string
 	// pid is the process id of running display chart script.
 	pid string
+	// fifo is the path to fifo on chart tablet which can be used to write
+	// display configuration into it. Can be empty if the chart tablet
+	// don't support fifo mode.
+	fifo string
 }
 
 // cleanup cleans up chart's (half-)initialized members and saves logs of chart process to |outDir|.
@@ -152,6 +157,16 @@ func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string)
 	return NewWithDisplayLevel(ctx, d, altHostname, chartPath, outDir, DisplayDefaultLevel)
 }
 
+// copyChart copies the chart from local to host chart tablet.
+func copyChart(ctx context.Context, conn *ssh.Conn, chartLocalPath, chartHostDir string) error {
+	chartHostPath := filepath.Join(chartHostDir, filepath.Base(chartLocalPath))
+	if _, err := linuxssh.PutFiles(
+		ctx, conn, map[string]string{chartLocalPath: chartHostPath}, linuxssh.DereferenceSymlinks); err != nil {
+		return errors.Wrapf(err, "failed to send chart file in path %v to chart tablet", chartLocalPath)
+	}
+	return nil
+}
+
 // SetUp sets up the chart with the given ssh connection and returns a new |Chart| instance.
 // It uses |displayLevel| to set the brightness, the range is in [0.0, 100.0].
 func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displayLevel float32) (_ *Chart, retErr error) {
@@ -172,16 +187,14 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displa
 	dir = strings.TrimSpace(string(out))
 
 	// Display chart on chart tablet.
-	chartHostPath := filepath.Join(dir, filepath.Base(chartPath))
-	if _, err := linuxssh.PutFiles(
-		ctx, conn, map[string]string{chartPath: chartHostPath}, linuxssh.DereferenceSymlinks); err != nil {
-		return nil, errors.Wrapf(err, "failed to send chart file in path %v to chart tablet", chartPath)
+	if err := copyChart(ctx, conn, chartPath, dir); err != nil {
+		return nil, err
 	}
-
 	var displayLevelOpt string
 	if displayLevel >= 0.0 {
 		displayLevelOpt = fmt.Sprintf("--display_level=%f", displayLevel)
 	}
+	chartHostPath := filepath.Join(dir, filepath.Base(chartPath))
 	displayCmd := fmt.Sprintf(
 		"(python2 %s %s %s > %s 2>&1) & echo -n $!",
 		shutil.Escape(displayScript), shutil.Escape(chartHostPath),
@@ -194,13 +207,23 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displa
 	pid = strings.TrimSpace(string(out))
 
 	testing.ContextLog(ctx, "Poll for 'is ready' message for ensuring chart is ready")
+	const chartReadyMsg = "Chart is ready."
+	var fifo string
+	fifoPathRegex := regexp.MustCompile(chartReadyMsg + ` Fifo:\s(\S+)`)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		err := conn.CommandContext(ctx, "grep", "-q", "Chart is ready.", displayOutputLog).Run()
+		output, err := conn.CommandContext(ctx, "grep", chartReadyMsg, displayOutputLog).Output()
 		switch err.(type) {
-		case nil, *cryptossh.ExitError:
-			// We reach here either when grep ready pattern succeed
-			// with nil err returned or the pattern is not found
-			// with ExitError returned.
+		case nil:
+			m := fifoPathRegex.FindSubmatch(output)
+			if len(m) != 0 {
+				testing.ContextLog(ctx, "Chart start in fifo mode")
+				fifo = string(m[1])
+			} else {
+				testing.ContextLog(ctx, "Chart start in non-fifo mode")
+			}
+			return nil
+		case *cryptossh.ExitError:
+			// Grep failed to find ready message, wait for next poll.
 			return err
 		default:
 			return testing.PollBreak(err)
@@ -210,7 +233,37 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displa
 	}
 	testing.ContextLog(ctx, "Display chart complete")
 
-	return &Chart{conn, dir, pid}, nil
+	return &Chart{conn, dir, pid, fifo}, nil
+}
+
+// Display change the displayed chart.
+func (c *Chart) Display(ctx context.Context, chartPath string) error {
+	if len(c.fifo) == 0 {
+		return errors.New("change displayed chart is not supported on the chart tablet")
+	}
+
+	if err := copyChart(ctx, c.conn, chartPath, c.dir); err != nil {
+		return err
+	}
+
+	cmd := fmt.Sprintf(`echo '{"chart_name": %q}' > %s`, filepath.Base(chartPath), c.fifo)
+	if err := c.conn.CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
+		return errors.Wrapf(err, "failed to change displayed chart to %v", chartPath)
+	}
+	return nil
+}
+
+// SetDisplayLevel sets the display level ranged [0.0, 100.0].
+func (c *Chart) SetDisplayLevel(ctx context.Context, lv float32) error {
+	if len(c.fifo) == 0 {
+		return errors.New("change display level is not supported on the chart tablet")
+	}
+
+	cmd := fmt.Sprintf(`echo '{"display_level": %.1f}' > %s`, lv, c.fifo)
+	if err := c.conn.CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
+		return errors.Wrapf(err, "failed to change display level to %v", lv)
+	}
+	return nil
 }
 
 // Close closes the chart process and saves its logs to |outDir|.
