@@ -8,10 +8,13 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -22,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowControl,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check if the performance around window controlling is good enough; go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"oshima@chromium.org",
@@ -31,13 +34,31 @@ func init() {
 			"mukai@chromium.org", // Tast author
 		},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func WindowControl(ctx context.Context, s *testing.State) {
+	// Reserve a few seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
+	defer cancel()
+
+	interactiveWindowResizeHistogram := "Ash.InteractiveWindowResize.TimeToPresent"
+	if s.Param().(browser.Type) == browser.TypeLacros {
+		interactiveWindowResizeHistogram = "Ash.InteractiveWindowResize.Lacros.TimeToPresent"
+	}
 	expects := perfutil.CreateExpectations(ctx,
 		"Ash.Window.AnimationSmoothness.CrossFade",
 		"Ash.Window.AnimationSmoothness.CrossFade.DragMaximize",
@@ -45,7 +66,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		"Ash.WindowCycleView.AnimationSmoothness.Show",
 		"Ash.Overview.AnimationSmoothness.Enter.ClamshellMode",
 		"Ash.Overview.AnimationSmoothness.Exit.ClamshellMode",
-		"Ash.InteractiveWindowResize.TimeToPresent",
+		interactiveWindowResizeHistogram,
 	)
 	// When custom expectation value needs to be set, modify expects here.
 	// Ash.WindowCycleView.AnimationSmoothness.Show is known bad: https://crbug.com/1111130
@@ -54,17 +75,28 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	expects["Ash.Window.AnimationSmoothness.CrossFade.DragMaximize"] = 20
 	expects["Ash.Window.AnimationSmoothness.CrossFade.DragUnmaximize"] = 20
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the connection to the test API: ", err)
 	}
+	// Set up the browser, open a first window.
+	const numWindows = 8
+	const url = chrome.BlankURL
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
+
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
 		s.Fatal("Failed to ensure into clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
-	if err := ash.CreateWindows(ctx, tconn, cr, "", 8); err != nil {
+	defer cleanup(cleanupCtx)
+	// Open the rest of the new windows alongside the one that was already opened above.
+	if err := ash.CreateWindows(ctx, tconn, br, url, numWindows-1); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
 	}
 	ws, err := ash.GetAllWindows(ctx, tconn)
@@ -72,7 +104,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the windows: ", err)
 	}
 
-	r := perfutil.NewRunner(cr.Browser())
+	r := perfutil.NewRunner(br)
 	r.Runs = 5
 	r.RunTracing = false
 
@@ -254,7 +286,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 			}
 		}
 		return nil
-	}, "Ash.InteractiveWindowResize.TimeToPresent"),
+	}, interactiveWindowResizeHistogram),
 		perfutil.StoreLatency)
 
 	// Check the validity of histogram data.
