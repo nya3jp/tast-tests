@@ -28,33 +28,38 @@ type TestParam struct {
 	Validation  bool
 }
 
-// ChromeCleanUpFunc defines the clean up function of chrome browser.
-type ChromeCleanUpFunc func(ctx context.Context) error
-
-// CloseAboutBlankFunc defines the helper to close about:blank page. It is
-// implemented for lacros-chrome and no-op for ash-chrome.
-type CloseAboutBlankFunc func(ctx context.Context) error
+// TestConnection holds things that facilitate interaction with the DUT.
+type TestConnection struct {
+	Cr              *chrome.Chrome
+	Cs              ash.ConnSource
+	Tconn           *chrome.TestConn
+	Cleanup         func(ctx context.Context) error
+	CloseAboutBlank func(ctx context.Context) error
+	BTconn          *chrome.TestConn
+}
 
 // DragPoints holds three points, to signify a drag from the first point
 // to the second point, then the third point, and back to the first point.
 type DragPoints [3]coords.Point
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
-func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, error) {
+func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*TestConnection, error) {
 	testParam := s.Param().(TestParam)
 
-	var cr *chrome.Chrome
-	var cs ash.ConnSource
+	connection := &TestConnection{
+		nil,
+		nil,
+		nil,
+		func(ctx context.Context) error { return nil },
+		func(ctx context.Context) error { return nil },
+		nil,
+	}
 	var l *lacros.Lacros
-	var bTconn *chrome.TestConn
-
-	cleanup := func(ctx context.Context) error { return nil }
-	closeAboutBlank := func(ctx context.Context) error { return nil }
 
 	ok := false
 	defer func() {
 		if !ok {
-			if err := cleanup(closeCtx); err != nil {
+			if err := connection.Cleanup(closeCtx); err != nil {
 				s.Error("Failed to clean up after detecting error condition: ", err)
 			}
 		}
@@ -63,49 +68,50 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrom
 	if testParam.BrowserType == browser.TypeAsh {
 		if testParam.Tablet {
 			var err error
-			if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
-				return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to init chrome")
+			if connection.Cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
+				return nil, errors.Wrap(err, "failed to init chrome")
 			}
-			cleanup = cr.Close
+			connection.Cleanup = connection.Cr.Close
 		} else {
-			cr = s.FixtValue().(*chrome.Chrome)
+			connection.Cr = s.FixtValue().(*chrome.Chrome)
 		}
-		cs = cr
+		connection.Cs = connection.Cr
 
 		var err error
-		bTconn, err = cr.TestAPIConn(ctx)
+		connection.BTconn, err = connection.Cr.TestAPIConn(ctx)
 		if err != nil {
-			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get TestAPIConn")
+			return nil, errors.Wrap(err, "failed to get TestAPIConn")
 		}
 	} else {
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.BrowserType)
+		connection.Cr, l, connection.Cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
 		if err != nil {
-			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to setup lacros")
+			return nil, errors.Wrap(err, "failed to setup lacros")
 		}
-		cleanup = func(ctx context.Context) error {
+		connection.Cleanup = func(ctx context.Context) error {
 			lacros.CloseLacros(ctx, l)
 			return nil
 		}
 
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
+		if connection.BTconn, err = l.TestAPIConn(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
+	var err error
+	connection.Tconn, err = connection.Cr.TestAPIConn(ctx)
 	if err != nil {
-		return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to conect to test api")
+		return nil, errors.Wrap(err, "failed to connect to test api")
 	}
 
 	if testParam.BrowserType == browser.TypeLacros {
-		closeAboutBlank = func(ctx context.Context) error {
-			return l.CloseAboutBlank(ctx, tconn, 0)
+		connection.CloseAboutBlank = func(ctx context.Context) error {
+			return l.CloseAboutBlank(ctx, connection.Tconn, 0)
 		}
 	}
 
 	ok = true
-	return cr, cs, tconn, cleanup, closeAboutBlank, bTconn, nil
+	return connection, nil
 }
 
 // Drag does the specified drag based on the documentation of DragPoints.

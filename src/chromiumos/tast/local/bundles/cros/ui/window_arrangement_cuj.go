@@ -110,25 +110,25 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	testParam := s.Param().(windowarrangementcuj.TestParam)
 	tabletMode := testParam.Tablet
 
-	cr, cs, tconn, chromeCleanUp, closeAboutBlank, bTconn, err := windowarrangementcuj.SetupChrome(ctx, closeCtx, s)
+	connection, err := windowarrangementcuj.SetupChrome(ctx, closeCtx, s)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
-	defer chromeCleanUp(closeCtx)
+	defer connection.Cleanup(closeCtx)
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, connection.Tconn, tabletMode)
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
 	}
 	defer cleanup(closeCtx)
 
-	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
+	tabChecker, err := cuj.NewTabCrashChecker(ctx, connection.Tconn)
 	if err != nil {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
 	if _, ok := s.Var("record"); ok {
-		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+		screenRecorder, err := uiauto.NewScreenRecorder(ctx, connection.Tconn)
 		if err != nil {
 			s.Fatal("Failed to create ScreenRecorder: ", err)
 		}
@@ -145,7 +145,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			}
 			screenRecorder.Release(ctx)
 		}()
-		screenRecorder.Start(ctx, tconn)
+		screenRecorder.Start(ctx, connection.Tconn)
 	}
 
 	// Set up the cuj.Recorder: In clamshell mode, this test will measure the combinations of
@@ -170,7 +170,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.WithOverview"),
 			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn),
+				"percent", perf.SmallerIsBetter, []int64{50, 80}, connection.BTconn),
 		}
 	} else {
 		configs = []cuj.MetricConfig{
@@ -180,11 +180,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
 			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn),
+				"percent", perf.SmallerIsBetter, []int64{50, 80}, connection.BTconn),
 		}
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cuj.NewRecorder(ctx, connection.Cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
@@ -198,12 +198,12 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(closeCtx)
 
-	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, connection.Tconn)
 
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
-	connPiP, err := cs.NewConn(ctx, srv.URL+"/pip.html")
+	connPiP, err := connection.Cs.NewConn(ctx, srv.URL+"/pip.html")
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
@@ -212,7 +212,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
 
-	connNoPiP, err := cs.NewConn(ctx, srv.URL+"/pip.html")
+	connNoPiP, err := connection.Cs.NewConn(ctx, srv.URL+"/pip.html")
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
@@ -221,7 +221,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(connection.Tconn)
 
 	// Only show pip window for ash-chrome.
 	// TODO(crbug/1232492): Remove this after fix.
@@ -240,16 +240,16 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	// Lacros specific setup.
 	if testParam.BrowserType == browser.TypeLacros {
 		// Close about:blank created at startup after creating other tabs.
-		if err := closeAboutBlank(ctx); err != nil {
+		if err := connection.CloseAboutBlank(ctx); err != nil {
 			s.Fatal("Failed to close about:blank: ", err)
 		}
 	}
 
 	var pc pointer.Context
 	if !tabletMode {
-		pc = pointer.NewMouse(tconn)
+		pc = pointer.NewMouse(connection.Tconn)
 	} else {
-		pc, err = pointer.NewTouch(ctx, tconn)
+		pc, err = pointer.NewTouch(ctx, connection.Tconn)
 		if err != nil {
 			s.Fatal("Failed to create a touch controller: ", err)
 		}
@@ -259,11 +259,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	var f func(ctx context.Context) error
 	if !tabletMode {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunClamShell(ctx, tconn, ui, pc)
+			return windowarrangementcuj.RunClamShell(ctx, connection.Tconn, ui, pc)
 		}
 	} else {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunTablet(ctx, tconn, ui, pc)
+			return windowarrangementcuj.RunTablet(ctx, connection.Tconn, ui, pc)
 		}
 	}
 
