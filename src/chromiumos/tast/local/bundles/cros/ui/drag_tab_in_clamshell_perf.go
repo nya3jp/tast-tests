@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -27,14 +29,21 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragTabInClamshellPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the presentation time of dragging a tab in clamshell mode",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:    "lacros",
+			Fixture: "lacrosPrimary",
+			Val:     browser.TypeLacros,
+		}},
 	})
 }
 
@@ -44,12 +53,15 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
-
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+	// Set up a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	defer closeBrowser(ctx)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
@@ -58,10 +70,12 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	defer cleanup(ctx)
 
 	for i := 0; i < 2; i++ {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL)
+		conn, err := br.NewConn(ctx, ui.PerftestURL)
 		if err != nil {
 			s.Fatalf("Failed to open %d-th tab: %v", i, err)
 		}
+		// TODO: Confirm if an extra blank window opened by SetUp is acceptable.
+		// TODO: Why are the connections being closed before actual test starts? It will terminate lacros-chrome process.
 		if err := conn.Close(); err != nil {
 			s.Fatalf("Failed to close the connection to %d-th tab: %v", i, err)
 		}
@@ -107,7 +121,7 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 	}
 	start := tabRect.CenterPoint()
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, br, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		return uiauto.Combine("drag and move a tab",
 			mouse.Drag(tconn, start, end, time.Second),
 			ac.Retry(10, checkWindowsNum(ctx, tconn, 2)),
