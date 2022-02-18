@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "916fd62d_366ba409",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-02-18T11:55:12Z",
+      "side": 1,
+      "message": "Yeah I shall make it another CL.",
+      "parentUuid": "a75cf27d_ad75e27e",
+      "revId": "5b02ddc9750b391e79a2e98dd7f6fb678d306304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b85da0d_4ab64789",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fee1cbd_fa3e447d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-02-18T11:55:12Z",
+      "side": 1,
+      "message": "Agree. I should remove the sleep.",
+      "parentUuid": "8b85da0d_4ab64789",
+      "revId": "5b02ddc9750b391e79a2e98dd7f6fb678d306304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e1d1d1c_42df4bfa",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-02-18T07:56:13Z",
       "side": 1,
       "message": "Not sure whether it will affect other tasts which calls this function.",
+      "range": {
+        "startLine": 424,
+        "startChar": 11,
+        "endLine": 424,
+        "endChar": 24
+      },
+      "revId": "5b02ddc9750b391e79a2e98dd7f6fb678d306304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "638a315b_77c46a56",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-02-18T11:55:12Z",
+      "side": 1,
+      "message": "This will affect tests that use feedback loops. I should file this as another bug and CL. Thanks!",
+      "parentUuid": "0e1d1d1c_42df4bfa",
       "range": {
         "startLine": 424,
         "startChar": 11,
