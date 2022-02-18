@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a11655a_ce565e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-18T22:22:16Z",
+      "side": 1,
+      "message": "I was mainly concerned with when CreateAppSearchFinder gets evaluated if I just put this in combine (I wanted to make sure it happens after calling launcher.Open) - I\u0027ll try adding it directly in Combine chain",
+      "parentUuid": "9ef77553_3ac9b530",
+      "range": {
+        "startLine": 88,
+        "startChar": 10,
+        "endLine": 88,
+        "endChar": 85
+      },
+      "revId": "2958e33ca90208be6f45bbd3b26771197b697024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb005c03_646bc48e",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 2
