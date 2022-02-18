@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b85da0d_4ab64789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-02-18T07:51:43Z",
+      "side": 1,
+      "message": "Why do you need to sleep after getting the audioDeviceName? The audio node has been switched, right?",
+      "revId": "5b02ddc9750b391e79a2e98dd7f6fb678d306304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
