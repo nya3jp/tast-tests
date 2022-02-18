@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a90543_9a940e28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-02-18T03:40:41Z",
+      "side": 1,
+      "message": "Can we move all non-DFS tests to non-DFS channels?",
+      "revId": "2e0dd7574c65e252fffabe6fb8a6d1820b92420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9850d4a7_b08b08ae",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-02-18T03:40:41Z",
+      "side": 1,
+      "message": "Interesting, this option was never used before. Thanks for catching this!",
+      "revId": "2e0dd7574c65e252fffabe6fb8a6d1820b92420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
