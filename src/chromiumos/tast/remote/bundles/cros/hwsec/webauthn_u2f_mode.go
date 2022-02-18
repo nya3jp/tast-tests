@@ -34,7 +34,7 @@ func init() {
 			"tast.cros.hwsec.WebauthnService",
 			"tast.cros.hwsec.AttestationDBusService",
 		},
-		Vars: []string{"servo"},
+		VarDeps: []string{"servo"},
 	})
 }
 
