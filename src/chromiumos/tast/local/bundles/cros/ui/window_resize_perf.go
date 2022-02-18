@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
@@ -27,14 +28,21 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowResizePerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures animation smoothness of resizing a window",
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:    "lacros",
+			Fixture: "lacrosPrimary",
+			Val:     browser.TypeLacros,
+		}},
 	})
 }
 
@@ -44,8 +52,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
-
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -72,13 +79,23 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
 	}
 
-	runner := perfutil.NewRunner(cr.Browser())
-	for _, numWindows := range []int{1, 2} {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
+	// Set up a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	defer closeBrowser(ctx)
+
+	runner := perfutil.NewRunner(br)
+	for i, numWindows := range []int{1, 2} {
+		conn, err := br.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open a new connection: ", err)
 		}
 		defer conn.Close()
+
+		// Close the extra blank window opened by browserfixt for lacors
+		if i == 0 && bt == browser.TypeLacros {
+			// TODO:
+		}
 
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
