@@ -86,6 +86,10 @@ func OptinManaged(ctx context.Context, s *testing.State) {
 	if err := optin.WaitForPlayStoreShown(ctx, conn, timeoutWaitForPlayStore); err != nil {
 		s.Fatal("Failed to wait for Play Store to show up: ", err)
 	}
+
+	if err := optin.EnsureNoPlayStoreError(ctx, cr); err != nil {
+		s.Fatal("Optin failed with error: ", err)
+	}
 }
 
 func setupFakePolicyServer(ctx context.Context, outdir string) (*fakedms.FakeDMS, error) {

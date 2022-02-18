@@ -117,6 +117,11 @@ func waitForOptin(ctx context.Context, conn *chrome.Conn) error {
 		return errors.Wrap(err, "failed to wait for optin completion")
 	}
 
+	return ensureNoError(ctx, conn)
+}
+
+// ensureNoError ensures that the Play Store window doesn't display an error.
+func ensureNoError(ctx context.Context, conn *chrome.Conn) error {
 	var errMsg string
 	if err := conn.Eval(ctx, fmt.Sprintf("!appWindow ? '' : %s  ?? 'Unknown error'", errorMessage), &errMsg); err != nil {
 		return errors.Wrap(err, "failed to evaluate optin result")
@@ -129,13 +134,33 @@ func waitForOptin(ctx context.Context, conn *chrome.Conn) error {
 	return nil
 }
 
-// FindOptInExtensionPageAndAcceptTerms finds the opt-in extension page, optins if verified,
-// and optionally waits for completion.
-func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome, maxAttempts int, wait bool) error {
+// EnsureNoPlayStoreError ensures that the Play Store window doesn't display an error.
+func EnsureNoPlayStoreError(ctx context.Context, cr *chrome.Chrome) error {
+	conn, err := newConnForPlayStore(ctx, cr)
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+	return ensureNoError(ctx, conn)
+}
+
+// newConnForPlayStore opens a connection with Play Store extension page.
+func newConnForPlayStore(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
-		return errors.Wrap(err, "failed to find optin extension page")
+		return nil, errors.Wrap(err, "failed to find Play Store page")
+	}
+
+	return conn, nil
+}
+
+// FindOptInExtensionPageAndAcceptTerms finds the opt-in extension page, optins if verified,
+// and optionally waits for completion.
+func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome, maxAttempts int, wait bool) error {
+	conn, err := newConnForPlayStore(ctx, cr)
+	if err != nil {
+		return err
 	}
 	defer conn.Close()
 
