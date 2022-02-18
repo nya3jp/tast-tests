@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87eb8b11_1fb3dfcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2022-02-18T00:41:52Z",
+      "side": 1,
+      "message": "why is this left commented out instead of deleted? Maybe leave a TODO / delete fully?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "cd5789e2631be09593d4d83e33f71e12ecf6fe41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8f9dce_b82377c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2022-02-18T00:41:52Z",
+      "side": 1,
+      "message": "why is this left commented out instead of deleted? Maybe leave a TODO w explaination / delete fully?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "cd5789e2631be09593d4d83e33f71e12ecf6fe41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c07783_75927f25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2022-02-18T00:41:52Z",
+      "side": 1,
+      "message": "link to actual bug",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "cd5789e2631be09593d4d83e33f71e12ecf6fe41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
