@@ -159,10 +159,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the PIP window location (before resize): ", err)
 	}
 
-	workAreaTopLeft := info.WorkArea.TopLeft()
 	var resizeEnd coords.Point
 	if params.bigPIP {
-		resizeEnd = workAreaTopLeft
+		resizeEnd = info.WorkArea.TopLeft()
 	} else {
 		resizeEnd = info.WorkArea.BottomRight().Sub(coords.NewPoint(1, 1))
 	}
@@ -199,11 +198,6 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		if pipWindowBounds.Width != 260 || pipWindowBounds.Height != 195 {
 			s.Fatalf("PIP window is %v. It should be (260 x 195)", pipWindowBounds.Size())
 		}
-	}
-
-	// Ensure that the PIP window will show no controls or resize shadows.
-	if err := mouse.Move(tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second)(ctx); err != nil {
-		s.Fatal("Failed to move mouse: ", err)
 	}
 
 	extraConn, err := cs.NewConn(ctx, "chrome://settings")
