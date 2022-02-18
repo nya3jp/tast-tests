@@ -288,6 +288,12 @@ func (c *cryptohomeBinary) authenticateAuthSession(ctx context.Context, password
 	return c.call(ctx, args...)
 }
 
+// authenticateAuthFactor calls "cryptohome --action=authenticate_auth_factor".
+func (c *cryptohomeBinary) authenticateAuthFactor(ctx context.Context, authSessionID, label, password string) ([]byte, error) {
+	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--password=" + password}
+	return c.call(ctx, args...)
+}
+
 // updateCredentialWithAuthSession calls "cryptohome --action=update_credential".
 // password is ignored if publicMount is set to true.
 func (c *cryptohomeBinary) updateCredentialWithAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) ([]byte, error) {
@@ -309,6 +315,12 @@ func (c *cryptohomeBinary) addCredentialsWithAuthSession(ctx context.Context, us
 	} else {
 		args = append(args, "--password="+password, "--key_label=fake_label")
 	}
+	return c.call(ctx, args...)
+}
+
+// addAuthFactor calls "cryptohome --action=add_auth_factor".
+func (c *cryptohomeBinary) addAuthFactor(ctx context.Context, authSessionID, label, password string) ([]byte, error) {
+	args := []string{"--action=add_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--password=" + password}
 	return c.call(ctx, args...)
 }
 

@@ -851,10 +851,22 @@ func (u *CryptohomeClient) UpdateCredentialWithAuthSession(ctx context.Context, 
 	return err
 }
 
+// AuthenticateAuthFactor authenticates an AuthSession with a given authSessionID via an auth factor.
+func (u *CryptohomeClient) AuthenticateAuthFactor(ctx context.Context, authSessionID, label, password string) error {
+	_, err := u.binary.authenticateAuthFactor(ctx, authSessionID, label, password)
+	return err
+}
+
 // AddCredentialsWithAuthSession creates the credentials for the user with given password.
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
 	_, err := u.binary.addCredentialsWithAuthSession(ctx, user, password, authSessionID, publicMount)
+	return err
+}
+
+// AddAuthFactor creates an auth factor for the user with given password.
+func (u *CryptohomeClient) AddAuthFactor(ctx context.Context, authSessionID, label, password string) error {
+	_, err := u.binary.addAuthFactor(ctx, authSessionID, label, password)
 	return err
 }
 
