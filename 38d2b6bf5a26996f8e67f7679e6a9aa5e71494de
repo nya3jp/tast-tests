@@ -46,6 +46,30 @@
       },
       "revId": "38d2b6bf5a26996f8e67f7679e6a9aa5e71494de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c3d4ca_963d3fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-18T14:45:13Z",
+      "side": 1,
+      "message": "yeah, the default GAIA account pool is @gmail.com account, but you can create another pool with @managedchrome.com for your test fixture.\n\nThat doesn\u0027t need to happen in the CL, just a reminder that your tests may fail with this reason.",
+      "parentUuid": "9104a5dc_d1f3d71f",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 65
+      },
+      "revId": "38d2b6bf5a26996f8e67f7679e6a9aa5e71494de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
