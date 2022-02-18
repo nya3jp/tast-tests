@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acaf589d_0c48424c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T10:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed22c68e_f7113322",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fc997cc_77976ad6",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a892bd04_5070c0f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T10:30:01Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "4fc997cc_77976ad6",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 71
+      },
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea12475_0812396d",
@@ -94,6 +142,24 @@
       "writtenOn": "2022-02-16T23:50:18Z",
       "side": 1,
       "message": "nit: remove empty line.",
+      "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a8f818_fc3a3b02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T10:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea12475_0812396d",
       "revId": "825d6a1e27a314355c26f9def253f74336e18acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
