@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522ec4d3_8940e9ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-18T01:07:09Z",
+      "side": 1,
+      "message": "Please modify the wording, this CL doesn\u0027t add a new test.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "2dfbb7b76d3c50605cd14409bba063fca6be2b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
