@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80f9c04_f4cc1487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T09:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e946307_2ae00723",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "eaab811807dea56a62c725481e7ac02893cd2490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45b36085_561b22f0",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-02-17T12:09:31Z",
       "side": 1,
       "message": "Can you add a comment on why this step is optional?",
+      "revId": "eaab811807dea56a62c725481e7ac02893cd2490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3175af_5a7c0386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-18T09:40:51Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "45b36085_561b22f0",
       "revId": "eaab811807dea56a62c725481e7ac02893cd2490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
