@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a535ae36_81a15068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-18T08:54:52Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s the issue. But I\u0027m  not sure how to overcome it. We might either log a successful message or put a big warning into the chromium code DO NOT CHANGE THE LOG MESSAGE!!!!11111\n\nWDYT?",
+      "parentUuid": "a5fe76e9_0b57db7b",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ba0d535_7ef77894",
         "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-16T15:35:28Z",
       "side": 1,
       "message": "Where do we check which prefix to use prod or staging? Why can\u0027t we move sandboxGAIASignInURLPrefix somewhere there too.",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93db92e2_76b281fb",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-18T08:54:52Z",
+      "side": 1,
+      "message": "no idea actually :) probably just a leftover of something.",
+      "parentUuid": "7ba0d535_7ef77894",
       "range": {
         "startLine": 34,
         "startChar": 6,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c070fbb_56f5c372",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-18T08:54:52Z",
+      "side": 1,
+      "message": "the flag is to connect the gaia sandbox page. Not sure how it would work for not Gaia. Or what do you mean?",
+      "parentUuid": "930f7736_8955ff3f",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9106eb9f_8f51a90d",
         "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
         "patchSetId": 1
@@ -117,6 +189,30 @@
       "writtenOn": "2022-02-16T15:35:28Z",
       "side": 1,
       "message": "reuse sandboxGAIASignInURLPrefix?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "424dc295_98723b91",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-18T08:54:52Z",
+      "side": 1,
+      "message": "what do you mean?",
+      "parentUuid": "9106eb9f_8f51a90d",
       "range": {
         "startLine": 107,
         "startChar": 0,
