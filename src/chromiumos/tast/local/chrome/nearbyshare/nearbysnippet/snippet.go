@@ -25,7 +25,7 @@ import (
 // AndroidNearbyDevice represents a connected Android device equipped with Nearby Share controls.
 // Nearby Share control is achieved by making RPCs to the Nearby Snippet running on the Android device.
 type AndroidNearbyDevice struct {
-	device           *adb.Device
+	Device           *adb.Device
 	snippetClient    *mobly.SnippetClient
 	transferCallback string
 	uiDevice         *ui.Device
@@ -35,10 +35,10 @@ type AndroidNearbyDevice struct {
 // and initializing a Mobly snippet client to communicate with it.
 // Callers should defer Cleanup to ensure the resources used by the AndroidNearbyDevice are freed.
 func New(ctx context.Context, d *adb.Device, apkZipPath string, overrideGMS bool) (a *AndroidNearbyDevice, err error) {
-	a = &AndroidNearbyDevice{device: d}
+	a = &AndroidNearbyDevice{Device: d}
 	// Override the necessary GMS Core flags.
 	if overrideGMS {
-		if err := overrideGMSCoreFlags(ctx, a.device); err != nil {
+		if err := overrideGMSCoreFlags(ctx, a.Device); err != nil {
 			return a, err
 		}
 	}
@@ -47,14 +47,14 @@ func New(ctx context.Context, d *adb.Device, apkZipPath string, overrideGMS bool
 	// This is required for the Android sender flow, since the Nearby Snippet sends files from external storage.
 	const needsStoragePermissionsVersion = 30
 	var permissions []string
-	if sdkVersion, err := a.device.SDKVersion(ctx); err != nil {
+	if sdkVersion, err := a.Device.SDKVersion(ctx); err != nil {
 		return a, errors.Wrap(err, "failed to get android sdk version")
 	} else if sdkVersion >= needsStoragePermissionsVersion {
 		permissions = append(permissions, "MANAGE_EXTERNAL_STORAGE")
 	}
 
 	// Launch the snippet and create a client.
-	snippetClient, err := mobly.NewSnippetClient(ctx, a.device, moblyPackage, apkZipPath, ApkName, permissions...)
+	snippetClient, err := mobly.NewSnippetClient(ctx, a.Device, moblyPackage, apkZipPath, ApkName, permissions...)
 	if err != nil {
 		return a, errors.Wrap(err, "failed to start the snippet client")
 	}
@@ -109,7 +109,7 @@ func overrideGMSCoreFlags(ctx context.Context, device *adb.Device) error {
 // DumpLogs saves the Android device's logcat output to a file.
 func (a *AndroidNearbyDevice) DumpLogs(ctx context.Context, outDir, filename string) error {
 	filePath := filepath.Join(outDir, filename)
-	if err := a.device.DumpLogcat(ctx, filePath); err != nil {
+	if err := a.Device.DumpLogcat(ctx, filePath); err != nil {
 		testing.ContextLog(ctx, "Failed to dump Android logs: ", err)
 		return errors.Wrap(err, "failed to dump Android logs")
 	}
@@ -118,7 +118,7 @@ func (a *AndroidNearbyDevice) DumpLogs(ctx context.Context, outDir, filename str
 
 // ClearLogcat clears logcat so each test run can have only relevant logs.
 func (a *AndroidNearbyDevice) ClearLogcat(ctx context.Context) error {
-	if err := a.device.ClearLogcat(ctx); err != nil {
+	if err := a.Device.ClearLogcat(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear previous logcat logs")
 	}
 	return nil
@@ -126,13 +126,13 @@ func (a *AndroidNearbyDevice) ClearLogcat(ctx context.Context) error {
 
 // SHA256Sum computes the sha256sum of the specified file on the Android device.
 func (a *AndroidNearbyDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
-	return a.device.SHA256Sum(ctx, filename)
+	return a.Device.SHA256Sum(ctx, filename)
 }
 
 // StageFile pushes the specified file to the Android device to be used in sending.
 func (a *AndroidNearbyDevice) StageFile(ctx context.Context, file string) error {
 	androidDst := filepath.Join(android.DownloadDir, SendDir, filepath.Base(file))
-	if err := a.device.PushFile(ctx, file, androidDst); err != nil {
+	if err := a.Device.PushFile(ctx, file, androidDst); err != nil {
 		return errors.Wrapf(err, "failed to push %v to %v", file, androidDst)
 	}
 	return nil
@@ -140,7 +140,7 @@ func (a *AndroidNearbyDevice) StageFile(ctx context.Context, file string) error 
 
 // ClearDownloads clears the device's Downloads folder, where outgoing shares are staged and incoming shares are received.
 func (a *AndroidNearbyDevice) ClearDownloads(ctx context.Context) error {
-	if err := a.device.RemoveContents(ctx, android.DownloadDir); err != nil {
+	if err := a.Device.RemoveContents(ctx, android.DownloadDir); err != nil {
 		return errors.Wrap(err, "failed to clear Android downloads directory")
 	}
 	return nil
@@ -319,7 +319,7 @@ func (a *AndroidNearbyDevice) Sync(ctx context.Context) error {
 
 // InitUI initializes a UI automator connection to the Android device. Callers should defer CloseUI to free the associated resources.
 func (a *AndroidNearbyDevice) InitUI(ctx context.Context) error {
-	d, err := ui.NewDevice(ctx, a.device)
+	d, err := ui.NewDevice(ctx, a.Device)
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI automator")
 	}
@@ -367,7 +367,7 @@ type AndroidAttributes struct {
 // GetAndroidAttributes returns the AndroidAttributes for the device.
 func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*AndroidAttributes, error) {
 	// Get the base set of Android attributes used in all crossdevice tests.
-	basicAttributes, err := crossdevice.GetAndroidAttributes(ctx, a.device)
+	basicAttributes, err := crossdevice.GetAndroidAttributes(ctx, a.Device)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get base set of crossdevice Android attributes for reporting")
 	}
