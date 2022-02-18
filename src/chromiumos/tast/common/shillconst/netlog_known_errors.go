@@ -45,15 +45,16 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0}, // Test lab only
 		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},                                                         // b/211000413
 		// {"shill", "netlink_manager.cc", ".*Unexpected auxiliary message type: 0.*", 0},                                        // b/211004192
-		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.CreateInterface.*", 0},         // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.Interface.Scan.*", 0},          // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PatchPanel.GetTrafficCounters.*", 0},    // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PowerManager.ChangeWifiRegDomain.*", 0}, // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.dhcpcd.Release.*", 0},                   // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.freedesktop.DBus.Properties.GetAll.*", 0},        // b/215373366
-		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                        // b/213611282
-		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                      // b/213612672
-		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                     // b/213612672
+		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.CreateInterface.*", 0},           // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.Interface.Scan.*", 0},            // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PatchPanel.GetTrafficCounters.*", 0},      // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PowerManager.ChangeWifiRegDomain.*", 0},   // b/220197073, Test lab only
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.dhcpcd.Release.*", 0},                     // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.freedesktop.DBus.Properties.GetAll.*", 0},          // b/215373366
+		{"shill", "power_manager_proxy.cc", ".*Failed to change reg domain: org.freedesktop.DBus.Error.NoReply.*", 0}, // b/220197073, Test lab only
+		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                          // b/213611282
+		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                        // b/213612672
+		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                       // b/213612672
 		// Need to try to get more info about these:
 		// {"shill", "unknown", ".*", 0},
 		{"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
