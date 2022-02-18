@@ -22,6 +22,30 @@
       },
       "revId": "62ce958eee58fa21a34b72f2ea5824ff3447e887",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c271c516_d38191fa",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-18T13:38:28Z",
+      "side": 1,
+      "message": "As per offline discussion, setters and getters removed for now and using constant values until if someone needs additional flexibility.",
+      "parentUuid": "cdc46994_9d145716",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "62ce958eee58fa21a34b72f2ea5824ff3447e887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
