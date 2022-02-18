@@ -175,23 +175,123 @@ func (u *CryptohomeClient) IsMounted(ctx context.Context) (bool, error) {
 	return result, nil
 }
 
+// EnsureChapsInitialized waits for the chapsd process to be running.
+// TODO: This is a hack to ensure that chapsd is restarted when the user is logged out.
+func (u *CryptohomeClient) EnsureChapsInitialized(ctx context.Context) error {
+	_, _ = u.binary.runner.Run(ctx, "stop", "chapsd")
+	_, err := u.binary.runner.Run(ctx, "start", "chapsd")
+	if err != nil {
+		return errors.Wrap(err, "failed to stop chapsd")
+	}
+
+	return nil
+}
+
 // Unmount unmounts the vault for username.
 func (u *CryptohomeClient) Unmount(ctx context.Context, username string) (bool, error) {
+	// In test environments, the time between remove and mount is sometimes short
+	// enough that chapsd is still writing to the user cryptohome at removal.
+	// Wait for chaps lock file to disappear.
+	err := testing.Poll(ctx, func(context.Context) error {
+		exists, err := u.binary.chapsLockExists(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if exists {
+			return errors.New("lock file still exists")
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: time.Second,
+	})
+	if err != nil {
+		return false, errors.Wrap(err, "expected chaps to finish all load events")
+	}
+
+	err = u.binary.killSessionHolders(ctx, "--file_holders")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to kill processes holding files open")
+		return false, errors.Wrap(err, "failed to unmount")
+	}
+
 	out, err := u.binary.unmount(ctx, username)
 	if err != nil {
 		testing.ContextLogf(ctx, "Unmount command failed for %q with: %q", username, string(out))
 		return false, errors.Wrap(err, "failed to unmount")
 	}
+
+	err = u.binary.killSessionHolders(ctx, "--mount_holders")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to kill processes holding mounts open")
+		return false, errors.Wrap(err, "failed to unmount")
+	}
+
+	// HACK: currently, chapsd keeps writing to disk beyond end of session and
+	// gets killed for its troubles. ensure that chapsd is up and running post
+	// unmount.
+	err = u.EnsureChapsInitialized(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to ensure chapsd is still running")
+		return false, errors.Wrap(err, "failed to unmount")
+	}
+
 	return true, nil
 }
 
 // UnmountAll unmounts all vault.
 func (u *CryptohomeClient) UnmountAll(ctx context.Context) error {
+	// In test environments, the time between remove and mount is sometimes short
+	// enough that chapsd is still writing to the user cryptohome at removal.
+	// Wait for chaps lock file to disappear.
+	err := testing.Poll(ctx, func(context.Context) error {
+		exists, err := u.binary.chapsLockExists(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if exists {
+			return errors.New("lock file still exists")
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: time.Second,
+	})
+	if err != nil {
+		return errors.Wrap(err, "expected chaps to finish all load events")
+	}
+
+	err = u.binary.killSessionHolders(ctx, "--file_holders")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to kill processes")
+		return errors.Wrap(err, "failed to unmount")
+	}
+
 	out, err := u.binary.unmountAll(ctx)
 	if err != nil {
 		testing.ContextLogf(ctx, "Unmount command failed with: %q", string(out))
 		return errors.Wrap(err, "failed to unmount")
 	}
+
+	err = u.binary.killSessionHolders(ctx, "--mount_holders")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to kill processes")
+		return errors.Wrap(err, "failed to unmount")
+	}
+
+	// HACK: currently, chapsd keeps writing to disk beyond end of session and
+	// gets killed for its troubles. ensure that chapsd is up and running post
+	// unmount.
+	err = u.EnsureChapsInitialized(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to ensure chapsd is still running")
+		return errors.Wrap(err, "failed to unmount")
+	}
+
 	return nil
 }
 
@@ -440,29 +540,7 @@ func (u *CryptohomeClient) ChangeVaultPassword(ctx context.Context, username, pa
 
 // RemoveVault remove the vault for username.
 func (u *CryptohomeClient) RemoveVault(ctx context.Context, username string) (bool, error) {
-	// In test environments, the time between remove and mount is sometimes short
-	// enough that chapsd is still writing to the user cryptohome at removal.
-	// Wait for chaps lock file to disappear.
-	err := testing.Poll(ctx, func(context.Context) error {
-		exists, err := u.binary.chapsLockExists(ctx)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-
-		if exists {
-			return errors.New("lock file still exists")
-		}
-
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  30 * time.Second,
-		Interval: time.Second,
-	})
-	if err != nil {
-		return false, errors.Wrap(err, "expected chaps to finish all load events")
-	}
-
-	_, err = u.binary.remove(ctx, username)
+	_, err := u.binary.remove(ctx, username)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to remove vault")
 	}
