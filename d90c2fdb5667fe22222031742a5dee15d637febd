@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "570370f0_4f50965c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-18T08:19:20Z",
+      "side": 1,
+      "message": "Optional:\n\nI would suggest to do something to identify the model info inside the test, though I do not know how to do so. TAST has root permission, as long as it is saved in a config file, or retrievable from a commandline, then it is doable.\n\nReason: Tast is designed to develop a test running across multiple boards. Once using a single model in Testing.Params, you can potentially add 10+ tests (palmrejection.PalmTouch.kohaku, palmrejection.PalmTouch.coachz, ...), and each test only runs on one board. It does not align with the test structure.\n\nAnyway, it is just an advice and I am happy if you want to land this cl first.",
+      "parentUuid": "57fc4798_7f7cfaf6",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "d90c2fdb5667fe22222031742a5dee15d637febd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4a424b7_8dfaeeba",
