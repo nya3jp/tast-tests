@@ -703,6 +703,23 @@ func TestPlatformDecodingParams(t *testing.T) {
 		})
 	}
 
+	// Generates V4L2 H264 tests.
+	for _, group := range []string{"baseline", "main", "first_mb_in_slice"} {
+		files := h264Files[group]
+
+		param := paramData{
+			Name:         fmt.Sprintf("v4l2_h264_%s", group),
+			Decoder:      "v4l2_stateful_decoder",
+			CmdBuilder:   "v4l2StatefulDecodeArgs",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeH264},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_h264"},
+		}
+		params = append(params, param)
+	}
+
 	// Generates V4L2 VP9 tests.
 	for i, profile := range []string{"profile_0"} {
 		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5_0", "level5_1"} {
