@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef77553_3ac9b530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-18T22:15:50Z",
+      "side": 1,
+      "message": "I think it should work if you just put this in the Combine chain (instead of wrapping in another func)",
+      "range": {
+        "startLine": 88,
+        "startChar": 10,
+        "endLine": 88,
+        "endChar": 85
+      },
+      "revId": "2958e33ca90208be6f45bbd3b26771197b697024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb005c03_646bc48e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-18T22:15:50Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 96
+      },
+      "revId": "2958e33ca90208be6f45bbd3b26771197b697024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
