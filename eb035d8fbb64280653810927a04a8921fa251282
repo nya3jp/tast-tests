@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7943da_61ecd2d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/exceptions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-18T05:14:35Z",
+      "side": 1,
+      "message": "Q: What\u0027s the right order to gracefully exit in line 45-46?\n\nOur guidelines said it\u0027s the other way around: https://screenshot.googleplex.com/9hL2KuicS9xvDh3 However, if conn.Close() is called before closeBrowser() for lacros-chrome, it will just close the last opened window and end up terminating lacros-chrome process. closeBrowser may not be able to gracefully release the session and logger for the process already killed? Did I miss anything?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "eb035d8fbb64280653810927a04a8921fa251282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
