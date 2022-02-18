@@ -15,11 +15,13 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
@@ -77,6 +79,11 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
@@ -105,6 +112,22 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for pip_video.html to achieve quiescence: ", err)
 	}
 
+	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check whether tablet mode is active: ", err)
+	}
+
+	var pc pointer.Context
+	if tabletMode {
+		pc, err = pointer.NewTouch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch controller: ", err)
+		}
+	} else {
+		pc = pointer.NewMouse(tconn)
+	}
+	defer pc.Close()
+
 	ac := uiauto.New(tconn)
 	pipButton := nodewith.Name("PIP").Role(role.Button)
 
@@ -118,11 +141,32 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	pipWindow := nodewith.Name("Picture in picture").ClassName(pipClassName).Onscreen().First()
 
 	if err := action.Combine(
-		"click PIP button and wait for PIP window",
-		ac.LeftClick(pipButton),
+		"click/tap PIP button and wait for PIP window",
+		pc.Click(pipButton),
 		ac.WithTimeout(10*time.Second).WaitUntilExists(pipWindow),
 	)(ctx); err != nil {
 		s.Fatal("Failed to show the PIP window: ", err)
+	}
+
+	pipWindowBounds, err := ac.Location(ctx, pipWindow)
+	if err != nil {
+		s.Fatal("Failed to get the PIP window location (before resize): ", err)
+	}
+
+	if err := pc.Drag(pipWindowBounds.TopLeft(), pc.DragTo(info.WorkArea.TopLeft(), time.Second))(ctx); err != nil {
+		s.Fatal("Failed to resize the PIP window: ", err)
+	}
+
+	pipWindowBounds, err = ac.Location(ctx, pipWindow)
+	if err != nil {
+		s.Fatal("Failed to get the PIP window location (after resize): ", err)
+	}
+
+	// For code maintainability, just check a relatively permissive expectation for
+	// the maximum size of the PIP window: it should be either strictly wider than 2/5
+	// of the work area width, or strictly taller than 2/5 of the work area height.
+	if 5*pipWindowBounds.Width <= 2*info.WorkArea.Width && 5*pipWindowBounds.Height <= 2*info.WorkArea.Height {
+		s.Fatalf("Expected a bigger PIP window. Got a %v PIP window in a %v work area", pipWindowBounds.Size(), info.WorkArea.Size())
 	}
 
 	// Minimize the main browser window to ensure that its overlay
