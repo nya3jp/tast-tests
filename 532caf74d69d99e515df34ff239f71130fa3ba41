@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b84da77_8531265c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-18T10:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad199e74_9b673129",
+      "range": {
+        "startLine": 310,
+        "startChar": 80,
+        "endLine": 310,
+        "endChar": 94
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c15635b2_be0226b5",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-17T21:56:23Z",
       "side": 1,
       "message": "super-nit: just `ctx`",
+      "range": {
+        "startLine": 390,
+        "startChar": 33,
+        "endLine": 390,
+        "endChar": 39
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56206b22_63156602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-18T10:53:17Z",
+      "side": 1,
+      "message": "I wanted it to refer to the context that was created by the StartRecording.\nI.e. it seems that the original \"ctx\" is only used for tracing.\n\nThe test scenario and metrics fetching are using modified context, which is runCtx.\nSo StopRecording should get the modified one.\n\nI feel that we can save runCtx to the Recorder too so that developers do not need to think about which context to supply later.",
+      "parentUuid": "c15635b2_be0226b5",
       "range": {
         "startLine": 390,
         "startChar": 33,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25584fc9_6f3bbeeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-18T10:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9deaec71_48207216",
+      "range": {
+        "startLine": 395,
+        "startChar": 2,
+        "endLine": 395,
+        "endChar": 3
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77712290_2e4d6317",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-02-17T21:56:23Z",
       "side": 1,
       "message": "I would simplify these lines to:\n```\ncleanupCtx :\u003d ctx\nctx, err :\u003d r.StartRecording(ctx);\nif  err !\u003d nil {\n\teturn err\n}\ndefer r.StopRecording(cleanupCtx)\n```\n\n1, it assumes the error returned by StopRecording is non-fatal, and the error has been logged as suggested in the other comment. But if the error in StopRecording is considered fatal, then the deferred func is fine. \n\n2, the current use of context is problematic. cleanup tasks (StopRecording here) need a context with longer deadline. A formal use would be something like:\n```\ncleanupCtx :\u003d ctx // Reserve the original context for cleanup\nctx \u003d ...// Shorten the ctx for execution\n// use ctx for normal execution\n// use cleanupCtx in deferred cleanup functions.\n```\nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 454,
+        "startChar": 1,
+        "endLine": 467,
+        "endChar": 19
+      },
+      "revId": "532caf74d69d99e515df34ff239f71130fa3ba41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d984376a_a85317ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-18T10:53:17Z",
+      "side": 1,
+      "message": "I think error in StopRecording should be fatal, because otherwise CUJ test does not make any sense.\n\nLooking at the original CL, the cleanup task is only the one that stops tracing.\nMetrics fetching was done using the shorted context.\n\nThis is actually interesting, because this way tracing covers metrics fetching, which is probably not what we want. On the other hand, stopping tracing before fetching metrics would make these performance metrics longer, which is also not what we want.\n\nSo I decided to leave the original behavior here. The change in shutdown sequence is probably beyond the scope of this CL.\n\nI also put all the contexts used for cleanup in Recorder, so I hope that this problem does not exist anymore.",
+      "parentUuid": "77712290_2e4d6317",
       "range": {
         "startLine": 454,
         "startChar": 1,

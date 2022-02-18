@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a1287a_ecb46fe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-18T10:53:17Z",
+      "side": 1,
+      "message": "Thank you for explanation!",
+      "parentUuid": "9c3eb1b9_809fda6b",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 4
+      },
+      "revId": "b1bcce1da2dce77260c9853f0702bb5434698360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b6295fa_26dec33b",
