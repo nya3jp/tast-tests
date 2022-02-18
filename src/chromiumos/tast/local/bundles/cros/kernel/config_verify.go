@@ -213,6 +213,12 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 
 		// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
 		"MMAP_NOEXEC_TAINT": "0",
+
+		// Magic sysrq: we allow it on by default, but *only* for the CrOS addition sysrq-x
+		// (dump and crash / SYSRQ_ENABLE_CROS_XKEY=0x1000).
+		// The default should match the verified-mode choice we make in
+		// src/platform2/init/cros_sysrq_init.cc.
+		"MAGIC_SYSRQ_DEFAULT_ENABLE": "0x1000",
 	}
 	var same [][2]string
 	optional := []string{
