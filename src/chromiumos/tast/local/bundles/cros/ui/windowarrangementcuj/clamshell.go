@@ -23,6 +23,35 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// multiresize summons a multiresizer and drags it like Drag, but with all
+// drag points adjusted for the location of the multiresizer.
+func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, dragPoints DragPoints, duration time.Duration) error {
+	if err := action.Combine(
+		"hover mouse where windows meet",
+		mouse.Move(tconn, dragPoints[0].Sub(coords.NewPoint(10, 10)), 0),
+		mouse.Move(tconn, dragPoints[0], duration),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to summon multiresizer")
+	}
+
+	multiresizerBounds, err := ui.Location(ctx, nodewith.Role("window").ClassName("MultiWindowResizeController"))
+	if err != nil {
+		return errors.Wrap(err, "failed to get the multiresizer location")
+	}
+
+	offset := multiresizerBounds.CenterPoint().Sub(dragPoints[0])
+	var multiresizeDragPoints DragPoints
+	for i, p := range dragPoints {
+		multiresizeDragPoints[i] = p.Add(offset)
+	}
+
+	if err := Drag(ctx, tconn, pc, multiresizeDragPoints, duration); err != nil {
+		return errors.Wrap(err, "failed to drag multiresizer")
+	}
+
+	return nil
+}
+
 // RunClamShell runs window arrangement cuj for clamshell. We test performance
 // for resizing window, dragging window, maximizing window, minimizing window
 // and split view resizing.
@@ -179,26 +208,9 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	}
 
 	// Use multiresize on the two snapped windows.
-	if err := action.Combine(
-		"hover mouse over split view divider to show the multiresizer",
-		mouse.Move(tconn, splitViewDragPoints[0].Sub(coords.NewPoint(10, 10)), 0),
-		mouse.Move(tconn, splitViewDragPoints[0], duration),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to hover mouse over split view divider")
-	}
-	multiresizerBounds, err := ui.Location(ctx, nodewith.Role("window").ClassName("MultiWindowResizeController"))
-	if err != nil {
-		return errors.Wrap(err, "failed to get the multiresizer location")
-	}
-	offset := multiresizerBounds.CenterPoint().Sub(splitViewDragPoints[0])
-	var multiresizeDragPoints DragPoints
-	for i := range multiresizeDragPoints {
-		multiresizeDragPoints[i] = splitViewDragPoints[i].Add(offset)
-	}
-	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
 	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
-	if err := Drag(ctx, tconn, pc, multiresizeDragPoints, duration); err != nil {
+	if err := multiresize(ctx, tconn, ui, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
