@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -20,13 +21,20 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SnapPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the animation smoothess of snapping windows in clamshell mode",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:    "lacros",
+			Fixture: "lacrosPrimary",
+			Val:     browser.TypeLacros,
+		}},
 	})
 }
 
@@ -36,14 +44,18 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+	// Set up a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	defer closeBrowser(ctx)
 
-	conn, err := cr.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
+	conn, err := br.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open a new connection: ", err)
 	}
