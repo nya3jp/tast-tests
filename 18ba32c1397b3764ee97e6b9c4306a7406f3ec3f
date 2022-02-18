@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c84ec139_17c08a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-02-18T11:59:15Z",
+      "side": 1,
+      "message": "Is there a CL adding this config that need to be in CQ-Depend?",
+      "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2059ab9_1ebdbd75",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
         "patchSetId": 1
@@ -66,6 +83,23 @@
         "endLine": 50,
         "endChar": 34
       },
+      "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dede7d3_ab9f2b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-02-18T11:59:15Z",
+      "side": 1,
+      "message": "qq: How will we test device with multiple fw-updatable USB cameras?",
       "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
