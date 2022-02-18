@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a883d9c8_7c3e42f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T18:21:49Z",
+      "side": 1,
+      "message": "Closing and relaunching the app outside of the normal RunTestCases is not ideal. I understand it may be temporarily necessary but can we make that more obvious by moving this out into a separate function, filing a bug against it, and including a TODO on the bug so we are reminded to come back to it later?",
+      "revId": "ec9134a10f604e66558b4e71158d402fc0e0bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995856ac_25bf1516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-18T18:21:49Z",
+      "side": 1,
+      "message": "is there a reason to have 3 separate appPage.Exists(..) blocks? It seems all the code should be in one appPage.Exists(..) {..} block.",
+      "revId": "ec9134a10f604e66558b4e71158d402fc0e0bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
