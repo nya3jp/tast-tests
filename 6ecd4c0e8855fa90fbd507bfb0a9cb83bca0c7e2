@@ -16,6 +16,69 @@
       "message": "Not it behaves as expected. LGTM ",
       "revId": "6ecd4c0e8855fa90fbd507bfb0a9cb83bca0c7e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b94d79_f098f12e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-18T05:48:05Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "6ecd4c0e8855fa90fbd507bfb0a9cb83bca0c7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d01110_83ac5ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-18T05:48:05Z",
+      "side": 1,
+      "message": "Nit: put this comment after the comma (,), here and elsewhere.",
+      "range": {
+        "startLine": 83,
+        "startChar": 19,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "6ecd4c0e8855fa90fbd507bfb0a9cb83bca0c7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6159dd7_6d3faed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-18T05:48:05Z",
+      "side": 1,
+      "message": "Nit: same here. If this is an auto-formatting issue, then do true /*verifyEduSecondaryAddSuccess*/. Put the comment after the parameter.",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "6ecd4c0e8855fa90fbd507bfb0a9cb83bca0c7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

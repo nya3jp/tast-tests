@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa8017c_d7008870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-18T05:48:05Z",
+      "side": 1,
+      "message": "This is fine. Other Tast tests list android_p as a dependency (for example, [1]).\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go;l\u003d37?q\u003df:src%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Farc%2Funicorn_blocked_apps.go",
+      "parentUuid": "2db059df_6361baf6",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae8c54de_766f5ae2",
