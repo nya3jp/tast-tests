@@ -710,7 +710,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		param := paramData{
 			Name:         fmt.Sprintf("v4l2_h264_%s", group),
 			Decoder:      "v4l2_stateful_decoder",
-			CmdBuilder:   "v4l2DecodeArgs",
+			CmdBuilder:   "v4l2StatefulDecodeArgs",
 			Files:        files,
 			Timeout:      defaultTimeout,
 			SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeH264},
