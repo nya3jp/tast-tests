@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f8ff9f_302ae3cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-18T18:38:38Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20f7a7fb_bbf6cb68",
@@ -140,6 +157,30 @@
       "writtenOn": "2022-02-18T04:55:34Z",
       "side": 1,
       "message": "nit: Would particularly like to see an explanation of how this is different to the other TConn.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "3fd99bf1b6826b21c61149f68f6b2d3a27c8d5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "375a05ca_aa3707fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-18T18:38:38Z",
+      "side": 1,
+      "message": "We needed 2 to support lacros use case so that we get the browser metrics from the correct browser.\n\nTConn is always a TestConn to ash chrome. BTConn is the browser test conn. It connects to ash chrome when using ash chrome as the browser and to lacros when using lacros as the browser.",
+      "parentUuid": "d2e8b4be_e25b4cb7",
       "range": {
         "startLine": 38,
         "startChar": 1,
