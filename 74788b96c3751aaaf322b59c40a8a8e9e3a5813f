@@ -16,6 +16,92 @@
       "message": "lamzin@ PTAL 😊",
       "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318fdb7d_88f25e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-18T12:37:36Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks!",
+      "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb78fd5_d8f0d0e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-18T12:37:36Z",
+      "side": 1,
+      "message": "I think my proposed idea about NewServerConfiguration was not very good. Sorry for that!\n\nAs discussed in the chat you can make these field private, e.g. caCommonName instead of CaCommonName + have method called CaCommonName() as getter and SetCaCommonName as setter.",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 78
+      },
+      "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39dfa513_511d6dc2",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-18T12:37:36Z",
+      "side": 1,
+      "message": "Don\u0027t ignore returned error",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 52
+      },
+      "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44db4770_2b51569e",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-18T12:37:36Z",
+      "side": 1,
+      "message": "Split this condition into 2:\n\n```\n\nif isFound, err :\u003d ui.IsNodeFound(ctx, certPanel); err !\u003d nil {\n  return false, errors.Wrap(err, \"failed to ...\")\n} else if !isFound {\n  return false, nil\n}\n```\n\nsame below",
+      "range": {
+        "startLine": 221,
+        "startChar": 52,
+        "endLine": 221,
+        "endChar": 74
+      },
+      "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
