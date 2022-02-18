@@ -25,6 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BasicDetections,
 		Desc:         "Confirm that the image-based uidetetion library works as intended",
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Contacts:     []string{"alvinjia@google.com", "chromeos-engprod-sydney@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
