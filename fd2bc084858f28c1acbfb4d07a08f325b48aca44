@@ -164,6 +164,30 @@
       },
       "revId": "fd2bc084858f28c1acbfb4d07a08f325b48aca44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d7f8eb_08c915a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-18T10:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ca0fe6_40924cfd",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "fd2bc084858f28c1acbfb4d07a08f325b48aca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
