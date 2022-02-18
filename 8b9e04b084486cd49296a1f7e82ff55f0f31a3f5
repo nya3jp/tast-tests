@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1c9962_5b91f99b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/locate_phone.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-18T20:31:49Z",
+      "side": 1,
+      "message": "does it just keep ringing forever on the phone if the test fails and we don\u0027t stop it?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "8b9e04b084486cd49296a1f7e82ff55f0f31a3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9d9d48_a48ad48f",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-18T20:31:49Z",
+      "side": 1,
+      "message": "maybe include wanted X, got Y for debugging later",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 224,
+        "endChar": 78
+      },
+      "revId": "8b9e04b084486cd49296a1f7e82ff55f0f31a3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cfbdfd0_2a85e70d",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-18T20:31:49Z",
+      "side": 1,
+      "message": "nit: consistent use of quotes around names",
+      "range": {
+        "startLine": 218,
+        "startChar": 44,
+        "endLine": 218,
+        "endChar": 58
+      },
+      "revId": "8b9e04b084486cd49296a1f7e82ff55f0f31a3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
