@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d97ba2_2dd5da4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-18T11:07:26Z",
+      "side": 1,
+      "message": "nit: please considering to use account pool for gaia relate account.\nOtherwise you tests may hit the account login rate limit.\nhttps://buganizer.corp.google.com/issues/153516375",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 65
+      },
+      "revId": "38d2b6bf5a26996f8e67f7679e6a9aa5e71494de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
