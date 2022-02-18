@@ -67,8 +67,8 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		{"non-tablet", "none", []string{"--notablet", "--domain=none"}},
 	} {
 		// Dynamic devices support all modes, whereas static devices
-		// only support the specified mode (or no regulatory domain).
-		supported := len(staticMode) == 0 || (len(staticMode) != 0 && tc.mode == staticMode) || tc.domain == "none"
+		// only support the specified mode.
+		supported := len(staticMode) == 0 || (len(staticMode) != 0 && tc.mode == staticMode)
 
 		// Supported modes must not fail, and unsupported modes must not succeed.
 		s.Logf("Testing mode: %s, domain: %s, staticMode: %s, supported: %t", tc.mode, tc.domain, staticMode, supported)
