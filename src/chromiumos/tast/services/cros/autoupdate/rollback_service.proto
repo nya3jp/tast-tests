@@ -4,11 +4,11 @@
 
 syntax = "proto3";
 
-package tast.cros.policy;
+package tast.cros.autoupdate;
 
 import "google/protobuf/empty.proto";
 
-option go_package = "chromiumos/tast/services/cros/policy";
+option go_package = "chromiumos/tast/services/cros/autoupdate";
 
 // RollbackService provides functions to set up and verify enterprise rollback.
 service RollbackService {

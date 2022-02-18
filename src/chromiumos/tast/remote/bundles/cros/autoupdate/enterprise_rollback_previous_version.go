@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/updateutil"
 	"chromiumos/tast/rpc"
+	aupb "chromiumos/tast/services/cros/autoupdate"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -38,9 +39,9 @@ func init() {
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps: []string{
 			"tast.cros.autoupdate.NebraskaService",
+			"tast.cros.autoupdate.RollbackService",
 			"tast.cros.autoupdate.UpdateService",
 			"tast.cros.policy.PolicyService",
-			"tast.cros.policy.RollbackService",
 		},
 		Timeout: updateutil.UpdateTimeout + 12*time.Minute,
 	})
@@ -141,7 +142,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	}
 
 	// Configure PSK network to check preservation across rollback.
-	rollbackService := ps.NewRollbackServiceClient(client.Conn)
+	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
 	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Failed to configure PSK network on client: ", err)
@@ -244,8 +245,8 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	}
 	defer client.Close(ctx)
 
-	rollbackService = ps.NewRollbackServiceClient(client.Conn)
-	verifyResponse, err := rollbackService.VerifyRollback(ctx, &ps.VerifyRollbackRequest{Guid: guid})
+	rollbackService = aupb.NewRollbackServiceClient(client.Conn)
+	verifyResponse, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Guid: guid})
 	// This error is expected on any milestone <99 because Chrome wasn't ready
 	// to be tested yet.
 	if err != nil {
