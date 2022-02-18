@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66980d7e_3f6066d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-18T16:53:16Z",
+      "side": 1,
+      "message": "CQ failure doesn\u0027t seem to be relevant to this change. I\u0027ll keep an eye out on the next a few runs to make sure it\u0027s not breaking anything. submitting..",
+      "revId": "cdfc769937e690969b8c5b970980a2444e21a6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
