@@ -16,6 +16,24 @@
       "message": "You can reference https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1260037 here :)",
       "revId": "4cd8a28b3a963ee42f910ccbbc2a07cc2451c0c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad2dce5_708e2f1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-18T16:36:49Z",
+      "side": 1,
+      "message": "Thanks for the catch! 😄 I would have forgot to add it as I initially started this CL to promote to CQ then repurposed it. Done",
+      "parentUuid": "b71bc21b_4661b821",
+      "revId": "4cd8a28b3a963ee42f910ccbbc2a07cc2451c0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
