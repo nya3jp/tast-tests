@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c4cfff_efdab7df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-18T19:09:31Z",
+      "side": 1,
+      "message": "Hi Ricardo, could you please take a look? Please let me know if I should revert to tast-owners@. Thanks.",
+      "revId": "86265e6c5e5dd642fe4fa9eff5aee0b54b4b8428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
