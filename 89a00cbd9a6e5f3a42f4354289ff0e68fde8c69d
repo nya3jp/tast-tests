@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36912ce_cb4d81f1",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-18T16:47:50Z",
+      "side": 1,
+      "message": "nit: s/eVideoWithFakeWebcamAndSVCEnabled/chromeVideoWithFakeWebcamAndSVCEnabled/",
+      "range": {
+        "startLine": 231,
+        "startChar": 24,
+        "endLine": 231,
+        "endChar": 57
+      },
+      "revId": "89a00cbd9a6e5f3a42f4354289ff0e68fde8c69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
