@@ -22,6 +22,30 @@
       },
       "revId": "eb035d8fbb64280653810927a04a8921fa251282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6386e5c1_74c4ea88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/exceptions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-18T05:35:33Z",
+      "side": 1,
+      "message": "Ha.. i was mistaken. conn.Close won\u0027t close the actual window and terminate the lacros-chrome process. The guidelines seem to be okay. Resolving this.",
+      "parentUuid": "ec7943da_61ecd2d4",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "eb035d8fbb64280653810927a04a8921fa251282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
