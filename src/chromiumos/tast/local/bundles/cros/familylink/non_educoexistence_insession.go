@@ -49,7 +49,8 @@ func NonEducoexistenceInsession(ctx context.Context, s *testing.State) {
 
 	s.Log("Launching the in-session Edu Coexistence flow")
 	// Passing geller parent credentials instead of Edu should fail.
-	if err := familylink.AddEduSecondaryAccount(ctx, cr, tconn, unicornParentFirstName, unicornParentLastName, unicornParentUser, unicornParentPass, gellerParentUser, gellerParentPass); err != nil {
+	if err := familylink.AddEduSecondaryAccountWithMultipleParents(ctx, cr, tconn, unicornParentFirstName, unicornParentLastName,
+		unicornParentUser, unicornParentPass, gellerParentUser, gellerParentPass, false /*verifyEduSecondaryAddSuccess*/); err != nil {
 		s.Fatal("Failed to go through the in-session Edu Coexistence flow: ", err)
 	}
 

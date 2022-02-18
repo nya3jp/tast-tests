@@ -99,7 +99,7 @@ func MultipleArcProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to Add Account: ", err)
 	}
 
-	if err := switchPlayStoreAccount(ctx, d, tconn, s); err != nil {
+	if err := arc.SwitchPlayStoreAccount(ctx, d, tconn, s.RequiredVar("arc.parentUser")); err != nil {
 		s.Fatal("Failed to Switch Account: ", err)
 	}
 
@@ -130,45 +130,6 @@ func MultipleArcProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find Google Chat in Shelf: ", err)
 	}
 
-}
-
-// switchPlayStoreAccount switches between the ARC account in PlayStore.
-func switchPlayStoreAccount(ctx context.Context, arcDevice *androidui.Device,
-	tconn *chrome.TestConn, s *testing.State) error {
-	if err := launcher.LaunchApp(tconn, apps.PlayStore.Name)(ctx); err != nil {
-		return errors.Wrap(err, "failed to launch Play Store")
-	}
-
-	noThanksButton := arcDevice.Object(androidui.ClassName("android.widget.Button"),
-		androidui.TextMatches("(?i)No thanks"))
-	if err := noThanksButton.WaitForExists(ctx, 10*time.Second); err != nil {
-		s.Log("No Thanks button doesn't exists: ", err)
-	} else if err := noThanksButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click No Thanks button")
-	}
-
-	avatarIcon := arcDevice.Object(androidui.ClassName("android.widget.FrameLayout"),
-		androidui.DescriptionContains("Account and settings"))
-	if err := avatarIcon.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Avatar Icon")
-	}
-
-	expandAccountButton := arcDevice.Object(androidui.ClassName("android.view.ViewGroup"), androidui.Clickable(true))
-	if err := expandAccountButton.WaitForExists(ctx, 10*time.Second); err != nil {
-		s.Log("Expand account button doesn't exists: ", err)
-	} else if err := expandAccountButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click expand account button")
-	}
-
-	accountNameButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.Text("arc.parent.test@gmail.com"))
-	if err := accountNameButton.WaitForExists(ctx, 30*time.Second); err != nil {
-		return errors.Wrap(err, "failed to find Account Name")
-	}
-	if err := accountNameButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Account Name")
-	}
-	return nil
 }
 
 // openARCSettings opens the ARC Settings Page from Chrome Settings.
