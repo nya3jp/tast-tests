@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
+	aupb "chromiumos/tast/services/cros/autoupdate"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -33,8 +34,11 @@ func init() {
 		},
 		Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.policy.RollbackService"},
-		Timeout:      10 * time.Minute,
+		ServiceDeps: []string{
+			"tast.cros.policy.PolicyService",
+			"tast.cros.autoupdate.RollbackService",
+		},
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -128,7 +132,7 @@ func configureNetwork(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHin
 	}
 	defer client.Close(ctx)
 
-	rollbackService := ps.NewRollbackServiceClient(client.Conn)
+	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
 	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
 	if err != nil {
 		return "", errors.Wrap(err, "failed to configure psk network on client")
@@ -183,8 +187,8 @@ func verifyRollback(ctx context.Context, guid string, dut *dut.DUT, rpcHint *tes
 	}
 	defer client.Close(ctx)
 
-	rollbackService := ps.NewRollbackServiceClient(client.Conn)
-	response, err := rollbackService.VerifyRollback(ctx, &ps.VerifyRollbackRequest{Guid: guid})
+	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
+	response, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Guid: guid})
 	if err != nil {
 		return errors.Wrap(err, "failed to verify rollback on client")
 	}
