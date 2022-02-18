@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48eb3369_ac27eb6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-18T13:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f10a4110_ca85828b",
+      "range": {
+        "startLine": 210,
+        "startChar": 24,
+        "endLine": 210,
+        "endChar": 78
+      },
+      "revId": "8d87fbe8428810af24e7953457db9a9602ffdbe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f33f3ff0_dbb4615b",

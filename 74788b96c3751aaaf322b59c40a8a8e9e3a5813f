@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "904b422c_ad6c8747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-18T13:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb78fd5_d8f0d0e6",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 78
+      },
+      "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39dfa513_511d6dc2",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "893f5e91_7789b0a8",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-18T13:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39dfa513_511d6dc2",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 52
+      },
+      "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44db4770_2b51569e",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-02-18T12:37:36Z",
       "side": 1,
       "message": "Split this condition into 2:\n\n```\n\nif isFound, err :\u003d ui.IsNodeFound(ctx, certPanel); err !\u003d nil {\n  return false, errors.Wrap(err, \"failed to ...\")\n} else if !isFound {\n  return false, nil\n}\n```\n\nsame below",
+      "range": {
+        "startLine": 221,
+        "startChar": 52,
+        "endLine": 221,
+        "endChar": 74
+      },
+      "revId": "74788b96c3751aaaf322b59c40a8a8e9e3a5813f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd472d0_68d6620c",
+        "filename": "src/chromiumos/tast/local/https/https.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-18T13:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44db4770_2b51569e",
       "range": {
         "startLine": 221,
         "startChar": 52,
