@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a798adf5_072c80a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-02-18T00:16:41Z",
+      "side": 1,
+      "message": "Looks fine from a tast perspective, please wait for +2 from a teammate with context on the test before submitting.",
+      "revId": "a57fd4e7d83a9727f583f3548097660f3b0c6b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
