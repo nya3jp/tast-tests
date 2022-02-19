@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69a46408_ff66eb69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-19T03:23:12Z",
+      "side": 1,
+      "message": "oh... and CreateSearchFinder needs ctx, which we only get in the action function",
+      "parentUuid": "9a11655a_ce565e43",
+      "range": {
+        "startLine": 88,
+        "startChar": 10,
+        "endLine": 88,
+        "endChar": 85
+      },
+      "revId": "2958e33ca90208be6f45bbd3b26771197b697024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb005c03_646bc48e",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 2
