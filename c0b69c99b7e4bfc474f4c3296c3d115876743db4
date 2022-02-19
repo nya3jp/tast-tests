@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331a64de_27d98df5",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-19T18:47:02Z",
+      "side": 1,
+      "message": "I think stop \u0026 start chapsd directly would cause more issues in the other tests...",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 1
+      },
+      "revId": "c0b69c99b7e4bfc474f4c3296c3d115876743db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
