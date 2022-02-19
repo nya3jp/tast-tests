@@ -22,6 +22,29 @@
       },
       "revId": "c0b69c99b7e4bfc474f4c3296c3d115876743db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c169e7b_9e897025",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-19T18:59:33Z",
+      "side": 1,
+      "message": "I\u0027m still thinking about why calling \"cryptohome --action\u003dpkcs11_terminate\" at here would not work.\n\nIf that doesn\u0027t work, which means ui-post-stop may not work correctly either.\n\nBTW, look like you try to call \"cryptohome --action\u003dpkcs11_terminate\" in the \"remove\" operation instead of the \"unmount\" operation, does that make the difference?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3404026",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "revId": "c0b69c99b7e4bfc474f4c3296c3d115876743db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
