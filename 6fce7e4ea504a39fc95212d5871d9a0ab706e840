@@ -39,6 +39,30 @@
       },
       "revId": "6fce7e4ea504a39fc95212d5871d9a0ab706e840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f425ae30_16d3fbd0",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-02-19T02:17:39Z",
+      "side": 1,
+      "message": "Ouch, I wrongly reverted my change locally before uploading.\nFixed.",
+      "parentUuid": "97c83819_1fb7d7b0",
+      "range": {
+        "startLine": 234,
+        "startChar": 26,
+        "endLine": 237,
+        "endChar": 70
+      },
+      "revId": "6fce7e4ea504a39fc95212d5871d9a0ab706e840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
