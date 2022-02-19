@@ -51,12 +51,11 @@ func init() {
 			"enterprise.ARCProvisioning.unmanaged_user",
 			"enterprise.ARCProvisioning.unmanaged_password",
 			"enterprise.ARCProvisioning.unmanaged_packages",
+			"arc.managedAccountPool",
 		},
 		Params: []testing.Param{
 			{
 				Val: credentialKeys{
-					user:     "enterprise.ARCProvisioning.user",
-					password: "enterprise.ARCProvisioning.password",
 					packages: "enterprise.ARCProvisioning.packages",
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -82,8 +81,6 @@ func init() {
 			{
 				Name: "vm",
 				Val: credentialKeys{
-					user:     "enterprise.ARCProvisioning.user",
-					password: "enterprise.ARCProvisioning.password",
 					packages: "enterprise.ARCProvisioning.packages",
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
@@ -124,13 +121,18 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		bootTimeout            = time.Minute * 4
 	)
 
-	user := s.RequiredVar(s.Param().(credentialKeys).user)
-	password := s.RequiredVar(s.Param().(credentialKeys).password)
+	var login chrome.Option
+	if s.Param().(credentialKeys).user != "" {
+		login = chrome.GAIALogin(chrome.Creds{User: s.RequiredVar(s.Param().(credentialKeys).user), Pass: s.RequiredVar(s.Param().(credentialKeys).password)})
+	} else {
+		login = chrome.GAIALoginPool(s.RequiredVar("arc.managedAccountPool"))
+	}
 	packages := strings.Split(s.RequiredVar(s.Param().(credentialKeys).packages), ",")
+
 	// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
+		login,
 		chrome.ARCSupported(),
 		chrome.ProdPolicy(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
