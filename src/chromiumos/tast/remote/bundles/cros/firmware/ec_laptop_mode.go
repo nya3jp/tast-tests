@@ -6,9 +6,6 @@ package firmware
 
 import (
 	"context"
-	"fmt"
-	"regexp"
-	"strconv"
 	"strings"
 	"time"
 
@@ -34,7 +31,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Fixture:      fixture.NormalMode,
-		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService"},
+		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService", "tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
@@ -77,69 +74,48 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create mode switcher: ", err)
 	}
 
-	// checkLaptopMode checks if DUT is in laptop mode by comparing its lid angle against the tablet mode settings.
 	checkLaptopMode := func(ctx context.Context) error {
-		// Get the current lid angle, using ectool.
-		data, err := s.DUT().Conn().CommandContext(ctx, "ectool", "motionsense", "lid_angle").Output()
+		if err := h.RequireRPCUtils(ctx); err != nil {
+			return errors.Wrap(err, "requiring RPC utils")
+		}
+		if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
+			return errors.Wrap(err, "failed to create instance of chrome")
+		}
+		res, err := h.RPCUtils.EvalTabletMode(ctx, &empty.Empty{})
 		if err != nil {
-			return errors.Wrap(err, "failed to get DUT's lid angle from ectool")
+			return err
 		}
-		re := regexp.MustCompile(fmt.Sprintf(`Lid angle: (\d+)`))
-		m := re.FindSubmatch([]byte(data))
-		if len(m) != 2 {
-			return errors.New("failed to get lid angle")
-		}
-		lidAngle, err := strconv.Atoi(string(m[1][:]))
-		if err != nil {
-			return errors.Wrap(err, "failed to parse lid angle")
-		}
-
-		// Get tablet mode angle from the tablet mode settings.
-		data, err = s.DUT().Conn().CommandContext(ctx, "ectool", "motionsense", "tablet_mode_angle").Output()
-		if err != nil {
-			return errors.Wrap(err, "failed to retrieve tablet_mode_angle settings")
-		}
-		re = regexp.MustCompile(fmt.Sprintf(`tablet_mode_angle=(\d+)`))
-		m = re.FindSubmatch([]byte(data))
-		if len(m) != 2 {
-			errors.New("failed to get tablet mode angle")
-		}
-		tabletModeAngle, err := strconv.Atoi(string(m[1][:]))
-		if err != nil {
-			return errors.Wrap(err, "failed to parse tablet mode angle")
-		}
-
-		if lidAngle > tabletModeAngle {
-			return errors.New("current lid angle appears to be greater than the one from tablet mode settings")
+		if res.TabletModeEnabled {
+			return errors.New("DUT's tablet mode status is currently on")
 		}
 		return nil
 	}
 
 	dutType := s.Param().(string)
 	if dutType == "convertible" {
-		s.Log("Check initial state of laptop mode")
+		s.Log("Checking initial state of laptop mode")
 		if err := checkLaptopMode(ctx); err != nil {
-			s.Fatal("Unable to check whether DUT is in laptop mode before powering off: ", err)
+			s.Fatal("Unable to check DUT in laptop mode before powering off: ", err)
 		}
 
-		s.Log("Set power off")
+		s.Log("Setting power off")
 		if err := ms.PowerOff(ctx); err != nil {
 			s.Fatal("Failed to power off DUT: ", err)
 		}
 
-		s.Log("Tap on the power button to power on DUT")
+		s.Log("Tapping on the power button to power on DUT")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 			s.Fatal("Failed to tap on the power button: ", err)
 		}
 
-		s.Log("Wait for the boot to complete")
+		s.Log("Waiting for the boot to complete")
 		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
 		defer cancelWaitConnect()
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT: ", err)
 		}
-
-		s.Log("Check DUT remains in laptop mode after having rebooted")
+		h.CloseRPCConnection(ctx)
+		s.Log("Checking DUT remains in laptop mode after having rebooted")
 		if err := checkLaptopMode(ctx); err != nil {
 			s.Fatal("Unable to determine if DUT is in laptop mode after reboot: ", err)
 		}
@@ -219,7 +195,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			if _, err := screenLockService.ReuseChrome(ctx, &empty.Empty{}); err != nil {
 				s.Fatal("Failed to reuse existing chrome session for screenLockService: ", err)
 			}
-			s.Log("Lock Screen")
+			s.Log("Locking Screen")
 			if err := lockScreen(ctx); err != nil {
 				s.Fatal("Lock-screen did not behave as expected: ", err)
 			}
@@ -227,7 +203,13 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			defer screenLockService.CloseChrome(ctx, &empty.Empty{})
 		}
 
-		s.Log("Tap on the power button")
+		// Wait for some delay for display to fully settle down,
+		// after a transition between Chrome sessions.
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+
+		s.Log("Tapping on the power button")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 			s.Fatal("Failed to tap on the power button: ", err)
 		}
@@ -241,12 +223,12 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		// We are yet to verify if this would be the case in general for all detachables.
 		// As of now, we've observed such behavior on Kukui and Soraka.
 		if dutType != "detachable" {
-			s.Log("Check that display remains on")
+			s.Log("Checking that display remains on")
 			if err := checkDisplay(ctx); err != nil {
 				s.Fatal("Error in verifying display on: ", err)
 			}
 		} else {
-			s.Log("Check that display remains off")
+			s.Log("Checking that display remains off")
 			err := checkDisplay(ctx)
 			if err == nil {
 				s.Fatal("Unexpectedly able to take screenshot after setting display power off")
@@ -256,7 +238,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 
 			// Turn the screen on before testing the power menu.
-			s.Log("Tap on the power button to turn the screen on again")
+			s.Log("Tapping on the power button to turn the screen on again")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 				s.Fatal("Failed to tap on the power button: ", err)
 			}
@@ -266,13 +248,13 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to sleep: ", err)
 			}
 
-			s.Log("Check that display remains on")
+			s.Log("Checking that display remains on")
 			if err := checkDisplay(ctx); err != nil {
 				s.Fatal("Error in verifying display on: ", err)
 			}
 		}
 
-		s.Log("Press and hold the power button for 1 second to turn on the power menu")
+		s.Log("Pressing and holding the power button for 1 second to turn on the power menu")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
 			s.Fatal("Failed to press and hold on the power button for 1 second: ", err)
 		}
@@ -283,12 +265,12 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		}
 
 		// Check that pressing the power button for 1 second brings up the power menu.
-		s.Log("Check that the power menu has appeared")
+		s.Log("Checking that the power menu has appeared")
 		if err := checkPowerMenu(ctx, true); err != nil {
 			s.Fatal("Failed to check the power menu: ", err)
 		}
 
-		// Check that power menu items are displayed correctly.
+		s.Log("Checking that power menu items are displayed correctly")
 		var expected []string
 		switch testCase {
 		case atSignin:
@@ -305,7 +287,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get power menu items: ", err)
 		}
 		if len(res.MenuItems) != len(expected) {
-			s.Fatal("Found mismatched number of power menu items")
+			s.Fatalf("Found mismatched number of power menu items: expected: %v but got: %v", expected, res.MenuItems)
 		}
 		for _, receivedItem := range res.MenuItems {
 			check := false
@@ -322,7 +304,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		// When DUT is a detachable, a tap on the power button will
 		// turn off the screen, instead of the power menu.
 		if dutType != "detachable" {
-			s.Log("Tap on the power button to turn off the power menu")
+			s.Log("Tapping on the power button to turn off the power menu")
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 					return testing.PollBreak(errors.Wrap(err, "failed to tap on the power button"))
@@ -342,7 +324,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		s.Log("Press and hold the power button for 2~3 seconds")
+		s.Log("Pressing and holding the power button for 2~3 seconds")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur((h.Config.HoldPwrButtonPowerOff)/3)); err != nil {
 			s.Fatal("Failed to press and hold on the power button for 3 second: ", err)
 		}
@@ -350,12 +332,12 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		// To avoid false positive cases, delay for checking on the power states.
 		// Without this delay, if DUT turns down after 2~3 seconds, checking on
 		// the power state during shutdown might still return S0.
-		s.Logf("Sleep for %v before checking on the power state", h.Config.Shutdown)
+		s.Logf("Sleeping for %v before checking on the power state", h.Config.Shutdown)
 		if err := testing.Sleep(ctx, h.Config.Shutdown); err != nil {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
-		s.Log("Check that the power state remains S0")
+		s.Log("Checking that the power state remains S0")
 		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 			s.Fatal("Failed to get S0 powerstate: ", err)
 		}
@@ -365,24 +347,24 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		repeatedSteps(testCase)
 	}
 
-	s.Log("Set power off")
+	s.Log("Setting power off")
 	if err := ms.PowerOff(ctx); err != nil {
 		s.Fatal("Failed to power off DUT: ", err)
 	}
 
-	s.Log("Press and hold the power button for 3~8 seconds")
+	s.Log("Pressing and holding the power button for 3~8 seconds")
 	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 		s.Fatal("Failed to press and hold on the power button for 3~8 second: ", err)
 	}
 
 	// On some DUTs, pressing 3~8 seconds would leave them in the off state, while some others would power on.
 	// We are currently in the process of defining DUT categories for the respective behaviors.
-	s.Log("Wait for power state to become G3 or S0")
+	s.Log("Waiting for power state to become G3 or S0")
 	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S0"); err != nil {
 		s.Fatal("Failed to get G3 or S0 powerstate: ", err)
 	}
 
-	s.Log("Get powerstate information")
+	s.Log("Getting powerstate information")
 	powerState, err := h.Servo.GetECSystemPowerState(ctx)
 	if err != nil {
 		s.Fatal("Failed to get powerstate: ", err)
