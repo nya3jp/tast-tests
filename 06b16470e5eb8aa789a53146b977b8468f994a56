@@ -16,6 +16,23 @@
       "message": "Hmm, somehow CR+ labels are vanished. Can I ask to mark again?",
       "revId": "06b16470e5eb8aa789a53146b977b8468f994a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63449117_937d27ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-02-19T02:07:32Z",
+      "side": 1,
+      "message": "Gentle ping.",
+      "revId": "06b16470e5eb8aa789a53146b977b8468f994a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
