@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/input"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -175,4 +176,20 @@ func (us *UtilsService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 	err := us.cr.Close(ctx)
 	us.cr = nil
 	return &empty.Empty{}, err
+}
+
+func (us *UtilsService) EvalTabletMode(ctx context.Context, req *empty.Empty) (*fwpb.EvalTabletModeResponse, error) {
+	if us.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	tconn, err := us.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "creating test API connection failed")
+	}
+	// Check if tablet mode is enabled on DUT.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get tablet mode enabled status")
+	}
+	return &fwpb.EvalTabletModeResponse{TabletModeEnabled: tabletModeEnabled}, nil
 }

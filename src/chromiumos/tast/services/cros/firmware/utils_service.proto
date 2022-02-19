@@ -26,6 +26,9 @@ service UtilsService {
   
   // CloseChrome closes an existing instance of Chrome
   rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // EvalTabletMode evaluates if DUT is in tablet mode.
+  rpc EvalTabletMode (google.protobuf.Empty) returns (EvalTabletModeResponse) {}
 }
 
 // ReadServoKeyboardRequest listens the servo's keyboard emulator for a specified duration in seconds.
@@ -41,4 +44,9 @@ message ReadServoKeyboardResponse {
 // FindPhysicalKeyboardResponse provides the path to /dev/input/event* for physical keyboard.
 message FindPhysicalKeyboardResponse {
   string path = 1;
+}
+
+// EvalTabletModeResponse provides the tablet mode enabled status.
+message EvalTabletModeResponse {
+  bool tablet_mode_enabled = 1;
 }
