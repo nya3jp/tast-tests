@@ -34,6 +34,24 @@
       "parentUuid": "08628d76_555f694c",
       "revId": "1eaf474f0a8a5a6612ceb15de40094350853a9d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a823bb_7849d73b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2022-02-19T00:09:35Z",
+      "side": 1,
+      "message": "Kerker, Why do we have to wait? Even your lab decides not to add a TBT peripheral to the DUT, the test will skip fetching peripheral data. Can you clarify?",
+      "parentUuid": "7beb0b87_e601e4e8",
+      "revId": "1eaf474f0a8a5a6612ceb15de40094350853a9d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
