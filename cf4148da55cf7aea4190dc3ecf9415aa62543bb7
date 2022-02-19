@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4157218a_623fc601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-19T09:57:58Z",
+      "side": 1,
+      "message": "Not an expert in Go, but some comments to consider",
+      "revId": "cf4148da55cf7aea4190dc3ecf9415aa62543bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab24c0d2_800c5c05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-19T09:57:58Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we group all the data members together? This should be right after TestConn imo",
+      "revId": "cf4148da55cf7aea4190dc3ecf9415aa62543bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da903f49_40f00679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-19T09:57:58Z",
+      "side": 1,
+      "message": "I think having a NewConnections function to behave as a ctor might be beneficial?",
+      "revId": "cf4148da55cf7aea4190dc3ecf9415aa62543bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d1ab6c_4d4363a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-19T09:57:58Z",
+      "side": 1,
+      "message": "We should probably try to move this code into a member function of Connections as well imo",
+      "revId": "cf4148da55cf7aea4190dc3ecf9415aa62543bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
