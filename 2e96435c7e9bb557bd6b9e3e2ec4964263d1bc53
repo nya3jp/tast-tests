@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5cb8a4_2aa2360e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-19T01:15:49Z",
+      "side": 1,
+      "message": "The CL for adding the pool in the private repo https://crrev.com/i/4561831",
+      "revId": "2e96435c7e9bb557bd6b9e3e2ec4964263d1bc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
