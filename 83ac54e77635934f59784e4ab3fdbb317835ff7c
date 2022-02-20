@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c145ab25_2ba5ac2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-20T09:38:02Z",
+      "side": 1,
+      "message": "Do not add `context.Context` to the struct, instead, explicitly pass it as a func argument. See go/go-style/decisions#contexts\n\nIn the case when the `cleanup` field needs a context, you may change it to `cleanup func(ctx context.Context) error`",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 23
+      },
+      "revId": "83ac54e77635934f59784e4ab3fdbb317835ff7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0e316a_d8b4bab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-20T09:38:02Z",
+      "side": 1,
+      "message": "Pass the context explicitly, instead of using context field from the `Recorder` struct, see the other comment.",
+      "range": {
+        "startLine": 402,
+        "startChar": 19,
+        "endLine": 402,
+        "endChar": 34
+      },
+      "revId": "83ac54e77635934f59784e4ab3fdbb317835ff7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e67c9c7_d0d89a05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-20T09:38:02Z",
+      "side": 1,
+      "message": "The use of context is still problematic. Simply speaking, when `f(runCtx)` at L468 reaches the timeout, the cleanup task (the deferred func) will not be executed if you are using `runCtx` for the StopRecording. \n\nIn the original file, a `closeCtx` (with longer timeout than `runCtx`) is created for cleanup tasks. \n\nYou may refactor this func to:\n```\n        cleanupCtx :\u003d ctx\n        // This also shortens the ctx to reserve time for cleanups.\n        ctx, err :\u003d r.StartRecording(ctx) \n\tif err !\u003d nil {\n\t\treturn err\n\t}\n\tdefer func(ctx context.Context) {\n\t\terr :\u003d r.StopRecording(ctx)\n\t\tif e \u003d\u003d nil \u0026\u0026 err !\u003d nil {\n\t\t\te \u003d err\n\t\t} else if err !\u003d nil {\n\t\t\ttesting.ContextLogf(ctx, \"Failed to stop recording: %s\", err)\n\t\t}\n\t}(cleanupCtx)\n\tif err :\u003d f(ctx); err !\u003d nil {\n\t\treturn err\n\t}\n\treturn nil\n```",
+      "range": {
+        "startLine": 474,
+        "startChar": 1,
+        "endLine": 486,
+        "endChar": 4
+      },
+      "revId": "83ac54e77635934f59784e4ab3fdbb317835ff7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
