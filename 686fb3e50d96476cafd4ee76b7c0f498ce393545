@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a93edd_d0a76300",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-20T23:30:32Z",
+      "side": 1,
+      "message": "Per oncall chat thread, the failures are almost guaranteed legit. Please don\u0027t submit this, it\u0027ll just lead to landing a broken uprev.",
+      "revId": "686fb3e50d96476cafd4ee76b7c0f498ce393545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
