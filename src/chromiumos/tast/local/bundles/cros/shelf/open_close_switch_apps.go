@@ -32,7 +32,7 @@ func init() {
 			"tbarzic@chromium.org",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
