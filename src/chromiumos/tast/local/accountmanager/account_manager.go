@@ -160,9 +160,9 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	return nil
 }
 
-// CheckArcToggleStatus compares the state of the "ARC toggle" in the account
+// CheckARCToggleStatus compares the state of the "ARC toggle" in the account
 // addition flow with the expected value.
-func CheckArcToggleStatus(ctx context.Context, tconn *chrome.TestConn, brType browser.Type, expectedVal bool) error {
+func CheckARCToggleStatus(ctx context.Context, tconn *chrome.TestConn, brType browser.Type, expectedVal bool) error {
 	if brType != browser.TypeLacros {
 		// The feature is applied only if Lacros is enabled.
 		return nil
@@ -246,8 +246,8 @@ func openOGB(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration)
 	return nil
 }
 
-// CheckIsAccountPresentInArcAction returns an action that checks whether account is present in ARC depending on expectedPresentInArc parameter.
-func CheckIsAccountPresentInArcAction(tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedPresentInArc bool) action.Action {
+// CheckIsAccountPresentInARCAction returns an action that checks whether account is present in ARC depending on expectedPresentInARC parameter.
+func CheckIsAccountPresentInARCAction(tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedPresentInARC bool) action.Action {
 	return func(ctx context.Context) error {
 		const (
 			// Note: it may take long time for account to be propagated to ARC.
@@ -283,7 +283,7 @@ func CheckIsAccountPresentInArcAction(tconn *chrome.TestConn, d *androidui.Devic
 			}
 			if err := account.Exists(ctx); err == nil {
 				accountExists = true
-				if expectedPresentInArc {
+				if expectedPresentInARC {
 					// The account exists and is expected to exist => success.
 					return nil
 				}
@@ -294,8 +294,8 @@ func CheckIsAccountPresentInArcAction(tconn *chrome.TestConn, d *androidui.Devic
 			testing.ContextLog(ctx, "Finished polling with result: ", accountExists)
 		}
 
-		if expectedPresentInArc != accountExists {
-			return errors.Errorf("failed to check if account is present in ARC, expected %t, got %t", expectedPresentInArc, accountExists)
+		if expectedPresentInARC != accountExists {
+			return errors.Errorf("failed to check if account is present in ARC, expected %t, got %t", expectedPresentInARC, accountExists)
 		}
 
 		return nil
@@ -358,7 +358,34 @@ func removeSelectedAccountFromOSSettings(ctx context.Context, tconn *chrome.Test
 // the beginning of the test, so that results of the previous test don't
 // interfere with the current test.
 func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, brType browser.Type) error {
+	defer func(ctx context.Context) error {
+		// Close all windows.
+		ws, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get all open window")
+		}
+		for _, w := range ws {
+			if err := w.CloseWindow(ctx, tconn); err != nil {
+				return errors.Wrapf(err, "failed to close window (%+v)", w)
+			}
+		}
+		return nil
+	}(ctx)
+
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+
+	if err := ui.Exists(AddAccountDialog())(ctx); err == nil {
+		// Set up keyboard.
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get keyboard")
+		}
+		defer kb.Close()
+		// Press "Esc" to close the dialog.
+		if err := kb.Accel(ctx, "Esc"); err != nil {
+			return errors.Wrapf(err, "failed to write events %s", "Esc")
+		}
+	}
 
 	// Open Account Manager page in OS Settings.
 	if err := OpenAccountManagerSettingsAction(tconn, cr)(ctx); err != nil {
@@ -397,17 +424,6 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 
 		if err := ui.WaitUntilGone(accountMoreActionsButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait until account is removed")
-		}
-	}
-
-	// Close all windows.
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get all open window")
-	}
-	for _, w := range ws {
-		if err := w.CloseWindow(ctx, tconn); err != nil {
-			return errors.Wrapf(err, "failed to close window (%+v)", w)
 		}
 	}
 
