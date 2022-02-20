@@ -20,7 +20,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Performance tests of Termina VM startup and container startup",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "informational"},
 		Timeout:      10 * time.Minute,
 		Pre:          chrome.LoggedIn(),
 		SoftwareDeps: []string{"chrome", "vm_host"},

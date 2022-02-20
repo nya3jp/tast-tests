@@ -26,7 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Performance test for mouse responsiveness",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:         []string{"mouse_perf.py"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

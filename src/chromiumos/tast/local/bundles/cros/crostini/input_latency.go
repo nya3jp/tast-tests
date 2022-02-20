@@ -36,7 +36,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests Crostini input latency",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		Data:         []string{"input_latency_server.py"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
