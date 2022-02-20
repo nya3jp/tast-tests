@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5927ca3d_ed4e7eee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-02-20T13:06:44Z",
+      "side": 1,
+      "message": "Could we have `ProbeWifiInfo` in CL title? e.g. `Enable health.ProbeWifiInfo on non vPro devices`",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "0ecb376650a35f33b987b62ba98cfe8a1737bd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
