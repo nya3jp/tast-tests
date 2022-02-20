@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -174,4 +175,22 @@ func (checker *nodeChecker) Checked(expectedChecked checked.Checked) *nodeChecke
 // It returns with the error collected during the process.
 func (checker *nodeChecker) Verify() error {
 	return checker.err
+}
+
+// CheckCertificateVisibleInSystemSettings checks that a certificate with the
+// given name is usable for configuring a Wi-Fi connection. Fully creating such
+// a connection would require a special network environment, so it just tests
+// that the certificate is visible and selectable.
+func CheckCertificateVisibleInSystemSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, certName string) error {
+	OSSettingsPage(ctx, cr, "network")
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("use system settings",
+		ui.LeftClick(nodewith.Name("Add network connection").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Add Wi-Fi…").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Security").ClassName("md-select")),
+		ui.LeftClick(nodewith.Name("EAP").Role(role.ListBoxOption)),
+		ui.LeftClick(nodewith.Name("EAP method").ClassName("md-select")),
+		ui.LeftClick(nodewith.Name("EAP-TLS").Role(role.ListBoxOption)),
+		ui.LeftClick(nodewith.Name("User certificate").ClassName("md-select")),
+		ui.LeftClick(nodewith.Name(certName+" ["+certName+"]").Role(role.ListBoxOption)))(ctx)
 }
