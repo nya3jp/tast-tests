@@ -6,16 +6,17 @@ package policy
 
 import (
 	"context"
-	"strconv"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -24,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RequiredClientCertificate,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of RequiredClientCertificateForDevice/User policies, check if a certificate is issued when the respective policy is set",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
@@ -33,9 +34,9 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      fixture.FakeDMSEnrolled,
-		Timeout:      3 * time.Minute,
+		Timeout:      6 * time.Minute,
 	})
 }
 
@@ -43,11 +44,16 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 
 	attestationPolicy := &policy.AttestationEnabledForDevice{Val: true}
+	lacrosPolicy := &policy.LacrosAvailability{Val: "lacros_primary"}
+
+	chromeOpts := lacrosOpts
+	chromeOpts = append(chromeOpts, chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}))
+	chromeOpts = append(chromeOpts, chrome.DMSPolicy(fdms.URL))
+	chromeOpts = append(chromeOpts, chrome.KeepEnrollment())
 
 	for _, param := range []struct {
 		name   string        // name is the subtest name.
 		policy policy.Policy // policy is the policy we test.
-		slot   int           // slot is the slot where the certificate is placed.
 	}{
 		{
 			name: "device",
@@ -62,7 +68,6 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			slot: 0, // Device certificates will be placed in slot 0.
 		},
 		{
 			name: "user",
@@ -77,66 +82,105 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			slot: 1, // User certificates will take the next free slot which is 1.
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-
-			// Start Chrome.
-			cr, err := chrome.New(ctx,
-				chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-				chrome.DMSPolicy(fdms.URL),
-				chrome.KeepEnrollment())
+			cr, err := chrome.New(ctx, chromeOpts...)
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
 			}
 
-			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy, attestationPolicy}); err != nil {
-				s.Fatal("Failed to update policies: ", err)
+			pb := newPolicyBlobWithAffiliation()
+
+			// After this point, IsUserAffiliated flag should be updated.
+			if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+				s.Fatal("Failed to serve and refresh: ", err)
 			}
 
-			// Close the previous Chrome instance.
-			if err := cr.Close(ctx); err != nil {
-				s.Error("Failed to close Chrome connection: ", err)
+			// We should add policy value in the middle of 2 ServeBlobAndRefresh calls to be sure
+			// that IsUserAffiliated flag is updated and policy handler is triggered.
+			pb.AddPolicies([]policy.Policy{param.policy, attestationPolicy, lacrosPolicy})
+
+			// After this point, the policy handler should be triggered.
+			if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+				s.Fatal("Failed to serve and refresh: ", err)
 			}
 
-			// Reatart Chrome to trigger fetching of the certificate.
-			cr, err = chrome.New(ctx,
-				chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-				chrome.DMSPolicy(fdms.URL),
-				chrome.KeepEnrollment())
+			// Restart Chrome to trigger fetching of the certificate.
+			cr, err = chrome.New(ctx, chromeOpts...)
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
 			}
 
-			// Wait until the certificate is installed.
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create Test API connection: ", err)
+			}
 
-				// The argument --slot is for the system slot which will have
-				// the certificate.
-				out, err := testexec.CommandContext(ctx, "pkcs11-tool", "--module", "libchaps.so", "--slot", strconv.Itoa(param.slot), "--list-objects").Output()
+			s.Log("Checking that certificate is visible in Lacros")
+			func() {
+				// TODO(neis): Provide LaunchPrimaryBrowser or similar.
+				l, err := lacros.LaunchFromShelf(ctx, tconn, "/usr/local/lacros-chrome")
 				if err != nil {
-					return errors.Wrap(err, "failed to get certificate list")
+					s.Fatal("Failed to launch lacros: ", err)
 				}
-				outStr := string(out)
-
-				// Currently the policy_testserver.py serves a hardcoded certificate,
-				// with TastTest as the issuer. So we look for that string to
-				// identify the correct certificate.
-				if !strings.Contains(outStr, "TastTest") {
-					return errors.New("certificate not installed")
+				defer l.Close(ctx)
+				if err = checkCertificateVisibleInBrowserSettings(ctx, tconn, l.Browser()); err != nil {
+					s.Fatal("Failed to find certificate: ", err)
 				}
+			}()
 
-				return nil
-
-			}, nil); err != nil {
-				s.Error("Could not verify that client certificate was installed: ", err)
-			}
-
-			if err := cr.Close(ctx); err != nil {
-				s.Error("Failed to close Chrome connection: ", err)
+			s.Log("Checking that certificate is visible in Ash")
+			if err = checkCertificateVisibleInBrowserSettings(ctx, tconn, cr.Browser()); err != nil {
+				s.Fatal("Failed to find certificate: ", err)
 			}
 		})
 	}
 }
+
+func newPolicyBlobWithAffiliation() *fakedms.PolicyBlob {
+	affiliationIds := []string{"default_affiliation_id"}
+	pb := fakedms.NewPolicyBlob()
+	pb.DeviceAffiliationIds = affiliationIds
+	pb.UserAffiliationIds = affiliationIds
+	return pb
+}
+
+// TODO(neis): Provide GetLacrosInfo(lacrosmode) or similar, which includes these standard flags.
+var lacrosOpts = []chrome.Option{
+	chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "ForceProfileMigrationCompletion"),
+	chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive", "--disable-login-lacros-opening"),
+	chrome.LacrosExtraArgs("--remote-debugging-port=0"),
+}
+
+func checkCertificateVisibleInBrowserSettings(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser) error {
+	conn, err := br.NewConn(ctx, "chrome://settings/certificates")
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+
+	// We may have to reload the page for the certificate to show up.
+	ui := uiauto.New(tconn)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		node := nodewith.Role(role.StaticText).Name("org-TastTest")
+		if err := ui.WithTimeout(3 * time.Second).WaitUntilExists(node)(ctx); err != nil {
+
+			//if err := reloadActiveTab(ctx, br); err != nil {
+			if err := ui.LeftClick(nodewith.Name("Reload").Role(role.Button).Focusable().First())(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+			return err // Try again after reloading.
+		}
+		return nil
+	}, nil)
+}
+
+//// XXX Why does this not work for Lacros? Test API connection creation times out.
+//func reloadActiveTab(ctx context.Context, br *browser.Browser) error {
+//	tconn, err := br.TestAPIConn(ctx)
+//	if err != nil {
+//		return errors.Wrap(err, "failed to create Test API connection")
+//	}
+//	return tconn.Eval(ctx, "chrome.tabs.reload()", nil)
+//}
