@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e233c36_eecc06e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-20T21:38:02Z",
+      "side": 1,
+      "message": "you need `ctx` here.",
+      "range": {
+        "startLine": 424,
+        "startChar": 25,
+        "endLine": 424,
+        "endChar": 31
+      },
+      "revId": "437e73d82f57cd7ce01decab333c0e3f1e8dbd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d3532a_6f8bc314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-20T21:38:02Z",
+      "side": 1,
+      "message": "nit: go style code would be:\n```\nrunCtx, err :\u003d r.StartRecording(ctx)\nif err !\u003d nil {\n```\n\nIf you are using a variable for more than a few lines of code, it is generally not worth using the if-with-initializer style. see http://go/go-style/decisions#indent-error-flow",
+      "range": {
+        "startLine": 470,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 53
+      },
+      "revId": "437e73d82f57cd7ce01decab333c0e3f1e8dbd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

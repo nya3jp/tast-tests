@@ -140,6 +140,30 @@
       },
       "revId": "83ac54e77635934f59784e4ab3fdbb317835ff7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82b02fc_5dca527b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-20T21:38:02Z",
+      "side": 1,
+      "message": "\u003e But using original context (i.e. unchanged copy called `cleanupCtx`) to collect metrics is likely problematic too, because we will fetch metrics even if the test timed out. The original code also used shorted context to collect metrics. It used extended context only to stop tracing, because it could be a system-wide process and may not stop automatically when Chrome is stopped.\n\nWhich is exactly why you need a context with a longer timeout for `StopRecording`. You don\u0027t need two contexts in `StopRecording`, you just need the longer one. So that the test will fetch metrics even if it timed out (with `runCtx`).",
+      "parentUuid": "cc2b6236_38163bdb",
+      "range": {
+        "startLine": 474,
+        "startChar": 1,
+        "endLine": 486,
+        "endChar": 4
+      },
+      "revId": "83ac54e77635934f59784e4ab3fdbb317835ff7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
