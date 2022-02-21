@@ -6,6 +6,7 @@ package autoupdate
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -13,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	nc "chromiumos/tast/local/network/netconfig"
+	"chromiumos/tast/lsbrelease"
 	aupb "chromiumos/tast/services/cros/autoupdate"
 	"chromiumos/tast/testing"
 )
@@ -79,6 +81,31 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 		return nil, errors.Wrap(err, "failed to wait for enrollment screen")
 	}
 
+	// The following checks are expected to fail on any milestone <100 because
+	// Chrome was not ready for rollback tests yet. We skip them and consider the
+	// verification is successful, but we inform that a full verification was not
+	// possible.
+	lsbContent, err := lsbrelease.Load()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read /etc/lsb-release")
+	}
+
+	milestoneVal, err := strconv.Atoi(lsbContent[lsbrelease.Milestone])
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to convert milestone %s to integer", lsbContent[lsbrelease.Milestone])
+	}
+
+	response := &aupb.VerifyRollbackResponse{
+		Successful:          true,
+		VerificationDetails: "",
+	}
+
+	if milestoneVal < 100 {
+		response.Successful = true
+		response.VerificationDetails = "Image does not support a full rollback verification"
+		return response, nil
+	}
+
 	if err := cr.ContinueLogin(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to login as normal user after rollback")
 	}
@@ -94,10 +121,6 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 		return nil, errors.Wrapf(err, "failed to get managed properties for guid %s", request.Guid)
 	}
 
-	response := &aupb.VerifyRollbackResponse{
-		Successful: true,
-	}
-
 	// Passphrase is not passed via cros_network_config, instead mojo passes a constant value if a password is configured. Only check for non-empty.
 	if managedProperties.TypeProperties.Wifi.Security !=
 		psk.TypeConfig.Wifi.Security ||
@@ -105,6 +128,7 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 			psk.TypeConfig.Wifi.Ssid ||
 		managedProperties.TypeProperties.Wifi.Passphrase.ActiveValue == "" {
 		response.Successful = false
+		response.VerificationDetails = "PSK network was not preserved"
 	}
 
 	return response, nil
