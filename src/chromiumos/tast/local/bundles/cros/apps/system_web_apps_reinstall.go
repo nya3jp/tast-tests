@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -29,7 +30,7 @@ func init() {
 		},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "default_enabled_apps_stable",
 			Val:               []chrome.Option{},
@@ -85,16 +86,16 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 		return nil, nil, errors.Wrap(err, "failed to start Chrome")
 	}
 
-	defer func(ctx context.Context) {
-		if err := cr.Close(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to stop first Chrome instance: ", err)
-		}
-	}(cleanupCtx)
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to connect Test API")
 	}
+
+	defer func(ctx context.Context, tconn *chrome.TestConn) {
+		if err := quicksettings.SignOut(ctx, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to sign-out: ", err)
+		}
+	}(cleanupCtx, tconn)
 
 	installedSystemWebApps, err := apps.ListSystemWebApps(ctx, tconn)
 	if err != nil {
