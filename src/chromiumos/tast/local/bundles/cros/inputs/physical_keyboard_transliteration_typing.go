@@ -30,11 +30,12 @@ type pkTransliterationTestCase struct {
 }
 
 func init() {
+	// TODO(b/213799105): Add 'group:input-tools-upstream' once system PK transliteration is enabled by default.
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardTransliterationTyping,
 		Desc:         "Checks that Transliteration physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
