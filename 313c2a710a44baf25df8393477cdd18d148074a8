@@ -39,6 +39,30 @@
       },
       "revId": "313c2a710a44baf25df8393477cdd18d148074a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b105162b_8271b54d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2022-02-21T03:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "267d39bf_3b46f302",
+      "range": {
+        "startLine": 112,
+        "startChar": 44,
+        "endLine": 112,
+        "endChar": 50
+      },
+      "revId": "313c2a710a44baf25df8393477cdd18d148074a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
