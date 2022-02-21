@@ -15,4 +15,6 @@ const (
 	TiB = GiB * 1024
 	// PageBytes is the number of bytes in a page.
 	PageBytes = 4096
+	// KiBInMiB is the denominator to convert KiB to MiB
+	KiBInMiB = 1024
 )
