@@ -22,6 +22,30 @@
       },
       "revId": "303833d40e6afa1e045baa35cf4a6d67489b6585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8dc3db_194c01e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-21T03:16:28Z",
+      "side": 1,
+      "message": "Hi Kerker,\n\"interface\" is keyword so when i declare as interface getting below errors.\n/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:61:20: syntax error: unexpected :\u003d, expecting {\n2022-02-21T02:55:18.368915Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:62:4: syntax error: unexpected if, expecting semicolon or newline or }\n2022-02-21T02:55:18.368920Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:66:18: syntax error: unexpected ., expecting {\n2022-02-21T02:55:18.368924Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:66:19: undefined: WirelessInterfaces\n2022-02-21T02:55:18.368928Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:67:87: syntax error: unexpected ), expecting {\n2022-02-21T02:55:18.368933Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:68:5: syntax error: unexpected }, expecting expression\n2022-02-21T02:55:18.368937Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:70:17: syntax error: unexpected ., expecting {\n2022-02-21T02:55:18.368941Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:71:92: syntax error: unexpected ), expecting {\n2022-02-21T02:55:18.368945Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:72:5: syntax error: unexpected }, expecting expression\n2022-02-21T02:55:18.368949Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:76:4: syntax error: unexpected else after top level declaration\n2022-02-21T02:55:18.368953Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go:66:19: too many errors\n2022-02-21T02:55:18.370976Z Failed to run tests: failed to build and push: failed to prepare primary DUT 10.223.165.40: build failed: failed to build chromiumos/tast/local/bundles/cros: exit status 2",
+      "parentUuid": "00aa1eff_1304939b",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "303833d40e6afa1e045baa35cf4a6d67489b6585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
