@@ -127,6 +127,15 @@ func ensureNoError(ctx context.Context, conn *chrome.Conn) error {
 
 // EnsureNoPlayStoreError ensures that the Play Store window doesn't display an error.
 func EnsureNoPlayStoreError(ctx context.Context, cr *chrome.Chrome) error {
+	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
+	found, err := cr.IsTargetAvailable(ctx, chrome.MatchTargetURL(bgURL))
+
+	if err != nil {
+		return errors.Wrap(err, "failed to check Play Store window")
+	} else if !found {
+		return nil
+	}
+
 	conn, err := newConnForPlayStore(ctx, cr)
 	if err != nil {
 		return err
