@@ -229,6 +229,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4661d6c9_b9477449",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-21T12:39:16Z",
+      "side": 1,
+      "message": "As Georg said, could you add it for consistency now?\n--disable-login-lacros-opening\n\nEven with lacros only transition, we\u0027ll keep it.",
+      "parentUuid": "6dae4513_e57f1fdd",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a153fec1_68b9b2e3",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 4
