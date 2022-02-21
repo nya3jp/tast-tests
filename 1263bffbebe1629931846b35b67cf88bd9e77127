@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857b1497_9a9920b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-21T18:14:07Z",
+      "side": 1,
+      "message": "Hi! I have added the check to skip the known failure checks if the milestone is \u003c100. I have updated the proto to be able to add details about the failure, so the failure message clearly states that the failure is expected in the image. This failure message gives flexibility to inform about the failure reason in case we need to add new verification checks that will cause it to be unsuccessful. Please, let me know if you have any questions or comments. Thanks!",
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
