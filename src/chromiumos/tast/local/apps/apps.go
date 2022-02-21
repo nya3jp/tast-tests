@@ -66,6 +66,12 @@ var Canvas = App{
 	Name: "Chrome Canvas",
 }
 
+// Cursive has details about the Cursive app.
+var Cursive = App{
+	ID:   "apignacaigpffemhdbhmnajajaccbckh",
+	Name: "Cursive",
+}
+
 // ConnectivityDiagnostics has details about the Chrome Connectivity Diagnostics
 // app.
 var ConnectivityDiagnostics = App{
