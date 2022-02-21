@@ -47,6 +47,22 @@ type Chart struct {
 	fifo string
 }
 
+var errFifoModeNotSupported = errors.New("fifo mode not supported on tablet")
+
+// IsErrFifoModeNotSupported returns whether the error comes from chart don't support fifo mode.
+func IsErrFifoModeNotSupported(err error) bool {
+	if err == nil {
+		return false
+	}
+	if err == errFifoModeNotSupported {
+		return true
+	}
+	if wrappedErr, ok := err.(*errors.E); ok {
+		return IsErrFifoModeNotSupported(wrappedErr.Unwrap())
+	}
+	return false
+}
+
 // cleanup cleans up chart's (half-)initialized members and saves logs of chart process to |outDir|.
 func cleanup(ctx context.Context, conn *ssh.Conn, dir, pid, outDir string) error {
 	// The member initialization are chained in order of |conn|>|dir|>|pid|
@@ -239,7 +255,7 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displa
 // Display change the displayed chart.
 func (c *Chart) Display(ctx context.Context, chartPath string) error {
 	if len(c.fifo) == 0 {
-		return errors.New("change displayed chart is not supported on the chart tablet")
+		return errFifoModeNotSupported
 	}
 
 	if err := copyChart(ctx, c.conn, chartPath, c.dir); err != nil {
@@ -256,7 +272,7 @@ func (c *Chart) Display(ctx context.Context, chartPath string) error {
 // SetDisplayLevel sets the display level ranged [0.0, 100.0].
 func (c *Chart) SetDisplayLevel(ctx context.Context, lv float32) error {
 	if len(c.fifo) == 0 {
-		return errors.New("change display level is not supported on the chart tablet")
+		return errFifoModeNotSupported
 	}
 
 	cmd := fmt.Sprintf(`echo '{"display_level": %.1f}' > %s`, lv, c.fifo)
@@ -287,26 +303,35 @@ type Helper struct {
 
 // NewHelper creates |Helper|.
 func NewHelper(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string, displayLevel float32) (*Helper, error) {
-	c, err := NewWithDisplayLevel(ctx, d, altHostname, chartPath, outDir, displayLevel)
+	chart, err := NewWithDisplayLevel(ctx, d, altHostname, chartPath, outDir, displayLevel)
 	if err != nil {
 		return nil, err
 	}
-	return &Helper{c, ctx, d, altHostname, chartPath, outDir, displayLevel}, nil
+	return &Helper{chart, ctx, d, altHostname, chartPath, outDir, displayLevel}, nil
 }
 
 // SetDisplayLevel sets the display level.
 func (h *Helper) SetDisplayLevel(displayLevel float32) error {
 	if h.chart != nil {
+		// Try to reuse the existing chart service to set new display level if fifo mode is supported.
+		err := h.chart.SetDisplayLevel(h.ctx, displayLevel)
+		if err == nil {
+			return nil
+		}
+		if !IsErrFifoModeNotSupported(err) {
+			return err
+		}
+		// Fifo mode not support, fallback to legacy mode restarting chart service every time.
 		if err := h.chart.Close(h.ctx, h.outDir); err != nil {
 			return err
 		}
 		h.chart = nil
 	}
-	c, err := NewWithDisplayLevel(h.ctx, h.d, h.altHostname, h.chartPath, h.outDir, displayLevel)
+	chart, err := NewWithDisplayLevel(h.ctx, h.d, h.altHostname, h.chartPath, h.outDir, displayLevel)
 	if err != nil {
 		return err
 	}
-	h.chart = c
+	h.chart = chart
 	h.displayLevel = displayLevel
 	return nil
 }
