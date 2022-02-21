@@ -245,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad42613_72624394",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-21T22:38:02Z",
+      "side": 1,
+      "message": "As it is common for all parent fixtures, I added it generateChromeOpts",
+      "parentUuid": "4661d6c9_b9477449",
+      "revId": "85f81dd92515e4029d18189b379db20ba5ff971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a153fec1_68b9b2e3",
