@@ -16,6 +16,24 @@
       "message": "Hi Michael, here\u0027s a draft of the test change. I probably won\u0027t have time for it tomorrow but you might want to have a first look.",
       "revId": "547afb5a367c492ee7dc998d223073ca69879903",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a790bf9_46d4876f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-21T19:16:24Z",
+      "side": 1,
+      "message": "Hi Georg, looks reasonable so far. Thanks for working on this! \u003d)",
+      "parentUuid": "c816091b_d2538415",
+      "revId": "547afb5a367c492ee7dc998d223073ca69879903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
