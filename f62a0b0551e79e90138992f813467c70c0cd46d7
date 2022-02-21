@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fec3ffa_a6441d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-02-21T11:52:20Z",
+      "side": 1,
+      "message": "nit: remove extra empty line?",
+      "revId": "f62a0b0551e79e90138992f813467c70c0cd46d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
