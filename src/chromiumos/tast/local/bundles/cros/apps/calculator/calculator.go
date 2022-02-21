@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/webutil"
 )
 
 // UIConn returns a connection to the Calculator app HTML page,
@@ -26,7 +27,7 @@ func UIConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to connect to target %q", targetURL)
 	}
-	if err := appConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+	if err := webutil.WaitForQuiescence(ctx, appConn, 10*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for Calculator app to finish loading")
 	}
 	return appConn, nil
@@ -49,7 +50,7 @@ func WaitForCalculateResult(appConn *chrome.Conn, expectedResult string) uiauto.
 	script := `document.querySelector(".calculator-display").innerText`
 	var result string
 
-	return action.Retry(3, func(ctx context.Context) error {
+	return action.RetrySilently(3, func(ctx context.Context) error {
 		if err := appConn.Eval(ctx, script, &result); err != nil {
 			return errors.Wrap(err, "failed to get calculation result")
 		}
