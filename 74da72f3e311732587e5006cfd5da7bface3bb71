@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2611b2eb_e0371438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-21T08:48:10Z",
+      "side": 1,
+      "message": "could you avoid using regexp, instead use strings.Contains() for simplicity and efficiency?",
+      "revId": "74da72f3e311732587e5006cfd5da7bface3bb71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
