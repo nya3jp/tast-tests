@@ -54,6 +54,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9778e051_c5295642",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-02-21T01:04:12Z",
+      "side": 1,
+      "message": "Looks fine from a tast perspective, but please get +1/+2 from a teammate with context on the change before submitting.",
+      "revId": "86265e6c5e5dd642fe4fa9eff5aee0b54b4b8428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89342b89_2a3fa6f8",
@@ -91,6 +108,30 @@
       "side": 1,
       "message": "Good question: it does. We can probably check whether the file existed in the test beginning.\n\nI thought naively that Tast tests don\u0027t promise leaving the DUT in any particular state (similarly to how the tests delete the user cryptohome if it existed before running the test, or to how policy tests clear the device policies). But I don\u0027t know about actual guidelines.",
       "parentUuid": "89342b89_2a3fa6f8",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "86265e6c5e5dd642fe4fa9eff5aee0b54b4b8428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d08010_c500e714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-02-21T01:04:12Z",
+      "side": 1,
+      "message": "I\u0027m actually not sure what the guidelines are either. Personally, I\u0027d say it\u0027s better to avoid modifying the state if possible, especially with relatively subtle changes like this. However, I guess this flag looks like it\u0027s a temporary thing that should only affect developers working on this feature. So I\u0027ll leave it up to you to decide whether or not the DUT state modification is okay.",
+      "parentUuid": "642d6f1e_3aae921c",
       "range": {
         "startLine": 68,
         "startChar": 0,
