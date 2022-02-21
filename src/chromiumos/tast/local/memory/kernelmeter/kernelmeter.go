@@ -426,9 +426,9 @@ func stringToWatermarks(s string) (*watermarkData, error) {
 	return w, nil
 }
 
-// readMemInfo returns all name-value pairs from /proc/meminfo.  The values
+// ReadMemInfo returns all name-value pairs from /proc/meminfo.  The values
 // returned are in bytes.
-func readMemInfo() (map[string]MemSize, error) {
+func ReadMemInfo() (map[string]MemSize, error) {
 	b, err := ioutil.ReadFile("/proc/meminfo")
 	if err != nil {
 		return nil, err
@@ -452,7 +452,7 @@ type MemInfoFields struct {
 
 // MemInfo returns selected /proc/meminfo fields.
 func MemInfo() (data *MemInfoFields, err error) {
-	info, err := readMemInfo()
+	info, err := ReadMemInfo()
 	if err != nil {
 		return nil, err
 	}
