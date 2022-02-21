@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5035b51_8f620cab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-02-21T11:50:25Z",
+      "side": 1,
+      "message": "Can we have a short summery and put this to the message body? It is recommended to have short title.\n\nhttps://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/contributing.md#uploading-a-change-for-review",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 106
+      },
+      "revId": "afb3e7f0c900a4fc5221464ba1e442f7d5a08103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

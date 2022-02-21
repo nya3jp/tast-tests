@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f858bcd4_d1ce1a5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-02-21T11:50:25Z",
+      "side": 0,
+      "message": "Can we still note this in comment to show why we need interactive with Chrome login screen?",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 114
+      },
+      "revId": "9dbd6acd7986bc1df8f230256b3ccd0bf5eae4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
