@@ -33,6 +33,115 @@
       "message": "Heya, I hoped to get around to this earlier today Jun but I haven\u0027t managed to do so. Reassigning to David, who actually has done Chromium work before, to look at this while Gabie is away. Thanks for landing this, and apologies for the delay!",
       "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0572965a_e9bd6076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370770
+      },
+      "writtenOn": "2022-02-21T02:06:07Z",
+      "side": 1,
+      "message": "lgtm, mostly a few nits.\n\nNote: im fairly unfamiliar w/ go but this looks pretty g!\n",
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa042510_c10c5467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive/cursive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1370770
+      },
+      "writtenOn": "2022-02-21T02:06:07Z",
+      "side": 1,
+      "message": "nit: Cursive",
+      "range": {
+        "startLine": 31,
+        "startChar": 51,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2ada27_6ea77af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1370770
+      },
+      "writtenOn": "2022-02-21T02:06:07Z",
+      "side": 1,
+      "message": "nit: maybe cursiveEnabledDevices? cursiveModels makes me thing they are cursive related when really they are devices that will have cursive on them",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9070875f_392b518b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370770
+      },
+      "writtenOn": "2022-02-21T02:06:07Z",
+      "side": 1,
+      "message": "should crux be in this list?",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db1d0e2_aaafeaa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1370770
+      },
+      "writtenOn": "2022-02-21T02:06:07Z",
+      "side": 1,
+      "message": "should we test for this? IIUC chrome apps are being deprecated and cursive is a PWA?\n\nor is this API not related to \"chrome apps deprecation\"?",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
