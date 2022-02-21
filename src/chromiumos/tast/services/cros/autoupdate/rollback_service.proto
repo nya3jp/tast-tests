@@ -28,4 +28,5 @@ message VerifyRollbackRequest {
 
 message VerifyRollbackResponse {
   bool successful = 1;
+  string failure_details = 2;
 }
