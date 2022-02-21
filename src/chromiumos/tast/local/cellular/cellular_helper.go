@@ -454,10 +454,18 @@ func (h *Helper) ResetModem(ctx context.Context) (time.Duration, error) {
 
 // IsSimLockEnabled returns lockenabled value.
 func (h *Helper) IsSimLockEnabled(ctx context.Context) bool {
-	lockStatus, _ := h.GetCellularSIMLockStatus(ctx)
+	lockStatus, err := h.GetCellularSIMLockStatus(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "getcellularsimlockstatus -lock: ", err.Error())
+	}
+
+	lock := false
 	lockEnabled := lockStatus[shillconst.DevicePropertyCellularSIMLockStatusLockEnabled]
-	testing.ContextLog(ctx, "lock enabled status: ", lockEnabled)
-	return lockEnabled.(bool)
+	if lockEnabled != nil {
+		testing.ContextLog(ctx, "lock enabled status: ", lockEnabled)
+		lock = lockEnabled.(bool)
+	}
+	return lock
 }
 
 // IsSimPinLocked returns true if locktype value is 'sim-pin'
