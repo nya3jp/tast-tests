@@ -247,12 +247,18 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 
 	rollbackService = aupb.NewRollbackServiceClient(client.Conn)
 	verifyResponse, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Guid: guid})
-	// This error is expected on any milestone <99 because Chrome wasn't ready
-	// to be tested yet.
 	if err != nil {
 		s.Fatal("Failed to verify rollback on client: ", err)
 	}
 	if !verifyResponse.Successful {
-		s.Error("Rollback was not successful")
+		s.Errorf("Rollback was not successful: %s", verifyResponse.VerificationDetails)
+	} else {
+		// On any milestone <100 Chrome was not ready to be tested yet, so it is not
+		// possible to carry out all verification steps and they are skipped. The
+		// verification is considered successful but if details are provided by the
+		// service, they the should be logged.
+		if verifyResponse.VerificationDetails != "" {
+			s.Log(verifyResponse.VerificationDetails)
+		}
 	}
 }

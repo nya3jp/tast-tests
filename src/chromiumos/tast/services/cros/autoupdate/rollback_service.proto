@@ -28,4 +28,7 @@ message VerifyRollbackRequest {
 
 message VerifyRollbackResponse {
   bool successful = 1;
+  // It provides details about the failure or further information about the
+  // success that should be logged for reference.
+  string verification_details = 2;
 }
