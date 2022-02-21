@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a553a43b_64141ad5",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-21T19:13:49Z",
+      "side": 1,
+      "message": "This value is owned by the parent fixture, so you must not try to tear it down in your own TearDown function. The parent fixture\u0027s TearDown will take care of that. Remove the call to chrome.Unlock() from your close() method, and also don\u0027t call f.cr.close() there. Just set f.cr to nil.",
+      "revId": "fdee18a5d03b927a2846daf285a4450953a0037d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

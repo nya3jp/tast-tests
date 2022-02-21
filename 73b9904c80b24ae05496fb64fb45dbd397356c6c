@@ -250,6 +250,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b39983c5_e643e9f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-21T19:13:49Z",
+      "side": 1,
+      "message": "(SetUp opens a window in the Lacros case only.)",
+      "parentUuid": "7544d198_947c144d",
+      "revId": "73b9904c80b24ae05496fb64fb45dbd397356c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bd63fac_939f9395",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
         "patchSetId": 6
