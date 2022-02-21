@@ -59,8 +59,8 @@ type embeddedDisplayInfo struct {
 type externalDisplayInfo struct {
 	DisplayWidth         *jsontypes.Uint32 `json:"display_width"`
 	DisplayHeight        *jsontypes.Uint32 `json:"display_height"`
-	ResolutionHorizontal *jsontypes.Uint32 `json:"resolution_width"`
-	ResolutionVertical   *jsontypes.Uint32 `json:"resolution_height"`
+	ResolutionHorizontal *jsontypes.Uint32 `json:"resolution_horizontal"`
+	ResolutionVertical   *jsontypes.Uint32 `json:"resolution_vertical"`
 	RefreshRate          *float64          `json:"refresh_rate"`
 }
 
