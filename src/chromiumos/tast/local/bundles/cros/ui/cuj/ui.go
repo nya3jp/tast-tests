@@ -358,6 +358,6 @@ func ExpandMenu(tconn *chrome.TestConn, button, menu *nodewith.Finder, height in
 			// we still need to keep this ExpandMenu() function.
 			testing.ContextLog(ctx, "Menu expanded to full height in ", time.Now().Sub(startTime))
 			return nil
-		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second})
+		}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
 	}
 }
