@@ -34,6 +34,24 @@
       "parentUuid": "a698c09e_7808c9f3",
       "revId": "271e6de86c93e169dbcfb63a42a6db0190d4287d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50734ec4_23e0fb64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-21T17:54:23Z",
+      "side": 1,
+      "message": "FWIW https://tastboard.corp.google.com/test/shelf.OpenCloseSwitchApps not reproducible on devices. My suspicion is it may be the flake has been around for the vm target.",
+      "parentUuid": "9d7be81d_0319dae2",
+      "revId": "271e6de86c93e169dbcfb63a42a6db0190d4287d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
