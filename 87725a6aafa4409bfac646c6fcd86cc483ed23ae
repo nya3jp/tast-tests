@@ -77,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f484b08_69d5c39c",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-21T03:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01bbc347_03abccca",
+      "range": {
+        "startLine": 76,
+        "startChar": 19,
+        "endLine": 76,
+        "endChar": 24
+      },
+      "revId": "87725a6aafa4409bfac646c6fcd86cc483ed23ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53d8dce6_4afe37ef",
@@ -90,6 +114,30 @@
       "writtenOn": "2022-02-21T00:01:06Z",
       "side": 1,
       "message": "Might be good to include an example of why you are skipping 2 lines? e.g.\n```\n// Skip two lines after authentication error to identify the\n// exact authentication error:\n//   Got authentication error\n//   net_error: net::OK (skip)\n//   response body: { (skip)\n//    \"error\": \"rate_limit_exceeded\"\n//   }\n```",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 53
+      },
+      "revId": "87725a6aafa4409bfac646c6fcd86cc483ed23ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678a74e7_631a8287",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-21T03:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d8dce6_4afe37ef",
       "range": {
         "startLine": 85,
         "startChar": 7,
@@ -123,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f944df_8424e47e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-21T03:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eaa013c_08727283",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "87725a6aafa4409bfac646c6fcd86cc483ed23ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8697a030_7843a35d",
@@ -136,6 +208,30 @@
       "writtenOn": "2022-02-21T00:01:06Z",
       "side": 1,
       "message": "nit: unique error here? failed to skip log reader forward 2 lines?",
+      "range": {
+        "startLine": 89,
+        "startChar": 36,
+        "endLine": 89,
+        "endChar": 81
+      },
+      "revId": "87725a6aafa4409bfac646c6fcd86cc483ed23ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02177468_9b611341",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-02-21T03:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8697a030_7843a35d",
       "range": {
         "startLine": 89,
         "startChar": 36,
