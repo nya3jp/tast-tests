@@ -193,7 +193,8 @@ func verifyRollback(ctx context.Context, guid string, dut *dut.DUT, rpcHint *tes
 		return errors.Wrap(err, "failed to verify rollback on client")
 	}
 	if !response.Successful {
-		return errors.Wrap(err, "rollback was not successful")
+		return errors.Wrapf(err, "rollback was not successful: %s", response.VerificationDetails)
 	}
+
 	return nil
 }
