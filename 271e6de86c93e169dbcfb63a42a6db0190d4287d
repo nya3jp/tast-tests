@@ -70,6 +70,24 @@
       "parentUuid": "50734ec4_23e0fb64",
       "revId": "271e6de86c93e169dbcfb63a42a6db0190d4287d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ef8e11_497aa6d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-21T18:06:52Z",
+      "side": 1,
+      "message": "https://crbug.com/1299244 marked it as informational already to avoid blocking in CQ. Rebasing your CL should be fine?\nI\u0027m still unsure about why it only happens on that vm target even though submitting this CL already passed the same target on submission.",
+      "parentUuid": "6c133576_2ff03693",
+      "revId": "271e6de86c93e169dbcfb63a42a6db0190d4287d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
