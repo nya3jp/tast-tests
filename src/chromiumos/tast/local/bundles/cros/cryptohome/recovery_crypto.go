@@ -22,7 +22,7 @@ func init() {
 }
 
 func RecoveryCrypto(ctx context.Context, s *testing.State) {
-	testTool, newErr := cryptohome.NewRecoveryTestTool()
+	testTool, newErr := cryptohome.NewRecoveryTestToolWithFakeMediator()
 	if newErr != nil {
 		s.Fatal("Failed to initialize RecoveryTestTool", newErr)
 	}
