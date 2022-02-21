@@ -93,7 +93,7 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed while checking that sensitive data is not logged: ", err)
 	}
 
-	if err := verifyRollback(ctx, guid, s.DUT(), s.RPCHint()); err != nil {
+	if err := verifyRollback(ctx, s, guid, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to verify rollback: ", err)
 	}
 }
@@ -180,7 +180,7 @@ func ensureSensitiveDataIsNotLogged(ctx context.Context, dut *dut.DUT, sensitive
 	return nil
 }
 
-func verifyRollback(ctx context.Context, guid string, dut *dut.DUT, rpcHint *testing.RPCHint) error {
+func verifyRollback(ctx context.Context, s *testing.State, guid string, dut *dut.DUT, rpcHint *testing.RPCHint) error {
 	client, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
@@ -193,7 +193,16 @@ func verifyRollback(ctx context.Context, guid string, dut *dut.DUT, rpcHint *tes
 		return errors.Wrap(err, "failed to verify rollback on client")
 	}
 	if !response.Successful {
-		return errors.Wrap(err, "rollback was not successful")
+		errorMsg := "rollback was not successful: " + response.VerificationDetails
+		return errors.Wrap(err, errorMsg)
 	}
+	// On any milestone <100 Chrome was not ready to be tested yet, so it is not
+	// possible to carry out all verification steps and they are skipped. The
+	// verification is considered successful but if details are provided by the
+	// service, they the should be logged.
+	if response.VerificationDetails != "" {
+		s.Log(response.VerificationDetails)
+	}
+
 	return nil
 }
