@@ -91,10 +91,12 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 				if (event.type === chrome.tts.EventType.END) {
 					resolve(event.charIndex);
 				}
+				if (event.type === chrome.tts.EventType.ERROR) {
+					reject(new Error(event.errorMessage));
+				}
 				if (event.type === chrome.tts.EventType.CANCELLED ||
-				    event.type === chrome.tts.EventType.ERROR ||
 				    event.type === chrome.tts.EventType.INTERRUPTED) {
-					reject();
+					reject(new Error("Unexpected event typpe: " + event.type));
 				}
 			}},
 			function()  {
