@@ -193,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c1db03_011a7274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1370770
+      },
+      "writtenOn": "2022-02-21T06:06:59Z",
+      "side": 1,
+      "message": "crux is coachz, SGTM! \n\nbut also do note, we are planning to preinstall on other stylus devices sooon, so maybe there will be some churn on this list for onmibox installation vs preinstall.",
+      "parentUuid": "5b62faf0_3e94a26a",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5db1d0e2_aaafeaa0",
@@ -230,6 +254,30 @@
       "side": 1,
       "message": "haha. ChromeApp represents any apps installed in Chrome (Backlight, Files, whatever). It is not the traditional Chrome apps.",
       "parentUuid": "5db1d0e2_aaafeaa0",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9caaf10f_7c2a897b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1370770
+      },
+      "writtenOn": "2022-02-21T06:06:59Z",
+      "side": 1,
+      "message": "TIL thanks!",
+      "parentUuid": "8906a0df_448fdf0b",
       "range": {
         "startLine": 71,
         "startChar": 15,
