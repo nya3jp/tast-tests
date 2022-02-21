@@ -52,6 +52,29 @@
       "parentUuid": "edacd879_0e3b34ea",
       "revId": "86265e6c5e5dd642fe4fa9eff5aee0b54b4b8428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89342b89_2a3fa6f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-02-21T00:47:10Z",
+      "side": 1,
+      "message": "What happens if the experiment is already enabled? Does running this test end up disabling the experiment?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "86265e6c5e5dd642fe4fa9eff5aee0b54b4b8428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
