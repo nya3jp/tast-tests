@@ -106,6 +106,24 @@
       "parentUuid": "26ef8e11_497aa6d7",
       "revId": "271e6de86c93e169dbcfb63a42a6db0190d4287d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c408e5a_e131a0dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-21T18:17:40Z",
+      "side": 1,
+      "message": "No problem. I also have some pending CLs blocked on that 😄 and forgot to tell you it\u0027s pulled out from CQ now.",
+      "parentUuid": "7b9b7545_69fb7d11",
+      "revId": "271e6de86c93e169dbcfb63a42a6db0190d4287d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
