@@ -91,7 +91,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 	}
 
 	// ARC toggle should be checked.
-	if err := accountmanager.CheckArcToggleStatus(ctx, tconn, browser.TypeLacros, true); err != nil {
+	if err := accountmanager.CheckARCToggleStatus(ctx, tconn, browser.TypeLacros, true); err != nil {
 		s.Fatal("Failed to check ARC toggle status: ", err)
 	}
 
@@ -110,7 +110,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 	}
 
 	// Check that account is present in ARC.
-	if err := accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, true /*expectedPresentInArc*/)(ctx); err != nil {
+	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, true /*expectedPresentInArc*/)(ctx); err != nil {
 		s.Fatal("Failed to check that account is present in ARC: ", err)
 	}
 
@@ -123,7 +123,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(removeFromARCButton),
 		ui.LeftClick(removeFromARCButton),
 		// Check that account is not present in ARC.
-		accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, false /*expectedPresentInArc*/),
+		accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, false /*expectedPresentInArc*/),
 	)(ctx); err != nil {
 		s.Fatal("Failed to remove account from ARC: ", err)
 	}
@@ -137,7 +137,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(addToARCButton),
 		ui.LeftClick(addToARCButton),
 		// Check that account is present in ARC.
-		accountmanager.CheckIsAccountPresentInArcAction(tconn, arcDevice, username, true /*expectedPresentInArc*/),
+		accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, true /*expectedPresentInArc*/),
 	)(ctx); err != nil {
 		s.Fatal("Failed to add account to ARC: ", err)
 	}

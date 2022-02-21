@@ -106,7 +106,7 @@ func ARCAccountPicker(ctx context.Context, s *testing.State) {
 		// Find "More actions, <email>" button to make sure that account was added.
 		ui.WaitUntilExists(moreActionsButton),
 		// Check that account is not present in ARC.
-		accountmanager.CheckIsAccountPresentInArcAction(tconn, d, username, false),
+		accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username, false),
 	)(ctx); err != nil {
 		s.Fatal("Failed to confirm account addition: ", err)
 	}
@@ -118,16 +118,16 @@ func ARCAccountPicker(ctx context.Context, s *testing.State) {
 		// Click on account to add it to ARC.
 		ui.LeftClick(accountPickerItem),
 		// Check that account is present in ARC.
-		accountmanager.CheckIsAccountPresentInArcAction(tconn, d, username, true),
+		accountmanager.CheckIsAccountPresentInARCAction(tconn, d, username, true),
 	)(ctx); err != nil {
 		s.Fatal("Failed to add account to ARC from account picker: ", err)
 	}
 }
 
-// checkARCToggleStatusAction returns an action that runs accountmanager.CheckArcToggleStatus.
+// checkARCToggleStatusAction returns an action that runs accountmanager.CheckARCToggleStatus.
 func checkARCToggleStatusAction(tconn *chrome.TestConn, expectedVal bool) action.Action {
 	return func(ctx context.Context) error {
-		if err := accountmanager.CheckArcToggleStatus(ctx, tconn, browser.TypeLacros, expectedVal); err != nil {
+		if err := accountmanager.CheckARCToggleStatus(ctx, tconn, browser.TypeLacros, expectedVal); err != nil {
 			return errors.Wrap(err, "failed to check ARC toggle status")
 		}
 		return nil
