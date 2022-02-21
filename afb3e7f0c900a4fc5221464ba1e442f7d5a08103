@@ -22,6 +22,121 @@
       },
       "revId": "afb3e7f0c900a4fc5221464ba1e442f7d5a08103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c02a91_3a623ef8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-21T12:23:49Z",
+      "side": 1,
+      "message": "nit: move command above here:\ntast run \u003cDUT IP\u003e health.ProbeBusInfo.thunderbolt",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "afb3e7f0c900a4fc5221464ba1e442f7d5a08103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b9596d3_a3f9988b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-21T12:23:49Z",
+      "side": 1,
+      "message": "I believe you need to use ChromeEC hardware dependency to use ectool\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d216?q\u003dtast%20hwdep\n\nnot all Chromebooks have Google EC",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 104
+      },
+      "revId": "afb3e7f0c900a4fc5221464ba1e442f7d5a08103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4da675_5fea4984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-21T12:23:49Z",
+      "side": 1,
+      "message": "nit: pass ctx by value:\n\n```\ndefer func(ctx context.Context) {\n   if err :\u003d testexec.CommandContext(ctx, \"ectool\", \"pdcontrol\", \"resume\", portStr).Run(); err !\u003d nil {\n      s.Error(\"Failed to perform replug: \", err)\n   }\n}(ctx)\n```",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "afb3e7f0c900a4fc5221464ba1e442f7d5a08103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05117ce9_f05c9b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-21T12:23:49Z",
+      "side": 1,
+      "message": "nit: drop it since it\u0027s a default value for the interval",
+      "range": {
+        "startLine": 111,
+        "startChar": 27,
+        "endLine": 111,
+        "endChar": 61
+      },
+      "revId": "afb3e7f0c900a4fc5221464ba1e442f7d5a08103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d95b8a3_62c0aa3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-21T12:23:49Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 113,
+        "startChar": 58,
+        "endLine": 113,
+        "endChar": 59
+      },
+      "revId": "afb3e7f0c900a4fc5221464ba1e442f7d5a08103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
