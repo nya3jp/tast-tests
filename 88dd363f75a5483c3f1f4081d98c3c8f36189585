@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d03fc89_4b70d094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive/cursive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-21T06:02:59Z",
+      "side": 1,
+      "message": "oops. Fixed.",
+      "parentUuid": "aa042510_c10c5467",
+      "range": {
+        "startLine": 31,
+        "startChar": 51,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f2ada27_6ea77af7",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-02-21T02:06:07Z",
       "side": 1,
       "message": "nit: maybe cursiveEnabledDevices? cursiveModels makes me thing they are cursive related when really they are devices that will have cursive on them",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bcc9714_8e4055d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-21T06:02:59Z",
+      "side": 1,
+      "message": "I changed it to cursiveEnabledModels as `Model` is more accurate term in CrOS world.",
+      "parentUuid": "8f2ada27_6ea77af7",
       "range": {
         "startLine": 23,
         "startChar": 4,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b62faf0_3e94a26a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-21T06:02:59Z",
+      "side": 1,
+      "message": "Reason is that I did not find crux here https://chromeos.google.com/partner/dlm/device/list\n\nDo you know the right model name?\n\nbtw, this test currently validate the installation from omnibox. IIUC crux has A4 pre-installed. We can branch the test code to cover both cases. Maybe a separate cl?",
+      "parentUuid": "9070875f_392b518b",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5db1d0e2_aaafeaa0",
@@ -134,6 +206,30 @@
       "writtenOn": "2022-02-21T02:06:07Z",
       "side": 1,
       "message": "should we test for this? IIUC chrome apps are being deprecated and cursive is a PWA?\n\nor is this API not related to \"chrome apps deprecation\"?",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "88dd363f75a5483c3f1f4081d98c3c8f36189585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8906a0df_448fdf0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cursive_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-21T06:02:59Z",
+      "side": 1,
+      "message": "haha. ChromeApp represents any apps installed in Chrome (Backlight, Files, whatever). It is not the traditional Chrome apps.",
+      "parentUuid": "5db1d0e2_aaafeaa0",
       "range": {
         "startLine": 71,
         "startChar": 15,
