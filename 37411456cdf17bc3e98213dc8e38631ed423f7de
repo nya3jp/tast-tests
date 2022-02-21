@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "301fc68b_23e456ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-21T13:15:32Z",
+      "side": 1,
+      "message": "Oh it looks like the problem was caused by another Settings window (ARC Settings and not OS Settings). I reverted this part of the CL. I will look into this issue separately",
+      "parentUuid": "9d4dbd52_a58e8374",
+      "revId": "37411456cdf17bc3e98213dc8e38631ed423f7de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c425c5c6_c5e4dbd0",
