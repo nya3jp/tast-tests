@@ -47,18 +47,18 @@ func FwmpDevDisableBoot(ctx context.Context, s *testing.State) {
 
 	// checkTPMNotOwned returns error if TPM is owned.
 	checkTPMNotOwned := func(ctx context.Context) error {
-		out, err := s.DUT().Conn().CommandContext(ctx, "cryptohome", "--action=tpm_status").Output(ssh.DumpLogOnError)
+		out, err := s.DUT().Conn().CommandContext(ctx, "cryptohome", "--action=status").Output(ssh.DumpLogOnError)
 		if err != nil {
 			return errors.Wrap(err, "unable to read TPM status")
 		}
-		regex := `TPM Owned:(\s+\w+\s?)`
+		regex := `\"owned\":(\s+\w+\s?)`
 		expMatch := regexp.MustCompile(regex)
 		matches := expMatch.FindStringSubmatch(string(out))
 		if len(matches) < 2 {
 			return errors.Errorf("failed to match regex %q in %q", expMatch, string(out))
 		}
 		tpmStatus := strings.TrimSpace(matches[1])
-		if tpmStatus == "True" {
+		if tpmStatus == "true" {
 			return errors.New("got TPM Owned: true, expected it to be false")
 		}
 		return nil
