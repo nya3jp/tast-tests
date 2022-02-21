@@ -188,6 +188,30 @@
       },
       "revId": "83ac54e77635934f59784e4ab3fdbb317835ff7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f67810_d3aaa80c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-21T05:23:05Z",
+      "side": 1,
+      "message": "Thanks for the clarification. Passing two contexts is uncommon, but I don\u0027t have a better solution.",
+      "parentUuid": "6b6ba557_ea66f18d",
+      "range": {
+        "startLine": 474,
+        "startChar": 1,
+        "endLine": 486,
+        "endChar": 4
+      },
+      "revId": "83ac54e77635934f59784e4ab3fdbb317835ff7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
