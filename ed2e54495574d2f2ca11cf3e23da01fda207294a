@@ -16,6 +16,24 @@
       "message": "why do you return nil here?",
       "revId": "ed2e54495574d2f2ca11cf3e23da01fda207294a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2245cc52_da554f39",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-02-21T03:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf84405f_26cb3c5c",
+      "revId": "ed2e54495574d2f2ca11cf3e23da01fda207294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
