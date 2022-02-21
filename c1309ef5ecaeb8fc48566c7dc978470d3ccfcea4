@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e03ebe_771d5022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-02-21T01:35:06Z",
+      "side": 1,
+      "message": "Found that this is not an array, so the naming should be `interface`. (without suffix \u0027s\u0027)",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "c1309ef5ecaeb8fc48566c7dc978470d3ccfcea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
