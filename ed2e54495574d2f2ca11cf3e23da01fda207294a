@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf84405f_26cb3c5c",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-02-21T02:58:56Z",
+      "side": 1,
+      "message": "why do you return nil here?",
+      "revId": "ed2e54495574d2f2ca11cf3e23da01fda207294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
