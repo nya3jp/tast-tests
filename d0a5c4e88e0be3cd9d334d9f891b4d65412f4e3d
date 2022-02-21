@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff998f3_b395c29d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-21T08:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25ecf20_12710de0",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "d0a5c4e88e0be3cd9d334d9f891b4d65412f4e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e36d16_49e3243d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-21T06:02:24Z",
       "side": 1,
       "message": "typo, please fix.",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 23
+      },
+      "revId": "d0a5c4e88e0be3cd9d334d9f891b4d65412f4e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99cea56e_8dde64c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-21T08:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93e36d16_49e3243d",
       "range": {
         "startLine": 230,
         "startChar": 1,
