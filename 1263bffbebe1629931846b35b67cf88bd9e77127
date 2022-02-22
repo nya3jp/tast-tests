@@ -205,6 +205,54 @@
       },
       "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3380f1aa_d68ee38c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T12:17:10Z",
+      "side": 1,
+      "message": "As the test is set to pass when the failure is expected in other cases (e.g. when the test skips), it probably makes sense to have the same outcome in here as well. I will make the updates to introduce failureExpected",
+      "parentUuid": "76090c93_06f52676",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ecd98b_dd93c487",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T12:17:10Z",
+      "side": 1,
+      "message": "If when the failure is expected",
+      "parentUuid": "14af46ba_650f4d27",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
