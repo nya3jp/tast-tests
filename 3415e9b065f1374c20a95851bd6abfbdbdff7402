@@ -16,6 +16,24 @@
       "message": "Did you mean that you got an error from this line? If so, what error did you get? Thanks.",
       "revId": "3415e9b065f1374c20a95851bd6abfbdbdff7402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44898302_c4407cc4",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-02-22T22:21:44Z",
+      "side": 1,
+      "message": "Yeah exactly the error was, \n\nError at fixture.go:75: Failure in ending the profiler: failed waiting for the command to exit: context canceled                                                               \n2022-02-18T21:23:42.564452Z [21:23:42.192] Stack trace:                                \nFailure in ending the profiler                                                         \n        at chromiumos/tast/local/profiler.(*profilerFixture).TearDown (fixture.go:75)  \n        at chromiumos/tast/internal/planner/internal/fixture.(*statefulFixture).RunTearDown.func1 (internal_stack.go:437)\n        at chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)          \n        at runtime.goexit (asm_amd64.s:1581)                                           \nfailed waiting for the command to exit                                                 \n        at chromiumos/tast/local/profiler.(*perf).end (perf.go:317)                    \n        at chromiumos/tast/local/profiler.(*RunningProf).End (profiler.go:71)          \n        at chromiumos/tast/local/profiler.(*profilerFixture).TearDown (fixture.go:73)  \n        at chromiumos/tast/internal/planner/internal/fixture.(*statefulFixture).RunTearDown.func1 (internal_stack.go:437)\n        at chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)          \n        at runtime.goexit (asm_amd64.s:1581)                                           \ncontext canceled                                                                       \n        at ??? \n       \nThere\u0027s some slight mismatch with the lines cause I had some extra prints",
+      "parentUuid": "30975c48_e5fa412f",
+      "revId": "3415e9b065f1374c20a95851bd6abfbdbdff7402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
