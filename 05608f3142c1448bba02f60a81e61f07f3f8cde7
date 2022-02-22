@@ -22,6 +22,30 @@
       },
       "revId": "05608f3142c1448bba02f60a81e61f07f3f8cde7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83487cb_ec2263ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/palmrejection/palm_touch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373186
+      },
+      "writtenOn": "2022-02-22T04:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79970567_aaee76dd",
+      "range": {
+        "startLine": 47,
+        "startChar": 67,
+        "endLine": 47,
+        "endChar": 107
+      },
+      "revId": "05608f3142c1448bba02f60a81e61f07f3f8cde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
