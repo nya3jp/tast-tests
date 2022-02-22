@@ -301,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8131218d_93a8ffdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-22T23:40:18Z",
+      "side": 1,
+      "message": "Instead of os.chdir before/after calling the binary, it\u0027s better to have the binary accept arguments to specify the data directories. Something like \"image_processor_test --data-directory\u003dxxx\".",
+      "parentUuid": "6ca2eb2a_fa3aa98d",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2f392f8_e645fc7d",
