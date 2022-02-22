@@ -221,6 +221,22 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
+	// lacrosPrimaryDisableSync is a fixture to bring up Lacros as a primary browser from the rootfs partition by default and disables app sync.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPrimaryDisableSync",
+		Desc:     "Lacros Chrome from rootfs as a primary browser and disables app sync",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
+				chrome.ExtraArgs("--disable-sync"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
 	// lacrosUIKeepAlive is similar to lacros but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
 	// of by command line, and this test assuming that Lacros will be keep alive

@@ -27,6 +27,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInDisableSync",
+		Desc:     "Logged into a user session with --disable-sync flag",
+		Contacts: []string{"dhaddock@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{ExtraArgs("--disable-sync")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInForEA",
 		Desc:     "Logged into a user session for essential apps",
 		Contacts: []string{"shengjun@chromium.org"},
