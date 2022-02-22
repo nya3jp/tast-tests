@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1df29311_405b82a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-22T09:50:35Z",
+      "side": 1,
+      "message": "It is easier to make the assumption that when `.Successful` is false, `.FailureDetails` is populated.",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 3
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3766165f_9549c2de",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 1
@@ -54,6 +77,30 @@
       "writtenOn": "2022-02-22T08:01:12Z",
       "side": 1,
       "message": "I\u0027d propose to just do s.Log this if it\u0027s the \"image does not support a full rollback verification\" error. That makes it easier for us to see if there\u0027s an actual failure or not.\n\nYou could make the error publicly accessible similar to here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go;l\u003d88\n\nNot sure whether error definition needs to go into \"common\", or could be in \"local\", i.e. src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go?",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a112a552_6c13fa74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-22T09:50:35Z",
+      "side": 1,
+      "message": "I don\u0027t think you can use this approach, as the core error is only a string, and it can be any string that is returned by `VerifyRollback`.\nIt might be possible, if the order of error is swapped, and a common `VerificationError`  is wrapped into the `.FailureDetails`.\nBut if you want to go down this path, we need to involve more reviewers, as it is not the common practice, and requires a discussion.",
+      "parentUuid": "3766165f_9549c2de",
       "range": {
         "startLine": 260,
         "startChar": 2,
