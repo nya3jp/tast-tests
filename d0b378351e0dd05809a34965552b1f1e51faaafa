@@ -16,6 +16,47 @@
       "message": "Can src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go be fixed instead of adding a new test?",
       "revId": "d0b378351e0dd05809a34965552b1f1e51faaafa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ee8f93_63c31705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-22T21:19:27Z",
+      "side": 1,
+      "message": "Or src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go\n\nor src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go, which I\u0027ve fought with getting the suspend/resume cases to pass on all models.",
+      "parentUuid": "4279836f_ab275414",
+      "revId": "d0b378351e0dd05809a34965552b1f1e51faaafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c09b436_b92d3015",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-22T21:19:27Z",
+      "side": 1,
+      "message": "We probably don\u0027t want this in the CQ, but in faft bios nightly instead. Set attrs to []string{\"group:firmware\", \"firmware_unstable\"} until the test is proved stable, then move to \"firmware_bios\".",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "d0b378351e0dd05809a34965552b1f1e51faaafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
