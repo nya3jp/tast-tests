@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ba7e095_727cf69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-22T17:24:04Z",
+      "side": 1,
+      "message": "this HTML file is already in the repo, it is from the existing test case VideoCaptureAllowed.\nShould I duplicate it to make sure a change for VideoCaptureAllowed will not affect this test?",
+      "parentUuid": "560ec9eb_904d2b21",
+      "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fff62cf_4e5abd69",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
         "patchSetId": 1
