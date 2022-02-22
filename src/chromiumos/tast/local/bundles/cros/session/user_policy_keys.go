@@ -172,11 +172,6 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify created key: ", err)
 	}
 
-	// Restart the ui, which should delete the key.
-	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
-		s.Fatal("Failed to unmount user vault: ", err)
-	}
-
 	oldProc, err := ashproc.Root()
 	if err != nil {
 		s.Fatal("Failed to find Chrome: ", err)
