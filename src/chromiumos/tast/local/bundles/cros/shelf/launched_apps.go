@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -18,10 +19,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type shelfParams struct {
+	tablet      bool
+	browserType browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchedApps,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that launched apps appear in the shelf",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -30,19 +36,45 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedInDisableSync(),
+
 		Params: []testing.Param{
 			{
 				// Primary form factor is not tablet.
-				Name:              "",
-				Val:               false,
+				Name:    "",
+				Fixture: "chromeLoggedInDisableSync",
+				Val: shelfParams{
+					tablet:      false,
+					browserType: browser.TypeAsh,
+				},
 				ExtraSoftwareDeps: []string{"no_tablet_form_factor"},
 			},
 			{
+				Name:    "lacros",
+				Fixture: "lacrosPrimary",
+				Val: shelfParams{
+					tablet:      false,
+					browserType: browser.TypeLacros,
+				},
+				ExtraSoftwareDeps: []string{"lacros", "no_tablet_form_factor"},
+			},
+			{
 				// Primary form factor is tablet.
-				Name:              "tablet_form_factor",
-				Val:               true,
+				Name:    "tablet_form_factor",
+				Fixture: "chromeLoggedInDisableSync",
+				Val: shelfParams{
+					tablet:      true,
+					browserType: browser.TypeAsh,
+				},
 				ExtraSoftwareDeps: []string{"tablet_form_factor"},
+			},
+			{
+				Name:    "tablet_form_factor_lacros",
+				Fixture: "lacrosPrimary",
+				Val: shelfParams{
+					tablet:      true,
+					browserType: browser.TypeLacros,
+				},
+				ExtraSoftwareDeps: []string{"lacros", "tablet_form_factor"},
 			},
 		},
 	})
@@ -50,30 +82,33 @@ func init() {
 
 // LaunchedApps tests that apps launched appear in the ChromeOS shelf.
 func LaunchedApps(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	testOpt := s.Param().(shelfParams)
+	bt := testOpt.browserType
+
+	// Get the expected browser app info.
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
 	if err != nil {
-		s.Fatal("Could not find the Chrome app: ", err)
+		s.Fatalf("Could not find the %v browser app: %v", bt, err)
 	}
 
 	// Chrome app name doesn't exactly match the chrome shelf name so modify it here for simpler code later.
-	if chromeApp.Name == apps.Chrome.Name {
-		chromeApp.Name = "Google Chrome"
+	if browserApp.Name == apps.Chrome.Name {
+		browserApp.Name = "Google Chrome"
 	}
 
-	tabletMode := s.Param().(bool)
+	tabletMode := testOpt.tablet
 	var defaultAppsPartial []apps.App
 	if tabletMode {
-		defaultAppsPartial = []apps.App{chromeApp}
+		defaultAppsPartial = []apps.App{browserApp}
 	} else {
-		defaultAppsPartial = []apps.App{chromeApp, apps.Files}
+		defaultAppsPartial = []apps.App{browserApp, apps.Files}
 	}
 	defaultAppsFull := append(defaultAppsPartial, apps.Gmail, apps.Docs, apps.Youtube)
 
