@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "231bcf1e_dbad782f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T10:51:46Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "dfc555a8_e373f284",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1df29311_405b82a6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-22T09:50:35Z",
       "side": 1,
       "message": "It is easier to make the assumption that when `.Successful` is false, `.FailureDetails` is populated.",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 3
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1d69be_d977cb7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T10:51:46Z",
+      "side": 1,
+      "message": "You are right, I have updated the code, thanks!",
+      "parentUuid": "1df29311_405b82a6",
       "range": {
         "startLine": 256,
         "startChar": 2,
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "I don\u0027t think you can use this approach, as the core error is only a string, and it can be any string that is returned by `VerifyRollback`.\nIt might be possible, if the order of error is swapped, and a common `VerificationError`  is wrapped into the `.FailureDetails`.\nBut if you want to go down this path, we need to involve more reviewers, as it is not the common practice, and requires a discussion.",
       "parentUuid": "3766165f_9549c2de",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14af46ba_650f4d27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T10:51:46Z",
+      "side": 1,
+      "message": "I think it makes sense if the test fails, even if it is expected, because we are not really being able to completely verify everything works. With the details, we are aware that the error is the expected one and can just ignore it when it appears. \n\nHowever, if you think it is best that the test passes and to use Log instead if the failure is expected, maybe instead of checking failureDetails, we can have a new failureExpected \u003d true and just use Log in that case?",
+      "parentUuid": "a112a552_6c13fa74",
       "range": {
         "startLine": 260,
         "startChar": 2,
