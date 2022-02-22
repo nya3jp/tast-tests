@@ -431,6 +431,24 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
 			[]int64{50, 80}, bTconn))
 	}
+	for _, suffix := range []string{
+		"", ".H264", ".Vp8", ".Vp8.S0", ".Vp8.S1", ".Vp8.S2",
+		".Vp9", ".Vp9.S0", ".Vp9.S1", ".Vp9.S2",
+	} {
+		// Neither SmallerIsBetter nor BiggerIsBetter
+		// makes sense here, but we have to pick one.
+		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
+			"WebRTC.Video.Encoded.Qp"+suffix,
+			"unitless", perf.SmallerIsBetter, []int64{}, bTconn))
+	}
+	for _, suffix := range []string{
+		"H264.4k.Hw", "H264.4k.Sw", "H264.Hd.Hw", "H264.Hd.Sw",
+		"Vp9.4k.Hw", "Vp9.4k.Sw", "Vp9.Hd.Hw", "Vp9.Hd.Sw",
+	} {
+		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
+			"WebRTC.Video.DecodeTimePerFrameInMs."+suffix,
+			"millisecond", perf.SmallerIsBetter, []int64{}, bTconn))
+	}
 	// Jank criteria for input event latencies. The 1st number is the
 	// threshold to be marked as jank and the 2nd one is to be marked
 	// very jank.
