@@ -181,6 +181,30 @@
       },
       "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76090c93_06f52676",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-22T11:53:56Z",
+      "side": 1,
+      "message": "Yes, something like failureExpected \u003d true was what I had in mind when I proposed this change since it\u0027s not that anything fails, it\u0027s just that we can\u0027t verify it (there\u0027s a lot of other properties of rollback we don\u0027t verify either).\n\nI think leaving it as error case is also fine, your call. :)\n\nRegarding error comparison: Introducing a string constant and checking that FailureDetails contains that string doesn\u0027t seem that uncommon to me.",
+      "parentUuid": "14af46ba_650f4d27",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
