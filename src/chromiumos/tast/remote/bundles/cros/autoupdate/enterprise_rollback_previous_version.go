@@ -62,6 +62,27 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	board := lsbContent[lsbrelease.Board]
 	originalVersion := lsbContent[lsbrelease.Version]
 
+	milestoneN, err := strconv.Atoi(lsbContent[lsbrelease.Milestone])
+	if err != nil {
+		s.Fatalf("Failed to convert milestone to integer %s: %v", lsbContent[lsbrelease.Milestone], err)
+	}
+	milestoneM := milestoneN - 1 // Target milestone.
+
+	// Find the latest release for milestone M.
+	paygen, err := updateutil.LoadPaygenFromGS(ctx)
+	if err != nil {
+		s.Fatal("Failed to load paygen data: ", err)
+	}
+
+	filtered := paygen.FilterBoard(board).FilterDeltaType("OMAHA").FilterMilestone(milestoneM)
+	latest, err := filtered.FindLatest()
+	if err != nil {
+		// For unreleased boards, e.g. -kernelnext it's expected that there is no
+		// image available. Mark the test as successful and skip it.
+		s.Logf("Skipping test; Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
+		return
+	}
+
 	// Make sure to clear the TPM, go back to the original image, and remove all
 	// remains that may be left by a faulty rollback.
 	cleanupCtx := ctx
@@ -177,27 +198,6 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Error("Failed to close RPC client: ", err)
 	}
 
-	// Stage the "Update" to milestone - 1.
-	milestoneN, err := strconv.Atoi(lsbContent[lsbrelease.Milestone])
-	if err != nil {
-		s.Fatalf("Failed to convert milestone to integer %s: %v", lsbContent[lsbrelease.Milestone], err)
-	}
-	milestoneM := milestoneN - 1 // Target milestone.
-
-	// Find the latest release for milestone M.
-	paygen, err := updateutil.LoadPaygenFromGS(ctx)
-	if err != nil {
-		s.Fatal("Failed to load paygen data: ", err)
-	}
-
-	filtered := paygen.FilterBoard(board).FilterDeltaType("OMAHA").FilterMilestone(milestoneM)
-	latest, err := filtered.FindLatest()
-	if err != nil {
-		// For unreleased boards, e.g. -kernelnext it's expected that there is no
-		// image available. Mark the test as successful and skip it.
-		s.Logf("Skipping test; Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
-		return
-	}
 	rollbackVersion := latest.ChromeOSVersion
 
 	builderPath := fmt.Sprintf("%s-release/R%d-%s", board, milestoneM, rollbackVersion)
