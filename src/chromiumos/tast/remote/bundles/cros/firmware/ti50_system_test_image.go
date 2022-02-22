@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const timeLimit = 50 * time.Second
+const timeLimit = 2 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
