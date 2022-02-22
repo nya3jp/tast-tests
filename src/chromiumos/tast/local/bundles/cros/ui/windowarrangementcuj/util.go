@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -19,6 +20,8 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
+
+const pkgName = "org.chromium.arc.testapp.pictureinpicturevideo"
 
 // TestParam holds parameters of window arrangement cuj test variations.
 type TestParam struct {
@@ -52,6 +55,10 @@ type Connections struct {
 	// BrowserTestConn is a connection to ash chrome or lacros chrome,
 	// depending on the browser in use.
 	BrowserTestConn *chrome.TestConn
+
+	// ArcVideoActivity is an ARC activity that plays a video, looped.
+	// If you minimize it, it plays the video in PIP.
+	ArcVideoActivity *arc.Activity
 }
 
 // DragPoints holds three points, to signify a drag from the first point
@@ -69,8 +76,10 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		func(ctx context.Context) error { return nil },
 		func(ctx context.Context) error { return nil },
 		nil,
+		nil,
 	}
 	var l *lacros.Lacros
+	var a *arc.ARC
 
 	ok := false
 	defer func() {
@@ -84,12 +93,16 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	if testParam.BrowserType == browser.TypeAsh {
 		if testParam.Tablet {
 			var err error
-			if connection.Chrome, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
+			if connection.Chrome, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
 				return nil, errors.Wrap(err, "failed to init chrome")
 			}
 			connection.Cleanup = connection.Chrome.Close
+			if a, err = arc.New(ctx, s.OutDir()); err != nil {
+				return nil, errors.Wrap(err, "failed to init ARC")
+			}
 		} else {
-			connection.Chrome = s.FixtValue().(*chrome.Chrome)
+			connection.Chrome = s.FixtValue().(*arc.PreData).Chrome
+			a = s.FixtValue().(*arc.PreData).ARC
 		}
 		connection.Source = connection.Chrome
 
@@ -100,7 +113,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		}
 	} else {
 		var err error
-		connection.Chrome, l, connection.Source, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
+		connection.Chrome, l, connection.Source, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to setup lacros")
 		}
@@ -112,9 +125,24 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		if connection.BrowserTestConn, err = l.TestAPIConn(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
+
+		a = s.FixtValue().(*arc.PreData).ARC
 	}
 
+	if err := a.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
+		return nil, errors.Wrap(err, "failed to install ARC app")
+	}
 	var err error
+	connection.ArcVideoActivity, err = arc.NewActivity(a, pkgName, ".VideoActivity")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create ARC activity")
+	}
+	oldCleanup := connection.Cleanup
+	connection.Cleanup = func(ctx context.Context) error {
+		connection.ArcVideoActivity.Close()
+		return oldCleanup(ctx)
+	}
+
 	connection.TestConn, err = connection.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to test api")
