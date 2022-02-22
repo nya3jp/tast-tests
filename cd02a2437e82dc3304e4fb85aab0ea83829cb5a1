@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8722565_b5567a41",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-02-22T23:17:29Z",
+      "side": 1,
+      "message": "I think it should be chartHostPath here that indicates the path on the host machine for the chart, rather than the chartPath on the test server.",
+      "revId": "cd02a2437e82dc3304e4fb85aab0ea83829cb5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
