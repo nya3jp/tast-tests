@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0d9b17_8a5d26d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-22T19:17:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fff62cf_4e5abd69",
+      "range": {
+        "startLine": 81,
+        "startChar": 62,
+        "endLine": 81,
+        "endChar": 110
+      },
+      "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fecefdd2_a5d980f5",
@@ -107,6 +131,24 @@
       "writtenOn": "2022-02-22T17:03:29Z",
       "side": 1,
       "message": "And maybe use some URL that is guaranteed to not be used by the server here.",
+      "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c3e877_e29ddd24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-22T19:17:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fecefdd2_a5d980f5",
       "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
