@@ -63,12 +63,14 @@ func (di *devInfo) String() string {
 
 // isKeyboard returns true if this appears to be a keyboard device.
 func (di *devInfo) isKeyboard() bool {
-	// Just check some arbitrary keys. The choice of 1, Q, Space and
-	// VolumeDown from:
+	// Just check some arbitrary keys. The choice of Escape, Back, VolumeUP and
+	// the Mute Key.
 	// https://chromeos.google.com/partner/dlm/docs/hardware-specs/keyboardspec.html
+
+	fmt.Println(di.hasBit(evGroup, uint16(EV_KEY)))
 	return di.path != "" && di.hasBit(evGroup, uint16(EV_KEY)) &&
-		di.hasBit(keyGroup, uint16(KEY_1)) && di.hasBit(keyGroup, uint16(KEY_Q)) &&
-		di.hasBit(keyGroup, uint16(KEY_SPACE)) && di.hasBit(keyGroup, uint16(KEY_ENTER))
+		di.hasBit(keyGroup, uint16(KEY_ESC)) && di.hasBit(keyGroup, uint16(KEY_BACK)) &&
+		di.hasBit(keyGroup, uint16(KEY_VOLUMEUP)) && di.hasBit(keyGroup, uint16(KEY_MUTE))
 }
 
 // isTouchscreen returns true if this appears to be a touchscreen device.
