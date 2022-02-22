@@ -26,7 +26,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChangePassword,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks cryptohome password change flow",
 		Contacts: []string{
 			"rsorokin@google.com",
