@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -40,8 +41,8 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create config: ", err)
 	}
 
-	// checkPowerInfo checks the power supply information after waking up DUT from suspend.
-	checkPowerInfo := func(ctx context.Context) (string, error) {
+	// checkBatteryInfo returns information relevant to the battery.
+	checkBatteryInfo := func(ctx context.Context) (string, error) {
 		regex := `state:(\s+\w+\s?\w+)`
 		expMatch := regexp.MustCompile(regex)
 
@@ -57,6 +58,31 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 
 		batteryStatus := strings.TrimSpace(matches[1])
 		return batteryStatus, nil
+	}
+
+	// checkACInfo returns information relevant to the AC. This is temporary, and may be
+	// combined with checkBatteryInfo, depending on future needs. At the moment, this is to
+	// help log some AC states for debugging purposes.
+	checkACInfo := func(ctx context.Context) (string, error) {
+		acLines := map[string]*regexp.Regexp{
+			"source": regexp.MustCompile(`enum type:(\s+\w+)`),
+			"online": regexp.MustCompile(`online:(\s+\w+)`),
+		}
+		out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
+		if err != nil {
+			return "", errors.Wrap(err, "failed to retrieve AC info from DUT")
+		}
+		var measurements []string
+		for k, v := range acLines {
+			match := v.FindStringSubmatch(string(out))
+			if len(match) < 2 {
+				s.Logf("Did not match regex %q in %q", v, string(out))
+			} else {
+				acInfo := strings.TrimSpace(match[1])
+				measurements = append(measurements, fmt.Sprintf("%s: %s", k, acInfo))
+			}
+		}
+		return strings.Join(measurements, ", "), nil
 	}
 
 	for _, tc := range []struct {
@@ -81,7 +107,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 				return errors.Errorf("expected charger attached: %t, but got: %t", hasPluggedAC, currentCharger)
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second}); err != nil {
 			s.Fatal("While determining charger state: ", err)
 		}
 
@@ -131,10 +157,17 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to reconnect to DUT after waking DUT from suspend: ", err)
 		}
 
-		s.Log("Checking power supply information")
-		battery, err := checkPowerInfo(ctx)
+		s.Log("Checking AC information")
+		if ac, err := checkACInfo(ctx); err != nil {
+			s.Fatal("While verifying ac information: ", err)
+		} else {
+			s.Logf("Line power %s", ac)
+		}
+
+		s.Log("Checking battery information")
+		battery, err := checkBatteryInfo(ctx)
 		if err != nil {
-			s.Fatal("While verifying power supply information: ", err)
+			s.Fatal("While verifying battery information: ", err)
 		}
 
 		switch hasPluggedAC {
