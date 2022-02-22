@@ -55,6 +55,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                          // b/213611282
 		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                        // b/213612672
 		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                       // b/213612672
+		{"shill", "upstart_proxy.cc", ".*Error.AlreadyStarted Job is already running: shill-event", 0},                // b/213930243
 		// Need to try to get more info about these:
 		// {"shill", "unknown", ".*", 0},
 		{"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
