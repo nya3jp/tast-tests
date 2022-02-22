@@ -49,7 +49,8 @@ func init() {
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeAsh,
 				},
-				Fixture: "chromeLoggedIn",
+				Fixture:           "arcBootedInClamshellMode",
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "tablet_mode",
@@ -57,6 +58,7 @@ func init() {
 					BrowserType: browser.TypeAsh,
 					Tablet:      true,
 				},
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "tablet_mode_trace",
@@ -65,6 +67,7 @@ func init() {
 					Tablet:      true,
 					Tracing:     true,
 				},
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "tablet_mode_validation",
@@ -73,14 +76,23 @@ func init() {
 					Tablet:      true,
 					Validation:  true,
 				},
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "lacros",
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeLacros,
 				},
-				Fixture:           "lacrosUI",
-				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "lacrosWithArcBooted",
+				ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			},
+			{
+				Name: "vm",
+				Val: windowarrangementcuj.TestParam{
+					BrowserType: browser.TypeAsh,
+				},
+				Fixture:           "arcBootedInClamshellMode",
+				ExtraSoftwareDeps: []string{"android_vm"},
 			},
 		},
 	})
