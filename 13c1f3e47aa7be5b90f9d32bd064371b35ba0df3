@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a97a17_d87b4822",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T17:40:45Z",
+      "side": 1,
+      "message": "You are right, I have moved it to a new one. Thanks!",
+      "parentUuid": "8b3fb41a_9623e288",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "13c1f3e47aa7be5b90f9d32bd064371b35ba0df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94e95bf9_b8a374d4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-22T15:31:01Z",
       "side": 1,
       "message": "nit: These lines are too long.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 74
+      },
+      "revId": "13c1f3e47aa7be5b90f9d32bd064371b35ba0df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1704507c_1672df13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T17:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e95bf9_b8a374d4",
       "range": {
         "startLine": 12,
         "startChar": 0,
