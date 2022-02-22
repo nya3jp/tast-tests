@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df21d9f1_5f59758f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-02-22T19:09:52Z",
+      "side": 1,
+      "message": "LGTM (I don\u0027t think I am chrome reviewer yet). See my comments.",
+      "revId": "4a7f5754589e43937238de6c49a0167d903dfedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3c2ef7_b0ef3005",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-02-22T19:09:52Z",
+      "side": 1,
+      "message": "Unmanaged case optin.go uses `PerformWithRetry` while managed cases use `LaunchAndWaitForPlayStore`. IIUC, the former does retry while the later does check on the play store window.\n\nMaybe we can unify this and only do one of the two? Of course, this is beyond the scope of this CL and is about possible future changes.",
+      "revId": "4a7f5754589e43937238de6c49a0167d903dfedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdd4f5c_53b47ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-02-22T19:09:52Z",
+      "side": 1,
+      "message": "This essentially reorders `arc.NewWithTimeout` and the other 3 API calls. What\u0027s the purpose? Or does it not make a difference?",
+      "revId": "4a7f5754589e43937238de6c49a0167d903dfedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
