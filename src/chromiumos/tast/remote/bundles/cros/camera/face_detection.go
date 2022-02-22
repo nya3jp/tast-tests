@@ -61,11 +61,15 @@ func FaceDetection(ctx context.Context, s *testing.State) {
 		altAddr = chartAddr
 	}
 
-	c, err := chart.New(ctx, s.DUT(), altAddr, s.DataPath("its_scene2_c_20210708.png"), s.OutDir())
+	c, namePaths, err := chart.New(ctx, s.DUT(), altAddr, s.OutDir(), []string{s.DataPath("its_scene2_c_20210708.png")})
 	if err != nil {
 		s.Fatal("Failed to prepare chart tablet: ", err)
 	}
 	defer c.Close(ctx, s.OutDir())
+
+	if err := c.Display(ctx, namePaths[0]); err != nil {
+		s.Fatal("Failed to display chart on chart tablet: ", err)
+	}
 
 	if err := camerabox.LogTestScene(ctx, d, facing, s.OutDir()); err != nil {
 		s.Error("Failed to take a photo of test scene: ", err)
