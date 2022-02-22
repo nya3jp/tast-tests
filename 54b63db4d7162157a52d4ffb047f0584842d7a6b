@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b53ca5c_2f050e80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-22T03:46:48Z",
+      "side": 1,
+      "message": "LGTM assuming that these are ash specific.",
+      "revId": "54b63db4d7162157a52d4ffb047f0584842d7a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
