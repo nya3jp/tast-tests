@@ -492,10 +492,15 @@ func (f *fixture) prepareChart(ctx context.Context, addr, keyFile, contentPath s
 	// No need to close ssh connection since chart will handle it when cleaning
 	// up.
 
-	c, err := chart.SetUp(ctx, conn, contentPath, f.outDir, chart.DisplayDefaultLevel)
+	c, namePaths, err := chart.SetUp(ctx, conn, f.outDir, []string{contentPath})
 	if err != nil {
 		return errors.Wrap(err, "failed to prepare chart tablet")
 	}
+
+	if err := c.Display(ctx, namePaths[0]); err != nil {
+		return errors.Wrap(err, "failed to display chart on chart tablet")
+	}
+
 	f.chart = c
 	return nil
 }

@@ -110,11 +110,14 @@ func CameraboxAlign(ctx context.Context, s *testing.State) {
 	if altAddr, ok := s.Var("chart"); ok {
 		chartAddr = altAddr
 	}
-	c, err := chart.New(ctx, s.DUT(), chartAddr, s.DataPath("camerabox_align.svg"), s.OutDir())
+	c, namePaths, err := chart.New(ctx, s.DUT(), chartAddr, s.OutDir(), []string{s.DataPath("camerabox_align.svg")})
 	if err != nil {
 		s.Fatal("Failed to prepare chart tablet: ", err)
 	}
 	defer c.Close(ctx, s.OutDir())
+	if err := c.Display(ctx, namePaths[0]); err != nil {
+		s.Fatal("Failed to display chart on chart tablet: ", err)
+	}
 	if manualMode {
 		if err := <-ch; err != nil {
 			s.Fatal("Remote call ManualAlign() failed: ", err)
