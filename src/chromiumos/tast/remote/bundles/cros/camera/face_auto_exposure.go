@@ -50,14 +50,14 @@ func getFaceLumaValue(ctx context.Context, d *dut.DUT, facing pb.Facing, enableF
 
 // calibrateDisplayLevel finds the chart display level which can let face to be detected.
 // Returns (display level, luma value of face image, error)
-func calibrateDisplayLevel(ctx context.Context, ch *chart.Helper, d *dut.DUT, facing pb.Facing, outDir string) (float32, int64, error) {
+func calibrateDisplayLevel(ctx context.Context, ch *chart.Chart, d *dut.DUT, facing pb.Facing, outDir string) (float32, int64, error) {
 	adjustStep := float32(10.0)
 	for displayLevel := float32(20.0); displayLevel <= 100.0; displayLevel += adjustStep {
 		if ctx.Err() != nil {
 			return 0.0, 0, errors.Errorf("Context already expired: %s", ctx.Err())
 		}
 		testing.ContextLogf(ctx, "Try Display level %f", displayLevel)
-		if err := ch.SetDisplayLevel(displayLevel); err != nil {
+		if err := ch.SetDisplayLevel(ctx, displayLevel); err != nil {
 			return 0.0, 0, err
 		}
 		// It may not find face when the display level is not good enough and it returns error.
@@ -90,14 +90,16 @@ func FaceAutoExposure(ctx context.Context, s *testing.State) {
 		altAddr = chartAddr
 	}
 
-	chartPath := s.DataPath("te273_mia_20211228.jpg")
 	outDir := s.OutDir()
 	// Log the test scene by default display level.
-	ch, err := chart.NewHelper(ctx, d, altAddr, chartPath, outDir, chart.DisplayDefaultLevel)
+	ch, namePaths, err := chart.New(ctx, d, altAddr, outDir, []string{s.DataPath("te273_mia_20211228.jpg")})
 	if err != nil {
 		s.Fatal("Failed to prepare chart tablet: ", err)
 	}
-	defer ch.Close()
+	defer ch.Close(ctx, outDir)
+	if err := ch.Display(ctx, namePaths[0]); err != nil {
+		s.Fatal("Failed to display chart on chart tablet: ", err)
+	}
 	if err := camerabox.LogTestScene(ctx, d, facing, outDir); err != nil {
 		s.Error("Failed to take a photo of test scene: ", err)
 	}
