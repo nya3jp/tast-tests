@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6e8df3_814cd3a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-22T15:12:09Z",
+      "side": 1,
+      "message": "Passing the `testing.State` is discouraged.\nYou should use `testing.ContextLog(ctx,` for the logs.",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 7
+      },
+      "revId": "cfc74e33a43ab4deef8c906878522bd5b539a0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
