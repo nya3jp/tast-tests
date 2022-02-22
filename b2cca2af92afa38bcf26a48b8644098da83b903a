@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7188de3f_0aa87651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "Few comments but generally looks good. Can you test this on a few additional boards as well to make sure we won\u0027t hit any snags when releasing? i.e. one of each:\n\neve\nzork\noctopus\n\nYou can use crosfleet(https://g3doc.corp.google.com/company/teams/chrome/ops/chromeos/chromeos-infra/test_platform/internal/tools/crosfleet.md?cl\u003dhead) to lease a board in the lab. Let me know if you need any assistance setting it up.\n",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ce5bb3_eb679ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "nit: \"Creates\"",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bebe3f_5296daba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "nit: not sure this comment is helpful. Remove?",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50329a79_26f650f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "Is there a reason to not set ImmediateScreenshot mode here? Seems to be used the majority of the time in your tests so could it be set once here?",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659cc0f5_0a180d4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "nit: Is there a reason to reduce the timeout? I think you can just rely on the default here.",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fbe4797_e24711ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "nit: can you add some comments above each of the \u0027IfSuccessThens\u0027 to quickly describe what they are looking for?",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f191fb9_e661ff91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "nit: same as above, I don\u0027t think you need uda.WithTimeout since the default was set to time.Minute above.",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858aed62_237fb42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "nit: sleeps are generally discouraged and the checks below should be able to account for it. If the checks below need a longer timeout, set it as part of the \u0027if\u0027 condition. I.e. you can remove this sleep and make the \u0027WaitUntilExists\u0027 below have a longer timeout (90 seconds)",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7efbb558_2ad7d38b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "can you file a bug and put a a TODO(b/{number}): ... comment about what we talked regarding the Nth() call?",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d984dc0b_9fe04684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-22T20:52:02Z",
+      "side": 1,
+      "message": "same as above, remove the sleep, add a longer timeout",
+      "revId": "b2cca2af92afa38bcf26a48b8644098da83b903a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
