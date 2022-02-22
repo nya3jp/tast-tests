@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4279836f_ab275414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-22T21:16:43Z",
+      "side": 1,
+      "message": "Can src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go be fixed instead of adding a new test?",
+      "revId": "d0b378351e0dd05809a34965552b1f1e51faaafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
