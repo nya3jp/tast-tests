@@ -141,7 +141,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "error checking whether charger is attached")
 				}
 				if ok {
-					return errors.New("Charger is still attached")
+					return errors.New("charger is still attached - use Servo V4 Type-C or supply RPM vars")
 				}
 				return nil
 			}, &getChargerPollOptions); err != nil {
@@ -212,8 +212,17 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		if (tc.lidOpen == "yes" || hasMicroOrC2D2) && h.Config.Hibernate {
 			// Hibernate DUT
 			s.Log("Putting DUT in hibernation")
-			if err = h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
-				s.Fatal("Failed to hibernate: ", err)
+			if tc.lidOpen == "no" {
+				// In cases where lid is closed, and there's a servo_micro or C2D2 connection,
+				// use console command to hibernate. Using keyboard presses might trigger DUT
+				// to wake, as well as interrupt lid emulation.
+				if err = h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
+					s.Fatal("Failed to hibernate: ", err)
+				}
+			} else {
+				if err = h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
+					s.Fatal("Failed to hibernate: ", err)
+				}
 			}
 			h.DisconnectDUT(ctx)
 			deviceHasHibernated = true
@@ -244,13 +253,15 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to reconnect power supply: ", err)
 		}
 
-		// Verify DUT's lid current state remains the same as the initial state.
-		lidStateFinal, err := h.Servo.LidOpenState(ctx)
-		if err != nil {
-			s.Fatal("Failed to check the final lid state: ", err)
-		}
-		if lidStateFinal != tc.lidOpen {
-			s.Fatalf("DUT's lid_open state has changed from %s to %s", tc.lidOpen, lidStateFinal)
+		if deviceHasLid {
+			// Verify DUT's lid current state remains the same as the initial state.
+			lidStateFinal, err := h.Servo.LidOpenState(ctx)
+			if err != nil {
+				s.Fatal("Failed to check the final lid state: ", err)
+			}
+			if lidStateFinal != tc.lidOpen {
+				s.Fatalf("DUT's lid_open state has changed from %s to %s", tc.lidOpen, lidStateFinal)
+			}
 		}
 	}
 
