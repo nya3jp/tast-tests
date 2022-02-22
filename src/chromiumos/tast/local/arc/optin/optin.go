@@ -288,6 +288,23 @@ func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
+// LaunchAndWaitForPlayStore launches Play Store and ensures that it doesn't display an error.
+func LaunchAndWaitForPlayStore(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, timeout time.Duration) error {
+	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
+		return errors.Wrap(err, "failed to launch Play Store")
+	}
+
+	if err := WaitForPlayStoreShown(ctx, tconn, timeout); err != nil {
+		return errors.Wrap(err, "failed to wait for Play Store to show up")
+	}
+
+	if err := EnsureNoPlayStoreError(ctx, cr); err != nil {
+		return errors.Wrap(err, "Play Store launched with an error")
+	}
+
+	return nil
+}
+
 // WaitForPlayStoreShown waits for Play Store window to be shown.
 func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
 	return ash.WaitForApp(ctx, tconn, apps.PlayStore.ID, timeout)

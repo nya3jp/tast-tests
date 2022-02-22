@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
@@ -114,11 +115,12 @@ func init() {
 // - check that force-installed Android packages cannot be uninstalled.
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
-		searchBarTextStart     = "Search for apps"
-		emptyPlayStoreText     = "No results found."
-		somethingWentWrongText = "Something went wrong"
-		maxPlayStoreAttempt    = 5
-		bootTimeout            = time.Minute * 4
+		searchBarTextStart      = "Search for apps"
+		emptyPlayStoreText      = "No results found."
+		somethingWentWrongText  = "Something went wrong"
+		maxPlayStoreAttempt     = 5
+		bootTimeout             = 4 * time.Minute
+		timeoutWaitForPlayStore = 1 * time.Minute
 	)
 
 	var login chrome.Option
@@ -141,25 +143,31 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	// Ensure that ARC is launched.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	s.Log("Ensuring ARC is enabled by policy")
+	// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
+	if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
+		s.Fatal("Failed to verify ArcEnabled: ", err)
+	}
+
+	s.Log("Verifying force-installed apps in ArcPolicy")
+	if err := arcent.VerifyArcPolicyForceInstalled(ctx, tconn, packages); err != nil {
+		s.Fatal("Failed to verify force-installed apps in ArcPolicy: ", err)
+	}
+
 	a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 	if err != nil {
 		s.Fatal("Failed to start ARC by user policy: ", err)
 	}
 	defer a.Close(ctx)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
-	// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
-	if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
-		s.Fatal("Failed to verify ArcEnabled: ", err)
-	}
-
-	if err := arcent.VerifyArcPolicyForceInstalled(ctx, tconn, packages); err != nil {
-		s.Fatal("Failed to verify force-installed apps in ArcPolicy: ", err)
+	s.Log("Launching Play Store")
+	if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
+		s.Fatal("Failed to launch Play Store: ", err)
 	}
 
 	// Ensure that Android packages are force-installed by ARC policy.
@@ -184,50 +192,18 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure Play Store is not empty.
-	attempt := 0
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		attempt++
-		if attempt > maxPlayStoreAttempt {
-			return testing.PollBreak(errors.New("Maximum attempts reached"))
-		}
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer d.Close(ctx)
 
-		s.Log("Starting Play Store, attempt ", attempt)
-		act, err := arc.NewActivity(a, "com.android.vending", "com.android.vending.AssetBrowserActivity")
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to create new activity"))
-		}
-		defer func() {
-			if attempt < maxPlayStoreAttempt {
-				act.Stop(ctx, tconn)
-			}
-			act.Close()
-		}()
+	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, 10*time.Second); err != nil {
+		s.Fatal("Unknown Play Store UI screen is shown: ", err)
+	}
 
-		if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed starting Play Store or Play Store is empty")
-		}
-
-		d, err := a.NewUIDevice(ctx)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed initializing UI Automator"))
-		}
-		defer d.Close(ctx)
-
-		if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, 10*time.Second); err != nil {
-			return errors.Wrap(err, "unknown Play Store UI screen is shown")
-		}
-
-		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-			return testing.PollBreak(errors.New("Play Store is empty"))
-		}
-
-		if err := d.Object(ui.Text(somethingWentWrongText)).Exists(ctx); err == nil {
-			return testing.PollBreak(errors.New("Play Store shows error"))
-		}
-
-		return nil
-	}, &testing.PollOptions{Interval: 3 * time.Second}); err != nil {
-		s.Fatal("Failed to check Play Store: ", err)
+	if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+		s.Fatal("Play Store is empty")
 	}
 }
 
