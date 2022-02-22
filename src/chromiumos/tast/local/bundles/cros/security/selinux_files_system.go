@@ -39,9 +39,10 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/bin/kmod", Context: "cros_modprobe_exec"},
 		{Path: "/bin/sh", Context: "sh_exec"},
 		{Path: "/etc", Context: "cros_conf_file", Recursive: true, Filter: selinux.IgnorePaths([]string{
-			"/etc/localtime", "/etc/passwd", "/etc/group", "/etc/shadow", "/etc/selinux",
+			"/etc/hosts.d", "/etc/localtime", "/etc/passwd", "/etc/group", "/etc/shadow", "/etc/selinux",
 		})},
 		{Path: "/etc/group", Context: "cros_passwd_file"},
+		{Path: "/etc/hosts.d", Recursive: true, Context: "cros_run_crosdns", IgnoreErrors: true},
 		{Path: "/etc/localtime", Context: "cros_tz_data_file"},
 		{Path: "/etc/passwd", Context: "cros_passwd_file"},
 		{Path: "/etc/selinux", Context: "cros_selinux_config_file", Recursive: true},
