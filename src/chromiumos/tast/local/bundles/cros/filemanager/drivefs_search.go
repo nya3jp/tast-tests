@@ -10,7 +10,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/filemanager/pre"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -26,7 +25,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify that exact file search for Google Drive returns correct value",
 		Contacts: []string{
-			"dats@chromium.org",
 			"austinct@chromium.org",
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
@@ -40,18 +38,13 @@ func init() {
 			"group:mainline",
 			"informational",
 		},
-		Pre: pre.DriveFsStarted,
-		VarDeps: []string{
-			"filemanager.user",
-			"filemanager.password",
-			"filemanager.drive_credentials",
-		},
+		Fixture: "driveFsStarted",
 	})
 }
 
 func DrivefsSearch(ctx context.Context, s *testing.State) {
-	mountPath := s.PreValue().(drivefs.PreData).MountPath
-	tconn := s.PreValue().(drivefs.PreData).TestAPIConn
+	mountPath := s.FixtValue().(*drivefs.FixtureData).MountPath
+	tconn := s.FixtValue().(*drivefs.FixtureData).TestAPIConn
 
 	// This test case is exercising the full-text search of DriveFS, keeping the name
 	// fairly unique to avoid having it match as content search (not just file name).
