@@ -108,7 +108,7 @@ func ITS(ctx context.Context, s *testing.State) {
 		if hostname, ok := s.Var("chart"); ok {
 			altHostname = hostname
 		}
-		c, err := chart.New(ctx, s.DUT(), altHostname, param.ChartPath, s.OutDir())
+		c, namePaths, err := chart.New(ctx, s.DUT(), altHostname, s.OutDir(), []string{param.ChartPath})
 		if err != nil {
 			s.Fatal("Failed to prepare chart tablet: ", err)
 		}
@@ -117,6 +117,10 @@ func ITS(ctx context.Context, s *testing.State) {
 				s.Error("Failed to cleanup chart: ", err)
 			}
 		}(cleanupCtx)
+
+		if err := c.Display(ctx, namePaths[0]); err != nil {
+			s.Fatal("Failed to display chart on chart tablet: ", err)
+		}
 	}
 
 	testing.ContextLog(ctx, "Running ITS")
