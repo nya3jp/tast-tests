@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf8e2515_c70eaabc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-02-22T22:07:07Z",
+      "side": 1,
+      "message": "I believe a new test is warranted here because it\u0027s suitably different from those tests. The tests you\u0027ve listed appear to be testing the behavior of something (battery charge state, event log, etc) in conjunction with suspend/resume. This test is testing suspend/resume itself. Because of that, it runs a number of suspend/resume cycles while those appear to run singles. This allows the test to check for failures that may only happen occasionally. For example, I encountered a kernel panic on a zork device that only happens after about 10 cycles. By having a separate test it also makes it clearer that when this test fails it\u0027s a problem with suspend/resume and not a failure somewhere else.\n\nThough in the future it would be nice to factor out the common code that deals with suspend/resume to simplify the existing tests and make it easier to create new ones in the future.",
+      "parentUuid": "d3ee8f93_63c31705",
+      "revId": "d0b378351e0dd05809a34965552b1f1e51faaafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c09b436_b92d3015",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
         "patchSetId": 1
@@ -49,6 +67,30 @@
       "writtenOn": "2022-02-22T21:19:27Z",
       "side": 1,
       "message": "We probably don\u0027t want this in the CQ, but in faft bios nightly instead. Set attrs to []string{\"group:firmware\", \"firmware_unstable\"} until the test is proved stable, then move to \"firmware_bios\".",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "d0b378351e0dd05809a34965552b1f1e51faaafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca02869_b0e9ee54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-02-22T22:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c09b436_b92d3015",
       "range": {
         "startLine": 31,
         "startChar": 16,
