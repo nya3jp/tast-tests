@@ -2373,7 +2373,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 
 		mwifiexFormat = "/sys/kernel/debug/mwifiex/%s/reset"
 		ath10kFormat  = "/sys/kernel/debug/ieee80211/%s/ath10k/simulate_fw_crash"
-		ath11kFormat  = "/sys/kernel/debug/ath11k/wcn6855 hw2.0/simulate_fw_crash"
+		ath11kFormat  = "/sys/kernel/debug/ath11k/wcn6855 hw2.1/simulate_fw_crash"
 		// Possible reset paths for Intel wireless NICs are:
 		// 1. /sys/kernel/debug/iwlwifi/{iface}/iwlmvm/fw_restart
 		//    Logs look like: iwlwifi 0000:00:0c.0: 0x00000038 | BAD_COMMAND
