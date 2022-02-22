@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/ti50/fixture"
 	"chromiumos/tast/testing"
 )
@@ -105,6 +106,8 @@ func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, tes
 	for ; elapsedTime < timeLimit; elapsedTime = time.Since(testTime) {
 		m, err := board.ReadSerialSubmatch(ctx, lineRe)
 		if err != nil {
+			// Tests might be silent for several seconds, so just
+			// try the read again.
 			continue
 		}
 		delay := time.Since(lineTime)
@@ -126,5 +129,5 @@ func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, tes
 	s.Logf("Still waiting for test %s after %v, giving up", testName, elapsedTime.Round(time.Second))
 	delay := time.Since(lineTime)
 	s.Logf("Waited %v at %q", delay.Round(time.Second), line)
-	return "", err
+	return "", errors.New("test failed to finish in time")
 }
