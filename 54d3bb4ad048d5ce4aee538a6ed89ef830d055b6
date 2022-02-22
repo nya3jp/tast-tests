@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32fd653_f33ccae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-02-22T00:00:07Z",
+      "side": 1,
+      "message": "This test seems incredibly fragile.\n\nJP IME has huge amounts of ML, which changes over time.\n\nA better approach for testing the JP IME is to type valid phrases and ensure that the \"expected\" phrase is shown in some possibility in the candidate list as used in other JP IME tests",
+      "revId": "54d3bb4ad048d5ce4aee538a6ed89ef830d055b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
