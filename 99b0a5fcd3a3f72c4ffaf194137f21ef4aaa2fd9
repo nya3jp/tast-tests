@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3d69ee_6755aa02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-22T17:03:29Z",
+      "side": 1,
+      "message": "LGTM, but you\u0027re missing a file 😊",
+      "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560ec9eb_904d2b21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-22T17:03:29Z",
+      "side": 1,
+      "message": "Seems like you forgot to include this file in your CL.",
+      "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fff62cf_4e5abd69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-22T17:03:29Z",
+      "side": 1,
+      "message": "Maybe we should be using `server.URL + \u0027/video_capture_allowed.html\u0027` instead of hardcoding this to make it more robust, in case how the server works changes under us?",
+      "range": {
+        "startLine": 81,
+        "startChar": 62,
+        "endLine": 81,
+        "endChar": 110
+      },
+      "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecefdd2_a5d980f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-22T17:03:29Z",
+      "side": 1,
+      "message": "And maybe use some URL that is guaranteed to not be used by the server here.",
+      "revId": "99b0a5fcd3a3f72c4ffaf194137f21ef4aaa2fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
