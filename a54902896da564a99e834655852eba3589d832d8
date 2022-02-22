@@ -63,6 +63,24 @@
       "message": "Do we want to impose a maximum as well?",
       "revId": "a54902896da564a99e834655852eba3589d832d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b414b782_7f5e691a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-22T20:39:18Z",
+      "side": 1,
+      "message": "I am just trying to verify that the test did the resize properly. This is not a test of the maximum size of the PIP window.",
+      "parentUuid": "e3ceb06c_0b206fe9",
+      "revId": "a54902896da564a99e834655852eba3589d832d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
