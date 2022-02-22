@@ -16,6 +16,29 @@
       "message": "Not sure if this is related, but one of the shelf tests that looks similar to this change had failed on the reven vm target https://crbug.com/1299244 It would be good to monitor test results on vm targets if possible.",
       "revId": "f357b5fff5960a2cb3101868e674b9ba578f0abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a126001_831e94cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-22T03:52:49Z",
+      "side": 1,
+      "message": "Don\u0027t we need a lacros variant for tablet_form_factor as well?",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "f357b5fff5960a2cb3101868e674b9ba578f0abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
