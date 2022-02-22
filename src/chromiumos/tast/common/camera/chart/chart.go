@@ -42,26 +42,13 @@ type Chart struct {
 	// pid is the process id of running display chart script.
 	pid string
 	// fifo is the path to fifo on chart tablet which can be used to write
-	// display configuration into it. Can be empty if the chart tablet
-	// don't support fifo mode.
+	// display configuration into it.
 	fifo string
 }
 
-var errFifoModeNotSupported = errors.New("fifo mode not supported on tablet")
-
-// IsErrFifoModeNotSupported returns whether the error comes from chart don't support fifo mode.
-func IsErrFifoModeNotSupported(err error) bool {
-	if err == nil {
-		return false
-	}
-	if err == errFifoModeNotSupported {
-		return true
-	}
-	if wrappedErr, ok := err.(*errors.E); ok {
-		return IsErrFifoModeNotSupported(wrappedErr.Unwrap())
-	}
-	return false
-}
+// NamePath is the reference path to the chart to be displayed on the chart
+// service. The path is determined by the relative path to the chart directory.
+type NamePath string
 
 // cleanup cleans up chart's (half-)initialized members and saves logs of chart process to |outDir|.
 func cleanup(ctx context.Context, conn *ssh.Conn, dir, pid, outDir string) error {
@@ -143,10 +130,10 @@ func connectChart(ctx context.Context, d *dut.DUT, hostname string) (*ssh.Conn, 
 	return ssh.New(ctx, &sopt)
 }
 
-// NewWithDisplayLevel displays |chartPath| chart on either |altHostname| or |d|'s
-// corresponding chart tablet and returns a new |Chart| instance.
-// It uses |displayLevel| to set the brightness, the range is in [0.0, 100.0].
-func NewWithDisplayLevel(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string, displayLevel float32) (_ *Chart, retErr error) {
+// New starts chart service waiting for display chart command on the host
+// either |altHostname| or |d|'s corresponding chart tablet and returns a new
+// |Chart| instance.
+func New(ctx context.Context, d *dut.DUT, altHostname, outDir string) (_ *Chart, retErr error) {
 	var conn *ssh.Conn
 
 	// Connect to chart tablet.
@@ -164,13 +151,7 @@ func NewWithDisplayLevel(ctx context.Context, d *dut.DUT, altHostname, chartPath
 		conn = c
 	}
 
-	return SetUp(ctx, conn, chartPath, outDir, displayLevel)
-}
-
-// New displays |chartPath| chart on either |altHostname| or |d|'s
-// corresponding chart tablet and returns a new |Chart| instance.
-func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string) (_ *Chart, retErr error) {
-	return NewWithDisplayLevel(ctx, d, altHostname, chartPath, outDir, DisplayDefaultLevel)
+	return SetUp(ctx, conn, outDir)
 }
 
 // copyChart copies the chart from local to host chart tablet.
@@ -185,7 +166,7 @@ func copyChart(ctx context.Context, conn *ssh.Conn, chartLocalPath, chartHostDir
 
 // SetUp sets up the chart with the given ssh connection and returns a new |Chart| instance.
 // It uses |displayLevel| to set the brightness, the range is in [0.0, 100.0].
-func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displayLevel float32) (_ *Chart, retErr error) {
+func SetUp(ctx context.Context, conn *ssh.Conn, outDir string) (_ *Chart, retErr error) {
 	var dir, pid string
 	defer func() {
 		if retErr != nil {
@@ -202,19 +183,11 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displa
 	}
 	dir = strings.TrimSpace(string(out))
 
-	// Display chart on chart tablet.
-	if err := copyChart(ctx, conn, chartPath, dir); err != nil {
-		return nil, err
-	}
-	var displayLevelOpt string
-	if displayLevel >= 0.0 {
-		displayLevelOpt = fmt.Sprintf("--display_level=%f", displayLevel)
-	}
-	chartHostPath := filepath.Join(dir, filepath.Base(chartPath))
+	// Start chart service.
 	displayCmd := fmt.Sprintf(
-		"(python2 %s %s %s > %s 2>&1) & echo -n $!",
-		shutil.Escape(displayScript), shutil.Escape(chartHostPath),
-		displayLevelOpt, shutil.Escape(displayOutputLog))
+		"(python %s %s > %s 2>&1) & echo -n $",
+		shutil.Escape(displayScript), shutil.Escape(dir),
+		shutil.Escape(displayOutputLog))
 	testing.ContextLog(ctx, "Start display chart process: ", displayCmd)
 	out, err = conn.CommandContext(ctx, "sh", "-c", displayCmd).Output()
 	if err != nil {
@@ -235,7 +208,7 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displa
 				testing.ContextLog(ctx, "Chart start in fifo mode")
 				fifo = string(m[1])
 			} else {
-				testing.ContextLog(ctx, "Chart start in non-fifo mode")
+				return testing.PollBreak(errors.New("chart don't support fifo mode"))
 			}
 			return nil
 		case *cryptossh.ExitError:
@@ -252,29 +225,42 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displa
 	return &Chart{conn, dir, pid, fifo}, nil
 }
 
-// Display change the displayed chart.
-func (c *Chart) Display(ctx context.Context, chartPath string) error {
-	if len(c.fifo) == 0 {
-		return errFifoModeNotSupported
+// PutFiles copies the chart files or directories from local to chart directory.
+func (c *Chart) PutFiles(ctx context.Context, localPaths ...string) ([]NamePath, error) {
+	files := make(map[string]string, len(localPaths))
+	namePaths := make([]NamePath, len(localPaths))
+	for _, localPath := range localPaths {
+		baseName := filepath.Base(localPath)
+		chartHostPath := filepath.Join(c.dir, baseName)
+		files[localPath] = chartHostPath
+		namePaths = append(namePaths, NamePath(baseName))
 	}
-
-	if err := copyChart(ctx, c.conn, chartPath, c.dir); err != nil {
-		return err
+	if _, err := linuxssh.PutFiles(ctx, c.conn, files, linuxssh.DereferenceSymlinks); err != nil {
+		return nil, errors.Wrapf(err, "failed to send chart files %v to chart tablet", localPaths)
 	}
+	return namePaths, nil
+}
 
-	cmd := fmt.Sprintf(`echo '{"chart_name": %q}' > %s`, filepath.Base(chartPath), c.fifo)
+// DisplayWithNamePath displays the chart file specified by |namePath|.
+func (c *Chart) DisplayWithNamePath(ctx context.Context, namePath NamePath) error {
+	cmd := fmt.Sprintf(`echo '{"chart_name": %q}' > %s`, namePath, c.fifo)
 	if err := c.conn.CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
-		return errors.Wrapf(err, "failed to change displayed chart to %v", chartPath)
+		return errors.Wrapf(err, "failed to change displayed chart to %v", namePath)
 	}
 	return nil
 }
 
+// Display change the displayed chart.
+func (c *Chart) Display(ctx context.Context, chartPath string) error {
+	namePaths, err := c.PutFiles(ctx, chartPath)
+	if err != nil {
+		return err
+	}
+	return c.DisplayWithNamePath(ctx, namePaths[0])
+}
+
 // SetDisplayLevel sets the display level ranged [0.0, 100.0].
 func (c *Chart) SetDisplayLevel(ctx context.Context, lv float32) error {
-	if len(c.fifo) == 0 {
-		return errFifoModeNotSupported
-	}
-
 	cmd := fmt.Sprintf(`echo '{"display_level": %.1f}' > %s`, lv, c.fifo)
 	if err := c.conn.CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
 		return errors.Wrapf(err, "failed to change display level to %v", lv)
@@ -286,60 +272,6 @@ func (c *Chart) SetDisplayLevel(ctx context.Context, lv float32) error {
 func (c *Chart) Close(ctx context.Context, outDir string) error {
 	if err := cleanup(ctx, c.conn, c.dir, c.pid, outDir); err != nil {
 		return errors.Wrap(err, "failed to close chart")
-	}
-	return nil
-}
-
-// Helper is a helper class to control display level and change chart easily.
-type Helper struct {
-	chart        *Chart
-	ctx          context.Context
-	d            *dut.DUT
-	altHostname  string
-	chartPath    string
-	outDir       string
-	displayLevel float32
-}
-
-// NewHelper creates |Helper|.
-func NewHelper(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string, displayLevel float32) (*Helper, error) {
-	chart, err := NewWithDisplayLevel(ctx, d, altHostname, chartPath, outDir, displayLevel)
-	if err != nil {
-		return nil, err
-	}
-	return &Helper{chart, ctx, d, altHostname, chartPath, outDir, displayLevel}, nil
-}
-
-// SetDisplayLevel sets the display level.
-func (h *Helper) SetDisplayLevel(displayLevel float32) error {
-	if h.chart != nil {
-		// Try to reuse the existing chart service to set new display level if fifo mode is supported.
-		err := h.chart.SetDisplayLevel(h.ctx, displayLevel)
-		if err == nil {
-			return nil
-		}
-		if !IsErrFifoModeNotSupported(err) {
-			return err
-		}
-		// Fifo mode not support, fallback to legacy mode restarting chart service every time.
-		if err := h.chart.Close(h.ctx, h.outDir); err != nil {
-			return err
-		}
-		h.chart = nil
-	}
-	chart, err := NewWithDisplayLevel(h.ctx, h.d, h.altHostname, h.chartPath, h.outDir, displayLevel)
-	if err != nil {
-		return err
-	}
-	h.chart = chart
-	h.displayLevel = displayLevel
-	return nil
-}
-
-// Close closes the helper.
-func (h *Helper) Close() error {
-	if h.chart != nil {
-		return h.chart.Close(h.ctx, h.outDir)
 	}
 	return nil
 }
