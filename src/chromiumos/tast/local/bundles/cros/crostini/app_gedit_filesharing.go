@@ -81,7 +81,6 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	// Create a temp text file in the /Downloads folder to use in this test.
 	if err := ioutil.WriteFile(tmpFileCrosDownloadsPath, []byte(tmpFileContents), 0644); err != nil {
 		s.Fatal("Failed to create text file in Downloads folder: ", err)
 	}
@@ -174,7 +173,7 @@ func checkFilesharingBeforeRestart(
 		return errors.Wrap(err, "failed to bring the Filesapp Download window to foreground")
 	}
 
-	err := uiauto.Combine("validate contexts of text file opened with default non-linux app",
+	err := uiauto.Combine("validate contents of text file opened with default non-linux app",
 		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, defaultTextEditorContextMenuItem),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
 	)(ctx)
