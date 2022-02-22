@@ -16,6 +16,52 @@
       "message": "Hi! I have added the check to skip the known failure checks if the milestone is \u003c100. I have updated the proto to be able to add details about the failure, so the failure message clearly states that the failure is expected in the image. This failure message gives flexibility to inform about the failure reason in case we need to add new verification checks that will cause it to be unsuccessful. Please, let me know if you have any questions or comments. Thanks!",
       "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc555a8_e373f284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-22T08:01:12Z",
+      "side": 1,
+      "message": "Let\u0027s use the new property here and set response.FailureDetails to something meaningful like \"psk network was not preserved\"? :)",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3766165f_9549c2de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-22T08:01:12Z",
+      "side": 1,
+      "message": "I\u0027d propose to just do s.Log this if it\u0027s the \"image does not support a full rollback verification\" error. That makes it easier for us to see if there\u0027s an actual failure or not.\n\nYou could make the error publicly accessible similar to here: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go;l\u003d88\n\nNot sure whether error definition needs to go into \"common\", or could be in \"local\", i.e. src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go?",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
