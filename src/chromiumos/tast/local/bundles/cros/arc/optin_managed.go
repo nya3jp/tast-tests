@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -80,15 +79,8 @@ func OptinManaged(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API Conn: ", err)
 	}
-	if err := apps.Launch(ctx, conn, apps.PlayStore.ID); err != nil {
-		s.Fatal("Failed to launch Play Store: ", err)
-	}
-	if err := optin.WaitForPlayStoreShown(ctx, conn, timeoutWaitForPlayStore); err != nil {
-		s.Fatal("Failed to wait for Play Store to show up: ", err)
-	}
-
-	if err := optin.EnsureNoPlayStoreError(ctx, cr); err != nil {
-		s.Fatal("Optin failed with error: ", err)
+	if err := optin.LaunchAndWaitForPlayStore(ctx, conn, cr, timeoutWaitForPlayStore); err != nil {
+		s.Fatal("Optin failed: ", err)
 	}
 }
 
