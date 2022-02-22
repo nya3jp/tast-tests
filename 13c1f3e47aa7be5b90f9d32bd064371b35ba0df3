@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3fb41a_9623e288",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-22T15:31:01Z",
+      "side": 1,
+      "message": "This change is unrelated to the previous one.\nIf you create a new local branch for it, you can merge this CL independently from the other.",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "13c1f3e47aa7be5b90f9d32bd064371b35ba0df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e95bf9_b8a374d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-22T15:31:01Z",
+      "side": 1,
+      "message": "nit: These lines are too long.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 74
+      },
+      "revId": "13c1f3e47aa7be5b90f9d32bd064371b35ba0df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0f04e6c_5b8681fd",
@@ -14,6 +60,23 @@
       "writtenOn": "2022-02-22T15:11:45Z",
       "side": 1,
       "message": "Hi, I realised that when EnterpriseRollbackPreviousVersion runs in an unsupported board, the test fails with `Failed to reset TPM after test:...` instead of being successful. This error comes from the cleanup process, which should not be needed if the test is skipped. I have moved the check before any other step is carried out and the cleanup process is deferred so the error is avoided.",
+      "revId": "13c1f3e47aa7be5b90f9d32bd064371b35ba0df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52268ff8_5bfb4ebb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-22T15:31:01Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "13c1f3e47aa7be5b90f9d32bd064371b35ba0df3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
