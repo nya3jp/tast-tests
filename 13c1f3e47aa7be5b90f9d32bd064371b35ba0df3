@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f04e6c_5b8681fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T15:11:45Z",
+      "side": 1,
+      "message": "Hi, I realised that when EnterpriseRollbackPreviousVersion runs in an unsupported board, the test fails with `Failed to reset TPM after test:...` instead of being successful. This error comes from the cleanup process, which should not be needed if the test is skipped. I have moved the check before any other step is carried out and the cleanup process is deferred so the error is avoided.",
+      "revId": "13c1f3e47aa7be5b90f9d32bd064371b35ba0df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

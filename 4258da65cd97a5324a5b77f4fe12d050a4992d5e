@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ae2d78_66a86879",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T15:11:45Z",
+      "side": 1,
+      "message": "\u003e \"unnecesary\" is a possible misspelling of \"unnecessary\".\n\nPlease fix.",
+      "parentUuid": "956f2ee2_214d36b6",
+      "range": {
+        "startLine": 12,
+        "startChar": 64,
+        "endLine": 12,
+        "endChar": 74
+      },
+      "revId": "4258da65cd97a5324a5b77f4fe12d050a4992d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
