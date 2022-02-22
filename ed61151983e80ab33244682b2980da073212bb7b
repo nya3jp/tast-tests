@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acedbf7a_19c4cf27",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-22T20:51:48Z",
+      "side": 1,
+      "message": "nit: seems like \"EDU Coexistence\" as part of an error string is capitalized in several different ways here, and that might be an issue if people are grepping through logs. Can we canonicalize that?",
+      "revId": "ed61151983e80ab33244682b2980da073212bb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd46aca_5dec70d5",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-22T20:51:48Z",
+      "side": 1,
+      "message": "The documentation looks almost the same here to the point that I didn\u0027t really understand what the difference between this and the OneParent variation did at first. (I was expecting that there would be multiple parent user/pass combinations passed in here when I first saw this...)\n\nCan we make it more obvious that this version should be used when there are  *already* multiple parent accounts?\n\nBetter yet, would it be possible to combine these so users can just pass the parent name and it will be used if it\u0027s needed? If so, it can be left to a follow-up, and if not, that\u0027s also fine.",
+      "revId": "ed61151983e80ab33244682b2980da073212bb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88edff0_8ece93bf",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-22T20:51:48Z",
+      "side": 1,
+      "message": "nit: might want to combine this line with the next one so the type of all of these is not on a different line",
+      "revId": "ed61151983e80ab33244682b2980da073212bb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
