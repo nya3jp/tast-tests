@@ -109,6 +109,30 @@
       },
       "revId": "4a7f5754589e43937238de6c49a0167d903dfedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c92ff7_3610821a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-22T22:40:41Z",
+      "side": 1,
+      "message": "This is under the if statement where the error is nil so there is no error to attach.",
+      "parentUuid": "3acedd6c_e573c961",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 9
+      },
+      "revId": "4a7f5754589e43937238de6c49a0167d903dfedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
