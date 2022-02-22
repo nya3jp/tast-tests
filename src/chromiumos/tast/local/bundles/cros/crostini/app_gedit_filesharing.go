@@ -174,7 +174,7 @@ func checkFilesharingBeforeRestart(
 		return errors.Wrap(err, "failed to bring the Filesapp Download window to foreground")
 	}
 
-	err := uiauto.Combine("validate contexts of text file opened with default non-linux app",
+	err := uiauto.Combine("validate contents of text file opened with default non-linux app",
 		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, defaultTextEditorContextMenuItem),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
 	)(ctx)
