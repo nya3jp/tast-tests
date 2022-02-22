@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/filemanager/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
@@ -28,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DrivefsDssOffline,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Verify that making a Docs/Sheets/Slides file available offline through Files App works",
 		Contacts: []string{
 			"austinct@chromium.org",
@@ -45,12 +44,7 @@ func init() {
 			"informational",
 		},
 		Timeout: 5 * time.Minute,
-		Pre:     pre.DriveFsWithDssPinning,
-		VarDeps: []string{
-			"filemanager.user",
-			"filemanager.password",
-			"filemanager.drive_credentials",
-		},
+		Fixture: "driveFsStartedWithNativeMessaging",
 	})
 }
 
@@ -73,9 +67,9 @@ func installRequiredExtensions(ctx context.Context, cr *chrome.Chrome, tconn *ch
 }
 
 func DrivefsDssOffline(ctx context.Context, s *testing.State) {
-	APIClient := s.PreValue().(drivefs.PreData).APIClient
-	cr := s.PreValue().(drivefs.PreData).Chrome
-	tconn := s.PreValue().(drivefs.PreData).TestAPIConn
+	APIClient := s.FixtValue().(*drivefs.FixtureData).APIClient
+	cr := s.FixtValue().(*drivefs.FixtureData).Chrome
+	tconn := s.FixtValue().(*drivefs.FixtureData).TestAPIConn
 
 	testDocFileName := fmt.Sprintf("doc-drivefs-%d-%d", time.Now().UnixNano(), rand.Intn(10000))
 

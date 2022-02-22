@@ -23,7 +23,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that drivefs can be accessed through the UI",
 		Contacts: []string{
-			"dats@chromium.org",
 			"austinct@chromium.org",
 			"benreich@chromium.org",
 		},
