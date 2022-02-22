@@ -277,6 +277,30 @@
       },
       "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4219c84e_c271fabf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-22T15:00:42Z",
+      "side": 1,
+      "message": "I have updated the code and the test passes when skipping the checks. Including a new failureExpected made the code a little convoluted and repetitive/confusing with Success being false but then not failing. Instead, Success is marked as true but VerificationDetails (renamed from failureDetails) is populated and logged if provided. I think the code is clearer this way. I have made the corresponding updates in EnterpriseRollbackInPlace as well.",
+      "parentUuid": "d3ecd98b_dd93c487",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
