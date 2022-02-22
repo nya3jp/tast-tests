@@ -16,6 +16,24 @@
       "message": "nit: put this in a defer after the open",
       "revId": "99bc4755619a9425d45bc8480d372e7264635ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac0a174_4bae91f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_cleanup_hack.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-02-22T22:23:26Z",
+      "side": 1,
+      "message": "We need it before the unmount() to ensure that we deterministically call it before removal (unmount() now kills processes that attempts to keep files open on the user mount).",
+      "parentUuid": "865873f3_2de2bf94",
+      "revId": "99bc4755619a9425d45bc8480d372e7264635ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
