@@ -44,9 +44,15 @@ func (p *chartPre) Prepare(ctx context.Context, s *testing.PreState) interface{}
 		if hostname, ok := s.Var("chart"); ok {
 			altHostname = hostname
 		}
-		c, err := chart.New(ctx, s.DUT(), altHostname, s.DataPath(p.path), s.OutDir())
+		c, namePaths, err := chart.New(ctx, s.DUT(), altHostname, s.OutDir(), []string{s.DataPath(p.path)})
 		if err != nil {
 			s.Fatal("Failed to prepare chart tablet: ", err)
+		}
+		if err := c.Display(ctx, namePaths[0]); err != nil {
+			if err := c.Close(ctx, s.OutDir()); err != nil {
+				testing.ContextLog(ctx, "Failed to cleanup chart: ", err)
+			}
+			s.Fatal("Failed to display chart on chart tablet: ", err)
 		}
 		p.chart = c
 	}
