@@ -132,6 +132,7 @@ var appTests = []string{
 	"app_eclipse.go",
 	"app_emacs.go",
 	"app_gedit.go",
+	"app_gedit_unshare_folder",
 	"app_vscode.go",
 	"restart_app.go",
 }
