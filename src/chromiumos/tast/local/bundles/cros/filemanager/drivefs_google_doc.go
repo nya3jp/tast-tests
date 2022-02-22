@@ -10,7 +10,7 @@ import (
 	"math/rand"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/filemanager/pre"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/drivefs"
@@ -23,7 +23,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verify that a google doc created via Drive API syncs to DriveFS",
 		Contacts: []string{
-			"dats@chromium.org",
 			"austinct@chromium.org",
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
@@ -38,18 +37,18 @@ func init() {
 			"informational",
 		},
 		Timeout: 5 * time.Minute,
-		Pre:     pre.DriveFsStarted,
-		VarDeps: []string{
-			"filemanager.user",
-			"filemanager.password",
-			"filemanager.drive_credentials",
-		},
+		Fixture: "driveFsStarted",
 	})
 }
 
 func DrivefsGoogleDoc(ctx context.Context, s *testing.State) {
-	APIClient := s.PreValue().(drivefs.PreData).APIClient
-	tconn := s.PreValue().(drivefs.PreData).TestAPIConn
+	APIClient := s.FixtValue().(*drivefs.FixtureData).APIClient
+	tconn := s.FixtValue().(*drivefs.FixtureData).TestAPIConn
+
+	// Give the Drive API enough time to remove the file.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Current refresh period is 2 minutes, leaving buffer for UI propagation.
 	// TODO(crbug/1112246): Reduce refresh period once push notifications fixed.
@@ -61,8 +60,8 @@ func DrivefsGoogleDoc(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not create blank google doc: ", err)
 	}
-	defer APIClient.RemoveFileByID(ctx, file.Id)
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer APIClient.RemoveFileByID(cleanupCtx, file.Id)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Launch Files App and check that Drive is accessible.
 	filesApp, err := filesapp.Launch(ctx, tconn)
