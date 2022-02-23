@@ -140,8 +140,7 @@ func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, er
 }
 
 // RunAccelVideoTest runs all tests in video_encode_accelerator_tests.
-// TODO(b/204494388) Replace 'cacheExtractedVideo' with command-line parameter.
-func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptions, cacheExtractedVideo bool) {
+func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -160,8 +159,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
-	}
-	if !cacheExtractedVideo {
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
 		defer os.Remove(yuvPath)
 	}
 
@@ -169,8 +167,9 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		s.DataPath(YUVJSONFileNameFor(opts.webMName)))
 	if err != nil {
 		s.Fatal("Failed to create a yuv json file: ", err)
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
+		defer os.Remove(yuvJSONPath)
 	}
-	defer os.Remove(yuvJSONPath)
 
 	codec, err := codecProfileToEncodeCodecOption(opts.profile)
 	if err != nil {
@@ -222,7 +221,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 // This is used to measure cpu usage and power consumption in the practical case.
 // - Quality performance: the specified test video is encoded for 300 frames and computes the SSIM and PSNR metrics of the encoded stream.
 // - Multiple concurrent performance: the specified test video is encoded with multiple concurrent encoders as fast as possible.
-func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptions, cacheExtractedVideo bool) error {
+func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) error {
 	const (
 		// Name of the uncapped performance test.
 		uncappedTestname = "MeasureUncappedPerformance"
@@ -254,8 +253,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
-	}
-	if !cacheExtractedVideo {
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
 		defer os.Remove(yuvPath)
 	}
 
@@ -263,9 +261,9 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		s.DataPath(YUVJSONFileNameFor(opts.webMName)))
 	if err != nil {
 		s.Fatal("Failed to create a yuv json file: ", err)
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
+		defer os.Remove(yuvJSONPath)
 	}
-
-	defer os.Remove(yuvJSONPath)
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for CPU to become idle")
