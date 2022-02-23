@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b30b89b_171cf9a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-02-23T15:40:55Z",
+      "side": 1,
+      "message": "Hi Seewai, I think there need a CR+2 from you, the tast owner, to proceed this CL with CQ+2. Can you approve it?",
+      "revId": "a25c358df49b2823088619ee37e2d3888fcb2a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
