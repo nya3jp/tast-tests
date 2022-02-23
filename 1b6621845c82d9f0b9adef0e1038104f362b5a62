@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89ef42db_2b80cf7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2022-02-23T22:25:29Z",
+      "side": 0,
+      "message": "if the |yuvJSONPath| failed, it deleted the |yuvPath|.  For consistency I paired the failures with the creations.  This is still occurring, I just moved it up and added a defer. I tried to make the pattern consistent across the files.",
+      "parentUuid": "166340c7_980085c9",
+      "revId": "1b6621845c82d9f0b9adef0e1038104f362b5a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8256e13d_93e4f94a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-23T21:36:02Z",
       "side": 0,
       "message": "And this one?",
+      "range": {
+        "startLine": 97,
+        "startChar": 18,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "1b6621845c82d9f0b9adef0e1038104f362b5a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35f1f46_d7b61024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2022-02-23T22:25:29Z",
+      "side": 0,
+      "message": "this is on me.  I should be deleting the |yuvJSONPath|, but instead was deleting the |yuvPath|",
+      "parentUuid": "8256e13d_93e4f94a",
       "range": {
         "startLine": 97,
         "startChar": 18,
