@@ -51,6 +51,23 @@
       "parentUuid": "0a4b6781_cad30609",
       "revId": "c25a91ba7e526d4790e8c2fc7a9ad1f9a81dbfa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b54b0b_84859a1e",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-02-23T01:16:37Z",
+      "side": 1,
+      "message": "namePaths[0] is an empty string, namePaths[1] would be the filename you intend to retrieve. Though as the comment https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3478956/comments/0a4b6781_cad30609, this is not the full path you are getting so it wouldn\u0027t be rendered properly",
+      "revId": "c25a91ba7e526d4790e8c2fc7a9ad1f9a81dbfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
