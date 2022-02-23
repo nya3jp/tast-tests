@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b96b499_a3790ff9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-23T17:29:11Z",
+      "side": 1,
+      "message": "Version may be still applicable because each of the tests execute rollback just once to a previous version",
+      "parentUuid": "763cc8a7_5ba5526a",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "3677f560287787d77e8ed0dc221448068f19fbb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7c1b54d_ef565e27",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 1
