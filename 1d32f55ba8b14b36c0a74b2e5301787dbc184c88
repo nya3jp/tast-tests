@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59bb2de_ac3ae07d",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-23T23:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e99c7185_b3eb3d96",
+      "range": {
+        "startLine": 276,
+        "startChar": 44,
+        "endLine": 276,
+        "endChar": 45
+      },
+      "revId": "1d32f55ba8b14b36c0a74b2e5301787dbc184c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec9514cb_5417ec62",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-18T18:52:09Z",
       "side": 1,
       "message": "convert",
+      "range": {
+        "startLine": 275,
+        "startChar": 42,
+        "endLine": 275,
+        "endChar": 48
+      },
+      "revId": "1d32f55ba8b14b36c0a74b2e5301787dbc184c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e6dc6f_c4c18ef9",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-23T23:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec9514cb_5417ec62",
       "range": {
         "startLine": 275,
         "startChar": 42,
