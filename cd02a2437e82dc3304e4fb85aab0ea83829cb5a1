@@ -16,6 +16,24 @@
       "message": "I think it should be chartHostPath here that indicates the path on the host machine for the chart, rather than the chartPath on the test server.",
       "revId": "cd02a2437e82dc3304e4fb85aab0ea83829cb5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913dbc44_96e41731",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-02-23T01:15:10Z",
+      "side": 1,
+      "message": "Yes, it\u0027s correct due to the protocol to communicate with chart mentioned in https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/3473811/.\nWe pass the relative path to the chart directory instead of the full qualified path.\n\nE.g.\n```\nchartPath :\u003d \"\u003ctest_server_path\u003e/chart.png\"\n# Should scp the file to \"\u003cchart_directory_on_host\u003e/chart.png\"\n# Should echo \u0027{\"chart_name\": \"chart.png\"}\u0027 \u003e \u003cfifo_path\u003e\n```",
+      "parentUuid": "b8722565_b5567a41",
+      "revId": "cd02a2437e82dc3304e4fb85aab0ea83829cb5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
