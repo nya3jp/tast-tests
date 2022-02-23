@@ -188,7 +188,7 @@ func stressTestCase(ctx context.Context, localRand *rand.Rand, mbPerTab, switchC
 		}
 	}
 
-	return memorystress.TestCase(ctx, cr, localRand, mbPerTab, switchCount, compressRatio, baseURL)
+	return memorystress.TestCase(ctx, cr.Browser(), localRand, mbPerTab, switchCount, compressRatio, baseURL)
 }
 
 func lacrosMain(ctx context.Context, s *testing.State, localRand *rand.Rand, mbPerTab int, baseURL string, perfValues *perf.Values) error {
@@ -204,7 +204,7 @@ func lacrosMain(ctx context.Context, s *testing.State, localRand *rand.Rand, mbP
 
 	const switchCount = 10
 	const compressRatio = 0.67
-	result, err := memorystress.TestCase(ctx, lacros, localRand, mbPerTab, switchCount, compressRatio, baseURL)
+	result, err := memorystress.TestCase(ctx, lacros.Browser(), localRand, mbPerTab, switchCount, compressRatio, baseURL)
 	if err != nil {
 		return errors.Wrap(err, "memorystress test case failed")
 	}
