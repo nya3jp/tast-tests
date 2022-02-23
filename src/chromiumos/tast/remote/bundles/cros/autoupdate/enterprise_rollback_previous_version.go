@@ -26,6 +26,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testParam struct {
+	previousVersionTarget int
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EnterpriseRollbackPreviousVersion,
@@ -44,6 +48,22 @@ func init() {
 			"tast.cros.policy.PolicyService",
 		},
 		Timeout: updateutil.UpdateTimeout + 12*time.Minute,
+		Params: []testing.Param{{
+			Name: "rollback_1_version",
+			Val: testParam{
+				previousVersionTarget: 1,
+			},
+		}, {
+			Name: "rollback_2_versions",
+			Val: testParam{
+				previousVersionTarget: 2,
+			},
+		}, {
+			Name: "rollback_3_versions",
+			Val: testParam{
+				previousVersionTarget: 3,
+			},
+		}},
 	})
 }
 
@@ -66,7 +86,10 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to convert milestone to integer %s: %v", lsbContent[lsbrelease.Milestone], err)
 	}
-	milestoneM := milestoneN - 1 // Target milestone.
+
+	// The target milestone depends on the parameter of the test.
+	param := s.Param().(testParam)
+	milestoneM := milestoneN - param.previousVersionTarget // Target milestone.
 
 	// Find the latest release for milestone M.
 	paygen, err := updateutil.LoadPaygenFromGS(ctx)
@@ -82,6 +105,8 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Logf("Skipping test; Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
 		return
 	}
+
+	rollbackVersion := latest.ChromeOSVersion
 
 	// Make sure to clear the TPM, go back to the original image, and remove all
 	// remains that may be left by a faulty rollback.
@@ -198,10 +223,6 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Error("Failed to close RPC client: ", err)
 	}
 
-	rollbackVersion := latest.ChromeOSVersion
-
-	builderPath := fmt.Sprintf("%s-release/R%d-%s", board, milestoneM, rollbackVersion)
-
 	// Stopping ui early to prevent accidental reboots in the middle of TPM clear.
 	// If you stop the ui while an update is pending, the device restarts.
 	if err := s.DUT().Conn().CommandContext(ctx, "stop", "ui").Run(); err != nil {
@@ -214,6 +235,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	}
 
 	s.Logf("Starting update from %s to %s", originalVersion, rollbackVersion)
+	builderPath := fmt.Sprintf("%s-release/R%d-%s", board, milestoneM, rollbackVersion)
 	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
 		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
