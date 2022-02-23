@@ -62,7 +62,7 @@ func BasicNToN(ctx context.Context, s *testing.State) {
 	}
 
 	// Limit the timeout for the verification steps.
-	postCtx, cancel := context.WithTimeout(ctx, preUpdateTimeoutN2N)
+	postCtx, cancel := context.WithTimeout(ctx, postUpdateTimeoutN2N)
 	defer cancel()
 
 	// Reboot the DUT.
