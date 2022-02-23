@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d1af1e_f8988c22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bcc66f_3444a75b",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b2567ce_c70758ac",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-23T10:44:06Z",
       "side": 1,
       "message": "Is there a plan to add Lacros variants of the other tests (e.g. large_container) as well? If not, why are they not needed?",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c42eead_bc9d6cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "No, large_container only tests apps supported by Crostini, Lacros is not one of them.",
+      "parentUuid": "4b2567ce_c70758ac",
       "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c462ea_22d9e46e",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "Yes, it is required to check whether to use the existing image, refer to checkKeepState(s) \u0026\u0026 terminaDLCAvailable() in this file.",
+      "parentUuid": "95852639_f5bb3306",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df1128d0_b7f1135a",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-02-23T10:44:06Z",
       "side": 1,
       "message": "This is still missing \"--disable-login-lacros-opening\".",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22776b00_5ae88bf8",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "It is added in generateChromeOpts for all fixtures as hidehiko@ suggested in a previous comment.",
+      "parentUuid": "df1128d0_b7f1135a",
       "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9a1349_33aeb314",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "Yes, it is required to check whether to use the existing image, refer to checkKeepState(s) \u0026\u0026 terminaDLCAvailable() in this file.",
+      "parentUuid": "83962fed_9ae41ee7",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58db1887_28c569ca",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-02-23T10:44:06Z",
       "side": 1,
       "message": "A comment would be good, explaining that this is non-nil only when the parent fixture is a Lacros fixture.",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f6889f_11b08c6d",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58db1887_28c569ca",
       "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5558e303_19bd4187",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a42704_87b838e9",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12698134_e48914ad",
@@ -133,6 +259,24 @@
       "writtenOn": "2022-02-23T10:44:06Z",
       "side": 1,
       "message": "This is already done by the parent fixture.",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b878c31b_662627ec",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-23T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12698134_e48914ad",
       "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
