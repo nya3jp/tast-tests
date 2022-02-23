@@ -258,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1733c1_3cf27f2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-02-23T01:40:02Z",
+      "side": 1,
+      "message": "I removed the ExtraAttr. We can add proper attributes when it is needed.",
+      "parentUuid": "76531c2f_9ecba6d5",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "06e6fdee610b9076c2a4f84ef53068c4ed795dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf06bffe_7726d992",
