@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42ebb4d_84180cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-23T09:00:29Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "587a916e_228e0e3d",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "ff32afe7a58baf82eaf8df706f216571f7891ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfd498e4_11812b2a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-21T04:29:37Z",
       "side": 1,
       "message": "an instance of App which represents and ARC App.",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "ff32afe7a58baf82eaf8df706f216571f7891ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "560225d0_ee177ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-23T09:00:29Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "bfd498e4_11812b2a",
       "range": {
         "startLine": 37,
         "startChar": 30,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2027e54d_db16d75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-23T09:00:29Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "05043a44_5f00ec63",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "ff32afe7a58baf82eaf8df706f216571f7891ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24c1d92f_25fda977",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "725e73ea_00db976a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-23T09:00:29Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "24c1d92f_25fda977",
+      "range": {
+        "startLine": 50,
+        "startChar": 48,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "ff32afe7a58baf82eaf8df706f216571f7891ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "019827ba_124c9c2c",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-02-21T04:29:37Z",
       "side": 1,
       "message": "the ARC\n\nBTW, I guess func Install should be called before? If yes, please document.",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "ff32afe7a58baf82eaf8df706f216571f7891ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "965ba3e4_11a29b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-23T09:00:29Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "019827ba_124c9c2c",
       "range": {
         "startLine": 59,
         "startChar": 19,
