@@ -16,6 +16,24 @@
       "message": "This test seems incredibly fragile.\n\nJP IME has huge amounts of ML, which changes over time.\n\nA better approach for testing the JP IME is to type valid phrases and ensure that the \"expected\" phrase is shown in some possibility in the candidate list as used in other JP IME tests",
       "revId": "54d3bb4ad048d5ce4aee538a6ed89ef830d055b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4077606_18cd0f4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-23T09:29:57Z",
+      "side": 1,
+      "message": "This test might be fragile since it is customized for current VK layout, it is very likely to fail on VK layout changes (especially for symbols), but we didn\u0027t found a VK key list of specific IME.\n\nAbout the ML part,\nsince the procedures have been changed to check each key one by one, e.g.:\n 1.clearInputField\n 2.tapKey(a)\n 3.validateField(し)\n\nDo you mean the expected result might be a phrase instead of a character by this 1:1 tap-validate mechanism?",
+      "parentUuid": "c32fd653_f33ccae4",
+      "revId": "54d3bb4ad048d5ce4aee538a6ed89ef830d055b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
