@@ -33,6 +33,24 @@
       "message": "This should be chartHostPath I thnk?",
       "revId": "c25a91ba7e526d4790e8c2fc7a9ad1f9a81dbfa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef014c60_92c2944a",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-02-23T01:10:52Z",
+      "side": 1,
+      "message": "It\u0027s not the full qualified path on chart, but the path relative to the temp chart directory. So I don\u0027t use the name like |chartHostPath|",
+      "parentUuid": "0a4b6781_cad30609",
+      "revId": "c25a91ba7e526d4790e8c2fc7a9ad1f9a81dbfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
