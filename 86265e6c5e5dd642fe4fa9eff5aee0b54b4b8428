@@ -181,6 +181,30 @@
       },
       "revId": "86265e6c5e5dd642fe4fa9eff5aee0b54b4b8428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf810a0_93c1d724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-02-23T18:20:46Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I dont think its an issue right now, I\u0027ll keep this on my radar as we get closer to enabling the flag. Letting this CL through!",
+      "parentUuid": "cd681e1d_de63fa48",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "86265e6c5e5dd642fe4fa9eff5aee0b54b4b8428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
