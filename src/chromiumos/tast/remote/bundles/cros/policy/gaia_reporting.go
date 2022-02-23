@@ -27,7 +27,7 @@ type testParameters struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GAIAReporting,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "GAIA Enroll a device and verify reporting functionality",
 		Contacts: []string{
 			"rzakarian@google.com", // Test author

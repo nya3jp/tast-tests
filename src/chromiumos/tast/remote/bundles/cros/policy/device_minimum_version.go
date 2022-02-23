@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeviceMinimumVersion,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of DeviceMinimumVersion policy",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
