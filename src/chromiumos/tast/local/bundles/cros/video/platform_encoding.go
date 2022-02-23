@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/videovars"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
@@ -871,8 +872,9 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	yuvFile, err := encoding.PrepareYUV(ctx, s.DataPath(testOpt.filename), videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
+		defer os.Remove(yuvFile)
 	}
-	defer os.Remove(yuvFile)
 
 	command, encodedFile, targetBitrate, err := testOpt.commandBuilder(ctx, s.TestName(), testOpt.command, yuvFile, testOpt.size, int(testOpt.fps))
 	if err != nil {
@@ -889,8 +891,9 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	logFile, err := runTest(ctx, s.OutDir(), command[0], command[1:]...)
 	if err != nil {
 		s.Fatal("Failed to run binary: ", err)
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
+		defer os.Remove(encodedFile)
 	}
-	defer os.Remove(encodedFile)
 
 	timeDelta := time.Now().Sub(startTime)
 	var energyDiff *power.RAPLValues
