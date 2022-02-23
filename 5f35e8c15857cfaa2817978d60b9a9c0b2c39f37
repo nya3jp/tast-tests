@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1c0a32b_79d4560d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-02-23T03:02:28Z",
+      "side": 1,
+      "message": "lgtm, CR+1. Defer +2 to Nicolas. Filed https://b.corp.google.com/issues/220966729 for drallion360 since it looks like literally all wificell tests are failing.",
+      "parentUuid": "32d5ee14_ce5779a1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "5f35e8c15857cfaa2817978d60b9a9c0b2c39f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a6c7635_0ab35230",
