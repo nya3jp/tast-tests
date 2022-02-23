@@ -126,7 +126,7 @@ func FindConnectedDPMonitor(ctx context.Context, tc *chrome.TestConn) error {
 // CheckTBTAndDP is a convenience function that checks for TBT and DP enumeration.
 // It returns nil on success, and the relevant error otherwise.
 func CheckTBTAndDP(ctx context.Context, tc *chrome.TestConn) error {
-	tbtPollOptions := testing.PollOptions{Timeout: 10 * time.Second}
+	tbtPollOptions := testing.PollOptions{Timeout: 20 * time.Second}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return CheckTBTDevice(true)
 	}, &tbtPollOptions); err != nil {
