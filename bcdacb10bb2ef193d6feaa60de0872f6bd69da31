@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1486425_1e3dc845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-02-23T00:47:28Z",
+      "side": 1,
+      "message": "PTAL \n\nThe last update was because of:\nrecorder.go:320:92: Sprintf format %v arg r.cleanup is a func value, not called",
+      "revId": "bcdacb10bb2ef193d6feaa60de0872f6bd69da31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
