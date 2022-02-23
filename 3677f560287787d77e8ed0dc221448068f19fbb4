@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "763cc8a7_5ba5526a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-23T15:56:40Z",
+      "side": 1,
+      "message": "nit: Let\u0027s change the test\u0027s name to ...Versions?",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "3677f560287787d77e8ed0dc221448068f19fbb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7c1b54d_ef565e27",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 1
@@ -53,6 +76,29 @@
         "startChar": 74,
         "endLine": 37,
         "endChar": 77
+      },
+      "revId": "3677f560287787d77e8ed0dc221448068f19fbb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc4fe9b_86c2272c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-23T15:56:40Z",
+      "side": 1,
+      "message": "Thanks for cleaning this up. :)",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 84
       },
       "revId": "3677f560287787d77e8ed0dc221448068f19fbb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
