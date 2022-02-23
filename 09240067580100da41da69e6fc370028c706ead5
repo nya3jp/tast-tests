@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59672794_f5049e0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-02-23T13:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "559008ef_8554e5fc",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "09240067580100da41da69e6fc370028c706ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cc34eec_01ee43d2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-22T23:40:18Z",
       "side": 1,
       "message": "Not used.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "09240067580100da41da69e6fc370028c706ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9a8bba_e0fe1ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-02-23T13:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc34eec_01ee43d2",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e742a3_b6832b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-02-23T13:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35a3e644_0c3226d2",
+      "revId": "09240067580100da41da69e6fc370028c706ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c02ec3e_8b8e159f",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-02-22T23:40:18Z",
       "side": 1,
       "message": "Put into one line",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "09240067580100da41da69e6fc370028c706ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50fabed7_45f2cfc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-02-23T13:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c02ec3e_8b8e159f",
       "range": {
         "startLine": 95,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23df60b0_f6ff7cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-02-23T13:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df8f140_d3652cca",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "09240067580100da41da69e6fc370028c706ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a8b6d9_37f0e3a6",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-02-22T23:40:18Z",
       "side": 1,
       "message": "nit. optional. Maybe put imageProcessorUnitTestBin to the message as well?",
+      "revId": "09240067580100da41da69e6fc370028c706ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a526c315_60412879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-02-23T13:35:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure I totally understand, there seems to be another log statement for that?",
+      "parentUuid": "f5a8b6d9_37f0e3a6",
       "revId": "09240067580100da41da69e6fc370028c706ead5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

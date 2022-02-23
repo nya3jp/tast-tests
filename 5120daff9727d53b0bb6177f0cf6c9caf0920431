@@ -325,6 +325,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "810db33a_4bf2ee33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-02-23T13:35:18Z",
+      "side": 1,
+      "message": "Oh I see what you mean. Is there any chance I could add that to a followup CL?",
+      "parentUuid": "8131218d_93a8ffdb",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "5120daff9727d53b0bb6177f0cf6c9caf0920431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2f392f8_e645fc7d",
