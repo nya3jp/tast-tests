@@ -34,6 +34,24 @@
       "parentUuid": "1a55a59b_ffcae099",
       "revId": "c4c404ee594c48ecee6b13b476ba2dae9843ee58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013e880f_35aa2aee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-02-23T17:20:32Z",
+      "side": 1,
+      "message": "Right, I read too fast, sorry for the noise. Thanks both!",
+      "parentUuid": "622b58f2_ce8768df",
+      "revId": "c4c404ee594c48ecee6b13b476ba2dae9843ee58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
