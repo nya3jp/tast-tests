@@ -16,6 +16,23 @@
       "message": "Hi Seewai, I think there need a CR+2 from you, the tast owner, to proceed this CL with CQ+2. Can you approve it?",
       "revId": "a25c358df49b2823088619ee37e2d3888fcb2a60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c3aaca_92452d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-23T15:58:45Z",
+      "side": 1,
+      "message": "I thought it was okay as long as I have a +1 and others +2. Let me try and see if it can be CQ+2. If not, I will give a CR+2 later.",
+      "revId": "a25c358df49b2823088619ee37e2d3888fcb2a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
