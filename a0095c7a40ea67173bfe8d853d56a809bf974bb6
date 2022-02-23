@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43a2434_804d1f22",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-23T10:44:06Z",
+      "side": 0,
+      "message": "Both the Responded and ResetState is already done by the parent fixture.",
+      "revId": "a0095c7a40ea67173bfe8d853d56a809bf974bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
