@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a55a59b_ffcae099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-02-23T05:21:29Z",
+      "side": 1,
+      "message": "lgtm too, thanks!\n\n@Jintao, can you file a bug against EngProd for the drallion fixture issue?",
+      "revId": "c4c404ee594c48ecee6b13b476ba2dae9843ee58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
