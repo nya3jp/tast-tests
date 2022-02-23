@@ -29,7 +29,7 @@ func init() {
 		Attr:     []string{"group:mainline", "group:typec", "informational"},
 		// TODO(b/213260357): Re-enable manatee once there is adequate EC support.
 		SoftwareDeps: []string{"no_manatee"},
-		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.SkipOnModel("fievel", "tiger"), hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.SkipOnModel("fievel", "habokay", "tiger"), hwdep.ChromeEC()),
 		Vars:         []string{"servo"},
 	})
 }
