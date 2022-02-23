@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ac0cc7_524670de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-23T21:04:23Z",
+      "side": 1,
+      "message": "Thank you for clarifying the name!",
+      "revId": "3fb57f8052b098dee5748f95c5c58a327d30f868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9b2939_10034bb0",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-23T21:04:23Z",
+      "side": 1,
+      "message": "Nit: to",
+      "range": {
+        "startLine": 264,
+        "startChar": 34,
+        "endLine": 264,
+        "endChar": 37
+      },
+      "revId": "3fb57f8052b098dee5748f95c5c58a327d30f868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
