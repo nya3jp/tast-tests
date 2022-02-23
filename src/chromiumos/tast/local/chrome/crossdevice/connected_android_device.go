@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/mobly"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -202,16 +203,26 @@ func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 	}
 	// Close the Camera app by pressing the back button when this function exits.
 	defer c.device.PressKeyCode(ctx, "KEYCODE_BACK")
-	testing.Sleep(ctx, time.Second)
-	if err := c.device.PressKeyCode(ctx, "KEYCODE_VOLUME_DOWN"); err != nil {
-		return "", errors.Wrap(err, "failed to take a photo")
-	}
 
-	// Wait for a new photo to appear.
 	mostRecentPhoto, err := c.GetMostRecentPhoto(ctx)
 	if err != nil {
 		return "", err
 	}
+
+	uiDevice, err := ui.NewDevice(ctx, c.device)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to connect to the UI Automator server")
+	}
+	defer uiDevice.Close(ctx)
+	shutterButton := uiDevice.Object(ui.DescriptionMatches("Take.*photo"))
+	if err := shutterButton.WaitForExists(ctx, 3*time.Second); err != nil {
+		return "", errors.Wrap(err, "cannot find the shutter button in the Google Camera app")
+	}
+	if err := shutterButton.Click(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to take a photo")
+	}
+
+	// Wait for a new photo to appear.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if photo, err := c.GetMostRecentPhoto(ctx); err != nil {
 			return testing.PollBreak(err)
