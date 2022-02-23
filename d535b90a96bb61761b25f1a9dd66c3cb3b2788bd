@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2046a5d4_1955cb6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-23T11:25:39Z",
+      "side": 1,
+      "message": "I fixed it as I only expect one",
+      "parentUuid": "bcd2ae7c_4e48608d",
+      "range": {
+        "startLine": 123,
+        "startChar": 74,
+        "endLine": 123,
+        "endChar": 82
+      },
+      "revId": "d535b90a96bb61761b25f1a9dd66c3cb3b2788bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c2fe900_67a5e132",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-23T09:05:29Z",
       "side": 1,
       "message": "nit: We usually use `s.Error` instead of `s.Fatal` for the last check.\nSame below.",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "d535b90a96bb61761b25f1a9dd66c3cb3b2788bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa06537_40fadc86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-23T11:25:39Z",
+      "side": 1,
+      "message": "good to know thanks 😊 I am using old tests for guidance",
+      "parentUuid": "0c2fe900_67a5e132",
       "range": {
         "startLine": 124,
         "startChar": 7,
