@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -27,7 +29,7 @@ const liveCaptionToggleName = "Live Caption"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LiveCaption,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks live caption works",
 		Contacts: []string{
 			"alanlxl@chromium.org",
@@ -36,17 +38,27 @@ func init() {
 		},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "ondevice_speech"},
-		Attr:         []string{"group:mainline", "informational"},
 		Data: []string{
 			"live_caption.html",
 			"voice_en_hello.wav",
 		},
+		Params: []testing.Param{{
+			Fixture:   "chromeLoggedInForLiveCaption",
+			ExtraAttr: []string{"group:mainline", "informational"},
+			Val:       browser.TypeAsh,
+		}, {
+			// TODO(crbug.com/1222629): Live Caption is not yet available on Lacros. Add attr for continuous testing once feature is completed.
+			Name:              "lacros",
+			Fixture:           "lacrosLoggedInForLiveCaption",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func LiveCaption(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	// Setup test HTTP server.
@@ -54,16 +66,7 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	// Launch chrome.
-	cr, err := chrome.New(
-		ctx,
-		chrome.ExtraArgs("--autoplay-policy=no-user-gesture-required"), // Allow media autoplay.
-		chrome.EnableFeatures("OnDeviceSpeechRecognition"),
-	)
-	if err != nil {
-		s.Fatal("Failed to start chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
-
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -106,8 +109,16 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for libsoda dlc to be installed: ", err)
 	}
 
+	// Set up a browser
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	if err != nil {
+		s.Fatalf("Failed to setup %v browser: %v", bt, err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	// Open the test page and play the audio.
-	conn, err := cr.NewConn(ctx, server.URL+"/live_caption.html")
+	conn, err := br.NewConn(ctx, server.URL+"/live_caption.html")
 	if err != nil {
 		s.Fatal("Failed to open test web page: ", err)
 	}
