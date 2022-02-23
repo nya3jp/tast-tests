@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f3610e9_e7120882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-23T10:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9e8ff33_50938f25",
+      "range": {
+        "startLine": 131,
+        "startChar": 34,
+        "endLine": 131,
+        "endChar": 37
+      },
+      "revId": "ad14a1b7bd6518649d4cdf5f396f50eceaedda4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a63e000_206e8c63",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-23T07:48:15Z",
       "side": 1,
       "message": "This test only runs on newest builds, it doesn\u0027t go back. So we don\u0027t need to check for VerificationDetails if it succeeds (for now at least).",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "ad14a1b7bd6518649d4cdf5f396f50eceaedda4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac5b461_d0efc059",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-02-23T10:53:55Z",
+      "side": 1,
+      "message": "Makes sense, I have removed it, thanks!",
+      "parentUuid": "6a63e000_206e8c63",
       "range": {
         "startLine": 198,
         "startChar": 1,
