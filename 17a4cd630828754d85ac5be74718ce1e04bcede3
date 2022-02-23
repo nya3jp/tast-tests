@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7872265b_6706a703",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-23T00:00:20Z",
+      "side": 1,
+      "message": "Can these parameters be made configured externally. Specifically the number of cycles and the length of time to spend awake and asleep. Maybe also an option to only test s3 or s0i3.",
+      "revId": "17a4cd630828754d85ac5be74718ce1e04bcede3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2098ed60_9c533ff4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-23T00:00:20Z",
+      "side": 1,
+      "message": "If we check the battery after every cycle, we could use this for long running stress tests too.",
+      "revId": "17a4cd630828754d85ac5be74718ce1e04bcede3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3e6614_31a20cf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-02-23T00:00:20Z",
+      "side": 1,
+      "message": "I\u0027m guessing this will catch unexpected reboots during resume?",
+      "revId": "17a4cd630828754d85ac5be74718ce1e04bcede3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
