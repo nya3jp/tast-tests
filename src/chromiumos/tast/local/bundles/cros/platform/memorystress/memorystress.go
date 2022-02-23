@@ -56,16 +56,6 @@ func activeTabURL(ctx context.Context, br *browser.Browser) (string, error) {
 	return tabURL, nil
 }
 
-// reloadActiveTab reloads the active tab.
-func reloadActiveTab(ctx context.Context, br *browser.Browser) error {
-	tconn, err := br.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "cannot create test connection")
-	}
-
-	return tconn.Eval(ctx, "chrome.tabs.reload()", nil)
-}
-
 // isTargetAvailable checks if there is any matched target.
 func isTargetAvailable(ctx context.Context, br *browser.Browser, tm chrome.TargetMatcher) (bool, error) {
 	targets, err := br.FindTargets(ctx, tm)
@@ -155,8 +145,8 @@ func reloadCrashedTab(ctx context.Context, br *browser.Browser) (bool, error) {
 
 	if !targetAvailable {
 		testing.ContextLog(ctx, "Reload tab:", tabURL)
-		if err := reloadActiveTab(ctx, br); err != nil {
-			return false, errors.Wrap(err, "reloadActiveTab failed")
+		if err := br.ReloadActiveTab(ctx); err != nil {
+			return false, errors.Wrap(err, "ReloadActiveTab failed")
 		}
 		if err := waitAllocationForURL(ctx, br, tabURL); err != nil {
 			return false, errors.Wrap(err, "waitAllocationForURL failed")
