@@ -22,9 +22,6 @@ const (
 	crowd720p  = "crowd-1280x720_30frames.vp9.webm"
 	crowd1080p = "crowd-1920x1080_30frames.vp9.webm"
 	crowd2160p = "crowd-3840x2160_30frames.vp9.webm"
-
-	// Enable to cache the extracted raw video to speed up the test.
-	eapCacheExtractedVideo = false
 )
 
 func init() {
@@ -246,7 +243,7 @@ func init() {
 }
 
 func EncodeAccelPerf(ctx context.Context, s *testing.State) {
-	if err := encode.RunAccelVideoPerfTest(ctx, s, s.Param().(encode.TestOptions), eapCacheExtractedVideo); err != nil {
+	if err := encode.RunAccelVideoPerfTest(ctx, s, s.Param().(encode.TestOptions)); err != nil {
 		s.Fatal("test failed: ", err)
 	}
 }
