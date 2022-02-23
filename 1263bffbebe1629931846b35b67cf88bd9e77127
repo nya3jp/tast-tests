@@ -301,6 +301,30 @@
       },
       "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4103be25_3e2e2ef6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-23T07:48:15Z",
+      "side": 1,
+      "message": "Yes, that looks good, thanks for changing it!",
+      "parentUuid": "4219c84e_c271fabf",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "1263bffbebe1629931846b35b67cf88bd9e77127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
