@@ -30,8 +30,15 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "gsc"},
-		Timeout:      5 * time.Minute,
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Name:              "tpm1",
+			ExtraSoftwareDeps: []string{"tpm1"},
+		}, {
+			Name:              "gsc",
+			ExtraSoftwareDeps: []string{"gsc"},
+		}},
+		Timeout: 5 * time.Minute,
 	})
 }
 
