@@ -34,6 +34,24 @@
       "parentUuid": "b8722565_b5567a41",
       "revId": "cd02a2437e82dc3304e4fb85aab0ea83829cb5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0224d8c6_b4d258e8",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-02-23T01:56:21Z",
+      "side": 1,
+      "message": "After some discussion, we found that both local/host path would create the same URL. And the 404 Not Found problem is on telemetry side. So we may need to fix the API in the next CL. The broken API is currently not used by any code, so we still can submit this first.",
+      "parentUuid": "913dbc44_96e41731",
+      "revId": "cd02a2437e82dc3304e4fb85aab0ea83829cb5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
