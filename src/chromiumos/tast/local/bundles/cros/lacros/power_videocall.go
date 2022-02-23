@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	memorymetrics "chromiumos/tast/local/memory/metrics"
 	"chromiumos/tast/testing"
 )
 
@@ -80,6 +81,11 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 2 * time.Minute}); err != nil {
 		s.Fatal("Failed to poll to close any excess windows: ", err)
+	}
+
+	memBase, err := memorymetrics.NewBaseMemoryStats(ctx, nil)
+	if err != nil {
+		s.Fatal("Failed to get base zram stats: ", err)
 	}
 
 	videoConn, br, cleanup, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), bt, videocallURL)
@@ -183,6 +189,10 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
+
+	if err := memorymetrics.LogMemoryStats(ctx, memBase, nil, pv, s.OutDir(), ""); err != nil {
+		s.Error("Failed to log memory stats: ", err)
+	}
 
 	for _, h := range histograms {
 		mean, err := h.Mean()
