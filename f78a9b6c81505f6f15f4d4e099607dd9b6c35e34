@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5373c09_bc025ce0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-02-23T21:36:02Z",
+      "side": 1,
+      "message": "Nit: IIRC s.Fatal is an aborting failure, so we don\u0027t need the else",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "f78a9b6c81505f6f15f4d4e099607dd9b6c35e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

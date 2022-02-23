@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166340c7_980085c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-02-23T21:36:02Z",
+      "side": 0,
+      "message": "I might be missing something: why don\u0027t we need to retain this line?",
+      "revId": "1b6621845c82d9f0b9adef0e1038104f362b5a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8256e13d_93e4f94a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-02-23T21:36:02Z",
+      "side": 0,
+      "message": "And this one?",
+      "range": {
+        "startLine": 97,
+        "startChar": 18,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "1b6621845c82d9f0b9adef0e1038104f362b5a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
