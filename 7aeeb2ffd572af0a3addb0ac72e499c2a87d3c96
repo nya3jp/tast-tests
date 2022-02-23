@@ -16,6 +16,29 @@
       "message": "Cool thanks! Now you were faster than me with fixing this! :D ",
       "revId": "7aeeb2ffd572af0a3addb0ac72e499c2a87d3c96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98cf0b13_1deb9f8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-02-23T07:30:17Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this comment is accurate anymore",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "7aeeb2ffd572af0a3addb0ac72e499c2a87d3c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
