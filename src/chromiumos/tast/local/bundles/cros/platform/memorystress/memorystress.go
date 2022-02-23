@@ -27,19 +27,6 @@ const (
 	JavascriptFilename = "memory_stress.js"
 )
 
-// ChromeCommon is the common interface of chrome.Chrome and lacros.Lacros.
-type ChromeCommon interface {
-	// TestAPIConn returns a new chrome.TestConn instance for the Chrome browser.
-	TestAPIConn(ctx context.Context) (*chrome.TestConn, error)
-	// NewConnForTarget iterates through all available targets and returns a connection to the
-	// first one that is matched by tm.
-	NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error)
-	// NewConn creates a new Chrome renderer and returns a connection to it.
-	NewConn(ctx context.Context, url string, opts ...browser.CreateTargetOption) (*chrome.Conn, error)
-	// FindTargets returns the info about Targets, which satisfies the given cond condition.
-	FindTargets(ctx context.Context, tm chrome.TargetMatcher) ([]*chrome.Target, error)
-}
-
 // TestCaseResult is the result of a stress test case.
 type TestCaseResult struct {
 	// jankyCount is the average janky count in 30 seconds histogram.
@@ -53,8 +40,8 @@ type TestCaseResult struct {
 }
 
 // activeTabURL returns the URL of the active tab.
-func activeTabURL(ctx context.Context, cr ChromeCommon) (string, error) {
-	tconn, err := cr.TestAPIConn(ctx)
+func activeTabURL(ctx context.Context, br *browser.Browser) (string, error) {
+	tconn, err := br.TestAPIConn(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "cannot create test connection")
 	}
@@ -70,8 +57,8 @@ func activeTabURL(ctx context.Context, cr ChromeCommon) (string, error) {
 }
 
 // reloadActiveTab reloads the active tab.
-func reloadActiveTab(ctx context.Context, cr ChromeCommon) error {
-	tconn, err := cr.TestAPIConn(ctx)
+func reloadActiveTab(ctx context.Context, br *browser.Browser) error {
+	tconn, err := br.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "cannot create test connection")
 	}
@@ -80,8 +67,8 @@ func reloadActiveTab(ctx context.Context, cr ChromeCommon) error {
 }
 
 // isTargetAvailable checks if there is any matched target.
-func isTargetAvailable(ctx context.Context, cr ChromeCommon, tm chrome.TargetMatcher) (bool, error) {
-	targets, err := cr.FindTargets(ctx, tm)
+func isTargetAvailable(ctx context.Context, br *browser.Browser, tm chrome.TargetMatcher) (bool, error) {
+	targets, err := br.FindTargets(ctx, tm)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get targets")
 	}
@@ -110,8 +97,8 @@ func waitAllocation(ctx context.Context, conn *chrome.Conn) error {
 }
 
 // waitAllocationForURL waits for completion of JavaScript memory allocation on the tab with specified URL.
-func waitAllocationForURL(ctx context.Context, cr ChromeCommon, url string) error {
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+func waitAllocationForURL(ctx context.Context, br *browser.Browser, url string) error {
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
 	if err != nil {
 		return errors.Wrap(err, "NewConnForTarget failed")
 	}
@@ -121,8 +108,8 @@ func waitAllocationForURL(ctx context.Context, cr ChromeCommon, url string) erro
 }
 
 // openAllocationPage opens a page to allocate many JavaScript objects.
-func openAllocationPage(ctx context.Context, url string, cr ChromeCommon) error {
-	conn, err := cr.NewConn(ctx, url)
+func openAllocationPage(ctx context.Context, url string, br *browser.Browser) error {
+	conn, err := br.NewConn(ctx, url)
 	if err != nil {
 		return errors.Wrap(err, "cannot create new renderer")
 	}
@@ -143,10 +130,10 @@ func openTabCount(mbPerTab int) (int, error) {
 }
 
 // openTabs opens tabs to create memory pressure.
-func openTabs(ctx context.Context, cr ChromeCommon, createTabCount, mbPerTab int, compressRatio float64, baseURL string) error {
+func openTabs(ctx context.Context, br *browser.Browser, createTabCount, mbPerTab int, compressRatio float64, baseURL string) error {
 	for i := 0; i < createTabCount; i++ {
 		url := fmt.Sprintf("%s?alloc=%d&ratio=%.3f&id=%d", baseURL, mbPerTab, compressRatio, i)
-		if err := openAllocationPage(ctx, url, cr); err != nil {
+		if err := openAllocationPage(ctx, url, br); err != nil {
 			return errors.Wrap(err, "cannot create tab")
 		}
 	}
@@ -154,24 +141,24 @@ func openTabs(ctx context.Context, cr ChromeCommon, createTabCount, mbPerTab int
 }
 
 // reloadCrashedTab reload the active tab if it's crashed. Returns whether the tab is reloaded.
-func reloadCrashedTab(ctx context.Context, cr ChromeCommon) (bool, error) {
-	tabURL, err := activeTabURL(ctx, cr)
+func reloadCrashedTab(ctx context.Context, br *browser.Browser) (bool, error) {
+	tabURL, err := activeTabURL(ctx, br)
 	if err != nil {
 		return false, errors.Wrap(err, "cannot get active tab URL")
 	}
 
 	// If the active tab's URL is not in the devtools targets, the active tab is crashed.
-	targetAvailable, err := isTargetAvailable(ctx, cr, chrome.MatchTargetURL(tabURL))
+	targetAvailable, err := isTargetAvailable(ctx, br, chrome.MatchTargetURL(tabURL))
 	if err != nil {
 		return false, errors.Wrap(err, "isTargetAvailable failed")
 	}
 
 	if !targetAvailable {
 		testing.ContextLog(ctx, "Reload tab:", tabURL)
-		if err := reloadActiveTab(ctx, cr); err != nil {
+		if err := reloadActiveTab(ctx, br); err != nil {
 			return false, errors.Wrap(err, "reloadActiveTab failed")
 		}
-		if err := waitAllocationForURL(ctx, cr, tabURL); err != nil {
+		if err := waitAllocationForURL(ctx, br, tabURL); err != nil {
 			return false, errors.Wrap(err, "waitAllocationForURL failed")
 		}
 		return true, nil
@@ -206,7 +193,7 @@ func waitMoveCursor(ctx context.Context, mw *input.MouseEventWriter, d time.Dura
 }
 
 // switchTabs switches between tabs and reloads crashed tabs. Returns the reload count.
-func switchTabs(ctx context.Context, cr ChromeCommon, switchCount int, localRand *rand.Rand) (uint64, error) {
+func switchTabs(ctx context.Context, br *browser.Browser, switchCount int, localRand *rand.Rand) (uint64, error) {
 	mouse, err := input.Mouse(ctx)
 	if err != nil {
 		return 0, errors.Wrap(err, "cannot initialize mouse")
@@ -245,7 +232,7 @@ func switchTabs(ctx context.Context, cr ChromeCommon, switchCount int, localRand
 		}
 		testing.ContextLogf(ctx, "%3d, wait time: %v", i, waitTime)
 
-		reloaded, err := reloadCrashedTab(ctx, cr)
+		reloaded, err := reloadCrashedTab(ctx, br)
 		if err != nil {
 			return 0, errors.Wrap(err, "reloadCrashedTab failed")
 		}
@@ -306,7 +293,7 @@ func ReportTestCaseResult(ctx context.Context, perfValues *perf.Values, result T
 }
 
 // TestCase opens synthetic pages to allocate JavaScript objects to create memory pressure.
-func TestCase(ctx context.Context, cr ChromeCommon, localRand *rand.Rand, mbPerTab, switchCount int, compressRatio float64, baseURL string) (TestCaseResult, error) {
+func TestCase(ctx context.Context, br *browser.Browser, localRand *rand.Rand, mbPerTab, switchCount int, compressRatio float64, baseURL string) (TestCaseResult, error) {
 	vmstatsStart, err := kernelmeter.VMStats()
 	if err != nil {
 		return TestCaseResult{}, errors.Wrap(err, "failed to get vmstat")
@@ -318,11 +305,11 @@ func TestCase(ctx context.Context, cr ChromeCommon, localRand *rand.Rand, mbPerT
 	}
 	testing.ContextLog(ctx, "Tab count to create: ", createTabCount)
 
-	if err := openTabs(ctx, cr, createTabCount, mbPerTab, compressRatio, baseURL); err != nil {
+	if err := openTabs(ctx, br, createTabCount, mbPerTab, compressRatio, baseURL); err != nil {
 		return TestCaseResult{}, errors.Wrap(err, "failed to open tabs")
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := br.TestAPIConn(ctx)
 	if err != nil {
 		return TestCaseResult{}, errors.Wrap(err, "failed to connect to test API")
 	}
@@ -333,7 +320,7 @@ func TestCase(ctx context.Context, cr ChromeCommon, localRand *rand.Rand, mbPerT
 		return TestCaseResult{}, errors.Wrap(err, "failed to get histograms")
 	}
 
-	reloadCount, err := switchTabs(ctx, cr, switchCount, localRand)
+	reloadCount, err := switchTabs(ctx, br, switchCount, localRand)
 	if err != nil {
 		return TestCaseResult{}, errors.Wrap(err, "failed to switch tabs")
 	}
