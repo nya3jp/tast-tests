@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff0863be_210b5579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-23T09:05:29Z",
+      "side": 1,
+      "message": "LGTM % nit\nThanks for the test!",
+      "revId": "d535b90a96bb61761b25f1a9dd66c3cb3b2788bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd2ae7c_4e48608d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-23T09:05:29Z",
+      "side": 1,
+      "message": "Can you add a comment on why do you expect to have more than 1 Allow button?",
+      "range": {
+        "startLine": 123,
+        "startChar": 74,
+        "endLine": 123,
+        "endChar": 82
+      },
+      "revId": "d535b90a96bb61761b25f1a9dd66c3cb3b2788bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2fe900_67a5e132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-23T09:05:29Z",
+      "side": 1,
+      "message": "nit: We usually use `s.Error` instead of `s.Fatal` for the last check.\nSame below.",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "d535b90a96bb61761b25f1a9dd66c3cb3b2788bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
