@@ -124,6 +124,15 @@ run by executing:
 New boards being brought up will need to add capabilities files in the
 appropriate locations for the Video Tast tests to run properly.
 
+## Runtime Variables
+
+The encode tests uncompress video files in order to create a local file
+for processing.  Under nominal conditions these files should be removed after
+the test has run.  These uncompressed files along with their descriptive .json
+files can be left on the device by passing the `removeArtifacts` variable to tast:
+
+    tast run -var=videovars.removeArtifacts=false $HOST video.EncodeAccel.*
+
 ## Video decoder integration tests (`video.DecodeAccel`)
 
 These tests validate video decoding at the **Chrome `//media`** level for
