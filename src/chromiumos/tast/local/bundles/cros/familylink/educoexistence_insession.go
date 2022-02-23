@@ -11,10 +11,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -45,25 +42,9 @@ func EducoexistenceInsession(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	ui := uiauto.New(tconn)
-
 	s.Log("Launching the in-session Edu Coexistence flow")
-	if err := familylink.AddEduSecondaryAccount(ctx, cr, tconn, parentFirstName, parentLastName, parentUser, parentPass, eduUser, eduPass); err != nil {
-		s.Fatal("Failed to go through the in-session Edu Coexistence flow: ", err)
-	}
-
-	s.Log("Clicking next on the final page to wrap up")
-	schoolAccountAddedHeader := nodewith.Name("School account added").Role(role.Heading)
-	if err := uiauto.Combine("Clicking next button and wrapping up",
-		ui.WaitUntilExists(schoolAccountAddedHeader),
-		ui.LeftClickUntil(nodewith.Name("Next").Role(role.Button), ui.Gone(schoolAccountAddedHeader)))(ctx); err != nil {
-		s.Fatal("Failed to click next button: ", err)
-	}
-
-	s.Log("Verifying the EDU secondary account added successfully")
-	// There should be a "more actions" button to remove the EDU secondary account.
-	moreActionsButton := nodewith.Name("More actions, " + eduUser).Role(role.Button)
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
-		s.Fatal("Failed to detect EDU secondary account: ", err)
+	if err := familylink.AddEduSecondaryAccountWithMultipleParents(ctx, cr, tconn, parentFirstName, parentLastName,
+		parentUser, parentPass, eduUser, eduPass, true /*verifyEduSecondaryAddSuccess*/); err != nil {
+		s.Fatal("Failed to complete the in-session Edu Coexistence flow: ", err)
 	}
 }
