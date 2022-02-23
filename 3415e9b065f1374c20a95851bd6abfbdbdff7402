@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3350d9b_1e6d7902",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-23T01:13:55Z",
+      "side": 1,
+      "message": "Hi Keigo:\n\nIt is not a code review. Please take a look at the comment and let us know if you have any insight on the issue.\n\nThanks.\n\nSeewai",
+      "revId": "3415e9b065f1374c20a95851bd6abfbdbdff7402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30975c48_e5fa412f",
