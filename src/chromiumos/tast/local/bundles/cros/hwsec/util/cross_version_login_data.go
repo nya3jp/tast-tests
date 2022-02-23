@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -178,6 +179,11 @@ func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Daem
 
 	if err := decompressData(archivePath); err != nil {
 		return errors.Wrap(err, "failed to decompress the cryptohome data")
+	}
+
+	// decompressData do not restore selinux attributs. Running `restorecon` should do the trick.
+	if err := testexec.CommandContext(ctx, "restorecon", "-r", "/home/.shadow").Run(); err != nil {
+		return errors.Wrap(err, "failed to restore selinux attributes")
 	}
 	return nil
 }
