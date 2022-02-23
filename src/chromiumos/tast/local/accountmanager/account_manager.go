@@ -209,25 +209,10 @@ func OpenOneGoogleBar(ctx context.Context, tconn *chrome.TestConn, br *browser.B
 
 	if err := openOGB(ctx, tconn, 30*time.Second); err != nil {
 		// The page may have loaded in logged out state: reload and try again.
-		reloadTab(ctx, br)
+		br.ReloadActiveTab(ctx)
 		if err := openOGB(ctx, tconn, LongUITimeout); err != nil {
 			return errors.Wrap(err, "failed to find OGB")
 		}
-	}
-	return nil
-}
-
-func reloadTab(ctx context.Context, br *browser.Browser) error {
-	tconn, err := br.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect Test API")
-	}
-
-	if err := tconn.Eval(ctx, "chrome.tabs.reload()", nil); err != nil {
-		return errors.Wrap(err, "failed to reload")
-	}
-	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return errors.Wrap(err, "failed to wait for the ready state")
 	}
 	return nil
 }

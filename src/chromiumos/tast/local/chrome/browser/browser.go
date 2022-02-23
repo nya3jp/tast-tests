@@ -118,3 +118,18 @@ func (b *Browser) StartTracing(ctx context.Context, categories []string, opts ..
 func (b *Browser) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
 	return b.sess.StopTracing(ctx)
 }
+
+// ReloadActiveTab reloads the active tab.
+func (b *Browser) ReloadActiveTab(ctx context.Context) error {
+	tconn, err := b.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+	if err := tconn.Eval(ctx, "chrome.tabs.reload()", nil); err != nil {
+		return errors.Wrap(err, "failed to reload tab")
+	}
+	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "failed to wait for the ready state")
+	}
+	return nil
+}
