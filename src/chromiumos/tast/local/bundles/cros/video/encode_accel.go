@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/encode"
+	"chromiumos/tast/local/bundles/cros/video/videovars"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -25,9 +26,6 @@ const (
 	tulip720P  = "tulip2-1280x720.vp9.webm"
 	crowd1080P = "crowd-1920x1080.vp9.webm"
 	crowd2160P = "crowd-3840x2160.vp9.webm"
-
-	// Enable to cache the extracted raw video to speed up the test.
-	eaCacheExtractedVideo = false
 )
 
 func init() {
@@ -235,5 +233,5 @@ func init() {
 }
 
 func EncodeAccel(ctx context.Context, s *testing.State) {
-	encode.RunAccelVideoTest(ctx, s, s.Param().(encode.TestOptions), eaCacheExtractedVideo)
+	encode.RunAccelVideoTest(ctx, s, s.Param().(encode.TestOptions), videovars.ShouldRemoveArtifacts(ctx))
 }

@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/video/encode"
+	"chromiumos/tast/local/bundles/cros/video/videovars"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
@@ -25,9 +26,6 @@ import (
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
-
-// Enable to cache the extracted raw video to speed up the test.
-const deapCacheExtractedVideo = false
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -85,16 +83,16 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
+		defer os.Remove(yuvPath)
 	}
+
 	yuvJSONPath, err := encoding.PrepareYUVJSON(ctx, yuvPath,
 		s.DataPath(encode.YUVJSONFileNameFor(encodeFileName)))
 	if err != nil {
-		os.Remove(yuvPath)
 		s.Fatal("Failed to create a yuv json file: ", err)
-	}
-	if !deapCacheExtractedVideo {
+	} else if videovars.ShouldRemoveArtifacts(ctx) {
 		defer os.Remove(yuvPath)
-		defer os.Remove(yuvJSONPath)
 	}
 
 	// Wait for the CPU to become idle.
