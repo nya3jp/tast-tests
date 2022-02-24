@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a54640a_31c86ae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "this has some interactions with drive in file manager so +benreich from files app team",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b1fd0dd_96c53618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "can you document what these mean?",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6417daed_5f950d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "do we actually expect anything in the drive folder? should we use a name that\u0027s unique enough for this test and just delete that file at the end?",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1400278_2d79542d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "maybe make newGoogleDoc return cleanup function?",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24ee8d7_dd3a38d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "shouldn\u0027t searching for SearchResultView class be enough?",
+      "range": {
+        "startLine": 107,
+        "startChar": 42,
+        "endLine": 107,
+        "endChar": 66
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd2158cf_2a9f78ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "shouldn\u0027t tast framework already close all windows? It may be a good idea to separate this into 3 separate tests",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50183130_9e65651f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "ash.TriggerLauncherStateChange()",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98145842_ea1aa9e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "why waiting for shelf animation? can we use\nash.WaitForLauncherState(ctx, tconn, ash.Closed)",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e1f0a9_f8cf8f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:27:19Z",
+      "side": 1,
+      "message": "can we use src/platform/tast-tests/src/chromiumos/tast/local/drivefs/drive_api.go here?",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
