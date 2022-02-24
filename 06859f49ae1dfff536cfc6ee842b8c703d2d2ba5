@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2574131a_7ae8f2fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T07:25:27Z",
+      "side": 1,
+      "message": "Not quite sure what why this started failing, but using an actual gaia user seems to fix the test.",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "06859f49ae1dfff536cfc6ee842b8c703d2d2ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
