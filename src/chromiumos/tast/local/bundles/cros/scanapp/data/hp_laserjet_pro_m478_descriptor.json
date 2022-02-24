@@ -5,7 +5,11 @@
                   "SourceType": "Flatbed",
                   "ColorModes": ["Color", "Grayscale"],
                   "PageSizes": ["A4", "Letter", "Fit to scan area"],
-                  "Resolutions": ["600 dpi", "300 dpi", "200 dpi", "150 dpi", "100 dpi", "75 dpi"]
+                  "Resolutions": ["600 dpi", "300 dpi", "200 dpi", "150 dpi", "100 dpi", "75 dpi"],
+                  "SourceDimensions": {
+                    "Height": 297.0106658935547,
+                    "Width": 215.89999389648438
+                }
           },
           {
                  "SourceType": "Document Feeder (One-sided)",
