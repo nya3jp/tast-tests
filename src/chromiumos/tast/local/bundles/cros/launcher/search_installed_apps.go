@@ -33,7 +33,25 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Timeout:      3*time.Minute + cws.InstallationTimeout,
+		Params: []testing.Param{{
+			Name:    "productivity_launcher_clamshell_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+			Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
+		}, {
+			Name:    "clamshell_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Fixture: "chromeLoggedInWithGaiaLegacyLauncher",
+		}, {
+			Name:    "productivity_launcher_tablet_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
+		}, {
+			Name:    "tablet_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			Fixture: "chromeLoggedInWithGaiaLegacyLauncher",
+		}},
 	})
 }
 
@@ -43,15 +61,11 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to get the connection to the test API: ", err)
+		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
 	ui := uiauto.New(tconn)
@@ -65,14 +79,33 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
 		faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
 		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-		if err := ui.RetryUntil(
-			kw.AccelAction("esc"),
-			func(ctx context.Context) error { return ash.WaitForLauncherState(ctx, tconn, ash.Closed) },
-		)(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to dismiss launcher: ", err)
-		}
 	}(cleanupCtx)
+
+	testCase := s.Param().(launcher.TestCase)
+	tabletMode := testCase.TabletMode
+	if !tabletMode {
+		defer func(ctx context.Context) {
+			if err := ui.RetryUntil(
+				kw.AccelAction("esc"),
+				func(ctx context.Context) error { return ash.WaitForLauncherState(ctx, tconn, ash.Closed) },
+			)(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to dismiss launcher: ", err)
+			}
+		}(cleanupCtx)
+	}
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	if err != nil {
+		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
+	// When a DUT switches from tablet mode to clamshell mode, sometimes it takes a while to settle down.
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+		}
+	}
 
 	cwsapp := newCwsAppGoogleDrawings(cr, tconn)
 
