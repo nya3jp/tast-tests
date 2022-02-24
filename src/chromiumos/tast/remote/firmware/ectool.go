@@ -10,7 +10,6 @@ package firmware
 import (
 	"context"
 	"regexp"
-	"strconv"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -46,7 +45,6 @@ var (
 	reROVersion    = regexp.MustCompile(`RO version:\s*(\S+)\s`)
 	reRWVersion    = regexp.MustCompile(`RW version:\s*(\S+)\s`)
 	reECHash       = regexp.MustCompile(`hash:\s*(\S+)\s*`)
-	reI2CLookup    = regexp.MustCompile(`Bus: I2C; Port: (\S+); Address: (\S+)`)
 )
 
 // Command return the prebuilt ssh Command with options and args applied.
@@ -91,6 +89,7 @@ func (ec *ECTool) Hash(ctx context.Context) (string, error) {
 	if err != nil {
 		return "", errors.Wrap(err, "running 'ectool echash' on DUT")
 	}
+	// return string(out), nil
 
 	// Parse output to determine whether RO or RW is the active firmware.
 	match := reECHash.FindSubmatch(out)
@@ -107,74 +106,4 @@ func (ec *ECTool) BatteryCutoff(ctx context.Context) error {
 		return errors.Wrap(err, "running 'ectool batterycutoff' on DUT")
 	}
 	return nil
-}
-
-// I2CLookupInfo is a way to access the port and address of the i2c.
-type I2CLookupInfo struct {
-	Port    int
-	Address int
-}
-
-// I2CLookup runs ectool locatechip 0 0 to get Port and Address for I2C.
-func (ec *ECTool) I2CLookup(ctx context.Context) (*I2CLookupInfo, error) {
-	out, err := ec.Command(ctx, "locatechip", "0", "0").Output(ssh.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "running 'ectool locatechip 0 0' on DUT")
-	}
-	match := reI2CLookup.FindSubmatch(out)
-	if match == nil || len(match) == 0 {
-		return nil, errors.Wrapf(err, "lookup for I2C failed, got %q", string(out))
-	}
-
-	parsedPort, err := strconv.ParseInt(string(match[1]), 0, 0)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to parse port val %q as int", string(match[1]))
-	}
-	parsedAddr, err := strconv.ParseInt(string(match[2]), 0, 0)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to parse addr val %q as int", string(match[2]))
-	}
-
-	return &I2CLookupInfo{Port: int(parsedPort), Address: int(parsedAddr)}, nil
-}
-
-// GPIOGetCmd type holds commands for 'ectool gpioget'.
-type GPIOGetCmd string
-
-const (
-	// ECCbiWp for the 'ectool gpioget ec_cbi_wp' cmd.
-	ECCbiWp GPIOGetCmd = "ec_cbi_wp"
-)
-
-// GPIOGet runs the 'ectool gpioget' with provided command.
-func (ec *ECTool) GPIOGet(ctx context.Context, cmd GPIOGetCmd) (string, error) {
-	out, err := ec.Command(ctx, "gpioget", string(cmd)).Output(ssh.DumpLogOnError)
-	if err != nil {
-		return "", errors.Wrapf(err, "running 'ectool gpioget %s' on DUT", string(cmd))
-	}
-	return string(out), nil
-}
-
-// I2CCmd type holds commands for interacting with i2c using the ectool
-type I2CCmd string
-
-const (
-	// I2CRead for the 'ectool i2cread' cmd.
-	I2CRead I2CCmd = "i2cread"
-	// I2CSpeed for the 'ectool i2cspeed' cmd.
-	I2CSpeed I2CCmd = "i2cspeed"
-	// I2CWrite for the 'ectool i2cwrite' cmd.
-	I2CWrite I2CCmd = "i2cwrite"
-	// I2Cxfer for the 'ectool i2cxfer' cmd.
-	I2Cxfer I2CCmd = "i2cxfer"
-)
-
-// I2C runs the 'ectool i2c*' with provided command and args.
-func (ec *ECTool) I2C(ctx context.Context, cmd I2CCmd, args ...string) (string, error) {
-	cmdAndArgs := append([]string{string(cmd)}, args...)
-	out, err := ec.Command(ctx, cmdAndArgs...).Output(ssh.DumpLogOnError)
-	if err != nil {
-		return "", errors.Wrapf(err, "running 'ectool %s' on DUT with args %v", string(cmd), args)
-	}
-	return string(out), nil
 }
