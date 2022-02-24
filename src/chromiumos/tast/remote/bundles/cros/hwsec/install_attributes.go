@@ -201,14 +201,14 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	// Check install attributes right after resetting the TPM.
-	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err := getInstallAttributesStates(ctx, utility)
+	// Check install attributes is empty right after resetting the TPM.
+	_, _, _, _, _, count, err := getInstallAttributesStates(ctx, utility)
 	if err != nil {
 		s.Fatal("Failed to parse cryptohome status: ", err)
 	}
 
-	if isReady || isInitialized || isInvalid || isFirstInstall || count != 0 {
-		s.Fatalf("Unexpected Install Attributes state after TPM reset; ready=%t, initialized=%t, invalid=%t, firstInstall=%t, count=%d", isReady, isInitialized, isInvalid, isFirstInstall, count)
+	if count != 0 {
+		s.Fatalf("Unexpected Install Attributes state after TPM reset; count=%d", count)
 	}
 
 	// Take ownership then wait for install attributes.
@@ -235,7 +235,7 @@ func InstallAttributes(ctx context.Context, s *testing.State) {
 	}
 
 	// Check install attributes right after finalizing.
-	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err = getInstallAttributesStates(ctx, utility)
+	isReady, isInitialized, isInvalid, isFirstInstall, _, count, err := getInstallAttributesStates(ctx, utility)
 	if err != nil {
 		s.Fatal("Failed to parse cryptohoattemptChangeAndCheckShouldFailme status: ", err)
 	}
