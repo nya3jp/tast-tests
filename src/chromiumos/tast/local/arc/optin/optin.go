@@ -80,23 +80,37 @@ func waitForTerms(ctx context.Context, conn *chrome.Conn) error {
 	return nil
 }
 
+// sleepAndPressRetryButton sleeps for 5 seconds and presses the retry button
+func sleepAndPressRetryButton(ctx context.Context, conn *chrome.Conn) error {
+	// Sleep briefly before retrying.
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep for re-attempt")
+	}
+
+	if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-retry').click()", nil); err != nil {
+		return errors.Wrap(err, "failed to press the retry button")
+	}
+
+	return nil
+}
+
 // withRetry returns a function that attempts to perform an action, if action fails, presses retry button
 // and attempts to perform the action again until action succeeds or until attempt count exceeds maxAttempts.
 func withRetry(actionName string, action func(context.Context, *chrome.Conn) error, maxAttempts int, conn *chrome.Conn) uiauto.Action {
+	isRecoveryNeeded := false
 	return uiauto.Retry(maxAttempts, uiauto.NamedAction(actionName, func(ctx context.Context) error {
+		if isRecoveryNeeded {
+			if err := sleepAndPressRetryButton(ctx, conn); err != nil {
+				return err
+			}
+		}
+
 		err := action(ctx, conn)
 		if err == nil {
 			return nil
 		}
 
-		// Sleep briefly before retrying.
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-			return errors.Wrap(err, "failed to sleep for re-attempt")
-		}
-
-		if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-retry').click()", nil); err != nil {
-			return errors.Wrap(err, "failed to press the retry button")
-		}
+		isRecoveryNeeded = true
 
 		return err
 	}))
@@ -173,7 +187,7 @@ func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome
 	}
 
 	if wait {
-		return withRetry("wait for optin to complete", waitForOptin, maxAttempts, conn)(ctx)
+		return waitForOptin(ctx, conn)
 	}
 
 	return nil
