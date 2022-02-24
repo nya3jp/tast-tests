@@ -16,6 +16,41 @@
       "message": "Doubling the duration, because we started to run optin up to two times.",
       "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eecabf1_6eb3d7f9",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-24T03:00:17Z",
+      "side": 1,
+      "message": "This timeout reflects the time optin takes, not the total amount a specific test that does retries takes. If any test is using retries they can multiply the value by no. of times they are attempting optin.",
+      "parentUuid": "80af8d8e_ed8d4e3f",
+      "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7b19f1_a6421a99",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-24T03:00:17Z",
+      "side": 1,
+      "message": "optional: not related to your change, but I\u0027d appreciate if you can factor out the retry logic in a separate `pressRetryButtonOnOptinDialog` method and call it here under the if statement. It will make this method simpler.",
+      "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
