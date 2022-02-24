@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77b42b4c_37677984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-24T18:17:46Z",
+      "side": 1,
+      "message": "Not for this CL, but another thought would be to move this function to a library somewhere, so if we want to add a ARC YouTube CUJ to another test, we can do that.",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e57fc8fd_6dec7b82",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
         "patchSetId": 1
