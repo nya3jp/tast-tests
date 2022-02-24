@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2cc461_c530f139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-24T07:57:03Z",
+      "side": 1,
+      "message": "Sorry for not describing the changes.\nWe added an extra step to check if the remaining time is enough, an error will be returned if it\u0027s not (PS#10 line 51~54).",
+      "parentUuid": "5e1a21c2_40a56f3c",
+      "range": {
+        "startLine": 50,
+        "startChar": 48,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "ff32afe7a58baf82eaf8df706f216571f7891ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "019827ba_124c9c2c",

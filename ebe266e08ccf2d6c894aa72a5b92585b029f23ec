@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9132edec_45f3bdb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-24T07:57:03Z",
+      "side": 1,
+      "message": "This step ensures the ctx has enough time to install the app.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "ebe266e08ccf2d6c894aa72a5b92585b029f23ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
