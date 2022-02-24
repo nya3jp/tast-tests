@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2096c50_e30f1d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T21:45:37Z",
+      "side": 1,
+      "message": "As the comment for this and the other test indicated, these are just two tests to test the fixtures. These code are needed to test the lacros fixture and lacros could be setup. After this cl, crostini.LaunchBrowser will be migrated to use the lacros fixture and uses similar code to set up lacros.\n\nCurrently crostini.FixtureData contains LacrosFixtV lacrosfixt.FixtValue. I tried to s.FixtValue().(crostini.FixtureData) here but it throws type error even HasChrome is implemented for crostini.FixtureData. Could you please specify what kind of more general type could be used?",
+      "parentUuid": "43a95b0e_2eaf2ae7",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c381851e_37fa93a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
         "patchSetId": 9
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18da6864_6ace0865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T21:45:37Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "c381851e_37fa93a9",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94e18101_f8416ed0",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 9
@@ -48,6 +84,24 @@
       "writtenOn": "2022-02-24T08:36:17Z",
       "side": 1,
       "message": "For consistency with the other fixture definitions, please move Vars to the end.",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517e0a10_f15f95c7",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T21:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e18101_f8416ed0",
       "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

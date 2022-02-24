@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0ddf051_61f69878",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T21:45:37Z",
+      "side": 1,
+      "message": "Refer to: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3461089/4..9/src/chromiumos/tast/local/crostini/fixture.go#b48.\n\nIn that comment, you first mentioned to pass the same Chrome options here as lacrosPrimary does (I assume you meant \"--disable-lacros-keep-alive\" and \"--disable-login-lacros-opening\"). Then we discussed that when Lacros become the only broswer, we could not need these options. I preferred not to add them into non-Lacros fixtures because we would need to remove them in the future while it does not add any value at present and you suggested add them because the options would be taken care of. Then hidehiko said \"As Georg said, could you add it for consistency now?--disable-login-lacros-opening Even with lacros only transition, we\u0027ll keep it.\" Because generateChromeOpts generates common options for all parent fixtures in this file, so I added \"--disable-login-lacros-opening\" to all parent fixtures in this file.\n\nPlease let me know if I understand it incorrectly.",
+      "parentUuid": "1e6ac288_b7eae54f",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83962fed_9ae41ee7",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 8
