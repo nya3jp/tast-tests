@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d8462c_a10fac9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/locate_phone.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-24T00:21:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure how long it rings for, it\u0027s too loud for me to wait and find out lol. I added a function to turn the screen off and back on, which silences it. Deferring that should keep it from annoying anyone for too long",
+      "parentUuid": "7d1c9962_5b91f99b",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "8b9e04b084486cd49296a1f7e82ff55f0f31a3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad9d9d48_a48ad48f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aadb0b6a_e760215d",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-24T00:21:17Z",
+      "side": 1,
+      "message": "I\u0027ll omit it for now, since the error ultimately will be wrapped in an s.Fatal/s.Error in most cases which can provide more details.",
+      "parentUuid": "ad9d9d48_a48ad48f",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 224,
+        "endChar": 78
+      },
+      "revId": "8b9e04b084486cd49296a1f7e82ff55f0f31a3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cfbdfd0_2a85e70d",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-18T20:31:49Z",
       "side": 1,
       "message": "nit: consistent use of quotes around names",
+      "range": {
+        "startLine": 218,
+        "startChar": 44,
+        "endLine": 218,
+        "endChar": 58
+      },
+      "revId": "8b9e04b084486cd49296a1f7e82ff55f0f31a3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1404ac9c_3aaa1c07",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-24T00:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cfbdfd0_2a85e70d",
       "range": {
         "startLine": 218,
         "startChar": 44,
