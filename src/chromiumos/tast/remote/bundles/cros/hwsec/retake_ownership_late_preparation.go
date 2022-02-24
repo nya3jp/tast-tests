@@ -35,7 +35,6 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	}
 
 	tpmManager := helper.TPMManagerClient()
-	attestation := helper.AttestationClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
@@ -43,11 +42,6 @@ func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	if result, err := attestation.IsPreparedForEnrollment(ctx); err != nil {
-		s.Fatal("Cannot check if enrollment preparation is reset: ", err)
-	} else if result {
-		s.Fatal("Enrollment preparation is not reset after clearing ownership")
-	}
 	dCtrl := helper.DaemonController()
 	dCtrl.Stop(ctx, hwsec.AttestationDaemon)
 

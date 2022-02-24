@@ -57,21 +57,13 @@ func RetakeOwnershipFlushPassword(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	passwd2, err := tpmManager.GetOwnerPassword(ctx)
-	if err != nil {
-		s.Fatal("Failed to get owner password: ", err)
-	}
-	if len(passwd2) != 0 {
-		s.Fatal("Non-empty owner password after reset: ", passwd2)
-	}
-
 	s.Log("Start taking ownership again")
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure ownership: ", err)
 	}
 	s.Log("Ownership is taken")
 
-	passwd2, err = tpmManager.GetOwnerPassword(ctx)
+	passwd2, err := tpmManager.GetOwnerPassword(ctx)
 	if err != nil {
 		s.Fatal("Failed to get owner password: ", err)
 	}
