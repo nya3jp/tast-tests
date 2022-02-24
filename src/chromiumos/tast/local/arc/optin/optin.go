@@ -24,7 +24,7 @@ import (
 
 const (
 	// OptinTimeout is the maximum amount of time that Optin is expected to take.
-	OptinTimeout = 5 * time.Minute
+	OptinTimeout = 10 * time.Minute
 
 	// PlayStoreCloseTimeout is the timeout value waiting for Play Store window to show up
 	// and then close it after optin.
@@ -83,20 +83,25 @@ func waitForTerms(ctx context.Context, conn *chrome.Conn) error {
 // withRetry returns a function that attempts to perform an action, if action fails, presses retry button
 // and attempts to perform the action again until action succeeds or until attempt count exceeds maxAttempts.
 func withRetry(actionName string, action func(context.Context, *chrome.Conn) error, maxAttempts int, conn *chrome.Conn) uiauto.Action {
+	isRecoveryNeeded := false
 	return uiauto.Retry(maxAttempts, uiauto.NamedAction(actionName, func(ctx context.Context) error {
+		if isRecoveryNeeded {
+			// Sleep briefly before retrying.
+			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep for re-attempt")
+			}
+
+			if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-retry').click()", nil); err != nil {
+				return errors.Wrap(err, "failed to press the retry button")
+			}
+		}
+
 		err := action(ctx, conn)
 		if err == nil {
 			return nil
 		}
 
-		// Sleep briefly before retrying.
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-			return errors.Wrap(err, "failed to sleep for re-attempt")
-		}
-
-		if err := conn.Eval(ctx, "appWindow.contentWindow.document.getElementById('button-retry').click()", nil); err != nil {
-			return errors.Wrap(err, "failed to press the retry button")
-		}
+		isRecoveryNeeded = true
 
 		return err
 	}))
