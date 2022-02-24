@@ -9,15 +9,17 @@ import (
 
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ECConsole,
-		Desc:     "Verifies that EC console is working",
-		Contacts: []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
-		Attr:     []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
-		Vars:     []string{"servo"},
+		Func:         ECConsole,
+		Desc:         "Verifies that EC console is working",
+		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Vars:         []string{"servo"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
 
