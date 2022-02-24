@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2943d39_b350cd5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-24T03:07:54Z",
+      "side": 1,
+      "message": "Copyright should be the current year. This is checked in lint. Not sure how it passed the lint check locally.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7ed2110f901c3ef63b169c352fc973df537dc3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d4e0e5_76285a64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet/tablet_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-24T03:07:54Z",
+      "side": 1,
+      "message": "The function provided in this package does not look related to Inputs.\n\nShould it be in a common place?\n\nBtw, http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/tablet.go provides a bunch of tablet functions already.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "7ed2110f901c3ef63b169c352fc973df537dc3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daefcf23_1ba0c2a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-24T03:07:54Z",
+      "side": 1,
+      "message": "Package inputs is designed to manage tests on keyboards. Add the test in this package will complicate the test management, test suite, etc.\n\nCurrently Essential Inputs team use inputs.* to filter all interested tests. \nI would suggest to create a new package for touchpad tests.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "7ed2110f901c3ef63b169c352fc973df537dc3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13f6f94_34ae3ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-24T03:07:54Z",
+      "side": 1,
+      "message": "This fixture is designed for Essential Inputs specifically. Mix use an unfamiliar fixture can mess up the DUT environment and cause unpredictable test failures.",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "7ed2110f901c3ef63b169c352fc973df537dc3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
