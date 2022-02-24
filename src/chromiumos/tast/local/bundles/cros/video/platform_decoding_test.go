@@ -761,9 +761,9 @@ func TestPlatformDecodingParams(t *testing.T) {
 
 	// Generates V4L2 Stateless VP9 tests.
 	for i, profile := range []string{"profile_0"} {
-		for _, levelGroup := range []string{"group1"} {
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5_0", "level5_1"} {
 			for _, cat := range []string{
-				"buf",
+				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
 			} {
 				files := vp9WebmFiles[profile][levelGroup][cat]
 				param := paramData{
