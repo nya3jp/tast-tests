@@ -128,6 +128,24 @@
       "parentUuid": "25bdcb97_7d71cbd0",
       "revId": "98f6cd92709eec0f1acb1489280ebbdbd21b15fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ca5d39_71c9223c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videovars/videovars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-24T17:20:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97869d77_fb48457a",
+      "revId": "98f6cd92709eec0f1acb1489280ebbdbd21b15fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
