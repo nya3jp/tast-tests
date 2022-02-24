@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63b37ae_e82913a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-24T23:20:45Z",
+      "side": 0,
+      "message": "For group:graphics, it has different scheduling preference than group:mainline.\nIn order to got picked up by corresponding tast control file, it needs either graphics_perbuild, graphics_nightly, graphics_weekly.",
+      "range": {
+        "startLine": 183,
+        "startChar": 32,
+        "endLine": 183,
+        "endChar": 45
+      },
+      "revId": "1b6621845c82d9f0b9adef0e1038104f362b5a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
