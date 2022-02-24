@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c919edd2_97c120e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123029
+      },
+      "writtenOn": "2022-02-24T18:47:35Z",
+      "side": 1,
+      "message": "Hi Seewai,\n\nCan you please review the update? Updated attribute lists the tests. \n\nhttps://paste.googleplex.com/6201698956607488\n\nRegards,\nDinesh",
+      "revId": "0b884695aa4acbc8006515a185a7491e03c9ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
