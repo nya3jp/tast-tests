@@ -159,7 +159,7 @@ func GetTabletTest(fn TestFunc) Test {
 }
 
 // TabletHardwareDep returns the hardware dependencies all tablet tests share.
-var TabletHardwareDep = hwdep.SkipOnModel(TabletOnlyModels...)
+var TabletHardwareDep = hwdep.SkipOnModel(ClamshellOnlyModels...)
 
 // RunTest runs the provided test cases and handles cleanup between tests.
 func RunTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, t Test) {
