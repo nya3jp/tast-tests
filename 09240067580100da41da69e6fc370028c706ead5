@@ -257,6 +257,24 @@
       "parentUuid": "f5a8b6d9_37f0e3a6",
       "revId": "09240067580100da41da69e6fc370028c706ead5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8300997b_4f11f325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-24T23:24:12Z",
+      "side": 1,
+      "message": "You are right. :)",
+      "parentUuid": "a526c315_60412879",
+      "revId": "09240067580100da41da69e6fc370028c706ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
