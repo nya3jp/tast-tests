@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
@@ -22,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeviceGuestModeEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test the DeviceGuestModeEnabled policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
@@ -103,10 +104,8 @@ func DeviceGuestModeEnabled(ctx context.Context, s *testing.State) {
 					s.Error("Guest mode button did not appear: ", err)
 				}
 			} else {
-				// TODO(b/190596080): Change to uia.EnsureGoreFor once the
-				// problem is resolved.
-				if err := uia.WaitUntilExists(gmNode)(ctx); err == nil {
-					s.Error("Guest mode button appeared")
+				if err := uia.EnsureGoneFor(gmNode, 15*time.Second)(ctx); err != nil {
+					s.Error("Guest mode button appeared: ", err)
 				}
 			}
 		})
