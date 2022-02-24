@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4bde63_9894ef32",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "nit: specifies",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51dc0b5e_0b0b8aad",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "Might want to at least log the error here to ensure it\u0027s there for debugging purpose.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4f7746d_8690b2db",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "nit: redundant",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "273f55fb_1a0cfe1f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s easier to do something like:\n```\nmatches :\u003d re.FindStringSubmatch(scanner.Text())\nif len(matches) \u003e 0 {\n  if _, err :\u003d r.Run(ctx, \"sudo\", \"chaps_client\", \"--unload\", \"--path\u003d\"+matches[1]); err !\u003d nil {\n    return errors.Wrap(err, \"failed to unload scratchpad\")\n  }\n}\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 74,
+        "endLine": 31,
+        "endChar": 115
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a308871a_4d933363",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "nit: extra line here",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1aefe1_2ef51600",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "Curiousity question: how does this differ from running idiomatic go methods such as `os.Chmod`, I\u0027m not totally familiar with hwsec so interested in why using the CommandRunner over `os.Chmod`?",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c8f61b_5003743f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bebfa0cd_b837b94c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57f4a40_49cc26fa",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a53ffe5_5ed30e36",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "Again might want to log the error even if it\u0027s not indicating a test failure.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41cd90c5_a840fbc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "Might want to reserve some cleanup time to avoid a context deadline not having enough time to cleanup.",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792c236e_b9ec2c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "Use cleanup context here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155c7916_6457ad67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "All these methods return errors, might want to log these at the very least.",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde52643_03866c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-24T03:51:28Z",
+      "side": 1,
+      "message": "Generally this is very difficult to read and reason about. I\u0027m not sure if there\u0027s a better way to format this but might be worth considering if this flow ever needs to be changed or updated.\n\nFor example there seems to be a few comments on \"Change X and verify Y\" can this be a helper function that takes in X and a Y assertion? Leaving as resolved as I don\u0027t have concrete ideas here, just thought I\u0027d raise this 👍",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
