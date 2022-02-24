@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "286639a5_d3e124a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-24T01:53:24Z",
+      "side": 1,
+      "message": "Please run tast unit tests, fast_build.sh -T, to make sure nothing breaks. Thanks.",
+      "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf13756b_0264374f",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-24T01:53:24Z",
+      "side": 1,
+      "message": "It is only a question. I am not asking for any code change. What is the reason you need to define a new type instead of string?",
+      "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be4b671d_30e0bb72",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-24T01:53:24Z",
+      "side": 1,
+      "message": "nit: chart does not ...",
+      "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
