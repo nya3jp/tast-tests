@@ -41,6 +41,12 @@ func MajorVersionPinning(ctx context.Context, s *testing.State) {
 			continue
 		}
 
+		// Major Version Pinning only supports the last 10 milestones.
+		if vpMilestone < state.Config.CurrentStableChrome-10 {
+			s.Logf("Not testing version %d, too old", vpMilestone)
+			continue
+		}
+
 		vpMilestoneStr := strconv.FormatInt(int64(vpMilestone), 10)
 		vpChromeOSVersionStr := strconv.FormatInt(int64(vpChromeOSVersion), 10)
 

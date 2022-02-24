@@ -44,7 +44,6 @@ func Rollback(ctx context.Context, s *testing.State) {
 			s.Logf("Not testing version %d higher than stable %d", vpMilestone, state.Config.CurrentStableChrome)
 			continue
 		}
-
 		vpMilestoneStr := strconv.FormatInt(int64(vpMilestone), 10)
 		vpChromeOSVersionStr := strconv.FormatInt(int64(vpChromeOSVersion), 10)
 
@@ -78,7 +77,7 @@ func Rollback(ctx context.Context, s *testing.State) {
 
 		// Rollback only supports the last 4 milestones.
 		if vpMilestone < state.Config.CurrentStableChrome-4 {
-			s.Logf("Not testing version %d higher than stable %d", vpMilestone, state.Config.CurrentStableChrome)
+			s.Logf("Not testing version %d, too old", vpMilestone)
 			continue
 		}
 
