@@ -177,7 +177,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			return err
 		}
 		if fromMode != fwCommon.BootModeNormal {
-			if err := ms.fwScreenToNormalMode(ctx, hasSerialAP); err != nil {
+			if err := ms.FwScreenToNormalMode(ctx, hasSerialAP, true); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to normal mode")
 			}
 		}
@@ -225,7 +225,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			// Depending on how we got to to dev mode, we might end up in normal mode or the recovery
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err == nil {
+			if err := ms.FwScreenToDevMode(ctx, hasSerialAP, true); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
 				if err != nil {
 					return errors.Wrap(err, "determining boot mode after simple reboot")
@@ -241,7 +241,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err != nil {
+			if err := ms.FwScreenToDevMode(ctx, hasSerialAP, true); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
 		} else {
@@ -269,7 +269,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 			// Depending on how we got to to rec mode, we might end up in normal mode or the recovery
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err == nil {
+			if err := ms.FwScreenToDevMode(ctx, hasSerialAP, true); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
 				if err != nil {
 					return errors.Wrap(err, "determining boot mode after simple reboot")
@@ -292,7 +292,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
-			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err != nil {
+			if err := ms.FwScreenToDevMode(ctx, hasSerialAP, true); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
 			newMode, err := h.Reporter.CurrentBootMode(ctx)
@@ -447,7 +447,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 
 	// If in dev mode, bypass the TO_DEV screen.
 	if fromMode == fwCommon.BootModeDev {
-		if err := ms.fwScreenToDevMode(ctx, hasSerialAP, opts...); err != nil {
+		if err := ms.FwScreenToDevMode(ctx, hasSerialAP, true, opts...); err != nil {
 			return errors.Wrap(err, "bypassing fw screen")
 		}
 	} else if fromMode == fwCommon.BootModeUSBDev {
@@ -484,17 +484,19 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	return nil
 }
 
-// fwScreenToNormalMode moves the DUT from the firmware bootup screen to Normal mode.
+// FwScreenToNormalMode moves the DUT from the firmware bootup screen to Normal mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bool) error {
+func (ms *ModeSwitcher) FwScreenToNormalMode(ctx context.Context, hasSerialAP, waitForFwScreen bool) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
-	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
+	if waitForFwScreen {
+		testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
+		}
 	}
 	if hasSerialAP {
 		testing.ContextLogf(ctx, "Sleeping %s (SerialFirmwareBootDelay)", h.Config.SerialFirmwareBootDelay)
@@ -561,22 +563,24 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bo
 			return errors.Wrap(err, "selecting menu option 'Confirm Enabling Verified Boot'")
 		}
 	default:
-		return errors.Errorf("unsupported ModeSwitcherType %s for fwScreenToNormalMode", h.Config.ModeSwitcherType)
+		return errors.Errorf("unsupported ModeSwitcherType %s for FwScreenToNormalMode", h.Config.ModeSwitcherType)
 	}
 	return nil
 }
 
-// fwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
+// FwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, hasSerialAP bool, opts ...ModeSwitchOption) error {
+func (ms *ModeSwitcher) FwScreenToDevMode(ctx context.Context, hasSerialAP, waitForFwScreen bool, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
 
-	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
+	if waitForFwScreen {
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
+		}
 	}
 	if hasSerialAP {
 		testing.ContextLogf(ctx, "Sleeping %s (SerialFirmwareBootDelay)", h.Config.SerialFirmwareBootDelay)

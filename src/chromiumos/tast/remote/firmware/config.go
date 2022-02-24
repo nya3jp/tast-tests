@@ -82,6 +82,7 @@ type Config struct {
 	HasKeyboard          bool              `json:"has_keyboard"`
 	RawUSBEnablePins     []json.RawMessage `json:"custom_usb_enable_pins"`
 	USBAPortCount        int               `json:"usb_a_port_count"`
+	LidWakeFromPowerOff  bool              `json:"lid_wake_from_power_off"`
 
 	// Raw duration fields represent a quantity of seconds.
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
