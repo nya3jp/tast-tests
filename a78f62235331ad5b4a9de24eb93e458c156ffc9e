@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80af8d8e_ed8d4e3f",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-24T02:40:13Z",
+      "side": 1,
+      "message": "Doubling the duration, because we started to run optin up to two times.",
+      "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
