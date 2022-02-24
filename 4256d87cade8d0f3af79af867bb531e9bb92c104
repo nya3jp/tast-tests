@@ -22,6 +22,30 @@
       },
       "revId": "4256d87cade8d0f3af79af867bb531e9bb92c104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8488e3_07a6ab5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-24T16:20:30Z",
+      "side": 1,
+      "message": "It would start Chrome without the features WebUITabStrip and WebUITabStripTabDragIntegration (assuming that they are still disabled by default).",
+      "parentUuid": "c78ef505_53625dfb",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "4256d87cade8d0f3af79af867bb531e9bb92c104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
