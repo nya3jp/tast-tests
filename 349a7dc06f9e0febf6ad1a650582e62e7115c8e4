@@ -16,6 +16,24 @@
       "message": "Ok for tast, please wait for team member review for technical content.",
       "revId": "349a7dc06f9e0febf6ad1a650582e62e7115c8e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6766bd_6e224f35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-02-24T19:49:06Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "ab96c312_a3ccad79",
+      "revId": "349a7dc06f9e0febf6ad1a650582e62e7115c8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
