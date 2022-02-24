@@ -595,6 +595,17 @@ func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 		return false, err
 	}
 	ui := uiauto.New(tconn)
+	// Scroll the mic toggle into view.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to setup keyboard")
+	}
+	if err := kb.Accel(ctx, "Tab"); err != nil {
+		return false, errors.Wrap(err, "failed to press Tab to bring focus into Quick Settings")
+	}
+	if err := ui.FocusAndWait(MicToggle)(ctx); err != nil {
+		return false, errors.Wrap(err, "failed to scroll mic toggle into view")
+	}
 	info, err := ui.Info(ctx, MicToggle)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get the pod icon button info")
@@ -612,7 +623,7 @@ func ToggleMic(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
 		return err
 	} else if current != enable {
 		ui := uiauto.New(tconn)
-		if err := ui.LeftClick(MicToggle)(ctx); err != nil {
+		if err := ui.DoDefault(MicToggle)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click mic toggle button")
 		}
 	}
