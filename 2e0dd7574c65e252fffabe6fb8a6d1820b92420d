@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "673f69b2_01e87314",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-02-24T00:13:52Z",
+      "side": 1,
+      "message": "Fair enough.",
+      "parentUuid": "cd5a2e04_09384034",
+      "revId": "2e0dd7574c65e252fffabe6fb8a6d1820b92420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9850d4a7_b08b08ae",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
