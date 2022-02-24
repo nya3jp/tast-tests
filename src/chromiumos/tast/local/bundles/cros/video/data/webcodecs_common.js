@@ -144,6 +144,7 @@ async function CreateEncoder(
 async function createNewFrame(frame) {
   let buffer = new Uint8Array(frame.allocationSize());
   let layout = await frame.copyTo(buffer);
+
   let bufferInit = {
     format: frame.format,
     codedWidth: frame.codedWidth,
@@ -158,18 +159,26 @@ async function createNewFrame(frame) {
     colorSpace: frame.colorSpace
   };
 
-  return new VideoFrame(buffer, bufferInit);
+  try {
+    return new VideoFrame(buffer, bufferInit);
+  } catch (e) {
+    TEST.log("video frame creation error: " + e);
+    return null;
+  }
 }
 
 async function decodeVideoInURL(videoURL, numFrames, hardwareAcceleration) {
   let demuxer = new MP4Demuxer(videoURL);
   let videoFrames = [];
+  let numDecodedFrames = 0;
   let decoder = new VideoDecoder({
     output(frame) {
       createNewFrame(frame).then(newFrame => {
         // newFrame may not be queued in order of calling output() because of
         // createNewFrame execution time.
-        videoFrames.push(newFrame);
+        numDecodedFrames++;
+        if (newFrame !== null)
+          videoFrames.push(newFrame);
         frame.close();
       });
     },
@@ -193,7 +202,7 @@ async function decodeVideoInURL(videoURL, numFrames, hardwareAcceleration) {
 
   return new Promise(async(resolve, reject) => {
     (function waitForDecoded(){
-      if (videoFrames.length == numFrames) {
+      if (numDecodedFrames == numFrames) {
         decoder.close();
         // Sort videoFrames in order of timestamps.
         videoFrames.sort(function(fa, fb) {
