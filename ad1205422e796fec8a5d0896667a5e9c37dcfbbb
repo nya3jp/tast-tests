@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2452da46_e8196fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-24T08:36:17Z",
+      "side": 1,
+      "message": "Okay. large_container was just an example. Is the same true for the rest?",
+      "parentUuid": "2c42eead_bc9d6cd7",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95852639_f5bb3306",
@@ -106,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c65424_52d35b8b",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-24T08:36:17Z",
+      "side": 1,
+      "message": "Ah, I missed that it\u0027s used in generateChromeOpts.",
+      "parentUuid": "f5c462ea_22d9e46e",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df1128d0_b7f1135a",
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "It is added in generateChromeOpts for all fixtures as hidehiko@ suggested in a previous comment.",
       "parentUuid": "df1128d0_b7f1135a",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e6ac288_b7eae54f",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-24T08:36:17Z",
+      "side": 1,
+      "message": "I don\u0027t see a comment where hidehiko suggested to add this in generateChromeOpts. It\u0027s a Lacros-specific flag so it makes sense to group it together with the other Lacros-specific flags.",
+      "parentUuid": "22776b00_5ae88bf8",
       "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -34,6 +34,24 @@
       "parentUuid": "e43a2434_804d1f22",
       "revId": "a0095c7a40ea67173bfe8d853d56a809bf974bb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa90130f_d4c666dd",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-24T08:36:17Z",
+      "side": 0,
+      "message": "Yes in both cases, take a look at the parent fixtures implementations.",
+      "parentUuid": "4cb6fcb1_0879ad3c",
+      "revId": "a0095c7a40ea67173bfe8d853d56a809bf974bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

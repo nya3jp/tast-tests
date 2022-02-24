@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a95b0e_2eaf2ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-24T08:36:17Z",
+      "side": 1,
+      "message": "What is the idea behind doing SetUp here? Just to check that it doesn\u0027t fail? In my opinion (unless I\u0027m missing something) you can remove this code.\n\nBut if you want to keep it, then please do it unconditionally, i.e. even in the Ash case, and use SetUpWithURL. To make that work you need to change your LacrosFixtV to a more general ParentFixtV that stores the parent fixture\u0027s value.",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c381851e_37fa93a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-24T08:36:17Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e18101_f8416ed0",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-24T08:36:17Z",
+      "side": 1,
+      "message": "For consistency with the other fixture definitions, please move Vars to the end.",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
