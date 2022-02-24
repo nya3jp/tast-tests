@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a6767f6_03656c3e",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-02-24T08:20:10Z",
+      "side": 1,
+      "message": "You may want to use s.FixtContext(). The context should live until the  fixture is torn down.",
+      "range": {
+        "startLine": 63,
+        "startChar": 18,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "3415e9b065f1374c20a95851bd6abfbdbdff7402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30975c48_e5fa412f",
         "filename": "src/chromiumos/tast/local/profiler/fixture.go",
         "patchSetId": 1
