@@ -95,6 +95,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f6078a1_cdbb607c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-02-24T13:02:36Z",
+      "side": 1,
+      "message": "Not sure if we need sudo. I might be wrong, but I think tast runs with root privilege on DUT.",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a308871a_4d933363",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
         "patchSetId": 1
@@ -203,6 +226,23 @@
         "endLine": 86,
         "endChar": 19
       },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38270357_af3cf9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-02-24T13:02:36Z",
+      "side": 1,
+      "message": "I would recommend either:\n- Mount the user, and use the /run/daemon-store/chaps/$user path for chaps database. However, that won\u0027t be the scratchpad path, and do no initialization on that path.\n- Use /tmp/xxx for scratchpad path, initialize the database there and do not mount.\n\n\u003d\u003d\u003d\u003d\u003d\u003d\n\nGenerally speaking, mounting and scratchpad path is 2 different mechanism to get to a working chaps database path, but I think we should not mix them.",
       "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
