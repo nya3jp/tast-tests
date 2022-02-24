@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d29256_a7e2018e",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-24T06:41:11Z",
+      "side": 1,
+      "message": "Had a GVC with Muhammad Hasan about it. `Perform` method should not use retries. Instead, `PerformWithRetries` should be used in other places.",
+      "parentUuid": "5d081772_a769f5a9",
+      "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef7b19f1_a6421a99",
