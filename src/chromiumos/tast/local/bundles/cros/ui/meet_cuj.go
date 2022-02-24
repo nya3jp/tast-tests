@@ -816,7 +816,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}
-	if pv.Save(s.OutDir()); err != nil {
+	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
 }
