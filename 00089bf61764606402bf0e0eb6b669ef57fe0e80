@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7ff4f4_cd0924a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-24T18:16:07Z",
+      "side": 1,
+      "message": "chromeos-perfmetrics-eng",
+      "range": {
+        "startLine": 27,
+        "startChar": 51,
+        "endLine": 27,
+        "endChar": 63
+      },
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57fc8fd_6dec7b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-24T18:16:07Z",
+      "side": 1,
+      "message": "Let\u0027s add comments for each step here so it\u0027s clearer what\u0027s going on.",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56469f5e_114e0001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-24T18:16:07Z",
+      "side": 1,
+      "message": "So we search for these videos:\nhttps://www.youtube.com/results?search_query\u003dTop%20100%20Free%20Stock%20Videos%204K%20Rview%20and%20Download%20in%20Pixabay%2012%2F2018\n\nThere are a bunch of results, and there\u0027s a possibility that the video order switches, right? Are we worried about this?",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae39f600_346a7da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-24T18:16:07Z",
+      "side": 1,
+      "message": "Should we also match the exact id to ensure we don\u0027t pick a video with lower quality or something?",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
