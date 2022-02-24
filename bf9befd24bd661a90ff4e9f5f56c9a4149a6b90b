@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "188b3eaa_04c01743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-24T00:28:13Z",
+      "side": 1,
+      "message": "LGTM for Tast Review",
+      "revId": "bf9befd24bd661a90ff4e9f5f56c9a4149a6b90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
