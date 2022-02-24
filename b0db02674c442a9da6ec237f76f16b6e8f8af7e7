@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8dc73f_0dc22b58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-24T23:34:16Z",
+      "side": 1,
+      "message": "This CL may not only affect graphics.VTSwitch but others. \nI\u0027d write down the method this CL modified in the commit message so that others can see it easier.\n\nHow about:\n\"input: Improve isKeyboard identification\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b0db02674c442a9da6ec237f76f16b6e8f8af7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
