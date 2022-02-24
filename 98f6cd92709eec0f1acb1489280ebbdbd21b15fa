@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6972fa94_0af29e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2022-02-24T13:58:57Z",
+      "side": 1,
+      "message": "was just replacing the logic as it was.  cleaned it up to be consistent as requested.",
+      "parentUuid": "17ffa03c_bca51763",
+      "range": {
+        "startLine": 143,
+        "startChar": 88,
+        "endLine": 143,
+        "endChar": 108
+      },
+      "revId": "98f6cd92709eec0f1acb1489280ebbdbd21b15fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a31fe439_6fec614f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44c8113_64aaf5dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2022-02-24T13:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a31fe439_6fec614f",
+      "range": {
+        "startLine": 224,
+        "startChar": 92,
+        "endLine": 224,
+        "endChar": 112
+      },
+      "revId": "98f6cd92709eec0f1acb1489280ebbdbd21b15fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25bdcb97_7d71cbd0",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-02-24T07:12:06Z",
       "side": 1,
       "message": "Shouldn\u0027t this be false by default?",
+      "revId": "98f6cd92709eec0f1acb1489280ebbdbd21b15fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97869d77_fb48457a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/videovars/videovars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000886
+      },
+      "writtenOn": "2022-02-24T13:58:57Z",
+      "side": 1,
+      "message": "No.  The test should remove the artifacts by default.  Only in debug/testing do we want to be able to leave them in place.\n\nPreviously the logic used \"cache\" and was false by default.  I inverted that logic to make it easier to read.",
+      "parentUuid": "25bdcb97_7d71cbd0",
       "revId": "98f6cd92709eec0f1acb1489280ebbdbd21b15fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
