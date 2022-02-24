@@ -6,12 +6,10 @@ package hwsec
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/errors"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -32,27 +30,6 @@ func init() {
 	})
 }
 
-const (
-	notOwned = "owned: false"
-)
-
-// waitUntilTpmManagerReady is a helper function to wait until cryptohome initialized.
-func waitUntilTpmManagerReady(ctx context.Context, tpmManager *hwsec.TPMManagerClient) error {
-	return testing.Poll(ctx, func(context.Context) error {
-		status, err := tpmManager.Status(ctx)
-		if err != nil {
-			return errors.Wrap(err, "can't get TPM status")
-		}
-		if !strings.Contains(status, notOwned) {
-			return errors.New("TPM isn't ready to be owned")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
-		Interval: time.Second,
-	})
-}
-
 // TpmManagerPerf do the performance test for tpm_manager.
 func TpmManagerPerf(ctx context.Context, s *testing.State) {
 	r := hwsecremote.NewCmdRunner(s.DUT())
@@ -70,10 +47,8 @@ func TpmManagerPerf(ctx context.Context, s *testing.State) {
 
 	tpmManager := helper.TPMManagerClient()
 
-	err = waitUntilTpmManagerReady(ctx, tpmManager)
-	if err != nil {
-		s.Fatal("Failed to wait tpm_manager ready: ", err)
-	}
+	dCtrl := helper.DaemonController()
+	dCtrl.Ensure(ctx, hwsec.TPMManagerDaemon)
 
 	takeOwnershipStart := time.Now()
 	tpmManager.TakeOwnership(ctx)

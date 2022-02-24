@@ -9,7 +9,6 @@ import (
 	"context"
 	"time"
 
-	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	hwsecremote "chromiumos/tast/remote/hwsec"
@@ -36,29 +35,12 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	}
 
 	tpmManager := helper.TPMManagerClient()
-	attestation := helper.AttestationClient()
 
 	s.Log("Start resetting TPM if needed")
 	if err := helper.EnsureTPMIsReset(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	s.Log("TPM is confirmed to be reset")
-
-	if result, err := attestation.IsPreparedForEnrollment(ctx); err != nil {
-		s.Fatal("Cannot check if enrollment preparation is reset: ", err)
-	} else if result {
-		s.Fatal("Enrollment preparation is not reset after clearing ownership")
-	}
-	s.Log("Enrolling with TPM not ready")
-	_, err = attestation.CreateEnrollRequest(ctx, hwsec.DefaultPCA)
-	var ae *hwsec.AttestationError
-	if err == nil {
-		s.Fatal("Enrollment should not happen w/o getting prepared")
-	} else if !errors.As(err, &ae) {
-		s.Fatalf("Unexpected CreateEnrollRequest error: got %q; want *hwsec.AttestationError", err)
-	} else if ae.AttestationStatus != apb.AttestationStatus_STATUS_UNEXPECTED_DEVICE_ERROR {
-		s.Fatalf("Unexpected error status: got %s; want STATUS_UNEXPECTED_DEVICE_ERROR", ae.AttestationStatus.String())
-	}
 
 	s.Log("Start taking ownership")
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
