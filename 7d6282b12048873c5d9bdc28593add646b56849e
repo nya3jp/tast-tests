@@ -105,6 +105,24 @@
       "parentUuid": "facb1b6d_578fa0fd",
       "revId": "7d6282b12048873c5d9bdc28593add646b56849e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dad3441_17606cd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-02-24T00:10:02Z",
+      "side": 1,
+      "message": "Hi Pathan,\n\nPlease assign tast-owners as reviewer.",
+      "parentUuid": "53918c41_730dd95f",
+      "revId": "7d6282b12048873c5d9bdc28593add646b56849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
