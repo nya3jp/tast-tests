@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b788c9_40a4d95b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "This conn is ssh.Conn from chromiumos/tast/ssh package. It uses ssh.Client from golang.org/x/crypto/ssh but not testexec.Cmd. So I think using Stderr/Stdout directly looks fine at the moment.",
+      "parentUuid": "8a66e2c7_fa910c2d",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "109adcd3_89b8b95c",

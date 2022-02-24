@@ -16,6 +16,143 @@
       "message": "Sorry for delay, I was writing perf.",
       "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d44f87_ada6579d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "nit: I suggest \"written to\" or \"dumped into\", because \"logged in\" sounds like user authentication (login).",
+      "range": {
+        "startLine": 66,
+        "startChar": 64,
+        "endLine": 66,
+        "endChar": 77
+      },
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2454e1d9_9d9313d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "Did you mean\nlogged into \"the test output file created in outDir\"\nor\nlogged into \"the test output file, which is created in outDir\"\n?",
+      "range": {
+        "startLine": 66,
+        "startChar": 77,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70ca6c0_a7195b58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "I think \"what is returned in what condition\" should be described here, where not obvious. I imagine there are these three cases:\n- command execution success, and stdout data is returned\n- command execution returned non-zero status, and stdout data is still fulfilled\n- critical error happened somewhere, in which case nil slice is returned as stdout\nIt might be an option to use named return value for making it easier to reference from the comment.",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c98f8a7_0264406b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "Are these checks needed?\nI think cmd is created at line 72, and tast/ssh Conn.CommandContext always returns an object with these fields nil. Even when it were not, the role of these fields are like \"inputs\" that alternate behavior of Run() or Start(), so I think it\u0027d be safe to overwrite.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec_ctx.go?q\u003dfile:tast%2Fssh%20func.*CommandContext\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31cd9c26_f9eb5200",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "https://pkg.go.dev/golang.org/x/crypto/ssh#Session.Wait\n\"err !\u003d nil\" can also happen by other reasons than non-zero error code of the remote command. So it\u0027d be better only to say like \"command %q failed\".",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6150bc61_2abe61f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "I suggest extracting the file writing sequence as a function, so as to avoid the repetitive check like lines 108--111.\n\n  func writeOutputFile(...) error {\n    f, err :\u003d os.OpenFile(.....)\n    if err !\u003d nil {\n      return err\n    }\n    defer f.Close()\n    if _, err :\u003d f.Write(....); err !\u003d nil {\n      return err\n    }\n    if _, err :\u003d f.Write(....); err !\u003d nil {\n      return err\n    }\n    return nil\n  }\n\n  cmdError :\u003d cmd.Wait()\n  if logOutput {\n    if err :\u003d writeOutputFile(....); err !\u003d nil {\n      if cmdError !\u003d nil {\n        return cmdError\n      }\n      return err\n    }",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e032ddf_94d789d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-24T14:16:00Z",
+      "side": 1,
+      "message": "Please paste the content here, because the internal URL is not accessible for all developers. The original file is long, but we\u0027ll only need 1 or 2 blocks (like the first 16 lines) as the example.\n\n$ dump_fmap /usr/local/share/tast/bios_image.bin \nhit at 0x00204000\nfmap_signature   __FMAP__\nfmap_version:    1.1\n...\nfmap_nareas:     36\narea:            1\narea_offset:     0x00000000\narea_size:       0x00400000 (4194304)\narea_name:       WP_RO\narea:            2\narea_offset:     0x00000000\narea_size:       0x00001000 (4096)\narea_name:       SI_DESC\n...",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
