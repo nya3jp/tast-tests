@@ -1852,7 +1852,12 @@ func v4l2StatefulDecodeArgs(ctx context.Context, filename string) (command []str
 // v4l2StatelessDecodeArgs provides the arguments to use with the stateless decoding binary exe for v4l2.
 func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []string) {
 	// TODO(stevecho): md5 support has to be added
-	command = append(command, "--video="+filename)
+	command = append(command,
+		"--video="+filename,
+		"--md5",
+		// vpxdec is used to compute reference hashes, and outputs only those for
+		// visible frames
+		"--visible")
 
 	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
 	// command line.
