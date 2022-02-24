@@ -1,6 +1,63 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b680310_085a89b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-02-24T09:26:34Z",
+      "side": 1,
+      "message": "proliferation",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "7f3e3431f91dadadd25df05fff42ed256150ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83379995_2a57df0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-02-24T09:26:34Z",
+      "side": 1,
+      "message": "If we do end up creating a new DriveService every time an API call is made, it\u0027s probably worth adding the reasoning in a comment - maybe on createNewDriveService()?",
+      "revId": "7f3e3431f91dadadd25df05fff42ed256150ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984f3b86_4c35a47c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-02-24T09:26:34Z",
+      "side": 1,
+      "message": "Is it worth creating it once the first API call is made and reusing that one?",
+      "revId": "7f3e3431f91dadadd25df05fff42ed256150ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3ebf00f4_9dc1b7b0",
@@ -14,6 +71,69 @@
       "writtenOn": "2022-02-24T08:53:51Z",
       "side": 1,
       "message": "Friendly review ping on this austinct@ 😊",
+      "revId": "7f3e3431f91dadadd25df05fff42ed256150ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24688aa2_0b4659c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-02-24T09:26:34Z",
+      "side": 1,
+      "message": "Sorry for the delay - just some minor questions.",
+      "revId": "7f3e3431f91dadadd25df05fff42ed256150ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "772f5da4_f526af59",
+        "filename": "src/chromiumos/tast/local/drivefs/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-02-24T09:26:34Z",
+      "side": 1,
+      "message": "drivefs",
+      "range": {
+        "startLine": 157,
+        "startChar": 24,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "7f3e3431f91dadadd25df05fff42ed256150ce01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb378f82_d5e43875",
+        "filename": "src/chromiumos/tast/local/drivefs/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-02-24T09:26:34Z",
+      "side": 1,
+      "message": "drive volumes",
+      "range": {
+        "startLine": 164,
+        "startChar": 30,
+        "endLine": 164,
+        "endChar": 40
+      },
       "revId": "7f3e3431f91dadadd25df05fff42ed256150ce01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
