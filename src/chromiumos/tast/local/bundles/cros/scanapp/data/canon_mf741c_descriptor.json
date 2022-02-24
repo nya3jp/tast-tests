@@ -1,0 +1,27 @@
+{
+    "Name": "Canon MF741C/743C (9e:31:7f) (4) (9e:31:7f) (17) (9e:31:7f) (8)",
+    "Sources": [
+        {
+            "SourceType": "Flatbed",
+            "ColorModes": ["Color", "Grayscale"],
+            "PageSizes": ["A4", "Legal", "Letter", "Fit to scan area"],
+            "Resolutions": ["300 dpi"],
+            "SourceDimensions": {
+                "Height": 355.59999084472656,
+                "Width": 215.9846649169922
+            }
+        },
+        {
+            "SourceType": "Document Feeder (One-sided)",
+            "ColorModes": ["Color", "Grayscale"],
+            "PageSizes": ["A4", "Legal", "Letter", "Fit to scan area"],
+            "Resolutions": ["300 dpi"]
+        },
+        {
+            "SourceType": "Document Feeder (Two-sided)",
+            "ColorModes": ["Color", "Grayscale"],
+            "PageSizes": ["A4", "Legal", "Letter", "Fit to scan area"],
+            "Resolutions": ["300 dpi"]
+        }
+    ]
+}

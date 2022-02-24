@@ -36,6 +36,10 @@ func init() {
 			// Val: scanner descriptor file
 			// ExtraData: scanner descriptor file
 			{
+				Name:      "canon_mf741c",
+				Val:       "canon_mf741c_descriptor.json",
+				ExtraData: []string{"canon_mf741c_descriptor.json"},
+			}, {
 				//MFP in lab
 				Name:      "brother_dcp_l2550dw",
 				Val:       "brother_dcp_l2550dw_descriptor.json",
