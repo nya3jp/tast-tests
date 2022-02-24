@@ -109,11 +109,6 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	// Wait for cpu to stabilize before test.
-	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
-		s.Fatal("Failed to wait for CPU to become idle: ", err)
-	}
-
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
@@ -133,6 +128,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
 	}
 	defer cleanup(closeCtx)
+
+	// Wait for CPU to stabilize before test.
+	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
+		s.Fatal("Failed to wait for CPU to become idle: ", err)
+	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, conns.TestConn)
 	if err != nil {
