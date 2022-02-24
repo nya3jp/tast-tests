@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "607ecbd0_50318a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-24T21:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe7ff4f4_cd0924a5",
+      "range": {
+        "startLine": 27,
+        "startChar": 51,
+        "endLine": 27,
+        "endChar": 63
+      },
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77b42b4c_37677984",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-02-24T18:17:46Z",
       "side": 1,
       "message": "Not for this CL, but another thought would be to move this function to a library somewhere, so if we want to add a ARC YouTube CUJ to another test, we can do that.",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e577c17a_f0589426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-24T21:03:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77b42b4c_37677984",
       "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9317c76_2aa0ddd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-24T21:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e57fc8fd_6dec7b82",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56469f5e_114e0001",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c689174_b5546c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-24T21:03:55Z",
+      "side": 1,
+      "message": "To help mitigate this, I have changed the search query to EPlRnpgY2bY. Even that matches several videos for some reason, but I guess that [1] probably will always be first.\n\n[1] https://www.youtube.com/watch?v\u003dEPlRnpgY2bY",
+      "parentUuid": "56469f5e_114e0001",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae39f600_346a7da6",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-02-24T18:16:07Z",
       "side": 1,
       "message": "Should we also match the exact id to ensure we don\u0027t pick a video with lower quality or something?",
+      "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17966b29_81e90878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-24T21:03:55Z",
+      "side": 1,
+      "message": "To help mitigate this, I have refined the regex to specify the channel WORLD NATURE, because it seems like the exact same video is on many different YouTube channels for some reason. I cannot match the exact id EPlRnpgY2bY, because it is not surfaced in the UI.",
+      "parentUuid": "ae39f600_346a7da6",
       "revId": "00089bf61764606402bf0e0eb6b669ef57fe0e80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
