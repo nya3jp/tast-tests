@@ -518,15 +518,13 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	// Find the web view of Meet window.
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
 
+	uiLongWait := ui.WithTimeout(time.Minute)
 	bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
 	allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
 	// Check and grant permissions.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		needPermission, err := needToGrantPermission(ctx, meetConn)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to check if it needs to grant permissions"))
-		}
-		if !needPermission {
+		// Long wait for permission bubble and break poll loop when it times out.
+		if err := uiLongWait.WaitUntilExists(bubble)(ctx); err != nil {
 			return nil
 		}
 		if err := pc.Click(allow)(ctx); err != nil {
@@ -819,30 +817,4 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
-}
-
-// needToGrantPermission checks if we need to grant permission before joining meetings.
-// If camera/microphone/notifications permissions are not granted, we need to skip
-// the permission bubbles later.
-func needToGrantPermission(ctx context.Context, conn *chrome.Conn) (bool, error) {
-	perms := []string{"microphone", "camera", "notifications"}
-	for _, perm := range perms {
-		var state string
-		if err := conn.Eval(ctx, fmt.Sprintf(
-			`new Promise(function(resolve, reject) {
-				navigator.permissions.query({name: '%v'})
-				.then((permission) => {
-					resolve(permission.state);
-				})
-				.catch((error) => {
-					reject(error);
-				});
-			 })`, perm), &state); err != nil {
-			return true, errors.Errorf("failed to query %v permission", perm)
-		}
-		if state != "granted" {
-			return true, nil
-		}
-	}
-	return false, nil
 }
