@@ -23,6 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SystemDialog,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "In-session account addition using system 'Add account' dialog",
 		Contacts:     []string{"anastasiian@chromium.org", "team-dent@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
