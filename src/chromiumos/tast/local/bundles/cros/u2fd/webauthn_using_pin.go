@@ -119,7 +119,8 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	if err := util.WebAuthnInSecurityKeysInfo(ctx, cr, authCallback); err != nil {
+	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
+	if err := util.WebAuthnInWebAuthnIo(ctx, cr, authCallback); err != nil {
 		s.Fatal("Failed to perform WebAuthn: ", err)
 	}
 }

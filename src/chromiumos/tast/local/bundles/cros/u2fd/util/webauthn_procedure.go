@@ -6,6 +6,8 @@ package util
 
 import (
 	"context"
+	"fmt"
+	"math/rand"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -14,10 +16,14 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/testing"
 )
 
-// WebAuthnInSecurityKeysInfo performs the WebAuthn procedure in the external site securitykeys.info/qa.html.
-func WebAuthnInSecurityKeysInfo(ctx context.Context, cr *chrome.Chrome, authCallback func(context.Context, *uiauto.Context) error) error {
+// WebAuthnInWebAuthnIo performs the WebAuthn procedure in the external site webauthn.io.
+func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, authCallback func(context.Context, *uiauto.Context) error) error {
+	// We need truly random values for username strings so that different test runs don't affect each other.
+	rand.Seed(time.Now().UnixNano())
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
@@ -29,8 +35,7 @@ func WebAuthnInSecurityKeysInfo(ctx context.Context, cr *chrome.Chrome, authCall
 	}
 	defer logReader.Close()
 
-	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
-	conn, err := cr.NewConn(ctx, "https://securitykeys.info/qa.html")
+	conn, err := cr.NewConn(ctx, "https://webauthn.io/")
 	if err != nil {
 		return errors.Wrap(err, "failed to navigate to test website")
 	}
@@ -38,22 +43,19 @@ func WebAuthnInSecurityKeysInfo(ctx context.Context, cr *chrome.Chrome, authCall
 
 	// Perform MakeCredential on the test website.
 
-	// Choose webauthn
-	err = conn.Eval(ctx, `document.getElementById('regWebauthn').click()`, nil)
+	// Enter username
+	name := randomUsername()
+	testing.ContextLogf(ctx, "Username: %s", name)
+	// Use a random username because webauthn.io keeps state for each username for a period of time.
+	err = conn.Eval(ctx, fmt.Sprintf(`document.getElementById('input-email').value = "%s"`, name), nil)
 	if err != nil {
-		return errors.Wrap(err, "failed to execute JS expression")
+		return errors.Wrap(err, "failed to execute JS expression to set username")
 	}
 
-	// Choose none attestation
-	err = conn.Eval(ctx, `document.getElementById('attNone').click()`, nil)
+	// Press "Register" button.
+	err = conn.Eval(ctx, `document.getElementById('register-button').click()`, nil)
 	if err != nil {
-		return errors.Wrap(err, "failed to execute JS expression")
-	}
-
-	// Press "Register" button
-	err = conn.Eval(ctx, `document.getElementById('submit').click()`, nil)
-	if err != nil {
-		return errors.Wrap(err, "failed to execute JS expression")
+		return errors.Wrap(err, "failed to execute JS expression to press register button")
 	}
 
 	ui := uiauto.New(tconn)
@@ -83,10 +85,10 @@ func WebAuthnInSecurityKeysInfo(ctx context.Context, cr *chrome.Chrome, authCall
 
 	// Perform GetAssertion on the test website.
 
-	// Press "Authenticate" button. There should be only 1 button in registration-list.
-	err = conn.Eval(ctx, `document.getElementById('registration-list').querySelector("button").click()`, nil)
+	// Press "Login" button.
+	err = conn.Eval(ctx, `document.getElementById('login-button').click()`, nil)
 	if err != nil {
-		return errors.Wrap(err, "failed to execute JS expression")
+		return errors.Wrap(err, "failed to execute JS expression to press login button")
 	}
 
 	// Wait for ChromeOS WebAuthn dialog.
@@ -102,4 +104,16 @@ func WebAuthnInSecurityKeysInfo(ctx context.Context, cr *chrome.Chrome, authCall
 		return errors.Wrap(err, "GetAssertion did not succeed")
 	}
 	return nil
+}
+
+// randomUsername returns a random username of length 20.
+func randomUsername() string {
+	const letters = "abcdefghijklmnopqrstuvwxyz0123456789"
+
+	ret := make([]byte, 20)
+	for i := range ret {
+		ret[i] = letters[rand.Intn(len(letters))]
+	}
+
+	return string(ret)
 }
