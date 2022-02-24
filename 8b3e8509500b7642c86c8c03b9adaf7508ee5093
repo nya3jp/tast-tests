@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31150056_cf275c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:31:04Z",
+      "side": 1,
+      "message": "sorry I missed this one... Andrew, can you have a closer look at this change?",
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a92d3a5_77315a11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:31:04Z",
+      "side": 1,
+      "message": "can you add tbarzic@chromium.org",
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f862b601_3da8c6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:31:04Z",
+      "side": 1,
+      "message": "can you list what it actually tests",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef202d65_2a5896a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:31:04Z",
+      "side": 1,
+      "message": "failed to find launcher button",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 70
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17504248_4393f205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-24T06:31:04Z",
+      "side": 1,
+      "message": "document what outDir is",
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
