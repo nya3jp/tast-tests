@@ -106,3 +106,25 @@ func SwipeRight(obj *ui.Object, steps int) action.Action {
 		return obj.SwipeRight(ctx, steps)
 	}
 }
+
+// RetryUntil returns a function that repeatedly does the given action until the condition returns no error.
+// It will try to do action once before it checks the condition.
+func RetryUntil(action, condition action.Action, pollOpt *testing.PollOptions) action.Action {
+	return func(ctx context.Context) error {
+		if err := action(ctx); err != nil {
+			return errors.Wrap(err, "failed to initially do action")
+		}
+		if err := testing.Sleep(ctx, pollOpt.Interval); err != nil {
+			return err
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := condition(ctx); err != nil {
+				if err := action(ctx); err != nil {
+					return errors.Wrap(err, "failed to do action")
+				}
+				return errors.Wrap(err, "action has been done but condition is not met")
+			}
+			return nil
+		}, pollOpt)
+	}
+}
