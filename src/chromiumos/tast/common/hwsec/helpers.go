@@ -282,17 +282,16 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
 
-	tpmInfo, err := h.tpmManager.GetNonsensitiveStatus(ctx)
+	ownershipData, err := h.cmdRunner.Run(ctx, "hwsec-ownership-id", "id")
 	if err != nil {
-		return errors.Wrap(err, "failed to get TPM information")
+		return errors.Wrap(err, "failed to get ownership ID")
 	}
+	ownershipID := strings.TrimSpace(string(ownershipData))
 
 	// Wrap this section to a function, so we can ensure all daemons are up.
 	err = func(ctx context.Context) error {
-		if tpmInfo.IsOwned {
-			if err := h.tpmClearer.PreClearTPM(ctx); err != nil {
-				return errors.Wrap(err, "failed to pre clear TPM")
-			}
+		if err := h.tpmClearer.PreClearTPM(ctx); err != nil {
+			return errors.Wrap(err, "failed to pre clear TPM")
 		}
 
 		if err := h.daemonController.TryStop(ctx, UIDaemon); err != nil {
@@ -319,10 +318,8 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 			}
 		}(ctx)
 
-		if tpmInfo.IsOwned {
-			if err := h.tpmClearer.ClearTPM(ctx); err != nil {
-				return errors.Wrap(err, "failed to clear TPM")
-			}
+		if err := h.tpmClearer.ClearTPM(ctx); err != nil {
+			return errors.Wrap(err, "failed to clear TPM")
 		}
 
 		if removeFiles {
@@ -333,10 +330,8 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 			}
 		}
 
-		if tpmInfo.IsOwned {
-			if err := h.tpmClearer.PostClearTPM(ctx); err != nil {
-				return errors.Wrap(err, "failed to post clear TPM")
-			}
+		if err := h.tpmClearer.PostClearTPM(ctx); err != nil {
+			return errors.Wrap(err, "failed to post clear TPM")
 		}
 		return nil
 	}(ctx)
@@ -353,15 +348,11 @@ func (h *CmdTPMClearHelper) ensureTPMIsReset(ctx context.Context, removeFiles bo
 		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
 	}
 
-	tpmInfo, err = h.tpmManager.GetNonsensitiveStatus(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get TPM information")
-	}
-	if tpmInfo.IsOwned {
+	if _, err = h.cmdRunner.Run(ctx, "hwsec-ownership-id", "diff", "--id="+ownershipID); err != nil {
 		if err := h.saveTPMClearLogs(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to save TPM clear logs: ", err)
 		}
-		// If the TPM is ready, the reset was not successful
+		// If the ownership ID is not changed, the reset was not successful
 		return ErrIneffectiveReset
 	}
 
