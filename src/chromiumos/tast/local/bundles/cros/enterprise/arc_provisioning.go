@@ -115,12 +115,11 @@ func init() {
 // - check that force-installed Android packages cannot be uninstalled.
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
-		searchBarTextStart      = "Search for apps"
-		emptyPlayStoreText      = "No results found."
-		somethingWentWrongText  = "Something went wrong"
-		maxPlayStoreAttempt     = 5
-		bootTimeout             = 4 * time.Minute
-		timeoutWaitForPlayStore = 1 * time.Minute
+		searchBarTextStart = "Search for apps"
+		emptyPlayStoreText = "No results found."
+		bootTimeout        = 4 * time.Minute
+		// CloudDPC sign-in timeout set in code is 3 minutes.
+		timeoutWaitForPlayStore = 3 * time.Minute
 	)
 
 	var login chrome.Option
