@@ -16,6 +16,213 @@
       "message": "Please note I\u0027ve not added ScreenDiff yet. Will do that next. This only uses Acuiti.",
       "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47570261_ac76ab46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "err should be handled before defer close.",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca874000_13614705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "Thanks for finding this. Could you please add a func into settings and call it here?",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 25
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89a0abc_ac46b39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 7
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d170f3b_fab3aaa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "Please handle this err.",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5758f255_705a089d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "err should be handled before defer close.",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 7
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d203ad5_b786bca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "This could be combined like if err \u003d ...; err !\u003d nil ...",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99e347e_e42c087c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "The dialog \"save file as\" only after trying to close gedit? If yes, please explain in the comment.",
+      "range": {
+        "startLine": 145,
+        "startChar": 17,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f9d495_532e348b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "Suggest to combine these two statements.",
+      "range": {
+        "startLine": 150,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 16
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52622d8_d085598e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-24T04:39:49Z",
+      "side": 1,
+      "message": "Suggest to combine them.",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 14
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
