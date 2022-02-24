@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70ee514_223760a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19a47936_c4282390",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bf08b15_013cc97d",
@@ -81,6 +99,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a66e2c7_fa910c2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "I saw this SeparatedOutput, but it only works for local connections. This is remote test, it runs on DUT (not on host), so I need remote connection.\nThe only library function that suited this test was CombinedOutput, however you asked not to use it.",
+      "parentUuid": "9bf08b15_013cc97d",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fdf4966_b65337c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "I need this err later, until the end of function. So it needs to have scope to be visible outside if conditional.",
+      "parentUuid": "30236958_5dd041d2",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "109adcd3_89b8b95c",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a477829_0e62bee7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109adcd3_89b8b95c",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad990a85_aacffaf6",
@@ -111,6 +195,24 @@
       "writtenOn": "2022-02-14T13:50:43Z",
       "side": 1,
       "message": "could you calls f.Close() in defer here?\nOtherwise, on write error, it will be leaked.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa414273_5ffba57d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad990a85_aacffaf6",
       "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4666c2e4_b834e415",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ae6646d_29faed22",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "493ebc3e_811d3635",
@@ -151,6 +277,24 @@
       "writtenOn": "2022-02-14T13:50:43Z",
       "side": 1,
       "message": "optional: I\u0027d recommend to add some separator here.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a505de_254d1093",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "493ebc3e_811d3635",
       "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +322,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba43101_c0030c98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3defe9b9_2f8f4866",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 9
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81acfa29_b7a2dff2",
@@ -195,6 +363,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a39788_e43d723b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81acfa29_b7a2dff2",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6049b5a4_4ef645f1",
@@ -208,6 +394,24 @@
       "writtenOn": "2022-02-14T13:50:43Z",
       "side": 1,
       "message": "nit: could you wrap err here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bdca30_43ef969a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6049b5a4_4ef645f1",
       "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -252,6 +456,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0c0011_8c29a0bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Moved with defer.",
+      "parentUuid": "e67917ef_fdd597dc",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d318141_cb2cb5d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3603814a_ced25cc9",
+      "range": {
+        "startLine": 169,
+        "startChar": 8,
+        "endLine": 169,
+        "endChar": 9
+      },
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82640ede_6079a36c",
@@ -265,6 +511,24 @@
       "writtenOn": "2022-02-14T13:50:43Z",
       "side": 1,
       "message": "Could you wrap error here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c229f1_e567ffc4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82640ede_6079a36c",
       "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -286,6 +550,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ea236a_a9894977",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "599ce0a1_f7bf7774",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb67f79_2a6899d9",
@@ -299,6 +581,24 @@
       "writtenOn": "2022-02-14T13:50:43Z",
       "side": 1,
       "message": "could you add comment what are expected format? Examples will be useful.\nComment about group capturing is also helpful.",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df7acd1_d9981922",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb67f79_2a6899d9",
       "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -320,6 +620,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3002618d_b3cf902a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85f836a1_b2dd7ef5",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5cf2d66_f99c875c",
@@ -337,6 +655,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02fe4d79_49e10d2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5cf2d66_f99c875c",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8640f2d_07c9d13f",
@@ -350,6 +686,24 @@
       "writtenOn": "2022-02-14T13:50:43Z",
       "side": 1,
       "message": "could you wrap err here?",
+      "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa75a6ae_182440c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-24T04:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8640f2d_07c9d13f",
       "revId": "a8249590598e0a11ec53b8d3c67f1874a092e08d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
