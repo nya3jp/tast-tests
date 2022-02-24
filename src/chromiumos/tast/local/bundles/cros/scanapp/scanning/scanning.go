@@ -7,8 +7,13 @@ package scanning
 
 import (
 	"context"
+	"math"
+	"math/rand"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -46,7 +51,14 @@ const (
 	// DefaultScanPattern is the pattern used to find files in the default
 	// scan-to location.
 	DefaultScanPattern = filesapp.MyFilesPath + "/scan*_*.*"
+
+	// InchesToMM is the conversion factor from inches to mm.
+	InchesToMM = 25.4
 )
+
+// identifyOutputRegex parses out the width, height and colorspace from the
+// output of `identify someImage`.
+var identifyOutputRegex = regexp.MustCompile(`^.+ PNG (?P<width>[0-9]+)x(?P<height>[0-9]+).+ 8-bit (?P<colorspace>sRGB|Gray 256c|Gray 2c)`)
 
 // GetScan returns the filepath of the scanned file found using pattern.
 func GetScan(pattern string) (string, error) {
@@ -78,6 +90,161 @@ func RemoveScans(pattern string) error {
 	return nil
 }
 
+// MaxOf returns the maximum integer among the inputs.
+// From: https://stackoverflow.com/questions/27516387/what-is-the-correct-way-to-find-the-min-between-two-integers-in-go
+func MaxOf(vars ...int) int {
+	max := vars[0]
+
+	for _, i := range vars {
+		if max < i {
+			max = i
+		}
+	}
+
+	return max
+}
+
+// PopRandomColorMode pops a random element from `colorModes`.
+func PopRandomColorMode(colorModes []scanapp.ColorMode) (scanapp.ColorMode, []scanapp.ColorMode) {
+	index := rand.Intn(len(colorModes))
+	mode := colorModes[index]
+	poppedColorModes := append(colorModes[:index], colorModes[index+1:]...)
+	return mode, poppedColorModes
+}
+
+// PopRandomPageSize pops a random element from `pageSizes`.
+func PopRandomPageSize(pageSizes []scanapp.PageSize) (scanapp.PageSize, []scanapp.PageSize) {
+	index := rand.Intn(len(pageSizes))
+	size := pageSizes[index]
+	poppedPageSizes := append(pageSizes[:index], pageSizes[index+1:]...)
+	return size, poppedPageSizes
+}
+
+// PopRandomResolution pops a random element from `resolutions`.
+func PopRandomResolution(resolutions []scanapp.Resolution) (scanapp.Resolution, []scanapp.Resolution) {
+	index := rand.Intn(len(resolutions))
+	resolution := resolutions[index]
+	poppedResolutions := append(resolutions[:index], resolutions[index+1:]...)
+	return resolution, poppedResolutions
+}
+
+// toIdentifyColorspace converts from `colorMode` to the colorspace output by
+// `identify someImage`.
+func toIdentifyColorspace(colorMode scanapp.ColorMode) (string, error) {
+	switch colorMode {
+	case scanapp.ColorModeBlackAndWhite:
+		return "Gray 2c", nil
+	case scanapp.ColorModeGrayscale:
+		return "Gray 256c", nil
+	case scanapp.ColorModeColor:
+		return "sRGB", nil
+	default:
+		return "", errors.Errorf("Unable to convert color mode: %v to identify colorspace", colorMode)
+	}
+}
+
+// calculateExpectedDimensions returns the expected height and width in pixels
+// for an image of size `pageSize` and resolution `resolution`.
+func calculateExpectedDimensions(pageSize scanapp.PageSize, resolution scanapp.Resolution, sourceDimensions SourceDimensions) (expectedHeight, expectedWidth float64, err error) {
+	var heightMM float64
+	var widthMM float64
+	switch pageSize {
+	case scanapp.PageSizeA3:
+		widthMM = 297
+		heightMM = 420
+	case scanapp.PageSizeA4:
+		widthMM = 210
+		heightMM = 297
+	case scanapp.PageSizeB4:
+		widthMM = 257
+		heightMM = 364
+	case scanapp.PageSizeLegal:
+		widthMM = 215.9
+		heightMM = 355.6
+	case scanapp.PageSizeLetter:
+		widthMM = 215.9
+		heightMM = 279.4
+	case scanapp.PageSizeTabloid:
+		widthMM = 279.4
+		heightMM = 431.8
+	case scanapp.PageSizeFitToScanArea:
+		widthMM = sourceDimensions.WidthMM
+		heightMM = sourceDimensions.HeightMM
+	default:
+		return -1, -1, errors.Errorf("Unrecognized page size: %v", pageSize)
+	}
+
+	resInt, err := resolution.ToInt()
+	if err != nil {
+		return -1, -1, err
+	}
+
+	return heightMM / InchesToMM * float64(resInt), widthMM / InchesToMM * float64(resInt), nil
+}
+
+// verifyScannedImage verifies that the scanned image with location `scan` has
+// the correct width, height and resolution as reported by `identify`.
+func verifyScannedImage(scan string, pageSize scanapp.PageSize, resolution scanapp.Resolution, colorMode scanapp.ColorMode, sourceDimensions SourceDimensions) error {
+	cmd := exec.Command("identify", scan)
+	identifyBytes, err := cmd.Output()
+	if err != nil {
+		return err
+	}
+
+	expectedHeight, expectedWidth, err := calculateExpectedDimensions(pageSize, resolution, sourceDimensions)
+	if err != nil {
+		return err
+	}
+
+	match := identifyOutputRegex.FindStringSubmatch(string(identifyBytes))
+	if match == nil || len(match) < 4 {
+		return errors.Errorf("Unable to parse identify output: %s", string(identifyBytes))
+	}
+
+	for i, name := range identifyOutputRegex.SubexpNames() {
+		if name == "width" {
+			width, err := strconv.Atoi(match[i])
+
+			if err != nil {
+				return err
+			}
+
+			// Allow a 1-pixel difference for scanners which round 0.5 down
+			// instead of up.
+			if math.Abs(expectedWidth-float64(width)) > 1.0 {
+				return errors.Errorf("Width: got %d, expected %d", width, expectedWidth)
+			}
+		}
+
+		if name == "height" {
+			height, err := strconv.Atoi(match[i])
+
+			if err != nil {
+				return err
+			}
+
+			// Allow a 1-pixel difference for scanners which round 0.5 down
+			// instead of up.
+			if math.Abs(expectedHeight-float64(height)) > 1.0 {
+				return errors.Errorf("Height: got %d, expected %d", height, expectedHeight)
+			}
+		}
+
+		if name == "colorspace" {
+			colorSpace, err := toIdentifyColorspace(colorMode)
+			if err != nil {
+				return err
+			}
+
+			if colorSpace != match[i] {
+				return errors.Errorf("Colorspace: got %s, expected %s", match[i], colorSpace)
+			}
+		}
+	}
+
+	return nil
+}
+
 // TestingStruct contains the parameters used when testing the scanapp settings
 // in RunAppSettingsTests.
 type TestingStruct struct {
@@ -93,12 +260,24 @@ type ScannerStruct struct {
 	EsclCaps    string
 }
 
+// SourceDimensions contain the height and width of a scan source, in mm.
+type SourceDimensions struct {
+	HeightMM float64 `json:"Height"`
+	WidthMM  float64 `json:"Width"`
+}
+
 // SupportedSource describes the options supported by a particular scan source.
 type SupportedSource struct {
 	SourceType           scanapp.Source       `json:"SourceType"`
 	SupportedColorModes  []scanapp.ColorMode  `json:"ColorModes"`
 	SupportedPageSizes   []scanapp.PageSize   `json:"PageSizes"`
 	SupportedResolutions []scanapp.Resolution `json:"Resolutions"`
+	// SourceDimensions only needs to be present for flatbed sources. They can
+	// be determined by running `lorgnette_cli get_json_caps --scanner=$SCANNER`
+	// for any particular scanner. Note that the flatbed and ADF sources often
+	// have different dimensions - make sure to choose the dimension of the
+	// flatbed source.
+	SourceDimensions SourceDimensions `json:"SourceDimensions"`
 }
 
 // ScannerDescriptor contains the parameters used to test the scan app on real
@@ -217,7 +396,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	app, err := scanapp.Launch(ctx, tconn)
+	app, err := scanapp.LaunchWithPollOpts(ctx, testing.PollOptions{Interval: 300 * time.Millisecond, Timeout: 1 * time.Minute}, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch app: ", err)
 	}
@@ -239,6 +418,8 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		s.Fatal("Failed to sleep after selecting scanner: ", err)
 	}
 	for _, source := range scanner.SupportedSources {
+		s.Log("Testing source: ", source.SourceType)
+
 		if err := app.SelectSource(source.SourceType)(ctx); err != nil {
 			s.Fatalf("Failed to select source: %s: %v", source.SourceType, err)
 		}
@@ -249,20 +430,101 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		if err := testing.Sleep(ctx, 2*time.Second); err != nil {
 			s.Fatal("Failed to sleep after selecting source: ", err)
 		}
-		for _, colorMode := range source.SupportedColorModes {
-			if err := app.SelectColorMode(colorMode)(ctx); err != nil {
-				s.Fatalf("Failed to select color mode: %s: %v", colorMode, err)
+
+		switch source.SourceType {
+		// For flatbed sources, perform scans with randomized settings
+		// combinations until each setting has been tested at least once.
+		case scanapp.SourceFlatbed:
+			defer func() {
+				if err := RemoveScans(DefaultScanPattern); err != nil {
+					s.Error("Failed to remove scans: ", err)
+				}
+			}()
+
+			rand.Seed(time.Now().UnixNano())
+
+			if err := app.SelectFileType(scanapp.FileTypePNG)(ctx); err != nil {
+				s.Fatal("Failed to select file type: ", scanapp.FileTypePNG)
+			}
+
+			var colorMode scanapp.ColorMode
+			var pageSize scanapp.PageSize
+			var resolution scanapp.Resolution
+			numScans := MaxOf(len(source.SupportedColorModes), len(source.SupportedPageSizes), len(source.SupportedResolutions))
+			for i := 0; i < numScans; i++ {
+				if len(source.SupportedColorModes) != 0 {
+					colorMode, source.SupportedColorModes = PopRandomColorMode(source.SupportedColorModes)
+					if err := app.SelectColorMode(colorMode)(ctx); err != nil {
+						s.Fatalf("Failed to select color mode: %s: %v", colorMode, err)
+					}
+				}
+
+				if len(source.SupportedPageSizes) != 0 {
+					pageSize, source.SupportedPageSizes = PopRandomPageSize(source.SupportedPageSizes)
+					if err := app.SelectPageSize(pageSize)(ctx); err != nil {
+						s.Fatalf("Failed to select page size: %s: %v", pageSize, err)
+					}
+				}
+
+				if len(source.SupportedResolutions) != 0 {
+					resolution, source.SupportedResolutions = PopRandomResolution(source.SupportedResolutions)
+					if err := app.SelectResolution(resolution)(ctx); err != nil {
+						s.Fatalf("Failed to select resolution: %s, %v", resolution, err)
+					}
+				}
+
+				// Make sure printer connected notifications don't cover the
+				// Scan button.
+				if err := ash.CloseNotifications(ctx, tconn); err != nil {
+					s.Fatal("Failed to close notifications: ", err)
+				}
+
+				s.Logf("Testing scan combination: {%v %v %v}", colorMode, pageSize, resolution)
+
+				if err := uiauto.Combine("scan",
+					app.Scan(),
+					app.ClickDone(),
+				)(ctx); err != nil {
+					s.Fatal("Failed to perform scan: ", err)
+				}
+
+				scan, err := GetScan(DefaultScanPattern)
+				if err != nil {
+					s.Fatal("Failed to find scan: ", err)
+				}
+
+				err = verifyScannedImage(scan, pageSize, resolution, colorMode, source.SourceDimensions)
+				if err != nil {
+					s.Fatal("Failed to verify scanned image: ", err)
+				}
+
+				err = RemoveScans(DefaultScanPattern)
+				if err != nil {
+					s.Error("Failed to remove scans: ", err)
+				}
+			}
+		// For ADF sources, just attempt to select each of the scanner-specific
+		// options once.
+		case scanapp.SourceADFOneSided:
+			fallthrough
+		case scanapp.SourceADFTwoSided:
+			for _, colorMode := range source.SupportedColorModes {
+				if err := app.SelectColorMode(colorMode)(ctx); err != nil {
+					s.Fatalf("Failed to select color mode: %s: %v", colorMode, err)
+				}
 			}
 			for _, pageSize := range source.SupportedPageSizes {
 				if err := app.SelectPageSize(pageSize)(ctx); err != nil {
 					s.Fatalf("Failed to select page size: %s: %v", pageSize, err)
 				}
-				for _, resolution := range source.SupportedResolutions {
-					if err := app.SelectResolution(resolution)(ctx); err != nil {
-						s.Fatalf("Failed to select resolution: %s, %v", resolution, err)
-					}
+			}
+			for _, resolution := range source.SupportedResolutions {
+				if err := app.SelectResolution(resolution)(ctx); err != nil {
+					s.Fatalf("Failed to select resolution: %s, %v", resolution, err)
 				}
 			}
+		default:
+			s.Fatal("Unrecognized source: ", source.SourceType)
 		}
 	}
 }
