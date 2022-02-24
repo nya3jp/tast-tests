@@ -8,6 +8,8 @@ package scanapp
 import (
 	"context"
 	"fmt"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/apps"
@@ -97,10 +99,16 @@ type Resolution string
 const (
 	Resolution75DPI   Resolution = "75 dpi"
 	Resolution150DPI  Resolution = "150 dpi"
+	Resolution200DPI  Resolution = "200 dpi"
 	Resolution300DPI  Resolution = "300 dpi"
 	Resolution600DPI  Resolution = "600 dpi"
 	Resolution1200DPI Resolution = "1200 dpi"
 )
+
+// ToInt returns the integer representation of `r`.
+func (r Resolution) ToInt() (int, error) {
+	return strconv.Atoi(strings.TrimSuffix(string(r), " dpi"))
+}
 
 // ScanSettings defines the settings to use to perform a scan.
 type ScanSettings struct {
