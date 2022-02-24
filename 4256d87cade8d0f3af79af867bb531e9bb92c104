@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78ef505_53625dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-24T05:53:04Z",
+      "side": 1,
+      "message": "should we add Fixture: \"arcBootedInTabletMode\" to tests in tablet mode?",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "4256d87cade8d0f3af79af867bb531e9bb92c104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
