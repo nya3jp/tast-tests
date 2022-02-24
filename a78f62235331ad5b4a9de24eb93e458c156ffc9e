@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d081772_a769f5a9",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-24T03:35:24Z",
+      "side": 1,
+      "message": "I feel a bit confused here, will you be able to help me untangle?\n`optin.Perform` starts `context.WithTimeout(ctx, OptinTimeout)` and later runs `FindOptInExtensionPageAndAcceptTerms`. `FindOptInExtensionPageAndAcceptTerms` max duration has doubled because of the retry introduced in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3486816 .\nMy assumption is that `OptinTimeout` refers to the duration of `optin.Perform` function and therefore should be increased.\nDoes it make sense?",
+      "parentUuid": "6eecabf1_6eb3d7f9",
+      "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef7b19f1_a6421a99",
         "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2022-02-24T03:00:17Z",
       "side": 1,
       "message": "optional: not related to your change, but I\u0027d appreciate if you can factor out the retry logic in a separate `pressRetryButtonOnOptinDialog` method and call it here under the if statement. It will make this method simpler.",
+      "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff286b4_5677858a",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-24T03:35:24Z",
+      "side": 1,
+      "message": "Does `sleepAndPressRetryButton` sound like a reasonable name?\nI feel it\u0027s important to mention, it `sleep`s.\nAn alternative is to extract just the button press in a separate function and leave sleep as is. I assume, you meant the former.",
+      "parentUuid": "ef7b19f1_a6421a99",
       "revId": "a78f62235331ad5b4a9de24eb93e458c156ffc9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
