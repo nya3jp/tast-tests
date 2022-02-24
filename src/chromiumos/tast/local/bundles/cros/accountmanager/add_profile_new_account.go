@@ -24,6 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AddProfileNewAccount,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Addition of a secondary profile with a new account",
 		Contacts:     []string{"anastasiian@chromium.org", "team-dent@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
