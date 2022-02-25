@@ -16,6 +16,24 @@
       "message": "can we remove withRetry from here?",
       "revId": "a1731d881ae27f72c7fec9957bd95aaadae199fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c36ddce_aee50c0f",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-25T06:41:35Z",
+      "side": 1,
+      "message": "It has been removed in https://crrev.com/c/3486816 . I assume, the changes will get merged without issues. I triggered rebase for this CL - hope, this will update the underlying code.",
+      "parentUuid": "f21a0b51_8fb74d51",
+      "revId": "a1731d881ae27f72c7fec9957bd95aaadae199fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
