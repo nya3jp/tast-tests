@@ -22,6 +22,103 @@
       },
       "revId": "06859f49ae1dfff536cfc6ee842b8c703d2d2ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a426bb4_50c1d196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-25T00:45:00Z",
+      "side": 1,
+      "message": "LGTM, just a few small things",
+      "revId": "06859f49ae1dfff536cfc6ee842b8c703d2d2ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b608500_4e2e67b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-25T00:45:00Z",
+      "side": 1,
+      "message": "One suggestion while you\u0027re here: I\u0027d move this below all the other cleanup code/deferred functions, probably to right before the uiauto.Combine block on L119.\n\nDefers are executed in LIFO order, so you want this to run first before all of the other cleanup happens. The order of this in relation to other deferred cleanup can cause the UI tree and screenshot to mismatch with the device state at the time of failure.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 14
+      },
+      "revId": "06859f49ae1dfff536cfc6ee842b8c703d2d2ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bafb850_e259c98b",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-25T00:45:00Z",
+      "side": 1,
+      "message": "change",
+      "revId": "06859f49ae1dfff536cfc6ee842b8c703d2d2ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93419dae_0c1b216a",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-25T00:45:00Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "06859f49ae1dfff536cfc6ee842b8c703d2d2ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55dd508_248a1fb9",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-25T00:45:00Z",
+      "side": 1,
+      "message": "typo (missing the \"y\")",
+      "range": {
+        "startLine": 223,
+        "startChar": 87,
+        "endLine": 223,
+        "endChar": 106
+      },
+      "revId": "06859f49ae1dfff536cfc6ee842b8c703d2d2ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
