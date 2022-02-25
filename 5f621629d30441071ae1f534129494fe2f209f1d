@@ -50,6 +50,24 @@
       "message": "All these long lines make the test section extremely hard to read. Please define and use variables. Example:\n```\nvar v4l2_stateless_vp9_0_group1_frm_resize_decoding_file \u003d []string {\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf\"\n}\n...\n\t\t\t{\n\t\t\t\tName: \"v4l2_stateless_vp9_0_group1_frm_resize\",\n\t\t\t\tVal: platformDecodingParams{\n\t\t\t\t\tfilenames: v4l2_stateless_vp9_0_group1_frm_resize_decoding_file,\n\n```",
       "revId": "5f621629d30441071ae1f534129494fe2f209f1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa9abdc_0232c6e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-25T16:38:37Z",
+      "side": 1,
+      "message": "Thank you Seewai for feedback. This is how it is being done in other parts of this file and this part is in fact just being generated from platform_deocding_test.go file. \n\nThat being said, can I make that change in a separate CL and leave TODO comment for this?",
+      "parentUuid": "a7280a92_a6f5175d",
+      "revId": "5f621629d30441071ae1f534129494fe2f209f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
