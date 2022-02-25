@@ -16,6 +16,40 @@
       "message": "Jao-ke, Miguel, and tast onwers: PTAL. Thank you.",
       "revId": "5f621629d30441071ae1f534129494fe2f209f1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb363b2_dbedac18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-25T01:52:09Z",
+      "side": 1,
+      "message": "Please also run tast unit test, fast_build.sh -T. \n\nThanks.\n",
+      "revId": "5f621629d30441071ae1f534129494fe2f209f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7280a92_a6f5175d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-25T01:52:09Z",
+      "side": 1,
+      "message": "All these long lines make the test section extremely hard to read. Please define and use variables. Example:\n```\nvar v4l2_stateless_vp9_0_group1_frm_resize_decoding_file \u003d []string {\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf\",\n\"test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf\"\n}\n...\n\t\t\t{\n\t\t\t\tName: \"v4l2_stateless_vp9_0_group1_frm_resize\",\n\t\t\t\tVal: platformDecodingParams{\n\t\t\t\t\tfilenames: v4l2_stateless_vp9_0_group1_frm_resize_decoding_file,\n\n```",
+      "revId": "5f621629d30441071ae1f534129494fe2f209f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
