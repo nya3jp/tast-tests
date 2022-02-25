@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d113f0c5_223a1877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-25T10:28:08Z",
+      "side": 1,
+      "message": "lgtm modulo the two comments below.",
+      "revId": "dfd642739c10892f2c64ef8490e3d071c5936c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ceb5a3_4a2ff661",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-25T10:28:08Z",
+      "side": 1,
+      "message": "I think this is unused and can be removed.",
+      "revId": "dfd642739c10892f2c64ef8490e3d071c5936c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
