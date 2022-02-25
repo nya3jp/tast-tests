@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f14916d_3d160976",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "Done a first pass, thanks for adding me for review!",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b1fd0dd_96c53618",
@@ -37,6 +54,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdd8a37c_0896c9a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "One consideration here is Google Drive actually takes a little time to startup, we have some functions in the [chromiumos/tast/local/drivefs](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/drivefs/wait.go;l\u003d28;drc\u003d05af165b0f43a2289e831700c4b783bc05c7fb64) package that provide an opaque was to wait for drivefs to mount.",
+      "range": {
+        "startLine": 50,
+        "startChar": 43,
+        "endLine": 50,
+        "endChar": 55
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afbc861b_32f96622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "If you\u0027re going to be interacting with `drivefs` via Files app, you\u0027ll need `chrome_internal` and `drivefs` as `SoftwareDeps`",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6417daed_5f950d88",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
         "patchSetId": 2
@@ -48,6 +111,47 @@
       "writtenOn": "2022-02-24T06:27:19Z",
       "side": 1,
       "message": "do we actually expect anything in the drive folder? should we use a name that\u0027s unique enough for this test and just delete that file at the end?",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bccc885_515aa6c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "Adding to this, you can\u0027t guarantee this test will be the only one using this account. I believe the pool has 19 test accounts as of this writing, there\u0027s more than that in boards so concurrently a test may remove files and end up on an odd behaviour.\n\n+1 to unique name for this test and delete at end.",
+      "parentUuid": "6417daed_5f950d88",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7e9b98_c14919a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "nit: prefer s.Log instead of testing.ContextLog when you have access to testing.State. Same applies for the remainder of testing.ContextLog in this function",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 19
+      },
       "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +191,29 @@
         "startChar": 42,
         "endLine": 107,
         "endChar": 66
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10be568c_768764f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "You should be able to just use:\n```\ns.Run(ctx, search.searchKeyWord, func(ctx context.Context, s *testing.State) {\n\tcleanupSubTestCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()\n\tdefer faillog.DumpUITreeWithScreenshotOnError(...)\n\n\tif err :\u003d searchByLauncher(ctx, tconn, kb, cr, ui, search); err !\u003d nil {\n\t\ts.Fatal(\"Failed to search by launcher: \", err)\n\t}\n})\n```\n\nThe `s.Run` will take any `Fatal` within to overall error but all other subtests will continue.",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 3
       },
       "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -145,6 +272,121 @@
       "writtenOn": "2022-02-24T06:27:19Z",
       "side": 1,
       "message": "why waiting for shelf animation? can we use\nash.WaitForLauncherState(ctx, tconn, ash.Closed)",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750ea0ac_1adc9b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "Can you pull this out to a general timeout? This is reused a lot, something like:\n```\nconst launcherSearchTimeout \u003d 5 * time.Second\n```\nSame for the remainder usages of this.",
+      "range": {
+        "startLine": 174,
+        "startChar": 19,
+        "endLine": 174,
+        "endChar": 32
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2607d318_17710fb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "nit: search",
+      "range": {
+        "startLine": 192,
+        "startChar": 37,
+        "endLine": 192,
+        "endChar": 42
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ff48e3_938bc4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "You should be able to use the files object and not have to start a new uiauto instance, it has the benefit of scoping to the Files window as well.",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 24
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438759a3_c3806975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "There might be a race case here where you select all files before they\u0027ve been loaded and erroneously think there\u0027s nothing there.",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2be28d6_f07b72ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-25T11:35:37Z",
+      "side": 1,
+      "message": "what is this?",
+      "range": {
+        "startLine": 247,
+        "startChar": 42,
+        "endLine": 247,
+        "endChar": 55
+      },
       "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
