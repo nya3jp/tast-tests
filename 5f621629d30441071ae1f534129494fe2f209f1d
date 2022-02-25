@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1b68ba_00b2af9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-25T16:41:26Z",
+      "side": 1,
+      "message": "dry build failure seems to be infra issue. \n\nhttps://ci.chromium.org/ui/p/chromeos/builders/cq/cherry-cq/b8821301503337831729/overview\n\n[Errno 13] Permission denied: \u0027/b/s/w/ir/cache/chromiumos/.recipes_state.json\u0027\n\n\n[Errno 2] No such file or directory: \u0027/b/s/w/ir/x/w/recipe_cleanup/chromiumos_workspace/src/third_party/chromiumos-overlay/chromeos/config/chromeos_version.sh\u0027",
+      "revId": "5f621629d30441071ae1f534129494fe2f209f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7280a92_a6f5175d",
