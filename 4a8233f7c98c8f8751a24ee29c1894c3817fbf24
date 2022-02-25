@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d102df8_d755e55e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-25T09:58:38Z",
+      "side": 1,
+      "message": "Actually what I had in mind doesn\u0027t require extra work:\nhttps://paste.googleplex.com/5047727143518208?raw",
+      "parentUuid": "636c2cb1_5d20140d",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c381851e_37fa93a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
         "patchSetId": 9
