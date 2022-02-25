@@ -16,6 +16,29 @@
       "message": "This should not change anything to existing tests.  ",
       "revId": "63dcccd9c7284219037233dda3ecba3d2ffb73d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1cbbfbd_604ca2ce",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-25T03:34:16Z",
+      "side": 1,
+      "message": "Note: This doesn\u0027t seem to actually work on lacros with the GAIA login, but it would need further investigation separately. See http://b/220799400#comment2.",
+      "range": {
+        "startLine": 34,
+        "startChar": 110,
+        "endLine": 34,
+        "endChar": 132
+      },
+      "revId": "63dcccd9c7284219037233dda3ecba3d2ffb73d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
