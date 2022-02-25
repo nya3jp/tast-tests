@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47bdf4cc_a67f780c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-02-25T16:40:05Z",
+      "side": 1,
+      "message": "Thank you for suggestion. Can you help to provide more info about how to run tast unit test, fast_build.sh -T.",
+      "parentUuid": "3eb363b2_dbedac18",
+      "revId": "5f621629d30441071ae1f534129494fe2f209f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7280a92_a6f5175d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
         "patchSetId": 1
