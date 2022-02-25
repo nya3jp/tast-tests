@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f133bf_302a1218",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-25T17:57:30Z",
+      "side": 1,
+      "message": "nit: crbug:1298962 as well?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "92538cf7_8dfaa910",
@@ -31,6 +54,52 @@
       "writtenOn": "2022-02-25T07:13:24Z",
       "side": 1,
       "message": "Abe-san, could you take another look?",
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82003af_b0858157",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-25T17:57:30Z",
+      "side": 1,
+      "message": "Do you think this can be moved to chromiumos/tast/local/chrome/lacros/lacros.go?\n```\nconst UserDataDir \u003d \"/home/chronos/user/lacros/\"\nconst LogPath \u003d UserDataDir + \"lacros.log\"  // clearly shows the log is under the user data dir\n```\nor alternatively (not urgent) to chromiumos/tast/common/cros/lacros/const.go if we want both local and remote tests to use this const?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f20a27b_093b0802",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-25T17:57:30Z",
+      "side": 1,
+      "message": "Curious, do we want to report \u0027lacros.log\u0027 for all test runs on success or failure?",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 3
+      },
       "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
