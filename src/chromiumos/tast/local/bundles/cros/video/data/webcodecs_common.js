@@ -145,10 +145,14 @@ async function createNewFrame(frame) {
   let buffer = new Uint8Array(frame.allocationSize());
   let layout = await frame.copyTo(buffer);
 
-  let bufferInit = {
+  let bufferParams = {
     format: frame.format,
-    codedWidth: frame.codedWidth,
-    codedHeight: frame.codedHeight,
+    // frame.copyTo() sets the width and height to frame.visibleRect by default.
+    // Set codedWidth and codedHeight in bufferInit to frame.visibleRect,
+    // otherwise `new VideoFrame` will fail if frame.codedWidth and codedHeight
+    // are more than layout.stride or the buffer height.
+    codedWidth: frame.visibleRect.width,
+    codedHeight: frame.visibleRect.height,
     timestamp: frame.timestamp,
     // TODO(crbug.com/1270610): Sets duration.
     // duration: frame.duration,
@@ -160,7 +164,7 @@ async function createNewFrame(frame) {
   };
 
   try {
-    return new VideoFrame(buffer, bufferInit);
+    return new VideoFrame(buffer, bufferParams);
   } catch (e) {
     TEST.log("video frame creation error: " + e);
     return null;
