@@ -39,6 +39,30 @@
       },
       "revId": "f357b5fff5960a2cb3101868e674b9ba578f0abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ebb0a3_f34042cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-25T00:49:46Z",
+      "side": 1,
+      "message": "Yeh. I\u0027ll add",
+      "parentUuid": "8a126001_831e94cb",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "f357b5fff5960a2cb3101868e674b9ba578f0abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
