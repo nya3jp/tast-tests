@@ -34,6 +34,24 @@
       "parentUuid": "c32fd653_f33ccae4",
       "revId": "54d3bb4ad048d5ce4aee538a6ed89ef830d055b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ea2d03_9d8df31b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-02-25T03:13:28Z",
+      "side": 1,
+      "message": "I suspect ML can impact even single keys causing flakiness.\n\nE.g. on new account a-acute (typed with us:intl) will autocorrect to a\n\nIf I type a bunch of a-acute that autocorrect will stop.\n\nGiven general complexity of JP IME, I wouldn\u0027t be surprised if single keys have ML",
+      "parentUuid": "c4077606_18cd0f4a",
+      "revId": "54d3bb4ad048d5ce4aee538a6ed89ef830d055b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
