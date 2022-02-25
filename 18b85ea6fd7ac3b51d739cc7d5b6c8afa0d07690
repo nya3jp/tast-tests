@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13fbf634_8ecf6193",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-02-25T03:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29f2901d_a6c25b48",
+      "revId": "18b85ea6fd7ac3b51d739cc7d5b6c8afa0d07690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c8ab95b_ace7d97e",
@@ -31,6 +49,42 @@
       "writtenOn": "2022-02-25T01:44:33Z",
       "side": 1,
       "message": "1. Please run tast unit test fast_build.sh -T.\n2. Add Cq-Depend to https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3482875\n3. Manual run with new attribute.\n4. Update the TEST section.\n\nThanks.\n",
+      "revId": "18b85ea6fd7ac3b51d739cc7d5b6c8afa0d07690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbdf36a5_eb48b06a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-02-25T03:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c8ab95b_ace7d97e",
+      "revId": "18b85ea6fd7ac3b51d739cc7d5b6c8afa0d07690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d18b30_9fff384d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-02-25T03:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c8ab95b_ace7d97e",
       "revId": "18b85ea6fd7ac3b51d739cc7d5b6c8afa0d07690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7efc3bd5_017da99f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-02-25T03:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d1f417b_bc35141d",
+      "range": {
+        "startLine": 164,
+        "startChar": 23,
+        "endLine": 164,
+        "endChar": 32
+      },
+      "revId": "18b85ea6fd7ac3b51d739cc7d5b6c8afa0d07690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d06fe8c_e59e2de0",
@@ -71,6 +149,30 @@
       "writtenOn": "2022-02-24T23:15:07Z",
       "side": 1,
       "message": "graphics_drm is not a group but an attribute under group:graphics.",
+      "range": {
+        "startLine": 188,
+        "startChar": 21,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "18b85ea6fd7ac3b51d739cc7d5b6c8afa0d07690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d31476_859b92b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-02-25T03:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d06fe8c_e59e2de0",
       "range": {
         "startLine": 188,
         "startChar": 21,
