@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f98489d_6ed06266",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T01:26:32Z",
+      "side": 1,
+      "message": "I choose \"written to\".",
+      "parentUuid": "08d44f87_ada6579d",
+      "range": {
+        "startLine": 66,
+        "startChar": 64,
+        "endLine": 66,
+        "endChar": 77
+      },
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2454e1d9_9d9313d3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-24T14:16:00Z",
       "side": 1,
       "message": "Did you mean\nlogged into \"the test output file created in outDir\"\nor\nlogged into \"the test output file, which is created in outDir\"\n?",
+      "range": {
+        "startLine": 66,
+        "startChar": 77,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01da61a9_816b6064",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T01:26:32Z",
+      "side": 1,
+      "message": "I changed to \"the test output file, which is created in outDir\"",
+      "parentUuid": "2454e1d9_9d9313d3",
       "range": {
         "startLine": 66,
         "startChar": 77,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a962d90_d576af4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T01:26:32Z",
+      "side": 1,
+      "message": "I elaborated on return values, using your words, thank you!",
+      "parentUuid": "a70ca6c0_a7195b58",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c98f8a7_0264406b",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-02-24T14:16:00Z",
       "side": 1,
       "message": "Are these checks needed?\nI think cmd is created at line 72, and tast/ssh Conn.CommandContext always returns an object with these fields nil. Even when it were not, the role of these fields are like \"inputs\" that alternate behavior of Run() or Start(), so I think it\u0027d be safe to overwrite.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec_ctx.go?q\u003dfile:tast%2Fssh%20func.*CommandContext\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbba7e5d_39b47bd4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T01:26:32Z",
+      "side": 1,
+      "message": "I can remove the checks. Initially I just copied them from SeparatedOutput function in the library , which I used as example.",
+      "parentUuid": "5c98f8a7_0264406b",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7433e3b0_e01f57a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T01:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31cd9c26_f9eb5200",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6150bc61_2abe61f6",
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8676b5_0da9b7d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T01:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6150bc61_2abe61f6",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e032ddf_94d789d2",
@@ -151,6 +277,24 @@
       "writtenOn": "2022-02-24T14:16:00Z",
       "side": 1,
       "message": "Please paste the content here, because the internal URL is not accessible for all developers. The original file is long, but we\u0027ll only need 1 or 2 blocks (like the first 16 lines) as the example.\n\n$ dump_fmap /usr/local/share/tast/bios_image.bin \nhit at 0x00204000\nfmap_signature   __FMAP__\nfmap_version:    1.1\n...\nfmap_nareas:     36\narea:            1\narea_offset:     0x00000000\narea_size:       0x00400000 (4194304)\narea_name:       WP_RO\narea:            2\narea_offset:     0x00000000\narea_size:       0x00001000 (4096)\narea_name:       SI_DESC\n...",
+      "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "154a4a64_6fdf85dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T01:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e032ddf_94d789d2",
       "revId": "3f0558fa5f1b7a3049100a3abc221bdcac0c84ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
