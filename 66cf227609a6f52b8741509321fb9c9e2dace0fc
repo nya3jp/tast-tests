@@ -34,6 +34,24 @@
       "parentUuid": "1dd1c3dd_d3dff536",
       "revId": "66cf227609a6f52b8741509321fb9c9e2dace0fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a008c6d3_1bb10287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-02-25T22:40:42Z",
+      "side": 1,
+      "message": "sure ill add it in",
+      "parentUuid": "ab728466_ebca17f3",
+      "revId": "66cf227609a6f52b8741509321fb9c9e2dace0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
