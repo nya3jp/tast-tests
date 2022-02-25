@@ -59,14 +59,14 @@ func installRequiredExtensions(ctx context.Context, cr *chrome.Chrome, tconn *ch
 	docsOfflineName := "Google Docs Offline"
 	docsOfflineURL := "https://chrome.google.com/webstore/detail/google-docs-offline/ghbmnnjooekpmoecnnnilnnbdlolhkhi"
 	docsOfflineExt := cws.App{Name: docsOfflineName, URL: docsOfflineURL}
-	if err := cws.InstallApp(ctx, cr, tconn, docsOfflineExt); err != nil {
+	if err := cws.InstallApp(ctx, cr.Browser(), tconn, docsOfflineExt); err != nil {
 		return errors.Wrap(err, "failed to install Google Docs Offline extension")
 	}
 
 	proxyExtName := "Application Launcher For Drive (by Google)"
 	proxyExtURL := "https://chrome.google.com/webstore/detail/application-launcher-for/lmjegmlicamnimmfhcmpkclmigmmcbeh"
 	proxyExt := cws.App{Name: proxyExtName, URL: proxyExtURL}
-	if err := cws.InstallApp(ctx, cr, tconn, proxyExt); err != nil {
+	if err := cws.InstallApp(ctx, cr.Browser(), tconn, proxyExt); err != nil {
 		return errors.Wrap(err, "failed to install Application Launcher for Drive extension")
 	}
 	return nil
