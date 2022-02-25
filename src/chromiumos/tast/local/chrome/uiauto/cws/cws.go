@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -30,9 +31,9 @@ type App struct {
 // pollOpts is the polling interval and timeout to be used on the Chrome Web Store.
 var pollOpts = &testing.PollOptions{Interval: time.Second, Timeout: InstallationTimeout}
 
-// InstallApp installs the specified Chrome app from the Chrome Web Store.
-func InstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, app App) error {
-	cws, err := cr.NewConn(ctx, app.URL)
+// InstallApp installs the specified Chrome app from the Chrome Web Store. This works for both ash-chrome and lacros-chrome browsers.
+func InstallApp(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, app App) error {
+	cws, err := br.NewConn(ctx, app.URL)
 	if err != nil {
 		return err
 	}

@@ -164,7 +164,7 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	if err := crd.Launch(ctx, cr, tconn); err != nil {
+	if err := crd.Launch(ctx, cr.Browser(), tconn); err != nil {
 		s.Fatal("Failed to Launch: ", err)
 	}
 
