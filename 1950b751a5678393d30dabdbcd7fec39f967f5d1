@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "489decd0_1e6a5ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca874000_13614705",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 25
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a89a0abc_ac46b39f",
