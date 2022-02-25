@@ -16,6 +16,125 @@
       "message": "LGTM. Please ask a domain expert to review and give you a CR+2. Thanks.",
       "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6715bc2_0b0881c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T23:18:57Z",
+      "side": 1,
+      "message": "Type name gives the impression of a bool/function. How about using the full name for type, `processExistsVerifier`?",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63a3294_0d887c82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T23:18:57Z",
+      "side": 1,
+      "message": "Consider using full name.",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e4fa82_1f50b6c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T23:18:57Z",
+      "side": 1,
+      "message": "Typo `ensure`",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de76d250_4fff1642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T23:18:57Z",
+      "side": 1,
+      "message": "Ditto. Consider using full name.",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686d8a66_eaf34125",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/process.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T23:18:57Z",
+      "side": 1,
+      "message": "If process is the parent abstraction, the API definition appear to be chrome-centric.\nI am trying to think how a FileApp process or a generic system process would leverage this interface.",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0416002a_be4a38c5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T23:18:57Z",
+      "side": 1,
+      "message": "Is there other conditions to check that is not based on the columns? \nI am thinking either directly from Task Manager or through UI Auto, users might want to change the column display settings, and those settings do get carried at least within the same user session.",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672da8d4_aa77c174",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T23:18:57Z",
+      "side": 1,
+      "message": "Just want to point out that there is some assumption that the number of columns are always fixed. (which might be ok)",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
