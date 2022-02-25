@@ -8,6 +8,7 @@ import (
 	"context"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -275,4 +276,36 @@ func BatteryLevel(ctx context.Context, tconn *chrome.TestConn) (int, error) {
 		return -1, errors.Wrapf(err, "failed to convert battery level %v to int", m[0])
 	}
 	return level, nil
+}
+
+// RecentTabChipFinder is the finder for Phone Hub "Recent Chrome tab" chips.
+var RecentTabChipFinder = nodewith.Role(role.Button).HasClass("ContinueBrowsingChip")
+
+// RecentTabChip represents one of Phone Hub's "Recent Chrome tab" chips.
+type RecentTabChip struct {
+	URL    string
+	Finder *nodewith.Finder
+}
+
+// RecentTabChips returns all of the "Recent Chrome tab" chips currently displayed in Phone Hub.
+func RecentTabChips(ctx context.Context, tconn *chrome.TestConn) ([]RecentTabChip, error) {
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(RecentTabChipFinder.First())(ctx); err != nil {
+		return nil, errors.Wrap(err, "no recent tab chips found")
+	}
+	nodes, err := ui.NodesInfo(ctx, RecentTabChipFinder)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get UI node info about recent tab chips")
+	}
+
+	var chips []RecentTabChip
+	for _, node := range nodes {
+		// Extract the URL from the Name attribute, which looks like:
+		//   name=Browser tab 1 of 1. Blah, https://www.blah.org/
+		name := node.Name
+		parts := strings.Split(name, " ")
+		url := parts[len(parts)-1]
+		chips = append(chips, RecentTabChip{URL: url, Finder: RecentTabChipFinder.Name(name)})
+	}
+	return chips, nil
 }
