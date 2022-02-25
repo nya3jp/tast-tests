@@ -240,7 +240,7 @@ func TriggerAppListSortAndWaitForUndoButtonExist(ctx context.Context, ui *uiauto
 	}
 
 	sortContextMenuItem := nodewith.Name(sortMenuName).ClassName("MenuItemView")
-	reorderContextMenuItem := nodewith.Name("Reorder by").ClassName("MenuItemView")
+	reorderContextMenuItem := nodewith.Name("Sort by").ClassName("MenuItemView")
 	undoButton := nodewith.Name("Undo").ClassName("PillButton")
 
 	if err := uiauto.Combine("sort app list items through the context menu",
