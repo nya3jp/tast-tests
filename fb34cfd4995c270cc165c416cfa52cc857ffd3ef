@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4151bc34_560c3575",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-25T02:27:42Z",
+      "side": 1,
+      "message": "I think your code does not actually distinguish errors (like ssh connection error) from non-zero return code of the remote command.\nSo not to guarantee the data in case of error would be easier, because the test does not use the \"error happened but still use the stdout\" pattern.\n- when the command execution succeeded, the byte slice contains the output to stdout and the error is nil.\n- when any error happened during command execution (including non-zero exit status in remote), non-nil error is returned and the byte slice data is invalid.",
+      "revId": "fb34cfd4995c270cc165c416cfa52cc857ffd3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1211fab_2b6c3883",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-25T02:27:42Z",
+      "side": 1,
+      "message": "[optional] When err is non-nil, this should be (nil,err) for consistency with the other returns in above if block. (or inversely always return outbuf.Bytes() as the first return value).",
+      "revId": "fb34cfd4995c270cc165c416cfa52cc857ffd3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
