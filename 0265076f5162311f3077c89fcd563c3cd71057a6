@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc09d7d_51e7b93b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T18:40:10Z",
+      "side": 1,
+      "message": "Thanks, Ben.",
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b7a0503_66197e61",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-02-24T22:18:14Z",
       "side": 1,
       "message": "Do all these need so many digits?  Even at 1200 dpi a single pixel would represent .021mm.  I\u0027m not sure how we could ever see a difference out past 2 or 3 digits after the decimal.",
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6955c1b_1579e87e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/data/brother_dcp_l2550dw_descriptor.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T18:40:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we need them, but I was just using the exact output from `lorgnette_cli get_json_caps` for simplicity. I think we\u0027ve talked before about trimming that output, but it hasn\u0027t happened yet.",
+      "parentUuid": "7b7a0503_66197e61",
       "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "045cb5f0_bb0b0e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T18:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5859a691_1f01c8dd",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01bfc36e_7e59204e",
@@ -71,6 +130,24 @@
       "writtenOn": "2022-02-24T22:18:14Z",
       "side": 1,
       "message": "We can\u0027t take code from stackoverflow because it doesn\u0027t come with a clear license.  That said, if you wrote this from scratch I think it would end up identical.  There isn\u0027t really much room for variation here.",
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5d8c3e_b29c7da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T18:40:10Z",
+      "side": 1,
+      "message": "I changed this to be more specific to our use case.",
+      "parentUuid": "01bfc36e_7e59204e",
       "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +186,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba955a8f_81535089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T18:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e692844_bd533e19",
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bba06972_afa63100",
@@ -126,6 +221,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d46f6d_ce58ce24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T18:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bba06972_afa63100",
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8524db0_e9c0e07a",
@@ -139,6 +252,24 @@
       "writtenOn": "2022-02-24T22:18:14Z",
       "side": 1,
       "message": "If you do the random permutation suggestion, these could be folded into the loop above.  That way if there\u0027s some hypothetical interaction between two of these parameters, you have a higher chance of catching it.",
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c551911_1afc859d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T18:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8524db0_e9c0e07a",
       "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
