@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55cb619_1e1db4c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T01:28:08Z",
+      "side": 1,
+      "message": "\u003e Patch Set 10: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1398801\u003e:\n\u003e * src/chromiumos/tast/local/arc/playstore/playstore.go\n\u003e * src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go\n\u003e * src/chromiumos/tast/local/bundles/cros/arc/apputil/voicerecorder/vr.go\n\u003e * src/chromiumos/tast/local/bundles/cros/arc/audio_record_and_playback.go\n\u003e \n\nThank you for your time!",
+      "revId": "806bcf97d001f0beef7643fba513d452580268c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
