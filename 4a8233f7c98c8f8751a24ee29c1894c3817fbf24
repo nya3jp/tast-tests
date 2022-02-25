@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8274ab_bcdcbc17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-25T10:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d102df8_d755e55e",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c381851e_37fa93a9",
@@ -139,6 +157,24 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "c381851e_37fa93a9",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c426419b_3fbd66ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-25T10:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18da6864_6ace0865",
       "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
