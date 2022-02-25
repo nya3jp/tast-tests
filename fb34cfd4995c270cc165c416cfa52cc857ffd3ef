@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5444f262_381ca653",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T04:25:37Z",
+      "side": 1,
+      "message": "I used your words, since they are explaining everything very well, thank you!",
+      "parentUuid": "4151bc34_560c3575",
+      "revId": "fb34cfd4995c270cc165c416cfa52cc857ffd3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1211fab_2b6c3883",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-25T02:27:42Z",
       "side": 1,
       "message": "[optional] When err is non-nil, this should be (nil,err) for consistency with the other returns in above if block. (or inversely always return outbuf.Bytes() as the first return value).",
+      "revId": "fb34cfd4995c270cc165c416cfa52cc857ffd3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1831d5b1_87a0a04d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-25T04:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1211fab_2b6c3883",
       "revId": "fb34cfd4995c270cc165c416cfa52cc857ffd3ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
