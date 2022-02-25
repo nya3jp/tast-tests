@@ -228,12 +228,13 @@ func PerformWithRetry(ctx context.Context, cr *chrome.Chrome, maxAttempts int) e
 	return nil
 }
 
-// PerformAndClose performs opt-in, and then close the play store window.
+// PerformAndClose performs opt-in with retries, and then closes the play store window.
 func PerformAndClose(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 	ctx, cancel := context.WithTimeout(ctx, OptinTimeout+PlayStoreCloseTimeout)
 	defer cancel()
 
-	if err := Perform(ctx, cr, tconn); err != nil {
+	maxAttempts := 2
+	if err := PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 		return errors.Wrap(err, "failed to perform Play Store optin")
 	}
 	if err := WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
