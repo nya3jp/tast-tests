@@ -207,6 +207,24 @@
       "parentUuid": "5f11c7d6_57ef6799",
       "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98314d9_c9af6091",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-25T06:20:16Z",
+      "side": 1,
+      "message": "Hrm this is surprising to me. Anyway, personally I am okay with composing the FixtValue like you have done. The alternative, by the way, is to define an interface for FixtureData like we have done with FixtValue, and then the struct embedding approach should work.\n\nhidehiko@, do you have an opinion on this?",
+      "parentUuid": "a7c6584f_da3f42e8",
+      "revId": "cb067436aded1f096f1dbc783aeb086f5da1f2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

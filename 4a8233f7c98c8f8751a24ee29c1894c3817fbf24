@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e855f4e_31c475a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-25T06:20:16Z",
+      "side": 1,
+      "message": "It should work if Chrome() is implemented for crostini.FixtureData. Where is it implemented? I don\u0027t see it in fixture.go anywhere.",
+      "parentUuid": "a2096c50_e30f1d2d",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c381851e_37fa93a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
         "patchSetId": 9
