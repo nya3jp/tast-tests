@@ -16,6 +16,52 @@
       "message": "LGTM, please ask a domain expert to review and give a CR+2. Thanks.",
       "revId": "32a09556686da74582aaffa2519d81daa8002374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e2f4989_82d265f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-25T22:25:14Z",
+      "side": 1,
+      "message": "It\u0027s interesting to see so many drm tests are put into weekly suite.",
+      "range": {
+        "startLine": 171,
+        "startChar": 32,
+        "endLine": 171,
+        "endChar": 47
+      },
+      "revId": "32a09556686da74582aaffa2519d81daa8002374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22fe1c2d_efc498b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-25T22:25:14Z",
+      "side": 1,
+      "message": "Could you have perbuild here?",
+      "range": {
+        "startLine": 185,
+        "startChar": 32,
+        "endLine": 185,
+        "endChar": 48
+      },
+      "revId": "32a09556686da74582aaffa2519d81daa8002374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

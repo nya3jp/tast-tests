@@ -16,6 +16,24 @@
       "message": "@pwang should I also add graphics_nightly here as well as mainline?",
       "revId": "66cf227609a6f52b8741509321fb9c9e2dace0fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab728466_ebca17f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-02-25T22:25:14Z",
+      "side": 1,
+      "message": "How about perbuild? I don\u0027t have strong opinion on how to frequent should we schedule those super-stable CQ tests but I don\u0027t mind running it perbuild.",
+      "parentUuid": "1dd1c3dd_d3dff536",
+      "revId": "66cf227609a6f52b8741509321fb9c9e2dace0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
