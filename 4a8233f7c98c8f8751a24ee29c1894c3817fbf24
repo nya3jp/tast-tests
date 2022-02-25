@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "636c2cb1_5d20140d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-25T08:38:15Z",
+      "side": 1,
+      "message": "I see, thanks for the explanation.\n\nRegarding SetUp(WithURL), take a look at its documentation:\n// If browser type is TypeAsh, the fixture value must implement the HasChrome interface.\n// If browser type is TypeLacros, the fixture value must be of lacrosfixt.FixtValue type.\n\nMy suggestion was to always store the parent fixture value, instead of only do it in the Lacros case. But I realize now that this would require a bit more work. Let me think a bit and also try to understand why the struct embedding isn\u0027t working as discussed in another comment with Eliot. I think it\u0027s important that we get this right. Will get back to you.",
+      "parentUuid": "78478449_0dada51b",
+      "revId": "4a8233f7c98c8f8751a24ee29c1894c3817fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c381851e_37fa93a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture2.go",
         "patchSetId": 9
