@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21a0b51_8fb74d51",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-25T06:37:16Z",
+      "side": 1,
+      "message": "can we remove withRetry from here?",
+      "revId": "a1731d881ae27f72c7fec9957bd95aaadae199fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
