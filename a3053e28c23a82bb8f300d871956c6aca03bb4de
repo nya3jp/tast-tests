@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01bbe39_d722f66d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/udev.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-02-25T01:50:41Z",
+      "side": 1,
+      "message": "Is it even possible for this to be false? I thought WaitForCrashFiles won\u0027t return until all the patterns are matched?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "a3053e28c23a82bb8f300d871956c6aca03bb4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
