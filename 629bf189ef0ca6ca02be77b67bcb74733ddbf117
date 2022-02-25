@@ -102,6 +102,29 @@
       },
       "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161e3b9f_bb64af6c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-25T22:42:33Z",
+      "side": 1,
+      "message": "IIRC every call to Launch(WithURL) creates a new user data dir (at line 121).\nCurious, is it meant to save \"lacros.log\" under whatever user data dir or just the fixed location (/home/chronos/user/lacros) whether lacros is launched from the script or the shelf?",
+      "range": {
+        "startLine": 156,
+        "startChar": 36,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
