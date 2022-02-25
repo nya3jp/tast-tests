@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faac7e95_a387918b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T16:18:03Z",
+      "side": 1,
+      "message": "I agree, will fix this in the next patchset",
+      "parentUuid": "b958a8fb_8fb13105",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69b127ce_aa7e735d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "I don\u0027t know what we should expect when the policy is not set. Based on the policy name, my expectation would be the absence or the underlining of the word.",
       "parentUuid": "39972030_3ede13cc",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453468f7_155cb463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T16:18:03Z",
+      "side": 1,
+      "message": "If the policy is not set the user default references are kept untouched. This means that some words, regardless of language that was intended to be, will get marked as spell check errors for the english language.\n\nFor example, with the policy unset: the Spanish example \"tronpeta\" gets highlighted and the suggestion is \"patronage\"",
+      "parentUuid": "61c4948b_d75182bc",
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -197,6 +233,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dab1537_0818aa86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T16:18:03Z",
+      "side": 1,
+      "message": "will do 😊",
+      "parentUuid": "2ac0e911_25e594fa",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07a04a1a_4527150b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -225,6 +279,30 @@
       "writtenOn": "2022-02-25T16:04:04Z",
       "side": 1,
       "message": "nit: `check.`",
+      "range": {
+        "startLine": 88,
+        "startChar": 53,
+        "endLine": 88,
+        "endChar": 58
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73090d7_2fff63f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T16:18:03Z",
+      "side": 1,
+      "message": "will do, and remind myself to use the . at the end of comments",
+      "parentUuid": "b4dc768b_ccb667f2",
       "range": {
         "startLine": 88,
         "startChar": 53,
@@ -378,6 +456,30 @@
       "side": 1,
       "message": "While not common, we have other tests like this.\nThis way we don\u0027t need to add an extra data file, and the hosting of the html page can be skipped as well, so I support this approach.\nAbout the proper html syntax, I agree, that would be better.",
       "parentUuid": "bd1b4f6f_37af6712",
+      "range": {
+        "startLine": 120,
+        "startChar": 47,
+        "endLine": 120,
+        "endChar": 92
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5b35ed_17240fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T16:18:03Z",
+      "side": 1,
+      "message": "I see, then I could make a better html string that will no be malformed.",
+      "parentUuid": "c02b6aa3_03cd7b31",
       "range": {
         "startLine": 120,
         "startChar": 47,
