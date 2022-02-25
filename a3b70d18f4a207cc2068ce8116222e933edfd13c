@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69a6b30_671d8a64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T21:48:22Z",
+      "side": 1,
+      "message": "Is there any benefit unrolling one loop as Tast Parametrized test? \nI guess there is no easy way to do it as `searchKey` variable required access to chrome and uiauto.",
+      "revId": "a3b70d18f4a207cc2068ce8116222e933edfd13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a36147_9e59acbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-25T21:48:22Z",
+      "side": 1,
+      "message": "nit: how about success or ok?",
+      "revId": "a3b70d18f4a207cc2068ce8116222e933edfd13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
