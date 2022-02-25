@@ -10,19 +10,17 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	"path/filepath"
 	"strings"
-	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
 const (
-	systemCrashDir = "/var/spool/crash"
+	udevBaseName = `__tast_udev_crash_test\..*`
+	udevLogName  = udevBaseName + `\.log.*` // match .log and .log.gz
 )
 
 func init() {
@@ -52,55 +50,11 @@ func readLog(filename string) ([]byte, error) {
 	return ioutil.ReadAll(r)
 }
 
-func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
-	files, err := ioutil.ReadDir(systemCrashDir)
-	if err != nil {
-		if os.IsNotExist(err) {
-			return false, nil
-		}
-		return false, err
-	}
-	for _, file := range files {
-		filename := file.Name()
-		if _, found := pastCrashes[filename]; found {
-			continue
-		}
-		if !strings.HasPrefix(filename, "__tast_udev_crash_test.") {
-			continue
-		}
-		if !strings.HasSuffix(filename, ".log") && !strings.HasSuffix(filename, ".log.gz") {
-			continue
-		}
-		b, err := readLog(filepath.Join(systemCrashDir, filename))
-		if err != nil {
-			// Content error of .gz file (e.g. Unexpected EOF) can happen when
-			// the file has not been written to the end. Skip it so that the
-			// file can be visited again by the polling.
-			continue
-		}
-		if string(b) != "ok\n" {
-			continue
-		}
-		return true, nil
-	}
-	return false, nil
-}
-
 func Udev(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)
-
-	// Memorize existing crash report to distinguish new reports from them.
-	files, err := ioutil.ReadDir(systemCrashDir)
-	pastCrashes := make(map[string]struct{})
-	if err != nil && !os.IsNotExist(err) {
-		s.Fatal("Failed to read system crash dir: ", err)
-	}
-	for _, file := range files {
-		pastCrashes[file.Name()] = struct{}{}
-	}
 
 	// Use udevadm to trigger a test-only udev event representing driver failure.
 	// See 99-crash-reporter.rules for the matcing udev rule.
@@ -119,18 +73,45 @@ func Udev(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for the corresponding crash report")
 
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
+	// We might not be logged in, so also allow system crash dir.
+	crashDirs = append(crashDirs, crash.SystemCrashDir)
+
+	expectedRegexes := []string{udevBaseName + `\.meta`, udevLogName}
+
 	// Check proper crash reports are created.
-	err = testing.Poll(ctx, func(c context.Context) error {
-		found, err := checkFakeCrashes(pastCrashes)
-		if err != nil {
-			s.Fatal("Failed while polling crash log: ", err)
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedRegexes)
+	if err != nil {
+		s.Fatal("Couldn't find expected files: ", err)
+	}
+	defer func() {
+		if err := crash.RemoveAllFiles(ctx, files); err != nil {
+			s.Log("Couldn't clean up files: ", err)
+		}
+	}()
+
+	if len(files[udevLogName]) >= 1 {
+		found := false
+		for _, file := range files[udevLogName] {
+			b, err := readLog(file)
+			if err != nil {
+				// try later log files -- but this shouldn't happen, so still error.
+				s.Error("Failed reading log file: ", err)
+				continue
+			}
+			if string(b) != "ok\n" {
+				continue
+			}
+			found = true
+			break
 		}
 		if !found {
-			return errors.New("no fake crash found")
+			s.Error("No matching log file found")
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: 60 * time.Second})
-	if err != nil {
-		s.Error("Failed to wait for crash reports: ", err)
+	} else {
+		s.Error("No log files in crash report")
 	}
 }
