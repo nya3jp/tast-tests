@@ -99,7 +99,7 @@ func NewlyInstalledApps(ctx context.Context, s *testing.State) {
 	}
 
 	if tc.appType == newlyInstalledCwsApp {
-		if err := cws.InstallApp(ctx, cr, tconn, cws.App{
+		if err := cws.InstallApp(ctx, cr.Browser(), tconn, cws.App{
 			Name: tc.appName,
 			URL:  "https://chrome.google.com/webstore/detail/wicked-good-unarchiver/" + tc.appID,
 		}); err != nil {

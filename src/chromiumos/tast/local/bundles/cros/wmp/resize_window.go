@@ -405,7 +405,7 @@ func (app *cwsAppText) install(ctx context.Context) error {
 	if isInstalled {
 		return nil
 	}
-	return cws.InstallApp(ctx, app.cr, app.tconn, app.App)
+	return cws.InstallApp(ctx, app.cr.Browser(), app.tconn, app.App)
 }
 
 func (app *cwsAppText) uninstall(ctx context.Context) error {

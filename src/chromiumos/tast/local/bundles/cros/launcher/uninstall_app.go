@@ -182,7 +182,7 @@ func installApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 	switch app.source {
 	case fromCWS:
 		// The cws has already sets the installation timeout, use the ctx directly.
-		if err := cws.InstallApp(ctx, cr, tconn, app.cwsApp); err != nil {
+		if err := cws.InstallApp(ctx, cr.Browser(), tconn, app.cwsApp); err != nil {
 			return errors.Wrapf(err, "failed to install %s", app.name)
 		}
 	case fromPlayStore:

@@ -303,7 +303,7 @@ func (c *cwsApp) install(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Install app: %q", c.name)
-	return cws.InstallApp(ctx, c.cr, c.tconn, *c.app)
+	return cws.InstallApp(ctx, c.cr.Browser(), c.tconn, *c.app)
 }
 
 // uninstallAppViaSettings uninstalls the an app via ossettings.
