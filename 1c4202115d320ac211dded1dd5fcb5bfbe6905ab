@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c06826ee_93056090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:54:03Z",
+      "side": 1,
+      "message": "No particular reason other than I used as a base the test SpellCheckEnabled and that the bug report says Ash is optional. I can check other tests and add the Ash support.",
+      "parentUuid": "27549989_9d557db1",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3c5f6e9_03783a58",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -141,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c34c895_4774d0d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:54:03Z",
+      "side": 1,
+      "message": "This question I think gabor can answer it better because I am not sure.",
+      "parentUuid": "d131f56f_c0f2f412",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c6a8bc4_35e4c0ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -211,6 +247,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f85a9283_c1567fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:54:03Z",
+      "side": 1,
+      "message": "This piece of code is also from the test SpellCheckEnabled. I agree with you, it would be better to create a proper HTML file and have it in the data/ folder.",
+      "parentUuid": "bd1b4f6f_37af6712",
+      "range": {
+        "startLine": 120,
+        "startChar": 47,
+        "endLine": 120,
+        "endChar": 92
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef2eda20_d5519dc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -222,6 +282,30 @@
       "writtenOn": "2022-02-25T15:40:55Z",
       "side": 1,
       "message": "Instead of doing this complex logic with observing marker changes, couldn\u0027t we just verify that the node we expect has the correct marker set after we\u0027ve typed the text?\n\nWe could even go a step further and remove the need for embedding javascript by using `ui.Info()` to get the properties of the node and check that the marker is there in Go. Currently, markers are not one of the properties exposed through info, but the [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d165;drc\u003dbb86a0762d07a6a525157872fc9e57a69ac0ade5) suggests we are encouraged to add them. I\u0027ll defer to Gabor though if this is a valid reason for adding another property there.",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47263480_4f187f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:54:03Z",
+      "side": 1,
+      "message": "On this one I can say that I thought this was the proper way to do it because it is done by the test SpellCheckEnabled and it seems recent enough.\nBut if there is a better way to do it I am glad to update it, and the other test if it were the case.",
+      "parentUuid": "ef2eda20_d5519dc5",
       "range": {
         "startLine": 145,
         "startChar": 2,

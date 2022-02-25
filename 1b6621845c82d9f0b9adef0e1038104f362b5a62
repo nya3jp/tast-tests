@@ -16,6 +16,24 @@
       "message": "nit: the policy is `SpellcheckLanguage`, so we should treat \"spellcheck\" as a single word for consistency",
       "revId": "1b6621845c82d9f0b9adef0e1038104f362b5a62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9675003_fda5d1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:54:03Z",
+      "side": 0,
+      "message": "true, you are right. I used that file name because there is already a test spell_check_enabled.go. Guess that filename should have been spellcheck_enabled.go",
+      "parentUuid": "572b488f_23f56b95",
+      "revId": "1b6621845c82d9f0b9adef0e1038104f362b5a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
