@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8a4b25_9e3aaeab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/udev.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-02-25T01:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d91ad7_f5388fe4",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "982cef81783656536462f7e8fb86872119017916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c5ce542_372a02e5",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-25T01:29:33Z",
       "side": 1,
       "message": "It feels like WaitForCrashFiles is redundant with the testing.Poll below. Once WaitForCrashFiles is done, shouldn\u0027t the files we want be completely written out? Alternately, do we need to re-WaitForCrashFiles, if we fear that the crash files may appear later?",
+      "range": {
+        "startLine": 108,
+        "startChar": 21,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "982cef81783656536462f7e8fb86872119017916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d740cb_27a7a114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/udev.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-02-25T01:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c5ce542_372a02e5",
       "range": {
         "startLine": 108,
         "startChar": 21,
