@@ -98,3 +98,27 @@ func (c *CrosNetworkConfig) SetNetworkTypeEnabledState(ctx context.Context, netw
 
 	return nil
 }
+
+// GetNetworkStateList returns a array of states of networks based on the filter
+func (c *CrosNetworkConfig) GetNetworkStateList(ctx context.Context, filter NetworkFilter) ([]NetworkStateProperties, error) {
+	var result struct{ Result []NetworkStateProperties }
+
+	if err := c.mojoRemote.Call(ctx, &result,
+		"function(filter) { return this.getNetworkStateList(filter)}", filter); err != nil {
+		return result.Result, errors.Wrap(err, "failed to run getNetworkStateList")
+	}
+
+	return result.Result, nil
+}
+
+// GetDeviceStateList returns a array of Device states
+func (c *CrosNetworkConfig) GetDeviceStateList(ctx context.Context) ([]DeviceStateProperties, error) {
+	var result struct{ Result []DeviceStateProperties }
+
+	if err := c.mojoRemote.Call(ctx, &result,
+		"function(filter) { return this.getDeviceStateList()}"); err != nil {
+		return result.Result, errors.Wrap(err, "failed to run DeviceStateList")
+	}
+
+	return result.Result, nil
+}
