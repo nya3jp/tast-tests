@@ -29,6 +29,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -54,8 +55,9 @@ const websiteGreeting = "Hello, client"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CertSettingsPage,
-		Desc: "Test that chrome://settings/certificates page can import and use client and CA certificates",
+		Func:         CertSettingsPage,
+		LacrosStatus: testing.LacrosVariantExists,
+		Desc:         "Test that chrome://settings/certificates page can import and use client and CA certificates",
 		Contacts: []string{
 			"miersh@google.com",
 			"chromeos-commercial-networking@google.com",
@@ -239,6 +241,28 @@ func createAndUseWebsite(ctx context.Context, s *testing.State,
 	s.Log("SUCCESS: [" + websiteGreeting + "] found")
 }
 
+// useSystemSettings opens the system settings app and tries to configure a new
+// Wi-Fi connection using the client certificate imported by importClientCert.
+// Fully creating such a connection would require a special network environment,
+// so it just tests that the certificate is visible and selectable.
+func useSystemSettings(ctx context.Context, s *testing.State,
+	chrome *chrome.Chrome, ui *uiauto.Context) {
+	policyutil.OSSettingsPage(ctx, chrome, "network")
+	if err := uiauto.Combine("use system settings",
+		ui.LeftClick(nodewith.Name("Add network connection").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Add Wi-Fi…").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Security").ClassName("md-select")),
+		ui.LeftClick(nodewith.Name("EAP").Role(role.ListBoxOption)),
+		ui.LeftClick(nodewith.Name("EAP method").ClassName("md-select")),
+		ui.LeftClick(nodewith.Name("EAP-TLS").Role(role.ListBoxOption)),
+		ui.LeftClick(nodewith.Name("User certificate").ClassName("md-select")),
+		ui.LeftClick(nodewith.Name("TEST_CA_ORG [TEST_CA_ORG]").Role(role.ListBoxOption)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to select client certificate in system settings: ", err)
+	}
+	s.Log("Client cert is usable in system settings")
+}
+
 func CertSettingsPage(ctx context.Context, s *testing.State) {
 	chrome := s.FixtValue().(chrome.HasChrome).Chrome()
 	browserType := s.Param().(browser.Type)
@@ -274,4 +298,5 @@ func CertSettingsPage(ctx context.Context, s *testing.State) {
 	waitForClientCert(ctx, s)
 
 	createAndUseWebsite(ctx, s, browser, ui)
+	useSystemSettings(ctx, s, chrome, ui)
 }
