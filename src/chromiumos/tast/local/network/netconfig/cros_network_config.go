@@ -98,3 +98,48 @@ func (c *CrosNetworkConfig) SetNetworkTypeEnabledState(ctx context.Context, netw
 
 	return nil
 }
+
+func (c *CrosNetworkConfig) GetNetworkStateList(ctx context.Context, filter NetworkFilter) ([]NetworkStateProperties, error) {
+	var result struct{ Result []NetworkStateProperties }
+
+	/*	b, err := json.Marshal(filter)
+		if err != nil {
+			return result.Result, errors.New("json marshalling failed")
+		}*/
+
+	if err := c.mojoRemote.Call(ctx, &result,
+		"function(filter) { return this.getNetworkStateList(filter)}", filter); err != nil {
+		//"function(filter) { return this.getNetworkStateList(filter)}", b); err != nil {
+		return result.Result, errors.Wrap(err, "failed to run getNetworkStateList")
+	}
+	return result.Result, nil
+
+}
+
+func (c *CrosNetworkConfig) GetDeviceStateList(ctx context.Context) ([]DeviceStateProperties, error) {
+	var result struct{ Result []DeviceStateProperties }
+	if err := c.mojoRemote.Call(ctx, &result,
+		"function(filter) { return this.getDeviceStateList()}"); err != nil {
+		return result.Result, errors.Wrap(err, "failed to run DeviceStateList")
+	}
+	return result.Result, nil
+
+}
+
+func (c *CrosNetworkConfig) Testfunc(ctx context.Context) ([]string, []int, error) {
+	var result1 []string
+	var result2 []int
+
+	if err := c.mojoRemote.Call(ctx, &result1,
+		"function() { return this.dkeys}"); err != nil {
+		return result1, result2, errors.Wrap(err, "failed to run test")
+	}
+
+	if err := c.mojoRemote.Call(ctx, &result2,
+		"function() { return this.dvalues}"); err != nil {
+		return result1, result2, errors.Wrap(err, "failed to run test")
+	}
+
+	return result1, result2, nil
+
+}

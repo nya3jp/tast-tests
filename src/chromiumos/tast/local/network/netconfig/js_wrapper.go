@@ -43,6 +43,19 @@ async function() {
     async setNetworkTypeEnabledState(networkType, enable) {
       return await this.getCrosNetworkConfig().setNetworkTypeEnabledState(networkType, enable);
     },
+
+   async getDeviceStateList() {
+     return await this.getCrosNetworkConfig().getDeviceStateList();
+   },
+
+   async getNetworkStateList(filter) {
+     // Filtering is not working unless the first letter is in lower case
+     lowercased_filter = {}
+     Object.keys(filter).map(function(key,_){
+      lowercased_filter[key[0].toLowerCase()+key.slice(1)] = filter[key]});
+     return await this.getCrosNetworkConfig().getNetworkStateList(lowercased_filter);
+    },
+
   }
 }
 `
