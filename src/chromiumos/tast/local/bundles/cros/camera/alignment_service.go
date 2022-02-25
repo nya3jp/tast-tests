@@ -55,7 +55,7 @@ func (a *AlignmentService) ManualAlign(ctx context.Context, req *pb.ManualAlignR
 		return nil, errors.Wrap(err, "failed to connect Test API")
 	}
 	// TODO(b/166370953): Handle CRD timeout.
-	if err := crd.Launch(ctx, cr, tconn); err != nil {
+	if err := crd.Launch(ctx, cr.Browser(), tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to launch remote desktop")
 	}
 	testing.ContextLog(ctx, "Waiting connection")
