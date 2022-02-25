@@ -104,7 +104,7 @@ func Fsp(ctx context.Context, s *testing.State) {
 	unarchiverName := "Wicked Good Unarchiver"
 	unarchiverURL := "https://chrome.google.com/webstore/detail/wicked-good-unarchiver/mljpablpddhocfbnokacjggdbmafjnon?hl=en"
 	app := cws.App{Name: unarchiverName, URL: unarchiverURL}
-	if err := cws.InstallApp(ctx, cr, tconn, app); err != nil {
+	if err := cws.InstallApp(ctx, cr.Browser(), tconn, app); err != nil {
 		s.Fatal("Chrome app installation failed: ", err)
 	}
 
@@ -149,7 +149,7 @@ func installTextAppIfNotInstalled(ctx context.Context, cr *chrome.Chrome, tconn 
 	}
 	testing.ContextLog(ctx, "Installing the missing Text app")
 	textApp := cws.App{Name: textAppName, URL: textAppURL}
-	return cws.InstallApp(ctx, cr, tconn, textApp)
+	return cws.InstallApp(ctx, cr.Browser(), tconn, textApp)
 }
 
 // unzipFile unzips the specified "zipFile" located at "folder" using the "unarchiver".
