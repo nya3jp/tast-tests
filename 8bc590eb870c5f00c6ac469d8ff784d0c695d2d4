@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc793fc0_213eec70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468b7d0d_f47d2677",
+      "range": {
+        "startLine": 27,
+        "startChar": 29,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16e3504d_9db2fad8",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-09T04:01:42Z",
       "side": 1,
       "message": "s/suspnd/suspend/\n\nAlso, the following three error strings are not RegEx, let\u0027s remove \"Re\" suffix and move the three var to const.\n\nAlso, the three strings mean no error of specific type. How about adding \"No\" or \"Zero\" prefix? e.g. ZeroSuspendFailure",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40486f49_a86f3bc5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16e3504d_9db2fad8",
       "range": {
         "startLine": 56,
         "startChar": 2,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89869833_c21359df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5311c04_17845539",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85aee583_41c7ce8c",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-02-09T04:01:42Z",
       "side": 1,
       "message": "Poll for running suspend_stress_test",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "836f455d_3143c776",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85aee583_41c7ce8c",
       "range": {
         "startLine": 111,
         "startChar": 4,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9f8152_482b2ec9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f4bcf0b_02ba7766",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 14
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3852db7c_c66ddeb6",
@@ -163,6 +283,30 @@
       "writtenOn": "2022-02-09T04:01:42Z",
       "side": 1,
       "message": "expect zero failures for %q, got %q",
+      "range": {
+        "startLine": 121,
+        "startChar": 26,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d2c8fb_417e7d05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3852db7c_c66ddeb6",
       "range": {
         "startLine": 121,
         "startChar": 26,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50bb559_1e13fa33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bafd81c1_83ca0693",
+      "range": {
+        "startLine": 131,
+        "startChar": 26,
+        "endLine": 131,
+        "endChar": 64
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e510ba0_59910d70",
@@ -213,6 +381,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d32a9d_7c57a4ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e510ba0_59910d70",
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd8cee6c_7323a12d",
@@ -226,6 +412,30 @@
       "writtenOn": "2022-02-09T08:08:32Z",
       "side": 1,
       "message": "This is sort of redundant as the message provides the full file path.",
+      "range": {
+        "startLine": 149,
+        "startChar": 30,
+        "endLine": 149,
+        "endChar": 34
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7dad4a_b4b70f33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd8cee6c_7323a12d",
       "range": {
         "startLine": 149,
         "startChar": 30,
@@ -259,6 +469,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efca8418_a77088ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c25d4a_88cb54fd",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 95
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "445b19ce_b428b409",
@@ -272,6 +506,30 @@
       "writtenOn": "2022-02-09T04:01:42Z",
       "side": 1,
       "message": "got",
+      "range": {
+        "startLine": 157,
+        "startChar": 54,
+        "endLine": 157,
+        "endChar": 62
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe15c5a_fcc564dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "445b19ce_b428b409",
       "range": {
         "startLine": 157,
         "startChar": 54,
@@ -305,6 +563,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cbad2a_8817aa7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b64d894_df424396",
+      "range": {
+        "startLine": 172,
+        "startChar": 12,
+        "endLine": 172,
+        "endChar": 18
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c672e8_003b2c28",
@@ -318,6 +600,30 @@
       "writtenOn": "2022-02-09T08:08:32Z",
       "side": 1,
       "message": "Failed:",
+      "range": {
+        "startLine": 176,
+        "startChar": 11,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed509d8_bc5572a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c672e8_003b2c28",
       "range": {
         "startLine": 176,
         "startChar": 11,
@@ -351,6 +657,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "421ceb49_003a5d35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd47a0e_5cd3262a",
+      "range": {
+        "startLine": 180,
+        "startChar": 38,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ebee352_267f4f48",
@@ -364,6 +694,30 @@
       "writtenOn": "2022-02-09T04:01:42Z",
       "side": 1,
       "message": "const displayInfoFile \u003d ...",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46542b4_7aef5581",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ebee352_267f4f48",
       "range": {
         "startLine": 182,
         "startChar": 1,
@@ -397,6 +751,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1cee5b6_dbbcb6de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1459941d_2c7bfcd0",
+      "range": {
+        "startLine": 187,
+        "startChar": 28,
+        "endLine": 187,
+        "endChar": 63
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "887dd897_70354711",
@@ -420,6 +798,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0fd562_aa6acdee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "887dd897_70354711",
+      "range": {
+        "startLine": 191,
+        "startChar": 22,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b122bc24_cf0f84c4",
@@ -433,6 +835,30 @@
       "writtenOn": "2022-02-09T04:01:42Z",
       "side": 1,
       "message": "You may just return err.",
+      "range": {
+        "startLine": 197,
+        "startChar": 9,
+        "endLine": 197,
+        "endChar": 72
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a606adfa_d78d0235",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T11:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b122bc24_cf0f84c4",
       "range": {
         "startLine": 197,
         "startChar": 9,
