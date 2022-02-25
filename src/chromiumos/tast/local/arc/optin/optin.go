@@ -233,9 +233,11 @@ func PerformAndClose(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 	ctx, cancel := context.WithTimeout(ctx, OptinTimeout+PlayStoreCloseTimeout)
 	defer cancel()
 
-	if err := Perform(ctx, cr, tconn); err != nil {
+	maxAttempts := 2
+	if err := PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 		return errors.Wrap(err, "failed to perform Play Store optin")
 	}
+
 	if err := WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
 		// When we get here, play store is probably not shown, or it failed to be detected.
 		// Just log the message and continue.
