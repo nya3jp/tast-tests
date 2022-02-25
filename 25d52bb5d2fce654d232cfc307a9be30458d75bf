@@ -70,6 +70,30 @@
       },
       "revId": "25d52bb5d2fce654d232cfc307a9be30458d75bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9355f598_89ee51e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-25T08:56:07Z",
+      "side": 1,
+      "message": "Also, as at least two tests use the same dependency, how about having a \nhwdep.SoundCardInit() or hwdep.CalibratedSmartAmp() that filters devices with calibrated smart amp?",
+      "parentUuid": "30871611_bc8b7d87",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 114
+      },
+      "revId": "25d52bb5d2fce654d232cfc307a9be30458d75bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
