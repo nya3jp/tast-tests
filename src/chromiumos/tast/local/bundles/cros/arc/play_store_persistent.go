@@ -120,13 +120,10 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	maxAttempts := 2
+	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
 	}
 

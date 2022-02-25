@@ -79,7 +79,8 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 
 	// Show Play files.
 	// It is necessary to call optin.Perform and optin.WaitForPlayStoreShown to make sure that Play files is shown.
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	maxAttempts := 2
+	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
 	}
 	if err := optin.WaitForPlayStoreShown(ctx, tconn, 2*time.Minute); err != nil {

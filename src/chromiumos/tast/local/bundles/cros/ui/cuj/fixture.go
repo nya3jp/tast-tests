@@ -264,7 +264,8 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 			if err != nil {
 				s.Fatal("Failed to get the test conn: ", err)
 			}
-			if err := optin.Perform(ctx, cr, tconn); err != nil {
+			maxAttempts := 2
+			if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 				s.Fatal("Failed to optin to Play Store: ", err)
 			}
 
