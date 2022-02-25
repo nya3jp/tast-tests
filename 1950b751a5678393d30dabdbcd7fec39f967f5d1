@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad60463e_9fddddc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47570261_ac76ab46",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca874000_13614705",
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7455ce29_69eb0a12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a89a0abc_ac46b39f",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 7
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d170f3b_fab3aaa2",
@@ -100,6 +148,30 @@
       "writtenOn": "2022-02-24T04:39:49Z",
       "side": 1,
       "message": "Please handle this err.",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce0354b_c4a85adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d170f3b_fab3aaa2",
       "range": {
         "startLine": 117,
         "startChar": 16,
@@ -133,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89702d83_a660b36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5758f255_705a089d",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 7
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d203ad5_b786bca0",
@@ -146,6 +242,30 @@
       "writtenOn": "2022-02-24T04:39:49Z",
       "side": 1,
       "message": "This could be combined like if err \u003d ...; err !\u003d nil ...",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c845629_2e9cefab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d203ad5_b786bca0",
       "range": {
         "startLine": 130,
         "startChar": 1,
@@ -179,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8de65e_b0611f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99e347e_e42c087c",
+      "range": {
+        "startLine": 145,
+        "startChar": 17,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f9d495_532e348b",
@@ -202,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd9dda9_8beb0f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71f9d495_532e348b",
+      "range": {
+        "startLine": 150,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 16
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d52622d8_d085598e",
@@ -215,6 +383,30 @@
       "writtenOn": "2022-02-24T04:39:49Z",
       "side": 1,
       "message": "Suggest to combine them.",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 14
+      },
+      "revId": "1950b751a5678393d30dabdbcd7fec39f967f5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818503b4_177c081a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-25T00:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d52622d8_d085598e",
       "range": {
         "startLine": 177,
         "startChar": 1,
