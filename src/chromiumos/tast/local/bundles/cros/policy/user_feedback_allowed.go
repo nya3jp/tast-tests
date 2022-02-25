@@ -135,10 +135,14 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 				}
 
 				// Availability of report window popup should match wantReportOption.
-				feedbackRoot := nodewith.Name("Feedback").Role(role.RootWebArea)
+				feedbackRoot := nodewith.Name("Send feedback to Google").HasClass("RootView")
 				if param.wantReportOption {
 					if err := uia.WithTimeout(waitTimeout).WaitUntilExists(feedbackRoot)(ctx); err != nil {
 						s.Error("Failed to wait for Feedback window: ", err)
+					}
+					// Close the feedback window to continue the test in a clean state
+					if err := uia.LeftClick(nodewith.Name("Close").Ancestor(feedbackRoot))(ctx); err != nil {
+						s.Fatal("Failed to close Feedback window: ", err)
 					}
 				} else {
 					if err := uia.EnsureGoneFor(feedbackRoot, waitTimeout)(ctx); err != nil {
@@ -151,14 +155,23 @@ func UserFeedbackAllowed(ctx context.Context, s *testing.State) {
 				defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name+"_menu_access")
 
 				// Check if the option "Report an issue" is available (or not) in the
-				// Help menu.
+				// Help menu, which is accessible from the browser menu.
 				browserAppMenuButtonFinder := nodewith.ClassName("BrowserAppMenuButton").Role(role.PopUpButton)
+				if err := uia.LeftClick(browserAppMenuButtonFinder)(ctx); err != nil {
+					s.Fatal("Failed to open the browser menu: ", err)
+				}
+
+				// Ensure the test works despite the screen size.
 				helpMenuItemFinder := nodewith.ClassName("MenuItemView").Name("Help")
-				if err := uiauto.Combine("Open Help option from Chrome browser menu",
-					uia.LeftClick(browserAppMenuButtonFinder),
-					uia.LeftClick(helpMenuItemFinder),
+				if err := uiauto.Combine("Wait and find the Help option",
+					uia.WaitUntilExists(helpMenuItemFinder),
+					uia.MakeVisible(helpMenuItemFinder),
 				)(ctx); err != nil {
-					s.Fatal("Failed to open Help option from Chrome browser menu: ", err)
+					s.Fatal("Failed to find the Help option in the browser menu: ", err)
+				}
+
+				if err := uia.LeftClick(helpMenuItemFinder)(ctx); err != nil {
+					s.Fatal("Failed to open the Help option from Chrome browser menu: ", err)
 				}
 
 				// Availability of the report option in the menu should match wantReportOption.
