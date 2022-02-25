@@ -22,6 +22,30 @@
       },
       "revId": "09be9948deb6c71f3a429d0ccc64d24739e275e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5663e93_c0e2ab9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-25T00:44:39Z",
+      "side": 1,
+      "message": "I think at some point we\u0027ll probably want to exercise search and other features of the YouTube app, but for now, I think reliably getting the right video is the primary goal.",
+      "parentUuid": "567f6dc0_fe601eb3",
+      "range": {
+        "startLine": 108,
+        "startChar": 57,
+        "endLine": 108,
+        "endChar": 100
+      },
+      "revId": "09be9948deb6c71f3a429d0ccc64d24739e275e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
