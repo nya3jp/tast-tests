@@ -419,16 +419,8 @@ func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserCont
 		defer cancel()
 		defer hwCtx.SwitchToKeyboard()(cleanupCtx)
 
-		// Warm-up steps to check handwriting engine ready.
-		checkEngineReady := uiauto.Combine("wait for handwriting engine to be ready",
-			hwCtx.DrawFirstStrokeFromFile(dataPath(inputData.HandwritingFile)),
-			util.WaitForFieldNotEmpty(its.tconn, inputField.Finder()),
-			hwCtx.ClearHandwritingCanvas(),
-			its.Clear(inputField),
-		)
-
 		return uiauto.Combine("handwriting input on virtual keyboard",
-			hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
+			its.WaitForHandwritingEngineReadyOnField(hwCtx, inputField, dataPath(inputData.HandwritingFile)),
 			hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile)),
 		)(ctx)
 	}
@@ -441,6 +433,18 @@ func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserCont
 			Tags:           []useractions.ActionTag{useractions.ActionTagVKHandWriting},
 		},
 	)
+}
+
+// WaitForHandwritingEngineReadyOnField tries handwriting until the field is not empty.
+func (its *InputsTestServer) WaitForHandwritingEngineReadyOnField(hwCtx *vkb.HandwritingContext, inputField InputField, dataPathStr string) uiauto.Action {
+	// Warm-up steps to check handwriting engine ready.
+	checkEngineReady := uiauto.Combine("wait for handwriting engine to be ready",
+		hwCtx.DrawFirstStrokeFromFile(dataPathStr),
+		util.WaitForFieldNotEmpty(its.tconn, inputField.Finder()),
+		hwCtx.ClearHandwritingCanvas(),
+		its.Clear(inputField),
+	)
+	return hwCtx.WaitForHandwritingEngineReady(checkEngineReady)
 }
 
 // ValidateInputFieldForMode tests input in the given field.
