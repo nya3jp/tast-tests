@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb854c1_995a0a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-25T10:35:22Z",
+      "side": 1,
+      "message": "Yes, it is true for the rest.",
+      "parentUuid": "694e2dfa_c2c07d85",
+      "revId": "ad1205422e796fec8a5d0896667a5e9c37dcfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95852639_f5bb3306",
