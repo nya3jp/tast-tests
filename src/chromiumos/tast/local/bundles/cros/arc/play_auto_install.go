@@ -60,13 +60,10 @@ func PlayAutoInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
 
 	s.Log("Performing optin")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	maxAttempts := 2
+	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 		s.Fatal("Failed to optin: ", err)
 	}
 

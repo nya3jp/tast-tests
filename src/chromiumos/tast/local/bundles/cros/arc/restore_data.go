@@ -57,8 +57,9 @@ func anyChildDataAppPathSelector(ctx context.Context) (string, error) {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RestoreData,
-		Desc: "This verifies SELinux data restore flow in case Android /data folder has corrupted SELinux contexts",
+		Func:         RestoreData,
+		Desc:         "This verifies SELinux data restore flow in case Android /data folder has corrupted SELinux contexts",
+		LacrosStatus: testing.LacrosVariantUnknown,
 
 		Contacts: []string{
 			"khmel@chromium.org", // original author
@@ -130,13 +131,9 @@ func restoreDataInitialBoot(ctx context.Context, credPool string) (*chrome.Creds
 	}
 	defer cr.Close(ctx)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create test connection")
-	}
-
 	testing.ContextLog(ctx, "ARC is not enabled, perform optin")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	maxAttempts := 2
+	if err := optin.PerformWithRetry(ctx, cr, maxAttempts); err != nil {
 		return nil, errors.Wrap(err, "failed to optin")
 	}
 
