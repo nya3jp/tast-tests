@@ -39,6 +39,30 @@
       },
       "revId": "7e18d6fb9e137635c9ace699797fdb268d4c2d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "621edcc5_2985beb8",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-25T06:40:37Z",
+      "side": 1,
+      "message": "It would not work if we are to define func (f FixtureData) Chrome() *chrome.Chrome",
+      "parentUuid": "ea549ec9_33b837ba",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 3
+      },
+      "revId": "7e18d6fb9e137635c9ace699797fdb268d4c2d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
