@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39972030_3ede13cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:44:36Z",
+      "side": 1,
+      "message": "I was thinking about it. If the policy is unset, should we test that for each suggestion:\n1) either there is no text mark for spell check at all or,\n1) the text marker shows and the suggestion in the language-in-test is not there\n?",
+      "parentUuid": "69b127ce_aa7e735d",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bc4f404_3aaa8c59",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2022-02-25T15:31:08Z",
       "side": 1,
       "message": "Can you add English as well? Or is it handled in a different way?",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da8adaa_e10b417d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:44:36Z",
+      "side": 1,
+      "message": "We could yeah but English (US) is the default language and will be spell checked regardless of the state of this policy. That is why I was using additional languages.\nWe could add English UK for example",
+      "parentUuid": "7bc4f404_3aaa8c59",
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -209,6 +245,24 @@
       "writtenOn": "2022-02-25T15:31:08Z",
       "side": 1,
       "message": "What happens when the error is `falseErr`?",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd2ac84_44814554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-25T15:44:36Z",
+      "side": 1,
+      "message": "I started this function based on another existing test (SpellCheckEnabled), and I also find it odd.\n\nThis false error is used to not let .Poll to finish until either the\nwindow[\"spellCheckEnabled_\" + name] \u003d false;\nbecomes true or the polling time is exhausted\n\nI wonder if there a better way to do it.",
+      "parentUuid": "9dd8e3ed_5ebed4fd",
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
