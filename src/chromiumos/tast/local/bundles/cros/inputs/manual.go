@@ -312,7 +312,7 @@ func Manual(ctx context.Context, s *testing.State) {
 	}
 
 	if settings.crd {
-		if err := crd.Launch(ctx, cr, tconn); err != nil {
+		if err := crd.Launch(ctx, cr.Browser(), tconn); err != nil {
 			s.Fatal("Failed to Launch remote desktop: ", err)
 		}
 		s.Log("Waiting connection")
