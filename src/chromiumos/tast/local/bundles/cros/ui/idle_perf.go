@@ -31,7 +31,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the CPU usage while the desktop is idle",
 		Contacts:     []string{"xiyuan@chromium.org", "yichenz@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      cuj.CPUStablizationTimeout + idleDuration,
 		Pre:          arc.Booted(),
