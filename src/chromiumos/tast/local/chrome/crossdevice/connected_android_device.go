@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/mobly"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -255,4 +256,65 @@ func (c *AndroidDevice) SHA256Sum(ctx context.Context, filename string) (string,
 // RemoveMediaFile removes the media file specified by filePath from the Android device's storage and media gallery.
 func (c *AndroidDevice) RemoveMediaFile(ctx context.Context, filePath string) error {
 	return c.device.RemoveMediaFile(ctx, filePath)
+}
+
+// Constants for interacting with the Chrome app on Android.
+const (
+	chromePkg    = "com.android.chrome"
+	chromeIntent = chromePkg + "/com.google.android.apps.chrome.Main"
+)
+
+// LaunchChrome launches Chrome on the Android device.
+func (c *AndroidDevice) LaunchChrome(ctx context.Context) error {
+	if err := c.device.ShellCommand(ctx, "am", "start", "-n", chromeIntent).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to launch Chrome browser on Android")
+	}
+	return nil
+}
+
+// LaunchChromeAtURL opens the specified URL in Chrome.
+func (c *AndroidDevice) LaunchChromeAtURL(ctx context.Context, url string) error {
+	if err := c.device.ShellCommand(ctx, "am", "start", "-n", chromeIntent, "-d", url).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to launch Chrome browser on Android with URL %v", url)
+	}
+	return nil
+}
+
+// EnableChromeSync turns on Chrome Sync using the UI.
+func (c *AndroidDevice) EnableChromeSync(ctx context.Context) error {
+	// Clear Chrome's data so we have a fresh start. This makes it easier to turn on Chrome Sync through the UI.
+	if err := c.device.ShellCommand(ctx, "pm", "clear", chromePkg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to clear Chrome app data")
+	}
+
+	// Open Chrome.
+	if err := c.LaunchChrome(ctx); err != nil {
+		return err
+	}
+
+	// Set up uiautomator for UI controls.
+	d, err := ui.NewDevice(ctx, c.device)
+	if err != nil {
+		return errors.Wrap(err, "failed initializing UI automator")
+	}
+	defer d.Close(ctx)
+
+	// If Chrome is being launched for this first time on the device, we have to accept the ToS.
+	acceptBtn := d.Object(ui.ResourceID("com.android.chrome:id/terms_accept"))
+	if err := acceptBtn.WaitForExists(ctx, 3*time.Second); err == nil { // button exists, i.e. first run of Chrome
+		if err := acceptBtn.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to accept the ToS on first run of Chrome")
+		}
+	}
+
+	// Accepting the ToS automatically brings us to an opt-in page for Chrome Sync.
+	acceptBtn = d.Object(ui.ResourceID("com.android.chrome:id/positive_button"))
+	if err := acceptBtn.WaitForExists(ctx, 3*time.Second); err != nil {
+		return errors.Wrap(err, "failed to find opt-in button for Chrome Sync")
+	}
+	if err := acceptBtn.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to opt in to Chrome Sync")
+	}
+
+	return nil
 }
