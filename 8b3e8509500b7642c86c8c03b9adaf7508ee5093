@@ -83,6 +83,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44102a3c_03e0dafd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-02-25T01:20:16Z",
+      "side": 1,
+      "message": "If I understand correctly, you are trying to restore the app\u0027s pin state, right? If so, please use shelf.ResetShelfPinState(). Call that function before any change on pin states. Please read that function\u0027s code for more details.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd82e44_2fcda792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-02-25T01:20:16Z",
+      "side": 1,
+      "message": "Could you move this function to chrome/ash/shelf.go? Maybe the function should accept an array of appIDs then return an array of boolean. It makes the function calling more flexible.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17504248_4393f205",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
         "patchSetId": 1
@@ -94,6 +140,29 @@
       "writtenOn": "2022-02-24T06:31:04Z",
       "side": 1,
       "message": "document what outDir is",
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bebec34b_6e3e2423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-02-25T01:20:16Z",
+      "side": 1,
+      "message": "Question: is the test scenario in `verifyTabletMode` covered by hotseat_animation.go? I may want to avoid duplicate test scenarios.\n\nBy the way, I feel that the test cases in `verifyClamshellMode()` are largely different from `verifyTabletMode()`. Is it intended?\n\nThanks!",
+      "range": {
+        "startLine": 143,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 98
+      },
       "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
