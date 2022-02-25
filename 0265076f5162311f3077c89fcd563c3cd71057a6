@@ -90,6 +90,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b9ff2f69_17676c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/data/brother_dcp_l2550dw_descriptor.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-02-25T21:47:29Z",
+      "side": 1,
+      "message": "I created b/221480392 to track that work, and just removed the extra precision in this CL.",
+      "parentUuid": "27256aeb_cdd91553",
+      "revId": "0265076f5162311f3077c89fcd563c3cd71057a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5859a691_1f01c8dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
         "patchSetId": 6
