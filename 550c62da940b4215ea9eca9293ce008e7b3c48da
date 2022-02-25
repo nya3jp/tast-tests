@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22154cc3_a34e3362",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac6bc91f_80a66fd8",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8884b5a8_2dd38033",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-02-09T09:23:31Z",
       "side": 1,
       "message": "It doesn\u0027t matter if the name of a variable or a constant inside a function is capitalized. They are unexported. However, please be consistent. I would suggest making them uncapitalized as the general convention of variables inside a function are uncapitalized.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b1b197_bca4a06b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8884b5a8_2dd38033",
       "range": {
         "startLine": 50,
         "startChar": 2,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6981f2d_cfdebdd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04567aec_48ac38b2",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f1b478e_a5aa0f42",
@@ -134,6 +206,24 @@
       "writtenOn": "2022-02-09T09:23:31Z",
       "side": 1,
       "message": "Same. configMemSleepS3",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53fce0c2_b8293a08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f1b478e_a5aa0f42",
       "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe8e052_9721b205",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17184590_35a015c1",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "855cad97_7b4eee71",
@@ -172,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "316f0c1f_0d86bef0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "855cad97_7b4eee71",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60f4cb48_8320df66",
@@ -185,6 +311,24 @@
       "writtenOn": "2022-02-09T09:23:31Z",
       "side": 1,
       "message": "Please add a comment:\n\n// For setting suspend mode, refer to: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/power_manager/docs/suspend_stress_test.md",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e72274_dcab1974",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60f4cb48_8320df66",
       "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +356,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b474e8_6dd4fb1a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb46b1a9_c59aa42d",
+      "range": {
+        "startLine": 76,
+        "startChar": 22,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0cff038_189e6e1f",
@@ -229,6 +397,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c4952f_b720ce50",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0cff038_189e6e1f",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3164deb_f4bf10cc",
@@ -242,6 +428,30 @@
       "writtenOn": "2022-02-09T09:23:31Z",
       "side": 1,
       "message": "Failed: expect powerd configured to suspend to S3; S0ix found.",
+      "range": {
+        "startLine": 130,
+        "startChar": 13,
+        "endLine": 130,
+        "endChar": 77
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c831723_1249a980",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3164deb_f4bf10cc",
       "range": {
         "startLine": 130,
         "startChar": 13,
@@ -275,6 +485,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ea48bf_22afad92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60fbb643_3e0f1ee9",
+      "range": {
+        "startLine": 136,
+        "startChar": 22,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c85545c4_a99782e5",
@@ -288,6 +522,30 @@
       "writtenOn": "2022-02-09T09:23:31Z",
       "side": 1,
       "message": "via servo",
+      "range": {
+        "startLine": 146,
+        "startChar": 55,
+        "endLine": 146,
+        "endChar": 57
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee8c3b7_408d19c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85545c4_a99782e5",
       "range": {
         "startLine": 146,
         "startChar": 55,
@@ -323,6 +581,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8a7dc6a_c16380ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "No, all requiredEventSets should be found otherwise test will fail.",
+      "parentUuid": "f54db327_53b4c1c6",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "877081d7_2606c094",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
         "patchSetId": 2
@@ -334,6 +616,24 @@
       "writtenOn": "2022-02-09T09:23:31Z",
       "side": 1,
       "message": "The two servo power key press actions are the same, right?\n\nIf so, we may make it a for-loop of two tries.",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f6ceb6_d8801088",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T10:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "877081d7_2606c094",
       "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
