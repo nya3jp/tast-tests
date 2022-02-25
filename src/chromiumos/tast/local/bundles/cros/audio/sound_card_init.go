@@ -26,7 +26,8 @@ func init() {
 		// TODO(b/214459747): Re-enable manatee after VPD and cpufreq are plumbed through.
 		SoftwareDeps: []string{"no_manatee"},
 		// b/178479311: Skip lindar and lillipup as they have un-calibrated smart amp so that we cannot run sound_card_init.
-		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup")),
+		// b/221241958: Skip helios as it is an old project before sound_card_init.
+		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios")),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      1 * time.Minute,
