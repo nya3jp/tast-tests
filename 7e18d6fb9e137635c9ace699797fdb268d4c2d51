@@ -63,6 +63,30 @@
       },
       "revId": "7e18d6fb9e137635c9ace699797fdb268d4c2d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d56806_7034f6b4",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-25T06:47:41Z",
+      "side": 1,
+      "message": "Yeah fair. You could rename it to chrome and access via the Chrome() method. This is what we did for lacros because we only access through interface to allow the interface structure embedding method I mentioned in another comment: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go;l\u003d284;drc\u003dfe397c46c4cc287ce0680df3c008f65374016210",
+      "parentUuid": "621edcc5_2985beb8",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 3
+      },
+      "revId": "7e18d6fb9e137635c9ace699797fdb268d4c2d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
