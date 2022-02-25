@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e964465_ce2fdef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T09:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef860d73_1bbe56e2",
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e355e96_638a61ef",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-03T06:34:19Z",
       "side": 1,
       "message": "nit/style: nTab is not needed.\n\nif app.URL \u003d\u003d \"\"{\n  return ...\n}\ntab, err :\u003d newTab(...)\nif err !\u003d nil {\n  return err\n}\ndefer tab.close()",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 18
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "072fdcc6_b9074afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T09:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e355e96_638a61ef",
       "range": {
         "startLine": 101,
         "startChar": 1,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f2253b_288c59c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T09:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e90886c_afea2ce1",
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b994acb6_8876047c",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-01-03T06:34:19Z",
       "side": 1,
       "message": "style: these lines can be merged by ui.IfSuccessThen.",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 56
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f4518c_db06cbf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T09:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b994acb6_8876047c",
       "range": {
         "startLine": 129,
         "startChar": 6,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bdde4a_b65058ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T09:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99e8cd04_2f648d3c",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87168365_8fda01b2",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-01-03T06:34:19Z",
       "side": 1,
       "message": "Looks very long.\nThis will be blocker to promote these tests to critical.\n\nWhy just installing/uninstalling the app can take so long time...?\nCan this be reduced? Or if this is important, could you document in detail with its background?",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a494c0_8912ea22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-25T09:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87168365_8fda01b2",
       "range": {
         "startLine": 38,
         "startChar": 4,
