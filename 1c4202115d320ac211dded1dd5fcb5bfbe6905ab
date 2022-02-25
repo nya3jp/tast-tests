@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27549989_9d557db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-25T15:40:55Z",
+      "side": 1,
+      "message": "Is there a reason why we are only testing Lacros, and not Ash as well?",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c5f6e9_03783a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-25T15:40:55Z",
+      "side": 1,
+      "message": "Maybe it\u0027s worth documenting a bit what exactly the test\u0027s success criteria is, since it\u0027s not trivial, and I misunderstood it the first time I went through it. Knowing what the test is supposed to does would make it easier for the reader to understand the code.\n\nBasically, what I think is happening is: we type slightly misspelled words into a textbox, and expect that the spellcheck will give us the correctly spelled word as a suggestion. If we do not see that suggestion, we take it as an indicator that the language of that particular word has not been enabled.",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69b127ce_aa7e735d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -31,6 +65,40 @@
       "writtenOn": "2022-02-25T15:31:08Z",
       "side": 1,
       "message": "Can you add English as well? Or is it handled in a different way?",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a04a1a_4527150b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-25T15:40:55Z",
+      "side": 1,
+      "message": "If we only have a single test, there\u0027s no need to create a sub-test for it. Just do the entire test as part of the main test, e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/prevent_default_profile_removal.go",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d131f56f_c0f2f412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-25T15:40:55Z",
+      "side": 1,
+      "message": "Should we be looking at this in the browser settings, or OS settings instead? When I go to `chrome://settings/languages` in Ash, I get a message that I should look for them in OS settings. This specific policy I can find in `chrome://os-settings/osLanguages/input`.",
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -84,6 +152,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd1b4f6f_37af6712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-25T15:40:55Z",
+      "side": 1,
+      "message": "Wondering if this is a common pattern we use in tests, or should we be careful that invalid HTML here will bite us? IIRC, `\u003chtml\u003e` and `\u003cbody\u003e` tags need to be explicitly closed to constitute valid HTML.",
+      "range": {
+        "startLine": 120,
+        "startChar": 47,
+        "endLine": 120,
+        "endChar": 92
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2eda20_d5519dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-25T15:40:55Z",
+      "side": 1,
+      "message": "Instead of doing this complex logic with observing marker changes, couldn\u0027t we just verify that the node we expect has the correct marker set after we\u0027ve typed the text?\n\nWe could even go a step further and remove the need for embedding javascript by using `ui.Info()` to get the properties of the node and check that the marker is there in Go. Currently, markers are not one of the properties exposed through info, but the [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d165;drc\u003dbb86a0762d07a6a525157872fc9e57a69ac0ade5) suggests we are encouraged to add them. I\u0027ll defer to Gabor though if this is a valid reason for adding another property there.",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dd8e3ed_5ebed4fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -117,6 +231,29 @@
         "startChar": 87,
         "endLine": 186,
         "endChar": 92
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d89be3_b93f09e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-25T15:40:55Z",
+      "side": 1,
+      "message": "nit: maybe include which suggestion we expected to see in the message, helps with debugging if a specific language is the problem",
+      "range": {
+        "startLine": 195,
+        "startChar": 28,
+        "endLine": 195,
+        "endChar": 53
       },
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
