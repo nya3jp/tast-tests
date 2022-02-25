@@ -66,6 +66,16 @@ type meetTest struct {
 	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
 }
 
+// videoCodecReport is used to report a video codec to a performance metric so that it is easy to find in places like TPS Dashboard.
+type videoCodecReport float64
+
+// Bigger values should represent "better" codecs in some sense, because these are reported with perf.BiggerIsBetter.
+// That is silly, of course, but every metric must specify either perf.SmallerIsBetter or perf.BiggerIsBetter.
+const (
+	vp8 videoCodecReport = 0
+	vp9 videoCodecReport = 1
+)
+
 const defaultTestTimeout = 10 * time.Minute
 
 func init() {
@@ -223,11 +233,13 @@ func init() {
 //   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
 	const (
-		timeout        = 10 * time.Second
-		defaultDocsURL = "https://docs.new/"
-		jamboardURL    = "https://jamboard.google.com"
-		notes          = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-		newTabTitle    = "New Tab"
+		timeout                 = 10 * time.Second
+		defaultDocsURL          = "https://docs.new/"
+		jamboardURL             = "https://jamboard.google.com"
+		notes                   = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		newTabTitle             = "New Tab"
+		decodingCodecMetricName = "meetcuj_decoding_codec"
+		encodingCodecMetricName = "meetcuj_encoding_codec"
 	)
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
@@ -810,6 +822,23 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
+	// Report what video codecs were used for decoding and encoding.
+	if webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals"); err != nil {
+		s.Error("Failed to open chrome://webrtc-internals: ", err)
+		s.Logf("%s and %s will not be reported", decodingCodecMetricName, encodingCodecMetricName)
+	} else {
+		defer webrtcInternals.Close()
+		if err := ui.WaitUntilExists(nodewith.NameContaining("VideoStream").First())(ctx); err != nil {
+			s.Error("Failed to wait for video stream info to appear: ", err)
+		}
+		if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
+			s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
+		}
+		if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
+			s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
+		}
+	}
+
 	if err := tweakPerfValues(pv); err != nil {
 		s.Fatal("Failed to tweak the perf values: ", err)
 	}
@@ -845,4 +874,41 @@ func needToGrantPermission(ctx context.Context, conn *chrome.Conn) (bool, error)
 		}
 	}
 	return false, nil
+}
+
+// reportCodec looks for node names containing given descriptions of a vp8 video stream
+// and a vp9 video stream, and reports the detected video codec to a performance metric.
+func reportCodec(ctx context.Context, ui *uiauto.Context, pv *perf.Values, metricName, vp8Description, vp9Description string) error {
+	foundVP8, err := ui.IsNodeFound(ctx, nodewith.NameContaining(vp8Description).First())
+	if err != nil {
+		return errors.Wrap(err, "failed to check for vp8 video stream")
+	}
+
+	foundVP9, err := ui.IsNodeFound(ctx, nodewith.NameContaining(vp9Description).First())
+	if err != nil {
+		return errors.Wrap(err, "failed to check for vp9 video stream")
+	}
+
+	if !foundVP8 && !foundVP9 {
+		return errors.New("found neither a vp8 video stream nor a vp9 video stream")
+	}
+
+	if foundVP8 && foundVP9 {
+		return errors.New("found both a vp8 video stream and a vp9 video stream")
+	}
+
+	var codec videoCodecReport
+	if foundVP8 {
+		codec = vp8
+	} else if foundVP9 {
+		codec = vp9
+	}
+
+	pv.Set(perf.Metric{
+		Name:      metricName,
+		Unit:      "unitless",
+		Direction: perf.BiggerIsBetter,
+	}, float64(codec))
+
+	return nil
 }
