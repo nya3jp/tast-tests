@@ -118,10 +118,14 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		s.Fatal("Failed to create new app activity: ", err)
 	}
 	defer act.Close()
-	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to ensure the display is on: ", err)
+
+	// Keep the device awake throughout all tests.
+	resetKeepAwake, err := power.RequestKeepAwake(ctx, tconn, power.Display)
+	if err != nil {
+		s.Fatal("Failed to request the device to keep awake: ", err)
 	}
+	defer resetKeepAwake(ctx, tconn)
+
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
 	}
@@ -161,10 +165,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			// Save time for cleanup and screenshot.
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
-			// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
-			if err := power.TurnOnDisplay(ctx); err != nil {
-				s.Fatal("Failed to ensure the display is on: ", err)
-			}
+
 			// Launch the app.
 			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
@@ -286,10 +287,14 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 
 	s.Log("Installing app")
-	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to ensure the display is on: ", err)
+
+	// Keep the device awake while installing from the play store.
+	resetKeepAwake, err := power.RequestKeepAwake(ctx, tconn, power.Display)
+	if err != nil {
+		s.Fatal("Failed to request the device to keep awake: ", err)
 	}
+	defer resetKeepAwake(ctx, tconn)
+
 	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)
 	}

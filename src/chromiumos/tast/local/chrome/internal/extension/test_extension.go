@@ -132,6 +132,7 @@ func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
     "tabs",
     "tts",
     "usersPrivate",
+    "power",
     "wallpaper"
   ],
   "automation": {
