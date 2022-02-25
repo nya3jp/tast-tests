@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a17d3b2_eb50f2c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T09:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a92d3a5_77315a11",
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f862b601_3da8c6b9",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-02-24T06:31:04Z",
       "side": 1,
       "message": "can you list what it actually tests",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9981b7a6_f25e218d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T09:13:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f862b601_3da8c6b9",
       "range": {
         "startLine": 40,
         "startChar": 25,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d78dc7_c44f4d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T09:13:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ef202d65_2a5896a1",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 70
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44102a3c_03e0dafd",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-02-25T01:20:16Z",
       "side": 1,
       "message": "If I understand correctly, you are trying to restore the app\u0027s pin state, right? If so, please use shelf.ResetShelfPinState(). Call that function before any change on pin states. Please read that function\u0027s code for more details.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a57328f_c915b3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T09:13:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "44102a3c_03e0dafd",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c662ea87_f078a5b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T09:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd82e44_2fcda792",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17504248_4393f205",
@@ -144,6 +258,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a436e2af_04e4b8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T09:13:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "17504248_4393f205",
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bebec34b_6e3e2423",
@@ -157,6 +289,30 @@
       "writtenOn": "2022-02-25T01:20:16Z",
       "side": 1,
       "message": "Question: is the test scenario in `verifyTabletMode` covered by hotseat_animation.go? I may want to avoid duplicate test scenarios.\n\nBy the way, I feel that the test cases in `verifyClamshellMode()` are largely different from `verifyTabletMode()`. Is it intended?\n\nThanks!",
+      "range": {
+        "startLine": 143,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 98
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea18e495_21ea8057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-25T09:13:23Z",
+      "side": 1,
+      "message": "\u003e By the way, I feel that the test cases in `verifyClamshellMode()` are largely different from `verifyTabletMode()`. Is it intended?\nThe provided details did describe those procedures very differently, are there extra procedures or changes suggested?\n\n\n\u003e Question: is the test scenario in `verifyTabletMode` covered by hotseat_animation.go? I may want to avoid duplicate test scenarios.\nThank you for the information, `verifyTabletMode` is very similar to existing tests, we\u0027ll remove the `verifyTabletMode` in the next PS (after the discussion of procedures is settled).",
+      "parentUuid": "bebec34b_6e3e2423",
       "range": {
         "startLine": 143,
         "startChar": 6,
