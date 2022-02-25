@@ -16,6 +16,52 @@
       "message": "yamaguchi@ for visibility",
       "revId": "982cef81783656536462f7e8fb86872119017916",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d91ad7_f5388fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/udev.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-02-25T01:29:33Z",
+      "side": 1,
+      "message": "The return value of this function made more sense before when it was both waiting for the files to be written and also checking their contents. As I mentioned below, I think you need to decide who is going to wait for the good set of files. If WaitForCrashFiles is the waiter, then this should only return an error in any case where it doesn\u0027t find the log file it wants.",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "982cef81783656536462f7e8fb86872119017916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5ce542_372a02e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/udev.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-02-25T01:29:33Z",
+      "side": 1,
+      "message": "It feels like WaitForCrashFiles is redundant with the testing.Poll below. Once WaitForCrashFiles is done, shouldn\u0027t the files we want be completely written out? Alternately, do we need to re-WaitForCrashFiles, if we fear that the crash files may appear later?",
+      "range": {
+        "startLine": 108,
+        "startChar": 21,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "982cef81783656536462f7e8fb86872119017916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
