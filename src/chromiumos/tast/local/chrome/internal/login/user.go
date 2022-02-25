@@ -8,7 +8,9 @@ import (
 	"context"
 	"io"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
@@ -54,7 +56,12 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		if cfg.EphemeralUser() {
 			mountType = cryptohome.Ephemeral
 		}
-		if err = cryptohome.WaitForUserMountAndValidateType(ctx, cfg.NormalizedUser(), mountType); err != nil {
+
+		// Shorten deadline to reserve time for reading the log.
+		shortenCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+		defer cancel()
+
+		if err = cryptohome.WaitForUserMountAndValidateType(shortenCtx, cfg.NormalizedUser(), mountType); err != nil {
 			if cfg.LoginMode() == config.GAIALogin {
 				// Backup the original error.
 				origErr := err
