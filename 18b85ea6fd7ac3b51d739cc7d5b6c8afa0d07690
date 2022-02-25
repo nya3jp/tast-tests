@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c8ab95b_ace7d97e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-25T01:44:33Z",
+      "side": 1,
+      "message": "1. Please run tast unit test fast_build.sh -T.\n2. Add Cq-Depend to https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3482875\n3. Manual run with new attribute.\n4. Update the TEST section.\n\nThanks.\n",
+      "revId": "18b85ea6fd7ac3b51d739cc7d5b6c8afa0d07690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d1f417b_bc35141d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 1
