@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "775b5457_6e567976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-25T08:44:06Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 137,
+        "startChar": 56,
+        "endLine": 137,
+        "endChar": 63
+      },
+      "revId": "c331e2661e92ae108b9479226d7a4901b56fc253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb76ee26_6dcbe6d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-25T08:44:06Z",
+      "side": 1,
+      "message": "Nit: Extra indent at start of line, and bit of an odd place for a line break.",
+      "revId": "c331e2661e92ae108b9479226d7a4901b56fc253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e0594c_4fbe5f04",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-25T08:44:06Z",
+      "side": 1,
+      "message": "Does OpenLinuxSettings already do the navigation for you (open parent, then open child)? If not, seems like a reasonable thing to do instead of making every caller do it.",
+      "revId": "c331e2661e92ae108b9479226d7a4901b56fc253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
