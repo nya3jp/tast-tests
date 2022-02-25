@@ -16,6 +16,24 @@
       "message": "Let\u0027s add chromeos-perfmetrics-eng as well",
       "revId": "e92cd323790d7feffb145cee5a1091001fd3e745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b7ae3e_dc4267d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-25T21:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "553696f3_dd76c251",
+      "revId": "e92cd323790d7feffb145cee5a1091001fd3e745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
