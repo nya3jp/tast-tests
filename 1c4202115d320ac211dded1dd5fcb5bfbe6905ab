@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8629cabd_ead03354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-25T16:04:04Z",
+      "side": 1,
+      "message": "The focus was Lacros tests when I created the bug, as the test coverage of it is smaller.\nWe plan to make a change in the fixture in the future where the Ash and Lacros tests become even more closer, so for now I would say this is enough.\nOf course if someone wants to cover the Ash variant as well, that is encouraged.",
+      "parentUuid": "27549989_9d557db1",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3c5f6e9_03783a58",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -49,6 +67,24 @@
       "writtenOn": "2022-02-25T15:40:55Z",
       "side": 1,
       "message": "Maybe it\u0027s worth documenting a bit what exactly the test\u0027s success criteria is, since it\u0027s not trivial, and I misunderstood it the first time I went through it. Knowing what the test is supposed to does would make it easier for the reader to understand the code.\n\nBasically, what I think is happening is: we type slightly misspelled words into a textbox, and expect that the spellcheck will give us the correctly spelled word as a suggestion. If we do not see that suggestion, we take it as an indicator that the language of that particular word has not been enabled.",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b958a8fb_8fb13105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-25T16:04:04Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "d3c5f6e9_03783a58",
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -90,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61c4948b_d75182bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-25T16:04:04Z",
+      "side": 1,
+      "message": "I don\u0027t know what we should expect when the policy is not set. Based on the policy name, my expectation would be the absence or the underlining of the word.",
+      "parentUuid": "39972030_3ede13cc",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bc4f404_3aaa8c59",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -125,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ac0e911_25e594fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-25T16:04:04Z",
+      "side": 1,
+      "message": "I see. If the OS language is handles separately, there is no need to add another English one. But in this case, can you add a comment on this?",
+      "parentUuid": "2da8adaa_e10b417d",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07a04a1a_4527150b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -136,6 +208,29 @@
       "writtenOn": "2022-02-25T15:40:55Z",
       "side": 1,
       "message": "If we only have a single test, there\u0027s no need to create a sub-test for it. Just do the entire test as part of the main test, e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/prevent_default_profile_removal.go",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4dc768b_ccb667f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-25T16:04:04Z",
+      "side": 1,
+      "message": "nit: `check.`",
+      "range": {
+        "startLine": 88,
+        "startChar": 53,
+        "endLine": 88,
+        "endChar": 58
+      },
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -271,6 +366,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c02b6aa3_03cd7b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-25T16:04:04Z",
+      "side": 1,
+      "message": "While not common, we have other tests like this.\nThis way we don\u0027t need to add an extra data file, and the hosting of the html page can be skipped as well, so I support this approach.\nAbout the proper html syntax, I agree, that would be better.",
+      "parentUuid": "bd1b4f6f_37af6712",
+      "range": {
+        "startLine": 120,
+        "startChar": 47,
+        "endLine": 120,
+        "endChar": 92
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef2eda20_d5519dc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -305,6 +424,30 @@
       "writtenOn": "2022-02-25T15:54:03Z",
       "side": 1,
       "message": "On this one I can say that I thought this was the proper way to do it because it is done by the test SpellCheckEnabled and it seems recent enough.\nBut if there is a better way to do it I am glad to update it, and the other test if it were the case.",
+      "parentUuid": "ef2eda20_d5519dc5",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5f7238_37c235ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-25T16:04:04Z",
+      "side": 1,
+      "message": "This is a tough question. While it would make this test nicer, it seems like a one off use case of this info. I\u0027ll discuss it with the others.",
       "parentUuid": "ef2eda20_d5519dc5",
       "range": {
         "startLine": 145,
