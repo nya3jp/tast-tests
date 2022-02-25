@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/benchmark/setup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -75,7 +76,7 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	s.Logf("Launching %s", extName)
-	if err := launchChromeExtension(ctx, cr, tconn, extName, extID, extStoreURL); err != nil {
+	if err := launchChromeExtension(ctx, cr.Browser(), tconn, extName, extID, extStoreURL); err != nil {
 		s.Fatalf("Failed to launch %s, error: %v", extName, err)
 	}
 
@@ -219,7 +220,7 @@ func CRXPRT2(ctx context.Context, s *testing.State) {
 	}
 }
 
-func launchChromeExtension(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, name, ID, URL string) error {
+func launchChromeExtension(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, name, ID, URL string) error {
 	isInstalled, err := ash.ChromeAppInstalled(ctx, tconn, ID)
 	if err != nil {
 		return errors.Wrap(err, "failed to check Chrome app existance")
@@ -227,7 +228,7 @@ func launchChromeExtension(ctx context.Context, cr *chrome.Chrome, tconn *chrome
 	if !isInstalled {
 		testing.ContextLogf(ctx, "Chrome extension %s not exist, try to install", name)
 		app := cws.App{Name: name, URL: URL}
-		if err := cws.InstallApp(ctx, cr, tconn, app); err != nil {
+		if err := cws.InstallApp(ctx, br, tconn, app); err != nil {
 			return errors.Wrapf(err, "failed to install %s", name)
 		}
 	}
