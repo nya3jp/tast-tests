@@ -168,6 +168,19 @@ func Drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p Dra
 		return errors.Wrap(err, "failed to get bounds of all windows")
 	}
 
+	verifyBounds := func(ctx context.Context) error {
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			if initialBounds := initialBoundsMap[w.ID]; !w.BoundsInRoot.Equals(initialBounds) {
+				return errors.Errorf("got window bounds %v; want %v", w.BoundsInRoot, initialBounds)
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "failed to verify bounds of all windows")
+		}
+		return nil
+	}
+	verifyBoundsTimeout := &testing.PollOptions{Timeout: 10 * time.Second}
+
 	if err := pc.Drag(
 		p[0],
 		pc.DragTo(p[1], duration),
@@ -180,23 +193,17 @@ func Drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p Dra
 			// match the initial bounds because the drag begins and ends at p[0].
 			// If the drag does not move/resize any windows, this code is okay as
 			// the final bounds should match the initial bounds in that case too.
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-					if initialBounds := initialBoundsMap[w.ID]; !w.BoundsInRoot.Equals(initialBounds) {
-						return errors.Errorf("got window bounds %v; want %v", w.BoundsInRoot, initialBounds)
-					}
-					return nil
-				}); err != nil {
-					return errors.Wrap(err, "failed to verify bounds of all windows")
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-				return errors.Wrap(err, "failed to wait for window bounds to be what they were before the drag")
+			if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
+				testing.ContextLog(ctx, "Warning: Failed to wait for expected window bounds before ending drag (see https://crbug.com/1297297): ", err)
 			}
 			return nil
 		},
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag")
+	}
+
+	if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
+		return errors.Wrap(err, "failed to wait for expected window bounds after ending drag (which should never happen, regardless of https://crbug.com/1297297)")
 	}
 
 	return nil
