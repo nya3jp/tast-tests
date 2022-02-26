@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b676c74f_d5d9749a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-02-26T19:51:17Z",
+      "side": 1,
+      "message": "Hi,\n\nThis is a test that enables/disables Cellular device using Mojo API PTAL.\n\nRegards\nShijin ",
+      "revId": "402bb34f8ac22dd83651aa368db4287328c3a120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
