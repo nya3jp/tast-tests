@@ -7,16 +7,18 @@ package arcappgameperf
 import (
 	"context"
 	"regexp"
+	"strings"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -50,139 +52,70 @@ func RobloxLogin(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.roblox.client"
 		appActivity = ".startup.ActivitySplash"
+		// The inputs rendered by Roblox are not immediately active after being clicked
+		// so wait a moment for the engine to make the input active before interacting with it.
+		waitForActiveInputTime = time.Second * 5
+		// Stores how long the game should be benchmarked.
+		gameBenchmarkTime = time.Minute * 1
 	)
 
-	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(launchParams testutil.TestParams) error {
-		// Pull out screen bounds first.
-		bounds, err := launchParams.Activity.SurfaceBounds(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get surface bounds")
-		}
-		if bounds.Width <= 0 || bounds.Height <= 0 {
-			return errors.New("bounds should be positive")
-		}
-
-		// onAppReady: Landing will appear in logcat after the game is fully loaded.
-		if err := launchParams.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
-			return errors.Wrap(err, "onAppReady was not found in LogCat")
-		}
-
+	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) error {
 		// Get Username and Password for Roblox.
 		username := s.RequiredVar("arcappgameperf.roblox_username")
 		password := s.RequiredVar("arcappgameperf.roblox_password")
 
-		return performLogin(ctx, s.OutDir(), username, password, launchParams, bounds)
+		// Start up keyboard and ACUITI.
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to open keyboard")
+		}
+		defer kb.Close()
+
+		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
+
+		// Make sure Roblox is launched.
+		// onAppReady: Landing will appear in logcat after the game is fully loaded.
+		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
+			return errors.Wrap(err, "onAppReady was not found in LogCat")
+		}
+
+		if err := uiauto.Combine("Enter login information",
+			// Click login button.
+			uda.Tap(uidetection.TextBlock([]string{"Log", "In"})),
+
+			// Click username field and enter username.
+			uda.Tap(uidetection.Word("Username/Email/Phone")),
+			action.Sleep(waitForActiveInputTime),
+			kb.TypeAction(username),
+
+			// Click password field and enter password.
+			uda.Tap(uidetection.Word("Password").First()),
+			action.Sleep(waitForActiveInputTime),
+			kb.TypeAction(password),
+
+			// Click the log in button.
+			uda.Tap(uidetection.TextBlock(strings.Split("Log In", " ")).First()),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to finish test")
+		}
+
+		// Start timer for metrics.
+		startTime := time.Now()
+
+		// onAppReady: AvatarExperienceLandingPage will appear in logcat after the game is fully logged in.
+		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sAvatarExperienceLandingPage`))); err != nil {
+			return errors.Wrap(err, "\"onAppReady: AvatarExperienceLandingPage\" was not found in LogCat")
+		}
+
+		// Save the metric in crosbolt.
+		loginTime := time.Now().Sub(startTime)
+		perfValues := perf.NewValues()
+		perfValues.Set(testutil.LoginTimePerfMetric(), loginTime.Seconds())
+
+		if err := perfValues.Save(s.OutDir()); err != nil {
+			return errors.Wrap(err, "failed to save performance values")
+		}
+
+		return nil
 	})
-}
-
-// performLogin assumes a fully launched Roblox activity, performs a login, returning an errors that occur, and uploads the login time metric.
-func performLogin(ctx context.Context, outDir, username, password string, params testutil.TestParams, bounds coords.Rect) error {
-	// Hard coded heuristics for Roblox login.
-	const (
-		initiateLoginButton = 0.53
-		usernameField       = 0.46
-		passwordField       = 0.53
-		submitLoginButton   = 0.6
-		// All Roblox fields exist at the middle of the screen, width-wise.
-		screenMid = 0.5
-		// sleepTime reserves time to wait between peripheral interactions.
-		sleepTime = time.Second * 5
-	)
-
-	// Start up keyboard.
-	kb, err := input.VirtualKeyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open virtual keyboard")
-	}
-	defer kb.Close()
-
-	// Derive test connection.
-	tconn := params.TestConn
-
-	// Click screen anywhere.
-	// TODO(b/215396708): Find solution for additional mouse click.
-	if err := mouse.Click(tconn, coords.NewPoint(0, 0), mouse.LeftButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click first login button")
-	}
-	if err := testing.Sleep(ctx, sleepTime); err != nil {
-		return errors.Wrap(err, "failed to sleep after clicking to focus")
-	}
-
-	// Locate/click on login button.
-	loginCoords1, err := testutil.GetCoords(ctx, tconn, bounds, screenMid, initiateLoginButton)
-	if err != nil {
-		return errors.Wrap(err, "failed to get first login coordinates")
-	}
-	if err := mouse.Click(tconn, loginCoords1, mouse.LeftButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click first login button")
-	}
-	if err := testing.Sleep(ctx, sleepTime); err != nil {
-		return errors.Wrap(err, "failed to sleep after clicking first login button")
-	}
-
-	// Locate/click username field, and type username.
-	usernameCoords, err := testutil.GetCoords(ctx, tconn, bounds, screenMid, usernameField)
-	if err != nil {
-		return errors.Wrap(err, "failed to get username coordinates")
-	}
-	if err := mouse.Click(tconn, usernameCoords, mouse.LeftButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click username field")
-	}
-	if err := testing.Sleep(ctx, sleepTime); err != nil {
-		return errors.Wrap(err, "failed to sleep after clicking username field")
-	}
-
-	if err := kb.Type(ctx, username); err != nil {
-		return errors.Wrap(err, "failed to write username")
-	}
-	if err := testing.Sleep(ctx, sleepTime); err != nil {
-		return errors.Wrap(err, "failed to sleep after typing username")
-	}
-
-	// Locate/click password field, and enter.
-	passwordCoords, err := testutil.GetCoords(ctx, tconn, bounds, screenMid, passwordField)
-	if err != nil {
-		return errors.Wrap(err, "failed to get password coordinates")
-	}
-	if err := mouse.Click(tconn, passwordCoords, mouse.LeftButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click password field")
-	}
-	if err := testing.Sleep(ctx, sleepTime); err != nil {
-		return errors.Wrap(err, "failed to sleep after clicking password field")
-	}
-
-	if err := kb.Type(ctx, password); err != nil {
-		return errors.Wrap(err, "failed to write password")
-	}
-	if err := testing.Sleep(ctx, sleepTime); err != nil {
-		return errors.Wrap(err, "failed to sleep after typing password")
-	}
-
-	// Locate login button, start timer, and click login button.
-	loginCoords2, err := testutil.GetCoords(ctx, tconn, bounds, screenMid, submitLoginButton)
-	if err != nil {
-		return errors.Wrap(err, "failed to get password coordinates")
-	}
-	if err := mouse.Click(tconn, loginCoords2, mouse.LeftButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click second login button")
-	}
-
-	// Calculate start time for login metric.
-	startTime := time.Now()
-
-	// onAppReady: AvatarExperienceLandingPage will appear in logcat after the game is fully logged in.
-	if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sAvatarExperienceLandingPage`))); err != nil {
-		return errors.Wrap(err, "\"onAppReady: AvatarExperienceLandingPage\" was not found in LogCat")
-	}
-
-	// Save the metric in crosbolt.
-	loginTime := time.Now().Sub(startTime)
-	perfValues := perf.NewValues()
-	perfValues.Set(testutil.LoginTimePerfMetric(), loginTime.Seconds())
-
-	if err := perfValues.Save(outDir); err != nil {
-		return errors.Wrap(err, "failed to save performance values")
-	}
-
-	return nil
 }
