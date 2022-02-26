@@ -40,6 +40,9 @@ func init() {
 		Params: []testing.Param{{
 			Name: "remember_password",
 			Val:  true,
+		}, {
+			Name: "forget_password",
+			Val:  false,
 		}},
 	})
 }
@@ -53,6 +56,7 @@ func SMBPassword(ctx context.Context, s *testing.State) {
 	)
 
 	fixt := s.FixtValue().(smb.FixtureData)
+	rememberPassword := s.Param().(bool)
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to login to Chrome: ", err)
@@ -103,6 +107,18 @@ func SMBPassword(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	UncheckRememberMyPasswordIfRequired := func(ctx context.Context) error {
+		if !rememberPassword {
+			return uiauto.Combine("uncheck Remember my password",
+				kb.AccelAction("Tab"),
+				kb.AccelAction("Enter"),
+				kb.AccelAction("Tab"),
+				kb.AccelAction("Tab"),
+			)(ctx)
+		}
+		return nil
+	}
+
 	ui := uiauto.New(tconn)
 	fileShareURLTextBox := nodewith.Name("File share URL").Role(role.TextField)
 	if err := uiauto.Combine("add secureshare via Files context menu",
@@ -115,6 +131,7 @@ func SMBPassword(ctx context.Context, s *testing.State) {
 		kb.TypeAction(smbUsername),
 		kb.AccelAction("Tab"), // Tab to the password box.
 		kb.TypeAction(smbPassword),
+		UncheckRememberMyPasswordIfRequired,
 		kb.AccelAction("Enter"), // Add the Samba share.
 		files.OpenPath(filesapp.FilesTitlePrefix+shareName, shareName),
 		files.WaitForFile(textFile),
@@ -144,8 +161,36 @@ func SMBPassword(ctx context.Context, s *testing.State) {
 	// Verify the Samba share does not prompt for a password.
 	if err := uiauto.Combine("ensure secureshare is still available",
 		files.OpenPath(filesapp.FilesTitlePrefix+shareName, shareName),
+		enterCredentialsIfPasswordForgotten(tconn, kb, files, rememberPassword, smbUsername, smbPassword),
 		files.WaitForFile(textFile),
 	)(ctx); err != nil {
 		s.Fatal("Failed to ensure secureshare is still available: ", err)
 	}
+}
+
+// enterCredentialsIfPasswordForgotten ensures the password prompt is shown
+// after a restart and then enter the credentials and press enter.
+func enterCredentialsIfPasswordForgotten(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, files *filesapp.FilesApp, rememberPassword bool, smbUsername, smbPassword string) uiauto.Action {
+	return func(ctx context.Context) error {
+		if rememberPassword {
+			return nil
+		}
+
+		ui := uiauto.New(tconn)
+		usernameTextbox := nodewith.Role(role.TextField).Name("Username")
+		refreshButton := nodewith.Role(role.Button).Name("Refresh")
+
+		return uiauto.Combine("wait for dialog and enter credentials",
+			ui.WaitUntilExists(usernameTextbox),
+			ui.LeftClick(usernameTextbox),
+			kb.TypeAction(smbUsername),
+			kb.AccelAction("Tab"),
+			kb.TypeAction(smbPassword),
+			kb.AccelAction("Enter"),
+			ui.WaitUntilGone(usernameTextbox),
+			files.WaitUntilExists(refreshButton),
+			files.LeftClick(refreshButton),
+		)(ctx)
+	}
+
 }
