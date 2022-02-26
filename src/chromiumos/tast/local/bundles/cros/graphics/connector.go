@@ -65,10 +65,10 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "",
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(dpPlusModels...)),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(dpPlusModels...), hwdep.SkipOnPlatform("volteer-manatee")),
 			}, {
 				Name:              "bad_bios",
-				ExtraHardwareDeps: hwdep.D(hwdep.Model(dpPlusModels...)),
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(dpPlusModels...), hwdep.Platform("volteer-manatee")),
 				ExtraAttr:         []string{"informational"},
 			},
 		},
