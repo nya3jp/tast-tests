@@ -605,6 +605,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "492e3a16_3d8c88d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-26T09:59:08Z",
+      "side": 1,
+      "message": "The implementation cannot satisfy the logic you proposed.\nFor example, \nrequiredEventSets \u003d [[re0_0, re0_1], [re1_0, re_1_1]]\nand let\u0027s assume all re* are true except re1_0. \n\nThe first requiredEventSet loop sets foundAllRequiredEventsInSet, which sets requiredEventsFound \u003d true and stops the iteration of requiredEventSets. However, re1_0 is false. According to your logic, any required event in requiredEventSets fails, requiredEventsFound should be set to false.\n\nThe implementation of line 169 should be:\n`requiredEventsFound :\u003d true`\n\nand line 179-181 should be:\n```\nif !foundAllRequiredEventsInSet {\n  requiredEventsFound \u003d false\n  break\n}\n```\n\nOr you may consider having a shortcut:\n```\n  for _, eventSet :\u003d range(requiredEventSets) {\n    for _, ev :\u003d range(eventSet) {\n      evr :\u003d regexp.MustCompile(ev)\n      if !eventMessageContainMatch(ctx, events, evr) {\n        s.Fatal(\u0027Failed as a required event is missing: %s\u0027, evr)\n      }\n    }\n  }\n```",
+      "parentUuid": "b8a7dc6a_c16380ae",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "877081d7_2606c094",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
         "patchSetId": 2
