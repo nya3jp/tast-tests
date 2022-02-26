@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -20,18 +21,35 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const smbdSetupTimeout = 5 * time.Second
+const (
+	smbdSetupTimeout = 5 * time.Second
+	smbpasswdFile    = "smbpasswd"
+)
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "smbStarted",
-		Desc:            "Samba server started with 2 shares ready",
+		Desc:            "Samba server started with 2 shares available",
 		Contacts:        []string{"chromeos-files-syd@chromium.org", "benreich@chromium.org"},
 		Parent:          "chromeLoggedIn",
-		Impl:            &fixture{},
+		Impl:            &fixture{startChrome: true},
 		SetUpTimeout:    chrome.LoginTimeout + smbdSetupTimeout,
 		ResetTimeout:    smbdSetupTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{smbpasswdFile},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "smbStartedWithoutChrome",
+		Desc: `Samba server started with 2 shares available with
+						  unmounting of SMB mounts and Chrome cleanup expected
+						  to be handled by the test`,
+		Contacts:        []string{"chromeos-files-syd@chromium.org", "benreich@chromium.org"},
+		Impl:            &fixture{startChrome: false},
+		SetUpTimeout:    smbdSetupTimeout,
+		ResetTimeout:    smbdSetupTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Data:            []string{smbpasswdFile},
 	})
 }
 
@@ -43,6 +61,10 @@ type FixtureData struct {
 }
 
 type fixture struct {
+	// True starts a Chrome instance within this fixture, used if Chrome needs
+	// needs to be restarted or manipulated as it doesn't get locked.
+	startChrome bool
+
 	cr       *chrome.Chrome
 	server   *Server
 	guestDir string
@@ -53,7 +75,9 @@ type fixture struct {
 // minimal samba guest configuration and a folder for a public SMB share.
 func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	success := false
-	f.cr = s.ParentValue().(*chrome.Chrome)
+	if f.startChrome {
+		f.cr = s.ParentValue().(*chrome.Chrome)
+	}
 	defer func() {
 		if !success {
 			f.cr = nil
@@ -95,6 +119,11 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		s.Fatal("Failed to create guest samba configuration: ", err)
 	}
 
+	// Move the passdb file to Samba temporary directory.
+	if err := fsutil.CopyFile(s.DataPath("smbpasswd"), filepath.Join(f.tempDir, smbpasswdFile)); err != nil {
+		s.Fatal("Failed to copy smbpasswd file: ", err)
+	}
+
 	// Start the smbd process which will dump an error log if it is not
 	// terminated by a SIGTERM.
 	server := NewServer(guestSambaConf)
@@ -114,8 +143,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 // TearDown ensures the smb daemon is shutdown gracefully and all the temporary
 // directories and files are cleaned up.
 func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	if err := unmountAllSmbMounts(ctx, f.cr); err != nil {
-		s.Error("Failed to unmount all SMB mounts: ", err)
+	if f.startChrome && f.cr != nil {
+		if err := UnmountAllSmbMounts(ctx, f.cr); err != nil {
+			s.Error("Failed to unmount all SMB mounts: ", err)
+		}
 	}
 	f.cr = nil
 	if err := f.server.Stop(ctx); err != nil {
@@ -131,8 +162,10 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 // Reset unmounts any mounted SMB shares and removes all the contents of the
 // guest share in between tests.
 func (f *fixture) Reset(ctx context.Context) error {
-	if err := unmountAllSmbMounts(ctx, f.cr); err != nil {
-		return err
+	if f.startChrome && f.cr != nil {
+		if err := UnmountAllSmbMounts(ctx, f.cr); err != nil {
+			testing.ContextLog(ctx, "Failed to unmount all SMB mounts: ", err)
+		}
 	}
 	return removeAllContents(ctx, f.guestDir)
 }
@@ -147,6 +180,10 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 // shares and testing of other Samba configuration.
 func createGuestSambaConf(ctx context.Context, sharePath, confLocation string) (string, error) {
 	sambaConf := `private dir = ` + confLocation + `
+[global]
+	security = user
+	smb passwd file = ` + filepath.Join(confLocation, smbpasswdFile) + `
+	passdb backend = smbpasswd
 
 [guestshare]
 	path = ` + sharePath + `
@@ -156,17 +193,27 @@ func createGuestSambaConf(ctx context.Context, sharePath, confLocation string) (
 	create mask = 0644
 	directory mask = 0755
 	force user = chronos
+	read only = no
+
+[secureshare]
+	path = ` + sharePath + `
+	guest ok = no
+	writeable = yes
+	browseable = yes
+	create mask = 0644
+	directory mask = 0755
+	valid users = chronos
 	read only = no`
 
 	sambaFileLocation := filepath.Join(confLocation, "smb.conf")
 	return sambaFileLocation, ioutil.WriteFile(sambaFileLocation, []byte(sambaConf), 0644)
 }
 
-// unmountAllSmbMounts uses the chrome.fileManagerPrivate.removeMount API to
+// UnmountAllSmbMounts uses the chrome.fileManagerPrivate.removeMount API to
 // unmount all the identified SMB FUSE filesystems. Chrome maintains a mapping
 // of SMB shares so if we unmount via cros-disks it still thinks the volume is
 // mounted with chained tests all failing after the first.
-func unmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
+func UnmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
 	// Open the test API.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
