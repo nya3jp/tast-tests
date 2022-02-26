@@ -61,7 +61,7 @@ func init() {
 			"chromeos-gfx@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"no_qemu"},
+		SoftwareDeps: []string{"no_qemu", "no_manatee"},
 		Params: []testing.Param{
 			{
 				Name:              "",
