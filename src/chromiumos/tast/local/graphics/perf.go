@@ -128,6 +128,45 @@ func collectGPUPerformanceCounters(ctx context.Context, interval time.Duration) 
 	return counters, megaPeriods, nil
 }
 
+// AMD does not use the command line tool perf to report GPU utilization, but it
+// provides a sysfs file that can be read with the GPU utilization as a
+// percent, see the kernel amdgpu_pm.c file. This function reads the values
+// during interval and returns it in the counters' "rcs" and "total", imitating
+// what perf and collectGPUPerformanceCounters() would do.
+// TODO(b/181352867): Remove this method when AMD implements perf counters.
+func collectAMDBusyCounter(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error) {
+
+	const amdBusyGPUFile = "/sys/class/drm/card0/device/gpu_busy_percent"
+	if _, err = os.Stat(amdBusyGPUFile); err != nil {
+		return nil, 0, nil
+	}
+
+	accuBusy := int64(0)
+	const samplePeriod = 10 * time.Millisecond
+	numSamples := int(interval / samplePeriod)
+	for i := 0; i < numSamples; i++ {
+		if err := testing.Sleep(ctx, samplePeriod); err != nil {
+			return nil, 0, errors.Wrap(err, "error sleeping")
+		}
+
+		v, err := ioutil.ReadFile(amdBusyGPUFile)
+		if err != nil {
+			return nil, 0, errors.Wrapf(err, "error reading from %s", amdBusyGPUFile)
+		}
+		busy, err := strconv.ParseInt(strings.TrimSuffix(string(v), "\n"), 10, 64)
+		if err != nil {
+			return nil, 0, errors.Wrapf(err, "error converting %s", string(v))
+		}
+		accuBusy += busy
+	}
+
+	counters = make(map[string]time.Duration)
+	// Divide accuBusy by hundred to remove the percentage.
+	counters["rcs"] = time.Duration(float64(accuBusy) / 100.0 * float64(time.Second))
+	counters["total"] = time.Duration(numSamples * int(time.Second))
+	return counters, 0, nil
+}
+
 // collectPackagePerformanceCounters gathers the amount of cycles the Package
 // was in each of a given C-States, providing also the total amount of cycles
 // elapsed. If the hardware/kernel doesn't provide this type of event monitoring
@@ -239,7 +278,11 @@ func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 		return errors.Wrap(err, "error collecting graphics performance counters")
 	}
 	if counters == nil {
-		return nil
+		// Give a chance to AMD-specific counter readings.
+		counters, megaPeriods, err = collectAMDBusyCounter(ctx, t)
+		if counters == nil {
+			return nil
+		}
 	}
 	if counters["total"].Milliseconds() == 0 {
 		return errors.New("total elapsed time counter is zero")
