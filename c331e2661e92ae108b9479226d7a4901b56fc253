@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b68513e_ed4dac0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-27T22:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "775b5457_6e567976",
+      "range": {
+        "startLine": 137,
+        "startChar": 56,
+        "endLine": 137,
+        "endChar": 63
+      },
+      "revId": "c331e2661e92ae108b9479226d7a4901b56fc253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb76ee26_6dcbe6d3",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2b0f33_d849b540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-27T22:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb76ee26_6dcbe6d3",
+      "revId": "c331e2661e92ae108b9479226d7a4901b56fc253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27e0594c_4fbe5f04",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-02-25T08:44:06Z",
       "side": 1,
       "message": "Does OpenLinuxSettings already do the navigation for you (open parent, then open child)? If not, seems like a reasonable thing to do instead of making every caller do it.",
+      "revId": "c331e2661e92ae108b9479226d7a4901b56fc253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad824ac_44925496",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-27T22:49:07Z",
+      "side": 1,
+      "message": "You\u0027re absolutely right, and the original approach was to pass sub-setting page names to OpenLinuxSettings. However, that was quite unreliable on some machines, and so I split it out and that worked.  I added a comment in there about it, and Judy recommended I abstract it into a new method in the settings package, which I\u0027ve now done in a more recent patchset.\n\nThere is now a new method OpenLinuxManagedSharedFoldersSetting which does the same two-step approach, so the caller can call that one method directly.  We will observe this for a while and see how to improve it, because it seems the original OpenLinuxSettings does not WAI reliably.",
+      "parentUuid": "27e0594c_4fbe5f04",
       "revId": "c331e2661e92ae108b9479226d7a4901b56fc253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
