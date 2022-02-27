@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d66d89_b39a105a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/session_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-02-27T09:26:21Z",
+      "side": 1,
+      "message": "Add email-id here",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 83
+      },
+      "revId": "302e1e77e699925a7f605ca9b044a5d338a2d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fd3eb7_132ac309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/session_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-02-27T09:26:21Z",
+      "side": 1,
+      "message": "How to stop and start session ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "302e1e77e699925a7f605ca9b044a5d338a2d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f140b01_e45c160c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-02-27T09:26:21Z",
+      "side": 1,
+      "message": "Added `FullRestore` to make primary lacros restorable.",
+      "range": {
+        "startLine": 232,
+        "startChar": 66,
+        "endLine": 232,
+        "endChar": 77
+      },
+      "revId": "302e1e77e699925a7f605ca9b044a5d338a2d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
