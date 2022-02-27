@@ -7,11 +7,14 @@ package imesettings
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 )
@@ -241,6 +244,49 @@ func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, is
 				useractions.ActionTagAutoCapitalization,
 			},
 		})
+}
+
+// EnableInputOptionsInShelf returns a user action to change IME setting
+// to show / hide IME options in shelf.
+func EnableInputOptionsInShelf(uc *useractions.UserContext, shown bool) *useractions.UserAction {
+	ui := uiauto.New(uc.TestAPIConn())
+	imeMenuTrayButtonFinder := nodewith.Name("IME menu button").Role(role.Button)
+
+	userActionName := "Show input options in the shelf"
+	if !shown {
+		userActionName = "Hide input options in the shelf"
+	}
+
+	action := func(ctx context.Context) error {
+		setting, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
+		if err != nil {
+			return errors.Wrap(err, "failed to launch input settings")
+		}
+
+		return uiauto.Combine(strings.ToLower(userActionName),
+			setting.ToggleShowInputOptionsInShelf(uc.Chrome(), shown),
+			func(ctx context.Context) error {
+				if shown {
+					return ui.WaitUntilExists(imeMenuTrayButtonFinder)(ctx)
+				}
+				return ui.WaitUntilGone(imeMenuTrayButtonFinder)(ctx)
+			},
+			setting.Close,
+		)(ctx)
+	}
+
+	return useractions.NewUserAction(
+		userActionName,
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagOSSettings,
+				useractions.ActionTagIMEShelf,
+			},
+		},
+	)
 }
 
 // SetKoreanKeyboardLayout returns a user action to change 'Korean keyboard layout' setting.
