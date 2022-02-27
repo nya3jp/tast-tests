@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d9cf9e_f941bf32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T23:58:38Z",
+      "side": 1,
+      "message": "lgtm % defer to e14s team\u0027s review for domain knowledge.",
+      "revId": "50d58d7e93a8e4ecc7b0f6b5bd082a152a86e202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
