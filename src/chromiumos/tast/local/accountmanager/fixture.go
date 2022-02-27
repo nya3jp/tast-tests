@@ -107,6 +107,12 @@ func (f FixtureData) LacrosPath() string {
 	return f.LacrosFixt.LacrosPath()
 }
 
+// Options used to launch a CrOS chrome.
+// Implement lacrosfixt.FixtValue interface.
+func (f FixtureData) Options() []chrome.Option {
+	return nil
+}
+
 // UserTmpDir returns the path to be used for Lacros's user data directory.
 // This directory will be wiped on every reset call.
 // We used to use generic tmp directory, and kept it until whole Tast run

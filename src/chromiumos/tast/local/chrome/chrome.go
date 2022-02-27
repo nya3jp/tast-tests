@@ -216,10 +216,11 @@ func (c *Chrome) LogFilename() string {
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
-	if locked {
-		panic("Cannot create Chrome instance while precondition is being used")
-	}
-
+	/*
+		if locked {
+			panic("Cannot create Chrome instance while precondition is being used")
+		}
+	*/
 	ctx, st := timing.Start(ctx, "chrome_new")
 	defer st.End()
 
