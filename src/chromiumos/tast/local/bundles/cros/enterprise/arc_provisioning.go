@@ -115,9 +115,7 @@ func init() {
 // - check that force-installed Android packages cannot be uninstalled.
 func ARCProvisioning(ctx context.Context, s *testing.State) {
 	const (
-		searchBarTextStart = "Search for apps"
-		emptyPlayStoreText = "No results found."
-		bootTimeout        = 4 * time.Minute
+		bootTimeout = 4 * time.Minute
 		// CloudDPC sign-in timeout set in code is 3 minutes.
 		timeoutWaitForPlayStore = 3 * time.Minute
 	)
@@ -169,41 +167,81 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
 
+	if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
+		s.Fatal("Package verification failed: ", err)
+	}
+
+	if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
+		s.Fatal("Failed to launch asset browser: ", err)
+	}
+
+	if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
+		s.Fatal("Play Store verification failed: ", err)
+	}
+}
+
+// ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
+func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
 	// Ensure that Android packages are force-installed by ARC policy.
 	// Note: if the user policy for the user is changed, the packages listed in
 	// credentials files must be updated.
 	if err := a.WaitForPackages(ctx, packages); err != nil {
-		s.Fatal("Failed to force install packages: ", err)
+		return errors.Wrap(err, "failed to force install packages")
 	}
 
 	// Ensure that Andriod packages are set as not-uninstallable by ARC policy.
-	s.Log("Waiting for packages being marked as not uninstallable")
+	testing.ContextLog(ctx, "Waiting for packages being marked as not uninstallable")
 	if err := waitForBlockUninstall(ctx, cr, a, packages); err != nil {
-		s.Fatal("Failed to mark packages as not uninstallable: ", err)
+		return errors.Wrap(err, "failed to mark packages as not uninstallable")
 	}
 
 	// Try uninstalling packages with ADB, should fail.
-	s.Log("Trying to uninstall packages")
+	testing.ContextLog(ctx, "Trying to uninstall packages")
 	for _, p := range packages {
 		if a.Uninstall(ctx, p) == nil {
-			s.Fatalf("Package %q can be uninstalled", p)
+			return errors.Errorf("Package %q can be uninstalled", p)
 		}
 	}
 
-	// Ensure Play Store is not empty.
+	return nil
+}
+
+// ensurePlayStoreNotEmpty ensures that the asset browser does not display empty screen.
+func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
+	const (
+		searchBarTextStart = "Search for apps"
+		emptyPlayStoreText = "No results found."
+	)
+
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
-		s.Fatal("Failed to initialize UI Automator: ", err)
+		return errors.Wrap(err, "failed to initialize UI Automator")
 	}
 	defer d.Close(ctx)
 
 	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, 10*time.Second); err != nil {
-		s.Fatal("Unknown Play Store UI screen is shown: ", err)
+		return errors.Wrap(err, "unknown Play Store UI screen is shown")
 	}
 
 	if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-		s.Fatal("Play Store is empty")
+		return errors.New("Play Store is empty")
 	}
+
+	return nil
+}
+
+// launchAssetBrowserActivity starts the activity that displays the available apps.
+func launchAssetBrowserActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
+	testing.ContextLog(ctx, "Starting Asset Browser activity")
+	act, err := arc.NewActivity(a, "com.android.vending", "com.android.vending.AssetBrowserActivity")
+	if err != nil {
+		return errors.Wrap(err, "failed to create new activity")
+	}
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed starting Play Store or Play Store is empty")
+	}
+
+	return nil
 }
 
 // readPackageRestrictions reads content of package restrictions file.
