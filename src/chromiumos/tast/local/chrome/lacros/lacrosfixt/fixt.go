@@ -7,6 +7,7 @@ package lacrosfixt
 
 import (
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/testing"
 )
 
@@ -22,6 +23,7 @@ type FixtValue interface {
 	Mode() SetupMode               // Mode used to get the lacros binary.
 	LacrosPath() string            // Root directory for lacros-chrome.
 	UserTmpDir() string            // Path to the directory that can store user data.
+	Options() []config.Option
 }
 
 // NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and

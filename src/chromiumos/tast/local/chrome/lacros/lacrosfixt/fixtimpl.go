@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -222,6 +223,22 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
+	// lacrosPrimaryRestorable is a fixture to bring up Lacros as a primary browser from the rootfs partition by default
+	// and support the fullrestore after a reboot or restarting a ui session.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPrimaryRestorable",
+		Desc:     "Lacros Chrome from rootfs as a primary browser",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com", "abhijeet@igalia.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary", "FullRestore"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
 	// lacrosUIKeepAlive is similar to lacros but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
 	// of by command line, and this test assuming that Lacros will be keep alive
@@ -290,6 +307,7 @@ type fixtValueImpl struct {
 	// pointer here such that FixtValue().UserTmpDir() can return the
 	// current one.  TODO(hidehiko): Clean this up.
 	userTmpDir *string
+	options    []config.Option
 }
 
 // Chrome gets the CrOS-chrome instance.
@@ -323,16 +341,22 @@ func (f *fixtValueImpl) UserTmpDir() string {
 	return *f.userTmpDir
 }
 
+// Options returns chrome.Option used to launch a CrOS-chrome.
+func (f *fixtValueImpl) Options() []chrome.Option {
+	return f.options
+}
+
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
 type fixtImpl struct {
-	mode       SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath string                                        // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
-	cr         *chrome.Chrome                                // Connection to CrOS-chrome.
-	tconn      *chrome.TestConn                              // Test-connection for CrOS-chrome.
-	prepared   bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	fOpt       chrome.OptionsCallback                        // Function to generate Chrome Options
-	makeValue  func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
-	userTmpDir string                                        // Path to the tmp directory storing lacros user data.
+	mode         SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
+	lacrosPath   string                                        // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
+	cr           *chrome.Chrome                                // Connection to CrOS-chrome.
+	tconn        *chrome.TestConn                              // Test-connection for CrOS-chrome.
+	prepared     bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	fOpt         chrome.OptionsCallback                        // Function to generate Chrome Options
+	makeValue    func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
+	userTmpDir   string                                        // Path to the tmp directory storing lacros user data.
+	optsToReturn []chrome.Option                               // Options used to launch a CrOS-chrome.
 }
 
 // SetUp is called by tast before each test is run. We use this method to initialize
@@ -417,6 +441,8 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		opts = append(opts, extraOpts...)
 	}
 
+	// Cache the chrome.Option and
+	f.optsToReturn = opts
 	if f.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -538,7 +564,7 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath, &f.userTmpDir}
+	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath, &f.userTmpDir, f.optsToReturn}
 }
 
 // waitForPathToExist is a helper method that waits the given binary path to be present
