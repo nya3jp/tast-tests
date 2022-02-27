@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124ecc14_19320783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T21:32:14Z",
+      "side": 1,
+      "message": "what is `Optin`?",
+      "range": {
+        "startLine": 39,
+        "startChar": 39,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "b73f66872f0e5969ed1490b271410755457612f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ddb6fe_1e0db491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T21:32:14Z",
+      "side": 1,
+      "message": "not just voice, isn\u0027t it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "b73f66872f0e5969ed1490b271410755457612f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181dae1a_f709af17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T21:32:14Z",
+      "side": 1,
+      "message": "Suggest to extract voice, handwriting, emoji to individual functions for better readability.\n```\nInputMethodShelfInputs(...){\n  ...\n  inputMethodShelfVoice(...)\n  inputMethodShelfHandwriting(...)\n  ...\n}\n\n```\n\nUsing comments `start of XXX test` and `end of XXX test` doesn\u0027t look like a good practice.",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "b73f66872f0e5969ed1490b271410755457612f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04dacfc3_9c60f11c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T21:32:14Z",
+      "side": 1,
+      "message": "just `time.Second`.\nPlus, inconsistent usage with step 2 `uiauto.New(tconn).Sleep(time.Second)`. You may want to refactor step to the same.",
+      "range": {
+        "startLine": 109,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 24
+      },
+      "revId": "b73f66872f0e5969ed1490b271410755457612f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0db8aed_f3863950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T21:32:14Z",
+      "side": 1,
+      "message": "`ui.Sleep(...)`",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "b73f66872f0e5969ed1490b271410755457612f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ead16ce_77ccde05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T21:32:14Z",
+      "side": 1,
+      "message": "based on the context, should we use the word `VK` here?",
+      "range": {
+        "startLine": 172,
+        "startChar": 39,
+        "endLine": 172,
+        "endChar": 42
+      },
+      "revId": "b73f66872f0e5969ed1490b271410755457612f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11465252_f21c6bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-27T21:32:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 20
+      },
+      "revId": "b73f66872f0e5969ed1490b271410755457612f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
