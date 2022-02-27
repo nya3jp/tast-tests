@@ -16,6 +16,139 @@
       "message": "pwang@ / ihf@ WDYT?\n\n(I think it\u0027d still need to change the Sleep() to a testing.Poll()...?)",
       "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66416618_56902e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-27T03:03:44Z",
+      "side": 1,
+      "message": "Wouldn\u0027t a testing.Poll() be more expensive in terms of impacting the measurement? I like the sleep, but well, if you want to be accurate this is going to be more work than it is worth probably.",
+      "parentUuid": "cc785f28_3f877bef",
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edefde8e_81aecdc7",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-27T03:03:44Z",
+      "side": 1,
+      "message": "Why so large? Considering that you are blocking below, does it impact the reading if you were to use 60Hz or 120Hz?\n\nAnd if you need to make it large, can you raise an error if time.Duration is not at least say 10 * samplePeriod? (This should be immediately noticeable in any new test, right now people sample for a long time.)",
+      "range": {
+        "startLine": 145,
+        "startChar": 22,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14a963b_949daabe",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-27T03:03:44Z",
+      "side": 1,
+      "message": "Nit: I know it isn\u0027t much work, but best to move conversion and division out of the loop to be as lightweight as possible and not impact sampling.",
+      "range": {
+        "startLine": 157,
+        "startChar": 14,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4701e13_dd82d62d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-27T03:03:44Z",
+      "side": 1,
+      "message": "You assume the Sleep is accurate. I assume it can take longer when overloaded. Which means that this function will undersample the bad case and give a nicer number. But I think it isn\u0027t worth fixing. (You would have to measure actually passed time and use that as weight in the accumulation.) But maybe leave a note to that regard?",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0601f373_67a4f8a5",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-27T03:03:44Z",
+      "side": 1,
+      "message": "One issue is that you unnecessarily sleep at the end but not at all at the beginning. As this is a poor men\u0027s integral you could sleep half of samplePeriod at the beginning (and not at the end). But maybe it is easiest to mive the sleep before ioutil.ReadFile(amdBusyGPUFile). After all you want to give the GPU some exercise first and stabilize.",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe2fecd_202aeac1",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-02-27T03:03:44Z",
+      "side": 1,
+      "message": "I am confused why samplePeriod doesn\u0027t show up here.",
+      "range": {
+        "startLine": 163,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
