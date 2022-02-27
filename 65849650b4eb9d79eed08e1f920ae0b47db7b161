@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc393e4f_7ca44af5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-27T22:47:06Z",
+      "side": 1,
+      "message": "Hey Judy, PTAL. This partially automates https://testtracker.googleplex.com/testplans/testcase/detail/2864885?id\u003d445\u0026revision\u003d169 with the next CL in the chain fully automating it 😊",
+      "revId": "65849650b4eb9d79eed08e1f920ae0b47db7b161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
