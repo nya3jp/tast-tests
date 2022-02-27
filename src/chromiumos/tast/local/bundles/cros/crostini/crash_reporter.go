@@ -146,4 +146,13 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	if re := regexp.MustCompile(osRegexp); !re.Match(metaData) {
 		s.Fatalf("Did not find expected line %q in metadata file", osRegexp)
 	}
+
+	// If the crash report files were as expected, delete
+	// them. This stops them from being uploaded to the crash
+	// server and polluting the data with fake crashes.
+	//
+	// Don't die on error, because this is just a cleanup step.
+	if err = crash.RemoveAllFiles(ctx, files); err != nil {
+		s.Log("Failed to clean up generated crash files: ", err)
+	}
 }
