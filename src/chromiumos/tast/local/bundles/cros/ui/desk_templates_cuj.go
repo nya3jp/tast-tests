@@ -129,7 +129,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Find the "save desk as a template" button.
-		saveDeskButton := nodewith.ClassName("PillButton")
+		saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
 		desksTemplatesGridView := nodewith.ClassName("DesksTemplatesGridView")
 
 		if err := uiauto.Combine(
@@ -138,7 +138,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			// Wait for the desk templates grid shows up.
 			ac.WaitUntilExists(desksTemplatesGridView),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "error in saveing a desk template")
+			return errors.Wrap(err, "error in saving a desk template")
 		}
 
 		// Exits overview mode.
