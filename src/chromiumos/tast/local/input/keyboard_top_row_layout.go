@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // TopRowLayout represents the top row layout of the Chromebook keyboard.
@@ -33,13 +34,10 @@ type TopRowLayout struct {
 	MediaLaunchApp string
 }
 
-// KeyboardTopRowLayout returns the layout of the top row (function keys) for a given keyboard.
-// This is because not all Chromebook keyboards have the same functionality associated to the functions keys.
-// As an example, the Toggle Zoom key could be mapped to F3 or F4 depending on the Chromebook model.
-func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRowLayout, error) {
+var (
 	// "mapping 1" and "mapping 2" taken from:
 	// https://cs.chromium.org/chromium/src/ui/chromeos/events/event_rewriter_chromeos.cc?l=1143&rcl=3028a8be77afd57282d664b6bb07f6d4d01edc55
-	mapping1 := TopRowLayout{
+	mapping1 = TopRowLayout{
 		BrowserBack:    "F1",
 		BrowserForward: "F2",
 		BrowserRefresh: "F3",
@@ -53,7 +51,7 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 	}
 
 	// BROWSER_FORWARD removed, MEDIA_PLAY_PAUSE added.
-	mapping2 := TopRowLayout{
+	mapping2 = TopRowLayout{
 		BrowserBack:    "F1",
 		BrowserRefresh: "F2",
 		ZoomToggle:     "F3",
@@ -69,7 +67,7 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 	// Wilco mappings taken from:
 	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.cc;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e;l=1599
 	// MEDIA_PLAY_PAUSE removed, MEDIA_LAUNCH_APP2 added.
-	mappingWilco := TopRowLayout{
+	mappingWilco = TopRowLayout{
 		BrowserBack:    "search+F1",
 		BrowserRefresh: "search+F2",
 		ZoomToggle:     "search+F3",
@@ -84,7 +82,7 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 
 	// This is the minimal set of required top row keys for custom top row
 	// layouts.
-	mappingCustom := TopRowLayout{
+	mappingCustom = TopRowLayout{
 		BrowserBack:    "back",
 		BrowserRefresh: "refresh",
 		ZoomToggle:     "fullscreen",
@@ -96,7 +94,29 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 		VolumeDown:     "volumedown",
 		VolumeUp:       "volumeup",
 	}
+)
 
+// customMapping includes top row layouts for different custom function_row_physmap definitions.
+var customMapping = map[string]TopRowLayout{
+	// Delbin platform.
+	"EA E7 91 92 93 94 95 A0 AE B0": TopRowLayout{
+		BrowserBack:    "documents",
+		BrowserRefresh: "send",
+		ZoomToggle:     "sendfile",
+		SelectTask:     "deletefile",
+		Screenshot:     "xfer",
+		BrightnessDown: "prog1",
+		BrightnessUp:   "prog2",
+		VolumeMute:     "closecd",
+		VolumeDown:     "exit",
+		VolumeUp:       "edit",
+	},
+}
+
+// KeyboardTopRowLayout returns the layout of the top row (function keys) for a given keyboard.
+// This is because not all Chromebook keyboards have the same functionality associated to the functions keys.
+// As an example, the Toggle Zoom key could be mapped to F3 or F4 depending on the Chromebook model.
+func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRowLayout, error) {
 	props, err := udevProperties(ctx, ew.Device())
 	if err != nil {
 		return nil, err
@@ -106,11 +126,15 @@ func KeyboardTopRowLayout(ctx context.Context, ew *KeyboardEventWriter) (*TopRow
 		return nil, err
 	}
 
-	// Logic taken from here:
-	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
-	if _, ok := attrs["function_row_physmap"]; ok {
+	if physmap, ok := attrs["function_row_physmap"]; ok {
+		if val, ok := customMapping[strings.ToUpper(strings.TrimSpace(physmap))]; ok {
+			return &val, nil
+		}
+		testing.ContextLogf(ctx, "Keyboard top row layout for physmap %q is not defined; using default one", physmap)
 		return &mappingCustom, nil
 	}
+	// Logic taken from here:
+	// https://source.chromium.org/chromium/chromium/src/+/HEAD:ui/chromeos/events/event_rewriter_chromeos.h;l=56;drc=3e2b7d89ce6261e00e6e723c13c52d0d41bcc69e
 	if val, ok := props["CROS_KEYBOARD_TOP_ROW_LAYOUT"]; ok {
 		switch val {
 		case "1":

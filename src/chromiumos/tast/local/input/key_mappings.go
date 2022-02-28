@@ -133,6 +133,8 @@ var namedKeyCodes = map[string]EventCode{
 	"space":     KEY_SPACE,
 	"tab":       KEY_TAB,
 	"esc":       KEY_ESC,
+	"pageup":    KEY_PAGEUP,
+	"pagedown":  KEY_PAGEDOWN,
 
 	"left":  KEY_LEFT,
 	"right": KEY_RIGHT,
@@ -164,6 +166,17 @@ var namedKeyCodes = map[string]EventCode{
 	"volumedown":     KEY_VOLUMEDOWN,
 	"volumeup":       KEY_VOLUMEUP,
 	"micmute":        KEY_MICMUTE,
+
+	"documents":  KEY_DOCUMENTS,
+	"send":       KEY_SEND,
+	"sendfile":   KEY_SENDFILE,
+	"deletefile": KEY_DELETEFILE,
+	"xfer":       KEY_XFER,
+	"prog1":      KEY_PROG1,
+	"prog2":      KEY_PROG2,
+	"closecd":    KEY_CLOSECD,
+	"exit":       KEY_EXIT,
+	"edit":       KEY_EDIT,
 }
 
 // parseAccel parses a string in the format accepted by the Accel function.
