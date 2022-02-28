@@ -17,18 +17,6 @@ import (
 	"chromiumos/tast/local/crostini"
 )
 
-var testFiles = []string{
-	"launch_browser.go",
-	"verify_app_wayland.go",
-}
-
-func TestParams(t *testing.T) {
-	params := crostini.MakeTestParams(t)
-	for _, filename := range testFiles {
-		genparams.Ensure(t, filename, params)
-	}
-}
-
 var testFilesFix = []string{
 	"audio_basic.go",
 	"audio_playback_configurations.go",
@@ -89,6 +77,23 @@ func TestFixTestParams(t *testing.T) {
 	for _, filename := range testFilesFix {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			UseFixture: true,
+		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+var lacrosTests = []string{
+	"launch_browser.go",
+	"verify_app_wayland.go",
+}
+
+func TestLacrosTestParams(t *testing.T) {
+	for _, filename := range lacrosTests {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Timeout:    3 * time.Minute,
+			UseFixture: true,
+			TestLacros: true,
+			Val:        "browser.TypeAsh",
 		}})
 		genparams.Ensure(t, filename, params)
 	}
