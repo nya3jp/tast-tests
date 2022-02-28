@@ -16,6 +16,24 @@
       "message": "Why do we subtract 1 here?\n\nAlso, given that this is now standard deviation, shouldn\u0027t this be `stdDev :\u003d ...` or something like that, for readability?",
       "revId": "9743b0756f8ee289e16aa870064bb5b55fed287b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac1759f_a9e6629a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-02-28T19:01:18Z",
+      "side": 1,
+      "message": "The formula for stdDev is sqrt((sum(x_i - x_mean)^2) / (n - 1)), so we\u0027re subtracting 1 there to account for the n-1 in the denominator.\n\nAnd, good point about the confusing use of variance/stdDev, I\u0027ve changed to stdDev everywhere. Thanks!",
+      "parentUuid": "07b2610d_88fdfa22",
+      "revId": "9743b0756f8ee289e16aa870064bb5b55fed287b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
