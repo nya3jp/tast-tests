@@ -16,6 +16,23 @@
       "message": "I do not think it is ready to be in cq with the high fail rate on kukui-arc-r (krane).",
       "revId": "e3a15d012937a84a7ccf5cc5a90181789e4358e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c99e1513_b212b983",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-02-28T09:28:31Z",
+      "side": 1,
+      "message": "Hi Judy, PTAL\n\nI think this test is stable enough now.",
+      "revId": "e3a15d012937a84a7ccf5cc5a90181789e4358e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
