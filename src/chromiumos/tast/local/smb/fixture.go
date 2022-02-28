@@ -22,6 +22,8 @@ import (
 )
 
 const (
+	// GuestShareName is the standard share used by most settings.
+	GuestShareName   = "guestshare"
 	smbdSetupTimeout = 5 * time.Second
 	smbpasswdFile    = "smbpasswd"
 )
