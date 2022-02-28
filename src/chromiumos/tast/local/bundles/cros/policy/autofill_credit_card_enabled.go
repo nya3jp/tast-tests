@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 	"crypto/tls"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
@@ -64,8 +65,17 @@ func init() {
 	})
 }
 
-func newLocalHTTPSTestServer(handler http.Handler, certFile, keyFile string) (*httptest.Server, error) {
-	server := httptest.NewUnstartedServer(handler)
+func newLocalHTTPSTestServer(htmlFile, certFile, keyFile string) (*httptest.Server, error) {
+	server := httptest.NewUnstartedServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case "GET":
+			http.ServeFile(w, r, htmlFile)
+		case "POST":
+			// TODO: What should I do here to ensure the credit card details get saved?
+			fmt.Fprintf(w, "Thanks for filling in your credit card details.")
+		}
+	}))
+
 	cert, err := tls.LoadX509KeyPair(certFile, keyFile)
 	if err != nil {
 		return nil, err
@@ -89,29 +99,29 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	server, err := newLocalHTTPSTestServer(http.FileServer(s.DataFileSystem()), s.DataPath(autofillCreditCardCertFile), s.DataPath(autofillCreditCardKeyFile))
+	server, err := newLocalHTTPSTestServer(s.DataPath(autofillCreditCardHTMLFile), s.DataPath(autofillCreditCardCertFile), s.DataPath(autofillCreditCardKeyFile))
 	if err != nil {
 		s.Fatal("Failed to start the server: ", err)
 	}
 	defer server.Close()
 
 	creditCardFields := []struct {
-		// The field's name on the Chrome's settings page.
-		fieldName string
 		// The value which is set on the settings page and which should have been filled into the html input field after the autofill has been triggered.
 		fieldValue string
 		// The field's corresponding id on autofill_credit_card_enabled.html
 		htmlFieldID string
 	}{
 		{
-			fieldName:   "Card number",
-			fieldValue:  "1234123412341234",
+			fieldValue:  "4111111111111111", // A fake Visa fulfilling the Luhn algorithm.
 			htmlFieldID: "cc-number",
 		},
 		{
-			fieldName:   "Name on card",
 			fieldValue:  "Tester",
 			htmlFieldID: "cc-name",
+		},
+		{
+			fieldValue:  time.Now().AddDate( /*year=*/ 1, 0, 0).Format("01/2006"),
+			htmlFieldID: "cc-exp",
 		},
 	}
 
@@ -159,6 +169,7 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 			defer closeBrowser(cleanupCtx)
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
+			// Ensure saving payment methods toggle is accordingly enabled/disabled.
 			if err := policyutil.SettingsPage(ctx, cr, br, "payments").
 				SelectNode(ctx, nodewith.
 					Name("Payment methods").
@@ -173,38 +184,11 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 			// a credit card in the settings and autofill it into a credit card form.
 			if param.wantChecked == checked.True {
 				ui := uiauto.New(tconn)
+				visaNode := nodewith.NameContaining("Visa").NameContaining("1111").Role(role.StaticText)
 
-				// Click the button to add a new credit card.
-				if err := ui.LeftClick(nodewith.Name("Add").Role(role.Button))(ctx); err != nil {
-					s.Fatal("Failed to click the Add button: ", err)
-				}
-
-				// Find the Save button node, meaning the form is open.
-				if err := ui.WaitUntilExists(nodewith.Name("Save").Role(role.Button))(ctx); err != nil {
-					s.Fatal("Failed to find the Save button: ", err)
-				}
-
-				kb, err := input.Keyboard(ctx)
+				isSavedAlready, err := ui.IsNodeFound(ctx, visaNode)
 				if err != nil {
-					s.Fatal("Failed to get the keyb: ", err)
-				}
-				defer kb.Close()
-
-				// Fill in the credit card details and click on the save button.
-				// TODO(crbug.com/1294166): Do the clicking on the test page rather than on the settings page.
-				for _, creditCardField := range creditCardFields {
-					textField := nodewith.Role(role.TextField).Name(creditCardField.fieldName)
-					if err := uiauto.Combine("fill in the credit card details",
-						ui.MakeVisible(textField),
-						ui.LeftClick(textField),
-						kb.TypeAction(creditCardField.fieldValue),
-					)(ctx); err != nil {
-						s.Fatal(errors.Wrap(err, "failed to fill in the credit card details"))
-					}
-				}
-
-				if err := ui.LeftClick(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
-					s.Fatal("Failed to click the Save button: ", err)
+					s.Fatal("Failed to check if credit card node is already found: ", err)
 				}
 
 				// TODO(crbug.com/1298550): Don't rely on all files being in same directory.
@@ -225,15 +209,49 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 				urlToOpen := strings.Replace(server.URL, "127.0.0.1", "localhost", -1) + "/" + autofillCreditCardHTMLFile
 
 				// Open the website with the credit card form.
-				conn, err := br.NewConn(ctx, urlToOpen)
+				conn, err := openCreditCardPage(ctx, br, tconn, urlToOpen)
 				if err != nil {
 					s.Fatal("Failed to open website: ", err)
 				}
 				defer conn.Close()
 
+				// If the credit card has already been saved, saving the same card again is not possible.
+				if !isSavedAlready {
+					kb, err := input.Keyboard(ctx)
+					if err != nil {
+						s.Fatal("Failed to use keyboard: ", err)
+					}
+					defer kb.Close()
+
+					// Fill in the credit card details and click on the save button.
+					for _, creditCardField := range creditCardFields {
+						if err := conn.Call(ctx, nil, `(htmlFieldID, fieldValue) => {
+					  document.getElementById(htmlFieldID).value = fieldValue;
+					}`, creditCardField.htmlFieldID, creditCardField.fieldValue); err != nil {
+							s.Fatal("Failed to change the field value: ", err)
+						}
+					}
+
+					if err := uiauto.Combine("trigger and handle the save prompt for the credit card",
+						ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
+						ui.WaitUntilExists(visaNode),
+						ui.LeftClick(nodewith.Role(role.Button).Name("Save").ClassName("MdTextButton")),
+						kb.AccelAction("Enter"),
+						ui.WaitUntilExists(nodewith.NameContaining("Card saved").Role(role.StaticText)),
+					)(ctx); err != nil {
+						s.Fatal("Failed to save credit card: ", err)
+					}
+
+					// Re-open the website with the credit card form.
+					conn, err = openCreditCardPage(ctx, br, tconn, urlToOpen)
+					if err != nil {
+						s.Fatal("Failed to open website: ", err)
+					}
+					defer conn.Close()
+				}
+
 				// Trigger the autofill on the credit card form page.
 				if err := uiauto.Combine("clicking the Name on card field and choosing the suggested credit card",
-					ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
 					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Name on card")),
 					ui.LeftClick(nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")),
 				)(ctx); err != nil {
@@ -253,4 +271,19 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
+}
+
+func openCreditCardPage(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, urlToOpen string) (*chrome.Conn, error) {
+	ui := uiauto.New(tconn)
+	conn, err := br.NewConn(ctx, urlToOpen)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open credit card page")
+	}
+
+	// Ensure the page is open.
+	if err := ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button))(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to find the OK button on the credit card page")
+	}
+
+	return conn, nil
 }
