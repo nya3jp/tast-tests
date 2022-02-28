@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "230c90ae_49e80133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-28T17:48:52Z",
+      "side": 1,
+      "message": "+dhaddock@ in case it conflicts with your CL using PrimaryBrowser: https://crrev.com/c/3478703",
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42c5d6db_82863a6c",
         "filename": "src/chromiumos/tast/local/apps/apps.go",
         "patchSetId": 2
