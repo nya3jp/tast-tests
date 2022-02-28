@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/resourced"
+	"chromiumos/tast/testing"
 )
 
 // ChromeOSAvailableMetrics logs performance metrics for ChromeOS memory margins
@@ -18,7 +19,8 @@ import (
 func ChromeOSAvailableMetrics(ctx context.Context, p *perf.Values, suffix string) error {
 	rm, err := resourced.NewClient(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to create Resource Manager client")
+		testing.ContextLog(ctx, "Skipping available metrics due to inability to contact resourced: ", err)
+		return nil
 	}
 	margins, err := rm.MemoryMarginsKB(ctx)
 	if err != nil {

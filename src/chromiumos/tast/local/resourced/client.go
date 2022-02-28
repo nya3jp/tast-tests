@@ -11,13 +11,15 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
 const (
-	dbusInterface = "org.chromium.ResourceManager"
-	dbusPath      = "/org/chromium/ResourceManager"
-	dbusService   = "org.chromium.ResourceManager"
+	dbusInterface         = "org.chromium.ResourceManager"
+	dbusPath              = "/org/chromium/ResourceManager"
+	dbusService           = "org.chromium.ResourceManager"
+	minResourcedMilestone = 93
 
 	// GameModeOff means no component managed by Resource Manager is in game
 	// mode.
@@ -224,6 +226,13 @@ func (c *Client) SetFullscreenVideoWithTimeout(ctx context.Context, fullscreenVi
 // NewClient makes a new D-Bus wrapper object for communicating with Resource
 // Manager.
 func NewClient(ctx context.Context) (*Client, error) {
+	milestone, err := vm.GetMilestone()
+	if err != nil {
+		return nil, errors.Wrap(err, "Unable to determine milestone, which is a pre-requisite for resourced connections")
+	}
+	if milestone < minResourcedMilestone {
+		return nil, errors.Errorf("Milestone detected as %d, which is less than the resourced requirement of %d", milestone, minResourcedMilestone)
+	}
 	obj, err := dbusutil.NewDBusObject(ctx, dbusService, dbusInterface, dbusPath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Resource Manager")

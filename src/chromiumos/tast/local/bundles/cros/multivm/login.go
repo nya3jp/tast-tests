@@ -38,6 +38,10 @@ func init() {
 			Pre:               multivm.ArcStarted(),
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}, {
+			Name:              "arc_p",
+			Pre:               multivm.ArcStarted(),
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
 			Name:              "crostini",
 			Pre:               multivm.CrostiniStarted(),
 			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},

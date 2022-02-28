@@ -61,7 +61,7 @@ func DownloadStagingTermina(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to mkdir for container image")
 	}
 
-	milestone, err := getMilestone()
+	milestone, err := GetMilestone()
 	if err != nil {
 		return "", err
 	}
