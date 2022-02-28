@@ -58,6 +58,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/genparams"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/vm"
 )
 
@@ -149,6 +150,12 @@ type Param struct {
 	// This is used to migrate the tests from precondition to fixture.
 	// TODO (jinrongwu): remove this once the migration is done.
 	UseFixture bool
+
+	// TestLacros controls whether the test case tests Lacros.
+	// If yes, an extra param will be added with fixture crostiniBullseyeWithLacros.
+	// In addition, an extra val of the browser type will
+	// be added to all params of the test case as well.
+	TestLacros bool
 }
 
 type generatedParam struct {
@@ -201,16 +208,18 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 		debianVersion vm.ContainerDebianVersion
 		stable        bool
 	}
-	var it = []iterator{}
+	var itChrome = []iterator{}
 
 	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianBuster, vm.DebianBullseye} {
 		for _, stable := range []bool{true, false} {
-			it = append(it, iterator{
+			itChrome = append(itChrome, iterator{
 				debianVersion: debianVersion,
 				stable:        stable,
 			})
 		}
 	}
+
+	var itLacros = []iterator{{debianVersion: vm.DebianBullseye, stable: true}}
 
 	for _, testCase := range baseCases {
 
@@ -229,16 +238,16 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 		}
 
-		for _, i := range it {
+		iterate := func(i iterator, bt browser.Type) {
 
 			if (testCase.IsNotMainline || testCase.OnlyStableBoards) && !i.stable {
 				// The stable/unstable distinction is only important for mainline tests
-				continue
+				return
 			}
 
 			if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
 				// The minimal set is currently Buster.
-				continue
+				return
 			}
 
 			name := testCase.Name
@@ -262,7 +271,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 
 			// _unstable tests can never be CQ critical.
 			var extraAttr []string
-			if !i.stable && canBeCritical {
+			if (!i.stable && canBeCritical) || bt == browser.TypeLacros {
 				extraAttr = append(extraAttr, "informational")
 			}
 
@@ -305,6 +314,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 					fixture = fmt.Sprintf("\"crostini%sLargeContainer\"", strings.Title(string(i.debianVersion)))
 				} else if testCase.UseGaiaLogin {
 					fixture = fmt.Sprintf("\"crostini%sGaia\"", strings.Title(string(i.debianVersion)))
+				} else if bt == browser.TypeLacros {
+					fixture = fmt.Sprintf("\"crostini%sWithLacros\"", strings.Title(string(i.debianVersion)))
 				} else {
 					fixture = fmt.Sprintf("\"crostini%s\"", strings.Title(string(i.debianVersion)))
 				}
@@ -345,12 +356,27 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				Val:               testCase.Val,
 			}
 
+			if bt == browser.TypeLacros {
+				testParam.Name = combineName(name, "lacros")
+				testParam.ExtraSoftwareDeps = append(extraSoftwareDeps, "lacros")
+				testParam.Val = "browser.TypeLacros"
+			}
+
 			if testCase.UseFixture {
 				testParam.Fixture = fixture
 			} else {
 				testParam.Pre = precondition
 			}
 			result = append(result, testParam)
+		}
+
+		for _, i := range itChrome {
+			iterate(i, "")
+		}
+		if testCase.TestLacros {
+			for _, i := range itLacros {
+				iterate(i, browser.TypeLacros)
+			}
 		}
 	}
 	return genparams.Template(t, template, result)
