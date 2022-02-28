@@ -35,8 +35,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "smbStartedWithoutChrome",
-		// TODO(crbug/1295640): Add test when the "Remember my password" button
-		// is not checked.
 		Params: []testing.Param{{
 			Name: "remember_password",
 			Val:  true,
@@ -107,32 +105,10 @@ func SMBPassword(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	UncheckRememberMyPasswordIfRequired := func(ctx context.Context) error {
-		if !rememberPassword {
-			return uiauto.Combine("uncheck Remember my password",
-				kb.AccelAction("Tab"),
-				kb.AccelAction("Enter"),
-				kb.AccelAction("Tab"),
-				kb.AccelAction("Tab"),
-			)(ctx)
-		}
-		return nil
-	}
-
 	ui := uiauto.New(tconn)
-	fileShareURLTextBox := nodewith.Name("File share URL").Role(role.TextField)
 	if err := uiauto.Combine("add secureshare via Files context menu",
 		files.ClickMoreMenuItem("Services", "SMB file share"),
-		ui.WaitForLocation(fileShareURLTextBox),
-		ui.LeftClick(fileShareURLTextBox),
-		kb.TypeAction(`\\localhost\`+shareName),
-		kb.AccelAction("Tab"), // Tab past share name to Username box.
-		kb.AccelAction("Tab"),
-		kb.TypeAction(smbUsername),
-		kb.AccelAction("Tab"), // Tab to the password box.
-		kb.TypeAction(smbPassword),
-		UncheckRememberMyPasswordIfRequired,
-		kb.AccelAction("Enter"), // Add the Samba share.
+		smb.AddFileShareAction(ui, kb, rememberPassword, shareName, smbUsername, smbPassword),
 		files.OpenPath(filesapp.FilesTitlePrefix+shareName, shareName),
 		files.WaitForFile(textFile),
 	)(ctx); err != nil {
