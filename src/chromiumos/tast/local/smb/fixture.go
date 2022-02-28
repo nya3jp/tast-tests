@@ -114,7 +114,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		s.Fatal("Failed to chown guestshare to chronos: ", err)
 	}
 
-	guestSambaConf, err := createGuestSambaConf(ctx, f.guestDir, dir)
+	guestSambaConf, err := createSambaConf(ctx, f.guestDir, dir)
 	if err != nil {
 		s.Fatal("Failed to create guest samba configuration: ", err)
 	}
@@ -174,39 +174,37 @@ func (f *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
-// createGuestSambaConf creates a very simple smb.conf in the confLocation and
+// createSambaConf creates a very simple smb.conf in the confLocation and
 // ensures it has a single share visible.
-// TODO(crbug.com/1156844): Make this into a fluent API to enable additional
-// shares and testing of other Samba configuration.
-func createGuestSambaConf(ctx context.Context, sharePath, confLocation string) (string, error) {
-	sambaConf := `private dir = ` + confLocation + `
-[global]
-	security = user
-	smb passwd file = ` + filepath.Join(confLocation, smbpasswdFile) + `
-	passdb backend = smbpasswd
+func createSambaConf(ctx context.Context, sharePath, confLocation string) (string, error) {
+	guestshare := NewFileShare("guestshare")
+	guestshare.SetParam("path", sharePath)
+	guestshare.SetParam("guest ok", "yes")
+	guestshare.SetParam("writeable", "yes")
+	guestshare.SetParam("create mask", "0644")
+	guestshare.SetParam("directory mask", "0755")
+	guestshare.SetParam("force user", "chronos")
+	guestshare.SetParam("read only", "no")
 
-[guestshare]
-	path = ` + sharePath + `
-	guest ok = yes
-	writeable = yes
-	browseable = yes
-	create mask = 0644
-	directory mask = 0755
-	force user = chronos
-	read only = no
+	secureshare := NewFileShare("secureshare")
+	secureshare.SetParam("path", sharePath)
+	secureshare.SetParam("guest ok", "no")
+	secureshare.SetParam("writeable", "yes")
+	secureshare.SetParam("create mask", "0644")
+	secureshare.SetParam("directory mask", "0755")
+	secureshare.SetParam("valid users", "chronos")
+	secureshare.SetParam("read only", "no")
 
-[secureshare]
-	path = ` + sharePath + `
-	guest ok = no
-	writeable = yes
-	browseable = yes
-	create mask = 0644
-	directory mask = 0755
-	valid users = chronos
-	read only = no`
+	config := NewConfig()
+	config.SetGlobalParam("private dir", confLocation)
+	config.SetGlobalParam("security", "user")
+	config.SetGlobalParam("smb passwd file", filepath.Join(confLocation, smbpasswdFile))
+	config.SetGlobalParam("passdb backend", "smbpasswd")
+	config.AddFileShare(guestshare)
+	config.AddFileShare(secureshare)
 
 	sambaFileLocation := filepath.Join(confLocation, "smb.conf")
-	return sambaFileLocation, ioutil.WriteFile(sambaFileLocation, []byte(sambaConf), 0644)
+	return sambaFileLocation, ioutil.WriteFile(sambaFileLocation, []byte(config.String()), 0644)
 }
 
 // UnmountAllSmbMounts uses the chrome.fileManagerPrivate.removeMount API to
