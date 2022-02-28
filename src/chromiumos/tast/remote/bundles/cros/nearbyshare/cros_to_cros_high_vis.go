@@ -32,6 +32,7 @@ func init() {
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
+				ExtraAttr: []string{"group:nearby-share-cq"},
 				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
@@ -39,13 +40,15 @@ func init() {
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
+				ExtraAttr: []string{"group:nearby-share-cq"},
 				Val:       nearbycommon.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
-				Name:    "dataonline_noone_txt30mb",
-				Fixture: "nearbyShareRemoteDataUsageOnlineNoOne",
+				Name:      "dataonline_noone_txt30mb",
+				Fixture:   "nearbyShareRemoteDataUsageOnlineNoOne",
+				ExtraAttr: []string{"group:nearby-share-cq"},
 				Val: nearbycommon.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},

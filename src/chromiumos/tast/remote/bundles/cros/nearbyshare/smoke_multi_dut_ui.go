@@ -24,7 +24,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks we can enable Nearby Share high-vis receving on two DUTs at once",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:nearby-share-remote"},
+		Attr:         []string{"group:nearby-share-remote", "group:nearby-share-cq"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		// TODO(crbug/1127165): Move to fixture when data is available in fixtures.
