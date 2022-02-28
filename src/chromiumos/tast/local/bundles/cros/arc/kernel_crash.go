@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"kimiyuki@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm", "arc_pstore"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"metrics_consent"},

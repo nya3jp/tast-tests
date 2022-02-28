@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"alexlau@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "h264",

@@ -33,7 +33,8 @@ import (
 const (
 	// BootTimeout is the maximum amount of time that ARC is expected to take to boot.
 	// Tests that call New should declare a timeout that's at least this long.
-	BootTimeout = 120 * time.Second
+        // TODO(b/221515009): Change the timeout back to 2 minutes after perf regression is fixed.
+	BootTimeout = 3 * time.Minute
 
 	// Time Android init process takes to start. It should be smaller than BootTimeout.
 	androidInitTimeout = 60 * time.Second

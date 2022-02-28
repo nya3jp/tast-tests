@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"afakhry@chromium.org", "arc-framework+tast@@google.com", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {

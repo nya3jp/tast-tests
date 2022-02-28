@@ -30,11 +30,12 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CompatSnap,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests compatible snapping works properly for resize-locked ARC apps",
 		Contacts:     []string{"toshikikikuchi@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		// TODO(b/215063759): Replace this with arcBootedInClamshellMode after the feature is launched.
 		Fixture: "arcBootedInClamshellModeWithCompatSnap",
 	})

@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"sonnyrao@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               "/sys/fs/cgroup/cpu/session_manager_containers/cpu.shares",

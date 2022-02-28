@@ -38,7 +38,7 @@ const (
 	xmlLogName  = "gtest_logs.xml"
 
 	perfMeasurementDuration = time.Duration(30) * time.Second
-	perfTestSlack           = time.Duration(180) * time.Second
+	perfTestSlack           = time.Duration(240) * time.Second
 
 	// PerfTestRuntime is the runtime for a single performance test case
 	// * 2 because two sets of perf measurements are gathered per test (rendering, no rendering)
