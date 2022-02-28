@@ -28,7 +28,7 @@ func init() {
 
 const cachePath = "/var/cache/vpd/full-v2.txt"
 
-var vpdEntry = regexp.MustCompile(`^".+"=".+"$`)
+var vpdEntry = regexp.MustCompile(`^".+"=".*"$`)
 
 func DumpVPDLog(ctx context.Context, s *testing.State) {
 	// Force a restore of the VPD cache for later tests.
