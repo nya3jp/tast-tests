@@ -285,7 +285,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunTablet(ctx, conns.TestConn, ui, pc)
+			return windowarrangementcuj.RunTablet(ctx, closeCtx, conns.TestConn, ui, pc, conns.ArcVideoActivity, conns.WithTestVideo)
 		}
 	}
 
