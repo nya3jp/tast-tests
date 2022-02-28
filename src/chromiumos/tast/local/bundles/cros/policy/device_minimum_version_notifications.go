@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeviceMinimumVersionNotifications,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Notifications of DeviceMinimumVersion policy when device has reached auto update expiration",
 		Contacts: []string{
 			"snijhara@google.com", // Test author

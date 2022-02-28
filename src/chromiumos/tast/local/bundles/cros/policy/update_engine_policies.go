@@ -47,7 +47,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UpdateEnginePolicies,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check of policies are properly propagating to update_engine by checking the logs",
 		Contacts: []string{
 			"vsavu@google.com", // Test author

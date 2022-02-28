@@ -32,7 +32,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DefaultSearchProviderSuggestURL,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of DefaultSearchProviderSuggestURL policy: check if provided search provider is being used for suggestions",
 		Contacts: []string{
 			"fabiansommer@chromium.org", // Test author
