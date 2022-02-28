@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e0289b5_af3e2081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia_api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2022-02-28T09:53:08Z",
+      "side": 1,
+      "message": "If we do want to do such things maybe add special world to error message on the client side like TastTestError in the error message. In the future we can check that no errors like this presented in the logs as a final check for all our tests. wdyt?",
+      "parentUuid": "a535ae36_81a15068",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ba0d535_7ef77894",
         "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
         "patchSetId": 1
@@ -176,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ca6ebe_69f9992c",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2022-02-28T09:53:08Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "3c070fbb_56f5c372",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9106eb9f_8f51a90d",
@@ -213,6 +261,30 @@
       "side": 1,
       "message": "what do you mean?",
       "parentUuid": "9106eb9f_8f51a90d",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "22c4e4d2e7fa3dad197b94d030682741f3ea3bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff19c97a_007eae0e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2022-02-28T09:53:08Z",
+      "side": 1,
+      "message": "We have sandboxGAIASignInURLPrefix const already that is used as --gaia-url to append to args.",
+      "parentUuid": "424dc295_98723b91",
       "range": {
         "startLine": 107,
         "startChar": 0,
