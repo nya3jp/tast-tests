@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44307a71_56b93a4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T08:58:52Z",
+      "side": 1,
+      "message": "LGTM % nit\nFunny how it was defined in 2 different places as well. Nice catch for the accountmanager package.",
+      "revId": "cb2e30ae275f7e0e6b6c9b202c15c34d644b86d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3f3b68_318e4bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memorystress/memorystress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T08:58:52Z",
+      "side": 1,
+      "message": "nit: \"failed to reload active tab\"\nI think it is not necessary to include the function name that was called, as it can change (like now).",
+      "range": {
+        "startLine": 149,
+        "startChar": 35,
+        "endLine": 149,
+        "endChar": 57
+      },
+      "revId": "cb2e30ae275f7e0e6b6c9b202c15c34d644b86d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
