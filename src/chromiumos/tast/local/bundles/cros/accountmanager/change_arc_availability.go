@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/accountmanager"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
@@ -58,7 +57,6 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "change_arc_availability")
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")

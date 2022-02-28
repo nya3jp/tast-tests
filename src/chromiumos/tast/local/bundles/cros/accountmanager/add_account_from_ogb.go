@@ -84,7 +84,7 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "add_account_from_ogb")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "add_account_from_ogb")
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
