@@ -48,8 +48,6 @@ func init() {
 	})
 }
 
-const smbGuestShareName = "guestshare"
-
 type smbFileOperationTestFunc = func(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, fixture smb.FixtureData, files *filesapp.FilesApp)
 
 func SMBFileOperations(ctx context.Context, s *testing.State) {
@@ -69,16 +67,6 @@ func SMBFileOperations(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch the Files app: ", err)
 	}
 
-	// Open the Add SMB share dialog and focus the first text field.
-	ui := uiauto.New(tconn)
-	fileShareURLTextBox := nodewith.Name("File share URL").Role(role.TextField)
-	if err := uiauto.Combine("Click add SMB file share",
-		files.ClickMoreMenuItem("Services", "SMB file share"),
-		ui.WaitForLocation(fileShareURLTextBox),
-		ui.LeftClick(fileShareURLTextBox))(ctx); err != nil {
-		s.Fatal("Failed to click add SMB share: ", err)
-	}
-
 	// Get a handle to the input keyboard.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -86,12 +74,13 @@ func SMBFileOperations(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := kb.Type(ctx, `\\localhost\guestshare`); err != nil {
-		s.Fatal("Failed to enter the new SMB file share path: ", err)
-	}
-
-	if err := kb.Accel(ctx, "Enter"); err != nil {
-		s.Fatal("Failed to press enter: ", err)
+	// A
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("add the SMB file share via Files context menu",
+		files.ClickMoreMenuItem("Services", "SMB file share"),
+		smb.AddFileShareAction(ui, kb, true /*=rememberPassword*/, smb.GuestShareName, "" /*=username*/, "" /*=password*/),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click add SMB share: ", err)
 	}
 
 	testFunc(ctx, kb, s, fixt, files)
@@ -108,7 +97,7 @@ func testCopyOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *te
 	if err := uiauto.Combine("wait for SMB to mount",
 		files.OpenDownloads(),
 		files.ClickContextMenuItem(textFile, filesapp.Copy),
-		files.OpenPath(filesapp.FilesTitlePrefix+smbGuestShareName, smbGuestShareName),
+		files.OpenPath(filesapp.FilesTitlePrefix+smb.GuestShareName, smb.GuestShareName),
 		kb.AccelAction("Ctrl+V"),
 		files.WaitForFile(textFile),
 	)(ctx); err != nil {
@@ -128,7 +117,7 @@ func testRenameOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *
 	defer os.Remove(testFileLocation)
 
 	if err := uiauto.Combine("rename existing file on Samba share",
-		files.OpenDir(smbGuestShareName, filesapp.FilesTitlePrefix+smbGuestShareName),
+		files.OpenDir(smb.GuestShareName, filesapp.FilesTitlePrefix+smb.GuestShareName),
 		files.RenameFile(kb, textFile, expectedFile),
 		files.WaitForFile(expectedFile),
 	)(ctx); err != nil {
@@ -145,7 +134,7 @@ func testDeleteOperation(ctx context.Context, kb *input.KeyboardEventWriter, s *
 	defer os.Remove(testFileLocation)
 
 	if err := uiauto.Combine("delete existing file on Samba share",
-		files.OpenDir(smbGuestShareName, filesapp.FilesTitlePrefix+smbGuestShareName),
+		files.OpenDir(smb.GuestShareName, filesapp.FilesTitlePrefix+smb.GuestShareName),
 		files.DeleteFileOrFolder(kb, textFile),
 	)(ctx); err != nil {
 		s.Fatal("Failed to delete text file: ", err)
@@ -160,7 +149,7 @@ func testUnmountOperation(ctx context.Context, kb *input.KeyboardEventWriter, s 
 	}
 	defer os.Remove(testFileLocation)
 
-	guestshareFinder := nodewith.Name(smbGuestShareName).Role(role.StaticText)
+	guestshareFinder := nodewith.Name(smb.GuestShareName).Role(role.StaticText)
 	if err := uiauto.Combine("unmount a mounted Samba share",
 		files.LeftClickUntil(guestshareFinder, files.WaitForFile(textFile)),
 		kb.AccelAction("Ctrl+Shift+E"),
