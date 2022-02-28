@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af61b8d4_0163d545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-28T01:23:35Z",
+      "side": 1,
+      "message": "Would it be better to just use image.Decode?\n\nhttps://pkg.go.dev/image#Decode",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4353ab27_5de71214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-28T01:23:35Z",
+      "side": 1,
+      "message": "Please use testexec instead, it works better with logging and in case of test crashes:\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/common/testexec",
+      "range": {
+        "startLine": 178,
+        "startChar": 13,
+        "endLine": 178,
+        "endChar": 20
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34254ab5_94c83934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-28T01:23:35Z",
+      "side": 1,
+      "message": "This makes test failures unreproducible and could cause flakiness if particular combinations fail and not others.\n\nStrongly prefer for this to be deterministic.  If randomization is really needed, can there be a command line option to enable it when being manually tested?",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 14
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
