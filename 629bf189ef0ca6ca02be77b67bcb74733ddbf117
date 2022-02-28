@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0ac978a3_a14c4505",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-28T02:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f133bf_302a1218",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "92538cf7_8dfaa910",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54a73380_1f3da94d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-28T02:19:25Z",
+      "side": 1,
+      "message": "UserDataDir depends on whether lacros is launched via the shelf or via command line (if UserDataDir was always the same we wouldn\u0027t have this issue to begin with).\n\nI don\u0027t mind so much where we put this.",
+      "parentUuid": "d82003af_b0858157",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f20a27b_093b0802",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
         "patchSetId": 4
@@ -94,6 +142,30 @@
       "writtenOn": "2022-02-25T17:57:30Z",
       "side": 1,
       "message": "Curious, do we want to report \u0027lacros.log\u0027 for all test runs on success or failure?",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 3
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee0a369_554ac4b5",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-28T02:19:25Z",
+      "side": 1,
+      "message": "I don\u0027t see much reason not to report it even if it\u0027s success.",
+      "parentUuid": "9f20a27b_093b0802",
       "range": {
         "startLine": 515,
         "startChar": 0,
@@ -117,6 +189,30 @@
       "writtenOn": "2022-02-25T22:42:33Z",
       "side": 1,
       "message": "IIRC every call to Launch(WithURL) creates a new user data dir (at line 121).\nCurious, is it meant to save \"lacros.log\" under whatever user data dir or just the fixed location (/home/chronos/user/lacros) whether lacros is launched from the script or the shelf?",
+      "range": {
+        "startLine": 156,
+        "startChar": 36,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5c8122_e735cc80",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-28T02:19:25Z",
+      "side": 1,
+      "message": "The point of this CL is to always put the log file in the same location, so it can be copied at the end of the test. A test could arbitrarily launch lacros a bunch of times and it would be hard to know where to get that logfile - passing the *Lacros value or similar makes it messy IMO.\n\nEventually we can get rid of this when we remove the command line launching.",
+      "parentUuid": "161e3b9f_bb64af6c",
       "range": {
         "startLine": 156,
         "startChar": 36,
