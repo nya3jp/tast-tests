@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40d5487_9dc6b2e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-28T20:17:18Z",
+      "side": 1,
+      "message": "I tried running this CL for tast.arcappcompat.Snapchat test, test failed with the following error message, https://paste.googleplex.com/4925453316915200\n\nIs possible to include the following code snippet here to make sure device is kept awake for every test case.\nresetKeepAwake, err :\u003d power.RequestKeepAwake(ctx, tconn, power.Display)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to request the device to keep awake: \", err)\n\t}\n\tdefer resetKeepAwake(ctx, tconn)",
+      "revId": "3793396b63293911caca0c82332ee6cf59d66e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
