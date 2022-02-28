@@ -34,6 +34,24 @@
       "parentUuid": "b40d5487_9dc6b2e2",
       "revId": "3793396b63293911caca0c82332ee6cf59d66e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28be0ca4_0dc32ac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-28T23:57:54Z",
+      "side": 1,
+      "message": "As suggested, I tried increasing the test timeout to 20 with the \"arcappcompat: Implement Power Extension API Calls\" CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3490246). \nThis fixed the deadline exceeded error and also it performed remaining tests without any error messages. \nSure. Once the CL for “Implement Power Extension API Calls” is submitted. I will file a separate issue to increase the test timeout for the tests.",
+      "parentUuid": "02a2c21b_44a9df61",
+      "revId": "3793396b63293911caca0c82332ee6cf59d66e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
