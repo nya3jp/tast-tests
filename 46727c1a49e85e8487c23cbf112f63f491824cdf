@@ -16,6 +16,46 @@
       "message": "This depends on https://chromium-review.googlesource.com/c/chromium/src/+/3494257",
       "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8355037_6d62f8e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-28T17:48:15Z",
+      "side": 1,
+      "message": "LGTM! Thanks a lot for making it simple! Curious, I\u0027m wondering if this could probably help replace `browserType` in tests or fixtures once lacros primary/only is set by default.",
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c5d6db_82863a6c",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-28T17:48:15Z",
+      "side": 1,
+      "message": "nit: adding a comment that tconn is from ash-chrome (since it calls autotestPrivate) would be helpful to avoid any confusion?",
+      "range": {
+        "startLine": 424,
+        "startChar": 41,
+        "endLine": 424,
+        "endChar": 63
+      },
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
