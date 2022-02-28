@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
@@ -103,7 +104,10 @@ func SystemTimezoneAutomaticDetection(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			// Retry to make sure they are applied. This is just an experiment for applying device policies.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				return policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value})
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
