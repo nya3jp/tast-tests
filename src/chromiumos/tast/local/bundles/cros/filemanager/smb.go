@@ -84,7 +84,7 @@ func SMB(ctx context.Context, s *testing.State) {
 	}
 
 	if err := uiauto.Combine("Wait for SMB to mount",
-		files.OpenPath("Files - guestshare", "guestshare"),
+		files.OpenPath(filesapp.FilesTitlePrefix+smb.GuestShareName, smb.GuestShareName),
 		files.WaitForFile(textFile))(ctx); err != nil {
 		s.Fatal("Failed to wait for SMB to mount: ", err)
 	}
