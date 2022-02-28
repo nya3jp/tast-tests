@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeviceAdvancedBatteryChargeMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests the DeviceAdvancedBatteryCharge policies that maximize battery health",
 		Contacts: []string{
 			"lamzin@google.com", // policy author

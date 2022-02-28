@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SharedManagedGuestSessionCleanup,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test chrome.login.endSharedSession Extension API properly performs cleanup",
 		Contacts: []string{
 			"jityao@google.com", // Test author

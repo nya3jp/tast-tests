@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ReportUploadFrequency,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check ReportUploadFrequency by observing /var/log/messages",
 		Contacts: []string{
 			"zubeil@google.com", // Test author

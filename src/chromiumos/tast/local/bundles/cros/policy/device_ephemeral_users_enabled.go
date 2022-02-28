@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeviceEphemeralUsersEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies whether the ephemeral_users_enabled policy is set on the device or not",
 		Contacts: []string{
 			"sergiyb@google.com",   // Migrated from autotest to tast.
