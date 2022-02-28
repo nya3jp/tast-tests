@@ -629,6 +629,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dac40efa_1f3099c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-02-28T04:59:49Z",
+      "side": 1,
+      "message": "Sorry, I misinterpreted your question. Yeah, as per included logic any one of event set among requiredEventSets has to be found. In that one particular set, all regexps has to be found, otherwise test should fail.",
+      "parentUuid": "492e3a16_3d8c88d8",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "877081d7_2606c094",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
         "patchSetId": 2
