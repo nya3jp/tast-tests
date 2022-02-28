@@ -131,7 +131,9 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	// Wait for CPU to stabilize before test.
 	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
-		s.Fatal("Failed to wait for CPU to become idle: ", err)
+		// Log the cpu stabilizing wait failure instead of make it fatal.
+		// TODO(b/213238698): Include the error as part of test data.
+		s.Log("Failed to wait for CPU to become idle: ", err)
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, conns.TestConn)
