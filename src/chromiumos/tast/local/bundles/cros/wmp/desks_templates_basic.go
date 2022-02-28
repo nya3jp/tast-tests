@@ -105,7 +105,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Find the "save desk as a template" button.
-	saveDeskButton := nodewith.ClassName("PillButton")
+	saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
 	desksTemplatesGridView := nodewith.ClassName("DesksTemplatesGridView")
 
 	if err := uiauto.Combine(
