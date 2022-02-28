@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/coords"
@@ -809,4 +810,21 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 		}
 	}
 	return nil
+}
+
+// BrowserTitleMatch returns a func to check whether a browser window matches the type and title.
+func BrowserTitleMatch(bt browser.Type, title string) func(w *Window) bool {
+	// The browser is a lacros browser.
+	f := func(w *Window) bool {
+		return w.WindowType == WindowTypeLacros && strings.HasPrefix(w.Title, title)
+	}
+
+	// The browser is a chrome browser.
+	if bt == browser.TypeAsh {
+		title = "Chrome - " + title
+		f = func(w *Window) bool {
+			return w.WindowType == WindowTypeBrowser && strings.HasPrefix(w.Title, title)
+		}
+	}
+	return f
 }
