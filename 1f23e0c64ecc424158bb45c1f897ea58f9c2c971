@@ -214,6 +214,30 @@
       },
       "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b90486b1_1185a8a3",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-28T23:20:58Z",
+      "side": 0,
+      "message": "Unfortunately, got error: type *\"chromiumos/tast/internal/testing\".FixtTestState has no field or method ParentValue. \n\nIn SetUp, it is s *testing.FixtState\nIn PostTest, it is s *testing.FixtTestState.\n\nRefer to https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/internal/testing#FixtureImpl",
+      "parentUuid": "e1211b35_1b9d9576",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
