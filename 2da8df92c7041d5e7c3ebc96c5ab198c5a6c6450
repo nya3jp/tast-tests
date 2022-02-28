@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f8042a_a7e63f4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-28T17:57:49Z",
+      "side": 1,
+      "message": "Please run Tast unit test \"fast_build -T\", and update the TEST\u003d field. Thanks.",
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bcb180_6d037592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-28T17:57:49Z",
+      "side": 1,
+      "message": "Line 31 and Line 35 are the same. Any reason that you don\u0027t use Attr for the test instead of using ExtraAttr for each Param?",
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d288d73_69c2fce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-28T17:57:49Z",
+      "side": 1,
+      "message": "nit: se fmt.Sprintf(\"allocated%s_p90\", suffix) to make it more readable.",
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
