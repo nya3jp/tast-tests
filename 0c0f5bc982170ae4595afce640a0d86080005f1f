@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a38c2f67_cd270982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-28T22:41:34Z",
+      "side": 1,
+      "message": "Good to know. I need to launch emoji picker a few times in this test. Dismissing the emoji picker can not be avoided. So I have to keep it to complete the test journey. Sounds good?",
+      "parentUuid": "0c22edb7_950626c0",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6555c6a2_26ab4708",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdd69d96_0f5e5a6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-28T22:41:34Z",
+      "side": 1,
+      "message": "This is not a general solution to click out. But works in this case - The input field is empty, and emoji picker is shown next to cursor which is on the left of the screen. Do you think it is necessary to check the emoji picker position in this test?",
+      "parentUuid": "6555c6a2_26ab4708",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad405808_beb7276e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-28T21:33:53Z",
       "side": 1,
       "message": "This feels like we can just do it with a browser test in chromium land rather than a tast test, since we can trigger all of this via JS in a browsertest",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 74
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf42003_53048ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-28T22:41:34Z",
+      "side": 1,
+      "message": "It sounds great to me. If there is a browsertest covering these scenarios without any gap. I am happy to remove them from TAST. Otherwise, let\u0027s keep it for now.\n\nbtw, I reported b/221786977 yesterday. It can not be covered in browsertest. Not sure if it is VM issue only. Can you please help investigate the problem?",
+      "parentUuid": "ad405808_beb7276e",
       "range": {
         "startLine": 122,
         "startChar": 0,
