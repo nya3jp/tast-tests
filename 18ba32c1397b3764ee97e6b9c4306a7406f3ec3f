@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da88782_29fcfc2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-02-28T13:05:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8441f5f2_f04ab873",
+      "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2059ab9_1ebdbd75",
@@ -208,6 +226,24 @@
       "side": 1,
       "message": "I extended the file format to take a list of test args for multiple cameras. (For qualification test we only need to test one by one, but supporting multiple cameras sounds good in case it\u0027s needed in the future.)",
       "parentUuid": "4dede7d3_ab9f2b0c",
+      "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b21f6c_5bad9673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/firmware_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-02-28T13:05:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b0f126d_d6685b48",
       "revId": "18ba32c1397b3764ee97e6b9c4306a7406f3ec3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
