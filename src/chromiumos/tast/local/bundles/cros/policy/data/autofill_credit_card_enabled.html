@@ -9,16 +9,20 @@
 <body>
     <form method="post">
         <label for="cc-name">Name on card</label>
-        <input name="cc-name" id="cc-name" autocomplete="cc-name">
+        <input name="ccname" id="cc-name" autocomplete="cc-name">
 
         <label for="cc-number">Card Number</label>
-        <input name="cc-number" id="cc-number" autocomplete="cc-number">
+        <input name="cardnumber" id="cc-number" autocomplete="cc-number">
 
+        <!--CVC doesnt get saved to the settings, so thus hard coding it here.-->
         <label for="cc-csc">CVC</label>
-        <input name="cc-csc" id="cc-csc" autocomplete="cc-csc">
+        <input name="cvc" id="cc-csc" autocomplete="cc-csc" value="123">
 
         <label for="cc-exp">Expiry</label>
         <input name="cc-exp" id="cc-exp" autocomplete="cc-exp">
+
+        <label for="cc-type" hidden>Card type</label>
+        <input name="card-type" id="cc-type" autocomplete="cc-type" value="Visa" hidden>
 
         <input type="submit" id="button" value="OK">
     </form>
