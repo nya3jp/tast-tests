@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99045f9e_6cee820f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-28T22:02:05Z",
+      "side": 1,
+      "message": "If there is error, then the error log contains the msg.",
+      "parentUuid": "7fcf150b_05f2a07b",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 19
+      },
+      "revId": "80b6ad4678be29f740c980c0ba07d9ce5211f6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bb7d436_d6a4e306",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
         "patchSetId": 1
