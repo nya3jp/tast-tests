@@ -7,18 +7,19 @@
 </head>
 
 <body>
-    <form method="post">
+    <form method="post" >
         <label for="cc-name">Name on card</label>
-        <input name="cc-name" id="cc-name" autocomplete="cc-name">
+        <input name="ccname" id="cc-name" autocomplete="cc-name">
 
         <label for="cc-number">Card Number</label>
-        <input name="cc-number" id="cc-number" autocomplete="cc-number">
-
-        <label for="cc-csc">CVC</label>
-        <input name="cc-csc" id="cc-csc" autocomplete="cc-csc">
+        <input name="cardnumber" id="cc-number" autocomplete="cc-number">
 
         <label for="cc-exp">Expiry</label>
-        <input name="cc-exp" id="cc-exp" autocomplete="cc-exp">
+        <input name="cc-exp" id="cc-exp" placeholder="MM/YYYY" autocomplete="cc-exp">
+
+        <!--CVC or card type doesnt get saved to the settings as a value, so thus hard coding them as hidden values.-->
+        <input name="cvc" id="cc-csc" autocomplete="cc-csc" value="123" hidden>
+        <input name="card-type" id="cc-type" autocomplete="cc-type" value="Visa" hidden>
 
         <input type="submit" id="button" value="OK">
     </form>
