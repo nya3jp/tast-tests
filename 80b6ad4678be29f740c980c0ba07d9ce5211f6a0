@@ -16,6 +16,24 @@
       "message": "Would you please get approval from a team member first? Tast owners could not review the test content itself.",
       "revId": "80b6ad4678be29f740c980c0ba07d9ce5211f6a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7966307d_09542318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-02-28T01:24:34Z",
+      "side": 1,
+      "message": "Discussed on chat that I\u0027m the owner of the test and the secondary owner no longer works on Commercial.",
+      "parentUuid": "d4698449_38914b5c",
+      "revId": "80b6ad4678be29f740c980c0ba07d9ce5211f6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
