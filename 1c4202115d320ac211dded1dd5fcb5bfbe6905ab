@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cfcfa1f_146ca048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faac7e95_a387918b",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69b127ce_aa7e735d",
@@ -196,6 +214,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f07ec0c1_9902d0f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc5d6b4_ad26c50d",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bc4f404_3aaa8c59",
@@ -267,6 +303,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5365631b_7469f525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dab1537_0818aa86",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a04a1a_4527150b",
@@ -280,6 +334,24 @@
       "writtenOn": "2022-02-25T15:40:55Z",
       "side": 1,
       "message": "If we only have a single test, there\u0027s no need to create a sub-test for it. Just do the entire test as part of the main test, e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/prevent_default_profile_removal.go",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e6d77b_1b49a724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "I refactor this entire test, as Gabor suggested. Now there is a sub-test for each language.",
+      "parentUuid": "07a04a1a_4527150b",
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -321,6 +393,30 @@
       "side": 1,
       "message": "will do, and remind myself to use the . at the end of comments",
       "parentUuid": "b4dc768b_ccb667f2",
+      "range": {
+        "startLine": 88,
+        "startChar": 53,
+        "endLine": 88,
+        "endChar": 58
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6216100_d1b66ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73090d7_2fff63f3",
       "range": {
         "startLine": 88,
         "startChar": 53,
@@ -390,6 +486,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fdc0db5_a1a39bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c6a8bc4_35e4c0ed",
+      "range": {
+        "startLine": 100,
+        "startChar": 45,
+        "endLine": 100,
+        "endChar": 54
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbbe8d90_daf9526a",
@@ -413,6 +533,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd49870_4e1c3573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbbe8d90_daf9526a",
+      "range": {
+        "startLine": 101,
+        "startChar": 99,
+        "endLine": 101,
+        "endChar": 107
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdd44d3a_213c5733",
@@ -426,6 +570,30 @@
       "writtenOn": "2022-02-28T08:53:12Z",
       "side": 1,
       "message": "If you modify `spellCheckWithSuggestionEnabled` so it accepts one language at a time, you can put it in a for loop here, and into a `s.Run`, so every message from `spellCheckWithSuggestionEnabled` will be prefixed by the language.\n\nThe test will open a new tab for each test, and the keyboard will be initialised multiple times (or you pass it as an argument), but that is not a big cost.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "176aaffa_75b42705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "That is a good idea thanks. I refactor it to follow this approach. I tried to reuse the text area tab and the keyboard event writer but that did not work because for each language `policyutil.SettingsPage` opens up a new tab.",
+      "parentUuid": "fdd44d3a_213c5733",
       "range": {
         "startLine": 102,
         "startChar": 2,
@@ -521,6 +689,30 @@
       "side": 1,
       "message": "I see, then I could make a better html string that will no be malformed.",
       "parentUuid": "c02b6aa3_03cd7b31",
+      "range": {
+        "startLine": 120,
+        "startChar": 47,
+        "endLine": 120,
+        "endChar": 92
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae27414_9d2211de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "I googled a bit and found that Data URLs do not need the \u003chtml\u003e and \u003cbody\u003e tags. According to the standard:\n`data:text/html, \u003ctextarea aria-label\u003d\u0027textarea\u0027/\u003e`\nis a well formed data URL",
+      "parentUuid": "6c5b35ed_17240fea",
       "range": {
         "startLine": 120,
         "startChar": 47,
@@ -637,6 +829,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6aa0dc_9f6459f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "I refactor this because this \"falseErr\" is actually a real error in this test. If there is no text marker the test will fail with the proper message",
+      "parentUuid": "fbd2ac84_44814554",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fed1b9e8_1c0c61fa",
@@ -660,6 +870,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38814447_923eb649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed1b9e8_1c0c61fa",
+      "range": {
+        "startLine": 186,
+        "startChar": 87,
+        "endLine": 186,
+        "endChar": 92
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1d89be3_b93f09e1",
@@ -673,6 +907,30 @@
       "writtenOn": "2022-02-25T15:40:55Z",
       "side": 1,
       "message": "nit: maybe include which suggestion we expected to see in the message, helps with debugging if a specific language is the problem",
+      "range": {
+        "startLine": 195,
+        "startChar": 28,
+        "endLine": 195,
+        "endChar": 53
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b98f17_c980d55d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-02-28T12:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d89be3_b93f09e1",
       "range": {
         "startLine": 195,
         "startChar": 28,
