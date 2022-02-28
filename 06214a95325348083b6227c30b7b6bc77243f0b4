@@ -16,6 +16,24 @@
       "message": "thanks! this is exactly what I wrote up, then decided to punt $BUG to you because of one question I had:\n\nare you ensuring that the log is non-empty? I thought that was one point of your original bug, to make sure we had *something* (even if they are empty values, we should have some keys) in there?\n\nOr maybe I\u0027m misreading something.",
       "revId": "06214a95325348083b6227c30b7b6bc77243f0b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a4accc_2dbd8d14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-02-28T18:58:55Z",
+      "side": 1,
+      "message": "I guess even if this is a concern, it\u0027s orthogonal to this CL. (We weren\u0027t checking for a non-empty either before or after this.)",
+      "parentUuid": "00e71a3a_4d62b8bf",
+      "revId": "06214a95325348083b6227c30b7b6bc77243f0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
