@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6326149_ec82e085",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T14:11:28Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "908bb4d114673c7c94e47dc840507231044e27e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7bbee2d_8f7ee5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_automatic_detection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T14:11:28Z",
+      "side": 1,
+      "message": "Can you add a comment on why does it behave differently that the other policies?",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "908bb4d114673c7c94e47dc840507231044e27e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf56aa8c_af58a017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone_automatic_detection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T14:11:28Z",
+      "side": 1,
+      "message": "No need for this edit.",
+      "range": {
+        "startLine": 111,
+        "startChar": 30,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "908bb4d114673c7c94e47dc840507231044e27e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
