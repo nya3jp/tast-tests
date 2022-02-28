@@ -7,6 +7,7 @@ package lacros
 import (
 	"context"
 	"math"
+	"os"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -23,6 +24,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	memorymetrics "chromiumos/tast/local/memory/metrics"
+	"chromiumos/tast/local/tracing"
+	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/baserpc"
 	"chromiumos/tast/testing"
 )
 
@@ -33,30 +37,48 @@ const (
 	notes               = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
 )
 
+type powerVideocallParams struct {
+	browserType  browser.Type
+	collectTrace bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PowerVideocall,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Runs a video conference and text input window side-by-side with either ash-chrome and lacros-chrome",
 		Contacts:     []string{"luken@google.com", "hidehiko@chromium.org", "lacros-team@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      20 * time.Minute,
+		ServiceDeps:  []string{"tast.cros.baserpc.FileSystem"},
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "lacros",
-			Val:               browser.TypeLacros,
+			Val:               powerVideocallParams{browserType: browser.TypeLacros, collectTrace: false},
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		}, {
-			Name:    "ash",
-			Val:     browser.TypeAsh,
-			Fixture: "chromeLoggedIn",
+			Name:      "ash",
+			Val:       powerVideocallParams{browserType: browser.TypeAsh, collectTrace: false},
+			Fixture:   "chromeLoggedIn",
+			ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+		}, {
+			Name:              "lacros_trace",
+			Val:               powerVideocallParams{browserType: browser.TypeLacros, collectTrace: true},
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraData:         []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
+		}, {
+			Name:      "ash_trace",
+			Val:       powerVideocallParams{browserType: browser.TypeAsh, collectTrace: true},
+			Fixture:   "chromeLoggedIn",
+			ExtraData: []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
 		}},
 	})
 }
 
 func PowerVideocall(ctx context.Context, s *testing.State) {
-	bt := s.Param().(browser.Type)
+	params := s.Param().(powerVideocallParams)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -89,7 +111,7 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get base zram stats: ", err)
 	}
 
-	videoConn, br, cleanup, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), bt, videocallURL)
+	videoConn, br, cleanup, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), params.browserType, videocallURL)
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}
@@ -105,7 +127,7 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 	}
 
 	videoWin, err := ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {
-		if bt == browser.TypeAsh {
+		if params.browserType == browser.TypeAsh {
 			return window.WindowType == ash.WindowTypeBrowser
 		}
 		return window.WindowType == ash.WindowTypeLacros
@@ -136,7 +158,7 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 	}()
 
 	docsWin, err := ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {
-		if bt == browser.TypeAsh {
+		if params.browserType == browser.TypeAsh {
 			if window.WindowType == ash.WindowTypeBrowser {
 				return window != videoWin
 			}
@@ -166,6 +188,17 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to select input field on docs page: ", err)
 	}
 
+	var sess *tracing.Session
+	if params.collectTrace {
+		traceConfigPath := s.DataPath(tracing.TBMTracedProbesConfigFile)
+		sess, err = tracing.StartSession(ctx, traceConfigPath)
+		if err != nil {
+			s.Fatal("Failed to start tracing: ", err)
+		}
+		s.Log("Collecting Perfetto trace File at: ", sess.TraceResultFile.Name())
+		defer sess.RemoveTraceResultFile()
+	}
+
 	histograms, err := metrics.RunAndWaitAll(
 		ctx,
 		bTconn,
@@ -189,6 +222,30 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to collect metric data: ", err)
 	}
 
+	if params.collectTrace {
+		if err := sess.Stop(); err != nil {
+			s.Fatal("Failed to stop the tracing session: ", err)
+		}
+
+		// Transfer file back from DUT.
+		cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+		if err != nil {
+			s.Fatal("Failed to connect rpc to DUT: ", err)
+		}
+		defer cl.Close(ctx)
+
+		fs := baserpc.NewFileSystemClient(cl.Conn)
+
+		trace, err := fs.ReadFile(ctx, &baserpc.ReadFileRequest{Name: sess.TraceResultFile.Name()})
+		if err != nil {
+			s.Error("Failed to read trace file from DUT over RPC: ", err)
+		}
+		err = os.WriteFile(s.OutDir()+"/trace.pb", trace.GetContent(), 0644)
+		if err != nil {
+			s.Error("Failed to save trace file locally: ", err)
+		}
+	}
+
 	pv := perf.NewValues()
 
 	if err := memorymetrics.LogMemoryStats(ctx, memBase, nil, pv, s.OutDir(), ""); err != nil {
@@ -210,6 +267,7 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		)
 		totalCount := h.TotalCount()
 		sampleNum95 := (totalCount * 95) / 100
+
 		var max int64
 		var stdDev float64
 		var value95 float64
