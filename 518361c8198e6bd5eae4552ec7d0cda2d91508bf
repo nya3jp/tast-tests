@@ -70,6 +70,30 @@
       },
       "revId": "518361c8198e6bd5eae4552ec7d0cda2d91508bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0efe9c_aed163db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-28T07:52:02Z",
+      "side": 1,
+      "message": "You are absolutely right. Great catch. I\u0027d confused myself in the nested error handling. Thanks!",
+      "parentUuid": "f8ba8c25_1e3cd694",
+      "range": {
+        "startLine": 136,
+        "startChar": 50,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "518361c8198e6bd5eae4552ec7d0cda2d91508bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
