@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"djacobo@chromium.org", "jorgegil@google.com", "chromeos-sw-engprod@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		VarDeps:      []string{"arc.SmartSelectionChrome.username", "arc.SmartSelectionChrome.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},

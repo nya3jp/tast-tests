@@ -27,7 +27,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "arcBootedWithTouchModeMouse",
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 

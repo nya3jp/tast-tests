@@ -21,7 +21,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		// "no_qemu" disables the test on betty. b/168566159#comment3
 		SoftwareDeps: []string{"android_vm", "chrome", "no_qemu"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 

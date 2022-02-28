@@ -52,7 +52,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithoutUIAutomator",
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_p"},

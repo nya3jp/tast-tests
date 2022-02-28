@@ -30,7 +30,7 @@ func init() {
 		Fixture:      "arcBootedInClamshellMode",
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"capybara.jpg"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 

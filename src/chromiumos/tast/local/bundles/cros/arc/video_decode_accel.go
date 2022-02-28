@@ -27,7 +27,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               video.DecodeTestOptions{TestVideo: "test-25fps.h264"},

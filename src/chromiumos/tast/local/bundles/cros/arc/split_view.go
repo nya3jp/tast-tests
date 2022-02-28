@@ -31,7 +31,7 @@ func init() {
 		// TODO(b/188754062): Add support for mouse input and remove the internal display deps
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "clamshell_mode",
