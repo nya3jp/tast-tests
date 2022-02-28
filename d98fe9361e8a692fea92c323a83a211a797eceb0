@@ -16,6 +16,75 @@
       "message": "LGTM from my side. Work with Gabor to resolve the remaining comments.",
       "revId": "d98fe9361e8a692fea92c323a83a211a797eceb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0d7fb5_e763bf58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T14:26:43Z",
+      "side": 1,
+      "message": "I liked it better when the function returned with an error.\nWhenever not inconvenient, it is better to have a function to return with an error instead of using the testing state in it.\n\nYou can modify Run like:\n```\ns.Run(ctx, \"lang_\"+l.languageName, func(ctx context.Context, s *testing.State) {\n\tif err :\u003d verifySpellcheckForLanguage(cr, tconn, br, l); err !\u003d nil {\n\t\ts.Errorf(\"Failed to verify spellcheck: \", err)\n\t})\n})\n```",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 184
+      },
+      "revId": "d98fe9361e8a692fea92c323a83a211a797eceb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb276a5a_78fcf0b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T14:26:43Z",
+      "side": 1,
+      "message": "nit: `%s`",
+      "range": {
+        "startLine": 108,
+        "startChar": 53,
+        "endLine": 108,
+        "endChar": 54
+      },
+      "revId": "d98fe9361e8a692fea92c323a83a211a797eceb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c119b86_7f0a2f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T14:26:43Z",
+      "side": 1,
+      "message": "Can you try it without this cleanup?\nI think a new tab will be opened every time, so there should be no need for this.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 3
+      },
+      "revId": "d98fe9361e8a692fea92c323a83a211a797eceb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
