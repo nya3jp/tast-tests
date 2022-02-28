@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1334ce44_f8810e69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-28T02:24:58Z",
+      "side": 1,
+      "message": "Looks good to me, but please wait for hidehiko@ to take a look IMO (I can\u0027t +2 this anyway).\n\nThanks for sticking along for the long review. I\u0027ll add the method we\u0027ve used in case to the lacros porting document if it\u0027s okay. Composing the parent fixture value is a bit less boilerplate than using interface embedding, although I think it would get messy if there\u0027s more fixture inheritance - e.g. what happens if something inherits from one of these new fixtures - now you have to reference .ParentFixtV.ParentFixtV somehow. With interface embedding this doesn\u0027t happen.\n\nLet me know if anyone has any thoughts on this.",
+      "revId": "d124d263bef65bbf3558d25dd05886856230ce2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
