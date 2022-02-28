@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -80,6 +81,7 @@ func init() {
 				Verdict:  diag.VerdictProblem,
 				Problems: []uint32{problemSecurityTypeWepPsk},
 			},
+			ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP(), hwdep.WifiNotMarvell()),
 		}, {
 			Name: "wep_8021x",
 			Val: secureWiFiParams{
@@ -87,6 +89,7 @@ func init() {
 				Verdict:  diag.VerdictProblem,
 				Problems: []uint32{problemSecurityTypeWep8021x},
 			},
+			ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP(), hwdep.WifiNotMarvell()),
 		}, {
 			Name: "wpa",
 			Val: secureWiFiParams{
