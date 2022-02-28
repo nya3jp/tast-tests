@@ -166,6 +166,30 @@
       },
       "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62d5a29_c13490a5",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-28T08:55:58Z",
+      "side": 0,
+      "message": "The functions you mentioned have access to the testing state s, so they can get the Chrome instance via s.ParentValue().(chrome.HasChrome).Chrome().",
+      "parentUuid": "f60dfb46_d91595e9",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
