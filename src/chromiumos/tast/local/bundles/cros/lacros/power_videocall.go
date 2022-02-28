@@ -6,6 +6,7 @@ package lacros
 
 import (
 	"context"
+	"math"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -209,9 +210,14 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 		)
 		totalCount := h.TotalCount()
 		sampleNum95 := (totalCount * 95) / 100
+		var max int64
+		var stdDev float64
 		var value95 float64
 		var t int64
 		for _, b := range h.Buckets {
+			midpoint := (float64(b.Min) + float64(b.Max)) / 2.0
+			stdDev = stdDev + (float64(b.Count) * (mean - midpoint) * (mean - midpoint))
+			max = b.Max
 			if t < sampleNum95 {
 				if t+b.Count >= sampleNum95 {
 					value95 = float64(b.Min) + ((float64(b.Max) - float64(b.Min)) * ((float64(sampleNum95) - float64(t)) / float64(b.Count)))
@@ -219,6 +225,17 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 			}
 			t = t + b.Count
 		}
+
+		stdDev = math.Sqrt(stdDev / (float64(totalCount) - 1.0))
+		pv.Set(
+			perf.Metric{
+				Name:      h.Name + ".std_dev",
+				Unit:      "microseconds",
+				Direction: perf.SmallerIsBetter,
+			},
+			stdDev,
+		)
+
 		pv.Set(
 			perf.Metric{
 				Name:      h.Name + ".percent_95",
@@ -226,6 +243,15 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 				Direction: perf.SmallerIsBetter,
 			},
 			value95,
+		)
+
+		pv.Set(
+			perf.Metric{
+				Name:      h.Name + ".max",
+				Unit:      "microseconds",
+				Direction: perf.SmallerIsBetter,
+			},
+			float64(max),
 		)
 	}
 
