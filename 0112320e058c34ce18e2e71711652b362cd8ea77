@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "970ad210_99923b0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-28T22:39:38Z",
+      "side": 1,
+      "message": "what does this number come from?",
+      "range": {
+        "startLine": 157,
+        "startChar": 29,
+        "endLine": 157,
+        "endChar": 32
+      },
+      "revId": "0112320e058c34ce18e2e71711652b362cd8ea77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
