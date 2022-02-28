@@ -18,7 +18,7 @@ const pattern = "arc.*"
 
 func TestTimeout(t *gotesting.T) {
 	const minTestBodyTime = 30 * time.Second
-	minTimeout := chrome.LoginTimeout + arc.BootTimeout + minTestBodyTime
+	minTimeout := chrome.LoginTimeout + arc.BootTimeout + minTestBodyTime - 1 + time.Minute
 
 	re, err := testing.NewTestGlobRegexp(pattern)
 	if err != nil {
