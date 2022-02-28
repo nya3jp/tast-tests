@@ -27,7 +27,7 @@ func init() {
 		Func:         EnterpriseLogin,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that ARC is launched when policy is set",
-		Contacts:     []string{"pbond@chromium.org", "mhasank@chromium.org", "arc-commercial@google.com"},
+		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"arc", "chrome"},
 		Timeout:      8 * time.Minute,
