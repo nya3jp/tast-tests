@@ -93,6 +93,22 @@ func TestFixTestParams(t *testing.T) {
 	}
 }
 
+var testLacros = []string{
+	"launch_browser.go",
+	"verify_app_wayland.go",
+}
+
+func TestLacrosTestParams(t *testing.T) {
+	for _, filename := range testLacros {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Timeout:    2 * time.Minute,
+			UseFixture: true,
+			TestLacros: true,
+		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
 var perfTests = map[string]time.Duration{
 	"cpu_perf.go":      12 * time.Minute,
 	"disk_io_perf.go":  60 * time.Minute,
