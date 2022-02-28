@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d401a6c0_bc7a7389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-02-28T02:07:14Z",
+      "side": 1,
+      "message": "This change has been enforced by the linting in precommit hook.",
+      "revId": "9f9b8bf571d6a5814a6e327cee19a1ab921c0d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
