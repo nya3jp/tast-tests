@@ -33,6 +33,24 @@
       "message": "Hi Judy, PTAL\n\nI think this test is stable enough now.",
       "revId": "e3a15d012937a84a7ccf5cc5a90181789e4358e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f281d6e9_d3d0ce8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-28T09:33:39Z",
+      "side": 1,
+      "message": "I\u0027m afraid I could not agree as there are several failures in the latest builds. They are not the failure of the case itself, but it will block the cq if it happens.",
+      "parentUuid": "c99e1513_b212b983",
+      "revId": "e3a15d012937a84a7ccf5cc5a90181789e4358e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
