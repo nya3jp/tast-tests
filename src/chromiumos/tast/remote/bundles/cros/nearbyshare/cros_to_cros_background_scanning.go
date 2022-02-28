@@ -23,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Nearby Device is trying to share notification shows up, clicking the notification enables high-vis mode and the receive flow is successful",
 		Contacts:     []string{"chromeos-sw-engprod@google.com, cvandermerwe@google.com"},
-		Attr:         []string{"group:nearby-share-remote"},
+		Attr:         []string{"group:nearby-share-remote", "group:nearby-share-cq"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		Vars:         []string{"secondaryTarget"},
