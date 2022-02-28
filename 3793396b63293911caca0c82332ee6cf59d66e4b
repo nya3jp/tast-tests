@@ -16,6 +16,24 @@
       "message": "I tried running this CL for tast.arcappcompat.Snapchat test, test failed with the following error message, https://paste.googleplex.com/4925453316915200\n\nIs possible to include the following code snippet here to make sure device is kept awake for every test case.\nresetKeepAwake, err :\u003d power.RequestKeepAwake(ctx, tconn, power.Display)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to request the device to keep awake: \", err)\n\t}\n\tdefer resetKeepAwake(ctx, tconn)",
       "revId": "3793396b63293911caca0c82332ee6cf59d66e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a2c21b_44a9df61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-28T20:56:01Z",
+      "side": 1,
+      "message": "I commented in b/166637700 but I think that\u0027s just due to the timeout being hit. You should be able to fix that by increasing the timeout of the test after this is submitted. \n\nThe line I added on 122 should setup chrome for all tests so we should be OK without the call on each test.",
+      "parentUuid": "b40d5487_9dc6b2e2",
+      "revId": "3793396b63293911caca0c82332ee6cf59d66e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
