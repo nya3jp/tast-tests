@@ -35,8 +35,9 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		// TODO(crbug.com/1186655): Enable test when the policy can be disabled.
+		Attr:    []string{},
+		Fixture: fixture.ChromePolicyLoggedIn,
 	})
 }
 
@@ -58,12 +59,13 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 		wantChecked     checked.Checked
 		wantRestriction restriction.Restriction
 	}{
+
 		{
-			name:            "unset",
-			value:           &policy.AutoclickEnabled{Stat: policy.StatusUnset},
-			wantButton:      false,
-			wantChecked:     checked.False,
-			wantRestriction: restriction.None,
+			name:            "enabled",
+			value:           &policy.AutoclickEnabled{Val: true},
+			wantButton:      true,
+			wantChecked:     checked.True,
+			wantRestriction: restriction.Disabled,
 		},
 		{
 			name:            "disabled",
@@ -73,11 +75,11 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 			wantRestriction: restriction.Disabled,
 		},
 		{
-			name:            "enabled",
-			value:           &policy.AutoclickEnabled{Val: true},
-			wantButton:      true,
-			wantChecked:     checked.True,
-			wantRestriction: restriction.Disabled,
+			name:            "unset",
+			value:           &policy.AutoclickEnabled{Stat: policy.StatusUnset},
+			wantButton:      false,
+			wantChecked:     checked.False,
+			wantRestriction: restriction.None,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
