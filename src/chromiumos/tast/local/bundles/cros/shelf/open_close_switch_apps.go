@@ -104,7 +104,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the expected browser app info.
-	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
 		s.Fatalf("Could not find the %v browser app: %v", bt, err)
 	}
