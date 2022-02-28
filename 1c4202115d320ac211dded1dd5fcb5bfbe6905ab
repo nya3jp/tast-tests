@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fc5d6b4_ad26c50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T08:53:12Z",
+      "side": 1,
+      "message": "Oh right, I see. Can you add a comment on this as well?",
+      "parentUuid": "453468f7_155cb463",
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bc4f404_3aaa8c59",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
         "patchSetId": 2
@@ -390,6 +408,29 @@
         "startChar": 99,
         "endLine": 101,
         "endChar": 107
+      },
+      "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd44d3a_213c5733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-28T08:53:12Z",
+      "side": 1,
+      "message": "If you modify `spellCheckWithSuggestionEnabled` so it accepts one language at a time, you can put it in a for loop here, and into a `s.Run`, so every message from `spellCheckWithSuggestionEnabled` will be prefixed by the language.\n\nThe test will open a new tab for each test, and the keyboard will be initialised multiple times (or you pass it as an argument), but that is not a big cost.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
       },
       "revId": "1c4202115d320ac211dded1dd5fcb5bfbe6905ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
