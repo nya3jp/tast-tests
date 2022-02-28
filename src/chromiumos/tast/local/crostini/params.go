@@ -149,6 +149,12 @@ type Param struct {
 	// This is used to migrate the tests from precondition to fixture.
 	// TODO (jinrongwu): remove this once the migration is done.
 	UseFixture bool
+
+	// TestLacros controls whether the test case tests Lacros.
+	// If yes, an extra param should be added with fixture crostiniBullseyeWithLacros.
+	// In addition, an extra val of the browser type should
+	// be added to all params of the test case as well.
+	TestLacros bool
 }
 
 type generatedParam struct {
@@ -345,6 +351,10 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				Val:               testCase.Val,
 			}
 
+			if testCase.TestLacros {
+				testParam.Val = "browser.TypeAsh"
+			}
+
 			if testCase.UseFixture {
 				testParam.Fixture = fixture
 			} else {
@@ -352,6 +362,18 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 			result = append(result, testParam)
 		}
+	}
+
+	if baseCases[0].TestLacros {
+		result = append(result, generatedParam{
+			Name:              "bullseye_stable_lacros",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"dlc", "lacros"},
+			ExtraHardwareDeps: "crostini.CrostiniStable",
+			Timeout:           2 * time.Minute,
+			Fixture:           "\"crostiniBullseyeWithLacros\"",
+			Val:               "browser.TypeLacros",
+		})
 	}
 	return genparams.Template(t, template, result)
 }

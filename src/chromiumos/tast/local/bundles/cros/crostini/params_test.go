@@ -26,7 +26,6 @@ var testFiles = []string{
 	"home_directory_delete_file.go",
 	"home_directory_rename_file.go",
 	"icon_and_username.go",
-	"launch_browser.go",
 	"launch_terminal.go",
 	"nested_vm.go",
 	"notify.go",
@@ -60,7 +59,6 @@ var testFiles = []string{
 	"sync_time.go",
 	"task_manager.go",
 	"uninstall_invalid_app.go",
-	"verify_app_wayland.go",
 	"verify_app_x11.go",
 	"vmc_extra_disk.go",
 	"vmc_start.go",
@@ -89,6 +87,22 @@ func TestFixTestParams(t *testing.T) {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Timeout:    2 * time.Minute,
 			UseFixture: true,
+		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+var testLacros = []string{
+	"launch_browser.go",
+	"verify_app_wayland.go",
+}
+
+func TestLacrosTestParams(t *testing.T) {
+	for _, filename := range testLacros {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Timeout:    2 * time.Minute,
+			UseFixture: true,
+			TestLacros: true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
