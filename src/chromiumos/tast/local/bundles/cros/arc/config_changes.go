@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Fixture:      "arcBootedInClamshellMode",
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 

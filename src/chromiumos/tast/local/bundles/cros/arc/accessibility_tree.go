@@ -45,7 +45,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithoutUIAutomator",
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Val: expectedNode{
 				CheckBoxAttributes: map[string]interface{}{},

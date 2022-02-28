@@ -28,7 +28,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"image_paste_manifest.json", "image_paste_background.js", "image_paste_foreground.html", "image_paste_sample.png"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 

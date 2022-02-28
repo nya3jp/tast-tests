@@ -29,7 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:arc-functional"},
 			ExtraSoftwareDeps: []string{"android_p"},

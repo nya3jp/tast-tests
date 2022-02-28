@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Verifies hardware decode acceleration using a media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_tests binary (see go/vd-migration)",
 		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"arc", "chrome", "video_decoder_direct"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.h264"},

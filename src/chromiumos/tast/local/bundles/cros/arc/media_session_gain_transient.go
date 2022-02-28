@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Data: []string{
 			"media_session_test.apk",
 			"media_session_60sec_test.ogg",

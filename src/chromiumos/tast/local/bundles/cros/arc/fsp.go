@@ -48,7 +48,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Data:         []string{fspZipFile},
 		Params: []testing.Param{
