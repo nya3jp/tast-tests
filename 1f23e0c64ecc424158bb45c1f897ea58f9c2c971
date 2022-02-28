@@ -22,6 +22,30 @@
       },
       "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "404456d4_47f6bbf9",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-28T06:43:03Z",
+      "side": 0,
+      "message": "Yes, still needed.",
+      "parentUuid": "45accf88_a685bb0f",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
