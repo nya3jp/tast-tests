@@ -20,9 +20,10 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrosToCrosBackgroundScanningPreSetup,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Nearby Device is trying to share notification shows up, clicking the notification initiates onboarding flow",
 		Contacts:     []string{"chromeos-sw-engprod@google.com, cvandermerwe@google.com"},
-		Attr:         []string{"group:nearby-share-remote"},
+		Attr:         []string{"group:nearby-share-remote", "group:nearby-share-cq"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
 		Vars:         []string{"secondaryTarget"},
