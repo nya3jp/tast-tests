@@ -58,6 +58,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/genparams"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/vm"
 )
 
@@ -149,6 +150,12 @@ type Param struct {
 	// This is used to migrate the tests from precondition to fixture.
 	// TODO (jinrongwu): remove this once the migration is done.
 	UseFixture bool
+
+	// TestLacros controls whether the test case tests Lacros.
+	// If yes, an extra param should be added with fixture crostiniBullseyeWithLacros.
+	// In addition, an extra val of the browser type should
+	// be added to all params of the test case as well.
+	TestLacros bool
 }
 
 type generatedParam struct {
@@ -201,16 +208,18 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 		debianVersion vm.ContainerDebianVersion
 		stable        bool
 	}
-	var it = []iterator{}
+	var itChrome = []iterator{}
 
 	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianBuster, vm.DebianBullseye} {
 		for _, stable := range []bool{true, false} {
-			it = append(it, iterator{
+			itChrome = append(itChrome, iterator{
 				debianVersion: debianVersion,
 				stable:        stable,
 			})
 		}
 	}
+
+	var itLacros = []iterator{{debianVersion: vm.DebianBullseye, stable: true}}
 
 	for _, testCase := range baseCases {
 
@@ -229,128 +238,149 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 		}
 
-		for _, i := range it {
+		iterate := func(it []iterator, bt browser.Type) {
+			for _, i := range it {
 
-			if (testCase.IsNotMainline || testCase.OnlyStableBoards) && !i.stable {
-				// The stable/unstable distinction is only important for mainline tests
-				continue
-			}
-
-			if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
-				// The minimal set is currently Buster.
-				continue
-			}
-
-			name := testCase.Name
-			if !testCase.MinimalSet {
-				// If we're generating a minimal set
-				// then the debian version is always
-				// the same and we don't need to
-				// include it in the test name.
-				name = combineName(name, string(i.debianVersion))
-			}
-			if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
-				if i.stable {
-					name = combineName(name, "stable")
-				} else {
-					name = combineName(name, "unstable")
+				if (testCase.IsNotMainline || testCase.OnlyStableBoards) && !i.stable {
+					// The stable/unstable distinction is only important for mainline tests
+					continue
 				}
-			}
-			if testCase.UseGaiaLogin {
-				name = combineName(name, "gaia")
-			}
 
-			// _unstable tests can never be CQ critical.
-			var extraAttr []string
-			if !i.stable && canBeCritical {
-				extraAttr = append(extraAttr, "informational")
-			}
+				if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
+					// The minimal set is currently Buster.
+					continue
+				}
 
-			var extraSoftwareDeps []string
-			extraSoftwareDeps = append(extraSoftwareDeps, "dlc")
+				name := testCase.Name
+				if !testCase.MinimalSet {
+					// If we're generating a minimal set
+					// then the debian version is always
+					// the same and we don't need to
+					// include it in the test name.
+					name = combineName(name, string(i.debianVersion))
+				}
+				if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
+					if i.stable {
+						name = combineName(name, "stable")
+					} else {
+						name = combineName(name, "unstable")
+					}
+				}
+				if testCase.UseGaiaLogin {
+					name = combineName(name, "gaia")
+				}
 
-			var hardwareDeps string
-			if !testCase.IsNotMainline {
-				if i.stable {
-					if testCase.StableHardwareDep != "" {
-						hardwareDeps = testCase.StableHardwareDep
+				if bt == browser.TypeLacros {
+					name = combineName(name, "lacros")
+				}
+
+				// _unstable tests can never be CQ critical.
+				var extraAttr []string
+				if (!i.stable && canBeCritical) || bt == browser.TypeLacros {
+					extraAttr = append(extraAttr, "informational")
+				}
+
+				var extraSoftwareDeps []string
+				extraSoftwareDeps = append(extraSoftwareDeps, "dlc")
+
+				if bt == browser.TypeLacros {
+					extraSoftwareDeps = append(extraSoftwareDeps, "lacros")
+				}
+
+				var hardwareDeps string
+				if !testCase.IsNotMainline {
+					if i.stable {
+						if testCase.StableHardwareDep != "" {
+							hardwareDeps = testCase.StableHardwareDep
+						} else if testCase.UseLargeContainer {
+							hardwareDeps = "crostini.CrostiniAppTest"
+						} else {
+							hardwareDeps = "crostini.CrostiniStable"
+						}
+					} else {
+						if testCase.UnstableHardwareDep != "" {
+							hardwareDeps = testCase.UnstableHardwareDep
+						} else {
+							hardwareDeps = "crostini.CrostiniUnstable"
+						}
+					}
+				}
+
+				var timeout time.Duration
+				if testCase.Timeout != time.Duration(0) {
+					timeout = testCase.Timeout
+				} else {
+					timeout = 7 * time.Minute
+				}
+
+				var extraData []string
+				var testParam generatedParam
+				var fixture, precondition string
+				if testCase.UseFixture {
+					if testCase.SelfManagedInstall {
+						fixture = ""
 					} else if testCase.UseLargeContainer {
-						hardwareDeps = "crostini.CrostiniAppTest"
+						fixture = fmt.Sprintf("\"crostini%sLargeContainer\"", strings.Title(string(i.debianVersion)))
+					} else if testCase.UseGaiaLogin {
+						fixture = fmt.Sprintf("\"crostini%sGaia\"", strings.Title(string(i.debianVersion)))
+					} else if bt == browser.TypeLacros {
+						fixture = fmt.Sprintf("\"crostini%sWithLacros\"", strings.Title(string(i.debianVersion)))
 					} else {
-						hardwareDeps = "crostini.CrostiniStable"
+						fixture = fmt.Sprintf("\"crostini%s\"", strings.Title(string(i.debianVersion)))
 					}
 				} else {
-					if testCase.UnstableHardwareDep != "" {
-						hardwareDeps = testCase.UnstableHardwareDep
+					extraData = append(extraData,
+						fmt.Sprintf("crostini.GetContainerMetadataArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
+						fmt.Sprintf("crostini.GetContainerRootfsArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
+					)
+
+					if testCase.SelfManagedInstall {
+						precondition = ""
+					} else if testCase.UseLargeContainer {
+						precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", "Dlc", strings.Title(string(i.debianVersion)))
+					} else if testCase.UseGaiaLogin {
+						precondition = fmt.Sprintf("crostini.StartedBy%s%sGaia()", "Dlc", strings.Title(string(i.debianVersion)))
 					} else {
-						hardwareDeps = "crostini.CrostiniUnstable"
+						precondition = fmt.Sprintf("crostini.StartedBy%s%s()", "Dlc", strings.Title(string(i.debianVersion)))
 					}
 				}
-			}
 
-			var timeout time.Duration
-			if testCase.Timeout != time.Duration(0) {
-				timeout = testCase.Timeout
-			} else {
-				timeout = 7 * time.Minute
-			}
-
-			var extraData []string
-			var testParam generatedParam
-			var fixture, precondition string
-			if testCase.UseFixture {
-				if testCase.SelfManagedInstall {
-					fixture = ""
-				} else if testCase.UseLargeContainer {
-					fixture = fmt.Sprintf("\"crostini%sLargeContainer\"", strings.Title(string(i.debianVersion)))
-				} else if testCase.UseGaiaLogin {
-					fixture = fmt.Sprintf("\"crostini%sGaia\"", strings.Title(string(i.debianVersion)))
-				} else {
-					fixture = fmt.Sprintf("\"crostini%s\"", strings.Title(string(i.debianVersion)))
+				// Quote the extra data strings we got passed,
+				// so we can define the container and VM
+				// artifacts with runtime functions while
+				// still taking string literals from the
+				// outside world.
+				for _, data := range testCase.ExtraData {
+					extraData = append(extraData,
+						fmt.Sprintf("%q", data))
 				}
-			} else {
-				extraData = append(extraData,
-					fmt.Sprintf("crostini.GetContainerMetadataArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
-					fmt.Sprintf("crostini.GetContainerRootfsArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
-				)
 
-				if testCase.SelfManagedInstall {
-					precondition = ""
-				} else if testCase.UseLargeContainer {
-					precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", "Dlc", strings.Title(string(i.debianVersion)))
-				} else if testCase.UseGaiaLogin {
-					precondition = fmt.Sprintf("crostini.StartedBy%s%sGaia()", "Dlc", strings.Title(string(i.debianVersion)))
-				} else {
-					precondition = fmt.Sprintf("crostini.StartedBy%s%s()", "Dlc", strings.Title(string(i.debianVersion)))
+				testParam = generatedParam{
+					Name:              name,
+					ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
+					ExtraData:         extraData,
+					ExtraSoftwareDeps: append(testCase.ExtraSoftwareDeps, extraSoftwareDeps...),
+					ExtraHardwareDeps: hardwareDeps,
+					Timeout:           timeout,
+					Val:               testCase.Val,
 				}
-			}
 
-			// Quote the extra data strings we got passed,
-			// so we can define the container and VM
-			// artifacts with runtime functions while
-			// still taking string literals from the
-			// outside world.
-			for _, data := range testCase.ExtraData {
-				extraData = append(extraData,
-					fmt.Sprintf("%q", data))
-			}
+				if bt == browser.TypeLacros {
+					testParam.Val = "browser.TypeLacros"
+				}
 
-			testParam = generatedParam{
-				Name:              name,
-				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
-				ExtraData:         extraData,
-				ExtraSoftwareDeps: append(testCase.ExtraSoftwareDeps, extraSoftwareDeps...),
-				ExtraHardwareDeps: hardwareDeps,
-				Timeout:           timeout,
-				Val:               testCase.Val,
+				if testCase.UseFixture {
+					testParam.Fixture = fixture
+				} else {
+					testParam.Pre = precondition
+				}
+				result = append(result, testParam)
 			}
+		}
 
-			if testCase.UseFixture {
-				testParam.Fixture = fixture
-			} else {
-				testParam.Pre = precondition
-			}
-			result = append(result, testParam)
+		iterate(itChrome, "")
+		if testCase.TestLacros {
+			iterate(itLacros, browser.TypeLacros)
 		}
 	}
 	return genparams.Template(t, template, result)
