@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a65484_d4d9dc8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-02-28T13:40:02Z",
+      "side": 1,
+      "message": "LGTM from my side. Work with Gabor to resolve the remaining comments.",
+      "revId": "d98fe9361e8a692fea92c323a83a211a797eceb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
