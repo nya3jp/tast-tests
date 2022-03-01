@@ -60,6 +60,7 @@ type osInfo struct {
 	MarketingName *string   `json:"marketing_name"`
 	OsVersion     osVersion `json:"os_version"`
 	BootMode      string    `json:"boot_mode"`
+	OemName       *string   `json:"oem_name"`
 }
 
 type vpdInfo struct {
@@ -134,6 +135,7 @@ func expectedOsInfo(ctx context.Context) (osInfo, error) {
 	const (
 		cfgCodeName      = "/name"
 		cfgMarketingName = "/arc/build-properties/marketing-name"
+		cfgOemName       = "/branding/oem-name"
 	)
 	var r osInfo
 	var err error
@@ -141,6 +143,9 @@ func expectedOsInfo(ctx context.Context) (osInfo, error) {
 		return r, err
 	}
 	if r.MarketingName, err = utils.GetOptionalCrosConfig(ctx, cfgMarketingName); err != nil {
+		return r, err
+	}
+	if r.OemName, err = utils.GetOptionalCrosConfig(ctx, cfgOemName); err != nil {
 		return r, err
 	}
 	if r.OsVersion, err = expectedOsVersion(ctx); err != nil {
