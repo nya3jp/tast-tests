@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd9be89_0fa7031e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-01T19:32:11Z",
+      "side": 1,
+      "message": "Link to video:\nhttps://storage.googleapis.com/chromiumos-test-assets-public/tast/cros/video/shaka_720_20181218.webm",
+      "revId": "ee94d251138ca728714b8545c930391fa8712b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
