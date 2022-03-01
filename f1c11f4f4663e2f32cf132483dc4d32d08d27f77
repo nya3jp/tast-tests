@@ -16,6 +16,23 @@
       "message": "Thanks for the review!",
       "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687ca049_155ff198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-01T02:01:22Z",
+      "side": 1,
+      "message": "Is b.Count guaranteed to be non-zero? If not, this could report a wrong max value.\n\nAlso, would it be better to store midpoint instead here? IIUC b.Max is only the upper limit for that bucket. If we have no information about the distribution of the values in the bucket, we have to assume the mean is (min+max)/2. (I assumed that the max value reported here is meant to mean the max value we saw in any bucket)",
+      "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
