@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9473df1_092a0403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-01T00:10:15Z",
+      "side": 1,
+      "message": "Got error when running crostini.LaunchBrowser.bullseye_stable_lacros:\nError at launch_browser.go:91: Didn\u0027t see crosh renderer: failed to launch lacros-chrome: failed to connect to debugging port: failed to connect to debugging port: context deadline exceeded; last error follows: browser process not started yet: unexpected number of chrome root processes: got 2, want 1.\n\nShould I use this func?",
+      "range": {
+        "startLine": 89,
+        "startChar": 32,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "2ed36b1ac463cb4861c78352ffc9a78dc7fc55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
