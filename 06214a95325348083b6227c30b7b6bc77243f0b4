@@ -34,107 +34,24 @@
       "parentUuid": "00e71a3a_4d62b8bf",
       "revId": "06214a95325348083b6227c30b7b6bc77243f0b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
-    }
-  ],
-  "submitRequirementResults": [
-    {
-      "submitRequirement": {
-        "name": "Code-Owners",
-        "description": {
-          "value": "User with the code owner override approved the change"
-        },
-        "applicabilityExpression": {
-          "value": {
-            "expressionString": "has:enabled_code-owners"
-          }
-        },
-        "submittabilityExpression": {
-          "expressionString": "has:approval_code-owners"
-        },
-        "overrideExpression": {
-          "value": {
-            "expressionString": "label:Owners-Override\u003d+1"
-          }
-        },
-        "allowOverrideInChildProjects": true
-      },
-      "applicabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"has:enabled_code-owners"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:enabled_code-owners"],"failingAtoms":[]}
-      },
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"has:approval_code-owners"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:approval_code-owners"],"failingAtoms":[]}
-      },
-      "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Owners-Override=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Owners-Override=+1"]}
-      },
-      "patchSetCommitId": "06214a95325348083b6227c30b7b6bc77243f0b4",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
     },
     {
-      "submitRequirement": {
-        "name": "Code-Review",
-        "description": {
-          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
-        },
-        "applicabilityExpression": {},
-        "submittabilityExpression": {
-          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
-        },
-        "overrideExpression": {
-          "value": {
-            "expressionString": "label:Bot-Commit\u003d+1"
-          }
-        },
-        "allowOverrideInChildProjects": true
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad6d6d7_f51af6fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
       },
-      "applicabilityExpressionResult": {},
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MAX,user=non_uploader"],"failingAtoms":["label:Code-Review=MIN"]}
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
       },
-      "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
-      },
-      "patchSetCommitId": "06214a95325348083b6227c30b7b6bc77243f0b4",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
-    },
-    {
-      "submitRequirement": {
-        "name": "Verified",
-        "description": {
-          "value": "CI or human verified the change"
-        },
-        "applicabilityExpression": {},
-        "submittabilityExpression": {
-          "expressionString": "label:Verified\u003dMAX AND -label:Verified\u003dMIN"
-        },
-        "overrideExpression": {
-          "value": {
-            "expressionString": "label:Bot-Commit\u003d+1"
-          }
-        },
-        "allowOverrideInChildProjects": true
-      },
-      "applicabilityExpressionResult": {},
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Verified=MAX"],"failingAtoms":["label:Verified=MIN"]}
-      },
-      "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
-      },
-      "patchSetCommitId": "06214a95325348083b6227c30b7b6bc77243f0b4",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
+      "writtenOn": "2022-03-01T08:30:34Z",
+      "side": 1,
+      "message": "dump_vpd_log already accepts empty entries, the tast test is more restrictive. \n\ndump_vpd_log does catch explicit read errors (see line 78) that would have simply been kept there indefinitely.",
+      "parentUuid": "65a4accc_2dbd8d14",
+      "revId": "06214a95325348083b6227c30b7b6bc77243f0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
