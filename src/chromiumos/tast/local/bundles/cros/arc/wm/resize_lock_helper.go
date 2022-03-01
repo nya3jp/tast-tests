@@ -76,9 +76,9 @@ const (
 	settingsAppName   = "Settings"
 
 	// Used in test cases where screenshots are taken.
-	pixelColorDiffMargin                    = 5
+	pixelColorDiffMargin                    = 15
 	clientContentColorPixelPercentThreshold = 95
-	borderColorPixelCountThreshold          = 1000
+	borderColorPixelCountThreshold          = 3000
 	borderWidthPX                           = 6
 )
 
@@ -338,12 +338,12 @@ func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.
 		borderColorPixels := 0
 		for y := rect.Min.Y; y < rect.Max.Y; y++ {
 			for x := rect.Min.X; x < rect.Max.X; x++ {
-				onLeftBorder := bounds.Left-borderWidthPX <= x && x < bounds.Left
-				onTopBorder := bounds.Top-borderWidthPX <= y && y < bounds.Top
-				onRightBorder := bounds.Right() < x && x <= bounds.Right()+borderWidthPX
-				onBottomBorder := bounds.Bottom() < y && y <= bounds.Bottom()+borderWidthPX
+				onLeftBorder := bounds.Left-borderWidthPX <= x && x < bounds.Left && bounds.Top <= y && y < bounds.Bottom()
+				onTopBorder := bounds.Top-borderWidthPX <= y && y < bounds.Top && bounds.Left <= x && x < bounds.Right()
+				onRightBorder := bounds.Right() < x && x <= bounds.Right()+borderWidthPX && bounds.Top <= y && y < bounds.Bottom()
+				onBottomBorder := bounds.Bottom() < y && y <= bounds.Bottom()+borderWidthPX && bounds.Left <= x && x < bounds.Right()
 				onBorder := onLeftBorder || onTopBorder || onRightBorder || onBottomBorder
-				if onBorder && colorcmp.ColorsMatch(img.At(x, y), color.RGBA{155, 155, 155, 255}, pixelColorDiffMargin) {
+				if onBorder && colorcmp.ColorsMatch(img.At(x, y), color.RGBA{170, 170, 170, 255}, pixelColorDiffMargin) {
 					borderColorPixels++
 				}
 			}
