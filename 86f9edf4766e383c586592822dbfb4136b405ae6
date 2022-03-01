@@ -16,6 +16,29 @@
       "message": "The main change is in src/chromiumos/tast/local/bundles/cros/crostini/params_test.go. The changes in the test files are just accordingly.",
       "revId": "86f9edf4766e383c586592822dbfb4136b405ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535396f4_6487d52b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-01T03:34:43Z",
+      "side": 1,
+      "message": "Why not these two?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "86f9edf4766e383c586592822dbfb4136b405ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
