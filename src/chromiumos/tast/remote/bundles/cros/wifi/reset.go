@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,7 +24,9 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_suspend"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Fixture:     "wificellFixt",
+		// TODO(b:220648498): Temporarily disable reset test on nipperkin due to flaky reset test.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("nipperkin")),
+		Fixture:      "wificellFixt",
 		// For some Marvell DUT, this test may take more than 25 minutes.
 		// For WCN3990 device, this test may take more than 39 minutes.
 		Timeout: time.Minute * 45,
@@ -34,12 +37,14 @@ func init() {
 			{
 				// Default AP settings ported from Autotest.
 				Val: []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)},
+				//ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("nipperkin")),
 			},
 			{
 				// The target protocol and channel settings, as this is more widely used nowadays.
 				// TODO(b/175602523): Replace the default with this once the issue is fixed.
 				Name: "80211n_ch48",
 				Val:  wificell.DefaultOpenNetworkAPOptions(),
+				//ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("nipperkin")),
 			},
 		},
 	})
