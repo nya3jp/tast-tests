@@ -318,7 +318,7 @@ func (vkbCtx *VirtualKeyboardContext) ShowAccessPoints() uiauto.Action {
 }
 
 // SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
-func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContext, enabled bool) *useractions.UserAction {
+func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContext, enabled bool) uiauto.Action {
 	var switchMode uiauto.Action
 	var actionName string
 	if enabled {
@@ -337,7 +337,7 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 		)
 	}
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		actionName,
 		uiauto.Combine("switch VK mode",
 			vkbCtx.ShowAccessPoints(),
@@ -641,46 +641,41 @@ func (vkbCtx *VirtualKeyboardContext) WaitUntilShiftStatus(expectedShiftState Sh
 
 // GlideTyping returns a user action to simulate glide typing on virtual keyboard.
 // It works on both tablet VK and A11y VK.
-func (vkbCtx *VirtualKeyboardContext) GlideTyping(uc *useractions.UserContext, keys []string, validateResultFunc uiauto.Action) *useractions.UserAction {
-	return useractions.NewUserAction(
-		"VK glide typing",
-		func(ctx context.Context) error {
-			if len(keys) < 2 {
-				return errors.New("glide typing only works on multiple keys")
-			}
+func (vkbCtx *VirtualKeyboardContext) GlideTyping(keys []string, validateResultFunc uiauto.Action) uiauto.Action {
+	return func(ctx context.Context) error {
+		if len(keys) < 2 {
+			return errors.New("glide typing only works on multiple keys")
+		}
 
-			touchCtx, err := touch.New(ctx, vkbCtx.tconn)
-			if err != nil {
-				return errors.Wrap(err, "fail to get touch screen")
-			}
-			defer touchCtx.Close()
+		touchCtx, err := touch.New(ctx, vkbCtx.tconn)
+		if err != nil {
+			return errors.Wrap(err, "fail to get touch screen")
+		}
+		defer touchCtx.Close()
 
-			ui := uiauto.New(vkbCtx.tconn)
+		ui := uiauto.New(vkbCtx.tconn)
 
-			initKeyLoc, err := ui.Location(ctx, KeyByNameIgnoringCase(keys[0]))
-			if err != nil {
-				return errors.Wrap(err, "fail to find the location of first key")
-			}
+		initKeyLoc, err := ui.Location(ctx, KeyByNameIgnoringCase(keys[0]))
+		if err != nil {
+			return errors.Wrap(err, "fail to find the location of first key")
+		}
 
-			var gestures []uiauto.Action
-			for i := 1; i < len(keys); i++ {
-				// Perform a swipe in 50ms and stop 200ms on each key.
-				gestures = append(gestures, ui.Sleep(200*time.Millisecond))
-				if keys[i] == keys[i-1] {
-					keyLoc, err := ui.Location(ctx, KeyByNameIgnoringCase(keys[i]))
-					if err != nil {
-						return errors.Wrapf(err, "fail to find the location of key: %q", keys[i])
-					}
-					gestures = append(gestures, touchCtx.SwipeTo(keyLoc.TopLeft(), 50*time.Millisecond))
+		var gestures []uiauto.Action
+		for i := 1; i < len(keys); i++ {
+			// Perform a swipe in 50ms and stop 200ms on each key.
+			gestures = append(gestures, ui.Sleep(200*time.Millisecond))
+			if keys[i] == keys[i-1] {
+				keyLoc, err := ui.Location(ctx, KeyByNameIgnoringCase(keys[i]))
+				if err != nil {
+					return errors.Wrapf(err, "fail to find the location of key: %q", keys[i])
 				}
-				gestures = append(gestures, touchCtx.SwipeToNode(KeyByNameIgnoringCase(keys[i]), 50*time.Millisecond))
+				gestures = append(gestures, touchCtx.SwipeTo(keyLoc.TopLeft(), 50*time.Millisecond))
 			}
-			return touchCtx.Swipe(initKeyLoc.CenterPoint(), gestures...)(ctx)
-		},
-		uc,
-		&useractions.UserActionCfg{
-			ValidateResult: validateResultFunc,
-			Tags:           []useractions.ActionTag{useractions.ActionTagVKTyping},
-		},
-	)
+			gestures = append(gestures, touchCtx.SwipeToNode(KeyByNameIgnoringCase(keys[i]), 50*time.Millisecond))
+		}
+		return uiauto.Combine("swipe to glide typing and validate result",
+			touchCtx.Swipe(initKeyLoc.CenterPoint(), gestures...),
+			validateResultFunc,
+		)(ctx)
+	}
 }

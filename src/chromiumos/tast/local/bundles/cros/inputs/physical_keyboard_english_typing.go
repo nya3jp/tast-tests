@@ -104,7 +104,7 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 		s.Run(ctx, subtest.TestName, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subtest.TestName)
 
-			if err := useractions.NewUserAction(
+			if err := uiauto.UserAction(
 				"Engish PK input",
 				its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText),
 				uc, &useractions.UserActionCfg{
@@ -114,7 +114,7 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 					},
 					Tags: []useractions.ActionTag{useractions.ActionTagPKTyping},
 				},
-			).Run(ctx); err != nil {
+			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
 			}
 

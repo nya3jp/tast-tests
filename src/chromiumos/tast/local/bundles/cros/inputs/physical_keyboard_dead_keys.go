@@ -105,7 +105,7 @@ func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.expectedTypingResult),
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"PK dead keys typing",
 		validateAction,
 		uc,
@@ -117,7 +117,7 @@ func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 				useractions.ActionTagDeadKey,
 			},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to verify dead keys input: ", err)
 	}
 }

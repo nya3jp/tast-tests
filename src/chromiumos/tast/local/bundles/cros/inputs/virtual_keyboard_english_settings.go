@@ -110,14 +110,14 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 					settings.Close,
 				)
 
-				if err := useractions.NewUserAction(
+				if err := uiauto.UserAction(
 					"disable auto-cap in IME settings",
 					disableAutoCapAction,
 					uc,
 					&useractions.UserActionCfg{
 						Tags: []useractions.ActionTag{useractions.ActionTagIMESettings},
 					},
-				).Run(ctx); err != nil {
+				)(ctx); err != nil {
 					s.Fatal("Failed to change IME settings: ", err)
 				}
 			}
@@ -137,7 +137,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				testScenario = "VK typing with auto-cap enabled"
 			}
 
-			if err := useractions.NewUserAction(
+			if err := uiauto.UserAction(
 				"VK typing",
 				validateAction,
 				uc,
@@ -148,7 +148,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 					},
 					Tags: []useractions.ActionTag{useractions.ActionTagAutoCapitalization},
 				},
-			).Run(ctx); err != nil {
+			)(ctx); err != nil {
 				s.Fatal("Failed to verify input: ", err)
 			}
 		})

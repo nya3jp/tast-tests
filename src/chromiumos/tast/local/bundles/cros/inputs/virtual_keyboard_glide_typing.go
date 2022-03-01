@@ -113,13 +113,13 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 	setFloatVK := func(ctx context.Context) error {
 		if !isFloatLayout && shouldFloatLayout {
 			isFloatLayout = true
-			return vkbCtx.SetFloatingMode(uc, true).Run(ctx)
+			return vkbCtx.SetFloatingMode(uc, true)(ctx)
 		}
 		return nil
 	}
 
 	// Define glide typing user action including validating the result.
-	glideTypingUserAction := func(testScenario string, inputField testserver.InputField, isGlideTypingEnabled bool) *useractions.UserAction {
+	glideTypingUserAction := func(testScenario string, inputField testserver.InputField, isGlideTypingEnabled bool) uiauto.Action {
 		// Define result validation function.
 		// Should submit the last key if glide typing disabled.
 		validateResultFunc := its.ValidateResult(inputField, keySeq[len(keySeq)-1])
@@ -138,10 +138,18 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 				return nil
 			}
 		}
-		userAction := vkbCtx.GlideTyping(uc, keySeq, validateResultFunc)
-		userAction.SetAttribute(useractions.AttributeInputField, string(inputField))
-		userAction.SetAttribute(useractions.AttributeTestScenario, testScenario)
-		return userAction
+
+		return uiauto.UserAction("VK glide typing",
+			vkbCtx.GlideTyping(keySeq, validateResultFunc),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(inputField),
+					useractions.AttributeTestScenario: testScenario,
+				},
+				Tags: []useractions.ActionTag{useractions.ActionTagVKTyping},
+			},
+		)
 	}
 
 	validateGlideTyping := func(testScenario string, inputField testserver.InputField, isGlideTypingEnabled bool) uiauto.Action {
@@ -150,20 +158,20 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 			its.Clear(inputField),
 			its.ClickFieldUntilVKShown(inputField),
 			setFloatVK,
-			glideTypingUserAction(testScenario, inputField, isGlideTypingEnabled).Run,
+			glideTypingUserAction(testScenario, inputField, isGlideTypingEnabled),
 		)
 	}
 
 	util.RunSubTest(ctx, s, cr, "default", validateGlideTyping("Glide typing is enabled by default", testserver.TextAreaInputField, true))
 	util.RunSubTest(ctx, s, cr, "not_applicable", validateGlideTyping("Glide typing should not work on non-appliable fields", testserver.PasswordInputField, false))
 
-	if err := imesettings.SetGlideTyping(uc, inputMethod, false).Run(ctx); err != nil {
+	if err := imesettings.SetGlideTyping(uc, inputMethod, false)(ctx); err != nil {
 		s.Fatal("Failed to disable glide typing: ", err)
 	}
 
 	util.RunSubTest(ctx, s, cr, "disable", validateGlideTyping("Glide typing can be disabled in IME setting", testserver.TextAreaInputField, false))
 
-	if err := imesettings.SetGlideTyping(uc, inputMethod, true).Run(ctx); err != nil {
+	if err := imesettings.SetGlideTyping(uc, inputMethod, true)(ctx); err != nil {
 		s.Fatal("Failed to disable glide typing: ", err)
 	}
 

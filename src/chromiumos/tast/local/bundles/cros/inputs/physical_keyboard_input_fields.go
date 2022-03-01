@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
@@ -96,14 +97,14 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.InputField))
 			inputField := subtest.InputField
 
-			if err := useractions.NewUserAction(
+			if err := uiauto.UserAction(
 				"PK input in different fields",
 				its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText),
 				uc, &useractions.UserActionCfg{
 					Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
 					Tags:       []useractions.ActionTag{useractions.ActionTagPKTyping},
 				},
-			).Run(ctx); err != nil {
+			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
 			}
 		})

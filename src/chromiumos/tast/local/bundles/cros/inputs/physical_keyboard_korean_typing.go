@@ -165,13 +165,13 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 
 			// Change layout in IME settings only if required.
 			if currentKeyboardLayout != string(subtest.keyboardLayout) {
-				if err := imesettings.SetKoreanKeyboardLayout(uc, string(subtest.keyboardLayout)).Run(ctx); err != nil {
+				if err := imesettings.SetKoreanKeyboardLayout(uc, string(subtest.keyboardLayout))(ctx); err != nil {
 					s.Fatalf("Failed to set keyboard layout to %q: %v", subtest.keyboardLayout, err)
 				}
 				currentKeyboardLayout = string(subtest.keyboardLayout)
 			}
 
-			if err := useractions.NewUserAction(
+			if err := uiauto.UserAction(
 				"Korean PK input",
 				its.ValidateInputOnField(inputField, subtest.inputFunc, subtest.expectedText),
 				uc, &useractions.UserActionCfg{
@@ -181,7 +181,7 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 					},
 					Tags: []useractions.ActionTag{useractions.ActionTagPKTyping},
 				},
-			).Run(ctx); err != nil {
+			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
 			}
 		})
@@ -193,7 +193,7 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 
 		// Change layout in IME settings only if required.
 		if currentKeyboardLayout != string(koreanInputType2Set) {
-			if err := imesettings.SetKoreanKeyboardLayout(uc, string(koreanInputType2Set)).Run(ctx); err != nil {
+			if err := imesettings.SetKoreanKeyboardLayout(uc, string(koreanInputType2Set))(ctx); err != nil {
 				s.Fatalf("Failed to set keyboard layout to %q: %v", koreanInputType2Set, err)
 			}
 		}
@@ -208,7 +208,7 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 			}),
 		)
 
-		if err := useractions.NewUserAction(
+		if err := uiauto.UserAction(
 			"Korean PK input",
 			validateOmniboxAction,
 			uc, &useractions.UserActionCfg{
@@ -218,7 +218,7 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 				},
 				Tags: []useractions.ActionTag{useractions.ActionTagPKTyping},
 			},
-		).Run(ctx); err != nil {
+		)(ctx); err != nil {
 			s.Fatal("Failed to validate korean PK input in omnibox: ", err)
 		}
 	})

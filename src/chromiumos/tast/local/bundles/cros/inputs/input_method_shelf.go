@@ -85,14 +85,14 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		ui.WaitUntilGone(imeMenuTrayButtonFinder),
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"validate that setting is disabled by default",
 		validateShelfDisabledByDefaultAction,
 		uc,
 		&useractions.UserActionCfg{
 			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings, useractions.ActionTagIMEShelf},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate that input options in shelf is disabled by default: ", err)
 	}
 
@@ -105,14 +105,14 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(imeMenuTrayButtonFinder),
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"input options in shelf is enabled by adding second IME",
 		activateAction,
 		uc,
 		&useractions.UserActionCfg{
 			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings, useractions.ActionTagIMEShelf},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate that input options in shelf is enabled by adding second IME: ", err)
 	}
 
@@ -135,14 +135,14 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		},
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"user can change input method via IME tray",
 		changeIMEAction,
 		uc,
 		&useractions.UserActionCfg{
 			Tags: []useractions.ActionTag{useractions.ActionTagIMEShelf},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to change input method via IME tray: ", err)
 	}
 
@@ -152,14 +152,14 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		ui.WaitUntilGone(imeMenuTrayButtonFinder),
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"user can disable IME tray in OS settings",
 		toggleOffAction,
 		uc,
 		&useractions.UserActionCfg{
 			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings, useractions.ActionTagIMEShelf},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to disable IME tray in OS settings: ", err)
 	}
 }
