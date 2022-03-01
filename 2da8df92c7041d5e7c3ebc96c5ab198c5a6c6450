@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d642fb7e_92f1b938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-03-01T09:52:33Z",
+      "side": 1,
+      "message": "I\u0027m curious about this one too...",
+      "parentUuid": "a2bcb180_6d037592",
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d288d73_69c2fce5",
         "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
         "patchSetId": 2
@@ -48,6 +66,52 @@
       "writtenOn": "2022-02-28T17:57:49Z",
       "side": 1,
       "message": "nit: se fmt.Sprintf(\"allocated%s_p90\", suffix) to make it more readable.",
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2fb041e_fb306e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-03-01T09:52:33Z",
+      "side": 1,
+      "message": "each time you log with a suffiz, you also need to call Reset - search for basemem.Reset() in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/memory/mempressure/mempressure.go  .\nThe reason for this is: this resets the timestamp for the \"starting point\" used to compute custom-period PSI, and the base for some ZRAM delta-style metrics.",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43946cc_f67386df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-03-01T09:52:33Z",
+      "side": 1,
+      "message": "FYI the very last LogMemoryStats() will not require a subsequent Reset().",
+      "range": {
+        "startLine": 128,
+        "startChar": 19,
+        "endLine": 128,
+        "endChar": 30
+      },
       "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
