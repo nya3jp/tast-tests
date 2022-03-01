@@ -34,6 +34,24 @@
       "parentUuid": "be8907a6_bf5c4ebd",
       "revId": "de7eb4bbb10f0e3c6691e43310f0f6759a4bc5b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "134a6375_1fa572af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-01T22:44:36Z",
+      "side": 1,
+      "message": "Anyway, that shouldn\u0027t be the problem here, adding poll won\u0027t fix it, since `tconn.Eval` didn\u0027t return a failure.\n\nDebugging `apps.InstallPWAForURL` is a bit difficult though. Hope this fix works.",
+      "parentUuid": "be8907a6_bf5c4ebd",
+      "revId": "de7eb4bbb10f0e3c6691e43310f0f6759a4bc5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
