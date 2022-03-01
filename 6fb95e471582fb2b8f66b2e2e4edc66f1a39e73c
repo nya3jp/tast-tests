@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aba0728_c4da0835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/registration_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-03-01T15:04:07Z",
+      "side": 1,
+      "message": "There are 40+ tests that need to be updated. I sent a new iteration in https://crrev.com/c/3495089",
+      "revId": "6fb95e471582fb2b8f66b2e2e4edc66f1a39e73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
