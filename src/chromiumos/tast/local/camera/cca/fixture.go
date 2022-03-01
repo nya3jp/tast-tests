@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -32,117 +33,277 @@ const (
 	tearDownTimeout        = chrome.ResetTimeout
 )
 
-type feature string
-
-const (
-	manualCrop feature = "CameraAppDocumentManualCrop"
-)
-
 func init() {
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaLaunchedParent",
+		Desc:            "Launched CCA",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{launchCCA: true}),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		PreTestTimeout:  ccaSetUpTimeout,
+		PostTestTimeout: ccaTearDownTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaLaunched",
 		Desc:            "Launched CCA",
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{launchCCA: true},
+		Impl:            newChildFixture(&param{launchCCA: true}),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		PreTestTimeout:  ccaSetUpTimeout,
+		PostTestTimeout: ccaTearDownTimeout,
+		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaLaunchedParent",
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaLaunchedGuestParent",
+		Desc:            "Launched CCA",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{guestMode: true, launchCCA: true}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		PreTestTimeout:  ccaSetUpTimeout,
 		PostTestTimeout: ccaTearDownTimeout,
 		TearDownTimeout: tearDownTimeout,
 	})
-
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaLaunchedGuest",
 		Desc:            "Launched CCA",
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{guestMode: true, launchCCA: true},
+		Impl:            newChildFixture(&param{guestMode: true, launchCCA: true}),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		PreTestTimeout:  ccaSetUpTimeout,
+		PostTestTimeout: ccaTearDownTimeout,
+		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaLaunchedGuestParent",
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaLaunchedWithFakeCameraParent",
+		Desc:            "Launched CCA with fake camera input",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{fakeCamera: true, launchCCA: true}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		PreTestTimeout:  ccaSetUpTimeout,
 		PostTestTimeout: ccaTearDownTimeout,
 		TearDownTimeout: tearDownTimeout,
 	})
-
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaLaunchedWithFakeCamera",
 		Desc:            "Launched CCA with fake camera input",
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{fakeCamera: true, launchCCA: true},
+		Impl:            newChildFixture(&param{fakeCamera: true, launchCCA: true}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		PreTestTimeout:  ccaSetUpTimeout,
 		PostTestTimeout: ccaTearDownTimeout,
 		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaLaunchedWithFakeCameraParent",
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyParent",
+		Desc:            "Set up test bridge for CCA",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{}),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaTestBridgeReady",
 		Desc:            "Set up test bridge for CCA",
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{},
+		Impl:            newChildFixture(&param{}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaTestBridgeReadyParent",
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyWithFakeCameraParent",
+		Desc:            "Lacros Chrome from rootfs as a primary browser",
+		Contacts:        []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{fakeCamera: true, fakeScene: true}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
+	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "ccaTestBridgeReadyWithFakeCamera",
 		Desc: `Set up test bridge for CCA with fake camera. Any tests using this
 		       fixture should switch the camera scene before opening camera`,
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{fakeCamera: true, fakeScene: true},
+		Impl:            newChildFixture(&param{fakeCamera: true, fakeScene: true}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaTestBridgeReadyWithFakeCameraParent",
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyBypassPermissionClamshellParent",
+		Desc:            "Lacros Chrome from rootfs as a primary browser",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{bypassPermission: true, forceClamshell: true}),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
+	})
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaTestBridgeReadyBypassPermissionClamshell",
 		Desc:            "Set up test bridge for CCA with bypassPermission on clamshell mode on",
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{bypassPermission: true, forceClamshell: true},
+		Impl:            newChildFixture(&param{bypassPermission: true, forceClamshell: true}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaTestBridgeReadyBypassPermissionClamshellParent",
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyWithArcParent",
+		Desc:            "Set up test bridge for CCA with ARC enabled",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{arcBooted: true}),
+		SetUpTimeout:    setUpTimeout + arc.BootTimeout + ui.StartTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaTestBridgeReadyWithArc",
 		Desc:            "Set up test bridge for CCA with ARC enabled",
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{arcBooted: true},
+		Impl:            newChildFixture(&param{arcBooted: true}),
 		SetUpTimeout:    setUpTimeout + arc.BootTimeout + ui.StartTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaTestBridgeReadyWithArcParent",
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "ccaTestBridgeReadyForDocumentManualCrop",
-		Desc:     "Set up test bridge for CCA and chrome for testing document manual crop",
-		Contacts: []string{"inker@chromium.org"},
-		Data:     []string{"cca_ui.js"},
-		Impl: &fixture{
-			fakeCamera: true,
-			fakeScene:  true,
-			features:   []feature{manualCrop},
-		},
+		Name:            "ccaTestBridgeReadyForDocumentManualCropParent",
+		Desc:            "Set up test bridge for CCA and chrome for testing document manual crop",
+		Contacts:        []string{"inker@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newLacrosParentFixture(&param{fakeCamera: true, fakeScene: true, manualCrop: true}),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyForDocumentManualCrop",
+		Desc:            "Set up test bridge for CCA and chrome for testing document manual crop",
+		Contacts:        []string{"inker@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            newChildFixture(&param{fakeCamera: true, fakeScene: true, manualCrop: true}),
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+		Parent:          "ccaTestBridgeReadyForDocumentManualCropParent",
+	})
+}
+
+type param struct {
+	arcBooted        bool
+	bypassPermission bool
+	fakeCamera       bool
+	fakeScene        bool
+	forceClamshell   bool
+	guestMode        bool
+	launchCCA        bool
+	manualCrop       bool
+}
+
+func newLacrosParentFixture(f *param) testing.FixtureImpl {
+	return lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		var chromeOpts []chrome.Option
+
+		// Enable assistant verbose logging for the CCAUIAssistant test. Since
+		// assistant is disabled by default, this should not affect other tests.
+		chromeOpts = append(chromeOpts, assistant.VerboseLogging())
+
+		// Lacros.
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures("LacrosPrimary"))
+		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--disable-lacros-keep-alive", "--disable-login-lacros-opening"))
+
+		if f.fakeCamera {
+			chromeOpts = append(chromeOpts, chrome.ExtraArgs(
+				// The default fps of fake device is 20, but CCA requires fps >= 24.
+				// Set the fps to 30 to avoid OverconstrainedError.
+				"--use-fake-device-for-media-stream=fps=30"))
+			if f.fakeScene {
+				dataDir := filepath.Dir(s.DataPath("cca_ui.js"))
+				cameraScene := filepath.Join(dataDir, "camera_scene.mjpeg")
+				chromeOpts = append(chromeOpts, chrome.ExtraArgs(
+					// Set the default camera scene as the input of the fake stream.
+					// The content of the scene can be dynamically changed during tests.
+					"--use-file-for-fake-video-capture="+cameraScene))
+			}
+		}
+		if f.bypassPermission {
+			chromeOpts = append(chromeOpts, chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
+		}
+		if f.forceClamshell {
+			chromeOpts = append(chromeOpts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+		}
+		if f.guestMode {
+			chromeOpts = append(chromeOpts, chrome.GuestLogin())
+		}
+		if f.manualCrop {
+			chromeOpts = append(chromeOpts, chrome.EnableFeatures("CameraAppDocumentManualCrop"))
+		}
+		if f.arcBooted {
+			chromeOpts = append(chromeOpts, chrome.ARCEnabled(), chrome.ExtraArgs("--disable-features=ArcResizeLock"))
+		}
+
+		return chromeOpts, nil
+	})
+}
+
+type fixture struct {
+	cr          *chrome.Chrome
+	arc         *arc.ARC
+	tb          *testutil.TestBridge
+	app         *App
+	outDir      string
+	chart       *chart.Chart
+	cameraScene string
+	scriptPaths []string
+	p           *param
+	debugParams DebugParams
 }
 
 // DebugParams defines some useful flags for debug CCA tests.
 type DebugParams struct {
 	SaveScreenshotWhenFail   bool
 	SaveCameraFolderWhenFail bool
+}
+
+func newChildFixture(f *param) testing.FixtureImpl {
+	return &fixture{p: f}
 }
 
 // TestWithAppParams defines parameters to control behaviors of running test
@@ -195,29 +356,8 @@ type FixtureData struct {
 	SetDebugParams func(params DebugParams)
 }
 
-type fixture struct {
-	cr          *chrome.Chrome
-	arc         *arc.ARC
-	tb          *testutil.TestBridge
-	app         *App
-	outDir      string
-	chart       *chart.Chart
-	cameraScene string
-
-	scriptPaths      []string
-	fakeCamera       bool
-	fakeScene        bool
-	arcBooted        bool
-	launchCCA        bool
-	bypassPermission bool
-	forceClamshell   bool
-	guestMode        bool
-	debugParams      DebugParams
-	features         []feature
-}
-
 func (f *fixture) cameraType() testutil.UseCameraType {
-	if f.fakeCamera {
+	if f.p.fakeCamera {
 		return testutil.UseFakeCamera
 	}
 	return testutil.UseRealCamera
@@ -226,55 +366,19 @@ func (f *fixture) cameraType() testutil.UseCameraType {
 func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	success := false
 
-	var chromeOpts []chrome.Option
-	for _, f := range f.features {
-		chromeOpts = append(chromeOpts, chrome.EnableFeatures(string(f)))
-	}
-	if f.fakeCamera {
-		chromeOpts = append(chromeOpts, chrome.ExtraArgs(
-			// The default fps of fake device is 20, but CCA requires fps >= 24.
-			// Set the fps to 30 to avoid OverconstrainedError.
-			"--use-fake-device-for-media-stream=fps=30"))
-
-		if f.fakeScene {
-			dataDir := filepath.Dir(s.DataPath("cca_ui.js"))
-			f.cameraScene = filepath.Join(dataDir, "camera_scene.mjpeg")
-			chromeOpts = append(chromeOpts, chrome.ExtraArgs(
-				// Set the default camera scene as the input of the fake stream.
-				// The content of the scene can be dynamically changed during tests.
-				"--use-file-for-fake-video-capture="+f.cameraScene))
-		}
-	}
-	if f.guestMode {
-		chromeOpts = append(chromeOpts, chrome.GuestLogin())
-	}
-	if f.arcBooted {
-		chromeOpts = append(chromeOpts, chrome.ARCEnabled(), chrome.ExtraArgs("--disable-features=ArcResizeLock"))
-	}
-	if f.bypassPermission {
-		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
-	}
-	if f.forceClamshell {
-		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	if f.p.fakeCamera && f.p.fakeScene {
+		dataDir := filepath.Dir(s.DataPath("cca_ui.js"))
+		f.cameraScene = filepath.Join(dataDir, "camera_scene.mjpeg")
 	}
 
-	// Enable assistant verbose logging for the CCAUIAssistant test. Since
-	// assistant is disabled by default, this should not affect other tests.
-	chromeOpts = append(chromeOpts, assistant.VerboseLogging())
-
-	cr, err := chrome.New(ctx, chromeOpts...)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	f.cr = cr
+	f.cr = s.ParentValue().(chrome.HasChrome).Chrome()
 	defer func() {
 		if !success {
-			f.cr.Close(ctx)
 			f.cr = nil
 		}
 	}()
 
-	if f.arcBooted {
+	if f.p.arcBooted {
 		a, err := arc.New(ctx, s.OutDir())
 		if err != nil {
 			s.Fatal("Failed to start ARC: ", err)
@@ -288,7 +392,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		}()
 	}
 
-	tb, err := testutil.NewTestBridge(ctx, cr, f.cameraType())
+	tb, err := testutil.NewTestBridge(ctx, f.cr, f.cameraType())
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -315,16 +419,13 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 	f.tb = nil
 
-	if f.arcBooted {
+	if f.p.arcBooted {
 		if err := f.arc.Close(ctx); err != nil {
 			s.Error("Failed to tear down ARC: ", err)
 		}
 		f.arc = nil
 	}
 
-	if err := f.cr.Close(ctx); err != nil {
-		s.Error("Failed to tear down Chrome: ", err)
-	}
 	f.cr = nil
 
 	if f.cameraScene != "" {
@@ -341,7 +442,7 @@ func (f *fixture) Reset(ctx context.Context) error {
 
 func (f *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	f.outDir = s.OutDir()
-	if f.launchCCA {
+	if f.p.launchCCA {
 		app, err := f.startApp(ctx)
 		if err != nil {
 			s.Fatal("Failed to start app: ", err)
@@ -362,7 +463,7 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 		f.chart = nil
 	}
 
-	if f.launchCCA {
+	if f.p.launchCCA {
 		if err := f.stopApp(ctx, s.HasError()); err != nil {
 			s.Fatal("Failed to stop app: ", err)
 		}
@@ -376,7 +477,7 @@ func (f *fixture) resetTestBridge(ctx context.Context) error {
 	f.tb = nil
 
 	cameraType := testutil.UseRealCamera
-	if f.fakeCamera {
+	if f.p.fakeCamera {
 		cameraType = testutil.UseFakeCamera
 	}
 	tb, err := testutil.NewTestBridge(ctx, f.cr, cameraType)
