@@ -14,7 +14,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/apps/cursive"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -32,6 +35,7 @@ var cursiveEnabledModels = []string{
 	"scarlet",
 	"eve",
 	"nocturne",
+	"betty",
 }
 
 func init() {
@@ -64,11 +68,26 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	if _, err := apps.InstallPWAForURL(ctx, cr, cursive.AppURL, 2*time.Minute); err != nil {
-		s.Fatal("Failed to install Cursive: ", err)
+	conn, err := cr.NewConn(ctx, cursive.AppURL)
+	if err != nil {
+		s.Fatalf("Failed to open URL %q: %v", cursive.AppURL, err)
+	}
+	defer conn.Close()
+
+	ui := uiauto.New(tconn).WithInterval(2 * time.Second)
+	installIcon := nodewith.ClassName("PwaInstallView").Role(role.Button)
+	installButton := nodewith.Name("Install").Role(role.Button)
+	if err := ui.WithTimeout(2 * time.Minute).WaitUntilExists(installIcon)(ctx); err != nil {
+		s.Fatal("Failed to wait for the install button in the omnibox")
 	}
 
-	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Cursive.ID, 5*time.Minute); err != nil {
+	if err := uiauto.Combine("",
+		ui.LeftClick(installIcon),
+		ui.LeftClick(installButton))(ctx); err != nil {
+		s.Fatal("Failed to click install button: ", err)
+	}
+
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Cursive.ID, 2*time.Minute); err != nil {
 		s.Fatal("Failed to wait for installed app: ", err)
 	}
 
