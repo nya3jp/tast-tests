@@ -52,6 +52,24 @@
       "parentUuid": "be8907a6_bf5c4ebd",
       "revId": "de7eb4bbb10f0e3c6691e43310f0f6759a4bc5b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3617e08c_28fc489d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-01T22:48:07Z",
+      "side": 1,
+      "message": "Polling / retry is still possible if using waitForChromeInstalled() to check the result. But I do not want to waste much time on investigation. This test basically validates A4 can be installed from URL. UI interaction is a better approach anyway.",
+      "parentUuid": "134a6375_1fa572af",
+      "revId": "de7eb4bbb10f0e3c6691e43310f0f6759a4bc5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
