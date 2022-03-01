@@ -33,6 +33,24 @@
       "message": "This is changing a bunch of buster-only tests to bullseye-only? I\u0027d rather this be its own CL instead of hidden in a migration. Easier to review/revert/etc it that way.",
       "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1fdc29_3c60b6ec",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-01T23:41:26Z",
+      "side": 1,
+      "message": "Oh, we have buster-only tests?\n\nI changed this because if I did not change this, the large container will be buster, there is no fixture for buster large container.",
+      "parentUuid": "8f50f391_13d043a5",
+      "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
