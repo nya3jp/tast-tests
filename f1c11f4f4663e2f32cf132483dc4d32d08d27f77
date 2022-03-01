@@ -33,107 +33,24 @@
       "message": "Is b.Count guaranteed to be non-zero? If not, this could report a wrong max value.\n\nAlso, would it be better to store midpoint instead here? IIUC b.Max is only the upper limit for that bucket. If we have no information about the distribution of the values in the bucket, we have to assume the mean is (min+max)/2. (I assumed that the max value reported here is meant to mean the max value we saw in any bucket)",
       "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
-    }
-  ],
-  "submitRequirementResults": [
-    {
-      "submitRequirement": {
-        "name": "Code-Owners",
-        "description": {
-          "value": "User with the code owner override approved the change"
-        },
-        "applicabilityExpression": {
-          "value": {
-            "expressionString": "has:enabled_code-owners"
-          }
-        },
-        "submittabilityExpression": {
-          "expressionString": "has:approval_code-owners"
-        },
-        "overrideExpression": {
-          "value": {
-            "expressionString": "label:Owners-Override\u003d+1"
-          }
-        },
-        "allowOverrideInChildProjects": true
-      },
-      "applicabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"has:enabled_code-owners"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:enabled_code-owners"],"failingAtoms":[]}
-      },
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"has:approval_code-owners"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:approval_code-owners"],"failingAtoms":[]}
-      },
-      "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Owners-Override=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Owners-Override=+1"]}
-      },
-      "patchSetCommitId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
     },
     {
-      "submitRequirement": {
-        "name": "Code-Review",
-        "description": {
-          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
-        },
-        "applicabilityExpression": {},
-        "submittabilityExpression": {
-          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
-        },
-        "overrideExpression": {
-          "value": {
-            "expressionString": "label:Bot-Commit\u003d+1"
-          }
-        },
-        "allowOverrideInChildProjects": true
+      "unresolved": true,
+      "key": {
+        "uuid": "30ddbd9b_febb2603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 2
       },
-      "applicabilityExpressionResult": {},
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MAX,user=non_uploader"],"failingAtoms":["label:Code-Review=MIN"]}
+      "lineNbr": 220,
+      "author": {
+        "id": 1113039
       },
-      "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
-      },
-      "patchSetCommitId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
-    },
-    {
-      "submitRequirement": {
-        "name": "Verified",
-        "description": {
-          "value": "CI or human verified the change"
-        },
-        "applicabilityExpression": {},
-        "submittabilityExpression": {
-          "expressionString": "label:Verified\u003dMAX AND -label:Verified\u003dMIN"
-        },
-        "overrideExpression": {
-          "value": {
-            "expressionString": "label:Bot-Commit\u003d+1"
-          }
-        },
-        "allowOverrideInChildProjects": true
-      },
-      "applicabilityExpressionResult": {},
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Verified=MAX"],"failingAtoms":["label:Verified=MIN"]}
-      },
-      "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
-      },
-      "patchSetCommitId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
+      "writtenOn": "2022-03-01T14:17:41Z",
+      "side": 1,
+      "message": "max is intended to be the max in any bucket. The buckets are always in sorted order, so this keeps the max from the last bucket in the iteration. I could probably take this out of the loop and just read the value directly in recording, and that would likely be better code. I\u0027ll send a subsequent CL that does that.\n\nI\u0027ll also add a zero check b.Count.",
+      "parentUuid": "687ca049_155ff198",
+      "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
