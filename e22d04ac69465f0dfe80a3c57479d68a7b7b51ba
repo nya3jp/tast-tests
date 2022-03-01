@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d2229a_cd7402c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-03-01T05:17:15Z",
+      "side": 1,
+      "message": "CL to delete the creds file https://chrome-internal-review.git.corp.google.com/c/chromeos/platform/tast-tests-private/+/4582372",
+      "revId": "e22d04ac69465f0dfe80a3c57479d68a7b7b51ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
