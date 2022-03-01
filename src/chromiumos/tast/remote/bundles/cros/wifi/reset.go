@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,7 +24,9 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_suspend"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Fixture:     "wificellFixt",
+		// TODO(b:220648498): Temporarily disable reset test on nipperkin due to flaky reset test.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("nipperkin")),
+		Fixture:      "wificellFixt",
 		// For some Marvell DUT, this test may take more than 25 minutes.
 		// For WCN3990 device, this test may take more than 39 minutes.
 		Timeout: time.Minute * 45,
