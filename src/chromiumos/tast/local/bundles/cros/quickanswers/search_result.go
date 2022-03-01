@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SearchResult,
-		Desc: "Test Quick Answers card click should bring up search result",
+		Func:         SearchResult,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		Desc:         "Test Quick Answers card click should bring up search result",
 		Contacts: []string{
 			"updowndota@google.com",
 			"croissant-eng@google.com",
@@ -69,7 +70,7 @@ func SearchResult(ctx context.Context, s *testing.State) {
 
 	// Right click the selected word and ensure the Quick Answers UI shows up with the definition result.
 	quickAnswers := nodewith.ClassName("QuickAnswersView")
-	definitionResult := nodewith.NameContaining("twenty plane faces").ClassName("Label")
+	definitionResult := nodewith.NameContaining("twenty plane faces").ClassName("QuickAnswersTextLabel")
 	if err := uiauto.Combine("Show context menu",
 		ui.RightClick(query),
 		ui.WaitUntilExists(quickAnswers),

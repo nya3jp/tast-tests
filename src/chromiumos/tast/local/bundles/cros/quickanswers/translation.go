@@ -78,7 +78,7 @@ func Translation(ctx context.Context, s *testing.State) {
 
 	// Right click the selected query word and ensure the Quick Answers UI shows up with the translation result.
 	quickAnswers := nodewith.ClassName("QuickAnswersView")
-	translationResult := nodewith.NameContaining("translate").ClassName("Label")
+	translationResult := nodewith.NameContaining("translate").ClassName("QuickAnswersTextLabel")
 	if err := uiauto.Combine("Show context menu",
 		ui.RightClick(query),
 		ui.WaitUntilExists(quickAnswers),

@@ -71,7 +71,7 @@ func SettingsButton(ctx context.Context, s *testing.State) {
 	// with the settings button and the conversion result in pounds.
 	quickAnswers := nodewith.ClassName("QuickAnswersView")
 	settingsButton := nodewith.ClassName("ImageButton").Name("Quick answers settings")
-	unitConversionResult := nodewith.NameContaining("110.231").ClassName("Label")
+	unitConversionResult := nodewith.NameContaining("110.231").ClassName("QuickAnswersTextLabel")
 	if err := uiauto.Combine("Show context menu",
 		ui.RightClick(units),
 		ui.WaitUntilExists(quickAnswers),
