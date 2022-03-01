@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca9816e_d9316d1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-01T17:42:28Z",
+      "side": 1,
+      "message": "Is this the same as before? I think we need to do something to verify this test wasn\u0027t breaking machines before we add it back.\n\nMaybe have it run on just one model, and then add more models slowly after checking on if there are any broken duts.\n\nOr don\u0027t put it in firmware_unstable and schedule it manually using crosfleet.",
+      "revId": "76c7102884406a47029dcc5b35f0f0ff1ecb1fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
