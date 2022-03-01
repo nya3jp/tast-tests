@@ -156,17 +156,17 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "crostiniBullseyeLargeContainer",
+		Name:            "crostiniBusterLargeContainer",
 		Desc:            "Install Crostini with Bullseye in large container with apps installed",
 		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Impl:            &crostiniFixture{preData: preTestDataBullseyeLC},
+		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
 		SetUpTimeout:    installationTimeout,
 		ResetTimeout:    checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostini",
 		Vars:            []string{"keepState"},
-		Data:            []string{GetContainerMetadataArtifact("bullseye", true), GetContainerRootfsArtifact("bullseye", true)},
+		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -221,9 +221,9 @@ var preTestDataBullseye = &preTestData{
 	debianVersion: vm.DebianBullseye,
 }
 
-var preTestDataBullseyeLC = &preTestData{
+var preTestDataBusterLC = &preTestData{
 	container:     largeContainer,
-	debianVersion: vm.DebianBullseye,
+	debianVersion: vm.DebianBuster,
 }
 
 func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {

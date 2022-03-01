@@ -22,6 +22,7 @@ func TestDebianUpgradeAlertParams(t *testing.T) {
 		Timeout:            14 * time.Minute,
 		MinimalSet:         true,
 		SelfManagedInstall: false,
+		UseFixture:         true,
 	}})
 	genparams.Ensure(t, "debian_upgrade_alert.go", params)
 }
