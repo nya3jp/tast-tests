@@ -714,6 +714,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 			Files:        files,
 			Timeout:      defaultTimeout,
 			SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeH264},
+			HardwareDeps: "hwdep.SupportsV4L2StatefulVideoDecoding(), ",
 			Metadata:     genExtraData(files),
 			Attr:         []string{"graphics_video_h264"},
 		}
