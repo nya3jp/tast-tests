@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573e03ae_adbb03a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-03-01T09:01:43Z",
+      "side": 1,
+      "message": "ptal at  http://crrev.com/c/3494197   - not failing fatally when resourced.NewClient fails.\n\nI hope we can make all these calls fail gracefully in the absence of resourced.\nReason: so that we keep the ability of retrieving NEW metrics on OLD ChromeOS versions, which we sometimes do for compare/contrast.\n\nFor this particular test, it seems to me that the safer thing to do is to look at the current milestone, and get the numbers the old way when connecting to resourced is known to lead to a hang.",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "8fb9f9dcf524ce7ec412ffe045febc859b4efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee921d5_1fc2aab1",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-03-01T09:01:43Z",
+      "side": 1,
+      "message": "same as previous comment... making it incompatible with older system prevents comparisons.  Here, I guess this would translate to using a different method when rm is nil (?)",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "8fb9f9dcf524ce7ec412ffe045febc859b4efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
