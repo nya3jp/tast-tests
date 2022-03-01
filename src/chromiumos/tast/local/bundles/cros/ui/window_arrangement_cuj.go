@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio/crastestclient"
@@ -42,7 +43,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
 		Timeout:      10*time.Minute + cuj.CPUStablizationTimeout,
-		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
+		Data:         []string{"shaka_720.webm", "pip.html"},
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -222,6 +223,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
 	defer connPiP.Close()
+	// Close the browser window at the end of the test. If it is left playing a video, it
+	// will cause the above-deferred function call srv.Close() to block for a few minutes.
+	defer connPiP.CloseTarget(closeCtx)
+
 	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
@@ -231,6 +236,10 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
 	defer connNoPiP.Close()
+	// Close the browser window at the end of the test. If it is left playing a video, it
+	// will cause the above-deferred function call srv.Close() to block for a few minutes.
+	defer connNoPiP.CloseTarget(closeCtx)
+
 	if err := webutil.WaitForQuiescence(ctx, connNoPiP, timeout); err != nil {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
@@ -243,7 +252,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		// The second tab enters the system PiP mode.
 		webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
 		pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
-		if err := ui.LeftClick(pipButton)(ctx); err != nil {
+		if err := action.Combine(
+			"focus the PIP button (to ensure it is in view) and left-click on it",
+			ui.FocusAndWait(pipButton),
+			ui.LeftClick(pipButton),
+		)(ctx); err != nil {
 			s.Fatal("Failed to click the pip button: ", err)
 		}
 		if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
