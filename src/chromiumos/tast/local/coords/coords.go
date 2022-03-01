@@ -42,6 +42,11 @@ func (p Point) Sub(p2 Point) Point {
 	return Point{p.X - p2.X, p.Y - p2.Y}
 }
 
+// In returns whether the point is contained within r.
+func (p Point) In(r Rect) bool {
+	return r.Left <= p.X && r.Top <= p.Y && r.Bottom() >= p.Y && r.Right() >= p.X
+}
+
 // Size represents a size of a region.
 type Size struct {
 	Width  int `json:"width"`

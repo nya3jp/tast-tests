@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
@@ -79,10 +80,11 @@ const (
 	settingsAppName   = "Settings"
 
 	// Used in test cases where screenshots are taken.
-	pixelColorDiffMargin                    = 5
+	pixelColorDiffMargin                    = 15
 	clientContentColorPixelPercentThreshold = 95
-	borderColorPixelCountThreshold          = 1000
-	borderWidthPX                           = 6
+	// When shadow exists, the percentage will be 70~80%, and otherwise, it will be 0%. Let's use the intermediate value.
+	borderColorPixelPercentageThreshold = 35
+	borderWidthPX                       = 6
 )
 
 // Represents the size of a window.
@@ -339,26 +341,32 @@ func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.
 		}
 
 		rect := img.Bounds()
-		borderColorPixels := 0
+		shadowOnBorderPixels := 0
+		borderPixels := 0
 		for y := rect.Min.Y; y < rect.Max.Y; y++ {
 			for x := rect.Min.X; x < rect.Max.X; x++ {
-				onLeftBorder := bounds.Left-borderWidthPX <= x && x < bounds.Left
-				onTopBorder := bounds.Top-borderWidthPX <= y && y < bounds.Top
-				onRightBorder := bounds.Right() < x && x <= bounds.Right()+borderWidthPX
-				onBottomBorder := bounds.Bottom() < y && y <= bounds.Bottom()+borderWidthPX
-				onBorder := onLeftBorder || onTopBorder || onRightBorder || onBottomBorder
-				if onBorder && colorcmp.ColorsMatch(img.At(x, y), color.RGBA{165, 165, 165, 255}, pixelColorDiffMargin) {
-					borderColorPixels++
+				p := coords.Point{x, y}
+				onBorder := p.In(bounds.WithInset(-borderWidthPX, -borderWidthPX)) && !p.In(bounds)
+				if onBorder {
+					if colorcmp.ColorsMatch(img.At(x, y), color.RGBA{170, 170, 170, 255}, pixelColorDiffMargin) {
+						shadowOnBorderPixels++
+					}
+					borderPixels++
 				}
 			}
 		}
 
-		if shouldShowBorder && borderColorPixels < borderColorPixelCountThreshold {
-			return errors.Errorf("failed to verify that the window border is visible; contains %d border color pixels", borderColorPixels)
+		// borderPixels is 0 if the window is maximized. There's nothing to verify in this case.
+		if borderPixels != 0 {
+			shadowOnBorderPercentage := int(float64(shadowOnBorderPixels) / float64(borderPixels) * 100.0)
+			if shouldShowBorder && shadowOnBorderPercentage < borderColorPixelPercentageThreshold {
+				return errors.Errorf("failed to verify that the window border is visible; Border has %d%% (%d/%d) of shadow pixels (threshold: %d%%)", shadowOnBorderPercentage, shadowOnBorderPixels, borderPixels, borderColorPixelPercentageThreshold)
+			}
+			if !shouldShowBorder && shadowOnBorderPercentage > borderColorPixelPercentageThreshold {
+				return errors.Errorf("failed to verify that the window border is invisible; Border has %d%% (%d/%d) of shadow pixels (threshold: %d%%)", shadowOnBorderPercentage, shadowOnBorderPixels, borderPixels, borderColorPixelPercentageThreshold)
+			}
 		}
-		if !shouldShowBorder && borderColorPixels > borderColorPixelCountThreshold {
-			return errors.Errorf("failed to verify that the window border is invisible; contains %d border color pixels", borderColorPixels)
-		}
+
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
