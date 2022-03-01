@@ -118,6 +118,30 @@
       },
       "revId": "2ed36b1ac463cb4861c78352ffc9a78dc7fc55c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c0c666_2a701102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-01T12:30:13Z",
+      "side": 1,
+      "message": "I think what\u0027s happening is a race. The crostini command launches Lacros, but it takes a bit before the Lacros process is created. And before that happens, SetUpWithURL is called and tries to first kill any running Lacros instance, but there isn\u0027t any (yet). Eventually we end up with two Lacros browser processes, which is bad.\n\nThe two suggestsions are:\na) After running the Crostini command, use something like WaitForWindow from the mentioned CLs to wait for the browser window (with given page title) to appear. That\u0027s it. Don\u0027t use browserfixt.SetUp(WithURL).\nb) Before running the Crostini command, do browserfixt.SetUp such that the crostini command will use the existing browser process. (In the Lacros case this will open the page in a tab but I don\u0027t see how this difference is relevant).\n\nHowever, in (b) you\u0027d still want to check that at the end the correct browser is showing the correct page though, so something like WaitForWindow would still necessary I think. All in all, (a) seems simpler to me.",
+      "parentUuid": "07fcc234_59cfe9ba",
+      "range": {
+        "startLine": 89,
+        "startChar": 32,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "2ed36b1ac463cb4861c78352ffc9a78dc7fc55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
