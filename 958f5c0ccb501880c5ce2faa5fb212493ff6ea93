@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a1a14b_536933f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-03-01T20:29:22Z",
+      "side": 0,
+      "message": "Not actually sure how this was passing locally before or how it passed CQ 😕",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 26
+      },
+      "revId": "958f5c0ccb501880c5ce2faa5fb212493ff6ea93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
