@@ -33,6 +33,24 @@
       "message": "Where does it get the bear video? you\u0027ve deleted it in this CL",
       "revId": "b214124676884399a85938d725c54ff00b880728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c3b86c_96421622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-01T23:41:16Z",
+      "side": 1,
+      "message": "I have deleted bear-320x240.vp8.webm in this CL, but this is bear-320x240.h264.mp4. They are two different files. See:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/android/ArcPipVideoTest/res/raw/",
+      "parentUuid": "ce750501_bc36dd1e",
+      "revId": "b214124676884399a85938d725c54ff00b880728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
