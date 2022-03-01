@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "594ebb92_36b2d6a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-03-01T11:27:05Z",
+      "side": 1,
+      "message": "Hi, I have updated the informational test to fix its flakiness; please, let me know if you have any comment. Thanks!",
+      "revId": "d27542af9512565e761695750585f22057a6ae95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
