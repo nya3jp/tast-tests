@@ -187,11 +187,6 @@ func testScreenshotOverflow(
 		}()
 
 		return uiauto.Combine("overflow screenshots",
-			// Left click the tray to open the bubble.
-			ui.LeftClick(holdingspace.FindTray()),
-			ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
-				Name(screenshotName)),
-
 			// Take the first additional screenshot and verify state.
 			func(ctx context.Context) error {
 				var err error
