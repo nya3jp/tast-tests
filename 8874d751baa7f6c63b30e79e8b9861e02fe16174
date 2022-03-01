@@ -22,6 +22,30 @@
       },
       "revId": "8874d751baa7f6c63b30e79e8b9861e02fe16174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef522735_456f0923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-01T17:51:11Z",
+      "side": 1,
+      "message": "We swap the windows on lines 174-184, so then the ARC window is right snapped.",
+      "parentUuid": "b7b46acb_c943b40b",
+      "range": {
+        "startLine": 161,
+        "startChar": 53,
+        "endLine": 161,
+        "endChar": 71
+      },
+      "revId": "8874d751baa7f6c63b30e79e8b9861e02fe16174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
