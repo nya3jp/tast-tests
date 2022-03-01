@@ -161,7 +161,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn, arc.WithExtraString("video_codec", "h264")); err != nil {
+	if err := act.Start(ctx, tconn, arc.WithExtraString("video", "bear-320x240.h264")); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
 	defer act.Stop(cleanupCtx, tconn)

@@ -26,8 +26,8 @@ public class VideoActivity extends Activity {
         setContentView(R.layout.video_activity);
 
         final VideoView videoView = findViewById(R.id.testvideo);
-        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName()
-                + "/raw/bear-320x240." + getIntent().getStringExtra("video_codec")));
+        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/raw/"
+                + getIntent().getStringExtra("video")));
         videoView.setOnPreparedListener(new OnPreparedListener() {
           @Override
           public void onPrepared(MediaPlayer mp) {
