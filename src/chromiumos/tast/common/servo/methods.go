@@ -889,7 +889,7 @@ func (s *Servo) GetServoType(ctx context.Context) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	hasCCD := strings.Contains(servoType, string(DUTControllerCCD))
+	hasCCD := strings.Contains(servoType, "ccd")
 	if !hasCCD {
 		if hasCCDState, err := s.HasControl(ctx, string(CCDState)); err != nil {
 			return "", errors.Wrap(err, "failed to check ccd_state control")
