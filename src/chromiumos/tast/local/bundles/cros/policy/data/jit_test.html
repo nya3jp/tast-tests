@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Status</title>
+    <script type="text/javascript">
+        // An effective way to verify that the JIT compiler is allowed to execute is to try
+        // to compile and execute WebAssembly code. The binary file `is_jit_enabled.wasm` is
+        // the WebAssembly output for the C++ code:
+        //    int isJitEnabled() { return 1; }
+        // This function is exported in WebAssembly as _Z12isJitEnabledv that can be used in
+        // regular Javascript code
+        let jitEnabled = undefined;
+
+        function onLoad() {
+            fetch('is_jit_enabled.wasm')
+                .then(response => response.arrayBuffer())
+                .then(buffer => WebAssembly.compile(buffer))
+                .then(module => { return new WebAssembly.Instance(module) })
+                .then(instance => {
+                    jitEnabled = instance.exports._Z12isJitEnabledv;
+                })
+        }
+
+        function isJitEnabled() {
+            if (jitEnabled == undefined) {
+                return false;
+            }
+            return jitEnabled() == 1;
+        }
+    </script>
+</head>
+
+<body onload="onLoad()">
+</body>
+
+</html>
