@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8907a6_bf5c4ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-01T22:17:23Z",
+      "side": 1,
+      "message": "This issue happens only in kukui board, which seems to be of the low-end devices. Have you tried using `testing.Poll` for `tconn.Eval` (i.e., https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d201?q\u003duiauto%2Fautomation#:~:text\u003d200-,201,-202)? \n\nFixing `apps.InstallPWAForURL` might be a better solution here.",
+      "revId": "de7eb4bbb10f0e3c6691e43310f0f6759a4bc5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
