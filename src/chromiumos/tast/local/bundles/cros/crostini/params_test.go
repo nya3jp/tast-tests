@@ -114,6 +114,7 @@ func TestExpensiveParams(t *testing.T) {
 			Timeout:       duration,
 			MinimalSet:    true,
 			IsNotMainline: true,
+			UseFixture:    true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
@@ -122,6 +123,7 @@ func TestExpensiveParams(t *testing.T) {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Timeout:    duration,
 			MinimalSet: true,
+			UseFixture: true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
@@ -144,6 +146,7 @@ func TestAppTestParams(t *testing.T) {
 			StableHardwareDep: "crostini.CrostiniAppTest",
 			UseLargeContainer: true,
 			OnlyStableBoards:  true,
+			UseFixture:        true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
@@ -160,6 +163,7 @@ func TestGaiaTestParams(t *testing.T) {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Timeout:      7 * time.Minute,
 			UseGaiaLogin: true,
+			UseFixture:   true,
 		}})
 		genparams.Ensure(t, filename, params)
 	}
