@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45e5e9c_c8e76bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-03-01T05:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c49a6678_ddf2907f",
+      "range": {
+        "startLine": 153,
+        "startChar": 35,
+        "endLine": 153,
+        "endChar": 38
+      },
+      "revId": "4802a055f98d4720fb452edc6e59f7b37f17e230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa37e0f2_950ec583",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19eaed0_c9d520b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-03-01T05:01:26Z",
+      "side": 1,
+      "message": "That\u0027s right. I am also surprised that the original code doesn\u0027t work.\nThe thing is the copy is executed in frame.copyTo(). \nIt copies, by default, the visible rectangle probably for optimization.\nSo we need to align bufferInit with the copy behavior. 😞",
+      "parentUuid": "aa37e0f2_950ec583",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "4802a055f98d4720fb452edc6e59f7b37f17e230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8742bb7e_2fa41377",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-25T18:22:19Z",
       "side": 1,
       "message": "nit: maybe s/bufferInit/bufferParams/ ...?",
+      "range": {
+        "startLine": 167,
+        "startChar": 34,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "4802a055f98d4720fb452edc6e59f7b37f17e230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02460eb0_6f6685d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-03-01T05:01:26Z",
+      "side": 1,
+      "message": "I followed init in https://www.w3.org/TR/webcodecs/#videoframe-interface.\nI am fine with Param though.",
+      "parentUuid": "8742bb7e_2fa41377",
       "range": {
         "startLine": 167,
         "startChar": 34,
