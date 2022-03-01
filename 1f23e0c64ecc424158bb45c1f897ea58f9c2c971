@@ -238,6 +238,30 @@
       },
       "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3bbdba5_d529801e",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-01T07:50:00Z",
+      "side": 0,
+      "message": "Interesting, I wasn\u0027t aware of this. Thanks for checking.",
+      "parentUuid": "b90486b1_1185a8a3",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "1f23e0c64ecc424158bb45c1f897ea58f9c2c971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
