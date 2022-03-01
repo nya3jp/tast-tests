@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c48003_52954374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-01T17:22:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand. The |ctx| variable is referenced elsewhere in the file, I don\u0027t think I can just get rid of this line without changing the behavior?",
+      "parentUuid": "f8006eee_0a0050ba",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 15
+      },
+      "revId": "39eb4122629fbd695541d12271cfd3da976b1ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72754013_7a28ed0e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-24T23:24:12Z",
       "side": 1,
       "message": "Justin, Can you test if `cd \u003cdir\u003e \u0026\u0026 image_processor_test ...` works in this case. I\u0027d avoid using chdir here as chdir would implicitly change the go working directories.\n\nhttps://groups.google.com/a/google.com/g/tast-reviewers/c/jNjCN-VqxWg/m/FL-56ZS9AgAJ?utm_medium\u003demail\u0026utm_source\u003dfooter",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "39eb4122629fbd695541d12271cfd3da976b1ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "661863d2_cf66c5b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-01T17:22:12Z",
+      "side": 1,
+      "message": "I don\u0027t have access to that comment. Also I don\u0027t totally understand the suggestion. Are you saying we should add \"cd \u003cdir\u003e \u0026\u0026\" to the string that ultimately gets passed to execve?",
+      "parentUuid": "72754013_7a28ed0e",
       "range": {
         "startLine": 98,
         "startChar": 1,
