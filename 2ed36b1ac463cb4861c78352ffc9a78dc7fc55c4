@@ -94,6 +94,30 @@
       },
       "revId": "2ed36b1ac463cb4861c78352ffc9a78dc7fc55c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fcc234_59cfe9ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-01T01:52:22Z",
+      "side": 1,
+      "message": "I think the test needs a new window.",
+      "parentUuid": "be6808c4_7963d644",
+      "range": {
+        "startLine": 89,
+        "startChar": 32,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "2ed36b1ac463cb4861c78352ffc9a78dc7fc55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
