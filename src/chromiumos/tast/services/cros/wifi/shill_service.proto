@@ -423,8 +423,7 @@ message RequestRoamRequest {
 }
 
 message DHCPProperties {
-  string vendor_class = 1;
-  string hostname = 2;
+  string hostname = 1;
 }
 
 message SetDHCPPropertiesRequest {

@@ -39,13 +39,11 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
 
-	const vendorClass = "testVendorClass"
 	const hostname = "testHostname"
 
 	req := &wifi.SetDHCPPropertiesRequest{
 		Props: &wifi.DHCPProperties{
-			Hostname:    hostname,
-			VendorClass: vendorClass,
+			Hostname: hostname,
 		},
 	}
 	resp, err := tf.WifiClient().SetDHCPProperties(ctx, req)
@@ -143,7 +141,6 @@ packetLoop:
 		// Map for the options we're interested.
 		optMap := map[layers.DHCPOpt]*layers.DHCPOption{
 			layers.DHCPOptMessageType: nil,
-			layers.DHCPOptClassID:     nil,
 			layers.DHCPOptHostname:    nil,
 		}
 		for i, opt := range dhcp.Options {
@@ -179,12 +176,6 @@ packetLoop:
 		}
 
 		dhcpReqCount++
-		// Check vendor class ID.
-		if opt := optMap[layers.DHCPOptClassID]; opt == nil {
-			s.Error("Found DHCP Request without vendor class option")
-		} else if vc := string(opt.Data); vc != vendorClass {
-			s.Errorf("Unexpected vendor class; got %q, want %q", vc, vendorClass)
-		}
 		// Check hostname.
 		if opt := optMap[layers.DHCPOptHostname]; opt == nil {
 			s.Error("Found DHCP Request without hostname option")
