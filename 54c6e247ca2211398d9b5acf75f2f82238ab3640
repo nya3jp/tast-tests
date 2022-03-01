@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c384e8_bd15bf09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-01T01:09:22Z",
+      "side": 1,
+      "message": "One comment, otherwise LGTM",
+      "revId": "54c6e247ca2211398d9b5acf75f2f82238ab3640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6e5c9d_7119190b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-01T01:09:22Z",
+      "side": 1,
+      "message": "I\u0027d rather check the \u0027error\u0027 case (in this case `err \u003d\u003d nil`) and fail early then continue the main flow outside the block. Could aloso invert the other checks too (e.g. `if !strings.Containers...` on line 144).\n\nUsual go style is to have error checks with early return, then the happy path flows unindented and ends at the end of the function.",
+      "revId": "54c6e247ca2211398d9b5acf75f2f82238ab3640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
