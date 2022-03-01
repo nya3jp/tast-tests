@@ -70,6 +70,30 @@
       },
       "revId": "2ed36b1ac463cb4861c78352ffc9a78dc7fc55c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6808c4_7963d644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-01T01:45:36Z",
+      "side": 1,
+      "message": "You could open the browser before running the command - then it will just open a new tab and you can use regular APIs to see if the tab has been opened.\n\nIt will change the test slightly (new tab rather than new window), though.",
+      "parentUuid": "4b65af25_3fc83586",
+      "range": {
+        "startLine": 89,
+        "startChar": 32,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "2ed36b1ac463cb4861c78352ffc9a78dc7fc55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
