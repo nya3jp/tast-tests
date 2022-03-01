@@ -126,7 +126,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	if err := imesettings.SetVKAutoCapitalization(uc, inputMethod, false).Run(ctx); err != nil {
+	if err := imesettings.SetVKAutoCapitalization(uc, inputMethod, false)(ctx); err != nil {
 		s.Fatal("Failed to disable auto-capitalization in IME settings: ", err)
 	}
 
@@ -152,7 +152,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
 	)
 
-	if err := useractions.NewUserAction("Trigger VK auto correction",
+	if err := uiauto.UserAction("Trigger VK auto correction",
 		triggerACAction,
 		uc,
 		&useractions.UserActionCfg{
@@ -161,7 +161,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 			},
 			Tags: []useractions.ActionTag{useractions.ActionTagAutoCorrection},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
 	}
 
@@ -207,7 +207,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord+" "),
 		)
 
-		if err := useractions.NewUserAction("Undo VK auto-correction",
+		if err := uiauto.UserAction("Undo VK auto-correction",
 			validateUndoAction,
 			uc,
 			&useractions.UserActionCfg{
@@ -215,7 +215,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 					useractions.AttributeTestScenario: "Undo auto-correction via mouse",
 				},
 			},
-		).Run(ctx); err != nil {
+		)(ctx); err != nil {
 			s.Fatal("Failed to validate VK autocorrect undo via popup using mouse: ", err)
 		}
 	}

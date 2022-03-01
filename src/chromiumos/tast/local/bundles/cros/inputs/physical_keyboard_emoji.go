@@ -53,7 +53,7 @@ func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	if err := its.InputEmojiWithEmojiPicker(uc, testserver.TextAreaInputField, "😂").Run(ctx); err != nil {
+	if err := its.InputEmojiWithEmojiPicker(uc, testserver.TextAreaInputField, "😂")(ctx); err != nil {
 		s.Fatal("Failed to verify emoji picker: ", err)
 	}
 }

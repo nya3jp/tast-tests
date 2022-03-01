@@ -120,7 +120,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	if isFloating {
 		if err := uiauto.Combine("validate handwriting input",
 			its.ClickFieldUntilVKShown(inputField),
-			vkbCtx.SetFloatingMode(uc, true).Run,
+			vkbCtx.SetFloatingMode(uc, true),
 		)(ctx); err != nil {
 			s.Fatal("Failed to switch to floating mode: ", err)
 		}
@@ -128,7 +128,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 		defer func(ctx context.Context) {
 			if err := uiauto.Combine("switch back to docked mode and hide VK",
 				its.ClickFieldUntilVKShown(inputField),
-				vkbCtx.SetFloatingMode(uc, false).Run,
+				vkbCtx.SetFloatingMode(uc, false),
 				vkbCtx.HideVirtualKeyboard(),
 			)(ctx); err != nil {
 				s.Log("Failed to cleanup floating mode: ", err)
@@ -153,7 +153,7 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateInputFieldForMode(uc, inputField, util.InputWithHandWriting, inputData, s.DataPath).Run(ctx); err != nil {
+			if err := its.ValidateInputFieldForMode(uc, inputField, util.InputWithHandWriting, inputData, s.DataPath)(ctx); err != nil {
 				s.Fatal("Failed to validate handwriting input: ", err)
 			}
 		}

@@ -92,7 +92,7 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, userInputFinder, testEmail),
 	)
 
-	if err := useractions.NewUserAction("VK input",
+	if err := uiauto.UserAction("VK input",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
@@ -100,7 +100,7 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 				useractions.AttributeTestScenario: "OOBE field",
 			},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to input on OOBE page: ", err)
 	}
 }

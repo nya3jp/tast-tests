@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/input"
@@ -71,11 +72,10 @@ func InputMethodManagement(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := imesettings.AddInputMethodInOSSettings(uc, kb, testInputMethod).Run(ctx); err != nil {
-		s.Fatalf("Failed to add input method %q in OS settings: %v", testInputMethod.Name, err)
-	}
-
-	if err := imesettings.RemoveInputMethodInOSSettings(uc, testInputMethod).Run(ctx); err != nil {
-		s.Fatalf("Failed to remove input method %q in OS settings: %v", testInputMethod.Name, err)
+	if err := uiauto.Combine("add and remove input method",
+		imesettings.AddInputMethodInOSSettings(uc, kb, testInputMethod),
+		imesettings.RemoveInputMethodInOSSettings(uc, testInputMethod),
+	)(ctx); err != nil {
+		s.Fatal("Failed to add / remove input method in OS settings: ", err)
 	}
 }

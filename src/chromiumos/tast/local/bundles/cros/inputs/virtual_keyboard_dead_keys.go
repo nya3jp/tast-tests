@@ -139,7 +139,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.expectedTypingResult),
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"VK dead key input",
 		validateAction,
 		uc,
@@ -147,7 +147,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 			Tags:       []useractions.ActionTag{useractions.ActionTagDeadKey},
 			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}
 }

@@ -54,7 +54,7 @@ func PhysicalKeyboardEmojiSearch(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	if err := its.InputEmojiWithEmojiPickerSearch(uc, testserver.TextAreaInputField, keyboard, "melting face", "🫠").Run(ctx); err != nil {
+	if err := its.InputEmojiWithEmojiPickerSearch(uc, testserver.TextAreaInputField, keyboard, "melting face", "🫠")(ctx); err != nil {
 		s.Fatal("Failed to verify emoji picker: ", err)
 	}
 }

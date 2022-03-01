@@ -77,7 +77,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBeIgnoringCase(tconn, searchFieldFinder, typingKeys),
 	)
 
-	if err := useractions.NewUserAction("VK typing",
+	if err := uiauto.UserAction("VK typing",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
@@ -86,7 +86,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 			},
 			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to verify virtual keyboard input in settings: ", err)
 	}
 }

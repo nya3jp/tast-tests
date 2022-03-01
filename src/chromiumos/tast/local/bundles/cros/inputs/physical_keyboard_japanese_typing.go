@@ -216,14 +216,14 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		s.Run(ctx, subtest.Name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.Name))
 
-			if err := useractions.NewUserAction(
+			if err := uiauto.UserAction(
 				"Japanese PK input",
 				subtest.Action,
 				uc, &useractions.UserActionCfg{
 					Attributes: map[string]string{useractions.AttributeTestScenario: subtest.Name},
 					Tags:       []useractions.ActionTag{useractions.ActionTagPKTyping},
 				},
-			).Run(ctx); err != nil {
+			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
 			}
 		})

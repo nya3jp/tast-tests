@@ -197,7 +197,7 @@ func PhysicalKeyboardTransliterationTyping(ctx context.Context, s *testing.State
 		}),
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"PK transliteration typing",
 		validateAction,
 		uc,
@@ -209,7 +209,7 @@ func PhysicalKeyboardTransliterationTyping(ctx context.Context, s *testing.State
 				useractions.ActionTagPKTyping,
 			},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to verify transliteration typing: ", err)
 	}
 }

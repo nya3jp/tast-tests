@@ -113,7 +113,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
 	)
 
-	if err := useractions.NewUserAction("PK Autocorrect",
+	if err := uiauto.UserAction("PK Autocorrect",
 		validatePKAutocorrectAction,
 		uc,
 		&useractions.UserActionCfg{
@@ -121,7 +121,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 				useractions.AttributeTestScenario: fmt.Sprintf(`correct %q to %q`, testCase.MisspeltWord, testCase.CorrectWord),
 			},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate PK autocorrect: ", err)
 	}
 
@@ -134,11 +134,11 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(undoButtonFinder),
 	)
 
-	if err := useractions.NewUserAction("press LEFT key to trigger AC undo",
+	if err := uiauto.UserAction("press LEFT key to trigger AC undo",
 		triggerUndoAction,
 		uc,
 		nil,
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to trigger AC undo: ", err)
 	}
 
@@ -167,7 +167,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		)
 	}
 
-	if err := useractions.NewUserAction("PK autocorrect undo",
+	if err := uiauto.UserAction("PK autocorrect undo",
 		undoAction,
 		uc,
 		&useractions.UserActionCfg{
@@ -175,7 +175,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 				useractions.AttributeTestScenario: testScenario,
 			},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate autocorrect undo: ", err)
 	}
 }
