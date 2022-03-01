@@ -84,6 +84,11 @@ Tast can skip running tests on SoCs without a particular functionality by
 specifying its [Software Dependencies]. All video tests make extensive use of
 this for gating tests on e.g. support for decoding a given codec, etc.
 
+This restriction can be bypassed during development.  Pass `-checktestdeps=false`
+to tast in order to do so:
+
+    tast run -checktestdeps=false $HOST video.*
+
 The full specification can be found in the [`autotest-capability-default`]
 package but, essentially these capabilities are specified per-chipset
 (potentially with per-board and per-device overlays) in files like e.g.
