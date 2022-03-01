@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
@@ -23,6 +24,7 @@ func init() {
 		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.HWEncodeJPEG},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		Pre:          chrome.LoggedIn(),
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               "usb",
 			ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera},

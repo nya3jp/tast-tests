@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
@@ -22,6 +23,7 @@ func init() {
 		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
 		Data:         []string{portraitModeTestFile},
 		Pre:          chrome.LoggedIn(),
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name:      "",
 			Val:       false, // generatePerfLog
