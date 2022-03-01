@@ -236,8 +236,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				continue
 			}
 
-			if testCase.MinimalSet && i.debianVersion != vm.DebianBuster {
-				// The minimal set is currently buster
+			if testCase.MinimalSet && i.debianVersion != vm.DebianBullseye {
+				// The minimal set is currently Bullseye.
 				continue
 			}
 
