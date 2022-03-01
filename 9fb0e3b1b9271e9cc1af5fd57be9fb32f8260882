@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c07b0d_b4f3e18e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/jit_test.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-01T09:58:00Z",
+      "side": 1,
+      "message": "WebAssembly does not have bool, it uses i32 instead as the return value for bools.",
+      "revId": "9fb0e3b1b9271e9cc1af5fd57be9fb32f8260882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
