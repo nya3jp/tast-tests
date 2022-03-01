@@ -16,6 +16,23 @@
       "message": "android/ lgtm",
       "revId": "b214124676884399a85938d725c54ff00b880728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce750501_bc36dd1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-01T23:35:34Z",
+      "side": 1,
+      "message": "Where does it get the bear video? you\u0027ve deleted it in this CL",
+      "revId": "b214124676884399a85938d725c54ff00b880728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
