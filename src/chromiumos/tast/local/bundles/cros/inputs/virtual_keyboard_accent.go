@@ -95,7 +95,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), accentKeyName),
 	)
 
-	if err := useractions.NewUserAction("VK typing accent letters",
+	if err := uiauto.UserAction("VK typing accent letters",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
@@ -103,7 +103,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 				useractions.ActionTagVKTyping,
 			},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Fail to input accent key on virtual keyboard: ", err)
 	}
 }

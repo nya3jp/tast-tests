@@ -118,7 +118,7 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 				util.WaitForFieldTextToBeIgnoringCase(tconn, omniboxFinder, inputData.ExpectedText),
 			)
 
-			if err := useractions.NewUserAction("VK typing",
+			if err := uiauto.UserAction("VK typing",
 				validateAction,
 				uc,
 				&useractions.UserActionCfg{
@@ -127,7 +127,7 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 						useractions.AttributeInputField: "Omnibox",
 					},
 				},
-			).Run(ctx); err != nil {
+			)(ctx); err != nil {
 				s.Fatal("Failed to verify virtual keyboard input on omnibox: ", err)
 			}
 		}

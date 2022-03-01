@@ -107,7 +107,7 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 	learnMoreFinder := nodewith.Name("Learn more").Ancestor(emojiCandidateWindowFinder).HasClass("ImageButton")
 	ui := uiauto.New(tconn)
 
-	validateInputUserAction := func(testScenario string, isEmojiSuggestionEnabled bool) *useractions.UserAction {
+	validateInputUserAction := func(testScenario string, isEmojiSuggestionEnabled bool) uiauto.Action {
 		action := uiauto.Combine("validate emoji suggestion",
 			its.Clear(inputField),
 			its.ClickFieldAndWaitForActive(inputField),
@@ -132,7 +132,7 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 				)(ctx)
 			},
 		)
-		return useractions.NewUserAction(
+		return uiauto.UserAction(
 			"validate emoji suggestion",
 			action,
 			uc,
@@ -146,7 +146,7 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 		)
 	}
 
-	validateLearnMoreUserAction := useractions.NewUserAction(
+	validateLearnMoreUserAction := uiauto.UserAction(
 		"learn more of emoji suggestion",
 		uiauto.Combine(`validate "learn more" in emoji suggestion`,
 			its.Clear(inputField),
@@ -168,27 +168,14 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 		},
 	)
 
-	if err := validateInputUserAction("Emoji suggestion is enabled by default", true).Run(ctx); err != nil {
-		s.Fatal("Failed to validate emoji suggestion is enabled by default: ", err)
-	}
-
-	if err := imesettings.SetEmojiSuggestions(uc, false).Run(ctx); err != nil {
-		s.Fatal("Failed to disable emoji suggestion in OS setting: ", err)
-	}
-
-	if err := validateInputUserAction("Emoji suggestion disabled in OS setting", false).Run(ctx); err != nil {
-		s.Fatal("Failed to validate input with emoji suggestion disabled: ", err)
-	}
-
-	if err := imesettings.SetEmojiSuggestions(uc, true).Run(ctx); err != nil {
-		s.Fatal("Failed to enable emoji suggestion in OS setting: ", err)
-	}
-
-	if err := validateInputUserAction("Emoji suggestion re-enabled in OS setting", true).Run(ctx); err != nil {
-		s.Fatal("Failed to input emoji from suggestion: ", err)
-	}
-
-	if err := validateLearnMoreUserAction.Run(ctx); err != nil {
-		s.Fatal("Failed to validate learn more of emoji suggestion: ", err)
+	if err := uiauto.Combine("validate emoji suggestion",
+		validateInputUserAction("Emoji suggestion is enabled by default", true),
+		imesettings.SetEmojiSuggestions(uc, false),
+		validateInputUserAction("Emoji suggestion disabled in OS setting", false),
+		imesettings.SetEmojiSuggestions(uc, true),
+		validateInputUserAction("Emoji suggestion re-enabled in OS setting", true),
+		validateLearnMoreUserAction,
+	)(ctx); err != nil {
+		s.Fatal("Failed to validate emoji suggestion: ", err)
 	}
 }

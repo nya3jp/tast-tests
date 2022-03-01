@@ -20,7 +20,7 @@ import (
 const EmojiSuggestionsOption = "Emoji suggestions"
 
 // AddInputMethodInOSSettings returns a user action adding certain input method in OS settings.
-func AddInputMethodInOSSettings(uc *useractions.UserContext, kb *input.KeyboardEventWriter, im ime.InputMethod) *useractions.UserAction {
+func AddInputMethodInOSSettings(uc *useractions.UserContext, kb *input.KeyboardEventWriter, im ime.InputMethod) uiauto.Action {
 	action := func(ctx context.Context) error {
 		// Use the first 5 letters to search input method.
 		// This will handle Unicode characters correctly.
@@ -41,7 +41,7 @@ func AddInputMethodInOSSettings(uc *useractions.UserContext, kb *input.KeyboardE
 		)(ctx)
 	}
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		"Add input method in OS Settings",
 		action,
 		uc,
@@ -52,11 +52,12 @@ func AddInputMethodInOSSettings(uc *useractions.UserContext, kb *input.KeyboardE
 				useractions.ActionTagIMEManagement,
 				useractions.ActionTagAddIME,
 			},
-		})
+		},
+	)
 }
 
 // RemoveInputMethodInOSSettings returns a user action removing certain input method in OS settings.
-func RemoveInputMethodInOSSettings(uc *useractions.UserContext, im ime.InputMethod) *useractions.UserAction {
+func RemoveInputMethodInOSSettings(uc *useractions.UserContext, im ime.InputMethod) uiauto.Action {
 	action := func(ctx context.Context) error {
 		settings, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
 		if err != nil {
@@ -77,7 +78,7 @@ func RemoveInputMethodInOSSettings(uc *useractions.UserContext, im ime.InputMeth
 		)(ctx)
 	}
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		"Remove input method in OS Settings",
 		action,
 		uc,
@@ -88,11 +89,12 @@ func RemoveInputMethodInOSSettings(uc *useractions.UserContext, im ime.InputMeth
 				useractions.ActionTagIMEManagement,
 				useractions.ActionTagRemoveIME,
 			},
-		})
+		},
+	)
 }
 
 // SetEmojiSuggestions returns a user action to change 'Emoji suggestions' setting.
-func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) *useractions.UserAction {
+func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) uiauto.Action {
 	actionName := "enable emoji suggestions in OS settings"
 	if !isEnabled {
 		actionName = "disable emoji suggestions in OS settings"
@@ -109,7 +111,8 @@ func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) *useractio
 		)(ctx)
 	}
 
-	return useractions.NewUserAction(actionName,
+	return uiauto.UserAction(
+		actionName,
 		action,
 		uc,
 		&useractions.UserActionCfg{
@@ -118,11 +121,12 @@ func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) *useractio
 				useractions.ActionTagIMESettings,
 				useractions.ActionTagEmojiSuggestion,
 			},
-		})
+		},
+	)
 }
 
 // SetGlideTyping returns a user action to change 'Glide suggestions' setting.
-func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) *useractions.UserAction {
+func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) uiauto.Action {
 	actionName := "enable glide typing in IME setting"
 	if !isEnabled {
 		actionName = "disable glide typing in IME setting"
@@ -140,7 +144,7 @@ func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled b
 		)(ctx)
 	}
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		actionName,
 		action,
 		uc,
@@ -150,7 +154,8 @@ func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled b
 				useractions.ActionTagIMESettings,
 				useractions.ActionTagGlideTyping,
 			},
-		})
+		},
+	)
 }
 
 // AutoCorrectionLevel describes the auto correction level of an input method.
@@ -165,16 +170,16 @@ const (
 )
 
 // SetVKAutoCorrection returns a user action to change 'On-screen keyboard Auto-correction' setting.
-func SetVKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLevel AutoCorrectionLevel) *useractions.UserAction {
+func SetVKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLevel AutoCorrectionLevel) uiauto.Action {
 	return setAutoCorrection(uc, im, true, acLevel)
 }
 
 // SetPKAutoCorrection returns a user action to change 'Physical keyboard Auto-correction' setting.
-func SetPKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLevel AutoCorrectionLevel) *useractions.UserAction {
+func SetPKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLevel AutoCorrectionLevel) uiauto.Action {
 	return setAutoCorrection(uc, im, false, acLevel)
 }
 
-func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK bool, acLevel AutoCorrectionLevel) *useractions.UserAction {
+func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK bool, acLevel AutoCorrectionLevel) uiauto.Action {
 	actionName := fmt.Sprintf("Set PK auto-correction level to %q", acLevel)
 	if isVK {
 		actionName = fmt.Sprintf("Set VK auto-correction level to %q", acLevel)
@@ -195,7 +200,7 @@ func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK boo
 		)(ctx)
 	}
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		actionName,
 		action,
 		uc,
@@ -205,11 +210,12 @@ func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK boo
 				useractions.ActionTagIMESettings,
 				useractions.ActionTagAutoCorrection,
 			},
-		})
+		},
+	)
 }
 
 // SetVKAutoCapitalization returns a user action to change 'On-screen keyboard Auto-capitalization' setting.
-func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) *useractions.UserAction {
+func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) uiauto.Action {
 	actionName := "enable VK auto capitalization in IME setting"
 	if !isEnabled {
 		actionName = "disable VK auto capitalization in IME setting"
@@ -230,7 +236,7 @@ func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, is
 		)(ctx)
 	}
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		actionName,
 		action,
 		uc,
@@ -240,11 +246,12 @@ func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, is
 				useractions.ActionTagIMESettings,
 				useractions.ActionTagAutoCapitalization,
 			},
-		})
+		},
+	)
 }
 
 // SetKoreanKeyboardLayout returns a user action to change 'Korean keyboard layout' setting.
-func SetKoreanKeyboardLayout(uc *useractions.UserContext, keyboardLayout string) *useractions.UserAction {
+func SetKoreanKeyboardLayout(uc *useractions.UserContext, keyboardLayout string) uiauto.Action {
 	action := func(ctx context.Context) error {
 		setting, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
 		if err != nil {
@@ -258,7 +265,7 @@ func SetKoreanKeyboardLayout(uc *useractions.UserContext, keyboardLayout string)
 		)(ctx)
 	}
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		"Change Korean keyboard layout setting",
 		action,
 		uc,

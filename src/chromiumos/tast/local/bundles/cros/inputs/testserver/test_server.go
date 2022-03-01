@@ -316,7 +316,7 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 	)
 }
 
-func (its *InputsTestServer) validatePKTypingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData) *useractions.UserAction {
+func (its *InputsTestServer) validatePKTypingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData) uiauto.Action {
 	action := func(ctx context.Context) error {
 		// This is either an actual PK device, or a PK simulator for injecting
 		// key codes.
@@ -339,9 +339,10 @@ func (its *InputsTestServer) validatePKTypingInField(uc *useractions.UserContext
 		)(ctx)
 	}
 
-	return uc.NewUserAction(
+	return uiauto.UserAction(
 		"PK typing",
 		action,
+		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
 			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
@@ -350,7 +351,7 @@ func (its *InputsTestServer) validatePKTypingInField(uc *useractions.UserContext
 	)
 }
 
-func (its *InputsTestServer) validateVKTypingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData) *useractions.UserAction {
+func (its *InputsTestServer) validateVKTypingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData) uiauto.Action {
 	vkbCtx := vkb.NewContext(its.cr, its.tconn)
 	action := uiauto.Combine("validate vk input function on field "+string(inputField),
 		its.cleanFieldAndTriggerVK(inputField),
@@ -362,9 +363,10 @@ func (its *InputsTestServer) validateVKTypingInField(uc *useractions.UserContext
 			return nil
 		},
 	)
-	return uc.NewUserAction(
+	return uiauto.UserAction(
 		"VK typing",
 		action,
+		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
 			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
@@ -373,7 +375,7 @@ func (its *InputsTestServer) validateVKTypingInField(uc *useractions.UserContext
 	)
 }
 
-func (its *InputsTestServer) validateVoiceInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData, dataPath func(string) string) *useractions.UserAction {
+func (its *InputsTestServer) validateVoiceInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData, dataPath func(string) string) uiauto.Action {
 	action := func(ctx context.Context) error {
 		// Setup CRAS Aloop for audio test.
 		cleanup, err := voice.EnableAloop(ctx, its.tconn)
@@ -391,9 +393,10 @@ func (its *InputsTestServer) validateVoiceInField(uc *useractions.UserContext, i
 			},
 		)(ctx)
 	}
-	return uc.NewUserAction(
+	return uiauto.UserAction(
 		"VK voice",
 		action,
+		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
 			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
@@ -402,7 +405,7 @@ func (its *InputsTestServer) validateVoiceInField(uc *useractions.UserContext, i
 	)
 }
 
-func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData, dataPath func(string) string) *useractions.UserAction {
+func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData, dataPath func(string) string) uiauto.Action {
 	action := func(ctx context.Context) error {
 		vkbCtx := vkb.NewContext(its.cr, its.tconn)
 		if err := its.cleanFieldAndTriggerVK(inputField)(ctx); err != nil {
@@ -432,9 +435,10 @@ func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserCont
 			hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile)),
 		)(ctx)
 	}
-	return uc.NewUserAction(
+	return uiauto.UserAction(
 		"VK handwriting",
 		action,
+		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
 			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
@@ -445,9 +449,11 @@ func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserCont
 
 // ValidateInputFieldForMode tests input in the given field.
 // After input action, it checks whether the outcome equals to expected value.
-func (its *InputsTestServer) ValidateInputFieldForMode(uc *useractions.UserContext, inputField InputField, inputModality util.InputModality, inputData data.InputData, dataPath func(string) string) *useractions.UserAction {
+func (its *InputsTestServer) ValidateInputFieldForMode(uc *useractions.UserContext, inputField InputField, inputModality util.InputModality, inputData data.InputData, dataPath func(string) string) uiauto.Action {
 	if !inputField.isSupported(inputModality) {
-		return uc.InvalidUserAction(errors.Errorf("%s is not supported for %s", inputModality, inputField))
+		return func(ctx context.Context) error {
+			return errors.Errorf("%s is not supported for %s", inputModality, inputField)
+		}
 	}
 	// TODO(b/195083581): Enable ValidateInputFieldForMode for physical keyboard and emoji.
 	switch inputModality {
@@ -461,7 +467,9 @@ func (its *InputsTestServer) ValidateInputFieldForMode(uc *useractions.UserConte
 		return its.validatePKTypingInField(uc, inputField, inputData)
 	}
 
-	return uc.InvalidUserAction(errors.Errorf("input modality not supported: %q", inputModality))
+	return func(ctx context.Context) error {
+		return errors.Errorf("input modality not supported: %q", inputModality)
+	}
 }
 
 func (inputField InputField) isSupported(inputModality util.InputModality) bool {

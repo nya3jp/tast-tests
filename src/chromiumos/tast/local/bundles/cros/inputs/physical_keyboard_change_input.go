@@ -127,7 +127,7 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	switchToNextInputMethodUserAction := useractions.NewUserAction(
+	switchToNextInputMethodUserAction := uiauto.UserAction(
 		"Switch input method with shortcut Ctrl+Shift+Space",
 		switchToNextInputMethod,
 		uc,
@@ -147,7 +147,7 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	switchToLastActiveInputMethodUserAction := useractions.NewUserAction(
+	switchToLastActiveInputMethodUserAction := uiauto.UserAction(
 		"Switch input method with shortcut Ctrl+Space",
 		switchToLastActiveInputMethod,
 		uc,
@@ -158,11 +158,11 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	// TODO(b/196771467) Validate typing after switching IME.
 	if err := uiauto.Combine("switch IME in different ways",
-		switchToNextInputMethodUserAction.Run,
-		switchToLastActiveInputMethodUserAction.Run,
-		switchToNextInputMethodUserAction.Run,
-		switchToNextInputMethodUserAction.Run,
-		switchToLastActiveInputMethodUserAction.Run,
+		switchToNextInputMethodUserAction,
+		switchToLastActiveInputMethodUserAction,
+		switchToNextInputMethodUserAction,
+		switchToNextInputMethodUserAction,
+		switchToLastActiveInputMethodUserAction,
 	)(ctx); err != nil {
 		s.Fatal("Failed to switch input method: ", err)
 	}

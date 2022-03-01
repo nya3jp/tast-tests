@@ -116,7 +116,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 			ui.WaitUntilGone(omniboxFirstResultFinder),
 		)
 
-		if err := useractions.NewUserAction("VK typing",
+		if err := uiauto.UserAction("VK typing",
 			action,
 			uc,
 			&useractions.UserActionCfg{
@@ -126,7 +126,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 					useractions.AttributeKeyboardLayout: mode.name,
 				},
 			},
-		).Run(ctx); err != nil {
+		)(ctx); err != nil {
 			s.Fatal("Failed to assert input mode: ", err)
 		}
 	}
@@ -146,7 +146,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 			ui.Sleep(loadNewSettingDuration),
 		)
 
-		if err := useractions.NewUserAction("Switch Japanese input mode",
+		if err := uiauto.UserAction("Switch Japanese input mode",
 			action,
 			uc,
 			&useractions.UserActionCfg{
@@ -155,7 +155,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 					useractions.AttributeKeyboardLayout: mode.name,
 				},
 			},
-		).Run(ctx); err != nil {
+		)(ctx); err != nil {
 			s.Fatalf("Failed to switch input mode to %q: %v", mode.name, err)
 		}
 	}

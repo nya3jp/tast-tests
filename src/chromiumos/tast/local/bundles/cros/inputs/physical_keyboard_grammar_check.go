@@ -94,7 +94,7 @@ func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
 	)
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"Accept grammar check suggestion",
 		validateAction,
 		uc,
@@ -104,7 +104,7 @@ func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 			},
 			Tags: []useractions.ActionTag{useractions.ActionTagGrammarCheck},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Fail to accept grammar check suggestion: ", err)
 	}
 }
