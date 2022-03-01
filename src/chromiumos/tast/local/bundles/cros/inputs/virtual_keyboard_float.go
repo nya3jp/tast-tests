@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -60,7 +59,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
-	if err := vkbCtx.SetFloatingMode(uc, true).Run(ctx); err != nil {
+	if err := vkbCtx.SetFloatingMode(uc, true)(ctx); err != nil {
 		s.Fatal("Failed to set VK to floating mode: ", err)
 	}
 
@@ -99,12 +98,12 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		return uiauto.New(tconn).WaitUntilExists(resizeHandleFinder.First())(ctx)
 	}
 
-	if err := useractions.NewUserAction(
+	if err := uiauto.UserAction(
 		"Drag floating VK",
 		validateDragVKAction,
 		uc,
 		nil,
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate dragging floating VK: ", err)
 	}
 }

@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
@@ -120,7 +121,7 @@ func InputMethodSystemLanguage(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
-	if err := useractions.NewUserAction("Default input method in region",
+	if err := uiauto.UserAction("Default input method in region",
 		action,
 		uc,
 		&useractions.UserActionCfg{
@@ -128,7 +129,7 @@ func InputMethodSystemLanguage(ctx context.Context, s *testing.State) {
 				useractions.AttributeDeviceRegion: regionCode,
 			},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatalf("Failed to validate default input method in region %q: %v", regionCode, err)
 	}
 }

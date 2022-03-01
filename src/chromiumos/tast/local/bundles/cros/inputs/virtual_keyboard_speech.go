@@ -123,7 +123,7 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), inputData.ExpectedText),
 			)
 
-			if err := useractions.NewUserAction("Voice input",
+			if err := uiauto.UserAction("Voice input",
 				verifyAudioInputAction,
 				uc,
 				&useractions.UserActionCfg{
@@ -132,7 +132,7 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 					},
 					Tags: []useractions.ActionTag{useractions.ActionTagVKVoiceInput},
 				},
-			).Run(ctx); err != nil {
+			)(ctx); err != nil {
 				s.Fatal("Failed to validate voice input: ", err)
 			}
 		}

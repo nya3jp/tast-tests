@@ -71,7 +71,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	if err := imesettings.EnableInputOptionsInShelf(uc, true).Run(ctx); err != nil {
+	if err := imesettings.EnableInputOptionsInShelf(uc, true)(ctx); err != nil {
 		s.Fatal("Failed to show input options in shelf: ", err)
 	}
 
@@ -100,7 +100,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get handwriting test data of input method: ", testIME)
 	}
 
-	voiceInputUserAction := func() *useractions.UserAction {
+	voiceInputUserAction := func() uiauto.Action {
 		scenario := "Verify voice input triggered from IME tray"
 
 		verifyAudioInputAction := uiauto.Combine(scenario,
@@ -117,7 +117,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), voiceInputData.ExpectedText),
 		)
 
-		return useractions.NewUserAction("Voice input",
+		return uiauto.UserAction("Voice input",
 			verifyAudioInputAction,
 			uc,
 			&useractions.UserActionCfg{
@@ -137,7 +137,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 		)
 	}
 
-	handwritingInputUserAction := func() *useractions.UserAction {
+	handwritingInputUserAction := func() uiauto.Action {
 		scenario := "Verify handwriting input triggered from IME tray"
 
 		hwFilePath := s.DataPath(hwInputData.HandwritingFile)
@@ -160,7 +160,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			},
 		)
 
-		return useractions.NewUserAction("VK handwriting",
+		return uiauto.UserAction("VK handwriting",
 			verifyHandWritingInputAction,
 			uc,
 			&useractions.UserActionCfg{
@@ -180,7 +180,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 		)
 	}
 
-	emojiInputUserAction := func() *useractions.UserAction {
+	emojiInputUserAction := func() uiauto.Action {
 		scenario := "Verify emoji input triggered from IME tray"
 
 		inputEmoji := "😄"
@@ -197,7 +197,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), inputEmoji),
 		)
 
-		return useractions.NewUserAction(
+		return uiauto.UserAction(
 			"Input Emoji with Emoji Picker",
 			verifyEmojiInputAction,
 			uc,
@@ -212,8 +212,8 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 	}
 
 	subTests := []struct {
-		name       string
-		userAction *useractions.UserAction
+		name   string
+		action uiauto.Action
 	}{
 		{"voice", voiceInputUserAction()},
 		{"handwriting", handwritingInputUserAction()},
@@ -221,11 +221,6 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 	}
 
 	for _, subtest := range subTests {
-		s.Run(ctx, subtest.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.name))
-			if err := subtest.userAction.Run(ctx); err != nil {
-				s.Fatalf("Failed to validate %q: %v", subtest.name, err)
-			}
-		})
+		util.RunSubTest(ctx, s, cr, subtest.name, subtest.action)
 	}
 }

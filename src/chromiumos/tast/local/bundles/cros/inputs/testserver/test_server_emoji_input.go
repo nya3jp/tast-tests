@@ -25,7 +25,7 @@ func newEmojiUICtx(tconn *chrome.TestConn) *uiauto.Context {
 }
 
 // InputEmojiWithEmojiPicker returns a user action to input Emoji with PK emoji picker on E14s test server.
-func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserContext, inputField InputField, emojiChar string) *useractions.UserAction {
+func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserContext, inputField InputField, emojiChar string) uiauto.Action {
 	emojiCharFinder := nodewith.Name(emojiChar).First().Ancestor(emojiPickerFinder)
 	ui := newEmojiUICtx(uc.TestAPIConn())
 
@@ -40,7 +40,7 @@ func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserConte
 		util.WaitForFieldTextToBe(uc.TestAPIConn(), inputField.Finder(), emojiChar),
 	)
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		"Input Emoji with Emoji Picker",
 		action,
 		uc,
@@ -51,7 +51,7 @@ func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserConte
 }
 
 // InputEmojiWithEmojiPickerSearch returns a user action to input Emoji with PK emoji picker on E14s test server using search.
-func (its *InputsTestServer) InputEmojiWithEmojiPickerSearch(uc *useractions.UserContext, inputField InputField, keyboard *input.KeyboardEventWriter, searchString, emojiChar string) *useractions.UserAction {
+func (its *InputsTestServer) InputEmojiWithEmojiPickerSearch(uc *useractions.UserContext, inputField InputField, keyboard *input.KeyboardEventWriter, searchString, emojiChar string) uiauto.Action {
 	emojiSearchFinder := nodewith.Name("Search").Role(role.SearchBox).Ancestor(emojiPickerFinder)
 	emojiResultFinder := nodewith.Name(fmt.Sprintf("%s %s", emojiChar, searchString))
 	ui := newEmojiUICtx(uc.TestAPIConn())
@@ -68,7 +68,7 @@ func (its *InputsTestServer) InputEmojiWithEmojiPickerSearch(uc *useractions.Use
 		util.WaitForFieldTextToBe(uc.TestAPIConn(), inputField.Finder(), emojiChar),
 	)
 
-	return useractions.NewUserAction(
+	return uiauto.UserAction(
 		"Input Emoji with Emoji Picker",
 		action,
 		uc,

@@ -404,7 +404,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching the VK to floating mode.
-	if err := vkbCtx.SetFloatingMode(uc, true).Run(ctx); err != nil {
+	if err := vkbCtx.SetFloatingMode(uc, true)(ctx); err != nil {
 		s.Fatal("Failed to switch to floating mode: ", err)
 	}
 	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
@@ -418,7 +418,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching back to the normal mode
-	if err := vkbCtx.SetFloatingMode(uc, false).Run(ctx); err != nil {
+	if err := vkbCtx.SetFloatingMode(uc, false)(ctx); err != nil {
 		s.Fatal("Failed to switch to dock mode: ", err)
 	}
 	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {

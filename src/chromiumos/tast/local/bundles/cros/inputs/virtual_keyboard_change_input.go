@@ -102,7 +102,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), typingTestData.ExpectedText),
 	)
 
-	if err := useractions.NewUserAction("Change input method on VK",
+	if err := uiauto.UserAction("Change input method on VK",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
@@ -111,7 +111,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 			},
 			Tags: []useractions.ActionTag{useractions.ActionTagSwitchIME},
 		},
-	).Run(ctx); err != nil {
+	)(ctx); err != nil {
 		s.Fatal("Failed to verify changing input method: ", err)
 	}
 }
