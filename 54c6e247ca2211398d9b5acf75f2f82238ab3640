@@ -33,6 +33,24 @@
       "message": "I\u0027d rather check the \u0027error\u0027 case (in this case `err \u003d\u003d nil`) and fail early then continue the main flow outside the block. Could aloso invert the other checks too (e.g. `if !strings.Containers...` on line 144).\n\nUsual go style is to have error checks with early return, then the happy path flows unindented and ends at the end of the function.",
       "revId": "54c6e247ca2211398d9b5acf75f2f82238ab3640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ac916e_b84b2cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_unshare_folder.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-03-01T03:14:24Z",
+      "side": 1,
+      "message": "absolutely agree - I think the style guide prefers err !\u003d nil check (from memory) but i think its better to lead with err \u003d\u003d nil check in this context. have made the change.  I\u0027ve not done the !strings.Contains() because upon writing it that way I felt it made it a little less clear to comprehend for people unfamiliar, in light of the way the UI flow occurs, so left that unchanged for now. Thank you !",
+      "parentUuid": "aa6e5c9d_7119190b",
+      "revId": "54c6e247ca2211398d9b5acf75f2f82238ab3640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
