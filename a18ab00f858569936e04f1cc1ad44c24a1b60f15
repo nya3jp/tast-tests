@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f964f1a7_b52c9a69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-03-01T13:02:16Z",
+      "side": 1,
+      "message": "missing dot at end of line.",
+      "revId": "a18ab00f858569936e04f1cc1ad44c24a1b60f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

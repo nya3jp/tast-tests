@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f0208b6_2a2d4429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/removable_qualification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-03-01T13:02:16Z",
+      "side": 1,
+      "message": "redeclaration from line 51",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "b56ff9004f4e635be0be15f22bff44ff550ba58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9b3d58_5f74e4b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/removable_qualification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-03-01T13:02:16Z",
+      "side": 1,
+      "message": "redeclaration from line 51",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "b56ff9004f4e635be0be15f22bff44ff550ba58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a129c27_dc803244",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_blocks.go",
         "patchSetId": 1
@@ -20,6 +66,23 @@
         "endLine": 154,
         "endChar": 2
       },
+      "revId": "b56ff9004f4e635be0be15f22bff44ff550ba58e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee8f36d_a2c08ab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-03-01T13:02:16Z",
+      "side": 1,
+      "message": "nit: missing dot at end of line.",
       "revId": "b56ff9004f4e635be0be15f22bff44ff550ba58e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
