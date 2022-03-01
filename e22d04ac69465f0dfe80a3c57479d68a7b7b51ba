@@ -16,6 +16,57 @@
       "message": "CL to delete the creds file https://chrome-internal-review.git.corp.google.com/c/chromeos/platform/tast-tests-private/+/4582372",
       "revId": "e22d04ac69465f0dfe80a3c57479d68a7b7b51ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38165d5a_a12693a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-03-01T18:37:04Z",
+      "side": 1,
+      "message": "LGTM.\n\nI am assuming the \"parallel testing\" comes from many lab DUTs using the same account at the same time? And the 50 limit is for all regular users and not just for testing accounts.",
+      "revId": "e22d04ac69465f0dfe80a3c57479d68a7b7b51ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59593615_06cf903f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-03-01T18:37:04Z",
+      "side": 1,
+      "message": "small nit: If this line is after `loginPoolVar`, the change to this line would be minimal, i.e. only 4 -\u003e 5.",
+      "revId": "e22d04ac69465f0dfe80a3c57479d68a7b7b51ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc47490_c87bc273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-03-01T18:37:04Z",
+      "side": 1,
+      "message": "Just curious what adding this helps (since there are also other fields in the struct).",
+      "revId": "e22d04ac69465f0dfe80a3c57479d68a7b7b51ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
