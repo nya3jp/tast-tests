@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae20edd_5110f6fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-01T23:28:32Z",
+      "side": 1,
+      "message": "Ack. \nCreated separate closeAndRelaunchApp func and included TODO bug.",
+      "parentUuid": "a883d9c8_7c3e42f2",
+      "revId": "ec9134a10f604e66558b4e71158d402fc0e0bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "995856ac_25bf1516",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-18T18:21:49Z",
       "side": 1,
       "message": "is there a reason to have 3 separate appPage.Exists(..) blocks? It seems all the code should be in one appPage.Exists(..) {..} block.",
+      "revId": "ec9134a10f604e66558b4e71158d402fc0e0bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e75455c_d76f00c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/minecraft.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-01T23:28:32Z",
+      "side": 1,
+      "message": "Before executing each block, need to make sure if the app page still exist. separate appPage.Exist is needed here.",
+      "parentUuid": "995856ac_25bf1516",
       "revId": "ec9134a10f604e66558b4e71158d402fc0e0bc10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
