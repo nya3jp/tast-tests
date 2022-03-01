@@ -1960,18 +1960,14 @@ func (s *ShillService) SetDHCPProperties(ctx context.Context, req *wifi.SetDHCPP
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Manager's properties")
 	}
-	// We expect that the two properties below could be not there yet.
+	// We expect that the hostname property below could be not there yet.
 	// If that's the case, the default value is set as an empty string.
 	oldHostname, err := prop.GetString(shillconst.DHCPPropertyHostname)
 	if err != nil {
 		oldHostname = ""
 	}
-	oldVendor, err := prop.GetString(shillconst.DHCPPropertyVendorClass)
-	if err != nil {
-		oldVendor = ""
-	}
 
-	// Revert the DHCP properties if something goes wrong.
+	// Revert the DHCP property if something goes wrong.
 	defer func(ctx context.Context) {
 		if retErr == nil {
 			// No need of restore.
@@ -1979,9 +1975,6 @@ func (s *ShillService) SetDHCPProperties(ctx context.Context, req *wifi.SetDHCPP
 		}
 		if err := m.SetProperty(ctx, shillconst.DHCPPropertyHostname, oldHostname); err != nil {
 			testing.ContextLogf(ctx, "Failed to restore DHCP hostname to %q: %v", oldHostname, err)
-		}
-		if err := m.SetProperty(ctx, shillconst.DHCPPropertyVendorClass, oldVendor); err != nil {
-			testing.ContextLogf(ctx, "Failed to restore DHCP vendor class to %q: %v", oldVendor, err)
 		}
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
@@ -1993,17 +1986,10 @@ func (s *ShillService) SetDHCPProperties(ctx context.Context, req *wifi.SetDHCPP
 			return nil, errors.Wrapf(err, "failed to set DHCP hostname to %q", hostname)
 		}
 	}
-	vendor := req.Props.VendorClass
-	if oldVendor != vendor {
-		if err := m.SetProperty(ctx, shillconst.DHCPPropertyVendorClass, vendor); err != nil {
-			return nil, errors.Wrapf(err, "failed to set DHCP vendor class to %q", vendor)
-		}
-	}
 
 	return &wifi.SetDHCPPropertiesResponse{
 		Props: &wifi.DHCPProperties{
-			Hostname:    oldHostname,
-			VendorClass: oldVendor,
+			Hostname: oldHostname,
 		},
 	}, nil
 }
