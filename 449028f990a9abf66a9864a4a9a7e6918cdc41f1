@@ -34,6 +34,23 @@
       "parentUuid": "df10eef2_39be97c3",
       "revId": "449028f990a9abf66a9864a4a9a7e6918cdc41f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d244ba7_bbd355e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-01T07:54:49Z",
+      "side": 1,
+      "message": "Please run Tast unit test before submitting to CQ. The CQ failures were because this change broke the Tast unit test. You can see the errors by running\n\nfastbuild.sh -T\n",
+      "revId": "449028f990a9abf66a9864a4a9a7e6918cdc41f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
