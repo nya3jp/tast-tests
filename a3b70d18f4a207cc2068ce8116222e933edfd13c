@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "591b63d0_d3e4f2d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-03-01T17:53:42Z",
+      "side": 1,
+      "message": "I took that back, after running your test, I think there is a good reason why it is all lumped together.\n\nOriginally I was suggesting breaking that down for better reporting and isolation in case of errors.",
+      "parentUuid": "1d3f9711_c3b418ff",
+      "revId": "a3b70d18f4a207cc2068ce8116222e933edfd13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7a36147_9e59acbf",
