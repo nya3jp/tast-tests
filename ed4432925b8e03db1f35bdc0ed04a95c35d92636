@@ -38,6 +38,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c06432fa_1113e7b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-01T23:57:28Z",
+      "side": 1,
+      "message": "I don\u0027t think CQ runs internal tests, since the results on here are public. I\u0027d go look at the tests and see, or else try running them locally to check.",
+      "parentUuid": "d08bbf96_f6d532ed",
+      "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9012a87c_b505f4c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-01T23:57:28Z",
+      "side": 1,
+      "message": "What is `FixtV`?",
+      "range": {
+        "startLine": 77,
+        "startChar": 44,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f50f391_13d043a5",
         "filename": "src/chromiumos/tast/local/crostini/params.go",
         "patchSetId": 3
@@ -67,6 +108,24 @@
       "side": 1,
       "message": "Oh, we have buster-only tests?\n\nI changed this because if I did not change this, the large container will be buster, there is no fixture for buster large container.",
       "parentUuid": "8f50f391_13d043a5",
+      "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730faa91_413d2a2f",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-01T23:57:28Z",
+      "side": 1,
+      "message": "If you take a look at the tests you\u0027re changing e.g. network_perf you can see there\u0027s only a Buster Pre, no Bullseye.\nThis changes anything with MinimalSet \u003d\u003d true from buster-only to bullseye-only, and that should be coordinated with the bullseye rollout.",
+      "parentUuid": "9d1fdc29_3c60b6ec",
       "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
