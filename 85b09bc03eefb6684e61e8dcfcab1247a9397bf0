@@ -69,6 +69,24 @@
       "parentUuid": "2a041e6b_025d8b32",
       "revId": "85b09bc03eefb6684e61e8dcfcab1247a9397bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6361ab6_c548fd03",
+        "filename": "src/chromiumos/tast/services/cros/wifi/shill_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-01T17:38:53Z",
+      "side": 1,
+      "message": "Thanks, sorry should have provided clearer instructions.",
+      "parentUuid": "409169ad_6b5ace37",
+      "revId": "85b09bc03eefb6684e61e8dcfcab1247a9397bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
