@@ -12,17 +12,12 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hardware/iio"
-	"chromiumos/tast/local/bundles/cros/hardware/util"
-	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
-
-const targetProcessName = "/usr/sbin/iioservice"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -33,8 +28,7 @@ func init() {
 			"chenghaoyang@chromium.org", // Test author
 			"chromeos-sensors@google.com",
 		},
-		Data:         []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessorAmd64, tracing.TraceProcessorArm, tracing.TraceProcessorArm64},
-		Attr:         []string{"group:mainline", "informational", "group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"iioservice"},
 	})
 }
@@ -119,12 +113,6 @@ func SensorIioserviceHard(ctx context.Context, s *testing.State) {
 		s.Fatal("Error reading sensors on DUT: ", err)
 	}
 
-	// Start a trace session using the perfetto command line tool.
-	traceConfigPath := s.DataPath(tracing.TBMTracedProbesConfigFile)
-	sess, err := tracing.StartSession(ctx, traceConfigPath)
-	// The temporary file of trace data is no longer needed when returned.
-	defer sess.RemoveTraceResultFile()
-
 	errorCh := make(chan error)
 	numTasks := 0
 	for i := 0; i < nClientPerSensor; i++ {
@@ -148,24 +136,5 @@ func SensorIioserviceHard(ctx context.Context, s *testing.State) {
 		if err := <-errorCh; err != nil {
 			s.Error(" : ", err)
 		}
-	}
-
-	if err := sess.Stop(); err != nil {
-		s.Fatal("Failed to stop the tracing session: ", err)
-	}
-
-	metrics, err := sess.RunMetrics(ctx, s.DataPath(tracing.TraceProcessor()), []string{util.TraceMetricCPU, util.TraceMetricMEM})
-	if err != nil {
-		s.Fatal("Failed to RunMetrics: ", err)
-	}
-
-	pv := perf.NewValues()
-	// As there's no existing metrics for ChromeOS, and Android ones are quite useful, use the existing Android metrics for now.
-	if err := util.ProcessCPUMetric(ctx, metrics.GetAndroidCpu(), "SensorIioserviceHard", util.IioserviceProcessName, pv); err != nil {
-		s.Fatal("Failed to process CPU metric: ", err)
-	}
-
-	if err := pv.Save(s.OutDir()); err != nil {
-		s.Error("Failed to save perf data: ", err)
 	}
 }
