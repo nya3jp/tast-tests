@@ -19,9 +19,8 @@ import (
 
 const (
 	playstorePackageName    = "com.android.vending"
-	username                = "arc.OptinManaged.username"
-	password                = "arc.OptinManaged.password"
-	timeoutWaitForPlayStore = 4 * time.Minute
+	timeoutWaitForPlayStore = 5 * time.Minute
+	loginPoolVar            = "arc.managedAccountPool"
 )
 
 func init() {
@@ -30,14 +29,14 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "A functional test that verifies OptIn flow for managed user",
 		Contacts: []string{
-			"arc-core@google.com",
+			"arc-commercial@google.com",
 			"mhasank@chromium.org",
 			"yaohuali@google.com",
 		},
 		Attr: []string{"group:mainline", "group:arc-functional"},
 		VarDeps: []string{
-			"arc.OptinManaged.username",
-			"arc.OptinManaged.password"},
+			loginPoolVar,
+		},
 		SoftwareDeps: []string{
 			"chrome",
 			"chrome_internal",
@@ -56,16 +55,19 @@ func init() {
 }
 
 func OptinManaged(ctx context.Context, s *testing.State) {
-	fdms, err := setupFakePolicyServer(ctx, s.OutDir())
+	// Actual username and password are read from vars/arc.yaml.
+	creds, err := chrome.PickRandomCreds(s.RequiredVar(loginPoolVar))
+	if err != nil {
+		s.Fatal("Failed to get login creds: ", err)
+	}
+
+	fdms, err := setupFakePolicyServer(ctx, s.OutDir(), creds.User)
 	if err != nil {
 		s.Fatal("Failed to setup fake policy server: ", err)
 	}
 	defer fdms.Stop(ctx)
 
-	// Actual username and password are read from vars/arc.OptinManaged.yaml.
-	creds := chrome.Creds{User: s.RequiredVar(username), Pass: s.RequiredVar(password)}
 	gaiaLogin := chrome.GAIALogin(creds)
-
 	cr, err := setupManagedChrome(ctx, gaiaLogin, fdms)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
@@ -84,7 +86,7 @@ func OptinManaged(ctx context.Context, s *testing.State) {
 	}
 }
 
-func setupFakePolicyServer(ctx context.Context, outdir string) (*fakedms.FakeDMS, error) {
+func setupFakePolicyServer(ctx context.Context, outdir, policyUser string) (*fakedms.FakeDMS, error) {
 	fdms, err := fakedms.New(ctx, outdir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create fakedms")
@@ -95,6 +97,7 @@ func setupFakePolicyServer(ctx context.Context, outdir string) (*fakedms.FakeDMS
 
 	// Add the new policy to fmds
 	blob := fakedms.NewPolicyBlob()
+	blob.PolicyUser = policyUser
 	if err := blob.AddPolicies(policies); err != nil {
 		fdms.Stop(ctx)
 		return nil, errors.Wrap(err, "failed to add policy to policy blob")
