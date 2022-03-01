@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65b308c_1038834d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-03-01T18:15:25Z",
+      "side": 1,
+      "message": "Thanks, Matthew.",
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af61b8d4_0163d545",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-02-28T01:23:35Z",
       "side": 1,
       "message": "Would it be better to just use image.Decode?\n\nhttps://pkg.go.dev/image#Decode",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ad23c5_d13b42e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-03-01T18:15:25Z",
+      "side": 1,
+      "message": "Unfortunately not - image.Decode doesn\u0027t tell us the original colorspace of the image.",
+      "parentUuid": "af61b8d4_0163d545",
       "range": {
         "startLine": 61,
         "startChar": 4,
@@ -47,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07de3102_61c8c52e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-03-01T18:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4353ab27_5de71214",
+      "range": {
+        "startLine": 178,
+        "startChar": 13,
+        "endLine": 178,
+        "endChar": 20
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34254ab5_94c83934",
@@ -60,6 +125,30 @@
       "writtenOn": "2022-02-28T01:23:35Z",
       "side": 1,
       "message": "This makes test failures unreproducible and could cause flakiness if particular combinations fail and not others.\n\nStrongly prefer for this to be deterministic.  If randomization is really needed, can there be a command line option to enable it when being manually tested?",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 14
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578df026_5f6454c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-03-01T18:15:25Z",
+      "side": 1,
+      "message": "The randomization is a core part of our design here. We want to test all combinations, but it\u0027s prohibitively time-consuming to test each combination in every run.\n\nWe do log each combination that is run, so if a failure occurs we should be able to tell which combination caused that failure. From there, an easy way to reproduce that specific combination is to locally modify the scanner descriptor JSON file to only have that combination.\n\nI\u0027m not sure what you mean by \"enable it when being manually tested\" - do you mean enable randomization or determinism? Randomization should be enabled by default, and determinism can be achieved in a similar manner to reproducing specific combinations above.\n\nRealistically, to locally test modifications the developer already needs to add a custom scanner descriptor for a scanner that they have locally, and if they want to test deterministically they can just specify a single combination in the local scanner descriptor. Ack that this is not ideal, but we haven\u0027t figured out a better solution.",
+      "parentUuid": "34254ab5_94c83934",
       "range": {
         "startLine": 442,
         "startChar": 2,
