@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b46acb_c943b40b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/tablet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-01T00:58:34Z",
+      "side": 1,
+      "message": "If the ARC window is left snapped, shouldn\u0027t we stay 346 away from the left end?",
+      "range": {
+        "startLine": 161,
+        "startChar": 53,
+        "endLine": 161,
+        "endChar": 71
+      },
+      "revId": "8874d751baa7f6c63b30e79e8b9861e02fe16174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
