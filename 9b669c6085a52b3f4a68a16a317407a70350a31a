@@ -16,6 +16,46 @@
       "message": "PTAL!",
       "revId": "9b669c6085a52b3f4a68a16a317407a70350a31a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8126a0_e7b0fc9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-03-01T05:54:22Z",
+      "side": 1,
+      "message": "How about verifying by the ratio rather than fixed threshold, so that it would be invariant to the screen resolution or window size?",
+      "revId": "9b669c6085a52b3f4a68a16a317407a70350a31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44b012d_90b33780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-03-01T05:54:22Z",
+      "side": 1,
+      "message": "I\u0027d suggest something like this:\n    p :\u003d Point{x, y}\n    onBorder :\u003d p.In(bounds.Inset(-borderWidthPX)) \u0026\u0026 !p.In(bounds)\n\n(I assumed that the four corners are also expected to be border color.)",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 78
+      },
+      "revId": "9b669c6085a52b3f4a68a16a317407a70350a31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
