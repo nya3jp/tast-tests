@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8920a5e_d72f090f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "Thanks for updating it... I\u0027ve just reviewed it again and noticed a few minor things that I missed back in my previous review (sorry!)\n",
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f938e05_43f5ba06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "huge nit: \"gets\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d5c8145_0439237b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "see below for context:... this could be renamed to `Percent()`",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b56bc67_1718f691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "see comments below: rename this function to `SetBrightnessPercent()`...\n\nalthough you should avoid duplicating the word Brightness... the package is called \"brightness\" so the function should not repeat the name Brightness... perhaps `SetPercent` is better... so the caller would just do:\n\n  brightness.SetPercent()",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c4e41a_070bdd50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "huge nit: \"init\" is confusing... if what you meant is \"initial\", then just use the word \"initial\"...",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bde7859_c7314c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "nit: move this code to brightness.go... add a new function there named `SetBrightnessPercent()` (?)",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c87b87_ee7db961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "nit: and here just call  `SetBrightnessPercent(ctx, 100)`",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4c2e30_c7b94e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "huge nit, consistency: prebrightness -\u003e preBrightness",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa77429d_d1a0e8bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t it be \u003e\u003d ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c8df7c_c9ba17bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1aedd9_23475bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "ditto above: shouldn\u0027t it be \u003c\u003d ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee4f930_43e20a44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "nit: since you are already using the word Brightness, rename Brt to Brightness",
+      "range": {
+        "startLine": 103,
+        "startChar": 80,
+        "endLine": 103,
+        "endChar": 91
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54fcf13e_a3737b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_ui.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-01T17:49:30Z",
+      "side": 1,
+      "message": "I would create a follow up CL with the test. One CL per test.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
