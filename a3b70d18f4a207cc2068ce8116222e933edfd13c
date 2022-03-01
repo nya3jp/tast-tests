@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d3f9711_c3b418ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-01T11:45:52Z",
+      "side": 1,
+      "message": "Do you suggest unrolling one loop as a few parameterized tests?",
+      "parentUuid": "f69a6b30_671d8a64",
+      "revId": "a3b70d18f4a207cc2068ce8116222e933edfd13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7a36147_9e59acbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
         "patchSetId": 6
