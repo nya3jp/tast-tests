@@ -44,8 +44,8 @@ func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 		// CrosConfig name property.
 		nameProperty = "name"
 
-		// CrosConfig ARC build properties path.
-		arcBuildPropertiesPath = "/arc/build-properties"
+		// CrosConfig branding path.
+		brandingPath = "/branding"
 		// CrosConfig marketing name property.
 		marketingNameProperty = "marketing-name"
 
@@ -73,7 +73,7 @@ func ProbeSystemInfo(ctx context.Context, s *testing.State) {
 	// "Acer Chromebook Spin 11 (CP311-H1, CP311-1HN)" ->
 	// "Acer Chromebook Spin 11 (CP311-H1/CP311-1HN)"
 	// TODO(crbug/1135261): Remove these explicit values checks from the test
-	marketingNameRaw, err := crosconfig.Get(ctx, arcBuildPropertiesPath, marketingNameProperty)
+	marketingNameRaw, err := crosconfig.Get(ctx, brandingPath, marketingNameProperty)
 	if err != nil && !crosconfig.IsNotFound(err) {
 		s.Fatal("Unable to get marketing name from cros_config: ", err)
 	}
