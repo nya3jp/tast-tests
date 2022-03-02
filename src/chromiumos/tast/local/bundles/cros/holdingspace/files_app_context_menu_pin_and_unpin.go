@@ -33,7 +33,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FilesAppContextMenuPinAndUnpin,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that pinning to Holding Space from the Files app works",
 		Contacts: []string{
 			"angusmclean@chromium.org",

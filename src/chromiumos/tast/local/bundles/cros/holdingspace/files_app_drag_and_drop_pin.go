@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FilesAppDragAndDropPin,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that dragging and dropping on Holding Space pins the item",
 		Contacts: []string{
 			"angusmclean@chromium.org",
