@@ -16,6 +16,24 @@
       "message": "LGTM. Can you put an update in the bug to specify the condition when this stopgap will be removed? (firmware update)",
       "revId": "8158fe2e0aebfb6cd3a42c4b75028f9dc8679e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b114f70b_d6a0f3cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-03-02T01:02:14Z",
+      "side": 1,
+      "message": "I have put a comment explicitly mentioning that the test is being disabled on Nipperkin, until Reset is stablized on Nipperkin (by FW fix). The comment in this patches adds a reference to the bug that captures the current flake in the reset test on Nipperkin.",
+      "parentUuid": "94176903_144754b2",
+      "revId": "8158fe2e0aebfb6cd3a42c4b75028f9dc8679e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
