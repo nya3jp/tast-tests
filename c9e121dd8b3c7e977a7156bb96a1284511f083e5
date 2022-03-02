@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1992114e_bf075f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:31:08Z",
+      "side": 1,
+      "message": "Maybe call this file uiwrapper.go? Sorry, not the right place to write the comment. But I do not know how to comment a file name.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "c9e121dd8b3c7e977a7156bb96a1284511f083e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce45fb7e_29d316eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:31:08Z",
+      "side": 1,
+      "message": "Is this func used in this package?",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "c9e121dd8b3c7e977a7156bb96a1284511f083e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1e3c64_4e5622b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/voicerecorder/vr.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:31:08Z",
+      "side": 1,
+      "message": "It just call Install directly, does this func check whether it exists?",
+      "range": {
+        "startLine": 75,
+        "startChar": 18,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "c9e121dd8b3c7e977a7156bb96a1284511f083e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0662a5bc_bff5f4ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/voicerecorder/vr.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:31:08Z",
+      "side": 1,
+      "message": "This log is sort of redundant as the name of the func and the error msg are enough.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "c9e121dd8b3c7e977a7156bb96a1284511f083e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d711093b_44d1ddbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/voicerecorder/vr.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:31:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 46
+      },
+      "revId": "c9e121dd8b3c7e977a7156bb96a1284511f083e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
