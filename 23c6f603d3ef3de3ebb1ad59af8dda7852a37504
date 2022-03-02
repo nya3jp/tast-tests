@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f37e6565_0f28c543",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-02T22:36:51Z",
+      "side": 1,
+      "message": "Wanted to get some feedback on this line specifically, basically when testing with the example.Pass test the profiler would fail to save the output file without this sleep. I think this is due to the example.pass test being so quick that profiler is being stopped too quickly after starting since other tests I tried didn\u0027t require this sleep to copy the file successfully. \n\nNot sure if there would be a better way to do this or if it would be okay to leave this as is since it\u0027s just 400 Ms (which was the minimum time I could do and still succeed in example.Pass).",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "23c6f603d3ef3de3ebb1ad59af8dda7852a37504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
