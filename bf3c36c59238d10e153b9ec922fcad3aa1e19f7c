@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81e794d_1d99739f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1970,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-02T15:01:53Z",
+      "side": 1,
+      "message": "nit: \"property\", now?",
+      "range": {
+        "startLine": 1970,
+        "startChar": 20,
+        "endLine": 1970,
+        "endChar": 30
+      },
+      "revId": "bf3c36c59238d10e153b9ec922fcad3aa1e19f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d61d9c5_9ca7368f",
+        "filename": "src/chromiumos/tast/services/cros/wifi/shill_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-02T15:01:53Z",
+      "side": 1,
+      "message": "I assume that since these are only ever in transit as RPC, it\u0027s fine to change the field number?",
+      "revId": "bf3c36c59238d10e153b9ec922fcad3aa1e19f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
