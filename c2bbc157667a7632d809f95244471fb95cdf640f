@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f394db97_3d1bc960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-02T07:32:00Z",
+      "side": 1,
+      "message": "Please use `repo upload . --current-branch --verify` to upload patch, there are some presubmit check errors.",
+      "revId": "c2bbc157667a7632d809f95244471fb95cdf640f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
