@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17df21e_867a3ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-02T14:13:43Z",
+      "side": 1,
+      "message": "why do you need to repeatedly activate the tab? (is the my question in prev comment)\n\nCould you describe more background in the comment?",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "74ec3298f7466c448d2f3d4f7374dc95f0ee700a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67446e0_c61169da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-02T14:13:43Z",
+      "side": 1,
+      "message": "could you add lacros metadata?",
+      "revId": "74ec3298f7466c448d2f3d4f7374dc95f0ee700a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
