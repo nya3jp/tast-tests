@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "741deb8f_5d9a545c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-03-02T03:48:23Z",
+      "side": 1,
+      "message": "Seems fine - maybe just add a comment to clarify that is why this is here so we don\u0027t delete this later by accident.",
+      "parentUuid": "a38c2f67_cd270982",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6555c6a2_26ab4708",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
         "patchSetId": 4
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5277a43f_f67ba1a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-03-02T03:48:23Z",
+      "side": 1,
+      "message": "Just worried about flakiness due to some weird screen size - e.g. emoji picker v2 is a bit wider and on a portrait screen on something like krane might be starting to get to the right hand edge of the screen. (is that something that can even happen in tast?)\n\nProbably fine if you think this is OK",
+      "parentUuid": "bdd69d96_0f5e5a6b",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad405808_beb7276e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
         "patchSetId": 4
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "It sounds great to me. If there is a browsertest covering these scenarios without any gap. I am happy to remove them from TAST. Otherwise, let\u0027s keep it for now.\n\nbtw, I reported b/221786977 yesterday. It can not be covered in browsertest. Not sure if it is VM issue only. Can you please help investigate the problem?",
       "parentUuid": "ad405808_beb7276e",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 74
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8513ae_5540a596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-03-02T03:48:23Z",
+      "side": 1,
+      "message": "Since this is written, may as well keep it, but maybe send me a bug to replace with browser test?",
+      "parentUuid": "ecf42003_53048ed6",
       "range": {
         "startLine": 122,
         "startChar": 0,
