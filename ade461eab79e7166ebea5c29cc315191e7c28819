@@ -16,6 +16,29 @@
       "message": "Hi Hyung, does this cl make sense?",
       "revId": "ade461eab79e7166ebea5c29cc315191e7c28819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ebe83a_770386b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-02T10:57:57Z",
+      "side": 1,
+      "message": "Does the preview open in lacros browser if enabled? Otherwise, it\u0027s likely LacrosVariantUnneeded. Can you confirm with your Eng team or hidehiko/edcourtney@?",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "ade461eab79e7166ebea5c29cc315191e7c28819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
