@@ -69,6 +69,24 @@
       "message": "nit: how about success or ok?",
       "revId": "a3b70d18f4a207cc2068ce8116222e933edfd13c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff781296_19ee26de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-02T10:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a36147_9e59acbf",
+      "revId": "a3b70d18f4a207cc2068ce8116222e933edfd13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
