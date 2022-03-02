@@ -73,6 +73,23 @@
       },
       "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5673f7a6_ef24d277",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-02T13:57:17Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
