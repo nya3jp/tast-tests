@@ -321,6 +321,30 @@
       },
       "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b456a87a_312d32fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-02T23:03:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea18e495_21ea8057",
+      "range": {
+        "startLine": 143,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 98
+      },
+      "revId": "8b3e8509500b7642c86c8c03b9adaf7508ee5093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
