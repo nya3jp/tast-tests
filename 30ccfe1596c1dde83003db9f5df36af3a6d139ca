@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166afd1a_4d6d98d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:22:02Z",
+      "side": 1,
+      "message": "I didn\u0027t notice this before - can you use input.Keyboard instead? It will use a virtual one if a physical can\u0027t be found.",
+      "revId": "30ccfe1596c1dde83003db9f5df36af3a6d139ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a64388f_02109588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:22:02Z",
+      "side": 1,
+      "message": "nit: message will change when set to input.Keyboard",
+      "revId": "30ccfe1596c1dde83003db9f5df36af3a6d139ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e951cc_4317bb34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:22:02Z",
+      "side": 1,
+      "message": "Any reason to poll for this element rather than the logcat entry we did before?\n\n```\n\t\t// onAppReady: Landing will appear in logcat after the game is fully loaded.\n\t\tif err :\u003d params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\\sLanding`))); err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"onAppReady was not found in LogCat\")\n\t\t}\n```",
+      "revId": "30ccfe1596c1dde83003db9f5df36af3a6d139ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
