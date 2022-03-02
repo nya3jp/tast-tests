@@ -16,6 +16,23 @@
       "message": "Adjusted message and ran fast_build.sh -T locally. All came back OK",
       "revId": "e1dac5aa48c8fd8b9da6d777988e3f5e149a336a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf337cbd_81de4673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-02T05:08:48Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e1dac5aa48c8fd8b9da6d777988e3f5e149a336a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
