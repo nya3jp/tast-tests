@@ -94,6 +94,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/storage"
 	_ "chromiumos/tast/local/bundles/cros/system"
 	_ "chromiumos/tast/local/bundles/cros/telemetryextension"
+	_ "chromiumos/tast/local/bundles/cros/touchpad"
 	_ "chromiumos/tast/local/bundles/cros/typec"
 	_ "chromiumos/tast/local/bundles/cros/u2fd"
 	_ "chromiumos/tast/local/bundles/cros/ui"
