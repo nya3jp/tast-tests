@@ -236,6 +236,7 @@ func (y *YtApp) waitForLoadingComplete(ctx context.Context) error {
 		sidebarID             = youtubePkg + ":id/video_metadata_layout"
 		alternateElementClass = "android.view.ViewGroup"
 		alternateTitleDesc    = "Expand description"
+		alternateExpandDesc   = "Expand Mini Player"
 	)
 	videoTitle := y.d.Object(androidui.ID(titleID))
 	shareBtn := y.d.Object(androidui.Text(shareBtnText), androidui.ID(shareBtnTextID))
@@ -243,12 +244,13 @@ func (y *YtApp) waitForLoadingComplete(ctx context.Context) error {
 	// An alternate video title and share button are added here to support the two versions of UI trees observed across DUTs.
 	// For details, please refer to b/206011393.
 	alternateVideoTitle := y.d.Object(androidui.ClassName(alternateElementClass), androidui.Description(alternateTitleDesc))
+	alternateExpandMenu := y.d.Object(androidui.ClassName(alternateElementClass), androidui.Description(alternateExpandDesc))
 	alternateShareBtn := y.d.Object(androidui.ClassName(alternateElementClass), androidui.Description(shareBtnText))
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := videoTitle.Exists(ctx); err != nil {
 			testing.ContextLog(ctx, "Unable to find video title with expected UI tree: ", err)
-			if err2 := alternateVideoTitle.Exists(ctx); err2 != nil {
+			if alternateVideoTitle.Exists(ctx) != nil && alternateExpandMenu.Exists(ctx) != nil {
 				return errors.New("still loading... video title not rendered")
 			}
 		}
