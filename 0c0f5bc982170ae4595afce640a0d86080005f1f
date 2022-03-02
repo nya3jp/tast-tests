@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1b64b7_a8a4565f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-02T04:53:53Z",
+      "side": 1,
+      "message": "Added comment. Done.",
+      "parentUuid": "741deb8f_5d9a545c",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6555c6a2_26ab4708",
@@ -143,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9851d45_094572fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-02T04:53:53Z",
+      "side": 1,
+      "message": "It is reasonable concern. My suggestion is to keep it as it is and check the test result on different boards and UI mode. I can fix it later if it is a problem on some specific mode.",
+      "parentUuid": "5277a43f_f67ba1a2",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad405808_beb7276e",
@@ -204,6 +252,30 @@
       "side": 1,
       "message": "Since this is written, may as well keep it, but maybe send me a bug to replace with browser test?",
       "parentUuid": "ecf42003_53048ed6",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 74
+      },
+      "revId": "0c0f5bc982170ae4595afce640a0d86080005f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f11666_eae4a40b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-02T04:53:53Z",
+      "side": 1,
+      "message": "Let\u0027s keep it for now. And deprecate it once covered by browser test (b/222202741)",
+      "parentUuid": "dd8513ae_5540a596",
       "range": {
         "startLine": 122,
         "startChar": 0,
