@@ -101,8 +101,8 @@ func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
 				useractions.AttributeInputField: string(inputField),
+				useractions.AttributeFeature:    useractions.FeatureGrammarCheck,
 			},
-			Tags: []useractions.ActionTag{useractions.ActionTagGrammarCheck},
 		},
 	)(ctx); err != nil {
 		s.Fatal("Fail to accept grammar check suggestion: ", err)

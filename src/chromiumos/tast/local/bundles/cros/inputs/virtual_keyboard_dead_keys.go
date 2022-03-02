@@ -144,8 +144,10 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
-			Tags:       []useractions.ActionTag{useractions.ActionTagDeadKey},
-			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
+			Attributes: map[string]string{
+				useractions.AttributeInputField: string(inputField),
+				useractions.AttributeFeature:    useractions.FeatureDeadKeys,
+			},
 		},
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
