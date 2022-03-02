@@ -6,34 +6,34 @@ package testserver
 
 import (
 	"fmt"
-	"time"
 
+	"chromiumos/tast/local/bundles/cros/inputs/emojipicker"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 )
 
 var emojiMenuFinder = nodewith.NameStartingWith("Emoji")
-var emojiPickerFinder = nodewith.Name("Emoji Picker").Role(role.RootWebArea)
 
-func newEmojiUICtx(tconn *chrome.TestConn) *uiauto.Context {
-	return uiauto.New(tconn).WithTimeout(30 * time.Second)
+// TriggerEmojiPickerFromContextMenu launches emoji picker from context menu.
+func (its *InputsTestServer) TriggerEmojiPickerFromContextMenu(inputField InputField) uiauto.Action {
+	return uiauto.Combine("launches emoji picker from context menu",
+		its.RightClickFieldAndWaitForActive(inputField),
+		its.ui.LeftClick(emojiMenuFinder),
+		emojipicker.WaitUntilExists(its.tconn),
+	)
 }
 
 // InputEmojiWithEmojiPicker returns a user action to input Emoji with PK emoji picker on E14s test server.
 func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserContext, inputField InputField, emojiChar string) *useractions.UserAction {
-	emojiCharFinder := nodewith.Name(emojiChar).First().Ancestor(emojiPickerFinder)
-	ui := newEmojiUICtx(uc.TestAPIConn())
+	emojiCharFinder := emojipicker.NodeFinder.Name(emojiChar).First()
+	ui := emojipicker.NewUICtx(its.tconn)
 
 	action := uiauto.Combine(fmt.Sprintf("input emoji with emoji picker on field %v", inputField),
 		its.Clear(inputField),
-		// Right click input to trigger context menu and select Emoji.
-		its.RightClickFieldAndWaitForActive(inputField),
-		ui.LeftClick(emojiMenuFinder),
+		its.TriggerEmojiPickerFromContextMenu(inputField),
 		// Select item from emoji picker.
 		ui.LeftClick(emojiCharFinder),
 		// Wait for input value to test emoji.
@@ -52,16 +52,13 @@ func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserConte
 
 // InputEmojiWithEmojiPickerSearch returns a user action to input Emoji with PK emoji picker on E14s test server using search.
 func (its *InputsTestServer) InputEmojiWithEmojiPickerSearch(uc *useractions.UserContext, inputField InputField, keyboard *input.KeyboardEventWriter, searchString, emojiChar string) *useractions.UserAction {
-	emojiSearchFinder := nodewith.Name("Search").Role(role.SearchBox).Ancestor(emojiPickerFinder)
 	emojiResultFinder := nodewith.Name(fmt.Sprintf("%s %s", emojiChar, searchString))
-	ui := newEmojiUICtx(uc.TestAPIConn())
+	ui := emojipicker.NewUICtx(its.tconn)
 
 	action := uiauto.Combine(fmt.Sprintf("input emoji with emoji picker on field %v", inputField),
 		its.Clear(inputField),
-		// Right click input to trigger context menu and select Emoji.
-		its.RightClickFieldAndWaitForActive(inputField),
-		ui.LeftClick(emojiMenuFinder),
-		ui.LeftClick(emojiSearchFinder),
+		its.TriggerEmojiPickerFromContextMenu(inputField),
+		ui.LeftClick(emojipicker.SearchFieldFinder),
 		keyboard.TypeAction(searchString),
 		ui.LeftClick(emojiResultFinder),
 		// Wait for input value to be test Emoji.
