@@ -69,6 +69,23 @@
       "parentUuid": "386f649e_c7df9140",
       "revId": "77819b3c197387568dda5a5ad35259d7e9b4fbfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "948202b6_9459200a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-03-02T06:24:19Z",
+      "side": 1,
+      "message": "Sanity check: CQ builds are passing so Tast unittests should be good.",
+      "revId": "77819b3c197387568dda5a5ad35259d7e9b4fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
