@@ -51,6 +51,24 @@
       "message": "LGTM",
       "revId": "77819b3c197387568dda5a5ad35259d7e9b4fbfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0c85f9_1de0ee47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-03-02T06:23:07Z",
+      "side": 1,
+      "message": "Investigation is in progress under b/221515009. At this point ARC uprev seems unlikely the cause of the issue, and we\u0027d like to land this CL to unblock uprevs.\nWe\u0027ll make sure this CL is reverted once the underlying issue is fixed.",
+      "parentUuid": "386f649e_c7df9140",
+      "revId": "77819b3c197387568dda5a5ad35259d7e9b4fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
