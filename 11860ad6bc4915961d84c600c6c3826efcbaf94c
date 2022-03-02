@@ -16,6 +16,24 @@
       "message": "Should DUTControllerCCD be changed to \"ccd\" instead? Just 1 other use of it on line 931.\nAnd then I also see another copy of this logic in src/platform/tast/src/chromiumos/tast/internal/minidriver/servo/methods.go so I guess that needs fixing too.",
       "revId": "11860ad6bc4915961d84c600c6c3826efcbaf94c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f732256_771a1582",
+        "filename": "src/chromiumos/tast/common/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-03-02T18:46:46Z",
+      "side": 1,
+      "message": "Line 931 is setting the active dut controller, so it needs to use \"ccd_cr50\". It should probably be modified to try setting the dut controller to ccd_gsc if ccd_cr50 fails.",
+      "parentUuid": "b835392d_7e14c203",
+      "revId": "11860ad6bc4915961d84c600c6c3826efcbaf94c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
