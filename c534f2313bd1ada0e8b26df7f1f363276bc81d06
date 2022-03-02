@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad82811_513177e8",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T22:02:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30381686_05462999",
+      "revId": "c534f2313bd1ada0e8b26df7f1f363276bc81d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "833b5664_2dea5cc7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-02T17:30:32Z",
       "side": 1,
       "message": "Can we pull these `ui.enabled` changes into a separate CL/bug? Isolating the changes will make bugs easier to diagnose if they continue.",
+      "revId": "c534f2313bd1ada0e8b26df7f1f363276bc81d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad977696_6423e968",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T22:02:32Z",
+      "side": 1,
+      "message": "Ack.\nYes, there is already seperate bug for this issue, b/217964717. \nAs suggeted, moved it to seperate CL, crrev.com/c/3501031.",
+      "parentUuid": "833b5664_2dea5cc7",
       "revId": "c534f2313bd1ada0e8b26df7f1f363276bc81d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
