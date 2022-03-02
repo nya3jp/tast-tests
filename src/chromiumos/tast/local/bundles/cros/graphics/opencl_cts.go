@@ -164,7 +164,8 @@ func init() {
 					logFileName:  "api-binary_create.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_binary_get",
@@ -174,7 +175,8 @@ func init() {
 					logFileName:  "api-binary_get.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_bool_type",
@@ -184,7 +186,8 @@ func init() {
 					logFileName:  "api-bool_type.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_buffer_properties_queries",
@@ -194,7 +197,8 @@ func init() {
 					logFileName:  "api-buffer_properties_queries.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_clone_kernel",
@@ -204,7 +208,8 @@ func init() {
 					logFileName:  "api-clone_kernel.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_2d_image_from_buffer",
@@ -214,7 +219,8 @@ func init() {
 					logFileName:  "api-consistency_2d_image_from_buffer.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_3d_image_writes",
@@ -224,7 +230,8 @@ func init() {
 					logFileName:  "api-consistency_3d_image_writes.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_depth_images",
@@ -234,7 +241,8 @@ func init() {
 					logFileName:  "api-consistency_depth_images.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_device_and_host_timer",
@@ -244,7 +252,8 @@ func init() {
 					logFileName:  "api-consistency_device_and_host_timer.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_device_enqueue",
@@ -254,7 +263,8 @@ func init() {
 					logFileName:  "api-consistency_device_enqueue.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_il_programs",
@@ -264,7 +274,8 @@ func init() {
 					logFileName:  "api-consistency_il_programs.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_memory_model",
@@ -274,7 +285,8 @@ func init() {
 					logFileName:  "api-consistency_memory_model.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_non_uniform_work_group",
@@ -284,7 +296,8 @@ func init() {
 					logFileName:  "api-consistency_non_uniform_work_group.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_pipes",
@@ -294,7 +307,8 @@ func init() {
 					logFileName:  "api-consistency_pipes.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_prog_ctor_dtor",
@@ -304,7 +318,8 @@ func init() {
 					logFileName:  "api-consistency_prog_ctor_dtor.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_progvar",
@@ -314,7 +329,8 @@ func init() {
 					logFileName:  "api-consistency_progvar.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_read_write_images",
@@ -324,7 +340,8 @@ func init() {
 					logFileName:  "api-consistency_read_write_images.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_subgroups",
@@ -334,7 +351,8 @@ func init() {
 					logFileName:  "api-consistency_subgroups.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_svm",
@@ -344,7 +362,8 @@ func init() {
 					logFileName:  "api-consistency_svm.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_context_destructor_callback",
@@ -354,7 +373,8 @@ func init() {
 					logFileName:  "api-context_destructor_callback.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_create_context_from_type",
@@ -364,7 +384,8 @@ func init() {
 					logFileName:  "api-create_context_from_type.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_create_kernels_in_program",
@@ -374,7 +395,8 @@ func init() {
 					logFileName:  "api-create_kernels_in_program.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_enqueue_task",
@@ -384,7 +406,8 @@ func init() {
 					logFileName:  "api-enqueue_task.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_execute_kernel_local_sizes",
@@ -394,7 +417,8 @@ func init() {
 					logFileName:  "api-execute_kernel_local_sizes.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_buffer_info",
@@ -404,7 +428,8 @@ func init() {
 					logFileName:  "api-get_buffer_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_command_queue_info_compatibility",
@@ -414,7 +439,8 @@ func init() {
 					logFileName:  "api-get_command_queue_info_compatibility.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_command_queue_info",
@@ -424,7 +450,8 @@ func init() {
 					logFileName:  "api-get_command_queue_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_context_info",
@@ -434,7 +461,8 @@ func init() {
 					logFileName:  "api-get_context_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_device_info",
@@ -444,7 +472,8 @@ func init() {
 					logFileName:  "api-get_device_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_image1d_array_info",
@@ -454,7 +483,8 @@ func init() {
 					logFileName:  "api-get_image1d_array_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_image1d_info",
@@ -464,7 +494,8 @@ func init() {
 					logFileName:  "api-get_image1d_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_image2d_array_info",
@@ -474,7 +505,8 @@ func init() {
 					logFileName:  "api-get_image2d_array_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_image2d_info",
@@ -484,7 +516,8 @@ func init() {
 					logFileName:  "api-get_image2d_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_image3d_info",
@@ -494,7 +527,8 @@ func init() {
 					logFileName:  "api-get_image3d_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_kernel_arg_info_compatibility",
@@ -524,7 +558,8 @@ func init() {
 					logFileName:  "api-get_kernel_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_platform_ids",
@@ -534,7 +569,8 @@ func init() {
 					logFileName:  "api-get_platform_ids.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_platform_info",
@@ -544,7 +580,8 @@ func init() {
 					logFileName:  "api-get_platform_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_program_info_kernel_names",
@@ -554,7 +591,8 @@ func init() {
 					logFileName:  "api-get_program_info_kernel_names.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_sampler_info_compatibility",
@@ -564,7 +602,8 @@ func init() {
 					logFileName:  "api-get_sampler_info_compatibility.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_get_sampler_info",
@@ -574,7 +613,8 @@ func init() {
 					logFileName:  "api-get_sampler_info.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_image_properties_queries",
@@ -584,7 +624,8 @@ func init() {
 					logFileName:  "api-image_properties_queries.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_arg_changes",
@@ -594,7 +635,8 @@ func init() {
 					logFileName:  "api-kernel_arg_changes.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_arg_multi_setup_random",
@@ -604,7 +646,8 @@ func init() {
 					logFileName:  "api-kernel_arg_multi_setup_random.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_global_constant",
@@ -614,7 +657,8 @@ func init() {
 					logFileName:  "api-kernel_global_constant.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_private_memory_size",
@@ -624,7 +668,8 @@ func init() {
 					logFileName:  "api-kernel_private_memory_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_required_group_size",
@@ -634,7 +679,8 @@ func init() {
 					logFileName:  "api-kernel_required_group_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_load_single_kernel",
@@ -644,7 +690,8 @@ func init() {
 					logFileName:  "api-load_single_kernel.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_load_two_kernels_in_one",
@@ -654,7 +701,8 @@ func init() {
 					logFileName:  "api-load_two_kernels_in_one.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_load_two_kernels_manually",
@@ -664,7 +712,8 @@ func init() {
 					logFileName:  "api-load_two_kernels_manually.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_load_two_kernels",
@@ -674,7 +723,8 @@ func init() {
 					logFileName:  "api-load_two_kernels.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_mem_object_destructor_callback",
@@ -684,7 +734,8 @@ func init() {
 					logFileName:  "api-mem_object_destructor_callback.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_data_type_align_size_alignment",
@@ -694,7 +745,8 @@ func init() {
 					logFileName:  "api-min_data_type_align_size_alignment.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_image_formats",
@@ -704,7 +756,8 @@ func init() {
 					logFileName:  "api-min_image_formats.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_address_bits",
@@ -714,7 +767,8 @@ func init() {
 					logFileName:  "api-min_max_address_bits.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_compute_units",
@@ -724,7 +778,8 @@ func init() {
 					logFileName:  "api-min_max_compute_units.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_constant_args",
@@ -734,7 +789,8 @@ func init() {
 					logFileName:  "api-min_max_constant_args.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_constant_buffer_size",
@@ -744,7 +800,8 @@ func init() {
 					logFileName:  "api-min_max_constant_buffer_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_device_version",
@@ -754,7 +811,8 @@ func init() {
 					logFileName:  "api-min_max_device_version.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_double_fp_config",
@@ -764,7 +822,8 @@ func init() {
 					logFileName:  "api-min_max_double_fp_config.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_execution_capabilities",
@@ -774,7 +833,8 @@ func init() {
 					logFileName:  "api-min_max_execution_capabilities.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_2d_height",
@@ -784,7 +844,8 @@ func init() {
 					logFileName:  "api-min_max_image_2d_height.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_2d_width",
@@ -794,7 +855,8 @@ func init() {
 					logFileName:  "api-min_max_image_2d_width.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_3d_depth",
@@ -804,7 +866,8 @@ func init() {
 					logFileName:  "api-min_max_image_3d_depth.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_3d_height",
@@ -814,7 +877,8 @@ func init() {
 					logFileName:  "api-min_max_image_3d_height.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_3d_width",
@@ -824,7 +888,8 @@ func init() {
 					logFileName:  "api-min_max_image_3d_width.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_array_size",
@@ -834,7 +899,8 @@ func init() {
 					logFileName:  "api-min_max_image_array_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_buffer_size",
@@ -854,7 +920,8 @@ func init() {
 					logFileName:  "api-min_max_kernel_preferred_work_group_size_multiple.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_language_version",
@@ -864,7 +931,8 @@ func init() {
 					logFileName:  "api-min_max_language_version.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_local_mem_size",
@@ -874,7 +942,8 @@ func init() {
 					logFileName:  "api-min_max_local_mem_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_mem_alloc_size",
@@ -884,7 +953,8 @@ func init() {
 					logFileName:  "api-min_max_mem_alloc_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_parameter_size",
@@ -894,7 +964,8 @@ func init() {
 					logFileName:  "api-min_max_parameter_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_queue_properties",
@@ -904,7 +975,8 @@ func init() {
 					logFileName:  "api-min_max_queue_properties.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_read_image_args",
@@ -914,7 +986,8 @@ func init() {
 					logFileName:  "api-min_max_read_image_args.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_samplers",
@@ -924,7 +997,8 @@ func init() {
 					logFileName:  "api-min_max_samplers.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_single_fp_config",
@@ -934,7 +1008,8 @@ func init() {
 					logFileName:  "api-min_max_single_fp_config.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_thread_dimensions",
@@ -944,7 +1019,8 @@ func init() {
 					logFileName:  "api-min_max_thread_dimensions.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_work_group_size",
@@ -954,7 +1030,8 @@ func init() {
 					logFileName:  "api-min_max_work_group_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_work_items_sizes",
@@ -964,7 +1041,8 @@ func init() {
 					logFileName:  "api-min_max_work_items_sizes.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_write_image_args",
@@ -974,7 +1052,8 @@ func init() {
 					logFileName:  "api-min_max_write_image_args.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_native_kernel",
@@ -984,7 +1063,8 @@ func init() {
 					logFileName:  "api-native_kernel.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_null_buffer_arg",
@@ -1004,7 +1084,8 @@ func init() {
 					logFileName:  "api-pipe_properties_queries.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_platform_extensions",
@@ -1014,7 +1095,8 @@ func init() {
 					logFileName:  "api-platform_extensions.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_queue_flush_on_release",
@@ -1024,7 +1106,8 @@ func init() {
 					logFileName:  "api-queue_flush_on_release.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_queue_hint",
@@ -1034,7 +1117,8 @@ func init() {
 					logFileName:  "api-queue_hint.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_queue_properties",
@@ -1044,7 +1128,8 @@ func init() {
 					logFileName:  "api-queue_properties.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_queue_properties_queries",
@@ -1054,7 +1139,8 @@ func init() {
 					logFileName:  "api-queue_properties_queries.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_release_during_execute",
@@ -1064,7 +1150,8 @@ func init() {
 					logFileName:  "api-release_during_execute.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_release_kernel_order",
@@ -1074,7 +1161,8 @@ func init() {
 					logFileName:  "api-release_kernel_order.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_repeated_setup_cleanup",
@@ -1084,7 +1172,8 @@ func init() {
 					logFileName:  "api-repeated_setup_cleanup.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_retain_mem_object_multiple",
@@ -1094,7 +1183,8 @@ func init() {
 					logFileName:  "api-retain_mem_object_multiple.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_retain_mem_object_set_kernel_arg",
@@ -1104,7 +1194,8 @@ func init() {
 					logFileName:  "api-retain_mem_object_set_kernel_arg.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_retain_mem_object_single",
@@ -1114,7 +1205,8 @@ func init() {
 					logFileName:  "api-retain_mem_object_single.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_retain_queue_multiple",
@@ -1124,7 +1216,8 @@ func init() {
 					logFileName:  "api-retain_queue_multiple.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_retain_queue_single",
@@ -1134,7 +1227,8 @@ func init() {
 					logFileName:  "api-retain_queue_single.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_set_kernel_arg_by_index",
@@ -1144,7 +1238,8 @@ func init() {
 					logFileName:  "api-set_kernel_arg_by_index.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_set_kernel_arg_constant",
@@ -1154,7 +1249,8 @@ func init() {
 					logFileName:  "api-set_kernel_arg_constant.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_set_kernel_arg_struct_array",
@@ -1164,7 +1260,8 @@ func init() {
 					logFileName:  "api-set_kernel_arg_struct_array.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_sub_group_dispatch",
@@ -1174,7 +1271,8 @@ func init() {
 					logFileName:  "api-sub_group_dispatch.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "api_zero_sized_enqueue",
@@ -1184,7 +1282,8 @@ func init() {
 					logFileName:  "api-zero_sized_enqueue.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "atomics_atomic_add_index_bin",
@@ -1324,7 +1423,8 @@ func init() {
 					logFileName:  "basic-arraycopy.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_arrayimagecopy3d",
@@ -1354,7 +1454,8 @@ func init() {
 					logFileName:  "basic-arrayreadwrite.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_astype",
@@ -1374,7 +1475,8 @@ func init() {
 					logFileName:  "basic-async_copy_global_to_local.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_async_copy_local_to_global",
@@ -1384,7 +1486,8 @@ func init() {
 					logFileName:  "basic-async_copy_local_to_global.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_async_strided_copy_global_to_local",
@@ -1414,7 +1517,8 @@ func init() {
 					logFileName:  "basic-barrier.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_bufferreadwriterect",
@@ -1424,7 +1528,8 @@ func init() {
 					logFileName:  "basic-bufferreadwriterect.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_constant",
@@ -1434,7 +1539,8 @@ func init() {
 					logFileName:  "basic-constant.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_constant_source",
@@ -1444,7 +1550,8 @@ func init() {
 					logFileName:  "basic-constant_source.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_createkernelsinprogram",
@@ -1454,7 +1561,8 @@ func init() {
 					logFileName:  "basic-createkernelsinprogram.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_enqueued_local_size",
@@ -1464,7 +1572,8 @@ func init() {
 					logFileName:  "basic-enqueued_local_size.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_enqueue_map_buffer",
@@ -1474,7 +1583,8 @@ func init() {
 					logFileName:  "basic-enqueue_map_buffer.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_enqueue_map_image",
@@ -1484,7 +1594,8 @@ func init() {
 					logFileName:  "basic-enqueue_map_image.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_char",
@@ -1494,7 +1605,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_char.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_double",
@@ -1504,7 +1616,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_double.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_float",
@@ -1514,7 +1627,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_float.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_int",
@@ -1524,7 +1638,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_int.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_long",
@@ -1534,7 +1649,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_long.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_short",
@@ -1544,7 +1660,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_short.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_uchar",
@@ -1554,7 +1671,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_uchar.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_uint",
@@ -1564,7 +1682,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_uint.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_ulong",
@@ -1574,7 +1693,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_ulong.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_ushort",
@@ -1584,7 +1704,8 @@ func init() {
 					logFileName:  "basic-explicit_s2v_ushort.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_float2int",
@@ -1594,7 +1715,8 @@ func init() {
 					logFileName:  "basic-float2int.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_fpmath_float2",
@@ -1604,7 +1726,8 @@ func init() {
 					logFileName:  "basic-fpmath_float2.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_fpmath_float4",
@@ -1614,7 +1737,8 @@ func init() {
 					logFileName:  "basic-fpmath_float4.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_fpmath_float",
@@ -1624,7 +1748,8 @@ func init() {
 					logFileName:  "basic-fpmath_float.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_get_global_offset",
@@ -1634,7 +1759,8 @@ func init() {
 					logFileName:  "basic-get_global_offset.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_get_linear_ids",
@@ -1644,7 +1770,8 @@ func init() {
 					logFileName:  "basic-get_linear_ids.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_global_linear_id",
@@ -1654,7 +1781,8 @@ func init() {
 					logFileName:  "basic-global_linear_id.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_global_work_offsets",
@@ -1664,7 +1792,8 @@ func init() {
 					logFileName:  "basic-global_work_offsets.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_hiloeo",
@@ -1684,7 +1813,8 @@ func init() {
 					logFileName:  "basic-host_numeric_constants.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_hostptr",
@@ -1694,7 +1824,8 @@ func init() {
 					logFileName:  "basic-hostptr.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_if",
@@ -1704,7 +1835,8 @@ func init() {
 					logFileName:  "basic-if.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagearraycopy3d",
@@ -1734,7 +1866,8 @@ func init() {
 					logFileName:  "basic-imagecopy3d.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagecopy",
@@ -1744,7 +1877,8 @@ func init() {
 					logFileName:  "basic-imagecopy.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagedim_non_pow2",
@@ -1754,7 +1888,8 @@ func init() {
 					logFileName:  "basic-imagedim_non_pow2.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagedim_pow2",
@@ -1764,7 +1899,8 @@ func init() {
 					logFileName:  "basic-imagedim_pow2.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_image_multipass_float_coord",
@@ -1774,7 +1910,8 @@ func init() {
 					logFileName:  "basic-image_multipass_float_coord.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_image_multipass_integer_coord",
@@ -1784,7 +1921,8 @@ func init() {
 					logFileName:  "basic-image_multipass_integer_coord.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagenpot",
@@ -1794,7 +1932,8 @@ func init() {
 					logFileName:  "basic-imagenpot.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_image_param",
@@ -1804,7 +1943,8 @@ func init() {
 					logFileName:  "basic-image_param.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_image_r8",
@@ -1814,7 +1954,8 @@ func init() {
 					logFileName:  "basic-image_r8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagerandomcopy",
@@ -1824,7 +1965,8 @@ func init() {
 					logFileName:  "basic-imagerandomcopy.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagereadwrite3d",
@@ -1834,7 +1976,8 @@ func init() {
 					logFileName:  "basic-imagereadwrite3d.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_imagereadwrite",
@@ -1844,7 +1987,8 @@ func init() {
 					logFileName:  "basic-imagereadwrite.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_int2float",
@@ -1854,7 +1998,8 @@ func init() {
 					logFileName:  "basic-int2float.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_int2",
@@ -1864,7 +2009,8 @@ func init() {
 					logFileName:  "basic-intmath_int2.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_int4",
@@ -1874,7 +2020,8 @@ func init() {
 					logFileName:  "basic-intmath_int4.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_int",
@@ -1884,7 +2031,8 @@ func init() {
 					logFileName:  "basic-intmath_int.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_long2",
@@ -1894,7 +2042,8 @@ func init() {
 					logFileName:  "basic-intmath_long2.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_long4",
@@ -1904,7 +2053,8 @@ func init() {
 					logFileName:  "basic-intmath_long4.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_long",
@@ -1914,7 +2064,8 @@ func init() {
 					logFileName:  "basic-intmath_long.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_kernel_call_kernel_function",
@@ -1934,7 +2085,8 @@ func init() {
 					logFileName:  "basic-kernel_limit_constants.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_kernel_memory_alignment_constant",
@@ -1984,7 +2136,8 @@ func init() {
 					logFileName:  "basic-kernel_numeric_constants.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_kernel_preprocessor_macros",
@@ -1994,7 +2147,8 @@ func init() {
 					logFileName:  "basic-kernel_preprocessor_macros.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_local_arg_def",
@@ -2024,7 +2178,8 @@ func init() {
 					logFileName:  "basic-local_kernel_scope.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_local_linear_id",
@@ -2034,7 +2189,8 @@ func init() {
 					logFileName:  "basic-local_linear_id.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_loop",
@@ -2044,7 +2200,8 @@ func init() {
 					logFileName:  "basic-loop.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_mri_multiple",
@@ -2054,7 +2211,8 @@ func init() {
 					logFileName:  "basic-mri_multiple.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_mri_one",
@@ -2064,7 +2222,8 @@ func init() {
 					logFileName:  "basic-mri_one.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_parameter_types",
@@ -2084,7 +2243,8 @@ func init() {
 					logFileName:  "basic-pointer_cast.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_prefetch",
@@ -2094,7 +2254,8 @@ func init() {
 					logFileName:  "basic-prefetch.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_func_scope",
@@ -2104,7 +2265,8 @@ func init() {
 					logFileName:  "basic-progvar_func_scope.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_prog_scope_init",
@@ -2114,7 +2276,8 @@ func init() {
 					logFileName:  "basic-progvar_prog_scope_init.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_prog_scope_misc",
@@ -2124,7 +2287,8 @@ func init() {
 					logFileName:  "basic-progvar_prog_scope_misc.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_prog_scope_uninit",
@@ -2134,7 +2298,8 @@ func init() {
 					logFileName:  "basic-progvar_prog_scope_uninit.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage3d_fp32",
@@ -2144,7 +2309,8 @@ func init() {
 					logFileName:  "basic-readimage3d_fp32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage3d_int16",
@@ -2154,7 +2320,8 @@ func init() {
 					logFileName:  "basic-readimage3d_int16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage3d",
@@ -2164,7 +2331,8 @@ func init() {
 					logFileName:  "basic-readimage3d.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage_fp32",
@@ -2174,7 +2342,8 @@ func init() {
 					logFileName:  "basic-readimage_fp32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage_int16",
@@ -2184,7 +2353,8 @@ func init() {
 					logFileName:  "basic-readimage_int16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage",
@@ -2194,7 +2364,8 @@ func init() {
 					logFileName:  "basic-readimage.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_rw_image_access_qualifier",
@@ -2204,7 +2375,8 @@ func init() {
 					logFileName:  "basic-rw_image_access_qualifier.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_simple_read_image_pitch",
@@ -2214,7 +2386,8 @@ func init() {
 					logFileName:  "basic-simple_read_image_pitch.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_simple_write_image_pitch",
@@ -2224,7 +2397,8 @@ func init() {
 					logFileName:  "basic-simple_write_image_pitch.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_sizeof",
@@ -2234,7 +2408,8 @@ func init() {
 					logFileName:  "basic-sizeof.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vector_creation",
@@ -2244,7 +2419,8 @@ func init() {
 					logFileName:  "basic-vector_creation.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vector_swizzle",
@@ -2264,7 +2440,8 @@ func init() {
 					logFileName:  "basic-vec_type_hint.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vload_constant",
@@ -2274,7 +2451,8 @@ func init() {
 					logFileName:  "basic-vload_constant.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vload_global",
@@ -2284,7 +2462,8 @@ func init() {
 					logFileName:  "basic-vload_global.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vload_local",
@@ -2294,7 +2473,8 @@ func init() {
 					logFileName:  "basic-vload_local.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vload_private",
@@ -2304,7 +2484,8 @@ func init() {
 					logFileName:  "basic-vload_private.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_global",
@@ -2314,7 +2495,8 @@ func init() {
 					logFileName:  "basic-vstore_global.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_local",
@@ -2324,7 +2506,8 @@ func init() {
 					logFileName:  "basic-vstore_local.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_private",
@@ -2334,7 +2517,8 @@ func init() {
 					logFileName:  "basic-vstore_private.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_wg_barrier",
@@ -2344,7 +2528,8 @@ func init() {
 					logFileName:  "basic-wg_barrier.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_work_item_functions",
@@ -2354,7 +2539,8 @@ func init() {
 					logFileName:  "basic-work_item_functions.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_writeimage_fp32",
@@ -2364,7 +2550,8 @@ func init() {
 					logFileName:  "basic-writeimage_fp32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_writeimage_int16",
@@ -2374,7 +2561,8 @@ func init() {
 					logFileName:  "basic-writeimage_int16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "basic_writeimage",
@@ -2384,7 +2572,8 @@ func init() {
 					logFileName:  "basic-writeimage.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				ExtraAttr: []string{"graphics_nightly"},
+				Timeout:   1 * time.Minute,
 			},
 			{
 				Name: "bruteforce_acosh",
