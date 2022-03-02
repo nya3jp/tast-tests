@@ -40,7 +40,7 @@ const StateFile = "state.json"
 // EnrollmentFakeDMSDir is the directory where FakeDMS stores state during enrollment.
 // Used to share state between the enrolled fixture and the fakeDMSEnrolled fixtures.
 // TODO(crbug.com/1187473): Remove
-const EnrollmentFakeDMSDir = "/tmp/enrolling-fdms"
+const EnrollmentFakeDMSDir = "/var/enrolling-fdms"
 
 var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
 var testserverPythonImports = []string{
