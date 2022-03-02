@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87794dae_f97634cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-02T17:37:17Z",
+      "side": 1,
+      "message": "the?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "bc5b387a9dab36670d555fe9e01fecc37af319b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851f571a_b9d95976",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-02T17:37:17Z",
+      "side": 1,
+      "message": "graphics-nightly. \n\nUnder the hood, it is still run with suite:graphics-nightly. Also, it is less confusing as the attribute you are adding is graphics_nightly.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "bc5b387a9dab36670d555fe9e01fecc37af319b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76487d4e_1b1c95a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-02T17:37:17Z",
+      "side": 1,
+      "message": "Just a heads up. \nThis would cause double running api/basic tests on weekly/nightly suite.\nI don\u0027t mind double running the stable one though.",
+      "range": {
+        "startLine": 34,
+        "startChar": 62,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "revId": "bc5b387a9dab36670d555fe9e01fecc37af319b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
