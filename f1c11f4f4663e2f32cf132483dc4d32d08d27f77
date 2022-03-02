@@ -51,6 +51,24 @@
       "parentUuid": "687ca049_155ff198",
       "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9409b545_952b7856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-02T09:19:35Z",
+      "side": 1,
+      "message": "IIUC the buckets have a lower and upper limit but b.Max doesn\u0027t mean that that value actually existed. If this is wrong or you aren\u0027t actually looking for values that existed feel free to ignore\n\nsgtm w.r.t count",
+      "parentUuid": "30ddbd9b_febb2603",
+      "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
