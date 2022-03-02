@@ -22,6 +22,8 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	perfSrc "chromiumos/tast/local/perf"
+	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -33,7 +35,10 @@ const (
 	groupOther      metricGroup = ""
 )
 
-const metricPrefix = "TPS."
+const (
+	tpsMetricPrefix   = "TPS."
+	powerMetricPrefix = "Power."
+)
 
 const checkInterval = 5 * time.Second
 
@@ -150,7 +155,14 @@ type Recorder struct {
 	// Defined only for the running recorder.
 	cleanup func(ctx context.Context) error
 
-	timeline           *perf.Timeline
+	// powerSetupCleanup cleans up power setup.
+	powerSetupCleanup setup.CleanupCallback
+
+	// batteryDischarge is true if battery discharge was successfully induced.
+	batteryDischarge bool
+
+	tpsTimeline        *perf.Timeline
+	powerTimeline      *perf.Timeline
 	gpuDataSource      *perfSrc.GPUDataSource
 	frameDataTracker   *perfSrc.FrameDataTracker
 	zramInfoTracker    *perfSrc.ZramInfoTracker
@@ -194,39 +206,72 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		return nil, errors.Wrap(err, "failed to connect to test API")
 	}
 
+	var batteryDischargeErr error
+	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, setup.PowerTestOptions{
+		Wifi:       setup.DisableWifiInterfaces,
+		Battery:    setup.TryBatteryDischarge(&batteryDischargeErr),
+		NightLight: setup.DisableNightLight,
+	})
+	if batteryDischargeErr != nil {
+		testing.ContextLog(ctx, "Failed to induce battery discharge: ", batteryDischargeErr)
+	} else {
+		r.batteryDischarge = true
+	}
+	if err != nil {
+		return nil, errors.Wrap(err, "power setup failed")
+	}
+	success := false
+	defer func(ctx context.Context) {
+		if success {
+			return
+		}
+		if err := r.powerSetupCleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to clean up power setup: ", err)
+		}
+	}(ctx)
+
 	r.gpuDataSource = perfSrc.NewGPUDataSource(r.tconn)
-	sources := []perf.TimelineDatasource{
+	r.tpsTimeline, err = perf.NewTimeline(ctx, []perf.TimelineDatasource{
 		perfSrc.NewCPUUsageSource("CPU"),
 		perfSrc.NewThermalDataSource(),
 		r.gpuDataSource,
 		perfSrc.NewMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
-	}
-	r.timeline, err = perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
+	}, perf.Interval(checkInterval), perf.Prefix(tpsMetricPrefix))
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to start perf.Timeline")
-	}
-	if err := r.timeline.Start(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to start perf.Timeline")
+		return nil, errors.Wrap(err, "failed to create TPS timeline")
 	}
 
-	r.frameDataTracker, err = perfSrc.NewFrameDataTracker(metricPrefix)
+	r.powerTimeline, err = perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(checkInterval), perf.Prefix(powerMetricPrefix))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create power timeline")
+	}
+
+	if err := r.tpsTimeline.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start TPS timeline")
+	}
+
+	if err := r.powerTimeline.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start power timeline")
+	}
+
+	r.frameDataTracker, err = perfSrc.NewFrameDataTracker(tpsMetricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create FrameDataTracker")
 	}
 
-	r.zramInfoTracker, err = perfSrc.NewZramInfoTracker(metricPrefix)
+	r.zramInfoTracker, err = perfSrc.NewZramInfoTracker(tpsMetricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ZramInfoTracker")
 	}
 
-	r.batteryInfoTracker, err = perfSrc.NewBatteryInfoTracker(ctx, metricPrefix)
+	r.batteryInfoTracker, err = perfSrc.NewBatteryInfoTracker(ctx, tpsMetricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create BatteryInfoTracker")
 	}
 
 	r.memInfoTracker = perfSrc.NewMemoryTracker(a)
 
-	r.loginEventRecorder = perfSrc.NewLoginEventRecorder(metricPrefix)
+	r.loginEventRecorder = perfSrc.NewLoginEventRecorder(tpsMetricPrefix)
 
 	r.names = make(map[*chrome.TestConn][]string)
 	r.records = make(map[string]*record, len(configs)+2)
@@ -254,8 +299,6 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		direction:     perf.BiggerIsBetter,
 	}}
 
-	success := false
-
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
 	}
@@ -276,8 +319,12 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		return nil, errors.Wrap(err, "failed to start BatteryInfoTracker")
 	}
 
-	if err := r.timeline.StartRecording(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to start recording timeline data")
+	if err := r.tpsTimeline.StartRecording(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start recording TPS timeline data")
+	}
+
+	if err := r.powerTimeline.StartRecording(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start recording power timeline data")
 	}
 
 	if err := r.memInfoTracker.Start(ctx); err != nil {
@@ -303,8 +350,15 @@ func (r *Recorder) EnableTracing(traceDir string) {
 
 // Close clears states for all trackers.
 func (r *Recorder) Close(ctx context.Context) error {
+	var firstErr error
+	if err := r.powerSetupCleanup(ctx); err != nil {
+		firstErr = errors.Wrap(err, "failed to clean up power setup")
+	}
 	r.gpuDataSource.Close()
-	return r.frameDataTracker.Close(ctx, r.tconn)
+	if err := r.frameDataTracker.Close(ctx, r.tconn); firstErr == nil && err != nil {
+		firstErr = errors.Wrap(err, "failed to close frame data tracker")
+	}
+	return firstErr
 }
 
 // StartRecording starts to record CUJ data.
@@ -525,11 +579,19 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		}
 	}
 
-	vs, err := r.timeline.StopRecording(ctx)
+	tpsData, err := r.tpsTimeline.StopRecording(ctx)
 	if err != nil {
-		testing.ContextLog(ctx, "Failed to stop timeline: ", err)
+		testing.ContextLog(ctx, "Failed to stop TPS timeline: ", err)
 		if stopErr == nil {
-			stopErr = errors.Wrap(err, "failed to stop timeline")
+			stopErr = errors.Wrap(err, "failed to stop TPS timeline")
+		}
+	}
+
+	powerData, err := r.powerTimeline.StopRecording(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to stop power timeline: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to stop power timeline")
 		}
 	}
 
@@ -549,7 +611,8 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	if stopErr != nil {
 		return stopErr
 	}
-	pv.Merge(vs)
+	pv.Merge(tpsData)
+	pv.Merge(powerData)
 
 	displayInfo, err := perfSrc.NewDisplayInfo(ctx, r.tconn)
 	if err != nil {
@@ -594,6 +657,16 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		Unit:      "count",
 		Direction: perf.SmallerIsBetter,
 	}, crasUnderruns/r.duration.Minutes())
+
+	var batteryDischargeReport float64
+	if r.batteryDischarge {
+		batteryDischargeReport = 1
+	}
+	pv.Set(perf.Metric{
+		Name:      powerMetricPrefix + "MetricsCollectedWithBatteryDischarge",
+		Unit:      "unitless",
+		Direction: perf.BiggerIsBetter,
+	}, batteryDischargeReport)
 
 	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
