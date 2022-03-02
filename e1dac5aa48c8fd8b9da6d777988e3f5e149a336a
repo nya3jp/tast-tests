@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f9f0e98_a3faa721",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T01:08:35Z",
+      "side": 1,
+      "message": "Adjusted message and ran fast_build.sh -T locally. All came back OK",
+      "revId": "e1dac5aa48c8fd8b9da6d777988e3f5e149a336a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
