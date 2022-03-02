@@ -122,6 +122,24 @@
       "parentUuid": "21d10e46_50ab713b",
       "revId": "30ccfe1596c1dde83003db9f5df36af3a6d139ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfc2af5_16d6fa0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-03-02T19:26:51Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I\u0027ll probably just use the logcat poll then, since it\u0027s already proven to be working currently with the launch.",
+      "parentUuid": "a061f8e9_cbc85254",
+      "revId": "30ccfe1596c1dde83003db9f5df36af3a6d139ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
