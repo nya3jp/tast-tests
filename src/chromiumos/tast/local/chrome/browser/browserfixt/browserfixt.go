@@ -80,3 +80,62 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
 }
+
+// SetUpWithNewChrome returns a Browser instance along with a new Chrome instance.
+// It also returns a closure to be called in order to close the browser instance.
+// The chrome instance should be also closed by cr.Close().
+// This util will be useful when lacros is not set in fixture, but needed in test.
+func SetUpWithNewChrome(ctx context.Context, bt browser.Type, s lacrosfixt.StateMixin, opts ...chrome.Option) (*chrome.Chrome, *browser.Browser, func(ctx context.Context), error) {
+	switch bt {
+	case browser.TypeAsh:
+		cr, err := chrome.New(ctx, opts...)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
+		}
+		return cr, cr.Browser(), func(context.Context) {}, nil
+
+	case browser.TypeLacros:
+		// Use rootfs-lacros by default unless specified with the var lacrosDeployedBinary.
+		const defaultLacrosBinary = lacrosfixt.Rootfs
+		var vars lacrosfixt.SetupVars
+		if bt == browser.TypeLacros {
+			vars = lacrosfixt.CheckVars(s, defaultLacrosBinary)
+			defaultOpts, err := lacrosfixt.DefaultOpts(vars, defaultLacrosBinary, opts...)
+			if err != nil {
+				return nil, nil, nil, errors.Wrap(err, "failed to set options")
+			}
+			opts = append(opts, defaultOpts...)
+			opts = append(opts,
+				// for lacros primary
+				chrome.EnableFeatures("LacrosPrimary"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive", "-disable-login-lacros-opening"))
+		}
+
+		cr, err := chrome.New(ctx, opts...)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
+		}
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome test API")
+		}
+
+		lacrosPath, err := lacrosfixt.WaitForReady(ctx, vars, defaultLacrosBinary, s)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to wait for lacros-chrome to be ready")
+		}
+		l, err := lacros.LaunchFromShelf(ctx, tconn, lacrosPath)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
+		}
+		closeBrowser := func(ctx context.Context) {
+			if err := l.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
+			}
+		}
+		return cr, l.Browser(), closeBrowser, nil
+
+	default:
+		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
+	}
+}

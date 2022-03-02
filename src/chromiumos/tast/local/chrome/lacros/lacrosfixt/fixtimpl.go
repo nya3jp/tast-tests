@@ -8,8 +8,6 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
-	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -361,60 +359,22 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	}
 	f.userTmpDir = userTmpDir
 
+	// Set chrome options for Lacros from multiple sources: fixture, parent, default.
 	opts, err := f.fOpt(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to obtain fixture options: ", err)
 	}
-
-	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+MojoSocketPath))
-
-	// Suppress experimental Lacros infobar and possible others as well.
-	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
-
-	// The What's-New feature automatically redirects the browser to a WebUI page to display the
-	// new feature if this is first time the user opens the browser or the user has upgraded
-	// Chrome to a different milestone. Disables the feature in testing to make the test
-	// expectations more predirectable, and thus make the tests more stable.
-	opts = append(opts, chrome.LacrosExtraArgs("--disable-features=ChromeWhatsNewUI"))
-
-	// We reuse the custom extension from the chrome package for exposing private interfaces.
-	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
-	extDirs, err := chrome.DeprecatedPrepareExtensions()
-	if err != nil {
-		s.Fatal("Failed to prepare extensions: ", err)
-	}
-	extList := strings.Join(extDirs, ",")
-	opts = append(opts, chrome.LacrosExtraArgs(ExtensionArgs(chrome.TestExtensionID, extList)...))
-
-	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
-	// lacros-chrome instead of always downloading from a gcs location.
-	// This workaround is to be removed soon once lab provisioning is supported for Lacros.
-	deployedPath, deployed := s.Var(LacrosDeployedBinary)
-	if deployed {
-		f.lacrosPath = deployedPath
-	} else if f.mode == External {
-		f.lacrosPath = lacrosRootPath
-	}
-
-	// Note that specifying the feature LacrosSupport has side-effects, so
-	// we specify it even if the lacros path is being overridden by lacrosDeployedBinary.
-	if f.mode == Rootfs {
-		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
-			chrome.ExtraArgs("--lacros-selection=rootfs"))
-	} else if f.mode == Omaha {
-		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
-			chrome.ExtraArgs("--lacros-selection=stateful"))
-	}
-
-	// If External or deployed we should specify the path.
-	// This will override the lacros-selection argument.
-	if deployed || f.mode == External {
-		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+f.lacrosPath))
-	}
-
 	// If there's a parent fixture and the fixture supplies extra options, use them.
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		opts = append(opts, extraOpts...)
+	}
+	// Default opts needed per setup mode
+	vars := CheckVars(s, f.mode)
+	f.lacrosPath = vars.deployedPath // only when deployed or mode == external. TODO: move to below
+	if defaultOpts, err := DefaultOpts(vars, f.mode, opts...); err != nil {
+		s.Fatal("Failed to set options: ", err)
+	} else {
+		opts = append(opts, defaultOpts...)
 	}
 
 	if f.cr, err = chrome.New(ctx, opts...); err != nil {
@@ -424,44 +384,10 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	// Prepare the lacros binary if it isn't deployed already via lacrosDeployedBinary.
-	if !deployed {
-		if f.mode == Omaha || f.mode == Rootfs {
-			config, err := ioutil.ReadFile("/etc/chrome_dev.conf")
-			if err == nil {
-				for _, line := range strings.Split(string(config), "\n") {
-					line = strings.TrimSpace(line)
-					if strings.HasPrefix(line, "--lacros-chrome-path") {
-						s.Fatal("Found --lacros-chrome-path in /etc/chrome_dev.conf, but lacrosDeployedBinary is not specified")
-					}
-				}
-			}
-		}
-		switch f.mode {
-		case External:
-			if err := prepareLacrosBinary(ctx, s); err != nil {
-				s.Fatal("Failed to prepare lacros-chrome, err")
-			}
-		case Omaha:
-			// When launched by Omaha we need to wait several seconds for lacros to be launchable.
-			// It is ready when the image loader path is created with the chrome executable.
-			testing.ContextLog(ctx, "Waiting for Lacros to initialize")
-			matches, err := f.waitForPathToExist(ctx, "/run/imageloader/lacros-dogfood*/*/chrome")
-			if err != nil {
-				s.Fatal("Failed to find lacros binary: ", err)
-			}
-			f.lacrosPath = filepath.Dir(matches[0])
-		case Rootfs:
-			// When launched from the rootfs partition, the lacros-chrome is already located
-			// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
-			matches, err := f.waitForPathToExist(ctx, "/run/lacros/chrome")
-			if err != nil {
-				s.Fatal("Failed to find lacros binary: ", err)
-			}
-			f.lacrosPath = filepath.Dir(matches[0])
-		default:
-			s.Fatal("Unrecognized mode: ", f.mode)
-		}
+	if lacrosPath, err := WaitForReady(ctx, vars, f.mode, s); err != nil {
+		s.Fatal("Failed to wait for the lacros binary to be ready for use: ", err)
+	} else {
+		f.lacrosPath = lacrosPath
 	}
 
 	testing.ContextLog(ctx, "Using lacros located at ", f.lacrosPath)
@@ -539,22 +465,6 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath, &f.userTmpDir}
-}
-
-// waitForPathToExist is a helper method that waits the given binary path to be present
-// then returns the matching paths or it will be timed out if the ctx's timeout is reached.
-func (f *fixtImpl) waitForPathToExist(ctx context.Context, pattern string) (matches []string, err error) {
-	return matches, testing.Poll(ctx, func(ctx context.Context) error {
-		m, err := filepath.Glob(pattern)
-		if err != nil {
-			return errors.Wrapf(err, "binary path does not exist yet. expected: %v", pattern)
-		}
-		if len(m) == 0 {
-			return errors.New("binary path does not exist yet. expected: " + pattern)
-		}
-		matches = append(matches, m...)
-		return nil
-	}, &testing.PollOptions{Interval: 5 * time.Second})
 }
 
 // createUserTempDir creates a temporary directory to store Lacros's user data.
