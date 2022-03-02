@@ -69,6 +69,24 @@
       "parentUuid": "30ddbd9b_febb2603",
       "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d0b6a1_f4f523e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-03-02T16:54:23Z",
+      "side": 1,
+      "message": "Wow, I think you\u0027re right, particularly about the highest value bucket. See comments in the Chrome histogram.h: https://source.chromium.org/chromium/chromium/src/+/main:base/metrics/histogram.h;l\u003d12\n\nSo I think based on that the 95% interval and the stdDev are probably both not useful calculations here, as they rely on that b.Max in the \"overflow bucket\" being \"a value that exists,\" as you say. Given that, I might write a CL to remove the computation of these stats.\n\nThanks for the thoughtful feedback.",
+      "parentUuid": "9409b545_952b7856",
+      "revId": "f1c11f4f4663e2f32cf132483dc4d32d08d27f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
