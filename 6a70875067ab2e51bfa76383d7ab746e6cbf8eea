@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a404b829_9fd616bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-02T17:54:18Z",
+      "side": 1,
+      "message": "It seems that code review votes have been automatically reset because of the new patchset. Does everyone still approve of this CL?",
+      "revId": "6a70875067ab2e51bfa76383d7ab746e6cbf8eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
