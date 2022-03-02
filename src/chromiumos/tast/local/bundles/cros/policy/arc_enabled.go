@@ -118,9 +118,6 @@ func ArcEnabled(ctx context.Context, s *testing.State) {
 			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
-			// crbug.com/1229569
-			// Disable arc before the next cleanup step to avoid a timeout in ResetChrome.
-			defer policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{&policy.ArcEnabled{Val: false}})
 
 			// Look for the Play Store icon.
 			// Polling till the icon is found or the timeout is reached.
