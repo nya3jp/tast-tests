@@ -181,6 +181,30 @@
       },
       "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13305d4c_fdf71cd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-03-02T20:09:51Z",
+      "side": 1,
+      "message": "Thanks, Matthew - I\u0027ll make a note of this in the bug and keep the conversation going there.",
+      "parentUuid": "b405b64e_d46b92be",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 14
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
