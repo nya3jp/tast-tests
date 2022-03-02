@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bec9d02_06aaa8c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-02T21:24:51Z",
+      "side": 1,
+      "message": "I would like to confirm with you whether this test needs a lacros variant or not. I\u0027m assuming no, because it doesn\u0027t seem to interact with a browser for verification. Do you think it\u0027s needed or not? Thanks,",
+      "revId": "c23797a91f7857e366e2b6d4686c433698a36ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
