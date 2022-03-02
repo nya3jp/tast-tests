@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"time"
 
@@ -68,6 +69,9 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 
 	// Enable the UserSecretStash experiment for the duration of the test by
 	// creating a flag file that's checked by cryptohomed.
+	if err := os.Mkdir(path.Dir(ussFlagFile), 0755); err != nil {
+		s.Fatal("Failed to create the UserSecretStash flag file directory: ", err)
+	}
 	if err := ioutil.WriteFile(ussFlagFile, []byte{}, 0644); err != nil {
 		s.Fatal("Failed to write the UserSecretStash flag file: ", err)
 	}
