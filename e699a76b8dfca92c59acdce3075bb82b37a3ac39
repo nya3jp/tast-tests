@@ -33,6 +33,161 @@
       "message": "ping",
       "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70929bc8_d62afa18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-02T20:00:21Z",
+      "side": 1,
+      "message": "Looks good. Just small things and qs ",
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68740389_0781dc19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-02T20:00:21Z",
+      "side": 1,
+      "message": "According to Jon, it should work with Lacros now. Can you make a bug similar to https://buganizer.corp.google.com/issues/222242545 and cc hyungtae. It probably will be a similar problem to other areas that have nested fixtures",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd8f724e_005955d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-02T20:00:21Z",
+      "side": 1,
+      "message": "is is possible that tabs from previous test runs could appear here?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 76
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c91b45c_c962524f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-02T20:00:21Z",
+      "side": 1,
+      "message": "do you need to defer hide?",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cc5e6f_aa8a9f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-02T20:00:21Z",
+      "side": 1,
+      "message": "is there no util in go to compare two list of strings?",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ed1896_10e251c0",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-02T20:00:21Z",
+      "side": 1,
+      "message": "Do you need to kill chrome first?",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 60
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9047f449_c605e445",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-02T20:00:21Z",
+      "side": 1,
+      "message": "Does clearing Chrome data above force us need to go through ToS?",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 93
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
