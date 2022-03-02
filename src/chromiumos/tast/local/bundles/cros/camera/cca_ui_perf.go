@@ -26,7 +26,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Timeout:      8 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Fixture:      "ccaTestBridgeReady",
 	})
 }
@@ -50,7 +50,7 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 	cancel()
 
 	// UI tests.
-	const previewTestTimeout = 3 * time.Minute
+	const previewTestTimeout = 5 * time.Minute
 	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 
 	for _, tst := range []struct {
