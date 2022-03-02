@@ -41,7 +41,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Fixture:      "virtualUsbPrinterModulesLoadedWithArcBooted",
-		Timeout:      5 * time.Minute,
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(stableModels...)),
