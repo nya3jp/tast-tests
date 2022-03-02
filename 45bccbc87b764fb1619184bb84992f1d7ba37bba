@@ -100,6 +100,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5224b6a_69d67fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-02T15:33:10Z",
+      "side": 1,
+      "message": "Using this tool wasn\u0027t my own invention, there\u0027s another test doing that already. There\u0027s also another test that does something similar without an external tool. As I suggested with the TODO I\u0027d like to clean this up in a followup CL that makes all tests use the same thing.",
+      "parentUuid": "bad0f3b0_555deabc",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f893640d_733db0de",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
         "patchSetId": 2
