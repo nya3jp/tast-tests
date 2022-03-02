@@ -129,8 +129,8 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 				&useractions.UserActionCfg{
 					Attributes: map[string]string{
 						useractions.AttributeInputField: string(inputField),
+						useractions.AttributeFeature:    useractions.FeatureVoiceInput,
 					},
-					Tags: []useractions.ActionTag{useractions.ActionTagVKVoiceInput},
 				},
 			)(ctx); err != nil {
 				s.Fatal("Failed to validate voice input: ", err)

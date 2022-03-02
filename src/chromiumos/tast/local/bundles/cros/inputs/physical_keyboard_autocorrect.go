@@ -100,8 +100,6 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	const inputField = testserver.TextAreaInputField
-	uc.SetAttribute(useractions.AttributeInputField, string(inputField))
-	uc.AddTags([]useractions.ActionTag{useractions.ActionTagAutoCorrection})
 
 	validatePKAutocorrectAction := uiauto.Combine("validate PK autocorrect",
 		inputMethod.SetPKAutoCorrection(tconn, ime.AutoCorrectionModest),
@@ -118,7 +116,9 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
+				useractions.AttributeInputField:   string(inputField),
 				useractions.AttributeTestScenario: fmt.Sprintf(`correct %q to %q`, testCase.MisspeltWord, testCase.CorrectWord),
+				useractions.AttributeFeature:      useractions.FeatureAutoCorrection,
 			},
 		},
 	)(ctx); err != nil {
@@ -172,7 +172,9 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
+				useractions.AttributeInputField:   string(inputField),
 				useractions.AttributeTestScenario: testScenario,
+				useractions.AttributeFeature:      useractions.FeatureAutoCorrection,
 			},
 		},
 	)(ctx); err != nil {

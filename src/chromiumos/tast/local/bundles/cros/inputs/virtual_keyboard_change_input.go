@@ -108,8 +108,8 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
 				useractions.AttributeTestScenario: fmt.Sprintf("Change input method to %q", inputMethod.Name),
+				useractions.AttributeFeature:      useractions.FeatureIMEManagement,
 			},
-			Tags: []useractions.ActionTag{useractions.ActionTagSwitchIME},
 		},
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify changing input method: ", err)

@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -62,7 +63,12 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 	if err := uiauto.UserAction("A11y VK functional keys check",
 		action,
 		uc,
-		nil,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: "Verify functional keys are present on A11y VK",
+				useractions.AttributeFeature:      useractions.FeatureVKTyping,
+			},
+		},
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate A11y virtual keyboard: ", err)
 	}

@@ -345,8 +345,10 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 		),
 		uc,
 		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeatureFloatVK,
+			},
 			Tags: []useractions.ActionTag{
-				useractions.ActionTagSwitchFloatVK,
 				useractions.ActionTagEssentialInputs,
 			},
 			Callback: func(ctx context.Context, actionError error) error {

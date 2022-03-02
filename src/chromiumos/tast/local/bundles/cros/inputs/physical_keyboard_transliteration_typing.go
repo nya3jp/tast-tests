@@ -203,10 +203,9 @@ func PhysicalKeyboardTransliterationTyping(ctx context.Context, s *testing.State
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
-				useractions.AttributeTestScenario: fmt.Sprintf(`type %q to get %q`, testCase.typingKeys, testCase.expectedComposition)},
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagPKTyping,
+				useractions.AttributeTestScenario: fmt.Sprintf(`type %q to get %q`, testCase.typingKeys, testCase.expectedComposition),
+				useractions.AttributeFeature:      useractions.FeaturePKTyping,
+				useractions.AttributeInputField:   string(inputField),
 			},
 		},
 	)(ctx); err != nil {

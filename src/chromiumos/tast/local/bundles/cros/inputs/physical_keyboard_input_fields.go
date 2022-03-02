@@ -98,11 +98,13 @@ func PhysicalKeyboardInputFields(ctx context.Context, s *testing.State) {
 			inputField := subtest.InputField
 
 			if err := uiauto.UserAction(
-				"PK input in different fields",
+				"Verify PK keys are functional",
 				its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText),
 				uc, &useractions.UserActionCfg{
-					Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
-					Tags:       []useractions.ActionTag{useractions.ActionTagPKTyping},
+					Attributes: map[string]string{
+						useractions.AttributeInputField: string(inputField),
+						useractions.AttributeFeature:    useractions.FeaturePKTyping,
+					},
 				},
 			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)

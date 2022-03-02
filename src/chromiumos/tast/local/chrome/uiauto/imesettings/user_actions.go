@@ -49,12 +49,11 @@ func AddInputMethodInOSSettings(uc *useractions.UserContext, kb *input.KeyboardE
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{"AddedInputMethod": im.Name},
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagIMEManagement,
-				useractions.ActionTagAddIME,
+			Attributes: map[string]string{
+				useractions.AttributeFeature:      useractions.FeatureIMEManagement,
+				useractions.AttributeTestScenario: fmt.Sprintf("Add input method %q", im.Name),
 			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -86,12 +85,11 @@ func RemoveInputMethodInOSSettings(uc *useractions.UserContext, im ime.InputMeth
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{"RemovedInputMethod": im.Name},
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagIMEManagement,
-				useractions.ActionTagRemoveIME,
+			Attributes: map[string]string{
+				useractions.AttributeFeature:      useractions.FeatureIMEManagement,
+				useractions.AttributeTestScenario: fmt.Sprintf("Remove input method %q", im.Name),
 			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -119,20 +117,19 @@ func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) uiauto.Act
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagIMESettings,
-				useractions.ActionTagEmojiSuggestion,
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeatureEmojiSuggestion,
 			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
 
 // SetGlideTyping returns a user action to change 'Glide suggestions' setting.
 func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) uiauto.Action {
-	actionName := "enable glide typing in IME setting"
+	actionName := "Enable glide typing in IME setting"
 	if !isEnabled {
-		actionName = "disable glide typing in IME setting"
+		actionName = "Disable glide typing in IME setting"
 	}
 
 	action := func(ctx context.Context) error {
@@ -152,11 +149,10 @@ func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled b
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagIMESettings,
-				useractions.ActionTagGlideTyping,
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeatureGlideTyping,
 			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -208,11 +204,10 @@ func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK boo
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagIMESettings,
-				useractions.ActionTagAutoCorrection,
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeatureAutoCorrection,
 			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -244,11 +239,10 @@ func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, is
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagIMESettings,
-				useractions.ActionTagAutoCapitalization,
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeatureAutoCapitalization,
 			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -287,11 +281,10 @@ func EnableInputOptionsInShelf(uc *useractions.UserContext, shown bool) uiauto.A
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagOSSettings,
-				useractions.ActionTagIMEShelf,
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeatureIMEManagement,
 			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -316,19 +309,11 @@ func SetKoreanKeyboardLayout(uc *useractions.UserContext, keyboardLayout string)
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Tags: []useractions.ActionTag{
-				useractions.ActionTagEssentialInputs,
-				useractions.ActionTagIMESettings,
-			},
 			Attributes: map[string]string{
-				useractions.AttributeTestScenario: fmt.Sprintf("Change layout to %q", keyboardLayout),
+				useractions.AttributeFeature:      useractions.FeatureIMESpecific,
+				useractions.AttributeTestScenario: fmt.Sprintf("Change Korean keyboard layout to %q", keyboardLayout),
 			},
-			Callback: func(ctx context.Context, actionError error) error {
-				if actionError == nil {
-					uc.SetAttribute(useractions.AttributeKeyboardLayout, keyboardLayout)
-				}
-				return nil
-			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }

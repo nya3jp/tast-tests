@@ -122,9 +122,9 @@ func VirtualKeyboardTypingOmnibox(ctx context.Context, s *testing.State) {
 				validateAction,
 				uc,
 				&useractions.UserActionCfg{
-					Tags: []useractions.ActionTag{useractions.ActionTagVKTyping},
 					Attributes: map[string]string{
 						useractions.AttributeInputField: "Omnibox",
+						useractions.AttributeFeature:    useractions.FeatureVKTyping,
 					},
 				},
 			)(ctx); err != nil {

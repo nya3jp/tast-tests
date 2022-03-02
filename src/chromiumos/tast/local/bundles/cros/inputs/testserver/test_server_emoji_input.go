@@ -45,8 +45,14 @@ func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserConte
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
-			Tags:       []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiPicker},
+			Attributes: map[string]string{
+				useractions.AttributeFeature:      useractions.FeatureEmojiPicker,
+				useractions.AttributeInputField:   string(inputField),
+				useractions.AttributeTestScenario: fmt.Sprintf("Input %q into %q field via emoji picker", emojiChar, string(inputField)),
+			},
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+			},
 		})
 }
 
@@ -69,11 +75,17 @@ func (its *InputsTestServer) InputEmojiWithEmojiPickerSearch(uc *useractions.Use
 	)
 
 	return uiauto.UserAction(
-		"Input Emoji with Emoji Picker",
+		"Input Emoji by search in Emoji Picker",
 		action,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{useractions.AttributeInputField: string(inputField), useractions.AttributeTestScenario: "Input emoji by searching in emoji picker"},
-			Tags:       []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiPicker},
+			Attributes: map[string]string{
+				useractions.AttributeFeature:      useractions.FeatureEmojiPicker,
+				useractions.AttributeInputField:   string(inputField),
+				useractions.AttributeTestScenario: fmt.Sprintf("Search %q for %q then submit", searchString, emojiChar),
+			},
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+			},
 		})
 }

@@ -116,6 +116,9 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 					uc,
 					&useractions.UserActionCfg{
 						Tags: []useractions.ActionTag{useractions.ActionTagIMESettings},
+						Attributes: map[string]string{
+							useractions.AttributeFeature: useractions.FeatureAutoCapitalization,
+						},
 					},
 				)(ctx); err != nil {
 					s.Fatal("Failed to change IME settings: ", err)
@@ -145,8 +148,8 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 					Attributes: map[string]string{
 						useractions.AttributeInputField:   string(inputField),
 						useractions.AttributeTestScenario: testScenario,
+						useractions.AttributeFeature:      useractions.FeatureAutoCapitalization,
 					},
-					Tags: []useractions.ActionTag{useractions.ActionTagAutoCapitalization},
 				},
 			)(ctx); err != nil {
 				s.Fatal("Failed to verify input: ", err)

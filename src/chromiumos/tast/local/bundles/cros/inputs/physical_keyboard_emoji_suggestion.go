@@ -133,21 +133,21 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 			},
 		)
 		return uiauto.UserAction(
-			"validate emoji suggestion",
+			"Input Emoji from suggestion",
 			action,
 			uc,
 			&useractions.UserActionCfg{
 				Attributes: map[string]string{
 					useractions.AttributeTestScenario: testScenario,
 					useractions.AttributeInputField:   string(inputField),
+					useractions.AttributeFeature:      useractions.FeatureEmojiSuggestion,
 				},
-				Tags: []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiSuggestion},
 			},
 		)
 	}
 
 	validateLearnMoreUserAction := uiauto.UserAction(
-		"learn more of emoji suggestion",
+		"Learn more of emoji suggestion",
 		uiauto.Combine(`validate "learn more" in emoji suggestion`,
 			its.Clear(inputField),
 			its.ClickFieldAndWaitForActive(inputField),
@@ -163,8 +163,8 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 			Attributes: map[string]string{
 				useractions.AttributeTestScenario: `click "learn more" in emoji suggestion window to launch setting`,
 				useractions.AttributeInputField:   string(inputField),
+				useractions.AttributeFeature:      useractions.FeatureEmojiSuggestion,
 			},
-			Tags: []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiSuggestion},
 		},
 	)
 

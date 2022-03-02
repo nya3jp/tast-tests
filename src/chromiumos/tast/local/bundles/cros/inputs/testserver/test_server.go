@@ -340,13 +340,16 @@ func (its *InputsTestServer) validatePKTypingInField(uc *useractions.UserContext
 	}
 
 	return uiauto.UserAction(
-		"PK typing",
+		"Typing PK to input",
 		action,
 		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
-			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
-			Tags:           []useractions.ActionTag{useractions.ActionTagPKTyping},
+			Attributes: map[string]string{
+				useractions.AttributeFeature:    useractions.FeaturePKTyping,
+				useractions.AttributeInputField: string(inputField),
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -364,13 +367,16 @@ func (its *InputsTestServer) validateVKTypingInField(uc *useractions.UserContext
 		},
 	)
 	return uiauto.UserAction(
-		"VK typing",
+		"Typing VK to input",
 		action,
 		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
-			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
-			Tags:           []useractions.ActionTag{useractions.ActionTagVKTyping},
+			Attributes: map[string]string{
+				useractions.AttributeFeature:    useractions.FeatureVKTyping,
+				useractions.AttributeInputField: string(inputField),
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -394,13 +400,16 @@ func (its *InputsTestServer) validateVoiceInField(uc *useractions.UserContext, i
 		)(ctx)
 	}
 	return uiauto.UserAction(
-		"VK voice",
+		"Voice input",
 		action,
 		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
-			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
-			Tags:           []useractions.ActionTag{useractions.ActionTagVKVoiceInput},
+			Attributes: map[string]string{
+				useractions.AttributeFeature:    useractions.FeatureVoiceInput,
+				useractions.AttributeInputField: string(inputField),
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }
@@ -433,8 +442,11 @@ func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserCont
 		uc,
 		&useractions.UserActionCfg{
 			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
-			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
-			Tags:           []useractions.ActionTag{useractions.ActionTagVKHandWriting},
+			Attributes: map[string]string{
+				useractions.AttributeFeature:    useractions.FeatureHandWriting,
+				useractions.AttributeInputField: string(inputField),
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEssentialInputs},
 		},
 	)
 }

@@ -83,8 +83,8 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
 				useractions.AttributeInputField: "OS setting search field",
+				useractions.AttributeFeature:    useractions.FeatureVKTyping,
 			},
-			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings},
 		},
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify virtual keyboard input in settings: ", err)
