@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -30,6 +32,14 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
+		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -41,11 +51,12 @@ func NotificationExpandCollapse(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Start a Chrome instance with the notification refresh feature.
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("NotificationsRefresh"))
+	cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, s.Param().(browser.Type), chrome.EnableFeatures("NotificationsRefresh"))
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatalf("Failed to connect to %v browser: %v", bt, err)
 	}
 	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
