@@ -161,7 +161,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Handle "Want to link your PayPal account" if necessary.
-		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText)).WaitForExists(ctx, defaultUITimeout); err == nil {
+		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText), ui.Enabled(true)).WaitForExists(ctx, defaultUITimeout); err == nil {
 			testing.ContextLog(ctx, "Want to link your paypal account does exist")
 			noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+noThanksButtonText))
 			if err := noThanksButton.WaitForExists(ctx, defaultUITimeout); err != nil {
@@ -180,7 +180,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Complete account setup if necessary.
-		if err := d.Object(ui.Text(accountSetupText)).WaitForExists(ctx, shortUITimeout); err == nil {
+		if err := d.Object(ui.Text(accountSetupText), ui.Enabled(true)).WaitForExists(ctx, shortUITimeout); err == nil {
 			testing.ContextLog(ctx, "Completing account setup")
 			continueButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+continueButtonText))
 			if err := continueButton.WaitForExists(ctx, defaultUITimeout); err != nil {
