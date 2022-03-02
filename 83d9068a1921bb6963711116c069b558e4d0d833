@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd76aee_a79b1547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f938e05_43f5ba06",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d5c8145_0439237b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-01T17:49:30Z",
       "side": 1,
       "message": "see below for context:... this could be renamed to `Percent()`",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87e9c81_1f1d3ac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d5c8145_0439237b",
       "range": {
         "startLine": 17,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76178c6_6c7f6b3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b56bc67_1718f691",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20c4e41a_070bdd50",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-01T17:49:30Z",
       "side": 1,
       "message": "huge nit: \"init\" is confusing... if what you meant is \"initial\", then just use the word \"initial\"...",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d84cd1f_6201437a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c4e41a_070bdd50",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4939fce0_503f5924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bde7859_c7314c03",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86c87b87_ee7db961",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-03-01T17:49:30Z",
       "side": 1,
       "message": "nit: and here just call  `SetBrightnessPercent(ctx, 100)`",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6111b36d_f43853e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c87b87_ee7db961",
       "range": {
         "startLine": 51,
         "startChar": 22,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6acc2370_0130e918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4c2e30_c7b94e34",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa77429d_d1a0e8bb",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-03-01T17:49:30Z",
       "side": 1,
       "message": "nit: shouldn\u0027t it be \u003e\u003d ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84fec6b9_1efcc946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa77429d_d1a0e8bb",
       "range": {
         "startLine": 74,
         "startChar": 19,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58fa3a1e_04a8587f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c8df7c_c9ba17bc",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e1aedd9_23475bf3",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-03-01T17:49:30Z",
       "side": 1,
       "message": "ditto above: shouldn\u0027t it be \u003c\u003d ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c1cb8b_b934bd2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e1aedd9_23475bf3",
       "range": {
         "startLine": 93,
         "startChar": 19,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3ad527_098d6c9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee4f930_43e20a44",
+      "range": {
+        "startLine": 103,
+        "startChar": 80,
+        "endLine": 103,
+        "endChar": 91
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54fcf13e_a3737b0a",
@@ -284,6 +548,30 @@
       "writtenOn": "2022-03-01T17:49:30Z",
       "side": 1,
       "message": "I would create a follow up CL with the test. One CL per test.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "83d9068a1921bb6963711116c069b558e4d0d833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb5e253_04a2f639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_ui.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-02T06:39:31Z",
+      "side": 1,
+      "message": "sure.. I would create a new CL and add you as a reviewer.",
+      "parentUuid": "54fcf13e_a3737b0a",
       "range": {
         "startLine": 1,
         "startChar": 1,
