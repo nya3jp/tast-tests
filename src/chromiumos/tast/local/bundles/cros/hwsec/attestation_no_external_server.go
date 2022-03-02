@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -42,6 +43,11 @@ func isTPM2(ctx context.Context) bool {
 // AttestationNoExternalServer runs through the attestation flow, including enrollment, cert, sign challenge.
 // Also, it verifies the the key access functionality. All the external dependencies are replaced with the locally generated server responses.
 func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
+	s.Log("Restarting ui job")
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to restart ui job: ", err)
+	}
+
 	r := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewFullHelper(ctx, r)
 	if err != nil {
@@ -51,6 +57,14 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	attestation := helper.AttestationClient()
 	cryptohome := helper.CryptohomeClient()
 	mountInfo := hwsec.NewCryptohomeMountInfo(r, cryptohome)
+
+	const username = "test@crashwsec.bigr.name"
+
+	s.Log("Resetting vault in case the cryptohome status is contaminated")
+	// Okay to call it even if the vault doesn't exist.
+	if _, err := cryptohome.RemoveVault(ctx, username); err != nil {
+		s.Fatal("Failed to cleanup: ", err)
+	}
 
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
@@ -84,14 +98,6 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	}
 	if *enrollReply.Status != apb.AttestationStatus_STATUS_SUCCESS {
 		s.Fatal("Faild to enroll: ", enrollReply.Status.String())
-	}
-
-	const username = "test@crashwsec.bigr.name"
-
-	s.Log("Resetting vault in case the cryptohome status is contaminated")
-	// Okay to call it even if the vault doesn't exist.
-	if err := mountInfo.CleanUpMount(ctx, username); err != nil {
-		s.Fatal("Failed to cleanup: ", err)
 	}
 
 	if err := cryptohome.MountVault(ctx, "fake_label", hwsec.NewPassAuthConfig(username, "testpass"), true /* create */, hwsec.NewVaultConfig()); err != nil {
