@@ -414,13 +414,6 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		defer crastestclient.Unmute(cleanUpCtx)
 	}
 
-	// Put battery under discharge in order to collect the power consumption of the test.
-	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
-	if err != nil {
-		s.Fatal("Failed to set battery discharge: ", err)
-	}
-	defer setBatteryNormal(cleanUpCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid

@@ -141,20 +141,6 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	}
 	defer recorder.Close(cleanupRecorderCtx)
 
-	// Give 5 seconds to resume battery charging. It is critical to ensure
-	// setBatteryNormal can be executed with a valid context so it has its
-	// own cleanup context from other cleanup functions. This is to avoid
-	// other cleanup functions executed earlier to use up the context time.
-	cleanupDischargeCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
-	if err != nil {
-		return errors.Wrap(err, "failed to set battery discharge")
-	}
-	defer setBatteryNormal(cleanupDischargeCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid

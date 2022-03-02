@@ -34,23 +34,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 
-	// Shorten the context to resume battery charging.
-	cleanUpBatteryCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	// Put battery under discharge in order to collect the power consumption of the test.
-	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
-	if err != nil {
-		return errors.Wrap(err, "failed to set battery discharge")
-	}
-	defer setBatteryNormal(cleanUpBatteryCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid
 	// other cleanup functions executed earlier to use up the context time.
 	cleanupSettingsCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)
