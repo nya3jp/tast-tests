@@ -26,7 +26,7 @@ func init() {
 			"gwendal@chromium.com", // Lead for Chrome OS Storage
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
