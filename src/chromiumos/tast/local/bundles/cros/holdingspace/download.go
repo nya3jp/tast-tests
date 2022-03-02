@@ -13,7 +13,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -22,13 +24,14 @@ import (
 )
 
 type downloadParams struct {
-	testfunc func(*uiauto.Context, string, uiauto.Action) uiauto.Action
+	testfunc    func(*uiauto.Context, string, uiauto.Action) uiauto.Action
+	browserType browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Download,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verifies download behavior in holding space",
 		Contacts: []string{
 			"dmblack@google.com",
@@ -41,24 +44,37 @@ func init() {
 		Params: []testing.Param{{
 			Name: "cancel",
 			Val: downloadParams{
-				testfunc: testDownloadCancel,
+				testfunc:    testDownloadCancel,
+				browserType: browser.TypeAsh,
 			},
 		}, {
 			Name: "pause_and_resume",
 			Val: downloadParams{
-				testfunc: testDownloadPauseAndResume,
+				testfunc:    testDownloadPauseAndResume,
+				browserType: browser.TypeAsh,
 			},
 		}, {
 			Name: "pin_and_unpin",
 			Val: downloadParams{
-				testfunc: testDownloadPinAndUnpin,
+				testfunc:    testDownloadPinAndUnpin,
+				browserType: browser.TypeAsh,
 			},
 		}, {
 			Name: "remove",
 			Val: downloadParams{
-				testfunc: testDownloadRemove,
+				testfunc:    testDownloadRemove,
+				browserType: browser.TypeAsh,
 			},
+		}, {
+			Name: "lacros_cancel",
+			Val: downloadParams{
+				testfunc:    testDownloadCancel,
+				browserType: browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
+		// Q: keep LacrosDeployedBinary in lacrosfixt or move to browserfixt so that the test doesn't have to import anything from lacrosfixt.
+		Vars: []string{lacrosfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -68,13 +84,15 @@ func init() {
 // completion, the user should be able to pin the download.
 func Download(ctx context.Context, s *testing.State) {
 	params := s.Param().(downloadParams)
+	bt := params.browserType
 
 	// Connect to a fresh Chrome instance to ensure holding space first-run state.
-	cr, err := chrome.New(ctx)
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, s)
 	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+		s.Fatalf("Failed to connect to %v browser: %v", bt, err)
 	}
 	defer cr.Close(ctx)
+	defer closeBrowser(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -121,7 +139,7 @@ func Download(ctx context.Context, s *testing.State) {
 	// browser has finished navigating to the desired URL. Since we actually want
 	// to start a download and not navigate the browser we'll use a redirect
 	// workaround to satisfy the requirement to navigate.
-	conn, err := cr.NewConn(ctx, server.URL+"?redirect=true")
+	conn, err := br.NewConn(ctx, server.URL+"?redirect=true")
 	if err != nil {
 		s.Fatal("Failed to connect to local server: ", err)
 	}
