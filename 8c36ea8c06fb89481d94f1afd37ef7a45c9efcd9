@@ -16,6 +16,86 @@
       "message": "Incorporated the comments mentioned by Jun Sheng in the below CL\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3303233",
       "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd13c68a_1cee1a93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-02T12:05:56Z",
+      "side": 1,
+      "message": "Style LGTM % nits\nPlease wait for the other reviewer.",
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7efcb1_9042decb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/touchpad/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-02T12:05:56Z",
+      "side": 1,
+      "message": "Is the \"check\" intentional?",
+      "range": {
+        "startLine": 5,
+        "startChar": 87,
+        "endLine": 5,
+        "endChar": 92
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b35fc79_715183cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/touchpad/functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-02T12:05:56Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63930376_4a058aaf",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-02T12:05:56Z",
+      "side": 1,
+      "message": "nit: reflow",
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
