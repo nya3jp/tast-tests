@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30381686_05462999",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:30:32Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this needs to be broken out into a separate function. It can all just be self-contained here.",
+      "revId": "c534f2313bd1ada0e8b26df7f1f363276bc81d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833b5664_2dea5cc7",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:30:32Z",
+      "side": 1,
+      "message": "Can we pull these `ui.enabled` changes into a separate CL/bug? Isolating the changes will make bugs easier to diagnose if they continue.",
+      "revId": "c534f2313bd1ada0e8b26df7f1f363276bc81d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
