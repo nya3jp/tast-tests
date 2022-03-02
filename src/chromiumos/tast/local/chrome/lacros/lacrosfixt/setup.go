@@ -4,6 +4,8 @@
 
 package lacrosfixt
 
+import "fmt"
+
 // SetupMode describes how lacros-chrome should be set-up during the test.
 // See the SetupMode constants for more explanation. Use Rootfs as a default.
 // Note that if the lacrosDeployedBinary var is specified, the lacros binary
@@ -12,7 +14,7 @@ type SetupMode int
 
 const (
 	// External denotes a lacros-chrome downloaded per the external data dependency.
-	// This may be overridden by a pre-deployed binary by specifying the lacrosDeployedBinary Var.
+	// This mode for downloadable lacros-chrome is deprecated and should not be explicitly used.
 	External SetupMode = iota
 	// Omaha is used to get the lacros binary.
 	Omaha
@@ -20,3 +22,17 @@ const (
 	// For tests that don't care which lacros they are using, use this as a default.
 	Rootfs
 )
+
+// String returns string representation of the SetupMode.
+func (s SetupMode) String() string {
+	switch s {
+	case External:
+		return "External"
+	case Omaha:
+		return "Omaha"
+	case Rootfs:
+		return "Rootfs"
+	default:
+		return fmt.Sprintf("Unknown SetupMode(%d)", s)
+	}
+}
