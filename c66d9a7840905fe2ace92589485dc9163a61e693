@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2aa33e7_d521f11e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-02T09:05:50Z",
+      "side": 1,
+      "message": "Test is stable: https://cros-health-prod.googleplex.com/test/cryptohome.AutomaticCleanup",
+      "revId": "c66d9a7840905fe2ace92589485dc9163a61e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
