@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b09a0b9_f144e0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:23:01Z",
+      "side": 1,
+      "message": "nw. I guess not. Buster \u0026 bullseye are the OS version of Crostini, stable and unstable are referring to the DUT. One for lacros is enough.",
+      "parentUuid": "ee390023_347220af",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "2e80285c4af8629663ac0a9d3942f894a7e7aa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa3563d4_b8b41064",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Making lacros the default browser will be done in fixture setup, not in test body. If you removed line 76-78, would it still pass the test?",
       "parentUuid": "46e1bc6e_5d7bead9",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "2e80285c4af8629663ac0a9d3942f894a7e7aa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "809826d0_1f9b4125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:23:01Z",
+      "side": 1,
+      "message": "My understanding is that making Lacros the default browser forces the backend to share wayland from it. Please correct me.",
+      "parentUuid": "9668d4b7_7d59bc6b",
       "range": {
         "startLine": 76,
         "startChar": 0,
