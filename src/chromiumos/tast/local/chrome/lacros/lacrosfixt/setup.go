@@ -12,7 +12,7 @@ type SetupMode int
 
 const (
 	// External denotes a lacros-chrome downloaded per the external data dependency.
-	// This may be overridden by a pre-deployed binary by specifying the lacrosDeployedBinary Var.
+	// This mode for downloadable lacros-chrome is deprecated and should not be explicitly used.
 	External SetupMode = iota
 	// Omaha is used to get the lacros binary.
 	Omaha
@@ -20,3 +20,8 @@ const (
 	// For tests that don't care which lacros they are using, use this as a default.
 	Rootfs
 )
+
+// String returns string representation of the SetupMode.
+func (s SetupMode) String() string {
+	return []string{"External", "Omaha", "Rootfs"}[s]
+}

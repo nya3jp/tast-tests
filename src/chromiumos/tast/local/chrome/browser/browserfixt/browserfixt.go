@@ -8,8 +8,10 @@ package browserfixt
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -75,6 +77,81 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 			}
 		}
 		return conn, l.Browser(), closeLacros, nil
+
+	default:
+		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
+	}
+}
+
+// LacrosDeployedBinary is a lacrosfixt.LacrosDeployedBinary.
+const LacrosDeployedBinary = lacrosfixt.LacrosDeployedBinary
+
+// SetUpWithNewChrome returns a Browser instance along with a new Chrome instance.
+// It returns a closure to be called in order to close the browser instance.
+// The chrome instance should also be closed by cr.Close() on call site.
+// This util will be useful when lacros is not set in fixture, but needed in test along with a new chrome instance.
+func SetUpWithNewChrome(ctx context.Context, bt browser.Type, s lacrosfixt.StateMixin, opts ...chrome.Option) (*chrome.Chrome, *browser.Browser, func(ctx context.Context), error) {
+	switch bt {
+	case browser.TypeAsh:
+		cr, err := chrome.New(ctx, opts...)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
+		}
+		return cr, cr.Browser(), func(context.Context) {}, nil
+
+	case browser.TypeLacros:
+		vars := lacrosfixt.CheckVars(s)
+
+		// Use rootfs-lacros by default unless specified with the var lacrosDeployedBinary.
+		const defaultLacrosBinary = lacrosfixt.Rootfs
+		defaultOpts, err := lacrosfixt.DefaultOpts(vars, defaultLacrosBinary, opts...)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to set options")
+		}
+		opts = append(opts, defaultOpts...)
+		opts = append(opts,
+			// for lacros primary
+			chrome.EnableFeatures("LacrosPrimary"),
+			chrome.ExtraArgs("--disable-lacros-keep-alive", "-disable-login-lacros-opening"))
+
+		cr, err := chrome.New(ctx, opts...)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
+		}
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome test API")
+		}
+
+		lacrosPath, err := lacrosfixt.WaitForReady(ctx, vars, defaultLacrosBinary, s)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to wait for lacros-chrome to be ready")
+		}
+
+		l, err := lacros.LaunchFromShelf(ctx, tconn, lacrosPath)
+		if err != nil {
+			// TODO(crbug.com/1298962): Replace with lacrosfaillog to save lacros.log on failure for debugging.
+			saveIf := func(ctx context.Context, hasError func() bool) {
+				if hasError() {
+					out, ok := testing.ContextOutDir(ctx)
+					if !ok {
+						testing.ContextLog(ctx, "OutDir not found")
+						return
+					}
+					if err := fsutil.CopyFile(filepath.Join(lacros.UserDataDir, "lacros.log"), filepath.Join(out, "lacros.log")); err != nil {
+						testing.ContextLogf(ctx, "Failed to copy lacros.log from %v to %v, err: %v", lacros.UserDataDir, out, err)
+					}
+				}
+			}
+			saveIf(ctx, func() bool { return true })
+			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
+		}
+		closeBrowser := func(ctx context.Context) {
+			if err := l.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
+			}
+		}
+		return cr, l.Browser(), closeBrowser, nil
 
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
