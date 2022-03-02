@@ -34,7 +34,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ContentPreview,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test content preview while sharing a single file",
 		Contacts: []string{
 			"jinrongwu@google.com",
