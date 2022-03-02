@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6156fcc8_4edb9d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/touchpad/functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-02T22:33:22Z",
+      "side": 1,
+      "message": "I feel that 0,0 should be the most common used angle. I personally recommend to predefine some popular angles in the EnsureTabletModeEnabledWithKeyboardDisabled function. This would benefit other users as well.\n\ne.g. def SetTabletModeAngle(tabletModeAngle, tabletHysAngle)\n\nThen func EnsureTabletModeEnabledWithKeyboardDisabled(){\n    return SetTabletModeAngle(0,0)\n}",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 63
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b35fc79_715183cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/touchpad/functionality_check.go",
         "patchSetId": 1
@@ -76,6 +99,29 @@
         "startChar": 4,
         "endLine": 95,
         "endChar": 9
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b1122d_6ae978b4",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-02T22:33:22Z",
+      "side": 1,
+      "message": "just curious what does hys mean here? Anywhere I can learn about it?",
+      "range": {
+        "startLine": 60,
+        "startChar": 68,
+        "endLine": 60,
+        "endChar": 71
       },
       "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
