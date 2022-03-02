@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e1085d_ab17ecb3",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-02T02:18:29Z",
+      "side": 1,
+      "message": "nit: IIRC one of the feedback I got from go/lacros-tast-api-comparison was avoiding a new package unless really needed.\nThis could probably be moved to browserfixt/util.go. line 6 could be deleted.\n\nreviewers, anyone have any thoughts on this again?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "eea384ae6e8f165754a5eee4b6f122777ceab9bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
