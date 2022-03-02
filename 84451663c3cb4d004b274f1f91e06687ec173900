@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31858508_d730d870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:34:30Z",
+      "side": 1,
+      "message": "This else is not necessary, just move the log out.",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 7
+      },
+      "revId": "84451663c3cb4d004b274f1f91e06687ec173900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
