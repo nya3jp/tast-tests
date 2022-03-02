@@ -16,6 +16,23 @@
       "message": "Hi David, \nAs suggested, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3441088/7..9/src/chromiumos/tast/local/arc/playstore/playstore.go#b192\nmoved it to a separate CL, crrev.com/c/3501031.\n",
       "revId": "b5c1525cd1fca8e384477b73df7aa9da08d4a606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d369e93a_3a5e9f12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T22:24:06Z",
+      "side": 1,
+      "message": "Thanks for splitting this up - as mentioned in the other CL, this functionality is used by other tests as well. Can you confirm a few other test areas still work as well? I.e.\n\n\narcappgameperf.roblox_launch*\nui.TaskSwitchCUJ*",
+      "revId": "b5c1525cd1fca8e384477b73df7aa9da08d4a606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
