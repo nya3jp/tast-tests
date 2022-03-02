@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77686de9_48b85a71",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T00:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8fbdec91_ca7f0abf",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae3ff56_71cfcbfd",
@@ -69,6 +87,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d71174_22a5ccde",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T00:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a0dd884_c718e249",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0053a547_8140fd3b",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T00:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ae3ff56_71cfcbfd",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b02da9df_81ce6d17",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-02-18T19:52:19Z",
       "side": 1,
       "message": "can you reduce the timeout to 1 second? If it\u0027s in here then we are assuming the progress bar is displayed. We don\u0027t want this method holding up actual functionality.",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05cb81f_b994bd98",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T00:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b02da9df_81ce6d17",
       "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3b51c6_95e64eeb",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T00:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b878cdd7_e38e42c1",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1be3722d_f938d8d6",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6bc9281_77f1a3bc",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T00:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1be3722d_f938d8d6",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c112da_63a3253d",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-02-18T19:52:19Z",
       "side": 1,
       "message": "As mentioned above, these can move up into the helper function since they are only concerned with printing debug text, rather than being important to the installation flow.",
+      "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b992a262_d48a81b9",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T00:15:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33c112da_63a3253d",
       "revId": "7a225c35b82d0ae38ade69ec19808b44977d5f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
