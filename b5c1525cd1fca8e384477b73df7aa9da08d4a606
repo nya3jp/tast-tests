@@ -33,6 +33,24 @@
       "message": "Thanks for splitting this up - as mentioned in the other CL, this functionality is used by other tests as well. Can you confirm a few other test areas still work as well? I.e.\n\n\narcappgameperf.roblox_launch*\nui.TaskSwitchCUJ*",
       "revId": "b5c1525cd1fca8e384477b73df7aa9da08d4a606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d53035d_aa4b9277",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-02T23:18:46Z",
+      "side": 1,
+      "message": "Ran both arcappgameperf.roblox_launch* and ui.TaskSwitchCUJ* tast tests locally. Both are working fine with the CL.",
+      "parentUuid": "d369e93a_3a5e9f12",
+      "revId": "b5c1525cd1fca8e384477b73df7aa9da08d4a606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
