@@ -46,8 +46,6 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 	uc := s.PreValue().(pre.PreData).UserContext
 	ui := uiauto.New(tconn)
 
-	uc.AddTags([]useractions.ActionTag{useractions.ActionTagVKAutoShift})
-
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -286,6 +284,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 				Attributes: map[string]string{
 					useractions.AttributeInputField:   string(testserver.TextAreaAutoShiftInChar),
 					useractions.AttributeTestScenario: "Validate VK autoshift Char mode",
+					useractions.AttributeFeature:      useractions.FeatureVKAutoShift,
 				},
 			},
 		),
@@ -299,6 +298,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 				Attributes: map[string]string{
 					useractions.AttributeInputField:   string(testserver.TextAreaAutoShiftOff),
 					useractions.AttributeTestScenario: "Validate VK autoshift turned off by attribute",
+					useractions.AttributeFeature:      useractions.FeatureVKAutoShift,
 				},
 			},
 		),
@@ -312,6 +312,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 				Attributes: map[string]string{
 					useractions.AttributeInputField:   string(testserver.URLInputField),
 					useractions.AttributeTestScenario: "VK autoshift does not apply to inapplicable fields",
+					useractions.AttributeFeature:      useractions.FeatureVKAutoShift,
 				},
 			},
 		),
@@ -333,6 +334,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 				Attributes: map[string]string{
 					useractions.AttributeInputField:   string(inputField),
 					useractions.AttributeTestScenario: "VK autoshift is override by manual shift",
+					useractions.AttributeFeature:      useractions.FeatureVKAutoShift,
 				},
 			},
 		),
@@ -358,6 +360,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 				Attributes: map[string]string{
 					useractions.AttributeInputField:   string(inputField),
 					useractions.AttributeTestScenario: "VK autoshift lock is override by manual shift",
+					useractions.AttributeFeature:      useractions.FeatureVKAutoShift,
 				},
 			},
 		),

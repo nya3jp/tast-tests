@@ -158,8 +158,8 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
 				useractions.AttributeTestScenario: fmt.Sprintf("Auto correct %q to %q", testCase.MisspeltWord, testCase.CorrectWord),
+				useractions.AttributeFeature:      useractions.FeatureAutoCorrection,
 			},
-			Tags: []useractions.ActionTag{useractions.ActionTagAutoCorrection},
 		},
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
@@ -213,6 +213,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 			&useractions.UserActionCfg{
 				Attributes: map[string]string{
 					useractions.AttributeTestScenario: "Undo auto-correction via mouse",
+					useractions.AttributeFeature:      useractions.FeatureAutoCorrection,
 				},
 			},
 		)(ctx); err != nil {

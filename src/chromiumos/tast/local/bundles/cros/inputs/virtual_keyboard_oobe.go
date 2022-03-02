@@ -97,7 +97,9 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
-				useractions.AttributeTestScenario: "OOBE field",
+				useractions.AttributeTestScenario: "Use VK in OOBE stage",
+				useractions.AttributeInputField:   "OOBE field",
+				useractions.AttributeFeature:      useractions.FeatureVKTyping,
 			},
 		},
 	)(ctx); err != nil {

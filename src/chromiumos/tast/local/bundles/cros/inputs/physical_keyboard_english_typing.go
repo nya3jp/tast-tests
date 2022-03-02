@@ -73,7 +73,7 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 			InputFunc:    keyboard.TypeAction("Hello!\nTesting 123."),
 			ExpectedText: "Hello!\nTesting 123.",
 		}, {
-			TestName: "Backspace",
+			TestName: "Backspace to delete",
 			InputFunc: uiauto.Combine("type a string and Backspace",
 				keyboard.TypeAction("abc"),
 				keyboard.AccelAction("Backspace"),
@@ -111,8 +111,8 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 					Attributes: map[string]string{
 						useractions.AttributeTestScenario: subtest.TestName,
 						useractions.AttributeInputField:   string(inputField),
+						useractions.AttributeFeature:      useractions.FeaturePKTyping,
 					},
-					Tags: []useractions.ActionTag{useractions.ActionTagPKTyping},
 				},
 			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)

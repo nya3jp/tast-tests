@@ -69,23 +69,25 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	inputField := testserver.TextAreaInputField
-	uc.SetAttribute(useractions.AttributeInputField, string(inputField))
 
 	ui := uiauto.New(tconn)
 
 	subtests := []struct {
-		Name   string
-		Action uiauto.Action
+		name     string
+		scenario string
+		action   uiauto.Action
 	}{
 		{
 			// Type something and check that the text is split into syllables.
-			Name:   "TypePinyinShowsSyllables",
-			Action: its.ValidateInputOnField(inputField, kb.TypeAction("nihao"), "ni hao"),
+			name:     "TypePinyinShowsSyllables",
+			scenario: "verify text is split into syllables",
+			action:   its.ValidateInputOnField(inputField, kb.TypeAction("nihao"), "ni hao"),
 		},
 		{
 			// Type something and press space to submit the top candidate.
-			Name: "SpaceSubmitsTopCandidate",
-			Action: uiauto.Combine("type and press space",
+			name:     "SpaceSubmitsTopCandidate",
+			scenario: "Use SPACE to submit the top candidate",
+			action: uiauto.Combine("type and press space",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihao"),
 				util.GetNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
@@ -100,8 +102,9 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 		{
 			// Type something and use arrow keys to select a different candidate.
 			// Press space to submit the candidate, which might only be a prefix.
-			Name: "ArrowKeyAndSpaceSubmitsPartialCandidate",
-			Action: uiauto.Combine("type and press space",
+			name:     "ArrowKeyAndSpaceSubmitsPartialCandidate",
+			scenario: "Use arrow keys to select a different candidate and submit using SPACE key",
+			action: uiauto.Combine("type and press space",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihao"),
 				kb.AccelAction("Down"),
@@ -120,8 +123,9 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 		},
 		{
 			// Type something and press number key to submit a candidate, which might only be a prefix.
-			Name: "NumberKeySubmitsCandidate",
-			Action: uiauto.Combine("bring up candidates and select with number key",
+			name:     "NumberKeySubmitsCandidate",
+			scenario: "Use number key to submit candidate",
+			action: uiauto.Combine("bring up candidates and select with number key",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihao"),
 				util.GetNthCandidateTextAndThen(tconn, 3, func(prefix string) uiauto.Action {
@@ -138,8 +142,9 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 		},
 		{
 			// Press shift to switch to Raw input mode.
-			Name: "ShiftTogglesLanguageMode",
-			Action: uiauto.Combine("bring up candidates and select with number key",
+			name:     "ShiftTogglesLanguageMode",
+			scenario: "Press SHIFT to switch to Raw input mode",
+			action: uiauto.Combine("bring up candidates and select with number key",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.AccelAction("Shift"),
 				kb.TypeAction("ni "),
@@ -157,15 +162,18 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 	}
 
 	for _, subtest := range subtests {
-		s.Run(ctx, subtest.Name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.Name))
+		s.Run(ctx, subtest.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.name))
 
 			if err := uiauto.UserAction(
 				"Chinese Pinyin PK input",
-				subtest.Action,
+				subtest.action,
 				uc, &useractions.UserActionCfg{
-					Attributes: map[string]string{useractions.AttributeTestScenario: subtest.Name},
-					Tags:       []useractions.ActionTag{useractions.ActionTagPKTyping},
+					Attributes: map[string]string{
+						useractions.AttributeTestScenario: subtest.scenario,
+						useractions.AttributeInputField:   string(inputField),
+						useractions.AttributeFeature:      useractions.FeaturePKTyping,
+					},
 				},
 			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
