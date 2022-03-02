@@ -128,7 +128,6 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 		return nil, errors.Wrap(err, "failed to chown user data dir")
 	}
 
-	extList := strings.Join(f.Chrome().DeprecatedExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                   // Use wayland to connect to exo wayland server.
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
@@ -143,7 +142,6 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 		"--use-cras",                    // Use CrAS.
 		url,                             // Specify first tab to load.
 	}
-	args = append(args, lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...)
 	args = append(args, f.Chrome().LacrosExtraArgs()...)
 
 	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
