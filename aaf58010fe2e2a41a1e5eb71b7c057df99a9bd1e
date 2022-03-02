@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a45cfdb_bf820a74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-02T01:01:47Z",
+      "side": 1,
+      "message": "I was just told in the past by Tast reviewers to always use poll,\nso wanted to get an opinion acknowledging that I knew I had\nto change that. But if sleep works, I\u0027m fine with it : )",
+      "parentUuid": "66416618_56902e53",
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edefde8e_81aecdc7",
@@ -61,6 +79,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "593365dd_9467c334",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-02T01:01:47Z",
+      "side": 1,
+      "message": "Oh hmmm well, I didn\u0027t think about the sampling period to be similar\nto the refresh rate, more like one sample every second. But now that\nyou mention, the value read from the sysfs file is a instantaneous\nvalue, so it\u0027s best sampled often. I guess in my test runs, which\nran video, I saw a stable low reading and didn\u0027t think about it.\nLet me try e.g. 10ms, which might likely be a multiple of the input\ntime (likely seconds). WDYT?",
+      "parentUuid": "edefde8e_81aecdc7",
+      "range": {
+        "startLine": 145,
+        "startChar": 22,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e14a963b_949daabe",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 1
@@ -72,6 +114,30 @@
       "writtenOn": "2022-02-27T03:03:44Z",
       "side": 1,
       "message": "Nit: I know it isn\u0027t much work, but best to move conversion and division out of the loop to be as lightweight as possible and not impact sampling.",
+      "range": {
+        "startLine": 157,
+        "startChar": 14,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43b3a94_ab93e556",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-02T01:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14a963b_949daabe",
       "range": {
         "startLine": 157,
         "startChar": 14,
@@ -130,6 +196,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b8e52f3_d7a261df",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-02T01:01:47Z",
+      "side": 1,
+      "message": "This loop is simpler, because it doesn\u0027t use samplePeriod in the \ncalculations, it just reads the gpu_busy_percent a number of times\nand then calculates the average. samplePeriod is only used to \ncalculate the amount of samples. \n\nSo in principle a longer Sleep() would not skew the average\n(unless it takes so much longer that other parts of the test\nget to finish, e.g. the video stops playing or so). It would\nonly space out the \"sampling\" of said gpu_busy_percent. Does\nthat make sense?",
+      "parentUuid": "f4701e13_dd82d62d",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd761087_d32d853d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-02T01:01:47Z",
+      "side": 1,
+      "message": "Moved it to the beginning of the for loop.",
+      "parentUuid": "0601f373_67a4f8a5",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cfe2fecd_202aeac1",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 1
@@ -141,6 +255,30 @@
       "writtenOn": "2022-02-27T03:03:44Z",
       "side": 1,
       "message": "I am confused why samplePeriod doesn\u0027t show up here.",
+      "range": {
+        "startLine": 163,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb0b2722_a6296693",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-02T01:01:47Z",
+      "side": 1,
+      "message": "It\u0027s because parseAndReportCounter() will report a percentage\nby dividing \"rcs\" by \"total\", so the samplePeriod is not needed.\nAlternatively I could make \"rcs\" the actual value and write a\n\"1\" in \"total\", WDYT?",
+      "parentUuid": "cfe2fecd_202aeac1",
       "range": {
         "startLine": 163,
         "startChar": 42,
