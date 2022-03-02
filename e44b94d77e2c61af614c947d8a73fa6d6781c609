@@ -16,6 +16,87 @@
       "message": "Friendly ping on this one @jinrongwu 😊",
       "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f26f1b8_9d32bb0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T08:34:35Z",
+      "side": 1,
+      "message": "Sorry for the late reply :)",
+      "parentUuid": "29fdbeaa_17ef5d27",
+      "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "026badd2_fa499194",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T08:34:35Z",
+      "side": 1,
+      "message": "These two are the same except the share name? Maybe make an inner func?",
+      "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77232f6d_e2185bdd",
+        "filename": "src/chromiumos/tast/local/smb/smbconf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T08:34:35Z",
+      "side": 1,
+      "message": "What about making it a map?",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ad9691_7a5453c6",
+        "filename": "src/chromiumos/tast/local/smb/smbconf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T08:34:35Z",
+      "side": 1,
+      "message": "adds",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
