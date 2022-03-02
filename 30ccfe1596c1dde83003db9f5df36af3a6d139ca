@@ -104,6 +104,24 @@
       "parentUuid": "04e951cc_4317bb34",
       "revId": "30ccfe1596c1dde83003db9f5df36af3a6d139ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a061f8e9_cbc85254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T18:54:18Z",
+      "side": 1,
+      "message": "That\u0027s fair - the other Roblox tests use the logcat trigger. The benefit is that it doesn\u0027t have a timeout associated with it so if a lab DUT runs slowly, you only have to (potentially) adjust the test timeout rather than the test timeout + this step. I think a case can be made both ways so I\u0027ll leave it up to you to decide.",
+      "parentUuid": "21d10e46_50ab713b",
+      "revId": "30ccfe1596c1dde83003db9f5df36af3a6d139ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
