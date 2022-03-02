@@ -185,61 +185,54 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
 func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
-	tconn, err := cr.TestAPIConn(ctx)
+	r := &Recorder{cr: cr}
+
+	var err error
+	r.tconn, err = cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to test API")
 	}
 
-	gpuDS := perfSrc.NewGPUDataSource(tconn)
+	r.gpuDataSource = perfSrc.NewGPUDataSource(r.tconn)
 	sources := []perf.TimelineDatasource{
 		perfSrc.NewCPUUsageSource("CPU"),
 		perfSrc.NewThermalDataSource(),
-		gpuDS,
+		r.gpuDataSource,
 		perfSrc.NewMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
 	}
-	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
+	r.timeline, err = perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
-	if err = timeline.Start(ctx); err != nil {
+	if err := r.timeline.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
 	}
 
-	frameDataTracker, err := perfSrc.NewFrameDataTracker(metricPrefix)
+	r.frameDataTracker, err = perfSrc.NewFrameDataTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create FrameDataTracker")
 	}
 
-	zramInfoTracker, err := perfSrc.NewZramInfoTracker(metricPrefix)
+	r.zramInfoTracker, err = perfSrc.NewZramInfoTracker(metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ZramInfoTracker")
 	}
 
-	batteryInfoTracker, err := perfSrc.NewBatteryInfoTracker(ctx, metricPrefix)
+	r.batteryInfoTracker, err = perfSrc.NewBatteryInfoTracker(ctx, metricPrefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create BatteryInfoTracker")
 	}
 
-	memInfoTracker := perfSrc.NewMemoryTracker(a)
+	r.memInfoTracker = perfSrc.NewMemoryTracker(a)
 
-	r := &Recorder{
-		cr:                 cr,
-		tconn:              tconn,
-		names:              make(map[*chrome.TestConn][]string),
-		records:            make(map[string]*record, len(configs)+2),
-		timeline:           timeline,
-		gpuDataSource:      gpuDS,
-		frameDataTracker:   frameDataTracker,
-		zramInfoTracker:    zramInfoTracker,
-		batteryInfoTracker: batteryInfoTracker,
-		memInfoTracker:     memInfoTracker,
-	}
+	r.names = make(map[*chrome.TestConn][]string)
+	r.records = make(map[string]*record, len(configs)+2)
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
 			return nil, errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
 
-		bTconn := tconn
+		bTconn := r.tconn
 		if config.tconn != nil {
 			bTconn = config.tconn
 		}
@@ -260,14 +253,14 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 
 	success := false
 
-	if err := r.frameDataTracker.Start(ctx, tconn); err != nil {
+	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
 	}
 	defer func() {
 		if success {
 			return
 		}
-		if err := r.frameDataTracker.Stop(ctx, tconn); err != nil {
+		if err := r.frameDataTracker.Stop(ctx, r.tconn); err != nil {
 			testing.ContextLog(ctx, "Failed to stop frame data tracker: ", err)
 		}
 	}()
