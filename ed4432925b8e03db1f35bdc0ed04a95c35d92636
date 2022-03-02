@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b08b5fd_41672454",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T00:02:19Z",
+      "side": 1,
+      "message": "I\u0027ll revert the change for the minimumset, so it would not be impacted.",
+      "parentUuid": "c06432fa_1113e7b4",
+      "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9012a87c_b505f4c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
         "patchSetId": 3
@@ -67,6 +85,30 @@
       "writtenOn": "2022-03-01T23:57:28Z",
       "side": 1,
       "message": "What is `FixtV`?",
+      "range": {
+        "startLine": 77,
+        "startChar": 44,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f817ed67_7acc9217",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T00:02:19Z",
+      "side": 1,
+      "message": "It is fixturevalue.",
+      "parentUuid": "9012a87c_b505f4c1",
       "range": {
         "startLine": 77,
         "startChar": 44,
@@ -126,6 +168,24 @@
       "side": 1,
       "message": "If you take a look at the tests you\u0027re changing e.g. network_perf you can see there\u0027s only a Buster Pre, no Bullseye.\nThis changes anything with MinimalSet \u003d\u003d true from buster-only to bullseye-only, and that should be coordinated with the bullseye rollout.",
       "parentUuid": "9d1fdc29_3c60b6ec",
+      "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97308f31_8700f583",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T00:02:19Z",
+      "side": 1,
+      "message": "Ok, thanks. I\u0027ll find another way for large container.",
+      "parentUuid": "730faa91_413d2a2f",
       "revId": "ed4432925b8e03db1f35bdc0ed04a95c35d92636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
