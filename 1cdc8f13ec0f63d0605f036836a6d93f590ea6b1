@@ -16,6 +16,57 @@
       "message": "PTAL",
       "revId": "1cdc8f13ec0f63d0605f036836a6d93f590ea6b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "940a2f78_1fc85a22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:04:14Z",
+      "side": 1,
+      "message": "Thanks, this looks good. Just two minor changes around timeouts",
+      "revId": "1cdc8f13ec0f63d0605f036836a6d93f590ea6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffe52e8_f44632ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:04:14Z",
+      "side": 1,
+      "message": "Set to 20 to be safe",
+      "revId": "1cdc8f13ec0f63d0605f036836a6d93f590ea6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7003d03c_80f579a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-02T17:04:14Z",
+      "side": 1,
+      "message": "Since we are upping the max timeout, and this is the slowest part of the test (network slowness/dut slowdown etc/), how about setting it to 5?",
+      "revId": "1cdc8f13ec0f63d0605f036836a6d93f590ea6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
