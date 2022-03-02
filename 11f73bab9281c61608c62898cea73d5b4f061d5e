@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e0f33c2_00aad967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-03-02T05:05:22Z",
+      "side": 1,
+      "message": "Doen",
+      "parentUuid": "286639a5_d3e124a7",
+      "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf13756b_0264374f",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10e43da5_5fa1f497",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-03-02T05:05:22Z",
+      "side": 1,
+      "message": "The string also serve as a control handler to control each chart. I simply don\u0027t want this speicial set of string to be messed up with the normal string.\n\nFor example, viewing from function definition of `Chart.Display()`.\nWe don\u0027t want the developer to plugin any string to be displayed but only the string prepared by New() call.",
+      "parentUuid": "bf13756b_0264374f",
+      "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be4b671d_30e0bb72",
         "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
         "patchSetId": 3
@@ -48,6 +84,24 @@
       "writtenOn": "2022-02-24T01:53:24Z",
       "side": 1,
       "message": "nit: chart does not ...",
+      "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9520f9b0_69bdadc7",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-03-02T05:05:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be4b671d_30e0bb72",
       "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
