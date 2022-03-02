@@ -16,6 +16,23 @@
       "message": "Hi Alvin, need cr+2 again to submit the cl. In the last patchset, I rebased the cl from HEAD.",
       "revId": "1c8c0afaffa3507e2dd8a4a603ae538365266807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e9e4fb_6bb5990a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-02T05:00:46Z",
+      "side": 1,
+      "message": "This test passed most builders, but failed on brya-cq due to an known issue b/222107672. Thus force submit.",
+      "revId": "1c8c0afaffa3507e2dd8a4a603ae538365266807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
