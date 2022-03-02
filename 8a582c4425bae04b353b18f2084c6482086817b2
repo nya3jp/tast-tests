@@ -16,6 +16,23 @@
       "message": "+hidehiko for the lacros tast review",
       "revId": "8a582c4425bae04b353b18f2084c6482086817b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5dd2e9b_e8259a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-02T12:58:05Z",
+      "side": 1,
+      "message": "do we need to disable Sync for lacros, too?",
+      "revId": "8a582c4425bae04b353b18f2084c6482086817b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
