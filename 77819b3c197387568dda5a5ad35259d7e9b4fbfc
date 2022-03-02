@@ -16,6 +16,24 @@
       "message": "I would like to know why instead of fixing the decaying boot time (as it was previously 2 miuntes?), we are just punting the issue and increasing timeouts.\n\n\nI would think this is showing the product is decaying in terms of performance, and it should be evaluated on why this occured, rather than just constantly increasing test timeouts.",
       "revId": "77819b3c197387568dda5a5ad35259d7e9b4fbfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386f649e_c7df9140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-03-02T00:12:49Z",
+      "side": 1,
+      "message": "The perf investigation is on-going in the linked bug. We\u0027re increasing the timeout to unblock PFQ before more regressions creep in.\n\nI\u0027m unaware of other previous attempts to increase the timeout so can\u0027t confirm if the increase is constant. Nonetheless, there is also a comment added to revert this change once the perf regression is addressed.\n\nIf there is a better alternative that doesn\u0027t involve keeping the PFQ blocked in the meanwhile, we can try that out.",
+      "parentUuid": "68609dc7_2f00ab00",
+      "revId": "77819b3c197387568dda5a5ad35259d7e9b4fbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
