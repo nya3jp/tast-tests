@@ -157,6 +157,30 @@
       },
       "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b405b64e_d46b92be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-02T19:45:44Z",
+      "side": 1,
+      "message": "I\u0027ll approve, but just be aware this will have multiple unintended consequences that mean you will not have the coverage from this test that you think you will.\n\nFor example, if some combination breaks, the test will fail and will be immediately re-run.  This time a different combination is chosen and the test passes.  The test will be considered to be passed as \"flaky\".  Whichever run this is part of will pass, whether a CQ run, the CL will get submitted, or if release testing, it will be marked green in all of the release dashboard, postsubmit it won\u0027t be displayed to sheriffs, it won\u0027t trigger alerting rules to your team, etc.\n\nOf course this only applies when a bug is triggered by a combination rather than an individual dimension, but that is explicitly what this shuffle logic is trying to test.  Essentially you are increasing test flakiness for _reduced_ effective test coverage.\n\nIf you had deterministic combinations, at least those combinations would be tested and reported properly, even if you are not testing all possible combinations over time.\n\nFor the manual testing, I just mean create a command line arg to tast to turn the shuffling on.  This could be used when testing locally, but not activated when testing in CQ/CI/release. \nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/state.go;l\u003d489",
+      "parentUuid": "578df026_5f6454c2",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 14
+      },
+      "revId": "e05ad4348ac18ae4b57492de78fb801e51238f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
