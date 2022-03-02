@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "355d36bc_35d9a298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:07:21Z",
+      "side": 1,
+      "message": "You mean add LacrosStatus to all other crostini tests?",
+      "parentUuid": "428d5c0e_e2551e48",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "2e80285c4af8629663ac0a9d3942f894a7e7aa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa3563d4_b8b41064",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-02T06:04:42Z",
       "side": 1,
       "message": "nit: could be removed if urlTarget is no longer used",
+      "range": {
+        "startLine": 79,
+        "startChar": 21,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "2e80285c4af8629663ac0a9d3942f894a7e7aa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b6a183_7e476315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:07:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3563d4_b8b41064",
       "range": {
         "startLine": 79,
         "startChar": 21,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-02T06:04:42Z",
       "side": 1,
       "message": "I could probably be missing something here, but not sure what is the intention of the line 76-78 without `br` not being assigned nor used anywhere. Do you need to open a new browser window for lacros-chrome?\nDoes verifyapp.RunTest need to work for both browsers taking a `br` as an arg? I assume not though.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "2e80285c4af8629663ac0a9d3942f894a7e7aa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e1bc6e_5d7bead9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T09:07:21Z",
+      "side": 1,
+      "message": "I think this step makes Lacros the default browser.\n\nAdd Fergus to see whether this makes sense or not. @sidereal",
+      "parentUuid": "0b492efe_1337376e",
       "range": {
         "startLine": 76,
         "startChar": 0,
