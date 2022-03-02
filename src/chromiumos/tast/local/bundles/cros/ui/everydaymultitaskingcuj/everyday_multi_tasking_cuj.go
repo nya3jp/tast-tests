@@ -153,15 +153,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	}
 	defer recorder.Close(cleanupCtx)
 
-	// Put battery under discharge in order to collect the power consumption of the test.
-	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
-	if err != nil {
-		return errors.Wrap(err, "failed to set battery discharge")
-	}
-	// It's important to ensure setBatteryNormal will be called after the test is done.
-	// So make it the first deferred function to use cleanupCtx.
-	defer setBatteryNormal(cleanupCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid

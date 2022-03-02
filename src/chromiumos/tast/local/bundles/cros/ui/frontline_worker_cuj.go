@@ -31,6 +31,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FrontlineWorkerCUJ,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the performance of Frontline Worker CUJ",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -146,17 +147,6 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get browser start time: ", err)
 	}
-
-	// Shorten the context to resume battery charging.
-	cleanUpBatteryCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	// Put battery under discharge in order to collect the power consumption of the test.
-	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
-	if err != nil {
-		s.Fatal("Failed to set battery discharge: ", err)
-	}
-	defer setBatteryNormal(cleanUpBatteryCtx)
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its

@@ -35,8 +35,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/testing"
 )
@@ -342,47 +340,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			screenRecorder.Release(ctx)
 		}(closeCtx)
 		screenRecorder.Start(ctx, tconn)
-	}
-
-	tweakPerfValues := func(pv *perf.Values) error { return nil }
-	s.Log("Preparing for power metrics collection")
-	// Setup needs to happen before power.TestMetrics() to disable wifi first
-	// so that the thermal sensor for wifi is excluded from the metrics.
-	if cleanup, err := setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi:       setup.DisableWifiInterfaces,
-		Battery:    setup.ForceBatteryDischarge,
-		NightLight: setup.DisableNightLight,
-	}); err != nil {
-		s.Log("Power setup failed (but this failure is expected on some devices): ", err)
-		s.Log("Power metrics will not be collected")
-	} else {
-		defer func() {
-			if err := cleanup(closeCtx); err != nil {
-				s.Error("Cleanup meet power setup failed: ", err)
-			}
-		}()
-
-		// Power tests need to record power metrics; they are separated from
-		// cuj.Recorder's timeline as it is for a different purpose and mixing them
-		// might cause a risk of taking too much time of collecting data.
-		timeline, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Prefix("Power."))
-		if err != nil {
-			s.Fatal("Failed to create power metrics: ", err)
-		}
-		if err = timeline.Start(ctx); err != nil {
-			s.Fatal("Failed to start power timeline: ", err)
-		}
-		if err = timeline.StartRecording(ctx); err != nil {
-			s.Fatal("Failed to start recording the power metrics: ", err)
-		}
-		tweakPerfValues = func(pv *perf.Values) error {
-			values, err := timeline.StopRecording(ctx)
-			if err != nil {
-				return err
-			}
-			pv.Merge(values)
-			return nil
-		}
 	}
 
 	configs := []cuj.MetricConfig{
@@ -832,9 +789,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := tweakPerfValues(pv); err != nil {
-		s.Fatal("Failed to tweak the perf values: ", err)
-	}
 	if err := recorder.Record(ctx, pv); err != nil {
 		s.Fatal("Failed to record the data: ", err)
 	}

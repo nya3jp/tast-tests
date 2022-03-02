@@ -22,6 +22,8 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	perfSrc "chromiumos/tast/local/perf"
+	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -150,6 +152,9 @@ type Recorder struct {
 	// Defined only for the running recorder.
 	cleanup func(ctx context.Context) error
 
+	// powerSetup helps with preparing the device for meaningful power metrics.
+	powerSetup powerSetupHandlers
+
 	timeline           *perf.Timeline
 	gpuDataSource      *perfSrc.GPUDataSource
 	frameDataTracker   *perfSrc.FrameDataTracker
@@ -201,6 +206,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		r.gpuDataSource,
 		perfSrc.NewMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
 	}
+	sources = append(sources, power.TestMetrics()...)
 	r.timeline, err = perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start perf.Timeline")
@@ -291,6 +297,18 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		return nil, errors.Wrap(err, "failed to start recording login event data")
 	}
 
+	cleanup, err := setup.PowerTest(ctx, r.tconn, setup.PowerTestOptions{})
+	r.powerSetup[0] = newPowerSetupHandler(ctx, "TPS.PowerSetup.Basic", cleanup, err)
+
+	cleanup, err = setup.DisableWiFiInterfaces(ctx)
+	r.powerSetup[1] = newPowerSetupHandler(ctx, "TPS.PowerSetup.DisableWifiInterfaces", cleanup, err)
+
+	cleanup, err = setup.SetBatteryDischarge(ctx, 2.0)
+	r.powerSetup[2] = newPowerSetupHandler(ctx, "TPS.PowerSetup.ForceBatteryDischarge", cleanup, err)
+
+	cleanup, err = setup.TurnOffNightLight(ctx, r.tconn)
+	r.powerSetup[3] = newPowerSetupHandler(ctx, "TPS.PowerSetup.DisableNightLight", cleanup, err)
+
 	success = true
 
 	return r, nil
@@ -303,6 +321,10 @@ func (r *Recorder) EnableTracing(traceDir string) {
 
 // Close clears states for all trackers.
 func (r *Recorder) Close(ctx context.Context) error {
+	for _, handler := range r.powerSetup {
+		handler.close(ctx)
+	}
+
 	r.gpuDataSource.Close()
 	return r.frameDataTracker.Close(ctx, r.tconn)
 }
@@ -595,6 +617,10 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 		Direction: perf.SmallerIsBetter,
 	}, crasUnderruns/r.duration.Minutes())
 
+	for _, handler := range r.powerSetup {
+		handler.reportToMetric(pv)
+	}
+
 	displayInfo.Record(pv)
 	r.frameDataTracker.Record(pv)
 	r.zramInfoTracker.Record(pv)
@@ -614,4 +640,48 @@ func (r *Recorder) SaveHistograms(outDir string) error {
 		return err
 	}
 	return ioutil.WriteFile(filePath, j, 0644)
+}
+
+// powerSetupHandlers holds a handler for each part of power setup.
+type powerSetupHandlers [4]*powerSetupHandler
+
+// powerSetupHandler handles cleanup and error reporting associated with one part of power setup.
+type powerSetupHandler struct {
+	histogramName string
+	succeeded     bool
+	cleanup       setup.CleanupCallback
+}
+
+// newPowerSetupHandler logs the given error, if not nil, and constructs a powerSetupHandler.
+func newPowerSetupHandler(ctx context.Context, histogramName string, cleanup setup.CleanupCallback, err error) *powerSetupHandler {
+	if err != nil {
+		testing.ContextLogf(ctx, "%s failure: %v", histogramName, err)
+	}
+
+	return &powerSetupHandler{histogramName: histogramName, succeeded: err == nil, cleanup: cleanup}
+}
+
+// close cleans up the power setup if it succeeded in the first place. If the cleanup returns an error, close logs that error.
+func (handler *powerSetupHandler) close(ctx context.Context) {
+	if !handler.succeeded {
+		return
+	}
+
+	if err := handler.cleanup(ctx); err != nil {
+		testing.ContextLogf(ctx, "%s cleanup failure: %v", handler.histogramName, err)
+	}
+}
+
+// reportToMetric reports power setup success/failure to a performance metric, as 1 for success, 0 for failure.
+func (handler *powerSetupHandler) reportToMetric(pv *perf.Values) {
+	var report float64
+	if handler.succeeded {
+		report = 1
+	}
+
+	pv.Set(perf.Metric{
+		Name:      handler.histogramName,
+		Unit:      "unitless",
+		Direction: perf.BiggerIsBetter, // success is better than failure ;-)
+	}, report)
 }
