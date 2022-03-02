@@ -93,27 +93,12 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		s.Logf("Wi-Fi AP %s is connected", ssid)
 	}
 
-	// Shorten the context to resume battery charging.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	// Set battery to discharge so the power consumption of the CUJ can be measured.
-	setBatteryNormal, err := cuj.SetBatteryDischarge(ctx, 50)
-	if err != nil {
-		s.Fatal("Failed to set battery discharge: ", err)
-	}
-	// It is important to call the deferred function setBatteryNormal() in
-	// a separate context to make sure it has time to
-	// run and the battery change can be set back to normal.
-	defer setBatteryNormal(cleanupCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid
 	// other cleanup functions executed earlier to use up the context time.
 	cleanupSettingsCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)

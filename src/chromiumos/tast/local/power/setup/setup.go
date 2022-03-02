@@ -109,16 +109,50 @@ func (s *Setup) Check(ctx context.Context) error {
 }
 
 // BatteryDischargeMode what setup is needed for a test
-type BatteryDischargeMode int
+type BatteryDischargeMode interface {
+	// fulfill implements the indicated battery discharge behavior.
+	fulfill(ctx context.Context, s *Setup)
+}
+
+// basicBatteryDischargeMode is for battery discharge modes representable as
+// constant values.
+type basicBatteryDischargeMode int
 
 const (
 	// NoBatteryDischarge option requests setup not to try
 	// forcing discharge of battery
-	NoBatteryDischarge BatteryDischargeMode = iota
+	NoBatteryDischarge basicBatteryDischargeMode = iota
 	// ForceBatteryDischarge option requests setup to force
 	// discharging battery during a test
 	ForceBatteryDischarge
 )
+
+func (battery basicBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
+	if battery == ForceBatteryDischarge {
+		s.Add(SetBatteryDischarge(ctx, 2.0))
+	}
+}
+
+// advancedBatteryDischargeMode is for battery discharge modes constructed
+// from parameters.
+type advancedBatteryDischargeMode struct{ errp *error }
+
+// TryBatteryDischarge option requests setup to try battery discharge. If the
+// given pointer is nil, TryBatteryDischarge returns ForceBatteryDischarge.
+// Otherwise, the battery discharge error is omitted from the power test
+// setup and reported through the given pointer instead.
+func TryBatteryDischarge(errp *error) BatteryDischargeMode {
+	if errp == nil {
+		return ForceBatteryDischarge
+	}
+	return advancedBatteryDischargeMode{errp: errp}
+}
+
+func (battery advancedBatteryDischargeMode) fulfill(ctx context.Context, s *Setup) {
+	var cleanup CleanupCallback
+	cleanup, *battery.errp = SetBatteryDischarge(ctx, 2.0)
+	s.Add(cleanup, nil)
+}
 
 // WifiInterfacesMode describes how to setup WiFi interfaces for a test.
 type WifiInterfacesMode int
@@ -163,9 +197,7 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 		if options.Wifi == DisableWifiInterfaces {
 			s.Add(DisableWiFiInterfaces(ctx))
 		}
-		if options.Battery == ForceBatteryDischarge {
-			s.Add(SetBatteryDischarge(ctx, 2.0))
-		}
+		options.Battery.fulfill(ctx, s)
 		s.Add(DisableBluetooth(ctx))
 		if options.NightLight == DisableNightLight {
 			s.Add(TurnOffNightLight(ctx, c))
