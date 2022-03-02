@@ -39,6 +39,30 @@
       },
       "revId": "ade461eab79e7166ebea5c29cc315191e7c28819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e110e73c_59af73e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/content_preview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-02T22:20:21Z",
+      "side": 1,
+      "message": "No, it is not opened in lacros browser. It is just a popup window in Files app.\nLet me make it LacrosVariantUnneeded. Thanks",
+      "parentUuid": "d2ebe83a_770386b0",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "ade461eab79e7166ebea5c29cc315191e7c28819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
