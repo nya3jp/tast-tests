@@ -15,6 +15,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -34,7 +36,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ContentPreview,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test content preview while sharing a single file",
 		Contacts: []string{
 			"jinrongwu@google.com",
@@ -43,7 +45,18 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{cpTextFileName, cpZipFileName, cpVideoFileName, cpPngFileName},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{
+			{
+				Name:    "lacros",
+				Fixture: "lacros",
+				Val:     browser.TypeLacros,
+			},
+			{
+				Name:    "chrome",
+				Fixture: "chromeLoggedIn",
+				Val:     browser.TypeAsh,
+			},
+		},
 	})
 }
 
@@ -55,7 +68,12 @@ type subTestData struct {
 }
 
 func ContentPreview(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	var cr *chrome.Chrome
+	if s.Param().(browser.Type) == browser.TypeAsh {
+		cr = s.FixtValue().(*chrome.Chrome)
+	} else {
+		cr = s.FixtValue().(lacrosfixt.FixtValue).Chrome()
+	}
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
