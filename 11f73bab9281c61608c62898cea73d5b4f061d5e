@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd62fc9_bbf1757e",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-02T05:08:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10e43da5_5fa1f497",
+      "revId": "11f73bab9281c61608c62898cea73d5b4f061d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be4b671d_30e0bb72",
