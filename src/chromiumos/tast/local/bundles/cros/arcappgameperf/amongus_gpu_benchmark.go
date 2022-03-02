@@ -58,7 +58,7 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 		// No need to poll for game launched.
 		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
 
-		if err := uiauto.Combine("Load GPU Benchmark",
+		if err := uiauto.Combine("Tap through optional screens",
 			// Identify and click through optional screens (e.g. download, terms, D.O.B., "play offline").
 
 			// Click through optional screen for downloading data.
@@ -67,9 +67,9 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 				uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).Tap(uidetection.TextBlock([]string{"Accept"})),
 			),
 
-			// Click through optional screen for EULA.
+			// Click through optional screen for EULA, allowing extended time for slow downloads.
 			action.IfSuccessThen(
-				uda.WaitUntilExists(uidetection.TextBlock([]string{"Understand"})),
+				uda.WithTimeout(time.Minute*3).WaitUntilExists(uidetection.TextBlock([]string{"Understand"})),
 				uda.Tap(uidetection.TextBlock([]string{"Understand"})),
 			),
 
@@ -98,8 +98,14 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 				uda.Tap(uidetection.CustomIcon(s.DataPath("amongus-announcements-close-button.png"))),
 			),
 
+			// Poll created menu loaded (wait until "LOCAL" appears).
+			uda.WaitUntilExists(uidetection.Word("LOCAL")),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "menu not loaded")
+		}
+
+		if err := uiauto.Combine("Load GPU Benchmark",
 			// Identify and click "Local".
-			action.Sleep(waitForActiveInputTime),
 			uda.Tap(uidetection.Word("LOCAL")),
 
 			// Identify and click "Create Game".
