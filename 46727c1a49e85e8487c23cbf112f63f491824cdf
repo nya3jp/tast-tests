@@ -52,6 +52,59 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "122bec79_727724d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-02T14:51:40Z",
+      "side": 1,
+      "message": "Ready to commit once the dependency has made its way into CrOS.",
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d346b0b5_66f928b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-02T14:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "230c90ae_49e80133",
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9344f2a8_32982a58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-02T14:51:40Z",
+      "side": 1,
+      "message": "Maybe, if/when we are willing to drop Ash tests.",
+      "parentUuid": "b8355037_6d62f8e4",
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42c5d6db_82863a6c",
@@ -75,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa0bb2e_5ee5492e",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-02T14:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c5d6db_82863a6c",
+      "range": {
+        "startLine": 424,
+        "startChar": 41,
+        "endLine": 424,
+        "endChar": 63
+      },
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5673f7a6_ef24d277",
@@ -88,6 +165,24 @@
       "writtenOn": "2022-03-02T13:57:17Z",
       "side": 1,
       "message": "nit: const",
+      "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e758ec_01da7243",
+        "filename": "src/chromiumos/tast/local/apps/apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-02T14:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5673f7a6_ef24d277",
       "revId": "46727c1a49e85e8487c23cbf112f63f491824cdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
