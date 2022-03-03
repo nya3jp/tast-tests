@@ -155,15 +155,16 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
 	}
 
-	// TODO(crbug.com/1047146): Remove the env part after we drop the old crypto like MD5.
-	cmdStrs := []string{
-		// Environment variables.
-		"OPENSSL_CONF=/etc/ssl/openssl.cnf.compat",
-		"OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK=1",
-		// hostapd command.
-		hostapdCmd, "-dd", "-t", "-K", shutil.Escape(s.confPath()),
+	// Run hostapd command with any set environment variables.
+	var commands []string
+	for key, value := range s.conf.EnvironmentVars {
+		commands = append(commands, fmt.Sprintf("%s=%q", key, value))
 	}
-	cmd := s.host.CommandContext(ctx, "sh", "-c", strings.Join(cmdStrs, " "))
+	commands = append(commands, []string{
+		hostapdCmd, "-dd", "-t", "-K", shutil.Escape(s.confPath()),
+	}...)
+	cmd := s.host.CommandContext(ctx, "sh", "-c", strings.Join(commands, " "))
+
 	// Prepare stdout/stderr log files.
 	var err error
 	s.stderrFile, err = fileutil.PrepareOutDirFile(ctx, s.stderrFilename())
