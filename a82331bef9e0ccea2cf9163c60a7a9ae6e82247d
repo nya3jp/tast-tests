@@ -16,6 +16,24 @@
       "message": "Might need to wait until https://chromium-review.googlesource.com/c/chromium/src/+/3499663 is uprev\u0027d?",
       "revId": "a82331bef9e0ccea2cf9163c60a7a9ae6e82247d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6bf5b1_c5061995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356022
+      },
+      "writtenOn": "2022-03-03T21:57:34Z",
+      "side": 1,
+      "message": "Yeah, I would suggest waiting for a some time. The chromeos-chrome uprev has been blocked by this for 2 days. Let\u0027wait for one successful uprev. What do you think Toby?",
+      "parentUuid": "d338386f_fcfe90c0",
+      "revId": "a82331bef9e0ccea2cf9163c60a7a9ae6e82247d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
