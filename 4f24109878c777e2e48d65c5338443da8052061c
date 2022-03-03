@@ -34,6 +34,24 @@
       "parentUuid": "d57cad77_2437aae3",
       "revId": "4f24109878c777e2e48d65c5338443da8052061c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87844950_e64b34df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-03-03T08:42:27Z",
+      "side": 1,
+      "message": "If we need to make sure the test really stops the perfetto process, we should make this value a much larger value. Are we sure 20 sec is enough to make this happen?\n\nNote that if perfetto exits normally, sess.Stop() won\u0027t return any error. The test can fail because the iioservice cmdline runs for too long, and perfetto doesn\u0027t collect the trace event we want. This is a source of test flakeness.\n\nIn this sense, I\u0027d suggest we make it so long that we are sure the iioservice cmdline won\u0027t exceed the duration. If we worry about the test running for too long, we can shorten the test context to make it fail loudly so we can take a look.",
+      "parentUuid": "cf8fe238_9284cbba",
+      "revId": "4f24109878c777e2e48d65c5338443da8052061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
