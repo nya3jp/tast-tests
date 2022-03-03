@@ -10,6 +10,7 @@ package netconfig
 
 // Types from ip_address.mojom
 
+// IPAddress represents IP address
 type IPAddress struct {
 	AddressBytes []uint8
 }
@@ -31,7 +32,7 @@ const (
 	WiFi
 )
 
-// DeviceStateType: Device / Technology state for devices.
+// DeviceStateType : Device / Technology state for devices.
 type DeviceStateType int
 
 const (
@@ -44,7 +45,7 @@ const (
 	UnavailableDST
 )
 
-// ConnectionStateType: Connection state of visible networks.
+// ConnectionStateType : Connection state of visible networks.
 type ConnectionStateType int
 
 const (
@@ -55,7 +56,7 @@ const (
 	NotConnectedCST
 )
 
-// PortalState: The captive portal state. Provides additional details when the connection state is kPortal.
+// PortalState : The captive portal state. Provides additional details when the connection state is kPortal.
 type PortalState int
 
 const (
@@ -102,6 +103,15 @@ const (
 	WpaPsk
 )
 
+// AuthenticationType: The authentication type for Ethernet networks.
+type AuthenticationType int
+
+// Ethernet Authenticationtype
+const (
+	NoneAT AuthenticationType = iota
+	K8021x
+)
+
 // HiddenSsidMode is the tri-state status of hidden SSID.
 type HiddenSsidMode int
 
@@ -116,6 +126,7 @@ const (
 type ActivationStateType int
 
 const (
+	// ActivationStateType values
 	UnknownAST ActivationStateType = iota
 	NotActivatedAST
 	ActivatingAST
@@ -144,9 +155,13 @@ type WiFiStateProperties struct {
 	HiddenSsid     bool         `json:"hiddenSsid"`
 }
 
+type EthernetStateProperties struct {
+	Authentication AuthenticationType `json:"authentication"`
+}
+
 type NetworkTypeStateProperties struct {
 	Cellular CellularStateProperties `json:"cellular,omitempty"`
-	//	Ethernet EthernetStateProperties `json:"ethernet,omitempty"`
+	Ethernet EthernetStateProperties `json:"ethernet,omitempty"`
 	//	Tether   TetherStateProperties   `json:"tether,omitempty"`
 	//	VPN      VPNStateProperties      `json:"vpn,omitempty"`
 	WiFi WiFiStateProperties `json:"wifi,omitempty"`
@@ -219,9 +234,13 @@ type ConfigProperties struct {
 type FilterType int
 
 const (
+	// Return active networks. A network is active when its ConnectionStateType != kNotConnected.
 	ActiveFT FilterType = iota
+	// Return visible (active, physically connected or in-range) networks. Active networks will be listed first.
 	VisibleFT
+	// Only include configured (saved) networks.
 	ConfiguredFT
+	// Include all networks.
 	AllFT
 )
 
@@ -232,14 +251,14 @@ type NetworkFilter struct {
 	Limit       int32       `json:"limit`
 }
 
-// SIMLockStatus: The SIM card lock status for Cellular networks.
+// SIMLockStatus is the SIM card lock status for Cellular networks.
 type SIMLockStatus struct {
 	LockType    string `json:"locktype"`
 	LockEnabled bool   `json:"lockenabled"`
 	RetriesLeft int32  `json:"retriesleft"`
 }
 
-// SIMInfo: Details about a sim slot available on the device.
+// SIMInfo is details about a sim slot available on the device.
 type SIMInfo struct {
 	SlotID    int32  `json:"slotID"`
 	Eid       string `json:"eid"`
@@ -247,10 +266,11 @@ type SIMInfo struct {
 	IsPrimary bool   `json:"isPrimary"`
 }
 
-// InhibitReason: Reasons why the Cellular Device may have its scanning inhibited (i.e. temporarily stopped).
+// InhibitReason : Reasons why the Cellular Device may have its scanning inhibited (i.e. temporarily stopped).
 type InhibitReason int
 
 const (
+	// Possible values for InhibitReason
 	NotInhibited InhibitReason = iota
 	InstallingProfile
 	RenamingProfile
@@ -261,6 +281,7 @@ const (
 	DisablingProfile
 )
 
+// DeviceStateProperties is returned by GetDeviceStateList
 type DeviceStateProperties struct {
 	Ipv4Address             IPAddress       `json:"ipv4address,omitempty"`
 	Ipv6Address             IPAddress       `json:"ipv6address,omitempty"`
