@@ -39,10 +39,8 @@ type Router struct {
 	name          string
 	routerType    support.RouterType
 	board         string
-	phys          map[int]*iw.Phy       // map from phy idx to iw.Phy.
-	availIfaces   map[string]*iw.NetDev // map from interface name to iw.NetDev.
-	busyIfaces    map[string]*iw.NetDev // map from interface name to iw.NetDev.
-	ifaceID       int
+	phys          map[int]*iw.Phy // map from phy idx to iw.Phy.
+	im            *common.IfaceManager
 	bridgeID      int
 	vethID        int
 	iwr           *iw.Runner
@@ -59,12 +57,12 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		name:          name,
 		routerType:    support.LegacyT,
 		phys:          make(map[int]*iw.Phy),
-		availIfaces:   make(map[string]*iw.NetDev),
-		busyIfaces:    make(map[string]*iw.NetDev),
 		iwr:           remote_iw.NewRemoteRunner(host),
 		ipr:           remote_ip.NewRemoteRunner(host),
 		logCollectors: make(map[string]*log.Collector),
 	}
+	r.im = common.NewRouterIfaceManager(r, r.iwr)
+
 	shortCtx, cancel := ctxutil.Shorten(ctx, common.RouterCloseContextDuration)
 	defer cancel()
 
@@ -175,46 +173,26 @@ func (r *Router) RouterName() string {
 	return r.name
 }
 
-// removeWifiIface removes iface with iw command.
-func (r *Router) removeWifiIface(ctx context.Context, iface string) error {
-	testing.ContextLogf(ctx, "Deleting wdev %s on %s", iface, r.name)
-	return r.iwr.RemoveInterface(ctx, iface)
-}
-
-// removeWifiIfaces removes all WiFi interfaces.
-func (r *Router) removeWifiIfaces(ctx context.Context) error {
-	wdevs, err := r.iwr.ListInterfaces(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to list interfaces")
-	}
-	for _, w := range wdevs {
-		if err := r.removeWifiIface(ctx, w.IfName); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 // setupWifiPhys fills r.phys and enables their antennas.
 func (r *Router) setupWifiPhys(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "setupWifiPhys")
 	defer st.End()
 
-	if err := r.removeWifiIfaces(ctx); err != nil {
+	if err := r.im.RemoveAll(ctx); err != nil {
 		return err
 	}
-	wiphys, err := r.iwr.ListPhys(ctx)
+	phys, err := r.iwr.ListPhys(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to list phys")
 	}
-	if len(wiphys) == 0 {
+	if len(phys) == 0 {
 		return errors.New("Expect at least one wireless phy; found nothing")
 	}
 	// isWhirlwindAuxPhy returns true if p is Whirlwind's 1x1 auxiliary radio.
 	isWhirlwindAuxPhy := func(p *iw.Phy) bool {
 		return r.board == "whirlwind" && (p.RxAntenna < 2 || p.TxAntenna < 2)
 	}
-	for _, p := range wiphys {
+	for _, p := range phys {
 		if isWhirlwindAuxPhy(p) {
 			// We don't want to use the 3rd radio (1x1 auxiliary radio) on Whirlwind.
 			continue
@@ -302,14 +280,14 @@ func (r *Router) Close(ctx context.Context) error {
 	var firstErr error
 
 	// Remove the interfaces that we created.
-	for _, nd := range r.availIfaces {
-		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
+	for _, nd := range r.im.Available {
+		if err := r.im.Remove(ctx, nd.IfName); err != nil {
 			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
-	for _, nd := range r.busyIfaces {
+	for _, nd := range r.im.Busy {
 		testing.ContextLogf(ctx, "iface %s not yet freed", nd.IfName)
-		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
+		if err := r.im.Remove(ctx, nd.IfName); err != nil {
 			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
@@ -345,7 +323,7 @@ func (r *Router) phy(ctx context.Context, channel int, t iw.IfType) (int, error)
 	}
 	// Try to find an idle phy which is suitable
 	for id, phy := range r.phys {
-		if r.isPhyBusy(id, t) {
+		if r.im.IsPhyBusy(id, t) {
 			continue
 		}
 		if phySupportsFrequency(phy, freq) {
@@ -387,7 +365,7 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 // netDevWithPhyID finds an available interface on phy#phyID and with given type.
 func (r *Router) netDevWithPhyID(ctx context.Context, phyID int, t iw.IfType) (*iw.NetDev, error) {
 	// First check if there's an available interface on target phy.
-	for _, nd := range r.availIfaces {
+	for _, nd := range r.im.Available {
 		if nd.PhyNum == phyID && nd.IfType == t {
 			return nd, nil
 		}
@@ -401,7 +379,7 @@ func (r *Router) netDevWithPhyID(ctx context.Context, phyID int, t iw.IfType) (*
 func (r *Router) monitorOnInterface(ctx context.Context, iface string) (*iw.NetDev, error) {
 	var ndev *iw.NetDev
 	// Find phy ID of iface.
-	for name, nd := range r.busyIfaces {
+	for name, nd := range r.im.Busy {
 		if name == iface {
 			ndev = nd
 			break
@@ -428,10 +406,10 @@ func (r *Router) StartHostapd(ctx context.Context, name string, conf *hostapd.Co
 		return nil, err
 	}
 	iface := nd.IfName
-	r.setIfaceBusy(iface)
+	r.im.SetBusy(iface)
 	defer func() {
 		if retErr != nil {
-			r.freeIface(iface)
+			r.im.SetAvailable(iface)
 		}
 	}()
 	return r.startHostapdOnIface(ctx, iface, name, conf)
@@ -483,7 +461,7 @@ func (r *Router) StopHostapd(ctx context.Context, hs *hostapd.Server) error {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop hostapd"))
 	}
 	wifiutil.CollectFirstErr(ctx, &firstErr, r.ipr.SetLinkDown(ctx, iface))
-	r.freeIface(iface)
+	r.im.SetAvailable(iface)
 	return firstErr
 }
 
@@ -494,10 +472,10 @@ func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, con
 	if err := r.StopHostapd(ctx, hs); err != nil {
 		return nil, errors.Wrap(err, "failed to stop hostapd server")
 	}
-	r.setIfaceBusy(iface)
+	r.im.SetBusy(iface)
 	defer func() {
 		if retErr != nil {
-			r.freeIface(iface)
+			r.im.SetAvailable(iface)
 		}
 	}()
 	return r.startHostapdOnIface(ctx, iface, name, conf)
@@ -560,12 +538,12 @@ func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps 
 		return nil, err
 	}
 	iface := nd.IfName
-	shared := r.isPhyBusyAny(nd.PhyNum)
+	shared := r.im.IsPhyBusyAny(nd.PhyNum)
 
-	r.setIfaceBusy(iface)
+	r.im.SetBusy(iface)
 	defer func() {
 		if retErr != nil {
-			r.freeIface(iface)
+			r.im.SetAvailable(iface)
 		}
 	}()
 
@@ -615,7 +593,7 @@ func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error
 	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, err)
 	}
-	r.freeIface(iface)
+	r.im.SetAvailable(iface)
 	return firstErr
 }
 
@@ -644,10 +622,10 @@ func (r *Router) NewFrameSender(ctx context.Context, iface string) (ret *framese
 	if err != nil {
 		return nil, err
 	}
-	r.setIfaceBusy(nd.IfName)
+	r.im.SetBusy(nd.IfName)
 	defer func() {
 		if retErr != nil {
-			r.freeIface(nd.IfName)
+			r.im.SetAvailable(nd.IfName)
 		}
 	}()
 
@@ -671,7 +649,7 @@ func (r *Router) ReserveForCloseFrameSender(ctx context.Context) (context.Contex
 // CloseFrameSender closes frame sender and releases related resources.
 func (r *Router) CloseFrameSender(ctx context.Context, s *framesender.Sender) error {
 	err := r.ipr.SetLinkDown(ctx, s.Interface())
-	r.freeIface(s.Interface())
+	r.im.SetAvailable(s.Interface())
 	return err
 }
 
@@ -764,31 +742,12 @@ func (r *Router) UnbindVeth(ctx context.Context, veth string) error {
 
 // Utilities for resource control.
 
-// uniqueIfaceName returns an unique name for interface with type t.
-func (r *Router) uniqueIfaceName(t iw.IfType) string {
-	name := fmt.Sprintf("%s%d", string(t), r.ifaceID)
-	r.ifaceID++
-	return name
-}
-
 // createWifiIface creates an interface on phy with type=t and returns the name of created interface.
 func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (*iw.NetDev, error) {
 	ctx, st := timing.Start(ctx, "createWifiIface")
 	defer st.End()
-
-	iface := r.uniqueIfaceName(t)
-	phy := r.phys[phyID].Name
-	testing.ContextLogf(ctx, "Creating wdev %s on wiphy %s", iface, phy)
-	if err := r.iwr.AddInterface(ctx, phy, iface, t); err != nil {
-		return nil, err
-	}
-	nd := &iw.NetDev{
-		PhyNum: phyID,
-		IfName: iface,
-		IfType: t,
-	}
-	r.availIfaces[iface] = nd
-	return nd, nil
+	phyName := r.phys[phyID].Name
+	return r.im.Create(ctx, phyName, phyID, t)
 }
 
 // waitBridgeState polls for the bridge's link status.
@@ -901,46 +860,6 @@ func (r *Router) removeDevicesWithPrefix(ctx context.Context, prefix string) err
 		}
 	}
 	return nil
-}
-
-// isPhyBusyAny returns if the phyID is occupied by a busy interface of any type.
-func (r *Router) isPhyBusyAny(phyID int) bool {
-	for _, nd := range r.busyIfaces {
-		if nd.PhyNum == phyID {
-			return true
-		}
-	}
-	return false
-}
-
-// isPhyBusy returns if the phyID is occupied by a busy interface of type t.
-func (r *Router) isPhyBusy(phyID int, t iw.IfType) bool {
-	for _, nd := range r.busyIfaces {
-		if nd.PhyNum == phyID && nd.IfType == t {
-			return true
-		}
-	}
-	return false
-}
-
-// setIfaceBusy marks iface as busy.
-func (r *Router) setIfaceBusy(iface string) {
-	nd, ok := r.availIfaces[iface]
-	if !ok {
-		return
-	}
-	r.busyIfaces[iface] = nd
-	delete(r.availIfaces, iface)
-}
-
-// freeIface marks iface as free.
-func (r *Router) freeIface(iface string) {
-	nd, ok := r.busyIfaces[iface]
-	if !ok {
-		return
-	}
-	r.availIfaces[iface] = nd
-	delete(r.busyIfaces, iface)
 }
 
 // cloneMAC clones the MAC address of src to dst.
