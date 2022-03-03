@@ -49,6 +49,31 @@ func init() {
 			Fixture:           "lacrosOmaha",
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 			ExtraAttr:         []string{"informational"},
+		}, {
+			// 1. ash-chrome with --disable-features="DefaultWebAppInstallation" by default
+			// working as intended.
+			// blocks the default apps from installing and pinning to shelf on startup.
+			// the test will fail, but is just okay to check the flag's behavior.
+			Name:      "experiment0",
+			Fixture:   "chromeLoggedIn",
+			ExtraAttr: []string{"informational"},
+		}, {
+			// 2. lacros-chrome with --disable-features="DefaultWebAppInstallation"
+			// none of them works.
+			// the default apps are being installed and pinned to shelf on startup with or without the flag.
+			Name:              "experiment1",
+			Fixture:           "lacrosPrimaryDisableDefaultWebAppInstallation",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			// 3. lacros-chrome with --disable-default-apps
+			// partly okay.
+			// blocks the default apps from being pinned to shelf on startup, but
+			// continues to install them silently without pinning, which is not the same behavior as --disable-features="DefaultWebAppInstallation" for ash-chrome.
+			Name:              "experiment2",
+			Fixture:           "lacrosPrimaryDisableDefaultApps",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
@@ -125,11 +150,11 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
-	defer func() {
-		if l != nil {
-			l.Close(ctx)
-		}
-	}()
+	// defer func() {
+	// 	if l != nil {
+	// 		l.Close(ctx)
+	// 	}
+	// }()
 
 	s.Log("Opening a new tab")
 	conn, err := l.NewConn(ctx, "about:blank")
@@ -137,18 +162,18 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open new tab: ", err)
 	}
 	defer conn.Close()
-	defer conn.CloseTarget(ctx)
+	// defer conn.CloseTarget(ctx)
 	if err := lacros.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
 		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
 	}
 
-	s.Log("Closing lacros-chrome browser")
-	if err := l.Close(ctx); err != nil {
-		s.Fatal("Failed to close lacros-chrome: ", err)
-	}
-	l = nil
+	// s.Log("Closing lacros-chrome browser")
+	// if err := l.Close(ctx); err != nil {
+	// 	s.Fatal("Failed to close lacros-chrome: ", err)
+	// }
+	// l = nil
 
-	if err := ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID); err != nil {
-		s.Fatalf("%s did not close successfully: %s", apps.Lacros.Name, err)
-	}
+	// if err := ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID); err != nil {
+	// 	s.Fatalf("%s did not close successfully: %s", apps.Lacros.Name, err)
+	// }
 }

@@ -176,6 +176,38 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPrimaryDisableDefaultApps",
+		Desc:     "Lacros Chrome from rootfs as a primary browser",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
+				chrome.LacrosExtraArgs("--disable-default-apps"),
+				chrome.LacrosEnableFeatures("RecordWebAppDebugInfo"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPrimaryDisableDefaultWebAppInstallation",
+		Desc:     "Lacros Chrome from rootfs as a primary browser",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
+				chrome.LacrosDisableFeatures("DefaultWebAppInstallation"),
+				chrome.LacrosEnableFeatures("RecordWebAppDebugInfo"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
 	// lacrosUIKeepAlive is similar to lacros but should be used
 	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
 	// of by command line, and this test assuming that Lacros will be keep alive
