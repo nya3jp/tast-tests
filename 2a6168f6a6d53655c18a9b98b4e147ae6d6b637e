@@ -16,6 +16,24 @@
       "message": "Would a hardware requirement like `HardwareDeps: hwdep.D(hwdep.Keyboard()),` work for your use case?",
       "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e03ee7_c38a7ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-03T09:06:51Z",
+      "side": 1,
+      "message": "We found a scenario that DUT has a physical keyboard (which satisfies the `hwdep.D(hwdep.Keyboard())`) but `input` couldn’t find the physical keyboard configuration, we suspect it might be related to firmware.\nTherefore the `hwdep.D(hwdep.Keyboard())` might not work in this case.",
+      "parentUuid": "e0db01fb_9a2dcb52",
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
