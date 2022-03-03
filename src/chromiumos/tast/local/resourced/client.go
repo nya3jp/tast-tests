@@ -6,6 +6,9 @@ package resourced
 
 import (
 	"context"
+	"io/ioutil"
+	"strconv"
+	"strings"
 
 	"github.com/godbus/dbus"
 
@@ -77,6 +80,18 @@ func (c *Client) SetGameModeWithTimeout(ctx context.Context, mode uint8, timeout
 
 // AvailableMemoryKB returns the result of the GetAvailableMemoryKB D-Bus method.
 func (c *Client) AvailableMemoryKB(ctx context.Context) (uint64, error) {
+	if c == nil {
+		data, err := ioutil.ReadFile("/sys/kernel/mm/chromeos-low_mem/available")
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to read chromeos-low_mem/available")
+		}
+		firstString := strings.Split(strings.TrimSpace(string(data)), " ")[0]
+		firstUint64, err := strconv.ParseUint(firstString, 10, 64)
+		if err != nil {
+			return 0, errors.Wrapf(err, "unable to convert %q to integer", data)
+		}
+		return firstUint64 * 1024, nil
+	}
 	var result uint64
 	if err := c.obj.Call(ctx, "GetAvailableMemoryKB").Store(&result); err != nil {
 		return 0, errors.Wrap(err, "failed to call method GetAvailableMemoryKB")
@@ -102,6 +117,24 @@ type Margins struct {
 // MemoryMarginsKB returns the result of the GetMemoryMarginsKB D-Bus method.
 func (c *Client) MemoryMarginsKB(ctx context.Context) (Margins, error) {
 	var m Margins
+	if c == nil {
+		data, err := ioutil.ReadFile("/sys/kernel/mm/chromeos-low_mem/margin")
+		if err != nil {
+			return m, errors.Wrap(err, "failed to read chromeos-low_mem/margin")
+		}
+		fields := strings.Split(strings.TrimSpace(string(data)), " ")
+		critical, err := strconv.ParseUint(fields[0], 10, 64)
+		if err != nil {
+			return m, errors.Wrapf(err, "unable to convert %q to integer", data)
+		}
+		moderate, err := strconv.ParseUint(fields[1], 10, 64)
+		if err != nil {
+			return m, errors.Wrapf(err, "unable to convert %q to integer", data)
+		}
+		m.CriticalKB = critical * 1024
+		m.ModerateKB = moderate * 1024
+		return m, nil
+	}
 	if err := c.obj.Call(ctx, "GetMemoryMarginsKB").Store(&m.CriticalKB, &m.ModerateKB); err != nil {
 		return m, errors.Wrap(err, "failed to call method GetMemoryMarginsKB")
 	}

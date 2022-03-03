@@ -58,10 +58,13 @@ func MemoryChromeOSPerf(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(*multivm.PreData)
 	arc := multivm.ARCFromPre(pre)
 	p := perf.NewValues()
-	rm, err := resourced.NewClient(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Resource Manager client: ", err)
-	}
+	var rm *resourced.Client
+	/*
+		rm, err := resourced.NewClient(ctx)
+		if err != nil {
+			s.Fatal("Failed to create Resource Manager client: ", err)
+		}
+	*/
 
 	margins, err := rm.MemoryMarginsKB(ctx)
 	if err != nil {
