@@ -16,6 +16,63 @@
       "message": "As an alternative approach, would it be possible to use the standard chrome/lacros fixture, possibly with additional cleanup code at the end of a subtest (if needed)?",
       "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de0025a_151278d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-03T13:20:20Z",
+      "side": 1,
+      "message": "Eliot is working on a proposal to get rid of command line lacros execution, and I think that will help this CL significantly simplified.\n\nWDYT to put the effort together?",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9745779f_7792932f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-03T13:20:20Z",
+      "side": 1,
+      "message": "nit/style: let\u0027s use swtich to avoid createing unneeded array.",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb13676_c484373c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-03T13:20:20Z",
+      "side": 1,
+      "message": "instead, could you pass values directly?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
