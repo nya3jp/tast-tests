@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"runtime"
 	"strings"
 	"syscall"
@@ -41,7 +42,17 @@ func (sess *Session) Stop() error {
 		return errors.Wrap(err, "failed to terminate the tracing session")
 	}
 
-	return sess.Wait()
+	waitErr := sess.Wait()
+	if waitErr != nil {
+		if err, ok := waitErr.(*exec.ExitError); ok {
+			waitStatus := err.ProcessState.Sys().(syscall.WaitStatus)
+			if waitStatus.Signaled() && waitStatus.Signal() == syscall.SIGTERM {
+				return nil
+			}
+		}
+	}
+
+	return waitErr
 }
 
 // Wait waits until the tracing session is done, which should be created
