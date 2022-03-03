@@ -25,9 +25,9 @@ func init() {
 		ResetTimeout:    driveFsSetupTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			"filemanager.drive_credentials",
+			"filemanager.drive_credentials_new",
 			"filemanager.password",
-			"filemanager.refresh_token",
+			"filemanager.refresh_token_new",
 			"filemanager.user",
 		},
 	})
@@ -43,9 +43,9 @@ func init() {
 		ResetTimeout:    driveFsSetupTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			"filemanager.drive_credentials",
+			"filemanager.drive_credentials_new",
 			"filemanager.password",
-			"filemanager.refresh_token",
+			"filemanager.refresh_token_new",
 			"filemanager.user",
 		},
 	})
@@ -132,8 +132,8 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}
 	f.tconn = tconn
 
-	jsonCredentials := s.RequiredVar("filemanager.drive_credentials")
-	refreshToken := s.RequiredVar("filemanager.refresh_token")
+	jsonCredentials := s.RequiredVar("filemanager.drive_credentials_new")
+	refreshToken := s.RequiredVar("filemanager.refresh_token_new")
 
 	// Perform Drive API authentication.
 	APIClient, err := CreateAPIClient(ctx, f.cr, jsonCredentials, refreshToken)
