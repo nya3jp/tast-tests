@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46576408_423c2554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-03T00:48:49Z",
+      "side": 1,
+      "message": "This renamed a constant used by crrev.com/c/3492312. However, it still passed CQ because the second CQ run reused builds from the first CQ run.",
+      "revId": "6cb422aad7b3766d4c865b12419418ad797a91bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
