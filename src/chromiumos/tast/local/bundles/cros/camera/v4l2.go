@@ -25,7 +25,7 @@ const hwTimestampsPath = "/sys/module/uvcvideo/parameters/hwtimestamps"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         V4L2,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies required V4L2 operations on USB camera devices",
 		Contacts: []string{
 			"kamesan@chromium.org",
