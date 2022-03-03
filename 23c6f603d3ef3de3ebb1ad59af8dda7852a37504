@@ -70,6 +70,30 @@
       },
       "revId": "23c6f603d3ef3de3ebb1ad59af8dda7852a37504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f02af6_002639b5",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1405311
+      },
+      "writtenOn": "2022-03-03T16:46:07Z",
+      "side": 1,
+      "message": "Consider https://github.com/fsnotify/fsnotify or something with semantics like this.",
+      "parentUuid": "30683b89_26331bf5",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "23c6f603d3ef3de3ebb1ad59af8dda7852a37504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
