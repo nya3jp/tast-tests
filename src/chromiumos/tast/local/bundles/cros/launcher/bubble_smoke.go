@@ -85,8 +85,11 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not open bubble by clicking home button: ", err)
 	}
 
+	// Click close to the corner, but not exactly at origin to avoid the coordinate being transformed to
+	// bounds outside the root window at it's piped to UI.
+	// TODO(b/221688041): Consider changing back to (0,0) if the crash linked to the bug stops happening.
 	if err := uiauto.Combine("close bubble by clicking in screen corner",
-		mouse.Click(tconn, coords.Point{X: 0, Y: 0}, mouse.LeftButton),
+		mouse.Click(tconn, coords.Point{X: 4, Y: 4}, mouse.LeftButton),
 		ui.WaitUntilGone(bubble),
 	)(ctx); err != nil {
 		s.Fatal("Could not close bubble by clicking in screen corner: ", err)
