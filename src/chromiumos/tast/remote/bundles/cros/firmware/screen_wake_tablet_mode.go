@@ -15,8 +15,9 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-	"chromiumos/tast/services/cros/firmware"
+	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/services/cros/graphics"
 	"chromiumos/tast/services/cros/inputs"
 	"chromiumos/tast/testing"
@@ -89,6 +90,7 @@ var convertibleKeyboardScanned = []string{
 	"vortininja",
 	"helios",
 	"kled",
+	"kasumi360",
 }
 
 func init() {
@@ -187,7 +189,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 
-	// Declare the touchscreen service.
+	// Declare a rpc service for detecting touchscreen.
 	touchscreen := inputs.NewTouchscreenServiceClient(h.RPCClient.Conn)
 
 	// Start a logged-in Chrome session, which is required prior to TouchscreenTap in the screenWake function.
@@ -196,10 +198,10 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}
 	defer touchscreen.CloseChrome(ctx, &empty.Empty{})
 
-	// Declare the keyboard service.
-	keyboard := firmware.NewUtilsServiceClient(h.RPCClient.Conn)
+	// Declare a rpc service for finding keyboard.
+	keyboard := pb.NewUtilsServiceClient(h.RPCClient.Conn)
 
-	// Declare the touchpad service.
+	// Declare a rpc service for detecting touchpad.
 	touchpad := inputs.NewTouchpadServiceClient(h.RPCClient.Conn)
 
 	testArgs := s.Param().(*screenWakeTabletModeArgs)
@@ -330,6 +332,32 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	// For debugging purposes, checkAndRunTabletMode checks whether the relevant EC command exists.
+	checkAndRunTabletMode := func(ctx context.Context, action string) error {
+		// regular expressions.
+		var (
+			tabletmodeNotFound = `Command 'tabletmode' not found or ambiguous`
+			tabletmodeStatus   = `\[\S+ tablet mode (enabled|disabled)\]`
+			basestateNotFound  = `Command 'basestate' not found or ambiguous`
+			basestateStatus    = `\[\S+ base state: (attached|detached)\]`
+			checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `)`
+		)
+		// Run EC command to turn on/off tablet mode.
+		s.Logf("Check command %q exists", action)
+		out, err := h.Servo.RunECCommandGetOutput(ctx, action, []string{checkTabletMode})
+		if err != nil {
+			return errors.Wrapf(err, "failed to run command %q", action)
+		}
+		tabletModeUnavailable := []*regexp.Regexp{regexp.MustCompile(tabletmodeNotFound), regexp.MustCompile(basestateNotFound)}
+		for _, v := range tabletModeUnavailable {
+			if match := v.FindStringSubmatch(out[0][0]); match != nil {
+				return errors.Errorf("device does not support tablet mode: %q", match)
+			}
+		}
+		s.Logf("Current tabletmode status: %q", out[0][1])
+		return nil
+	}
+
 	powerBtnPollOptions := testing.PollOptions{
 		Timeout:  30 * time.Second,
 		Interval: 1 * time.Second,
@@ -397,9 +425,15 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			}
 			// Emulate the action of moving lid by turning off tablet mode.
 			s.Log("Turn off tablet mode to wake the screen")
-			if err := h.Servo.RunECCommand(ctx, testArgs.tabletmodeOFF); err != nil {
-				return errors.Wrap(err, "error resetting tabletmode from the EC command")
+			if err := checkAndRunTabletMode(ctx, testArgs.tabletmodeOFF); err != nil {
+				s.Logf("Failed to turn tabletmode off using command: %s. Attempting to turn off by setting tablet_mode_angle with ectool", testArgs.tabletmodeOFF)
+				cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+				// Setting tabletModeAngle to 360 will force DUT into clamshell mode.
+				if err := cmd.ForceTabletModeAngle(ctx, "360", "0"); err != nil {
+					return errors.Wrap(err, "failed to set tablet mode angle")
+				}
 			}
+
 			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
 				return errors.Wrap(err, "error in sleeping for 1 second")
 			}
@@ -470,12 +504,26 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}
 
 	if testArgs.hasLid {
-		// Run EC command to turn on tablet mode.
 		s.Log("Put DUT in tablet mode")
-		if err := h.Servo.RunECCommand(ctx, testArgs.tabletmodeON); err != nil {
-			s.Fatal("Failed to set DUT into tablet mode: ", err)
+		if err := checkAndRunTabletMode(ctx, testArgs.tabletmodeON); err != nil {
+			s.Logf("Unable to switch DUT into tablet mode using: %s, and got: %v. Attempting to set tablet mode by emulating rotation angles with ectool", testArgs.tabletmodeON, err)
+			cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+			// Save initial tablet mode angle settings to restore at the end of test.
+			tabletModeAngleInit, hysInit, err := cmd.SaveTabletModeAngles(ctx)
+			if err != nil {
+				s.Fatal("Failed to save initial tablet mode angles: ", err)
+			}
+			defer func() {
+				s.Logf("Restore DUT's tablet mode angles to the original settings: lid_angle=%s, hys=%s", tabletModeAngleInit, hysInit)
+				if err := cmd.ForceTabletModeAngle(ctx, tabletModeAngleInit, hysInit); err != nil {
+					s.Fatal("Failed to restore tablet mode angle to the initial angles: ", err)
+				}
+			}()
+			// Setting tabletModeAngle to 0s will force DUT into tablet mode.
+			if err := cmd.ForceTabletModeAngle(ctx, "0", "0"); err != nil {
+				s.Fatal("Failed to set tablet mode angle: ", err)
+			}
 		}
-
 		if err := verifyScreenState(ctx, expectOn); err != nil {
 			s.Fatal("After turning on tablemode: ", err)
 		}
@@ -504,18 +552,16 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to send 'chan 0' to EC: ", err)
 		}
 
-		defer func() {
-			if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
-				s.Fatal("Failed to send 'chan 0xffffffff' to EC: ", err)
-			}
-		}()
-
 		keyboardStateOut, err := h.Servo.RunECCommandGetOutput(ctx, "ksstate", []string{`Keyboard scan disable mask:(\s+\w+)`})
 		if err != nil {
 			s.Fatal("Failed to run command ksstate: ", err)
 		}
 		keyboardStateStr := keyboardStateOut[0][1]
 		s.Logf("Keyboard scan disable mask value:%s", keyboardStateStr)
+
+		if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
+			s.Fatal("Failed to send 'chan 0xffffffff' to EC: ", err)
+		}
 
 		// Emulate pressing a keyboard key.
 		if err := h.Servo.ECPressKey(ctx, "<enter>"); err != nil {
