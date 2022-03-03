@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74e618f5_f24d0599",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-03-03T23:21:40Z",
+      "side": 1,
+      "message": "See below on line 67.",
+      "parentUuid": "489a7081_04e701d0",
+      "revId": "c861bb694d81025123d71bb39d1bb4e320fd713d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fc884d6_30d3835b",
         "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2022-03-03T18:21:45Z",
       "side": 1,
       "message": "nit: How about call `Stop` to be consistent with other trackers and match `Start`? If we want to keep `FetchLoginEvents` name, maybe rename `Start` to `Prepare` ? It feels strange to call `Start` without `Stop`.",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 45
+      },
+      "revId": "c861bb694d81025123d71bb39d1bb4e320fd713d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d37517d_2900b524",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-03-03T23:21:40Z",
+      "side": 1,
+      "message": "You are right. At first I renamed it to Stop, but Prepare() is actually even better. Let it be Prepare. Thank you for the hint!",
+      "parentUuid": "3fc884d6_30d3835b",
       "range": {
         "startLine": 51,
         "startChar": 29,
