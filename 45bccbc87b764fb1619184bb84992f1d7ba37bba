@@ -236,6 +236,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5434f2_04e7e612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T14:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbc7a6f7_e371c484",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18ef59bb_0b2034ba",
@@ -586,6 +604,24 @@
       "side": 1,
       "message": "I will follow up with a CL that replaces this use of jq, another use of jq, and one or more native functions with a single native function.",
       "parentUuid": "8609f3dd_0dbabd83",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba38837a_8260e730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T14:34:47Z",
+      "side": 1,
+      "message": "Clarified the TODO. I\u0027ll prepare the follow-up CL first thing after this lands.",
+      "parentUuid": "b6e2f748_2841447a",
       "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
