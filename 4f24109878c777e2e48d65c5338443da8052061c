@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57cad77_2437aae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-03-03T07:49:15Z",
+      "side": 1,
+      "message": "QQ: extending the duration to 20 sec will make all devices go through the SIGTERM path, right?",
+      "revId": "4f24109878c777e2e48d65c5338443da8052061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
