@@ -16,6 +16,24 @@
       "message": "Should we increase total timeout here as well since 5min + 90s*3 is larger than 8min?",
       "revId": "d54c1a5cb37583ddaba3c67a2489c11c7b32c127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcdd5c80_3275de01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-03-03T08:03:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "637562e7_1dcd5f09",
+      "revId": "d54c1a5cb37583ddaba3c67a2489c11c7b32c127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
