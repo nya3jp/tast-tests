@@ -116,14 +116,15 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 			ui.WaitUntilGone(omniboxFirstResultFinder),
 		)
 
+		inputField := "Omnibox"
 		if err := uiauto.UserAction("VK typing",
 			action,
 			uc,
 			&useractions.UserActionCfg{
-				Tags: []useractions.ActionTag{useractions.ActionTagVKTyping},
 				Attributes: map[string]string{
-					useractions.AttributeInputField:     "Omnibox",
-					useractions.AttributeKeyboardLayout: mode.name,
+					useractions.AttributeInputField:   inputField,
+					useractions.AttributeTestScenario: fmt.Sprintf("Japanese VK typing in %q mode in %q field", mode.name, inputField),
+					useractions.AttributeFeature:      useractions.FeatureIMESpecific,
 				},
 			},
 		)(ctx); err != nil {
@@ -152,7 +153,8 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 			&useractions.UserActionCfg{
 				Tags: []useractions.ActionTag{useractions.ActionTagIMESettings},
 				Attributes: map[string]string{
-					useractions.AttributeKeyboardLayout: mode.name,
+					useractions.AttributeTestScenario: fmt.Sprintf("Switch input mode to %q", mode.name),
+					useractions.AttributeFeature:      useractions.FeatureIMESpecific,
 				},
 			},
 		)(ctx); err != nil {

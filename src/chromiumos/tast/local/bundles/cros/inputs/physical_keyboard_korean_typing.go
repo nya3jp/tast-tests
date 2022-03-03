@@ -147,7 +147,7 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 			expectedText:   "않",
 		},
 		{
-			testName:       "EnterKey",
+			testName:       "ENTER key to submit",
 			keyboardLayout: koreanInputType2Set,
 			inputFunc: uiauto.Combine("type Korean and press enter",
 				keyboard.TypeAction("gks"),
@@ -178,8 +178,8 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 					Attributes: map[string]string{
 						useractions.AttributeTestScenario: subtest.testName,
 						useractions.AttributeInputField:   string(inputField),
+						useractions.AttributeFeature:      useractions.FeaturePKTyping,
 					},
-					Tags: []useractions.ActionTag{useractions.ActionTagPKTyping},
 				},
 			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
@@ -187,7 +187,7 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 		})
 	}
 
-	testName := "EnterKeyOnOmnibox"
+	testName := "ENTER key on Omnibox"
 	s.Run(ctx, testName, func(ctx context.Context, s *testing.State) {
 		defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+testName)
 
@@ -215,8 +215,8 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 				Attributes: map[string]string{
 					useractions.AttributeTestScenario: testName,
 					useractions.AttributeInputField:   "Omnibox",
+					useractions.AttributeFeature:      useractions.FeaturePKTyping,
 				},
-				Tags: []useractions.ActionTag{useractions.ActionTagPKTyping},
 			},
 		)(ctx); err != nil {
 			s.Fatal("Failed to validate korean PK input in omnibox: ", err)

@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -63,13 +64,20 @@ func PhysicalKeyboardCapsLock(ctx context.Context, s *testing.State) {
 
 	// TODO(b/196771467) Validate typing after changing caps lock.
 	actionName := "PK caps lock and unlock"
-	if err := uc.RunAction(ctx, actionName,
+	if err := uiauto.UserAction(actionName,
 		uiauto.Combine(actionName,
 			keyboard.AccelAction("Alt+Search"),
 			ui.WaitUntilExists(capsOnImageFinder),
 			keyboard.AccelAction("Shift"),
 			ui.WaitUntilGone(capsOnImageFinder),
-		), nil); err != nil {
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeFeature: useractions.FeaturePKTyping,
+			},
+		},
+	)(ctx); err != nil {
 		s.Fatal("Failed to validate caps lock: ", err)
 	}
 }
