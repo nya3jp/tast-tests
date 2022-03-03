@@ -94,6 +94,30 @@
       },
       "revId": "23c6f603d3ef3de3ebb1ad59af8dda7852a37504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91480661_37ff0295",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-03T18:39:06Z",
+      "side": 1,
+      "message": "I tried setting this up with fsnotify but I\u0027m getting the following error:\n\n../../../trunk/src/platform/tast-tests/src/chromiumos/tast/local/profiler/fixture.go:13:2: cannot find package \"github.com/fsnotify/fsnotify\" in any of:\n2022-03-03T18:29:12.387230Z     /usr/lib/go/src/github.com/fsnotify/fsnotify (from $GOROOT)\n2022-03-03T18:29:12.387248Z     /home/jacobraz/trunk/src/platform/tast-tests/src/github.com/fsnotify/fsnotify (from $GOPATH)\n2022-03-03T18:29:12.387271Z     /home/jacobraz/trunk/src/platform/tast/src/github.com/fsnotify/fsnotify\n2022-03-03T18:29:12.387287Z     /usr/lib/gopath/src/github.com/fsnotify/fsnotify\n\nI\u0027m importing it with \"github.com/fsnotify/fsnotify\" as mentioned on the github page for that package.\n\nCan this package be added to our code base somewhere so the import works? \n\nAlternatively I could probably just mimic this functionality with a while loop ie:\n\nwhile (true) {\n   file, err :\u003d os.Open(myfile)\n   if err !\u003d nil { \n       time.Sleep(100 * time.Millisecond)\n       continue\n    } else { \n        break\n    }\n }\n \nit seems like this alternative would be less efficient but since we should just have to wait at most 4-5 iterations of the loop it wouldn\u0027t be too bad.",
+      "parentUuid": "c7f02af6_002639b5",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "23c6f603d3ef3de3ebb1ad59af8dda7852a37504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
