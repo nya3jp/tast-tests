@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5c34b9_a1279e30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-03T12:12:28Z",
+      "side": 1,
+      "message": "\u003e \"implemention\" is a possible misspelling of \"implementation\".\n\nPlease fix.",
+      "parentUuid": "d868779a_e23335ef",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "9c257e889955e3f217ba8929eda9245d3c5b6158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
