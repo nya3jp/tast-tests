@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c855a085_9202db69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:49:08Z",
+      "side": 1,
+      "message": "Nit: \"lacrosTests\" sounds more natural and in line with the others below.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 14
+      },
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a186575f_390fe790",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
         "patchSetId": 5
@@ -96,6 +119,40 @@
       "side": 1,
       "message": "No, we need to verify the title.",
       "parentUuid": "a186575f_390fe790",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd1caea_f7aa93d1",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:49:08Z",
+      "side": 1,
+      "message": "I don\u0027t understand this, it looks wrong.",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515dbb8a_da43a796",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:49:08Z",
+      "side": 1,
+      "message": "I don\u0027t get this either. Why is there a special case for the first element of baseCases?",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
