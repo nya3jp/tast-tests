@@ -52,6 +52,24 @@
       "parentUuid": "cf8fe238_9284cbba",
       "revId": "4f24109878c777e2e48d65c5338443da8052061c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f6c7ac_8390c08c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-03-03T08:58:43Z",
+      "side": 1,
+      "message": "20 sec is long enough for LocalPerfettoTBMTracedProbes (which takes 10 sec [1]), SensorIioservice (which takes 1 sec for each sensor), and SensorIioserviceHard (which takes about 10 sec in total: `Completed test hardware.SensorIioserviceHard in 12.954s with 0 error(s)`), so it\u0027s currently enough for all tests using it.\nI\u0027m okay to extend it further. Just name a value 😊\n\nI understand what you mean about the long enough duration, while by the race condition, I mean otherwise: In my trial, without the previous SIGTERM fix, and with this extended duration, SensorIioserviceHard would still pass (with luck I assume) without |Cmd.Wait()| returning with SIGTERM failure. I guess it\u0027s because when |Cmd.Wait()| is called, the cmdline perfetto has already gone (stopped by our SIGTERM sent).\nIn another case, if the cmdline perfetto is still alive when |Cmd.Wait()| is called, and after that the signal SIGTERM is received by the cmdline perfetto, I believe this causes |Cmd.Wait()| to return SIGTERM failure.\n\nWDYT?\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/local_perfetto_tbm_traced_probes.go;l\u003d97;bpv\u003d0",
+      "parentUuid": "87844950_e64b34df",
+      "revId": "4f24109878c777e2e48d65c5338443da8052061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
