@@ -43,7 +43,7 @@ func (r *Router) RouterType() support.RouterType {
 	return r.routerType
 }
 
-// RouterTypeName returns the human-readable name this Router's RouterType
+// RouterTypeName returns the human-readable name of this Router's RouterType.
 func (r *Router) RouterTypeName() string {
 	return "AsusAX"
 }
