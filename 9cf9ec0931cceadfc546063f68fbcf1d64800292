@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b7f981_ea5684cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-03-03T00:21:25Z",
+      "side": 1,
+      "message": "Judy: can you take a look.\n\nI\u0027ll try tast promotion after a week if it\u0027s passing in tastboard. CrOS CQ seems happy with it (see PS3 try job result)",
+      "revId": "9cf9ec0931cceadfc546063f68fbcf1d64800292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
