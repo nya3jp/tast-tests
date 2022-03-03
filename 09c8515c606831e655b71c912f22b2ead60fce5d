@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85cc5780_5333f34c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T23:43:31Z",
+      "side": 1,
+      "message": "For cleaning up tests with no fixture, I was told that Tast is going to gracefully reset ash-chrome between tests to ensure fresh chrome restart by purging user data dir upon creation that also wipes out the one for lacros as well. Please correct me if I understood incorrectly.",
+      "parentUuid": "ae52fa95_8568fa05",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9745779f_7792932f",
