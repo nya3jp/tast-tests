@@ -598,6 +598,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "06de7b30_e06595e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-03T10:23:12Z",
+      "side": 1,
+      "message": "I think we need this.",
+      "parentUuid": "155c7916_6457ad67",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cde52643_03866c16",

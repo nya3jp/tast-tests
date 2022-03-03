@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe15a17_cb218317",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-03T10:23:12Z",
+      "side": 1,
+      "message": "Not sure if this is in line with taste conventions. I think at least we should add in the comment that we\u0027re returning it together with non-nil error.\n\nsupernit: Period at the end.",
+      "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c47241_b9126d14",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-03T10:23:12Z",
+      "side": 1,
+      "message": "Optional: I would recommend getting the slot number after every load, because there\u0027s no guarantee that the slot ID remains the same after each load. (Although it is always the case in the current implementation.",
+      "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc9a455_7ed4120e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-03T10:23:12Z",
+      "side": 1,
+      "message": "Maybe check this actually failed?",
+      "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
