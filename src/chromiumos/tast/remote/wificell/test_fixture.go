@@ -38,6 +38,7 @@ import (
 	"chromiumos/tast/remote/wificell/router/ax"
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/router/legacy"
+	"chromiumos/tast/remote/wificell/router/openwrt"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
@@ -748,7 +749,7 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, options ...
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "client failed to connect to WiFi network with SSID %q", c.Ssid)
 	}
 	return response, nil
 }
@@ -969,17 +970,17 @@ func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Co
 	return nil
 }
 
-// RouterByID returns the respective Router object in the fixture.
+// RouterByID returns the respective router object in the fixture.
 func (tf *TestFixture) RouterByID(idx int) router.Base {
 	return tf.routers[idx].object
 }
 
-// Router returns Router 0 object in the fixture as the generic router.Base
+// Router returns the router with id 0 in the fixture as the generic router.Base.
 func (tf *TestFixture) Router() router.Base {
 	return tf.RouterByID(0)
 }
 
-// StandardRouter returns router.Base 0 object in the fixture as a router.Standard
+// StandardRouter returns the Router as a router.Standard.
 func (tf *TestFixture) StandardRouter() (router.Standard, error) {
 	r, ok := tf.Router().(router.Standard)
 	if !ok {
@@ -988,7 +989,7 @@ func (tf *TestFixture) StandardRouter() (router.Standard, error) {
 	return r, nil
 }
 
-// LegacyRouter returns router.Base 0 object in the fixture as a legacy.Router
+// LegacyRouter returns the Router as a legacy.Router.
 func (tf *TestFixture) LegacyRouter() (*legacy.Router, error) {
 	r, ok := tf.Router().(*legacy.Router)
 	if !ok {
@@ -997,7 +998,7 @@ func (tf *TestFixture) LegacyRouter() (*legacy.Router, error) {
 	return r, nil
 }
 
-// AxRouter returns router 0 object in the fixture as an ax.Router
+// AxRouter returns the Router as an ax.Router.
 func (tf *TestFixture) AxRouter() (*ax.Router, error) {
 	r, ok := tf.Router().(*ax.Router)
 	if !ok {
@@ -1006,16 +1007,34 @@ func (tf *TestFixture) AxRouter() (*ax.Router, error) {
 	return r, nil
 }
 
-// Pcap returns the pcap router.Standard object in the fixture.
+// OpenWrtRouter returns the Router as an openwrt.Router.
+func (tf *TestFixture) OpenWrtRouter() (*openwrt.Router, error) {
+	r, ok := tf.Router().(*openwrt.Router)
+	if !ok {
+		return nil, errors.New("router is not an OpenWrt router")
+	}
+	return r, nil
+}
+
+// Pcap returns the pcap device in the fixture.
 func (tf *TestFixture) Pcap() router.Base {
 	return tf.pcap
 }
 
-// LegacyPcap returns the pcap router.Standard object in the fixture.
+// LegacyPcap returns the Pcap as a legacy.Router.
 func (tf *TestFixture) LegacyPcap() (*legacy.Router, error) {
-	p, ok := tf.pcap.(*legacy.Router)
+	p, ok := tf.Pcap().(*legacy.Router)
 	if !ok {
-		return nil, errors.New("pcap is not a legacy pcap device")
+		return nil, errors.New("pcap is not a legacy router")
+	}
+	return p, nil
+}
+
+// OpenWrtPcap returns the Pcap as an openwrt.Router.
+func (tf *TestFixture) OpenWrtPcap() (*openwrt.Router, error) {
+	p, ok := tf.Pcap().(*openwrt.Router)
+	if !ok {
+		return nil, errors.New("pcap is not an OpenWrt router")
 	}
 	return p, nil
 }
@@ -1239,6 +1258,8 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 		return legacy.NewRouter(ctx, daemonCtx, host, name)
 	case support.AxT:
 		return ax.NewRouter(ctx, daemonCtx, host, name)
+	case support.OpenWrtT:
+		return openwrt.NewRouter(ctx, daemonCtx, host, name)
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
