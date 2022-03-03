@@ -33,6 +33,24 @@
       "message": "Thanks for the review.",
       "revId": "d4f067183c48cb26022ef5a0362f05d36495b7f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23aed5a0_5c9c22b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-03T19:08:23Z",
+      "side": 1,
+      "message": "Yes. I want to write a few more tests including a remote test to understand the test structure more. The next step will be write fixtures and convert the tests to use the fixture.",
+      "parentUuid": "25d050fa_c70518ce",
+      "revId": "d4f067183c48cb26022ef5a0362f05d36495b7f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
