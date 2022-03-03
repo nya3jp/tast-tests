@@ -6498,10 +6498,10 @@ type ArcPolicy struct {
 }
 
 type Application struct {
-	PackageName             string `json:"packageName"`
-	InstallType             string `json:"installType"`
-	DefaultPermissionPolicy string `json:"defaultPermissionPolicy"`
-	ManagedConfiguration    string `json:"managedConfiguration"`
+	PackageName             string                 `json:"packageName"`
+	InstallType             string                 `json:"installType"`
+	DefaultPermissionPolicy string                 `json:"defaultPermissionPolicy"`
+	ManagedConfiguration    map[string]interface{} `json:"managedConfiguration"`
 }
 
 type ArcPolicyValue struct {

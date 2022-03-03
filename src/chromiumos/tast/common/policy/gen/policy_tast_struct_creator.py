@@ -533,7 +533,7 @@ type Application struct {
 \tPackageName\tstring\t`json:"packageName"`
 \tInstallType\tstring\t`json:"installType"`
 \tDefaultPermissionPolicy\tstring\t`json:"defaultPermissionPolicy"`
-\tManagedConfiguration\tstring\t`json:"managedConfiguration"`
+\tManagedConfiguration\tmap[string]interface{}\t`json:"managedConfiguration"`
 }
 
 type ArcPolicyValue struct {
