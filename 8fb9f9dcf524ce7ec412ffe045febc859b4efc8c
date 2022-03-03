@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f36f00e_de2c4f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-03-03T10:38:21Z",
+      "side": 1,
+      "message": "I\u0027ve created https://crrev.com/c/3499613 to make the test work on R90. I did notice some non-fatal errors to do with PSI metrics I think, so you might have to fix those as well.",
+      "parentUuid": "573e03ae_adbb03a5",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "8fb9f9dcf524ce7ec412ffe045febc859b4efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eee921d5_1fc2aab1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-01T09:01:43Z",
       "side": 1,
       "message": "same as previous comment... making it incompatible with older system prevents comparisons.  Here, I guess this would translate to using a different method when rm is nil (?)",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "8fb9f9dcf524ce7ec412ffe045febc859b4efc8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5182b49_1bea2909",
+        "filename": "src/chromiumos/tast/local/memory/chromeos.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-03-03T10:38:21Z",
+      "side": 1,
+      "message": "see https://crrev.com/c/3499613",
+      "parentUuid": "eee921d5_1fc2aab1",
       "range": {
         "startLine": 140,
         "startChar": 1,
