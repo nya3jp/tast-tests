@@ -550,16 +550,12 @@ func (tf *TestFixture) getUniqueAPName() string {
 	return id
 }
 
-// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to chose router
+// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to choose router
 // to establish the AP on.
 func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
-	r, ok := tf.routers[idx].object.(router.Standard)
-	if !ok {
-		return nil, errors.Errorf("router device of type %v does not have standard support", tf.routers[idx].object.RouterType())
-	}
-
+	r := tf.routers[idx].object
 	name := tf.getUniqueAPName()
 
 	if fac != nil {
