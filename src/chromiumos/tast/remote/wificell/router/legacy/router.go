@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"net"
-	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -21,7 +20,6 @@ import (
 	remote_ip "chromiumos/tast/remote/network/ip"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
-	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/log"
@@ -34,6 +32,17 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
+
+// Used hostapd environment variable keys.
+const (
+	envKeyOpenSslConf                            = "OPENSSL_CONF"
+	envKeyOpenSslChromiumSkipTrustedPurposeCheck = "OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK"
+)
+
+// logsToCollect is the list of files on router to collect.
+var logsToCollect = []string{
+	"/var/log/messages",
+}
 
 // Router is used to control the legacy wireless router and stores state of the router.
 type Router struct {
@@ -99,7 +108,7 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 
 	// Start log collectors with daemonCtx as it should live longer than current
 	// stage when we are in precondition.
-	if err := r.startLogCollectors(daemonCtx); err != nil {
+	if r.logCollectors, err = common.StartLogCollectors(daemonCtx, r.host, logsToCollect); err != nil {
 		r.Close(shortCtx)
 		return nil, errors.Wrap(err, "failed to start loggers")
 	}
@@ -317,19 +326,19 @@ func (r *Router) Close(ctx context.Context) error {
 	}
 
 	if err := r.removeDevicesWithPrefix(ctx, common.BridgePrefix); err != nil {
-		return err
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to remove devices with prefix %q", common.BridgePrefix))
 	}
 	// Note that we only need to remove one side of each veth pair.
 	if err := r.removeDevicesWithPrefix(ctx, common.VethPrefix); err != nil {
-		return err
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to remove devices with prefix %q", common.VethPrefix))
 	}
 
 	// Collect closing log to facilitate debugging for error occurs in
 	// r.initialize() or after r.CollectLogs().
-	if err := r.collectLogs(ctx, ".close"); err != nil {
+	if err := common.CollectLogs(ctx, r, r.logCollectors, logsToCollect, ".close"); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
 	}
-	if err := r.stopLogCollectors(ctx); err != nil {
+	if err := common.StopLogCollectors(ctx, r.logCollectors); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
 	}
 	if err := r.host.CommandContext(ctx, "rm", "-rf", r.workDir()).Run(); err != nil {
@@ -438,12 +447,6 @@ func (r *Router) StartHostapd(ctx context.Context, name string, conf *hostapd.Co
 	}()
 	return r.startHostapdOnIface(ctx, iface, name, conf)
 }
-
-// Used hostapd environment variable keys.
-const (
-	envKeyOpenSslConf                            = "OPENSSL_CONF"
-	envKeyOpenSslChromiumSkipTrustedPurposeCheck = "OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK"
-)
 
 func (r *Router) startHostapdOnIface(ctx context.Context, iface, name string, conf *hostapd.Config) (_ *hostapd.Server, retErr error) {
 	ctx, st := timing.Start(ctx, "router.startHostapdOnIface")
@@ -945,63 +948,6 @@ func (r *Router) freeIface(iface string) {
 	delete(r.busyIfaces, iface)
 }
 
-// logsToCollect is the list of files on router to collect.
-var logsToCollect = []string{
-	"/var/log/messages",
-}
-
-// startLogCollectors starts log collectors.
-func (r *Router) startLogCollectors(ctx context.Context) error {
-	for _, p := range logsToCollect {
-		logger, err := log.StartCollector(ctx, r.host, p)
-		if err != nil {
-			return errors.Wrap(err, "failed to start log collector")
-		}
-		r.logCollectors[p] = logger
-	}
-	return nil
-}
-
-// collectLogs downloads log files from router to $OutDir/debug/$r.Name with suffix
-// appended to the filenames.
-func (r *Router) collectLogs(ctx context.Context, suffix string) error {
-	ctx, st := timing.Start(ctx, "collectLogs")
-	defer st.End()
-
-	baseDir := filepath.Join("debug", r.name)
-
-	for _, src := range logsToCollect {
-		dst := filepath.Join(baseDir, filepath.Base(src)+suffix)
-		collector := r.logCollectors[src]
-		if collector == nil {
-			testing.ContextLogf(ctx, "No log collector for %s found", src)
-			continue
-		}
-		f, err := fileutil.PrepareOutDirFile(ctx, dst)
-		if err != nil {
-			testing.ContextLogf(ctx, "Failed to collect %q, err: %v", src, err)
-			continue
-		}
-		if err := collector.Dump(f); err != nil {
-			testing.ContextLogf(ctx, "Failed to dump %q logs, err: %v", src, err)
-			continue
-
-		}
-	}
-	return nil
-}
-
-// stopLogCollectors closes all log collectors spawned.
-func (r *Router) stopLogCollectors(ctx context.Context) error {
-	var firstErr error
-	for _, c := range r.logCollectors {
-		if err := c.Close(); err != nil {
-			wifiutil.CollectFirstErr(ctx, &firstErr, err)
-		}
-	}
-	return firstErr
-}
-
 // cloneMAC clones the MAC address of src to dst.
 func (r *Router) cloneMAC(ctx context.Context, dst, src string) error {
 	mac, err := r.ipr.MAC(ctx, src)
@@ -1013,7 +959,7 @@ func (r *Router) cloneMAC(ctx context.Context, dst, src string) error {
 
 // CollectLogs downloads log files from router to OutDir.
 func (r *Router) CollectLogs(ctx context.Context) error {
-	return r.collectLogs(ctx, "")
+	return common.CollectLogs(ctx, r, r.logCollectors, logsToCollect, "")
 }
 
 // SetAPIfaceDown brings down the interface that the APIface uses.
