@@ -213,9 +213,9 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		return errors.Wrap(err, "failed to obtain StdoutPipe of hostapd")
 	}
 	readyFunc := func(buf []byte) (bool, error) {
-		if bytes.Contains(buf, []byte("Interface initialization failed")) {
+		if bytes.Contains(buf, []byte("Interface initialization failed")) || bytes.Contains(buf, []byte("Failed to initialize interface")) {
 			return false, errors.New("hostapd failed to initialize AP interface")
-		} else if bytes.Contains(buf, []byte("Setup of interface done")) {
+		} else if bytes.Contains(buf, []byte("Setup of interface done")) || bytes.Contains(buf, []byte("AP-ENABLED")) {
 			return true, nil
 		}
 		return false, nil
