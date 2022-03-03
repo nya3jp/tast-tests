@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "435ee4d2_7afe9792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T19:38:37Z",
+      "side": 1,
+      "message": "Andre, do you mind +2 on this changing the metadata? ",
+      "revId": "51e0d4e71b3c186377276e7377552a36d46e7342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
