@@ -393,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11dd6c53_a0736038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-03T11:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e591430_7d1fb3b9",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbacede5_85ae04fb",
@@ -424,6 +448,24 @@
       "side": 1,
       "message": "Sorry, now it is added under apps package.",
       "parentUuid": "bbacede5_85ae04fb",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53a18c0_50e031d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-03T11:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5759c2c6_50c858c4",
       "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
