@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a994a1c5_01d82652",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1264073
+      },
+      "writtenOn": "2022-03-03T04:17:42Z",
+      "side": 1,
+      "message": "This seems a little fragile if the clank and sync team iterates on their onboarding flow, I wonder if there\u0027s any more programatic way to to do this?  Might not be possible, but could be worth reaching out to owning teams to see.  \n\nMarking as resolved to (try to) avoid blocking submit.",
+      "revId": "389ee8e24c1e09f7f8b9f23128cd8934ca186e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
