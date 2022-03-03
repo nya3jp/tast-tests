@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3bc056_842d2f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/jit_test.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-03T11:07:12Z",
+      "side": 1,
+      "message": "If we wanted to not add local files as a server, I could just add a tab with a data URI and evaluate this javascript code from the test itself, also without compiling WebAssembly code at all, just checking that WebAssembly is a valid object and that it can instantiate modules. I leave this change up to reviewers.",
+      "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
