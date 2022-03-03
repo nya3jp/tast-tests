@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9989dc5_c2337ac3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T21:24:20Z",
+      "side": 1,
+      "message": "Yes, it comes down to choosing UserDataDir (changing based on whether launching from shelf or the commandline though) vs. fixed location. \n\nI\u0027m a little leaning towards the former, but I don\u0027t have a strong opinion either as I guess removing launching from the commandline could keep UserDataDir untouched anyway?\n\nLGTM. I\u0027ll leave a final decision to Hidehiko.",
+      "parentUuid": "54a73380_1f3da94d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f20a27b_093b0802",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
         "patchSetId": 4
@@ -213,6 +237,30 @@
       "side": 1,
       "message": "The point of this CL is to always put the log file in the same location, so it can be copied at the end of the test. A test could arbitrarily launch lacros a bunch of times and it would be hard to know where to get that logfile - passing the *Lacros value or similar makes it messy IMO.\n\nEventually we can get rid of this when we remove the command line launching.",
       "parentUuid": "161e3b9f_bb64af6c",
+      "range": {
+        "startLine": 156,
+        "startChar": 36,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "117734a9_378e9878",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T21:24:20Z",
+      "side": 1,
+      "message": "Resolving this to another open comment similar to this.",
+      "parentUuid": "5c5c8122_e735cc80",
       "range": {
         "startLine": 156,
         "startChar": 36,
