@@ -102,6 +102,15 @@ const (
 	WpaPsk
 )
 
+// AuthenticationType: The authentication type for Ethernet networks.
+type AuthenticationType int
+
+// Ethernet Authenticationtype
+const (
+	NoneAT AuthenticationType = iota
+	K8021x
+)
+
 // HiddenSsidMode is the tri-state status of hidden SSID.
 type HiddenSsidMode int
 
@@ -144,9 +153,13 @@ type WiFiStateProperties struct {
 	HiddenSsid     bool         `json:"hiddenSsid"`
 }
 
+type EthernetStateProperties struct {
+	Authentication AuthenticationType `json:"authentication"`
+}
+
 type NetworkTypeStateProperties struct {
 	Cellular CellularStateProperties `json:"cellular,omitempty"`
-	//	Ethernet EthernetStateProperties `json:"ethernet,omitempty"`
+	Ethernet EthernetStateProperties `json:"ethernet,omitempty"`
 	//	Tether   TetherStateProperties   `json:"tether,omitempty"`
 	//	VPN      VPNStateProperties      `json:"vpn,omitempty"`
 	WiFi WiFiStateProperties `json:"wifi,omitempty"`
