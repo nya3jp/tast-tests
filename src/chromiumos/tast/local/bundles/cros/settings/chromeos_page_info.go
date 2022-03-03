@@ -129,6 +129,7 @@ func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Act
 	detailRoot := nodewith.Name("Chrome - About Version").HasClass("BrowserFrame").Role(role.Window)
 
 	return uiauto.Combine("click details",
+		settings.FocusAndWait(ossettings.AdditionalDetails),
 		settings.LeftClick(ossettings.AdditionalDetails),
 		func(ctx context.Context) error {
 			arr, err := ui.Info(ctx, ossettings.ChangeChannelBtn)
@@ -150,7 +151,7 @@ func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Act
 
 func checkOpenSources(ui *uiauto.Context, cr *chrome.Chrome, settings *ossettings.OSSettings) uiauto.Action {
 	return func(ctx context.Context) error {
-		if err := settings.FocusAndWait(ossettings.OpenSourceSoftwares.First())(ctx); err != nil {
+		if err := settings.FocusAndWait(ossettings.OpenSourceSoftwares.Nth(1))(ctx); err != nil {
 			return errors.Wrap(err, "failed to focus on node")
 		}
 
