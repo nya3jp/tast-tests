@@ -33,6 +33,24 @@
       "message": "Can you add a comment here explaining why this isn\u0027t 0,0, and maybe cite the bug?",
       "revId": "75efc31bcb69b086f32c95089f3549b695664ecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f515a3f4_3ab67127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-03T19:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed9c085_0926b16f",
+      "revId": "75efc31bcb69b086f32c95089f3549b695664ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
