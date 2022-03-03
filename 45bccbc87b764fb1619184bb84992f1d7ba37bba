@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56718c91_bac89301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-03T07:25:24Z",
+      "side": 1,
+      "message": "Sorry for the late review:(\n",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94544f2d_cb13c2c4",
@@ -43,6 +60,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b84e9c6_3e75ba9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-03T07:25:24Z",
+      "side": 1,
+      "message": "Can we assume that Lacros is disabled by default? Should we provide disable-features\u003dLacrosSupport to explicitly disable it?",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dcc1ff_793e889a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-03T07:25:24Z",
+      "side": 1,
+      "message": "Deletion of Lacros user data directory is done by `BrowserLoader::Unload()` (BrowserManager::OnSessionStateChanged() -\u003e ... -\u003e BrowserLoader::Unload()). Is it guaranteed that the deletion is completed by this timing?",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18ef59bb_0b2034ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
         "patchSetId": 2
@@ -54,6 +105,69 @@
       "writtenOn": "2022-03-02T14:31:40Z",
       "side": 1,
       "message": "optional: could you add some data under Downloads, and making sure nothing is changed?",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4514e121_1ecd9117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-03T07:25:24Z",
+      "side": 1,
+      "message": "Define as a const just like bookmarkName?",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 42
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c568c1e_c8bf022e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-03T07:25:24Z",
+      "side": 1,
+      "message": "This should be `shortcutButton` maybe? I don\u0027t think this is add short cut button.",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71aa72b_8fc5fff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-03T07:25:24Z",
+      "side": 1,
+      "message": "Isn\u0027t ctrl+w close tab? And if so what is the purpose of line 138-139?\n\nAlso I\u0027m not sure if I follow the logic from line 135 - 144.\n1. get \"gaga\" button.\n2. then close tab with ctrl + w\n3. then wait for chrome://version page?",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 47
+      },
       "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
