@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013e2894_6a5f14e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-03T23:27:18Z",
+      "side": 1,
+      "message": "How fast does tail exhaust memory? Is there anything faster?\n\nIf you want to generate a crash report as well as UMA data, there\u0027s a test for that here you can copy from:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+      "revId": "63dd0b2f33d0d5e8a84732fe6e87bb8750389dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
