@@ -37,6 +37,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc249d7b_2846599a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T17:34:03Z",
+      "side": 1,
+      "message": "Is there any doc or pointer to know more about what/how it\u0027s planning to solve? It\u0027s a bit difficult to say without knowing the detail, if it\u0027s for changing/simplifying the default way of launching lacros it would help with some parts but maybe not all in this CL.\n\nI think exposing common chrome options to outside of lacros fixture conditionally by checking vars and the structure of having a convenient util that launches lacros from shelf for use by tests in this CL may be still useful. Do you think it can just go in parallel with that effort?\n\nAside, given that a number of the tests are in this scenario, it would be nice to have one working solution sooner than later to increase test coverage with tight schedule. Please advise.",
+      "parentUuid": "4de0025a_151278d8",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae52fa95_8568fa05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T17:34:03Z",
+      "side": 1,
+      "message": "Not sure if I\u0027m quite following your point and how to address it in this CL. Did you mean making (all or part of) the fixture available for use directly in test body? Could you explain a bit further?",
+      "parentUuid": "5a01d0c4_399202cf",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9745779f_7792932f",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/setup.go",
         "patchSetId": 6
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-03T13:20:20Z",
       "side": 1,
       "message": "nit/style: let\u0027s use swtich to avoid createing unneeded array.",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc2f373_f08820d7",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T17:34:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9745779f_7792932f",
       "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +119,30 @@
       "writtenOn": "2022-03-03T13:20:20Z",
       "side": 1,
       "message": "instead, could you pass values directly?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d95d685_e036b0b6",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T17:34:03Z",
+      "side": 1,
+      "message": "IIUC will it leave some boilerplates in call site (eg, test or fixture)?\n\n```\n// boilerplate?\nif bt :\u003d browser.TypeLacros {\n  deployedPath, deployed :\u003d s.Var(LacrosDeployedBinary)\n  if mode \u003d\u003d External {\n    dataArtifactPath \u003d s.DataPath(dataArtifact)\n  }\n  vars :\u003d NewSetupVars(deployed, deployedPath, dataArtifactPath)\n}\n\ncr, br, ... :\u003d browserfixt.SetUpWithNewChrome(ctx, bt, vars, opts ...chrome.Option)\n```\n\nI have run into some situations where common utils can\u0027t be easily sharable between tests and fixtures just because they take *testing.FixtState or *testing.State. Is there any better way to address it with no boilerplate or are we good with this approach for now?",
+      "parentUuid": "5fb13676_c484373c",
       "range": {
         "startLine": 74,
         "startChar": 0,
