@@ -30,7 +30,7 @@ type TestApp struct {
 const (
 	appID              = "obcppbejhdfcplncjdlmagmpfjhmipii"
 	localServerAddress = "http://127.0.0.1:8080/"
-	uiTimeout          = 10 * time.Second
+	uiTimeout          = 30 * time.Second
 )
 
 type elementCoordinates struct {
@@ -96,7 +96,7 @@ func (ta *TestApp) BuySku(ctx context.Context) error {
 
 func (ta *TestApp) waitForStableElementByID(ctx context.Context, id string) (elementCoordinates, error) {
 	jsExpr := fmt.Sprintf("document.getElementById('%s')", id)
-	if err := ta.pbconn.WaitForExprFailOnErrWithTimeout(ctx, fmt.Sprintf("%s != undefined", jsExpr), 30*time.Second); err != nil {
+	if err := ta.pbconn.WaitForExprFailOnErrWithTimeout(ctx, fmt.Sprintf("%s != undefined", jsExpr), uiTimeout); err != nil {
 		return elementCoordinates{}, errors.Wrapf(err, "failed to wait for %q to be defined", jsExpr)
 	}
 
