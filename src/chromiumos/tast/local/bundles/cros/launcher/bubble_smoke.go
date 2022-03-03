@@ -86,7 +86,7 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 	}
 
 	if err := uiauto.Combine("close bubble by clicking in screen corner",
-		mouse.Click(tconn, coords.Point{X: 0, Y: 0}, mouse.LeftButton),
+		mouse.Click(tconn, coords.Point{X: 4, Y: 4}, mouse.LeftButton),
 		ui.WaitUntilGone(bubble),
 	)(ctx); err != nil {
 		s.Fatal("Could not close bubble by clicking in screen corner: ", err)
