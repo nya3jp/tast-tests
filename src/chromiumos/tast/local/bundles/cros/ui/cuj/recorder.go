@@ -156,6 +156,7 @@ type Recorder struct {
 	zramInfoTracker    *perfSrc.ZramInfoTracker
 	batteryInfoTracker *perfSrc.BatteryInfoTracker
 	memInfoTracker     *perfSrc.MemoryInfoTracker
+	loginEventRecorder *perfSrc.LoginEventRecorder
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -222,6 +223,9 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 
 	memInfoTracker := perfSrc.NewMemoryTracker(a)
 
+	// TODO: Request fail here after keep-login-events-for-testing flag lands.
+	loginEventRecorder := perfSrc.NewLoginEventRecorder(metricPrefix, false /*failIfNoLoginStartedEvent*/)
+
 	r := &Recorder{
 		cr:                 cr,
 		tconn:              tconn,
@@ -233,6 +237,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		zramInfoTracker:    zramInfoTracker,
 		batteryInfoTracker: batteryInfoTracker,
 		memInfoTracker:     memInfoTracker,
+		loginEventRecorder: loginEventRecorder,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -286,6 +291,13 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 
 	if err := r.memInfoTracker.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording memory data")
+	}
+	// loginEventRecorder.Start() may not be needed because we usually start
+	// Chrome with --keep-login-events-for-testing flag that will start
+	// LoginEventRecorder data collection automatically. But we do it here
+	// just in case Chrome was started with different parameters.
+	if err := r.loginEventRecorder.Start(ctx, tconn); err != nil {
+		return nil, errors.Wrap(err, "failed to start recording login event data")
 	}
 
 	success = true
@@ -536,6 +548,12 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			stopErr = errors.Wrap(err, "failed to stop MemInfoTracker")
 		}
 	}
+	if err := r.loginEventRecorder.FetchLoginEvents(ctx, r.tconn); err != nil {
+		testing.ContextLog(ctx, "Failed to fetch login events date: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to fetch login events")
+		}
+	}
 
 	if stopErr != nil {
 		return stopErr
@@ -591,6 +609,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	r.zramInfoTracker.Record(pv)
 	r.batteryInfoTracker.Record(pv)
 	r.memInfoTracker.Record(pv)
+	r.loginEventRecorder.Record(ctx, pv)
 
 	return nil
 }
