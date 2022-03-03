@@ -121,16 +121,18 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			verifyAudioInputAction,
 			uc,
 			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(inputField),
+					useractions.AttributeTestScenario: "Validate voice input triggered from IME tray",
+				},
+				Tags: []useractions.ActionTag{
+					useractions.ActionTagVKVoiceInput,
+					useractions.ActionTagIMEShelf,
+				},
 				Callback: func(ctx context.Context, actionErr error) error {
 					vkbCtx := vkb.NewContext(cr, tconn)
 					return vkbCtx.HideVirtualKeyboard()(ctx)
 				},
-				Attributes: map[string]string{
-					useractions.AttributeInputField:   string(inputField),
-					useractions.AttributeTestScenario: scenario,
-					useractions.AttributeFeature:      useractions.FeatureVoiceInput,
-				},
-				Tags: []useractions.ActionTag{useractions.ActionTagIMEShelf},
 			},
 		)
 	}
@@ -158,20 +160,22 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			},
 		)
 
-		return uiauto.UserAction("Handwriting",
+		return uiauto.UserAction("VK handwriting",
 			verifyHandWritingInputAction,
 			uc,
 			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(inputField),
+					useractions.AttributeTestScenario: scenario,
+				},
+				Tags: []useractions.ActionTag{
+					useractions.ActionTagVKHandWriting,
+					useractions.ActionTagIMEShelf,
+				},
 				Callback: func(ctx context.Context, actionErr error) error {
 					vkbCtx := vkb.NewContext(cr, tconn)
 					return vkbCtx.HideVirtualKeyboard()(ctx)
 				},
-				Attributes: map[string]string{
-					useractions.AttributeInputField:   string(inputField),
-					useractions.AttributeTestScenario: scenario,
-					useractions.AttributeFeature:      useractions.FeatureHandWriting,
-				},
-				Tags: []useractions.ActionTag{useractions.ActionTagIMEShelf},
 			},
 		)
 	}
@@ -198,12 +202,12 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			verifyEmojiInputAction,
 			uc,
 			&useractions.UserActionCfg{
-				Attributes: map[string]string{
-					useractions.AttributeInputField:   string(inputField),
-					useractions.AttributeTestScenario: scenario,
-					useractions.AttributeFeature:      useractions.FeatureEmojiPicker,
+				Attributes: map[string]string{useractions.AttributeInputField: string(inputField), useractions.AttributeTestScenario: scenario},
+				Tags: []useractions.ActionTag{
+					useractions.ActionTagEmoji,
+					useractions.ActionTagEmojiPicker,
+					useractions.ActionTagIMEShelf,
 				},
-				Tags: []useractions.ActionTag{useractions.ActionTagIMEShelf},
 			})
 	}
 

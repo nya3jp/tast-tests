@@ -86,6 +86,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	inputField := testserver.TextAreaInputField
+	uc.SetAttribute(useractions.AttributeInputField, string(inputField))
 
 	// Focus on the input field and wait for a small duration.
 	// This is needed as the Japanese IME has a bug where typing immediately after
@@ -101,22 +102,19 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	subtests := []struct {
-		name     string
-		scenario string
-		action   uiauto.Action
+		Name   string
+		Action uiauto.Action
 	}{
 		// Type and check that the text field has the correct Hiragana.
 		{
-			name:     "TypeRomajiShowsHiragana",
-			scenario: "Type Romaji and check correct Hiragana",
-			action:   its.ValidateInputOnField(inputField, kb.TypeAction("nihongo"), "にほんご"),
+			Name:   "TypeRomajiShowsHiragana",
+			Action: its.ValidateInputOnField(inputField, kb.TypeAction("nihongo"), "にほんご"),
 		},
 		// Type and press Tab/Shift+Tab to select different candidates.
 		// The text field should show the selected candidate.
 		{
-			name:     "TabCyclesThroughCandidates",
-			scenario: "Type and press Tab/Shift+Tab to select candidate",
-			action: uiauto.Combine("Use Tab key to Cycle through candidates",
+			Name: "TabCyclesThroughCandidates",
+			Action: uiauto.Combine("cycle through candidates with tab",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(3, kb.AccelAction("Tab")),
@@ -128,9 +126,8 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		// Type and press arrow keys to select different candidates.
 		// The text field should show the selected candidate.
 		{
-			name:     "ArrowKeysCycleThroughCandidates",
-			scenario: "Use arrow keys to cycle through candidates",
-			action: uiauto.Combine("cycle through candidates with arrow keys",
+			Name: "ArrowKeysCycleThroughCandidates",
+			Action: uiauto.Combine("cycle through candidates with arrow keys",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(3, kb.AccelAction("Down")),
@@ -142,9 +139,8 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		// Type and press Tab/Arrow keys to go through multiple pages of candidates.
 		// The text field should show the selected candidate.
 		{
-			name:     "TabAndArrowKeysCyclesThroughPages",
-			scenario: "Use Tab/Arrow keys to flip pages",
-			action: uiauto.Combine("cycle through pages with tab and arrow keys",
+			Name: "TabAndArrowKeysCyclesThroughPages",
+			Action: uiauto.Combine("cycle through pages with tab and arrow keys",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				// The Japanese IME shows a max of 9 candidates per page.
@@ -156,9 +152,8 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		// Type and press a number key to select the candidate with that number.
 		// The text field should show the selected candidate.
 		{
-			name:     "NumberKeySelectsCandidate",
-			scenario: "Use number key to select the candidate",
-			action: uiauto.Combine("bring up candidates and select with number key",
+			Name: "NumberKeySelectsCandidate",
+			Action: uiauto.Combine("bring up candidates and select with number key",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				kb.AccelAction("Tab"),
@@ -169,9 +164,8 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		},
 		// Type and press space, which should select the first conversion candidate and hide the candidates window.
 		{
-			name:     "SpaceSelectsTopConversionCandidate",
-			scenario: "Use SPACE key to select the first conversion candidate",
-			action: uiauto.Combine("bring up the conversion candidates window",
+			Name: "SpaceSelectsTopConversionCandidate",
+			Action: uiauto.Combine("bring up the conversion candidates window",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				// Pop up the conversion candidates window to find the top conversion candidate.
@@ -191,9 +185,8 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		// Type and press space multiple times to go through different conversion candidates.
 		// The text field should show the selected candidate.
 		{
-			name:     "SpaceCyclesThroughConversionCandidates",
-			scenario: "Type and press SPACE multiple times to go through different conversion candidates",
-			action: uiauto.Combine("type some text",
+			Name: "SpaceCyclesThroughConversionCandidates",
+			Action: uiauto.Combine("type some text",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(5, kb.AccelAction("Space")),
@@ -203,9 +196,8 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		// Type and Tab several times to select a candidate.
 		// Press Enter, which should submit the selected candidate and hide the candidates window.
 		{
-			name:     "EnterSubmitsCandidate",
-			scenario: "Type and Tab several times to select a candidate",
-			action: uiauto.Combine("type some text",
+			Name: "EnterSubmitsCandidate",
+			Action: uiauto.Combine("type some text",
 				its.ClearThenClickFieldAndWaitForActive(inputField),
 				kb.TypeAction("nihongo"),
 				uiauto.Repeat(3, kb.AccelAction("Tab")),
@@ -221,18 +213,15 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	}
 
 	for _, subtest := range subtests {
-		s.Run(ctx, subtest.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.name))
+		s.Run(ctx, subtest.Name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.Name))
 
 			if err := uiauto.UserAction(
 				"Japanese PK input",
-				subtest.action,
+				subtest.Action,
 				uc, &useractions.UserActionCfg{
-					Attributes: map[string]string{
-						useractions.AttributeTestScenario: subtest.scenario,
-						useractions.AttributeFeature:      useractions.FeaturePKTyping,
-						useractions.AttributeInputField:   string(inputField),
-					},
+					Attributes: map[string]string{useractions.AttributeTestScenario: subtest.Name},
+					Tags:       []useractions.ActionTag{useractions.ActionTagPKTyping},
 				},
 			)(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)

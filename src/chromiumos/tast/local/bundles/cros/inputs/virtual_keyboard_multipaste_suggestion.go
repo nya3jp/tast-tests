@@ -69,22 +69,17 @@ func VirtualKeyboardMultipasteSuggestion(ctx context.Context, s *testing.State) 
 
 	ash.SetClipboard(ctx, tconn, text)
 
-	actionName := "Input text through multipaste suggestion bar"
-	if err := uiauto.UserAction(
-		actionName,
-		uiauto.Combine(actionName,
+	if err := uc.RunAction(ctx, "Input from multipaste suggestion bar",
+		uiauto.Combine("paste text through multipaste suggestion bar",
 			its.ClickFieldUntilVKShown(inputField),
 			vkbCtx.TapMultipasteSuggestion(text),
 			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), text),
 		),
-		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeInputField: string(inputField),
-				useractions.AttributeFeature:    useractions.FeatureMultiPaste,
-			},
+			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
 		},
-	)(ctx); err != nil {
+	); err != nil {
 		s.Fatal("Fail to paste text through multipaste suggestion: ", err)
 	}
 }

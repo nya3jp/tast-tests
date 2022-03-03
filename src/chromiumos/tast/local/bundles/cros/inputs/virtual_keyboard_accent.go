@@ -6,7 +6,6 @@ package inputs
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -100,10 +99,8 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeTestScenario: fmt.Sprintf(`long press %q to trigger accent popup then select %q`, keyName, accentKeyName),
-				useractions.AttributeFeature:      useractions.FeatureVKTyping,
-				useractions.AttributeInputField:   string(inputField),
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagVKTyping,
 			},
 		},
 	)(ctx); err != nil {

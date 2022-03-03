@@ -111,8 +111,10 @@ func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
-				useractions.AttributeFeature:      useractions.FeatureDeadKeys,
-				useractions.AttributeTestScenario: fmt.Sprintf(`type %q to get %q`, testCase.typingKeys, testCase.expectedTypingResult),
+				useractions.AttributeTestScenario: fmt.Sprintf(`type %q to get %q`, testCase.typingKeys, testCase.expectedTypingResult)},
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagDeadKey,
 			},
 		},
 	)(ctx); err != nil {

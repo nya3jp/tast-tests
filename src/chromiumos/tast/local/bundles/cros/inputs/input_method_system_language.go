@@ -126,7 +126,6 @@ func InputMethodSystemLanguage(ctx context.Context, s *testing.State) {
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
-				useractions.AttributeFeature:      useractions.FeatureIMEManagement,
 				useractions.AttributeDeviceRegion: regionCode,
 			},
 		},

@@ -80,9 +80,7 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 	ash.SetClipboard(ctx, tconn, text1)
 	ash.SetClipboard(ctx, tconn, text2)
 
-	actionName := "Input from VK multipaste clipboard"
-	if err := uiauto.UserAction(
-		actionName,
+	if err := uc.RunAction(ctx, "Input from VK multipaste clipboard",
 		uiauto.Combine("navigate to multipaste virtual keyboard and paste text",
 			its.ClickFieldUntilVKShown(inputField),
 			vkbCtx.SwitchToMultipaste(),
@@ -90,51 +88,37 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 			vkbCtx.TapMultipasteItem(text2),
 			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
 		),
-		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeInputField: string(inputField),
-				useractions.AttributeFeature:    useractions.FeatureMultiPaste,
-			},
+			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
 		},
-	)(ctx); err != nil {
+	); err != nil {
 		s.Fatal("Fail to paste text through multipaste virtual keyboard: ", err)
 	}
 
-	actionName = "Select then de-select item in multipaste clipboard"
 	ui := uiauto.New(tconn)
 	trashButton := vkb.KeyFinder.ClassName("trash-button")
-
-	if err := uiauto.UserAction(
-		actionName,
+	if err := uc.RunAction(ctx, "select then de-select item in VK multipaste clipboard",
 		uiauto.Combine("Select then de-select item in multipaste virtual keyboard",
 			touchCtx.LongPress(vkb.MultipasteItemFinder.Name(text1)),
 			ui.WithTimeout(3*time.Second).WaitUntilExists(trashButton),
 			vkbCtx.TapMultipasteItem(text1),
-			ui.WithTimeout(3*time.Second).WaitUntilGone(trashButton),
-		),
-		uc,
+			ui.WithTimeout(3*time.Second).WaitUntilGone(trashButton)),
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeInputField: string(inputField),
-				useractions.AttributeFeature:    useractions.FeatureMultiPaste,
-			},
+			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
 		},
-	)(ctx); err != nil {
+	); err != nil {
 		s.Fatal("Fail to select then de-select item: ", err)
 	}
 
-	actionName = "Remove item in VK multipaste clipboard"
-	if err := uiauto.UserAction(
-		actionName,
+	if err := uc.RunAction(ctx, "remove item in VK multipaste clipboard",
 		vkbCtx.DeleteMultipasteItem(touchCtx, text1),
-		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureMultiPaste,
-			},
+			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
 		},
-	)(ctx); err != nil {
+	); err != nil {
 		s.Fatal("Fail to long press to select and delete item: ", err)
 	}
 }

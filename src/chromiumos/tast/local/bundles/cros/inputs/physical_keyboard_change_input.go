@@ -132,9 +132,7 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		switchToNextInputMethod,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureIMEManagement,
-			},
+			Tags: []useractions.ActionTag{useractions.ActionTagSwitchIME},
 		},
 	)
 
@@ -154,9 +152,7 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		switchToLastActiveInputMethod,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureIMEManagement,
-			},
+			Tags: []useractions.ActionTag{useractions.ActionTagSwitchIME},
 		},
 	)
 

@@ -7,20 +7,18 @@ package useractions
 // AttributeTestScenario describes the test scenario that the user action is running in.
 const AttributeTestScenario string = "TestScenario"
 
-// AttributeFeature describes the feature that the user action is using.
-const AttributeFeature string = "Feature"
-
 // Attribute keys used to represent DUT environment.
 const (
-	AttributeDeviceMode    string = "DeviceMode"
-	AttributeDeviceRegion  string = "DeviceRegion"
-	AttributeKeyboardType  string = "KeyboardType"
-	AttributeBoardName     string = "BoardName"
-	AttributeIncognitoMode string = "IncognitoMode"
-	AttributeUserMode      string = "UserMode"
-	AttributeInputMethod   string = "InputMethod"
-	AttributeInputField    string = "InputField"
-	AttributeFloatVK       string = "FloatVK"
+	AttributeDeviceMode     string = "DeviceMode"
+	AttributeDeviceRegion   string = "DeviceRegion"
+	AttributeKeyboardType   string = "KeyboardType"
+	AttributeBoardName      string = "BoardName"
+	AttributeIncognitoMode  string = "IncognitoMode"
+	AttributeUserMode       string = "UserMode"
+	AttributeInputMethod    string = "InputMethod"
+	AttributeInputField     string = "InputField"
+	AttributeFloatVK        string = "FloatVK"
+	AttributeKeyboardLayout string = "KeyboardLayout"
 )
 
 // Available attribute values of device mode.
@@ -43,30 +41,40 @@ type ActionTag string
 
 // Action tags to indicate interested products / teams.
 const (
-	ActionTagEssentialInputs ActionTag = "Essential Inputs"
+	ActionTagEssentialInputs ActionTag = "EssentialInputs"
 	ActionTagARC             ActionTag = "ARC++"
-	ActionTagOSSettings      ActionTag = "OS Settings"
-	ActionTagIMESettings     ActionTag = "IME Settings"
-	ActionTagIMEShelf        ActionTag = "IME Shelf"
 )
 
-// E14s feature definition.
+// Action tags to indicate components of the user action.
 const (
-	FeatureIMEManagement      string = "IME Management"
-	FeatureIMESpecific        string = "IME Specific Feature"
-	FeaturePKTyping           string = "PK Typing Input"
-	FeatureDeadKeys           string = "Dead Keys"
-	FeatureVKTyping           string = "VK Typing Input"
-	FeatureVKAutoShift        string = "VK AutoShift"
-	FeatureVoiceInput         string = "Voice Input"
-	FeatureHandWriting        string = "Handwriting"
-	FeatureFloatVK            string = "Float VK"
-	FeatureGlideTyping        string = "Glide Typing"
-	FeatureEmoji              string = "Emoji"
-	FeatureEmojiPicker        string = "Emoji Picker"
-	FeatureEmojiSuggestion    string = "Emoji Suggestion"
-	FeatureGrammarCheck       string = "Grammar Check"
-	FeatureMultiPaste         string = "Multi-Paste"
-	FeatureAutoCorrection     string = "Auto-Correction"
-	FeatureAutoCapitalization string = "Auto-Capitalization"
+	ActionTagOSSettings    ActionTag = "OSSettings"
+	ActionTagIMEManagement ActionTag = "IMEManagement"
+	ActionTagIMESettings   ActionTag = "IMESettings"
+)
+
+// Action tags to indicate actions in IME Management.
+const (
+	ActionTagAddIME    ActionTag = "AddInputMethod"
+	ActionTagRemoveIME ActionTag = "RemoveInputMethod"
+	ActionTagSwitchIME ActionTag = "SwitchIME"
+	ActionTagIMEShelf  ActionTag = "IMEShelf"
+)
+
+// Tags to indicate user input actions.
+const (
+	ActionTagPKTyping           ActionTag = "PKTyping"
+	ActionTagDeadKey            ActionTag = "DeadKey"
+	ActionTagVKTyping           ActionTag = "VKTyping"
+	ActionTagVKAutoShift        ActionTag = "VKAutoShift"
+	ActionTagVKVoiceInput       ActionTag = "VKVoiceInput"
+	ActionTagVKHandWriting      ActionTag = "VKHandWriting"
+	ActionTagSwitchFloatVK      ActionTag = "SwitchFloatVK"
+	ActionTagGlideTyping        ActionTag = "GlideTyping"
+	ActionTagEmoji              ActionTag = "Emoji"
+	ActionTagEmojiPicker        ActionTag = "EmojiPicker"
+	ActionTagEmojiSuggestion    ActionTag = "EmojiSuggestion"
+	ActionTagGrammarCheck       ActionTag = "GrammarCheck"
+	ActionTagMultiPaste         ActionTag = "MultiPaste"
+	ActionTagAutoCorrection     ActionTag = "AutoCorrection"
+	ActionTagAutoCapitalization ActionTag = "AutoCapitalization"
 )
