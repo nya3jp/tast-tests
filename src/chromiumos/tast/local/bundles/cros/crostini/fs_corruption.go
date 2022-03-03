@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -223,7 +223,7 @@ func checkHistogram(ctx context.Context, tconn *chrome.TestConn, baseline int64)
 		return 0, err
 	}
 	if hist.Sum <= baseline {
-		return hist.Sum, errors.Errorf("expected total of more then %v histogram values, got %v", baseline, hist.Sum)
+		return hist.Sum, errors.Errorf("expected total of more than %v histogram values, got %v", baseline, hist.Sum)
 	}
 	return hist.Sum, nil
 }
@@ -274,7 +274,7 @@ func testOverwriteAtOffsets(ctx context.Context, tconn *chrome.TestConn, offsets
 	}
 	signalWatcher, err := dbusutil.NewSignalWatcherForSystemBus(ctx, match)
 	if err != nil {
-		return errors.Wrap(err, "failed to listed for DBus signals")
+		return errors.Wrap(err, "failed to listen for DBus signals")
 	}
 	defer func() {
 		if err := signalWatcher.Close(ctx); err != nil {
