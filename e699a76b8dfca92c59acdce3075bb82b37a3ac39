@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2c4fec_27cdb307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-03T01:31:44Z",
+      "side": 1,
+      "message": "Done b/222367920",
+      "parentUuid": "68740389_0781dc19",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd8f724e_005955d5",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-03-02T20:00:21Z",
       "side": 1,
       "message": "is is possible that tabs from previous test runs could appear here?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 76
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a783e7_b5b7ad36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-03T01:31:44Z",
+      "side": 1,
+      "message": "clearing the app data (which we do to force the ToS UI) clears all browsing history as well so it shouldn\u0027t be a problem. when I ran locally the tab history would be fresh each time",
+      "parentUuid": "fd8f724e_005955d5",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24db26db_7bf4a895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-03T01:31:44Z",
+      "side": 1,
+      "message": "it should be okay to leave it, all the other tests need to open it up anyways (they also don\u0027t defer hiding it)",
+      "parentUuid": "9c91b45c_c962524f",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52cc5e6f_aa8a9f09",
@@ -134,6 +206,30 @@
       "writtenOn": "2022-03-02T20:00:21Z",
       "side": 1,
       "message": "is there no util in go to compare two list of strings?",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "242a571f_a04c99be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-03T01:31:44Z",
+      "side": 1,
+      "message": "I couldn\u0027t find one (I also googled this for a bit since this is annoying lol).",
+      "parentUuid": "52cc5e6f_aa8a9f09",
       "range": {
         "startLine": 66,
         "startChar": 2,
@@ -167,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e17c8784_8f3d2fb5",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-03T01:31:44Z",
+      "side": 1,
+      "message": "I didn\u0027t need to in my testing, this command seems to kill it if it\u0027s already open.",
+      "parentUuid": "61ed1896_10e251c0",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 60
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9047f449_c605e445",
@@ -180,6 +300,30 @@
       "writtenOn": "2022-03-02T20:00:21Z",
       "side": 1,
       "message": "Does clearing Chrome data above force us need to go through ToS?",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 93
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e328adc_09c5a920",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-03T01:31:44Z",
+      "side": 1,
+      "message": "Yep it does. Updated this comment for clarity.",
+      "parentUuid": "9047f449_c605e445",
       "range": {
         "startLine": 333,
         "startChar": 0,
