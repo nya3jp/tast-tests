@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49efea8a_809da886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T14:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377897c9_830de1ec",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38dcc1ff_793e889a",
@@ -473,6 +497,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2d7777d_c7ab0d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T14:16:44Z",
+      "side": 1,
+      "message": "I\u0027m not ignoring the error. Why would we want to ignore it?\n\nOr are you saying that we need to do something about the case where chrome.New returns success but there is an error during profile migration?",
+      "parentUuid": "987feec1_ae7a4024",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 5
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bad0f3b0_555deabc",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
         "patchSetId": 2
@@ -520,6 +568,24 @@
       "side": 1,
       "message": "Depending on unneeded external tool is common bad pattern we learned a lot from autotest, so that we strongly recommended not to do that from the beginning. (indeed, there may be some leaks of reviews).\n\n\u003e  As I suggested with the TODO I\u0027d like to clean this up in a followup CL that makes all tests use the same thing.\n\nThe TODO above does not directly linked to the use of jq. Could you share details?",
       "parentUuid": "a5224b6a_69d67fee",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e2f748_2841447a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T14:16:44Z",
+      "side": 1,
+      "message": "I will follow up with a CL that replaces this use of jq, another use of jq, and one or more native functions with a single native function.",
+      "parentUuid": "8609f3dd_0dbabd83",
       "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
