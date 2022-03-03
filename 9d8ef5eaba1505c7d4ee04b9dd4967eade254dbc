@@ -182,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9246f3e1_93d07c80",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T12:26:58Z",
+      "side": 1,
+      "message": "See next comment.",
+      "parentUuid": "ed337d15_0899362c",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "515dbb8a_da43a796",
@@ -213,6 +231,24 @@
       "side": 1,
       "message": "Moved this into the line 211 for loop. It does not make any change for current tests because baseCases only have 1 item.",
       "parentUuid": "515dbb8a_da43a796",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a1eed5f_7a193712",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T12:26:58Z",
+      "side": 1,
+      "message": "Okay. I\u0027m not keen on having such a general TestLacros flag with a very ad-hoc semantics.\n\nIf I understand correctly, one way to make this cleaner would be to leave params.go untouched and instead add the Lacros variant as part of TestLacrosTestParams:\n```\nfunc TestLacrosTestParams(t *testing.T) {\n\tfor _, filename :\u003d range lacrosTests {\n\t\t// First generate the Ash variants.\n\t\tparams :\u003d crostini.MakeTestParamsFromList(t, []crostini.Param{{\n\t\t\tTimeout:    2 * time.Minute,\n\t\t\tUseFixture: true,\n\t\t\tVal: \"browser.TypeAsh\",\n\t\t}})\n\t\t// Now add the parameter for the Lacros variant. Note that\n\t\t// \"crostiniBullseyeWithLacros\" is the only Lacros fixture\n\t\t// for Crostini.\n\t\tappend(params, \"{ ... lacros param ... }\")\n\t\tgenparams.Ensure(t, filename, params)\n\t}\n}\n```",
+      "parentUuid": "6ed35db0_245aa6d2",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
