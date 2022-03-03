@@ -151,6 +151,30 @@
       },
       "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d826416_72ca7e12",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-03T19:16:49Z",
+      "side": 1,
+      "message": "Posted another patchset to let `CheckVars` be the only one sharable between test and fixture that takes StateMixin interface arg in order to hide the boilerplate from test/fixture and support the scenario with no chrome/lacros fixture.\n\nI believe this will make it easier for us to revisit/refactor it when needed. Is it okay to move on with this for now?",
+      "parentUuid": "6d95d685_e036b0b6",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
