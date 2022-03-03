@@ -88,8 +88,8 @@ func PhysicalKeyboardEmojiInformational(ctx context.Context, s *testing.State) {
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
 				useractions.AttributeTestScenario: "Dismiss emoji picker by tapping ESC key",
+				useractions.AttributeFeature:      useractions.FeatureEmojiPicker,
 			},
-			Tags: []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiPicker},
 		},
 	)
 
@@ -116,8 +116,8 @@ func PhysicalKeyboardEmojiInformational(ctx context.Context, s *testing.State) {
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
 				useractions.AttributeTestScenario: "Dismiss emoji picker by mouse click",
+				useractions.AttributeFeature:      useractions.FeatureEmojiPicker,
 			},
-			Tags: []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiPicker},
 		},
 	)
 
@@ -141,7 +141,9 @@ func PhysicalKeyboardEmojiInformational(ctx context.Context, s *testing.State) {
 				),
 				uc,
 				&useractions.UserActionCfg{
-					Tags: []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiPicker},
+					Attributes: map[string]string{
+						useractions.AttributeFeature: useractions.FeatureEmojiPicker,
+					},
 				},
 			),
 		)(ctx); err != nil {

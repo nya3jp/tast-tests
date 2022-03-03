@@ -146,8 +146,8 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 				Attributes: map[string]string{
 					useractions.AttributeInputField:   string(inputField),
 					useractions.AttributeTestScenario: testScenario,
+					useractions.AttributeFeature:      useractions.FeatureGlideTyping,
 				},
-				Tags: []useractions.ActionTag{useractions.ActionTagVKTyping},
 			},
 		)
 	}
