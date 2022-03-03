@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4532899f_293dd3ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-03T11:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8174a322_326b4e79",
+      "revId": "ea2db6b59e90c19e2f286418edac81d77ddfa531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a59d616_1b0d0fc6",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-03T10:04:13Z",
       "side": 1,
       "message": "Why do you need a polling here?\nIf `isJitEnabled` returns with false, it can change in an upcoming check?\nIf so, why?",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "ea2db6b59e90c19e2f286418edac81d77ddfa531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9f4b7c_eee62042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_javascript_jit_setting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-03T11:03:31Z",
+      "side": 1,
+      "message": "I realized that I don\u0027t need it. I chanegd the JS code to use async/await so that conn.Eval evaluates a function that will wait for WebAssembly to be compiled (or not)",
+      "parentUuid": "7a59d616_1b0d0fc6",
       "range": {
         "startLine": 107,
         "startChar": 3,
