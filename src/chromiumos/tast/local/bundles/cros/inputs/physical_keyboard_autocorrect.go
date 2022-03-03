@@ -111,7 +111,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
 	)
 
-	if err := uiauto.UserAction("PK Autocorrect",
+	if err := uiauto.UserAction("PK autocorrect",
 		validatePKAutocorrectAction,
 		uc,
 		&useractions.UserActionCfg{

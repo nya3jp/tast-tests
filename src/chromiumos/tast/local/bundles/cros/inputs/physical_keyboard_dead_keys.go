@@ -106,7 +106,7 @@ func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	)
 
 	if err := uiauto.UserAction(
-		"PK dead keys typing",
+		"PK dead keys input",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{

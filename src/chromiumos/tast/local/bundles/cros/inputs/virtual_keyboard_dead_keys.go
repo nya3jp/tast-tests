@@ -140,7 +140,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	)
 
 	if err := uiauto.UserAction(
-		"VK dead key input",
+		"VK dead keys input",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{

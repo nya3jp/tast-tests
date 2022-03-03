@@ -340,7 +340,7 @@ func (its *InputsTestServer) validatePKTypingInField(uc *useractions.UserContext
 	}
 
 	return uiauto.UserAction(
-		"Typing PK to input",
+		"PK typing input",
 		action,
 		uc,
 		&useractions.UserActionCfg{
@@ -367,7 +367,7 @@ func (its *InputsTestServer) validateVKTypingInField(uc *useractions.UserContext
 		},
 	)
 	return uiauto.UserAction(
-		"Typing VK to input",
+		"VK typing input",
 		action,
 		uc,
 		&useractions.UserActionCfg{
@@ -437,7 +437,7 @@ func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserCont
 		)(ctx)
 	}
 	return uiauto.UserAction(
-		"VK handwriting",
+		"Handwriting",
 		action,
 		uc,
 		&useractions.UserActionCfg{

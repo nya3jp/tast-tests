@@ -142,7 +142,7 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 	)
 
 	if err := uiauto.UserAction(
-		"Change input method via IME tray",
+		"Switch input method via IME tray",
 		changeIMEAction,
 		uc,
 		&useractions.UserActionCfg{
