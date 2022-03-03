@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/policy"
@@ -47,7 +48,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
-		Vars:            []string{"router", "pcap"},
+		Vars:            []string{"router", "pcap", "routertype", "pcaptype"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtWithCapture",
@@ -61,7 +62,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
-		Vars:            []string{"router", "pcap"},
+		Vars:            []string{"router", "pcap", "routertype", "pcaptype"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtRouterAsPcap",
@@ -75,7 +76,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
-		Vars:            []string{"router", "pcap"},
+		Vars:            []string{"router", "pcap", "routertype", "pcaptype"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtRouters",
@@ -89,7 +90,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
-		Vars:            []string{"routers", "pcap"},
+		Vars:            []string{"routers", "pcap", "routertype", "pcaptype"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtRoaming",
@@ -103,7 +104,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
-		Vars:            []string{"routers", "pcap", "attenuator"},
+		Vars:            []string{"routers", "pcap", "routertype", "pcaptype", "attenuator"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtEnrolled",
@@ -117,7 +118,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: 8 * time.Minute,
 		ServiceDeps:     []string{TFServiceName, "tast.cros.policy.PolicyService"},
-		Vars:            []string{"router", "pcap"},
+		Vars:            []string{"router", "pcap", "routertype", "pcaptype"},
 	})
 }
 
@@ -321,6 +322,33 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 	if f.features&TFFeaturesCapture != 0 {
 		ops = append(ops, TFCapture(true))
 	}
+
+	// Allow for setting router type
+	rTypeStr, ok := s.Var("routertype")
+	if !ok || rTypeStr == "" {
+		// Default to legacy
+		rTypeStr = "legacy"
+	}
+	if rType, err := support.ParseRouterType(rTypeStr); err != nil {
+		s.Fatalf("Failed to parse routertype %q: ", err)
+	} else {
+		testing.ContextLog(ctx, "routertype: ", rTypeStr)
+		ops = append(ops, TFRouterType(rType))
+	}
+
+	// Allow for setting pcap type
+	rTypeStr, ok = s.Var("pcaptype")
+	if !ok || rTypeStr == "" {
+		// Default to legacy
+		rTypeStr = "legacy"
+	}
+	if rType, err := support.ParseRouterType(rTypeStr); err != nil {
+		s.Fatalf("Failed to parse pcaptype %q: ", err)
+	} else {
+		testing.ContextLog(ctx, "pcaptype: ", rTypeStr)
+		ops = append(ops, TFPcapType(rType))
+	}
+
 	tf, err := NewTestFixture(ctx, s.FixtContext(), s.DUT(), s.RPCHint(), ops...)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
