@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b32b891_81c6c485",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2022-03-03T23:21:01Z",
+      "side": 1,
+      "message": "Adding chadduffin@ to take a look.",
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9199df50_23c2b2c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2022-03-03T23:21:01Z",
+      "side": 1,
+      "message": "Can we add more details about what in particular we\u0027re preventing here?\n\nAlso, nit: \"iss\" \u003d\u003e \"is\".",
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f3d5c2_343ab1c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2022-03-03T23:21:01Z",
+      "side": 1,
+      "message": "nit: Just use an `if` instead of an `else if` since we already call `s.Fatal()` above.",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8227d28d_3822e6ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2022-03-03T23:21:01Z",
+      "side": 1,
+      "message": "Isn\u0027t this disabling WiFi, not Ethernet?",
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
