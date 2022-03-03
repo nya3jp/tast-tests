@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af08795b_c636c7fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-03-03T07:55:30Z",
+      "side": 1,
+      "message": "This is reland as-is, right? Please provide the context for reland (what gets fixed in where, etc.).",
+      "revId": "e3d8ebac2690d898b67e6ecd54a0ca8a88a8c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
