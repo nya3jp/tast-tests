@@ -106,7 +106,7 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 
 	// Start log collectors with daemonCtx as it should live longer than current
 	// stage when we are in precondition.
-	if r.logCollectors, err = common.StartLogCollectors(daemonCtx, r.host, logsToCollect); err != nil {
+	if r.logCollectors, err = common.StartLogCollectors(daemonCtx, r.host, logsToCollect, true); err != nil {
 		r.Close(shortCtx)
 		return nil, errors.Wrap(err, "failed to start loggers")
 	}
