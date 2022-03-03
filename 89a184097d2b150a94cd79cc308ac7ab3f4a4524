@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "364fab5c_600139dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-03T00:05:38Z",
+      "side": 1,
+      "message": "Failing build: https://ci.chromium.org/ui/p/chromeos/builders/vmtest/betty-pi-arc-direct-tast-vm/b8820776975260482545/overview",
+      "revId": "89a184097d2b150a94cd79cc308ac7ab3f4a4524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
