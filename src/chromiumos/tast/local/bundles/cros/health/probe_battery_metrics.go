@@ -41,8 +41,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that we can probe cros_healthd for battery metrics",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
-		// TODO(b/209014812): Test is unstable
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Fixture:      "crosHealthdRunning",
