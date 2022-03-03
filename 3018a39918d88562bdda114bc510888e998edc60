@@ -22,6 +22,30 @@
       },
       "revId": "3018a39918d88562bdda114bc510888e998edc60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853110a0_914d8b1a",
+        "filename": "src/chromiumos/tast/local/tracing/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-03-03T08:45:14Z",
+      "side": 1,
+      "message": "OK!\nWhile we couldn\u0027t define |err| and |werr| in the if clauses, or else they\u0027ll be undefined outside.\n\nPlease check.",
+      "parentUuid": "06644e49_b444a9e0",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "3018a39918d88562bdda114bc510888e998edc60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
