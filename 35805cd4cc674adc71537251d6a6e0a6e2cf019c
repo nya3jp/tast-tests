@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ea125a_9eff70fc",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/logs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T19:49:56Z",
+      "side": 1,
+      "message": "I assume you meant to say the logCollectors should be returned, not logsToCollect. I\u0027ve updated it to return a fresh logCollectors map since it\u0027s only ever done once as you pointed out.",
+      "parentUuid": "28d9f06d_b87ba8b4",
+      "revId": "35805cd4cc674adc71537251d6a6e0a6e2cf019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e80c6a77_1a4da2d2",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-03T04:21:21Z",
       "side": 1,
       "message": "You declare this to return an error type, but it only ever seems to return nil.\nEither return errors in some conditions or remove the return value.",
+      "revId": "35805cd4cc674adc71537251d6a6e0a6e2cf019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4baabc_be5b76a6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/logs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T19:49:56Z",
+      "side": 1,
+      "message": "This return came from the support.Logs interface. Instead of removing it I made it return the first error that occurs. It doesn\u0027t stop after the first error so that it can collect as many logs as possible. Since the purpose of these logs is to debug errors I kept it verbose with it both logging each failure to the context and also returning just the first error that occurs.",
+      "parentUuid": "e80c6a77_1a4da2d2",
       "revId": "35805cd4cc674adc71537251d6a6e0a6e2cf019c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06cbe990_16fc16e9",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/logs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T19:49:56Z",
+      "side": 1,
+      "message": "While it shouldn\u0027t ever be nil, it is possible since logCollectors is passed in as a parameter. This check is here just to double check this state.\n\nAlso we can\u0027t do a map to log.Collector because the Collector struct has all of its functions implemented on *Collector, not Collector and if we just had it as a Collector we would not be able to use them. The log.StartCollector constructor also returns it as a pointer so this is keeping its use as Collector intends it.",
+      "parentUuid": "b00bf565_40c6dd35",
+      "revId": "35805cd4cc674adc71537251d6a6e0a6e2cf019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78377f71_31fd882d",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "157f6658_83049150",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T19:49:56Z",
+      "side": 1,
+      "message": "These are inside the Close function which is designed to do cleanup/finalization, which is called during the TestFixture Close which will happen after the tests are done, pass or fail. The reason it\u0027s not deferred within Close itself is so that we can return the first error if any occur but still try to do everything even if one thing fails since the cleanup is important for debugging the error as well as returning the router to a good state for a future test.",
+      "parentUuid": "78377f71_31fd882d",
+      "revId": "35805cd4cc674adc71537251d6a6e0a6e2cf019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c61c007_335ebd35",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-03-03T04:21:21Z",
       "side": 1,
       "message": "Global variables should be at the top of the file",
+      "revId": "35805cd4cc674adc71537251d6a6e0a6e2cf019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1c6c18_a0fa0d6a",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T19:49:56Z",
+      "side": 1,
+      "message": "Thank you for letting me know. I thought maybe it was a go style thing to not do this as I saw it elsewhere and it was like this before. I personally also prefer them at the top. I moved the global variables to the top.",
+      "parentUuid": "4c61c007_335ebd35",
       "revId": "35805cd4cc674adc71537251d6a6e0a6e2cf019c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
