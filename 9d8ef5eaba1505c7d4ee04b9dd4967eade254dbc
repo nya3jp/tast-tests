@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea7db45b_333bb903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-03T11:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c855a085_9202db69",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 14
+      },
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a186575f_390fe790",
@@ -140,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed337d15_0899362c",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-03T11:24:05Z",
+      "side": 1,
+      "message": "Sorry it is a long explanation:\n1. There are usually 4 params in a test, refer to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3494599/5/src/chromiumos/tast/local/bundles/cros/crostini/launch_browser.go#32. \n2. If there is lacros testing, the Val:browser.Typexxx must be added to all params.\n3. For non-lacros params, the value is browser.TypeAsh (line 355), for lacros params, the value is browser.TypeLacros (line 375, your next comment).\n4. The for loop starting from line 221 iterates all the base cases and add up to 4 non-lacros params of to the tests, so if there is lacros testing, add val:browser.TypeAsh to the param, otherwise, no need.",
+      "parentUuid": "0bd1caea_f7aa93d1",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "515dbb8a_da43a796",
@@ -153,6 +195,24 @@
       "writtenOn": "2022-03-03T09:49:08Z",
       "side": 1,
       "message": "I don\u0027t get this either. Why is there a special case for the first element of baseCases?",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed35db0_245aa6d2",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-03T11:24:05Z",
+      "side": 1,
+      "message": "Moved this into the line 211 for loop. It does not make any change for current tests because baseCases only have 1 item.",
+      "parentUuid": "515dbb8a_da43a796",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
