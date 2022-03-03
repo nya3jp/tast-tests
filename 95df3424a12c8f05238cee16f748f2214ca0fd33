@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9f1165_f62b6b2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-03T13:55:47Z",
+      "side": 1,
+      "message": "nit: // Run Lacros (if specified) as non-focused browser, ...\n\n\"background\" sounded a bit ambiguous, because we now support keep-alive.",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d888730_cc129b7c",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-03T13:55:47Z",
+      "side": 1,
+      "message": "could you avoid naming \"util.go\"?\nIt can be easily leading to a kitchen sync. Maybe wm.go?",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a13673_bb34745b",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-03T13:55:47Z",
+      "side": 1,
+      "message": "could you refactor to have only window check function here?\n\nfunc ByBrowserType(bt browser.Type) func(w *ash.Window) bool {\n  ...\n}\n\nfunc ByBrowserTitle(bt browser.Type, title string) func(w *ash.Window) bool {\n  ...\n}\n\nand compose them in the caller?\n\nTo me these APIs in precise belong to ash. Can they be in ash wm.go?",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
