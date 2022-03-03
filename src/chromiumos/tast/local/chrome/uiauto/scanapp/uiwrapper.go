@@ -37,3 +37,8 @@ func (s *ScanApp) WaitUntilGone(finder *nodewith.Finder) uiauto.Action {
 func (s *ScanApp) LeftClick(finder *nodewith.Finder) uiauto.Action {
 	return s.ui.LeftClick(finder.FinalAncestor(WindowFinder))
 }
+
+// MakeVisible calls ui.MakeVisible scoping the finder to the Scan App.
+func (s *ScanApp) MakeVisible(finder *nodewith.Finder) uiauto.Action {
+	return s.ui.MakeVisible(finder.FinalAncestor(WindowFinder))
+}
