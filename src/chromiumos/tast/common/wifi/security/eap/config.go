@@ -7,6 +7,7 @@ package eap
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
@@ -20,6 +21,7 @@ import (
 	"chromiumos/tast/common/wificell/router"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
@@ -135,6 +137,18 @@ func (c *Config) InstallRouterCredentials(ctx context.Context, host *ssh.Conn, w
 	if _, err := router.PutFiles(ctx, host, pathMap); err != nil {
 		return errors.Wrap(err, "unable to upload file to host")
 	}
+
+	// Log settings
+	credLog, err := json.Marshal(map[string]string{
+		c.ServerCACertFile:   c.serverCACert,
+		c.ServerCertFile:     c.serverCred.Cert,
+		c.ServerKeyFile:      c.serverCred.PrivateKey,
+		c.ServerEAPUsersFile: c.serverEAPUsers,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to marshall credLog json summary")
+	}
+	testing.ContextLogf(ctx, "Installed router credentials: %s", string(credLog))
 	return nil
 }
 
