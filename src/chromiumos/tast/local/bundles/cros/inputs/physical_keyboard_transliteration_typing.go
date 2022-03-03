@@ -198,7 +198,7 @@ func PhysicalKeyboardTransliterationTyping(ctx context.Context, s *testing.State
 	)
 
 	if err := uiauto.UserAction(
-		"PK transliteration typing",
+		"Transliteration PK input",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
