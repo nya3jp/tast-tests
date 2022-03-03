@@ -7,8 +7,10 @@ package support
 import (
 	"context"
 	"net"
+	"strings"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -23,7 +25,25 @@ const (
 	LegacyT RouterType = iota
 	// AxT is the ax router type.
 	AxT
+	// OpenWrtT is the openwrt router type.
+	OpenWrtT
 )
+
+// ParseRouterType parses a RouterType from a string.
+func ParseRouterType(rTypeStr string) (RouterType, error) {
+	var rType RouterType
+	switch strings.ToLower(rTypeStr) {
+	case "legacy":
+		rType = LegacyT
+	case "ax":
+		rType = AxT
+	case "openwrt":
+		rType = OpenWrtT
+	default:
+		return -1, errors.Errorf("unknown RouterType %q", rTypeStr)
+	}
+	return rType, nil
+}
 
 // Router contains the basic methods that must be implemented across all routers.
 type Router interface {

@@ -19,9 +19,9 @@ import (
 )
 
 // StartLogCollectors starts log collectors with log.StartCollector.
-func StartLogCollectors(ctx context.Context, host *ssh.Conn, logCollectors map[string]*log.Collector, logsToCollect []string) error {
+func StartLogCollectors(ctx context.Context, host *ssh.Conn, logCollectors map[string]*log.Collector, logsToCollect []string, tailFollowNameSupported bool) error {
 	for _, p := range logsToCollect {
-		logger, err := log.StartCollector(ctx, host, p)
+		logger, err := log.StartCollector(ctx, host, p, tailFollowNameSupported)
 		if err != nil {
 			return errors.Wrap(err, "failed to start log collector")
 		}
