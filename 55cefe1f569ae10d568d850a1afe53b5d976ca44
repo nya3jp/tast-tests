@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d068d23_ab8a391c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-03T05:51:34Z",
+      "side": 1,
+      "message": "thanks for your patience, and sorry for the super late review.",
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2975e3a0_9c02bd8d",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-03T05:51:34Z",
+      "side": 1,
+      "message": "nit: do we need this variable?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d836050_d246b23c",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-03T05:51:34Z",
+      "side": 1,
+      "message": "Maybe I\u0027m misunderstanding this - why are you evaluating a symlink of the dst file path? Shouldn\u0027t you just be doing dirFile, err :\u003d filepath.EvalSymlinks(dirFileInfo.Name())?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c18bea9_d7bf5f05",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-03T05:51:34Z",
+      "side": 1,
+      "message": "nit: rm",
+      "range": {
+        "startLine": 142,
+        "startChar": 75,
+        "endLine": 142,
+        "endChar": 77
+      },
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
