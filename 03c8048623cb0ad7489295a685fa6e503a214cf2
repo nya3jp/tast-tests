@@ -16,6 +16,29 @@
       "message": "LGTM. Please have a domain expert to review and give you a CR+2. Thanks.",
       "revId": "03c8048623cb0ad7489295a685fa6e503a214cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e34768d_4122e4b0",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-03-03T11:12:24Z",
+      "side": 1,
+      "message": "Mention that python3 is used instead of python2 in the commit message.",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "03c8048623cb0ad7489295a685fa6e503a214cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
