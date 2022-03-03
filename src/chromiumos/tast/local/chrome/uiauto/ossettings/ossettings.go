@@ -98,9 +98,11 @@ func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage *nodewith
 	}
 
 	// If the subpage doesn't exist, click the main menu.
+	// Focus the subpage to ensure it is on-screen.
 	// Then click the subpage that we want in the sidebar.
 	if err := uiauto.Combine("click subpage",
 		s.ui.IfSuccessThen(s.ui.Gone(subPageInApp), s.ui.LeftClick(mainMenu)),
+		s.ui.FocusAndWait(subPageInApp),
 		s.ui.LeftClick(subPageInApp),
 	)(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed to click subpage with %v", subpage)
