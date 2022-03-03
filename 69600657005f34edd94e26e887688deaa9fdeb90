@@ -62,6 +62,30 @@
       },
       "revId": "69600657005f34edd94e26e887688deaa9fdeb90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19aa9c1_98a5c98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-03T17:37:42Z",
+      "side": 1,
+      "message": "My only concern was that this could wrongly detect the label, but the role there is just Button so this should work-- thank you for the suggestion :)",
+      "parentUuid": "663b6506_f706b6a2",
+      "range": {
+        "startLine": 53,
+        "startChar": 88,
+        "endLine": 53,
+        "endChar": 120
+      },
+      "revId": "69600657005f34edd94e26e887688deaa9fdeb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
