@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5ff196_8ecd46bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/session_restore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-03-03T06:52:19Z",
+      "side": 1,
+      "message": "As hidehio san suggested we should refer existing functionality \n -\u003e https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/login/chrome.go;l\u003d89",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "ae1001db7957b21c7d3bae27ced8e1340f3f8a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

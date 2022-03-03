@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d1e8ca_4beaa6e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/session_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-03-03T06:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d3e4a1_c183dbff",
+      "range": {
+        "startLine": 29,
+        "startChar": 17,
+        "endLine": 29,
+        "endChar": 85
+      },
+      "revId": "302e1e77e699925a7f605ca9b044a5d338a2d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9d66d89_b39a105a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-27T09:26:21Z",
       "side": 1,
       "message": "Add email-id here",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 83
+      },
+      "revId": "302e1e77e699925a7f605ca9b044a5d338a2d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3634d8_e4104e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/session_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-03-03T06:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d66d89_b39a105a",
       "range": {
         "startLine": 30,
         "startChar": 25,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24085c6f_c6460ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/session_restore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-03-03T06:52:19Z",
+      "side": 1,
+      "message": "Hidehiko san suggested to use testChromeLoginInSession[1]\n\n\n[1] https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/login/chrome.go;l\u003d89",
+      "parentUuid": "07fd3eb7_132ac309",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "302e1e77e699925a7f605ca9b044a5d338a2d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f140b01_e45c160c",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-27T09:26:21Z",
       "side": 1,
       "message": "Added `FullRestore` to make primary lacros restorable.",
+      "range": {
+        "startLine": 232,
+        "startChar": 66,
+        "endLine": 232,
+        "endChar": 77
+      },
+      "revId": "302e1e77e699925a7f605ca9b044a5d338a2d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e47f0d_eac03636",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1322187
+      },
+      "writtenOn": "2022-03-03T06:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f140b01_e45c160c",
       "range": {
         "startLine": 232,
         "startChar": 66,
