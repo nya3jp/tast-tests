@@ -199,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c39e0f0_ba230628",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-03T07:12:17Z",
+      "side": 1,
+      "message": "Hys means Hysteresis angle. It prevents the fluctuations between the tablet mode and clamshell mode.\n\nYou can find more info in this [patch](https://git.furworks.de/coreboot-mirror/chrome-ec/commit/7b3088705a977cabc736405f291b39510763aa44).",
+      "parentUuid": "d1b1122d_6ae978b4",
+      "range": {
+        "startLine": 60,
+        "startChar": 68,
+        "endLine": 60,
+        "endChar": 71
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63930376_4a058aaf",
