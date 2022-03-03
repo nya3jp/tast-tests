@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -103,11 +102,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		"Drag floating VK",
 		validateDragVKAction,
 		uc,
-		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureFloatVK,
-			},
-		},
+		nil,
 	)(ctx); err != nil {
 		s.Fatal("Failed to validate dragging floating VK: ", err)
 	}

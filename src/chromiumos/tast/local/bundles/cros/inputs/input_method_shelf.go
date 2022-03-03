@@ -86,13 +86,10 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 	)
 
 	if err := uiauto.UserAction(
-		"Verify IME shelf is disabled by default",
+		"validate that setting is disabled by default",
 		validateShelfDisabledByDefaultAction,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureIMEManagement,
-			},
 			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings, useractions.ActionTagIMEShelf},
 		},
 	)(ctx); err != nil {
@@ -113,9 +110,6 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 		activateAction,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureIMEManagement,
-			},
 			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings, useractions.ActionTagIMEShelf},
 		},
 	)(ctx); err != nil {
@@ -142,13 +136,10 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 	)
 
 	if err := uiauto.UserAction(
-		"Change input method via IME tray",
+		"user can change input method via IME tray",
 		changeIMEAction,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureIMEManagement,
-			},
 			Tags: []useractions.ActionTag{useractions.ActionTagIMEShelf},
 		},
 	)(ctx); err != nil {
@@ -162,13 +153,10 @@ func InputMethodShelf(ctx context.Context, s *testing.State) {
 	)
 
 	if err := uiauto.UserAction(
-		"Disable IME tray in OS settings",
+		"user can disable IME tray in OS settings",
 		toggleOffAction,
 		uc,
 		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureIMEManagement,
-			},
 			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings, useractions.ActionTagIMEShelf},
 		},
 	)(ctx); err != nil {
