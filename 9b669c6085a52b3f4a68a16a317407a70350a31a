@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e58c2c7_dca153d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-03-03T03:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee8126a0_e7b0fc9d",
+      "revId": "9b669c6085a52b3f4a68a16a317407a70350a31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c44b012d_90b33780",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-03-01T05:54:22Z",
       "side": 1,
       "message": "I\u0027d suggest something like this:\n    p :\u003d Point{x, y}\n    onBorder :\u003d p.In(bounds.Inset(-borderWidthPX)) \u0026\u0026 !p.In(bounds)\n\n(I assumed that the four corners are also expected to be border color.)",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 78
+      },
+      "revId": "9b669c6085a52b3f4a68a16a317407a70350a31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0de2bc_e3853fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-03-03T03:23:14Z",
+      "side": 1,
+      "message": "Thnak you this is much better.",
+      "parentUuid": "c44b012d_90b33780",
       "range": {
         "startLine": 345,
         "startChar": 0,
