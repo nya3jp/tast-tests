@@ -101,7 +101,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 	}
 
 	voiceInputUserAction := func() uiauto.Action {
-		scenario := "Verify voice input triggered from IME tray"
+		scenario := "Voice input triggered from IME tray"
 
 		verifyAudioInputAction := uiauto.Combine(scenario,
 			its.Clear(inputField),

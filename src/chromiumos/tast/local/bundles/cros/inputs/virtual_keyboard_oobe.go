@@ -92,7 +92,7 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, userInputFinder, testEmail),
 	)
 
-	if err := uiauto.UserAction("VK input",
+	if err := uiauto.UserAction("VK typing input",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{

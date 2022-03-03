@@ -152,7 +152,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
 	)
 
-	if err := uiauto.UserAction("Trigger VK auto correction",
+	if err := uiauto.UserAction("VK autocorrect",
 		triggerACAction,
 		uc,
 		&useractions.UserActionCfg{

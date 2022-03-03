@@ -133,7 +133,7 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 			},
 		)
 		return uiauto.UserAction(
-			"Input Emoji from suggestion",
+			"Input emoji from suggestion",
 			action,
 			uc,
 			&useractions.UserActionCfg{

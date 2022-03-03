@@ -96,9 +96,9 @@ func RemoveInputMethodInOSSettings(uc *useractions.UserContext, im ime.InputMeth
 
 // SetEmojiSuggestions returns a user action to change 'Emoji suggestions' setting.
 func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) uiauto.Action {
-	actionName := "enable emoji suggestions in OS settings"
+	actionName := "Enable emoji suggestions in OS settings"
 	if !isEnabled {
-		actionName = "disable emoji suggestions in OS settings"
+		actionName = "Disable emoji suggestions in OS settings"
 	}
 
 	action := func(ctx context.Context) error {
@@ -214,9 +214,9 @@ func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK boo
 
 // SetVKAutoCapitalization returns a user action to change 'On-screen keyboard Auto-capitalization' setting.
 func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) uiauto.Action {
-	actionName := "enable VK auto capitalization in IME setting"
+	actionName := "Enable VK auto capitalization in IME setting"
 	if !isEnabled {
-		actionName = "disable VK auto capitalization in IME setting"
+		actionName = "Disable VK auto capitalization in IME setting"
 	}
 
 	action := func(ctx context.Context) error {

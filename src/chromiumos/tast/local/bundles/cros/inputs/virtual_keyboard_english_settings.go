@@ -100,27 +100,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 		s.Run(ctx, subTest.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subTest.name)
 			if !subTest.capitalizationEnabled {
-				settings, err := imesettings.LaunchAtInputsSettingsPage(ctx, tconn, cr)
-				if err != nil {
-					s.Fatal("Failed to launch OS settings and land at inputs setting page: ", err)
-				}
-				disableAutoCapAction := uiauto.Combine("test input method settings change",
-					settings.OpenInputMethodSetting(tconn, subTest.ime),
-					settings.ToggleAutoCap(cr, false),
-					settings.Close,
-				)
-
-				if err := uiauto.UserAction(
-					"disable auto-cap in IME settings",
-					disableAutoCapAction,
-					uc,
-					&useractions.UserActionCfg{
-						Tags: []useractions.ActionTag{useractions.ActionTagIMESettings},
-						Attributes: map[string]string{
-							useractions.AttributeFeature: useractions.FeatureAutoCapitalization,
-						},
-					},
-				)(ctx); err != nil {
+				if err := imesettings.SetVKAutoCapitalization(uc, subTest.ime, subTest.capitalizationEnabled)(ctx); err != nil {
 					s.Fatal("Failed to change IME settings: ", err)
 				}
 			}
@@ -141,7 +121,7 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 			}
 
 			if err := uiauto.UserAction(
-				"VK typing",
+				"VK typing input",
 				validateAction,
 				uc,
 				&useractions.UserActionCfg{

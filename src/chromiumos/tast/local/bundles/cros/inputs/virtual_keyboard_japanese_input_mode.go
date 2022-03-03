@@ -117,7 +117,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 		)
 
 		inputField := "Omnibox"
-		if err := uiauto.UserAction("VK typing",
+		if err := uiauto.UserAction("Japanese VK typing",
 			action,
 			uc,
 			&useractions.UserActionCfg{
