@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd377a0_65ba4dd7",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T18:46:46Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s used in line 48. It allows us to keep the previous src value for the error return before overriding it on success with p. Just a short temp variable.",
+      "parentUuid": "2975e3a0_9c02bd8d",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d836050_d246b23c",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1843e58_9c0c0944",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T18:46:46Z",
+      "side": 1,
+      "message": "Yeah you\u0027re right that it needed to be the src path resolved, not the dst path resolved. Seems like I missed that when I added the previously requested link checking. I updated it with a fix.",
+      "parentUuid": "6d836050_d246b23c",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c18bea9_d7bf5f05",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-03-03T05:51:34Z",
       "side": 1,
       "message": "nit: rm",
+      "range": {
+        "startLine": 142,
+        "startChar": 75,
+        "endLine": 142,
+        "endChar": 77
+      },
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0b60e2_a0415b55",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T18:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c18bea9_d7bf5f05",
       "range": {
         "startLine": 142,
         "startChar": 75,
