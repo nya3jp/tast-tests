@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d050fa_c70518ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-03-03T04:36:00Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we set this up with a fixture for services/network_config/public/mojom/cros_network_config.mojom as we have done with services/bluetooth_config/public/mojom/cros_bluetooth_config.mojom (http://shortn/_qnWT91qkrB) and services/network_health/public/mojom/network_diagnostics.mojom (http://shortn/_EA0tEbUrlO) ?",
+      "revId": "d4f067183c48cb26022ef5a0362f05d36495b7f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
