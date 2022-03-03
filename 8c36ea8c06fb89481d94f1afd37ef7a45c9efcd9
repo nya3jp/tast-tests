@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72b0681_f71966f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/touchpad/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-03T06:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7efcb1_9042decb",
+      "range": {
+        "startLine": 5,
+        "startChar": 87,
+        "endLine": 5,
+        "endChar": 92
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6156fcc8_4edb9d2c",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f516a40_cdfcd9d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/touchpad/functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-03T06:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6156fcc8_4edb9d2c",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 63
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b35fc79_715183cd",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-03-02T12:05:56Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "941a0d46_77ef2463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/touchpad/functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-03T06:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b35fc79_715183cd",
       "range": {
         "startLine": 95,
         "startChar": 4,
@@ -140,6 +212,24 @@
       "writtenOn": "2022-03-02T12:05:56Z",
       "side": 1,
       "message": "nit: reflow",
+      "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530477b5_e67c186f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-03T06:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63930376_4a058aaf",
       "revId": "8c36ea8c06fb89481d94f1afd37ef7a45c9efcd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
