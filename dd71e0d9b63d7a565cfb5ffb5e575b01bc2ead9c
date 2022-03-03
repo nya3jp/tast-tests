@@ -16,6 +16,40 @@
       "message": "PTAL again!",
       "revId": "dd71e0d9b63d7a565cfb5ffb5e575b01bc2ead9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26594172_5b18f79c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-03-03T05:33:21Z",
+      "side": 1,
+      "message": "lgtm with a comment",
+      "revId": "dd71e0d9b63d7a565cfb5ffb5e575b01bc2ead9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b535ae_4ade6f0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-03-03T05:33:21Z",
+      "side": 1,
+      "message": "early-return to reduce block nest.\n  if borderPixels \u003d\u003d 0 {\n    return nil\n  }",
+      "revId": "dd71e0d9b63d7a565cfb5ffb5e575b01bc2ead9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
