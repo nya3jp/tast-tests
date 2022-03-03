@@ -117,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1737a1b8_5525718d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9d58a4_779ef6db",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38dcc1ff_793e889a",
@@ -306,6 +324,30 @@
       "side": 1,
       "message": "We discussed this offline. Will make it clearer though.",
       "parentUuid": "e71aa72b_8fc5fff1",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 47
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc58326f_5d898d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bf5da1a_fc58f1a0",
       "range": {
         "startLine": 139,
         "startChar": 11,
