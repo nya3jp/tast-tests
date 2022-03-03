@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0e834f_43f2a208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-03T22:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad9f1165_f62b6b2c",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d888730_cc129b7c",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35226e96_ec357841",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-03T22:29:22Z",
+      "side": 1,
+      "message": "I\u0027ll move them to ash/wm.go once we clarify the next comment.",
+      "parentUuid": "0d888730_cc129b7c",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a13673_bb34745b",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-03-03T13:55:47Z",
       "side": 1,
       "message": "could you refactor to have only window check function here?\n\nfunc ByBrowserType(bt browser.Type) func(w *ash.Window) bool {\n  ...\n}\n\nfunc ByBrowserTitle(bt browser.Type, title string) func(w *ash.Window) bool {\n  ...\n}\n\nand compose them in the caller?\n\nTo me these APIs in precise belong to ash. Can they be in ash wm.go?",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3596d0_8ebb4526",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-03T22:29:22Z",
+      "side": 1,
+      "message": "Sorry, I did not get the point. What is the purpose of ByBrowserType and ByBrowserTitle respectively? How could I compose them to check the window type and window title?\n\nBTW, I think it would be better if we could provide a single API to the tests instead of asking the tests to compose funcs.",
+      "parentUuid": "80a13673_bb34745b",
       "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
