@@ -22,6 +22,30 @@
       },
       "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6beac242_203c8e0c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-03T08:27:09Z",
+      "side": 1,
+      "message": "Tablet mode values are 0 and 0 for all SKUs but clamshell mode values might change for other SKUs.\nSo EnsureTabletModeEnabledWithKeyboardDisabled() will get DUTs initial mode angle values, then switch to tablet mode and reset with stored initial values at cleanup.",
+      "parentUuid": "e08ba646_202a6593",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
