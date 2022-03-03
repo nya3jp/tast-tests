@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85991a7_555a6467",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-03T19:00:59Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "3cd377a0_65ba4dd7",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "55cefe1f569ae10d568d850a1afe53b5d976ca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d836050_d246b23c",
