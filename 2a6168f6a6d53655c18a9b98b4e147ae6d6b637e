@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8254e16_624e2930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "here goes some comments. I\u0027ll need to do a second review later, once the comments are addressed.\n\n\n",
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a1e494_6c196cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "add docstring. what\u0027s the purpose of this struct",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0db01fb_9a2dcb52",
@@ -32,6 +72,185 @@
       "side": 1,
       "message": "We found a scenario that DUT has a physical keyboard (which satisfies the `hwdep.D(hwdep.Keyboard())`) but `input` couldn’t find the physical keyboard configuration, we suspect it might be related to firmware.\nTherefore the `hwdep.D(hwdep.Keyboard())` might not work in this case.",
       "parentUuid": "e0db01fb_9a2dcb52",
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208e3dbd_b3fd8a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "I agree with jonfan@\n\nwhat will happen if the test is run in a tablet? Will it fail?\nThe test must only be run in Chromebooks that are expected to pass the test.\n\nIf  `FindPhysicalKeyboard` fails when using`hwdep.D(hwdep.Keyboard())`, then it is worth filing a bug.\n\nBut regardless the bug, it seems that your should have that hwdep requirement.",
+      "parentUuid": "60e03ee7_c38a7ec9",
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb7b335_88848c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "huge nit, here and in the rest of the test: unfortunately backticks are not supported by godoc... just replace them with \", or just remote them.",
+      "range": {
+        "startLine": 96,
+        "startChar": 19,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4ffd2d_ca6fd189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "it seems that only \"res.ui\" is needed in, and not the rest... so, just pass \"res.ui\" instead.",
+      "range": {
+        "startLine": 104,
+        "startChar": 75,
+        "endLine": 104,
+        "endChar": 79
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ac2481_b42da994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "or why are not comparing the other \"keyNames\"?",
+      "range": {
+        "startLine": 176,
+        "startChar": 3,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cc7713_8394d1d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "here and below: add docstring to all non-trivial functions",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 18
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a844784c_ebb8a081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "add docstring to this struct.\n\nAlthough a key / value struct is \"trivial\" enough that it should not require a docstring, in this case, \"key\" is not clear why it is used... \n\nSo, defining the purpose what is \"name\" and what is \"value\" is also welcome.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 1
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d5764b6_a64535b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "it feels weird that resetBinding belongs to \"key\". is it done for any particular reason? what about passing \"key\" as argument?\n\nand I\u0027d move the structs close to L41 where other struct are defined",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 1
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49e756d_3479ebc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-03T20:33:43Z",
+      "side": 1,
+      "message": "nit: remove \"get\" prefix from getters\n\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 16
+      },
       "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
