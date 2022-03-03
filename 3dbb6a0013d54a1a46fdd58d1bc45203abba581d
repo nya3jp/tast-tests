@@ -22,6 +22,30 @@
       },
       "revId": "3dbb6a0013d54a1a46fdd58d1bc45203abba581d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b08b5b_f10f9d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-03-03T03:13:50Z",
+      "side": 1,
+      "message": "Good catch! Done MkdirAll.",
+      "parentUuid": "bc1832b4_9cce0ff0",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 62
+      },
+      "revId": "3dbb6a0013d54a1a46fdd58d1bc45203abba581d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
