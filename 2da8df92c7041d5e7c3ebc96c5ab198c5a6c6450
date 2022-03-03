@@ -76,6 +76,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed00344_da07c9cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-03-03T10:38:39Z",
+      "side": 1,
+      "message": "It\u0027s mostly a copy-paste error from anther test. I think I originally had another param that wasn\u0027t set to run in crosbold, but it\u0027s gone.\n\nSingle Attr now.",
+      "parentUuid": "d642fb7e_92f1b938",
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d288d73_69c2fce5",
@@ -93,6 +111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a304f2_f96b0894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-03-03T10:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d288d73_69c2fce5",
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2fb041e_fb306e3c",
@@ -106,6 +142,30 @@
       "writtenOn": "2022-03-01T09:52:33Z",
       "side": 1,
       "message": "each time you log with a suffiz, you also need to call Reset - search for basemem.Reset() in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/memory/mempressure/mempressure.go  .\nThe reason for this is: this resets the timestamp for the \"starting point\" used to compute custom-period PSI, and the base for some ZRAM delta-style metrics.",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "2da8df92c7041d5e7c3ebc96c5ab198c5a6c6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "334dab01_4f2e845a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-03-03T10:38:39Z",
+      "side": 1,
+      "message": "Ah, otherwise the metrics logged are from the beginning of the test, not the previous stats.\n\nDone.",
+      "parentUuid": "d2fb041e_fb306e3c",
       "range": {
         "startLine": 93,
         "startChar": 17,
