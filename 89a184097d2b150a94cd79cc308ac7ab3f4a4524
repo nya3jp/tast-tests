@@ -16,6 +16,23 @@
       "message": "Failing build: https://ci.chromium.org/ui/p/chromeos/builders/vmtest/betty-pi-arc-direct-tast-vm/b8820776975260482545/overview",
       "revId": "89a184097d2b150a94cd79cc308ac7ab3f4a4524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd95fda3_f4c0190b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-03-03T06:16:12Z",
+      "side": 1,
+      "message": "FYI: I think https://chromium-review.googlesource.com/c/chromium/src/+/3499663 should fix this",
+      "revId": "89a184097d2b150a94cd79cc308ac7ab3f4a4524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
