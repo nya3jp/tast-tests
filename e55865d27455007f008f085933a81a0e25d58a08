@@ -16,6 +16,23 @@
       "message": "pwang@, PTAL? \n\nHaven\u0027t verified it fully (my chroot is busted), but we can review it\nalready.",
       "revId": "e55865d27455007f008f085933a81a0e25d58a08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe4adc6_dbc4cc53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-03T20:07:37Z",
+      "side": 1,
+      "message": "Verified. pwang@ PTAL",
+      "revId": "e55865d27455007f008f085933a81a0e25d58a08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
