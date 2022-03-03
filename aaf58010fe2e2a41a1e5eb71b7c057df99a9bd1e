@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7767a3_14c3575b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-03T02:14:05Z",
+      "side": 1,
+      "message": "Sleep is prefer over sleep as it is one of the source of flakiness if used to wait till certain condition is met. \nIn the case of sampling, I don\u0027t think tast enforces the Poll over Sleep policy here.",
+      "parentUuid": "1a45cfdb_bf820a74",
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edefde8e_81aecdc7",
@@ -284,6 +302,52 @@
         "startChar": 42,
         "endLine": 165,
         "endChar": 65
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b8b7e4_91dda07d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-03T02:14:05Z",
+      "side": 1,
+      "message": "Don\u0027t forget to check err.",
+      "range": {
+        "startLine": 281,
+        "startChar": 25,
+        "endLine": 281,
+        "endChar": 28
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9407ef37_4ea72c63",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-03T02:14:05Z",
+      "side": 1,
+      "message": "Is there any way counters is not nil but err is nil?",
+      "range": {
+        "startLine": 282,
+        "startChar": 5,
+        "endLine": 282,
+        "endChar": 13
       },
       "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
