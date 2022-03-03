@@ -77,6 +77,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d9d58a4_779ef6db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "2b84e9c6_3e75ba9a",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b52855_45166879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "Is this just for consistency or does it actually matter? My understanding is that Close here is not needed because we are going to restart Chrome anyways in migrateProfile.",
+      "parentUuid": "94544f2d_cb13c2c4",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38dcc1ff_793e889a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
         "patchSetId": 2
@@ -94,6 +136,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "401b9ebf_9200226b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "Good question, I don\u0027t know, and it doesn\u0027t seem easy to find out. Hidehiko, do you know? I\u0027ll add polling otherwise.",
+      "parentUuid": "38dcc1ff_793e889a",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18ef59bb_0b2034ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
         "patchSetId": 2
@@ -105,6 +165,24 @@
       "writtenOn": "2022-03-02T14:31:40Z",
       "side": 1,
       "message": "optional: could you add some data under Downloads, and making sure nothing is changed?",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96393866_7b01c3e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18ef59bb_0b2034ba",
       "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +227,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a266d57e_15173178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c568c1e_c8bf022e",
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f52c2d_9ab21e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4514e121_1ecd9117",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 42
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71aa72b_8fc5fff1",
@@ -174,6 +294,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bf5da1a_fc58f1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "We discussed this offline. Will make it clearer though.",
+      "parentUuid": "e71aa72b_8fc5fff1",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 47
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2272d3b2_33eaedf7",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
         "patchSetId": 2
@@ -185,6 +329,30 @@
       "writtenOn": "2022-03-02T14:31:40Z",
       "side": 1,
       "message": "pls close",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 5
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a246ba22_af24370c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "See the comment for why this value must not be used.",
+      "parentUuid": "2272d3b2_33eaedf7",
       "range": {
         "startLine": 165,
         "startChar": 4,
@@ -243,6 +411,30 @@
       "writtenOn": "2022-03-02T14:31:40Z",
       "side": 1,
       "message": "nit/style: can these move above?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 56
+      },
+      "revId": "45bccbc87b764fb1619184bb84992f1d7ba37bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f7db24_4c961aa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T09:06:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f893640d_733db0de",
       "range": {
         "startLine": 197,
         "startChar": 0,
