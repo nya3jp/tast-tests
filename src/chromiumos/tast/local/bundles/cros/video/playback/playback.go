@@ -237,5 +237,7 @@ func sampleDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values)
 		Direction: perf.SmallerIsBetter,
 	}, droppedFramePercent)
 
+	testing.ContextLogf(ctx, "dropped frames: %d (%f%%)", droppedFrameCount, droppedFramePercent)
+
 	return nil
 }
