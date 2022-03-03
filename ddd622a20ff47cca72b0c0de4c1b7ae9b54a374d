@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d82175_ed49c3ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-03T16:53:36Z",
+      "side": 1,
+      "message": "Hi all,\n\nCan an owner please re-review this code so that I can submit it to CQ? Since the original code change I updated the simple_connect_test.go to reflect the already approved changes I made to simple_connect.go.\n\nThanks,\nJared",
+      "revId": "ddd622a20ff47cca72b0c0de4c1b7ae9b54a374d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
