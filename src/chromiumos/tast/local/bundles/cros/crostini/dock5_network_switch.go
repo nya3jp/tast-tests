@@ -1,0 +1,248 @@
+/***
+#8 Wired/WiFi network switching over Dock
+Pre-Condition:
+(Please note: Brand / Model number on test result)
+1. External displays
+2. Docking station / Hub
+3. Connection Type (HDMI/DP/VGA/DVI/USB-C on test result)
+4. Wired and WiFi connection (Router / Wireless Hub)
+
+Procedure:
+1) Boot-up and Sign-In to the device
+2) Connect ext-display to (Docking station)
+3) Connect (Docking station) to Chromebook
+4) Connect wired Ethernet cable onto (Dock station or Hub)
+5) Open Chrome Browser: www.youtube.com and play any video
+6) Disconnect Ethernet cable, and connect to WiFi
+7) Repeat step: #5
+
+Verification:
+4)  Make sure (Quick Settings Menu) show "Ethernet" connection
+HideAllNotifications
+5)  Make sure video/audio playback without any issue
+6)  Make sure (Quick Setting Menu) show "WiFi" connection
+7)  Make sure video/audio playback without any issue
+*/
+
+// headphone pluging check command
+//cras_test_client | grep *Headphone | grep yes
+//(9e934263)      7:0        75 0.000000     yes              no  1619683090              HEADPHONE            2*Headphone
+
+// check eth0
+// Ethernet : ifconfig eth0 | grep inet
+// wifi : ifconfig wlan0 | grep inet
+//Output dev: acpd7219m98357: :1,2
+// enable/disable wifi : ifconfig wlan0 up/down
+
+/***
+2021/05/06 23:43:30 --------------------------------------------------------------------------------
+2021/05/06 23:43:30 crostini.Dock5NetworkSwitch.ethernet  [ FAIL ] Lost SSH connection: target did not come back: context deadline exceeded; last error follows: dial tcp 192.168.0.102:22: i/o timeout
+2021/05/06 23:43:30                                                 Test did not finish
+2021/05/06 23:43:30 --------------------------------------------------------------------------------
+*/
+
+package crostini
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/crostini/utils"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         Dock5NetworkSwitch,
+		Desc:         "Test wired/WiFi network switching when connecting/disconnecting over a Dock",
+		Contacts:     []string{"allion-sw@allion.com"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      10 * time.Minute,
+		Vars:         utils.GetInputVars(),
+		Pre:          chrome.LoggedIn(), // 1) Boot-up and Sign-In to the device
+	})
+}
+
+func Dock5NetworkSwitch(ctx context.Context, s *testing.State) {
+	// set up
+	cr := s.PreValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	s.Logf("Step 1 - Boot-up and Sign-In to the device ")
+
+	// step 2 - connect ext-display to station
+	if err := Dock5NetworkSwitch_Step2(ctx, s); err != nil {
+		s.Fatal("Failed to execute step2: ", err)
+	}
+
+	// step 3 - connect station to chromebook
+	if err := Dock5NetworkSwitch_Step3(ctx, s); err != nil {
+		s.Fatal("Failed to execute step3: ", err)
+	}
+
+	// step 4 - connect ethernet to station
+	if err := Dock5NetworkSwitch_Step4(ctx, s); err != nil {
+		s.Fatal("Failed to execute step4: ", err)
+	}
+
+	// step 5 - play youtube then check
+	if err := Dock5NetworkSwitch_Step5(ctx, s, cr, tconn); err != nil {
+		s.Fatal("Failed to execute step5: ", err)
+	}
+
+	// step 6 - disconnect ethernet from station
+	if err := Dock5NetworkSwitch_Step6(ctx, s); err != nil {
+		s.Fatal("Failed to execute step6: ", err)
+	}
+
+	// step 7 - play youtube then check
+	if err := Dock5NetworkSwitch_Step7(ctx, s, cr, tconn); err != nil {
+		s.Fatal("Failed to execute step7", err)
+	}
+
+}
+
+// 2) Connect ext-display to (Docking station)
+func Dock5NetworkSwitch_Step2(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 2 - Connect ext-display to docking station")
+
+	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
+		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+	}
+
+	return nil
+}
+
+// 3) Connect (Docking station) to Chromebook
+func Dock5NetworkSwitch_Step3(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 3 - Connect docking station to chromebook ")
+
+	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
+		return errors.Wrap(err, "Failed to plug in docking station to chromebook: ")
+	}
+
+	return nil
+}
+
+// 4) Connect wired Ethernet cable onto (Dock station or Hub)
+func Dock5NetworkSwitch_Step4(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 4 - Connect wire ethernet to docking station ")
+
+	// plug in ethernet
+	if err := utils.ControlFixture(ctx, s, utils.FixtureEthernet, utils.ActionPlugin, false); err != nil {
+		return errors.Wrap(err, "Failed to plug in ethernet: ")
+	}
+
+	// check ethernet status in 30s
+	if err := testing.Poll(ctx, func(c context.Context) error {
+
+		time.Sleep(1 * time.Second)
+
+		if err := utils.VerifyEthernetStatus(ctx, s, utils.IsConnect); err != nil {
+			return err
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// 5) Open Chrome Browser: www.youtube.com and play any video
+func Dock5NetworkSwitch_Step5(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 5 - Open brower and play youtube")
+
+	// play youtube
+	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
+		return errors.Wrap(err, "Failed to play youtube")
+	}
+
+	// 5)  Make sure video/audio playback without any issue
+	if err := utils.CheckPlaybackByFixture(ctx, s, utils.InternalDisplay); err != nil {
+		return errors.Wrap(err, "Failed check playback on internal display: ")
+	}
+
+	// get youtube window
+	youtube, err := utils.GetYoutubeWindow(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "Failed to get youtube window: ")
+	}
+
+	// close youtube in the end
+	if err := youtube.CloseWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "Failed to close youtube: ")
+	}
+
+	return nil
+
+}
+
+// 6) Disconnect Ethernet cable, and connect to WiFi
+func Dock5NetworkSwitch_Step6(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 6 - Disconnect ethernet cable, and connect to WiFi")
+
+	// disconnect ethernet cable
+	if err := utils.ControlFixture(ctx, s, utils.FixtureEthernet, utils.ActionUnplug, false); err != nil {
+		return errors.Wrap(err, "Failed to unplug ethernet: ")
+	}
+
+	// check network interface is disabled or not in 30s
+	if err := testing.Poll(ctx, func(c context.Context) error {
+
+		time.Sleep(1 * time.Second)
+
+		if err := utils.VerifyEthernetStatus(ctx, s, utils.IsDisconnect); err != nil {
+			return err
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+
+		return err
+	}
+
+	return nil
+}
+
+// 7) Repeat step: #5
+func Dock5NetworkSwitch_Step7(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 7 - Play youtube")
+
+	// play youtube
+	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
+		return errors.Wrap(err, "Failed to play youtube: ")
+	}
+
+	// make sure video playback without any issue
+	if err := utils.CheckPlaybackByFixture(ctx, s, utils.InternalDisplay); err != nil {
+		return errors.Wrap(err, "Failed to check playback on internal display: ")
+	}
+
+	// get youtube window
+	youtube, err := utils.GetYoutubeWindow(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "Failed to get youtube window: ")
+	}
+
+	// close youtube window
+	if err := youtube.CloseWindow(ctx, tconn); err != nil {
+		return errors.Wrap(err, "Failed to close youtube: ")
+	}
+
+	return nil
+}

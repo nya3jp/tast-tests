@@ -1,0 +1,107 @@
+/***
+#15 USB Charging via a powered Dock
+Pre-Condition:
+(Please note: Brand / Model number on test result)
+1. External displays
+2. Docking station
+3. Connection Type (HDMI/DP/VGA/DVI/USB-C on test result)
+
+Procedure:
+1)  Boot-up and Sign-In to the device
+2)  Connect ext-display to (Powered Docking station)
+3)  Connect (Powered Docking station) to Chromebook
+
+
+Verification:
+- Chrome Book /Chrome Box "Battery" icon should show (Lighting Bolt charging) indicator
+***/
+
+package crostini
+
+import (
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/crostini/utils"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/testing"
+	"context"
+	"time"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         Dock3UsbCharging,
+		Desc:         "Test power charging via a powered Dock over USB-C",
+		Contacts:     []string{"allion-sw@allion.com"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      4 * time.Minute,
+		Vars:         utils.GetInputVars(),
+		Pre:          chrome.LoggedIn(), // 1)  Boot-up and Sign-In to the device
+	})
+}
+
+func Dock3UsbCharging(ctx context.Context, s *testing.State) {
+
+	// set up
+	cr := s.PreValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	s.Logf("Step 1 - Boot-up and Sign-In to the device")
+
+	// step 2 - connect ext-display to station
+	if err := Dock3UsbCharging_Step2(ctx, s); err != nil {
+		s.Fatal("Failed to execute step2: ", err)
+	}
+
+	// step 3 - connect station to chromebook
+	if err := Dock3UsbCharging_Step3(ctx, s); err != nil {
+		s.Fatal("Failed to execute step3: ", err)
+	}
+
+	// step 4 - verification
+	if err := Dock3UsbCharging_Step4(ctx, s); err != nil {
+		s.Fatal("Failed to execute step4: ", err)
+	}
+
+}
+
+// 2)  Connect ext-display to (Powered Docking station)
+func Dock3UsbCharging_Step2(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 2 - Connect ext-display to docking station")
+
+	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
+		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+	}
+
+	return nil
+}
+
+// 3)  Connect (Powered Docking station) to Chromebook
+func Dock3UsbCharging_Step3(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 3 - Connect docking station to chromebook")
+
+	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
+		return errors.Wrap(err, "Failed to plug in station to chromebook: ")
+	}
+
+	return nil
+
+}
+
+// check usb is charging or not
+func Dock3UsbCharging_Step4(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 4 - Check chromebook is charging or not")
+
+	if err := utils.VerifyPowerStatus(ctx, s, utils.IsConnect); err != nil {
+		return err
+	}
+
+	return nil
+}

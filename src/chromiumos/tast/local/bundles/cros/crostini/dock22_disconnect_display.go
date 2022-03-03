@@ -1,0 +1,297 @@
+// 22 Physically disconnect a display
+
+// "Pre-Condition:
+// (Please note: Brand / Model number on test result)
+// 1. External displays (Single/Dual)
+// 2. Docking station / Hub /Dongle
+// 3. Connection Type (HDMI/DP/VGA/DVI/USB-C on test result)
+
+// Procedure:
+// 1) Boot-up and Sign-In to the device
+// 2) Connect ext-display to (Docking station)
+// 3) Connect (Dock station) to Chromebook
+// 4) Open Chrome browser: www.youtube.com and play any video
+// 5) While video is playing drag the Chrome browser window onto ""Extended"" ext-display
+// 6) Disconnect the (Dock station) from Chromebook while video still playing
+
+// Verification:
+// 6) Make sure Chrome browser window bound it back to Chromebook ""Primary"" screen without any issue
+
+// "
+
+/////////////////////////////////////////////////////////////////////////////////////
+// automation step
+// "Preperation:
+// 1. Monitor (Type-C)
+// 2. Chromebook
+// 3. Docking Station
+// 4. Type-C cable
+
+// Test Step:
+// 1. Power the Chrombook On.
+// 2. Sign-in account.
+// 3. Connect the external monitor to the docking station via Type-C cable. (Manual)
+// 4. Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture)
+// 5. Run verification step 1.
+// 6. Click and open the Google Chrome browser from the bottom middle of the screen.(open on extend display)
+// 7. Input and navigate the video address ""https://www.youtube.com/watch?v=l4bDVq-nP-0&t=65s""
+// 8. Run verification step 3
+// 9. Disconnect the docking station from chromebook.
+// 10. Run verification step 2 & 3.4"
+
+// Automation verification
+// 1. Check the external monitor display properly by test fixture.
+// 2. Check external display exist and screen mode is ""Exetended""
+// 3. Check the 1Khz video/audio playback  by test fixture.
+// 4. Check Chrome browser window bounds it back to ""Primary"" screen"
+
+package crostini
+
+import (
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/crostini/utils"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/testing"
+	"context"
+	"fmt"
+	"time"
+)
+
+// 1. Power the Chrombook On.
+// 2. Sign-in account.
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         Dock22DisconnectDisplay,
+		Desc:         "Physically disconnect a display",
+		Contacts:     []string{"allion-sw@allion.com"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      20 * time.Minute,
+		Pre:          chrome.LoggedIn(), //Boot-up and Sign-In to the device
+		Vars:         utils.GetInputVars(),
+	})
+}
+
+func Dock22DisconnectDisplay(ctx context.Context, s *testing.State) {
+
+	cr := s.PreValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to open connection: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	s.Logf("Step 1 - Power the Chrombook On.")
+
+	s.Logf("Step 2 - Sign-in account.")
+
+	// step 3 - connect ext-display to docking
+	if err := Dock22DisconnectDisplay_Step3(ctx, s); err != nil {
+		s.Fatal("Failed to execute step 3: ", err)
+	}
+
+	// step 4 - connect docking station to chromebook
+	if err := Dock22DisconnectDisplay_Step4(ctx, s, tconn); err != nil {
+		s.Fatal("Failed to execute step 4: ", err)
+	}
+
+	// step 5 - check ext-display
+	if err := Dock22DisconnectDisplay_Step5(ctx, s, tconn); err != nil {
+		s.Fatal("Failed to execute step 5: ", err)
+	}
+
+	// step 6, 7 - open youtube on ext-display1
+	if err := Dock22DisconnectDisplay_Step6To7(ctx, s, cr, tconn); err != nil {
+		s.Fatal("Failed to execute step 6, 7: ", err)
+	}
+
+	// step 8 - check playback on ext-display1
+	if err := Dock22DisconnectDisplay_Step8(ctx, s, tconn); err != nil {
+		s.Fatal("Failed to execute Step 8: ", err)
+	}
+
+	// step 9 - disconnect docking
+	if err := Dock22DisconnectDisplay_Step9(ctx, s, tconn); err != nil {
+		s.Fatal("Failed to execute step 9: ", err)
+	}
+
+	// step 10 - check external display is not exist
+	if err := Dock22DisconnectDisplay_Step10(ctx, s, tconn); err != nil {
+		s.Fatal("Failed to execute step 10: ", err)
+	}
+
+	// step 11 - check playback on primary display
+	if err := Dock22DisconnectDisplay_Step11(ctx, s, tconn); err != nil {
+		s.Fatal("Failed to execute step 11: ", err)
+	}
+
+	// step 12 - check youtube browser on primary display
+	if err := Dock22DisconnectDisplay_Step12(ctx, s, tconn); err != nil {
+		s.Fatal("Failed to execute step 12: ", err)
+	}
+
+}
+
+// 3. Connect the external monitor to the docking station via Type-C cable.
+func Dock22DisconnectDisplay_Step3(ctx context.Context, s *testing.State) error {
+
+	s.Logf("Step 3 - Connect the external monitor to the docking station via Type-C cable. (Manual)")
+
+	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
+		return errors.Wrap(err, "Failed to plug in ext-display to docking station: ")
+	}
+
+	return nil
+}
+
+// 4. Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture)
+func Dock22DisconnectDisplay_Step4(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 4 - Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture) ")
+
+	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
+		return errors.Wrapf(err, "Failed to connect docking station to chromebook: ")
+	}
+
+	return nil
+}
+
+// 5. Check the external monitor display properly by test fixture.
+func Dock22DisconnectDisplay_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 5 - Check external monitor display properly by test fixture")
+
+	if err := utils.VerifyDisplayProperly(ctx, s, tconn, 2); err != nil {
+		return errors.Wrap(err, "Failed to verify display properly: ")
+	}
+
+	return nil
+}
+
+// 6. Click and open the Google Chrome browser from the bottom middle of the screen.(open on extend display)
+// 7. Input and navigate the video address ""https://www.youtube.com/watch?v=l4bDVq-nP-0&t=65s""
+func Dock22DisconnectDisplay_Step6To7(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 6, 7 - Play youtube on ext-display 1")
+
+	// call function to play youtube
+	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
+		return errors.Wrap(err, "Failed to play youtube: ")
+	}
+
+	// retry in 30s
+	if err := testing.Poll(ctx, func(c context.Context) error {
+
+		time.Sleep(1)
+
+		infos, err := display.GetInfo(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "Failed to get display info: ")
+		}
+
+		// (open on extend display)
+		// get youtube window
+		youtube, err := utils.GetYoutubeWindow(ctx, tconn)
+		if err != nil {
+			return errors.Wrapf(err, "Failed to get youtube window: ")
+		}
+
+		// move window form internal to external
+		if err := utils.MoveWindowToDisplay(ctx, s, tconn, youtube, &infos[1]); err != nil {
+			return errors.Wrapf(err, "Failed to move window ext-display: ")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// 8. Check the 1Khz video/audio playback by test fixture.
+func Dock22DisconnectDisplay_Step8(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 8 - Check the 1Khz video/audio playback on ext-display 1 by test fixture")
+
+	// check playback
+	if err := utils.CheckPlaybackByFixture(ctx, s, utils.ExternalDisplay1); err != nil {
+		return errors.Wrapf(err, "Failed to check playback: ")
+	}
+
+	return nil
+}
+
+// 9. Disconnect the docking station from chromebook.
+func Dock22DisconnectDisplay_Step9(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 9 - Disconnect the docking station from chromebook. ")
+
+	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, false); err != nil {
+		return errors.Wrapf(err, "Failed to disconnect docking station from chromebook: ")
+	}
+
+	return nil
+}
+
+// 10. Check external display is not exist and screen mode is ""Exetended""
+func Dock22DisconnectDisplay_Step10(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 10 - Check external display is not exist and check internal display becomes to be primary")
+
+	// get display info
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "Failed to get display info: ")
+	}
+
+	// 10. Check external display exist and screen mode is ""Exetended""
+	if len(infos) != 1 {
+		return errors.New(fmt.Sprintf("Length of display is not enough, got %d, want 1", len(infos)))
+	}
+
+	for _, info := range infos {
+		// check external
+		if info.IsInternal == false {
+			// check extended
+			if info.IsPrimary == true {
+				return errors.New("External display should not be in primary mode")
+			}
+		}
+	}
+
+	return nil
+}
+
+// 11. Check the 1Khz video/audio playback by test fixture.
+func Dock22DisconnectDisplay_Step11(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 11 - Check the 1Khz video/audio playback on internal display by test fixture ")
+
+	// 11. Check the 1Khz video/audio playback  by test fixture.
+	if err := utils.CheckPlaybackByFixture(ctx, s, utils.InternalDisplay); err != nil {
+		return errors.Wrapf(err, "Failed to check playback by fixture: ")
+	}
+
+	return nil
+}
+
+// 12. Check Chrome browser window bounds it back to ""Primary"" screen"
+func Dock22DisconnectDisplay_Step12(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
+
+	s.Logf("Step 12 - Check Chrome browser window bounds it back to primary screen")
+
+	// get primary info
+	primaryInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrapf(err, "Failed to get the primary display info: ")
+	}
+
+	// 12. Check Chrome browser window bounds it back to ""Primary"" screen"
+	if err := utils.EnsureYoutubeOnDisplay(ctx, s, tconn, primaryInfo); err != nil {
+		return errors.Wrapf(err, "Failed to ensure youtube on primary display: ")
+	}
+
+	return nil
+}

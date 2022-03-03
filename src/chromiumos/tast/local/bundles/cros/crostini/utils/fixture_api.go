@@ -1,0 +1,536 @@
+package utils
+
+import (
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/testing"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"regexp"
+	"strings"
+)
+
+// retrieve fixture web api url from input var
+func getWebUrl(s *testing.State) string {
+
+	// get input args
+	url, ok := s.Var(FixtureWebUrl)
+	if !ok {
+		// default value
+		webServerUrl := "http://192.168.1.198"
+		webServerPort := "8585"
+
+		return fmt.Sprintf("%s:%s", webServerUrl, webServerPort)
+	}
+
+	// in error, cannot contain colon
+	http := "http://"
+	if !strings.Contains(url, http) {
+		url = http + url
+	}
+
+	return url
+}
+
+/*
+Control the port power switch
+
+type:1 = on , 0 = off
+
+port:1.2.3.4
+
+etc.
+
+ip/api/AVIOSYS?type=1&port=1&port=2
+*/
+func AviosysControl(s *testing.State, action string, port string) error {
+
+	// construct api api
+	api := fmt.Sprintf("%s/api/AVIOSYS?type=%s&port=%s", getWebUrl(s), action, port)
+
+	s.Logf("Request: %s", api)
+
+	// send request
+	res, err := http.Get(api)
+	if err != nil {
+		return errors.Wrapf(err, "Failed to get response: %s", api)
+	}
+
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return errors.Wrap(err, "Failed to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return errors.Wrap(err, "Failed to parse data to json: ")
+	}
+
+	// check response
+	m := data.(map[string]interface{})
+	if m["resultCode"] != "0000" || m["resultTxt"] != "Success" {
+		return errors.New(fmt.Sprintf("Failed to check response: %v\n", data))
+	}
+
+	// print response
+	s.Logf("Response: %v", data)
+
+	return nil
+}
+
+/*
+Control switch fixture
+
+Type:HDMI_Switch & TYPEC_Switch & TYPEA_Switch
+
+Index:ID1 & ID2 & ID3....
+
+cmd:
+
+HDMI,0:Close All;1:PortA;2:PortB;3:PortC;4:PortD
+
+Type-C,0:Close;1:Normal;2:Filp
+
+Type-A,1:PortA;2:PortB
+
+resultCode：0000 成功
+
+resultTxt：回應之訊息。
+*/
+func SwitchFixture(s *testing.State, whatType string, index string, cmd string, interval string) error {
+
+	// construct url
+	url := fmt.Sprintf("%s/api/switchfixture?Type=%s&Index=%s&cmd=%s&Interval=%s", getWebUrl(s), whatType, index, cmd, interval)
+
+	s.Logf("Request: %s", url)
+
+	// send request
+	res, err := http.Get(url)
+	if err != nil {
+		return errors.Wrapf(err, "Failed to get response: %s", url)
+	}
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return errors.Wrap(err, "Failed to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return errors.Wrap(err, "Failed to parse data to json: ")
+	}
+
+	// check response
+	m := data.(map[string]interface{})
+	// notice : is "Success "
+	if m["resultCode"] != "0000" || m["resultTxt"] != "Success" {
+		return errors.New(fmt.Sprintf("Failed to check response: %v\n", data))
+	}
+
+	// print response
+	s.Logf("Response: %v", data)
+
+	return nil
+}
+
+/*
+Use the camera to detect the preset range of colors
+
+Interval(可選):延遲n秒後取得顏色，使用延遲會立刻回傳resultCode:0000、resultTxt:None
+
+resultCode：0000 成功、0001 參數格式有誤、0002 執行失敗
+
+resultTxt：回應之訊息。
+
+偵測成功會回傳偵測到的顏色etc. red
+*/
+func GetPiColor(s *testing.State, dispType string, dispIndex string, interval string) (string, error) {
+
+	CameraUrl := fmt.Sprintf("%s/api/getpicolor?DisplayType=%s&ID=%s&Interval=%s", getWebUrl(s), dispType, dispIndex, interval)
+
+	s.Logf("Request: %s", CameraUrl)
+
+	// send request
+	res, err := http.Get(CameraUrl)
+	if err != nil {
+		return "", errors.Wrapf(err, "Failed to get response: %s", CameraUrl)
+	}
+
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return "", errors.Wrapf(err, "Fail to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return "", errors.Wrap(err, "Failde to parse data to json : ")
+	}
+
+	s.Logf("Response: %v", data)
+
+	// check response
+	m := data.(map[string]interface{})
+	if m["resultCode"] != "0000" {
+		return "", errors.Errorf("Response is not correctly, got %s, want 0000", m["resultCode"])
+	}
+
+	var color string
+	color = fmt.Sprintf("%v", m["resultTxt"])
+
+	return color, nil
+}
+
+/*
+Return camera detect the preset range of colors by background task
+
+resultTxt:None,background task an error or Color not yet obtained
+
+resultCode：0000 成功、0001 參數格式有誤、0002 執行失敗
+
+resultTxt：回應之訊息。
+
+偵測成功會回傳偵測到的顏色etc. red，回傳None代表執行失敗或者尚未取得顏色
+*/
+func GetPiColorResult(s *testing.State) (string, error) {
+
+	CameraUrl := fmt.Sprintf("%s/api/getpicolor_result", getWebUrl(s))
+
+	s.Logf("Request  %s", CameraUrl)
+
+	// send request
+	res, err := http.Get(CameraUrl)
+	if err != nil {
+		return "", errors.Wrapf(err, "Failed to get response: %s", CameraUrl)
+	}
+
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return "", errors.Wrapf(err, "Fail to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return "", errors.Wrap(err, "Failde to parse data to json: ")
+	}
+
+	// check response
+	m := data.(map[string]interface{})
+	if m["resultCode"] != "0000" {
+		return "", errors.Errorf("Response is not correctly, got %s, want 0000", m["resultCode"])
+	}
+
+	s.Logf("Response: %v", data)
+
+	var color string
+	color = fmt.Sprintf("%s", m["resultTxt"])
+
+	return color, nil
+}
+
+/*
+Use the default camera and mic record video
+
+Output:Video save path,do not include file name
+
+etc. 20210831-142730
+
+Durations:record time
+
+DisplayType(option):Display fixture type, default is Display_HDMI_Switch
+
+ID(option):Display fixture id, default is ID1
+
+Width(可選):預設為1920
+
+Height(可選):預設為1080
+
+resultCode：0000 成功、0001 參數格式有誤、0002 執行失敗
+
+resultTxt：錄製成功回傳影片完整路徑
+*/
+func VideoRecord(s *testing.State, durations string, output string, dispType string, dispIndex string) (string, error) {
+
+	VideoUrl := fmt.Sprintf("%s/api/VideoRecord?Durations=%s&Output=%s&DisplayType=%s&ID=%s&Width=1280&Height=720", getWebUrl(s), durations, output, dispType, dispIndex)
+
+	s.Logf("Request: %s", VideoUrl)
+
+	// send request
+	res, err := http.Get(VideoUrl)
+	if err != nil {
+		return "", errors.Wrapf(err, "Failed to get response: %s", VideoUrl)
+	}
+
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return "", errors.Wrapf(err, "Fail to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return "", errors.Wrap(err, "Failde to parse data to json: ")
+	}
+
+	// check response
+	m := data.(map[string]interface{})
+	if m["resultCode"] != "0000" {
+		return "", errors.Errorf("Response is not correctly, got %s, want 0000", m["resultCode"])
+	}
+
+	var filepath string
+	filepath = m["resultTxt"].(string)
+
+	// print response
+	s.Logf("Response: %v", data)
+
+	return filepath, nil
+}
+
+/*
+Predict golden sample and input video
+
+The video resolution must be greater than 1280*720
+
+Input:full video path include file name
+
+Audio:true;predict audio only,false(default);predict video and audio
+
+etc. /home/allion/Videos/testvideo/normal.mp4
+
+DisplayType(option):Display fixture type, default is Display_HDMI_Switch
+
+ID(option):Display fixture id, default is ID1
+
+resultCode：0000 成功、0001 參數格式有誤、0002 執行失敗
+
+resultTxt：video、audio都預測成功回傳pass，其中一個失敗會回傳video fail or audio fail，兩個都失敗則回傳video and audio fail
+
+http://server:port/api/goldenpredict?Input=/home/allion/gui-env/testvideo/issue.mp4
+*/
+func GoldenPredict(s *testing.State, videoPath string, dispType string, dispIndex string, audio bool) error {
+
+	// construct url
+	url := fmt.Sprintf("%s/api/goldenpredict?Input=%s&DisplayType=%s&ID=%s&Audio=%t", getWebUrl(s), videoPath, dispType, dispIndex, audio)
+
+	s.Logf("Request: %s", url)
+
+	// send request
+	res, err := http.Get(url)
+	if err != nil {
+		return errors.Wrapf(err, "Failed to get response: %s", url)
+	}
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return errors.Wrap(err, "Failed to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return errors.Wrap(err, "Failed to parse data to json: ")
+	}
+
+	s.Logf("Response: %v", data)
+
+	// check response
+	m := data.(map[string]interface{})
+
+	if m["resultCode"] != "0000" || m["resultTxt"] != "Pass" {
+		return errors.Errorf("Failed to get correct response: ")
+	}
+
+	return nil
+}
+
+// compare_scan_pic(color:str ,size:str ,resolution:str ,file_path: str)
+// color		size	resolution
+// color 		a4		75
+// grayscale	letter	100
+//				fit		150
+//						200
+//						300
+//						600
+func CompareScannerPic(s *testing.State, color string, size string, resolution string, file_path string) error {
+
+	// http://192.168.1.199:8585/api/compare_pic?color=color&size=a4&resolution=75&file_path=/filepath/on/tast'
+
+	int_resolution := regexp.MustCompile("[0-9]+").FindString(resolution)
+
+	// compare_pic api declare this
+	if size == string(scanapp.PageSizeFitToScanArea) {
+		size = "fit"
+	}
+
+	// construct url
+	url := fmt.Sprintf("%s/api/compare_scan_pic?color=%s&size=%s&resolution=%s&file_path=%s",
+		getWebUrl(s),
+		strings.ToLower(color),
+		strings.ToLower(size),
+		int_resolution,
+		file_path)
+
+	s.Logf("Request: %s", url)
+
+	return nil
+
+	// send request
+	res, err := http.Get(url)
+	if err != nil {
+		return errors.Wrapf(err, "Failed to get response: %s", url)
+	}
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return errors.Wrap(err, "Failed to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return errors.Wrap(err, "Failed to parse data to json: ")
+	}
+
+	s.Logf("Response: %v", data)
+
+	// check response
+	m := data.(map[string]interface{})
+
+	if m["resultCode"] != "0" || m["resultTxt"] != "success" {
+		return errors.Errorf("Failed to get correct response: ")
+	}
+
+	return nil
+}
+
+type ComparePrinterKey string
+
+const (
+	ComparePrinterOriginal   ComparePrinterKey = "original"
+	ComparePrinterScale      ComparePrinterKey = "scale"
+	ComparePrinterSize       ComparePrinterKey = "size"
+	ComparePrinterQuality    ComparePrinterKey = "quality"
+	ComparePrinterHearders   ComparePrinterKey = "headers"
+	ComparePrinterBackground ComparePrinterKey = "background"
+)
+
+// compare_printer_pic(key:str ,file_path: str)
+// key: original, scale, size, quality, headers, background
+func ComparePrinterPic(s *testing.State, key ComparePrinterKey, file_path string) error {
+
+	// construct url
+	url := fmt.Sprintf("%s/api/compare_printer_pic?key=%s&file_path=%s",
+		getWebUrl(s),
+		string(key),
+		file_path)
+
+	s.Logf("Request: %s", url)
+
+	return nil
+
+	// send request
+	res, err := http.Get(url)
+	if err != nil {
+		return errors.Wrapf(err, "Failed to get response: %s", url)
+	}
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return errors.Wrap(err, "Failed to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return errors.Wrap(err, "Failed to parse data to json: ")
+	}
+
+	s.Logf("Response: %v", data)
+
+	// check response
+	m := data.(map[string]interface{})
+
+	if m["resultCode"] != "0" || m["resultTxt"] != "success" {
+		return errors.Errorf("Failed to get correct response: ")
+	}
+
+	return nil
+}
+
+// pop up msg on tast server
+func FixtureServerNotice(s *testing.State, msg string) error {
+
+	if strings.Contains(msg, " ") {
+		msg = strings.ReplaceAll(msg, " ", "_")
+	}
+	// construct url
+	url := fmt.Sprintf("%s/api/notice_msg?msg=%s", getWebUrl(s), msg)
+
+	s.Logf("Request: %s", url)
+
+	// send request
+	res, err := http.Get(url)
+	if err != nil {
+		return errors.Wrapf(err, "Failed to get response: ")
+	}
+	// dispose when finished
+	defer res.Body.Close()
+
+	// get response
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return errors.Wrap(err, "Failed to read all response: ")
+	}
+
+	// parse response
+	var data interface{} // TopTracks
+	if err := json.Unmarshal(body, &data); err != nil {
+		return errors.Wrap(err, "Failed to parse data to json: ")
+	}
+
+	s.Logf("Response: %v", data)
+
+	// check response
+	m := data.(map[string]interface{})
+
+	if m["resultCode"] != "0" || m["resultTxt"] != "success" {
+		return errors.Errorf("Failed to get correct response: ")
+	}
+
+	return nil
+
+}
