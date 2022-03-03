@@ -25,6 +25,8 @@ const (
 	LegacyT RouterType = iota
 	// AxT is the ax router type.
 	AxT
+	// OpenWrtT is the openwrt router type.
+	OpenWrtT
 )
 
 // ParseRouterType parses a RouterType from a string.
@@ -35,6 +37,8 @@ func ParseRouterType(rTypeStr string) (RouterType, error) {
 		rType = LegacyT
 	case "ax", "gtax11000", "ax6100", "gtaxe11000":
 		rType = AxT
+	case "openwrt":
+		rType = OpenWrtT
 	default:
 		return -1, errors.Errorf("unknown RouterType %q", rTypeStr)
 	}
@@ -49,7 +53,7 @@ type Router interface {
 	RouterName() string
 	// RouterType returns the router type.
 	RouterType() RouterType
-	// RouterTypeName returns the human-readable name this Router's RouterType
+	// RouterTypeName returns the human-readable name of this Router's RouterType.
 	RouterTypeName() string
 }
 
