@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13967030_4085af72",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-03T00:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "026badd2_fa499194",
+      "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77232f6d_e2185bdd",
@@ -76,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c62900_394910ca",
+        "filename": "src/chromiumos/tast/local/smb/smbconf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-03T00:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77232f6d_e2185bdd",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25ad9691_7a5453c6",
@@ -89,6 +131,30 @@
       "writtenOn": "2022-03-02T08:34:35Z",
       "side": 1,
       "message": "adds",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "e44b94d77e2c61af614c947d8a73fa6d6781c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52881e3e_f418928b",
+        "filename": "src/chromiumos/tast/local/smb/smbconf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-03T00:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ad9691_7a5453c6",
       "range": {
         "startLine": 50,
         "startChar": 16,
