@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f000e557_e014f5c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-03T23:54:43Z",
+      "side": 1,
+      "message": "A sample failure I am trying to address: https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2022-03-03/45d434dc-929f-473c-8054-3c488e573d7f/autoserv_test/tast/results/tests/appsplatform.CheckSkuPurchase/",
+      "revId": "289cdaaf5a77ac315a289a10f9fdf4ffbe37ef3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
