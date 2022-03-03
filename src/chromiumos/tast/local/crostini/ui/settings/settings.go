@@ -122,6 +122,25 @@ func OpenLinuxSettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.C
 	return s, nil
 }
 
+// OpenLinuxManagedSharedFoldersSetting opens the Manage Shared Folders sub-settings page.
+// This is implemented a two-stage process as a single invocation off OpenLinuxSettings
+// with the ManageSharedFolders subsettings param fails on a few boards.
+func OpenLinuxManagedSharedFoldersSetting(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*Settings, error) {
+	// Open linux settings.
+	s, err := OpenLinuxSettings(ctx, tconn, cr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open linux subpage on Settings app")
+	}
+
+	// Open linux settings with the ManageSharedFolders param passed.
+	s, err = OpenLinuxSettings(ctx, tconn, cr, ManageSharedFolders)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open linux Manage Shared Folder sub-settings page")
+	}
+
+	return s, err
+}
+
 // FindSettingsPage finds a pre-opened Settings page with a window name.
 func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName string) (s *Settings, err error) {
 	// Create a uiauto.Context with default timeout.

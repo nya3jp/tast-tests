@@ -122,7 +122,7 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	err = checkFilesharingBeforeRestart(
 		ctx, cont, tconn, ui, ud, filesApp, keyboard, geditWindow, filesAppShelfButton)
 	if err != nil {
-		s.Fatal("Failed tests cases before restart of Crostini: ", err)
+		s.Fatal("Failed test cases before restart of Crostini: ", err)
 	}
 
 	// Restart Crostini. This will start linux and the terminal and then close the terminal, but not Linux.
@@ -170,7 +170,7 @@ func checkFilesharingBeforeRestart(
 		return errors.Wrap(err, "failed to bring the Filesapp Download window to foreground")
 	}
 
-	err := uiauto.Combine("validate contexts of text file opened with default non-linux app",
+	err := uiauto.Combine("validate contents of text file opened with default non-linux app",
 		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, defaultTextEditorContextMenuItem),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
 	)(ctx)
