@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a01d0c4_399202cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-03T10:14:39Z",
+      "side": 1,
+      "message": "As an alternative approach, would it be possible to use the standard chrome/lacros fixture, possibly with additional cleanup code at the end of a subtest (if needed)?",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
