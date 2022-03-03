@@ -41,10 +41,11 @@ func NewECTool(d *dut.DUT, name ECToolName) *ECTool {
 
 // Regexps to capture values outputted by ectool version.
 var (
-	reFirmwareCopy = regexp.MustCompile(`Firmware copy:\s*(RO|RW)`)
-	reROVersion    = regexp.MustCompile(`RO version:\s*(\S+)\s`)
-	reRWVersion    = regexp.MustCompile(`RW version:\s*(\S+)\s`)
-	reECHash       = regexp.MustCompile(`hash:\s*(\S+)\s*`)
+	reFirmwareCopy  = regexp.MustCompile(`Firmware copy:\s*(RO|RW)`)
+	reROVersion     = regexp.MustCompile(`RO version:\s*(\S+)\s`)
+	reRWVersion     = regexp.MustCompile(`RW version:\s*(\S+)\s`)
+	reECHash        = regexp.MustCompile(`hash:\s*(\S+)\s*`)
+	reTabletModeAng = regexp.MustCompile(`tablet_mode_angle=(\d+) hys=(\d+)`)
 )
 
 // Command return the prebuilt ssh Command with options and args applied.
@@ -104,6 +105,27 @@ func (ec *ECTool) Hash(ctx context.Context) (string, error) {
 func (ec *ECTool) BatteryCutoff(ctx context.Context) error {
 	if err := ec.Command(ctx, "batterycutoff").Start(); err != nil {
 		return errors.Wrap(err, "running 'ectool batterycutoff' on DUT")
+	}
+	return nil
+}
+
+// SaveTabletModeAngles runs 'ectool motionsense tablet_mode_angle' to save the current angles for tablet mode.
+func (ec *ECTool) SaveTabletModeAngles(ctx context.Context) (string, string, error) {
+	out, err := ec.Command(ctx, "motionsense", "tablet_mode_angle").Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "", "", errors.Wrap(err, "running 'ectool motionsense tablet_mode_angle' on DUT")
+	}
+	matches := reTabletModeAng.FindStringSubmatch(string(out))
+	if len(matches) != 3 {
+		return "", "", errors.Errorf("unable to retrieve tablet mode angles from 'ectool motionsense tablet_mode_angle' output: %s", out)
+	}
+	return matches[1], matches[2], nil
+}
+
+// ForceTabletModeAngle emulates rotation angles to change DUT's tablet mode setting.
+func (ec *ECTool) ForceTabletModeAngle(ctx context.Context, tabletModeAngle, hys string) error {
+	if err := ec.Command(ctx, "motionsense", "tablet_mode_angle", tabletModeAngle, hys).Start(); err != nil {
+		return errors.Wrap(err, "failed to set tablet_mode_angle to 0")
 	}
 	return nil
 }
