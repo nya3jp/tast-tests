@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c41912_e48ec621",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b4bde63_9894ef32",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51dc0b5e_0b0b8aad",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07952aab_2f94860e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51dc0b5e_0b0b8aad",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4f7746d_8690b2db",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-24T03:51:28Z",
       "side": 1,
       "message": "nit: redundant",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf52e36_689676ba",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4f7746d_8690b2db",
       "range": {
         "startLine": 22,
         "startChar": 20,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e723cad3_5f6bcbb4",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "273f55fb_1a0cfe1f",
+      "range": {
+        "startLine": 31,
+        "startChar": 74,
+        "endLine": 31,
+        "endChar": 115
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc96b839_240a2564",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f6078a1_cdbb607c",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a308871a_4d933363",
@@ -129,6 +249,24 @@
       "writtenOn": "2022-02-24T03:51:28Z",
       "side": 1,
       "message": "nit: extra line here",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41750a89_4aab54c3",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a308871a_4d933363",
       "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0fc5a8f_5b157393",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0c8f61b_5003743f",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bebfa0cd_b837b94c",
@@ -190,6 +346,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682a10d3_6eb1697b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bebfa0cd_b837b94c",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d57f4a40_49cc26fa",
@@ -203,6 +377,24 @@
       "writtenOn": "2022-02-24T03:51:28Z",
       "side": 1,
       "message": "nit: extra line",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcbd270b_2e57fecc",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d57f4a40_49cc26fa",
       "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -230,6 +422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03127f9a_89927efe",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a53ffe5_5ed30e36",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38270357_af3cf9a4",
@@ -243,6 +459,24 @@
       "writtenOn": "2022-02-24T13:02:36Z",
       "side": 1,
       "message": "I would recommend either:\n- Mount the user, and use the /run/daemon-store/chaps/$user path for chaps database. However, that won\u0027t be the scratchpad path, and do no initialization on that path.\n- Use /tmp/xxx for scratchpad path, initialize the database there and do not mount.\n\n\u003d\u003d\u003d\u003d\u003d\u003d\n\nGenerally speaking, mounting and scratchpad path is 2 different mechanism to get to a working chaps database path, but I think we should not mix them.",
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed9a5e97_4e693c1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38270357_af3cf9a4",
       "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -270,6 +504,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d85670a_bd80058f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41cd90c5_a840fbc7",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792c236e_b9ec2c45",
@@ -283,6 +541,30 @@
       "writtenOn": "2022-02-24T03:51:28Z",
       "side": 1,
       "message": "Use cleanup context here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "d35b8a8ecbfd9e62a8bf19af5b59e83bbb9d97d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79239203_7f0707f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-03T05:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "792c236e_b9ec2c45",
       "range": {
         "startLine": 81,
         "startChar": 38,
