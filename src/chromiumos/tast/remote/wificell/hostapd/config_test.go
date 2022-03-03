@@ -9,6 +9,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/common/wifi/security/wpa"
@@ -473,8 +476,8 @@ func TestNewConfig(t *testing.T) {
 		if err != nil {
 			t.Errorf("testcase %d NewConfig failed with err=%s", i, err.Error())
 		}
-		if !reflect.DeepEqual(conf, tc.expected) {
-			t.Errorf("testcase %d got %v but expect %v", i, conf, tc.expected)
+		if diff := cmp.Diff(conf, tc.expected, cmpopts.EquateEmpty()); diff != "" {
+			t.Errorf("testcase %d mismatch (-got +want): %s\n", i, diff)
 		}
 	}
 }
