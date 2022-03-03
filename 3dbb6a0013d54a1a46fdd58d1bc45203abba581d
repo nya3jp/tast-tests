@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1832b4_9cce0ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-03T01:03:59Z",
+      "side": 1,
+      "message": "This will fail if the directory already exists. Is that the desired behavior for this test? If you don\u0027t want to fail in that case, you can use os.MkdirAll.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 62
+      },
+      "revId": "3dbb6a0013d54a1a46fdd58d1bc45203abba581d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
