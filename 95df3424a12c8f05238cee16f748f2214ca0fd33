@@ -152,6 +152,24 @@
       "parentUuid": "837e505f_d0dd7714",
       "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d24c67_a7d9cb17",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-04T07:52:53Z",
+      "side": 1,
+      "message": "Note that the title check is a prefix check, so not checking title is just the special case of an empty \"\" title prefix.",
+      "parentUuid": "84360c9e_e539b5a3",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
