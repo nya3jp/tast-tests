@@ -116,6 +116,24 @@
       "parentUuid": "80a13673_bb34745b",
       "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837e505f_d0dd7714",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-04T06:24:40Z",
+      "side": 1,
+      "message": "To me these look still a part of ash APIs as ash maintains windows.\nI do no think we\u0027d like to have a ash tconn api in browser package, which looks just confusing, so recommended to move under ash.\nIf you\u0027d like to have an utility for your crostini test own, then it\u0027d be better to place it under subdir in crostini/.\n\nThough, stepping back, it\u0027s unclear for me if we should *always* check window title to figure out browser window. probably not, and so I recommend to decouple those two (window type check, and title check), and compose them by callers responsibility as needed.",
+      "parentUuid": "be3596d0_8ebb4526",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
