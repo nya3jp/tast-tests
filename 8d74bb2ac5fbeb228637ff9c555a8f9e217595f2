@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7aba148_314429a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-04T03:15:55Z",
+      "side": 1,
+      "message": "w.BoundsInRoot.String()?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/coords/coords.go;l\u003d81?q\u003dcoords.Rect",
+      "range": {
+        "startLine": 174,
+        "startChar": 60,
+        "endLine": 174,
+        "endChar": 72
+      },
+      "revId": "8d74bb2ac5fbeb228637ff9c555a8f9e217595f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
