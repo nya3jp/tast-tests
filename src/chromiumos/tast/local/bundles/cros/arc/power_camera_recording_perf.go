@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -34,26 +33,17 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Fixture:      "arcBootedWithDisableSyncFlags",
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
-		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
-		}, {
-			Name:              "nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
-		}, {
-			Name:              "vm_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
-		}},
+		Params: setup.PowerTestParams(
+			testing.Param{
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val:               new(setup.PowerTestParam),
+			},
+			testing.Param{
+				Name:              "vm",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val:               new(setup.PowerTestParam),
+			},
+		),
 		Timeout: 10 * time.Minute,
 	})
 
