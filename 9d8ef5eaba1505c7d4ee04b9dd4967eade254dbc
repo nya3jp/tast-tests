@@ -359,6 +359,24 @@
       "parentUuid": "d546a0e5_9a405fe9",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fa466f_94b76f0d",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-04T10:46:20Z",
+      "side": 1,
+      "message": "Then what do we do when we test four params with lacros as we are doing with ash? I think we will in the near future. I think the current code is more scalable for this.",
+      "parentUuid": "46f0f644_31f5de08",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
