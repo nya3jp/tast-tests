@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e8b5d0_99b58a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-04T12:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c56664e4_24de5071",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b50eb2a3_b3f1d208",

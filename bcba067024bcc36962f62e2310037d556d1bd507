@@ -312,6 +312,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e59392_3bb2f291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-04T12:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0a0807_d81fd646",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2849103_f3c32772",
@@ -431,6 +449,24 @@
       "side": 1,
       "message": "sorry for ambiguous comment. I meant, speed is not need to be defined here.",
       "parentUuid": "af329e06_3d4695ca",
+      "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d107f8_cf3292da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-04T12:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5260ca2_0dca244a",
       "revId": "bcba067024bcc36962f62e2310037d556d1bd507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
