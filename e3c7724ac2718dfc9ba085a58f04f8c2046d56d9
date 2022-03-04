@@ -16,6 +16,40 @@
       "message": "lgtm % an optional suggestion",
       "revId": "e3c7724ac2718dfc9ba085a58f04f8c2046d56d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab0523c_3ccd07ad",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-04T23:26:59Z",
+      "side": 1,
+      "message": "is there an associated bug here for this TODO so the work is not lost?\n\nAdditionally, is this CL dependent on another? If so, the CQ-Depend: flag should be used in the comment.",
+      "revId": "e3c7724ac2718dfc9ba085a58f04f8c2046d56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679dd2ef_49a4d555",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-04T23:26:59Z",
+      "side": 1,
+      "message": "nit: testing.ContextLogf(...) with appropriate format flags",
+      "revId": "e3c7724ac2718dfc9ba085a58f04f8c2046d56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
