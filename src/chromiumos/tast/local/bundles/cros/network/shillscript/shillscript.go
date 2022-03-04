@@ -15,8 +15,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/godbus/dbus"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
@@ -129,28 +127,17 @@ func tearDown(ctx context.Context, env *TestEnv) {
 // DbusEventMonitor monitors the system message bus for those D-Bus calls we want to observe (InsertUserProfile, PopAllUserProfiles, CreateUserProfile).
 // It returns a stop function and error. The stop function stops the D-Bus monitor and return the called methods and/or error.
 func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
-	var rules = []string{
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", InsertUserProfile),
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", CreateUserProfile),
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", PopAllUserProfiles),
-	}
-	var allowlistDbusCmd = []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile}
-	return dbusutil.DbusEventMonitor(ctx, rules, allowlistDbusCmd)
-}
 
-// dbusCallMember returns the member name of the D-Bus call.
-func dbusCallMember(dbusMessage *dbus.Message, allowlistDbusCmd []string) (string, error) {
-	v, ok := dbusMessage.Headers[dbus.FieldMember]
-	if !ok {
-		return "", errors.Errorf("failed dbus message doesn't have field member: %s", dbusMessage)
+	var specs []dbusutil.MatchSpec
+	var methods = []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile}
+	for _, method := range methods {
+		specs = append(specs, dbusutil.MatchSpec{
+			Type:      "method_call",
+			Interface: "org.chromium.flimflam.Manager",
+			Member:    method,
+		})
 	}
-	msg := fmt.Sprintf(v.String()[1 : len(v.String())-1])
-	for _, cmd := range allowlistDbusCmd {
-		if msg == cmd {
-			return cmd, nil
-		}
-	}
-	return "", errors.Errorf("failed found unexpected call: got %s, want %v", msg, allowlistDbusCmd)
+	return dbusutil.DbusEventMonitor(ctx, specs)
 }
 
 // AssureMethodCalls assure that the expected methods are called.
