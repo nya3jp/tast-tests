@@ -249,16 +249,23 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 
 // SelectedOutputDevice returns the active output device name and type.
 func (c *Cras) SelectedOutputDevice(ctx context.Context) (deviceName, deviceType string, err error) {
-	nodes, err := c.GetNodes(ctx)
+	node, err := c.SelectedOutputNode(ctx)
 	if err != nil {
 		return
 	}
+	return node.DeviceName, node.Type, nil
+}
+
+// SelectedOutputNode returns the active output node
+func (c *Cras) SelectedOutputNode(ctx context.Context) (*CrasNode, error) {
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return nil, err
+	}
 	for _, node := range nodes {
 		if node.Active && !node.IsInput {
-			deviceName = node.DeviceName
-			deviceType = node.Type
-			break
+			return &node, nil
 		}
 	}
-	return
+	return nil, errors.New("no output node found")
 }
