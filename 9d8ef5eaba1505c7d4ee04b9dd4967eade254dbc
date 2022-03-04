@@ -269,6 +269,24 @@
       "parentUuid": "6a1eed5f_7a193712",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c83df4f_8ee621be",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-04T08:03:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand your comment on alignment with what params_test.go is doing now. Could you explain? It\u0027s exactly that code that generates the test registrations in the other files.\n\nThe issue I see with your current code is that the TestLacros flag does not compose with all the other flags, which will be very surprising for anyone trying to use it. I don\u0027t feel comfortable to lgtm this code myself.\n\nI understand that properly implementing a TestLacros flag might not be trivial and/or might not be worth it. That\u0027s why I suggested to move the special case elsewhere.",
+      "parentUuid": "266758c6_292c3a7e",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
