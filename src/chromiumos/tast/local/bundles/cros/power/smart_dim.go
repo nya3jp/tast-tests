@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type smartDimParam struct {
+	browserType        browser.Type
+	useFlatbufferModel bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SmartDim,
@@ -26,11 +31,16 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "ml_service", "smartdim"},
 		Params: []testing.Param{{
-			Val:     browser.TypeAsh,
+			Val:     &smartDimParam{browserType: browser.TypeAsh, useFlatbufferModel: false},
 			Fixture: "chromeLoggedIn",
 		}, {
+			Name:      "flatbuffer",
+			Val:       &smartDimParam{browserType: browser.TypeAsh, useFlatbufferModel: true},
+			Fixture:   "chromeLoggedIn",
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name:              "lacros",
-			Val:               browser.TypeLacros,
+			Val:               &smartDimParam{browserType: browser.TypeLacros, useFlatbufferModel: false},
 			Fixture:           "lacros",
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros_stable"},
@@ -46,9 +56,13 @@ func SmartDim(ctx context.Context, s *testing.State) {
 
 		eventHistogramName  = "MachineLearningService.SmartDimModel.ExecuteResult.Event"
 		sourceHistogramName = "PowerML.SmartDimFeature.WebPageInfoSource"
+		workerHistogramName = "PowerML.SmartDimComponent.WorkerType"
 		timeout             = 60 * time.Second
 	)
-	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
+
+	param := s.Param().(*smartDimParam)
+
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), param.browserType)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -91,21 +105,45 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		return histogram
 	}
 
+	if param.useFlatbufferModel {
+		s.Log("Trigger component update and check the downloadable model works")
+
+		if err = tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.loadSmartDimComponent)`); err != nil {
+			s.Fatal("Running autotestPrivate.loadSmartDimComponent failed: ", err)
+		}
+	}
+
 	call()
 	eventHistogramBase := waitForHistogram(eventHistogramName, nil)
 	sourceHistogramBase := waitForHistogram(sourceHistogramName, nil)
+	workerHistogramBase := waitForHistogram(workerHistogramName, nil)
 
 	call()
 	eventHistogramUpdate := waitForHistogram(eventHistogramName, eventHistogramBase)
 	sourceHistogramUpdate := waitForHistogram(sourceHistogramName, sourceHistogramBase)
+	workerHistogramUpdate := waitForHistogram(workerHistogramName, workerHistogramBase)
 
+	// SmartDimModel.ExecuteResult.Event=0 means model is invoked successfully.
 	expectedEventBucket := metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
 	if len(eventHistogramUpdate.Buckets) != 1 || eventHistogramUpdate.Buckets[0] != expectedEventBucket {
 		s.Errorf("Unexpected event histogram update: want %+v, got %+v", expectedEventBucket, eventHistogramUpdate)
 	}
 
+	// WorkerType 0 means builtin model, 1 means flatbuffer model.
+	var expectedWorkerBucket metrics.HistogramBucket
+	if param.useFlatbufferModel {
+		expectedWorkerBucket = metrics.HistogramBucket{Min: 1, Max: 2, Count: 1}
+	} else {
+		expectedWorkerBucket = metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
+	}
+
+	if len(workerHistogramUpdate.Buckets) != 1 || workerHistogramUpdate.Buckets[0] != expectedWorkerBucket {
+		s.Errorf("Unexpected worker histogram update: want %+v, got %+v", expectedWorkerBucket, workerHistogramUpdate)
+	}
+
+	// WebPageInfoSource 0 means Ash , 1 means Lacros.
 	var expectedSourceBucket metrics.HistogramBucket
-	if s.Param().(browser.Type) == browser.TypeLacros {
+	if param.browserType == browser.TypeLacros {
 		expectedSourceBucket = metrics.HistogramBucket{Min: 1, Max: 2, Count: 1}
 	} else {
 		expectedSourceBucket = metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
