@@ -125,6 +125,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de672f86_55649948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-04T18:46:03Z",
+      "side": 1,
+      "message": "Thanks David for clarifying that the fixture is not intended to be used in this test in order to explicitly ensure a fresh start.\n\nGeorg, I see your point that chromeLoggedIn fixture could be an alternative approach in similar scenarios. However, like this test (and a number of other tests), not all test writers may want extra fixtures and change test code more than necessary just to add a lacros variant.\n\nI believe this CL could address that concern by the new convenient util that encapsulates chrome.New and common lacros setup exposed from lacrosfixt.\n\nAll reviewers, is there anything we\u0027d need to address? Many other tests in the similar migration path can benefit from this.",
+      "parentUuid": "0ef52c35_853f06f0",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f83d31_53ae2b8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-04T18:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc249d7b_2846599a",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9745779f_7792932f",
@@ -221,6 +257,30 @@
       "side": 1,
       "message": "Posted another patchset to let `CheckVars` be the only one sharable between test and fixture that takes StateMixin interface arg in order to hide the boilerplate from test/fixture and support the scenario with no chrome/lacros fixture.\n\nI believe this will make it easier for us to revisit/refactor it when needed. Is it okay to move on with this for now?",
       "parentUuid": "6d95d685_e036b0b6",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab118ea_804a929f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-04T18:46:03Z",
+      "side": 1,
+      "message": "Resolving this. Please reopen if you think this is a blocker.",
+      "parentUuid": "2d826416_72ca7e12",
       "range": {
         "startLine": 74,
         "startChar": 0,
