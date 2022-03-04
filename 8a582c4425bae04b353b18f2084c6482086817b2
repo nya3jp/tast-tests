@@ -33,6 +33,24 @@
       "message": "do we need to disable Sync for lacros, too?",
       "revId": "8a582c4425bae04b353b18f2084c6482086817b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7b269c_38fcef4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-04T21:14:27Z",
+      "side": 1,
+      "message": "Just to add to what Hidehiko pointed (my bad, I would have overlooked it earlier), \"chromeLoggedInDisableSync\" (line 44) doesn\u0027t seem to exist. Does this precondition have to be migrated with sync disabled to chrome and lacros?",
+      "parentUuid": "b5dd2e9b_e8259a6c",
+      "revId": "8a582c4425bae04b353b18f2084c6482086817b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
