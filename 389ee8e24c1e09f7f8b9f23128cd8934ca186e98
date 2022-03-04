@@ -16,6 +16,24 @@
       "message": "This seems a little fragile if the clank and sync team iterates on their onboarding flow, I wonder if there\u0027s any more programatic way to to do this?  Might not be possible, but could be worth reaching out to owning teams to see.  \n\nMarking as resolved to (try to) avoid blocking submit.",
       "revId": "389ee8e24c1e09f7f8b9f23128cd8934ca186e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e39b3c_21080ee6",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-04T18:21:32Z",
+      "side": 1,
+      "message": "I reached out a while ago to Clank engprod and Chrome sync eng teams, but no one knew of a programmatic way to do this. I\u0027ll try reviving that email thread to see if we can improve things, but will go ahead and land this as-is for now.",
+      "parentUuid": "a994a1c5_01d82652",
+      "revId": "389ee8e24c1e09f7f8b9f23128cd8934ca186e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
