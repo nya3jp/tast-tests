@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e82d8c_950c87ae",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-04T03:50:18Z",
+      "side": 1,
+      "message": "Is there a reason you can\u0027t just use io.Copy (https://pkg.go.dev/io#Copy)",
+      "revId": "881dd499fbb4de428afcf2df104b9cf16879ef2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57382177_6a80af6d",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-04T03:50:18Z",
+      "side": 1,
+      "message": "This should be deferred immediately after opening.",
+      "revId": "881dd499fbb4de428afcf2df104b9cf16879ef2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
