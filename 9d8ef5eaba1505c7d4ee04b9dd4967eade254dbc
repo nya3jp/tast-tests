@@ -287,6 +287,24 @@
       "parentUuid": "266758c6_292c3a7e",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d546a0e5_9a405fe9",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-04T08:56:20Z",
+      "side": 1,
+      "message": "params_test.go does:\n1. Group the test files\n2. Create common []Param for each group\n3. Call crostini.MakeTestParamsFromList to create params for each test file.\nIt does not create params for each test file directly. It is done by MakeTestParamsFromList in crostini/params.go.\n\nI\u0027m not sure what you mean by \"compose with all the other flags\", just because it is outside the for loop in 238 and it is the only condition in the if statement? As appending a special case in params_test.go is ok, I guess a special if statement is also ok. \n\nIn addition, it is more scalable. When we want to create 4 params instead of 1, we just need to modify the code in this if statement: create a copy of all the params and change the name and fixture.",
+      "parentUuid": "8c83df4f_8ee621be",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

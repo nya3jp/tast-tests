@@ -170,6 +170,24 @@
       "parentUuid": "84360c9e_e539b5a3",
       "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c62f1a_04f4afb4",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-04T08:56:20Z",
+      "side": 1,
+      "message": "Had a discussion with Hidehiko offline, we agreed to delete util.go and add a func in vm.go",
+      "parentUuid": "17d24c67_a7d9cb17",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
