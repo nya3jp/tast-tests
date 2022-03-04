@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b4976d_7196535c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-04T23:37:25Z",
+      "side": 1,
+      "message": "nit: Think we want to use `(\"group:cuj\")` instead of `ui.*CUJ*` as the command line to run all tests in group cuj.\n\nSometing like:\n```\nTEST\u003dtast run $DUT \u0027(\"group:cuj\")\u0027\n```\n\ndisclaimer: I did not try the command above so might have errors in it.",
+      "revId": "9805f24d293956088a1c292fd3e24e868e2074e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be92605a_5da50f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-04T23:37:25Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "9805f24d293956088a1c292fd3e24e868e2074e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
