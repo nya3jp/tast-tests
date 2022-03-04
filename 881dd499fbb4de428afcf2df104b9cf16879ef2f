@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a1147da_aecc7db6",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-04T08:32:27Z",
+      "side": 1,
+      "message": "Use linuxssh.ReadFile + ioutil.WriteFile. It should be much simpler and I don\u0027t expect any large files on routers anyway.",
+      "revId": "881dd499fbb4de428afcf2df104b9cf16879ef2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3e82d8c_950c87ae",
         "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
         "patchSetId": 2
