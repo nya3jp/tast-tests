@@ -22,6 +22,30 @@
       },
       "revId": "36a0e84ac034d2ffd07014f693d5287632b67307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1741d2_abe3c19c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T17:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "510cc242_2a74723a",
+      "range": {
+        "startLine": 89,
+        "startChar": 54,
+        "endLine": 89,
+        "endChar": 72
+      },
+      "revId": "36a0e84ac034d2ffd07014f693d5287632b67307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
