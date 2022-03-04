@@ -57,11 +57,12 @@ const (
 
 // DecodeTestOptions contains all options for the video decoder test.
 type DecodeTestOptions struct {
+	setup.PowerTestParam
+
 	// TestVideo stores the test video's name.
 	TestVideo string
 	// DecoderType indicates whether a HW or SW decoder will be used.
-	DecoderType          DecoderType
-	BatteryDischargeMode setup.BatteryDischargeMode
+	DecoderType DecoderType
 }
 
 // arcTestConfig stores GoogleTest configuration passed to c2_e2e_test APK.

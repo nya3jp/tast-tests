@@ -74,6 +74,8 @@ const (
 
 // EncodeTestOptions contains all options for the video encoder test.
 type EncodeTestOptions struct {
+	setup.PowerTestParam
+
 	// Profile specifies the codec profile to use when encoding.
 	Profile videotype.CodecProfile
 	// Params contains the test parameters for the e2e video encode test.
@@ -82,8 +84,6 @@ type EncodeTestOptions struct {
 	PixelFormat videotype.PixelFormat
 	// EncoderType indicates whether a HW or SW encoder will be used.
 	EncoderType EncoderType
-	// BatteryDischargeMode specifies battery usage during a test.
-	BatteryDischargeMode setup.BatteryDischargeMode
 }
 
 // testMode represents the test's running mode.

@@ -17,12 +17,11 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type powerCameraPreviewPerfArgs struct {
-	targetFPS     string
-	dischargeMode setup.BatteryDischargeMode
+	setup.PowerTestParam
+	targetFPS string
 }
 
 func init() {
@@ -38,44 +37,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Fixture:      "arcBootedWithDisableSyncFlags",
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Params: []testing.Param{
-			{
+		Params: setup.PowerTestParams(
+			testing.Param{
 				Name:              "30fps",
 				ExtraSoftwareDeps: []string{"android_p"},
-				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "30",
-					dischargeMode: setup.ForceBatteryDischarge,
-				},
+				Val:               &powerCameraPreviewPerfArgs{targetFPS: "30"},
 			},
-			{
+			testing.Param{
 				Name:              "30fps_vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "30",
-					dischargeMode: setup.ForceBatteryDischarge,
-				},
+				Val:               &powerCameraPreviewPerfArgs{targetFPS: "30"},
 			},
-			{
-				Name:              "30fps_nobatterymetrics",
-				ExtraSoftwareDeps: []string{"android_p"},
-				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "30",
-					dischargeMode: setup.NoBatteryDischarge,
-				},
-			},
-			{
-				Name:              "30fps_vm_nobatterymetrics",
-				ExtraSoftwareDeps: []string{"android_vm"},
-				ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-				Val: powerCameraPreviewPerfArgs{
-					targetFPS:     "30",
-					dischargeMode: setup.NoBatteryDischarge,
-				},
-			},
-		},
+		),
 		Timeout: 10 * time.Minute,
 	})
 }
@@ -116,7 +89,10 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 
 	args := s.Param().(powerCameraPreviewPerfArgs)
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{
-		Wifi: setup.DisableWifiInterfaces, Battery: args.dischargeMode, NightLight: setup.DisableNightLight}))
+		Wifi:       setup.DisableWifiInterfaces,
+		Battery:    setup.BatteryDischargeMode(args.PowerTestParam),
+		NightLight: setup.DisableNightLight,
+	}))
 
 	// Install camera testing app.
 	a := s.FixtValue().(*arc.PreData).ARC
