@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1943c2a_d108e582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-04T05:50:03Z",
+      "side": 1,
+      "message": "could you stop, even in this case?",
+      "revId": "ff213a5c9c22e2de4c7ab4bbc9479879a3e64ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
