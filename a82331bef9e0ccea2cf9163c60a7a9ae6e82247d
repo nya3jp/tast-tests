@@ -52,6 +52,24 @@
       "parentUuid": "d338386f_fcfe90c0",
       "revId": "a82331bef9e0ccea2cf9163c60a7a9ae6e82247d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06baad2e_a6fef16a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-04T05:34:53Z",
+      "side": 1,
+      "message": "The uprev landed so this CL is good to go.",
+      "parentUuid": "4e56e5d7_3ebe92d9",
+      "revId": "a82331bef9e0ccea2cf9163c60a7a9ae6e82247d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
