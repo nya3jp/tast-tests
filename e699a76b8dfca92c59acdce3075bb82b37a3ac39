@@ -146,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40649927_a24dfded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/recent_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1264073
+      },
+      "writtenOn": "2022-03-04T18:48:30Z",
+      "side": 1,
+      "message": "I agree that clearing data and re-enabling sync should put us in a fresh state, however it might still be valuable to assert that the recents are empty after clearing data and enabling sync, since these values come from chrome sync / history.google.com rather than directly from the phone over BT.",
+      "parentUuid": "a8a783e7_b5b7ad36",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 76
+      },
+      "revId": "e699a76b8dfca92c59acdce3075bb82b37a3ac39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c91b45c_c962524f",
