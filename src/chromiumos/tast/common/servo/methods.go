@@ -217,6 +217,7 @@ type DUTController string
 const (
 	DUTControllerC2D2       DUTController = "c2d2"
 	DUTControllerCCD        DUTController = "ccd_cr50"
+	DUTControllerCCDGSC     DUTController = "ccd_gsc"
 	DUTControllerServoMicro DUTController = "servo_micro"
 )
 
@@ -929,7 +930,9 @@ func (s *Servo) RequireCCD(ctx context.Context) error {
 	}
 	if s.isDualV4 {
 		if err = s.SetActiveDUTController(ctx, DUTControllerCCD); err != nil {
-			return errors.Wrap(err, "failed to set active dut controller")
+			if err = s.SetActiveDUTController(ctx, DUTControllerCCDGSC); err != nil {
+				return errors.Wrap(err, "failed to set active dut controller")
+			}
 		}
 	}
 	return nil
