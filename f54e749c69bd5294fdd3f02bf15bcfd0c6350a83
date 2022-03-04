@@ -16,6 +16,52 @@
       "message": "See http://b/186274474#comment73 for context",
       "revId": "f54e749c69bd5294fdd3f02bf15bcfd0c6350a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3ab1d5_c1fc148c",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-04T04:53:28Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 105
+      },
+      "revId": "f54e749c69bd5294fdd3f02bf15bcfd0c6350a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3424eb9c_d7c3fe79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-04T04:53:28Z",
+      "side": 1,
+      "message": "It is highly recommended to create a cleanupCtx to dump ui on failure, such as \n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n\ndefer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)\n\nOtherwise it will do nothing if test fails on ctx timeout.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 68
+      },
+      "revId": "f54e749c69bd5294fdd3f02bf15bcfd0c6350a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
