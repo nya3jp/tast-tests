@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/servo"
@@ -193,7 +194,15 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		// Skip setting the lid state for DUTs that don't have a lid, i.e. Chromeslates.
 		if deviceHasLid {
 			s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
-			if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
+					// This error may be temporary.
+					if strings.Contains(err.Error(), "No data was sent from the pty") {
+						return err
+					}
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 1 * time.Second}); err != nil {
 				s.Fatal("Failed to set lid state: ", err)
 			}
 		}
