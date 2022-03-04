@@ -27,6 +27,7 @@ func TestToolkitParams(t *testing.T) {
 				command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:toolkit_gtk3_demo.py",
 			}`,
+			UseFixture: true,
 		}, {
 			Name:      "gtk3_x11",
 			ExtraData: []string{"toolkit_gtk3_demo.py"},
@@ -36,6 +37,7 @@ func TestToolkitParams(t *testing.T) {
 				command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 			}`,
+			UseFixture: true,
 		}, {
 			Name:      "qt5",
 			ExtraData: []string{"toolkit_qt5_demo.py"},
@@ -45,6 +47,7 @@ func TestToolkitParams(t *testing.T) {
 				command: []string{"python3", "toolkit_qt5_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 			}`,
+			UseFixture: true,
 		}, {
 			Name:      "tkinter",
 			ExtraAttr: []string{"informational"}, /* b/200056776 */
@@ -55,6 +58,7 @@ func TestToolkitParams(t *testing.T) {
 				command: []string{"python3", "toolkit_tkinter_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 			}`,
+			UseFixture: true,
 		}})
 	genparams.Ensure(t, "toolkit.go", params)
 }
