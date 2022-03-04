@@ -134,6 +134,24 @@
       "parentUuid": "be3596d0_8ebb4526",
       "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84360c9e_e539b5a3",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-04T06:58:30Z",
+      "side": 1,
+      "message": "Yes, I agree to move them to ash/wm.go. I just to understand what it should look like.\n\nCould we make the func like this in ash/wm.go?\n\nfunc WaitForWindowByBrowserType(ctx, tconn, bt) bool\n\nfunc WaitForWindowByBrowserTitle(ctx, tconn, bt, title) bool\n\nIf not, what would you suggest?\n\nI think we would have more use cases where tests want to check the browser type and browser title (even though not necessarily together). We do not have such APIs yet. This should not only belong to one test suits.",
+      "parentUuid": "837e505f_d0dd7714",
+      "revId": "95df3424a12c8f05238cee16f748f2214ca0fd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
