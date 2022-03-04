@@ -51,6 +51,24 @@
       "parentUuid": "05658d5d_519601db",
       "revId": "39600462f520ad3ba609a868b7a54544b5246a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2723596d_7ba49f39",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-03-04T03:19:20Z",
+      "side": 1,
+      "message": "I think Tast will be unable to find it if you move it to common, as you still need to specify it in Data.\n\nSorry for the confusion!",
+      "parentUuid": "9b28aca2_5a2d6fab",
+      "revId": "39600462f520ad3ba609a868b7a54544b5246a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
