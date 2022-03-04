@@ -377,6 +377,24 @@
       "parentUuid": "46f0f644_31f5de08",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8f5743_1592e5c0",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-04T10:59:17Z",
+      "side": 1,
+      "message": "Well that might push you towards option 1 then",
+      "parentUuid": "44fa466f_94b76f0d",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
