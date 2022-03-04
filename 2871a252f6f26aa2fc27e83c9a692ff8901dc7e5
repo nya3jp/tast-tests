@@ -33,6 +33,24 @@
       "message": "nit: Do you meant that it \"returns an invalid slot number [...] with non-nil errors\" when \"it fails\"?",
       "revId": "2871a252f6f26aa2fc27e83c9a692ff8901dc7e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12ac14e_5ae783e0",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-04T05:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e587252_763eb60e",
+      "revId": "2871a252f6f26aa2fc27e83c9a692ff8901dc7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
