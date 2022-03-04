@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51aef38e_6022f771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-04T17:13:02Z",
+      "side": 1,
+      "message": "lgtm\n\nTricky that we need to navigate away to record the UMA.",
+      "revId": "e5851e1df95aaf6b1189057450e68d317d49957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
