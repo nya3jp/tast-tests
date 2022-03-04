@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de04f9a2_0aadad23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "mostly nits, general flow looks good",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3955578d_365fca0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "maybe we could pass this in to verify* methods instead of creating a new cleanup context there",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4771bb89_623eb8af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "can we use WaitForHotseatAnimatingToIdealState(ShownClamshell) here?\n(for consistency with tablet mode version)\n\nor we can even move this to HotseatScalable() before we call verify* methods (just wait for different state depending on tablet mode param)",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e7d537_7bc580ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "can we create cleanupCtx for deferred functions?",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfc7528_bc150fb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "nit: move this comment just before you open a window, and maybe phrase is as:\n\nOpen a browser window.\n\nAnd maybe\n\nVerify hotseat hides after opening a window.\n\nbefore WaitForHotseatAnimationToFinish step.",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd32c03_0849bda1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "nit: maybe move this before creating tc (so it\u0027s clearer that it tests state after opening new browser window)",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ac7b2d_ee3b87dd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "nit: How about\n...that indicate whether an app at particular index in appIDs is pinned.",
+      "range": {
+        "startLine": 955,
+        "startChar": 92,
+        "endLine": 955,
+        "endChar": 113
+      },
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b5bbcb8_b4676f3d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-04T20:02:00Z",
+      "side": 1,
+      "message": "optional: AreAppsPinned",
+      "range": {
+        "startLine": 956,
+        "startChar": 5,
+        "endLine": 956,
+        "endChar": 15
+      },
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
