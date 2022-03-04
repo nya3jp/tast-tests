@@ -129,6 +129,16 @@ func tearDown(ctx context.Context, env *TestEnv) {
 // DbusEventMonitor monitors the system message bus for those D-Bus calls we want to observe (InsertUserProfile, PopAllUserProfiles, CreateUserProfile).
 // It returns a stop function and error. The stop function stops the D-Bus monitor and return the called methods and/or error.
 func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
+	var rules = []string{
+		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", InsertUserProfile),
+		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", CreateUserProfile),
+		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", PopAllUserProfiles),
+	}
+	var allowlistDbusCmd = []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile}
+	return dbusEventMonitor(ctx, rules, allowlistDbusCmd)
+}
+
+func dbusEventMonitor(ctx context.Context, rules, allowlistDbusCmd []string) (func() ([]string, error), error) {
 	ch := make(chan error, 1)
 	var calledMethods []string
 	stop := func() ([]string, error) {
@@ -161,13 +171,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 		return nil, errors.Wrap(err, "failed to send the Hello call to the system bus")
 	}
 
-	var rules = []string{
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", InsertUserProfile),
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", CreateUserProfile),
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", PopAllUserProfiles),
-		fmt.Sprintf("type='signal',member='%s',path='/',interface='com.fake'", fakeEndSignal),
-	}
-
+	rules = append(rules, fmt.Sprintf("type='signal',member='%s',path='/',interface='com.fake'", fakeEndSignal))
 	call := conn.BusObject().CallWithContext(ctx, "org.freedesktop.DBus.Monitoring.BecomeMonitor", 0, rules, uint(0))
 	if call.Err != nil {
 		return nil, errors.Wrap(call.Err, "failed to become monitor")
@@ -175,6 +179,8 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 
 	c := make(chan *dbus.Message, 10)
 	conn.Eavesdrop(c)
+
+	allowlistDbusCmd = append(allowlistDbusCmd, fakeEndSignal)
 
 	go func() {
 		defer func() {
@@ -187,7 +193,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 			case <-ctx.Done():
 				ch <- errors.New("failed waiting for signal")
 			case msg := <-c:
-				dbusCmd, err := dbusCallMember(msg)
+				dbusCmd, err := dbusCallMember(msg, allowlistDbusCmd)
 				if err != nil {
 					testing.ContextLog(ctx, "Something failed: ", err)
 					continue
@@ -205,13 +211,12 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 }
 
 // dbusCallMember returns the member name of the D-Bus call.
-func dbusCallMember(dbusMessage *dbus.Message) (string, error) {
+func dbusCallMember(dbusMessage *dbus.Message, allowlistDbusCmd []string) (string, error) {
 	v, ok := dbusMessage.Headers[dbus.FieldMember]
 	if !ok {
 		return "", errors.Errorf("failed dbus message doesn't have field member: %s", dbusMessage)
 	}
 	msg := fmt.Sprintf(v.String()[1 : len(v.String())-1])
-	allowlistDbusCmd := []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile, fakeEndSignal}
 	for _, cmd := range allowlistDbusCmd {
 		if msg == cmd {
 			return cmd, nil
