@@ -18,9 +18,8 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/printmanagementapp"
-	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/printpreview"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -36,14 +35,24 @@ func init() {
 			"project-bolton@google.com",
 			"chromeos-commercial-remote-management@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "lacros"},
+		SoftwareDeps: []string{"chrome"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
 			"informational",
 		},
-		Fixture: fixture.LacrosPolicyLoggedIn,
+		Params: []testing.Param{
+			{
+				Fixture: fixture.ChromePolicyLoggedIn,
+				Val:     browser.TypeAsh,
+			}, {
+				Name:              "lacros",
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val:               browser.TypeLacros,
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -58,10 +67,11 @@ func Printers(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	printerName := "Water Cooler Printer"
+	printerDescription := "The printer next to the water cooler"
 	printersPolicy := &policy.Printers{Val: []string{
 		fmt.Sprintf(`{
 			"display_name": "%s",
-			"description": "The printer next to the water cooler.",
+			"description": "%s",
 			"manufacturer": "Printer Manufacturer",
 			"model": "Color Laser 2004",
 			"uri": "lpd://localhost:9100",
@@ -70,27 +80,18 @@ func Printers(ctx context.Context, s *testing.State) {
 				"effective_model": "generic pcl 6/pcl xl printer pxlcolor",
 				"autoconf": false
 			}
-		}`, printerName)}}
+		}`, printerName, printerDescription)}}
 
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{printersPolicy}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
 
 	// TODO(crbug.com/1259615): This should be part of the fixture.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), "")
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
 	defer closeBrowser(cleanupCtx)
-
-	// Open a new tab. The print dialog fails to open when invoking CTRL+P
-	// directly after calling `browserfixt.SetUp`, likely because the page
-	// isn't fully loaded yet. It also fails to open on about:blank pages, but
-	// works fine on chrome://newtab; see crbug.com/1290797.
-	conn, err := br.NewConn(ctx, "chrome://newtab")
-	if err != nil {
-		s.Fatal("Failed to connect to chrome: ", err)
-	}
 	defer conn.Close()
 
 	// Connect to Test API to use it with the UI library.
@@ -106,16 +107,19 @@ func Printers(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	ui := uiauto.New(tconn)
-	if err := uiauto.Combine("select the printer and print",
+	if err := uiauto.Combine("open print preview",
 		kb.AccelAction("Ctrl+P"),
-		ui.WaitUntilExists(nodewith.Role(role.Window).Name("Print").ClassName("RootView")),
-		ui.LeftClick(nodewith.Role(role.PopUpButton).NameStartingWith("Destination")),
-		ui.LeftClick(nodewith.Role(role.MenuItem).Name("See more destinations")),
-		ui.LeftClick(nodewith.Role(role.Cell).NameStartingWith(printerName)),
-		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
+		printpreview.WaitForPrintPreview(tconn),
 	)(ctx); err != nil {
-		s.Fatal("Failed to select printer in print destination popup and print: ", err)
+		s.Fatal("Failed to open print preview: ", err)
+	}
+
+	if err := printpreview.SelectPrinter(ctx, tconn, fmt.Sprintf("%s %s", printerName, printerDescription)); err != nil {
+		s.Fatal("Failed to select printer: ", err)
+	}
+
+	if err := printpreview.Print(ctx, tconn); err != nil {
+		s.Fatal("Failed to print: ", err)
 	}
 
 	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
