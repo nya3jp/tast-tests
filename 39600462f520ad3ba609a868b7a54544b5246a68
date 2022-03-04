@@ -33,6 +33,24 @@
       "message": "I think you need to add this file to the CL as well.",
       "revId": "39600462f520ad3ba609a868b7a54544b5246a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b28aca2_5a2d6fab",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-04T03:10:18Z",
+      "side": 1,
+      "message": "They are still in local/ and remote/, shall I move it here under data/?",
+      "parentUuid": "05658d5d_519601db",
+      "revId": "39600462f520ad3ba609a868b7a54544b5246a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
