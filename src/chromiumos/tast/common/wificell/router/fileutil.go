@@ -6,6 +6,7 @@ package router
 
 import (
 	"context"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -161,5 +162,63 @@ func MakeDirs(ctx context.Context, host *ssh.Conn, dirs ...string) error {
 			}
 		}
 	}
+	return nil
+}
+
+// GetSingleFile copies a single file from the host to the local machine.
+// srcRemoteFilePath is the full source file path on the host to be copied.
+// dstLocalFilePath will be replaced if it already exists. The local file will
+// be created with default permissions for the local machine.
+//
+// Unlike linuxssh.GetFile, tar is not used to transfer the file and directories
+// are not supported. This is because routers have varied support for tar.
+// Instead, a simple cat call on the host is used and its stdout is directed to
+// a local file.
+func GetSingleFile(ctx context.Context, host *ssh.Conn, srcRemoteFilePath, dstLocalFilePath string) error {
+	// Confirm remote file exists
+	if _, err := host.CommandContext(ctx, "test", "-f", srcRemoteFilePath).Output(); err != nil {
+		return errors.Wrapf(err, "failed to confirm that remote path %q refers to a file that exists", srcRemoteFilePath)
+	}
+
+	// Cat remote file and read stdout
+	catCmd := host.CommandContext(ctx, "cat", srcRemoteFilePath)
+	catStdOut, err := catCmd.StdoutPipe()
+	if err != nil {
+		return errors.Wrap(err, "failed to get stdout pipe")
+	}
+	if err := catCmd.Start(); err != nil {
+		return errors.Wrapf(err, "failed to run remote command 'cat %q'", srcRemoteFilePath)
+	}
+	defer catCmd.Abort()
+
+	// Pipe cat stdout to new local file
+	dstLocalFile, err := os.Create(dstLocalFilePath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create local destination file %q", dstLocalFilePath)
+	}
+	buf := make([]byte, 100)
+	for {
+		bytesRead, err := catStdOut.Read(buf)
+		if err != io.EOF && err != nil {
+			return errors.Wrapf(err, "failed to read stdout of remote command 'cat %q'", srcRemoteFilePath)
+		}
+		if bytesRead > 0 {
+			if _, err := dstLocalFile.Write(buf[:bytesRead]); err != nil {
+				return errors.Wrapf(err, "failed to write %d bytes to local file %q", bytesRead, dstLocalFilePath)
+			}
+		}
+		if err == io.EOF {
+			break
+		}
+	}
+	if err := dstLocalFile.Close(); err != nil {
+		return errors.Wrapf(err, "failed to close local file %q", dstLocalFilePath)
+	}
+
+	if err := catCmd.Wait(); err != nil {
+		return errors.Wrapf(err, "failed to wait for remote command 'cat %q' to complete", dstLocalFilePath)
+	}
+
+	testing.ContextLogf(ctx, "Copied remote file %q to local file %q", srcRemoteFilePath, dstLocalFilePath)
 	return nil
 }
