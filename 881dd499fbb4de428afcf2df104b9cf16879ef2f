@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3473d5_f209e1ce",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-04T18:25:55Z",
+      "side": 1,
+      "message": "Oh cool didn\u0027t see that function. Seems like it\u0027s the same thing with cat but just pulls the whole thing into memory before returning.\n\nThis is only used for transferring pcap files currently, and since those files could technically grow and grow depending on the amount of packets captured in the area I will stick with keeping it piped with a buffer to be safe.",
+      "parentUuid": "0a1147da_aecc7db6",
+      "revId": "881dd499fbb4de428afcf2df104b9cf16879ef2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e82d8c_950c87ae",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30182d57_aab530fe",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-04T18:25:55Z",
+      "side": 1,
+      "message": "I figured a function like that would exist I just didn\u0027t find one, thanks for pointing it out. I\u0027ve updated it to use it.",
+      "parentUuid": "c3e82d8c_950c87ae",
+      "revId": "881dd499fbb4de428afcf2df104b9cf16879ef2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57382177_6a80af6d",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-04T03:50:18Z",
       "side": 1,
       "message": "This should be deferred immediately after opening.",
+      "revId": "881dd499fbb4de428afcf2df104b9cf16879ef2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cacf9e9_601ba1e5",
+        "filename": "src/chromiumos/tast/common/wificell/router/fileutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-04T18:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57382177_6a80af6d",
       "revId": "881dd499fbb4de428afcf2df104b9cf16879ef2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
