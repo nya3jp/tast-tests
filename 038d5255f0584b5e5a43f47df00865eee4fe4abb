@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682f83cd_4184a77d",
+        "filename": "src/chromiumos/tast/local/smb/ui_helpers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-04T23:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8b5184_9dd32a69",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "038d5255f0584b5e5a43f47df00865eee4fe4abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8a575eb_9bcc3b22",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-04T09:20:29Z",
       "side": 1,
       "message": "I think this is not necessary as ui.LeftClick calls ui.Location and ui.WaitForLocation does the same.",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "038d5255f0584b5e5a43f47df00865eee4fe4abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd218a7_d9415445",
+        "filename": "src/chromiumos/tast/local/smb/ui_helpers.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-04T23:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a575eb_9bcc3b22",
       "range": {
         "startLine": 35,
         "startChar": 6,
