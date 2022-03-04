@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf2d2b4_8e27cca5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-04T22:45:18Z",
+      "side": 1,
+      "message": "LGTM % couple of nits 😊",
+      "revId": "0b5e017c201d11b38f5c8800f81fdf3520354a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bba269_3857dd85",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-04T22:45:18Z",
+      "side": 1,
+      "message": "The idiomatic way of doing this is \n```\nif err :\u003d ...; err !\u003d nil {\n    ...\n}\n```\ngo/go-style/guide#concision",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 53
+      },
+      "revId": "0b5e017c201d11b38f5c8800f81fdf3520354a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672c29ec_1c1c38a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-04T22:45:18Z",
+      "side": 1,
+      "message": "nit: space between `//` and `Give`",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "0b5e017c201d11b38f5c8800f81fdf3520354a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
