@@ -16,11 +16,14 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -175,6 +178,11 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch asset browser: ", err)
 	}
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
 		s.Fatal("Play Store verification failed: ", err)
 	}
@@ -211,6 +219,8 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
+		serverErrorText    = "Server error"
+		tryAgainButtonText = "Try again"
 	)
 
 	d, err := a.NewUIDevice(ctx)
@@ -219,15 +229,21 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 	}
 	defer d.Close(ctx)
 
-	if err := d.Object(ui.TextStartsWith(searchBarTextStart)).WaitForExists(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "unknown Play Store UI screen is shown")
-	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
+			return testing.PollBreak(errors.New("Play Store is empty"))
+		}
 
-	if err := d.Object(ui.Text(emptyPlayStoreText)).Exists(ctx); err == nil {
-		return errors.New("Play Store is empty")
-	}
+		if err := playstore.FindAndDismissDialog(ctx, d, serverErrorText, tryAgainButtonText, 2*time.Second); err != nil {
+			return testing.PollBreak(err)
+		}
 
-	return nil
+		if err := d.Object(ui.TextStartsWith(searchBarTextStart)).Exists(ctx); err != nil {
+			return errors.Wrap(err, "Play Store UI screen not shown")
+		}
+
+		return nil
+	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second})
 }
 
 // launchAssetBrowserActivity starts the activity that displays the available apps.
