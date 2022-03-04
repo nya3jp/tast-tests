@@ -33,6 +33,23 @@
       "message": "gabormagda@: PTAL - assigning you manually because lamzin@ assigned through tast-owners@ is OOO.",
       "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92a0922_14ee317a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1340678
+      },
+      "writtenOn": "2022-03-04T20:23:21Z",
+      "side": 1,
+      "message": "I was the original author of the PrintPdfAsImageDefault policy, but I don\u0027t know anything about tast, and definitely don\u0027t have ownership for approval of that.  I\u0027m not sure what value you are hoping for from my review?\n\nI\u0027m also amazed to see that several of the bots for this are still not completed yet after 6h of running.",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
