@@ -22,7 +22,7 @@ func init() {
 		Func:         TabSwitchCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of tab-switching CUJ",
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      22*time.Minute + cuj.CPUStablizationTimeout,
