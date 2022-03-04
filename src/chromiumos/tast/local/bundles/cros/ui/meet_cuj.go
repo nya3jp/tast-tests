@@ -83,8 +83,8 @@ func init() {
 		Func:         MeetCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of critical user journey for Google Meet",
-		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
 		Vars: []string{
 			"mute",
