@@ -15,8 +15,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/godbus/dbus"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
@@ -135,94 +133,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", PopAllUserProfiles),
 	}
 	var allowlistDbusCmd = []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile}
-	return dbusEventMonitor(ctx, rules, allowlistDbusCmd)
-}
-
-func dbusEventMonitor(ctx context.Context, rules, allowlistDbusCmd []string) (func() ([]string, error), error) {
-	ch := make(chan error, 1)
-	var calledMethods []string
-	stop := func() ([]string, error) {
-		// Send a fake dbus signal to stop the Eavesdrop.
-		connect, err := dbusutil.SystemBus()
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to connect to system bus")
-		}
-		if err := connect.Emit("/", fmt.Sprintf("com.fake.%s", fakeEndSignal)); err != nil {
-			return calledMethods, errors.Wrap(err, "failed sending fake signal to stop Eavesdrop")
-		}
-		if err := <-ch; err != nil {
-			return calledMethods, err
-		}
-		return calledMethods, nil
-	}
-
-	conn, err := dbusutil.SystemBusPrivate()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to system bus")
-	}
-	err = conn.Auth(nil)
-	if err != nil {
-		conn.Close()
-		return nil, errors.Wrap(err, "failed to authenticate the system bus")
-	}
-	err = conn.Hello()
-	if err != nil {
-		conn.Close()
-		return nil, errors.Wrap(err, "failed to send the Hello call to the system bus")
-	}
-
-	rules = append(rules, fmt.Sprintf("type='signal',member='%s',path='/',interface='com.fake'", fakeEndSignal))
-	call := conn.BusObject().CallWithContext(ctx, "org.freedesktop.DBus.Monitoring.BecomeMonitor", 0, rules, uint(0))
-	if call.Err != nil {
-		return nil, errors.Wrap(call.Err, "failed to become monitor")
-	}
-
-	c := make(chan *dbus.Message, 10)
-	conn.Eavesdrop(c)
-
-	allowlistDbusCmd = append(allowlistDbusCmd, fakeEndSignal)
-
-	go func() {
-		defer func() {
-			conn.Eavesdrop(nil)
-			conn.Close()
-		}()
-
-		for {
-			select {
-			case <-ctx.Done():
-				ch <- errors.New("failed waiting for signal")
-			case msg := <-c:
-				dbusCmd, err := dbusCallMember(msg, allowlistDbusCmd)
-				if err != nil {
-					testing.ContextLog(ctx, "Something failed: ", err)
-					continue
-				}
-				if dbusCmd == fakeEndSignal {
-					ch <- nil
-					return
-				}
-				calledMethods = append(calledMethods, dbusCmd)
-			}
-		}
-	}()
-
-	return stop, nil
-}
-
-// dbusCallMember returns the member name of the D-Bus call.
-func dbusCallMember(dbusMessage *dbus.Message, allowlistDbusCmd []string) (string, error) {
-	v, ok := dbusMessage.Headers[dbus.FieldMember]
-	if !ok {
-		return "", errors.Errorf("failed dbus message doesn't have field member: %s", dbusMessage)
-	}
-	msg := fmt.Sprintf(v.String()[1 : len(v.String())-1])
-	for _, cmd := range allowlistDbusCmd {
-		if msg == cmd {
-			return cmd, nil
-		}
-	}
-	return "", errors.Errorf("failed found unexpected call: got %s, want %v", msg, allowlistDbusCmd)
+	return dbusutil.DbusEventMonitor(ctx, rules, allowlistDbusCmd)
 }
 
 // AssureMethodCalls assure that the expected methods are called.
