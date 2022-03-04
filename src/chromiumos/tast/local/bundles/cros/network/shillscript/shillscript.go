@@ -127,13 +127,16 @@ func tearDown(ctx context.Context, env *TestEnv) {
 // DbusEventMonitor monitors the system message bus for those D-Bus calls we want to observe (InsertUserProfile, PopAllUserProfiles, CreateUserProfile).
 // It returns a stop function and error. The stop function stops the D-Bus monitor and return the called methods and/or error.
 func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
-	var rules = []string{
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", InsertUserProfile),
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", CreateUserProfile),
-		fmt.Sprintf("type='method_call',member='%s',path='/',interface='org.chromium.flimflam.Manager'", PopAllUserProfiles),
+	var specs []dbusutil.MatchSpec
+	var methods = []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile}
+	for _, method := range methods {
+		specs = append(specs, dbusutil.MatchSpec{
+			Type:      "method_call",
+			Interface: "org.chromium.flimflam.Manager",
+			Member:    method,
+		})
 	}
-	var allowlistDbusCmd = []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile}
-	return dbusutil.DbusEventMonitor(ctx, rules, allowlistDbusCmd)
+	return dbusutil.DbusEventMonitor(ctx, specs)
 }
 
 // AssureMethodCalls assure that the expected methods are called.

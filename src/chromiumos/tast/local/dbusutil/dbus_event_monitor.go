@@ -20,9 +20,9 @@ const (
 	fakeEndSignal = "FakeEndSignal"
 )
 
-// DbusEventMonitor monitors the system message bus for the D-Bus calls we want to observe as listed in |allowListDbusCmd|.
+// DbusEventMonitor monitors the system message bus for the D-Bus calls we want to observe as specified in |specs|.
 // It returns a stop function and error. The stop function stops the D-Bus monitor and return the called methods and/or error.
-func DbusEventMonitor(ctx context.Context, rules, allowlistDbusCmd []string) (func() ([]string, error), error) {
+func DbusEventMonitor(ctx context.Context, specs []MatchSpec) (func() ([]string, error), error) {
 	ch := make(chan error, 1)
 	var calledMethods []string
 	stop := func() ([]string, error) {
@@ -55,7 +55,19 @@ func DbusEventMonitor(ctx context.Context, rules, allowlistDbusCmd []string) (fu
 		return nil, errors.Wrap(err, "failed to send the Hello call to the system bus")
 	}
 
-	rules = append(rules, fmt.Sprintf("type='signal',member='%s',path='/',interface='com.fake'", fakeEndSignal))
+	specs = append(specs, MatchSpec{
+		Type:      "signal",
+		Interface: "com.fake",
+		Member:    fakeEndSignal,
+	})
+
+	var rules []string
+	var allowlistDbusCmd []string
+	for _, spec := range specs {
+		rules = append(rules, spec.String())
+		allowlistDbusCmd = append(allowlistDbusCmd, spec.Member)
+	}
+
 	call := conn.BusObject().CallWithContext(ctx, "org.freedesktop.DBus.Monitoring.BecomeMonitor", 0, rules, uint(0))
 	if call.Err != nil {
 		return nil, errors.Wrap(call.Err, "failed to become monitor")
@@ -63,8 +75,6 @@ func DbusEventMonitor(ctx context.Context, rules, allowlistDbusCmd []string) (fu
 
 	c := make(chan *dbus.Message, 10)
 	conn.Eavesdrop(c)
-
-	allowlistDbusCmd = append(allowlistDbusCmd, fakeEndSignal)
 
 	go func() {
 		defer func() {
