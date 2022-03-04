@@ -1,0 +1,6 @@
+{
+    "go.gopath": "/usr/local/google/home/aaronyu/go:/usr/local/google/home/aaronyu/cros/floop/src/platform/tast:/usr/local/google/home/aaronyu/cros/floop/src/platform/tast-tests:/usr/local/google/home/aaronyu/cros/floop/chroot/usr/lib/gopath",
+    "gopls": {
+        "formatting.local": "chromiumos"
+    }
+}
