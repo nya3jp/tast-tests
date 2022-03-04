@@ -110,9 +110,11 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// TODO(yichenz): Add scroll metrics.
+	// TODO(b/222729608): Add scroll metrics.
 	configs := []cuj.MetricConfig{
 		cuj.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
+			perf.SmallerIsBetter, []int64{4000, 5000}),
+		cuj.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000})}
 	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
@@ -139,6 +141,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to open the Google Sheets website")
 		}
 		defer sheetConn.Close()
+		defer sheetConn.CloseTarget(closeCtx)
 		s.Log("Creating a Google Sheets window")
 
 		// Pop-up content regarding view history privacy might show up.
@@ -169,6 +172,11 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		}
 		if scrollTop == 0 {
 			return errors.New("scroll didn't happen")
+		}
+
+		// Navigate away to record PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
+		if err := sheetConn.Navigate(ctx, "chrome://version"); err != nil {
+			return errors.Wrap(err, "failed to navigate to chrome://version")
 		}
 
 		return nil
