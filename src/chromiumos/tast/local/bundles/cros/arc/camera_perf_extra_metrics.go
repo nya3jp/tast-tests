@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -32,30 +31,19 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Fixture:      "arcBootedWithDisableSyncFlags",
-		Params: []testing.Param{{
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
-		}, {
-			Name:              "vm",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val:               setup.ForceBatteryDischarge,
-		}, {
-			Name:              "nobatterymetrics",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
-		}, {
-			Name:              "vm_nobatterymetrics",
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val:               setup.NoBatteryDischarge,
-		}},
+		Params: setup.PowerTestParams(
+			testing.Param{
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val:               new(setup.PowerTestParam),
+			},
+			testing.Param{
+				Name:              "vm",
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val:               new(setup.PowerTestParam),
+			},
+		),
 		Timeout: 10 * time.Minute,
 	})
 }

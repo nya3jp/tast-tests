@@ -33,10 +33,10 @@ const (
 
 // TestParameters holds the ARC audio tast parameters.
 type TestParameters struct {
-	Permission           string
-	Class                string
-	PerformanceMode      PerformanceMode
-	BatteryDischargeMode setup.BatteryDischargeMode
+	Permission      string
+	Class           string
+	PerformanceMode PerformanceMode
+	setup.PowerTestParam
 }
 
 const (
