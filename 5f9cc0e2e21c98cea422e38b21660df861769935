@@ -34,6 +34,24 @@
       "parentUuid": "f3941e82_a432ccbb",
       "revId": "5f9cc0e2e21c98cea422e38b21660df861769935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e6a6bf_181ed154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-04T00:26:26Z",
+      "side": 1,
+      "message": "The tracking bug is b/222442446. The conflict was with crrev.com/c/3496809.\n\nThis is an unavoidable issue with parallel CQ. There\u0027s a window between CQ starting and the change being submitted where a conflicting CL can be submitted. It should be relatively rare, though, since there have to be no git conflicts when CQ rebases the current change.",
+      "parentUuid": "19d17980_fc0d06b8",
+      "revId": "5f9cc0e2e21c98cea422e38b21660df861769935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
