@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18685308_e1faf46e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-04T16:46:26Z",
+      "side": 1,
+      "message": "I think this test would be more useful if we also tested that WiFi is preferred over Cellular (possibly as a separate test, but I would put both in the same file with a less specific name, e.g. cellular_not_preferred).",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b5faa3_1b42accb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-04T16:46:26Z",
+      "side": 1,
+      "message": "nit: Autoconnect shouldn\u0027t be causing a failure, it should just be causing the network to already be connected or connecting instead of explicitly connecting. I would just say \u0027Disable autoconnect for Cellular so that the test can explicitly connect and disconnect.\u0027 Or not say anything at all since that should be pretty clear in the test code.",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff4c519_936da016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-04T16:46:26Z",
+      "side": 1,
+      "message": "You should be able to combine this with the above:\n} else if !isConnected \u0026\u0026 _, err \u003d ...; err !\u003d nil {",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e76ee0_5262e847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-04T16:46:26Z",
+      "side": 1,
+      "message": "Here also, we are disabling WiFi.",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6feacacc_58d7e816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-04T16:46:26Z",
+      "side": 1,
+      "message": "Here we don\u0027t need an else",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9915a89_20968bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-04T16:46:26Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

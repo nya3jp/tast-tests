@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac399b77_13ff55e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-04T16:46:26Z",
+      "side": 1,
+      "message": "In Go, variables can be scoped to an if statement with :\u003d, so we need the else here since isConnected is scoped to the if/else. (This pattern is generally preferable to scoping isConnected outside of the if since it doesn\u0027t need to be.",
+      "parentUuid": "16f3d5c2_343ab1c4",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8227d28d_3822e6ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
         "patchSetId": 4
