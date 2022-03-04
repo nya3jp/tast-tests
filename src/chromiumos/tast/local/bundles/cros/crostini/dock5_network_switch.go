@@ -75,7 +75,7 @@ func Dock5NetworkSwitch(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Boot-up and Sign-In to the device ")
+	s.Log("Step 1 - Boot-up and Sign-In to the device ")
 
 	// step 2 - connect ext-display to station
 	if err := Dock5NetworkSwitch_Step2(ctx, s); err != nil {
@@ -104,7 +104,7 @@ func Dock5NetworkSwitch(ctx context.Context, s *testing.State) {
 
 	// step 7 - play youtube then check
 	if err := Dock5NetworkSwitch_Step7(ctx, s, cr, tconn); err != nil {
-		s.Fatal("Failed to execute step7", err)
+		s.Fatal("Failed to execute step7: ", err)
 	}
 
 }
@@ -112,10 +112,10 @@ func Dock5NetworkSwitch(ctx context.Context, s *testing.State) {
 // 2) Connect ext-display to (Docking station)
 func Dock5NetworkSwitch_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Connect ext-display to docking station")
+	s.Log("Step 2 - Connect ext-display to docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display to docking station")
 	}
 
 	return nil
@@ -124,10 +124,10 @@ func Dock5NetworkSwitch_Step2(ctx context.Context, s *testing.State) error {
 // 3) Connect (Docking station) to Chromebook
 func Dock5NetworkSwitch_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect docking station to chromebook ")
+	s.Log("Step 3 - Connect docking station to chromebook ")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in docking station to chromebook: ")
+		return errors.Wrap(err, "failed to plug in docking station to chromebook")
 	}
 
 	return nil
@@ -136,11 +136,11 @@ func Dock5NetworkSwitch_Step3(ctx context.Context, s *testing.State) error {
 // 4) Connect wired Ethernet cable onto (Dock station or Hub)
 func Dock5NetworkSwitch_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Connect wire ethernet to docking station ")
+	s.Log("Step 4 - Connect wire ethernet to docking station ")
 
 	// plug in ethernet
 	if err := utils.ControlFixture(ctx, s, utils.FixtureEthernet, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in ethernet: ")
+		return errors.Wrap(err, "failed to plug in ethernet")
 	}
 
 	// check ethernet status in 30s
@@ -163,27 +163,27 @@ func Dock5NetworkSwitch_Step4(ctx context.Context, s *testing.State) error {
 // 5) Open Chrome Browser: www.youtube.com and play any video
 func Dock5NetworkSwitch_Step5(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Open brower and play youtube")
+	s.Log("Step 5 - Open brower and play youtube")
 
 	// play youtube
 	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
-		return errors.Wrap(err, "Failed to play youtube")
+		return errors.Wrap(err, "failed to play youtube")
 	}
 
 	// 5)  Make sure video/audio playback without any issue
 	if err := utils.CheckPlaybackByFixture(ctx, s, utils.InternalDisplay); err != nil {
-		return errors.Wrap(err, "Failed check playback on internal display: ")
+		return errors.Wrap(err, "failed check playback on internal display")
 	}
 
 	// get youtube window
 	youtube, err := utils.GetYoutubeWindow(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get youtube window: ")
+		return errors.Wrap(err, "failed to get youtube window")
 	}
 
 	// close youtube in the end
 	if err := youtube.CloseWindow(ctx, tconn); err != nil {
-		return errors.Wrap(err, "Failed to close youtube: ")
+		return errors.Wrap(err, "failed to close youtube")
 	}
 
 	return nil
@@ -193,11 +193,11 @@ func Dock5NetworkSwitch_Step5(ctx context.Context, s *testing.State, cr *chrome.
 // 6) Disconnect Ethernet cable, and connect to WiFi
 func Dock5NetworkSwitch_Step6(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 6 - Disconnect ethernet cable, and connect to WiFi")
+	s.Log("Step 6 - Disconnect ethernet cable, and connect to WiFi")
 
 	// disconnect ethernet cable
 	if err := utils.ControlFixture(ctx, s, utils.FixtureEthernet, utils.ActionUnplug, false); err != nil {
-		return errors.Wrap(err, "Failed to unplug ethernet: ")
+		return errors.Wrap(err, "failed to unplug ethernet")
 	}
 
 	// check network interface is disabled or not in 30s
@@ -221,27 +221,27 @@ func Dock5NetworkSwitch_Step6(ctx context.Context, s *testing.State) error {
 // 7) Repeat step: #5
 func Dock5NetworkSwitch_Step7(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 7 - Play youtube")
+	s.Log("Step 7 - Play youtube")
 
 	// play youtube
 	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
-		return errors.Wrap(err, "Failed to play youtube: ")
+		return errors.Wrap(err, "failed to play youtube")
 	}
 
 	// make sure video playback without any issue
 	if err := utils.CheckPlaybackByFixture(ctx, s, utils.InternalDisplay); err != nil {
-		return errors.Wrap(err, "Failed to check playback on internal display: ")
+		return errors.Wrap(err, "failed to check playback on internal display")
 	}
 
 	// get youtube window
 	youtube, err := utils.GetYoutubeWindow(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get youtube window: ")
+		return errors.Wrap(err, "failed to get youtube window")
 	}
 
 	// close youtube window
 	if err := youtube.CloseWindow(ctx, tconn); err != nil {
-		return errors.Wrap(err, "Failed to close youtube: ")
+		return errors.Wrap(err, "failed to close youtube")
 	}
 
 	return nil

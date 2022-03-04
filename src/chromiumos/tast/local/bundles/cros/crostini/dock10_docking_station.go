@@ -76,6 +76,9 @@ Procedure:
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
@@ -83,8 +86,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
-	"context"
-	"time"
 )
 
 // 1. Power the Chromebook On.
@@ -92,7 +93,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dock10DockingStation,
-		Desc:         "USB Type-C Multi-Port adapter and Docking station should work properly.",
+		Desc:         "USB Type-C Multi-Port adapter and Docking station should work properly",
 		Contacts:     []string{"allion-sw@allion.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
@@ -119,7 +120,7 @@ func Dock10DockingStation(ctx context.Context, s *testing.State) {
 	}
 
 	// 1. Boot the device with dock connected
-	s.Logf("Step 1 - Boot the device with dock connected ")
+	s.Log("Step 1 - Boot the device with dock connected ")
 
 	// 2. Hotplug the dock alone
 	if err := Dock10DockingStation_Step2(ctx, s); err != nil {
@@ -164,10 +165,10 @@ func Dock10DockingStation(ctx context.Context, s *testing.State) {
 // 2. Hotplug the dock alone
 func Dock10DockingStation_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Hotplug the dock alone")
+	s.Log("Step 2 - Hotplug the dock alone")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in docking station: ")
+		return errors.Wrap(err, "failed to plug in docking station")
 	}
 
 	return nil
@@ -177,16 +178,16 @@ func Dock10DockingStation_Step2(ctx context.Context, s *testing.State) error {
 // 4. Hotplug peripheral(s) - one by one, or in combination - while docking station is plugged to Chromebook device
 func Dock10DockingStation_Step4(ctx context.Context, s *testing.State, tconn *chrome.TestConn, uc *utils.UsbController) error {
 
-	s.Logf("Step 4 - plug peripherals one by one then check ")
+	s.Log("Step 4 - plug peripherals one by one then check ")
 
 	// plug peripherals one by one
 	if err := utils.ControlPeripherals(ctx, s, uc, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in peripherals to docking station one by one: ")
+		return errors.Wrap(err, "failed to plug in peripherals to docking station one by one")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on docking station: ")
+		return errors.Wrap(err, "failed to check peripherals on docking station")
 	}
 
 	return nil
@@ -195,26 +196,26 @@ func Dock10DockingStation_Step4(ctx context.Context, s *testing.State, tconn *ch
 // 5. Docking station only - Power up, Power down, and Up again the dock while all ports are busy with ExtDisplay and HID(kb, or mouse)
 func Dock10DockingStation_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn, uc *utils.UsbController) error {
 
-	s.Logf("Step 5 - check extDisp & HID after power up - down - up docking station")
+	s.Log("Step 5 - check extDisp & HID after power up - down - up docking station")
 
 	// power up docking
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOn); err != nil {
-		return errors.Wrapf(err, "Failed to power up docking station: ")
+		return errors.Wrap(err, "failed to power up docking station")
 	}
 
 	// power off docking
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOff); err != nil {
-		return errors.Wrapf(err, "Failed to power off docking station: ")
+		return errors.Wrap(err, "failed to power off docking station")
 	}
 
 	// power up docking
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOn); err != nil {
-		return errors.Wrapf(err, "Failed to power up docking station: ")
+		return errors.Wrap(err, "failed to power up docking station")
 	}
 
 	// check peripherals on station
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check HID on docking station: ")
+		return errors.Wrap(err, "failed to check HID on docking station")
 	}
 
 	return nil
@@ -223,22 +224,22 @@ func Dock10DockingStation_Step5(ctx context.Context, s *testing.State, tconn *ch
 // 6. Plug - Suspend - Resume.
 func Dock10DockingStation_Step6(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Plug in docking, suspend & wake up chromebook, then check peripherals on docking station")
+	s.Log("Plug in docking, suspend & wake up chromebook, then check peripherals on docking station")
 
 	// plug in docking
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to plug-in docking station: ")
+		return errors.Wrap(err, "failed to plug-in docking station")
 	}
 
 	// suspend & wake up chromebook
 	tconn, err := utils.SuspendChromebook(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to suspend the wake up chromebook")
+		return errors.Wrap(err, "failed to suspend the wake up chromebook")
 	}
 
 	// check peripherals on docking station
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on docking station: ")
+		return errors.Wrap(err, "failed to check peripherals on docking station")
 	}
 
 	return nil
@@ -247,32 +248,32 @@ func Dock10DockingStation_Step6(ctx context.Context, s *testing.State, cr *chrom
 // 7. Plug - Suspend -Unplug -Resume - Plug
 func Dock10DockingStation_Step7(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Plug in docking, suspend chromebook, unplug docking, wake up it, then check peripherals on docking station")
+	s.Log("Plug in docking, suspend chromebook, unplug docking, wake up it, then check peripherals on docking station")
 
 	// plug in station
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to plug-in docking station: ")
+		return errors.Wrap(err, "failed to plug-in docking station")
 	}
 
 	// unplug station later
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, true); err != nil {
-		return errors.Wrap(err, "Failed to unplug docking station later: ")
+		return errors.Wrap(err, "failed to unplug docking station later")
 	}
 
 	// suspend then resume
 	tconn, err := utils.SuspendChromebook(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to suspend chromebook: ")
+		return errors.Wrap(err, "failed to suspend chromebook")
 	}
 
 	// plug in docking
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to plug-in docking station: ")
+		return errors.Wrap(err, "failed to plug-in docking station")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on docking station: ")
+		return errors.Wrap(err, "failed to check peripherals on docking station")
 	}
 
 	return nil
@@ -281,27 +282,27 @@ func Dock10DockingStation_Step7(ctx context.Context, s *testing.State, cr *chrom
 // 8. Unplug - Suspend - Plug - Resume
 func Dock10DockingStation_Step8(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Unplug docking, suspend chromebook, plug in docking , wake up it, then check peripherals on docking station")
+	s.Log("Unplug docking, suspend chromebook, plug in docking , wake up it, then check peripherals on docking station")
 
 	// unplug station
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, false); err != nil {
-		return errors.Wrapf(err, "Failed to unplug docking station: ")
+		return errors.Wrap(err, "failed to unplug docking station")
 	}
 
 	// plug in station later
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, true); err != nil {
-		return errors.Wrap(err, "Failed to plug in docking station later: ")
+		return errors.Wrap(err, "failed to plug in docking station later")
 	}
 
 	// suspend - resume
 	tconn, err := utils.SuspendChromebook(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to suspend then reconnect chromebook: ")
+		return errors.Wrap(err, "failed to suspend then reconnect chromebook")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsDisconnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on docking station: ")
+		return errors.Wrap(err, "failed to check peripherals on docking station")
 	}
 
 	return nil
@@ -310,23 +311,23 @@ func Dock10DockingStation_Step8(ctx context.Context, s *testing.State, cr *chrom
 // 9. Enable tablet mode repeat above step
 func Dock10DockingStation_Step9(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Step 9 - Enable tablet mode, then repeat above steps ")
+	s.Log("Step 9 - Enable tablet mode, then repeat above steps ")
 
 	// reconnect chromebook
 	if err := cr.Reconnect(ctx); err != nil {
-		return errors.Wrap(err, "Failed to reconnect to chromebook: ")
+		return errors.Wrap(err, "failed to reconnect to chromebook")
 	}
 
 	// get test connection
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create Test API connection: ")
+		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
 	// ensure tablet mode is enabled
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		return errors.Wrap(err, "Failed to ensure in tablet mode ")
+		return errors.Wrap(err, "failed to ensure in tablet mode ")
 	}
 	defer cleanup(ctx)
 

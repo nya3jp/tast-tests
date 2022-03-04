@@ -1,6 +1,9 @@
 package utils
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -9,8 +12,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // displayLayout is a pair of internal and external display.Info.

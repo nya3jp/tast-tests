@@ -42,14 +42,15 @@
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // 1. Power the Chrombook On.
@@ -76,9 +77,9 @@ func Dock19MstDisplay(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Power the Chrombook On")
+	s.Log("Step 1 - Power the Chrombook On")
 
-	s.Logf("Step 2 - Sign-in account")
+	s.Log("Step 2 - Sign-in account")
 
 	// step 3 - connect ext-display1 via Type-C
 	if err := Dock19MstDisplay_Step3(ctx, s); err != nil {
@@ -109,10 +110,10 @@ func Dock19MstDisplay(ctx context.Context, s *testing.State) {
 // 3. Connect the 1st external monitor to the chromebook via DP cable. (switch Type-C & HDMI fixture)
 func Dock19MstDisplay_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect the 1st external monitor to the chromebook via DP cable. (switch Type-C & HDMI fixture)")
+	s.Log("Step 3 - Connect the 1st external monitor to the chromebook via DP cable. (switch Type-C & HDMI fixture)")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp2, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in ext-display to docking station: ")
+		return errors.Wrap(err, "failed to plug in ext-display to docking station")
 	}
 
 	return nil
@@ -121,16 +122,16 @@ func Dock19MstDisplay_Step3(ctx context.Context, s *testing.State) error {
 // 4. Connect the 2nd external monitor to the 1st external monitor via DP cable. (Manual)
 func Dock19MstDisplay_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Connect the 2nd external monitor to the 1st external monitor via DP cable. (Manually)")
+	s.Log("Step 4 - Connect the 2nd external monitor to the 1st external monitor via DP cable. (Manually)")
 
 	return nil
 }
 func Dock19MstDisplay_Step5(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 5 - Connect station to chromebook")
+	s.Log("Step 5 - Connect station to chromebook")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect station to chromebook: ")
+		return errors.Wrap(err, "failed to connect station to chromebook")
 	}
 
 	return nil
@@ -141,16 +142,16 @@ func Dock19MstDisplay_Step5(ctx context.Context, s *testing.State) error {
 // 7. Input and navigate the video address ""https://www.youtube.com/watch?v=l4bDVq-nP-0&t=65s""
 func Dock19MstDisplay_Step6To8(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 6, 7, 8 - Play youtube")
+	s.Log("Step 6, 7, 8 - Play youtube")
 
 	// call function to play youtube
 	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
-		return errors.Wrap(err, "Failed to play youtube: ")
+		return errors.Wrap(err, "failed to play youtube")
 	}
 
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info: ")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	if err := testing.Poll(ctx, func(c context.Context) error {
@@ -159,12 +160,12 @@ func Dock19MstDisplay_Step6To8(ctx context.Context, s *testing.State, cr *chrome
 		// get youtube window
 		youtube, err := utils.GetYoutubeWindow(ctx, tconn)
 		if err != nil {
-			return errors.Wrapf(err, "Failed to get youtube window: ")
+			return errors.Wrap(err, "failed to get youtube window")
 		}
 
 		// move window form internal to external
 		if err := utils.MoveWindowToDisplay(ctx, s, tconn, youtube, &infos[1]); err != nil {
-			return errors.Wrapf(err, "Failed to move window between display: ")
+			return errors.Wrap(err, "failed to move window between display")
 		}
 
 		return nil
@@ -182,18 +183,18 @@ func Dock19MstDisplay_Step6To8(ctx context.Context, s *testing.State, cr *chrome
 // 4. Check the 1Khz video/audio playback  by test fixture."
 func Dock19MstDisplay_Step9(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 8 - Run verification")
+	s.Log("Step 8 - Run verification")
 
 	// 1. Check the 1st external monitor display properly by test fixture.
 	// 2. Check the 2nd external monitor display properly by test fixture.
 	if err := utils.VerifyDisplayProperly(ctx, s, tconn, 3); err != nil {
-		return errors.Wrap(err, "Failed to verify display properly: ")
+		return errors.Wrap(err, "failed to verify display properly")
 	}
 
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info: ")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// 3. Check both displays exist and screen mode is ""Extended"" or Chrome browser bounds on both displays
@@ -215,12 +216,12 @@ func Dock19MstDisplay_Step9(ctx context.Context, s *testing.State, tconn *chrome
 
 	// check chrome browser on first external
 	if err := utils.EnsureYoutubeOnDisplay(ctx, s, tconn, &infos[1]); err != nil {
-		return errors.Wrapf(err, "Failed to ensure youtube on first display - %s: ", infos[1].ID)
+		return errors.Wrapf(err, "failed to ensure youtube on first display - %s: ", infos[1].ID)
 	}
 
 	// 4. Check the 1Khz video/audio playback  by test fixture."
 	if err := utils.CheckPlaybackByFixture(ctx, s, utils.ExternalDisplay1); err != nil {
-		return errors.Wrapf(err, "Failed to check playback on ext-display1: ")
+		return errors.Wrap(err, "failed to check playback on ext-display1")
 	}
 
 	return nil

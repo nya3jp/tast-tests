@@ -1,12 +1,13 @@
 package utils
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // to get display with attribute is not internal
@@ -54,7 +55,7 @@ func EnsureDisplayIsPrimary(ctx context.Context, s *testing.State, tconn *chrome
 		// set the display to primary
 		isPrimary := true
 		if err := display.SetDisplayProperties(ctx, tconn, disp.ID, display.DisplayProperties{IsPrimary: &isPrimary}); err != nil {
-			return errors.Wrap(err, "Failed to make internal display become primary: ")
+			return errors.Wrap(err, "failed to make internal display become primary")
 		}
 
 		// retry in 5s
@@ -63,12 +64,12 @@ func EnsureDisplayIsPrimary(ctx context.Context, s *testing.State, tconn *chrome
 			// get primary info to compare
 			primaryInfo, err := display.GetPrimaryInfo(ctx, tconn)
 			if err != nil {
-				return errors.Wrap(err, "Failed to get primary display info ")
+				return errors.Wrap(err, "failed to get primary display info ")
 			}
 
 			// check prop in the end
 			if primaryInfo.ID != disp.ID {
-				return errors.Errorf("Failed to set want display to be primary: ")
+				return errors.New("failed to set want display to be primary: ")
 			}
 
 			return nil

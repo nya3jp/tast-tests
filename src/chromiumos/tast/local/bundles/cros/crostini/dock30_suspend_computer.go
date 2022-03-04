@@ -43,13 +43,14 @@
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // Test Step:
@@ -58,7 +59,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dock30SuspendComputer,
-		Desc:         "Suspend the computer while external display connected.",
+		Desc:         "Suspend the computer while external display connected",
 		Contacts:     []string{"allion-sw@allion.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
@@ -77,9 +78,9 @@ func Dock30SuspendComputer(ctx context.Context, s *testing.State) { // chrome.Lo
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Power the Chrombook On")
+	s.Log("Step 1 - Power the Chrombook On")
 
-	s.Logf("Step 2 - Sign-in account")
+	s.Log("Step 2 - Sign-in account")
 
 	// step 3 - connect ext-display to station
 	if err := Dock30SuspendComputer_Step3(ctx, s); err != nil {
@@ -106,10 +107,10 @@ func Dock30SuspendComputer(ctx context.Context, s *testing.State) { // chrome.Lo
 // 3. Connect the external monitor to the docking station via Type-C cable.
 func Dock30SuspendComputer_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect the external monitor to the docking station")
+	s.Log("Step 3 - Connect the external monitor to the docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display to docking station")
 	}
 
 	return nil
@@ -118,10 +119,10 @@ func Dock30SuspendComputer_Step3(ctx context.Context, s *testing.State) error {
 // 4. Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture)
 func Dock30SuspendComputer_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Connect the docking station to chromebook")
+	s.Log("Step 4 - Connect the docking station to chromebook")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to connect docking station to chromebook: ")
+		return errors.Wrap(err, "failed to connect docking station to chromebook")
 	}
 
 	return nil
@@ -131,12 +132,12 @@ func Dock30SuspendComputer_Step4(ctx context.Context, s *testing.State) error {
 // 6. Check the chromebook display properly by test fixture.
 func Dock30SuspendComputer_Step5To6(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Check the external monitor display properly by test fixture.")
+	s.Log("Step 5 - Check the external monitor display properly by test fixture")
 
-	s.Logf("Step 6 - Check the chromebook display properly by test fixture.")
+	s.Log("Step 6 - Check the chromebook display properly by test fixture")
 
 	if err := utils.VerifyDisplayProperly(ctx, s, tconn, 2); err != nil {
-		return errors.Wrap(err, "Failed to verify display properly: ")
+		return errors.Wrap(err, "failed to verify display properly")
 	}
 
 	return nil
@@ -147,26 +148,26 @@ func Dock30SuspendComputer_Step5To6(ctx context.Context, s *testing.State, tconn
 // 9. Check the chromebook display become dark by test fixture."
 func Dock30SuspendComputer_Step7To9(ctx context.Context, s *testing.State, cr *chrome.Chrome) error {
 
-	s.Logf("Step 7 - Suspend chromebook")
+	s.Log("Step 7 - Suspend chromebook")
 
-	s.Logf("Step 8 - Check the external monitor become dark by test fixture")
+	s.Log("Step 8 - Check the external monitor become dark by test fixture")
 
-	s.Logf("Step 9 - Check the chromebook display become dark by test fixture")
+	s.Log("Step 9 - Check the chromebook display become dark by test fixture")
 
 	// call before suspend
 	if err := utils.CheckColorLater(s, utils.InternalDisplay); err != nil {
-		return errors.Wrap(err, "Failed to execute CheckColorLater: ")
+		return errors.Wrap(err, "failed to execute CheckColorLater")
 	}
 
 	// suspend chromebook
 	_, err := utils.SuspendChromebook(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to suspend then reconnect chromebook: ")
+		return errors.Wrap(err, "failed to suspend then reconnect chromebook")
 	}
 
 	// check color
 	if err := utils.CheckColorResult(s, "black"); err != nil {
-		return errors.Wrap(err, "Failed to execute CheckColorResult: ")
+		return errors.Wrap(err, "failed to execute CheckColorResult")
 	}
 	return nil
 }

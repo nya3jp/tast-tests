@@ -44,14 +44,15 @@
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // Test Step:
@@ -79,9 +80,9 @@ func Dock29Closelid(ctx context.Context, s *testing.State) { // chrome.LoggedIn(
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Power the Chrombook On.")
+	s.Log("Step 1 - Power the Chrombook On")
 
-	s.Logf("Step 2 - Sign-in account")
+	s.Log("Step 2 - Sign-in account")
 
 	// step 3 - connect ext-display to station
 	if err := Dock29Closelid_Step3(ctx, s); err != nil {
@@ -132,10 +133,10 @@ func Dock29Closelid(ctx context.Context, s *testing.State) { // chrome.LoggedIn(
 // 3. Connect the external monitor to the docking station via Type-C cable.
 func Dock29Closelid_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect the external monitor to the station ")
+	s.Log("Step 3 - Connect the external monitor to the station ")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to station: ")
+		return errors.Wrap(err, "failed to connect ext-display to station")
 	}
 
 	return nil
@@ -144,10 +145,10 @@ func Dock29Closelid_Step3(ctx context.Context, s *testing.State) error {
 // 4. Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture)
 func Dock29Closelid_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Connect the station to chromebook")
+	s.Log("Step 4 - Connect the station to chromebook")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to connect station to chromebook: ")
+		return errors.Wrap(err, "failed to connect station to chromebook")
 	}
 
 	return nil
@@ -157,20 +158,20 @@ func Dock29Closelid_Step4(ctx context.Context, s *testing.State) error {
 // 6. Input and navigate the video address ""https://www.youtube.com/watch?v=l4bDVq-nP-0&t=65s""
 func Dock29Closelid_Step5To6(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5, 6 - Play youtube")
+	s.Log("Step 5, 6 - Play youtube")
 
 	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
-		return errors.Wrap(err, "Failed to play youtube: ")
+		return errors.Wrap(err, "failed to play youtube")
 	}
 
 	// get primary info to compare
 	primaryInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get primary display info: ")
+		return errors.Wrap(err, "failed to get primary display info")
 	}
 
 	if err := utils.EnsureYoutubeOnDisplay(ctx, s, tconn, primaryInfo); err != nil {
-		return errors.Wrap(err, "Failed to ensure youtube on primary display: ")
+		return errors.Wrap(err, "failed to ensure youtube on primary display")
 	}
 
 	return nil
@@ -179,10 +180,10 @@ func Dock29Closelid_Step5To6(ctx context.Context, s *testing.State, cr *chrome.C
 // 7. Close Chromebook lid.
 func Dock29Closelid_Step7(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 7 - Close chromebook lid")
+	s.Log("Step 7 - Close chromebook lid")
 
 	if err := utils.SetDisplayPower(ctx, utils.DisplayPowerInternalOffExternalOn); err != nil {
-		return errors.Wrap(err, "Failed to set internal display power off: ")
+		return errors.Wrap(err, "failed to set internal display power off")
 	}
 
 	return nil
@@ -191,19 +192,19 @@ func Dock29Closelid_Step7(ctx context.Context, s *testing.State) error {
 // 8. Check window bounds on external display
 func Dock29Closelid_Step8(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 8 - Check window bounds on external display")
+	s.Log("Step 8 - Check window bounds on external display")
 
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info: ")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// ensure youtube on ext-display 1
 	// but currently only can get only one display
 	// so ext-display 1 will be infos[0]
 	if err := utils.EnsureYoutubeOnDisplay(ctx, s, tconn, &infos[0]); err != nil {
-		return errors.Wrapf(err, "Failed to ensure youtube on external display: ")
+		return errors.Wrap(err, "failed to ensure youtube on external display")
 	}
 
 	return nil
@@ -212,10 +213,10 @@ func Dock29Closelid_Step8(ctx context.Context, s *testing.State, tconn *chrome.T
 // 9. Check the 1Khz video/audio playback by test fixture."
 func Dock29Closelid_Step9(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 9 - Check the 1Khz video/audio playback on ext-display 1 by test fixture ")
+	s.Log("Step 9 - Check the 1Khz video/audio playback on ext-display 1 by test fixture ")
 
 	if err := utils.CheckPlaybackByFixture(ctx, s, utils.ExternalDisplay1); err != nil {
-		return errors.Wrapf(err, "Failed to check playback by test fixture: ")
+		return errors.Wrap(err, "failed to check playback by test fixture")
 	}
 
 	return nil

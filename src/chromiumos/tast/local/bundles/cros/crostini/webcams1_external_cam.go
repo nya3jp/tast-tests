@@ -22,6 +22,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/pkg/errors"
+
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
@@ -30,8 +32,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-
-	"github.com/pkg/errors"
 )
 
 func init() {
@@ -106,11 +106,11 @@ func Webcams1ExternalCam_Step1(ctx context.Context, s *testing.State, app *cca.A
 	// Verify default camera is the front camera
 	facing, err := app.GetFacing(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "Get facing failed: ")
+		return errors.Wrap(err, "get facing failed")
 	}
 
 	if facing != cca.FacingFront {
-		return errors.Errorf("Failed to verify default camera is the front camera, want %s, got %s", cca.FacingFront, facing)
+		return errors.Errorf("failed to verify default camera is the front camera, want %s, got %s", cca.FacingFront, facing)
 	}
 
 	return nil
@@ -161,12 +161,12 @@ func Webcams1ExternalCam_Step3(ctx context.Context, s *testing.State, cr *chrome
 	// Verify the photo and video taken with external camera are clear and looks good
 	// play youtube
 	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
-		return errors.Wrap(err, "Failed to play youtube: ")
+		return errors.Wrap(err, "failed to play youtube")
 	}
 
 	// send "f" to enter youtube full screen
 	if err := kb.Accel(ctx, "f"); err != nil {
-		return errors.Wrapf(err, "Failed to let youtube into full screen: ")
+		return errors.Wrap(err, "failed to let youtube into full screen")
 	}
 
 	if err := CheckPhotoLooksGood(ctx, s, app); err != nil {
@@ -179,18 +179,18 @@ func Webcams1ExternalCam_Step3(ctx context.Context, s *testing.State, cr *chrome
 
 	// send "esc" to chromebook exit youtube full screen
 	if err := kb.Accel(ctx, "esc"); err != nil {
-		return errors.Wrapf(err, "Failed to let youtube exit full screen: ")
+		return errors.Wrap(err, "failed to let youtube exit full screen")
 	}
 
 	// get youtube window
 	youtube, err := utils.GetYoutubeWindow(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get youtube window: ")
+		return errors.Wrap(err, "failed to get youtube window")
 	}
 
 	// close youtube window
 	if err := youtube.CloseWindow(ctx, tconn); err != nil {
-		return errors.Wrap(err, "Failed to close youtube: ")
+		return errors.Wrap(err, "failed to close youtube")
 	}
 
 	return nil
@@ -250,17 +250,17 @@ func CheckVideoLooksGood(ctx context.Context, s *testing.State, cr *chrome.Chrom
 
 	file, err := app.RecordVideo(ctx, cca.TimerOn, time.Minute)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to record video")
+		return errors.Wrap(err, "failed to record video")
 	}
 
 	videoPath, err := app.FilePathInSavedDir(ctx, file.Name())
 	if err != nil {
-		return errors.Wrap(err, "Failed to get video path: ")
+		return errors.Wrap(err, "failed to get video path")
 	}
 
 	// 	--  Playback the video and verify it plays as expected"
 	if err := cca.CheckVideoProfile(videoPath, cca.ProfileH264High); err != nil {
-		return errors.Wrap(err, "Failed to check video profile ")
+		return errors.Wrap(err, "failed to check video profile ")
 	}
 
 	if err := utils.CopyFile(ctx, s, videoPath); err != nil {

@@ -1,13 +1,14 @@
 package utils
 
 import (
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/input"
-	"chromiumos/tast/testing"
 	"context"
 	"path/filepath"
 	"strings"
 	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // sequence number for display.
@@ -40,7 +41,7 @@ func GetColor(ctx context.Context, s *testing.State, dispSeq DisplaySequence) (s
 
 	want, err := GetPiColor(s, dispType, dispIndex, "0")
 	if err != nil {
-		return "", errors.Wrap(err, "Failed to execute GetPiColor: ")
+		return "", errors.Wrap(err, "failed to execute GetPiColor")
 	}
 
 	return want, nil
@@ -54,11 +55,11 @@ func CheckColor(ctx context.Context, s *testing.State, dispSeq DisplaySequence, 
 
 	color, err := GetPiColor(s, dispType, dispIndex, "0")
 	if err != nil {
-		return errors.Wrap(err, "Failed to execute GetPiColor: ")
+		return errors.Wrap(err, "failed to execute GetPiColor")
 	}
 
 	if color != expectColor {
-		return errors.Errorf("Failed to get expect color, got %s, want %s", color, expectColor)
+		return errors.Errorf("failed to get expect color, got %s, want %s", color, expectColor)
 	}
 
 	return nil
@@ -71,7 +72,7 @@ func CheckColorLater(s *testing.State, dispSeq DisplaySequence) error {
 
 	_, err := GetPiColor(s, dispType, dispIndex, "5")
 	if err != nil {
-		return errors.Wrap(err, "Failed to execute GetPiColor: ")
+		return errors.Wrap(err, "failed to execute GetPiColor")
 	}
 
 	return nil
@@ -82,11 +83,11 @@ func CheckColorResult(s *testing.State, expectColor string) error {
 
 	color, err := GetPiColorResult(s)
 	if err != nil {
-		return errors.Wrap(err, "Failed to execute GetPiColorResult: ")
+		return errors.Wrap(err, "failed to execute GetPiColorResult")
 	}
 
 	if color != expectColor {
-		return errors.Errorf("Failed to get expect color, got %s, want %s", color, expectColor)
+		return errors.Errorf("failed to get expect color, got %s, want %s", color, expectColor)
 	}
 
 	return nil
@@ -138,7 +139,7 @@ func CheckPlaybackByFixture(ctx context.Context, s *testing.State, dispSeq Displ
 
 	// send "f" to enter youtube full screen
 	if err := kb.Accel(ctx, "f"); err != nil {
-		return errors.Wrapf(err, "Failed to let youtube into full screen: ")
+		return errors.Wrap(err, "failed to let youtube into full screen")
 	}
 
 	// send http request to api server
@@ -152,7 +153,7 @@ func CheckPlaybackByFixture(ctx context.Context, s *testing.State, dispSeq Displ
 
 	// send "esc" to chromebook exit youtube full screen
 	if err := kb.Accel(ctx, "esc"); err != nil {
-		return errors.Wrapf(err, "Failed to let youtube exit full screen: ")
+		return errors.Wrap(err, "failed to let youtube exit full screen")
 	}
 
 	// this is golden sample path
@@ -160,7 +161,7 @@ func CheckPlaybackByFixture(ctx context.Context, s *testing.State, dispSeq Displ
 
 	// compare video with golden sample
 	if err := GoldenPredict(s, videoPath, dispType, dispIndex, false); err != nil {
-		s.Fatal("Failed to check video :", err)
+		s.Fatal("Failed to check video: ", err)
 	}
 
 	return nil

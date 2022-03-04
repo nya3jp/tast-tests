@@ -1,17 +1,18 @@
 package utils
 
 import (
+	"context"
+	"fmt"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
-	"context"
-	"fmt"
 )
 
-func GetServerFile(ctx context.Context, s *testing.State, storepath string, filename string) error {
+func GetServerFile(ctx context.Context, s *testing.State, storepath, filename string) error {
 
-	s.Logf("Get server file ..")
+	s.Log("Get server file ")
 
 	serverFile := fmt.Sprintf("%s/%s/%s", getWebUrl(s), "script_upload", filename)
 

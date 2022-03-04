@@ -82,7 +82,7 @@ func Dock2PersistentSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Boot up and sign in ")
+	s.Log("Step 1 - Boot up and sign in ")
 
 	// step 2 - connect two ext-display to station
 	if err := Dock2PersistentSettings_Step2(ctx, s); err != nil {
@@ -135,16 +135,16 @@ func Dock2PersistentSettings(ctx context.Context, s *testing.State) {
 // 2)  Connect two ext-display to (Docking station)
 func Dock2PersistentSettings_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Connect two ext-display to docking station")
+	s.Log("Step 2 - Connect two ext-display to docking station")
 
 	// plug in ext-display
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display1 to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display1 to docking station")
 	}
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp2, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display2 to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display2 to docking station")
 	}
 
 	return nil
@@ -156,11 +156,11 @@ func Dock2PersistentSettings_Step2(ctx context.Context, s *testing.State) error 
 // *  External display will show up as (Extended)
 func Dock2PersistentSettings_Step3(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 3 - Connect docking station to chromebook then check state")
+	s.Log("Step 3 - Connect docking station to chromebook then check state")
 
 	// plug in docking station
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in docking station: ")
+		return errors.Wrap(err, "failed to plug in docking station")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -168,7 +168,7 @@ func Dock2PersistentSettings_Step3(ctx context.Context, s *testing.State, tconn 
 		// get display
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get display info: ")
+			return errors.Wrap(err, "failed to get display info")
 		}
 
 		// check num of display
@@ -211,22 +211,22 @@ func Dock2PersistentSettings_Step3(ctx context.Context, s *testing.State, tconn 
 // *  Two Chrome App windows bounds on External display.
 func Dock2PersistentSettings_Step4(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC) error {
 
-	s.Logf("Step 4 - Open apps on internal & external display ")
+	s.Log("Step 4 - Open apps on internal & external display ")
 
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info: ")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// check num of display
 	if len(infos) != 3 {
-		return errors.Errorf("Failed to get enough display, got %d, want 3", len(infos))
+		return errors.Errorf("failed to get enough display, got %d, want 3", len(infos))
 	}
 
 	// install app
 	if err := a.Install(ctx, arc.APKPath(utils.TestappApk)); err != nil {
-		return errors.Wrap(err, "Failed installing app: ")
+		return errors.Wrap(err, "failed installing app")
 	}
 
 	for _, param1 := range []struct {
@@ -247,14 +247,14 @@ func Dock2PersistentSettings_Step4(ctx context.Context, s *testing.State, tconn 
 			s.Logf("Start [%s] window on external display - %d ", param2.pkgName, param1.displayID)
 
 			if err := utils.StartActivityOnDisplay(ctx, a, tconn, param2.pkgName, param2.actName, 1); err != nil {
-				return errors.Wrap(err, "Failed to start window on display: ")
+				return errors.Wrap(err, "failed to start window on display")
 			}
 
 			window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
 				return w.ARCPackageName == param2.pkgName
 			})
 			if err != nil {
-				return errors.Wrap(err, "Failed to find window: ")
+				return errors.Wrap(err, "failed to find window")
 			}
 
 			if param1.isCloseAct == true {
@@ -279,7 +279,7 @@ func Dock2PersistentSettings_Step4(ctx context.Context, s *testing.State, tconn 
 // *  Plug-In: (two Chrome App windows) will bounds back to Ext-Display
 func Dock2PersistentSettings_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Unplug and re-plug in ext-display ")
+	s.Log("Step 5 - Unplug and re-plug in ext-display ")
 
 	for _, param1 := range []struct {
 		action    utils.ActionState
@@ -290,12 +290,12 @@ func Dock2PersistentSettings_Step5(ctx context.Context, s *testing.State, tconn 
 	} {
 		// control ext-display1
 		if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, param1.action, false); err != nil {
-			return errors.Wrap(err, "Failed to disconnect ext-display from docking station: ")
+			return errors.Wrap(err, "failed to disconnect ext-display from docking station")
 		}
 
 		// control ext-display2
 		if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, param1.action, false); err != nil {
-			return errors.Wrap(err, "Failed to disconnect ext-display2 from station: ")
+			return errors.Wrap(err, "failed to disconnect ext-display2 from station")
 		}
 
 		for _, param2 := range []struct {
@@ -315,7 +315,7 @@ func Dock2PersistentSettings_Step5(ctx context.Context, s *testing.State, tconn 
 				}
 
 				if err := utils.EnsureWindowOnDisplay(ctx, tconn, param2.pkgName, infos[param1.dispIndex].ID); err != nil {
-					return errors.Wrapf(err, "Failed to ensure %s window on display %d: ", param2.pkgName, param1.dispIndex)
+					return errors.Wrapf(err, "failed to ensure %s window on display %d: ", param2.pkgName, param1.dispIndex)
 				}
 
 				return nil
@@ -338,12 +338,12 @@ func Dock2PersistentSettings_Step5(ctx context.Context, s *testing.State, tconn 
 // **Make note of window bounds on External display.
 func Dock2PersistentSettings_Step6(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC) error {
 
-	s.Logf("Step 6 - Test primary mode ")
+	s.Log("Step 6 - Test primary mode ")
 
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// check external is enough for test
@@ -353,23 +353,23 @@ func Dock2PersistentSettings_Step6(ctx context.Context, s *testing.State, tconn 
 
 	// make sure internal display is primary
 	if err := utils.EnsureDisplayIsPrimary(ctx, s, tconn, &infos[0]); err != nil {
-		return errors.Wrapf(err, "Failed to ensure internal is primary: ")
+		return errors.Wrap(err, "failed to ensure internal is primary")
 	}
 
-	s.Logf("Reopen all windows on internal display")
+	s.Log("Reopen all windows on internal display")
 
 	// reopen window on internal
 	if err := utils.ReopenAllWindowsOnInternal(ctx, s, tconn, a); err != nil {
-		return errors.Wrap(err, "Failed to reopen window on internal display")
+		return errors.Wrap(err, "failed to reopen window on internal display")
 	}
 
 	time.Sleep(3 * time.Second)
 
-	s.Logf("Let external display 2 become primary ")
+	s.Log("Let external display 2 become primary ")
 
 	// set second external display to be primary
 	if err := utils.EnsureDisplayIsPrimary(ctx, s, tconn, &infos[2]); err != nil {
-		return errors.Wrap(err, "Failed to set second external display to be primary")
+		return errors.Wrap(err, "failed to set second external display to be primary")
 	}
 
 	time.Sleep(3 * time.Second)
@@ -380,12 +380,12 @@ func Dock2PersistentSettings_Step6(ctx context.Context, s *testing.State, tconn 
 		// get primary info to compare
 		primaryInfo, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get primary display info")
+			return errors.Wrap(err, "failed to get primary display info")
 		}
 
 		// check external display 2 become primary
 		if infos[2].ID != primaryInfo.ID {
-			return errors.Wrapf(err, "Failed to let external display become primary")
+			return errors.Wrap(err, "failed to let external display become primary")
 		}
 
 		// ensure two app on external display
@@ -398,7 +398,7 @@ func Dock2PersistentSettings_Step6(ctx context.Context, s *testing.State, tconn 
 
 			ensure := utils.EnsureWindowOnDisplay(ctx, tconn, param.packageName, infos[2].ID)
 			if err := ensure; err != nil {
-				return errors.Wrapf(err, "Failed to ensure [%s] window on display {seq:%d,ID:%s, Name:%s} ",
+				return errors.Wrapf(err, "failed to ensure [%s] window on display {seq:%d,ID:%s, Name:%s} ",
 					param.packageName, 2, infos[2].ID, infos[2].Name)
 			}
 
@@ -417,7 +417,7 @@ func Dock2PersistentSettings_Step6(ctx context.Context, s *testing.State, tconn 
 // *  External display window should switch between internal and external displays using previous window bounds.
 func Dock2PersistentSettings_Step7(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 7 - Unplug and re-plug in ext-display ")
+	s.Log("Step 7 - Unplug and re-plug in ext-display ")
 
 	for _, param1 := range []struct {
 		action    utils.ActionState
@@ -428,12 +428,12 @@ func Dock2PersistentSettings_Step7(ctx context.Context, s *testing.State, tconn 
 	} {
 		// control ext-display1
 		if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, param1.action, false); err != nil {
-			return errors.Wrap(err, "Failed to disconnect ext-display from docking station: ")
+			return errors.Wrap(err, "failed to disconnect ext-display from docking station")
 		}
 
 		// control ext-display2
 		if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp2, param1.action, false); err != nil {
-			return errors.Wrap(err, "Failed to disconnect ext-display2 from station: ")
+			return errors.Wrap(err, "failed to disconnect ext-display2 from station")
 		}
 
 		for _, param2 := range []struct {
@@ -453,7 +453,7 @@ func Dock2PersistentSettings_Step7(ctx context.Context, s *testing.State, tconn 
 				}
 
 				if err := utils.EnsureWindowOnDisplay(ctx, tconn, param2.pkgName, infos[param1.dispIndex].ID); err != nil {
-					return errors.Wrapf(err, "Failed to ensure %s window on display %d: ", param2.pkgName, param1.dispIndex)
+					return errors.Wrapf(err, "failed to ensure %s window on display %d: ", param2.pkgName, param1.dispIndex)
 				}
 
 				return nil
@@ -475,35 +475,35 @@ func Dock2PersistentSettings_Step7(ctx context.Context, s *testing.State, tconn 
 // *  External display window should switch between internal and external displays using previous window bounds.
 func Dock2PersistentSettings_Step8(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC) error {
 
-	s.Logf("Step 8 - Test mirror mode ")
+	s.Log("Step 8 - Test mirror mode ")
 
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info: ")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// make sure internal display is primary
 	if err := utils.EnsureDisplayIsPrimary(ctx, s, tconn, &infos[0]); err != nil {
-		return errors.Wrapf(err, "Failed to ensure internal is primary: ")
+		return errors.Wrap(err, "failed to ensure internal is primary")
 	}
 
 	// waiting for acceptable time
 	time.Sleep(3 * time.Second)
 
-	s.Logf("Enter mirror mode, then check display's mirror source id")
+	s.Log("Enter mirror mode, then check display's mirror source id")
 
 	// declare keyboard object
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to find keyboard")
+		return errors.Wrap(err, "failed to find keyboard")
 	}
 	defer kb.Close()
 
 	// Press Ctrl+F4, enter or exit mirror mode
 	enterMirror := kb.Accel(ctx, "Ctrl+F4")
 	if err := enterMirror; err != nil {
-		return errors.Wrapf(err, "Failed to enter mirror mode")
+		return errors.Wrap(err, "failed to enter mirror mode")
 	}
 
 	time.Sleep(3 * time.Second)
@@ -520,18 +520,18 @@ func Dock2PersistentSettings_Step8(ctx context.Context, s *testing.State, tconn 
 		// get display info in mirror mode
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get display infos in mirror mode")
+			return errors.Wrap(err, "failed to get display infos in mirror mode")
 		}
 
 		// num of display should be just one in mirror mode
 		if len(infos) > 1 {
-			return errors.Errorf("Failed to get right num of display, got %d, want 1", len(infos))
+			return errors.Errorf("failed to get right num of display, got %d, want 1", len(infos))
 		}
 
 		// check mirror source id
 		for _, info := range infos {
 			if intDispInfo.ID != info.MirroringSourceID {
-				return errors.Wrap(err, "Failed to check mirror source id")
+				return errors.Wrap(err, "failed to check mirror source id")
 			}
 		}
 
@@ -541,14 +541,14 @@ func Dock2PersistentSettings_Step8(ctx context.Context, s *testing.State, tconn 
 		return err
 	}
 
-	s.Logf("Exit mirror mode, then check display attributes and windows is on internal display")
+	s.Log("Exit mirror mode, then check display attributes and windows is on internal display")
 
 	time.Sleep(3 * time.Second)
 
 	// Press Ctrl+F4, exit mirror mode
 	exitMirror := kb.Accel(ctx, "Ctrl+F4")
 	if err := exitMirror; err != nil {
-		return errors.Wrap(err, "Failed to exit mirror mode")
+		return errors.Wrap(err, "failed to exit mirror mode")
 	}
 
 	time.Sleep(3 * time.Second)
@@ -559,23 +559,23 @@ func Dock2PersistentSettings_Step8(ctx context.Context, s *testing.State, tconn 
 		// get display info in mirror mode
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get display infos after exit mirror mode")
+			return errors.Wrap(err, "failed to get display infos after exit mirror mode")
 		}
 
 		// num of display should be 3 after exiting mirror mode
 		if len(infos) != 3 {
-			return errors.Errorf("Failed to get right num of display, got %d, want 3", len(infos))
+			return errors.Errorf("failed to get right num of display, got %d, want 3", len(infos))
 		}
 
 		// After exit (Mirror) mode Internal display show as (Primary) display and External display show as (Extended) display
 		for _, info := range infos {
 			if info.IsInternal == true { // internal
 				if info.IsPrimary == false { // shall be primary
-					return errors.Wrap(err, "Failed to check internal is primary after exit mirror mode")
+					return errors.Wrap(err, "failed to check internal is primary after exit mirror mode")
 				}
 			} else if info.IsInternal == false { // external
 				if info.IsPrimary == true { // shall not be primary
-					return errors.Wrap(err, "Failed to check external is not primary after exit mirror mode")
+					return errors.Wrap(err, "failed to check external is not primary after exit mirror mode")
 				}
 			}
 		}
@@ -593,7 +593,7 @@ func Dock2PersistentSettings_Step8(ctx context.Context, s *testing.State, tconn 
 			// ensure window on display
 			ensureWin := utils.EnsureWindowOnDisplay(ctx, tconn, param.packgeName, dispInfo.ID)
 			if err := ensureWin; err != nil {
-				return errors.Wrapf(err, "Failed to ensure window on display {pkgName:%s, seq:%d, ID:%s, Name:%s} ",
+				return errors.Wrapf(err, "failed to ensure window on display {pkgName:%s, seq:%d, ID:%s, Name:%s} ",
 					param.packgeName, 0, dispInfo.ID, dispInfo.Name)
 			}
 		}

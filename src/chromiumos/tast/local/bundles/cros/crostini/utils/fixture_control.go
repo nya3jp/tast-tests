@@ -1,11 +1,12 @@
 package utils
 
 import (
-	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
 	"context"
 	"fmt"
 	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 type FixtureType int
@@ -82,7 +83,7 @@ func waitForChromebook(needToDelay bool) {
 	time.Sleep(time.Duration(delayTime) * time.Second)
 }
 
-func DoSwitchFixture(ctx context.Context, s *testing.State, sType string, sIndex string, action ActionState, needToDelay bool) error {
+func DoSwitchFixture(ctx context.Context, s *testing.State, sType, sIndex string, action ActionState, needToDelay bool) error {
 
 	interval := getInterval(needToDelay)
 
@@ -95,12 +96,12 @@ func DoSwitchFixture(ctx context.Context, s *testing.State, sType string, sIndex
 	// to correspond port to switch
 	port := getPort(action, sType)
 	if port == "" {
-		return errors.Errorf("Failed to get correspond port: ")
+		return errors.New("failed to get correspond port: ")
 	}
 
 	// according parameter, to switch fixture
 	if err := SwitchFixture(s, sType, sIndex, port, interval); err != nil {
-		return errors.Wrap(err, "Failed to execute SwitchFixture: ")
+		return errors.Wrap(err, "failed to execute SwitchFixture")
 	}
 
 	// waiting for chromebook response

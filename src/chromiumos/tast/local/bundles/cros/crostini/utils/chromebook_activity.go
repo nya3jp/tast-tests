@@ -1,14 +1,15 @@
 package utils
 
 import (
+	"context"
+	"fmt"
+	"regexp"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
-	"context"
-	"fmt"
-	"regexp"
 )
 
 // startActivityOnDisplay starts an activity by calling "am start --display" on the given display ID.

@@ -142,7 +142,7 @@ func Microphones1ExternalMic(ctx context.Context, s *testing.State) {
 // Procedure
 // 1) Plug in a external headset connector(USB or TRRS-3.5mm-audiojack).
 func Microphones1ExternalMic_Step1(ctx context.Context, s *testing.State) error {
-	s.Logf("Step 1 - Plug in a external headset connector")
+	s.Log("Step 1 - Plug in a external headset connector")
 	return nil
 }
 
@@ -150,16 +150,16 @@ func Microphones1ExternalMic_Step1(ctx context.Context, s *testing.State) error 
 // __a) Verify that audio is recognized and input is coming from the external 3.5mm mic, and not from the built-in microphone.( Alternate speaking directly into the external microphone, and into the built-in microphone. )
 func Microphones1ExternalMic_Step2(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 2 - Talk through the external mic using google voice search")
+	s.Log("Step 2 - Talk through the external mic using google voice search")
 
 	// switch to external mic
 	if err := selectAudioOption(ctx, s, tconn, externalOption); err != nil {
-		return errors.Wrap(err, "Failed to switch to external audio channel: ")
+		return errors.Wrap(err, "failed to switch to external audio channel")
 	}
 
 	// google search
 	if err := googleVoiceSearch(ctx, s, cr, tconn, expectedSearchResult); err != nil {
-		return errors.Wrap(err, "Failed to use google voice search: ")
+		return errors.Wrap(err, "failed to use google voice search")
 	}
 
 	return nil
@@ -168,7 +168,7 @@ func Microphones1ExternalMic_Step2(ctx context.Context, s *testing.State, cr *ch
 // 3) Wiggle microphone connector
 // __a) No audio disruptions disruptions or unacceptable noise levels are observed
 func Microphones1ExternalMic_Step3(ctx context.Context, s *testing.State) error {
-	s.Logf("Step 3 - Wiggle microphone connector")
+	s.Log("Step 3 - Wiggle microphone connector")
 	return nil
 }
 
@@ -176,16 +176,16 @@ func Microphones1ExternalMic_Step3(ctx context.Context, s *testing.State) error 
 // __a) Verify that audio is recognized and input is coming from the onboard mic
 func Microphones1ExternalMic_Step4(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Switch the INPUT audio channel from UI shelf status menu to Internal Mic and repeat 2")
+	s.Log("Switch the INPUT audio channel from UI shelf status menu to Internal Mic and repeat 2")
 
 	// switch to input
 	if err := selectAudioOption(ctx, s, tconn, internalOption); err != nil {
-		return errors.Wrap(err, "Failed to switch to input audio channel: ")
+		return errors.Wrap(err, "failed to switch to input audio channel")
 	}
 
 	// search
 	if err := googleVoiceSearch(ctx, s, cr, tconn, expectedSearchResult); err != nil {
-		return errors.Wrap(err, "Failed to use google voice search: ")
+		return errors.Wrap(err, "failed to use google voice search")
 	}
 
 	return nil
@@ -195,10 +195,10 @@ func Microphones1ExternalMic_Step4(ctx context.Context, s *testing.State, cr *ch
 // __a) Input channel in the status menu should switch.
 func Microphones1ExternalMic_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Switch back to the External microphone INPUT channel")
+	s.Log("Step 5 - Switch back to the External microphone INPUT channel")
 
 	if err := selectAudioOption(ctx, s, tconn, externalOption); err != nil {
-		return errors.Wrap(err, "Failed to switch to external audio channel: ")
+		return errors.Wrap(err, "failed to switch to external audio channel")
 	}
 
 	return nil
@@ -260,11 +260,11 @@ func Microphones1ExternalMic_Step6To8(ctx context.Context, s *testing.State, cr 
 	// Install app.
 	s.Log("Installing app")
 	if err := playstore.InstallApp(ctx, a, d, pkgName, -1); err != nil {
-		return errors.Wrap(err, "Failed to install app")
+		return errors.Wrap(err, "failed to install app")
 	}
 
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-		return errors.Wrap(err, "Failed to close playstore: ")
+		return errors.Wrap(err, "failed to close playstore")
 	}
 
 	openAppCommand := testexec.CommandContext(ctx, "adb", "shell", "am", "start", "-n", pkgName+"/"+actName)
@@ -277,10 +277,10 @@ func Microphones1ExternalMic_Step6To8(ctx context.Context, s *testing.State, cr 
 	gotItClass := "android.widget.Button"
 	gotItButton := d.Object(ui.ClassName(gotItClass), ui.TextMatches(gotItText))
 	if err := gotItButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		return errors.Wrap(err, "gotItButton doesn't exists: ")
+		return errors.Wrap(err, "gotItButton doesn't exists")
 	}
 	if err := gotItButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click on gotItButton: ")
+		return errors.Wrap(err, "failed to click on gotItButton")
 	}
 
 	// Click on allow
@@ -288,13 +288,13 @@ func Microphones1ExternalMic_Step6To8(ctx context.Context, s *testing.State, cr 
 	allowClass := "android.widget.Button"
 	allowButton := d.Object(ui.ClassName(allowClass), ui.TextMatches(allowText))
 	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		return errors.Wrap(err, "allowButton doesn't exists: ")
+		return errors.Wrap(err, "allowButton doesn't exists")
 	}
 	if err := allowButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click on allowButton: ")
+		return errors.Wrap(err, "failed to click on allowButton")
 	}
 	if err := allowButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click on allowButton: ")
+		return errors.Wrap(err, "failed to click on allowButton")
 	}
 
 	for i := 0; i < 2; i++ {
@@ -302,65 +302,65 @@ func Microphones1ExternalMic_Step6To8(ctx context.Context, s *testing.State, cr 
 		recordPauseClass := "android.widget.ImageButton"
 		recordPauseButton := d.Object(ui.ClassName(recordPauseClass), ui.ResourceID(recordPauseResId))
 		if err := recordPauseButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			return errors.Wrap(err, "recordPauseButton doesn't exists: ")
+			return errors.Wrap(err, "recordPauseButton doesn't exists")
 		}
 		if err := recordPauseButton.Click(ctx); err != nil {
-			return errors.Wrap(err, "Failed to click on recordPauseButton: ")
+			return errors.Wrap(err, "failed to click on recordPauseButton")
 		}
 
 		doneResId := "com.coffeebeanventures.easyvoicerecorder:id/done_button"
 		doneClass := "android.widget.ImageView"
 		doneButton := d.Object(ui.ClassName(doneClass), ui.ResourceID(doneResId))
 		if err := doneButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			return errors.Wrap(err, "doneButton doesn't exists: ")
+			return errors.Wrap(err, "doneButton doesn't exists")
 		}
 		if err := doneButton.Click(ctx); err != nil {
-			return errors.Wrap(err, "Failed to click on doneButton: ")
+			return errors.Wrap(err, "failed to click on doneButton")
 		}
 
 		menuResId := "com.coffeebeanventures.easyvoicerecorder:id/finished_recording_overflow_menu_button"
 		menuClass := "android.widget.ImageView"
 		menuButton := d.Object(ui.ClassName(menuClass), ui.ResourceID(menuResId))
 		if err := menuButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			return errors.Wrap(err, "menuButton doesn't exists: ")
+			return errors.Wrap(err, "menuButton doesn't exists")
 		}
 		if err := menuButton.Click(ctx); err != nil {
-			return errors.Wrap(err, "Failed to click on menuButton: ")
+			return errors.Wrap(err, "failed to click on menuButton")
 		}
 
 		shareText := "Share"
 		shareClass := "android.widget.TextView"
 		shareButton := d.Object(ui.ClassName(shareClass), ui.Text(shareText))
 		if err := shareButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			return errors.Wrap(err, "shareButton doesn't exists: ")
+			return errors.Wrap(err, "shareButton doesn't exists")
 		}
 		if err := shareButton.Click(ctx); err != nil {
-			return errors.Wrap(err, "Failed to click on shareButton: ")
+			return errors.Wrap(err, "failed to click on shareButton")
 		}
 
 		saveToFilesText := "Save to Files"
 		saveToFiles := d.Object(ui.Text(saveToFilesText))
 		if err := saveToFiles.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			return errors.Wrap(err, "saveToFiles doesn't exists: ")
+			return errors.Wrap(err, "saveToFiles doesn't exists")
 		}
 		if err := saveToFiles.Click(ctx); err != nil {
-			return errors.Wrap(err, "Failed to click on saveToFiles: ")
+			return errors.Wrap(err, "failed to click on saveToFiles")
 		}
 
 		saveText := "SAVE"
 		save := d.Object(ui.Text(saveText))
 		if err := save.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			return errors.Wrap(err, "save doesn't exists: ")
+			return errors.Wrap(err, "save doesn't exists")
 		}
 		if err := save.Click(ctx); err != nil {
-			return errors.Wrap(err, "Failed to click on save: ")
+			return errors.Wrap(err, "failed to click on save")
 		}
 
 	}
 
-	s.Logf("Step 6 - Record sound with the external mic via 'voice recorder' app")
-	s.Logf("Step 7 - Unplug the external external mic. Repeat 6")
-	s.Logf("Step 8 - Compare audio recordings from external and onboard mics")
+	s.Log("Step 6 - Record sound with the external mic via 'voice recorder' app")
+	s.Log("Step 7 - Unplug the external external mic. Repeat 6")
+	s.Log("Step 8 - Compare audio recordings from external and onboard mics")
 	return nil
 }
 
@@ -399,7 +399,7 @@ func selectAudioOption(ctx context.Context, s *testing.State, tconn *chrome.Test
 	if err != nil {
 		return err
 	}
-	s.Logf(prettyPrint(nodesInfo))
+	s.Log(prettyPrint(nodesInfo))
 	var inputDevices []string
 
 	// find internal mic under "input" label
@@ -415,7 +415,7 @@ func selectAudioOption(ctx context.Context, s *testing.State, tconn *chrome.Test
 		}
 	}
 
-	s.Logf(prettyPrint(inputDevices))
+	s.Log(prettyPrint(inputDevices))
 
 	// fileName := "AAA.txt"
 	// filePath := filepath.Join(s.OutDir(), fileName)
@@ -441,7 +441,7 @@ func googleVoiceSearch(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		voiceReocrdButton = `document.querySelector('div.btn-record').click()`
 	)
 
-	s.Logf("Step 2 - Talk through the external mic using google voice search")
+	s.Log("Step 2 - Talk through the external mic using google voice search")
 
 	conn, err := cr.NewConn(ctx, googleUrl)
 	if err != nil {

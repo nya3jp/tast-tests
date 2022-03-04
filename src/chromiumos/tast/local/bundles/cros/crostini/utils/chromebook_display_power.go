@@ -1,11 +1,12 @@
 package utils
 
 import (
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 	"context"
 
 	"github.com/godbus/dbus"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 )
 
 // Power state for displays.
@@ -39,7 +40,7 @@ func SetDisplayPower(ctx context.Context, power DisplayPowerState) error {
 	// set display power
 	_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
 	if err != nil {
-		return errors.Wrapf(err, "Failed to connect to %s: ", dbusName)
+		return errors.Wrapf(err, "failed to connect to %s: ", dbusName)
 	}
 
 	return obj.CallWithContext(ctx, dbusInterface+"."+setPowerMethod, 0, power).Err

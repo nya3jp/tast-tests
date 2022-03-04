@@ -45,6 +45,9 @@
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
@@ -57,8 +60,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 var defaultOSSettingsPollOptions = &testing.PollOptions{
@@ -142,10 +143,10 @@ func Dock12LightMode(ctx context.Context, s *testing.State) {
 // 3. Connect external monitor to the docking station or hub (Manual)
 func Dock12LightMode_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect external monitor to the docking station")
+	s.Log("Step 3 - Connect external monitor to the docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display to docking station")
 	}
 
 	return nil
@@ -154,11 +155,11 @@ func Dock12LightMode_Step3(ctx context.Context, s *testing.State) error {
 // 4. Connect docking station or hub to the chromebook (turn on usb switch power)
 func Dock12LightMode_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Connect docking station to the chromebook ")
+	s.Log("Step 4 - Connect docking station to the chromebook ")
 
 	// connect docking station
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in docking station: ")
+		return errors.Wrap(err, "failed to plug in docking station")
 	}
 
 	return nil
@@ -167,16 +168,16 @@ func Dock12LightMode_Step4(ctx context.Context, s *testing.State) error {
 // 5. Check external monitor properly.
 func Dock12LightMode_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Check external display info")
+	s.Log("Step 5 - Check external display info")
 
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	if len(infos) < 2 {
-		return errors.Errorf("Failed to get correct num of display, got %d, at least 2", len(infos))
+		return errors.Errorf("failed to get correct num of display, got %d, at least 2", len(infos))
 	}
 
 	return nil
@@ -185,7 +186,7 @@ func Dock12LightMode_Step5(ctx context.Context, s *testing.State, tconn *chrome.
 // 6. Open files app on internal monitor.(相機必須指定判斷範圍，files app上的白色區塊)
 func Dock12LightMode_Step6(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 6 - Open settings on internal display")
+	s.Log("Step 6 - Open settings on internal display")
 
 	// open setting to device
 	if _, err := ossettings.LaunchAtPage(
@@ -225,19 +226,19 @@ func Dock12LightMode_Step6(ctx context.Context, s *testing.State, tconn *chrome.
 	// declare keyboard
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create keyboard: ")
+		return errors.Wrap(err, "failed to create keyboard")
 	}
 
 	// key in night light
 	if err := kb.Type(ctx, "Night light"); err != nil {
-		return errors.Wrap(err, "failed to type night light: ")
+		return errors.Wrap(err, "failed to type night light")
 	}
 
 	time.Sleep(1 * time.Second)
 
 	// to find night light
 	if err := kb.TypeKey(ctx, input.KEY_ENTER); err != nil {
-		return errors.Wrap(err, "failed to type enter: ")
+		return errors.Wrap(err, "failed to type enter")
 	}
 
 	time.Sleep(5 * time.Second)
@@ -249,10 +250,10 @@ func Dock12LightMode_Step6(ctx context.Context, s *testing.State, tconn *chrome.
 // 7. Turn Night Light - On.
 func Dock12LightMode_Step7(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 7 - Turn night light on")
+	s.Log("Step 7 - Turn night light on")
 
 	if _, err := setup.SetNightLightEnabled(ctx, tconn, true); err != nil {
-		return errors.Wrapf(err, "Failed to set night light enable to true: ")
+		return errors.Wrap(err, "failed to set night light enable to true")
 	}
 
 	return nil
@@ -261,25 +262,25 @@ func Dock12LightMode_Step7(ctx context.Context, s *testing.State, tconn *chrome.
 // 8. Set internal & external color temperature to cooler
 func Dock12LightMode_Step8(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 8 - Set internal & external color temperature to cooler")
+	s.Log("Step 8 - Set internal & external color temperature to cooler")
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create keyboard: ")
+		return errors.Wrap(err, "failed to create keyboard")
 	}
 
 	time.Sleep(1 * time.Second)
 
 	// move to seekbar
 	if err := kb.TypeKey(ctx, input.KEY_TAB); err != nil {
-		return errors.Wrap(err, "failed to type enter: ")
+		return errors.Wrap(err, "failed to type enter")
 	}
 
 	for i := 0; i < 100; i++ {
 
 		// move slider to left
 		if err := kb.TypeKey(ctx, input.KEY_DOWN); err != nil {
-			return errors.Wrap(err, "failed to type enter: ")
+			return errors.Wrap(err, "failed to type enter")
 		}
 
 	}
@@ -290,13 +291,13 @@ func Dock12LightMode_Step8(ctx context.Context, s *testing.State, tconn *chrome.
 // 9. Check internal and external (Night Light - ON),use camera to get screen color
 func Dock12LightMode_Step9(ctx context.Context, s *testing.State) (string, error) {
 
-	s.Logf("Step 9 - Use camera to get current screen color")
+	s.Log("Step 9 - Use camera to get current screen color")
 
 	time.Sleep(5 * time.Second)
 
 	color, err := utils.GetColor(ctx, s, utils.InternalDisplay)
 	if err != nil {
-		return "", errors.Wrap(err, "Failed to execute GetPiColor: ")
+		return "", errors.Wrap(err, "failed to execute GetPiColor")
 	}
 
 	return color, nil
@@ -305,18 +306,18 @@ func Dock12LightMode_Step9(ctx context.Context, s *testing.State) (string, error
 // 10. Set internal & external color temperature to warmer
 func Dock12LightMode_Step10(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 10 -  Set internal & external color temperature to warmer")
+	s.Log("Step 10 -  Set internal & external color temperature to warmer")
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create keyboard: ")
+		return errors.Wrap(err, "failed to create keyboard")
 	}
 
 	for i := 0; i < 100; i++ {
 
 		// move slider to right
 		if err := kb.TypeKey(ctx, input.KEY_UP); err != nil {
-			return errors.Wrap(err, "failed to type enter: ")
+			return errors.Wrap(err, "failed to type enter")
 		}
 
 	}
@@ -332,7 +333,7 @@ func Dock12LightMode_Step11(ctx context.Context, s *testing.State, firstColor st
 	secondColor, err := utils.GetColor(ctx, s, utils.InternalDisplay)
 
 	if err != nil {
-		return errors.Wrap(err, "Failed to execute GetPiColor: ")
+		return errors.Wrap(err, "failed to execute GetPiColor")
 	}
 
 	s.Logf("Frist-time color is %s", firstColor)
@@ -340,7 +341,7 @@ func Dock12LightMode_Step11(ctx context.Context, s *testing.State, firstColor st
 	s.Logf("Second-time color is %s", secondColor)
 
 	if firstColor == secondColor {
-		return errors.Errorf("First-time color should not be as same as second-time color")
+		return errors.New("First-time color should not be as same as second-time color")
 	}
 
 	return nil

@@ -1,16 +1,17 @@
 package utils
 
 import (
-	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
-	"chromiumos/tast/shutil"
-	"chromiumos/tast/testing"
 	"context"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+
+	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/shutil"
+	"chromiumos/tast/testing"
 )
 
 // execute cmd to record audio in Chromebook,
@@ -25,7 +26,7 @@ func AudioRecord(ctx context.Context, s *testing.State, duration int) error {
 	recordAudioCmd := testexec.CommandContext(ctx, "cras_test_client", "-C", rawPath, "--duration", fmt.Sprintf("%d", duration))
 	rawFile, err := recordAudioCmd.Output(testexec.DumpLogOnError)
 	if err != nil || rawFile == nil {
-		return errors.Wrap(err, fmt.Sprintf("%q failed", shutil.EscapeSlice(recordAudioCmd.Args)))
+		return errors.Wrapf(err, "%q failed", shutil.EscapeSlice(recordAudioCmd.Args))
 	}
 
 	// convert to .wav
@@ -33,7 +34,7 @@ func AudioRecord(ctx context.Context, s *testing.State, duration int) error {
 	convertFileCmd := testexec.CommandContext(ctx, "sox", "-t", "raw", "-r", "48000", "-b", "16", "-c", "2", "-e", "Signed-integer", rawPath, wavPath)
 	wavFile, err := convertFileCmd.Output(testexec.DumpLogOnError)
 	if err != nil || wavFile == nil {
-		return errors.Wrap(err, fmt.Sprintf("%q failed", shutil.EscapeSlice(convertFileCmd.Args)))
+		return errors.Wrapf(err, "%q failed", shutil.EscapeSlice(convertFileCmd.Args))
 	}
 
 	// transfer file to tast env

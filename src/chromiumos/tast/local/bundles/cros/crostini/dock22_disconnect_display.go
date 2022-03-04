@@ -48,15 +48,15 @@
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"fmt"
-	"time"
 )
 
 // 1. Power the Chrombook On.
@@ -82,9 +82,9 @@ func Dock22DisconnectDisplay(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Power the Chrombook On.")
+	s.Log("Step 1 - Power the Chrombook On")
 
-	s.Logf("Step 2 - Sign-in account.")
+	s.Log("Step 2 - Sign-in account")
 
 	// step 3 - connect ext-display to docking
 	if err := Dock22DisconnectDisplay_Step3(ctx, s); err != nil {
@@ -136,10 +136,10 @@ func Dock22DisconnectDisplay(ctx context.Context, s *testing.State) {
 // 3. Connect the external monitor to the docking station via Type-C cable.
 func Dock22DisconnectDisplay_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect the external monitor to the docking station via Type-C cable. (Manual)")
+	s.Log("Step 3 - Connect the external monitor to the docking station via Type-C cable. (Manual)")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in ext-display to docking station: ")
+		return errors.Wrap(err, "failed to plug in ext-display to docking station")
 	}
 
 	return nil
@@ -148,10 +148,10 @@ func Dock22DisconnectDisplay_Step3(ctx context.Context, s *testing.State) error 
 // 4. Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture)
 func Dock22DisconnectDisplay_Step4(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 4 - Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture) ")
+	s.Log("Step 4 - Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture) ")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to connect docking station to chromebook: ")
+		return errors.Wrap(err, "failed to connect docking station to chromebook")
 	}
 
 	return nil
@@ -160,10 +160,10 @@ func Dock22DisconnectDisplay_Step4(ctx context.Context, s *testing.State, tconn 
 // 5. Check the external monitor display properly by test fixture.
 func Dock22DisconnectDisplay_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Check external monitor display properly by test fixture")
+	s.Log("Step 5 - Check external monitor display properly by test fixture")
 
 	if err := utils.VerifyDisplayProperly(ctx, s, tconn, 2); err != nil {
-		return errors.Wrap(err, "Failed to verify display properly: ")
+		return errors.Wrap(err, "failed to verify display properly")
 	}
 
 	return nil
@@ -173,11 +173,11 @@ func Dock22DisconnectDisplay_Step5(ctx context.Context, s *testing.State, tconn 
 // 7. Input and navigate the video address ""https://www.youtube.com/watch?v=l4bDVq-nP-0&t=65s""
 func Dock22DisconnectDisplay_Step6To7(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 6, 7 - Play youtube on ext-display 1")
+	s.Log("Step 6, 7 - Play youtube on ext-display 1")
 
 	// call function to play youtube
 	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
-		return errors.Wrap(err, "Failed to play youtube: ")
+		return errors.Wrap(err, "failed to play youtube")
 	}
 
 	// retry in 30s
@@ -187,19 +187,19 @@ func Dock22DisconnectDisplay_Step6To7(ctx context.Context, s *testing.State, cr 
 
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get display info: ")
+			return errors.Wrap(err, "failed to get display info")
 		}
 
 		// (open on extend display)
 		// get youtube window
 		youtube, err := utils.GetYoutubeWindow(ctx, tconn)
 		if err != nil {
-			return errors.Wrapf(err, "Failed to get youtube window: ")
+			return errors.Wrap(err, "failed to get youtube window")
 		}
 
 		// move window form internal to external
 		if err := utils.MoveWindowToDisplay(ctx, s, tconn, youtube, &infos[1]); err != nil {
-			return errors.Wrapf(err, "Failed to move window ext-display: ")
+			return errors.Wrap(err, "failed to move window ext-display")
 		}
 
 		return nil
@@ -213,11 +213,11 @@ func Dock22DisconnectDisplay_Step6To7(ctx context.Context, s *testing.State, cr 
 // 8. Check the 1Khz video/audio playback by test fixture.
 func Dock22DisconnectDisplay_Step8(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 8 - Check the 1Khz video/audio playback on ext-display 1 by test fixture")
+	s.Log("Step 8 - Check the 1Khz video/audio playback on ext-display 1 by test fixture")
 
 	// check playback
 	if err := utils.CheckPlaybackByFixture(ctx, s, utils.ExternalDisplay1); err != nil {
-		return errors.Wrapf(err, "Failed to check playback: ")
+		return errors.Wrap(err, "failed to check playback")
 	}
 
 	return nil
@@ -226,10 +226,10 @@ func Dock22DisconnectDisplay_Step8(ctx context.Context, s *testing.State, tconn 
 // 9. Disconnect the docking station from chromebook.
 func Dock22DisconnectDisplay_Step9(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 9 - Disconnect the docking station from chromebook. ")
+	s.Log("Step 9 - Disconnect the docking station from chromebook. ")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, false); err != nil {
-		return errors.Wrapf(err, "Failed to disconnect docking station from chromebook: ")
+		return errors.Wrap(err, "failed to disconnect docking station from chromebook")
 	}
 
 	return nil
@@ -238,17 +238,17 @@ func Dock22DisconnectDisplay_Step9(ctx context.Context, s *testing.State, tconn 
 // 10. Check external display is not exist and screen mode is ""Exetended""
 func Dock22DisconnectDisplay_Step10(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 10 - Check external display is not exist and check internal display becomes to be primary")
+	s.Log("Step 10 - Check external display is not exist and check internal display becomes to be primary")
 
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info: ")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// 10. Check external display exist and screen mode is ""Exetended""
 	if len(infos) != 1 {
-		return errors.New(fmt.Sprintf("Length of display is not enough, got %d, want 1", len(infos)))
+		return errors.Errorf("Length of display is not enough, got %d, want 1", len(infos))
 	}
 
 	for _, info := range infos {
@@ -267,11 +267,11 @@ func Dock22DisconnectDisplay_Step10(ctx context.Context, s *testing.State, tconn
 // 11. Check the 1Khz video/audio playback by test fixture.
 func Dock22DisconnectDisplay_Step11(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 11 - Check the 1Khz video/audio playback on internal display by test fixture ")
+	s.Log("Step 11 - Check the 1Khz video/audio playback on internal display by test fixture ")
 
 	// 11. Check the 1Khz video/audio playback  by test fixture.
 	if err := utils.CheckPlaybackByFixture(ctx, s, utils.InternalDisplay); err != nil {
-		return errors.Wrapf(err, "Failed to check playback by fixture: ")
+		return errors.Wrap(err, "failed to check playback by fixture")
 	}
 
 	return nil
@@ -280,17 +280,17 @@ func Dock22DisconnectDisplay_Step11(ctx context.Context, s *testing.State, tconn
 // 12. Check Chrome browser window bounds it back to ""Primary"" screen"
 func Dock22DisconnectDisplay_Step12(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 12 - Check Chrome browser window bounds it back to primary screen")
+	s.Log("Step 12 - Check Chrome browser window bounds it back to primary screen")
 
 	// get primary info
 	primaryInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get the primary display info: ")
+		return errors.Wrap(err, "failed to get the primary display info")
 	}
 
 	// 12. Check Chrome browser window bounds it back to ""Primary"" screen"
 	if err := utils.EnsureYoutubeOnDisplay(ctx, s, tconn, primaryInfo); err != nil {
-		return errors.Wrapf(err, "Failed to ensure youtube on primary display: ")
+		return errors.Wrap(err, "failed to ensure youtube on primary display")
 	}
 
 	return nil

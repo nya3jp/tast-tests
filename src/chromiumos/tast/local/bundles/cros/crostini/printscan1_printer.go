@@ -150,7 +150,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Printscan1Printer,
-		Desc:     "Test USB printing from ChromeOS device.",
+		Desc:     "Test USB printing from ChromeOS device",
 		Contacts: []string{"allion-sw@allion.com"},
 		// below params -> reference to launcher_apps.go
 		Params: []testing.Param{{
@@ -233,16 +233,16 @@ func Printscan1Printer(ctx context.Context, s *testing.State) {
 // 1. Login to a ChromeOS device and connect USB printer.
 func Printscan1Printer_Step1(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 1 - Login to a ChromeOS device and connect USB printer.")
+	s.Log("Step 1 - Login to a ChromeOS device and connect USB printer")
 
 	// connect usb printer
 	if err := utils.DoSwitchFixture(ctx, s, utils.UsbPrinterType, utils.UsbPrinterIndex, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect printer: ")
+		return errors.Wrap(err, "failed to connect printer")
 	}
 
 	// verfiy connected
 	if _, err := ash.WaitForNotification(ctx, tconn, time.Minute, ash.WaitTitle("USB printer connected")); err != nil {
-		s.Fatalf("Failed to wait for notification: %v", err)
+		s.Fatal("Failed to wait for notification: ", err)
 	}
 
 	return nil
@@ -259,12 +259,12 @@ func Printscan1Printer_Step1(ctx context.Context, s *testing.State, tconn *chrom
 // ---- Verify print job status notification is present
 func Printscan1Printer_Step2To4(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, printer string) error {
 
-	s.Log("Step 2 - Open google search page and trigger print dialog on the current chrome page by pressing Ctrl + p.")
+	s.Log("Step 2 - Open google search page and trigger print dialog on the current chrome page by pressing Ctrl + p")
 
 	// Open browser window.
 	conn, err := cr.NewConn(ctx, "")
 	if err != nil {
-		return errors.Wrapf(err, "Failed to open browser window: ")
+		return errors.Wrap(err, "failed to open browser window")
 	}
 	defer conn.Close()
 
@@ -280,10 +280,10 @@ func Printscan1Printer_Step2To4(ctx context.Context, s *testing.State, cr *chrom
 		s.Fatal("Failed to press Ctrl+P to trigger print dialog: ", err)
 	}
 
-	s.Logf("Step 3, 4 - Select printer and proceed to printing with this printer")
+	s.Log("Step 3, 4 - Select printer and proceed to printing with this printer")
 
 	if err := selectPrinter(ctx, s, tconn, printer); err != nil {
-		return errors.Wrap(err, "Failed to select printer: ")
+		return errors.Wrap(err, "failed to select printer")
 	}
 
 	// Hide all notifications to prevent them from covering the print button.
@@ -299,7 +299,7 @@ func Printscan1Printer_Step2To4(ctx context.Context, s *testing.State, cr *chrom
 
 	// wait for print completed
 	if err := waitForPrintCompleted(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to")
+		return errors.Wrap(err, "failed to")
 	}
 
 	// verify print file
@@ -321,7 +321,7 @@ func Printscan1Printer_Step2To4(ctx context.Context, s *testing.State, cr *chrom
 // ---- Another print job should be executed successfully.
 func Printscan1Printer_Step5(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 5 - Start a print job and unplug the USB connection in the middle of the print job.")
+	s.Log("Step 5 - Start a print job and unplug the USB connection in the middle of the print job")
 
 	// unplug usb
 
@@ -337,7 +337,7 @@ func Printscan1Printer_Step5(ctx context.Context, s *testing.State) error {
 // 6. Confirm PDF and PNG files are printed successfully
 func Printscan1Printer_Step6(ctx context.Context, s *testing.State, tconn *chrome.TestConn, printer string) error {
 
-	s.Logf("Step 6 - Confirm PDF and PNG files are printed successfully")
+	s.Log("Step 6 - Confirm PDF and PNG files are printed successfully")
 
 	var files []string
 	files = append(files, printFileA)
@@ -349,12 +349,12 @@ func Printscan1Printer_Step6(ctx context.Context, s *testing.State, tconn *chrom
 
 		// copy file to download folder
 		if err := utils.GetServerFile(ctx, s, filesapp.DownloadPath, file); err != nil {
-			return errors.Wrap(err, "Failed to get server file: ")
+			return errors.Wrap(err, "failed to get server file")
 		}
 
 		// open file in download folder
 		if err := openDownloadsFile(ctx, s, tconn, file); err != nil {
-			return errors.Wrap(err, "Failed to open file in downloads: ")
+			return errors.Wrap(err, "failed to open file in downloads")
 		}
 
 		// declare keyboard object
@@ -387,12 +387,12 @@ func Printscan1Printer_Step6(ctx context.Context, s *testing.State, tconn *chrom
 
 		// wait print job completed
 		if err := waitForPrintCompleted(ctx, s, tconn); err != nil {
-			return errors.Wrap(err, "Failed to wait print job completed: ")
+			return errors.Wrap(err, "failed to wait print job completed")
 		}
 
 		// verify print file
 		if err := verifyPrintFile(ctx, s, tconn, utils.ComparePrinterOriginal); err != nil {
-			return errors.Wrap(err, "Failed to verify print file: ")
+			return errors.Wrap(err, "failed to verify print file")
 		}
 
 		// ctrl + w to close file
@@ -411,7 +411,7 @@ func Printscan1Printer_Step6(ctx context.Context, s *testing.State, tconn *chrom
 // ---- no impact to system stability or quality of the printed page
 func Printscan1Printer_Step7(ctx context.Context, s *testing.State, cr *chrome.Chrome, printer string) error {
 
-	s.Logf("Step 7 - Confirm print job can be done from ARC++ / Android app")
+	s.Log("Step 7 - Confirm print job can be done from ARC++ / Android app")
 
 	// install docs app from play store
 	const (
@@ -463,16 +463,16 @@ func Printscan1Printer_Step7(ctx context.Context, s *testing.State, cr *chrome.C
 	// Install app.
 	s.Log("Installing app")
 	if err := playstore.InstallApp(ctx, a, d, pkgName, -1); err != nil {
-		return errors.Wrap(err, "Failed to install app")
+		return errors.Wrap(err, "failed to install app")
 	}
 
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
-		return errors.Wrap(err, "Failed to close playstore: ")
+		return errors.Wrap(err, "failed to close playstore")
 	}
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to find keyboard: ")
+		return errors.Wrap(err, "failed to find keyboard")
 	}
 	//defer kb.Close()
 
@@ -486,10 +486,10 @@ func Printscan1Printer_Step7(ctx context.Context, s *testing.State, cr *chrome.C
 	allowClass := "android.widget.Button"
 	allowButton := d.Object(ui.ClassName(allowClass), ui.TextMatches(allowText))
 	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		return errors.Wrap(err, "allowButton doesn't exists: ")
+		return errors.Wrap(err, "allowButton doesn't exists")
 	}
 	if err := allowButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click on allowButton: ")
+		return errors.Wrap(err, "failed to click on allowButton")
 	}
 
 	// Click on download
@@ -497,9 +497,9 @@ func Printscan1Printer_Step7(ctx context.Context, s *testing.State, cr *chrome.C
 	downloadClass := "android.widget.TextView"
 	downloadTextView := d.Object(ui.ClassName(downloadClass), ui.TextMatches(downloadText))
 	if err := downloadTextView.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Logf("downloadTextView doesn't exists: ")
+		s.Log("downloadTextView doesn't exists: ")
 	} else if err := downloadTextView.Click(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click on downloadTextView: ")
+		return errors.Wrap(err, "failed to click on downloadTextView")
 	}
 
 	// Click on file
@@ -507,17 +507,17 @@ func Printscan1Printer_Step7(ctx context.Context, s *testing.State, cr *chrome.C
 	fileClass := "android.widget.TextView"
 	fileTextView := d.Object(ui.ClassName(fileClass), ui.TextMatches(fileText))
 	if err := fileTextView.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Logf("fileTextView doesn't exists: ")
+		s.Log("fileTextView doesn't exists: ")
 	} else if err := fileTextView.Click(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click on fileTextView: ")
+		return errors.Wrap(err, "failed to click on fileTextView")
 	}
 
 	// Click on print
 	printButton := d.Object(ui.ResourceID("com.picsel.tgv.app.smartoffice:id/print_button"))
 	if err := printButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Logf("printButton doesn't exists: ")
+		s.Log("printButton doesn't exists: ")
 	} else if err := printButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click printButton: ")
+		return errors.Wrap(err, "failed to click printButton")
 	}
 
 	// Hide all notifications to prevent them from covering the print button.
@@ -539,12 +539,12 @@ func Printscan1Printer_Step7(ctx context.Context, s *testing.State, cr *chrome.C
 
 	// wait print job completed
 	if err := waitForPrintCompleted(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to wait print job completed")
+		return errors.Wrap(err, "failed to wait print job completed")
 	}
 
 	// verify print file
 	if err := verifyPrintFile(ctx, s, tconn, utils.ComparePrinterOriginal); err != nil {
-		return errors.Wrap(err, "Failed to verify print file: ")
+		return errors.Wrap(err, "failed to verify print file")
 	}
 
 	closeAppCommand := testexec.CommandContext(ctx, "adb", "shell", "am", "force-stop", pkgName)
@@ -572,19 +572,19 @@ func Printscan1Printer_Step8(ctx context.Context, s *testing.State, cr *chrome.C
 
 	// var browserNode *nodewith.Finder = nodewith.Role(role.Window).First()
 
-	s.Log("Step 8 - Confirm printing with changes to 'More settings' controls works as intended.")
+	s.Log("Step 8 - Confirm printing with changes to 'More settings' controls works as intended")
 
 	// Open browser window.
 	_, err := cr.NewConn(ctx, "")
 	if err != nil {
-		return errors.Wrapf(err, "Failed to open browser window: ")
+		return errors.Wrap(err, "failed to open browser window")
 	}
 	// defer conn.Close()
 
 	for i := 0; i <= 6; i++ {
 
 		if err := triggerPrintDialog(ctx, s); err != nil {
-			return errors.Wrap(err, "Failed to trigger print dialog: ")
+			return errors.Wrap(err, "failed to trigger print dialog")
 		}
 
 		printpreview.WaitForPrintPreview(tconn)(ctx)
@@ -716,7 +716,7 @@ func showMoreSettingsVisible(ctx context.Context, s *testing.State, tconn *chrom
 
 	nodeInfo, err := ui.Info(ctx, moreSettingsFinder)
 	if err != nil {
-		return errors.Wrap(err, "failed to get info for the more settings: ")
+		return errors.Wrap(err, "failed to get info for the more settings")
 	}
 
 	if nodeInfo.State[state.Collapsed] == true {
@@ -745,7 +745,7 @@ func showMoreSettingsVisible(ctx context.Context, s *testing.State, tconn *chrom
 // select dropdown option
 func setDropdown(ctx context.Context, s *testing.State, tconn *chrome.TestConn, dropdownName DropdownName, dropdownOption string) error {
 
-	s.Logf("Setting dropdown %s to %s ..", dropdownName, dropdownOption)
+	s.Logf("Setting dropdown %s to %s ", dropdownName, dropdownOption)
 
 	dropdownFinder := nodewith.Name(string(dropdownName)).ClassName("md-select")
 	dropdownOptionFinder := nodewith.Name(dropdownOption).Role(role.ListBoxOption)
@@ -776,7 +776,7 @@ func setScale(ctx context.Context, tconn *chrome.TestConn, scales string) error 
 
 	// restrict scales range
 	if int64(amount) < 10 || int64(amount) > 200 {
-		return errors.Errorf("Scale amount must be a number between 10 and 200")
+		return errors.New("Scale amount must be a number between 10 and 200")
 	}
 
 	// Find and expand the scale list.
@@ -871,7 +871,7 @@ func setQuality(ctx context.Context, s *testing.State, tconn *chrome.TestConn, w
 // do the click
 func setOption(ctx context.Context, s *testing.State, tconn *chrome.TestConn, optionName PrintOption, checked checked.Checked) error {
 
-	s.Logf("Setting option %s to %s ..", string(optionName), string(checked))
+	s.Logf("Setting option %s to %s ", string(optionName), string(checked))
 
 	optionFinder := nodewith.Name(string(optionName)).Role(role.CheckBox)
 
@@ -883,10 +883,10 @@ func setOption(ctx context.Context, s *testing.State, tconn *chrome.TestConn, op
 	}
 	// When not eqaul expected, to the click
 	if nodeInfo.Checked != checked {
-		testing.ContextLogf(ctx, "Click '%s' checkbox", optionName)
+		testing.ContextLogf(ctx, "Click %q checkbox", optionName)
 
 		if err := ui.MakeVisible(optionFinder)(ctx); err != nil {
-			return errors.Wrap(err, "Failed to make visible: ")
+			return errors.Wrap(err, "failed to make visible")
 		}
 
 		if err := ui.LeftClick(optionFinder)(ctx); err != nil {
@@ -909,16 +909,16 @@ func launchPrintjobs(ctx context.Context, s *testing.State, cr *chrome.Chrome, t
 	ui := uiauto.New(tconn)
 	entryFinder := nodewith.Name(apps.PrintManagement.Name + " View and manage print jobs").Role(role.Link).Ancestor(ossettings.WindowFinder)
 	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "osPrinting", ui.Exists(entryFinder)); err != nil {
-		return errors.Wrapf(err, "Failed to launch Settings page: ")
+		return errors.Wrap(err, "failed to launch Settings page")
 	}
 
 	if err := ui.LeftClick(entryFinder)(ctx); err != nil {
-		return errors.Wrapf(err, "Failed to click entry: ")
+		return errors.Wrap(err, "failed to click entry")
 	}
 
 	err := ash.WaitForApp(ctx, tconn, apps.PrintManagement.ID, time.Minute)
 	if err != nil {
-		return errors.Wrapf(err, "Could not find app in shelf after launch: ")
+		return errors.Wrap(err, "could not find app in shelf after launch")
 	}
 
 	return nil
@@ -997,7 +997,7 @@ func waitForPrintCompleted(ctx context.Context, s *testing.State, tconn *chrome.
 
 	// ---- Verify print job status notification is present
 	if _, err := ash.WaitForNotification(ctx, tconn, time.Minute, ash.WaitTitleContains("Printing")); err != nil {
-		s.Fatalf("Failed to wait for notification: %v", err)
+		s.Fatal("Failed to wait for notification: ", err)
 	}
 
 	// ---- Verify printer produces the printed page successfully(limited to reasonable acceptance)
@@ -1042,14 +1042,14 @@ func verifyPrintFile(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	// scan file then copy file to tast server
 	app, err := scanapp.Launch(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to launch scanapp: ")
+		return errors.Wrap(err, "failed to launch scanapp")
 	}
 	defer app.Close(ctx)
 
 	startTime := time.Now()
 	// press scan
 	if err := app.Scan()(ctx); err != nil {
-		return errors.Wrap(err, "Failed to click scan: ")
+		return errors.Wrap(err, "failed to click scan")
 	}
 
 	// wait file saved
@@ -1059,7 +1059,7 @@ func verifyPrintFile(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	// file should be in folder
 	fs, err := WaitForFileSaved(ctx, filesapp.MyFilesPath, pat, startTime)
 	if err != nil {
-		return errors.Wrap(err, "Failed to wait for file saved: ")
+		return errors.Wrap(err, "failed to wait for file saved")
 	}
 
 	// copy file from chromebook to tast server
@@ -1067,7 +1067,7 @@ func verifyPrintFile(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 
 	// compare tast server file and fixture server file
 	if err := utils.ComparePrinterPic(s, key, tastpath); err != nil {
-		return errors.Wrap(err, "Failed to compare printer picture: ")
+		return errors.Wrap(err, "failed to compare printer picture")
 	}
 
 	return nil

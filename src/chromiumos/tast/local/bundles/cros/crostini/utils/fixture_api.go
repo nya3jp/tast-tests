@@ -1,15 +1,16 @@
 package utils
 
 import (
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/uiauto/scanapp"
-	"chromiumos/tast/testing"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"regexp"
 	"strings"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/testing"
 )
 
 // retrieve fixture web api url from input var
@@ -45,7 +46,7 @@ etc.
 
 ip/api/AVIOSYS?type=1&port=1&port=2
 */
-func AviosysControl(s *testing.State, action string, port string) error {
+func AviosysControl(s *testing.State, action, port string) error {
 
 	// construct api api
 	api := fmt.Sprintf("%s/api/AVIOSYS?type=%s&port=%s", getWebUrl(s), action, port)
@@ -55,7 +56,7 @@ func AviosysControl(s *testing.State, action string, port string) error {
 	// send request
 	res, err := http.Get(api)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get response: %s", api)
+		return errors.Wrapf(err, "failed to get response: %s", api)
 	}
 
 	// dispose when finished
@@ -64,23 +65,23 @@ func AviosysControl(s *testing.State, action string, port string) error {
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return errors.Wrap(err, "Failed to read all response: ")
+		return errors.Wrap(err, "failed to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return errors.Wrap(err, "Failed to parse data to json: ")
+		return errors.Wrap(err, "failed to parse data to json")
 	}
 
 	// check response
 	m := data.(map[string]interface{})
 	if m["resultCode"] != "0000" || m["resultTxt"] != "Success" {
-		return errors.New(fmt.Sprintf("Failed to check response: %v\n", data))
+		return errors.Errorf("failed to check response: %v\n", data)
 	}
 
 	// print response
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	return nil
 }
@@ -104,7 +105,7 @@ resultCode：0000 成功
 
 resultTxt：回應之訊息。
 */
-func SwitchFixture(s *testing.State, whatType string, index string, cmd string, interval string) error {
+func SwitchFixture(s *testing.State, whatType, index, cmd, interval string) error {
 
 	// construct url
 	url := fmt.Sprintf("%s/api/switchfixture?Type=%s&Index=%s&cmd=%s&Interval=%s", getWebUrl(s), whatType, index, cmd, interval)
@@ -114,7 +115,7 @@ func SwitchFixture(s *testing.State, whatType string, index string, cmd string, 
 	// send request
 	res, err := http.Get(url)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get response: %s", url)
+		return errors.Wrapf(err, "failed to get response: %s", url)
 	}
 	// dispose when finished
 	defer res.Body.Close()
@@ -122,24 +123,24 @@ func SwitchFixture(s *testing.State, whatType string, index string, cmd string, 
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return errors.Wrap(err, "Failed to read all response: ")
+		return errors.Wrap(err, "failed to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return errors.Wrap(err, "Failed to parse data to json: ")
+		return errors.Wrap(err, "failed to parse data to json")
 	}
 
 	// check response
 	m := data.(map[string]interface{})
 	// notice : is "Success "
 	if m["resultCode"] != "0000" || m["resultTxt"] != "Success" {
-		return errors.New(fmt.Sprintf("Failed to check response: %v\n", data))
+		return errors.Errorf("failed to check response: %v\n", data)
 	}
 
 	// print response
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	return nil
 }
@@ -155,7 +156,7 @@ resultTxt：回應之訊息。
 
 偵測成功會回傳偵測到的顏色etc. red
 */
-func GetPiColor(s *testing.State, dispType string, dispIndex string, interval string) (string, error) {
+func GetPiColor(s *testing.State, dispType, dispIndex, interval string) (string, error) {
 
 	CameraUrl := fmt.Sprintf("%s/api/getpicolor?DisplayType=%s&ID=%s&Interval=%s", getWebUrl(s), dispType, dispIndex, interval)
 
@@ -164,7 +165,7 @@ func GetPiColor(s *testing.State, dispType string, dispIndex string, interval st
 	// send request
 	res, err := http.Get(CameraUrl)
 	if err != nil {
-		return "", errors.Wrapf(err, "Failed to get response: %s", CameraUrl)
+		return "", errors.Wrapf(err, "failed to get response: %s", CameraUrl)
 	}
 
 	// dispose when finished
@@ -173,16 +174,16 @@ func GetPiColor(s *testing.State, dispType string, dispIndex string, interval st
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return "", errors.Wrapf(err, "Fail to read all response: ")
+		return "", errors.Wrap(err, "Fail to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return "", errors.Wrap(err, "Failde to parse data to json : ")
+		return "", errors.Wrap(err, "Failde to parse data to json ")
 	}
 
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	// check response
 	m := data.(map[string]interface{})
@@ -216,7 +217,7 @@ func GetPiColorResult(s *testing.State) (string, error) {
 	// send request
 	res, err := http.Get(CameraUrl)
 	if err != nil {
-		return "", errors.Wrapf(err, "Failed to get response: %s", CameraUrl)
+		return "", errors.Wrapf(err, "failed to get response: %s", CameraUrl)
 	}
 
 	// dispose when finished
@@ -225,13 +226,13 @@ func GetPiColorResult(s *testing.State) (string, error) {
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return "", errors.Wrapf(err, "Fail to read all response: ")
+		return "", errors.Wrap(err, "Fail to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return "", errors.Wrap(err, "Failde to parse data to json: ")
+		return "", errors.Wrap(err, "Failde to parse data to json")
 	}
 
 	// check response
@@ -240,7 +241,7 @@ func GetPiColorResult(s *testing.State) (string, error) {
 		return "", errors.Errorf("Response is not correctly, got %s, want 0000", m["resultCode"])
 	}
 
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	var color string
 	color = fmt.Sprintf("%s", m["resultTxt"])
@@ -269,7 +270,7 @@ resultCode：0000 成功、0001 參數格式有誤、0002 執行失敗
 
 resultTxt：錄製成功回傳影片完整路徑
 */
-func VideoRecord(s *testing.State, durations string, output string, dispType string, dispIndex string) (string, error) {
+func VideoRecord(s *testing.State, durations, output, dispType, dispIndex string) (string, error) {
 
 	VideoUrl := fmt.Sprintf("%s/api/VideoRecord?Durations=%s&Output=%s&DisplayType=%s&ID=%s&Width=1280&Height=720", getWebUrl(s), durations, output, dispType, dispIndex)
 
@@ -278,7 +279,7 @@ func VideoRecord(s *testing.State, durations string, output string, dispType str
 	// send request
 	res, err := http.Get(VideoUrl)
 	if err != nil {
-		return "", errors.Wrapf(err, "Failed to get response: %s", VideoUrl)
+		return "", errors.Wrapf(err, "failed to get response: %s", VideoUrl)
 	}
 
 	// dispose when finished
@@ -287,13 +288,13 @@ func VideoRecord(s *testing.State, durations string, output string, dispType str
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return "", errors.Wrapf(err, "Fail to read all response: ")
+		return "", errors.Wrap(err, "Fail to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return "", errors.Wrap(err, "Failde to parse data to json: ")
+		return "", errors.Wrap(err, "Failde to parse data to json")
 	}
 
 	// check response
@@ -306,7 +307,7 @@ func VideoRecord(s *testing.State, durations string, output string, dispType str
 	filepath = m["resultTxt"].(string)
 
 	// print response
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	return filepath, nil
 }
@@ -332,7 +333,7 @@ resultTxt：video、audio都預測成功回傳pass，其中一個失敗會回傳
 
 http://server:port/api/goldenpredict?Input=/home/allion/gui-env/testvideo/issue.mp4
 */
-func GoldenPredict(s *testing.State, videoPath string, dispType string, dispIndex string, audio bool) error {
+func GoldenPredict(s *testing.State, videoPath, dispType, dispIndex string, audio bool) error {
 
 	// construct url
 	url := fmt.Sprintf("%s/api/goldenpredict?Input=%s&DisplayType=%s&ID=%s&Audio=%t", getWebUrl(s), videoPath, dispType, dispIndex, audio)
@@ -342,7 +343,7 @@ func GoldenPredict(s *testing.State, videoPath string, dispType string, dispInde
 	// send request
 	res, err := http.Get(url)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get response: %s", url)
+		return errors.Wrapf(err, "failed to get response: %s", url)
 	}
 	// dispose when finished
 	defer res.Body.Close()
@@ -350,22 +351,22 @@ func GoldenPredict(s *testing.State, videoPath string, dispType string, dispInde
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return errors.Wrap(err, "Failed to read all response: ")
+		return errors.Wrap(err, "failed to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return errors.Wrap(err, "Failed to parse data to json: ")
+		return errors.Wrap(err, "failed to parse data to json")
 	}
 
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	// check response
 	m := data.(map[string]interface{})
 
 	if m["resultCode"] != "0000" || m["resultTxt"] != "Pass" {
-		return errors.Errorf("Failed to get correct response: ")
+		return errors.New("failed to get correct response: ")
 	}
 
 	return nil
@@ -379,7 +380,7 @@ func GoldenPredict(s *testing.State, videoPath string, dispType string, dispInde
 //						200
 //						300
 //						600
-func CompareScannerPic(s *testing.State, color string, size string, resolution string, file_path string) error {
+func CompareScannerPic(s *testing.State, color, size, resolution, file_path string) error {
 
 	// http://192.168.1.199:8585/api/compare_pic?color=color&size=a4&resolution=75&file_path=/filepath/on/tast'
 
@@ -405,7 +406,7 @@ func CompareScannerPic(s *testing.State, color string, size string, resolution s
 	// send request
 	res, err := http.Get(url)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get response: %s", url)
+		return errors.Wrapf(err, "failed to get response: %s", url)
 	}
 	// dispose when finished
 	defer res.Body.Close()
@@ -413,22 +414,22 @@ func CompareScannerPic(s *testing.State, color string, size string, resolution s
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return errors.Wrap(err, "Failed to read all response: ")
+		return errors.Wrap(err, "failed to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return errors.Wrap(err, "Failed to parse data to json: ")
+		return errors.Wrap(err, "failed to parse data to json")
 	}
 
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	// check response
 	m := data.(map[string]interface{})
 
 	if m["resultCode"] != "0" || m["resultTxt"] != "success" {
-		return errors.Errorf("Failed to get correct response: ")
+		return errors.New("failed to get correct response: ")
 	}
 
 	return nil
@@ -462,7 +463,7 @@ func ComparePrinterPic(s *testing.State, key ComparePrinterKey, file_path string
 	// send request
 	res, err := http.Get(url)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get response: %s", url)
+		return errors.Wrapf(err, "failed to get response: %s", url)
 	}
 	// dispose when finished
 	defer res.Body.Close()
@@ -470,22 +471,22 @@ func ComparePrinterPic(s *testing.State, key ComparePrinterKey, file_path string
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return errors.Wrap(err, "Failed to read all response: ")
+		return errors.Wrap(err, "failed to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return errors.Wrap(err, "Failed to parse data to json: ")
+		return errors.Wrap(err, "failed to parse data to json")
 	}
 
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	// check response
 	m := data.(map[string]interface{})
 
 	if m["resultCode"] != "0" || m["resultTxt"] != "success" {
-		return errors.Errorf("Failed to get correct response: ")
+		return errors.New("failed to get correct response: ")
 	}
 
 	return nil
@@ -505,7 +506,7 @@ func FixtureServerNotice(s *testing.State, msg string) error {
 	// send request
 	res, err := http.Get(url)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get response: ")
+		return errors.Wrap(err, "failed to get response")
 	}
 	// dispose when finished
 	defer res.Body.Close()
@@ -513,22 +514,22 @@ func FixtureServerNotice(s *testing.State, msg string) error {
 	// get response
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return errors.Wrap(err, "Failed to read all response: ")
+		return errors.Wrap(err, "failed to read all response")
 	}
 
 	// parse response
 	var data interface{} // TopTracks
 	if err := json.Unmarshal(body, &data); err != nil {
-		return errors.Wrap(err, "Failed to parse data to json: ")
+		return errors.Wrap(err, "failed to parse data to json")
 	}
 
-	s.Logf("Response: %v", data)
+	s.Log("Response: ", data)
 
 	// check response
 	m := data.(map[string]interface{})
 
 	if m["resultCode"] != "0" || m["resultTxt"] != "success" {
-		return errors.Errorf("Failed to get correct response: ")
+		return errors.New("failed to get correct response: ")
 	}
 
 	return nil

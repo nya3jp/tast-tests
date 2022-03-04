@@ -38,13 +38,14 @@
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // 1. Connect the external monitor to the docking station via Type-C cable. (Manual)
@@ -72,15 +73,15 @@ func Dock26BootComputer(ctx context.Context, s *testing.State) { // chrome.Logge
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Connect external moniter to docking station manually in advance ")
-	s.Logf("Step 2 - connect docking station to chromebook manually in advance ")
-	s.Logf("Step 3 - Power the Chrombook On.")
-	s.Logf("Step 4 - Sign-in account. ")
+	s.Log("Step 1 - Connect external moniter to docking station manually in advance ")
+	s.Log("Step 2 - connect docking station to chromebook manually in advance ")
+	s.Log("Step 3 - Power the Chrombook On")
+	s.Log("Step 4 - Sign-in account. ")
 
 	// only verify
 	// step 5, 6 - check display info
 	if err := Dock26BootComputer_Step5To6(ctx, s, tconn); err != nil {
-		s.Fatal("Failed to execute 5, 6 ", err)
+		s.Fatal("Failed to execute 5, 6: ", err)
 	}
 }
 
@@ -88,10 +89,10 @@ func Dock26BootComputer(ctx context.Context, s *testing.State) { // chrome.Logge
 // 6. Check the chromebook display properly by test fixture."
 func Dock26BootComputer_Step5To6(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5, 6 - Check external display info")
+	s.Log("Step 5, 6 - Check external display info")
 
 	if err := utils.VerifyDisplayProperly(ctx, s, tconn, 2); err != nil {
-		return errors.Wrap(err, "Failed to verify display properly: ")
+		return errors.Wrap(err, "failed to verify display properly")
 	}
 
 	return nil

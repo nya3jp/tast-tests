@@ -55,7 +55,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dock8DonglePower,
-		Desc:         "USB Type-C multi-port dongle should work properly.",
+		Desc:         "USB Type-C multi-port dongle should work properly",
 		Contacts:     []string{"allion-sw@allion.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
@@ -157,16 +157,16 @@ func Dock8DonglePower(ctx context.Context, s *testing.State) {
 // 1. Hotplug the [non-powered] dongle alone // another fixture for type-c (TPE prepare) after daq off
 func Dock8DonglePower_Step1(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 1 - Connect dongle when dongle is non-powered")
+	s.Log("Step 1 - Connect dongle when dongle is non-powered")
 
 	// power off dongle
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOff); err != nil {
-		return errors.Wrapf(err, "Failed to power off dongle: ")
+		return errors.Wrap(err, "failed to power off dongle")
 	}
 
 	// plug in dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in dongle: ")
+		return errors.Wrap(err, "failed to plug in dongle")
 	}
 
 	return nil
@@ -175,11 +175,11 @@ func Dock8DonglePower_Step1(ctx context.Context, s *testing.State) error {
 // 2. Power up the dongle (if support) // daq on
 func Dock8DonglePower_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Power up dongle")
+	s.Log("Step 2 - Power up dongle")
 
 	// power up dongle
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOn); err != nil {
-		return errors.Wrapf(err, "Failed to power on dongle: ")
+		return errors.Wrap(err, "failed to power on dongle")
 	}
 
 	return nil
@@ -188,16 +188,16 @@ func Dock8DonglePower_Step2(ctx context.Context, s *testing.State) error {
 // 3. Hotplug peripheral(s) - one by one, or in combination - while dongle is plugged to Chromebook device // (TPE prepare fixture)
 func Dock8DonglePower_Step3(ctx context.Context, s *testing.State, tconn *chrome.TestConn, uc *utils.UsbController) error {
 
-	s.Logf("Step 3 - Plug peripherals one by one, then check")
+	s.Log("Step 3 - Plug peripherals one by one, then check")
 
 	// plug peripherals one by one
 	if err := utils.ControlPeripherals(ctx, s, uc, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug peripherals one by one: ")
+		return errors.Wrap(err, "failed to plug peripherals one by one")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to verify peripherals on dongle: ")
+		return errors.Wrap(err, "failed to verify peripherals on dongle")
 	}
 
 	return nil
@@ -206,21 +206,21 @@ func Dock8DonglePower_Step3(ctx context.Context, s *testing.State, tconn *chrome
 // 4. Unplug and plug-in back the dongle while all peripherals are plugged to the dongle // daq off then on, check peripherals using case 11 verification
 func Dock8DonglePower_Step4(ctx context.Context, s *testing.State, tconn *chrome.TestConn, uc *utils.UsbController) error {
 
-	s.Logf("Step 4 - Unplug & plug-in dongle then check all peripherals")
+	s.Log("Step 4 - Unplug & plug-in dongle then check all peripherals")
 
 	// unplug dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, false); err != nil {
-		return errors.Wrap(err, "Failed to unplug dongle: ")
+		return errors.Wrap(err, "failed to unplug dongle")
 	}
 
 	// plug-in dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in dongle: ")
+		return errors.Wrap(err, "failed to plug in dongle")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	return nil
@@ -229,26 +229,26 @@ func Dock8DonglePower_Step4(ctx context.Context, s *testing.State, tconn *chrome
 // 5. Unplug, Flip, and plug-in back the dongle while all peripherals are plugged to the dongle // flip( James perpare) then check
 func Dock8DonglePower_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn, uc *utils.UsbController) error {
 
-	s.Logf("Step 5 - Unplug, flip & plug-in dongle then check all peripherals")
+	s.Log("Step 5 - Unplug, flip & plug-in dongle then check all peripherals")
 
 	// unplug dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, false); err != nil {
-		return errors.Wrap(err, "Failed to unplug dongle: ")
+		return errors.Wrap(err, "failed to unplug dongle")
 	}
 
 	// flip dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionFlip, false); err != nil {
-		return errors.Wrap(err, "Failed to flip dongle: ")
+		return errors.Wrap(err, "failed to flip dongle")
 	}
 
 	// plug in dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in dongle: ")
+		return errors.Wrap(err, "failed to plug in dongle")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	return nil
@@ -257,7 +257,7 @@ func Dock8DonglePower_Step5(ctx context.Context, s *testing.State, tconn *chrome
 // 6. Reboot the Chromebook device with peripherals connected to the powered dongle. // reboot then check
 func Dock8DonglePower_Step6(ctx context.Context, s *testing.State, intoTablet bool, uc *utils.UsbController) error {
 
-	s.Logf("Step 6 - Reboot then check peripherals")
+	s.Log("Step 6 - Reboot then check peripherals")
 
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
@@ -273,7 +273,7 @@ func Dock8DonglePower_Step6(ctx context.Context, s *testing.State, intoTablet bo
 	// re-create api connection
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create Test API connection: ")
+		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
 	// into tablet mode,  mode change back cuz reboot
@@ -287,7 +287,7 @@ func Dock8DonglePower_Step6(ctx context.Context, s *testing.State, intoTablet bo
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	return nil
@@ -296,11 +296,11 @@ func Dock8DonglePower_Step6(ctx context.Context, s *testing.State, intoTablet bo
 // 7. Remove power from dongle and reboot Chromebook device // daq off then reboot then check
 func Dock8DonglePower_Step7(ctx context.Context, s *testing.State, intoTablet bool, uc *utils.UsbController) error {
 
-	s.Logf("Step 7 - Power off dongle & reboot, then check peripherals")
+	s.Log("Step 7 - Power off dongle & reboot, then check peripherals")
 
 	// power off dongle
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOff); err != nil {
-		return errors.Wrapf(err, "Failed to power off dongle: ")
+		return errors.Wrap(err, "failed to power off dongle")
 	}
 
 	// reboot
@@ -318,7 +318,7 @@ func Dock8DonglePower_Step7(ctx context.Context, s *testing.State, intoTablet bo
 	// re-create api connection
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create Test API connection: ")
+		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
 	if intoTablet == true {
@@ -331,7 +331,7 @@ func Dock8DonglePower_Step7(ctx context.Context, s *testing.State, intoTablet bo
 
 	// check peripherals is not on dongle
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsDisconnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals is not on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals is not on dongle")
 	}
 
 	return nil
@@ -340,45 +340,45 @@ func Dock8DonglePower_Step7(ctx context.Context, s *testing.State, intoTablet bo
 // 8. Power up, Power down, and Power up again the dongle while all ports are busy with Ext-Display and HID (Keyboard, or Mouse) // daq on then check, daq off then on then check (moniter, keyboard, mouse)
 func Dock8DonglePower_Step8(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Step 8 - Check peripherals when power up / down couple times  ")
+	s.Log("Step 8 - Check peripherals when power up / down couple times  ")
 
 	if err := cr.Reconnect(ctx); err != nil {
-		return errors.Wrap(err, "Failed to reconnect to chromebook: ")
+		return errors.Wrap(err, "failed to reconnect to chromebook")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create Test API connection: ")
+		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
 	// power up
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOn); err != nil {
-		return errors.Wrapf(err, "Failed to power on dongle: ")
+		return errors.Wrap(err, "failed to power on dongle")
 	}
 
 	// check peripherals are on station
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	// power down
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOff); err != nil {
-		return errors.Wrapf(err, "Failed to power off dongle: ")
+		return errors.Wrap(err, "failed to power off dongle")
 	}
 
 	// check peripherals are not on station
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsDisconnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	// power up
 	if err := utils.SetStationPower(ctx, s, utils.StationPowerOn); err != nil {
-		return errors.Wrapf(err, "Failed to power on dongle: ")
+		return errors.Wrap(err, "failed to power on dongle")
 	}
 
 	// check peripherals are on station
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	return nil
@@ -387,22 +387,22 @@ func Dock8DonglePower_Step8(ctx context.Context, s *testing.State, cr *chrome.Ch
 // 9. Plug - Suspend - Resume . // daq on then sleep then wake up then check
 func Dock8DonglePower_Step9(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Step 9 - Plug in dongle, sleep chromebook & wake up it, then check peripherals")
+	s.Log("Step 9 - Plug in dongle, sleep chromebook & wake up it, then check peripherals")
 
 	// plug in
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to plug in dongle: ")
+		return errors.Wrap(err, "failed to plug in dongle")
 	}
 
 	// suspend then reconnect chromebook
 	tconn, err := utils.SuspendChromebook(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to suspend then reconnect chromebook: ")
+		return errors.Wrap(err, "failed to suspend then reconnect chromebook")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	return nil
@@ -411,32 +411,32 @@ func Dock8DonglePower_Step9(ctx context.Context, s *testing.State, cr *chrome.Ch
 // 10. Plug - Suspend - Unplug - Resume - Plug // daq on then sleep then daq off then wake up then daq on then check
 func Dock8DonglePower_Step10(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Step 10 - Plug in dongle, suspend chromebook, unplug dongle, wake up it, plug dongle, then check peripherls")
+	s.Log("Step 10 - Plug in dongle, suspend chromebook, unplug dongle, wake up it, plug dongle, then check peripherls")
 
 	// plug in dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to plug in dongle: ")
+		return errors.Wrap(err, "failed to plug in dongle")
 	}
 
 	// unplug dongle later
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, true); err != nil {
-		return errors.Wrap(err, "Failed to unplug dongle later: ")
+		return errors.Wrap(err, "failed to unplug dongle later")
 	}
 
 	// suspend then wake up chromebook
 	tconn, err := utils.SuspendChromebook(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to suspend then reconnect chromebook: ")
+		return errors.Wrap(err, "failed to suspend then reconnect chromebook")
 	}
 
 	// plug in dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to plug in dongle: ")
+		return errors.Wrap(err, "failed to plug in dongle")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	return nil
@@ -444,27 +444,27 @@ func Dock8DonglePower_Step10(ctx context.Context, s *testing.State, cr *chrome.C
 
 // 11. Unplug - Suspend - Plug - Resume // daq on - sleep - daq off - wake up - check peripherals
 func Dock8DonglePower_Step11(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
-	s.Logf("Step 11 - Unplug dongle, suspend chromebook, plug in dongle, wake up it, then check peripherals")
+	s.Log("Step 11 - Unplug dongle, suspend chromebook, plug in dongle, wake up it, then check peripherals")
 
 	// unplug dongle
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, false); err != nil {
-		return errors.Wrapf(err, "Failed to unplug dongle: ")
+		return errors.Wrap(err, "failed to unplug dongle")
 	}
 
 	// plug in dongle later
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, true); err != nil {
-		return errors.Wrap(err, "Failed to plug in dongle later: ")
+		return errors.Wrap(err, "failed to plug in dongle later")
 	}
 
 	// suspend then wake up chromebook
 	tconn, err := utils.SuspendChromebook(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to suspend then reconnect chromebook: ")
+		return errors.Wrap(err, "failed to suspend then reconnect chromebook")
 	}
 
 	// check peripherals
 	if err := utils.VerifyPeripherals(ctx, s, tconn, uc, utils.IsConnect); err != nil {
-		return errors.Wrap(err, "Failed to check peripherals on dongle: ")
+		return errors.Wrap(err, "failed to check peripherals on dongle")
 	}
 
 	return nil
@@ -473,15 +473,15 @@ func Dock8DonglePower_Step11(ctx context.Context, s *testing.State, cr *chrome.C
 // into tablet mode, repeat above steps
 func Dock8DonglePower_Step12(ctx context.Context, s *testing.State, cr *chrome.Chrome, uc *utils.UsbController) error {
 
-	s.Logf("Step 12 - into tablet mode, repeat above steps ")
+	s.Log("Step 12 - into tablet mode, repeat above steps ")
 
 	if err := cr.Reconnect(ctx); err != nil {
-		return errors.Wrap(err, "Failed to reconnect to chromebook: ")
+		return errors.Wrap(err, "failed to reconnect to chromebook")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create Test API connection: ")
+		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
 	// into tablet mode, repeat above steps
@@ -495,57 +495,57 @@ func Dock8DonglePower_Step12(ctx context.Context, s *testing.State, cr *chrome.C
 
 	// step 1 - connect dongle when dongle is non-powered
 	if err := Dock8DonglePower_Step1(ctx, s); err != nil {
-		s.Fatal("Failed to execute step 1 ", err)
+		s.Fatal("Failed to execute step 1: ", err)
 	}
 
 	// step 2 - power up dongle
 	if err := Dock8DonglePower_Step2(ctx, s); err != nil {
-		s.Fatal("Failed to execute step 2 ", err)
+		s.Fatal("Failed to execute step 2: ", err)
 	}
 
 	// Step 3 - plug peripherals one by one, then check
 	if err := Dock8DonglePower_Step3(ctx, s, tconn, uc); err != nil {
-		s.Fatal("Failed to execute step 3 ", err)
+		s.Fatal("Failed to execute step 3: ", err)
 	}
 
 	// Step 4 - unplug & plug-in dongle then check all peripherals
 	if err := Dock8DonglePower_Step4(ctx, s, tconn, uc); err != nil {
-		s.Fatal("Failed to execute step 4 ", err)
+		s.Fatal("Failed to execute step 4: ", err)
 	}
 
 	// Step 5 - unplug, flip & plug-in dongle then check all peripherals
 	if err := Dock8DonglePower_Step5(ctx, s, tconn, uc); err != nil {
-		s.Fatal("Failed to execute step 5 ", err)
+		s.Fatal("Failed to execute step 5: ", err)
 	}
 
 	// Step 6 - reboot then check peripherals
 	if err := Dock8DonglePower_Step6(ctx, s, true, uc); err != nil {
-		s.Fatal("Failed to execute step 6 ", err)
+		s.Fatal("Failed to execute step 6: ", err)
 	}
 
 	// Step 7 - power off dongle & reboot, then check peripherals
 	if err := Dock8DonglePower_Step7(ctx, s, true, uc); err != nil {
-		s.Fatal("Failed to execute step 7 ", err)
+		s.Fatal("Failed to execute step 7: ", err)
 	}
 
 	// Step 8 - check peripherals when power up / down couple times
 	if err := Dock8DonglePower_Step8(ctx, s, cr, uc); err != nil {
-		s.Fatal("Failed to execute step 8 ", err)
+		s.Fatal("Failed to execute step 8: ", err)
 	}
 
 	// Step 9 - plug in dongle, sleep chromebook & wake up it, then check peripherals
 	if err := Dock8DonglePower_Step9(ctx, s, cr, uc); err != nil {
-		s.Fatal("Failed to execute step 9 ", err)
+		s.Fatal("Failed to execute step 9: ", err)
 	}
 
 	// Step 10 - plug in dongle, suspend chromebook, unplug dongle, wake up it, plug dongle, then check peripherls
 	if err := Dock8DonglePower_Step10(ctx, s, cr, uc); err != nil {
-		s.Fatal("Failed to execute step 10 ", err)
+		s.Fatal("Failed to execute step 10: ", err)
 	}
 
 	// 11. Unplug - Suspend - Plug - Resume // daq on - sleep - daq off - wake up - check peripherals
 	if err := Dock8DonglePower_Step11(ctx, s, cr, uc); err != nil {
-		s.Fatal("Failed to execute step 11 ", err)
+		s.Fatal("Failed to execute step 11: ", err)
 	}
 
 	return nil

@@ -212,12 +212,12 @@ func Printscan2Scanner_Step1(ctx context.Context, s *testing.State, tconn *chrom
 
 	s.Log("USB - plug in usb")
 	if err := utils.DoSwitchFixture(ctx, s, utils.UsbPrinterType, utils.UsbPrinterIndex, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect usb: ")
+		return errors.Wrap(err, "failed to connect usb")
 	}
 
 	// verfiy connected
 	if _, err := ash.WaitForNotification(ctx, tconn, time.Minute, ash.WaitTitle("USB printer connected")); err != nil {
-		s.Fatalf("Failed to wait for notification: %v", err)
+		s.Fatal("Failed to wait for notification: ", err)
 	}
 
 	return nil
@@ -228,11 +228,11 @@ func Printscan2Scanner_Step1(ctx context.Context, s *testing.State, tconn *chrom
 // ----Via ‘Scan’ in Settings
 func Printscan2Scanner_Step2(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Log("Step 2 - Open ‘Scan’ Utility app or go to Settings-> Print and Scan-> Scan.")
+	s.Log("Step 2 - Open ‘Scan’ Utility app or go to Settings-> Print and Scan-> Scan")
 
 	// launch scan via launcher
 	if err := launchScanapp(ctx, s, tconn, ViaLauncher); err != nil {
-		return errors.Wrapf(err, "Failed to launch scanapp via launcher: ")
+		return errors.Wrap(err, "failed to launch scanapp via launcher")
 	}
 
 	// close scan app
@@ -242,7 +242,7 @@ func Printscan2Scanner_Step2(ctx context.Context, s *testing.State, cr *chrome.C
 
 	// launch scan via settings
 	if err := launchScanapp(ctx, s, tconn, ViaSettings); err != nil {
-		return errors.Wrapf(err, "Failed to launch scanapp via settings: ")
+		return errors.Wrap(err, "failed to launch scanapp via settings")
 	}
 
 	// close scan app
@@ -273,7 +273,7 @@ func Printscan2Scanner_Step3and4(ctx context.Context, s *testing.State, tconn *c
 
 	app, err := scanapp.Launch(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to launch app: ")
+		return errors.Wrap(err, "failed to launch app")
 	}
 
 	time.Sleep(time.Second)
@@ -337,11 +337,11 @@ func Printscan2Scanner_Step3and4(ctx context.Context, s *testing.State, tconn *c
 // ----USB / Launcher / Flatbed, My Files / PNG / Grayscale, Letter, 100dpi
 // ----WiFi / Settings / DocFeeder, Downloads / JPG / Grayscale, A4, 600dpi
 // ----USB / Settings / DocFeeder, Downloads / PDF / Color, A4, 75dpi"
-func Printscan2Scanner_Step5and6(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, scannerUsb string, scannerWifi string) error {
+func Printscan2Scanner_Step5and6(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, scannerUsb, scannerWifi string) error {
 
-	s.Logf("Step 5, 6 - Repeat above steps with different combinations ")
+	s.Log("Step 5, 6 - Repeat above steps with different combinations ")
 
-	flows := []MyScanSettings{}
+	var flows []MyScanSettings
 
 	// Wi-Fi	Launcher	Flatbed,	My Files	Color	A4	PDF	75 dpi
 	flows = append(flows, MyScanSettings{
@@ -525,7 +525,7 @@ func Printscan2Scanner_Step5and6(ctx context.Context, s *testing.State, cr *chro
 		s.Logf("%s", prettyPrint(flow))
 
 		if err := runMyScanSettings(ctx, s, tconn, &flow, scannerUsb, scannerWifi); err != nil {
-			return errors.Wrap(err, "Failed to run scan settings: ")
+			return errors.Wrap(err, "failed to run scan settings")
 		}
 
 		continue
@@ -586,7 +586,7 @@ func Printscan2Scanner_Step5and6(ctx context.Context, s *testing.State, cr *chro
 	return nil
 }
 
-func runMyScanSettings(ctx context.Context, s *testing.State, tconn *chrome.TestConn, flow *MyScanSettings, scannerUsb string, scannerWifi string) error {
+func runMyScanSettings(ctx context.Context, s *testing.State, tconn *chrome.TestConn, flow *MyScanSettings, scannerUsb, scannerWifi string) error {
 
 	var scanner string
 	if flow.Through == ThroughUsb {
@@ -602,12 +602,12 @@ func runMyScanSettings(ctx context.Context, s *testing.State, tconn *chrome.Test
 	// launch app
 	app, err := scanapp.Launch(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to launch scan app: ")
+		return errors.Wrap(err, "failed to launch scan app")
 	}
 
 	// scan to
 	if err := setScanto(ctx, s, tconn, flow.Scanto); err != nil {
-		return errors.Wrap(err, "Failed to set scanto: ")
+		return errors.Wrap(err, "failed to set scanto")
 	}
 
 	// when scan source is document one side,
@@ -615,7 +615,7 @@ func runMyScanSettings(ctx context.Context, s *testing.State, tconn *chrome.Test
 	if flow.Source == scanapp.SourceADFOneSided {
 		msg := fmt.Sprintf("Please put file into %s", scanapp.SourceADFOneSided)
 		if err := utils.FixtureServerNotice(s, msg); err != nil {
-			return errors.Wrap(err, "Failed to show msg on server: ")
+			return errors.Wrap(err, "failed to show msg on server")
 		}
 	}
 
@@ -633,7 +633,7 @@ func runMyScanSettings(ctx context.Context, s *testing.State, tconn *chrome.Test
 		app.SetScanSettings(settings),
 		app.WithTimeout(time.Minute).Scan(),
 	)(ctx); err != nil {
-		return errors.Wrap(err, "Failed to perform scan: ")
+		return errors.Wrap(err, "failed to perform scan")
 	}
 
 	app.Close(ctx)
@@ -646,11 +646,11 @@ func launchScanapp(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 
 	if whichVia == ViaSettings { // via settings
 		if err := launchScanappViaSettings(ctx, s, tconn); err != nil {
-			return errors.Wrap(err, "Failed to launch scanpp via settings: ")
+			return errors.Wrap(err, "failed to launch scanpp via settings")
 		}
 	} else { // via launcher
 		if err := launchScanappViaLauncher(ctx, s, tconn); err != nil {
-			return errors.Wrap(err, "Failed to launch scanpp via launcher: ")
+			return errors.Wrap(err, "failed to launch scanpp via launcher")
 		}
 	}
 
@@ -672,17 +672,17 @@ func launchScanappViaSettings(ctx context.Context, s *testing.State, tconn *chro
 	cr := s.PreValue().(*chrome.Chrome)
 	// open printing page on settings
 	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "osPrinting", ui.Exists(entryFinder)); err != nil {
-		return errors.Wrapf(err, "Failed to launch Settings page: ")
+		return errors.Wrap(err, "failed to launch Settings page")
 	}
 
 	// click scan link to open scanapp
 	if err := ui.LeftClick(entryFinder)(ctx); err != nil {
-		return errors.Wrapf(err, "Failed to click entry: ")
+		return errors.Wrap(err, "failed to click entry")
 	}
 
 	// wait for app visible
 	if err := ash.WaitForApp(ctx, tconn, apps.Scan.ID, time.Minute); err != nil {
-		return errors.Wrapf(err, "Could not find app in shelf after launch: ")
+		return errors.Wrap(err, "could not find app in shelf after launch")
 	}
 
 	// close settings app
@@ -699,18 +699,18 @@ func launchScanappViaLauncher(ctx context.Context, s *testing.State, tconn *chro
 	// create keyboard
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to find keyboard: ")
+		return errors.Wrap(err, "failed to find keyboard")
 	}
 	defer kb.Close()
 
 	// launcher search and launch
 	if err := launcher.SearchAndLaunch(tconn, kb, apps.Scan.Name)(ctx); err != nil {
-		return errors.Wrap(err, "Failed to search and launch scan app: ")
+		return errors.Wrap(err, "failed to search and launch scan app")
 	}
 
 	// wait for app visible
 	if err := ash.WaitForApp(ctx, tconn, apps.Scan.ID, time.Minute); err != nil {
-		return errors.Wrapf(err, "Could not find app in shelf after launch: ")
+		return errors.Wrap(err, "could not find app in shelf after launch")
 	}
 
 	return nil
@@ -815,7 +815,7 @@ func WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts ti
 // get scanner name from ui
 func getScannerFromUi(ctx context.Context, s *testing.State, tconn *chrome.TestConn) (string, string, error) {
 
-	s.Logf("Getting scanner from ui ..")
+	s.Log("Getting scanner from ui ")
 
 	var scannerUsb, scannerWifi string
 
@@ -823,7 +823,7 @@ func getScannerFromUi(ctx context.Context, s *testing.State, tconn *chrome.TestC
 
 		app, err := scanapp.Launch(ctx, tconn)
 		if err != nil {
-			return errors.Wrapf(err, "Failed to launch scanapp: ")
+			return errors.Wrap(err, "failed to launch scanapp")
 		}
 
 		// let scan app get ready
@@ -847,12 +847,12 @@ func getScannerFromUi(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		}
 		scanners, err := ui.FindAll(ctx, tconn, params)
 		if err != nil {
-			return errors.Wrapf(err, "Failed to find scanners on ui: ")
+			return errors.Wrap(err, "failed to find scanners on ui")
 		}
 
 		// scanners should have at least 2 device
 		if len(scanners) < 2 {
-			return errors.Errorf("Failed to get enough scanner, got %d, want 2", len(scanners))
+			return errors.Errorf("failed to get enough scanner, got %d, want 2", len(scanners))
 		}
 
 		for _, scanner := range scanners {
@@ -864,7 +864,7 @@ func getScannerFromUi(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		}
 
 		if scannerUsb == "" || scannerWifi == "" {
-			return errors.Errorf("Scanner name should not be blank")
+			return errors.New("Scanner name should not be blank")
 		}
 
 		app.Close(ctx)
@@ -872,7 +872,7 @@ func getScannerFromUi(ctx context.Context, s *testing.State, tconn *chrome.TestC
 		return nil
 
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return "", "", errors.Wrapf(err, "Failed to get scanner from ui:")
+		return "", "", errors.Wrap(err, "failed to get scanner from ui")
 	}
 
 	s.Logf("Found scanner(usb): %s, and scanner(wifi): %s", scannerUsb, scannerWifi)
@@ -927,19 +927,19 @@ func confirmDetails(ctx context.Context, s *testing.State, scannerInfo map[strin
 	// color mode: grayscale, color
 	// 	"cs": "grayscale,color",
 	case scanapp.DropdownNameColorMode:
-		s.Logf(scannerInfo["cs"])
+		s.Log(scannerInfo["cs"])
 	//  file type: jpg, png, pdf
 	// 	"pdl": "image/jpeg,application/pdf",
 	case scanapp.DropdownNameFileType:
-		s.Logf(scannerInfo["pdl"])
+		s.Log(scannerInfo["pdl"])
 	// source:
 	// 	"duplex": "F",
 	// 	"is": "platen,adf",
 	case scanapp.DropdownNameSource:
-		s.Logf(scannerInfo["is"])
-		s.Logf(scannerInfo["duplex"])
+		s.Log(scannerInfo["is"])
+		s.Log(scannerInfo["duplex"])
 	default:
-		s.Logf(scannerInfo["123"])
+		s.Log(scannerInfo["123"])
 	}
 
 	return nil

@@ -43,13 +43,14 @@
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // 1. Power the Chrombook On.
@@ -76,9 +77,9 @@ func Dock25DisconnectDisplay(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Power the Chrombook On.")
+	s.Log("Step 1 - Power the Chrombook On")
 
-	s.Logf("Step 2 - Sign-in account.")
+	s.Log("Step 2 - Sign-in account")
 
 	// step 3 - connect ext-display to docking
 	if err := Dock25DisconnectDisplay_Step3(ctx, s); err != nil {
@@ -109,10 +110,10 @@ func Dock25DisconnectDisplay(ctx context.Context, s *testing.State) {
 // 3. Connect the external monitor to the docking station via Type-C cable.
 func Dock25DisconnectDisplay_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect the external monitor to the docking station via Type-C cable")
+	s.Log("Step 3 - Connect the external monitor to the docking station via Type-C cable")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in ext-display to docking station: ")
+		return errors.Wrap(err, "failed to plug in ext-display to docking station")
 	}
 
 	return nil
@@ -121,10 +122,10 @@ func Dock25DisconnectDisplay_Step3(ctx context.Context, s *testing.State) error 
 // 4. Connect the docking station to chromebook via Type-C cable. (switch Type-C & HDMI fixture)
 func Dock25DisconnectDisplay_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Connect the docking station to chromebook via Type-C cable")
+	s.Log("Step 4 - Connect the docking station to chromebook via Type-C cable")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to connect docking station to chromebook: ")
+		return errors.Wrap(err, "failed to connect docking station to chromebook")
 	}
 
 	return nil
@@ -133,10 +134,10 @@ func Dock25DisconnectDisplay_Step4(ctx context.Context, s *testing.State) error 
 // 5. Check the external monitor display properly by test fixture.
 func Dock25DisconnectDisplay_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Check the external monitor display properly by test fixture")
+	s.Log("Step 5 - Check the external monitor display properly by test fixture")
 
 	if err := utils.VerifyDisplayProperly(ctx, s, tconn, 2); err != nil {
-		return errors.Wrap(err, "Failed to verify display properly: ")
+		return errors.Wrap(err, "failed to verify display properly")
 	}
 
 	return nil
@@ -146,10 +147,10 @@ func Dock25DisconnectDisplay_Step5(ctx context.Context, s *testing.State, tconn 
 // 7. Select Shut down to power off the chromebook system.
 func Dock25DisconnectDisplay_Step6To7(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 6, 7 - power off chromebook")
+	s.Log("Step 6, 7 - power off chromebook")
 
 	if err := utils.PoweroffChromebook(ctx, s); err != nil {
-		return errors.Wrap(err, "Failed to power off chromebook: ")
+		return errors.Wrap(err, "failed to power off chromebook")
 	}
 
 	return nil
@@ -158,10 +159,10 @@ func Dock25DisconnectDisplay_Step6To7(ctx context.Context, s *testing.State, tco
 // 8. Disconnect the external monitor from docking station.
 func Dock25DisconnectDisplay_Step8(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 8 - Disconnect the external monitor from docking station")
+	s.Log("Step 8 - Disconnect the external monitor from docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionUnplug, false); err != nil {
-		return errors.Wrapf(err, "Failed to disconnect docking staion from chromebook: ")
+		return errors.Wrap(err, "failed to disconnect docking staion from chromebook")
 	}
 
 	return nil
@@ -170,10 +171,10 @@ func Dock25DisconnectDisplay_Step8(ctx context.Context, s *testing.State) error 
 // 9. Wait 2-3 min and use camera to check if there is no screen (black screen) on the Chromebook screen."
 func Dock25DisconnectDisplay_Step9(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 9 - Use camera to check if there is no screen (black screen) on the Chromebook screen.")
+	s.Log("Step 9 - Use camera to check if there is no screen (black screen) on the Chromebook screen")
 
 	if err := utils.CheckColor(ctx, s, utils.InternalDisplay, "black"); err != nil {
-		return errors.Wrap(err, "Failed to use camera to check chromebook screen is black: ")
+		return errors.Wrap(err, "failed to use camera to check chromebook screen is black")
 	}
 
 	return nil

@@ -1,6 +1,10 @@
 package utils
 
 import (
+	"context"
+	"reflect"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -10,9 +14,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"context"
-	"reflect"
-	"time"
 )
 
 // reference: Multi_Display.go
@@ -30,7 +31,7 @@ func MoveWindowToDisplay(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// get display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get display info")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// declare destination display variables
@@ -72,7 +73,7 @@ func MoveWindowToDisplay(ctx context.Context, s *testing.State, tconn *chrome.Te
 	// Setup display layout.
 	disp, err := GetInternalAndExternalDisplays(ctx, tconn)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get interna & external display: ")
+		return errors.Wrap(err, "failed to get interna & external display")
 	}
 
 	// if window state is not normal, then the window can't be moved
@@ -80,14 +81,14 @@ func MoveWindowToDisplay(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 		// set window state to normal
 		if _, err := ash.SetWindowState(ctx, tconn, win.ID, ash.WMEventNormal, true); err != nil {
-			return errors.Wrap(err, "Failed to set window state to normal: ")
+			return errors.Wrap(err, "failed to set window state to normal")
 		}
 
 	}
 
 	// window info might be changed after changing window state
 	if win, err = ash.GetARCAppWindowInfo(ctx, tconn, win.ARCPackageName); err != nil {
-		return errors.Wrapf(err, "Failed to get app's window info")
+		return errors.Wrap(err, "failed to get app's window info")
 	}
 
 	// Raw mouse API.
@@ -103,45 +104,45 @@ func MoveWindowToDisplay(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 	// move to source display
 	if err := cursor.moveTo(ctx, tconn, m, sourDispIndex, sourDispType, disp); err != nil {
-		return errors.Wrap(err, "Failed to move cursor to source display: ")
+		return errors.Wrap(err, "failed to move cursor to source display")
 	}
 
 	// move to window header bar
 	winPt := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
 	if err := mouse.Move(tconn, winPt, 5)(ctx); err != nil {
-		return errors.Wrap(err, "Failed to move mouse to window header: ")
+		return errors.Wrap(err, "failed to move mouse to window header")
 	}
 
 	// press leftbutton
 	if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
-		return errors.Wrap(err, "Failed to press mouse on left button: ")
+		return errors.Wrap(err, "failed to press mouse on left button")
 	}
 
 	// move to destination display
 	if err := cursor.moveTo(ctx, tconn, m, destDispIndex, destDispType, disp); err != nil {
-		return errors.Wrap(err, "Failed to move cursor to destination display: ")
+		return errors.Wrap(err, "failed to move cursor to destination display")
 	}
 
 	// move to point
 	dstDispBnds := disp.DisplayInfo(arc.InternalDisplay).Bounds
 	dstPt := coords.NewPoint(dstDispBnds.Width/2, dstDispBnds.Height/2)
 	if err := mouse.Move(tconn, dstPt, time.Second)(ctx); err != nil {
-		return errors.Wrap(err, "Failed to move mouse to center of destination display: ")
+		return errors.Wrap(err, "failed to move mouse to center of destination display")
 	}
 
 	// release leftbutton
 	if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
-		return errors.Wrap(err, "Failed to release mouse: ")
+		return errors.Wrap(err, "failed to release mouse")
 	}
 
 	if err := EnsureWindowStable(ctx, tconn, win.ARCPackageName, win); err != nil {
-		return errors.Wrapf(err, "Failed to ensure window[%s] is stable: ", win.ARCPackageName)
+		return errors.Wrapf(err, "failed to ensure window[%s] is stable: ", win.ARCPackageName)
 	}
 
 	// ensure window on display
 	ensureAct := EnsureWindowOnDisplay(ctx, tconn, win.ARCPackageName, infos[destDispIndex].ID)
 	if err := ensureAct; err != nil {
-		return errors.Wrapf(err, "Failed to ensure [%s] window on display {seq:%d,ID:%s, Name:%s}",
+		return errors.Wrapf(err, "failed to ensure [%s] window on display {seq:%d,ID:%s, Name:%s}",
 			win.ARCPackageName, destDispIndex, infos[destDispIndex].ID, infos[destDispIndex].Name)
 	}
 
@@ -206,12 +207,12 @@ func EnsureWindowStable(ctx context.Context, tconn *chrome.TestConn, pkgName str
 // then open act on internal display
 func ReopenAllWindowsOnInternal(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC) error {
 
-	s.Logf("Close all windows and reopen two apps on interal display")
+	s.Log("Close all windows and reopen two apps on interal display")
 
 	// get all windows
 	windows, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to get all windows ")
+		return errors.Wrap(err, "failed to get all windows ")
 	}
 
 	// close all windows
@@ -224,7 +225,7 @@ func ReopenAllWindowsOnInternal(ctx context.Context, s *testing.State, tconn *ch
 	// get internal display info
 	intDispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get internal display: ")
+		return errors.Wrap(err, "failed to get internal display")
 	}
 
 	// start two activity on external display
@@ -252,17 +253,17 @@ func ReopenAllWindowsOnInternal(ctx context.Context, s *testing.State, tconn *ch
 
 			win, err := ash.GetARCAppWindowInfo(ctx, tconn, param2.pkgName)
 			if err != nil {
-				return errors.Wrapf(err, "Failed to get window[%s] info: ", param2.pkgName)
+				return errors.Wrapf(err, "failed to get window[%s] info: ", param2.pkgName)
 			}
 
 			if err := EnsureWindowStable(ctx, tconn, param2.pkgName, win); err != nil {
-				return errors.Wrap(err, "Failed to ensure window is stable: ")
+				return errors.Wrap(err, "failed to ensure window is stable")
 			}
 
 			// ensure activity on external display
 			ensureAct := EnsureWindowOnDisplay(ctx, tconn, param2.pkgName, intDispInfo.ID)
 			if err := ensureAct; err != nil {
-				return errors.Wrapf(err, "Failed to ensure [%s] window on display {seq:%d,ID:%s, Name:%s}",
+				return errors.Wrapf(err, "failed to ensure [%s] window on display {seq:%d,ID:%s, Name:%s}",
 					param2.pkgName, intDispInfo.ID, intDispInfo.ID, intDispInfo.Name)
 			}
 

@@ -1,15 +1,16 @@
 package utils
 
 import (
+	"context"
+	"strings"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
-	"context"
-	"strings"
-	"time"
 )
 
 // open browser to play youtube on chromebook
@@ -55,7 +56,7 @@ func GetYoutubeWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window,
 
 	// check window
 	if win == nil {
-		return nil, errors.Errorf("Failed to get youtube window")
+		return nil, errors.New("failed to get youtube window")
 	}
 
 	return win, nil
@@ -67,12 +68,12 @@ func EnsureYoutubeOnDisplay(ctx context.Context, s *testing.State, tconn *chrome
 	// get youtube window
 	youtube, err := GetYoutubeWindow(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get youtube window: ")
+		return errors.Wrap(err, "failed to get youtube window")
 	}
 
 	// ensure window on display
 	if err := EnsureWindowOnDisplay(ctx, tconn, youtube.ARCPackageName, wantDisp.ID); err != nil {
-		return errors.Wrapf(err, "Failed to ensure windows on display: ")
+		return errors.Wrap(err, "failed to ensure windows on display")
 	}
 
 	return nil

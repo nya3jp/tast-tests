@@ -1,6 +1,13 @@
 package utils
 
 import (
+	"context"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -14,15 +21,9 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
-	"context"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"strings"
-	"time"
 )
 
-func installDocsFromPlaystore(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, pkgName string, appName string) error {
+func installDocsFromPlaystore(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, pkgName, appName string) error {
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
@@ -72,7 +73,7 @@ func installDocsFromPlaystore(ctx context.Context, s *testing.State, cr *chrome.
 	// create keyboard
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "Failed to find keyboard: ")
+		return errors.Wrap(err, "failed to find keyboard")
 	}
 	defer kb.Close()
 

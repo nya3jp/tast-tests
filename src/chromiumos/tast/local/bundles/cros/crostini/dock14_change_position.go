@@ -40,7 +40,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dock14ChangePosition,
-		Desc:         "Change position of display relative to Chromebook.",
+		Desc:         "Change position of display relative to Chromebook",
 		Contacts:     []string{"allion-sw@allion.com"},
 		SoftwareDeps: []string{"arc", "chrome"},
 		Timeout:      10 * time.Minute,
@@ -61,7 +61,7 @@ func Dock14ChangePosition(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Boot-up and Sign-In to the device ")
+	s.Log("Step 1 - Boot-up and Sign-In to the device ")
 
 	// step 2 - connect ext-display to docking station
 	if err := Dock14ChangePosition_Step2(ctx, s, tconn); err != nil {
@@ -88,10 +88,10 @@ func Dock14ChangePosition(ctx context.Context, s *testing.State) {
 // 2) Connect ext-display to (Docking station or Hub)
 func Dock14ChangePosition_Step2(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 2 - Connect ext-display to docking station")
+	s.Log("Step 2 - Connect ext-display to docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display to docking station")
 	}
 
 	return nil
@@ -100,10 +100,10 @@ func Dock14ChangePosition_Step2(ctx context.Context, s *testing.State, tconn *ch
 // 3) Connect (Docking station or Hub) to Chromebook
 func Dock14ChangePosition_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect docking staion to chromebook")
+	s.Log("Step 3 - Connect docking staion to chromebook")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrapf(err, "Failed to plug in docking station to chromebook: ")
+		return errors.Wrap(err, "failed to plug in docking station to chromebook")
 	}
 
 	return nil
@@ -114,7 +114,7 @@ func Dock14ChangePosition_Step3(ctx context.Context, s *testing.State) error {
 // 5) Click+Hold the displays (Primary) or (Extended) ext-displays icon around (i.e. Left/Right/Top/Bottom)
 func Dock14ChangePosition_Step4To5(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC) error {
 
-	s.Logf("Step 4, 5 - Change display relative position")
+	s.Log("Step 4, 5 - Change display relative position")
 
 	// install testing app
 	if err := a.Install(ctx, arc.APKPath(utils.TestappApk)); err != nil {
@@ -227,12 +227,12 @@ func Dock14ChangePosition_Step4To5(ctx context.Context, s *testing.State, tconn 
 // 6) On "Primary" (Built-in displays) open Chrome browser window and drag the browser window onto (Extended) ext- displays
 func Dock14ChangePosition_Step6(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC) error {
 
-	s.Logf("Step 6 - On Primary (Built-in displays) open Chrome browser window and drag the browser window onto (Extended) ext- displays")
+	s.Log("Step 6 - On Primary (Built-in displays) open Chrome browser window and drag the browser window onto (Extended) ext- displays")
 
 	// start activity on internal display
 	act, err := arc.NewActivityOnDisplay(a, utils.SettingsPkg, utils.SettingsAct, 0)
 	if err != nil {
-		return errors.Wrap(err, "Failed to start activity on internal display: ")
+		return errors.Wrap(err, "failed to start activity on internal display")
 	}
 
 	// start activity
@@ -243,12 +243,12 @@ func Dock14ChangePosition_Step6(ctx context.Context, s *testing.State, cr *chrom
 	// get setting's window
 	win, err := ash.GetARCAppWindowInfo(ctx, tconn, utils.SettingsPkg)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get setting window info: ")
+		return errors.Wrap(err, "failed to get setting window info")
 	}
 
 	// set window state to normal
 	if _, err := ash.SetWindowState(ctx, tconn, win.ID, ash.WMEventNormal, true); err != nil {
-		s.Fatal("Failed to set window state to normal ", err)
+		s.Fatal("Failed to set window state to normal: ", err)
 	}
 
 	// retry in 30s
@@ -258,22 +258,22 @@ func Dock14ChangePosition_Step6(ctx context.Context, s *testing.State, cr *chrom
 		// get infos
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get display info: ")
+			return errors.Wrap(err, "failed to get display info")
 		}
 
 		if len(infos) < 2 {
-			return errors.Errorf("Failed to get right num of display, got %d, at least 2: ", len(infos))
+			return errors.Errorf("failed to get right num of display, got %d, at least 2: ", len(infos))
 		}
 
 		// get setting's window
 		win, err := ash.GetARCAppWindowInfo(ctx, tconn, utils.SettingsPkg)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get setting window info: ")
+			return errors.Wrap(err, "failed to get setting window info")
 		}
 
 		// move setting's window to external
 		if err := utils.MoveWindowToDisplay(ctx, s, tconn, win, &infos[1]); err != nil {
-			return errors.Wrap(err, "Failed to move window to external display: ")
+			return errors.Wrap(err, "failed to move window to external display")
 		}
 
 		return nil

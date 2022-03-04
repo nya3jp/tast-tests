@@ -19,13 +19,14 @@ Verification:
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 func init() {
@@ -50,7 +51,7 @@ func Dock3UsbCharging(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Boot-up and Sign-In to the device")
+	s.Log("Step 1 - Boot-up and Sign-In to the device")
 
 	// step 2 - connect ext-display to station
 	if err := Dock3UsbCharging_Step2(ctx, s); err != nil {
@@ -72,10 +73,10 @@ func Dock3UsbCharging(ctx context.Context, s *testing.State) {
 // 2)  Connect ext-display to (Powered Docking station)
 func Dock3UsbCharging_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Connect ext-display to docking station")
+	s.Log("Step 2 - Connect ext-display to docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display to docking station")
 	}
 
 	return nil
@@ -84,10 +85,10 @@ func Dock3UsbCharging_Step2(ctx context.Context, s *testing.State) error {
 // 3)  Connect (Powered Docking station) to Chromebook
 func Dock3UsbCharging_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect docking station to chromebook")
+	s.Log("Step 3 - Connect docking station to chromebook")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in station to chromebook: ")
+		return errors.Wrap(err, "failed to plug in station to chromebook")
 	}
 
 	return nil
@@ -97,7 +98,7 @@ func Dock3UsbCharging_Step3(ctx context.Context, s *testing.State) error {
 // check usb is charging or not
 func Dock3UsbCharging_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Check chromebook is charging or not")
+	s.Log("Step 4 - Check chromebook is charging or not")
 
 	if err := utils.VerifyPowerStatus(ctx, s, utils.IsConnect); err != nil {
 		return err

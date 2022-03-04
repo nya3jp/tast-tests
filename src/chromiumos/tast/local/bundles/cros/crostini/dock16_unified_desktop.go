@@ -162,7 +162,7 @@ func Dock16UnifiedDesktop(ctx context.Context, s *testing.State) {
 // 2) Open Chrome browser in the maximized window
 func Dock16UnifiedDesktop_Step2(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 2 - Open Chrome browser in the maximized window")
+	s.Log("Step 2 - Open Chrome browser in the maximized window")
 
 	// open chrome to url
 	_, err := cr.NewConn(ctx, "https://www.google.com/")
@@ -184,18 +184,18 @@ func Dock16UnifiedDesktop_Step2(ctx context.Context, s *testing.State, cr *chrom
 	// list display info
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "Failed to get display info: ")
+		return errors.Wrap(err, "failed to get display info")
 	}
 
 	// check num of display
 	if len(infos) < 2 {
-		return errors.Errorf("Failed to get enough display, got %d, want 2", len(infos))
+		return errors.Errorf("failed to get enough display, got %d, want 2", len(infos))
 	}
 
 	// verify unified desktop is working or not
 	for _, info := range infos {
 		if info.ID == browser.DisplayID {
-			return errors.Errorf("Under unified desktop mode and window is maximized, shall unable to get windows info: ")
+			return errors.New("Under unified desktop mode and window is maximized, shall unable to get windows info: ")
 		}
 	}
 
@@ -208,17 +208,17 @@ func Dock16UnifiedDesktop_Step2(ctx context.Context, s *testing.State, cr *chrom
 // connect station to chromebook
 func Dock16UnifiedDesktop_Step3(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 3.1 - Connect ext-display to station")
+	s.Log("Step 3.1 - Connect ext-display to station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in ext-display to docking station: ")
+		return errors.Wrap(err, "failed to plug in ext-display to docking station")
 	}
 
-	s.Logf("Step 3.2 - Connect station to chromebook")
+	s.Log("Step 3.2 - Connect station to chromebook")
 
 	// plug in station
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in station: ")
+		return errors.Wrap(err, "failed to plug in station")
 	}
 
 	return nil
@@ -228,7 +228,7 @@ func Dock16UnifiedDesktop_Step3(ctx context.Context, s *testing.State, tconn *ch
 // Verified Unified Desktop option can be turned off and on.
 func Dock16UnifiedDesktop_Step4(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, fdms *fakedms.FakeDMS) error {
 
-	s.Logf("Step 4 - Turn off and on unified desktop option ")
+	s.Log("Step 4 - Turn off and on unified desktop option ")
 
 	for _, param := range []struct {
 		name  string
@@ -270,7 +270,7 @@ func Dock16UnifiedDesktop_Step4(ctx context.Context, s *testing.State, cr *chrom
 // No flickering, no cras.
 func Dock16UnifiedDesktop_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Arrange monitor order")
+	s.Log("Step 5 - Arrange monitor order")
 
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
@@ -314,7 +314,7 @@ func Dock16UnifiedDesktop_Step5(ctx context.Context, s *testing.State, tconn *ch
 // No flickering, no crash.
 func Dock16UnifiedDesktop_Step6(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 6 - Change resolution ")
+	s.Log("Step 6 - Change resolution ")
 
 	// rule
 	// build in - 1536x864
@@ -355,47 +355,47 @@ func Dock16UnifiedDesktop_Step6(ctx context.Context, s *testing.State, tconn *ch
 	// declare keyboard
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to create keyboard: ")
+		return errors.Wrap(err, "failed to create keyboard")
 	}
 
 	// type in resolution
 	if err := kb.Type(ctx, "Resolution"); err != nil {
-		return errors.Wrap(err, "failed to type in resolution: ")
+		return errors.Wrap(err, "failed to type in resolution")
 	}
 
 	time.Sleep(1 * time.Second)
 
 	// search resolution
 	if err := kb.TypeKey(ctx, input.KEY_ENTER); err != nil {
-		return errors.Wrap(err, "failed to type enter: ")
+		return errors.Wrap(err, "failed to type enter")
 	}
 
 	time.Sleep(1 * time.Second)
 
 	// click resolution
 	if err := kb.TypeKey(ctx, input.KEY_ENTER); err != nil {
-		return errors.Wrap(err, "failed to type enter: ")
+		return errors.Wrap(err, "failed to type enter")
 	}
 
 	time.Sleep(1 * time.Second)
 
 	// choose upper element
 	if err := kb.TypeKey(ctx, input.KEY_UP); err != nil {
-		return errors.Wrap(err, "failed to type enter: ")
+		return errors.Wrap(err, "failed to type enter")
 	}
 
 	time.Sleep(1 * time.Second)
 
 	// click to select resolution
 	if err := kb.TypeKey(ctx, input.KEY_ENTER); err != nil {
-		return errors.Wrap(err, "failed to type enter: ")
+		return errors.Wrap(err, "failed to type enter")
 	}
 
 	time.Sleep(1 * time.Second)
 
 	// click to confirm change
 	if err := kb.TypeKey(ctx, input.KEY_ENTER); err != nil {
-		return errors.Wrap(err, "failed to type enter: ")
+		return errors.Wrap(err, "failed to type enter")
 	}
 
 	time.Sleep(1 * time.Second)
@@ -408,7 +408,7 @@ func Dock16UnifiedDesktop_Step6(ctx context.Context, s *testing.State, tconn *ch
 // No flickering, no crash.
 func Dock16UnifiedDesktop_Step7(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 7 - Enter dock mode by closing/open lid")
+	s.Log("Step 7 - Enter dock mode by closing/open lid")
 
 	for _, param := range []struct {
 		state utils.DisplayPowerState
@@ -428,7 +428,7 @@ func Dock16UnifiedDesktop_Step7(ctx context.Context, s *testing.State) error {
 //  No flickering, no crash.
 func Dock16UnifiedDesktop_Step8(ctx context.Context, s *testing.State, cr *chrome.Chrome) (*chrome.TestConn, error) {
 
-	s.Logf("Step 8 - Suspend and resume the device by running 'powerd_dbus_suspend'")
+	s.Log("Step 8 - Suspend and resume the device by running 'powerd_dbus_suspend'")
 
 	tconn, err := utils.SuspendChromebook(ctx, s, cr)
 
@@ -445,12 +445,12 @@ func Dock16UnifiedDesktop_Step8(ctx context.Context, s *testing.State, cr *chrom
 // No flickering, no crash.
 func Dock16UnifiedDesktop_Step9(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 9 - Press Ctrl-F4 to switch to mirror mode, verify mirror mode works, and back to Unified view")
+	s.Log("Step 9 - Press Ctrl-F4 to switch to mirror mode, verify mirror mode works, and back to Unified view")
 
 	// declare keyboard object
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Failed to find keyboard")
+		return errors.Wrap(err, "failed to find keyboard")
 	}
 	defer kb.Close()
 
@@ -458,7 +458,7 @@ func Dock16UnifiedDesktop_Step9(ctx context.Context, s *testing.State, tconn *ch
 
 	// send "Ctrl+F4" to enter mirror mode
 	if err := kb.Accel(ctx, "Ctrl+F4"); err != nil {
-		return errors.Wrapf(err, "Failed to enter mirror mode")
+		return errors.Wrap(err, "failed to enter mirror mode")
 	}
 	// defer kb.Accel(ctx, "Ctrl+F4") // back to normal mode
 
@@ -473,7 +473,7 @@ func Dock16UnifiedDesktop_Step9(ctx context.Context, s *testing.State, tconn *ch
 	s.Logf("Primary info is %s", string(obj))
 
 	if primaryInfo.ID != primaryInfo.MirroringSourceID {
-		return errors.Errorf("Failed to enter mirror mode: ")
+		return errors.New("failed to enter mirror mode: ")
 	}
 
 	return nil
@@ -482,43 +482,43 @@ func Dock16UnifiedDesktop_Step9(ctx context.Context, s *testing.State, tconn *ch
 // 10) Add one more external display (2+ monitors) and repeat 3-8.
 func Dock16UnifiedDesktop_Step10(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, fdms *fakedms.FakeDMS) error {
 
-	s.Logf("Step 10 - Add one more external display (2+ monitors) and repeat 3-8.")
+	s.Log("Step 10 - Add one more external display (2+ monitors) and repeat 3-8")
 
 	// connect 2nd monitor
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp2, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug ext-display 2 into docking station: ")
+		return errors.Wrap(err, "failed to plug ext-display 2 into docking station")
 	}
 
 	// repeat 3-8
 	// step 3 - connect ext-display to station, connect station to chromebook
 	if err := Dock16UnifiedDesktop_Step3(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to execute step3: ")
+		return errors.Wrap(err, "failed to execute step3")
 	}
 
 	// step 4 - turn off / on unified desktop option
 	if err := Dock16UnifiedDesktop_Step4(ctx, s, cr, tconn, fdms); err != nil {
-		return errors.Wrap(err, "Failed to execute step4: ")
+		return errors.Wrap(err, "failed to execute step4")
 	}
 
 	// step 5 - arrange moniter order
 	if err := Dock16UnifiedDesktop_Step5(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to execute step5: ")
+		return errors.Wrap(err, "failed to execute step5")
 	}
 
 	// step 6 - change resolution
 	if err := Dock16UnifiedDesktop_Step6(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to execute step6: ")
+		return errors.Wrap(err, "failed to execute step6")
 	}
 
 	// step 7 - close / open lid
 	if err := Dock16UnifiedDesktop_Step7(ctx, s); err != nil {
-		return errors.Wrap(err, "Failed to execute step7: ")
+		return errors.Wrap(err, "failed to execute step7")
 	}
 
 	// step 8 - suspend & wake up chromebook
 	tconn, err := Dock16UnifiedDesktop_Step8(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to execute step8:")
+		return errors.Wrap(err, "failed to execute step8")
 	}
 
 	return nil
@@ -527,45 +527,45 @@ func Dock16UnifiedDesktop_Step10(ctx context.Context, s *testing.State, cr *chro
 // 11) Repeat 3-8 in Tablet mode.
 func Dock16UnifiedDesktop_Step11(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn, fdms *fakedms.FakeDMS) error {
 
-	s.Logf("Step 11 - Repeat 3-8 in Tablet mode.")
+	s.Log("Step 11 - Repeat 3-8 in Tablet mode")
 	// into tablet mode
 	// ensure tablet mode is enabled
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		return errors.Wrap(err, "Failed to ensure in tablet mode ")
+		return errors.Wrap(err, "failed to ensure in tablet mode ")
 	}
 	defer cleanup(ctx)
 
 	// repeat 3-8
 	// step 3 - connect ext-display to station, connect station to chromebook
 	if err := Dock16UnifiedDesktop_Step3(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to execute step3: ")
+		return errors.Wrap(err, "failed to execute step3")
 	}
 
 	// step 4 - turn off / on unified desktop option
 	if err := Dock16UnifiedDesktop_Step4(ctx, s, cr, tconn, fdms); err != nil {
-		return errors.Wrap(err, "Failed to execute step4: ")
+		return errors.Wrap(err, "failed to execute step4")
 	}
 
 	// step 5 - arrange moniter order
 	if err := Dock16UnifiedDesktop_Step5(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to execute step5: ")
+		return errors.Wrap(err, "failed to execute step5")
 	}
 
 	// step 6 - change resolution
 	if err := Dock16UnifiedDesktop_Step6(ctx, s, tconn); err != nil {
-		return errors.Wrap(err, "Failed to execute step6: ")
+		return errors.Wrap(err, "failed to execute step6")
 	}
 
 	// step 7 - close / open lid
 	if err := Dock16UnifiedDesktop_Step7(ctx, s); err != nil {
-		return errors.Wrap(err, "Failed to execute step7: ")
+		return errors.Wrap(err, "failed to execute step7")
 	}
 
 	// step 8 - suspend & wake up chromebook
 	tconn, err = Dock16UnifiedDesktop_Step8(ctx, s, cr)
 	if err != nil {
-		return errors.Wrap(err, "Failed to execute step8:")
+		return errors.Wrap(err, "failed to execute step8")
 	}
 
 	return nil

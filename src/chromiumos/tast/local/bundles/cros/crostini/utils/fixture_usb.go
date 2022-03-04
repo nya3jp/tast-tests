@@ -1,11 +1,12 @@
 package utils
 
 import (
+	"context"
+	"strings"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
-	"context"
-	"strings"
 )
 
 type UsbController struct {
@@ -16,7 +17,7 @@ type UsbController struct {
 // also record system usb count (as condition: plug in station without any usb)
 func NewUsbController(ctx context.Context, s *testing.State) (*UsbController, error) {
 
-	s.Logf("Starting create usb recorder")
+	s.Log("Starting create usb recorder")
 
 	// plug in station
 	if err := ControlFixture(ctx, s, FixtureStation, ActionPlugin, false); err != nil {
@@ -34,7 +35,7 @@ func NewUsbController(ctx context.Context, s *testing.State) (*UsbController, er
 		return nil, err
 	}
 
-	s.Logf("Usb recorder created")
+	s.Log("Usb recorder created")
 
 	return &UsbController{
 		systemCount: count,
@@ -88,13 +89,13 @@ func (ur *UsbController) VerifyUsbCount(ctx context.Context, s *testing.State, s
 	if state { // usb connected
 		difference := currentCount - ur.systemCount
 		if difference != inputCount {
-			return errors.Errorf("Failed to verify connected usb, system is %d, current is %d:, input is %d ", ur.systemCount, currentCount, inputCount)
+			return errors.Errorf("failed to verify connected usb, system is %d, current is %d:, input is %d ", ur.systemCount, currentCount, inputCount)
 		}
 	} else { // usb disconnect
 		// 1. usb & station disconnect
 		// 2. usb disconnect and station connect
 		if currentCount > ur.systemCount {
-			return errors.Errorf("Failed to verify usb when disconnected: system is %d, current is %d", ur.systemCount, currentCount)
+			return errors.Errorf("failed to verify usb when disconnected: system is %d, current is %d", ur.systemCount, currentCount)
 		}
 
 	}

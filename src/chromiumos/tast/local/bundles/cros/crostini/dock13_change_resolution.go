@@ -50,7 +50,7 @@ func Dock13ChangeResolution(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Boot-up and Sign-In to the device ")
+	s.Log("Step 1 - Boot-up and Sign-In to the device ")
 
 	// step 2 - connect ext-display
 	if err := Dock13ChangeResolution_Step2(ctx, s); err != nil {
@@ -71,10 +71,10 @@ func Dock13ChangeResolution(ctx context.Context, s *testing.State) {
 // 2) Connect ext-display to (Docking station or Hub)
 func Dock13ChangeResolution_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Connect ext-display to docking station")
+	s.Log("Step 2 - Connect ext-display to docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display to docking station")
 	}
 
 	return nil
@@ -83,10 +83,10 @@ func Dock13ChangeResolution_Step2(ctx context.Context, s *testing.State) error {
 // 3) Connect (Docking station or Hub) to Chromebook
 func Dock13ChangeResolution_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect docking station to chromebook")
+	s.Log("Step 3 - Connect docking station to chromebook")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect docking station: ")
+		return errors.Wrap(err, "failed to connect docking station")
 	}
 
 	return nil
@@ -100,10 +100,10 @@ func Dock13ChangeResolution_Step4(ctx context.Context, s *testing.State, tconn *
 		// get external display info
 		extDispInfo, err := utils.GetExternalDisplay(ctx, s, tconn)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get external display info: ")
+			return errors.Wrap(err, "failed to get external display info")
 		}
 
-		s.Logf("external info : %v", extDispInfo)
+		s.Log("external info : ", extDispInfo)
 
 		s.Logf("length of ext-display's mode is %d", len(extDispInfo.Modes))
 
@@ -123,11 +123,11 @@ func Dock13ChangeResolution_Step4(ctx context.Context, s *testing.State, tconn *
 
 			mode := param.displayMode
 
-			s.Logf("Setting display properties: mode = %v", mode)
+			s.Log("Setting display properties: mode = ", mode)
 
 			p := display.DisplayProperties{DisplayMode: &mode}
 			if err := display.SetDisplayProperties(ctx, tconn, extDispInfo.ID, p); err != nil {
-				return errors.Wrap(err, "Failed to set display properties: ")
+				return errors.Wrap(err, "failed to set display properties")
 			}
 
 			time.Sleep(5 * time.Second)
@@ -135,12 +135,12 @@ func Dock13ChangeResolution_Step4(ctx context.Context, s *testing.State, tconn *
 			// get external display info
 			info, err := utils.GetExternalDisplay(ctx, s, tconn)
 			if err != nil {
-				return errors.Wrap(err, "Failed to get external display info: ")
+				return errors.Wrap(err, "failed to get external display info")
 			}
 
 			// check external display info resolution
 			if info.Bounds.Width != mode.Width || info.Bounds.Height != mode.Height {
-				return errors.Wrap(err, "Failed to check width and height: ")
+				return errors.Wrap(err, "failed to check width and height")
 			}
 
 		}

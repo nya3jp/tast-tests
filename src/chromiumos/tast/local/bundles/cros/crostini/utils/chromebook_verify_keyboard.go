@@ -1,14 +1,15 @@
 package utils
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 // refer to physical_keyboar.go
@@ -24,7 +25,7 @@ type pkTestState struct {
 // convert physical_keyboard.go's test as function to check keyboard works functionally
 func VerifyKeyboard(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Verifying keyboard")
+	s.Log("Verifying keyboard")
 
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -59,7 +60,7 @@ func VerifyKeyboard(ctx context.Context, s *testing.State) error {
 	testState := pkTestState{tconn, a, d, kb}
 
 	if err := physicalKeyboardBasicEditingTest(ctx, testState, s); err != nil {
-		return errors.Wrap(err, "Failed to verify keyboard: ")
+		return errors.Wrap(err, "failed to verify keyboard")
 	}
 
 	return nil
@@ -67,7 +68,7 @@ func VerifyKeyboard(ctx context.Context, s *testing.State) error {
 
 func physicalKeyboardBasicEditingTest(ctx context.Context, st pkTestState, s *testing.State) error {
 	if err := testTextField(ctx, st, s, ".MainActivity", "google", "google"); err != nil {
-		return errors.Wrap(err, "Failed to type in normal text field: ")
+		return errors.Wrap(err, "failed to type in normal text field")
 	}
 
 	return nil

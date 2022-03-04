@@ -24,6 +24,11 @@ Verification:
 package crostini
 
 import (
+	"context"
+	"path/filepath"
+	"strings"
+	"time"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -36,10 +41,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
-	"context"
-	"path/filepath"
-	"strings"
-	"time"
 )
 
 func init() {
@@ -75,7 +76,7 @@ func Dock6RemovableMedia(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create usb controller: ", err)
 	}
 
-	s.Logf("Step 1 - Boot-up and Sign-In to the device")
+	s.Log("Step 1 - Boot-up and Sign-In to the device")
 
 	// step 2 - connect ext-display to station
 	if err := Dock6RemovableMedia_Step2(ctx, s); err != nil {
@@ -110,10 +111,10 @@ func Dock6RemovableMedia(ctx context.Context, s *testing.State) {
 // 2) Connect ext-display to (Docking station)
 func Dock6RemovableMedia_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Connect ext-display to docking station")
+	s.Log("Step 2 - Connect ext-display to docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to connect ext-display to docking station: ")
+		return errors.Wrap(err, "failed to connect ext-display to docking station")
 	}
 
 	return nil
@@ -122,10 +123,10 @@ func Dock6RemovableMedia_Step2(ctx context.Context, s *testing.State) error {
 // 3) Connect (Docking station) to Chromebook
 func Dock6RemovableMedia_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect (Docking station) to Chromebook")
+	s.Log("Step 3 - Connect (Docking station) to Chromebook")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in docking to chromebook: ")
+		return errors.Wrap(err, "failed to plug in docking to chromebook")
 	}
 
 	return nil
@@ -135,20 +136,20 @@ func Dock6RemovableMedia_Step3(ctx context.Context, s *testing.State) error {
 // 4) Make sure the peripheral connected onto (Dock station) work without any issue (Check for Mouse/Keyboard responsive and overall performance see any delay)
 func Dock6RemovableMedia_Step4(ctx context.Context, s *testing.State, tconn *chrome.TestConn, uc *utils.UsbController) error {
 
-	s.Logf("Step 4 - Connect any of this (Flash Drive /Mouse /Keyboard /Webcam onto (Dock station)")
+	s.Log("Step 4 - Connect any of this (Flash Drive /Mouse /Keyboard /Webcam onto (Dock station)")
 
 	if err := uc.ControlUsbs(ctx, s, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in peripherals to station: ")
+		return errors.Wrap(err, "failed to plug in peripherals to station")
 	}
 
 	// verify keyboard
 	if err := utils.VerifyKeyboard(ctx, s); err != nil {
-		return errors.Wrap(err, "Failed to verify keyboard: ")
+		return errors.Wrap(err, "failed to verify keyboard")
 	}
 
 	// verify mouse
 	if err := utils.VerifyMouse(ctx, s); err != nil {
-		return errors.Wrap(err, "Failed to verify mouse: ")
+		return errors.Wrap(err, "failed to verify mouse")
 	}
 
 	return nil
@@ -159,7 +160,7 @@ func Dock6RemovableMedia_Step4(ctx context.Context, s *testing.State, tconn *chr
 // 5) Make sure "Files" are successfully copied and able to open without any issue
 func Dock6RemovableMedia_Step5(ctx context.Context, s *testing.State, tconn *chrome.TestConn) error {
 
-	s.Logf("Step 5 - Copy files from usb to download path")
+	s.Log("Step 5 - Copy files from usb to download path")
 
 	previewImageFile := "Lighthouse.jpg"
 	previewImageDimensions := "1024 x 768"
@@ -205,15 +206,15 @@ func Dock6RemovableMedia_Step5(ctx context.Context, s *testing.State, tconn *chr
 // 6) Make sure no crash or freeze on the device and "Touchpad and Keyboard" still work without issue
 func Dock6RemovableMedia_Step6(ctx context.Context, s *testing.State, uc *utils.UsbController) error {
 
-	s.Logf("Step 6 - Disconnect each peripheral from step: #4 individually to (ensure no issue)")
+	s.Log("Step 6 - Disconnect each peripheral from step: #4 individually to (ensure no issue)")
 
 	if err := uc.ControlUsbs(ctx, s, utils.ActionUnplug, false); err != nil {
-		return errors.Wrap(err, "Failed to unplug usb from docking station: ")
+		return errors.Wrap(err, "failed to unplug usb from docking station")
 	}
 
 	// verify keyboard
 	if err := utils.VerifyKeyboard(ctx, s); err != nil {
-		return errors.Wrap(err, "Failed to verify keyboard: ")
+		return errors.Wrap(err, "failed to verify keyboard")
 	}
 
 	return nil

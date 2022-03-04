@@ -1,11 +1,12 @@
 package utils
 
 import (
-	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
 	"context"
 	"fmt"
 	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Power state for station.
@@ -47,7 +48,7 @@ func SetStationPower(ctx context.Context, s *testing.State, want StationPowerSta
 	stationPort = "1"
 
 	if err := AviosysControl(s, action, stationPort); err != nil {
-		return errors.Wrap(err, "Failed to execute aviosys control: ")
+		return errors.Wrap(err, "failed to execute aviosys control")
 	}
 
 	// wait for system response

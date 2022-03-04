@@ -1,12 +1,13 @@
 package utils
 
 import (
-	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
 	"context"
 	"fmt"
 	"strconv"
 	"strings"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // fixture web api unit url
@@ -69,7 +70,7 @@ func ParseInputVars(ctx context.Context, s *testing.State) ([]InputArgument, err
 			// deal with perpherals & switch fixture
 			arr := strings.Split(perpType, ".")
 			if len(arr) != 2 {
-				return nil, errors.Errorf("Failed to split to two types: ")
+				return nil, errors.New("failed to split to two types: ")
 			}
 			arg.PeripheralType = arr[0]
 			arg.SwitchFixtureType = arr[1]
@@ -78,7 +79,7 @@ func ParseInputVars(ctx context.Context, s *testing.State) ([]InputArgument, err
 			arr = strings.Split(variable, ",")
 			startIndex, err := strconv.Atoi(arr[0])
 			if err != nil {
-				return nil, errors.Wrap(err, "Failed to convert startIndex to int: ")
+				return nil, errors.Wrap(err, "failed to convert startIndex to int")
 			} else {
 				arg.StartIndex = startIndex
 			}
@@ -86,7 +87,7 @@ func ParseInputVars(ctx context.Context, s *testing.State) ([]InputArgument, err
 			// deal with count
 			count, err := strconv.Atoi(arr[1])
 			if err != nil {
-				return nil, errors.Wrap(err, "Failed to convert count to int: ")
+				return nil, errors.Wrap(err, "failed to convert count to int")
 			} else {
 				arg.Count = count
 			}
@@ -106,7 +107,7 @@ func GetInputArgument(ctx context.Context, s *testing.State, wantPerpType string
 
 	args, err := ParseInputVars(ctx, s)
 	if err != nil {
-		return nil, errors.Wrap(err, "Failed to parse input variabels: ")
+		return nil, errors.Wrap(err, "failed to parse input variabels")
 	}
 
 	for _, arg := range args {
@@ -124,7 +125,7 @@ func GetInputArgumentCount(ctx context.Context, s *testing.State, wantPerpType s
 
 	args, err := GetInputArgument(ctx, s, wantPerpType)
 	if err != nil {
-		return -1, errors.Wrapf(err, "Failed to get input arguments - %s: ", wantPerpType)
+		return -1, errors.Wrapf(err, "failed to get input arguments - %s: ", wantPerpType)
 	}
 
 	var count int

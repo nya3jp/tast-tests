@@ -36,14 +36,15 @@ https://www.youtube.com/watch?v=aqz-KE-bpKQ?autoplay=1
 package crostini
 
 import (
+	"context"
+	"time"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/crostini/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
-	"context"
-	"time"
 )
 
 func init() {
@@ -68,7 +69,7 @@ func Dock4UsbAudio(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Step 1 - Boot-up and Sign-In to the device")
+	s.Log("Step 1 - Boot-up and Sign-In to the device")
 
 	// step 2 - connect ext-display to station
 	if err := Dock4UsbAudio_Step2(ctx, s); err != nil {
@@ -102,10 +103,10 @@ func Dock4UsbAudio(ctx context.Context, s *testing.State) {
 // 2)  Connect ext-display to (Docking station)
 func Dock4UsbAudio_Step2(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 2 - Connect ext-display to docking station")
+	s.Log("Step 2 - Connect ext-display to docking station")
 
 	if err := utils.ControlFixture(ctx, s, utils.FixtureExtDisp1, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in ext-display to station: ")
+		return errors.Wrap(err, "failed to plug in ext-display to station")
 	}
 
 	return nil
@@ -114,11 +115,11 @@ func Dock4UsbAudio_Step2(ctx context.Context, s *testing.State) error {
 // 3)  Connect (Powered Docking station) to Chromebook
 func Dock4UsbAudio_Step3(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 3 - Connect (Powered Docking station) to Chromebook")
+	s.Log("Step 3 - Connect (Powered Docking station) to Chromebook")
 
 	// plug in station
 	if err := utils.ControlFixture(ctx, s, utils.FixtureStation, utils.ActionPlugin, false); err != nil {
-		return errors.Wrap(err, "Failed to plug in station: ")
+		return errors.Wrap(err, "failed to plug in station")
 	}
 
 	return nil
@@ -127,7 +128,7 @@ func Dock4UsbAudio_Step3(ctx context.Context, s *testing.State) error {
 // 4)  Connect (Headphone/Microphone/External Speaker) onto Dock station
 func Dock4UsbAudio_Step4(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 4 - Connect (Headphone/Microphone/External Speaker) onto Dock station")
+	s.Log("Step 4 - Connect (Headphone/Microphone/External Speaker) onto Dock station")
 
 	// there is no fixture control method nowadays
 
@@ -137,15 +138,15 @@ func Dock4UsbAudio_Step4(ctx context.Context, s *testing.State) error {
 // 5)  Open Chrome browser : www.youtube.com and play any video
 func Dock4UsbAudio_Step5(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) (*ash.Window, error) {
 
-	s.Logf("Step 5 - Play youtube")
+	s.Log("Step 5 - Play youtube")
 
 	if err := utils.PlayYouTube(ctx, cr, tconn); err != nil {
-		return nil, errors.Wrap(err, "Failed to play youtube: ")
+		return nil, errors.Wrap(err, "failed to play youtube")
 	}
 
 	youtube, err := utils.GetYoutubeWindow(ctx, tconn)
 	if err != nil {
-		return nil, errors.Wrap(err, "Failed to get youtube: ")
+		return nil, errors.Wrap(err, "failed to get youtube")
 	}
 
 	return youtube, nil
@@ -154,10 +155,10 @@ func Dock4UsbAudio_Step5(ctx context.Context, s *testing.State, cr *chrome.Chrom
 // 6)  Open Camera or Audio Recorder app and records
 func Dock4UsbAudio_Step6(ctx context.Context, s *testing.State) error {
 
-	s.Logf("Step 6 - Open Camera or Audio Recorder app and records")
+	s.Log("Step 6 - Open Camera or Audio Recorder app and records")
 
 	if err := utils.CheckPlaybackByFixture(ctx, s, utils.InternalDisplay); err != nil {
-		return errors.Wrap(err, "Failed to check playback by fixture: ")
+		return errors.Wrap(err, "failed to check playback by fixture")
 	}
 
 	return nil

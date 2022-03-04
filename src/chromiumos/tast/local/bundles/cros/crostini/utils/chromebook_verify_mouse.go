@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"context"
+
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/motioninput"
 	"chromiumos/tast/local/chrome"
@@ -8,7 +10,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
-	"context"
 )
 
 // r99 code changed, need to pay attention
