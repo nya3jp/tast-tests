@@ -305,6 +305,24 @@
       "parentUuid": "8c83df4f_8ee621be",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea080c19_f990a511",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-04T10:05:55Z",
+      "side": 1,
+      "message": "What I mean is that for the generation of the Lacros variant you ignore all the other parameters.",
+      "parentUuid": "d546a0e5_9a405fe9",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
