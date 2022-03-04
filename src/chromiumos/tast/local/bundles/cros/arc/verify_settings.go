@@ -251,6 +251,14 @@ func testBackupToggle(ctx context.Context, arcDevice *androidui.Device) error {
 	const oldBackupID = "com.google.android.gms:id/switchWidget"
 	backupToggle := arcDevice.Object(androidui.ID(backupID))
 
+	// Turn on backup in case if it is off which is the expectation for this test.
+	backupToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)Turn on"), androidui.Enabled(true))
+	if err := backupToggleOn.WaitForExists(ctx, time.Second*10); err != nil {
+		testing.ContextLog(ctx, "Turn on button doesn't exist")
+	} else if err := backupToggleOn.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Turn on button")
+	}
+
 	oldBackupUI := false
 	// backupStatus will check for toggle on/off.
 	backupStatus, err := arcDevice.Object(androidui.ID(backupID)).IsChecked(ctx)
