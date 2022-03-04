@@ -46,6 +46,7 @@ func SmartDim(ctx context.Context, s *testing.State) {
 
 		eventHistogramName  = "MachineLearningService.SmartDimModel.ExecuteResult.Event"
 		sourceHistogramName = "PowerML.SmartDimFeature.WebPageInfoSource"
+		workerHistogramName = "PowerML.SmartDimComponent.WorkerType"
 		timeout             = 60 * time.Second
 	)
 	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
@@ -94,14 +95,21 @@ func SmartDim(ctx context.Context, s *testing.State) {
 	call()
 	eventHistogramBase := waitForHistogram(eventHistogramName, nil)
 	sourceHistogramBase := waitForHistogram(sourceHistogramName, nil)
+	workerHistogramBase := waitForHistogram(workerHistogramName, nil)
 
 	call()
 	eventHistogramUpdate := waitForHistogram(eventHistogramName, eventHistogramBase)
 	sourceHistogramUpdate := waitForHistogram(sourceHistogramName, sourceHistogramBase)
+	workerHistogramUpdate := waitForHistogram(workerHistogramName, workerHistogramBase)
 
 	expectedEventBucket := metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
 	if len(eventHistogramUpdate.Buckets) != 1 || eventHistogramUpdate.Buckets[0] != expectedEventBucket {
 		s.Errorf("Unexpected event histogram update: want %+v, got %+v", expectedEventBucket, eventHistogramUpdate)
+	}
+
+	expectedWorkerBucket := metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
+	if len(workerHistogramUpdate.Buckets) != 1 || workerHistogramUpdate.Buckets[0] != expectedWorkerBucket {
+		s.Errorf("Unexpected worker histogram update: want %+v, got %+v", expectedWorkerBucket, workerHistogramUpdate)
 	}
 
 	var expectedSourceBucket metrics.HistogramBucket
@@ -113,4 +121,32 @@ func SmartDim(ctx context.Context, s *testing.State) {
 	if len(sourceHistogramUpdate.Buckets) != 1 || sourceHistogramUpdate.Buckets[0] != expectedSourceBucket {
 		s.Fatalf("Unexpected source histogram update: want %+v, got %+v", expectedSourceBucket, sourceHistogramUpdate)
 	}
+
+	// Also tests smart dim can use downloadable model properly.
+	if s.Param().(browser.Type) != browser.TypeLacros {
+		s.Log("Trigger component update and check the downloadable model works")
+
+		if err = tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.loadSmartDimComponent)`); err != nil {
+			s.Fatal("Running autotestPrivate.loadSmartDimComponent failed: ", err)
+		}
+
+		eventHistogramBase = waitForHistogram(eventHistogramName, nil)
+		workerHistogramBase = waitForHistogram(workerHistogramName, nil)
+
+		call()
+		eventHistogramUpdate = waitForHistogram(eventHistogramName, eventHistogramBase)
+		workerHistogramUpdate = waitForHistogram(workerHistogramName, workerHistogramBase)
+
+		expectedEventBucket := metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
+		if len(eventHistogramUpdate.Buckets) != 1 || eventHistogramUpdate.Buckets[0] != expectedEventBucket {
+			s.Errorf("Unexpected event histogram update: want %+v, got %+v", expectedEventBucket, eventHistogramUpdate)
+		}
+
+		// Downloadable model has worker type = 1.
+		expectedWorkerBucket := metrics.HistogramBucket{Min: 1, Max: 2, Count: 1}
+		if len(workerHistogramUpdate.Buckets) != 1 || workerHistogramUpdate.Buckets[0] != expectedWorkerBucket {
+			s.Errorf("Unexpected worker histogram update: want %+v, got %+v", expectedWorkerBucket, workerHistogramUpdate)
+		}
+	}
+
 }
