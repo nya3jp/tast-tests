@@ -43,7 +43,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the smoothess of switch between full screen video and a tab/app",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
