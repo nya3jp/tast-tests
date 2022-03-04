@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8392a803_a6e94e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-04T18:55:45Z",
+      "side": 1,
+      "message": "I saw one failure during local testing, but I am not able to reproduce it now. I will remove this code for now.",
+      "parentUuid": "9199df50_23c2b2c7",
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f3d5c2_343ab1c4",
@@ -82,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "999fc4c3_13d11da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-04T18:55:45Z",
+      "side": 1,
+      "message": "No changing as per Steven\u0027s comment. I took this pattern from existing tests.",
+      "parentUuid": "ac399b77_13ff55e8",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8227d28d_3822e6ce",
@@ -95,6 +137,24 @@
       "writtenOn": "2022-03-03T23:21:01Z",
       "side": 1,
       "message": "Isn\u0027t this disabling WiFi, not Ethernet?",
+      "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fed73b_38a3b49f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-04T18:55:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8227d28d_3822e6ce",
       "revId": "fd15ee6a8871333efe7048ef0652410c45f96dc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
