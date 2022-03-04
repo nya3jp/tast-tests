@@ -222,6 +222,9 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to read probe requests from packet capture: ", err)
 		}
 		s.Logf("Received %d probe requests", len(probeReqPackets))
+		if len(probeReqPackets) == 0 {
+			s.Fatal("No probe requests in packet capture")
+		}
 		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
 		s.Log("Probe Request Time: ", probeReqTimestamp)
 
