@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ea738b_c97d2d9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-04T02:21:06Z",
+      "side": 1,
+      "message": "lgtm for Tast ownership approval % defer to Misha\u0027s review",
+      "revId": "39600462f520ad3ba609a868b7a54544b5246a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
