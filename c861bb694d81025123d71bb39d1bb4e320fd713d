@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1fe327_99ead093",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-04T22:57:12Z",
+      "side": 1,
+      "message": "Ack. Makes sense.",
+      "parentUuid": "a0cba5e5_20c8c2fb",
+      "revId": "c861bb694d81025123d71bb39d1bb4e320fd713d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fc884d6_30d3835b",
