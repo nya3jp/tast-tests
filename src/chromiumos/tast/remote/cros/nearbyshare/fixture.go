@@ -282,6 +282,10 @@ type nearbyShareFixture struct {
 
 	// Attributes for both chromebooks.
 	attributes []byte
+
+	cl1 *rpc.Client
+
+	cl2 *rpc.Client
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -343,6 +347,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 
 	// Login and setup Nearby Share on DUT 1 (Sender).
 	cl1, err := rpc.Dial(s.FixtContext(), d1, s.RPCHint())
+	f.cl1 = cl1
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -359,6 +364,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 
 	// Login and setup Nearby Share on DUT 2 (Receiver).
 	cl2, err := rpc.Dial(s.FixtContext(), d2, s.RPCHint())
+	f.cl2 = cl2
 	if err != nil {
 		s.Fatal("Failed to dial rpc service on DUT2: ", err)
 	}
@@ -437,6 +443,7 @@ func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.F
 // TearDown removes the test files from the sender and and closes the services on both DUTs.
 func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	// Delete the test files from the sender.
+	s.Error("Panchok inside tear Down")
 	if err := f.d1.Conn().CommandContext(ctx, "rm", "-r", f.remoteFilePath).Run(); err != nil {
 		s.Error("Failed to remove test files from the sender: ", err)
 	}
@@ -447,6 +454,10 @@ func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState)
 	if _, err := f.receiver.CloseChrome(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to shutdown nearby share service connections for receiver: ", err)
 	}
+
+	f.cl1.Close(ctx)
+	f.cl2.Close(ctx)
+
 }
 
 func (f *nearbyShareFixture) Reset(ctx context.Context) error { return nil }
