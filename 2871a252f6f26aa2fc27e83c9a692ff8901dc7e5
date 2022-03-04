@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ddad419_b63b9355",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-04T04:25:01Z",
+      "side": 1,
+      "message": "LGTM from hwsec perspective",
+      "revId": "2871a252f6f26aa2fc27e83c9a692ff8901dc7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e587252_763eb60e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-04T04:25:01Z",
+      "side": 1,
+      "message": "nit: Do you meant that it \"returns an invalid slot number [...] with non-nil errors\" when \"it fails\"?",
+      "revId": "2871a252f6f26aa2fc27e83c9a692ff8901dc7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

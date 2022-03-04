@@ -104,6 +104,24 @@
       "parentUuid": "9dc9a455_7ed4120e",
       "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762e5728_6edcf6c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-04T04:25:01Z",
+      "side": 1,
+      "message": "I\u0027m in favour of filing a bug on this.",
+      "parentUuid": "0a0b5270_b8b5319a",
+      "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
