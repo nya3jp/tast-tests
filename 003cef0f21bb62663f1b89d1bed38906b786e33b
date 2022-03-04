@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e7a84bc_606461e1",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-04T03:46:56Z",
+      "side": 1,
+      "message": "Modified a bit, please check if this is okay",
+      "parentUuid": "4fe15a17_cb218317",
+      "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31c47241_b9126d14",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-03T10:23:12Z",
       "side": 1,
       "message": "Optional: I would recommend getting the slot number after every load, because there\u0027s no guarantee that the slot ID remains the same after each load. (Although it is always the case in the current implementation.",
+      "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1153ce0f_a1b3f29b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11test/p11_setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-04T03:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31c47241_b9126d14",
       "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-03T10:23:12Z",
       "side": 1,
       "message": "Maybe check this actually failed?",
+      "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0b5270_b8b5319a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_change_auth_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-03-04T03:46:56Z",
+      "side": 1,
+      "message": "chaps_client doesn\u0027t report error on this. Need to file another bug if you think it\u0027s better to change this behavior.",
+      "parentUuid": "9dc9a455_7ed4120e",
       "revId": "003cef0f21bb62663f1b89d1bed38906b786e33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
