@@ -33,6 +33,92 @@
       "message": "lgtm w/ a couple of notes.",
       "revId": "70f7f963b7d53816a02a38dbc04889c15b36cb64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a620057_5e36edaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-04T23:25:08Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! :) LGTM with just a couple nits, please take a look whenever you have a moment!",
+      "revId": "70f7f963b7d53816a02a38dbc04889c15b36cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0a3ba7_e1e7ab1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-04T23:25:08Z",
+      "side": 1,
+      "message": "Nit: Checking whether a network state is online or connected seems like it may be used enough to warrant a helper function. What do you think of adding a NetworkStateIsConnectedOrOnline helper in cros_network_config.go (or a new cros_network_config_helpers.go)?",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 119
+      },
+      "revId": "70f7f963b7d53816a02a38dbc04889c15b36cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c977588_622f6d68",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-04T23:25:08Z",
+      "side": 1,
+      "message": "Nit: Space after colon here and below.",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "70f7f963b7d53816a02a38dbc04889c15b36cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b50a48_b480a299",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-04T23:25:08Z",
+      "side": 1,
+      "message": "Nit: Move to line above NoServiceAST.",
+      "range": {
+        "startLine": 164,
+        "startChar": 14,
+        "endLine": 164,
+        "endChar": 78
+      },
+      "revId": "70f7f963b7d53816a02a38dbc04889c15b36cb64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
