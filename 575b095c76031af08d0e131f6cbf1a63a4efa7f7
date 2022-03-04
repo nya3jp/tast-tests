@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6c0f34_5f37d671",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-04T10:25:07Z",
+      "side": 1,
+      "message": "\"should be\"? This is saying what *will* happen if this option is set, \"should\" is for things the caller must do.",
+      "range": {
+        "startLine": 154,
+        "startChar": 27,
+        "endLine": 154,
+        "endChar": 36
+      },
+      "revId": "575b095c76031af08d0e131f6cbf1a63a4efa7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
