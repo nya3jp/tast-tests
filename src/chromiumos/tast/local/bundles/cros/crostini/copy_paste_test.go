@@ -24,6 +24,7 @@ func TestCopyPasteParams(t *testing.T) {
 				Copy:  waylandCopyConfig,
 				Paste: waylandPasteConfig,
 			}`,
+			UseFixture: true,
 		},
 		{
 			Name: "wayland_to_x11",
@@ -31,6 +32,7 @@ func TestCopyPasteParams(t *testing.T) {
 				Copy:  waylandCopyConfig,
 				Paste: x11PasteConfig,
 			}`,
+			UseFixture: true,
 		},
 		{
 			Name: "x11_to_wayland",
@@ -38,6 +40,7 @@ func TestCopyPasteParams(t *testing.T) {
 				Copy:  x11CopyConfig,
 				Paste: waylandPasteConfig,
 			}`,
+			UseFixture: true,
 		},
 		{
 			Name: "x11_to_x11",
@@ -45,6 +48,7 @@ func TestCopyPasteParams(t *testing.T) {
 				Copy:  x11CopyConfig,
 				Paste: x11PasteConfig,
 			}`,
+			UseFixture: true,
 		}})
 	genparams.Ensure(t, "copy_paste.go", params)
 }

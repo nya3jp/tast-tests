@@ -59,6 +59,7 @@ var testFilesFix = []string{
 	"resize_cancel.go",
 	"resize_ok.go",
 	"resize_restart.go",
+	"resize_space_constrained.go",
 	"restart.go",
 	"restart_icon.go",
 	"run_with_arc.go",
@@ -133,6 +134,7 @@ var appTests = []string{
 	"app_eclipse.go",
 	"app_emacs.go",
 	"app_gedit.go",
+	"app_gedit_filesharing.go",
 	"app_vscode.go",
 	"restart_app.go",
 }
