@@ -16,6 +16,23 @@
       "message": "+2. Let\u0027s wait for the merge approval",
       "revId": "6946e745625229cb8e14f18c0b2c3a91114ab09c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbe7bdc_64fa249f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-03-04T19:42:16Z",
+      "side": 1,
+      "message": "Merged approved for http://b/216033063#comment42.",
+      "revId": "6946e745625229cb8e14f18c0b2c3a91114ab09c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
