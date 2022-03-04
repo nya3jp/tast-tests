@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d94836e_8fb5d4a2",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-04T17:02:05Z",
+      "side": 1,
+      "message": "Okay. I suspect we might want a fatal error since missing \"login started\" means missing timings of some stages and could skew the data.\n\nOptional: In addition to test log, how about we record a perf.Metric so that our data pipe could decide whether to drop the data or flag it when it does happen? \n\nI found the following to record a bool as perf.Metric:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/gpu_mem.go;rcl\u003d6be321bc3e88f618a6efeca710ed6d9ef3435189;l\u003d157",
+      "parentUuid": "648843d4_8981efd8",
+      "revId": "c861bb694d81025123d71bb39d1bb4e320fd713d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fc884d6_30d3835b",
         "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
         "patchSetId": 2
