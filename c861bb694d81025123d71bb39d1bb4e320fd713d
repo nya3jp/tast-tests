@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "648843d4_8981efd8",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-03-04T00:02:57Z",
+      "side": 1,
+      "message": "My first implementation was to always fail.\nBut I am worried that the flag is not there yet, so I wanted to postpone the actual failure that depends on this flag.\n\nI agree that we can replace `failIfNoLoginStartedEvent` with comment.\n\nDone.",
+      "parentUuid": "d28f1387_fe171314",
+      "revId": "c861bb694d81025123d71bb39d1bb4e320fd713d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fc884d6_30d3835b",
         "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
         "patchSetId": 2
