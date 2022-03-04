@@ -35,11 +35,6 @@ func init() {
 	})
 }
 
-const (
-	localStatePath = "/home/chronos/Local State"
-	knownUsersList = "KnownUsers"
-)
-
 func RemoveExistingUser(ctx context.Context, s *testing.State) {
 	// LocalState is a json like structure, from which we will need only LoggedInUsers field.
 	type LocalState struct {
