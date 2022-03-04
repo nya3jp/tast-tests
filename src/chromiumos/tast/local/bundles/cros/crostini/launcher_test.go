@@ -29,6 +29,7 @@ func TestLauncherParams(t *testing.T) {
 				installRoot: ".local",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			}`,
+			UseFixture: true,
 		}, {
 			Name:      "local_x11",
 			ExtraAttr: []string{"informational"},
@@ -40,6 +41,7 @@ func TestLauncherParams(t *testing.T) {
 				installRoot: ".local",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			}`,
+			UseFixture: true,
 		}, {
 			Name:      "system_wayland",
 			ExtraAttr: []string{"informational"},
@@ -51,6 +53,7 @@ func TestLauncherParams(t *testing.T) {
 				installRoot: "/usr",
 				launcherID:  "ddlengdehbebnlegdnllbdhpjofodekl",
 			}`,
+			UseFixture: true,
 		}, {
 			Name:      "system_x11",
 			ExtraAttr: []string{"informational"},
@@ -62,6 +65,7 @@ func TestLauncherParams(t *testing.T) {
 				installRoot: "/usr",
 				launcherID:  "mddfmcdnhpnhoefmmiochnnjofmfhanb",
 			}`,
+			UseFixture: true,
 		}})
 	genparams.Ensure(t, "launcher.go", params)
 }
