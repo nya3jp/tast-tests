@@ -323,6 +323,24 @@
       "parentUuid": "d546a0e5_9a405fe9",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7746f24_fd93b0f4",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-04T10:24:12Z",
+      "side": 1,
+      "message": "When we scale, they would not be ignored.",
+      "parentUuid": "ea080c19_f990a511",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
