@@ -16,6 +16,23 @@
       "message": "tast-owners@: PTAL\nawscreen@: PTAL since you are listed as one of the owners of this policy.",
       "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f04b7a_6e022530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-03-04T14:43:59Z",
+      "side": 1,
+      "message": "gabormagda@: PTAL - assigning you manually because lamzin@ assigned through tast-owners@ is OOO.",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
