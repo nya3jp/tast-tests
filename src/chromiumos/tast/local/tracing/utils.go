@@ -36,6 +36,9 @@ func createTempFileForTrace() (*os.File, error) {
 }
 
 // Stop stops the system-wide trace, which should be created by StartSession.
+// Note that the session shouldn't be stopped too early (like in 500
+// milliseconds), so that perfetto_cmd has time to register the signal handler
+// to handle SIGTERM properly.
 func (sess *Session) Stop() error {
 	if err := sess.cmd.Signal(syscall.SIGTERM); err != nil {
 		return errors.Wrap(err, "failed to terminate the tracing session")
