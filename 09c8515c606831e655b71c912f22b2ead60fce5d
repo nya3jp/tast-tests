@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0c3cb37_646db531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-04T08:21:47Z",
+      "side": 1,
+      "message": "My understanding is that the existing holdingspace.Download test manually restarts Chrome in order to make sure the holding space (something related to where downloads end up) is clean. So I\u0027m wondering if we can\u0027t simply change the test to use the standard chromeLoggedIn fixture plus possibly some cleanup code at the end that resets this holding space (this is needed if chrome.ResetState doesn\u0027t already reset the holding space).\n\nIf that works, then we can easily add a Lacros variant by using the existing lacrosPrimary fixture.",
+      "parentUuid": "85cc5780_5333f34c",
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9745779f_7792932f",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/setup.go",
         "patchSetId": 6
