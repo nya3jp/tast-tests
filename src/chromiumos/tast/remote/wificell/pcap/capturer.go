@@ -16,11 +16,11 @@ import (
 	"time"
 
 	"chromiumos/tast/common/network/daemonutil"
+	"chromiumos/tast/common/wificell/router"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -227,7 +227,7 @@ func (c *Capturer) downloadPacket(ctx context.Context) error {
 	if c.downloaded {
 		return errors.Errorf("packet already downloaded from %s to %s", src, dst)
 	}
-	if err := linuxssh.GetFile(ctx, c.host, src, dst, linuxssh.PreserveSymlinks); err != nil {
+	if err := router.GetSingleFile(ctx, c.host, src, dst); err != nil {
 		return errors.Wrapf(err, "unable to download packet from %s to %s", src, dst)
 	}
 	c.downloaded = true
