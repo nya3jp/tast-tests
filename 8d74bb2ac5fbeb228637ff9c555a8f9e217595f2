@@ -22,6 +22,30 @@
       },
       "revId": "8d74bb2ac5fbeb228637ff9c555a8f9e217595f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "623e3ac4_2af2512c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-04T16:57:24Z",
+      "side": 1,
+      "message": "Run this and see what happens:\nhttps://go.dev/play/p/l6U4OR9ny1c",
+      "parentUuid": "e7aba148_314429a8",
+      "range": {
+        "startLine": 174,
+        "startChar": 60,
+        "endLine": 174,
+        "endChar": 72
+      },
+      "revId": "8d74bb2ac5fbeb228637ff9c555a8f9e217595f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
