@@ -69,6 +69,24 @@
       "parentUuid": "94c52f13_ad4d39db",
       "revId": "e36da1d110c35ad34642c5cc83a0e0216d5445f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38298084_d3171889",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/hps_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-04T01:50:19Z",
+      "side": 1,
+      "message": "Nice! Congrats!",
+      "parentUuid": "ae80fd13_27b15277",
+      "revId": "e36da1d110c35ad34642c5cc83a0e0216d5445f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
