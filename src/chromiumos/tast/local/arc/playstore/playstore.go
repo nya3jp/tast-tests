@@ -26,7 +26,8 @@ const (
 	updateApp  operation = "update"
 )
 
-func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
+// FindAndDismissDialog finds a dialog containing text with a corresponding button and presses the button
+func FindAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
 	if err := d.Object(ui.TextMatches("(?i)" + dialogText)).Exists(ctx); err == nil {
 		testing.ContextLogf(ctx, `%q popup found. Skipping`, dialogText)
 		okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+buttonText))
@@ -146,7 +147,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			// optin finishes. Click "accept" button to accept and dismiss.
 			{termsOfServiceText, acceptButtonText},
 		} {
-			if err := findAndDismissDialog(ctx, d, val.dialogText, val.buttonText, defaultUITimeout); err != nil {
+			if err := FindAndDismissDialog(ctx, d, val.dialogText, val.buttonText, defaultUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
 		}
@@ -224,7 +225,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Grant permissions if necessary.
-		if err := findAndDismissDialog(ctx, d, permissionsText, acceptButtonText, defaultUITimeout); err != nil {
+		if err := FindAndDismissDialog(ctx, d, permissionsText, acceptButtonText, defaultUITimeout); err != nil {
 			return testing.PollBreak(err)
 		}
 
