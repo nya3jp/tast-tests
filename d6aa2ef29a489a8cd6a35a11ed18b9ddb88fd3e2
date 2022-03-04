@@ -120,6 +120,42 @@
       "message": "Hyung Tae: I don\u0027t have +2 permission here.",
       "revId": "d6aa2ef29a489a8cd6a35a11ed18b9ddb88fd3e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5794479_65109f16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-04T18:36:51Z",
+      "side": 1,
+      "message": "ah, didn\u0027t realize that. I just lgtm\u0027d with +2.",
+      "parentUuid": "6cf13091_79b90889",
+      "revId": "d6aa2ef29a489a8cd6a35a11ed18b9ddb88fd3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d414ea7_22e87a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-04T18:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1351f329_9b272afb",
+      "revId": "d6aa2ef29a489a8cd6a35a11ed18b9ddb88fd3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
