@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0cba5e5_20c8c2fb",
+        "filename": "src/chromiumos/tast/local/perf/login_event_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-03-04T22:52:36Z",
+      "side": 1,
+      "message": "I think it\u0027s easier to replace the behavior to fatal error in a few days when the Chrome command-line option finally reaches all the builders.",
+      "parentUuid": "8d94836e_8fb5d4a2",
+      "revId": "c861bb694d81025123d71bb39d1bb4e320fd713d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fc884d6_30d3835b",
