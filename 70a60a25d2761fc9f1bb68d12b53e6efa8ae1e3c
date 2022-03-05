@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38bef3ab_d6c72b86",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-05T23:02:51Z",
+      "side": 1,
+      "message": "I made Val:browser.TypeAsh as default in params_test.go. So, they are both set now.",
+      "parentUuid": "b580c253_09db93b5",
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4bacc5c_c182344a",
         "filename": "src/chromiumos/tast/local/crostini/params.go",
         "patchSetId": 10
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34f6312c_e2ec8675",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-05T23:02:51Z",
+      "side": 1,
+      "message": "Then how to distinguish between lacros and chrome?\n\nActually, my original way could meet this requirement (not touching this for loop) and it is scalable: when we only have one param for lacros, it is just a special case. when we have the same params as chrome, we could just make a copy of that of chrome and change the values accordingly. I also think that way is more readable than adding a separate param for lacros test in params_test.go because it would be a long string instead of a struct.\n\nI\u0027ve changed the order of the code to make it easier to review. Gerrit is not very friendly this time. There are totally four changes in this for loop:\n1. Increased the indentation because of making it a func.\n2. Added three conditions of bt \u003d\u003d browser.TypeLacros:\n2.1: line 275 making lacros test informational\n2.2: line 318 setting different fixture for lacros test\n2.3: line 360 setting testParam.Name, testParam.ExtraSoftwareDeps, testParam.Val for lacros test.",
+      "parentUuid": "e4bacc5c_c182344a",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e2c83ec_7cd86d1a",
         "filename": "src/chromiumos/tast/local/crostini/params.go",
         "patchSetId": 10
@@ -54,6 +96,30 @@
       "writtenOn": "2022-03-05T09:30:44Z",
       "side": 1,
       "message": "Don\u0027t we need to set this for the ash test cases too?",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 41
+      },
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe5272e_6eaec953",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-05T23:02:51Z",
+      "side": 1,
+      "message": "Val:browser.TypeAsh is set as default in params_test.go",
+      "parentUuid": "8e2c83ec_7cd86d1a",
       "range": {
         "startLine": 369,
         "startChar": 0,

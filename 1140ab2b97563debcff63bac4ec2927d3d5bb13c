@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96cd1878_949525bf",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-05T23:02:51Z",
+      "side": 1,
+      "message": "In this block (between line 293 and 321, just increased the indentation and added this if statement)",
+      "range": {
+        "startLine": 318,
+        "startChar": 29,
+        "endLine": 318,
+        "endChar": 39
+      },
+      "revId": "1140ab2b97563debcff63bac4ec2927d3d5bb13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
