@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FullScreenshot,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Take a full screenshot by 'Screen capture' button in the quick settings and verify the existence of the screenshot",
 		Contacts: []string{
 			"sun.tsai@cienet.com",
