@@ -144,14 +144,6 @@ func addAndroidAccount(ctx context.Context, arcDevice *androidui.Device, cr *chr
 		return errors.Wrap(err, "failed to click Add account")
 	}
 
-	// Click on Google button which appears only on tablet flow.
-	gaiaButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)Google"))
-	if err := gaiaButton.WaitForExists(ctx, 10*time.Second); err != nil {
-		testing.ContextLog(ctx, "Google button doesn't exist: ", err)
-	} else if err := gaiaButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Google")
-	}
-
 	if err := familylink.NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
 		return errors.Wrap(err, "failed entering geller account details in add school acount flow")
 	}
