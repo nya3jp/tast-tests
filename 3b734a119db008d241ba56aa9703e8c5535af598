@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cc25e2_87747e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-05T05:40:53Z",
+      "side": 1,
+      "message": "up to you whether you want to do it in this CL or a separate CL, but let\u0027s update contacts to chromeos-perfmetrics-eng@. Let\u0027s remove mukai@, tclairborne@, chromeos-wmp@, and also individual ldaps",
+      "revId": "3b734a119db008d241ba56aa9703e8c5535af598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
