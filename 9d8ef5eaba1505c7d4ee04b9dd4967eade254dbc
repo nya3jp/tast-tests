@@ -395,6 +395,24 @@
       "parentUuid": "44fa466f_94b76f0d",
       "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654beae5_e6cb4b1d",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-05T02:53:11Z",
+      "side": 1,
+      "message": "How does the new patch look like?",
+      "parentUuid": "dc8f5743_1592e5c0",
+      "revId": "9d8ef5eaba1505c7d4ee04b9dd4967eade254dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
