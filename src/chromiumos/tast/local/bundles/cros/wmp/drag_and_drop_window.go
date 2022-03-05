@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragAndDropWindow,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that window drag and drop works correctly and smoothly",
 		Contacts: []string{
 			"yichenz@chromium.org",

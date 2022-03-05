@@ -41,7 +41,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ReorderDesk,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that reordering desk by drag & drop and keyboard shortcuts works well",
 		Contacts: []string{
 			"zxdan@chromium.org",
