@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b580c253_09db93b5",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-05T09:30:44Z",
+      "side": 1,
+      "message": "Add a check here that `testCase.Val` and `testCase.TestLacros` aren\u0027t both set",
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bacc5c_c182344a",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-05T09:30:44Z",
+      "side": 1,
+      "message": "How about you make this take a single `iterator` value called `i` and avoid touching all these lines? That will make this much easier to review",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2c83ec_7cd86d1a",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-05T09:30:44Z",
+      "side": 1,
+      "message": "Don\u0027t we need to set this for the ash test cases too?",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 41
+      },
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
