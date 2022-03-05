@@ -37,7 +37,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
 		Params: []testing.Param{{
 			Val:       1,
-			ExtraAttr: []string{"group:mainline"},
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name:      "stress",
 			Val:       500,
