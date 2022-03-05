@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba9d113_c095ff20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-05T02:48:53Z",
+      "side": 1,
+      "message": "While we\u0027re at it, curious if apps.Launch (line 76) can wait and return when the given window is open, so that tests don\u0027t need to have boilerplate like this.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "51245a749a849de0532cab2608c738c3cd87dba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
