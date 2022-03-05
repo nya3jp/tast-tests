@@ -9,9 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -24,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GesturesForSmallScreen,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that gestures for hotseat, home, back and overview works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
@@ -33,7 +35,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -43,7 +53,7 @@ func GesturesForSmallScreen(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -57,17 +67,28 @@ func GesturesForSmallScreen(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	// Open a chrome window.
-	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+	// Open a browser window either ash-chrome or lacros-chrome.
+	bt := s.Param().(browser.Type)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
+	if err != nil {
+		s.Fatalf("Could not find %v browser app info: %v", bt, err)
+	}
+	if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
 		s.Fatal("Failed to launch chrome: ", err)
 	}
 
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the window list: ", err)
-	}
-	if len(ws) != 1 {
-		s.Fatal("Expected 1 window, got ", len(ws))
+	var ws []*ash.Window
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ws, err = ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
+		}
+		if len(ws) != 1 {
+			return errors.Errorf("expected 1 window, got %v", len(ws))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+		s.Fatalf("Failed to wait for the window to be open, browser: %v, err: %v", bt, err)
 	}
 
 	const uiTimeout = 5 * time.Second
