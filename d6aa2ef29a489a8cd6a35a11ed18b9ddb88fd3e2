@@ -226,6 +226,23 @@
       "parentUuid": "5ff79ced_07e09548",
       "revId": "d6aa2ef29a489a8cd6a35a11ed18b9ddb88fd3e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ef53d6_9fe2597f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-05T01:56:22Z",
+      "side": 1,
+      "message": "I think you have sufficient CR+ to do CQ+2 now.",
+      "revId": "d6aa2ef29a489a8cd6a35a11ed18b9ddb88fd3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
