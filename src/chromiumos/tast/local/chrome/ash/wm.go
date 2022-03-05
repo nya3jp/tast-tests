@@ -509,6 +509,30 @@ func GetWindow(ctx context.Context, tconn *chrome.TestConn, windowID int) (*Wind
 	return nil, errors.Errorf("failed to find the window with ID %d", windowID)
 }
 
+// CloseAllWindows closes all open windows and waits until gone.
+func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
+	ws, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all open windows")
+	}
+	for _, w := range ws {
+		if err := tconn.Call(ctx, nil,
+			"tast.promisify(chrome.autotestPrivate.closeAppWindow)", w.ID); err != nil {
+			return err
+		}
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		ws, err := GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get all open windows")
+		}
+		if len(ws) != 0 {
+			return errors.Errorf("failed to close all open windows, got: %v", len(ws))
+		}
+		return nil
+	}, defaultPollOptions)
+}
+
 // ForEachWindow runs a specified function on each window. If the given function returns an error, it is returned
 // and f won't be called for following windows.
 func ForEachWindow(ctx context.Context, tconn *chrome.TestConn, f func(window *Window) error) error {
