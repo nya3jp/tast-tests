@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360689bc_62f9b5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_stress_in_guest_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-03-05T19:23:33Z",
+      "side": 1,
+      "message": "Is it intended that the timeout of this test needs \"5 hours\"?\nIIUC, we should not put a 5 hours timeout test on mainline.\n\nBTW, looks like this test would also hang the VM informational test forever.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "d8ef0517a7f7adb69feae8cbd21b4730ca1b271e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
