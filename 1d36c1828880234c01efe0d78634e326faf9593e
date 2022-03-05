@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbee67b_214d5d3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-05T00:49:59Z",
+      "side": 1,
+      "message": "Please take a look at my comment. Thanks.",
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f069014a_c30f0d34",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-05T00:49:59Z",
+      "side": 1,
+      "message": "I think it 1 second may be a bit short if we are going to run profile on a VM. I think it should be at least 30 seconds.",
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
