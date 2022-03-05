@@ -10,8 +10,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -26,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ImmersiveMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that immersive mode works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
@@ -35,7 +37,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -46,10 +56,10 @@ func ImmersiveMode(ctx context.Context, s *testing.State) {
 
 	// Shorten context for cleanup.
 	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -63,34 +73,47 @@ func ImmersiveMode(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
-		s.Fatalf("Failed to open %s: %s", apps.Chrome.Name, err)
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open before test starts: ", err)
 	}
 
+	// Open a browser window either ash-chrome or lacros-chrome.
+	bt := s.Param().(browser.Type)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
+	if err != nil {
+		s.Fatalf("Could not find %v browser app info: %v", bt, err)
+	}
+	if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
+		s.Fatal("Failed to launch chrome: ", err)
+	}
+
+	// Ensure that there is only one open window that is the primary browser. Wait for the browser to be visible to avoid a race that may cause test flakiness.
+	bw, err := wmputils.EnsureOnlyBrowserWindowOpen(ctx, tconn, bt)
+	if err != nil {
+		s.Fatal("Expected the window to be fullscreen but got: ", err)
+	}
+	defer bw.CloseWindow(closeCtx, tconn)
+
+	// Press F4 to trigger immersive mode.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 	defer kb.Close()
-
-	ac := uiauto.New(tconn).WithTimeout(timeout)
-
-	// Press F4 to trigger immersive mode.
 	if err = kb.Accel(ctx, "F4"); err != nil {
 		s.Fatal("Failed to press F4: ", err)
 	}
+
 	// Check the chrome window is in immersive mode.
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if len(ws) != 1 {
-		s.Fatalf("Expected 1 window, got %d window(s)", len(ws))
-	}
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.ID == ws[0].ID && w.State == ash.WindowStateFullscreen && !w.IsAnimating
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		s.Fatalf("Expected the window to be fullscreen but it is %s", ws[0].State)
+		return w.ID == bw.ID && w.State == ash.WindowStateFullscreen && !w.IsAnimating
+	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
+		s.Fatalf("Expected the window to be fullscreen but it is %s", bw.State)
 	}
 
 	// Launcher should be hidden in immersive mode.
+	ac := uiauto.New(tconn).WithTimeout(timeout)
 	launcher := nodewith.Name("Launcher").ClassName("ash/HomeButton").Role(role.Button)
 	if err := ac.WaitUntilGone(launcher)(ctx); err != nil {
 		s.Fatal("Launcher is present in immersive mode: ", err)
