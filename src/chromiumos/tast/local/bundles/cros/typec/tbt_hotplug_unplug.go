@@ -30,7 +30,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "TBT device enumeration check after hot plug-unplug",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		Attr:         []string{"group:typec"},
+		Attr:         []string{"group:typec", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{testConfig, "testcert.p12"},
 		Vars:         []string{"typec.dutTbtPort", "typec.cSwitchPort", "typec.domainIP", "ui.signinProfileTestExtensionManifestKey"},
