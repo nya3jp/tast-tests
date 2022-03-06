@@ -81,7 +81,6 @@ func (app *MicrosoftWebOffice) CreateDocument(ctx context.Context) error {
 	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
 	if err := uiauto.Combine("open a new document",
 		app.openBlankDocument(word),
-		app.reloadWordDocument,
 		// Make sure paragraph exists before typing. This is especially necessary on low-end DUTs.
 		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(paragraph),
 		app.kb.TypeAction(docText),
@@ -238,17 +237,23 @@ func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error
 		excelTab: 2,
 	}
 
+	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+	paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).HasClass("EditingSurfaceBody").Editable()
 	if err := uiauto.Combine("switch to Microsoft Word cut selected text from the document",
 		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[wordTab]),
+		app.uiHdl.Click(paragraph),
 		app.kb.AccelAction("Ctrl+A"),
-		app.ui.Sleep(500*time.Millisecond), // Waiting for all text to be selected.
-		app.kb.AccelAction("Ctrl+X"),
+		app.kb.AccelAction("Ctrl+C"),
+		app.ui.Sleep(dataWaitTime), // Given time to select all data.
 	)(ctx); err != nil {
 		return err
 	}
 
+	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
 	return uiauto.Combine("switch to Microsoft Excel and paste the content into a cell of the spreadsheet",
 		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[excelTab]),
+		app.ui.WaitUntilExists(canvas),
 		app.selectBox("H3"),
 		app.kb.AccelAction("Ctrl+V"),
 	)(ctx)
@@ -269,7 +274,6 @@ func (app *MicrosoftWebOffice) MoveDataFromSheetToDoc(ctx context.Context) error
 	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
 	return uiauto.Combine("switch to Microsoft Word and paste the content",
 		app.uiHdl.SwitchToChromeTabByIndex(0),
-		app.reloadWordDocument,
 		app.ui.WaitUntilExists(paragraph),
 		app.kb.AccelAction("Ctrl+V"),
 	)(ctx)
@@ -316,34 +320,18 @@ func (app *MicrosoftWebOffice) UpdateCells(ctx context.Context) error {
 }
 
 // VoiceToTextTesting uses the "Dictation" function to achieve voice-to-text (VTT) and directly input text into office documents.
-func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedText string, playAudio func(ctx context.Context) error) error {
-	testing.ContextLog(ctx, "Using voice to text (VTT) to enter text directly to document")
+func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedText string, playAudio action.Action) error {
 
-	// allowPermission allows microphone if browser asks for the permissions.
-	allowPermission := func(ctx context.Context) error {
-		alertDialog := nodewith.NameContaining("Use your microphone").ClassName("RootView").Role(role.AlertDialog).First()
-		allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(alertDialog)
-		if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(allowButton)(ctx); err != nil {
-			if strings.Contains(err.Error(), nodewith.ErrNotFound) {
-				testing.ContextLog(ctx, "No action to grant microphone permission")
-				return nil
-			}
-			return err
-		}
-		return app.uiHdl.ClickUntil(allowButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(alertDialog))(ctx)
-	}
+	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+	paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).HasClass("EditingSurfaceBody").Editable().Focusable()
 
 	// checkDictationResult checks if the document contains the expected dictation results.
 	checkDictationResult := func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Check if the result is as expected")
-
-		wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
-		paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).Editable().Focused().HasClass("EditingSurfaceBody")
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			if err := uiauto.Combine("copy the content of the document to the clipboard",
 				app.uiHdl.Click(paragraph),
 				app.kb.AccelAction("Ctrl+A"),
-				app.ui.Sleep(500*time.Millisecond), // Wait for all text to be selected.
+				app.ui.Sleep(dataWaitTime), // Wait for all text to be selected.
 				app.kb.AccelAction("Ctrl+C"),
 			)(ctx); err != nil {
 				return err
@@ -353,6 +341,8 @@ func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedT
 			if err != nil {
 				return err
 			}
+			clipData = strings.ReplaceAll(clipData, ",", "")
+			clipData = strings.ReplaceAll(clipData, ".", "")
 			ignoreCaseData := strings.TrimSuffix(strings.ToLower(clipData), "\n")
 			if !strings.Contains(ignoreCaseData, strings.ToLower(expectedText)) {
 				return errors.Errorf("failed to validate input value ignoring case: got: %s; want: %s", clipData, expectedText)
@@ -361,23 +351,23 @@ func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedT
 		}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
 	}
 
-	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
-	stopDictationButton := nodewith.Name("Stop Dictation").Role(role.Button).Ancestor(dictationToolbar).First()
-
+	// dictate operates the dictation process.
 	dictate := uiauto.Combine("play an audio file and check dictation results",
-		playAudio,
-		app.closeHelpPanel,
-		app.checkDictation,
-		checkDictationResult,
+		uiauto.NamedAction("turn on the dictation", app.turnOnDictation),
+		uiauto.NamedAction("check if dictation is on", app.checkDictation),
+		uiauto.NamedAction("play the audio", playAudio),
+		uiauto.NamedAction("check if the result is as expected", checkDictationResult),
 	)
 
-	return uiauto.Combine("turn on the voice typing",
-		app.uiHdl.SwitchToChromeTabByIndex(0), // Switch to Microsoft Word.
-		app.turnOnDictation,
-		allowPermission,
-		app.reloadWordDocument,
-		app.ui.Retry(retryTimes, dictate),
-		app.ui.IfSuccessThen(app.ui.Exists(stopDictationButton), app.uiHdl.Click(stopDictationButton)),
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	stopDictationButton := nodewith.Name("Stop Dictation").Role(role.Button).Ancestor(dictationToolbar).First()
+	return uiauto.NamedAction("use voice to text (VTT) to enter text directly to document",
+		uiauto.Combine("turn on the voice typing",
+			app.uiHdl.SwitchToChromeTabByIndex(0), // Switch to Microsoft Word.
+			app.ui.WaitUntilExists(wordWebArea),
+			app.ui.Retry(retryTimes, dictate),
+			app.ui.IfSuccessThen(app.ui.Exists(stopDictationButton), app.uiHdl.Click(stopDictationButton)),
+		),
 	)(ctx)
 }
 
@@ -444,8 +434,6 @@ func (app *MicrosoftWebOffice) maybeCloseOneDriveTab(tabName string) action.Acti
 
 // checkSignIn checks if it is logged in, if not, try to log in.
 func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
-	testing.ContextLog(ctx, "Signing in to microsoft account")
-
 	// If the account manager exists, it means it has been logged in. Skip the login procedure.
 	accountManager := nodewith.NameContaining("Account manager for").Role(role.Button)
 	if err := app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(accountManager)(ctx); err != nil {
@@ -616,16 +604,14 @@ func (app *MicrosoftWebOffice) reloadPage(ctx context.Context) error {
 // If the tab navigates to the "My Files" page after reloading, then we need to re-operate the operation.
 // After clicking the "Go to OneDrive" or "Go to My OneDrive" button, it will create another new tab called "My files - OneDrive".
 // Therefore, it needs to be closed after re-operation. Otherwise, the number of current tabs will be affected and subsequent operations will fail.
-func (app *MicrosoftWebOffice) reload(finder *nodewith.Finder, action func(ctx context.Context) error) action.Action {
+func (app *MicrosoftWebOffice) reload(finder *nodewith.Finder, action action.Action) action.Action {
 	return func(ctx context.Context) error {
 		oneDriveWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
-		oneDriveTab := nodewith.Name("My files - OneDrive").Role(role.Tab).ClassName("Tab").First()
-		closeTab := nodewith.Name("Close").Role(role.Button).ClassName("TabCloseButton").Ancestor(oneDriveTab)
 		if err := app.ui.WaitUntilExists(finder)(ctx); err != nil {
 			return uiauto.Combine("reload and reoperate the action",
 				app.reloadPage,
 				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(oneDriveWebArea), action),
-				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeTab), app.uiHdl.Click(closeTab)),
+				app.maybeCloseOneDriveTab(myFilesTab),
 			)(ctx)
 		}
 		return nil
@@ -646,7 +632,7 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	closeAppLauncher := nodewith.Name("Close the app launcher").Role(role.Button).Ancestor(appLauncherOpened)
 	oneDriveLink := nodewith.Name("OneDrive").Role(role.Link).Ancestor(appLauncherOpened)
 	if err := uiauto.Combine("navigate to OneDrive",
-		app.checkSignIn,
+		uiauto.NamedAction("check if already logged in", app.checkSignIn),
 		app.uiHdl.ClickUntil(appLauncher, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeAppLauncher)),
 		app.uiHdl.Click(oneDriveLink),
 	)(ctx); err != nil {
@@ -679,6 +665,8 @@ func (app *MicrosoftWebOffice) openNewFile(service string) action.Action {
 	newItemMenu := nodewith.Role(role.Menu).Ancestor(newItem)
 	serviceItem := nodewith.NameContaining(service).Role(role.MenuItem).Ancestor(oneDriveWebArea)
 	return uiauto.NamedAction("open a new "+service, uiauto.Combine("create a new file",
+		// Make sure "New" exists before creating a new file. This is especially necessary on low-end DUTs.
+		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(newItem),
 		app.uiHdl.ClickUntil(newItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(newItemMenu)),
 		app.uiHdl.ClickUntil(serviceItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(oneDriveWebArea)),
 	))
@@ -716,29 +704,6 @@ func (app *MicrosoftWebOffice) openBlankDocument(service string) action.Action {
 
 		return app.reload(element[service], app.openNewFile(service))(ctx)
 	}
-}
-
-// reloadWordDocument reloads the page because it pops up "Couldn't save automatically" on Microsoft Word.
-func (app *MicrosoftWebOffice) reloadWordDocument(ctx context.Context) error {
-	reloadButtonName := "Reload Couldn't save automatically To avoid losing your changes, please copy them before you reload this document."
-	reloadButton := nodewith.Name(reloadButtonName).Role(role.Button)
-	if err := app.ui.WaitUntilExists(reloadButton)(ctx); err != nil {
-		return nil
-	}
-
-	testing.ContextLog(ctx, `Reloading the page because it pops up "Couldn't save automatically"`)
-
-	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
-	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).First()
-	paragraphEditable := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
-	return uiauto.Combine("copy content before reloading the page",
-		app.uiHdl.Click(paragraph),
-		app.kb.AccelAction("Ctrl+A"),
-		app.kb.AccelAction("Ctrl+C"),
-		app.uiHdl.Click(reloadButton),
-		app.uiHdl.Click(paragraphEditable),
-		app.kb.AccelAction("Ctrl+V"),
-	)(ctx)
 }
 
 // clickNavigationItem clicks the specified item in the navigation bar.
