@@ -281,7 +281,7 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 // Cleanup cleans up the resources used by running the GDocs testing.
 // It removes the document and slide which we created in the test case and close all tabs after completing the test.
 // This function should be called as deferred function after the app is created.
-func (app *GoogleDocs) Cleanup(ctx context.Context) error {
+func (app *GoogleDocs) Cleanup(ctx context.Context, sheetName string) error {
 	// tabIndexMap define the index of the corresponding service tab.
 	tabIndexMap := map[string]int{
 		docsTab:   0,
