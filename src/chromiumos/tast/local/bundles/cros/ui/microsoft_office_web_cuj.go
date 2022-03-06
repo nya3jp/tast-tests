@@ -28,20 +28,20 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			"ui.ms_username",    // Required. Expecting the username of the "Microsoft" account.
-			"ui.ms_password",    // Required. Expecting the password of the "Microsoft" account.
-			"ui.sampleSheetURL", // Required. The URL of sample Microsoft Excel. It will be copied to create a new one to perform tests on.
-			"ui.cuj_mode",       // Optional. Expecting "tablet" or "clamshell".
+			"ui.ms_username",            // Required. Expecting the username of the "Microsoft" account.
+			"ui.ms_password",            // Required. Expecting the password of the "Microsoft" account.
+			"ui.sampleMSOfficeSheetURL", // Required. The URL of sample Microsoft Excel. It will be copied to create a new one to perform tests on.
+			"ui.cuj_mode",               // Optional. Expecting "tablet" or "clamshell".
 		},
 		Params: []testing.Param{
 			{
 				Name:    "plus",
-				Timeout: 30 * time.Minute,
+				Timeout: 15 * time.Minute,
 				Val:     cuj.Plus,
 			},
 			{
 				Name:      "premium",
-				Timeout:   30 * time.Minute,
+				Timeout:   15 * time.Minute,
 				ExtraData: []string{"productivity_cuj_voice_to_text_en.wav"},
 				Val:       cuj.Premium,
 			},
@@ -52,9 +52,9 @@ func init() {
 func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
-	sampleSheetURL, ok := s.Var("ui.sampleSheetURL")
+	sampleSheetURL, ok := s.Var("ui.sampleMSOfficeSheetURL")
 	if !ok {
-		s.Fatal("Require variable ui.sampleSheetURL is not provided")
+		s.Fatal("Require variable ui.sampleMSOfficeSheetURL is not provided")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
