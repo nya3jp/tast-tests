@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
-	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -30,7 +29,7 @@ var obfuscatedUsernameRegexp = regexp.MustCompile(`^[\da-f]{40}$`)
 
 // RestartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
-func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *extension.Files) error {
+func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, lacrosExtArgs []string) error {
 	ctx, st := timing.Start(ctx, "restart")
 	defer st.End()
 
@@ -108,7 +107,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--skip-force-online-signin-for-testing")
 	}
 
-	args = append(args, exts.ChromeArgs()...)
+	args = append(args, extArgs...)
 	if cfg.PolicyEnabled() {
 		args = append(args, "--profile-requires-policy=true")
 	} else {
@@ -171,17 +170,67 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			"--arcvm-use-hugepages")
 	}
 
+	// Lacros options based on the configurations passed in.
+	// TODO: Consider moving this boilerplate to tast/local/chrome/internal/setup/lacros.go as the option list grows.
+	// TODO: Ensure LacrosExtraArgs can be set only when the option LacrosEnabled is explicitly passed in to chrome.New (after lacrosfixt is no longer in use)
+	lacrosArgs := cfg.LacrosExtraArgs()
+	if cfg.LacrosEnabled() {
+		testing.ContextLog(ctx, "Enabling Lacros with chrome config: ", cfg.LacrosConfig())
+		lacrosCfg := cfg.LacrosConfig()
+
+		// TODO: Enable LacrosOnly or other availability options when needed.
+		switch lacrosCfg.Availability {
+		case config.LacrosPrimary:
+			args = append(args, "--enable-features=LacrosPrimary")
+			args = append(args, "--disable-lacros-keep-alive", "--disable-login-lacros-opening")
+		}
+
+		// TODO: Remove this when the launching from the python script is deprecated.
+		// mojoSocketPath indicates the path of the unix socket that ash-chrome creates.
+		// This unix socket is used for getting the file descriptor needed to connect mojo
+		// from ash-chrome to lacros.
+		const mojoSocketPath = "/tmp/lacros.socket"
+		args = append(args, "--lacros-mojo-socket-for-testing="+mojoSocketPath)
+
+		// Suppress experimental Lacros infobar and possible others as well.
+		lacrosArgs = append(lacrosArgs, "--test-type")
+
+		// The What's-New feature automatically redirects the browser to a WebUI page to display the
+		// new feature if this is first time the user opens the browser or the user has upgraded
+		// Chrome to a different milestone. Disables the feature in testing to make the test
+		// expectations more predirectable, and thus make the tests more stable.
+		lacrosArgs = append(lacrosArgs, "--disable-features=ChromeWhatsNewUI")
+
+		// Prepare extensions.
+		lacrosArgs = append(lacrosArgs, lacrosExtArgs...)
+
+		// Enable Lacros.
+		args = append(args, "--enable-features=LacrosSupport,ForceProfileMigrationCompletion")
+		switch lacrosCfg.SourceType {
+		case config.Rootfs:
+			// Note that specifying the feature LacrosSupport has side-effects, so
+			// we specify it even if the lacros path is being overridden by lacrosDeployedBinary.
+			args = append(args, "--lacros-selection=rootfs")
+		case config.Omaha:
+			args = append(args, "--lacros-selection=stateful")
+		case config.Deployed, config.External:
+			// If lacros source is 'External' or 'Deployed' the path should be explicitly specified.
+			args = append(args, "--lacros-chrome-path="+lacrosCfg.SourcePath)
+		}
+		// TODO: Remove
+		testing.ContextLog(ctx, "Debugging args added with LacrosEnabled: ", args)
+	}
+	// Lacros Chrome additional arguments are delimited by '####'. See browser_manager.cc in Chrome source.
+	if len(lacrosArgs) > 0 {
+		args = append(args, "--lacros-chrome-additional-args="+strings.Join(lacrosArgs, "####"))
+	}
+
 	if fs := cfg.EnableFeatures(); len(fs) != 0 {
 		args = append(args, "--enable-features="+strings.Join(fs, ","))
 	}
 
 	if fs := cfg.DisableFeatures(); len(fs) != 0 {
 		args = append(args, "--disable-features="+strings.Join(fs, ","))
-	}
-
-	// Lacros Chrome additional arguments are delimited by '####'. See browser_manager.cc in Chrome source.
-	if as := cfg.LacrosExtraArgs(); len(args) != 0 {
-		args = append(args, "--lacros-chrome-additional-args="+strings.Join(as, "####"))
 	}
 
 	// TODO(b/207576612): Remove this explicit override once all tests have migrated
