@@ -23,6 +23,9 @@ const (
 // Creds contains credentials to log into a Chrome user session.
 type Creds = config.Creds
 
+// LacrosConfig is config.LacrosConfig.
+type LacrosConfig = config.LacrosConfig
+
 // Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
@@ -456,6 +459,16 @@ func EnableFilesAppSWA() Option {
 func EnableWallpaperSWA(enabled bool) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.EnableWallpaperSWA = enabled
+		return nil
+	}
+}
+
+// LacrosEnabled returns an Option that can be passed to New to enable and provision Lacros
+// conditionally based on the configurations passed in.
+func LacrosEnabled( /* lcfg LacrosConfig */ ) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.LacrosEnabled = true
+		// cfg.LacrosConfig = lcfg
 		return nil
 	}
 }
