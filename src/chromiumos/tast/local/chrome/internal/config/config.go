@@ -128,6 +128,51 @@ func ParseCreds(creds string) ([]Creds, error) {
 	return cs, nil
 }
 
+// LacrosAvailability describes whether Lacros is enabled as a primary or secondary browser with or without ash-chrome.
+type LacrosAvailability string
+
+// Valid values for LacrosAvailability.
+const (
+	LacrosPrimary    LacrosAvailability = "LacrosPrimary"
+	LacrosOnly       LacrosAvailability = "LacrosOnly"
+	LacrosSideBySide LacrosAvailability = "LacrosSideBySide"
+)
+
+// LacrosSourceType describes the type of sources from which Lacros is provisioned.
+type LacrosSourceType string
+
+// Valid values for LacrosSourceType.
+const (
+	// Deployed is used to get the pre-installed lacros-chrome specified with the var LacrosDeployedBinary.
+	Deployed LacrosSourceType = "Deployed"
+	// External denotes a lacros-chrome downloaded per the external data dependency.
+	External LacrosSourceType = "External"
+	// Omaha is used to get the lacros binary.
+	Omaha LacrosSourceType = "Omaha"
+	// Rootfs is used to force the rootfs version of lacros-chrome.
+	// For tests that don't care which lacros they are using, use this as a default.
+	Rootfs LacrosSourceType = "Rootfs"
+)
+
+// LacrosConfig contains configurations needed to enable and provision a Lacros browser.
+type LacrosConfig struct {
+	Availability LacrosAvailability
+
+	SourceType LacrosSourceType
+
+	// local path to lacros source image file.
+	// If source type is Deployed, it's from s.Var("lacrosDeployedBinary"). eg, "/usr/local/lacros-chrome"
+	// If source type is External, it's from s.DataPath(dataArtifact) where a compressed lacros image is located. This requires extra step to get a lacros executable file. eg, "TODO"
+	// If source type is Omaha or Rootfs, it is an empty string since provision will be done by Component Updater and mounted by the OS ImageLoader in runtime and it will not be used during chrome instantiation.
+	SourcePath string
+}
+
+// defaultLacrosConfig is the default configurations used to enable and provision a Lacros browser.
+var defaultLacrosConfig = LacrosConfig{
+	Availability: LacrosPrimary,
+	SourceType:   Rootfs,
+}
+
 // Config contains configurations for chrome.Chrome instance as requested by
 // options to chrome.New.
 //
@@ -260,6 +305,12 @@ func (c *Config) EnableFilesAppSWA() bool { return c.m.EnableFilesAppSWA }
 // TODO(b/197963464) Remove this config item once Wallpaper SWA is fully launched.
 func (c *Config) EnableWallpaperSWA() bool { return c.m.EnableWallpaperSWA }
 
+// LacrosEnabled returns whether to enable lacros-chrome.
+func (c *Config) LacrosEnabled() bool { return c.m.LacrosEnabled }
+
+// LacrosConfig returns configurations for lacros-chrome.
+func (c *Config) LacrosConfig() LacrosConfig { return c.m.LacrosConfig }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -272,45 +323,47 @@ func (c *Config) EnableWallpaperSWA() bool { return c.m.EnableWallpaperSWA }
 // - "customized": Reuse checking logic is expected to be customized in customizedReuseCheck() function.
 // This tag must be set for every field with one of the above values. Otherwise, unit test will fail.
 type MutableConfig struct {
-	Creds                           Creds      `reuse_match:"true"`
-	NormalizedUser                  string     `reuse_match:"true"`
-	KeepState                       bool       `reuse_match:"false"`
-	KeepOwnership                   bool       `reuse_match:"true"`
-	DeferLogin                      bool       `reuse_match:"customized"`
-	EnableRestoreTabs               bool       `reuse_match:"false"`
-	LoginMode                       LoginMode  `reuse_match:"customized"`
-	TryReuseSession                 bool       `reuse_match:"false"`
-	EnableLoginVerboseLogs          bool       `reuse_match:"true"`
-	VKEnabled                       bool       `reuse_match:"true"`
-	SkipOOBEAfterLogin              bool       `reuse_match:"false"`
-	WaitForCryptohome               bool       `reuse_match:"false"`
-	CustomLoginTimeout              int64      `reuse_match:"false"` // time.Duration can not be serialized to JSON. Store duration in nanoseconds.
-	InstallWebApp                   bool       `reuse_match:"true"`
-	Region                          string     `reuse_match:"true"`
-	PolicyEnabled                   bool       `reuse_match:"true"`
-	DMSAddr                         string     `reuse_match:"true"`
-	RealtimeReportingAddr           string     `reuse_match:"true"`
-	EncryptedReportingAddr          string     `reuse_match:"true"`
-	EnrollMode                      EnrollMode `reuse_match:"true"`
-	EnrollmentCreds                 Creds      `reuse_match:"true"`
-	DisablePolicyKeyVerification    bool       `reuse_match:"true"`
-	ARCMode                         ARCMode    `reuse_match:"true"`
-	ARCUseHugePages                 bool       `reuse_match:"true"`
-	RestrictARCCPU                  bool       `reuse_match:"true"`
-	BreakpadTestMode                bool       `reuse_match:"true"`
-	ExtraArgs                       []string   `reuse_match:"true"`
-	LacrosExtraArgs                 []string   `reuse_match:"true"`
-	EnableFeatures                  []string   `reuse_match:"true"`
-	DisableFeatures                 []string   `reuse_match:"true"`
-	ExtraExtDirs                    []string   `reuse_match:"customized"`
-	SigninExtKey                    string     `reuse_match:"customized"`
-	SkipForceOnlineSignInForTesting bool       `reuse_match:"true"`
-	RemoveNotification              bool       `reuse_match:"true"`
-	HideCrashRestoreBubble          bool       `reuse_match:"true"`
-	ForceLaunchBrowser              bool       `reuse_match:"true"`
-	EphemeralUser                   bool       `reuse_match:"true"`
-	EnableFilesAppSWA               bool       `reuse_match:"true"`
-	EnableWallpaperSWA              bool       `reuse_match:"true"`
+	Creds                           Creds        `reuse_match:"true"`
+	NormalizedUser                  string       `reuse_match:"true"`
+	KeepState                       bool         `reuse_match:"false"`
+	KeepOwnership                   bool         `reuse_match:"true"`
+	DeferLogin                      bool         `reuse_match:"customized"`
+	EnableRestoreTabs               bool         `reuse_match:"false"`
+	LoginMode                       LoginMode    `reuse_match:"customized"`
+	TryReuseSession                 bool         `reuse_match:"false"`
+	EnableLoginVerboseLogs          bool         `reuse_match:"true"`
+	VKEnabled                       bool         `reuse_match:"true"`
+	SkipOOBEAfterLogin              bool         `reuse_match:"false"`
+	WaitForCryptohome               bool         `reuse_match:"false"`
+	CustomLoginTimeout              int64        `reuse_match:"false"` // time.Duration can not be serialized to JSON. Store duration in nanoseconds.
+	InstallWebApp                   bool         `reuse_match:"true"`
+	Region                          string       `reuse_match:"true"`
+	PolicyEnabled                   bool         `reuse_match:"true"`
+	DMSAddr                         string       `reuse_match:"true"`
+	RealtimeReportingAddr           string       `reuse_match:"true"`
+	EncryptedReportingAddr          string       `reuse_match:"true"`
+	EnrollMode                      EnrollMode   `reuse_match:"true"`
+	EnrollmentCreds                 Creds        `reuse_match:"true"`
+	DisablePolicyKeyVerification    bool         `reuse_match:"true"`
+	ARCMode                         ARCMode      `reuse_match:"true"`
+	ARCUseHugePages                 bool         `reuse_match:"true"`
+	RestrictARCCPU                  bool         `reuse_match:"true"`
+	BreakpadTestMode                bool         `reuse_match:"true"`
+	ExtraArgs                       []string     `reuse_match:"true"`
+	LacrosExtraArgs                 []string     `reuse_match:"true"`
+	EnableFeatures                  []string     `reuse_match:"true"`
+	DisableFeatures                 []string     `reuse_match:"true"`
+	ExtraExtDirs                    []string     `reuse_match:"customized"`
+	SigninExtKey                    string       `reuse_match:"customized"`
+	SkipForceOnlineSignInForTesting bool         `reuse_match:"true"`
+	RemoveNotification              bool         `reuse_match:"true"`
+	HideCrashRestoreBubble          bool         `reuse_match:"true"`
+	ForceLaunchBrowser              bool         `reuse_match:"true"`
+	EphemeralUser                   bool         `reuse_match:"true"`
+	EnableFilesAppSWA               bool         `reuse_match:"true"`
+	EnableWallpaperSWA              bool         `reuse_match:"true"`
+	LacrosEnabled                   bool         `reuse_match:"true"`
+	LacrosConfig                    LacrosConfig `reuse_match:"customized"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -346,6 +399,8 @@ func NewConfig(opts []Option) (*Config, error) {
 			EphemeralUser:                   false,
 			EnableFilesAppSWA:               false,
 			EnableWallpaperSWA:              true,
+			LacrosEnabled:                   false,
+			LacrosConfig:                    defaultLacrosConfig,
 		},
 	}
 	for _, opt := range opts {
@@ -439,6 +494,9 @@ func (c *Config) customizedReuseCheck(newCfg *Config) error {
 	}
 	if newCfg.LoginMode() != c.LoginMode() {
 		return errors.Errorf("LoginMode has different values and cannot be reused: %v vs. %v", c.LoginMode(), newCfg.LoginMode())
+	}
+	if newCfg.LacrosConfig() != c.LacrosConfig() {
+		return errors.Errorf("LacrosConfig has different values and cannot be reused: (%+v) vs. (%+v)", c.LacrosConfig(), newCfg.LacrosConfig())
 	}
 
 	return nil

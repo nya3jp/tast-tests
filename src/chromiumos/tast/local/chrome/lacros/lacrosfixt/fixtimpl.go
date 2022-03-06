@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -485,6 +486,35 @@ func (f *fixtImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 }
 
 func (f *fixtImpl) Reset(ctx context.Context) error {
+	// Reset lacros-chrome state (eg, closing all lacros windows) between tests like chrome.ResetState for ash-chrome.
+	if false /*!f.cr.LacrosKeepState()*/ {
+		testing.ContextLog(ctx, "Resetting Lacros's state")
+		ws, err := ash.FindAllWindows(ctx, f.tconn, func(w *ash.Window) bool {
+			return w.IsVisible && w.WindowType == ash.WindowTypeLacros
+		})
+		if err != nil {
+			return errors.Wrap(err, "failed to get the window list")
+		}
+		if len(ws) > 0 {
+			testing.ContextLogf(ctx, "Closing %d lacros window(s)", len(ws))
+			for _, w := range ws {
+				if err := w.CloseWindow(ctx, f.tconn); err != nil {
+					return errors.Wrapf(err, "failed to close lacros window: %v", w.ID)
+				}
+			}
+		}
+		ws, err = ash.FindAllWindows(ctx, f.tconn, func(w *ash.Window) bool {
+			return w.IsVisible && w.WindowType == ash.WindowTypeLacros
+		})
+		if err != nil {
+			return errors.Wrap(err, "failed to get the window list")
+		}
+		if len(ws) > 0 {
+			return errors.Errorf("failed to close all lacros windows, remains: %v", len(ws))
+		}
+		// TODO: Add an option to wipe out user data dir.
+	}
+
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
