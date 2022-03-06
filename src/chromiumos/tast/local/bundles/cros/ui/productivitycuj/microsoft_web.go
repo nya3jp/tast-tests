@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
@@ -219,7 +220,12 @@ func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName str
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	return uiauto.NamedAction("search the sample spreadsheet", app.searchSampleSheet)(ctx)
+	return uiauto.NamedAction("search the sample spreadsheet",
+		uiauto.Combine("search the sample spreadsheet",
+			app.searchSampleSheet,
+			app.maybeCloseOneDriveTab(myFilesTab),
+		),
+	)(ctx)
 }
 
 // MoveDataFromDocToSheet moves data from document to spreadsheet.
@@ -737,70 +743,114 @@ func (app *MicrosoftWebOffice) reloadWordDocument(ctx context.Context) error {
 
 // clickNavigationItem clicks the specified item in the navigation bar.
 func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Action {
-	navigation := nodewith.Role(role.Navigation)
-	navigationOffScreen := navigation.Offscreen()
-	appMenu := nodewith.NameContaining("App menu").Role(role.MenuItem)
-	navigationItem := nodewith.NameContaining(itemName).Role(role.MenuItem).Ancestor(navigation)
-	return uiauto.Combine("click navigation bar item",
-		app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(navigationOffScreen), app.uiHdl.Click(appMenu)),
-		app.uiHdl.Click(navigationItem),
-	)
+	return func(ctx context.Context) error {
+		window := nodewith.NameContaining(myFilesTab).Role(role.Window).First()
+		maximizeButton := nodewith.Name("Maximize").Role(role.Button).HasClass("FrameCaptionButton").Ancestor(window)
+		// Maximize the browser window so that the navigation bar appears on the screen.
+		if err := app.ui.IfSuccessThen(app.ui.Exists(maximizeButton), app.uiHdl.Click(maximizeButton))(ctx); err != nil {
+			return err
+		}
+
+		navigation := nodewith.Role(role.Navigation)
+		navigationList := nodewith.Role(role.List).Ancestor(navigation)
+		itemLink := nodewith.NameContaining(itemName).Role(role.Link).Ancestor(navigationList)
+
+		if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(itemLink)(ctx); err == nil {
+			testing.ContextLogf(ctx, "Directly enter to %q from the navigation list", itemName)
+			return app.uiHdl.Click(itemLink)(ctx)
+		}
+
+		menu := nodewith.Role(role.Menu).Ancestor(navigation)
+		menuItem := nodewith.NameContaining(itemName).Role(role.MenuItem).Ancestor(menu).Visited()
+
+		if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(menuItem)(ctx); err == nil {
+			testing.ContextLogf(ctx, "Directly enter to %q from the menu", itemName)
+			return app.uiHdl.Click(menuItem)(ctx)
+		}
+
+		commandBar := nodewith.NameStartingWith("Command bar").Role(role.MenuBar).Horizontal()
+		appMenu := nodewith.NameContaining("App menu").Role(role.MenuItem).Ancestor(commandBar)
+		navigationMenu := nodewith.Role(role.Menu).Ancestor(navigation)
+		itemLink = nodewith.NameContaining(itemName).Role(role.MenuItem).Ancestor(navigationMenu).Visited()
+
+		return uiauto.NamedAction(fmt.Sprintf("click on the %q item in the navigation bar", itemName),
+			uiauto.Combine("click navigation bar item",
+				app.uiHdl.ClickUntil(appMenu, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(navigationMenu)),
+				app.uiHdl.Click(itemLink),
+			),
+		)(ctx)
+	}
 }
 
 // switchToListView switches the view option to list view.
 func (app *MicrosoftWebOffice) switchToListView(ctx context.Context) error {
-	testing.ContextLog(ctx, "Switching to list view")
-
 	details := nodewith.Name("Details").Role(role.MenuItem)
 	viewOptions := nodewith.NameContaining("View options").Role(role.MenuItem)
 	viewOptionsExpanded := viewOptions.Expanded()
 	listView := nodewith.NameContaining("List").Role(role.MenuItemCheckBox).Ancestor(viewOptions)
-	if err := app.ui.Retry(retryTimes, uiauto.Combine("switch to list view",
-		// Sometimes "Details" will be displayed later, causing the position of the "View Options" button to change.
-		app.ui.WaitUntilExists(details),
-		app.uiHdl.ClickUntil(viewOptions, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(viewOptionsExpanded)),
-		// After the page loads, OneDrive will reload and display again.
-		// Therefore, the expanded list of "View Options" might disappear and cause the "List" option to not be found.
-		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(listView),
-		app.uiHdl.Click(listView),
-	))(ctx); err != nil {
-		return err
+
+	checkListViewEnabled := func(ctx context.Context) error {
+		if node, _ := app.ui.Info(ctx, listView); node.Checked == checked.False {
+			return errors.New("list view options has not been enabled")
+		}
+		return nil
 	}
 
-	// Wait for the list to be reordered. Otherwise, we might encounter an error while operating the list at the same time.
+	// If the setting is already "list view", skip the switch view operation.
+	if err := checkListViewEnabled(ctx); err != nil {
+		return app.ui.Retry(retryTimes, uiauto.Combine("switch to list view",
+			// Sometimes "Details" will be displayed later, causing the position of the "View Options" button to change.
+			app.ui.WaitUntilExists(details),
+			app.uiHdl.ClickUntil(viewOptions, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(viewOptionsExpanded)),
+			// After the page loads, OneDrive will reload and display again.
+			// Therefore, the expanded list of "View Options" might disappear and cause the "List" option to not be found.
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(listView),
+			app.uiHdl.Click(listView),
+		))(ctx)
+	}
+
+	// Give the list some time to finish loading and ordering. Otherwise, we may encounter errors in the next operation.
 	return testing.Sleep(ctx, 2*time.Second)
 }
 
 // searchSampleSheet searches for the existence of the sample spreadsheet.
 func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
-	testing.ContextLog(ctx, "Searching sample spreadsheet")
 
 	// Check if the sample file exists via searching box.
 	searchFromBox := func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Searching through the Searching box")
-		search := nodewith.Role(role.Search)
-		searchBox := nodewith.Role(role.ListBox).Ancestor(search)
-		suggestedFiles := nodewith.Name("Suggested files").Role(role.Group).Ancestor(searchBox)
+		searchBox := nodewith.Name("Search box. Suggestions appear as you type.").Role(role.TextFieldWithComboBox)
+		suggestedFiles := nodewith.Name("Suggested files").Role(role.Group)
 		fileOption := fmt.Sprintf("Excel file result: .xlsx %v.xlsx ,", sheetName)
 		fileResult := nodewith.Name(fileOption).Role(role.ListBoxOption).Ancestor(suggestedFiles).First()
-		return uiauto.Combine("search file via searching box",
-			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(search),
-			app.uiHdl.Click(search),
-			app.kb.TypeAction(sheetName),
-			app.uiHdl.ClickUntil(fileResult, app.ui.Gone(fileResult)),
+		excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+		canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+		return uiauto.NamedAction("search through the box ",
+			uiauto.Combine("search file via searching box",
+				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(searchBox),
+				app.uiHdl.Click(searchBox),
+				app.kb.TypeAction(sheetName),
+				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileResult),
+				app.uiHdl.ClickUntil(fileResult, app.ui.Gone(fileResult)),
+				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
+			),
 		)(ctx)
 	}
 
 	// Check if the sample file in the list of recently opened files.
 	searchFromRecent := func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Searching from Recent")
+		goToOneDrive := nodewith.Name("Go to OneDrive").Role(role.Button).First()
+		recentWebArea := nodewith.Name("Recent - OneDrive").Role(role.RootWebArea)
 		row := nodewith.NameContaining(sheetName).Role(role.Row).First()
 		link := nodewith.NameContaining(sheetName).Role(role.Link).Ancestor(row)
-		return uiauto.Combine("search file from recently opened",
-			app.clickNavigationItem(recent),
-			app.switchToListView,
-			app.uiHdl.ClickUntil(link, app.ui.Gone(link)),
-			app.maybeCloseOneDriveTab(recentTab),
+		return uiauto.NamedAction(`search from "Recent"`,
+			uiauto.Combine("search file from recently opened",
+				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goToOneDrive), app.uiHdl.Click(goToOneDrive)),
+				app.clickNavigationItem(recent),
+				app.ui.WaitUntilExists(recentWebArea),
+				app.switchToListView,
+				app.uiHdl.ClickUntil(link, app.ui.Gone(link)),
+				app.maybeCloseOneDriveTab(recentTab),
+			),
 		)(ctx)
 	}
 
@@ -809,7 +859,7 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 		return searchFromRecent(ctx)
 	}
 
-	return app.maybeCloseOneDriveTab(myFilesTab)(ctx)
+	return nil
 }
 
 // openFindAndSelect opens "Find & Select".
