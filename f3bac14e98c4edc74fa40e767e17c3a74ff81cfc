@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fbf26e9_89e34409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-06T22:18:43Z",
+      "side": 1,
+      "message": "Not sure why cq+1 got this error:\n\n\tchromiumos/tast/local/bundles/cros/crash/crash\t[no test files]\ntast-local-tests-cros-0.0.2-r9648: --- FAIL: TestParams (0.10s)\ntast-local-tests-cros-0.0.2-r9648:     params_test.go:28: launch_browser.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.2-r9648:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini\ntast-local-tests-cros-0.0.2-r9648:     params_test.go:28: verify_app_wayland.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.2-r9648:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/local/bundles/cros/crostini\ntast-local-tests-cros-0.0.2-r9648: FAIL\n\nWhen I run:\n\n TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1\n \n Nothing changed.\n \n So I changed the timeout for these two cases to see whether it could work.",
+      "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
