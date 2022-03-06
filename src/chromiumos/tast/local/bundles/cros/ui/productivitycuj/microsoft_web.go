@@ -64,6 +64,7 @@ type MicrosoftWebOffice struct {
 	password        string
 	documentCreated bool
 	slideCreated    bool
+	sheetCreated    bool
 }
 
 // CreateDocument creates a new document from microsoft web app.
@@ -121,8 +122,23 @@ func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
 	return nil
 }
 
-// CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns sheet name.
+// CreateSpreadsheet creates a new spreadsheet from the microsoft web app.
+// and copy the content from the public shared document to return the sheet name.
+// Since MS Office documents cannot directly copy view-only documents,
+// we can only copy the contents of worksheets from public shared documents.
 func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error) {
+	connExcel, err := app.cr.NewConn(ctx, sampleSheetURL)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
+	}
+	defer func() {
+		connExcel.CloseTarget(ctx)
+		connExcel.Close()
+		// There are two tabs related to "Microsoft Excel Online".
+		// Sometimes the first target doesn't close quickly. Give it time to close by order.
+		err = uiauto.NamedAction("close the excel tab", app.ui.Retry(retryTimes, app.closeTab(excelTab)))(ctx)
+	}()
+
 	conn, err := app.openOneDrive(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to open OneDrive")
@@ -130,57 +146,41 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleShee
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	// If the file already exists, check the dependent cells first to prevent continuous failure due to incorrect content.
-	checkSheet := func(ctx context.Context) error {
-		for i := 1; i <= rangeOfCells; i++ {
-			idx := strconv.Itoa(i)
-			cell := fmt.Sprintf("A%d", i)
-			value, err := app.getBoxValue(ctx, cell)
-			if err != nil {
-				return errors.Wrapf(err, "failed to get the value of the cell %q", cell)
-			}
-			if value != idx {
-				if err := app.editBoxValue(ctx, cell, idx); err != nil {
-					return errors.Wrapf(err, "failed to edit the value of the cell %q", cell)
-				}
-			}
-		}
-
-		formulaBox := "B1"
-		formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
-		return app.ui.Retry(retryTimes, func(ctx context.Context) error {
-			if err := app.checkFormula(ctx, formulaBox, formula); err != nil {
-				if err := app.editBoxValue(ctx, formulaBox, formula); err != nil {
-					return errors.Wrapf(err, "failed to edit the value of the cell %q", formulaBox)
-				}
-				return app.checkFormula(ctx, formulaBox, formula)
-			}
-			return nil
-		})(ctx)
-	}
-
-	// Check if the sample file exists. If not, create a blank one.
-	if err := app.searchSampleSheet(ctx); err != nil {
-		if err := uiauto.Combine("create a new spreadsheet",
-			app.createSampleSheet,
-			app.closeTab(excelTab),
-			app.maybeCloseOneDriveTab(myFilesTab),
-		)(ctx); err != nil {
-			return "", err
-		}
-		return sheetName, nil
-	}
-
 	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
 	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
-	if err := uiauto.Combine("validate the contents of the spreadsheet",
-		app.reload(canvas, app.searchSampleSheet),
-		uiauto.NamedAction("check the contents of the spreadsheet", checkSheet),
-		app.closeTab(excelTab),
+
+	copyFromExistingSheet := uiauto.Combine("copy from existing spreadsheet",
+		app.openBlankDocument(excel),
+		app.uiHdl.SwitchToChromeTabByIndex(0),
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
+		app.selectBox("A1"),
+		app.kb.AccelAction("Ctrl+A"),
+		app.ui.Sleep(dataWaitTime), // Given time to select all data.
+		app.kb.AccelAction("Ctrl+C"),
+		app.ui.Sleep(dataWaitTime), // Given time to copy data.
+	)
+
+	pasteIntoNewSheet := uiauto.Combine("paste into newly created spreadsheet",
+		app.uiHdl.SwitchToChromeTabByIndex(3),
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
+		app.selectBox("A1"),
+		app.kb.AccelAction("Ctrl+V"),
+		app.ui.Sleep(dataWaitTime), // Given time to paste data.
+		app.selectBox("H1"),
+		app.kb.TypeAction(sheetText),
+	)
+
+	if err := uiauto.Combine("create the example spreadsheet",
+		uiauto.NamedAction("copy from existing spreadsheet", copyFromExistingSheet),
+		uiauto.NamedAction("paste into newly created spreadsheet", pasteIntoNewSheet),
+		uiauto.NamedAction("rename the spreadsheet", app.renameDocument(sheetName)),
 		app.maybeCloseOneDriveTab(myFilesTab),
 	)(ctx); err != nil {
 		return "", err
 	}
+
+	// Since the file will only be saved automatically after the file is edited, mark the file created successfully here.
+	app.sheetCreated = true
 	return sheetName, nil
 }
 
@@ -397,12 +397,13 @@ func (app *MicrosoftWebOffice) Cleanup(ctx context.Context) error {
 	filesRemovedMap := map[string]bool{
 		"Document":     app.documentCreated,
 		"Presentation": app.slideCreated,
+		sheetName:      app.sheetCreated,
 	}
 
 	for file, isCreated := range filesRemovedMap {
 		if isCreated {
-			if err := app.removeDocument(ctx, file); err != nil {
-				testing.ContextLog(ctx, "Failed to removing ", file)
+			if err := app.removeDocument(file)(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to removing: ", file)
 			}
 		}
 	}
@@ -947,57 +948,6 @@ func (app *MicrosoftWebOffice) checkFormula(ctx context.Context, box, value stri
 	return nil
 }
 
-// createSampleSheet creates a sample spreadsheet.
-func (app *MicrosoftWebOffice) createSampleSheet(ctx context.Context) error {
-	testing.ContextLog(ctx, "Creating a new spreadsheet")
-
-	myFilesWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
-	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
-	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
-	savedButton := nodewith.NameContaining("Saved to OneDrive").Role(role.Button)
-	fileNameBox := nodewith.Name("File Name").Role(role.TextField)
-
-	if err := uiauto.Combine("open a blank spreadsheet",
-		// Make sure we are in "My Files" so that "New" can be found.
-		app.ui.IfSuccessThen(app.ui.Gone(myFilesWebArea), app.clickNavigationItem(myFiles)),
-		app.openBlankDocument(excel),
-		// Make sure canvas exists before typing. This is especially necessary on low-end DUTs.
-		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(canvas),
-	)(ctx); err != nil {
-		return err
-	}
-
-	testing.ContextLogf(ctx, "Writing cell(A1:A%d) values", rangeOfCells)
-	for i := 1; i <= rangeOfCells; i++ {
-		idx := strconv.Itoa(i)
-		cell := fmt.Sprintf("A%d", i)
-		if err := app.editBoxValue(ctx, cell, idx); err != nil {
-			return errors.Wrapf(err, "failed to edit cell %q", cell)
-		}
-	}
-
-	formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
-	testing.ContextLog(ctx, "Writing cell(B1) value")
-	if err := app.editBoxValue(ctx, "B1", formula); err != nil {
-		return errors.Wrap(err, `failed to edit cell "B1"`)
-	}
-
-	testing.ContextLog(ctx, "Writing cell(H1) value")
-	if err := app.editBoxValue(ctx, "H1", "Copy to document"); err != nil {
-		return errors.Wrap(err, `failed to edit cell "H1"`)
-	}
-
-	testing.ContextLog(ctx, "Renaming spreadsheet")
-	return uiauto.Combine("rename file",
-		app.uiHdl.Click(savedButton),
-		app.ui.DoubleClick(fileNameBox),
-		app.kb.AccelAction("Ctrl+A"),
-		app.kb.TypeAction(sheetName),
-		app.kb.AccelAction("Enter"),
-		app.ui.WaitUntilExists(savedButton),
-	)(ctx)
-}
-
 // closeHelpPanel closes the "Help" panel if it exists.
 func (app *MicrosoftWebOffice) closeHelpPanel(ctx context.Context) error {
 	helpPanel := nodewith.Name("Help").Role(role.TabPanel)
@@ -1151,20 +1101,55 @@ func (app *MicrosoftWebOffice) closeTab(title string) action.Action {
 	}
 }
 
-// removeDocument removes the document with the specified file name.
-func (app *MicrosoftWebOffice) removeDocument(ctx context.Context, fileName string) error {
-	testing.ContextLog(ctx, "Removing an existing document: ", fileName)
+// renameDocument renames the document with the specified file name.
+func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
+	return func(ctx context.Context) error {
+		renameButton := nodewith.NameContaining("Saved to OneDrive").Role(role.Button)
+		fileNameTextField := nodewith.Name("File Name").Role(role.TextField)
 
+		checkFileName := func(ctx context.Context) error {
+			if err := app.uiHdl.Click(renameButton)(ctx); err != nil {
+				return err
+			}
+			node, err := app.ui.Info(ctx, fileNameTextField)
+			if err != nil {
+				return err
+			}
+			if node.Value != fileName {
+				return errors.New("file name is incorrect")
+			}
+			return nil
+		}
+
+		if err := app.uiHdl.Click(renameButton)(ctx); err != nil {
+			return err
+		}
+
+		return app.ui.Retry(retryTimes, uiauto.Combine("rename the document: "+fileName,
+			app.uiHdl.Click(fileNameTextField),
+			app.kb.AccelAction("Ctrl+A"),
+			app.ui.Sleep(dataWaitTime), // Given time to select all data.
+			app.kb.TypeAction(sheetName),
+			app.kb.AccelAction("Enter"),
+			checkFileName,
+		))(ctx)
+	}
+}
+
+// removeDocument removes the document with the specified file name.
+func (app *MicrosoftWebOffice) removeDocument(fileName string) uiauto.Action {
 	row := nodewith.NameContaining(fileName).Role(role.Row).First()
 	checkBox := nodewith.NameContaining("Checkbox").Role(role.CheckBox).Ancestor(row)
 	complementary := nodewith.Role(role.Complementary).First()
 	commandBar := nodewith.NameContaining("Command bar").Role(role.MenuBar).Ancestor(complementary)
 	remove := nodewith.Name("Remove").Role(role.MenuItem).Ancestor(commandBar)
-	return uiauto.Combine("remove the file",
-		app.switchToListView,
-		app.uiHdl.ClickUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
-		app.uiHdl.Click(remove),
-	)(ctx)
+	return uiauto.NamedAction("remove the document: "+fileName,
+		uiauto.Combine("remove the file",
+			app.switchToListView,
+			app.uiHdl.ClickUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
+			app.uiHdl.Click(remove),
+		),
+	)
 }
 
 // NewMicrosoftWebOffice creates MicrosoftWebOffice instance which implements ProductivityApp interface.
