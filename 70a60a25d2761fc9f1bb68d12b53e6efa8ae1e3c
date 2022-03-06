@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b4fd99_b6e6197e",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-06T09:14:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38bef3ab_d6c72b86",
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4bacc5c_c182344a",
@@ -97,6 +115,30 @@
       "side": 1,
       "message": "\u003e Then how to distinguish between lacros and chrome?\nPass it as the second parameter? I just meant that you should replace \n    iterate :\u003d func(it []iterator, bt browser.Type) {\n        for _, i :\u003d range it {\n\nwith\n\n    iterate :\u003d func(i iterator, bt browser.Type) {\n\nand then call `iterate` in a loop",
       "parentUuid": "34f6312c_e2ec8675",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "70a60a25d2761fc9f1bb68d12b53e6efa8ae1e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006a8eea_3f2d17a7",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-06T09:14:37Z",
+      "side": 1,
+      "message": "Sorry for misunderstanding. Done.",
+      "parentUuid": "72b3a62e_8d890c3f",
       "range": {
         "startLine": 241,
         "startChar": 2,
