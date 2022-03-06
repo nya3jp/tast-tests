@@ -39,6 +39,30 @@
       },
       "revId": "51245a749a849de0532cab2608c738c3cd87dba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aae47b0_82e9cf9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-06T20:28:15Z",
+      "side": 1,
+      "message": "Merging this to the comment similar to this.",
+      "parentUuid": "aba9d113_c095ff20",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "51245a749a849de0532cab2608c738c3cd87dba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

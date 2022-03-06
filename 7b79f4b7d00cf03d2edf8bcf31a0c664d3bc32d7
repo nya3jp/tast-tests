@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be4bd5d2_8908d6ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-06T20:28:15Z",
+      "side": 1,
+      "message": "This is a bit lengthy boilerplate to ensure there is only one primary browser window open on the system and it is ready for key inputs and use by test.\nAny cleanup suggestion?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 156
+      },
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99784c53_1aed641e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-06T20:28:15Z",
+      "side": 1,
+      "message": "Just for future discussion, is there any safe way to ensure a clean start of Lacros between tests (which is the assumptions this test is based on)?\n\nGenerally speaking it\u0027s the test\u0027s responsibility to do a cleanup and reset to the init state where it begins.\nHowever, there might still be a chance that some lacros windows opened from UI/Shelf in a previous test are not closed and let other subsequent tests expecting a clean start fail. IIUC this is likely to happen when tests use `lacrosfixt` and open lacros from UI/Shelf since the fixture doesn\u0027t reset the lacros state between tests (eg, closing all windows and wiping out user data dir)\n\nOffhand, my thought is .. it is nice to have an option whether to reset lacros between tests in lacrosfixt (default: reset) in follow-up. Any thoughts?",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
