@@ -29,6 +29,8 @@ const (
 	titleText = "CUJ title"
 	// subtitleText indicates content written as a subtitle of "Microsoft PowerPoint" or "Google Slides".
 	subtitleText = "CUJ subtitle"
+	// sheetText indicates content written as a cell of the "Microsoft Excel" or "Google Sheets".
+	sheetText = "Copy to document"
 
 	// sheetName indicates the name of the copied spreadsheet name.
 	sheetName = "sum-sample"
@@ -36,6 +38,8 @@ const (
 	// rangeOfCells indicates the sum of rows in the spreadsheet.
 	rangeOfCells = 100
 
+	// dataWaitTime indicates the default time to wait for data-related operations.
+	dataWaitTime = 2 * time.Second
 	// defaultUIWaitTime indicates the default time to wait for UI elements to appear.
 	defaultUIWaitTime = 5 * time.Second
 	// defaultUIWaitTime indicates the time to wait for some UI elements that need more time to appear.
