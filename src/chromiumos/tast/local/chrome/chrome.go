@@ -193,6 +193,31 @@ func (c *Chrome) NormalizedUser() string { return c.cfg.NormalizedUser() }
 // LacrosExtraArgs returns the extra arguments that should be added to the Lacros command line.
 func (c *Chrome) LacrosExtraArgs() []string { return c.cfg.LacrosExtraArgs() }
 
+// LacrosEnabled returns whether to enable lacros-chrome.
+func (c *Chrome) LacrosEnabled() bool { return c.cfg.LacrosEnabled() }
+
+// LacrosConfig returns the configurations used to enable and provision a Lacros browser.
+// TODO: Consider exposing the fields that are only used by tests (eg, exec path, user data dir), not the whole LacrosConfig.
+// func (c *Chrome) LacrosConfig() LacrosConfig { return c.cfg.LacrosConfig() }
+
+// EnsureLacrosReadyForLaunch waits for Lacros to be ready for use, then returns
+// the dir of lacros executable file ('chrome') and the user data dir.
+func (c *Chrome) EnsureLacrosReadyForLaunch(ctx context.Context) (string, string) {
+	if !c.cfg.LacrosEnabled() {
+		testing.ContextLog(ctx, "EnsureLacrosReadyForLaunch should be called only when chrome.LacrosEnabled is set")
+		return "", ""
+	}
+	lacrosExecPath, err := setup.EnsureLacrosReadyForLaunch(ctx, c.cfg.LacrosConfig())
+	if err != nil {
+		testing.ContextLog(ctx, "Can't find the path of lacros-chrome executable file: ", err)
+		return "", ""
+	}
+	// TODO: Consider implementing setup.LacrosUserDataDir that returns the user data dir if it could change to something other than the default location in runtime during setup.
+	lacrosUserDataDir := "/home/chronos/user/lacros"
+	testing.ContextLogf(ctx, "EnsureLacrosReadyForLaunch lacrosExecPath: %v, lacrosUserDataDir: %v", lacrosExecPath, lacrosUserDataDir)
+	return lacrosExecPath, lacrosUserDataDir
+}
+
 // DeprecatedExtDirs returns the directories holding the test extensions.
 // For reused Chrome session, deprecatedExtDirs is not set and this method will return nil.
 //
@@ -284,12 +309,32 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if cfg.LoginMode() == config.GuestLogin {
 		guestModeLogin = extension.GuestModeEnabled
 	}
+
+	// Prepare Extensions.
 	exts, err := extension.PrepareExtensions(extensionsDir, cfg, guestModeLogin)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
+	extArgs := exts.ChromeArgs()
+	var lacrosExtArgs []string
+	if cfg.LacrosEnabled() {
+		// We reuse the custom extension from the chrome package for exposing private interfaces to lacros-chrome.
+		// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
+		extDirs, err := DeprecatedPrepareExtensions()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to prepare extensions for lacros-chrome")
+		}
+		extList := strings.Join(extDirs, ",")
+		lacrosExtArgs = append(lacrosExtArgs,
+			"--remote-debugging-port=0",                   // Let Chrome choose its own debugging port.
+			"--enable-experimental-extension-apis",        // Allow Chrome to use the Chrome Automation API.
+			"--allowlisted-extension-id="+TestExtensionID, // Whitelists the test extension to access all Chrome APIs.
+			"--load-extension="+extList,                   // Load extensions.
+			"--disable-extensions-except="+extList,        // Disable extensions other than the Tast test extension.
+		)
+	}
 
-	if err := setup.RestartChromeForTesting(ctx, cfg, exts); err != nil {
+	if err := setup.RestartChromeForTesting(ctx, cfg, extArgs, lacrosExtArgs); err != nil {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
 
