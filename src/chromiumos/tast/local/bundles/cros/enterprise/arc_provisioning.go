@@ -219,7 +219,7 @@ func ensurePlayStoreNotEmpty(ctx context.Context, a *arc.ARC) error {
 	const (
 		searchBarTextStart = "Search for apps"
 		emptyPlayStoreText = "No results found."
-		serverErrorText    = "Server error"
+		serverErrorText    = "Server error|Error.*server.**"
 		tryAgainButtonText = "Try again"
 	)
 
