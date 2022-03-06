@@ -76,7 +76,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	cleanUpResourceCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-	defer app.Cleanup(cleanUpResourceCtx)
+	defer app.Cleanup(cleanUpResourceCtx, sheetName)
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return err != nil }, cr, "ui_dump")
 

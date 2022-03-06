@@ -36,12 +36,12 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "plus",
-				Timeout: 30 * time.Minute,
+				Timeout: 15 * time.Minute,
 				Val:     cuj.Plus,
 			},
 			{
 				Name:      "premium",
-				Timeout:   30 * time.Minute,
+				Timeout:   15 * time.Minute,
 				ExtraData: []string{"productivity_cuj_voice_to_text_en.wav"},
 				Val:       cuj.Premium,
 			},

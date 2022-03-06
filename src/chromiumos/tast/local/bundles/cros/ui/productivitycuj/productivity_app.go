@@ -29,6 +29,8 @@ const (
 	titleText = "CUJ title"
 	// subtitleText indicates content written as a subtitle of "Microsoft PowerPoint" or "Google Slides".
 	subtitleText = "CUJ subtitle"
+	// sheetText indicates content written as a cell of the "Microsoft Excel" or "Google Sheets".
+	sheetText = "Copy to document"
 
 	// sheetName indicates the name of the copied spreadsheet name.
 	sheetName = "sum-sample"
@@ -36,6 +38,8 @@ const (
 	// rangeOfCells indicates the sum of rows in the spreadsheet.
 	rangeOfCells = 100
 
+	// dataWaitTime indicates the default time to wait for data-related operations.
+	dataWaitTime = 2 * time.Second
 	// defaultUIWaitTime indicates the default time to wait for UI elements to appear.
 	defaultUIWaitTime = 5 * time.Second
 	// defaultUIWaitTime indicates the time to wait for some UI elements that need more time to appear.
@@ -57,7 +61,7 @@ type ProductivityApp interface {
 	SwitchToOfflineMode(ctx context.Context) error
 	UpdateCells(ctx context.Context) error
 	VoiceToTextTesting(ctx context.Context, expectedText string, playAudio action.Action) error
-	Cleanup(ctx context.Context) error
+	Cleanup(ctx context.Context, sheetName string) error
 }
 
 // dialogInfo holds the information of a dialog that will be encountered and needs to be handled during testing.
