@@ -370,6 +370,10 @@ func (a *App) CloseWithDebugParams(ctx context.Context, params DebugParams) (ret
 		return nil
 	}
 
+	cleanupCtx := ctx
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
 	defer func(ctx context.Context) {
 		reportOrLogError := func(err error) {
 			if retErr == nil {
@@ -398,7 +402,7 @@ func (a *App) CloseWithDebugParams(ctx context.Context, params DebugParams) (ret
 		testing.ContextLog(ctx, "CCA closed")
 		a.conn = nil
 		a.appWindow = nil
-	}(ctx)
+	}(cleanupCtx)
 
 	if err := a.conn.Eval(ctx, "Tast.removeCacheData()", nil); err != nil {
 		return errors.Wrap(err, "failed to clear cached data in local storage")
