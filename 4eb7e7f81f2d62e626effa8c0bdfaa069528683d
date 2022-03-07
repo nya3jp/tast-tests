@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff27696_7cab224f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-07T17:05:35Z",
+      "side": 1,
+      "message": "In case you want to check for a particular error, you can do it by doing:\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/storage/util/test_blocks.go?l\u003d302",
+      "range": {
+        "startLine": 10,
+        "startChar": 47,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "4eb7e7f81f2d62e626effa8c0bdfaa069528683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb21bd42_4ab3ee00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-07T17:05:35Z",
+      "side": 1,
+      "message": "+2 % nit\n\nplease, wait for your team\u0027s +2 as well.",
+      "revId": "4eb7e7f81f2d62e626effa8c0bdfaa069528683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892fbc5f_e2dd87b9",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-07T17:05:35Z",
+      "side": 1,
+      "message": "nit: I\u0027d invert the \"if then else\"... If there is an error return, else do the log.\n\ne.g:\n\n  if err :\u003d .... ; err !\u003d nil {\n     return ...\n  } else {\n     ContextLog(...)\n  }",
+      "range": {
+        "startLine": 173,
+        "startChar": 116,
+        "endLine": 173,
+        "endChar": 128
+      },
+      "revId": "4eb7e7f81f2d62e626effa8c0bdfaa069528683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
