@@ -12,10 +12,11 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/localstate"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/testing"
 )
@@ -59,7 +60,7 @@ func (*AdbSideloadService) SetRequestAdbSideloadFlag(ctx context.Context, reques
 	// TODO : Convert the polling function to an Explicit write to the DUT's disk
 	testing.ContextLog(ctx, "Waiting for Enable ADB Sideloading flag to be written on DUT's Local State json")
 	testing.Poll(ctx, func(ctx context.Context) error {
-		if err := testexec.CommandContext(ctx, "grep", "-c", "'EnableAdbSideloadingRequested'", "/home/chronos/Local State").Run(); err != nil {
+		if _, err := localstate.UnmarshalPref(browser.TypeAsh, "EnableAdbSideloadingRequested"); err != nil {
 			return err
 		}
 		return nil
