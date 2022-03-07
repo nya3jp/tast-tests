@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91c0f6f2_e3ae21fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_array_buffer_unrestricted_access_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-03-07T14:39:36Z",
+      "side": 1,
+      "message": "I updated this CL to test on Ash as well, but it isn\u0027t working. The first two table entries are failing on Ash, and from what I can tell, it looks like the policy values I set are \"lagging behind\" for some reason: The first test which enables the policy, behaves as if the policy is not enabled. The second test which disables the policy, behaves like the policy is enabled, and the last test, which unsets the policy, behaves as if the policy is disabled.\nI am guessing this is because the policy has `Dynamic Policy Refresh : No`.\n\nI managed to make it work by not using `policyutil` though, see https://crrev.com/c/3506367 for the diff. Please let me know what you think about that.",
+      "parentUuid": "d5fd49fb_87eefe24",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "a37622119a5a1b151904238e8e3cff378255e1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "231b3259_602c442f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_array_buffer_unrestricted_access_allowed.go",
         "patchSetId": 1
