@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232da3fe_acf60375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/jit_test.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-07T13:23:09Z",
+      "side": 1,
+      "message": "Yes that is clever, mangling is gone now.",
+      "parentUuid": "c2f172b4_613371a4",
+      "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83267556_e202a60a",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-07T12:46:54Z",
       "side": 1,
       "message": "nit: we don\u0027t actually need that in the global scope, right? It can be a local variable in the `try` block below?",
+      "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5dacab_87524a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/jit_test.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-07T13:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83267556_e202a60a",
       "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df222c9_b25b5b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/jit_test.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-07T13:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789183ba_49444225",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e632c82_47ef8d20",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-03-07T12:46:54Z",
       "side": 1,
       "message": "nit: We only reach this code if there was an exception raised above, right? Wouldn\u0027t that intent be somewhat clearer if we put this statement in the catch block?",
+      "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf99be80_feb49e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/jit_test.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-07T13:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e632c82_47ef8d20",
       "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
