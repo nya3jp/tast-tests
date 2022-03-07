@@ -162,7 +162,7 @@ func (t *tab) close() error {
 func (t *tab) waitForQuiescence(ctx context.Context, timeout time.Duration) error {
 	start := time.Now()
 	if err := webutil.WaitForQuiescence(ctx, t.conn, timeout); err != nil {
-		if ctx.Err() != context.DeadlineExceeded {
+		if !errors.Is(ctx.Err(), context.DeadlineExceeded) {
 			return errors.Wrap(err, "failed to wait for tab quiesce")
 		}
 		testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
