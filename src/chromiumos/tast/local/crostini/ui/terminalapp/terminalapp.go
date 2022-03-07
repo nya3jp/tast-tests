@@ -82,8 +82,8 @@ func (ta *TerminalApp) WaitForPrompt() uiauto.Action {
 	return ta.ui.WithTimeout(3 * time.Minute).WaitUntilExists(prompt)
 }
 
-// clickShelfMenuItem right clicks the terminal app icon on the shelf and left click the specified menu item.
-func (ta *TerminalApp) clickShelfMenuItem(itemNameRegexp string) uiauto.Action {
+// ClickShelfMenuItem right clicks the terminal app icon on the shelf and left click the specified menu item.
+func (ta *TerminalApp) ClickShelfMenuItem(itemNameRegexp string) uiauto.Action {
 	return func(ctx context.Context) error {
 		revert, err := ash.EnsureTabletModeEnabled(ctx, ta.tconn, false)
 		if err != nil {
@@ -143,7 +143,7 @@ func (ta *TerminalApp) RestartCrostini(keyboard *input.KeyboardEventWriter, cont
 			return errors.Wrap(err, "failed to connect to restarted container")
 		}
 
-		if err := ta.clickShelfMenuItem("Close")(ctx); err != nil {
+		if err := ta.ClickShelfMenuItem("Close")(ctx); err != nil {
 			return errors.Wrap(err, "failed to close Terminal app")
 		}
 
@@ -154,7 +154,7 @@ func (ta *TerminalApp) RestartCrostini(keyboard *input.KeyboardEventWriter, cont
 // ShutdownCrostini shuts down Crostini.
 func (ta *TerminalApp) ShutdownCrostini(cont *vm.Container) uiauto.Action {
 	return func(ctx context.Context) error {
-		if err := ta.clickShelfMenuItem("Shut down Linux")(ctx); err != nil {
+		if err := ta.ClickShelfMenuItem("Shut down Linux")(ctx); err != nil {
 			return errors.Wrap(err, "failed to shutdown crostini")
 		}
 
@@ -194,6 +194,6 @@ func (ta *TerminalApp) Exit(keyboard *input.KeyboardEventWriter) uiauto.Action {
 // Close closes the Terminal App through clicking Close on shelf context menu.
 func (ta *TerminalApp) Close() uiauto.Action {
 	return uiauto.Combine("close Terminal window",
-		ta.clickShelfMenuItem("Close"),
+		ta.ClickShelfMenuItem("Close"),
 		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
 }

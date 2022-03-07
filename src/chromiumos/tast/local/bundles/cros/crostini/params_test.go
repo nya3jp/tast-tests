@@ -18,6 +18,7 @@ import (
 )
 
 var testFilesFix = []string{
+	"app_gedit_install_uninstall.go",
 	"audio_basic.go",
 	"audio_playback_configurations.go",
 	"basic.go",
