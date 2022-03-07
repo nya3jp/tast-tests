@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d73619b_3540c22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-07T09:38:43Z",
+      "side": 1,
+      "message": "could you not check this condition on runtime, and instead could you represent this in HardwareDeps?",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 1
+      },
+      "revId": "8d4797a5134a40f29f5bf18fa54bda651363d79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
