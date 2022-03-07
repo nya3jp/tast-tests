@@ -22,8 +22,7 @@ import (
 )
 
 const (
-	userVar         = "arc.PlayBillingUser"
-	passVar         = "arc.PlayBillingPass"
+	accountPool     = "ui.gaiaPoolDefault"
 	assetLinksVar   = "arc.PlayBillingAssetLinks"
 	apk             = "ArcPlayBillingTestPWA_20220210.apk"
 	icon            = "play_billing_icon.png"
@@ -52,19 +51,10 @@ func init() {
 		Desc:     "The fixture starts chrome with ARC supported used for Play Billing tests",
 		Contacts: []string{"benreich@chromium.org", "jshikaram@chromium.org"},
 		Impl: arc.NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			userID, ok := s.Var(userVar)
-			if !ok {
-				s.Fatalf("Runtime variable %s is not provided", userVar)
-			}
-			userPasswd, ok := s.Var(passVar)
-			if !ok {
-				s.Fatalf("Runtime variable %s is not provided", passVar)
-			}
-
 			return []chrome.Option{
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 				chrome.ARCSupported(),
-				chrome.GAIALogin(chrome.Creds{User: userID, Pass: userPasswd})}, nil
+				chrome.GAIALoginPool(s.RequiredVar(accountPool))}, nil
 		}),
 		// Add two minutes to setup time to allow extra Play Store UI operations.
 		SetUpTimeout: chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
@@ -73,7 +63,7 @@ func init() {
 		// Or there might be error of "context deadline exceeded".
 		PostTestTimeout: 5 * time.Second,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{userVar, passVar},
+		Vars:            []string{accountPool},
 	})
 
 	testing.AddFixture(&testing.Fixture{
