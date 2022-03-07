@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdf91f0_e52f3054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-07T07:18:51Z",
+      "side": 1,
+      "message": "Fixed the comments mentioned in parent patch.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3198102",
+      "revId": "4a9f57eccecd29d31792f8df2505d51f5845990a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
