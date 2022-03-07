@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dbaaa5d_0a9aa18b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-07T23:27:55Z",
+      "side": 1,
+      "message": "Because since patch 4, the two test files are defined twice in params_test.go:\n\nvar testFiles \u003d []string{\n\t\"launch_browser.go\",\n\t\"verify_app_wayland.go\",\n}\n\nbecause of this change: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3496795/3/src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+      "parentUuid": "0fbf26e9_89e34409",
+      "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9daf35e1_103d46fc",
