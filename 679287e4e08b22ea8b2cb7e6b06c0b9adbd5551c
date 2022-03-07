@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787cb54d_4339cc84",
+        "filename": "src/chromiumos/tast/common/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-03-07T15:46:40Z",
+      "side": 1,
+      "message": "nit: I think we should try ccd_gsc first, then ccd_cr50. As I recall ccd_gsc will work for cr50 as well, so we should always succeed with ccd_gsc.",
+      "range": {
+        "startLine": 932,
+        "startChar": 2,
+        "endLine": 933,
+        "endChar": 9
+      },
+      "revId": "679287e4e08b22ea8b2cb7e6b06c0b9adbd5551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
