@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3296e038_8c9df21f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-07T20:44:37Z",
+      "side": 1,
+      "message": "What do you mean by \u0027ditto\u0027 in all of these comments?",
+      "parentUuid": "53d0e64f_fed23bdd",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 60
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6b1617a_123ed319",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 40
@@ -173,6 +197,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59cf5daf_fd03468d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-07T20:44:37Z",
+      "side": 1,
+      "message": "It\u0027s probably better to continue so I\u0027ll change it do that.",
+      "parentUuid": "07912924_d29b8d51",
+      "range": {
+        "startLine": 194,
+        "startChar": 17,
+        "endLine": 194,
+        "endChar": 36
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e1be922_c71665db",
@@ -265,6 +313,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "874199da_393a621a",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-07T20:44:37Z",
+      "side": 1,
+      "message": "Sounds good to me but I\u0027ll change it anyways to make it more clear.",
+      "parentUuid": "62bb8046_487fc4d9",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 80
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfab9c8a_24f3bcf2",
@@ -278,6 +350,30 @@
       "writtenOn": "2022-03-07T00:01:08Z",
       "side": 1,
       "message": "Errors should not be ignored for debugging purpose. Maybe print it out.",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 35
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e50415_83f9dd89",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-07T20:44:37Z",
+      "side": 1,
+      "message": "Technically when the kill commands error it just means that no process was killed, which is still a success here. I\u0027ve added a confirmation of the kill to the KillAll functions in a separate CL and adjusted the logic here to actually track the errors now since after that change the errors only occur if something goes wrong.",
+      "parentUuid": "bfab9c8a_24f3bcf2",
       "range": {
         "startLine": 248,
         "startChar": 1,
@@ -554,6 +650,30 @@
       "writtenOn": "2022-03-07T00:01:08Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 1010,
+        "startChar": 3,
+        "endLine": 1010,
+        "endChar": 85
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac19499_1b96e50d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-07T20:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f294c86_256b9359",
       "range": {
         "startLine": 1010,
         "startChar": 3,
