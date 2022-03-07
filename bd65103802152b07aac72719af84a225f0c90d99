@@ -22,6 +22,30 @@
       },
       "revId": "bd65103802152b07aac72719af84a225f0c90d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b545fe_c93705c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-03-07T23:54:21Z",
+      "side": 1,
+      "message": "Seconded.",
+      "parentUuid": "e8607192_52fc20ac",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "bd65103802152b07aac72719af84a225f0c90d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
