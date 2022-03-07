@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb9f4d0_e646c1b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-03-07T15:27:18Z",
+      "side": 1,
+      "message": "what\u0027s CDP entries?",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0235bf6_d215d4c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-03-07T15:27:18Z",
+      "side": 1,
+      "message": "is `list.json` clear enough to say what this file contains? Can we use more meaningful name?",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
