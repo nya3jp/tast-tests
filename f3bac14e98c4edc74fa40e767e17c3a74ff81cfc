@@ -39,6 +39,30 @@
       },
       "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20282c39_1a1715ab",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-07T08:10:12Z",
+      "side": 1,
+      "message": "Are you saying redefining browser.Type or passing three possible strings to this func? If the first one, I think it is our of scope of this cl. If the second one, I think it will make the code pretty messy as testcase.val only take string then we need to cast browser.Type back to string and check more. I\u0027d suggest we just leave as it is now.",
+      "parentUuid": "94634e98_1592f8e7",
+      "range": {
+        "startLine": 241,
+        "startChar": 30,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
