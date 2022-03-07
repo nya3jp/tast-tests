@@ -8,12 +8,12 @@ package uidetection
 import (
 	"context"
 
+	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/metadata"
 
 	"chromiumos/tast/errors"
-	pb "chromiumos/tast/local/uidetection/api"
 )
 
 type uiDetector struct {
