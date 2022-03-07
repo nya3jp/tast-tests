@@ -24,9 +24,10 @@ var (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SuspendStressInGuestMode,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Suspend Stress test memory check in GuestMode",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"power.SuspendStressInGuestMode.itr"},
 		Timeout:      5 * time.Hour,
