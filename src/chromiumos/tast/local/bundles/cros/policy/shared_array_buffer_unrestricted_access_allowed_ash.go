@@ -16,31 +16,28 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SharedArrayBufferUnrestrictedAccessAllowed,
+		Func:         SharedArrayBufferUnrestrictedAccessAllowedAsh,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checking if SharedArrayBuffer is available in non-cross-origin-isolated contexts depending on the value of this policy",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "lacros"},
+		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.LacrosPolicyLoggedIn,
+		Fixture:      fixture.FakeDMS,
 	})
 }
 
-// SharedArrayBufferUnrestrictedAccessAllowed tests the SharedArrayBufferUnrestrictedAccessAllowed policy in Lacros.
-func SharedArrayBufferUnrestrictedAccessAllowed(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+// SharedArrayBufferUnrestrictedAccessAllowedAsh tests the SharedArrayBufferUnrestrictedAccessAllowed policy in Ash.
+func SharedArrayBufferUnrestrictedAccessAllowedAsh(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// Reserve 10 seconds for cleanup.
@@ -85,22 +82,29 @@ func SharedArrayBufferUnrestrictedAccessAllowed(ctx context.Context, s *testing.
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			// Perform cleanup.
-			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-				s.Fatal("Failed to clean up: ", err)
+			// The SharedArrayBufferUnrestrictedAccessAllowed policy does not support
+			// dynamic refresh, which means that we need to restart the browser for
+			// every subtest. This works out of the box for Lacros, but requires us
+			// to manually close and reopen Ash Chrome.
+			pb := fakedms.NewPolicyBlob()
+			pb.AddPolicies([]policy.Policy{param.policy})
+			if err := fdms.WritePolicyBlob(pb); err != nil {
+				s.Fatal("Failed to write policies to FakeDMS: ", err)
 			}
 
-			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
-				s.Fatal("Failed to update policies: ", err)
-			}
-
-			// Setup browser based on the chrome type.
-			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), browser.TypeLacros, nonIsolatedURL)
+			// Start a Chrome instance that will fetch policies from the FakeDMS.
+			cr, err := chrome.New(ctx,
+				chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+				chrome.DMSPolicy(fdms.URL))
 			if err != nil {
-				s.Fatal("Failed to open the browser: ", err)
+				s.Fatal("Chrome login failed: ", err)
 			}
-			defer closeBrowser(cleanupCtx)
+			defer cr.Close(cleanupCtx)
+
+			conn, err := cr.NewConn(ctx, nonIsolatedURL)
+			if err != nil {
+				s.Fatal("Failed to connect to the browser: ", err)
+			}
 			defer conn.Close()
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
