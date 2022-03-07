@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bfebf24_ea1d9cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-07T22:38:13Z",
+      "side": 1,
+      "message": "emm, QuickCheckCUJ uses `loggedInToCUJUser`/`loggedInToCUJUserLacros` fixture. These 2 fixtures use `prepareForCUJ` as parent fixture [1] and `prepareForCUJ` would do cpu wait in its PreTest.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go;rcl\u003d13ed5f1efb70afae2996aec0fbb03d28eecb6afb;l\u003d59",
+      "revId": "c9274d0d7d0ca0f0ab588a3c51d2add4603362c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
