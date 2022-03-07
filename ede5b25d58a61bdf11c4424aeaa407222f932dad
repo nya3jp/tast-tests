@@ -22,6 +22,30 @@
       },
       "revId": "ede5b25d58a61bdf11c4424aeaa407222f932dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e138d5_6f35fcc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-07T17:30:05Z",
+      "side": 0,
+      "message": "Is it necessary? The individuals we would add here are already part of this group.",
+      "parentUuid": "f208474b_724d7229",
+      "range": {
+        "startLine": 86,
+        "startChar": 26,
+        "endLine": 86,
+        "endChar": 31
+      },
+      "revId": "ede5b25d58a61bdf11c4424aeaa407222f932dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
