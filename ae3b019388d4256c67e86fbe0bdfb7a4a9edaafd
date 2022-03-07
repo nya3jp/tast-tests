@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d935f46_cd70ca95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/jit_test.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1536067
+      },
+      "writtenOn": "2022-03-07T13:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f3bc056_842d2f57",
+      "revId": "ae3b019388d4256c67e86fbe0bdfb7a4a9edaafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2f172b4_613371a4",
