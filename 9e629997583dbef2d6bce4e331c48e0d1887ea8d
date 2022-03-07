@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b320d9_7c74d515",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-07T16:07:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4341702b_0935aab0",
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad0051e4_b98a56b4",
@@ -137,6 +155,30 @@
       "side": 1,
       "message": "it will be removed once the new dbus property/signal is ready",
       "parentUuid": "ad0051e4_b98a56b4",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c82d9eb_e34e2703",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-07T16:07:23Z",
+      "side": 1,
+      "message": "Not sure why that means we shouldn\u0027t use testing.Poll here though. You\u0027re basically reimplementing it here, but without the ability to specify an explicit timeout or honor the timeout specified by `ctx`",
+      "parentUuid": "b829772d_7a6443e0",
       "range": {
         "startLine": 76,
         "startChar": 0,
