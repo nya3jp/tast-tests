@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d3f813_2f4f91e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-07T16:40:51Z",
+      "side": 1,
+      "message": "Thanks for the heads up. This can wait. will be able to merge your CL once landed.",
+      "parentUuid": "0b500e86_d6c3ae3c",
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be4bd5d2_8908d6ac",
@@ -65,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd24162d_cde10b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-07T16:40:51Z",
+      "side": 1,
+      "message": "Yes, we could do that although it means more lengthy boilerplate. Merging to the comment above that looks similar.",
+      "parentUuid": "aa446513_16b9e4ad",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 156
+      },
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99784c53_1aed641e",
@@ -102,6 +144,30 @@
       "side": 1,
       "message": "If this is the common pattern, maybe introducing ash.CloseAllWindows() and call it at the beginning of each tests to make sure all windows are gone?",
       "parentUuid": "99784c53_1aed641e",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a3ae35_c29d1c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-07T16:40:51Z",
+      "side": 1,
+      "message": "That\u0027s one way to address this for sure.\nWhat I was looking for is like some consistency in resetting behavior in fixture as compared to ash-chrome currently being reset by `cr.ResetState` closing all windows and resetting resources associated between tests, which hasn\u0027t existed for lacros fixture. This could be served as a safety net to prevent this failure (caused by test order-dependent + improper test cleanup) from happening.\n\nI agree it is good to ensure all windows are closed at the beginning of this pattern with ash.CloseAllWindows(). will do in the next patchset.",
+      "parentUuid": "1b18cb58_cfe42f22",
       "range": {
         "startLine": 95,
         "startChar": 1,
