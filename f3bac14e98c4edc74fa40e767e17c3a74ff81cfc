@@ -63,6 +63,30 @@
       },
       "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1581d93a_b40737b2",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-07T08:15:06Z",
+      "side": 1,
+      "message": "I think you should add a new 3-state enum/type/whatever so you can communicate to this function which of these three things you need:\n - Pass through Val unchanged, use non-lacros fixtures\n - Set Val to browser.TypeAsh, use non-lacros fixtures\n - Set Val to browser.TypeLacros, use lacros fixtures\n\nThis is messy, but this is just a reflection of the intrinsic messiness of using Val multiple purposes at once",
+      "parentUuid": "20282c39_1a1715ab",
+      "range": {
+        "startLine": 241,
+        "startChar": 30,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
