@@ -40,7 +40,7 @@ func init() {
 		}, {
 			Name:      "stress",
 			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
-			Val:       100,
+			Val:       25,
 			Timeout:   22 * time.Minute,
 		}},
 	})
