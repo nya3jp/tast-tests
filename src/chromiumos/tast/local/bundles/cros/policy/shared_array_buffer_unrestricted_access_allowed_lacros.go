@@ -25,7 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SharedArrayBufferUnrestrictedAccessAllowed,
+		Func:         SharedArrayBufferUnrestrictedAccessAllowedLacros,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checking if SharedArrayBuffer is available in non-cross-origin-isolated contexts depending on the value of this policy",
 		Contacts: []string{
@@ -38,8 +38,8 @@ func init() {
 	})
 }
 
-// SharedArrayBufferUnrestrictedAccessAllowed tests the SharedArrayBufferUnrestrictedAccessAllowed policy.
-func SharedArrayBufferUnrestrictedAccessAllowed(ctx context.Context, s *testing.State) {
+// SharedArrayBufferUnrestrictedAccessAllowedLacros tests the SharedArrayBufferUnrestrictedAccessAllowed policy in Lacros.
+func SharedArrayBufferUnrestrictedAccessAllowedLacros(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
