@@ -259,6 +259,30 @@
       },
       "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bd9203_659d0dbb",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-07T20:14:42Z",
+      "side": 1,
+      "message": "I still think this should be fixed to use testing.Poll otherwise we may miss deferred cleanup steps in callers and I personally don\u0027t want to get into the habit of committing only-mostly correct things for the sake of expediency.",
+      "parentUuid": "d3d4f72a_137a1e65",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
