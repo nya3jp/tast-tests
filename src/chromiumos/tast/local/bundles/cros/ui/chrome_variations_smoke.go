@@ -14,6 +14,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -42,7 +44,6 @@ func init() {
 
 // Constants for the path to CrOS' Local State file and the pref names for controlling the variations config.
 const (
-	localStatePath     = "/home/chronos/Local State"
 	compressedSeedPref = "variations_compressed_seed"
 	seedSignaturePref  = "variations_seed_signature"
 )
@@ -55,31 +56,11 @@ type variationsSeedData struct {
 
 // readVariationsSeed reads the current variations seed from the Local State file.
 func readVariationsSeed(ctx context.Context) (*variationsSeedData, error) {
-	localStateFile, err := os.Open(localStatePath)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to open Local State file")
+	var seed variationsSeedData
+	if err := localstate.Unmarshal(browser.TypeAsh, &seed); err != nil {
+		return nil, err
 	}
-	defer localStateFile.Close()
-
-	var localState interface{}
-	b, err := ioutil.ReadAll(localStateFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read Local State file contents")
-	}
-	if err := json.Unmarshal(b, &localState); err != nil {
-		return nil, errors.Wrap(err, "failed to unmarshal Local State")
-	}
-	localStateMap := localState.(map[string]interface{})
-
-	seed, ok := localStateMap[compressedSeedPref].(string)
-	if !ok {
-		return nil, errors.Errorf("%v field not found in Local State", compressedSeedPref)
-	}
-	signature, ok := localStateMap[seedSignaturePref].(string)
-	if !ok {
-		return nil, errors.Errorf("%v field not found in Local State", seedSignaturePref)
-	}
-	return &variationsSeedData{CompressedSeed: seed, SeedSignature: signature}, nil
+	return &seed, nil
 }
 
 // injectVariationsSeed injects the given seed into Local State. The seed will be loaded and take effect on the next run of Chrome (i.e. next user session).

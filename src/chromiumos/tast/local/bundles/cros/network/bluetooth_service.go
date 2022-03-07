@@ -7,16 +7,16 @@ package network
 import (
 	"context"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -69,16 +69,13 @@ func (s *BluetoothService) SetBluetoothPowered(ctx context.Context, req *network
 
 	// Verify that the boot setting is set properly in the Local State.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		command := "jq"
-		args := []string{
-			".ash.system.bluetooth.adapter_enabled",
-			"/home/chronos/Local State",
-		}
-		output, err := testexec.CommandContext(ctx, command, args...).Output(testexec.DumpLogOnError)
+		enabledVal, err := localstate.UnmarshalPath(browser.TypeAsh, "ash.system.bluetooth.adapter_enabled")
 		if err != nil {
-			return err
-		} else if strings.TrimSpace(string(output)) != strconv.FormatBool(req.Powered) {
-			return errors.Errorf("ash Bluetooth preference not updated properly: wanted %s, got %s", strconv.FormatBool(req.Powered), string(output))
+			return errors.Wrap(err, "failed to extract bluetooth status from Local State")
+		}
+		enabled, ok := enabledVal.(bool)
+		if !ok || (enabled != req.Powered) {
+			return errors.Errorf("ash Bluetooth preference not updated properly: wanted %v, got %v", req.Powered, enabledVal)
 		}
 		return nil
 	}, &testing.PollOptions{
