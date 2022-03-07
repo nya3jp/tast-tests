@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e657b83_7a0650fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228344
+      },
+      "writtenOn": "2022-03-07T11:42:15Z",
+      "side": 1,
+      "message": "Thanks! This looks good to me % one comment.\n\nAlso, for my own education, what does this bring, compared to the existing C++ tests? See:\nhttps://source.chromium.org/search?q\u003dSharedArrayBufferUnrestrictedAccessAllowed%20-file:out\u0026sq\u003d\u0026ss\u003dchromium%2Fchromium%2Fsrc",
+      "revId": "aab18fb2ef47c0d6170fdf53a23d90be268deb76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dbe68d1_967c22a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_array_buffer_unrestricted_access_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1228344
+      },
+      "writtenOn": "2022-03-07T11:42:15Z",
+      "side": 1,
+      "message": "You probably don\u0027t need this, given L123-L125 expectations.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 5
+      },
+      "revId": "aab18fb2ef47c0d6170fdf53a23d90be268deb76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
