@@ -61,7 +61,6 @@ func ARCAccountPicker(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "arc_account_picker")
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
@@ -69,6 +68,8 @@ func ARCAccountPicker(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to do cleanup: ", err)
 		}
 	}(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "arc_account_picker")
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC

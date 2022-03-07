@@ -64,7 +64,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "add_profile_account_picker")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "add_profile_account_picker")
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 

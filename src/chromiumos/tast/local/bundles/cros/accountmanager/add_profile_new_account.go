@@ -64,7 +64,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "add_profile_new_account")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "add_profile_new_account")
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
