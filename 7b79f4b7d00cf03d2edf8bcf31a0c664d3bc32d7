@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b500e86_d6c3ae3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-07T09:22:17Z",
+      "side": 1,
+      "message": "Note that this conflicts with my pending CL that removes the last parameter (I don\u0027t mind it landing first though).",
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be4bd5d2_8908d6ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
         "patchSetId": 3
@@ -14,6 +31,30 @@
       "writtenOn": "2022-03-06T20:28:15Z",
       "side": 1,
       "message": "This is a bit lengthy boilerplate to ensure there is only one primary browser window open on the system and it is ready for key inputs and use by test.\nAny cleanup suggestion?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 156
+      },
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa446513_16b9e4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-07T09:22:17Z",
+      "side": 1,
+      "message": "Could you do something like CloseAllWindows + Launch + WaitForWindow?",
+      "parentUuid": "be4bd5d2_8908d6ac",
       "range": {
         "startLine": 80,
         "startChar": 1,
