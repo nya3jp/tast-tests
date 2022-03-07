@@ -50,6 +50,7 @@ func getLastLine(s string) string {
 type CryptohomeClient struct {
 	binary               *cryptohomeBinary
 	cryptohomePathBinary *cryptohomePathBinary
+	daemonController     *DaemonController
 }
 
 // NewCryptohomeClient creates a new CryptohomeClient.
@@ -57,6 +58,7 @@ func NewCryptohomeClient(r CmdRunner) *CryptohomeClient {
 	return &CryptohomeClient{
 		binary:               newCryptohomeBinary(r),
 		cryptohomePathBinary: newCryptohomePathBinary(r),
+		daemonController:     NewDaemonController(r),
 	}
 }
 
@@ -177,29 +179,14 @@ func (u *CryptohomeClient) IsMounted(ctx context.Context) (bool, error) {
 
 // Unmount unmounts the vault for username.
 func (u *CryptohomeClient) Unmount(ctx context.Context, username string) (bool, error) {
-	// In test environments, the time between remove and mount is sometimes short
-	// enough that chapsd is still writing to the user cryptohome at removal.
-	// Terminate pkcs11 services.
-	_, err := u.binary.pkcs11Terminate(ctx, username)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to terminate pkcs11 services")
-	}
-
-	err = u.binary.killSessionHolders(ctx, "--file_holders")
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to kill processes holding files open")
-		return false, errors.Wrap(err, "failed to unmount")
+	// Restart the UI to make sure nothing is still using cryptohome.
+	if err := u.daemonController.Restart(ctx, UIDaemon); err != nil {
+		return false, errors.Wrap(err, "failed to restart the UI")
 	}
 
 	out, err := u.binary.unmount(ctx, username)
 	if err != nil {
 		testing.ContextLogf(ctx, "Unmount command failed for %q with: %q", username, string(out))
-		return false, errors.Wrap(err, "failed to unmount")
-	}
-
-	err = u.binary.killSessionHolders(ctx, "--mount_holders")
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to kill processes holding mounts open")
 		return false, errors.Wrap(err, "failed to unmount")
 	}
 
