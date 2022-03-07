@@ -1,0 +1,567 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94fbb8f6_2f8d8db2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "LGTM from tast owner perspective % nits",
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d0e64f_fed23bdd",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 60
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b1617a_123ed319",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 60
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a14022_b13e50d5",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 44
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149404d2_edc14a79",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 47
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e9944b_9fb05b15",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 21
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d55815_0eb433b8",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07912924_d29b8d51",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "Just curious: Should this return on the first error or continue?",
+      "range": {
+        "startLine": 194,
+        "startChar": 17,
+        "endLine": 194,
+        "endChar": 36
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1be922_c71665db",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 74
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803f3449_8bf1dda9",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 64
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62bb8046_487fc4d9",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "btw, this does not sound to be a sentence.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 80
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c338d2f_c4de8e15",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 80
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfab9c8a_24f3bcf2",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "Errors should not be ignored for debugging purpose. Maybe print it out.",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 35
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43292b0_7ed92438",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 49
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d031ede_25abd17e",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 18
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1f42c4_ec4ca50f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 78
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24720ee_0930fa2d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 36
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cc38e1_43f5d5d9",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 71
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3369182_494f308d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 31
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd4b38b_f7dac138",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 45
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5084c40_e4be6b86",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 58
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a76fbe_e01caf8b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 31
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0205485f_0eb69c2d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 31
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fcbb83a_fc067fa9",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 31
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f294c86_256b9359",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-07T00:01:08Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 1010,
+        "startChar": 3,
+        "endLine": 1010,
+        "endChar": 85
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
