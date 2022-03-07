@@ -7,12 +7,12 @@ package lacros
 import (
 	"context"
 	"os"
-	"strings"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -193,18 +193,13 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 		return nil, err
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// TODO(neis): Provide a common function for Local State query
-		// that does not use external tools, and use it here and elsewhere.
-		command := "jq"
-		args := []string{
-			".lacros.profile_migration_completed_for_user[\"" + userHash + "\"]",
-			"/home/chronos/Local State",
-		}
-		output, err := testexec.CommandContext(ctx, command, args...).Output(testexec.DumpLogOnError)
+		completedVal, err := localstate.UnmarshalPref(browser.TypeAsh, "lacros.profile_migration_completed_for_user")
 		if err != nil {
 			return err
-		} else if strings.TrimSpace(string(output)) != "true" {
-			return errors.Errorf("profile migration not completed, got %s", string(output))
+		}
+		completed, ok := usersCompletedVal.(map[string]bool)
+		if !ok || !completed[userHash] {
+			return errors.New("profile migration incomplete")
 		}
 		return nil
 	}, nil); err != nil {
