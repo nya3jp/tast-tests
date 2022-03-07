@@ -175,6 +175,30 @@
       },
       "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4501f3_7c75e638",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-07T13:52:52Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "a5e17984_b739f4e8",
+      "range": {
+        "startLine": 241,
+        "startChar": 30,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
