@@ -326,7 +326,11 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 		flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
 		switchMode = vkbCtx.ui.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
-			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder)),
+			// Switching to float VK is lagging (b/223081262).
+			// Using long interval to check VK locationed.
+			vkbCtx.ui.LeftClickUntil(flipButtonFinder,
+				vkbCtx.ui.WithTimeout(10*time.Second).WithInterval(2*time.Second).WaitForLocation(DragPointFinder),
+			),
 		)
 	} else {
 		actionName = "Switch VK to dock mode"
