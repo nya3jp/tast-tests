@@ -36,7 +36,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "cancel",
