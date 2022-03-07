@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e371d0_bc2fccd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-07T09:10:28Z",
+      "side": 1,
+      "message": "Seems like there\u0027s no special reasons to run them in poll. Thank you for adding the comment.\n\nCould you not run these in poll?\nIf you expect that confirm button is displayed with delay, could you wait for it, and click it once?\n\nAlso, as for activation of the tab, could you wait an appropriate condition, then activate it once?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "deca8dd5ce096b67ca5630085bffb5cb3e246d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b695a8d1_72b2b35c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-07T09:10:28Z",
+      "side": 1,
+      "message": "new test should not have \"Unknown\" value. Could you set an appropriate state?",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "deca8dd5ce096b67ca5630085bffb5cb3e246d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
