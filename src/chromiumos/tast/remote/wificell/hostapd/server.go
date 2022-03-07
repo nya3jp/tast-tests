@@ -40,7 +40,19 @@ const (
 
 // KillAll kills all running hostapd on host, useful for environment setup/cleanup.
 func KillAll(ctx context.Context, host *ssh.Conn) error {
-	return host.CommandContext(ctx, "killall", hostapdCmd).Run()
+	cmd := hostapdCmd
+	killallOutput, killAllErr := host.CommandContext(ctx, "killall", cmd).Output()
+	pgrepOutput, err := host.CommandContext(ctx, "pgrep", cmd).Output()
+	if err != nil {
+		if err.Error() == "Process exited with status 1" {
+			return nil // no processes found, kill successful
+		}
+		return errors.Wrapf(err, "failed to verify that all %s processes have been killed: %s", cmd, string(pgrepOutput))
+	}
+	if killAllErr != nil {
+		return errors.Wrapf(killAllErr, "found processes matching %q still running after failed killall (output=%q), pgrep output: %s", cmd, string(killallOutput), string(pgrepOutput))
+	}
+	return errors.Errorf("found processes matching %q still running after successful killall (output=%q), pgrep output: %s", cmd, string(killallOutput), string(pgrepOutput))
 }
 
 // Server controls a hostapd on router.
