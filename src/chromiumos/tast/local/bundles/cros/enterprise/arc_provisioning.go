@@ -30,11 +30,10 @@ import (
 	"chromiumos/tast/timing"
 )
 
-type credentialKeys struct {
-	user     string
-	password string
-	packages string
-}
+const (
+	loginPoolVar = "arc.managedAccountPool"
+	packagesVar  = "enterprise.ARCProvisioning.packages"
+)
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -46,65 +45,15 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      13 * time.Minute,
 		VarDeps: []string{
-			"enterprise.ARCProvisioning.user",
-			"enterprise.ARCProvisioning.password",
-			"enterprise.ARCProvisioning.packages",
-			"enterprise.ARCProvisioning.necktie_user",
-			"enterprise.ARCProvisioning.necktie_password",
-			"enterprise.ARCProvisioning.necktie_packages",
-			"enterprise.ARCProvisioning.unmanaged_user",
-			"enterprise.ARCProvisioning.unmanaged_password",
-			"enterprise.ARCProvisioning.unmanaged_packages",
-			"arc.managedAccountPool",
+			loginPoolVar,
+			packagesVar,
 		},
 		Params: []testing.Param{
 			{
-				Val: credentialKeys{
-					packages: "enterprise.ARCProvisioning.packages",
-				},
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
-				Name: "unmanaged",
-				Val: credentialKeys{
-					user:     "enterprise.ARCProvisioning.unmanaged_user",
-					password: "enterprise.ARCProvisioning.unmanaged_password",
-					packages: "enterprise.ARCProvisioning.unmanaged_packages",
-				},
-				ExtraSoftwareDeps: []string{"android_p"},
-			},
-			{
-				Name: "necktie",
-				Val: credentialKeys{
-					user:     "enterprise.ARCProvisioning.necktie_user",
-					password: "enterprise.ARCProvisioning.necktie_password",
-					packages: "enterprise.ARCProvisioning.necktie_packages",
-				},
-				ExtraSoftwareDeps: []string{"android_p"},
-			},
-			{
-				Name: "vm",
-				Val: credentialKeys{
-					packages: "enterprise.ARCProvisioning.packages",
-				},
-				ExtraSoftwareDeps: []string{"android_vm"},
-			},
-			{
-				Name: "unmanaged_vm",
-				Val: credentialKeys{
-					user:     "enterprise.ARCProvisioning.unmanaged_user",
-					password: "enterprise.ARCProvisioning.unmanaged_password",
-					packages: "enterprise.ARCProvisioning.unmanaged_packages",
-				},
-				ExtraSoftwareDeps: []string{"android_vm"},
-			},
-			{
-				Name: "necktie_vm",
-				Val: credentialKeys{
-					user:     "enterprise.ARCProvisioning.necktie_user",
-					password: "enterprise.ARCProvisioning.necktie_password",
-					packages: "enterprise.ARCProvisioning.necktie_packages",
-				},
+				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 			}},
 	})
@@ -123,13 +72,8 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		timeoutWaitForPlayStore = 3 * time.Minute
 	)
 
-	var login chrome.Option
-	if s.Param().(credentialKeys).user != "" {
-		login = chrome.GAIALogin(chrome.Creds{User: s.RequiredVar(s.Param().(credentialKeys).user), Pass: s.RequiredVar(s.Param().(credentialKeys).password)})
-	} else {
-		login = chrome.GAIALoginPool(s.RequiredVar("arc.managedAccountPool"))
-	}
-	packages := strings.Split(s.RequiredVar(s.Param().(credentialKeys).packages), ",")
+	login := chrome.GAIALoginPool(s.RequiredVar(loginPoolVar))
+	packages := strings.Split(s.RequiredVar(packagesVar), ",")
 
 	// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 	cr, err := chrome.New(
