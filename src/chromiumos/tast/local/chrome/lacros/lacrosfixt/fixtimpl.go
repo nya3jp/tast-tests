@@ -467,7 +467,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	testing.ContextLog(ctx, "Using lacros located at ", f.lacrosPath)
 
 	val := f.buildFixtData(ctx, s)
-	chrome.Lock()
+	// chrome.Lock()
 	f.prepared = true
 	shouldClose = false
 	return f.makeValue(val, s.ParentValue())
@@ -480,7 +480,7 @@ func (f *fixtImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	ctx, st := timing.Start(ctx, "TearDown")
 	defer st.End()
 
-	chrome.Unlock()
+	// chrome.Unlock()
 	f.cleanUp(ctx, s)
 }
 
