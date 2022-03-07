@@ -8,11 +8,12 @@ import (
 	"context"
 	"strings"
 
+	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
-	pb "chromiumos/tast/local/uidetection/api"
 	"chromiumos/tast/testing"
 )
 

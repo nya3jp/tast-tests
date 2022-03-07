@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	pb "chromiumos/tast/local/uidetection/api"
+	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
 )
 
 // CustomIcon returns a finder for a given icon.

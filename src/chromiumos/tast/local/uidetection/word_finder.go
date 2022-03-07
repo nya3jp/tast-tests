@@ -5,7 +5,7 @@
 package uidetection
 
 import (
-	pb "chromiumos/tast/local/uidetection/api"
+	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
 )
 
 // Word returns a finder for a given word.
