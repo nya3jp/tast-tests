@@ -7,13 +7,12 @@ package userutil
 
 import (
 	"context"
-	"encoding/json"
-	"io/ioutil"
-	"os"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/testing"
 )
 
@@ -57,30 +56,18 @@ func login(ctx context.Context, username, password string, extraOpts ...chrome.O
 
 // GetKnownEmailsFromLocalState returns a map of users that logged in on the device, based on the LoggedInUsers from the LocalState file.
 func GetKnownEmailsFromLocalState() (map[string]bool, error) {
-	// LocalState is a json like structure, from which we will need only LoggedInUsers field.
+	// Local State is a json-like structure, from which we will need only LoggedInUsers field.
 	type LocalState struct {
 		Emails []string `json:"LoggedInUsers"`
 	}
-
-	localStateFile, err := os.Open("/home/chronos/Local State")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to open Local State file")
-	}
-	defer localStateFile.Close()
-
 	var localState LocalState
-	b, err := ioutil.ReadAll(localStateFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read Local State file contents")
-	}
-	if err := json.Unmarshal(b, &localState); err != nil {
-		return nil, errors.Wrap(err, "failed to unmarshal Local State")
+	if err := localstate.Unmarshal(browser.TypeAsh, &localState); err != nil {
+		return nil, errors.Wrap(err, "failed to extract Local State")
 	}
 	knownEmails := make(map[string]bool)
 	for _, email := range localState.Emails {
 		knownEmails[email] = true
 	}
-
 	return knownEmails, nil
 }
 
