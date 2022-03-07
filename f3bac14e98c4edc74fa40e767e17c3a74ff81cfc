@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab92dea2_c907993e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verify_app_wayland.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-07T10:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9daf35e1_103d46fc",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 8
+      },
+      "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94634e98_1592f8e7",
