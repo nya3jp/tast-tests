@@ -16,6 +16,40 @@
       "message": "Hi, I have updated the informational test to fix its flakiness; please, let me know if you have any comment. Thanks!",
       "revId": "d27542af9512565e761695750585f22057a6ae95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a764b658_0a6cddc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-07T08:38:36Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "d27542af9512565e761695750585f22057a6ae95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2224d73_94252cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-07T08:38:36Z",
+      "side": 1,
+      "message": "nit: end comment with .",
+      "revId": "d27542af9512565e761695750585f22057a6ae95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
