@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05298d94_0ef52842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2022-03-07T17:53:16Z",
+      "side": 1,
+      "message": "Reassigning to xiaohuic@, the new settings TL.",
+      "revId": "3286bf4ef730b5484a4ac55a75d90e2b88d86b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
