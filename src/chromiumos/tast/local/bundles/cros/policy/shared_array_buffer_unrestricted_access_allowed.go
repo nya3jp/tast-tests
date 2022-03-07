@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +36,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Fixture: fixture.ChromePolicyLoggedIn,
+			Fixture: fixture.FakeDMS,
 			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
@@ -48,7 +49,7 @@ func init() {
 
 // SharedArrayBufferUnrestrictedAccessAllowed tests the SharedArrayBufferUnrestrictedAccessAllowed policy.
 func SharedArrayBufferUnrestrictedAccessAllowed(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	browserType := s.Param().(browser.Type)
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// Reserve 10 seconds for cleanup.
@@ -93,23 +94,58 @@ func SharedArrayBufferUnrestrictedAccessAllowed(ctx context.Context, s *testing.
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			// Perform cleanup.
-			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-				s.Fatal("Failed to clean up: ", err)
+			var cr *chrome.Chrome
+			var conn *chrome.Conn
+
+			// The SharedArrayBufferUnrestrictedAccessAllowed policy does not support dynamic refresh, which means that we need to
+			// restart the browser for every subtest. This works out of the box for Lacros, but requires us to manually close and
+			// reopen Ash Chrome.
+			if browserType == browser.TypeAsh {
+				pb := fakedms.NewPolicyBlob()
+				pb.AddPolicies([]policy.Policy{param.policy})
+				if err := fdms.WritePolicyBlob(pb); err != nil {
+					s.Fatal("Failed to write policies to FakeDMS: ", err)
+				}
+
+				// Start a Chrome instance that will fetch policies from the FakeDMS.
+				var err error
+				cr, err = chrome.New(ctx,
+					chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+					chrome.DMSPolicy(fdms.URL))
+				if err != nil {
+					s.Fatal("Chrome login failed: ", err)
+				}
+				defer cr.Close(ctx)
+
+				conn, err = cr.NewConn(ctx, nonIsolatedURL)
+				if err != nil {
+					s.Fatal("Failed to connect to the browser: ", err)
+				}
+				defer conn.Close()
+			} else {
+				cr = s.FixtValue().(chrome.HasChrome).Chrome()
+
+				// Perform cleanup.
+				if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+					s.Fatal("Failed to clean up: ", err)
+				}
+
+				// Update policies.
+				if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
+					s.Fatal("Failed to update policies: ", err)
+				}
+
+				// Setup browser based on the chrome type.
+				var closeBrowser func(ctx context.Context)
+				var err error
+				conn, _, closeBrowser, err = browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), nonIsolatedURL)
+				if err != nil {
+					s.Fatal("Failed to open the browser: ", err)
+				}
+				defer closeBrowser(cleanupCtx)
+				defer conn.Close()
 			}
 
-			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.policy}); err != nil {
-				s.Fatal("Failed to update policies: ", err)
-			}
-
-			// Setup browser based on the chrome type.
-			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), nonIsolatedURL)
-			if err != nil {
-				s.Fatal("Failed to open the browser: ", err)
-			}
-			defer closeBrowser(cleanupCtx)
-			defer conn.Close()
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Check availability of SharedArrayBuffer on a non-isolated page.
