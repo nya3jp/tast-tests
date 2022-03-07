@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -79,6 +80,13 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to initialize test: ", err)
 		}
 		defer lacros.CloseLacros(closeCtx, l)
+	}
+
+	// Wait for CPU to stabilize before test.
+	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
+		// Log the cpu stabilizing wait failure instead of make it fatal.
+		// TODO(b/213238698): Include the error as part of test data.
+		s.Log("Failed to wait for CPU to become idle: ", err)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
