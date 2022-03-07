@@ -235,6 +235,30 @@
       },
       "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d4f72a_137a1e65",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-07T17:14:00Z",
+      "side": 1,
+      "message": "yes. What I meant is to submit this without fixing this issue, since it will be replaced very soon with another code",
+      "parentUuid": "82f757e3_480b056d",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
