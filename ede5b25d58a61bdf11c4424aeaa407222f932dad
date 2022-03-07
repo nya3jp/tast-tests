@@ -46,6 +46,30 @@
       },
       "revId": "ede5b25d58a61bdf11c4424aeaa407222f932dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7d26a3_15747932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-07T21:28:19Z",
+      "side": 0,
+      "message": "Yes, I think it is. I see most test cases have at least one individual contact to make sure that there is an owner.",
+      "parentUuid": "66e138d5_6f35fcc7",
+      "range": {
+        "startLine": 86,
+        "startChar": 26,
+        "endLine": 86,
+        "endChar": 31
+      },
+      "revId": "ede5b25d58a61bdf11c4424aeaa407222f932dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
