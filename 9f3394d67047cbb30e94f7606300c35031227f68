@@ -51,6 +51,24 @@
       "parentUuid": "09980c69_3f789594",
       "revId": "9f3394d67047cbb30e94f7606300c35031227f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "297523fc_a028af2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-07T17:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a333eaa3_207400af",
+      "revId": "9f3394d67047cbb30e94f7606300c35031227f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
