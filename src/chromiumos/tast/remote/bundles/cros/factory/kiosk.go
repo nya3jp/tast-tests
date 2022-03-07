@@ -8,6 +8,8 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -40,12 +42,13 @@ func init() {
 
 func Kiosk(ctx context.Context, s *testing.State) {
 	// Wait factory test UI show up
+	var debugEntries []*debugEntry
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		debugResponse, err := getDebugResponse(ctx, s.DUT().Conn())
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to debugging port")
 		}
-		debugEntries, err := getDebugEntries(ctx, debugResponse)
+		debugEntries, err = getDebugEntries(ctx, debugResponse)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -54,6 +57,10 @@ func Kiosk(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
+		dumpPath := filepath.Join(s.OutDir(), "list.json")
+		if dumpError := dumpEntries(debugEntries, dumpPath); dumpError != nil {
+			s.Error("Dump entries failed: ", dumpError)
+		}
 		s.Fatal("Device not showing factory test UI: ", err)
 	}
 }
@@ -80,6 +87,17 @@ func containsFactoryEntryResponse(entries []*debugEntry) bool {
 		}
 	}
 	return false
+}
+
+func dumpEntries(entries []*debugEntry, path string) error {
+	marshaledEntries, err := json.MarshalIndent(entries, "", "  ")
+	if err != nil {
+		return err
+	}
+	if err = ioutil.WriteFile(path, marshaledEntries, 0644); err != nil {
+		return err
+	}
+	return nil
 }
 
 type debugEntry struct {
