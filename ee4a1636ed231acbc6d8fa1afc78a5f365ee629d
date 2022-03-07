@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f39a55f_48e9113a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-07T23:40:51Z",
+      "side": 1,
+      "message": "In this test we are okay with autoconnect, since we just need the cellular network to be connected. I will follow the pattern of existing test such as shill_cellular_smoke.go and will not disable autoconnect.",
+      "parentUuid": "c5a2a0f1_6a030d76",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cff4c519_936da016",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Since |err| is already defined and _ is not a variable, use \u0027\u003d\u0027 not \u0027:\u003d\u0027.",
       "parentUuid": "f45e32c4_aa071afe",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8ccad2_55dd6007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-07T23:40:51Z",
+      "side": 1,
+      "message": "I don\u0027t think that syntax is supported in golang https://screenshot.googleplex.com/3NUCkg9kNb5wBFp\n\nAs I understand there can be statement before the if condition, but what we are trying to do is to the statement in the condition. I am new to golang so please let me know if I am wrong.",
+      "parentUuid": "0541783e_b2edef5a",
       "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

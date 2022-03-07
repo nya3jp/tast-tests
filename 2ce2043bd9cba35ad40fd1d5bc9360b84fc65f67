@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "296326c2_e26efb27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-07T23:40:51Z",
+      "side": 1,
+      "message": "Hi Chad, Steven, \n\nThanks for the review. I have address the review comments.\n\nRegards\nShijin ",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
