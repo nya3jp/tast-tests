@@ -70,6 +70,24 @@
       "parentUuid": "87844950_e64b34df",
       "revId": "4f24109878c777e2e48d65c5338443da8052061c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70159ed_9114f37e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-03-07T03:19:43Z",
+      "side": 1,
+      "message": "We decided that we don\u0027t want to tolerate process being killed by SIGTERM: perfetto handles SIGTERM to flush the trace data and then quit correctly. If this happens, the process won\u0027t die because with the exit status indicating that the process is killed by SIGTERM. If the perfetto cmdline process shows that it\u0027s killed by SIGTERM, the process probably hadn\u0027t have the chance to setup the SIGTERM handler early during startup, i.e. the test stops the tracing session *too early*. In this case, we want the test to fail loudly to have the test owner have a look.",
+      "parentUuid": "c2f6c7ac_8390c08c",
+      "revId": "4f24109878c777e2e48d65c5338443da8052061c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
