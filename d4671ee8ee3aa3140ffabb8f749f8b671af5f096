@@ -68,6 +68,41 @@
       "parentUuid": "c92a0922_14ee317a",
       "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baec13d2_ab8adb9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1340678
+      },
+      "writtenOn": "2022-03-07T15:22:37Z",
+      "side": 1,
+      "message": "Ack, thanks for the explanation.",
+      "parentUuid": "1e5ff987_07d6838f",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "460dfa3c_b221f587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1340678
+      },
+      "writtenOn": "2022-03-07T15:22:37Z",
+      "side": 1,
+      "message": "Setting for the behavior of the policy LGTM.",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
