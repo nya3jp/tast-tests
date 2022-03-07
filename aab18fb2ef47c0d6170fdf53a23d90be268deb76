@@ -39,6 +39,30 @@
       },
       "revId": "aab18fb2ef47c0d6170fdf53a23d90be268deb76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850117df_6455037e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_array_buffer_unrestricted_access_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-03-07T12:24:04Z",
+      "side": 1,
+      "message": "Thanks for the suggestion - I added this condition so that `err` is printed for ease of debugging potential future test failures. When we expect `SharedArrayBuffer` to be available, but it isn\u0027t for some reason, then printing the error might be valuable to figure out why it isn\u0027t available. Note that `s.Error` will not abort the test, so the message on line 124 will be printed as well.\nWDYT? Does that make sense to you?",
+      "parentUuid": "1dbe68d1_967c22a3",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 5
+      },
+      "revId": "aab18fb2ef47c0d6170fdf53a23d90be268deb76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
