@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f890fcc_54e8495f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/params_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-07T00:16:16Z",
+      "side": 1,
+      "message": "Maybe do not add this here as it is added in this cl: crrev.com/c/3502950. That cl is going through cq now and would be soon merged.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "3701a07e426c86ca9e59cf0224d27d4df953711a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
