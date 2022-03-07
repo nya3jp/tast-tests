@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "785417e7_ec9ae7ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-03-07T17:48:17Z",
+      "side": 1,
+      "message": "I didn\u0027t know errors.As() and errors.Is(). Using errors.Is() is a simpler fix.",
+      "parentUuid": "dff27696_7cab224f",
+      "range": {
+        "startLine": 10,
+        "startChar": 47,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "4eb7e7f81f2d62e626effa8c0bdfaa069528683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cb21bd42_4ab3ee00",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-07T17:05:35Z",
       "side": 1,
       "message": "nit: I\u0027d invert the \"if then else\"... If there is an error return, else do the log.\n\ne.g:\n\n  if err :\u003d .... ; err !\u003d nil {\n     return ...\n  } else {\n     ContextLog(...)\n  }",
+      "range": {
+        "startLine": 173,
+        "startChar": 116,
+        "endLine": 173,
+        "endChar": 128
+      },
+      "revId": "4eb7e7f81f2d62e626effa8c0bdfaa069528683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6fbfe1_fac4fd56",
+        "filename": "src/chromiumos/tast/local/memory/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-03-07T17:48:17Z",
+      "side": 1,
+      "message": "This doesn\u0027t apply on the latest change.",
+      "parentUuid": "892fbc5f_e2dd87b9",
       "range": {
         "startLine": 173,
         "startChar": 116,
