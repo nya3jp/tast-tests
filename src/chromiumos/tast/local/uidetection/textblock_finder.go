@@ -7,7 +7,7 @@ package uidetection
 import (
 	"strings"
 
-	pb "chromiumos/tast/local/uidetection/api"
+	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
 )
 
 // TextBlock returns a finder for a given textblock.
