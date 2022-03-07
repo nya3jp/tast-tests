@@ -28,7 +28,6 @@ func init() {
 			"victorhsieh@chromium.org",
 			"arc-core@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"reboot", "chrome", "tpm2"},
 		ServiceDeps:  []string{"tast.cros.arc.AdbSideloadService", "tast.cros.example.ChromeService", "tast.cros.security.BootLockboxService"},
 		Timeout:      5 * time.Minute,
