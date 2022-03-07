@@ -55,7 +55,7 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "system_dialog")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "system_dialog")
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 

@@ -58,7 +58,6 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "change_arc_availability")
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
@@ -66,6 +65,8 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to do cleanup: ", err)
 		}
 	}(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "change_arc_availability")
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
