@@ -158,14 +158,23 @@ func (t *tab) close() error {
 }
 
 // waitForQuiescence waits for the tab gets quiescence by timeout.
-// This does not return an error even if timed out.
+// This does not return an error if the page is loaded but not quiescent.
 func (t *tab) waitForQuiescence(ctx context.Context, timeout time.Duration) error {
 	start := time.Now()
 	if err := webutil.WaitForQuiescence(ctx, t.conn, timeout); err != nil {
-		if ctx.Err() != context.DeadlineExceeded {
-			return errors.Wrap(err, "failed to wait for tab quiesce")
+		// It has been seen that content sites such as CNN
+		// (https://edition.cnn.com/) sometimes can take minutes to
+		// reach quiescence on DUTs. When this occurred, it can be seen
+		// from screenshots that the UI has actually loaded but
+		// background tasks prevented the site to reach quiescence.
+		// Therefore, logic is added here to check whether the site has
+		// loaded. If the site has loaded, i.e., the site readyState is
+		// not "loading", no error will be returned here.
+		if err := t.conn.WaitForExpr(ctx, `document.readyState === "interactive" || document.readyState === "complete"`); err == nil {
+			testing.ContextLog(ctx, "Tab could not reach quiescence, but document state has passed loading")
+		} else {
+			return errors.Wrapf(err, "the page is not loaded in %s", timeout)
 		}
-		testing.ContextLogf(ctx, "Ignoring tab quiesce timeout (%v)", timeout)
 	} else {
 		testing.ContextLog(ctx, "Tab quiescence time: ", time.Now().Sub(start))
 	}
