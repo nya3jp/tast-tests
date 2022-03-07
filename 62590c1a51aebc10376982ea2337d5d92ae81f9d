@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e087409b_a3c7bda2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-07T03:14:16Z",
+      "side": 1,
+      "message": "I will create a separate CL to remove unused variables.",
+      "revId": "62590c1a51aebc10376982ea2337d5d92ae81f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
