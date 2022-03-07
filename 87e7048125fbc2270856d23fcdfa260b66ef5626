@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d2116f_26b108e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_from_settings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-07T11:05:05Z",
+      "side": 1,
+      "message": "Defer to close files app? \n\nIf you do so, please move defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn) after closing files app.",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "87e7048125fbc2270856d23fcdfa260b66ef5626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
