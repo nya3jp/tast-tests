@@ -87,6 +87,30 @@
       },
       "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e17984_b739f4e8",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-07T08:20:59Z",
+      "side": 1,
+      "message": "Can we do it in a separate cl? I think for now, the purpose of this cl (migrating the two test cases into Lacros) is enough. If we start to improve this part, this cl will in an endless improving mode.",
+      "parentUuid": "1581d93a_b40737b2",
+      "range": {
+        "startLine": 241,
+        "startChar": 30,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "f3bac14e98c4edc74fa40e767e17c3a74ff81cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
