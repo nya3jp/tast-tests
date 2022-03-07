@@ -118,6 +118,30 @@
       },
       "revId": "25d52bb5d2fce654d232cfc307a9be30458d75bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af8ec90_a162c1af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-03-07T08:54:17Z",
+      "side": 1,
+      "message": "I mean, as both lcoal and remote version of sound_card_init tests filters the same models, we shall move the denylist into hwdep.SmartAmp(). That is, the devices satisfies hwdep.SmartAmp() means they have workable smart amp.\n\nLet\u0027s merge this first to skip the known-failure tests. However, I hope you can move the exception condition into hwdep.SmartAmp().",
+      "parentUuid": "bca555d6_9247e46c",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 114
+      },
+      "revId": "25d52bb5d2fce654d232cfc307a9be30458d75bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
