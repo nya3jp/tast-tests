@@ -458,7 +458,7 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 		changeLayoutAction := uiauto.Combine("change layout to "+mode,
 			uiauto.NamedAction("click call options", cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433)),
 			uiauto.NamedAction("click change layout item", ui.LeftClick(changeLayoutItem)),
-			uiauto.NamedAction("wait for change layout panel", ui.WaitUntilExists(changeLayoutPanel)),
+			uiauto.NamedAction("wait for change layout panel", ui.WithTimeout(mediumUITimeout).WaitUntilExists(changeLayoutPanel)),
 			uiauto.NamedAction("click layout "+mode, ui.LeftClick(modeNode)),
 			uiauto.NamedAction("close layout panel", ui.LeftClick(closeButton)),
 		)
