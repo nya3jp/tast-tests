@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -55,4 +56,14 @@ func ExtensionArgs(extID, extList string) []string {
 		"--load-extension=" + extList,            // Load extensions.
 		"--disable-extensions-except=" + extList, // Disable extensions other than the Tast test extension.
 	}
+}
+
+// ChromeLock TODO(tvignatti): Add description
+func ChromeLock() {
+	chrome.Lock()
+}
+
+// ChromeUnlock TODO(tvignatti): Add description
+func ChromeUnlock() {
+	chrome.Unlock()
 }
