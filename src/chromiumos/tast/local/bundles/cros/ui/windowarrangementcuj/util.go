@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
 
@@ -29,6 +30,7 @@ type TestParam struct {
 	Tablet      bool
 	Tracing     bool
 	Validation  bool
+	BatteryMode setup.BatteryDischargeMode
 }
 
 // Connections holds things that facilitate interaction with the DUT.
