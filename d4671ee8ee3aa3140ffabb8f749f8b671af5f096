@@ -50,6 +50,24 @@
       "message": "I was the original author of the PrintPdfAsImageDefault policy, but I don\u0027t know anything about tast, and definitely don\u0027t have ownership for approval of that.  I\u0027m not sure what value you are hoping for from my review?\n\nI\u0027m also amazed to see that several of the bots for this are still not completed yet after 6h of running.",
       "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5ff987_07d6838f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-03-07T12:15:16Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t know anything about tast, and definitely don\u0027t have ownership for approval of that.  I\u0027m not sure what value you are hoping for from my review?\n\nI am also fairly new to Tast, but here is my understanding of the review process. The idea with Tast tests is that there are two reviewers for each CL: \n- One reviewer from tast-owners@, who checks that the test is using idiomatic Go and that the test uses the test framework correctly.\n- The other reviewer is supposed to be someone who has knowledge about the actual underlying code that is being tested. Basically, for policy tests, all that is required from this reviewer is to say \u0027yes, that is how the policy is supposed to work\u0027.\n\nPlease let me know whether you feel comfortable reviewing/+1ing this CL in terms of its functionality and whether it looks to you like I understood the purpose of the policy correctly. If you don\u0027t feel comfortable, that is totally fine as well, and I will find someone else who is more familiar with policies + Tast tests.",
+      "parentUuid": "c92a0922_14ee317a",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
