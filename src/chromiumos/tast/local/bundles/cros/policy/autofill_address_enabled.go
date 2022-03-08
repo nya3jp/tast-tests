@@ -208,17 +208,15 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				}
 				defer conn.Close()
 
-				// Ensure the page is ready.
-				if err := ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button))(ctx); err != nil {
-					s.Fatal("Failed to find the ok button: ", err)
-				}
-
 				// Trigger the autofill by clicking the email field and choosing the suggested address (this could be any of the address fields).
-				if err := ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Email"))(ctx); err != nil {
-					s.Fatal("Failed to click the Email text field: ", err)
-				}
-				if err := ui.LeftClick(nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView"))(ctx); err != nil {
-					s.Fatal("Failed to click the AutofillPopupSuggestionView listBoxOption: ", err)
+				suggestionPopup := nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")
+				if err := uiauto.Combine("clicking the Email field and choosing the suggested address",
+					ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
+					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Email")),
+					ui.WaitUntilExists(suggestionPopup),
+					ui.LeftClick(suggestionPopup),
+				)(ctx); err != nil {
+					s.Fatal("Failed to trigger and use address autofill: ", err)
 				}
 
 				// Run JavaScript checks to confirm that all the address fields are set correctly.
