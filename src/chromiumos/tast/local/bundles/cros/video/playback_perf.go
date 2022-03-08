@@ -354,6 +354,16 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Fixture:           "chromeVideo",
 		}, {
+			Name: "vp9_1080p_30fps_hw_long",
+			Val: playbackPerfParams{
+				fileName:    "perf/vp9/1080p_30fps_full.webm",
+				decoderType: playback.Hardware,
+				browserType: browser.TypeAsh,
+			},
+			ExtraData:         []string{"perf/vp9/1080p_30fps_full.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Fixture:           "chromeVideo",
+		}, {
 			Name: "vp9_1080p_60fps_hw",
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp9.webm",

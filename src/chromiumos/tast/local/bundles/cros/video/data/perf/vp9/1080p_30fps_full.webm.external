@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/vp9/1080p_30fps_full_20220308.webm",
+  "size": 99394027,
+  "sha256sum": "fc3d5504a4cf36ab897519be2cfac327e84a73829b14c7411aecc055c528e5c1"
+}

@@ -200,6 +200,16 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to get dropped frames and percentage")
 	}
 
+	roughness, err := devtools.GetVideoPlaybackRoughness(ctx, observer, url)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse Media DevTools")
+	}
+	p.Set(perf.Metric{
+		Name:      "roughness",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, float64(roughness))
+
 	if err := conn.Eval(ctx, videoElement+".pause()", nil); err != nil {
 		return errors.Wrap(err, "failed to stop video")
 	}
