@@ -16,6 +16,126 @@
       "message": "Hi vsavu@ PTAL 😊",
       "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd971e47_1ac3d14a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T13:21:36Z",
+      "side": 1,
+      "message": "Maybe generate the URL yourself instead. Should be more reliable than string replacement.",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cef745c_53b5b34a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T13:21:36Z",
+      "side": 1,
+      "message": "Move the js code in a separate constant. It\u0027s unreadable at this indentation level.",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee365073_3bc94a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T13:21:36Z",
+      "side": 1,
+      "message": "set",
+      "range": {
+        "startLine": 230,
+        "startChar": 26,
+        "endLine": 230,
+        "endChar": 32
+      },
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d856c03f_2df6969a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T13:21:36Z",
+      "side": 1,
+      "message": "Close the old conn as well.",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbcf2292_02d2f8ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T13:21:36Z",
+      "side": 1,
+      "message": "Maybe \"expected to find ....\"",
+      "range": {
+        "startLine": 284,
+        "startChar": 32,
+        "endLine": 284,
+        "endChar": 38
+      },
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06767162_a7565a02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/autofill_credit_card_enabled.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T13:21:36Z",
+      "side": 1,
+      "message": "Please add a comment on why this is needed.",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
