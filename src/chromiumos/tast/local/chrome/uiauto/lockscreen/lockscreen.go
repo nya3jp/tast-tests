@@ -188,6 +188,23 @@ func WaitForSmartUnlockReady(ctx context.Context, tconn *chrome.TestConn) error 
 	return nil
 }
 
+// WaitForSmartUnlockAvailable waits for UI signal that Smart Lock is an available auth factor.
+func WaitForSmartUnlockAvailable(ctx context.Context, tconn *chrome.TestConn) error {
+	finder := nodewith.ClassName("AuthIconView")
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for Smart Lock UI to indicate it is available")
+	}
+	return nil
+}
+
+// HasAuthIconView checks whether an auth factor icon (e.g. for Smart Lock) is shown.
+func HasAuthIconView(ctx context.Context, tconn *chrome.TestConn) bool {
+	ui := uiauto.New(tconn)
+	found, _ := ui.IsNodeFound(ctx, nodewith.ClassName("AuthIconView"))
+	return found
+}
+
 // ShowPassword clicks the "Show password" button.
 func ShowPassword(ctx context.Context, tconn *chrome.TestConn) error {
 	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(ShowPasswordButton)(ctx)
