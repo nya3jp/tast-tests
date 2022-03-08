@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd20077_90aad7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T00:46:24Z",
+      "side": 1,
+      "message": "Hi Daniel, Chad,\n\nThis is port of  enableDisableCellular test network_ChromeCellularEndToEnd tauto test. PTAL.\n\nRegards\nShijin \n",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
