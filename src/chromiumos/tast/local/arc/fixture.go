@@ -326,6 +326,28 @@ func init() {
 		PostTestTimeout: PostTestTimeout,
 		TearDownTimeout: resetTimeout,
 	})
+
+	// arcBootedWithPlayStoreEnabledPopup is a fixture similar to arcBootedWithPlayStore along with popup blocking disabled.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithPlayStoreEnabledPopup",
+		Desc: "ARC is booted with disabling sync flags",
+		Vars: []string{"ui.gaiaPoolDefault"},
+		Contacts: []string{
+			"rnanjappan@chromium.org",
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
+		Impl: NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(append([]string{"--disable-popup-blocking"}, DisableSyncFlags()...)...),
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: resetTimeout,
+	})
 }
 
 type bootedFixture struct {
