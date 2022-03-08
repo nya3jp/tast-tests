@@ -48,6 +48,11 @@ func (s *OSSettings) Info(ctx context.Context, finder *nodewith.Finder) (*uiauto
 	return s.ui.Info(ctx, finder.FinalAncestor(WindowFinder))
 }
 
+// WaitForLocation calls ui.WaitForLocation scoping the finder to the Settings app.
+func (s *OSSettings) WaitForLocation(finder *nodewith.Finder) uiauto.Action {
+	return s.ui.WaitForLocation(finder.FinalAncestor(WindowFinder))
+}
+
 // Exists calls ui.Exists scoping the finder to the Settings app.
 func (s *OSSettings) Exists(finder *nodewith.Finder) uiauto.Action {
 	return s.ui.Exists(finder.FinalAncestor(WindowFinder))

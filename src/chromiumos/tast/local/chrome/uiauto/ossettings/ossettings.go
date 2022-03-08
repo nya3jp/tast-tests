@@ -338,7 +338,7 @@ func (s *OSSettings) SearchWithKeyword(ctx context.Context, kb *input.KeyboardEv
 	if err := uiauto.Combine(fmt.Sprintf("query with keywords %q", keyword),
 		kb.TypeAction(keyword),
 		s.WaitUntilExists(nodewith.HasClass("ContentsWebView").Focused()),
-		s.WaitUntilExists(searchResultFinder.First()), // Wait for search results be stabled.
+		s.WaitForLocation(searchResultFinder.First()), // Wait for search results be stabled.
 	)(ctx); err != nil {
 		return nil, false, err
 	}
