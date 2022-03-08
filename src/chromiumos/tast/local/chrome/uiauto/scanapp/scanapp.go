@@ -172,7 +172,7 @@ func (s *ScanApp) ClickMoreSettings() uiauto.Action {
 func (s *ScanApp) selectScanSetting(name DropdownName, value string) uiauto.Action {
 	dropdownFinder := nodewith.Name(string(name)).ClassName("md-select")
 	dropdownOptionFinder := nodewith.Name(value).Role(role.ListBoxOption)
-	steps := []uiauto.Action{s.WaitUntilExists(dropdownFinder), s.MakeVisible(dropdownFinder), s.LeftClick(dropdownFinder), s.LeftClick(dropdownOptionFinder)}
+	steps := []uiauto.Action{s.WaitUntilExists(dropdownFinder), s.MakeVisible(dropdownFinder), s.LeftClickUntil(dropdownFinder, s.Exists(dropdownOptionFinder)), s.MakeVisible(dropdownOptionFinder), s.LeftClick(dropdownOptionFinder)}
 
 	return uiauto.Combine(fmt.Sprintf("Select%s", string(name)), steps...)
 }
