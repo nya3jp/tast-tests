@@ -230,6 +230,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28444bbf_a29df21a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-03-08T18:12:57Z",
+      "side": 1,
+      "message": "I am assuming that the document is geared towards verification of the functionality of Task Manager. \nAs TaskManager.go is library, it would be great if `EnsureOpened` call can account for the case when user does change the columns.\nThat said, is that possible that the check for default behavior goes to the tast test?",
+      "parentUuid": "cb035a1e_a6041bbf",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "672da8d4_aa77c174",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
         "patchSetId": 5
