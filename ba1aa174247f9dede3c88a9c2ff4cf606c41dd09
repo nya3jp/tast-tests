@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de1fd8f_0ef4d891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T23:10:05Z",
+      "side": 1,
+      "message": "lgtm w/ one minor fix",
+      "revId": "ba1aa174247f9dede3c88a9c2ff4cf606c41dd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a6ef7c_10c06844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T23:10:05Z",
+      "side": 1,
+      "message": "space after :",
+      "revId": "ba1aa174247f9dede3c88a9c2ff4cf606c41dd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
