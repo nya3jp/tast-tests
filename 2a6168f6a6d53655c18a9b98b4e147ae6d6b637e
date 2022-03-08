@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c76f89_7d701300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b4a1e494_6c196cfe",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0db01fb_9a2dcb52",
@@ -94,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c787b144_5f221289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "\u003e what will happen if the test is run in a tablet? Will it fail?\nIt can run in a tablet only if we use the `input.FindPhysicalKeyboard` instead of `input.Keyboard` (also the tablet needs a physical keyboard attached).\n`input.Keyboard` will not look for a physical keyboard in a tablet and the whole behavior is different with the physical keyboard (perhaps shortcuts or key-accel for a virtual keyboard is different). \nWe think this test might not be suitable for a virtual keyboard since triggering a shortcut via virtual keyboard is unusual.\n\n\n\u003e If `FindPhysicalKeyboard` fails when using `hwdep.D(hwdep.Keyboard()`) , then it is worth filing a bug.\nWe filed a bug for the described issue.\n\n\n\u003e But regardless the bug, it seems that your should have that hwdep requirement.\nDone, thanks.",
+      "parentUuid": "208e3dbd_b3fd8a6c",
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccb7b335_88848c57",
@@ -107,6 +149,30 @@
       "writtenOn": "2022-03-03T20:33:43Z",
       "side": 1,
       "message": "huge nit, here and in the rest of the test: unfortunately backticks are not supported by godoc... just replace them with \", or just remote them.",
+      "range": {
+        "startLine": 96,
+        "startChar": 19,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2436fb_fd081565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccb7b335_88848c57",
       "range": {
         "startLine": 96,
         "startChar": 19,
@@ -140,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "336569b3_37aed16b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "2b4ffd2d_ca6fd189",
+      "range": {
+        "startLine": 104,
+        "startChar": 75,
+        "endLine": 104,
+        "endChar": 79
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95ac2481_b42da994",
@@ -153,6 +243,30 @@
       "writtenOn": "2022-03-03T20:33:43Z",
       "side": 1,
       "message": "or why are not comparing the other \"keyNames\"?",
+      "range": {
+        "startLine": 176,
+        "startChar": 3,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bf5f0b4_d669e1d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "This function is only about following keys:\n- \"Search\"\n- \"Launcher\"\n\n\n\nWe added an extra comment to make it more clear.",
+      "parentUuid": "95ac2481_b42da994",
       "range": {
         "startLine": 176,
         "startChar": 3,
@@ -186,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fa2d35_8a2e0b95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "08cc7713_8394d1d5",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 18
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a844784c_ebb8a081",
@@ -199,6 +337,30 @@
       "writtenOn": "2022-03-03T20:33:43Z",
       "side": 1,
       "message": "add docstring to this struct.\n\nAlthough a key / value struct is \"trivial\" enough that it should not require a docstring, in this case, \"key\" is not clear why it is used... \n\nSo, defining the purpose what is \"name\" and what is \"value\" is also welcome.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 1
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9a519b_9fcfb65d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "a844784c_ebb8a081",
       "range": {
         "startLine": 204,
         "startChar": 0,
@@ -232,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ddfb20c_45f00756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "Done, the function is not belongs to `key` now.",
+      "parentUuid": "5d5764b6_a64535b3",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 1
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e49e756d_3479ebc1",
@@ -245,6 +431,30 @@
       "writtenOn": "2022-03-03T20:33:43Z",
       "side": 1,
       "message": "nit: remove \"get\" prefix from getters\n\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 16
+      },
+      "revId": "2a6168f6a6d53655c18a9b98b4e147ae6d6b637e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f6048a_b1f3b1db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T09:20:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e49e756d_3479ebc1",
       "range": {
         "startLine": 226,
         "startChar": 1,
