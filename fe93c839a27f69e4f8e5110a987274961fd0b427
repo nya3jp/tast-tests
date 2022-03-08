@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de688fad_22ef2c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-03-08T17:54:56Z",
+      "side": 1,
+      "message": "I am removing myself, as I am OOO for quite a while. Please add a different policy Tast Owner.",
+      "revId": "fe93c839a27f69e4f8e5110a987274961fd0b427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
