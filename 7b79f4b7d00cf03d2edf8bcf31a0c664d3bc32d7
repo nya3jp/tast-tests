@@ -176,6 +176,30 @@
       },
       "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53637675_385ddefa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-08T18:21:39Z",
+      "side": 1,
+      "message": "Is it okay to add CloseAllWindows and EnsureOnlyBrowserWindowOpen for some boilerplates to this package and move to the ash package later when it also makes sense for other packages?",
+      "parentUuid": "d2a3ae35_c29d1c44",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "7b79f4b7d00cf03d2edf8bcf31a0c664d3bc32d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

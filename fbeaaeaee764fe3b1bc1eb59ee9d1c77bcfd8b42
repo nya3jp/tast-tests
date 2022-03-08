@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875edc8c_9857807b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-08T18:21:39Z",
+      "side": 1,
+      "message": "Ready for another round of your review moving some boilerplates to a subpackage that is still in the wmp package. Let me know if there is anything to address further.",
+      "revId": "fbeaaeaee764fe3b1bc1eb59ee9d1c77bcfd8b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
