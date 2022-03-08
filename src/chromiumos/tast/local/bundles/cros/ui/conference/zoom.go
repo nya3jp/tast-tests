@@ -151,7 +151,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		return nil
 	}
 	joinAudio := func(ctx context.Context) error {
-		audioButton := nodewith.NameRegex(regexp.MustCompile(audioRegexCapture)).Role(role.Button)
+		audioButton := nodewith.NameRegex(regexp.MustCompile(audioRegexCapture)).Role(role.Button).Focusable()
 		// Not every room will automatically join audio.
 		// If there is no automatic join audio, do join audio action.
 		if err := ui.WaitUntilExists(audioButton)(ctx); err == nil {
