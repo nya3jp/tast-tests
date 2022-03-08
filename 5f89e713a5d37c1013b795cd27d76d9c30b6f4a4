@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e812be5_662ee486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "I have changed the name to MojoEnsureNetworkStateAfterCellularToggle",
+      "parentUuid": "ca3b8f4b_5c5e151c",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dffcbc4_6ffaa60a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
         "patchSetId": 6
@@ -78,6 +102,24 @@
       "writtenOn": "2022-03-08T16:17:31Z",
       "side": 1,
       "message": "ctx not needed",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c48ae49_af956458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dffcbc4_6ffaa60a",
       "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e14a52a_6e4bbda6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea97bae_46a85955",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a067954a_1a75bcb2",
@@ -112,6 +172,24 @@
       "writtenOn": "2022-03-08T16:17:31Z",
       "side": 1,
       "message": "NewHelper already enables Cellular, this is redundant.",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbfe6c4_63d8a10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a067954a_1a75bcb2",
       "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7ca4b5_f2498547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "Removed. The fixture is disabling cellular",
+      "parentUuid": "9320ef08_52e88991",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c91807_ff29b646",
@@ -146,6 +242,24 @@
       "writtenOn": "2022-03-08T16:17:31Z",
       "side": 1,
       "message": "Not needed (unless we disable wifi at some point, which according to the test description we shouldn\u0027t?)",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9414e00f_d91dc689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "This is actually a disable, as we are enabling the WiFi above. But I will remove it since the default Wifi state should be on.",
+      "parentUuid": "43c91807_ff29b646",
       "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03750ff5_6ea5e6a2",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f2bb64_3f02201d",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c86195a8_b505b567",
@@ -184,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d73c08b_2ba1bc0b",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86195a8_b505b567",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4de9f8_ffc94acc",
@@ -197,6 +347,24 @@
       "writtenOn": "2022-03-08T16:17:31Z",
       "side": 1,
       "message": "indent",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b259b35a_3342a052",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T21:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce4de9f8_ffc94acc",
       "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
