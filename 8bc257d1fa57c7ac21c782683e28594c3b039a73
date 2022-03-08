@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c083843f_b52c6165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-03-08T03:06:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abd05089_a79776ba",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0235bf6_d215d4c9",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "How about `CDP_json_list.json`? We are accessing the HTTP endpoint `/json/list`.",
       "parentUuid": "c0235bf6_d215d4c9",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33cc7a0_b4b0ce07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-03-08T03:06:12Z",
+      "side": 1,
+      "message": "Not sure if HTTP endpoint naming useful here. `json` and `list` sounds so meaningless to me. \n\nBTW, `json` is quite duplicated.\n\nAnyway, just mentioned that we can choose some name which can let people understand what information this file contain when ppl visiting the log pages.",
+      "parentUuid": "6bf06b46_9e3b482f",
       "range": {
         "startLine": 60,
         "startChar": 41,
