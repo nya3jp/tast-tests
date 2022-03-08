@@ -172,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e883dbcb_fcd70dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T15:33:51Z",
+      "side": 1,
+      "message": "You can close it explicitly before opening the new page.",
+      "parentUuid": "fa62992b_9888f665",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbcf2292_02d2f8ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
         "patchSetId": 3
@@ -254,6 +272,30 @@
       "side": 1,
       "message": "Actually this seemed to work here without this so removed it.",
       "parentUuid": "06767162_a7565a02",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36944d1d_92827cd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/autofill_credit_card_enabled.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T15:33:51Z",
+      "side": 1,
+      "message": "Even better 😊",
+      "parentUuid": "c3a3bd68_c2995df6",
       "range": {
         "startLine": 10,
         "startChar": 24,
