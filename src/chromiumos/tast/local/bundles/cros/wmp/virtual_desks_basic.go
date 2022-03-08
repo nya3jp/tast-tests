@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualDesksBasic,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that virtual desks works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
@@ -34,7 +34,13 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -44,7 +50,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -58,7 +64,12 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	ac := uiauto.New(tconn)
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
+	}
+
+	ui := uiauto.New(tconn)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -68,7 +79,11 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	defer pc.Close()
 
 	// Opens Files and Chrome.
-	for _, app := range []apps.App{apps.Chrome, apps.Files} {
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find browser app info: ", err)
+	}
+	for _, app := range []apps.App{browserApp, apps.Files} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
 		}
@@ -90,16 +105,16 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 		nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", newDeskName))
 	if err := uiauto.Combine(
 		"create a new desk",
-		ac.LeftClick(addDeskButton),
+		ui.LeftClick(addDeskButton),
 		// The focus on the new desk should be on the desk name field.
-		ac.WaitUntilExists(newDeskNameView.Focused()),
+		ui.WaitUntilExists(newDeskNameView.Focused()),
 		kb.TypeAction(newDeskName),
 		kb.AccelAction("Enter"),
 	)(ctx); err != nil {
 		s.Fatal("Failed to create a new desk: ", err)
 	}
 	// Verifies that there are 2 desks.
-	deskMiniViewsInfo, err := ash.FindDeskMiniViews(ctx, ac)
+	deskMiniViewsInfo, err := ash.FindDeskMiniViews(ctx, ui)
 	if err != nil {
 		s.Fatal("Failed to find desks: ", err)
 	}
@@ -115,7 +130,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to drag and drop desks: ", err)
 	}
 	// The new desk should be the first desk on the list.
-	newDeskLoc, err := ac.Location(ctx, newDeskMiniView)
+	newDeskLoc, err := ui.Location(ctx, newDeskMiniView)
 	if err != nil {
 		s.Fatal("Failed to get the location of the new desk mini view: ", err)
 	}
@@ -125,7 +140,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 
 	// Drags Files App into the new desk.
 	filesAppWindowView := nodewith.ClassName("NativeAppWindowViews").Name("Files - My files")
-	filesAppWindowViewLoc, err := ac.Location(ctx, filesAppWindowView)
+	filesAppWindowViewLoc, err := ui.Location(ctx, filesAppWindowView)
 	if err != nil {
 		s.Fatal("Failed to get the location of the Files app: ", err)
 	}
@@ -148,8 +163,12 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Delete the new desk.
-	closeDeskButton := nodewith.ClassName("CloseButton")
-	if err := ac.LeftClick(closeDeskButton)(ctx); err != nil {
+	closeDeskButton := nodewith.ClassName("CloseButton").Ancestor(newDeskMiniView)
+	if err := uiauto.Combine(
+		"Delete a new desk",
+		ui.LeftClick(closeDeskButton),
+		ui.WaitUntilGone(newDeskMiniView),
+	)(ctx); err != nil {
 		s.Fatal("Failed to delete the new desk: ", err)
 	}
 	// There should still be 2 visible windows. Deleting the new desk won't delete the
@@ -160,5 +179,9 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 	if windowCount != 2 {
 		s.Fatalf("Expected 2 visible windows, got %v instead", windowCount)
+	}
+	// Close all windows for cleanup.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
 	}
 }
