@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4f1fbe_b9f52e9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-08T19:59:29Z",
+      "side": 1,
+      "message": "Why do we need to change cros/arc tests? They are not owned by our team and not used as CUJ or for TPS.\n\nIf we want to change them, should we need to talk to arc team first?",
+      "revId": "98843245cc5e70a3dac57b2280900a4cf7ac22d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
