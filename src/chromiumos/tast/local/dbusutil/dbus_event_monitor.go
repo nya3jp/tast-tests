@@ -20,12 +20,18 @@ const (
 	fakeEndSignal = "FakeEndSignal"
 )
 
+// The CalledMethod struct represents a method call and arguments that was observed by DbusEventMonitor.
+type CalledMethod struct {
+	MethodName string
+	Arguments  []interface{}
+}
+
 // DbusEventMonitor monitors the system message bus for the D-Bus calls we want to observe as specified in |specs|.
 // It returns a stop function and error. The stop function stops the D-Bus monitor and return the called methods and/or error.
-func DbusEventMonitor(ctx context.Context, specs []MatchSpec) (func() ([]string, error), error) {
+func DbusEventMonitor(ctx context.Context, specs []MatchSpec) (func() ([]CalledMethod, error), error) {
 	ch := make(chan error, 1)
-	var calledMethods []string
-	stop := func() ([]string, error) {
+	var calledMethods []CalledMethod
+	stop := func() ([]CalledMethod, error) {
 		// Send a fake dbus signal to stop the Eavesdrop.
 		connect, err := SystemBus()
 		if err != nil {
@@ -96,7 +102,7 @@ func DbusEventMonitor(ctx context.Context, specs []MatchSpec) (func() ([]string,
 					ch <- nil
 					return
 				}
-				calledMethods = append(calledMethods, dbusCmd)
+				calledMethods = append(calledMethods, CalledMethod{dbusCmd, msg.Body})
 			}
 		}
 	}()
