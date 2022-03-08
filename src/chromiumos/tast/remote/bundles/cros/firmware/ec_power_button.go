@@ -221,7 +221,7 @@ func testIgnoreShortPowerKey(ctx context.Context, h *firmware.Helper) error {
 
 func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) error {
 	shutdownAndWake := func(shutDownDur time.Duration, expStates ...string) error {
-		testing.ContextLog(ctx, "Pressing power key")
+		testing.ContextLogf(ctx, "Pressing power key for %s", shutDownDur)
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(shutDownDur)); err != nil {
 			return errors.Wrap(err, "failed to press power key on DUT")
 		}
@@ -231,10 +231,15 @@ func testPowerdPowerOff(ctx context.Context, h *firmware.Helper) error {
 			return errors.Wrapf(err, "failed to get %v powerstates", expStates)
 		}
 
+		// If we are expecting S5/G3, we might still get to G3 after S5, so give it a little time before we wake up again.
+		if err := testing.Sleep(ctx, time.Second*2); err != nil {
+			return errors.Wrap(err, "sleep failed")
+		}
+
 		testing.ContextLog(ctx, "Send cmd to EC to wake up from deepsleep")
 		h.Servo.RunECCommand(ctx, "help")
 
-		testing.ContextLog(ctx, "Pressing power key")
+		testing.ContextLog(ctx, "Pressing power key (press)")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
 			return errors.Wrap(err, "failed to press power key on DUT")
 		}
