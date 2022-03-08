@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26886544_49038ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T18:09:33Z",
+      "side": 1,
+      "message": "Ah, right, I see. This is fine, sorry about the confusion.",
+      "parentUuid": "bf8ccad2_55dd6007",
+      "revId": "ee4a1636ed231acbc6d8fa1afc78a5f365ee629d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50e76ee0_5262e847",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
         "patchSetId": 5
