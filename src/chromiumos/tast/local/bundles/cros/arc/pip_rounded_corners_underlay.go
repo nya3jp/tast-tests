@@ -6,6 +6,8 @@ package arc
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -27,6 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
+		Data:         []string{"bear-320x240.h264.mp4"},
 		Fixture:      "gpuWatchDog",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -70,13 +73,22 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
+	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer srv.Close()
+
+	// Make sure that the test server has plenty of time to start.
+	// TODO: Remove this when I have the test working.
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to sleep: ", err)
+	}
+
 	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", ".VideoActivity")
 	if err != nil {
 		s.Fatal("Failed to create activity: ", err)
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn, arc.WithExtraString("video", "bear-320x240.h264")); err != nil {
+	if err := act.Start(ctx, tconn, arc.WithExtraString("video_uri", srv.URL+"/bear-320x240.h264.mp4")); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
 	defer act.Stop(cleanupCtx, tconn)
@@ -97,6 +109,12 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 
 	if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
 		s.Fatal("Failed to wait for app to idle: ", err)
+	}
+
+	// Make sure that the ARC app has plenty of time to load the video.
+	// TODO: Remove this when I have the test working.
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to sleep: ", err)
 	}
 
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
