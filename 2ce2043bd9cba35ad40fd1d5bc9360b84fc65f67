@@ -177,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bf19557_3b8651eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T20:43:37Z",
+      "side": 1,
+      "message": "As noted in the guidelines, the thing to do is to log these only if there is a failure where they might be helpful. i.e. we can call this before any of the s.Fatal calls below (e.g. when len \u003c 2, or the state type is not expected).",
+      "parentUuid": "ee0330ac_73edb29a",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde7f095_501d0dd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
         "patchSetId": 8
