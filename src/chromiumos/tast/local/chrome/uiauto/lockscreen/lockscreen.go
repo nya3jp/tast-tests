@@ -22,6 +22,8 @@ import (
 
 const uiTimeout = 10 * time.Second
 
+const authIconViewClassName = "AuthIconView"
+
 // AuthErrorFinder is the finder for the authentication error shown on the first failure.
 var AuthErrorFinder = nodewith.Role(role.AlertDialog).NameStartingWith("Your PIN or password couldn't be verified. Try again.").ClassName("LoginErrorBubble")
 
@@ -186,6 +188,23 @@ func WaitForSmartUnlockReady(ctx context.Context, tconn *chrome.TestConn) error 
 		return errors.Wrap(err, "failed to wait for Smart Lock UI to indicate it is ready to unlock")
 	}
 	return nil
+}
+
+// WaitForSmartUnlockAvailable waits for UI signal that Smart Lock is an available auth factor.
+func WaitForSmartUnlockAvailable(ctx context.Context, tconn *chrome.TestConn) error {
+	finder := nodewith.ClassName(authIconViewClassName)
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for Smart Lock UI to indicate it is available")
+	}
+	return nil
+}
+
+// HasAuthIconView checks whether an auth factor icon (e.g. for Smart Lock) is shown.
+func HasAuthIconView(ctx context.Context, tconn *chrome.TestConn) bool {
+	ui := uiauto.New(tconn)
+	found, _ := ui.IsNodeFound(ctx, nodewith.ClassName(authIconViewClassName))
+	return found
 }
 
 // ShowPassword clicks the "Show password" button.
