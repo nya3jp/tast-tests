@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de08dfa_dea38ec6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-08T17:48:35Z",
+      "side": 1,
+      "message": "Small change needed, but otherwise it looks good. Thank you!",
+      "revId": "db201386f22d34399d5ad1b918bead297df611ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f57c4af_52b5c23f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-08T17:48:35Z",
+      "side": 1,
+      "message": "This was in group:mainline and probably should remain there.",
+      "range": {
+        "startLine": 178,
+        "startChar": 32,
+        "endLine": 178,
+        "endChar": 49
+      },
+      "revId": "db201386f22d34399d5ad1b918bead297df611ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
