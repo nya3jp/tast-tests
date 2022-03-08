@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26535eb7_b7c4394a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "We have slightly refactored the function here since we have removed the `verifyTabletMode`.",
+      "parentUuid": "3955578d_365fca0d",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4771bb89_623eb8af",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-04T20:02:00Z",
       "side": 1,
       "message": "can we use WaitForHotseatAnimatingToIdealState(ShownClamshell) here?\n(for consistency with tablet mode version)\n\nor we can even move this to HotseatScalable() before we call verify* methods (just wait for different state depending on tablet mode param)",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e14b26_3b55dbc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "Done, replace with `ash.WaitForHotseatAnimatingToIdealState`",
+      "parentUuid": "4771bb89_623eb8af",
       "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "429afa09_cdb20047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f8e7d537_7bc580ac",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbfc7528_bc150fb3",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-03-04T20:02:00Z",
       "side": 1,
       "message": "nit: move this comment just before you open a window, and maybe phrase is as:\n\nOpen a browser window.\n\nAnd maybe\n\nVerify hotseat hides after opening a window.\n\nbefore WaitForHotseatAnimationToFinish step.",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8144cb55_95cebd25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "We have been told that `verifyTabletMode` is very similar to existing tests, therefore we removed the function.",
+      "parentUuid": "dbfc7528_bc150fb3",
       "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53600455_ad932990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "We have been told that `verifyTabletMode` is very similar to existing tests, therefore we removed the function.",
+      "parentUuid": "fcd32c03_0849bda1",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67ac7b2d_ee3b87dd",
@@ -122,6 +218,30 @@
       "writtenOn": "2022-03-04T20:02:00Z",
       "side": 1,
       "message": "nit: How about\n...that indicate whether an app at particular index in appIDs is pinned.",
+      "range": {
+        "startLine": 955,
+        "startChar": 92,
+        "endLine": 955,
+        "endChar": 113
+      },
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0bc777_d09e1dfe",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ac7b2d_ee3b87dd",
       "range": {
         "startLine": 955,
         "startChar": 92,
@@ -168,6 +288,48 @@
       "writtenOn": "2022-03-06T23:45:12Z",
       "side": 1,
       "message": "This only seems to be used with a single app. Could we just make it singular (isAppPinned)",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e5d6b8_66deafce",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5bbcb8_b4676f3d",
+      "range": {
+        "startLine": 956,
+        "startChar": 5,
+        "endLine": 956,
+        "endChar": 15
+      },
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6a0c07_c6530a2e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T08:26:04Z",
+      "side": 1,
+      "message": "Sorry, this is taken from another reviewer’s suggestion, it is probably can be used for other future tests.\nShould we make it singular in this CL?",
+      "parentUuid": "a4a03da0_da028b61",
       "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
