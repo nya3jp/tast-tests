@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bcf6f0e_e6e866f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-08T15:18:37Z",
+      "side": 1,
+      "message": "Done. The port gets randomly assigned so it still requires reading the port part from the server.URL (which is not typed but just a string).",
+      "parentUuid": "cd971e47_1ac3d14a",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cef745c_53b5b34a",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd172d74_49fe5fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-08T15:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cef745c_53b5b34a",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee365073_3bc94a1a",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-03-08T13:21:36Z",
       "side": 1,
       "message": "set",
+      "range": {
+        "startLine": 230,
+        "startChar": 26,
+        "endLine": 230,
+        "endChar": 32
+      },
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68e0a49_8a2330e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-08T15:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee365073_3bc94a1a",
       "range": {
         "startLine": 230,
         "startChar": 26,
@@ -94,6 +154,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa62992b_9888f665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-08T15:18:37Z",
+      "side": 1,
+      "message": "That should be closed already on line 216 or what do you mean?",
+      "parentUuid": "d856c03f_2df6969a",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbcf2292_02d2f8ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
         "patchSetId": 3
@@ -105,6 +183,30 @@
       "writtenOn": "2022-03-08T13:21:36Z",
       "side": 1,
       "message": "Maybe \"expected to find ....\"",
+      "range": {
+        "startLine": 284,
+        "startChar": 32,
+        "endLine": 284,
+        "endChar": 38
+      },
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3167cbbb_5f4e9579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-08T15:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbcf2292_02d2f8ba",
       "range": {
         "startLine": 284,
         "startChar": 32,
@@ -128,6 +230,30 @@
       "writtenOn": "2022-03-08T13:21:36Z",
       "side": 1,
       "message": "Please add a comment on why this is needed.",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a3bd68_c2995df6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/autofill_credit_card_enabled.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-08T15:18:37Z",
+      "side": 1,
+      "message": "Actually this seemed to work here without this so removed it.",
+      "parentUuid": "06767162_a7565a02",
       "range": {
         "startLine": 10,
         "startChar": 24,
