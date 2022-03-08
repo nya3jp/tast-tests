@@ -94,21 +94,19 @@ func FilesAppContextMenuPinAndUnpin(ctx context.Context, s *testing.State) {
 
 	uia := uiauto.New(tconn)
 
-	// To prevent the "Pin to shelf" option from being hidden, maximize the Files app.
-	if err := uia.LeftClick(nodewith.Name("Maximize").HasClass("FrameCaptionButton").Role(role.Button))(ctx); err != nil {
-		s.Fatal("Failed to maximize the Files app: ", err)
-	}
-
 	// Pin and unpin the item using the context menu in the files app. Unpinning
 	// the item should make the Tray disappear, since nothing else is pinned.
-	if err := uiauto.Combine("pin and unpin item from shelf via Files app context menu",
+	action := uiauto.Combine("pin and unpin item from shelf via Files app context menu",
 		fsapp.ClickContextMenuItem(targetName, "Pin to shelf"),
 		uia.LeftClick(holdingspace.FindTray()),
 		uia.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(targetName)),
 		fsapp.ClickContextMenuItem(targetName, "Unpin from shelf"),
 		uia.WaitUntilGone(holdingspace.FindTray()),
 		uia.EnsureGoneFor(holdingspace.FindTray(), time.Second),
-	)(ctx); err != nil {
+	)
+
+	// "Pin to shelf" option might be hidden. If the pin and unpin actions failed, maximize the Files app and retry.
+	if err := fsapp.PerformActionAndRetryMaximizedOnFail(action)(ctx); err != nil {
 		s.Fatalf("Failed to pin and unpin item %q: %v", targetName, err)
 	}
 }
