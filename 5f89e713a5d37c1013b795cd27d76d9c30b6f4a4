@@ -16,6 +16,29 @@
       "message": "Hi Daniel, Chad,\n\nThis is port of  enableDisableCellular test network_ChromeCellularEndToEnd tauto test. PTAL.\n\nRegards\nShijin \n",
       "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23d5450_9e41d666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-03-08T06:27:57Z",
+      "side": 1,
+      "message": "Should this be renamed to something like assertNetworkStateAfterCellularToggle ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
