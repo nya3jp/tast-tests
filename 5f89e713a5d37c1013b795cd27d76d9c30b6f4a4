@@ -39,6 +39,166 @@
       },
       "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3b8f4b_5c5e151c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "This will be the test name so it should start with a Capital, band I\u0027m not a huge fan of \u0027assert\u0027 since it has a special meaning in code, but agreed that we should name this more clearly, perhaps EnsureNetworkStateAfterCellularToggle?",
+      "parentUuid": "c23d5450_9e41d666",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dffcbc4_6ffaa60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "ctx not needed",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea97bae_46a85955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "Rather than passing in testing.State and using s.Fatal, return an error here (same below).",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a067954a_1a75bcb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "NewHelper already enables Cellular, this is redundant.",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9320ef08_52e88991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "Not needed, we should never assume a specific Cellular enabled or disabled state in a test.",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c91807_ff29b646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "Not needed (unless we disable wifi at some point, which according to the test description we shouldn\u0027t?)",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f2bb64_3f02201d",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "space before {",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86195a8_b505b567",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "2 space indent",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4de9f8_ffc94acc",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T16:17:31Z",
+      "side": 1,
+      "message": "indent",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
