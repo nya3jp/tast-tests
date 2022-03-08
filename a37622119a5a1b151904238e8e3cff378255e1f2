@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c012504b_77cf9f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_array_buffer_unrestricted_access_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-08T08:57:37Z",
+      "side": 1,
+      "message": "Let\u0027s land this as is in this case. The Chrome restart is probably enough to apply the policy (that works for other not dynamically refreshed policies as well). Maybe you can land a separate test for Ash since restarting Chrome is quite slow.",
+      "parentUuid": "91c0f6f2_e3ae21fe",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "a37622119a5a1b151904238e8e3cff378255e1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "231b3259_602c442f",
