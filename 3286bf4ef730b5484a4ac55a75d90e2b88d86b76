@@ -39,6 +39,30 @@
       },
       "revId": "3286bf4ef730b5484a4ac55a75d90e2b88d86b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1adeefeb_3c4a172e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/chromeos_page_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1524580
+      },
+      "writtenOn": "2022-03-08T03:34:36Z",
+      "side": 1,
+      "message": "Yes, it\u0027s the second link. The comments are added. Thanks.",
+      "parentUuid": "99d677d5_7f423aa4",
+      "range": {
+        "startLine": 154,
+        "startChar": 65,
+        "endLine": 154,
+        "endChar": 71
+      },
+      "revId": "3286bf4ef730b5484a4ac55a75d90e2b88d86b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
