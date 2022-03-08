@@ -55,7 +55,7 @@ func Unlock(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for the Smart Lock ready indicator")
-	if err := lockscreen.WaitForSmartUnlockReady(ctx, tconn); err != nil {
+	if err := lockscreen.WaitForSmartLockReady(ctx, tconn); err != nil {
 		s.Fatal("Failed waiting for Smart Lock icon to turn green: ", err)
 	}
 
