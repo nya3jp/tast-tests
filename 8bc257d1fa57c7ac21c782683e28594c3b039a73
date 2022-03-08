@@ -141,6 +141,30 @@
       },
       "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208e31da_82adf1f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-08T03:16:37Z",
+      "side": 1,
+      "message": "Got it, then how about `CDP_available_targets.json`? What we get from the endpoint are actually targets in CDP, so I think would be nice to show that, and people would understand it is referring to the CDP related domain objects, and it also matches to the data we dumped in.",
+      "parentUuid": "a33cc7a0_b4b0ce07",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
