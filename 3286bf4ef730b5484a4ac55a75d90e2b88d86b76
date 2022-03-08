@@ -16,6 +16,29 @@
       "message": "Reassigning to xiaohuic@, the new settings TL.",
       "revId": "3286bf4ef730b5484a4ac55a75d90e2b88d86b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d677d5_7f423aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/chromeos_page_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2022-03-08T01:42:14Z",
+      "side": 1,
+      "message": "why change this from First to Nth(1)?  this is the second link?\n\nplease add inline comments to explain why we need to focus first, here and other places, it\u0027s easier to understand in the future.",
+      "range": {
+        "startLine": 154,
+        "startChar": 65,
+        "endLine": 154,
+        "endChar": 71
+      },
+      "revId": "3286bf4ef730b5484a4ac55a75d90e2b88d86b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
