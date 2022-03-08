@@ -55,7 +55,7 @@ const (
 
 // RunTest measures a number of performance metrics while playing a video with
 // or without hardware acceleration as per decoderType.
-func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome, videoName string, decoderType DecoderType, gridSize int) {
+func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome, videoName string, decoderType DecoderType, gridSize int, measureRoughness bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -68,7 +68,7 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 	defer crastestclient.Unmute(ctx)
 
 	s.Log("Starting playback")
-	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, gridSize, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, gridSize, measureRoughness, s.OutDir()); err != nil {
 		s.Fatal("Playback test failed: ", err)
 	}
 }
@@ -76,7 +76,7 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 // measurePerformance collects video playback performance playing a video with
 // either SW or HW decoder.
 func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrome, fileSystem http.FileSystem, videoName string,
-	decoderType DecoderType, gridSize int, outDir string) error {
+	decoderType DecoderType, gridSize int, measureRoughness bool, outDir string) error {
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return err
@@ -156,7 +156,8 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to get initial histogram")
 	}
 
-	var gpuErr, cStateErr, cpuErr, fdErr error
+	var roughness float64
+	var gpuErr, cStateErr, cpuErr, fdErr, roughnessErr error
 	var wg sync.WaitGroup
 	wg.Add(4)
 	go func() {
@@ -175,6 +176,16 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		defer wg.Done()
 		fdErr = graphics.MeasureFdCount(ctx, measurementDuration, p)
 	}()
+	if measureRoughness {
+		wg.Add(1)
+
+		go func() {
+			defer wg.Done()
+			// If the video sequence is not long enough, roughness won't be provided by
+			// Media Devtools and this call will timeout.
+			roughness, roughnessErr = devtools.GetVideoPlaybackRoughness(ctx, observer, url)
+		}()
+	}
 	wg.Wait()
 	if gpuErr != nil {
 		return errors.Wrap(gpuErr, "failed to measure GPU counters")
@@ -188,6 +199,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	if fdErr != nil {
 		return errors.Wrap(fdErr, "failed to measure open FD count")
 	}
+	if roughnessErr != nil {
+		return errors.Wrap(roughnessErr, "failed to measure playback roughness")
+	}
 
 	if err := graphics.UpdatePerfMetricFromHistogram(ctx, tconn, decodeHistogram, initDecodeHistogram, p, "video_decode_delay"); err != nil {
 		return errors.Wrap(err, "failed to calculate Decode perf metric")
@@ -198,6 +212,14 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 
 	if err := sampleDroppedFrames(ctx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to get dropped frames and percentage")
+	}
+
+	if measureRoughness {
+		p.Set(perf.Metric{
+			Name:      "roughness",
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, float64(roughness))
 	}
 
 	if err := conn.Eval(ctx, videoElement+".pause()", nil); err != nil {
