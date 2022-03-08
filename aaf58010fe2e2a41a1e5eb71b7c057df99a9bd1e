@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2447fb2b_7736c950",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-08T18:46:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "593365dd_9467c334",
+      "range": {
+        "startLine": 145,
+        "startChar": 22,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e14a963b_949daabe",
@@ -262,6 +286,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3553826_6ce17a84",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-08T18:46:09Z",
+      "side": 1,
+      "message": "I mean it spaces out the high values when the system is busy, which means a too low estimate. But probably not worth losing sleep over.",
+      "parentUuid": "6b8e52f3_d7a261df",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cfe2fecd_202aeac1",
         "filename": "src/chromiumos/tast/local/graphics/perf.go",
         "patchSetId": 1
@@ -297,6 +345,30 @@
       "side": 1,
       "message": "It\u0027s because parseAndReportCounter() will report a percentage\nby dividing \"rcs\" by \"total\", so the samplePeriod is not needed.\nAlternatively I could make \"rcs\" the actual value and write a\n\"1\" in \"total\", WDYT?",
       "parentUuid": "cfe2fecd_202aeac1",
+      "range": {
+        "startLine": 163,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b14aa5_ce2f513a",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-08T18:46:09Z",
+      "side": 1,
+      "message": "I know this is all splitting hairs but rcs is a counter. So it could just be rcs \u003d accuBusy. And then total \u003d numSamples * 100 as the maximum possible counter? Why multiply both with seconds and then divide it out again.",
+      "parentUuid": "eb0b2722_a6296693",
       "range": {
         "startLine": 163,
         "startChar": 42,
