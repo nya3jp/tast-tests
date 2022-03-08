@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "077f870c_0bcbe259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-08T01:34:04Z",
+      "side": 1,
+      "message": "If there is any plan doc that you\u0027re working on do you think we can work together? If not, I put up something here http://go/lacros-tast-refactor-proposal and add you as an editor just in case. I believe that\u0027d be a good alternative to the approach in this CL.",
+      "parentUuid": "b9980ceb_f5d58f9e",
+      "revId": "21236354aae2559e9454edd5ac8923a0ca56cef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28ebdee5_7146edd7",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
         "patchSetId": 10
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-07T07:51:29Z",
       "side": 1,
       "message": "Is this meant to be -- instead of -?",
+      "range": {
+        "startLine": 115,
+        "startChar": 52,
+        "endLine": 115,
+        "endChar": 53
+      },
+      "revId": "21236354aae2559e9454edd5ac8923a0ca56cef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd5283b_1d17c53d",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-08T01:34:04Z",
+      "side": 1,
+      "message": "A terrible typo. Thanks for the catch!",
+      "parentUuid": "28ebdee5_7146edd7",
       "range": {
         "startLine": 115,
         "startChar": 52,
