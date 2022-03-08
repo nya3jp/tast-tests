@@ -22,6 +22,8 @@ import (
 
 const uiTimeout = 10 * time.Second
 
+const authIconViewClassName = "AuthIconView"
+
 // AuthErrorFinder is the finder for the authentication error shown on the first failure.
 var AuthErrorFinder = nodewith.Role(role.AlertDialog).NameStartingWith("Your PIN or password couldn't be verified. Try again.").ClassName("LoginErrorBubble")
 
@@ -179,11 +181,27 @@ func ClickSmartLockArrowButton(ctx context.Context, tconn *chrome.TestConn) erro
 	return ui.WithTimeout(uiTimeout).LeftClick(SmartLockArrowButtonFinder)(ctx)
 }
 
-// WaitForSmartUnlockReady waits for UI signal that the chromebook is ready to be unlocked by Smart Lock.
-func WaitForSmartUnlockReady(ctx context.Context, tconn *chrome.TestConn) error {
+// WaitForSmartLockReady waits for UI signal that the chromebook is ready to be unlocked by Smart Lock.
+func WaitForSmartLockReady(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
 	if err := ui.WaitUntilExists(SmartLockArrowButtonFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for Smart Lock UI to indicate it is ready to unlock")
+	}
+	return nil
+}
+
+// ExpectSmartLockVisible waits for UI signal that Smart Lock is an available auth factor.
+func ExpectSmartLockVisible(ctx context.Context, expectVisible bool, tconn *chrome.TestConn) error {
+	finder := nodewith.ClassName(authIconViewClassName)
+	ui := uiauto.New(tconn)
+	if expectVisible {
+		if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for Smart Lock UI to show up")
+		}
+	} else {
+		if err := ui.EnsureGoneFor(finder, 5*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to ensure Smart Lock UI gone for 5 sec")
+		}
 	}
 	return nil
 }
