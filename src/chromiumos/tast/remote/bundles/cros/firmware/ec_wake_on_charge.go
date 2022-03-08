@@ -69,6 +69,21 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		s.Fatal("PreferDebugHeader: ", err)
 	}
 
+	openCCD := func(ctx context.Context) error {
+		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
+			return errors.Wrap(err, "while checking if servo has a CCD connection")
+		} else if hasCCD {
+			if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+				return errors.Wrap(err, "failed to get cr50_ccd_level")
+			} else if val != servo.Open {
+				s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+				if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+					return errors.Wrap(err, "failed to unlock CCD")
+				}
+			}
+		}
+		return nil
+	}
 	setPowerSupply := func(ctx context.Context, connectPower, hasHibernated bool) error {
 		if connectPower {
 			// Connect power supply.
@@ -90,18 +105,14 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				}
 				// Cr50 goes to sleep during hibernation, and when DUT wakes, CCD state might be locked.
 				// Open CCD after waking DUT and before talking to the EC.
-				if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
-					s.Fatal("While checking if servo has a CCD connection: ", err)
-				} else if hasCCD {
-					if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
-						s.Fatal("Failed to get cr50_ccd_level: ", err)
-					} else if val != servo.Open {
-						s.Logf("CCD is not open, got %q. Attempting to unlock", val)
-						if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
-							s.Fatal("Failed to unlock CCD: ", err)
-						}
-					}
+				if err := openCCD(ctx); err != nil {
+					return err
 				}
+			}
+
+			// Sleep briefly to ensure that CCD has fully opened.
+			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
 			}
 
 			// Verify EC console is responsive.
@@ -205,6 +216,13 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				return nil
 			}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 1 * time.Second}); err != nil {
 				s.Fatal("Failed to set lid state: ", err)
+			}
+			// There's a chance that CCD would close when lid closed.
+			// Open CCD to prevent errors from running EC commands.
+			if tc.lidOpen == "no" {
+				if err := openCCD(ctx); err != nil {
+					s.Fatal("Failed to open CCD after closing lid: ", err)
+				}
 			}
 		}
 
