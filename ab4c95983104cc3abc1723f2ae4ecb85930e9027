@@ -51,6 +51,23 @@
       "message": "lgtm",
       "revId": "ab4c95983104cc3abc1723f2ae4ecb85930e9027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf22541_a5f19e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-08T00:38:50Z",
+      "side": 1,
+      "message": "LGTM, though not familiar with the generated code aspect",
+      "revId": "ab4c95983104cc3abc1723f2ae4ecb85930e9027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
