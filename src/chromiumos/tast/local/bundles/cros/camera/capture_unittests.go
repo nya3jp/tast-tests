@@ -110,6 +110,7 @@ func CaptureUnittests(ctx context.Context, s *testing.State) {
 		// we cannot run CaptureMJpeg tests on ChromeOS VM.
 		filter = "-*UsingRealWebcam_CaptureMjpeg*"
 	}
+	filter = "VideoCaptureDeviceTests/VideoCaptureDeviceTest.UsingRealWebcam_OpenInvalidDevice/*"
 
 	const exec = "capture_unittests"
 	logFile := filepath.Join(s.OutDir(), exec+".log")
