@@ -193,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6877cc1_e5094b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T22:16:07Z",
+      "side": 1,
+      "message": "Ack. I have removed it and add to len\u003c2. For the other two, I have added the actual value to the error messasge",
+      "parentUuid": "4bf19557_3b8651eb",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde7f095_501d0dd3",
