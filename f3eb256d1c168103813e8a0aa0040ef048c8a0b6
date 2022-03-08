@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64143fe6_994afa09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T07:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6715bc2_0b0881c7",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a63a3294_0d887c82",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-25T23:18:57Z",
       "side": 1,
       "message": "Consider using full name.",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1802e4dd_020e0208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T07:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63a3294_0d887c82",
       "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffb0269_62657343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T07:50:36Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "23e4fa82_1f50b6c3",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de76d250_4fff1642",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c3845b_737e519a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/default_ui_and_functionality.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T07:50:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de76d250_4fff1642",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "686d8a66_eaf34125",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-02-25T23:18:57Z",
       "side": 1,
       "message": "If process is the parent abstraction, the API definition appear to be chrome-centric.\nI am trying to think how a FileApp process or a generic system process would leverage this interface.",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b79b6e_6c350c5b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/process.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T07:50:36Z",
+      "side": 1,
+      "message": "We defined another type: `ProcessStatus`, which should be suitable for other processes like FileApp.",
+      "parentUuid": "686d8a66_eaf34125",
       "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +212,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb035a1e_a6041bbf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T07:50:36Z",
+      "side": 1,
+      "message": "The provided document requires verifying the default columns, it also explicitly listed those 5 columns to verify.\nShould we make changes on this step?",
+      "parentUuid": "0416002a_be4a38c5",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "672da8d4_aa77c174",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
         "patchSetId": 5
@@ -133,6 +241,24 @@
       "writtenOn": "2022-02-25T23:18:57Z",
       "side": 1,
       "message": "Just want to point out that there is some assumption that the number of columns are always fixed. (which might be ok)",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e8c863_7912bb78",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-08T07:50:36Z",
+      "side": 1,
+      "message": "We are now changing it to be adaptable for a non-fixed number of columns.",
+      "parentUuid": "672da8d4_aa77c174",
       "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
