@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/policy/dututils"
-	"chromiumos/tast/remote/bundles/cros/sdcard/powercontrol"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
