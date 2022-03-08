@@ -20,6 +20,167 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8206d535_752d4b9d",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "Why don\u0027t we pass []string ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a10da8_a087d9c3",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "How about making the type of this field []string ? It seems this is always split before being used.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6533967_7fecd51e",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "nit: var profs []Profiler\nshould work?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b911b9b_a6a465db",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "These string constants are used in many places. Can we define constants for them? You can even make them ints if the string values are not important.\n\ne.g. Around L29,\n\n```\ntype mode int\nconst (\n  // modeStat ...\n  modeStat mode \u003d iota\n  modeSched\n  ...\n)\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65481ba4_02bd1e4f",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "nit: s.Errorf(\"... %v ...\", arg)",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b3eae2_0add36b0",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "It should be ctx.",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413f303d_7053dfe1",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "I think it should be ctx. This function doesn\u0027t live longer than SetUp.",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f069014a_c30f0d34",
         "filename": "src/chromiumos/tast/local/profiler/fixture.go",
         "patchSetId": 4
@@ -31,6 +192,69 @@
       "writtenOn": "2022-03-05T00:49:59Z",
       "side": 1,
       "message": "I think it 1 second may be a bit short if we are going to run profile on a VM. I think it should be at least 30 seconds.",
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc57f35b_f21ef5aa",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "var paths []string",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9fa2139_0b57daf3",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "nit: you can use fmt.Errorf",
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e878395_8773a738",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-08T04:46:57Z",
+      "side": 1,
+      "message": "Do you need to call Start per test?\nIf that\u0027s the case, I think Start operation is tied with test, and should be put in PreTest.",
+      "range": {
+        "startLine": 160,
+        "startChar": 12,
+        "endLine": 160,
+        "endChar": 17
+      },
       "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
