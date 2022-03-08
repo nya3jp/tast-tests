@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c15068ab_6afd615c",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T05:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7c7392_a4582eb1",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18b6dcb6_a7e41269",
@@ -99,6 +123,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9a91f2_7ef1d3b1",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T05:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5236698a_1997e95b",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6132472_e978e2a3",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T05:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18b6dcb6_a7e41269",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e026b147_029dad48",
@@ -112,6 +178,24 @@
       "writtenOn": "2022-03-08T00:41:13Z",
       "side": 1,
       "message": "Nit: Consider asserting that networkState is not |nil|, or returning |false| if it is.",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e72f97_8691513e",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T05:55:05Z",
+      "side": 1,
+      "message": "I am not sure whether we need that check? networkstate comes from a array and if the array is empty, the call will fail. I have added a check for the length of the array. Please let me know if that is not enough.",
+      "parentUuid": "e026b147_029dad48",
       "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
