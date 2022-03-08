@@ -46,6 +46,30 @@
       },
       "revId": "f35075e549dd0c25854955ef5bd8d8c2c346879d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39203198_36fc472d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-03-08T06:25:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "050b030a_69748e91",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "f35075e549dd0c25854955ef5bd8d8c2c346879d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
