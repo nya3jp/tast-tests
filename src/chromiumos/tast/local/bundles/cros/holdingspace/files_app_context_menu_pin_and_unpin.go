@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -93,9 +94,12 @@ func FilesAppContextMenuPinAndUnpin(ctx context.Context, s *testing.State) {
 	defer os.Remove(targetPath)
 
 	uia := uiauto.New(tconn)
-
+	maximizeButton := nodewith.Name("Maximize").Role(role.Button).Ancestor(filesapp.WindowFinder(apps.Files.ID))
 	// To prevent the "Pin to shelf" option from being hidden, maximize the Files app.
-	if err := uia.LeftClick(nodewith.Name("Maximize").HasClass("FrameCaptionButton").Role(role.Button))(ctx); err != nil {
+	if err := uia.IfSuccessThen(
+		uia.WaitUntilExists(maximizeButton),
+		uia.LeftClick(maximizeButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to maximize the Files app: ", err)
 	}
 
