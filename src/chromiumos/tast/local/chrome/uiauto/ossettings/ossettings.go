@@ -338,7 +338,11 @@ func (s *OSSettings) SearchWithKeyword(ctx context.Context, kb *input.KeyboardEv
 	if err := uiauto.Combine(fmt.Sprintf("query with keywords %q", keyword),
 		kb.TypeAction(keyword),
 		s.WaitUntilExists(nodewith.HasClass("ContentsWebView").Focused()),
-		s.WaitUntilExists(searchResultFinder.First()), // Wait for search results be stabled.
+		// WaitUntilExists returns once the node is found, while WaitForLocation waits
+		// until the node exists and the location is not changing for two iterations of polling.
+		// In this case, the node will show the previous result first, then hide and reappear with the new result,
+		// so use WaitForLocation to wait until it stabilizes.
+		s.WaitForLocation(searchResultFinder.First()),
 	)(ctx); err != nil {
 		return nil, false, err
 	}

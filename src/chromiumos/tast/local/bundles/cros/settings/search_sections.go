@@ -296,5 +296,5 @@ func searchAndCheck(ctx context.Context, osSettings *ossettings.OSSettings, kb *
 		}
 	}
 
-	return nil, errors.New("no match results found")
+	return nil, errors.Errorf("no match results found, the first result is %q", infos[0].Name)
 }
