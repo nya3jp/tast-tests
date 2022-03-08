@@ -264,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b91a2c2_6d6e09b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T23:08:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9414e00f_d91dc689",
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f2bb64_3f02201d",
