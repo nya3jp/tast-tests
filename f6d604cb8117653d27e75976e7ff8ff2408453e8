@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f90a29_a776669b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-08T06:37:45Z",
+      "side": 1,
+      "message": "Per offline discussion, I did some investigation, and trying to run two lacros at the same time doesn\u0027t work if they use the same user data dir (but does if they use different ones, or different profiles). It will silently launch a new window of the already running lacros.\n\n2022-03-08T06:35:06.645067Z WARNING chrome[17704:17704]: [arc_ash.cc(86)] profile_ is already initialized. Ignoring SetProfile.\n2022-03-08T06:35:06.645366Z WARNING chrome[17704:17704]: [sharesheet_ash.cc(32)] profile_ is already initialized.\n2022-03-08T06:35:06.657929Z WARNING chrome[17704:17704]: [test_mojo_connection_manager.cc(86)] Mojo to lacros-chrome is disconnected\n",
+      "revId": "f6d604cb8117653d27e75976e7ff8ff2408453e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
