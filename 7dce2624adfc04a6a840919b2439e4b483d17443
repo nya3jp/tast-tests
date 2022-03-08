@@ -33,6 +33,46 @@
       "message": "LGTM, though I can\u0027t comment on the generated code aspect",
       "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55baa4c5_2633c879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-08T08:08:29Z",
+      "side": 1,
+      "message": "let\u0027s change to chromeos-perfmetrics-eng@google.com",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 73
+      },
+      "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2a621a_c26e15cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-08T08:08:29Z",
+      "side": 1,
+      "message": "Commented on the other bug as well - I\u0027m not a fan. I don\u0027t think it saves any effort, is harder to read, and adds an unnecessary level of indirection. It would make sense if this generator was more compact and used for multiple tests.",
+      "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
