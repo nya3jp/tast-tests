@@ -9,7 +9,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice"
@@ -70,7 +69,7 @@ func Login(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := signOut(ctx, cr, kb); err != nil {
+	if err := smartlock.SignOut(ctx, cr, kb); err != nil {
 		s.Fatal("Failed to sign out")
 	}
 
@@ -95,7 +94,7 @@ func Login(ctx context.Context, s *testing.State) {
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Failed to sleep on Smart Lock subpage: ", err)
 	}
-	if err := signOut(ctx, cr, kb); err != nil {
+	if err := smartlock.SignOut(ctx, cr, kb); err != nil {
 		s.Fatal("Failed to sign out")
 	}
 	s.Log("Signed out after signing in with password")
@@ -118,7 +117,7 @@ func Login(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Waiting for the Smart Lock ready indicator")
-	if err := lockscreen.WaitForSmartUnlockReady(ctx, tconn); err != nil {
+	if err := lockscreen.WaitForSmartLockReady(ctx, tconn); err != nil {
 		s.Fatal("Failed waiting for Smart Lock icon to turn green: ", err)
 	}
 	s.Log("Smart Unlock available. Clicking Smart Lock arrow button to log back in")
@@ -130,16 +129,4 @@ func Login(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForShelf(ctx, tconn, 10*time.Second); err != nil {
 		s.Fatal("Shelf did not appear after logging in: ", err)
 	}
-}
-
-// signOut ends the existing chrome session and logs out by keyboard shortcut.
-func signOut(ctx context.Context, cr *chrome.Chrome, kb *input.KeyboardEventWriter) error {
-	cr.Close(ctx)
-	if err := kb.Accel(ctx, "Ctrl+Shift+Q"); err != nil {
-		return errors.Wrap(err, "failed to emulate shortcut 1st press")
-	}
-	if err := kb.Accel(ctx, "Ctrl+Shift+Q"); err != nil {
-		return errors.Wrap(err, "failed to emulate shortcut 2nd press")
-	}
-	return nil
 }
