@@ -45,7 +45,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			// ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnFormFactor(hwdep.Chromeslate), hwdep.SkipOnFormFactor(hwdep.FormFactorUnknown)),
 			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "tablet_mode",
@@ -56,8 +57,10 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletMode,
+			// ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnFormFactor(hwdep.Clamshell), hwdep.SkipOnFormFactor(hwdep.Chromebase),
+				hwdep.SkipOnFormFactor(hwdep.Chromebit), hwdep.SkipOnFormFactor(hwdep.Chromebox), hwdep.SkipOnFormFactor(hwdep.FormFactorUnknown)),
+			Pre: pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
@@ -67,7 +70,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			// ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnFormFactor(hwdep.Chromeslate), hwdep.SkipOnFormFactor(hwdep.FormFactorUnknown)),
 			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "vm_tablet_mode",
@@ -78,8 +82,10 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletMode,
+			// ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnFormFactor(hwdep.Clamshell), hwdep.SkipOnFormFactor(hwdep.Chromebase),
+				hwdep.SkipOnFormFactor(hwdep.Chromebit), hwdep.SkipOnFormFactor(hwdep.Chromebox), hwdep.SkipOnFormFactor(hwdep.FormFactorUnknown)),
+			Pre: pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
