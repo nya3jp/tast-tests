@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94eae88_ff0abd0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T19:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ffda5d9_e946529e",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a87d735_f2486c62",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a4d932_68642928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T19:36:58Z",
+      "side": 1,
+      "message": "Removed.\nTurns out the NewHelper function also enables cellular so the enabled call is not needed.\n\nThough the default state seems to be disabled as the \u0027cellular\u0027 fixture is disabling cellular.",
+      "parentUuid": "3a87d735_f2486c62",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c4431b0_52d9e947",
@@ -82,6 +118,24 @@
       "writtenOn": "2022-03-08T18:09:33Z",
       "side": 1,
       "message": "\u0027.\u0027",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33447fdc_33c3e276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T19:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c4431b0_52d9e947",
       "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee0330ac_73edb29a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T19:36:58Z",
+      "side": 1,
+      "message": "I agree that it goes against the tast rules, but I feel that that will make debugging a failure much easier. In the absence of that, anyone debugging a failure will have to piece together the network state from logs as opposed to just reading the network state from that log message.\n\nI will remove it if you still feel strongly that it is not required.",
+      "parentUuid": "5b249a8b_4f8e2a90",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde7f095_501d0dd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
         "patchSetId": 8
@@ -116,6 +188,24 @@
       "writtenOn": "2022-03-08T18:09:33Z",
       "side": 1,
       "message": "\u0027.\u0027",
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06dc201_2db88e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T19:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde7f095_501d0dd3",
       "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +354,30 @@
       "side": 1,
       "message": "\u003e \"containes\" is a possible misspelling of \"contains\".\n\nPlease fix.",
       "parentUuid": "779bd64b_79b410fa",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "2ce2043bd9cba35ad40fd1d5bc9360b84fc65f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9febe9c5_73abb0b3",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T19:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea7c5e78_43d79f2f",
       "range": {
         "startLine": 8,
         "startChar": 13,
