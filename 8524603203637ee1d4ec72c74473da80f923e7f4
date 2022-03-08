@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709ae3b3_4bfa31db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-08T21:48:49Z",
+      "side": 1,
+      "message": "Do we not have a tracking bug for e2e work?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "8524603203637ee1d4ec72c74473da80f923e7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d7cc24_7d05b3ec",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-08T21:48:49Z",
+      "side": 1,
+      "message": "Should we use the whole string? \"Unlocked by your phone. Tap or click to enter.\"",
+      "range": {
+        "startLine": 182,
+        "startChar": 36,
+        "endLine": 182,
+        "endChar": 57
+      },
+      "revId": "8524603203637ee1d4ec72c74473da80f923e7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93114a76_7e578390",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-08T21:48:49Z",
+      "side": 1,
+      "message": "Is this function even still necessary now that hardlock functionality has been removed?",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 174
+      },
+      "revId": "8524603203637ee1d4ec72c74473da80f923e7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
