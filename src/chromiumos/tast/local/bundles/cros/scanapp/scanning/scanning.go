@@ -381,6 +381,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, scanner ScannerDescriptor) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
