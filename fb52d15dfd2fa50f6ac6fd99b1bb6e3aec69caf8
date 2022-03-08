@@ -33,6 +33,23 @@
       "message": "Hi Ilja/PO-Hsien,\n\nCan you please review this CL?",
       "revId": "fb52d15dfd2fa50f6ac6fd99b1bb6e3aec69caf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80cc14f_3f98f7ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-08T18:28:09Z",
+      "side": 1,
+      "message": "Thanks for fixing the attributes.\n\nYou can\u0027t check a tarball into the data directory. Can you copy it using gsutil to gs://chromiumos-test-assets-public/tast/cros/graphics/ and create an external file like the others in the data directory?",
+      "revId": "fb52d15dfd2fa50f6ac6fd99b1bb6e3aec69caf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
