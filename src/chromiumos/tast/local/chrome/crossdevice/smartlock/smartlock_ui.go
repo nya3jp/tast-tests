@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/input"
 )
 
 const (
@@ -23,6 +24,7 @@ const (
 		`.querySelector("os-settings-page").shadowRoot` +
 		`.querySelector("settings-multidevice-page").shadowRoot` +
 		`.querySelector("settings-multidevice-smartlock-subpage")`
+	smartLockToggle = smartLockSubpage + `.shadowRoot.querySelector("settings-multidevice-feature-toggle")`
 )
 
 // OpenSmartLockSubpage opens the Smart Lock sub page in OS Settings
@@ -32,6 +34,37 @@ func OpenSmartLockSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		return nil, errors.Wrap(err, "failed to launch OS Settings to the Smart Lock page")
 	}
 	return settings, nil
+}
+
+// ToggleSmartLockEnabled opens the Smart Lock sub page in OS Settings and toggles Smart Lock's enabled state
+func ToggleSmartLockEnabled(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, password string) error {
+	settings, err := OpenSmartLockSubpage(ctx, tconn, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to open Smart Lock subpage in OS Settings")
+	}
+	settingsConn, err := settings.ChromeConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to OS settings target")
+	}
+	token, err := settings.AuthToken(ctx, settingsConn, password)
+	if err != nil {
+		return errors.Wrap(err, "failed to get auth token")
+	}
+	data, err := json.Marshal(token)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshall auth token to JSON")
+	}
+	if err := settingsConn.WaitForExpr(ctx, smartLockSubpage); err != nil {
+		return errors.Wrap(err, "failed waiting for Smart Lock subpage to load")
+	}
+	expr := fmt.Sprintf(`%s.authToken_ = %s`, smartLockSubpage, data)
+	if err := settingsConn.Eval(ctx, expr, nil); err != nil {
+		return errors.Wrap(err, "failed to set authToken_ property")
+	}
+	if err := settingsConn.Eval(ctx, smartLockToggle+`.toggleFeature()`, nil); err != nil {
+		return errors.Wrap(err, "failed to toggle smart lock enabled button")
+	}
+	return nil
 }
 
 // DisableSmartLockLogin disables Smart Lock login functionality.
@@ -50,6 +83,9 @@ func DisableSmartLockLogin(ctx context.Context, tconn *chrome.TestConn, cr *chro
 	}
 	if err := settingsConn.Eval(ctx, smartLockSubpage+`.updateSmartLockSignInEnabled_(false)`, nil); err != nil {
 		return errors.Wrap(err, "failed to toggle smart lock login button")
+	}
+	if err := settingsConn.Eval(ctx, smartLockSubpage+`.onSmartLockSignInEnabledChanged_()`, nil); err != nil {
+		return errors.Wrap(err, "failed to update smart lock login setting")
 	}
 	return nil
 }
@@ -83,5 +119,17 @@ func EnableSmartLockLogin(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		return errors.Wrap(err, "failed to toggle smart lock login button")
 	}
 
+	return nil
+}
+
+// signOut ends the existing chrome session and logs out by keyboard shortcut.
+func SignOut(ctx context.Context, cr *chrome.Chrome, kb *input.KeyboardEventWriter) error {
+	cr.Close(ctx)
+	if err := kb.Accel(ctx, "Ctrl+Shift+Q"); err != nil {
+		return errors.Wrap(err, "failed to emulate shortcut 1st press")
+	}
+	if err := kb.Accel(ctx, "Ctrl+Shift+Q"); err != nil {
+		return errors.Wrap(err, "failed to emulate shortcut 2nd press")
+	}
 	return nil
 }
