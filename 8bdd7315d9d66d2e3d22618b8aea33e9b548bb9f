@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6937dd6a_0eee995a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-08T05:35:37Z",
+      "side": 1,
+      "message": "LGTM on wifi end.",
+      "revId": "8bdd7315d9d66d2e3d22618b8aea33e9b548bb9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
