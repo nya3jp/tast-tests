@@ -126,7 +126,7 @@ func tearDown(ctx context.Context, env *TestEnv) {
 
 // DbusEventMonitor monitors the system message bus for those D-Bus calls we want to observe (InsertUserProfile, PopAllUserProfiles, CreateUserProfile).
 // It returns a stop function and error. The stop function stops the D-Bus monitor and return the called methods and/or error.
-func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
+func DbusEventMonitor(ctx context.Context) (func() ([]dbusutil.CalledMethod, error), error) {
 	var specs []dbusutil.MatchSpec
 	var methods = []string{InsertUserProfile, PopAllUserProfiles, CreateUserProfile}
 	for _, method := range methods {
@@ -140,7 +140,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 }
 
 // AssureMethodCalls assure that the expected methods are called.
-func AssureMethodCalls(ctx context.Context, expectedMethodCalls, calledMethods []string) error {
+func AssureMethodCalls(ctx context.Context, expectedMethodCalls []string, calledMethods []dbusutil.CalledMethod) error {
 	if len(expectedMethodCalls) != len(calledMethods) {
 		return errors.Errorf("found unexpected number of method calls: got %v, want %v ", calledMethods, expectedMethodCalls)
 	}
@@ -148,7 +148,7 @@ func AssureMethodCalls(ctx context.Context, expectedMethodCalls, calledMethods [
 	for _, expected := range expectedMethodCalls {
 		found = false
 		for _, actual := range calledMethods {
-			if expected == actual {
+			if expected == actual.MethodName {
 				found = true
 				break
 			}
