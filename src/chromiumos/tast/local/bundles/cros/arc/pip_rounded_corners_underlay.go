@@ -6,6 +6,11 @@ package arc
 
 import (
 	"context"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -27,6 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
+		Data:         []string{"bear-320x240.h264.mp4"},
 		Fixture:      "gpuWatchDog",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -76,7 +82,26 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn, arc.WithExtraString("video", "bear-320x240.h264")); err != nil {
+	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer srv.Close()
+
+	srvURL, err := url.Parse(srv.URL)
+	if err != nil {
+		s.Fatal("Failed to parse test server URL: ", err)
+	}
+
+	hostPort, err := strconv.Atoi(srvURL.Port())
+	if err != nil {
+		s.Fatal("Failed to parse test server port: ", err)
+	}
+
+	androidPort, err := a.ReverseTCP(ctx, hostPort)
+	if err != nil {
+		s.Fatal("Failed to start reverse port forwarding: ", err)
+	}
+	defer a.RemoveReverseTCP(ctx, androidPort)
+
+	if err := act.Start(ctx, tconn, arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/bear-320x240.h264.mp4", androidPort))); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
 	defer act.Stop(cleanupCtx, tconn)
