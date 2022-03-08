@@ -28,6 +28,9 @@ var AuthErrorFinder = nodewith.Role(role.AlertDialog).NameStartingWith("Your PIN
 // ConsecutiveAuthErrorFinder is the finder for the authentication error shown on the consecutive failures.
 var ConsecutiveAuthErrorFinder = nodewith.Role(role.AlertDialog).NameStartingWith("Your PIN or password still couldn't be verified. Note: If you recently changed your password, use your old password. Your new password will be applied once you sign out.").ClassName("LoginErrorBubble")
 
+// SmartLockArrowButtonFinder is the finder for the button that needs to be clicked to complete authentication with Smart Lock.
+var SmartLockArrowButtonFinder = nodewith.NameContaining("Unlocked by your phone. Tap or click to enter.").ClassName("ArrowButtonView")
+
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
 type State struct {
@@ -170,29 +173,17 @@ func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
 	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(SubmitButton)(ctx)
 }
 
-// ClickUserImage clicks the users image to login with Smart Lock.
-func ClickUserImage(ctx context.Context, tconn *chrome.TestConn) error {
+// ClickSmartLockArrowButton clicks the arrow button to login with Smart Lock.
+func ClickSmartLockArrowButton(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
-	userImage := nodewith.ClassName("LoginUserImage")
-	return ui.WithTimeout(uiTimeout).LeftClick(userImage)(ctx)
+	return ui.WithTimeout(uiTimeout).LeftClick(SmartLockArrowButtonFinder)(ctx)
 }
 
 // WaitForSmartUnlockReady waits for UI signal that the chromebook is ready to be unlocked by Smart Lock.
 func WaitForSmartUnlockReady(ctx context.Context, tconn *chrome.TestConn) error {
-	finder := nodewith.Name("Your device can be unlocked with Smart Lock. Press Enter to unlock.").ClassName("ImageButton")
 	ui := uiauto.New(tconn)
-	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+	if err := ui.WaitUntilExists(SmartLockArrowButtonFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for Smart Lock UI to indicate it is ready to unlock")
-	}
-	return nil
-}
-
-// WaitForSmartLockPasswordPrompt waits for the login screen indication that the user must login one more time with their password to enable the Smart Lock for login feature.
-func WaitForSmartLockPasswordPrompt(ctx context.Context, tconn *chrome.TestConn) error {
-	finder := nodewith.NameContaining("Enter your password to enable Smart Lock.").Role(role.StaticText)
-	ui := uiauto.New(tconn)
-	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for Smart Lock UI to show password will help you with smart lock")
 	}
 	return nil
 }
