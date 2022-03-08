@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0472c1da_73585271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-08T16:45:46Z",
+      "side": 1,
+      "message": "Apparently the approvals were automatically reset when I uploaded Patchset 7. Is everyone still happy with this CL?",
+      "revId": "57d26e20968f99429227fb514b52a3043738a4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
