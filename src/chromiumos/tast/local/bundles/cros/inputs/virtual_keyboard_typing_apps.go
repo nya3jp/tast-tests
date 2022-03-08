@@ -77,7 +77,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBeIgnoringCase(tconn, searchFieldFinder, typingKeys),
 	)
 
-	if err := uiauto.UserAction("VK typing",
+	if err := uiauto.UserAction("VK typing input",
 		validateAction,
 		uc,
 		&useractions.UserActionCfg{
