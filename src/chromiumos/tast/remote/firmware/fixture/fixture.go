@@ -14,6 +14,7 @@ import (
 	common "chromiumos/tast/common/firmware"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/exec"
 	"chromiumos/tast/remote/firmware"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
@@ -268,6 +269,9 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		}
 		if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 			s.Fatal("Failed to disable write protect: ", err)
+		}
+		if err := i.value.Helper.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(exec.DumpLogOnError); err != nil {
+			s.Fatal("Failed to disable software WP: ", err)
 		}
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
 		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
