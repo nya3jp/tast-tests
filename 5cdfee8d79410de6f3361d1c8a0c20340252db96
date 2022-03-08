@@ -46,6 +46,30 @@
       },
       "revId": "5cdfee8d79410de6f3361d1c8a0c20340252db96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c6a1f7_9047c0df",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-08T23:02:29Z",
+      "side": 1,
+      "message": "Yep, that\u0027s normal.",
+      "parentUuid": "10cc58d6_97b09553",
+      "range": {
+        "startLine": 58,
+        "startChar": 98,
+        "endLine": 58,
+        "endChar": 112
+      },
+      "revId": "5cdfee8d79410de6f3361d1c8a0c20340252db96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
