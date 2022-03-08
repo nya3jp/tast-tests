@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819671da_f8308d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-08T08:03:33Z",
+      "side": 1,
+      "message": "Maybe add another line saying that this file\u0027s comments have instructions on how to generate new params",
+      "revId": "e00a1d127eae130076bd1ace9896fd5d166d2ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fabba110_4df4d8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-08T08:03:33Z",
+      "side": 1,
+      "message": "Should this file be named something like window_arrangement_cuj_gen.go to indicate that it\u0027s a generator script?",
+      "revId": "e00a1d127eae130076bd1ace9896fd5d166d2ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "126780c7_401cb9dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-08T08:03:33Z",
+      "side": 1,
+      "message": "This generator doesn\u0027t really seem to save much typing, and it\u0027s more complicated to understand than the output. What\u0027s the point?",
+      "revId": "e00a1d127eae130076bd1ace9896fd5d166d2ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
