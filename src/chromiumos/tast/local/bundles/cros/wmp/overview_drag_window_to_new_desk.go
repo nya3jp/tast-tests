@@ -10,8 +10,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -29,7 +31,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewDragWindowToNewDesk,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that drag window to new desk in overview mode works correctly",
 		Contacts: []string{
 			"conniekxu@chromium.org",
@@ -38,7 +40,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -48,7 +58,7 @@ func OverviewDragWindowToNewDesk(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -62,14 +72,24 @@ func OverviewDragWindowToNewDesk(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
+	}
+
 	ac := uiauto.New(tconn)
 
 	pc := pointer.NewMouse(tconn)
 	defer pc.Close()
 
-	// Open a chrome window.
-	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
-		s.Fatal("Failed to launch chrome: ", err)
+	// Open a browser window.
+	bt := s.Param().(browser.Type)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
+	if err != nil {
+		s.Fatalf("Could not find %v browser app info: %v", bt, err)
+	}
+	if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
+		s.Fatal("Failed to launch browser: ", err)
 	}
 
 	// Enter overview mode.
@@ -87,17 +107,18 @@ func OverviewDragWindowToNewDesk(ctx context.Context, s *testing.State) {
 		s.Fatal(err, "failed to get the location of new desk button view")
 	}
 
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if len(ws) != 1 {
-		s.Fatalf("Got %d window(s), Expected 1 window", len(ws))
+	// Ensure that there is only one open window that is the primary browser. Wait for the browser to be visible to avoid a race that may cause test flakiness.
+	bw, err := wmputils.EnsureOnlyBrowserWindowOpen(ctx, tconn, bt)
+	if err != nil {
+		s.Fatal("Expected the window to be fullscreen but got: ", err)
 	}
-	chromeWindow := ws[0]
+	defer bw.CloseWindow(cleanupCtx, tconn)
 
 	// Drag the window towoard to the new desk button without dropping it. Since it's close
 	// enough to the new desk button, the desks bar view should be transformed to its expanded
 	// state.
 	if err := uiauto.Combine("move mouse on the chrome window and then drag the window to the new desk button",
-		mouse.Move(tconn, chromeWindow.BoundsInRoot.CenterPoint(), 0),
+		mouse.Move(tconn, bw.BoundsInRoot.CenterPoint(), 0),
 		mouse.Press(tconn, mouse.LeftButton),
 		mouse.Move(tconn, newDeskButtonViewLoc.CenterPoint(), 2*time.Second),
 	)(ctx); err != nil {
@@ -145,7 +166,7 @@ func OverviewDragWindowToNewDesk(ctx context.Context, s *testing.State) {
 	}
 
 	if err := pc.Drag(
-		chromeWindow.BoundsInRoot.CenterPoint(),
+		bw.BoundsInRoot.CenterPoint(),
 		pc.DragTo(newDeskButtonViewLoc.CenterPoint(), 2*time.Second))(ctx); err != nil {
 		s.Fatal("Failed to drag chrome window into the new desk button: ", err)
 	}
@@ -160,12 +181,12 @@ func OverviewDragWindowToNewDesk(ctx context.Context, s *testing.State) {
 	}
 
 	// Checks that the chrome window is in the new desk. The new desk is inactive.
-	ws, err = ash.GetAllWindows(ctx, tconn)
+	ws, err := ash.GetAllWindows(ctx, tconn)
 	if len(ws) != 1 {
 		s.Fatalf("Got %d window(s), Expected 1 window", len(ws))
 	}
-	chromeWindow = ws[0]
-	if chromeWindow.OnActiveDesk == true {
+	bw = ws[0]
+	if bw.OnActiveDesk == true {
 		s.Fatal("Chrome window should be in the inactive desk")
 	}
 }
