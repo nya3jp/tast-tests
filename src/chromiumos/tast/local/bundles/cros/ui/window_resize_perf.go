@@ -10,12 +10,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
@@ -27,24 +28,43 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowResizePerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures animation smoothness of resizing a window",
-		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
+		Contacts:     []string{"xiyuan@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{
+			{
+				Val:     browser.TypeAsh,
+				Fixture: "chromeLoggedIn",
+			}, {
+				Name:              "lacros",
+				Val:               browser.TypeLacros,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "lacros",
+			},
+		},
 	})
 }
 
 func WindowResizePerf(ctx context.Context, s *testing.State) {
+	// Reserve five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacros(cleanupCtx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -55,7 +75,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	// Ensures in the landscape orientation; the following test scenario won't
 	// succeed when the device is in the portrait mode.
@@ -69,16 +89,28 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
-		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
+	}
+
+	metricsName := "Ash.InteractiveWindowResize.TimeToPresent"
+	if s.Param().(browser.Type) == browser.TypeLacros {
+		metricsName = "Ash.InteractiveWindowResize.Lacros.TimeToPresent"
 	}
 
 	runner := perfutil.NewRunner(cr.Browser())
-	for _, numWindows := range []int{1, 2} {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
+	for i, numWindows := range []int{1, 2} {
+		conn, err := cs.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open a new connection: ", err)
 		}
 		defer conn.Close()
+
+		// This must be done after opening a new window to avoid terminating lacros-chrome.
+		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
+			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
+				s.Fatal("Failed to close about:blank: ", err)
+			}
+		}
 
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
@@ -141,13 +173,13 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 					mouse.Release(tconn, mouse.LeftButton)
 				}
 			}()
-			if err := mouse.Move(tconn, left, time.Second/2)(ctx); err != nil {
+			if err := mouse.Move(tconn, left, time.Second)(ctx); err != nil {
 				return errors.Wrap(err, "faeild to drag to the left")
 			}
 			if err := mouse.Move(tconn, right, time.Second)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag to the right")
 			}
-			if err := mouse.Move(tconn, start, time.Second/2)(ctx); err != nil {
+			if err := mouse.Move(tconn, start, time.Second)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag back to the start position")
 			}
 			if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
@@ -155,7 +187,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			}
 			released = true
 			return testing.Sleep(ctx, time.Second)
-		}, "Ash.InteractiveWindowResize.TimeToPresent"),
+		}, metricsName),
 			perfutil.StoreAll(perf.SmallerIsBetter, "ms", suffix))
 	}
 
