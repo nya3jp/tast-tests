@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f50be1b_d19d3c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-08T02:43:41Z",
+      "side": 1,
+      "message": "nit:,",
+      "range": {
+        "startLine": 125,
+        "startChar": 73,
+        "endLine": 125,
+        "endChar": 74
+      },
+      "revId": "2ee359c056cb07c969ca766a826c7e7ca94b34d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752cf692_736dd7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-08T02:43:41Z",
+      "side": 1,
+      "message": "The content has changed a lot. Could you please explain why? I did not find too much from the bug and the commit msg.",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 48
+      },
+      "revId": "2ee359c056cb07c969ca766a826c7e7ca94b34d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c0c92e_7cf219d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-08T02:43:41Z",
+      "side": 1,
+      "message": "Previously, it checked whether the sample exists, it does not do it anymore?",
+      "range": {
+        "startLine": 130,
+        "startChar": 26,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "2ee359c056cb07c969ca766a826c7e7ca94b34d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
