@@ -38,7 +38,7 @@ func init() {
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8, caps.HWEncodeVP8},
-		Data: []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json",
+		Data: []string{"perf/vp8/1080p_30fps_300frames.vp8.ivf", "perf/vp8/1080p_30fps_300frames.vp8.ivf.json",
 			"crowd-1920x1080.vp9.webm", "crowd-1920x1080.yuv.json"},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 5 * time.Minute,
@@ -54,7 +54,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		// Duration of the interval during which CPU usage will be measured.
 		measureDuration = 30 * time.Second
 		// Filename of the video that will be decoded.
-		decodeFilename = "1080p_30fps_300frames.vp8.ivf"
+		decodeFilename = "perf/vp8/1080p_30fps_300frames.vp8.ivf"
 		// Filename of the video that will be encoded
 		encodeFileName = "crowd-1920x1080.vp9.webm"
 	)
