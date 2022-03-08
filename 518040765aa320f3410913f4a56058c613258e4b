@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80454bc0_7b4c8e17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-08T09:01:07Z",
+      "side": 1,
+      "message": "Hi,\n\nProbable fix for this flakiness:\n\nunset: Failed to click the AutofillPopupSuggestionView listBoxOption: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {className: \\\"AutofillPopupSuggestionView\\\", role: listBoxOption}\"\n\nhttps://tastboard.corp.google.com/test/policy.AutofillAddressEnabled.lacros",
+      "revId": "518040765aa320f3410913f4a56058c613258e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
