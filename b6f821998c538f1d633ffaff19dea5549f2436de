@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a252e87_c7a948a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-08T18:51:14Z",
+      "side": 1,
+      "message": "let\u0027s also verify that we have \"home/launcher button\" here",
+      "revId": "b6f821998c538f1d633ffaff19dea5549f2436de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd6c53a_47d0ac73",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-08T18:51:14Z",
+      "side": 1,
+      "message": "can we move this after PinApps",
+      "revId": "b6f821998c538f1d633ffaff19dea5549f2436de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -332,6 +332,24 @@
       "parentUuid": "a4a03da0_da028b61",
       "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ec7cbf_a03ae8c6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-08T18:51:14Z",
+      "side": 1,
+      "message": "personally, I don\u0027t have a strong preference - I\u0027m fine with this version for symmetry with \"PnApps\" method used in the test, but I\u0027m fine making this work for a single app only (and changing the method logic), though we may want to make the test use PinApp, too\n\n\nP.S. Actually, we can just have the test use \nash.GetPinnedAppIds(), and verify that the array contains pinned apps.",
+      "parentUuid": "6b6a0c07_c6530a2e",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
