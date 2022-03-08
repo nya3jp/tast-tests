@@ -124,9 +124,9 @@ func Login(ctx context.Context, s *testing.State) {
 	if err := lockscreen.WaitForSmartUnlockReady(ctx, tconn); err != nil {
 		s.Fatal("Failed waiting for Smart Lock icon to turn green: ", err)
 	}
-	s.Log("Smart Unlock available. Clicking user image to log back in")
-	if err := lockscreen.ClickUserImage(ctx, tconn); err != nil {
-		s.Fatal("Failed to click user image on the ChromeOS lock screen: ", err)
+	s.Log("Smart Unlock available. Clicking Smart Lock arrow button to log back in")
+	if err := lockscreen.ClickSmartLockArrowButton(ctx, tconn); err != nil {
+		s.Fatal("Failed to click arrow button on the ChromeOS lock screen: ", err)
 	}
 
 	// Check for shelf to ensure we are logged back in.
