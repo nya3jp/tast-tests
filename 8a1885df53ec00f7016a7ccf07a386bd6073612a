@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "494be6c6_d33cbf77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-03-08T00:52:18Z",
+      "side": 1,
+      "message": "up",
+      "revId": "8a1885df53ec00f7016a7ccf07a386bd6073612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f99647_39e014aa",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-03-08T00:52:18Z",
+      "side": 1,
+      "message": "ui restart will already call cryptohome --action\u003dunmount so you can get rid of the below call as well (in ui-post-stop). This differs from the per-user unmount call below, but as it turns out, UserDataAuth::Unmount() always does a full unmount anyway so these two are equivalent.",
+      "range": {
+        "startLine": 183,
+        "startChar": 30,
+        "endLine": 183,
+        "endChar": 37
+      },
+      "revId": "8a1885df53ec00f7016a7ccf07a386bd6073612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
