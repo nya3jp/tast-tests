@@ -16,6 +16,23 @@
       "message": "lgtm",
       "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389417fe_a8b4f80b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-08T00:36:58Z",
+      "side": 1,
+      "message": "LGTM, though I can\u0027t comment on the generated code aspect",
+      "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
