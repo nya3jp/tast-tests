@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19b9eac2_f0930508",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-08T05:26:26Z",
+      "side": 1,
+      "message": "It means the same as previous comment that it needs to finish with full stop :)",
+      "parentUuid": "3296e038_8c9df21f",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 60
+      },
+      "revId": "04fe65cb49926d4671edc0e2387ade9ed6dcd844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6b1617a_123ed319",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 40
