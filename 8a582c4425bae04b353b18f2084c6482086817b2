@@ -51,6 +51,24 @@
       "parentUuid": "b5dd2e9b_e8259a6c",
       "revId": "8a582c4425bae04b353b18f2084c6482086817b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c72a71_5ae58ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/launched_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-08T00:03:34Z",
+      "side": 1,
+      "message": "HyungTae -\u003e I am adding it in this CL. Check out fixture.go \n\nHidehiko -\u003ei had a quick look at disabling sync for the lacros tests too. When i pass --disable-sync to ash (or lacros) AND enable the LacrosPrimary feature, the disable-sync flag is getting ignored. I will have another look but let me know if you have any idea what could cause that",
+      "parentUuid": "7e7b269c_38fcef4e",
+      "revId": "8a582c4425bae04b353b18f2084c6482086817b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
