@@ -5,6 +5,7 @@
 package scanapp
 
 import (
+	"context"
 	"time"
 
 	"chromiumos/tast/local/chrome/uiauto"
@@ -38,7 +39,17 @@ func (s *ScanApp) LeftClick(finder *nodewith.Finder) uiauto.Action {
 	return s.ui.LeftClick(finder.FinalAncestor(WindowFinder))
 }
 
+// LeftClickUntil calls ui.LeftClickUntil scoping the finder to the Scan App.
+func (s *ScanApp) LeftClickUntil(finder *nodewith.Finder, condition func(context.Context) error) uiauto.Action {
+	return s.ui.LeftClickUntil(finder.FinalAncestor(WindowFinder), condition)
+}
+
 // MakeVisible calls ui.MakeVisible scoping the finder to the Scan App.
 func (s *ScanApp) MakeVisible(finder *nodewith.Finder) uiauto.Action {
 	return s.ui.MakeVisible(finder.FinalAncestor(WindowFinder))
+}
+
+// Exists calls ui.Exists scoping the finder to the Scan App.
+func (s *ScanApp) Exists(finder *nodewith.Finder) uiauto.Action {
+	return s.ui.Exists(finder.FinalAncestor(WindowFinder))
 }
