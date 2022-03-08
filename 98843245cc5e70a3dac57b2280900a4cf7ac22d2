@@ -34,6 +34,24 @@
       "parentUuid": "7f4f1fbe_b9f52e9d",
       "revId": "98843245cc5e70a3dac57b2280900a4cf7ac22d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa8b66d_e02c5469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-08T21:24:15Z",
+      "side": 1,
+      "message": "Thanks for the clarification.\n\nSo it is more like a refactoring to use runtime generation of testing.Param for power tests. I understand that now.\n\nI\u0027ll let tast owner to weigh in on this approach. Personally, I vote for this approach since it is easier (and less) to write and more readable than `genparams` approach.\n\nIf owners are okay with this approach, I still think we should leave the ARC tests alone and apply the approach to CUJ tests that are owned by us.",
+      "parentUuid": "48d464b5_1d08d1b0",
+      "revId": "98843245cc5e70a3dac57b2280900a4cf7ac22d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

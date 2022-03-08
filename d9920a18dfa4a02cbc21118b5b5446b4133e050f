@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d092d95_ed9ffe88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-08T21:24:15Z",
+      "side": 1,
+      "message": "Should we list the embedding first ?",
+      "revId": "d9920a18dfa4a02cbc21118b5b5446b4133e050f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea59ae7b_cde01e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_encode_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-08T21:24:15Z",
+      "side": 1,
+      "message": "Should it be `setup.PowerTestParams(` ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "d9920a18dfa4a02cbc21118b5b5446b4133e050f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d271509_f2af1fe6",
+        "filename": "src/chromiumos/tast/local/power/setup/power_test_param.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-08T21:24:15Z",
+      "side": 1,
+      "message": "nit: Get rid of this since package comment is already provided in `setup.go`.",
+      "revId": "d9920a18dfa4a02cbc21118b5b5446b4133e050f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
