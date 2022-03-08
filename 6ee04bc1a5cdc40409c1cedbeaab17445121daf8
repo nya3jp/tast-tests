@@ -22,6 +22,30 @@
       },
       "revId": "6ee04bc1a5cdc40409c1cedbeaab17445121daf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233218a2_833061b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-08T15:31:57Z",
+      "side": 1,
+      "message": "We need a naming convention to distinguish between UI/Mojo/platform level tests. Existing tests are named shill* or modemmanager* and I thought I will use mojo* but I am open to suggestions.",
+      "parentUuid": "2b4b30b8_9a228c37",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "6ee04bc1a5cdc40409c1cedbeaab17445121daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
