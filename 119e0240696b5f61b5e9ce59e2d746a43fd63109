@@ -16,6 +16,121 @@
       "message": "I am removing myself, as I am OOO for quite a while. Please add a different policy Tast Owner.",
       "revId": "119e0240696b5f61b5e9ce59e2d746a43fd63109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce19ba3a_17938211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-08T22:23:49Z",
+      "side": 1,
+      "message": "nit: add the `Timeout` field with a reasonable value. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dTests%20should%20always%20set%20the%20Timeout%20field",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "119e0240696b5f61b5e9ce59e2d746a43fd63109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f11d5af_56a89986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-08T22:23:49Z",
+      "side": 1,
+      "message": "super-nit: try to limit the length to 80. End-of-line comments do not need to be complete sentences, and you can assume the field name is the subject. http://go/go-style/decisions#comment-sentences",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 94
+      },
+      "revId": "119e0240696b5f61b5e9ce59e2d746a43fd63109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ab0e53_ca0a84c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-08T22:23:49Z",
+      "side": 1,
+      "message": "nit: refactor the comments, refer to the examples at http://go/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "119e0240696b5f61b5e9ce59e2d746a43fd63109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0ec1e0_9e34d8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-08T22:23:49Z",
+      "side": 1,
+      "message": "You probably don\u0027t need this. LeftClick implicitly executes functionality including WaitUntilExists. https://docs.google.com/presentation/d/1G8z5cjW1if1K1HX_jG7RKnKFo2JzV4Xrhs_zkzIgQ8A/edit#slide\u003did.gfb22eed951_0_292",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "119e0240696b5f61b5e9ce59e2d746a43fd63109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b9d8d7_47fc6af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spellcheck_language.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-08T22:23:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "119e0240696b5f61b5e9ce59e2d746a43fd63109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
