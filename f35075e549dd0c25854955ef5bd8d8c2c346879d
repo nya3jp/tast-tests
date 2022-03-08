@@ -22,6 +22,30 @@
       },
       "revId": "f35075e549dd0c25854955ef5bd8d8c2c346879d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050b030a_69748e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-03-08T04:17:46Z",
+      "side": 1,
+      "message": "Waited till crrev.com/c/3502950  merged and then rebased. Have fixed merge conflicts.",
+      "parentUuid": "de9ff5ee_936ce6ed",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "f35075e549dd0c25854955ef5bd8d8c2c346879d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
