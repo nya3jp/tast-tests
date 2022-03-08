@@ -8,10 +8,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -23,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowCycle,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks Alt+Tab and Alt+Shift+Tab functionality for cycling windows",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -31,7 +35,16 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -45,10 +58,22 @@ func waitForWindowActiveAndFinishAnimating(ctx context.Context, tconn *chrome.Te
 
 // WindowCycle verifies that we can cycle through open windows using Alt+Tab and Alt+Shift+Tab.
 func WindowCycle(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	// Reserve for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
 	}
 
 	// Launch the apps for the test. Different launch functions are used for Settings and Files,
@@ -56,8 +81,13 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	// order from changing while cycling. If a window has not completely loaded, it may appear on
 	// top once it finishes loading. If this happens while cycling windows, the test will likely fail.
 	const numApps = 3
-	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
-		s.Fatal("Failed to launch Chrome: ", err)
+	bt := s.Param().(browser.Type)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
+	if err != nil {
+		s.Fatalf("Could not find %v browser app info: %v", bt, err)
+	}
+	if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
+		s.Fatal("Failed to launch browser: ", err)
 	}
 
 	settings, err := ossettings.Launch(ctx, tconn)
@@ -76,13 +106,25 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	// We'll use this slice to find the expected window that should be brought to the top after each Alt+Tab cycle,
 	// based on the number of times Tab was pressed. After successfully cycling windows, we'll update this to reflect
 	// the expected order of the windows for the next Alt+Tab cycle.
-	windows, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get windows: ", err)
+	var windows []*ash.Window
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		windows, err = ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
+		}
+		if len(windows) != numApps {
+			return errors.Errorf("unexpected number of windows open; wanted %v, got %v", numApps, len(windows))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+		s.Fatalf("Failed to wait for the window to be open, browser: %v, err: %v", bt, err)
 	}
-	if len(windows) != numApps {
-		s.Fatalf("Unexpected number of windows open; wanted %v, got %v", numApps, len(windows))
-	}
+	defer func() {
+		for _, w := range windows {
+			w.CloseWindow(cleanupCtx, tconn)
+		}
+	}()
 
 	// Get the keyboard
 	keyboard, err := input.Keyboard(ctx)
