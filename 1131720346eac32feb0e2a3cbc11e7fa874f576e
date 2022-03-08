@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512ee6eb_b005f5cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2022-03-08T21:33:36Z",
+      "side": 1,
+      "message": "The pita test issue is a known issue in go/crosoncall and here:\n\nb/223389866 | P2 | suite:bvt-tast-parallels-cq failed because VM transitioned to unexpected state\n\nand these tests are being turned off in this CL:\n\nhttp://go/crrv/i/4599817\n\nwaiting for that to land before hitting CQ+2 again.",
+      "revId": "1131720346eac32feb0e2a3cbc11e7fa874f576e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
