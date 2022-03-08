@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0734bc7_37c55d5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way Shijin! I added a few comments below, please take a look whenever you have a moment! :)",
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0618e25f_e98125ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Nit: expected states",
+      "range": {
+        "startLine": 32,
+        "startChar": 86,
+        "endLine": 32,
+        "endChar": 91
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098b8464_be90ed35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Nit: device states",
+      "range": {
+        "startLine": 32,
+        "startChar": 46,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a84cdb2_33079d8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Super-nit: Add period to end here and below.",
+      "range": {
+        "startLine": 37,
+        "startChar": 50,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bf326f0_9d5972f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Super-nit: Check",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db71f88_cd6ca44d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "I think this might result in output like\n\n  \"unexpected Cellular state expected: enabled got: 1\"\n\nWhat do you think about rewording to something like\n\n  \"unexpected Cellular state, expected %d and got %d\"\n\nAnd passing in netconfig.EnabledDST/netconfig.DisabledDST and deviceState?",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9accae45_057ba5b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Nit: Consider condensing this block to\n\n```\nif enabled \u0026\u0026 deviceState !\u003d netconfig.EnabledDST {\n  ...\n} else if !enabled \u0026\u0026 deviceState !\u003d netconfig.DisabledDST {\n  ...\n}\n```",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e73720_ad1f1df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Nit: Potentially reword pending the comment above to something like\n\n  \"unexpected state for device %d, expected %d and got %d\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 26,
+        "endLine": 58,
+        "endChar": 78
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27bce2b0_b05110e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Nit: disables",
+      "range": {
+        "startLine": 65,
+        "startChar": 53,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857264e9_3f34c0ee",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-08T23:58:13Z",
+      "side": 1,
+      "message": "Could we expand on this documentation to mention why this is required?",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 73
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
