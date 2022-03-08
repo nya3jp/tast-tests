@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -33,7 +35,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -43,7 +53,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -57,9 +67,19 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
+	}
+
 	ac := uiauto.New(tconn)
 
-	for _, app := range []apps.App{apps.Files, apps.Chrome} {
+	bt := s.Param().(browser.Type)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
+	if err != nil {
+		s.Fatalf("Could not find %v browser app info: %v", bt, err)
+	}
+	for _, app := range []apps.App{apps.Files, browserApp} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to launch %s: %s", app.Name, err)
 		}
@@ -69,7 +89,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	}
 	// Set Chrome window's state to maximaized and Files window's state to normal.
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		if isChromeWindow(w) {
+		if wmputils.IsBrowserWindow(w, bt) {
 			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
 		}
 		if strings.Contains(w.Title, "Files") {
@@ -92,7 +112,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 				return testing.PollBreak(animationError)
 			}
 			for _, window := range ws {
-				if isChromeWindow(window) && !window.IsAnimating {
+				if wmputils.IsBrowserWindow(window, bt) && !window.IsAnimating {
 					animationError = errors.New("chrome window is not animating")
 					return animationError
 				}
@@ -113,8 +133,8 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	}
 
 	// Clicking the close button in overview should close the window.
-	chromeOverviewItemView := nodewith.NameRegex(regexp.MustCompile("New Tab(.*?)")).ClassName("OverviewItemView")
-	closeChromeButton := nodewith.ClassName("OverviewCloseButton").Ancestor(chromeOverviewItemView)
+	chromeOverviewItemView := nodewith.NameRegex(regexp.MustCompile(".*New Tab")).ClassName("OverviewItemView")
+	closeChromeButton := nodewith.ClassName("CloseButton").Ancestor(chromeOverviewItemView)
 	if err := ac.LeftClick(closeChromeButton)(ctx); err != nil {
 		s.Fatal("Failed to close chrome window: ", err)
 	}
@@ -128,11 +148,10 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	if len(ws) != 1 {
 		s.Fatalf("Expected 1 window, got %v window(s)", len(ws))
 	}
-	if isChromeWindow(ws[0]) {
+	if wmputils.IsBrowserWindow(ws[0], bt) {
 		s.Fatal("Chrome window still exists after closing it in overview")
 	}
-}
 
-func isChromeWindow(w *ash.Window) bool {
-	return strings.Contains(w.Title, "Chrome") || strings.Contains(w.Title, "Chromium")
+	// Close the open window for cleanup.
+	ws[0].CloseWindow(cleanupCtx, tconn)
 }
