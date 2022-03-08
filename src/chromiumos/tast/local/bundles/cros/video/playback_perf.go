@@ -23,6 +23,9 @@ type playbackPerfParams struct {
 	// Creates a layout of |gridSize| x |gridSize| videos for playback. Values
 	// less than 1 are clamped to a grid of 1x1.
 	gridSize int
+	// If set, uses a longer video sequence which allows for measuring Media
+	// Devtools "playback roughness".
+	measureRoughness bool
 }
 
 func init() {
@@ -850,6 +853,90 @@ func init() {
 			ExtraData:         []string{"perf/vp9/2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "video_decoder_legacy_supported"},
 			Fixture:           "chromeAlternateVideoDecoder",
+		}, {
+			Name: "vp8_1080p_30fps_hw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/1080_vp8.webm",
+				decoderType:      playback.Hardware,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData:         []string{"crosvideo/1080_vp8.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Fixture:           "chromeVideo",
+		}, {
+			Name: "vp8_1080p_30fps_sw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/1080_vp8.webm",
+				decoderType:      playback.Software,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData: []string{"crosvideo/1080_vp8.webm"},
+			Fixture:   "chromeVideoWithSWDecoding",
+		}, {
+			Name: "vp9_1080p_30fps_hw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/1080.webm",
+				decoderType:      playback.Hardware,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData:         []string{"crosvideo/1080.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Fixture:           "chromeVideo",
+		}, {
+			Name: "vp9_1080p_30fps_sw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/1080.webm",
+				decoderType:      playback.Software,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData: []string{"crosvideo/1080.webm"},
+			Fixture:   "chromeVideoWithSWDecoding",
+		}, {
+			Name: "h264_1080p_30fps_hw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/1080.mp4",
+				decoderType:      playback.Hardware,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData:         []string{"crosvideo/1080.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			Fixture:           "chromeVideo",
+		}, {
+			Name: "h264_1080p_30fps_sw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/1080.mp4",
+				decoderType:      playback.Software,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData: []string{"crosvideo/1080.mp4"},
+			Fixture:   "chromeVideoWithSWDecoding",
+		}, {
+			Name: "av1_1080p_30fps_hw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/av1_1080p_30fps.mp4",
+				decoderType:      playback.Hardware,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData:         []string{"crosvideo/av1_1080p_30fps.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Fixture:           "chromeVideo",
+		}, {
+			Name: "av1_1080p_30fps_sw_long",
+			Val: playbackPerfParams{
+				fileName:         "crosvideo/av1_1080p_30fps.mp4",
+				decoderType:      playback.Software,
+				browserType:      browser.TypeAsh,
+				measureRoughness: true,
+			},
+			ExtraData: []string{"crosvideo/av1_1080p_30fps.mp4"},
+			Fixture:   "chromeVideoWithSWDecoding",
 		}},
 	})
 }
@@ -867,5 +954,5 @@ func PlaybackPerf(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
-	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType, testOpt.gridSize)
+	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType, testOpt.gridSize, testOpt.measureRoughness)
 }

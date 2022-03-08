@@ -8,6 +8,7 @@ package devtools
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/media"
@@ -87,6 +88,66 @@ func getVideoCodecs(ctx context.Context, observer media.PlayerPropertiesChangedC
 		return false, "", err
 	}
 	return isPlatform, name, nil
+}
+
+// GetVideoPlaybackRoughness waits for and collects the video playback roughness
+// as provided by Media DevTools. Simply put it's the RMSE of the actual
+// playback times vs the ideal ones (1/fps). See go/chrome-video-roughness.
+func GetVideoPlaybackRoughness(ctx context.Context, observer media.PlayerPropertiesChangedClient, url string) (roughness float64, err error) {
+	testing.ContextLog(ctx, "Waiting for DevTools video playback roughness meas")
+
+	platformProperty := "kVideoPlaybackRoughness"
+
+	type result struct {
+		roughness float64
+		err       error
+	}
+
+	c := make(chan result, 1)
+	go func() {
+		var hasValue bool
+		err = testing.Poll(ctx, func(ctx context.Context) error {
+			reply, err := observer.Recv()
+			if err != nil {
+				return errors.Wrap(err, "error receiving Media DevTools data")
+			}
+
+			for _, s := range reply.Properties {
+				if s.Name == "kFrameUrl" && s.Value != url {
+					return errors.New("failed to find the expected URL in Media DevTools")
+				}
+
+				if s.Name == platformProperty {
+					hasValue = true
+					if roughness, err = strconv.ParseFloat(s.Value, 64); err != nil {
+						return err
+					}
+					testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
+					break
+				}
+			}
+
+			if !hasValue {
+				return errors.Errorf("failed to find %s in media DevTools Properties", platformProperty)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 5 * time.Second})
+
+		c <- result{roughness, err}
+	}()
+
+	// Roughness takes 100s (or less, if the video finishes or is stopped early
+	// but is longer than 20s at the time of writing). So we poll for a while,
+	// e.g. 2 minutes.
+	const roughnessTimeout = 120 * time.Second
+	shortCtx, cancel := context.WithTimeout(ctx, roughnessTimeout)
+	defer cancel()
+	select {
+	case res := <-c:
+		return res.roughness, res.err
+	case <-shortCtx.Done():
+		return 0, errors.New("Media DevTools timed out")
+	}
 }
 
 // CheckHWDRMPipeline waits for observer to produce a Player properties
