@@ -647,7 +647,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "api_kernel_global_constant",
@@ -1173,7 +1173,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "api_retain_mem_object_multiple",
@@ -1476,7 +1476,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_async_copy_local_to_global",
@@ -1487,7 +1487,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_async_strided_copy_global_to_local",
@@ -1889,7 +1889,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_imagedim_pow2",
@@ -1900,7 +1900,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_image_multipass_float_coord",
@@ -2255,7 +2255,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_func_scope",
@@ -2409,7 +2409,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vector_creation",
@@ -2420,7 +2420,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vector_swizzle",
@@ -2441,7 +2441,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_constant",
@@ -2452,7 +2452,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_global",
@@ -2463,7 +2463,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_local",
@@ -2474,7 +2474,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_private",
@@ -2485,7 +2485,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_global",
@@ -2496,7 +2496,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_local",
@@ -2507,7 +2507,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_private",
@@ -2518,7 +2518,7 @@ func init() {
 					expectedPass: true,
 				},
 				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout:   10 * time.Minute,
 			},
 			{
 				Name: "basic_wg_barrier",
