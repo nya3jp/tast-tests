@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "5747bf885a3ad6137d89217bb6b236b28422997e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31f93b6_fff5117d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-03-09T14:35:00Z",
+      "side": 1,
+      "message": "LGTM for optin network test",
+      "revId": "5747bf885a3ad6137d89217bb6b236b28422997e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
