@@ -246,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea90317d_b0c81702",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-09T10:19:38Z",
+      "side": 1,
+      "message": "Sorry, we moved the step to checks columns to test case itself. Fixed.",
+      "parentUuid": "28444bbf_a29df21a",
+      "revId": "f3eb256d1c168103813e8a0aa0040ef048c8a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "672da8d4_aa77c174",
