@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
-		VarDeps:      []string{"unicorn.parentUser", "unicorn.parentPassword", "unicorn.parentFirstName", "unicorn.parentLastName", "edu.user", "edu.password"},
+		VarDeps:      []string{"unicorn.parentUser", "unicorn.parentPassword", "edu.user", "edu.password"},
 		Fixture:      "familyLinkUnicornLogin",
 	})
 }
@@ -35,16 +35,13 @@ func EducoexistenceInsession(ctx context.Context, s *testing.State) {
 
 	parentUser := s.RequiredVar("unicorn.parentUser")
 	parentPass := s.RequiredVar("unicorn.parentPassword")
-	parentFirstName := s.RequiredVar("unicorn.parentFirstName")
-	parentLastName := s.RequiredVar("unicorn.parentLastName")
 	eduUser := s.RequiredVar("edu.user")
 	eduPass := s.RequiredVar("edu.password")
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Launching the in-session Edu Coexistence flow")
-	if err := familylink.AddEduSecondaryAccountWithMultipleParents(ctx, cr, tconn, parentFirstName, parentLastName,
-		parentUser, parentPass, eduUser, eduPass, true /*verifyEduSecondaryAddSuccess*/); err != nil {
+	if err := familylink.AddEduSecondaryAccount(ctx, cr, tconn, parentUser, parentPass, eduUser, eduPass, true /*verifyEduSecondaryAddSuccess*/); err != nil {
 		s.Fatal("Failed to complete the in-session Edu Coexistence flow: ", err)
 	}
 }
