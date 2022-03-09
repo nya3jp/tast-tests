@@ -22,6 +22,30 @@
       },
       "revId": "3700c4549ec2fdafb7d8d2d04e79198ac29a484b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce17ae7b_63418b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_arm64_support.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-03-09T08:00:00Z",
+      "side": 1,
+      "message": "Thanks for the Catch. Fixed it.",
+      "parentUuid": "5289d4d1_168a548e",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 43
+      },
+      "revId": "3700c4549ec2fdafb7d8d2d04e79198ac29a484b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
