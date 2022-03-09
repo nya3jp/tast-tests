@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Appfuse,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Make sure arc-appfuse-provider works",
 		Contacts: []string{
 			"hashimoto@google.com", // original author.
