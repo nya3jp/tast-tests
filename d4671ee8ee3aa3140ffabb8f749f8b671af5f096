@@ -138,6 +138,40 @@
       "parentUuid": "e4601a24_e83fed74",
       "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de23aae7_ff9865d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-03-09T13:56:01Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086d1edd_aa2e5bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/print_pdf_as_image_default.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-03-09T13:56:01Z",
+      "side": 1,
+      "message": "nit: missing dot.",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
