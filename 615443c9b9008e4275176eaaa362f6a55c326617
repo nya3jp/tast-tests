@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406c16fe_ca4be56f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_track_events_pid_ns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T12:57:02Z",
+      "side": 1,
+      "message": "ns is the abbreviation of namespace, right? Then NS is the go\u0027s style. Ditto for all below.",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "615443c9b9008e4275176eaaa362f6a55c326617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222794ed_54eb13a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_track_events_pid_ns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T12:57:02Z",
+      "side": 1,
+      "message": "metadata must not be changed per runtime condition. In this case, I think you\u0027ll need to list all of tracing files.\nNote that I found other uses, but all of them must be fixed, too. It looks out of the scope of this CL, so it\u0027s ok to leave them in this CL. (but please do not introduce more).",
+      "range": {
+        "startLine": 31,
+        "startChar": 76,
+        "endLine": 31,
+        "endChar": 100
+      },
+      "revId": "615443c9b9008e4275176eaaa362f6a55c326617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ecb33c7_5fc49151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_track_events_pid_ns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T12:57:02Z",
+      "side": 1,
+      "message": "optioanl: you may want to pass testexec.DumpLogOnError to Run() for logging.",
+      "revId": "615443c9b9008e4275176eaaa362f6a55c326617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
