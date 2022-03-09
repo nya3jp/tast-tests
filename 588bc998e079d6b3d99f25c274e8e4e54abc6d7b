@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "078ab916_cc669563",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T06:58:58Z",
+      "side": 1,
+      "message": "the direction LG.",
+      "revId": "588bc998e079d6b3d99f25c274e8e4e54abc6d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06b4dc4_032333a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T06:58:58Z",
+      "side": 1,
+      "message": "nit: \"Waits\"",
+      "range": {
+        "startLine": 24,
+        "startChar": 103,
+        "endLine": 24,
+        "endChar": 108
+      },
+      "revId": "588bc998e079d6b3d99f25c274e8e4e54abc6d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42bf0dda_5fcdc82e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T06:58:58Z",
+      "side": 1,
+      "message": "I think we should merge the conditions?\ntesting.Poll(... func(...) error {\n  ws, err :\u003d ash.GetAllWindows(...)\n  ...\n  if len(ws) !\u003d 1 {\n    return error...\n  }\n  w \u003d ws[0]\n  if !w.IsVisible || w.IsAnimating || w.WindowType !\u003d WindowType... {\n    return error...\n  }\n  return nil\n}, ...)\n\nso that timeout can be handled once (so return from 30 seconds), and the condition can be checked in a consistent way?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "588bc998e079d6b3d99f25c274e8e4e54abc6d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ebb109_705f2f5b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T06:58:58Z",
+      "side": 1,
+      "message": "optional:\nwe may want to close all windows in parallel, and wait for all windows are gone in parallel, which may be more efficient.\nWDYT?",
+      "revId": "588bc998e079d6b3d99f25c274e8e4e54abc6d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
