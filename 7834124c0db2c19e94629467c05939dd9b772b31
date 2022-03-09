@@ -50,6 +50,23 @@
       "message": "Add Frank to reviewer.",
       "revId": "7834124c0db2c19e94629467c05939dd9b772b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a2e4202_9187d337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-03-09T18:03:28Z",
+      "side": 1,
+      "message": "crostini should not be the right directory for these tests. crostini is Linux on Chrome OS.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md\n\nThe directory could be under \ntask/local/bundles/cros/usb  or task/local/bundles/cros/wwcb\n\n\n",
+      "revId": "7834124c0db2c19e94629467c05939dd9b772b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
