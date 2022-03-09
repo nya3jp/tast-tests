@@ -62,7 +62,7 @@ func init() {
 				Name:              "large_container",
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
-				Fixture:           "crostiniBusterLargeContainer",
+				Fixture:           "crostiniBullseyeLargeContainer",
 				Timeout:           2 * time.Minute,
 				Val:               browser.TypeAsh,
 			},
