@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb741fa_0440f15e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-09T21:25:10Z",
+      "side": 1,
+      "message": "The CQ error is real and caused by this cl:\n```\ntast-remote-tests-cros-0.0.2-r9771: # chromiumos/tast/remote/bundles/cros/firmware\ntast-remote-tests-cros-0.0.2-r9771: src/chromiumos/tast/remote/bundles/cros/firmware/ec_shared_memory.go:111:10: Wrapf format %s reads arg #2, but call has 1 arg\n```",
+      "revId": "d08fab72a29722c8efeb590a08fef551bbe083d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
