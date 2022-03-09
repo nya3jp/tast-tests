@@ -50,6 +50,24 @@
       "message": "Aren\u0027t clicking dropdowns usually a toggle option?\n\nWhat happens if we click, click hasn\u0027t been registered yet, then click again, the first click gets registered and it expands, we see it exists so declare \"done\", then the second click gets registered and it disappears again?",
       "revId": "228a1a2a198c7754cad8fdfcbb0eb66e4dbe9f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b51759c_f3ac602d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-03-09T14:43:59Z",
+      "side": 1,
+      "message": "This dropdown is a toggle option, yes.\n\nLeftClickUntil() polls with a set time interval, so I think if the situation you\u0027re worried about is happening then we would just need to increase the polling interval. For what it\u0027s worth, I don\u0027t see that situation happening when testing locally.",
+      "parentUuid": "57d50344_21b3efae",
+      "revId": "228a1a2a198c7754cad8fdfcbb0eb66e4dbe9f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
