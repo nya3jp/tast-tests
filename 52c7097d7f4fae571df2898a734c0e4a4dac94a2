@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e0f7d7f_16de0888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-09T08:22:49Z",
+      "side": 1,
+      "message": "nit: split into a separate CL",
+      "revId": "52c7097d7f4fae571df2898a734c0e4a4dac94a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
