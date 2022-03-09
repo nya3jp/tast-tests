@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fe344f_7f020a98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-09T07:47:22Z",
+      "side": 1,
+      "message": "Hi Anastasiia, this CL is ready for review as a follow-up to crrev.com/c/3429287.",
+      "revId": "8b318fa162af170e26d66177ffabf755cd44449a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
