@@ -46,6 +46,30 @@
       },
       "revId": "e333ab163d67749753ac26495ac49f078b70b639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cef4fe4_64b5d0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-09T19:51:51Z",
+      "side": 1,
+      "message": "I read \"Chrome\" as \"Chrome, the browser\" and \"ash-chrome\" as \"ChromeOS system UI\" (which may want to start \"Chrome\" or \"Lacros\" onto it). This is always confusing for me, and probably it\u0027s already written somewhere else what\u0027s the right nomenclature to be used. Sorry for the confusion!\n\nIn any case, the comment you suggested now is much better. Thank you!",
+      "parentUuid": "3647247e_77c8eac2",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "e333ab163d67749753ac26495ac49f078b70b639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
