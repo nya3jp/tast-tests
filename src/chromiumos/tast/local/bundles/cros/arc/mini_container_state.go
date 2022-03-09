@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MiniContainerState,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Verifies ARC mini container starts right after Chrome OS shows the login screen",
 		Contacts: []string{
 			"yusukes@chromium.org", // Original author.
