@@ -84,7 +84,7 @@ func RunTestsDebugger(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			flags := []string{fmt.Sprintf("-attachdebugger=%s:%d", tc.kind, debuggerPort)}
+			flags := []string{"-build=true", fmt.Sprintf("-attachdebugger=%s:%d", tc.kind, debuggerPort)}
 			cmd, err := tastrun.NewCommand(ctx, s, "run", flags, []string{tc.test})
 			if err != nil {
 				s.Fatal("Failed to generate tast command: ", err)
