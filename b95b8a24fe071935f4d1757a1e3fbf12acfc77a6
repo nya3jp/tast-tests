@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8c6c6d_3a0a626b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-03-09T04:39:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1936d3e3_5e5f6056",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "b95b8a24fe071935f4d1757a1e3fbf12acfc77a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f47ff6_037de9cb",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-08T22:40:00Z",
       "side": 1,
       "message": "`else` is not needed\n```\nif err !\u003d nil {\n    s.Fatalf(\"%q failed: %s\", shutil.EscapeSlice(cmd.Args), err)\n}\ns.Logf(\"%q output: %s\", shutil.EscapeSlice(cmd.Args), output)\n```\nhttp://go/go-style/decisions#indent-error-flow",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "b95b8a24fe071935f4d1757a1e3fbf12acfc77a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f1740a_09f4101b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom_write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-03-09T04:39:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f47ff6_037de9cb",
       "range": {
         "startLine": 31,
         "startChar": 1,
