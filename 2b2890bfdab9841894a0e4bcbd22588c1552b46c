@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b3523a_05663df2",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T06:31:17Z",
+      "side": 1,
+      "message": "can this be just ioutil.ReadFile(...) ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "2b2890bfdab9841894a0e4bcbd22588c1552b46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be1afdc_6d3aefb5",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T06:31:17Z",
+      "side": 1,
+      "message": "Can this be a simple for iteration?\n\nfor i :\u003d 0; i \u003c len(path); i++ {\n  component :\u003d path[i]\n  ...",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 40
+      },
+      "revId": "2b2890bfdab9841894a0e4bcbd22588c1552b46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9811e7ec_ab1826f7",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T06:31:17Z",
+      "side": 1,
+      "message": "can the path at failing be included in the error message?",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 59
+      },
+      "revId": "2b2890bfdab9841894a0e4bcbd22588c1552b46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
