@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db0ce94_820cdd85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T13:15:59Z",
+      "side": 1,
+      "message": "Dealing with older branches in the ToT code is concerned approach, IMO, as we don\u0027t have such use cases in general.\n\nFirst of all, could you describe why you need to run tests with older branches, like m90, even if it is known to fail? What\u0027s the benefit/value that failure produces? Why it is necessary to maintain in ToT while there\u0027s no continuous ways to run it against older branches (AFAIK)?",
+      "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db850628_6d31cffb",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "please see my other comment.  In m90, resourced did not exist, so the metrics that are resulted by this function did not exist, either.\nAs for \"we should not be initializing\"  - this is exactly what this code does.. it bypasses execution very early, when we detect that resourced is not available.",
       "parentUuid": "db850628_6d31cffb",
+      "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01cf5dd_22349600",
+        "filename": "src/chromiumos/tast/local/memory/available.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T13:15:59Z",
+      "side": 1,
+      "message": "\u003e this is exactly what this code does\n\nI meant, this should keep reporting errors, and if a test needs to run with m90 even if it is known to fail, I think it is callers responsibility not to call this then.\n\nUnder the regular condition (i.e. w/ ToT chrome os), in case of resourced error, we should report errors as it is not expected, right?",
+      "parentUuid": "734ebbbd_67e608c2",
       "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -73,6 +108,30 @@
       "side": 1,
       "message": "This is the intention, to run this test against m90 (see the change description).",
       "parentUuid": "e1ebb1ac_c2643aa0",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c7e5d9_912daa89",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T13:15:59Z",
+      "side": 1,
+      "message": "I may not fully understand your intention.\nIf it is known to fail on m90, why do you need to run the test?\nAlso, if the test is known to fail, then you can ignore such \"intended failures\" in your side, right?\n\nStepping back, in general, there\u0027s no guarantee that test on ToT can work against older release images. The tast tests is tied to the current version of chrome os. And, that\u0027s why we make branches of tast tests together with OS releases.\n\nIf you need to run it for some reasons manually one time even if it is known to fail, i wouldn\u0027t block you of course, but making some changes to deal with such an exceptional cases sounds like a worried piece from over-all maintenance perspective.",
+      "parentUuid": "fe421292_82805569",
       "range": {
         "startLine": 233,
         "startChar": 1,
