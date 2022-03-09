@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18eb8967_dbdf554c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-09T20:35:24Z",
+      "side": 1,
+      "message": "We do now. :)",
+      "parentUuid": "709ae3b3_4bfa31db",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "8524603203637ee1d4ec72c74473da80f923e7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19d7cc24_7d05b3ec",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "739a62db_1ce3dfab",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-09T20:35:24Z",
+      "side": 1,
+      "message": "Done. I don\u0027t think it should make any difference, though. I don\u0027t expect a collision is at all likely.",
+      "parentUuid": "19d7cc24_7d05b3ec",
+      "range": {
+        "startLine": 182,
+        "startChar": 36,
+        "endLine": 182,
+        "endChar": 57
+      },
+      "revId": "8524603203637ee1d4ec72c74473da80f923e7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93114a76_7e578390",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-08T21:48:49Z",
       "side": 1,
       "message": "Is this function even still necessary now that hardlock functionality has been removed?",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 174
+      },
+      "revId": "8524603203637ee1d4ec72c74473da80f923e7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acaff8a6_a39b670f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-09T20:35:24Z",
+      "side": 1,
+      "message": "Nope. I\u0027m pretty sure it\u0027s not even being called anywhere. I\u0027ll go ahead and drop it.",
+      "parentUuid": "93114a76_7e578390",
       "range": {
         "startLine": 190,
         "startChar": 0,
