@@ -206,6 +206,30 @@
       },
       "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b46c94_2fc0b042",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-09T01:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2efdfb_30874649",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "8bc257d1fa57c7ac21c782683e28594c3b039a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
