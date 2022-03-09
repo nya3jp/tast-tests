@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -22,10 +23,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// AddEduSecondaryAccountWithMultipleParents opens the EDU Coexistence
-// in-session flow and attempts to add a secondary account for a Family Link (FL)
-// primary user who has multiple parents. Parent account with provided
-// parentFirstName and parentLastName will be chosen from the parents list.
+// AddEduSecondaryAccount opens the EDU Coexistence in-session flow
+// and attempts to add a secondary account for a Family Link (FL)
+// primary user.
 // FL users can only have EDU secondary accounts. Trying to add other account
 // types will fail.
 // If `verifyEduSecondaryAddSuccess` is set to true - the account addition will
@@ -33,67 +33,10 @@ import (
 // new account was added in OS Settings).
 // Precondition: The current logged in user must be FL (such as Geller
 // or Unicorn).
-func AddEduSecondaryAccountWithMultipleParents(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn,
-	parentFirstName, parentLastName, parentUser, parentPass, secondUser, secondPass string,
-	verifyEduSecondaryAddSuccess bool) error {
-
-	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
-
-	selectParentOption := nodewith.NameStartingWith(parentFirstName + " " + parentLastName).Role(role.ListBoxOption)
-	if err := openAccountAdditionFlowFromOSSettings(ctx, cr, tconn, ui.Exists(selectParentOption)); err != nil {
-		return errors.Wrap(err, "failed to open in-session EDU Coexistence flow")
-	}
-
-	testing.ContextLog(ctx, "Clicking button that matches parent email: ", parentUser)
-	if err := ui.WithInterval(time.Second).LeftClickUntil(selectParentOption, ui.Exists(nodewith.Name("Parent password").Role(role.TextField)))(ctx); err != nil {
-		return errors.Wrap(err, "failed to click button that matches parent email")
-	}
-
-	if err := NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPass, secondUser, secondPass); err != nil {
-		return errors.Wrap(err, "failed to navigate in-session EDU Coexistence flow")
-	}
-
-	if verifyEduSecondaryAddSuccess {
-		return verifyAccountAddition(ctx, cr, tconn, secondUser)
-	}
-
-	return nil
-}
-
-// AddEduSecondaryAccountWithOneParent opens the EDU Coexistence in-session flow
-// in-session flow and attempts to add a secondary account for a Family Link (FL)
-// primary user who has only one parent. FL users can only have EDU secondary
-// accounts. Trying to add other account types will fail.
-// If `verifyEduSecondaryAddSuccess` is set to true - the account addition will
-// be verified ("School account added" message in the dialog + confirming that
-// new account was added in OS Settings).
-// Precondition: The current logged in user must be FL (such as Geller
-// or Unicorn) with only one parent (which means that the parent selection
-// screen will be skipped).
-func AddEduSecondaryAccountWithOneParent(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn,
+func AddEduSecondaryAccount(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn,
 	parentUser, parentPass, secondUser, secondPass string,
 	verifyEduSecondaryAddSuccess bool) error {
 
-	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
-
-	if err := openAccountAdditionFlowFromOSSettings(ctx, cr, tconn, ui.Exists(nodewith.Name("Parent password").Role(role.TextField))); err != nil {
-		return errors.Wrap(err, "failed to open in-session EDU Coexistence flow")
-	}
-
-	if err := NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPass, secondUser, secondPass); err != nil {
-		return errors.Wrap(err, "failed to navigate in-session EDU Coexistence flow")
-	}
-
-	if verifyEduSecondaryAddSuccess {
-		return verifyAccountAddition(ctx, cr, tconn, secondUser)
-	}
-
-	return nil
-}
-
-// openAccountAdditionFlowFromOSSettings opens Account Manager in OS Settings
-// and clicks 'Add school account' button until provided condition succeeds.
-func openAccountAdditionFlowFromOSSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, condition func(context.Context) error) error {
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
 	testing.ContextLog(ctx, "Checking logged in user is Family Link")
@@ -107,11 +50,51 @@ func openAccountAdditionFlowFromOSSettings(ctx context.Context, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to launch Account Manager page")
 	}
 
+	selectParentOption := nodewith.NameContaining(strings.ToLower(parentUser)).Role(role.ListBoxOption)
+	parentPasswordField := nodewith.Name("Parent password").Role(role.TextField)
+	// This condition passes if either selectParentOption or parentPassswordField exists.
+	condition := func(ctx context.Context) error {
+		err1 := ui.Exists(selectParentOption)(ctx)
+		err2 := ui.Exists(parentPasswordField)(ctx)
+		if err1 != nil && err2 != nil {
+			return errors.Wrap(err1, err2.Error())
+		}
+		return nil
+	}
 	if err := ui.WithInterval(time.Second).LeftClickUntil(addSchoolAccountButton, condition)(ctx); err != nil {
 		return errors.Wrap(err, "failed to open in-session EDU Coexistence flow")
 	}
 
+	if err := maybePressSelectParentOption(ctx, tconn, selectParentOption, parentPasswordField, parentUser); err != nil {
+		return err
+	}
+
+	if err := NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPass, secondUser, secondPass); err != nil {
+		return errors.Wrap(err, "failed to navigate in-session EDU Coexistence flow")
+	}
+
+	if verifyEduSecondaryAddSuccess {
+		return verifyAccountAddition(ctx, cr, tconn, secondUser)
+	}
+
 	return nil
+}
+
+// maybePressSelectParentOption selects the correct parent from parent
+// list if there's multiple parents. Otherwise, the EDU Coexistence
+// flow skips directly to the parent password page.
+func maybePressSelectParentOption(ctx context.Context, tconn *chrome.TestConn, selectParentOption, parentPasswordField *nodewith.Finder, parentUser string) error {
+	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
+
+	if err := ui.Exists(selectParentOption)(ctx); err != nil {
+		return nil
+	}
+	testing.ContextLog(ctx, "Clicking button that matches parent email: ", parentUser)
+	if err := ui.WithInterval(time.Second).LeftClickUntil(selectParentOption, ui.Exists(parentPasswordField))(ctx); err != nil {
+		return errors.Wrap(err, "failed to click button that matches parent email")
+	}
+	return nil
+
 }
 
 // verifyAccountAddition verifies account addition ("School account added"
@@ -145,7 +128,7 @@ func verifyAccountAddition(ctx context.Context, cr *chrome.Chrome, tconn *chrome
 // or Unicorn).
 func NavigateEduCoexistenceFlow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn,
 	parentPass, secondUser, secondPass string) error {
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
 	testing.ContextLog(ctx, "Checking logged in user is Family Link")
 	if err := ui.Exists(nodewith.Name("This account is managed by Family Link").Role(role.Image))(ctx); err != nil {

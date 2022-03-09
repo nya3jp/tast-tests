@@ -79,7 +79,7 @@ func EducoexistenceArc(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	s.Log("Launching the in-session Edu Coexistence flow")
-	if err := familylink.AddEduSecondaryAccountWithOneParent(ctx, cr, tconn, parentUser, parentPass,
+	if err := familylink.AddEduSecondaryAccount(ctx, cr, tconn, parentUser, parentPass,
 		eduUser, eduPass, true /*verifyEduSecondaryAddSuccess*/); err != nil {
 		s.Fatal("Failed to complete the in-session Edu Coexistence flow: ", err)
 	}
