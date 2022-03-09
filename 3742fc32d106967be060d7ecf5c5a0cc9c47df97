@@ -350,6 +350,24 @@
       "parentUuid": "6b6a0c07_c6530a2e",
       "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "058e55bd_d6cb4ca0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-09T10:08:54Z",
+      "side": 1,
+      "message": "Fixed, use ash.GetPinnedAppIds() instead.",
+      "parentUuid": "e4ec7cbf_a03ae8c6",
+      "revId": "3742fc32d106967be060d7ecf5c5a0cc9c47df97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

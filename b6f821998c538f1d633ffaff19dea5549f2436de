@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e5ff37_b17eb79d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/hotseat_scalable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-09T10:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a252e87_c7a948a1",
+      "revId": "b6f821998c538f1d633ffaff19dea5549f2436de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbd6c53a_47d0ac73",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-08T18:51:14Z",
       "side": 1,
       "message": "can we move this after PinApps",
+      "revId": "b6f821998c538f1d633ffaff19dea5549f2436de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fe3966_2110d22b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-09T10:08:54Z",
+      "side": 1,
+      "message": "We removed this function and use existing function instead.",
+      "parentUuid": "cbd6c53a_47d0ac73",
       "revId": "b6f821998c538f1d633ffaff19dea5549f2436de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
