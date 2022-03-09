@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8b8d04_97ef2821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-09T20:39:48Z",
+      "side": 1,
+      "message": "Based on my comments I do not thing it needs to be adjusted. If you disagree please let me know.",
+      "revId": "e4053dd2206124182a913f55efde9120c82742d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4694850_8a323b4d",
@@ -24,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a2f40d8_83e413ac",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-09T20:39:48Z",
+      "side": 1,
+      "message": "See other comment.",
+      "parentUuid": "c4694850_8a323b4d",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "e4053dd2206124182a913f55efde9120c82742d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b0e900b_d007ea5f",
@@ -37,6 +78,30 @@
       "writtenOn": "2022-03-09T17:04:56Z",
       "side": 1,
       "message": "this error should be checked first.\n\nI believe this code duplication is intentional. I haven\u0027t checked the rest of the code but if we want to keep the same code in two places then maybe a comment mentioning there is an identical code elsewhere would be good for a maintenance - any change here should trigger change in the other file.\n\nIdeally, we would have one implementation and 2 invocations ;)",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "e4053dd2206124182a913f55efde9120c82742d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ee8623_2ce9ea16",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-09T20:39:48Z",
+      "side": 1,
+      "message": "The killAllErr is intentionally checked after the pgrep error check since a killAllErr can actually be a success as long as pgrep also errors out. An error in killall means that no processes were killed (doesn\u0027t necessarily mean an error actually occured). An error with pgrep with exist code 1 means no processes were found. So, if no processes were killed and no processes were found it is still a successful case as far as KillAll is concerned because we just want them all gone.\n\nThe reason I added this code is that before only the error of killall was returned and everywhere KillAll was used it was simply ignored. Thus, it did not account for the case where killall was successful but did not actually keep things killed (some auto-restart). This also did not account for the case where the process did not exist, which would also cause a killall to return an error.\n\nAnd yeah the duplication here is intentional. I did not see it as enough code to really necessitate adding a common package between hostapd and dnsmasq for just this small function. If you disagree though, I can.",
+      "parentUuid": "0b0e900b_d007ea5f",
       "range": {
         "startLine": 52,
         "startChar": 0,
