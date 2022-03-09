@@ -172,6 +172,24 @@
       "message": "nit: missing dot.",
       "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7485542b_715fe8cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/print_pdf_as_image_default.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-03-09T14:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "086d1edd_aa2e5bfa",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
