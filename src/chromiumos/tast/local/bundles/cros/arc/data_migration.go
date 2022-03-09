@@ -129,12 +129,6 @@ func DataMigration(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check SDK version in packages.xml: ", err)
 	}
 
-	// Regression check for b/190293594.
-	if err := checkGmsCoreVersion(ctx, a, systemSdkVersion); err != nil {
-		// Log error and continue testing.
-		s.Error("Failed to check GMSCore version: ", err)
-	}
-
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
@@ -145,6 +139,12 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	s.Log("Installing app " + appToInstall)
 	if err := playstore.InstallApp(ctx, a, d, appToInstall, -1); err != nil {
 		s.Error("Failed to install app: ", err)
+	}
+
+	// Regression check for b/190293594.
+	if err := checkGmsCoreVersion(ctx, a, systemSdkVersion); err != nil {
+		// Log error and continue testing.
+		s.Error("Failed to check GMSCore version: ", err)
 	}
 }
 
