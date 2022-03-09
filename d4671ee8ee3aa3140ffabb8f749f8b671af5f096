@@ -120,6 +120,24 @@
       "message": "I am removing myself, as I am OOO for quite a while. Please add a different policy Tast Owner.",
       "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a89cfc1_b6c09f10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-03-09T12:26:02Z",
+      "side": 1,
+      "message": "Got it, thank you for letting me know!",
+      "parentUuid": "e4601a24_e83fed74",
+      "revId": "d4671ee8ee3aa3140ffabb8f749f8b671af5f096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
