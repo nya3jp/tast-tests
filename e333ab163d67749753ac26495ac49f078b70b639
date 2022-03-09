@@ -70,6 +70,30 @@
       },
       "revId": "e333ab163d67749753ac26495ac49f078b70b639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8158b50a_39a77dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-09T19:57:42Z",
+      "side": 1,
+      "message": "I was feeling the same as \"Chrome\" is a kind of overused term. I\u0027d rather specify \"ash-chrome\" \"lacros-chrome\" wherever it makes sense. Updated the comment for that.",
+      "parentUuid": "7cef4fe4_64b5d0eb",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "e333ab163d67749753ac26495ac49f078b70b639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
