@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4694850_8a323b4d",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-09T17:04:56Z",
+      "side": 1,
+      "message": "this error should be checked first.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "e4053dd2206124182a913f55efde9120c82742d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0e900b_d007ea5f",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-09T17:04:56Z",
+      "side": 1,
+      "message": "this error should be checked first.\n\nI believe this code duplication is intentional. I haven\u0027t checked the rest of the code but if we want to keep the same code in two places then maybe a comment mentioning there is an identical code elsewhere would be good for a maintenance - any change here should trigger change in the other file.\n\nIdeally, we would have one implementation and 2 invocations ;)",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "e4053dd2206124182a913f55efde9120c82742d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
