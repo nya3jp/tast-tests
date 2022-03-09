@@ -630,6 +630,10 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 					// It is normal that tabs might remain loading, hence no handle error here.
 					webutil.WaitForQuiescence(ctx, tab.conn, clickLinkTimeout)
 				}
+				// Given some time after clicking any anchor before doing next operation.
+				if err := testing.Sleep(ctx, time.Second); err != nil {
+					return errors.Wrapf(err, "failed to sleep for %v", time.Second)
+				}
 			}
 		}
 	}
