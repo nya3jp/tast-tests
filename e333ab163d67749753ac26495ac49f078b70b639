@@ -22,6 +22,30 @@
       },
       "revId": "e333ab163d67749753ac26495ac49f078b70b639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3647247e_77c8eac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-09T19:41:18Z",
+      "side": 1,
+      "message": "My understanding is that it is still meant to be \"Chrome\" (ash-chrome) that restarts from a clean state. In addition, br is also returned for browser functionality.\nFor clarity how does this sound?\n```\n// Connect to a fresh Chrome instance to ensure holding space first-run state,\n// also get a browser instance for using browser functionality.\n```",
+      "parentUuid": "72b69940_95fe39ef",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "e333ab163d67749753ac26495ac49f078b70b639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

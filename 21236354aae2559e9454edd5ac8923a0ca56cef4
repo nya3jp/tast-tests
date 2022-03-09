@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca59234_a4cbf02b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-09T19:41:18Z",
+      "side": 1,
+      "message": "Just for a record of what Hidehiko and I talked in a separate email, we\u0027d want to go with this approach not to block test writing/migrating to lacros for this scenario. In the long run, the future refactoring plan Eliot is working on is expected to simplify the interface or implementations even further. Resolving this.",
+      "parentUuid": "077f870c_0bcbe259",
+      "revId": "21236354aae2559e9454edd5ac8923a0ca56cef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ebdee5_7146edd7",

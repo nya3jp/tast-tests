@@ -289,6 +289,30 @@
       },
       "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5f58b3_dcf68788",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-09T19:41:18Z",
+      "side": 1,
+      "message": "Uploaded a new patchset to pass a struct var of LacrosConfig to SetUpWithNewChrome. PTAL.",
+      "parentUuid": "4ab118ea_804a929f",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "09c8515c606831e655b71c912f22b2ead60fce5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
