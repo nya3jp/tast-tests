@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec92f88_324173ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-09T22:11:45Z",
+      "side": 1,
+      "message": "nit: \"Connect to an ash-chrome instance to start from a clean state\"? \n\nI guess this might have mistakenly been copied from the specific holdingspace.* test in the referenced CL.",
+      "range": {
+        "startLine": 48,
+        "startChar": 43,
+        "endLine": 48,
+        "endChar": 79
+      },
+      "revId": "0aacb82d01ce7a9331f0a1b6e8073ec1b8546f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
