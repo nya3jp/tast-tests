@@ -50,6 +50,24 @@
       "message": "Thanks for fixing the attributes.\n\nYou can\u0027t check a tarball into the data directory. Can you copy it using gsutil to gs://chromiumos-test-assets-public/tast/cros/graphics/ and create an external file like the others in the data directory?",
       "revId": "fb52d15dfd2fa50f6ac6fd99b1bb6e3aec69caf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a622dd_dccd6999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-09T05:53:56Z",
+      "side": 1,
+      "message": "Hi Ilja,\n\nBeing a Google partner, we don\u0027t have the permissions to upload a file to this chromiumos-test-assets-public artifactory. We have instead uploaded the file to CPFE in below path. Can you please help us in placing the file from CPFE to this chromiumos-test-assets-public artifactory?\n\ngs://chromeos-binaries/HOME/bcs-brya-private/overlay-brya-private/tast-tests/local_tests/graphics/data/webgl_aquarium_static.tar.bz2\n\nOnce the file is available, we will create the external data file and update this CL.",
+      "parentUuid": "f80cc14f_3f98f7ab",
+      "revId": "fb52d15dfd2fa50f6ac6fd99b1bb6e3aec69caf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
