@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b8f6fe7_9d1f9835",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2022-03-09T00:19:15Z",
+      "side": 1,
+      "message": "+kyleshima@, can you check about validity of repeated click over the dropdown.",
+      "revId": "228a1a2a198c7754cad8fdfcbb0eb66e4dbe9f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57d50344_21b3efae",
