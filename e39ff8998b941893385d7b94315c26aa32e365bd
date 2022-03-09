@@ -33,6 +33,23 @@
       "message": "I do not think this cl caused the dlc problem. This CL just migrated the test cases to fixture, it did not change the way to install Crostini. \n\nIf you look at the tast board closer, the failure was there already before R101-14546.0.0 on which this cl landed. \n\nBTW, the fixture migration only changes some of the crostini test, but borealis is sufferring from the same problem.\n\nOne more thing, as for \tcrostini.TestFixture2.large_container, this cl only changes the debian version from bullseye to buster. Since R101-14546.0.0, the failure of this test actually have dropped from 100+ to about 40.",
       "revId": "e39ff8998b941893385d7b94315c26aa32e365bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08e423c_cf1f762f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-03-09T22:44:22Z",
+      "side": 1,
+      "message": "I agree with Judy. There seems to be an actual bug in dlcservice that breaks (among other things) crostini.",
+      "revId": "e39ff8998b941893385d7b94315c26aa32e365bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
