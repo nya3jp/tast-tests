@@ -119,6 +119,24 @@
       "parentUuid": "57d50344_21b3efae",
       "revId": "228a1a2a198c7754cad8fdfcbb0eb66e4dbe9f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f73b58_8e9b068b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-09T23:43:49Z",
+      "side": 1,
+      "message": "In that case, could we write a comment acknowledging this. If it ever does happen in the future, it\u0027d be much easier to debug if we had a comment talking about the potential race condition.",
+      "parentUuid": "7b51759c_f3ac602d",
+      "revId": "228a1a2a198c7754cad8fdfcbb0eb66e4dbe9f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
