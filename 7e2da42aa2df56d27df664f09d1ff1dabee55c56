@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6170cd_bbed8209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-09T09:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "906f7e4e_5125627c",
+      "revId": "7e2da42aa2df56d27df664f09d1ff1dabee55c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3680304d_bf9e50a3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-08T15:33:51Z",
       "side": 1,
       "message": "Use fmt.Sprintf, the port will be an integer.",
+      "revId": "7e2da42aa2df56d27df664f09d1ff1dabee55c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a29a32_7a8d1326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-09T09:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3680304d_bf9e50a3",
       "revId": "7e2da42aa2df56d27df664f09d1ff1dabee55c56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

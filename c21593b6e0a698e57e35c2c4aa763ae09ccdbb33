@@ -188,6 +188,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb9b0d5_c5231141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-09T09:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e883dbcb_fcd70dcf",
+      "revId": "c21593b6e0a698e57e35c2c4aa763ae09ccdbb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbcf2292_02d2f8ba",
