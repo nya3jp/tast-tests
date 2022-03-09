@@ -57,7 +57,7 @@ func (f *profilerFixture) newProfilers() ([]Profiler, error) {
 	var stat PerfStatOutput
 	var sched PerfSchedOutput
 
-	args := strings.Fields(profilerMode.Value())
+	args := strings.Split(profilerMode.Value(), ",")
 	if len(args) == 0 {
 		return nil, nil
 	}
