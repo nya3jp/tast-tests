@@ -16,6 +16,24 @@
       "message": "nit: split into a separate CL",
       "revId": "52c7097d7f4fae571df2898a734c0e4a4dac94a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c55e8c_ee8f36ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_printers_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1142256
+      },
+      "writtenOn": "2022-03-09T16:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e0f7d7f_16de0888",
+      "revId": "52c7097d7f4fae571df2898a734c0e4a4dac94a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
