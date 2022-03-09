@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "dac269084a1485ee59d936b5392f56d604635991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5635a80c_30cb88ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2022-03-09T01:04:23Z",
+      "side": 1,
+      "message": "Can we do this without parsing, by passing in something more structured like:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/multivm/lifecycle_shifting.go;l\u003d40?q\u003d%22%5B%5Dtesting.Param%7B%7B%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d11",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "dac269084a1485ee59d936b5392f56d604635991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
