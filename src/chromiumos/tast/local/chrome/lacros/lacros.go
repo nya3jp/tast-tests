@@ -56,6 +56,16 @@ func (l *Lacros) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 	return l.sess.StopTracing(ctx)
 }
 
+// CloseResources closes lacros resources without closing targets.
+// TODO(crbug.com/1318180): Instead we may want to change Lacros to use ResetState and Close fn
+// like Chrome, or provide these functions on the Browser().
+func (l *Lacros) CloseResources(ctx context.Context) {
+	l.sess.Close(ctx)
+	l.sess = nil
+	l.agg.Close()
+	l.agg = nil
+}
+
 // Close closes all lacros chrome targets and the dev session.
 func (l *Lacros) Close(ctx context.Context) error {
 	// Get all pages. Note that we can't get all targets, because one of them
@@ -79,10 +89,7 @@ func (l *Lacros) Close(ctx context.Context) error {
 
 	// The browser may already be terminated by the time we try to close the
 	// dev session, so ignore any error.
-	l.sess.Close(ctx)
-	l.sess = nil
-	l.agg.Close()
-	l.agg = nil
+	l.CloseResources(ctx)
 
 	return nil
 }
