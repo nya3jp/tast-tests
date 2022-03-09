@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4c652e_c41f40bf",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Not sure if you mean literally \"[]string\" or something like \"[\"stat\", \"sched\"]\" When I try \"[]string\" I get the error \"type []string is not an expression\"\n\nI\u0027ll use \"[\"stat\", \"sched\"]\"  for now, but in a subsequent patch I\u0027ll add a new runtime variable for setting which fixture to use that will be checked in SetUp.",
+      "parentUuid": "8206d535_752d4b9d",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99a10da8_a087d9c3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-08T04:46:57Z",
       "side": 1,
       "message": "How about making the type of this field []string ? It seems this is always split before being used.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35927f23_c8bdde88",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a10da8_a087d9c3",
       "range": {
         "startLine": 31,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4495d4_9185bac4",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6533967_7fecd51e",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b911b9b_a6a465db",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-08T04:46:57Z",
       "side": 1,
       "message": "These string constants are used in many places. Can we define constants for them? You can even make them ints if the string values are not important.\n\ne.g. Around L29,\n\n```\ntype mode int\nconst (\n  // modeStat ...\n  modeStat mode \u003d iota\n  modeSched\n  ...\n)\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e32cdda_c17da834",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b911b9b_a6a465db",
       "range": {
         "startLine": 51,
         "startChar": 7,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e0735a_0e814eeb",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65481ba4_02bd1e4f",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82b3eae2_0add36b0",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-03-08T04:46:57Z",
       "side": 1,
       "message": "It should be ctx.",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f240d25f_83a4ab4c",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b3eae2_0add36b0",
       "range": {
         "startLine": 73,
         "startChar": 30,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "887e908e_52f2d16f",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "413f303d_7053dfe1",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f069014a_c30f0d34",
@@ -192,6 +360,24 @@
       "writtenOn": "2022-03-05T00:49:59Z",
       "side": 1,
       "message": "I think it 1 second may be a bit short if we are going to run profile on a VM. I think it should be at least 30 seconds.",
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01d054d_fd841ea8",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f069014a_c30f0d34",
       "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acbc81d5_9a54f523",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc57f35b_f21ef5aa",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9fa2139_0b57daf3",
@@ -236,6 +446,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "404b3244_df4ac9af",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9fa2139_0b57daf3",
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e878395_8773a738",
@@ -249,6 +477,30 @@
       "writtenOn": "2022-03-08T04:46:57Z",
       "side": 1,
       "message": "Do you need to call Start per test?\nIf that\u0027s the case, I think Start operation is tied with test, and should be put in PreTest.",
+      "range": {
+        "startLine": 160,
+        "startChar": 12,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d355b5_0824c085",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-09T18:22:11Z",
+      "side": 1,
+      "message": "Yeah I do want one call to Start and End per test so we get individual log files for each individual test, I\u0027ll test this out with the Start and End in pre/post test",
+      "parentUuid": "1e878395_8773a738",
       "range": {
         "startLine": 160,
         "startChar": 12,
