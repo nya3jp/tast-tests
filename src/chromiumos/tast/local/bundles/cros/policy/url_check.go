@@ -43,41 +43,6 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{
 			{
-				// TODO(crbug.com/1101928): remove once URLBlacklist is no longer supported.
-				Name:    "blacklist",
-				Fixture: fixture.ChromePolicyLoggedIn,
-				Val: []blocklistTestTable{
-					{
-						name:        "single",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"http://example.org/blocked.html"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked.html"}}},
-					},
-					{
-						name:        "multi",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}}},
-					},
-					{
-						name:        "wildcard",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"http://example.com/blocked1.html", "http://example.com/blocked2.html"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"example.com"}}},
-					},
-					{
-						name:        "unset",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Stat: policy.StatusUnset}},
-					},
-				},
-			},
-			{
 				Name:    "blocklist",
 				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []blocklistTestTable{
@@ -108,53 +73,6 @@ func init() {
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Stat: policy.StatusUnset}},
-					},
-				},
-			},
-			{
-				// TODO(crbug.com/1101928): remove once URLWhitelist is no longer supported.
-				Name:    "whitelist",
-				Fixture: fixture.ChromePolicyLoggedIn,
-				Val: []blocklistTestTable{
-					{
-						name:        "single",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"http://example.org"},
-						allowedURLs: []string{"http://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Val: []string{"org"}},
-							&policy.URLWhitelist{Val: []string{"chromium.org"}},
-						},
-					},
-					{
-						name:        "identical",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"http://example.org"},
-						allowedURLs: []string{"http://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Val: []string{"http://chromium.org", "http://example.org"}},
-							&policy.URLWhitelist{Val: []string{"http://chromium.org"}},
-						},
-					},
-					{
-						name:        "https",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{"http://chromium.org"},
-						allowedURLs: []string{"https://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Val: []string{"chromium.org"}},
-							&policy.URLWhitelist{Val: []string{"https://chromium.org"}},
-						},
-					},
-					{
-						name:        "unset",
-						browserType: browser.TypeAsh,
-						blockedURLs: []string{},
-						allowedURLs: []string{"http://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Stat: policy.StatusUnset},
-							&policy.URLWhitelist{Stat: policy.StatusUnset},
-						},
 					},
 				},
 			},
@@ -205,43 +123,6 @@ func init() {
 				},
 			},
 			{
-				// TODO(crbug.com/1101928): remove once URLBlacklist is no longer supported.
-				Name:              "lacros_blacklist",
-				ExtraSoftwareDeps: []string{"lacros_stable"},
-				ExtraAttr:         []string{"informational"},
-				Fixture:           fixture.LacrosPolicyLoggedIn,
-				Val: []blocklistTestTable{
-					{
-						name:        "single",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{"http://example.org/blocked.html"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked.html"}}},
-					},
-					{
-						name:        "multi",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}}},
-					},
-					{
-						name:        "wildcard",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{"http://example.com/blocked1.html", "http://example.com/blocked2.html"},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"example.com"}}},
-					},
-					{
-						name:        "unset",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{},
-						allowedURLs: []string{"http://google.com", "http://chromium.org"},
-						policies:    []policy.Policy{&policy.URLBlacklist{Stat: policy.StatusUnset}},
-					},
-				},
-			},
-			{
 				Name:              "lacros_blocklist",
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraAttr:         []string{"informational"},
@@ -274,55 +155,6 @@ func init() {
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Stat: policy.StatusUnset}},
-					},
-				},
-			},
-			{
-				// TODO(crbug.com/1101928): remove once URLWhitelist is no longer supported.
-				Name:              "lacros_whitelist",
-				ExtraSoftwareDeps: []string{"lacros_stable"},
-				ExtraAttr:         []string{"informational"},
-				Fixture:           fixture.LacrosPolicyLoggedIn,
-				Val: []blocklistTestTable{
-					{
-						name:        "single",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{"http://example.org"},
-						allowedURLs: []string{"http://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Val: []string{"org"}},
-							&policy.URLWhitelist{Val: []string{"chromium.org"}},
-						},
-					},
-					{
-						name:        "identical",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{"http://example.org"},
-						allowedURLs: []string{"http://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Val: []string{"http://chromium.org", "http://example.org"}},
-							&policy.URLWhitelist{Val: []string{"http://chromium.org"}},
-						},
-					},
-					{
-						name:        "https",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{"http://chromium.org"},
-						allowedURLs: []string{"https://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Val: []string{"chromium.org"}},
-							&policy.URLWhitelist{Val: []string{"https://chromium.org"}},
-						},
-					},
-					{
-						name:        "unset",
-						browserType: browser.TypeLacros,
-						blockedURLs: []string{},
-						allowedURLs: []string{"http://chromium.org"},
-						policies: []policy.Policy{
-							&policy.URLBlacklist{Stat: policy.StatusUnset},
-							&policy.URLWhitelist{Stat: policy.StatusUnset},
-						},
 					},
 				},
 			},
