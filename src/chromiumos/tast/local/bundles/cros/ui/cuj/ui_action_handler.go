@@ -46,6 +46,9 @@ const (
 	SwitchWindowThroughShelf = SwitchWindowThroughHotseat
 )
 
+// retryTimes is the maximum number of times the action will be retried.
+const retryTimes = 3
+
 // pageScrollingInterval is the time interval when doing page scrolling.
 // A long page scrolling interval is required
 // in order to get Graphics.Smoothness.PercentDroppedFrames.AllInteractions metric results.
@@ -323,10 +326,6 @@ func (t *TabletActionHandler) SwitchToAppWindowByName(appName, targetName string
 // If menuItemFinder is nil, which is used when there is only one window for the app,
 // it will just tap the app icon to do the switch.
 func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, appName string, menuItemFinder *nodewith.Finder) error {
-	if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc); err != nil {
-		return errors.Wrap(err, "failed to show hotseat")
-	}
-
 	// clickIcon is the action to click the APP on the hot seat.
 	var clickIcon func(ctx context.Context) error
 	if strings.Contains(appName, "Chrome") || strings.Contains(appName, "Chromium") {
@@ -347,6 +346,12 @@ func (t *TabletActionHandler) switchToWindowThroughHotseat(ctx context.Context, 
 			}
 			return nil
 		}
+	}
+
+	if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
+		return ash.SwipeUpHotseatAndWaitForCompletion(ctx, t.tconn, t.stew, t.tcc)
+	})(ctx); err != nil {
+		return errors.Wrap(err, "failed to show hotseat")
 	}
 
 	// This indicates that the app has only one window, and the switch action does not require menu item view.
@@ -833,8 +838,11 @@ func (cl *ClamshellActionHandler) switchToWindowThroughShelf(ctx context.Context
 		return errors.Wrapf(err, "failed to click [%s] app icon on shelf", appName)
 	}
 
-	if err := cl.ui.LeftClick(menuItemFinder)(ctx); err != nil {
-		return errors.Wrap(err, "failed to tap app icon on shelf")
+	if err := uiauto.Retry(retryTimes, uiauto.Combine("click app icon",
+		cl.ui.WithTimeout(5*time.Second).WaitUntilExists(menuItemFinder),
+		cl.ui.LeftClick(menuItemFinder),
+	))(ctx); err != nil {
+		return errors.Wrapf(err, "failed to find menu items of app %s on shelf and tap", appName)
 	}
 
 	return nil
