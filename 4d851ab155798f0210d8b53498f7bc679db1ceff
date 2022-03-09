@@ -16,6 +16,24 @@
       "message": "Please do not check in large files like this (i.e. \u003e100-200 KB) into the git repository. Git is not optimised for such large files and it slows down cloning the repository for everyone.\n\nYou should make the file a .external file and upload the resource to GCS instead:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files",
       "revId": "4d851ab155798f0210d8b53498f7bc679db1ceff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc05592_73d5a5fd",
+        "filename": "android/ArcPipVideoTest/res/raw/shaka_720.webm",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-09T00:10:24Z",
+      "side": 0,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3510834",
+      "parentUuid": "3debe639_14a51f94",
+      "revId": "4d851ab155798f0210d8b53498f7bc679db1ceff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
