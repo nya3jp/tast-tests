@@ -39,6 +39,30 @@
       },
       "revId": "dac269084a1485ee59d936b5392f56d604635991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92f8de9_07968827",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2022-03-09T02:44:25Z",
+      "side": 1,
+      "message": "Good point! (thanks from golang newbie)",
+      "parentUuid": "5635a80c_30cb88ab",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "dac269084a1485ee59d936b5392f56d604635991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
