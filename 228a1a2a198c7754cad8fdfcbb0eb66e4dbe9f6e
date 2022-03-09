@@ -16,6 +16,23 @@
       "message": "Hi folks, PTAL.",
       "revId": "228a1a2a198c7754cad8fdfcbb0eb66e4dbe9f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d50344_21b3efae",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-09T00:03:54Z",
+      "side": 1,
+      "message": "Aren\u0027t clicking dropdowns usually a toggle option?\n\nWhat happens if we click, click hasn\u0027t been registered yet, then click again, the first click gets registered and it expands, we see it exists so declare \"done\", then the second click gets registered and it disappears again?",
+      "revId": "228a1a2a198c7754cad8fdfcbb0eb66e4dbe9f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
