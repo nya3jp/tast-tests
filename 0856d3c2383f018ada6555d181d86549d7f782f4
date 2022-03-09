@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db850628_6d31cffb",
+        "filename": "src/chromiumos/tast/local/memory/available.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T10:06:00Z",
+      "side": 1,
+      "message": "I don\u0027t think we should ignore the error here. At least callers should have responsibility. But moreover, the metrics availability should be deterministic, and we should be avoid initializing if not available.",
+      "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ebb1ac_c2643aa0",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-09T10:06:00Z",
+      "side": 1,
+      "message": "currently it\u0027s m101, and m93 is very old.\nTast test is tied to the release version, so the error case wouldn\u0027t happen (unless you plan to cherry pick this into very old branches).",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
