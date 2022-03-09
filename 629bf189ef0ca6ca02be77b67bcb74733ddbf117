@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "676005ad_c45baa89",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-09T05:26:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9989dc5_c2337ac3",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "629bf189ef0ca6ca02be77b67bcb74733ddbf117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f20a27b_093b0802",

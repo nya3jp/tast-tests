@@ -50,6 +50,24 @@
       "message": "Could you add comment that if lacros is launched multiple times, the log file will be overwritten?\nThe condition will be kept until we get rid of command line launch (and after the removal of command line launch, ash-chrome should maintain lacros logs).",
       "revId": "f6d604cb8117653d27e75976e7ff8ff2408453e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e83312f_d385eaad",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-09T05:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fcecb05_2d5b757d",
+      "revId": "f6d604cb8117653d27e75976e7ff8ff2408453e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
