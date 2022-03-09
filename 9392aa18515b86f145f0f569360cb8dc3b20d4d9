@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da585c8f_9f789314",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-09T20:43:49Z",
+      "side": 1,
+      "message": "I can confirm that this refactor will help to easily build a type test which requires re-login of Lacros to measure the restored session time.\n\nLGTM.",
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
