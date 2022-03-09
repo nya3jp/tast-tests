@@ -20,7 +20,7 @@ func init() {
 		Name:            "profilerRunning",
 		Desc:            "Started profilers specified by profiler.AccessVars.mode variable",
 		Contacts:        []string{"jacobraz@google.com"},
-		Impl:            NewProfilerFixture([]string{"stat", "sched", "record", "statrecord"}),
+		Impl:            NewProfilerFixture(),
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		TearDownTimeout: 10 * time.Second,
@@ -41,9 +41,9 @@ type profilerFixture struct {
 	perfCtx      context.Context
 }
 
-// NewProfilerFixture reates new profilerFixture struct with the specified mode
-func NewProfilerFixture(mode []string) *profilerFixture {
-	return &profilerFixture{modes: mode}
+// NewProfilerFixture creates new profilerFixture struct
+func NewProfilerFixture() *profilerFixture {
+	return &profilerFixture{}
 }
 
 func (f *profilerFixture) GetProfs(s *testing.FixtTestState) []Profiler {
@@ -105,6 +105,7 @@ func MustSucceedEval(ctx context.Context, files []string) (bool, error) {
 
 func (f *profilerFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	//TODO handle aarch64 devices that cant run perf
+	f.modes = strings.Fields(profilerMode.Value())
 	f.outDir = s.OutDir()
 	f.perfCtx = s.FixtContext()
 	return nil

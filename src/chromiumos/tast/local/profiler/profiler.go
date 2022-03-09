@@ -22,6 +22,13 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
+)
+
+var profilerMode = testing.RegisterVarString(
+	"profiler.profilerMode",
+	"none",
+	"A variable of type string that can be any number of (stat, record, sched, statrecord)",
 )
 
 type instance interface {
