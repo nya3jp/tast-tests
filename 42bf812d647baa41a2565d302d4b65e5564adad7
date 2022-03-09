@@ -16,6 +16,23 @@
       "message": "Sorry Kyle, we can hold off on this.\n\nSeewai would like to more formally review the Tast Server piece for this, so as this hinges on the server piece, I will request for review when that piece is settled.",
       "revId": "42bf812d647baa41a2565d302d4b65e5564adad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2171e42_36a76b36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-03-09T17:50:41Z",
+      "side": 1,
+      "message": "Hi Seewai, Keigo and Tatsuhisa,\nFor your reference, this is the CR for the remote test using of stdout logging functionality we had the other day.\nThanks,\nJonathan\n",
+      "revId": "42bf812d647baa41a2565d302d4b65e5564adad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
