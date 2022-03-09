@@ -19,10 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DumpVPDLog,
-		Desc:     "Verify the behaviour of dump_vpd_log",
-		Contacts: []string{"vsavu@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         DumpVPDLog,
+		Desc:         "Verify the behaviour of dump_vpd_log",
+		Contacts:     []string{"vsavu@chromium.org", "chromeos-commercial-remote-management@google.com"},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"vpd"},
 	})
 }
 
