@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa57c3a_0513b705",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_shared_memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-03-09T09:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef92a60_53b6b315",
+      "revId": "272c455690957efa22d68eb6dc381c8f980539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4851c49d_e2731dda",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-07T13:54:20Z",
       "side": 1,
       "message": "might be a little more useful for people reading the logs if this said \"failed to reset channel\" or something like that, so there\u0027s more context on why this is happening.\n\nAlso, since this is a cleanup step, do we need to fatal here? Though if you think it should, that\u0027s fine.",
+      "revId": "272c455690957efa22d68eb6dc381c8f980539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1d72a06_8d8febe4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_shared_memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-03-09T09:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4851c49d_e2731dda",
       "revId": "272c455690957efa22d68eb6dc381c8f980539a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64759cb_583ea26e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_shared_memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-03-09T09:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b354fc6_1e604766",
+      "range": {
+        "startLine": 49,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "272c455690957efa22d68eb6dc381c8f980539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cbf2872_3cdbc276",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-03-07T10:24:45Z",
       "side": 1,
       "message": "Does this need to be reverted after the test is complete?",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "272c455690957efa22d68eb6dc381c8f980539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736b6466_0b3fc174",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_shared_memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-03-09T09:11:31Z",
+      "side": 1,
+      "message": "Added at the end of function.",
+      "parentUuid": "3cbf2872_3cdbc276",
       "range": {
         "startLine": 72,
         "startChar": 2,
