@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae57b678_c65509df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-09T03:09:37Z",
+      "side": 1,
+      "message": "Is there a Google internal contact for this test?",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed796a2_413d99d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-09T03:09:37Z",
+      "side": 1,
+      "message": "There are other ways to tell if a device is in tablet or clamshell mode.  Is this something different?  If not better to use the standard way to avoid another argument.",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 91
+      },
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77fd051_4d54ccb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-09T03:09:37Z",
+      "side": 1,
+      "message": "This is a very long and hard to read function.  Can you extract a few helpers to make this more readable?",
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96566f5c_69198f4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-09T03:09:37Z",
+      "side": 1,
+      "message": "Not needed, \"\" is what is returned anyway when ok is false",
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c530de6_392dc8e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-09T03:09:37Z",
+      "side": 1,
+      "message": "If we exit here the DUT will remain powered off?\n\nPlease use a defer function to ensure that the DUT is always powered back on if possible.",
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
