@@ -6,8 +6,10 @@ package drivefs
 
 import (
 	"context"
+	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -25,10 +27,9 @@ func init() {
 		ResetTimeout:    driveFsSetupTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			"filemanager.drive_credentials_new",
-			"filemanager.password",
-			"filemanager.refresh_token_new",
-			"filemanager.user",
+			"drivefs.accountPool",
+			"drivefs.clientCredentials",
+			"drivefs.refreshTokens",
 		},
 	})
 
@@ -43,10 +44,9 @@ func init() {
 		ResetTimeout:    driveFsSetupTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
-			"filemanager.drive_credentials_new",
-			"filemanager.password",
-			"filemanager.refresh_token_new",
-			"filemanager.user",
+			"drivefs.accountPool",
+			"drivefs.clientCredentials",
+			"drivefs.refreshTokens",
 		},
 	})
 }
@@ -110,10 +110,8 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
 
-		username := s.RequiredVar("filemanager.user")
-		password := s.RequiredVar("filemanager.password")
 		var err error
-		f.cr, err = chrome.New(ctx, append(f.chromeOptions, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCDisabled())...)
+		f.cr, err = chrome.New(ctx, append(f.chromeOptions, chrome.GAIALoginPool(s.RequiredVar("drivefs.accountPool")), chrome.ARCDisabled())...)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -132,11 +130,15 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}
 	f.tconn = tconn
 
-	jsonCredentials := s.RequiredVar("filemanager.drive_credentials_new")
-	refreshToken := s.RequiredVar("filemanager.refresh_token_new")
+	jsonCredentials := s.RequiredVar("drivefs.clientCredentials")
+	refreshTokens := s.RequiredVar("drivefs.refreshTokens")
+	token, err := getRefreshTokenForAccount(f.cr.NormalizedUser(), refreshTokens)
+	if err != nil {
+		s.Fatal("Failed to get refresh token for account: ", err)
+	}
 
 	// Perform Drive API authentication.
-	APIClient, err := CreateAPIClient(ctx, f.cr, jsonCredentials, refreshToken)
+	APIClient, err := CreateAPIClient(ctx, f.cr, jsonCredentials, token)
 	if err != nil {
 		s.Fatal("Failed creating a APIClient instance: ", err)
 	}
@@ -180,4 +182,24 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 		}
 		f.cr = nil
 	}
+}
+
+// getRefreshTokenForAccount returns the matching refresh token for the
+// supplied account. The tokens are stored in a multi line strings as key value
+// pairs seperated by a ':' character.
+func getRefreshTokenForAccount(account, refreshTokens string) (string, error) {
+	for i, line := range strings.Split(refreshTokens, "\n") {
+		line = strings.TrimSpace(line)
+		if len(line) == 0 || strings.HasPrefix(line, "#") {
+			continue
+		}
+		ps := strings.SplitN(line, ":", 2)
+		if len(ps) != 2 {
+			return "", errors.Errorf("failed to parse refresh token list: line %d: does not contain a colon", i+1)
+		}
+		if ps[0] == account {
+			return ps[1], nil
+		}
+	}
+	return "", errors.Errorf("failed to retrieve account token for %q", account)
 }
