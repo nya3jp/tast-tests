@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef36a2f_354b691f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-03-09T08:47:51Z",
+      "side": 1,
+      "message": "Hi wtlee@ PTAL:\nsrc/chromiumos/tast/local/camera/cca/fixture.go\n\nAnd mojahsu@ PTAL the rest of the files.",
+      "revId": "753eb39a21328d124ff276d460b0d2fd7c76d853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
