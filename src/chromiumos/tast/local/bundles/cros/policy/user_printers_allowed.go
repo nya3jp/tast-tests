@@ -21,9 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UserNativePrintersAllowed,
+		Func:         UserPrintersAllowed,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Test behavior of UserNativePrintersAllowed policy: check if Add printer button is restricted based on the value of the policy",
+		Desc:         "Test behavior of UserPrintersAllowed policy: check if Add printer button is restricted based on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
@@ -33,34 +33,35 @@ func init() {
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
+			"informational",
 		},
 		Fixture: fixture.ChromePolicyLoggedIn,
 	})
 }
 
-func UserNativePrintersAllowed(ctx context.Context, s *testing.State) {
+func UserPrintersAllowed(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	for _, param := range []struct {
 		name            string
-		wantRestriction restriction.Restriction           // wantRestricted is the expected restriction state of the "Add printer" button.
-		policy          *policy.UserNativePrintersAllowed // policy is the policy we test.
+		wantRestriction restriction.Restriction     // wantRestricted is the expected restriction state of the "Add printer" button.
+		policy          *policy.UserPrintersAllowed // policy is the policy we test.
 	}{
 		{
 			name:            "unset",
 			wantRestriction: restriction.None,
-			policy:          &policy.UserNativePrintersAllowed{Stat: policy.StatusUnset},
+			policy:          &policy.UserPrintersAllowed{Stat: policy.StatusUnset},
 		},
 		{
 			name:            "not_allowed",
 			wantRestriction: restriction.Disabled,
-			policy:          &policy.UserNativePrintersAllowed{Val: false},
+			policy:          &policy.UserPrintersAllowed{Val: false},
 		},
 		{
 			name:            "allowed",
 			wantRestriction: restriction.None,
-			policy:          &policy.UserNativePrintersAllowed{Val: true},
+			policy:          &policy.UserPrintersAllowed{Val: true},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
