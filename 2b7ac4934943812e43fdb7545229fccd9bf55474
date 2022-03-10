@@ -22,6 +22,30 @@
       },
       "revId": "2b7ac4934943812e43fdb7545229fccd9bf55474",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718e7e22_740ef971",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-10T16:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9345f977_3f969870",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 116
+      },
+      "revId": "2b7ac4934943812e43fdb7545229fccd9bf55474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
