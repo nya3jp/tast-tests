@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8da1e6a_8fd5796b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-03-10T16:08:28Z",
+      "side": 1,
+      "message": "2 suggestions, otherwise looks good",
+      "revId": "797cc18b4f31596f10e1a7a8e6c5f770bf942b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07a36c6_61ffe263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-03-10T16:08:28Z",
+      "side": 1,
+      "message": "This condition doesn\u0027t check that the notification is not shown in case the screenshare is not blocked. More or less we need to check that `(err !\u003d nil) \u003d\u003d\u003d (restriction \u003d\u003d blocked)`",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "797cc18b4f31596f10e1a7a8e6c5f770bf942b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdbcb0ed_a428a916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-03-10T16:08:28Z",
+      "side": 1,
+      "message": "Same as above - need to check that the notification is shown only when it was blocked.",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 217
+      },
+      "revId": "797cc18b4f31596f10e1a7a8e6c5f770bf942b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
