@@ -237,6 +237,25 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{LacrosDeployedBinary},
 	})
+
+	// lacrosVariation is similar to lacros but should be used
+	// by variation smoke tests that will launch lacros with variation service enabled,
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosVariationEnabled",
+		Desc:     "Lacros with variation service enabled",
+		Contacts: []string{"yjt@google.com", "lacros-team@google.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive",
+					"--disable-login-lacros-opening"),
+				chrome.LacrosExtraArgs("--fake-variations-channel=beta"),
+				chrome.LacrosExtraArgs("--variations-server-url=https://clients4.google.com/chrome-variations/seed")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
 }
 
 // TODO(tvignatti): how do we make sure Lacros has this flag implemented? See crrev.com/c/3304121.
