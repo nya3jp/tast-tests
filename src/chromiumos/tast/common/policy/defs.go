@@ -597,120 +597,6 @@ func (p *EnableAuthNegotiatePort) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 29. AuthServerWhitelist
-///////////////////////////////////////////////////////////////////////////////
-type AuthServerWhitelist struct {
-	Stat Status
-	Val  string
-}
-
-func (p *AuthServerWhitelist) Name() string          { return "AuthServerWhitelist" }
-func (p *AuthServerWhitelist) Field() string         { return "" }
-func (p *AuthServerWhitelist) Scope() Scope          { return ScopeUser }
-func (p *AuthServerWhitelist) Status() Status        { return p.Stat }
-func (p *AuthServerWhitelist) UntypedV() interface{} { return p.Val }
-func (p *AuthServerWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *AuthServerWhitelist) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 30. AuthNegotiateDelegateWhitelist
-///////////////////////////////////////////////////////////////////////////////
-type AuthNegotiateDelegateWhitelist struct {
-	Stat Status
-	Val  string
-}
-
-func (p *AuthNegotiateDelegateWhitelist) Name() string          { return "AuthNegotiateDelegateWhitelist" }
-func (p *AuthNegotiateDelegateWhitelist) Field() string         { return "" }
-func (p *AuthNegotiateDelegateWhitelist) Scope() Scope          { return ScopeUser }
-func (p *AuthNegotiateDelegateWhitelist) Status() Status        { return p.Stat }
-func (p *AuthNegotiateDelegateWhitelist) UntypedV() interface{} { return p.Val }
-func (p *AuthNegotiateDelegateWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *AuthNegotiateDelegateWhitelist) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 32. ExtensionInstallBlacklist
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ExtensionInstallBlacklist struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *ExtensionInstallBlacklist) Name() string          { return "ExtensionInstallBlacklist" }
-func (p *ExtensionInstallBlacklist) Field() string         { return "" }
-func (p *ExtensionInstallBlacklist) Scope() Scope          { return ScopeUser }
-func (p *ExtensionInstallBlacklist) Status() Status        { return p.Stat }
-func (p *ExtensionInstallBlacklist) UntypedV() interface{} { return p.Val }
-func (p *ExtensionInstallBlacklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *ExtensionInstallBlacklist) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 33. ExtensionInstallWhitelist
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ExtensionInstallWhitelist struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *ExtensionInstallWhitelist) Name() string          { return "ExtensionInstallWhitelist" }
-func (p *ExtensionInstallWhitelist) Field() string         { return "" }
-func (p *ExtensionInstallWhitelist) Scope() Scope          { return ScopeUser }
-func (p *ExtensionInstallWhitelist) Status() Status        { return p.Stat }
-func (p *ExtensionInstallWhitelist) UntypedV() interface{} { return p.Val }
-func (p *ExtensionInstallWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *ExtensionInstallWhitelist) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 34. ExtensionInstallForcelist
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -4608,6 +4494,37 @@ func (p *IdleActionBattery) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 224. ReportDeviceNetworkInterfaces
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ReportDeviceNetworkInterfaces struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ReportDeviceNetworkInterfaces) Name() string { return "ReportDeviceNetworkInterfaces" }
+func (p *ReportDeviceNetworkInterfaces) Field() string {
+	return "device_reporting.report_network_interfaces"
+}
+func (p *ReportDeviceNetworkInterfaces) Scope() Scope          { return ScopeDevice }
+func (p *ReportDeviceNetworkInterfaces) Status() Status        { return p.Stat }
+func (p *ReportDeviceNetworkInterfaces) UntypedV() interface{} { return p.Val }
+func (p *ReportDeviceNetworkInterfaces) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ReportDeviceNetworkInterfaces) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // 225. DeviceLoginScreenPowerManagement
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -5946,6 +5863,35 @@ func (p *DeviceRebootOnShutdown) UnmarshalAs(m json.RawMessage) (interface{}, er
 	return v, nil
 }
 func (p *DeviceRebootOnShutdown) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 290. ReportDeviceHardwareStatus
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ReportDeviceHardwareStatus struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ReportDeviceHardwareStatus) Name() string          { return "ReportDeviceHardwareStatus" }
+func (p *ReportDeviceHardwareStatus) Field() string         { return "device_reporting.report_hardware_status" }
+func (p *ReportDeviceHardwareStatus) Scope() Scope          { return ScopeDevice }
+func (p *ReportDeviceHardwareStatus) Status() Status        { return p.Stat }
+func (p *ReportDeviceHardwareStatus) UntypedV() interface{} { return p.Val }
+func (p *ReportDeviceHardwareStatus) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ReportDeviceHardwareStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -7620,35 +7566,6 @@ func (p *DeviceSecondFactorAuthentication) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 377. NoteTakingAppsLockScreenWhitelist
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type NoteTakingAppsLockScreenWhitelist struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *NoteTakingAppsLockScreenWhitelist) Name() string          { return "NoteTakingAppsLockScreenWhitelist" }
-func (p *NoteTakingAppsLockScreenWhitelist) Field() string         { return "" }
-func (p *NoteTakingAppsLockScreenWhitelist) Scope() Scope          { return ScopeUser }
-func (p *NoteTakingAppsLockScreenWhitelist) Status() Status        { return p.Stat }
-func (p *NoteTakingAppsLockScreenWhitelist) UntypedV() interface{} { return p.Val }
-func (p *NoteTakingAppsLockScreenWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *NoteTakingAppsLockScreenWhitelist) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 378. CastReceiverEnabled
 // This policy has a default value of False.
 // This policy can be modified without rebooting.
@@ -8574,35 +8491,6 @@ func (p *VirtualMachinesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 }
 func (p *VirtualMachinesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 422. SafeBrowsingWhitelistDomains
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type SafeBrowsingWhitelistDomains struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *SafeBrowsingWhitelistDomains) Name() string          { return "SafeBrowsingWhitelistDomains" }
-func (p *SafeBrowsingWhitelistDomains) Field() string         { return "" }
-func (p *SafeBrowsingWhitelistDomains) Scope() Scope          { return ScopeUser }
-func (p *SafeBrowsingWhitelistDomains) Status() Status        { return p.Stat }
-func (p *SafeBrowsingWhitelistDomains) UntypedV() interface{} { return p.Val }
-func (p *SafeBrowsingWhitelistDomains) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *SafeBrowsingWhitelistDomains) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -11062,35 +10950,6 @@ func (p *DeviceWilcoDtcConfiguration) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 536. SpellcheckLanguageBlacklist
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type SpellcheckLanguageBlacklist struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *SpellcheckLanguageBlacklist) Name() string          { return "SpellcheckLanguageBlacklist" }
-func (p *SpellcheckLanguageBlacklist) Field() string         { return "" }
-func (p *SpellcheckLanguageBlacklist) Scope() Scope          { return ScopeUser }
-func (p *SpellcheckLanguageBlacklist) Status() Status        { return p.Stat }
-func (p *SpellcheckLanguageBlacklist) UntypedV() interface{} { return p.Val }
-func (p *SpellcheckLanguageBlacklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *SpellcheckLanguageBlacklist) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 537. DeviceWiFiAllowed
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -13244,35 +13103,6 @@ func (p *DeviceLoginScreenScreenMagnifierType) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 631. ExternalPrintServersWhitelist
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type ExternalPrintServersWhitelist struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *ExternalPrintServersWhitelist) Name() string          { return "ExternalPrintServersWhitelist" }
-func (p *ExternalPrintServersWhitelist) Field() string         { return "" }
-func (p *ExternalPrintServersWhitelist) Scope() Scope          { return ScopeUser }
-func (p *ExternalPrintServersWhitelist) Status() Status        { return p.Stat }
-func (p *ExternalPrintServersWhitelist) UntypedV() interface{} { return p.Val }
-func (p *ExternalPrintServersWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *ExternalPrintServersWhitelist) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
 // 633. DefaultInsecureContentSetting
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
@@ -13951,45 +13781,6 @@ func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) UnmarshalAs(m json.RawMessag
 }
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 658. PerAppTimeLimitsWhitelist
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type PerAppTimeLimitsWhitelist struct {
-	Stat Status
-	Val  *PerAppTimeLimitsWhitelistValue
-}
-
-type PerAppTimeLimitsWhitelistValue struct {
-	AppList []*PerAppTimeLimitsWhitelistValueAppList `json:"app_list,omitempty"`
-	UrlList []string                                 `json:"url_list,omitempty"`
-}
-
-type PerAppTimeLimitsWhitelistValueAppList struct {
-	AppId   string `json:"app_id"`
-	AppType string `json:"app_type"`
-}
-
-func (p *PerAppTimeLimitsWhitelist) Name() string          { return "PerAppTimeLimitsWhitelist" }
-func (p *PerAppTimeLimitsWhitelist) Field() string         { return "" }
-func (p *PerAppTimeLimitsWhitelist) Scope() Scope          { return ScopeUser }
-func (p *PerAppTimeLimitsWhitelist) Status() Status        { return p.Stat }
-func (p *PerAppTimeLimitsWhitelist) UntypedV() interface{} { return p.Val }
-func (p *PerAppTimeLimitsWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v *PerAppTimeLimitsWhitelistValue
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as *PerAppTimeLimitsWhitelistValue", m)
-	}
-	return v, nil
-}
-func (p *PerAppTimeLimitsWhitelist) Equal(iface interface{}) bool {
-	v, ok := iface.(*PerAppTimeLimitsWhitelistValue)
 	if !ok {
 		return ok
 	}
@@ -20120,6 +19911,7 @@ func (p *PreconfiguredDeskTemplates) Equal(iface interface{}) bool {
 
 ///////////////////////////////////////////////////////////////////////////////
 // 912. FastPairEnabled
+// This policy has a default value of False.
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
 type FastPairEnabled struct {
@@ -21061,7 +20853,6 @@ func (p *CloudProfileReportingEnabled) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 943. DefaultWebHidGuardSetting
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type DefaultWebHidGuardSetting struct {
 	Stat Status
@@ -21091,7 +20882,6 @@ func (p *DefaultWebHidGuardSetting) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 944. WebHidAskForUrls
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type WebHidAskForUrls struct {
 	Stat Status
@@ -21121,7 +20911,6 @@ func (p *WebHidAskForUrls) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 945. WebHidBlockedForUrls
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type WebHidBlockedForUrls struct {
 	Stat Status
@@ -21302,28 +21091,28 @@ func (p *AllHttpAuthSchemesAllowedForOrigins) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 951. WindowPlacementAlwaysAllowed
+// 951. DefaultWindowPlacementSetting
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
-type WindowPlacementAlwaysAllowed struct {
+type DefaultWindowPlacementSetting struct {
 	Stat Status
-	Val  bool
+	Val  int
 }
 
-func (p *WindowPlacementAlwaysAllowed) Name() string          { return "WindowPlacementAlwaysAllowed" }
-func (p *WindowPlacementAlwaysAllowed) Field() string         { return "" }
-func (p *WindowPlacementAlwaysAllowed) Scope() Scope          { return ScopeUser }
-func (p *WindowPlacementAlwaysAllowed) Status() Status        { return p.Stat }
-func (p *WindowPlacementAlwaysAllowed) UntypedV() interface{} { return p.Val }
-func (p *WindowPlacementAlwaysAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
+func (p *DefaultWindowPlacementSetting) Name() string          { return "DefaultWindowPlacementSetting" }
+func (p *DefaultWindowPlacementSetting) Field() string         { return "" }
+func (p *DefaultWindowPlacementSetting) Scope() Scope          { return ScopeUser }
+func (p *DefaultWindowPlacementSetting) Status() Status        { return p.Stat }
+func (p *DefaultWindowPlacementSetting) UntypedV() interface{} { return p.Val }
+func (p *DefaultWindowPlacementSetting) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
 	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
 }
-func (p *WindowPlacementAlwaysAllowed) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
+func (p *DefaultWindowPlacementSetting) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
@@ -21362,7 +21151,6 @@ func (p *ReportDevicePeripherals) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 953. WebHidAllowAllDevicesForUrls
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type WebHidAllowAllDevicesForUrls struct {
 	Stat Status
@@ -21392,7 +21180,6 @@ func (p *WebHidAllowAllDevicesForUrls) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 954. WebHidAllowDevicesForUrls
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type WebHidAllowDevicesForUrls struct {
 	Stat Status
@@ -21432,7 +21219,6 @@ func (p *WebHidAllowDevicesForUrls) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 955. WebHidAllowDevicesWithHidUsagesForUrls
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type WebHidAllowDevicesWithHidUsagesForUrls struct {
 	Stat Status
@@ -21472,7 +21258,244 @@ func (p *WebHidAllowDevicesWithHidUsagesForUrls) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 956. WebAuthnFactors
+// 956. SecondaryGoogleAccountUsage
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type SecondaryGoogleAccountUsage struct {
+	Stat Status
+	Val  string
+}
+
+func (p *SecondaryGoogleAccountUsage) Name() string          { return "SecondaryGoogleAccountUsage" }
+func (p *SecondaryGoogleAccountUsage) Field() string         { return "" }
+func (p *SecondaryGoogleAccountUsage) Scope() Scope          { return ScopeUser }
+func (p *SecondaryGoogleAccountUsage) Status() Status        { return p.Stat }
+func (p *SecondaryGoogleAccountUsage) UntypedV() interface{} { return p.Val }
+func (p *SecondaryGoogleAccountUsage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *SecondaryGoogleAccountUsage) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 957. DeviceEncryptedReportingPipelineEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceEncryptedReportingPipelineEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeviceEncryptedReportingPipelineEnabled) Name() string {
+	return "DeviceEncryptedReportingPipelineEnabled"
+}
+func (p *DeviceEncryptedReportingPipelineEnabled) Field() string {
+	return "device_reporting.encrypted_reporting_pipeline_enabled"
+}
+func (p *DeviceEncryptedReportingPipelineEnabled) Scope() Scope          { return ScopeDevice }
+func (p *DeviceEncryptedReportingPipelineEnabled) Status() Status        { return p.Stat }
+func (p *DeviceEncryptedReportingPipelineEnabled) UntypedV() interface{} { return p.Val }
+func (p *DeviceEncryptedReportingPipelineEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeviceEncryptedReportingPipelineEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 958. EnableDirectSockets
+// This policy has a default value of False.
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type EnableDirectSockets struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *EnableDirectSockets) Name() string          { return "EnableDirectSockets" }
+func (p *EnableDirectSockets) Field() string         { return "" }
+func (p *EnableDirectSockets) Scope() Scope          { return ScopeUser }
+func (p *EnableDirectSockets) Status() Status        { return p.Stat }
+func (p *EnableDirectSockets) UntypedV() interface{} { return p.Val }
+func (p *EnableDirectSockets) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *EnableDirectSockets) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 959. FloatingWorkspaceEnabled
+///////////////////////////////////////////////////////////////////////////////
+type FloatingWorkspaceEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *FloatingWorkspaceEnabled) Name() string          { return "FloatingWorkspaceEnabled" }
+func (p *FloatingWorkspaceEnabled) Field() string         { return "" }
+func (p *FloatingWorkspaceEnabled) Scope() Scope          { return ScopeUser }
+func (p *FloatingWorkspaceEnabled) Status() Status        { return p.Stat }
+func (p *FloatingWorkspaceEnabled) UntypedV() interface{} { return p.Val }
+func (p *FloatingWorkspaceEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *FloatingWorkspaceEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 960. WindowPlacementAllowedForUrls
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type WindowPlacementAllowedForUrls struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *WindowPlacementAllowedForUrls) Name() string          { return "WindowPlacementAllowedForUrls" }
+func (p *WindowPlacementAllowedForUrls) Field() string         { return "" }
+func (p *WindowPlacementAllowedForUrls) Scope() Scope          { return ScopeUser }
+func (p *WindowPlacementAllowedForUrls) Status() Status        { return p.Stat }
+func (p *WindowPlacementAllowedForUrls) UntypedV() interface{} { return p.Val }
+func (p *WindowPlacementAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *WindowPlacementAllowedForUrls) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 961. WindowPlacementBlockedForUrls
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type WindowPlacementBlockedForUrls struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *WindowPlacementBlockedForUrls) Name() string          { return "WindowPlacementBlockedForUrls" }
+func (p *WindowPlacementBlockedForUrls) Field() string         { return "" }
+func (p *WindowPlacementBlockedForUrls) Scope() Scope          { return ScopeUser }
+func (p *WindowPlacementBlockedForUrls) Status() Status        { return p.Stat }
+func (p *WindowPlacementBlockedForUrls) UntypedV() interface{} { return p.Val }
+func (p *WindowPlacementBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *WindowPlacementBlockedForUrls) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 962. CloudReportingUploadFrequency
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type CloudReportingUploadFrequency struct {
+	Stat Status
+	Val  int
+}
+
+func (p *CloudReportingUploadFrequency) Name() string          { return "CloudReportingUploadFrequency" }
+func (p *CloudReportingUploadFrequency) Field() string         { return "" }
+func (p *CloudReportingUploadFrequency) Scope() Scope          { return ScopeUser }
+func (p *CloudReportingUploadFrequency) Status() Status        { return p.Stat }
+func (p *CloudReportingUploadFrequency) UntypedV() interface{} { return p.Val }
+func (p *CloudReportingUploadFrequency) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *CloudReportingUploadFrequency) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 963. OptimizationGuideFetchingEnabled
+///////////////////////////////////////////////////////////////////////////////
+type OptimizationGuideFetchingEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *OptimizationGuideFetchingEnabled) Name() string          { return "OptimizationGuideFetchingEnabled" }
+func (p *OptimizationGuideFetchingEnabled) Field() string         { return "" }
+func (p *OptimizationGuideFetchingEnabled) Scope() Scope          { return ScopeUser }
+func (p *OptimizationGuideFetchingEnabled) Status() Status        { return p.Stat }
+func (p *OptimizationGuideFetchingEnabled) UntypedV() interface{} { return p.Val }
+func (p *OptimizationGuideFetchingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *OptimizationGuideFetchingEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 964. WebAuthnFactors
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
 type WebAuthnFactors struct {
@@ -21494,6 +21517,38 @@ func (p *WebAuthnFactors) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 }
 func (p *WebAuthnFactors) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 965. WebAuthenticationRemoteProxiedRequestsAllowed
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type WebAuthenticationRemoteProxiedRequestsAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Name() string {
+	return "WebAuthenticationRemoteProxiedRequestsAllowed"
+}
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Field() string         { return "" }
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Scope() Scope          { return ScopeUser }
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Status() Status        { return p.Stat }
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) UntypedV() interface{} { return p.Val }
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
