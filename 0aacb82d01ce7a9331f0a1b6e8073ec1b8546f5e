@@ -22,6 +22,30 @@
       },
       "revId": "0aacb82d01ce7a9331f0a1b6e8073ec1b8546f5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60419807_bdf04dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-10T14:17:53Z",
+      "side": 1,
+      "message": "Thank you for spotting this Hyung! I\u0027ve now reviewed all the comments again in this file and submitted the changes to Patchset 5.",
+      "parentUuid": "0ec92f88_324173ff",
+      "range": {
+        "startLine": 48,
+        "startChar": 43,
+        "endLine": 48,
+        "endChar": 79
+      },
+      "revId": "0aacb82d01ce7a9331f0a1b6e8073ec1b8546f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
