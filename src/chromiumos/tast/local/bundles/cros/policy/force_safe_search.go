@@ -41,8 +41,8 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
-		// Increase timeout due to the large number of test table entries.
-		Timeout: 4 * time.Minute,
+		// Loading two YouTube videos on slower devices can take a while (we observed subtests that took up to 40 seconds), thus give every subtest 1 minute to run.
+		Timeout: 9 * time.Minute,
 	})
 }
 

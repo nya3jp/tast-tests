@@ -6,6 +6,7 @@ package mgs
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
@@ -28,6 +29,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.FakeDMSEnrolled,
+		// Give each subtest 1 minute to run
+		Timeout: 3 * time.Minute,
 	})
 }
 
