@@ -201,16 +201,36 @@ func RootCA(ctx context.Context, s *testing.State) {
 		return nssMap, openSSLMap
 	}
 
-	compareCerts := func(expected, found map[string]string) {
+	compareCerts := func(certStoreName string, expected, found map[string]string) {
+		// missing is the set difference |expect| - |found|
+		missing := make(map[string]string)
 		for fingerprint, issuer := range expected {
 			if _, ok := found[fingerprint]; !ok {
-				s.Errorf("Did not find expected cert with fingerprint %q (issuer %q)", fingerprint, issuer)
+				missing[fingerprint] = issuer
 			}
 		}
+		// unexpected is the set difference |found| - |expected|
+		unexpected := make(map[string]string)
 		for fingerprint, issuer := range found {
 			if _, ok := expected[fingerprint]; !ok {
-				s.Errorf("Found unexpected cert with fingerprint %q (issuer %q) ", fingerprint, issuer)
+				unexpected[fingerprint] = issuer
 			}
+		}
+
+		// Ideally, missing and unexpected should be empty. But CA
+		// root certs are periodically updated.
+		// Print both missing and unexpected in json, so we can update
+		// the baseline accordingly.
+		// missing should be removed and unexpected should be added.
+		if len(missing) > 0 {
+			s.Errorf("In cert store  %q, expect but not found %v certs", certStoreName, len(missing))
+			jsonBytes, _ := json.Marshal(missing)
+			s.Log("missing certs: ", string(jsonBytes))
+		}
+		if len(unexpected) > 0 {
+			s.Errorf("In cert store  %q, found but unexpected %v certs", certStoreName, len(unexpected))
+			jsonBytes, _ := json.Marshal(unexpected)
+			s.Log("unexpcted certs: ", string(jsonBytes))
 		}
 	}
 
@@ -224,7 +244,7 @@ func RootCA(ctx context.Context, s *testing.State) {
 	}
 
 	s.Logf("Found %v NSS cert(s)", len(nssFound))
-	compareCerts(nssExpected, nssFound)
+	compareCerts("nss", nssExpected, nssFound)
 
 	openSSLFound, err := getOpenSSLCerts()
 	if err != nil {
@@ -232,7 +252,7 @@ func RootCA(ctx context.Context, s *testing.State) {
 	}
 
 	s.Logf("Found %v OpenSSL cert(s)", len(openSSLFound))
-	compareCerts(openSSLExpected, openSSLFound)
+	compareCerts("openssl", openSSLExpected, openSSLFound)
 
 	// Regression test for crbug.com/202944
 	certPaths, err := filepath.Glob(openSSLCertGlob)
