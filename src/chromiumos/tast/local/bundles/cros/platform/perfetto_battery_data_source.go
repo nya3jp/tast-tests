@@ -23,8 +23,12 @@ func init() {
 		Func:     PerfettoBatteryDataSource,
 		Desc:     "Verifies the linux.sysfs_power data source of traced_probes",
 		Contacts: []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
-		Data:     []string{batteryTraceConfigFile, batteryTraceQueryFile, tracing.TraceProcessor()},
-		Attr:     []string{"group:mainline", "informational"},
+		Data: []string{batteryTraceConfigFile,
+			batteryTraceQueryFile,
+			tracing.TraceProcessorAmd64,
+			tracing.TraceProcessorArm,
+			tracing.TraceProcessorArm64},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
