@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ed1351_74f30095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_track_events_pid_ns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-03-10T07:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406c16fe_ca4be56f",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "615443c9b9008e4275176eaaa362f6a55c326617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "222794ed_54eb13a9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f738fa5_903968bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_track_events_pid_ns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-03-10T07:26:54Z",
+      "side": 1,
+      "message": "Thanks for catching this. I\u0027ll list all of them in this file and fix others in a separate CL.",
+      "parentUuid": "222794ed_54eb13a9",
+      "range": {
+        "startLine": 31,
+        "startChar": 76,
+        "endLine": 31,
+        "endChar": 100
+      },
+      "revId": "615443c9b9008e4275176eaaa362f6a55c326617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ecb33c7_5fc49151",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-03-09T12:57:02Z",
       "side": 1,
       "message": "optioanl: you may want to pass testexec.DumpLogOnError to Run() for logging.",
+      "revId": "615443c9b9008e4275176eaaa362f6a55c326617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a43fbafd_48607b39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_track_events_pid_ns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2022-03-10T07:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ecb33c7_5fc49151",
       "revId": "615443c9b9008e4275176eaaa362f6a55c326617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
