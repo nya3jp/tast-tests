@@ -9,40 +9,31 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
 
-// getCryptohomeNamespaceMounterPID returns the PID of the
+// cryptohomeNamespaceMounterPID returns the PID of the
 // 'cryptohome-namespace-mounter' process, if found.
-func getCryptohomeNamespaceMounterPID() (int, error) {
+func cryptohomeNamespaceMounterPID() (int, error) {
 	const exePath = "/usr/sbin/cryptohome-namespace-mounter"
-
-	all, err := process.Pids()
+	p, err := procutil.FindUnique(procutil.ByExe(exePath))
 	if err != nil {
 		return -1, err
 	}
-
-	for _, pid := range all {
-		proc, err := process.NewProcess(pid)
-		if err != nil {
-			// Assume that the process exited.
-			continue
-		}
-		if exe, err := proc.Exe(); err == nil && exe == exePath {
-			return int(pid), nil
-		}
-	}
-	return -1, errors.New("mounter process not found")
+	return int(p.Pid), nil
 }
 
-// EnterUserSessionMountNs enters the user session mount namespace.
-func EnterUserSessionMountNs(ctx context.Context) error {
+// EnterUserSessionMountNS enters the user session mount namespace.
+// Mount namespace is per platform thread, which can be different from go-routine.
+// So in order to use this API safely, the current running context needs to be bound
+// to the platform thread, and it needs to be kept until it is unset by EnterInitMountNs.
+func EnterUserSessionMountNS(ctx context.Context) (retErr error) {
 	var nsPath = "/proc/1/ns/mnt"
-	if mounterPid, err := getCryptohomeNamespaceMounterPID(); err == nil {
+	if mounterPid, err := cryptohomeNamespaceMounterPID(); err == nil {
 		nsPath = fmt.Sprintf("/proc/%d/ns/mnt", mounterPid)
 	}
 
@@ -50,6 +41,15 @@ func EnterUserSessionMountNs(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrapf(err, "failed to open user session mount namespace at %s", nsPath)
 	}
+	defer func() {
+		if err := unix.Close(userSessionNsFd); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed to close user session mount namespace: ", err)
+			} else {
+				retErr = errors.Wrap(err, "failed to close user session mount namespace")
+			}
+		}
+	}()
 
 	if err := unix.Unshare(unix.CLONE_NEWNS); err != nil {
 		return errors.Wrap(err, "failed to unshare mount namespace")
@@ -59,15 +59,13 @@ func EnterUserSessionMountNs(ctx context.Context) error {
 		return errors.Wrap(err, "failed to enter user session mount namespace")
 	}
 
-	if err := unix.Close(userSessionNsFd); err != nil {
-		return errors.Wrap(err, "failed to close user session mount namespace")
-	}
-
 	return nil
 }
 
-// EnterInitMountNs enters the init mount namespace.
-func EnterInitMountNs(ctx context.Context) {
+// EnterInitMountNS enters the init mount namespace.
+// Please see also the thread-related comment for EnterUserSessionMountNS, which
+// applies here, too.
+func EnterInitMountNS(ctx context.Context) {
 	initNsFd, err := unix.Open("/proc/1/ns/mnt", unix.O_CLOEXEC, unix.O_RDONLY)
 	if err != nil {
 		testing.ContextLog(ctx, "Opening init mount namespace failed: ", err)
