@@ -122,6 +122,11 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get powerstates at S0ix or S3: ", err)
 		}
 
+		s.Log("Waiting for DUT to disconnect")
+		if err := h.DisconnectDUT(ctx); err != nil {
+			s.Fatal("Failed to disconnect DUT: ", err)
+		}
+
 		if h.Config.ModeSwitcherType == firmware.MenuSwitcher && h.Config.Platform != "zork" {
 			s.Logf("Waking DUT from suspend by %s", tc.wakeSource)
 			switch tc.wakeSource {
@@ -155,6 +160,20 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT after waking DUT from suspend: ", err)
+		}
+
+		// CCD might be locked after DUT has woken up.
+		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
+			s.Fatal("While checking if servo has a CCD connection: ", err)
+		} else if hasCCD {
+			if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+				s.Fatal("Failed to get cr50_ccd_level: ", err)
+			} else if val != servo.Open {
+				s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+				if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+					s.Fatal("Failed to unlock CCD: ", err)
+				}
+			}
 		}
 
 		s.Log("Checking AC information")
