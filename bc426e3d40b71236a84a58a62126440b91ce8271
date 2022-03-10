@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31eaae12_7ccd8540",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-10T07:20:54Z",
+      "side": 1,
+      "message": "These close functions only work if we assert that the length of r.activeServices.$service is 1. The append mechanism to contribute to these slices do not have a guarantee that we can only append once. We should either loop clean up the whole slice or assert during the append the max slice size is 1.",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 3
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bd7548_2eeed20f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-10T07:20:54Z",
+      "side": 1,
+      "message": "of",
+      "range": {
+        "startLine": 223,
+        "startChar": 49,
+        "endLine": 223,
+        "endChar": 50
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945c71b9_09a1caa7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-10T07:20:54Z",
+      "side": 1,
+      "message": "router.Base.\n\nAlso perhaps apply the wording pattern specified below if you agree with it, same for above functions.",
+      "range": {
+        "startLine": 1001,
+        "startChar": 20,
+        "endLine": 1001,
+        "endChar": 26
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8e8d72_49b3774b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-10T07:20:54Z",
+      "side": 1,
+      "message": "tf.Router is a router.Base?\n\nI think it might be a bit unclear what router.Base 0 object is, specifically how the 0 is relevant. I suggest we reword this as \"OpenWrtRouter returns the first router.Base object in tf.routers as an openwrt.Router\". WDYT?",
+      "range": {
+        "startLine": 1010,
+        "startChar": 25,
+        "endLine": 1010,
+        "endChar": 49
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
