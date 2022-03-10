@@ -119,16 +119,16 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string, extr
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
-	var variation_test bool = true
+	var isVariationTest bool = false
 	// if "--variations-server-url" is provided in the args, then it is running a variation smoke test
 	for _, s := range extraArgs {
 		if strings.Contains(s, "--variations-server-url") {
-			variation_test = true
+			isVariationTest = true
 			break
 		}
 	}
 	userDataDir := UserDataDir
-	if variation_test {
+	if isVariationTest {
 		// if the lacros launch for variation test, it requires the usage of the 'Local State' under UserDataDir
 		if err := os.MkdirAll(userDataDir, 0755); err != nil {
 			return nil, err

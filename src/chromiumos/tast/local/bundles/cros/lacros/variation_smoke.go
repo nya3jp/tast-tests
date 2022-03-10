@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VariationSmoke,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Tests basic lacros startup",
+		Desc:         "Test Lacros with test variation seed, and test launching Lacros with the downloaded seed",
 		Contacts:     []string{"yjt@google.com", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
@@ -182,7 +182,6 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("The test seed was not injected: ", err)
 	}
-
 	// Navigate to some pages in Lacros and verify that web elements are rendered correctly.
 	type tc struct {
 		url     string
