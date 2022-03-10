@@ -283,6 +283,30 @@
       },
       "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c71bed6_be3e9f91",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-10T19:39:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21bd9203_659d0dbb",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
