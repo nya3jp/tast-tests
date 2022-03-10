@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8384c8_62545b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T20:04:55Z",
+      "side": 1,
+      "message": "ditto re: please respond to Achuith\u0027s comment about the generated code, thanks!",
+      "revId": "e00a1d127eae130076bd1ace9896fd5d166d2ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "819671da_f8308d25",
