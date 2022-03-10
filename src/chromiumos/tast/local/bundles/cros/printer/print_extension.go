@@ -26,7 +26,7 @@ func init() {
 		Func:         PrintExtension,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that printing via the chrome.printing extension API works properly",
-		Contacts:     []string{"batrapranav@google.comabc", "cros-printing-dev@chromium.org"},
+		Contacts:     []string{"batrapranav@google.comab", "cros-printing-dev@chromium.org"},
 		Attr: []string{
 			"group:mainline",
 			"informational",
