@@ -103,6 +103,11 @@ func (s *OSSettings) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]
 	return s.ui.NodesInfo(ctx, finder.FinalAncestor(WindowFinder))
 }
 
+// IsNodeFound returns calls ui.IsNodeFound scoping the finder to the Settings app.
+func (s *OSSettings) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bool, error) {
+	return s.ui.IsNodeFound(ctx, finder.FinalAncestor(WindowFinder))
+}
+
 // Sleep returns an action to sleep for a certain time.
 func (s *OSSettings) Sleep(duration time.Duration) uiauto.Action {
 	return s.ui.Sleep(duration)
