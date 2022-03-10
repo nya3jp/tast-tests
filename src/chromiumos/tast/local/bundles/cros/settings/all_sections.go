@@ -64,24 +64,21 @@ func AllSections(ctx context.Context, s *testing.State) {
 	}
 
 	sections := ossettings.CommonSections(true)
-	var sectionTests []sectionTest
 	for sectionName, sectionFinder := range sections {
-		test := sectionTest{
+		section := sectionTest{
 			name:   sectionName,
 			finder: sectionFinder,
 		}
 		if sectionFinder == ossettings.Network {
-			test.subSectionToExpand = "Add network connection"
+			section.subSectionToExpand = "Add network connection"
 		}
 		if sectionFinder == ossettings.DateAndTime {
-			test.subSettingToToggle = "Use 24-hour clock"
+			section.subSettingToToggle = "Use 24-hour clock"
 		}
 
-		sectionTests = append(sectionTests, test)
-	}
-
-	if err := checkSections(ctx, cr, osSettings, sectionTests); err != nil {
-		s.Fatal("Failed to go through each main sections: ", err)
+		if err := checkSection(ctx, cr, osSettings, section); err != nil {
+			s.Fatalf("Failed to check section %s: %v", sectionName, err)
+		}
 	}
 }
 
@@ -92,34 +89,31 @@ type sectionTest struct {
 	subSettingToToggle string
 }
 
-// checkSections checks sections within the ossettings,
-// and verifies subsection or sub-setting is properly displayed by expands/toggles on it if the subsection or sub-setting is specified.
-func checkSections(ctx context.Context, cr *chrome.Chrome, osSettings *ossettings.OSSettings, sections []sectionTest) error {
-	for _, section := range sections {
-		if err := uiauto.Combine(fmt.Sprintf("looking for section: %q", section.name),
-			ensureVisible(osSettings, section.finder),
-			osSettings.WaitUntilExists(section.finder.Onscreen()),
-		)(ctx); err != nil {
-			return err
-		}
+// checkSection checks section within the ossettings, and verifies specified subsection or sub-setting is properly displayed by expands/toggles on it.
+func checkSection(ctx context.Context, cr *chrome.Chrome, osSettings *ossettings.OSSettings, section sectionTest) error {
+	if err := uiauto.Combine(fmt.Sprintf("look for section: %q", section.name),
+		ensureVisible(osSettings, section.finder),
+		osSettings.WaitUntilExists(section.finder.Onscreen()),
+	)(ctx); err != nil {
+		return err
+	}
 
-		if section.subSectionToExpand != "" {
-			node := nodewith.Name(section.subSectionToExpand).Role(role.Button)
-			if err := osSettings.LeftClick(section.finder)(ctx); err != nil {
-				return errors.Wrapf(err, "failed to navigate to section %q", section.name)
-			}
-			if err := expandSubSection(osSettings, node, true)(ctx); err != nil {
-				return errors.Wrap(err, "failed to expand sub section")
-			}
+	if section.subSectionToExpand != "" {
+		node := nodewith.Name(section.subSectionToExpand).Role(role.Button)
+		if err := osSettings.LeftClick(section.finder)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to navigate to section %q", section.name)
 		}
+		if err := expandSubSection(osSettings, node, true)(ctx); err != nil {
+			return errors.Wrap(err, "failed to expand sub section")
+		}
+	}
 
-		if section.subSettingToToggle != "" {
-			if err := osSettings.LeftClick(section.finder)(ctx); err != nil {
-				return errors.Wrapf(err, "failed to navigate to section %q", section.name)
-			}
-			if err := toggleSetting(cr, osSettings, section.subSettingToToggle)(ctx); err != nil {
-				return errors.Wrap(err, "failed to toggle setting")
-			}
+	if section.subSettingToToggle != "" {
+		if err := osSettings.LeftClick(section.finder)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to navigate to section %q", section.name)
+		}
+		if err := toggleSetting(cr, osSettings, section.subSettingToToggle)(ctx); err != nil {
+			return errors.Wrap(err, "failed to toggle setting")
 		}
 	}
 
@@ -143,6 +137,15 @@ func toggleSetting(cr *chrome.Chrome, osSettings *ossettings.OSSettings, name st
 
 func ensureVisible(osSettings *ossettings.OSSettings, node *nodewith.Finder) uiauto.Action {
 	return func(ctx context.Context) error {
+		if found, err := osSettings.IsNodeFound(ctx, nodewith.Role(role.Navigation).First()); err != nil {
+			return errors.Wrap(err, "failed to try to find node")
+		} else if !found {
+			// The main menu might be collapsed depending on window size, expand the main menu to ensure the input node is visible.
+			if err = osSettings.LeftClick(ossettings.MenuButton)(ctx); err != nil {
+				return errors.Wrap(err, "failed to click menu button")
+			}
+		}
+
 		info, err := osSettings.Info(ctx, node)
 		if err != nil {
 			return err

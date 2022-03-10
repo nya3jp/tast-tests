@@ -84,12 +84,12 @@ func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage *nodewith
 	// Wait until either the subpage or main menu exist.
 	// On small screens the sidebar is collapsed, and the main menu must be clicked.
 	subPageInApp := subpage.FinalAncestor(WindowFinder)
-	mainMenu := nodewith.Name("Main menu").Role(role.Button).Ancestor(WindowFinder)
+	menuButton := MenuButton.Ancestor(WindowFinder)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := s.ui.Exists(subPageInApp)(ctx); err == nil {
 			return nil
 		}
-		if err := s.ui.Exists(mainMenu)(ctx); err == nil {
+		if err := s.ui.Exists(menuButton)(ctx); err == nil {
 			return nil
 		}
 		return errors.New("neither subpage nor main menu exist")
@@ -101,7 +101,7 @@ func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage *nodewith
 	// Focus the subpage to ensure it is on-screen.
 	// Then click the subpage that we want in the sidebar.
 	if err := uiauto.Combine("click subpage",
-		s.ui.IfSuccessThen(s.ui.Gone(subPageInApp), s.ui.LeftClick(mainMenu)),
+		s.ui.IfSuccessThen(s.ui.Gone(subPageInApp), s.ui.LeftClick(menuButton)),
 		s.ui.FocusAndWait(subPageInApp),
 		s.ui.LeftClick(subPageInApp),
 	)(ctx); err != nil {
