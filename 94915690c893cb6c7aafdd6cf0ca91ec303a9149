@@ -57,6 +57,30 @@
       },
       "revId": "94915690c893cb6c7aafdd6cf0ca91ec303a9149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "358761c8_23b80ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/managed_device_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-10T23:32:40Z",
+      "side": 1,
+      "message": "Done. Thanks Gabor for your review! just didn\u0027t realized that this CL has been in the backlog until today and it\u0027s still not feature complete.",
+      "parentUuid": "4b20f28d_25283bb5",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 23
+      },
+      "revId": "94915690c893cb6c7aafdd6cf0ca91ec303a9149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
