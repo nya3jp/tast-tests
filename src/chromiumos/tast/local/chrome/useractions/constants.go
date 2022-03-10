@@ -75,6 +75,7 @@ const (
 	ActionTagEmojiSuggestion    ActionTag = "EmojiSuggestion"
 	ActionTagGrammarCheck       ActionTag = "GrammarCheck"
 	ActionTagMultiPaste         ActionTag = "MultiPaste"
+	ActionTagMultiwordSuggest   ActionTag = "MultiwordSuggest"
 	ActionTagAutoCorrection     ActionTag = "AutoCorrection"
 	ActionTagAutoCapitalization ActionTag = "AutoCapitalization"
 )
