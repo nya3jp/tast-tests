@@ -19,7 +19,6 @@ import (
 
 // chromeCrashLoopParams contains the test parameters which are different between the various tests.
 type chromeCrashLoopParams struct {
-	handler chromecrash.CrashHandler
 	consent crash.ConsentType
 }
 
@@ -32,23 +31,8 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "memfd_create"},
 		Params: []testing.Param{{
-			Name: "breakpad",
-			Val: chromeCrashLoopParams{
-				handler: chromecrash.Breakpad,
-				consent: crash.RealConsent,
-			},
-			ExtraSoftwareDeps: []string{"breakpad", "metrics_consent"},
-		}, {
-			Name: "breakpad_mock_consent",
-			Val: chromeCrashLoopParams{
-				handler: chromecrash.Breakpad,
-				consent: crash.MockConsent,
-			},
-			ExtraSoftwareDeps: []string{"breakpad"},
-		}, {
 			Name: "crashpad",
 			Val: chromeCrashLoopParams{
-				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
@@ -56,7 +40,6 @@ func init() {
 		}, {
 			Name: "crashpad_mock_consent",
 			Val: chromeCrashLoopParams{
-				handler: chromecrash.Crashpad,
 				consent: crash.MockConsent,
 			},
 			ExtraSoftwareDeps: []string{"crashpad"},
@@ -82,7 +65,7 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer ct.Close()
 
-	extraArgs := chromecrash.GetExtraArgs(params.handler, params.consent)
+	extraArgs := chromecrash.GetExtraArgs(chromecrash.Crashpad, params.consent)
 	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(extraArgs...))
 	if err != nil {
 		s.Fatal("chrome.New() failed: ", err)
