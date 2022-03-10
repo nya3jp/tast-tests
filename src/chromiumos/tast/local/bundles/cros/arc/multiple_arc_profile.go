@@ -151,39 +151,13 @@ func openARCSettings(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 // addARCAccount adds a second ARC account from ARC Settings->Accounts Screen.
-func addARCAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chrome.TestConn,
-	s *testing.State) error {
-	const (
-		scrollClassName   = "android.widget.ScrollView"
-		textViewClassName = "android.widget.TextView"
-	)
-
+func addARCAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chrome.TestConn, s *testing.State) error {
 	ui := uiauto.New(tconn)
 	secondUser := s.RequiredVar("arc.parentUser")
 	secondPassword := s.RequiredVar("arc.parentPassword")
 
-	// Scroll until Accounts is visible.
-	scrollLayout := arcDevice.Object(androidui.ClassName(scrollClassName),
-		androidui.Scrollable(true))
-	accounts := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
-	if err := scrollLayout.WaitForExists(ctx, 10*time.Second); err == nil {
-		scrollLayout.ScrollTo(ctx, accounts)
-	}
-
-	if err := accounts.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on System")
-	}
-
-	addAccount := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.TextMatches("(?i)Add account"), androidui.Enabled(true))
-
-	if err := addAccount.WaitForExists(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed finding addAccount Text View")
-	}
-
-	if err := addAccount.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click addAccount")
+	if err := arc.ClickAddAccountInSettings(ctx, arcDevice, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Add account dialog from ARC")
 	}
 
 	if err := accountmanager.AddAccount(ctx, tconn, secondUser, secondPassword); err != nil {
