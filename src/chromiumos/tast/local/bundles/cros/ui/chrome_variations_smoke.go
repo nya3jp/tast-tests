@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/variations"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -42,19 +43,11 @@ func init() {
 
 // Constants for the path to CrOS' Local State file and the pref names for controlling the variations config.
 const (
-	localStatePath     = "/home/chronos/Local State"
-	compressedSeedPref = "variations_compressed_seed"
-	seedSignaturePref  = "variations_seed_signature"
+	localStatePath = "/home/chronos/Local State"
 )
 
-// variationsSeedData represents a variations seed, which contains information about field trials to enable on the device.
-type variationsSeedData struct {
-	CompressedSeed string `json:"variations_compressed_seed"`
-	SeedSignature  string `json:"variations_seed_signature"`
-}
-
 // readVariationsSeed reads the current variations seed from the Local State file.
-func readVariationsSeed(ctx context.Context) (*variationsSeedData, error) {
+func readVariationsSeed(ctx context.Context) (*variations.SeedData, error) {
 	localStateFile, err := os.Open(localStatePath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to open Local State file")
@@ -71,24 +64,24 @@ func readVariationsSeed(ctx context.Context) (*variationsSeedData, error) {
 	}
 	localStateMap := localState.(map[string]interface{})
 
-	seed, ok := localStateMap[compressedSeedPref].(string)
+	seed, ok := localStateMap[variations.CompressedSeedPref].(string)
 	if !ok {
-		return nil, errors.Errorf("%v field not found in Local State", compressedSeedPref)
+		return nil, errors.Errorf("%v field not found in Local State", variations.CompressedSeedPref)
 	}
-	signature, ok := localStateMap[seedSignaturePref].(string)
+	signature, ok := localStateMap[variations.SeedSignaturePref].(string)
 	if !ok {
-		return nil, errors.Errorf("%v field not found in Local State", seedSignaturePref)
+		return nil, errors.Errorf("%v field not found in Local State", variations.SeedSignaturePref)
 	}
-	return &variationsSeedData{CompressedSeed: seed, SeedSignature: signature}, nil
+	return &variations.SeedData{CompressedSeed: seed, SeedSignature: signature}, nil
 }
 
 // injectVariationsSeed injects the given seed into Local State. The seed will be loaded and take effect on the next run of Chrome (i.e. next user session).
-func injectVariationsSeed(ctx context.Context, tconn *chrome.TestConn, seed *variationsSeedData) error {
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setWhitelistedPref)", seedSignaturePref, seed.SeedSignature); err != nil {
-		return errors.Wrapf(err, "failed to set %v", seedSignaturePref)
+func injectVariationsSeed(ctx context.Context, tconn *chrome.TestConn, seed *variations.SeedData) error {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setWhitelistedPref)", variations.SeedSignaturePref, seed.SeedSignature); err != nil {
+		return errors.Wrapf(err, "failed to set %v", variations.SeedSignaturePref)
 	}
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setWhitelistedPref)", compressedSeedPref, seed.CompressedSeed); err != nil {
-		return errors.Wrapf(err, "failed to set %v", compressedSeedPref)
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setWhitelistedPref)", variations.CompressedSeedPref, seed.CompressedSeed); err != nil {
+		return errors.Wrapf(err, "failed to set %v", variations.CompressedSeedPref)
 	}
 	return nil
 }
@@ -119,7 +112,7 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to read Local State file contents: ", err)
 	}
-	var testSeed variationsSeedData
+	var testSeed variations.SeedData
 	if err := json.Unmarshal(b, &testSeed); err != nil {
 		s.Fatal("Failed to unmarshal test seed: ", err)
 	}

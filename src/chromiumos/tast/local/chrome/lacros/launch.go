@@ -102,11 +102,11 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 
 // Launch launches a fresh instance of lacros-chrome.
 func Launch(ctx context.Context, f lacrosfixt.FixtValue) (*Lacros, error) {
-	return LaunchWithURL(ctx, f, chrome.BlankURL)
+	return LaunchWithURL(ctx, f, chrome.BlankURL, false)
 }
 
 // LaunchWithURL launches a fresh instance of lacros-chrome having the given url.
-func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*Lacros, error) {
+func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string, isVariationTest bool) (*Lacros, error) {
 	succeeded := false
 	defer lacrosfaillog.SaveIf(ctx, f.LacrosPath(), func() bool { return !succeeded })
 
@@ -114,15 +114,24 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
-	// Create a new temporary directory for user data dir.
-	// The directory will be wiped by fixture's Reset(), so if necessary
-	// the log needs to be preserved within the test.
-	// This creates new directory for each invocation to provide isolated environment.
-	userDataDir, err := ioutil.TempDir(f.UserTmpDir(), "")
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
+	var userDataDir string
+	if isVariationTest {
+		userDataDir = UserDataDir
+		// if the lacros launch for variation test, it requires the usage of the 'Local State' under UserDataDir
+		if err := os.MkdirAll(userDataDir, 0755); err != nil {
+			return nil, err
+		}
+	} else {
+		// Create a new temporary directory for user data dir.
+		// The directory will be wiped by fixture's Reset(), so if necessary
+		// the log needs to be preserved within the test.
+		// This creates new directory for each invocation to provide isolated environment.
+		newUserDataDir, err := ioutil.TempDir(f.UserTmpDir(), "")
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", newUserDataDir)
+		}
+		userDataDir = newUserDataDir
 	}
-
 	// Set user to chronos, since we run lacros as chronos.
 	if err := os.Chown(userDataDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
 		return nil, errors.Wrap(err, "failed to chown user data dir")
