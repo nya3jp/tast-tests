@@ -2406,21 +2406,6 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 	writeStringToFile := func(file, content string) error {
 		return ioutil.WriteFile(file, []byte(content), 0444)
 	}
-	pingOnce := func(ctx context.Context) error {
-		pingOps := []ping.Option{
-			ping.Count(pingCount),
-			ping.Interval(pingInterval),
-		}
-		res, err := local_ping.NewLocalRunner().Ping(ctx, req.ServerIp, pingOps...)
-		if err != nil {
-			return errors.Wrap(err, "failed to ping from the DUT")
-		}
-		testing.ContextLogf(ctx, "ping result: %+v", res)
-		if res.Loss > pingLossThreshold {
-			return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
-		}
-		return nil
-	}
 	// Asserts that after f() is called, shill sees the service changes state to Idle then to IsConnected.
 	// The reason to pass f() is because we need to set up a shill property watcher before the f() is called.
 	assertIdleAndConnect := func(ctx context.Context, f func(ctx context.Context) error) error {
@@ -2617,6 +2602,24 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 	iface, err := shill.WifiInterface(ctx, manager, 5*time.Second)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the WiFi interface")
+	}
+
+	pingOnce := func(ctx context.Context) error {
+		pingOps := []ping.Option{
+			ping.Count(pingCount),
+			ping.Interval(pingInterval),
+			ping.BindAddress(true),
+			ping.SourceIface(iface),
+		}
+		res, err := local_ping.NewLocalRunner().Ping(ctx, req.ServerIp, pingOps...)
+		if err != nil {
+			return errors.Wrap(err, "failed to ping from the DUT")
+		}
+		testing.ContextLogf(ctx, "ping result: %+v", res)
+		if res.Loss > pingLossThreshold {
+			return errors.Errorf("unexpected packet loss percentage: got %g%%, want <= %g%%", res.Loss, pingLossThreshold)
+		}
+		return nil
 	}
 
 	// Find the first workable reset path and function by checking the presence of a reset path from the three WiFi module families.
