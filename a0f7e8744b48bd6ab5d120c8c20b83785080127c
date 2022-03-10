@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "469da765_fae8ae73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-10T21:22:10Z",
+      "side": 1,
+      "message": "I like the fatal because if the file is there, other tests might fail, and this error will give us a clue of what\u0027s really going on. Since this test should not normally fail, it will be pretty clear to the champ that this has to be investigated",
+      "parentUuid": "f285b701_f42048a4",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92b173cc_e0fe3434",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-03-10T20:04:04Z",
       "side": 1,
       "message": "nit: maybe we should say what type we\u0027re trying to do a type assertion to in here?",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abeca1c_dc25af8b",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-10T21:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92b173cc_e0fe3434",
       "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04163b84_8e0df597",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-10T21:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a9bdea5_1be1158f",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2589a8cd_0f2299ca",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-03-10T20:04:04Z",
       "side": 1,
       "message": "this comment can be deleted now, I think",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6f96e3_7caacf6a",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-10T21:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2589a8cd_0f2299ca",
       "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
