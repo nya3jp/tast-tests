@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c228e9a7_cbc296bf",
+        "filename": "src/chromiumos/tast/local/memory/available.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-03-10T01:24:00Z",
+      "side": 1,
+      "message": "Thanks for the input, I followed your recommendation abandoned the plan to run against older version -  meaning that this change will no longer be needed.",
+      "parentUuid": "c01cf5dd_22349600",
+      "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1ebb1ac_c2643aa0",
@@ -132,6 +150,30 @@
       "side": 1,
       "message": "I may not fully understand your intention.\nIf it is known to fail on m90, why do you need to run the test?\nAlso, if the test is known to fail, then you can ignore such \"intended failures\" in your side, right?\n\nStepping back, in general, there\u0027s no guarantee that test on ToT can work against older release images. The tast tests is tied to the current version of chrome os. And, that\u0027s why we make branches of tast tests together with OS releases.\n\nIf you need to run it for some reasons manually one time even if it is known to fail, i wouldn\u0027t block you of course, but making some changes to deal with such an exceptional cases sounds like a worried piece from over-all maintenance perspective.",
       "parentUuid": "fe421292_82805569",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "0856d3c2383f018ada6555d181d86549d7f782f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ea640d_9fa47e35",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-03-10T01:24:00Z",
+      "side": 1,
+      "message": "Thanks for taking time to explain in detail. I followed your recommendation and abandoned the milestone checks.\n\nTo explain the background further:\n- The test doesn\u0027t really \"fail\" on m90... It breaks because this method of extracting metrics did not exist back then.\n- The fundamental reason to run against m90:  it\u0027s because lately, we have introduced new metrics (unrelated to this change), which did not exist in m90.  For historical purposes, I want to get those metrics from m90 (which is roughly the start of the recent push for ARCVM optimizations) and archive them.\n\nWhat I plan to do instead:\n- I\u0027ll just apply local patches, run against m90 and save the results.  That way there\u0027s no need to maintain the milestone comparison code, or deviate from tast\u0027s current branching strategy.",
+      "parentUuid": "89c7e5d9_912daa89",
       "range": {
         "startLine": 233,
         "startChar": 1,
