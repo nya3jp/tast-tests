@@ -50,6 +50,18 @@ var GrammarEnabledModels = []string{
 	"hatch",
 }
 
+// MultiwordEnabledModels is a subset of boards where multiword suggestions are
+// enabled. The multiword feature is enabled on all 4gb boards, with a list of
+// 2gb boards having the feature explicitly disabled. See the following link
+// for a list of all boards where the feature is disabled.
+// https://source.chromium.org/search?q=f:make.defaults%20%22-ondevice_text_suggestions%22&ss=chromiumos&start=31
+var MultiwordEnabledModels = []string{
+	"betty",
+	"octopus",
+	"nocturne",
+	"hatch",
+}
+
 // InputsStableModels is a shortlist of models aiming to run critical inputs tests.
 // More information refers to http://b/161415599.
 var InputsStableModels = hwdep.Model(StableModels...)
@@ -134,6 +146,10 @@ var NonVKClamshellReset = inputsPreCondition("non_vk_clamshell_reset_pre", clams
 // NonVKClamshellWithGrammarCheck creates a precondition for testing physical keyboard, and with OnDeviceGrammarCheck flag enabled.
 // It forces device to be clamshell mode and vk disabled.
 var NonVKClamshellWithGrammarCheck = inputsPreCondition("non_vk_clamshell_with_grammar_check_pre", clamshellMode, false, false, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck"))
+
+// NonVKClamshellWithMultiwordSuggest creates a precondition for testing physical keyboard, and with AssistMultiWord flag enabled.
+// It forces device to be clamshell mode and vk disabled.
+var NonVKClamshellWithMultiwordSuggest = inputsPreCondition("non_vk_clamshell_with_multiword_suggest_pre", clamshellMode, false, false, chrome.ExtraArgs("--enable-features=AssistMultiWord"))
 
 // The PreData object is made available to users of this precondition via:
 //
