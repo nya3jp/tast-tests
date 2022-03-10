@@ -28,8 +28,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			"ui.sampleSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
-			"ui.cuj_mode",       // Optional. Expecting "tablet" or "clamshell".
+			"ui.sampleGDocSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
+			"ui.cuj_mode",           // Optional. Expecting "tablet" or "clamshell".
 		},
 		Params: []testing.Param{
 			{
@@ -50,9 +50,9 @@ func init() {
 func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
-	sampleSheetURL, ok := s.Var("ui.sampleSheetURL")
+	sampleSheetURL, ok := s.Var("ui.sampleGDocSheetURL")
 	if !ok {
-		s.Fatal("Require variable ui.sampleSheetURL is not provided")
+		s.Fatal("Require variable ui.sampleGDocSheetURL is not provided")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
