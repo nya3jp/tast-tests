@@ -59,7 +59,9 @@ func init() {
 				primaryFormats: []string{"XR24", "XB24", "AR24", "AB24"},
 				overlay:        overlay{"NV12", "640x360"},
 			},
-			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
+			// rk3399 ("bob"/gru" and "scarlet") technically support NV12 overlays but
+			// has only 1 plane all in all, so cannot pass this test.
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays(), hwdep.SkipOnPlatform("bob", "gru", "kevin")),
 		}, {
 			Name: "30bpp_nv12_overlay",
 			Val: overlaysTestParam{
