@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e34e1031_c4677387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-03-10T12:08:16Z",
+      "side": 1,
+      "message": "This CL actually replaces the test and makes it lacros-only, not creates a variant, right? \nCould you keep the original ash tests until we fully release Lacros?\nNot sure what\u0027s the best way to do that. I expected to see some `if (lacros)` somewhere in this file. If that\u0027s tricky, I\u0027m also okay with just copypasting the whole file (as it was before) and having both of them in parallel.",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "a5b189755bb64bf95e28f5ee828ecea309965904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24628941_c99778ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
         "patchSetId": 3
