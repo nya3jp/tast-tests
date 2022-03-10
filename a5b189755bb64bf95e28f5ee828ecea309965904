@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24628941_c99778ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-10T09:46:30Z",
+      "side": 1,
+      "message": "Hidehiko, should I move this to the lacros package or let Eliot first remove the lacros fixtures?",
+      "revId": "a5b189755bb64bf95e28f5ee828ecea309965904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
