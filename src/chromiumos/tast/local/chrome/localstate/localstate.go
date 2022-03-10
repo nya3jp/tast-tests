@@ -63,3 +63,35 @@ func UnmarshalPref(bt browser.Type, pref string) (interface{}, error) {
 	}
 	return localState, nil
 }
+
+// Marshal will update Local State with localStateMap
+func Marshal(bt browser.Type, localStateMap map[string]interface{}) error {
+	var localStatePath = localStatePathAsh
+	if bt == browser.TypeLacros {
+		localStatePath = localStatePathLacros
+	}
+	jsonStr, err := json.Marshal(localStateMap)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal Local State")
+	}
+	if err := ioutil.WriteFile(localStatePath, jsonStr, 0644); err != nil {
+		return errors.Wrap(err, "failed to write Local State")
+	}
+	return nil
+}
+
+// MarshalPref will update preference in Local State with defined value in prefMap
+func MarshalPref(bt browser.Type, prefMap map[string]interface{}) error {
+	var localState interface{}
+	if err := Unmarshal(bt, &localState); err != nil {
+		return errors.Wrap(err, "failed to retrieve Local State contents")
+	}
+	localStateMap := localState.(map[string]interface{})
+	for pref, prefValue := range prefMap {
+		localStateMap[pref] = prefValue
+	}
+	if err := Marshal(bt, localStateMap); err != nil {
+		return errors.Wrap(err, "failed to wirte Local State contents")
+	}
+	return nil
+}
