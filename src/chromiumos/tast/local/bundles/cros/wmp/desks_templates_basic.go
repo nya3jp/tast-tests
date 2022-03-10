@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -23,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DesksTemplatesBasic,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks desks can be saved as a desk template",
 		Contacts: []string{
 			"yzd@chromium.org",
@@ -35,6 +36,13 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -44,6 +52,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	// TODO: Use browserfixt.SetUpWithNewChrome.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksTemplates"),
@@ -85,8 +94,15 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Opens PlayStore, Chrome and Files.
-	for _, app := range []apps.App{apps.PlayStore, apps.Chrome, apps.Files} {
+	// Get Browser app info.
+	bt := s.Param().(browser.Type)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn, bt)
+	if err != nil {
+		s.Fatalf("Could not find %v browser app info: %v", bt, err)
+	}
+
+	// Opens PlayStore, Browser and Files.
+	for _, app := range []apps.App{apps.PlayStore, browserApp, apps.Files} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
 		}
