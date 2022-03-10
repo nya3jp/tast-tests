@@ -253,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "757ec581_e0fc39ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-10T16:29:31Z",
+      "side": 1,
+      "message": "Yes I agree, and implementing this in a different change sounds good to me :)",
+      "parentUuid": "fa2b75f3_928d3b77",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9accae45_057ba5b8",
@@ -431,6 +455,30 @@
       "side": 1,
       "message": "I found out experimentally and I am not sure about the reason.",
       "parentUuid": "857264e9_3f34c0ee",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 73
+      },
+      "revId": "17869a28a0cb9a82b4b7dad27edc112d6aa110b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da26040_218ab099",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-03-10T16:29:31Z",
+      "side": 1,
+      "message": "Ah, okay I think it might be worth investigating a bit more to find out what is going on to make sure something wonky isn\u0027t happening behind the scenes. Could this be required because we `type NetworkFilter struct` here rather than directly relying on the mojo types like we do in JS/C++?\n\n@stevenjb do you know why this might be required?",
+      "parentUuid": "afc9ac2a_1bbea64e",
       "range": {
         "startLine": 52,
         "startChar": 8,
