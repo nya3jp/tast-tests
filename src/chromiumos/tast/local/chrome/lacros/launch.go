@@ -87,6 +87,7 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
 	}
+
 	testing.ContextLog(ctx, "Wait for Lacros window")
 	if err := WaitForLacrosWindow(ctx, tconn, ""); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for lacros")

@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-// Constants for the path to CrOS' Local State file and the pref names for controlling the variations config.
+// Constants for the path to Lacros Local State file and the pref names for controlling the variations config.
 const (
 	localStatePath     = "/home/chronos/user/lacros/Local State"
 	compressedSeedPref = "variations_compressed_seed"
@@ -51,7 +51,6 @@ type variationsSeedData struct {
 func readLocalStateFile() (map[string]interface{}, error) {
 	localStateFile, err := os.Open(localStatePath)
 	if err != nil {
-
 		return nil, errors.Wrap(err, "failed to open Local State file")
 	}
 	defer localStateFile.Close()
@@ -59,16 +58,15 @@ func readLocalStateFile() (map[string]interface{}, error) {
 	var localState interface{}
 	b, err := ioutil.ReadAll(localStateFile)
 	if err != nil {
-
 		return nil, errors.Wrap(err, "failed to read Local State file contents")
 	}
-	if err := json.Unmarshal(b, &localState); err != nil {
 
+	if err := json.Unmarshal(b, &localState); err != nil {
 		return nil, errors.Wrap(err, "failed to unmarshal Local State")
 	}
+
 	localStateMap := localState.(map[string]interface{})
 	return localStateMap, nil
-
 }
 
 // readVariationsSeed reads the current variations seed from the Local State file.
@@ -178,14 +176,14 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to read variations seed info")
 		}
 		if currentSeed.CompressedSeed == testSeed.CompressedSeed || currentSeed.SeedSignature == testSeed.SeedSignature {
-			return errors.New("chrome did not update the variations seed")
+			return errors.New("Lacros did not update the variations seed")
 		}
 		return nil
 	}, nil); err != nil {
 		s.Fatal("The test seed was not injected: ", err)
 	}
 
-	// Navigate to some pages in Chrome and verify that web elements are rendered correctly.
+	// Navigate to some pages in Lacros and verify that web elements are rendered correctly.
 	type tc struct {
 		url     string
 		text    string
