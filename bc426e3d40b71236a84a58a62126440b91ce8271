@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a646c9_5097cb78",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-10T22:01:35Z",
+      "side": 1,
+      "message": "It actually is looping through all of them. The StopX functions remove the service from the active services, so it\u0027s essentially popping each one off until no more remain.",
+      "parentUuid": "31eaae12_7ccd8540",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 3
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1bd7548_2eeed20f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-10T07:20:54Z",
       "side": 1,
       "message": "of",
+      "range": {
+        "startLine": 223,
+        "startChar": 49,
+        "endLine": 223,
+        "endChar": 50
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "328433df_bd8aff6b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-10T22:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1bd7548_2eeed20f",
       "range": {
         "startLine": 223,
         "startChar": 49,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfdd099_860eb5c3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-10T22:01:35Z",
+      "side": 1,
+      "message": "Seems like this was just a comment that I didn\u0027t update after refactoring it around. I\u0027ve corrected it.",
+      "parentUuid": "945c71b9_09a1caa7",
+      "range": {
+        "startLine": 1001,
+        "startChar": 20,
+        "endLine": 1001,
+        "endChar": 26
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef8e8d72_49b3774b",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-10T07:20:54Z",
       "side": 1,
       "message": "tf.Router is a router.Base?\n\nI think it might be a bit unclear what router.Base 0 object is, specifically how the 0 is relevant. I suggest we reword this as \"OpenWrtRouter returns the first router.Base object in tf.routers as an openwrt.Router\". WDYT?",
+      "range": {
+        "startLine": 1010,
+        "startChar": 25,
+        "endLine": 1010,
+        "endChar": 49
+      },
+      "revId": "bc426e3d40b71236a84a58a62126440b91ce8271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b5a65b_85dc8ba3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-10T22:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef8e8d72_49b3774b",
       "range": {
         "startLine": 1010,
         "startChar": 25,
