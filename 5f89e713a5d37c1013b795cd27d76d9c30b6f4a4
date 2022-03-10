@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15007be5_709bcad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-03-10T22:03:59Z",
+      "side": 1,
+      "message": "lgtm",
+      "parentUuid": "baac0339_11b101a0",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "5f89e713a5d37c1013b795cd27d76d9c30b6f4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dffcbc4_6ffaa60a",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_cellular_toggle_compare.go",
         "patchSetId": 6
