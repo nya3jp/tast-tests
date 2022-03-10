@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7e556a_56aa391d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/fs_corruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-03-10T23:53:58Z",
+      "side": 1,
+      "message": "In general the copyright date shouldn\u0027t change when we update the file, only for newly created files",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "fbf199f5b8467f2d6cf4a3e411fb9f47f9a1a052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

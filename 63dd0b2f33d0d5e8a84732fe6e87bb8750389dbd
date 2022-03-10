@@ -34,6 +34,24 @@
       "parentUuid": "013e2894_6a5f14e6",
       "revId": "63dd0b2f33d0d5e8a84732fe6e87bb8750389dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7deaff0e_76de5834",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-03-10T23:53:58Z",
+      "side": 1,
+      "message": "Ping on the validation that the crash report is generated 😊",
+      "parentUuid": "70d052d6_4bbbd7b2",
+      "revId": "63dd0b2f33d0d5e8a84732fe6e87bb8750389dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
