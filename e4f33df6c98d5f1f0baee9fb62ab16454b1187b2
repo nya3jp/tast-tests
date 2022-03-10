@@ -16,6 +16,23 @@
       "message": "LGTM. Seewai, could you please do an OWNERS review? \n\nPo-Hsien is OOO.",
       "revId": "e4f33df6c98d5f1f0baee9fb62ab16454b1187b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52eb6828_133dfd19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-10T23:01:14Z",
+      "side": 1,
+      "message": "Please run tast unit test \"fast_build.sh -T\" and update the TEST\u003d section of commit log. Thanks.",
+      "revId": "e4f33df6c98d5f1f0baee9fb62ab16454b1187b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
