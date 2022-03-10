@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca28abe9_d0e49ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-03-10T18:00:37Z",
+      "side": 0,
+      "message": "Can we modify this to use `uiauto.IfSuccessThen`? Example:\n```\nmaximizeButton :\u003d nodeWith.Name(\"Maximize\")...\nif err :\u003d uiauto.IfSuccessThen(\n  uiauto.WaitUntilExists(maximizeButton),\n  uiauto.LeftClick(maximizeButton)\n)(ctx); err !\u003d nil {\n  s.Fatalf(...)\n}\n```\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d755",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "a85aeb3f41152e52c9565a4d39559ad7dfc2965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
