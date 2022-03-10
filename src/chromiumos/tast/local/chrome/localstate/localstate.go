@@ -63,3 +63,45 @@ func UnmarshalPref(bt browser.Type, pref string) (interface{}, error) {
 	}
 	return localState, nil
 }
+
+// Marshal will update Local State with localStateMap
+// localStateMap includes pref names and pref values that will be written to local state
+// The preference name is a string such as "foo.bar.baz". It will parse like this
+// {"foo.bar.baz": 42}, instead of {"foo": {"bar": {"baz": 42}}}
+func Marshal(bt browser.Type, localStateMap map[string]interface{}) error {
+	path := localStatePathAsh
+	if bt == browser.TypeLacros {
+		path = localStatePathLacros
+	}
+	s, err := json.Marshal(localStateMap)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal Local State")
+	}
+	if err := ioutil.WriteFile(path, s, 0644); err != nil {
+		return errors.Wrap(err, "failed to write Local State")
+	}
+	return nil
+}
+
+// MarshalPref will update preference in Local State with defined value in prefMap
+// prefMap includes the pref names, pref values that will be overwritten in local state.
+// The preference name is a string such as "foo.bar.baz". PrefMap will have format
+// {"foo.bar.baz": 42}, instead of {"foo": {"bar": {"baz": 42}}}. If the prefMap has
+// a invalid format, writing to local state will be failed.
+func MarshalPref(bt browser.Type, prefMap map[string]interface{}) error {
+	var localState interface{}
+	if err := Unmarshal(bt, &localState); err != nil {
+		return errors.Wrap(err, "failed to retrieve Local State contents")
+	}
+	localStateMap, ok := localState.(map[string]interface{})
+	if !ok {
+		return errors.Wrap(nil, "localState has an unexpected value type")
+	}
+	for pref, prefValue := range prefMap {
+		localStateMap[pref] = prefValue
+	}
+	if err := Marshal(bt, localStateMap); err != nil {
+		return errors.Wrap(err, "failed to wirte Local State contents")
+	}
+	return nil
+}
