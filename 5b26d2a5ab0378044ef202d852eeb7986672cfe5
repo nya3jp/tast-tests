@@ -16,6 +16,24 @@
       "message": "Can you please check if it works on a tablet? I tested on eve device.",
       "revId": "5b26d2a5ab0378044ef202d852eeb7986672cfe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a7ef9e_af897aba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-03-10T15:31:08Z",
+      "side": 1,
+      "message": "LGTM as I was investigating this at my end yesterday and androidui.Enabled(true) should solve this. I don\u0027t have a kukui either. Suggest you to lease a device from skylab using crosfleet and try running it.",
+      "parentUuid": "f6faff48_485cfcda",
+      "revId": "5b26d2a5ab0378044ef202d852eeb7986672cfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
