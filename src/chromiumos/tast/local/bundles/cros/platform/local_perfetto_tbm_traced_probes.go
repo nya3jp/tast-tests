@@ -27,8 +27,11 @@ func init() {
 		Func:     LocalPerfettoTBMTracedProbes,
 		Desc:     "Verifies functions of Perfetto traced, traced_probes and trace_processor_shell commands",
 		Contacts: []string{"chenghaoyang@chromium.org", "chinglinyu@chromium.org"},
-		Data:     []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
-		Attr:     []string{"group:mainline"},
+		Data: []string{tracing.TBMTracedProbesConfigFile,
+			tracing.TraceProcessorAmd64,
+			tracing.TraceProcessorArm,
+			tracing.TraceProcessorArm64},
+		Attr: []string{"group:mainline"},
 		// TODO(b/208476320): Reenable when reven is fixed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("reven")),
 	})

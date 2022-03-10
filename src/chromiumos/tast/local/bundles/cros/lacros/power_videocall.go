@@ -65,12 +65,18 @@ func init() {
 			Val:               powerVideocallParams{browserType: browser.TypeLacros, collectTrace: true},
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraData:         []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
+			ExtraData: []string{tracing.TBMTracedProbesConfigFile,
+				tracing.TraceProcessorAmd64,
+				tracing.TraceProcessorArm,
+				tracing.TraceProcessorArm64},
 		}, {
-			Name:      "ash_trace",
-			Val:       powerVideocallParams{browserType: browser.TypeAsh, collectTrace: true},
-			Fixture:   "chromeLoggedIn",
-			ExtraData: []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
+			Name:    "ash_trace",
+			Val:     powerVideocallParams{browserType: browser.TypeAsh, collectTrace: true},
+			Fixture: "chromeLoggedIn",
+			ExtraData: []string{tracing.TBMTracedProbesConfigFile,
+				tracing.TraceProcessorAmd64,
+				tracing.TraceProcessorArm,
+				tracing.TraceProcessorArm64},
 		}},
 	})
 }
