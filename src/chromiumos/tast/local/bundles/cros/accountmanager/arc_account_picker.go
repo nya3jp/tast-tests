@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/accountmanager"
-	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -138,33 +138,8 @@ func checkARCToggleStatusAction(tconn *chrome.TestConn, expectedVal bool) action
 // openAddAccountDialogFromARCAction returns an action that clicks 'Add account' button in ARC settings.
 func openAddAccountDialogFromARCAction(d *androidui.Device, tconn *chrome.TestConn) action.Action {
 	return func(ctx context.Context) error {
-		const scrollClassName = "android.widget.ScrollView"
-
-		if err := apps.Launch(ctx, tconn, apps.AndroidSettings.ID); err != nil {
-			return errors.Wrap(err, "failed to launch AndroidSettings")
-		}
-
-		scrollLayout := d.Object(androidui.ClassName(scrollClassName),
-			androidui.Scrollable(true))
-		accounts := d.Object(androidui.ClassName("android.widget.TextView"),
-			androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
-		if err := scrollLayout.WaitForExists(ctx, accountmanager.DefaultUITimeout); err == nil {
-			scrollLayout.ScrollTo(ctx, accounts)
-		}
-
-		if err := accounts.Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click on System")
-		}
-
-		addAccount := d.Object(androidui.ClassName("android.widget.TextView"),
-			androidui.TextMatches("(?i)Add account"), androidui.Enabled(true))
-
-		if err := addAccount.WaitForExists(ctx, accountmanager.DefaultUITimeout); err != nil {
-			return errors.Wrap(err, "failed finding addAccount Text View")
-		}
-
-		if err := addAccount.Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click addAccount")
+		if err := arc.ClickAddAccountInSettings(ctx, d, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Add account dialog from ARC")
 		}
 		return nil
 	}
