@@ -90,8 +90,11 @@ func confereceChromeOpts(accountPool, cameraVideoPath string) []chrome.Option {
 
 // chromeArgsWithFileCameraInput returns Chrome extra args as string slice
 // for video test with a Y4M/MJPEG fileName streamed as live camera input.
-func chromeArgsWithFileCameraInput(fileName string) []string {
-	args := []string{
+func chromeArgsWithFileCameraInput(fileName string) (args []string) {
+	if fileName == "" {
+		return args
+	}
+	args = []string{
 		// See https://webrtc.github.io/webrtc-org/testing/.
 		// Feed a test pattern to getUserMedia() instead of live camera input.
 		"--use-fake-device-for-media-stream",
