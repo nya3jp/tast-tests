@@ -16,6 +16,24 @@
       "message": "Can you confirm the issue only happens when the video dependency is an external dependency as opposed to included directly? Or is this a general issue?",
       "revId": "afb28df03998a7615f69f10f97c6921558d55fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9134f581_015b4f53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-10T17:25:17Z",
+      "side": 1,
+      "message": "In the code base currently, the bear video is compiled into the ArcPipVideoTest APK, and the app successfully plays it in arc.PIPRoundedCornersUnderlay* and arc.PIPEnergyAndPower.*. I only have a problem when I modify [1] to point to a video on the test server, or simply a video on the internet such as [2].\n\nI could put the whole APK in GCS and use it like [3], with large videos compiled into it. I guess this approach would make the app more reliable and efficient in any case, but it might not be ideal for code maintainability. Is there any reason why the app should not be able to play a video hosted on the test server or the internet?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/android/ArcPipVideoTest/src/org/chromium/arc/testapp/pictureinpicture/VideoActivity.java;drc\u003d40c03267687a687b75a027a2c70eae6d39c41837;l\u003d29\n\n[2] https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4\n\n[3] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/data/LowLatencyStylusDemoGPU_20210423.apk.external",
+      "parentUuid": "bbeaceca_f1270948",
+      "revId": "afb28df03998a7615f69f10f97c6921558d55fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
