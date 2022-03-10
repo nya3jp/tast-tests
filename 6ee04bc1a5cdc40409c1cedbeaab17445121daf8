@@ -118,6 +118,30 @@
       },
       "revId": "6ee04bc1a5cdc40409c1cedbeaab17445121daf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1a5f83_8493fba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-03-10T22:01:21Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "2300c964_5d16b55a",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "6ee04bc1a5cdc40409c1cedbeaab17445121daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
