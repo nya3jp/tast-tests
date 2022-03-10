@@ -73,14 +73,14 @@ func init() {
 				primaryFormats: []string{"XR24", "XB24", "AR24", "AB24"},
 				overlay:        overlay{"P010", "640x360"},
 			},
-			ExtraHardwareDeps: hwdep.D(hwdep.Supports30bppFramebuffer(), hwdep.SupportsNV12Overlays()),
+			ExtraHardwareDeps: hwdep.D(hwdep.Supports30bppFramebuffer(), hwdep.SupportsP010Overlays()),
 		}, {
 			Name: "30bpp_p010_overlay",
 			Val: overlaysTestParam{
 				primaryFormats: []string{"AR30", "AB30", "XR30", "XB30"},
 				overlay:        overlay{"P010", "640x360"},
 			},
-			ExtraHardwareDeps: hwdep.D(hwdep.Supports30bppFramebuffer(), hwdep.SupportsNV12Overlays()),
+			ExtraHardwareDeps: hwdep.D(hwdep.Supports30bppFramebuffer(), hwdep.SupportsP010Overlays()),
 		}},
 		Fixture: "gpuWatchHangs",
 	})
