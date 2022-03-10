@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "498f3dc0_047bd829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-10T21:07:48Z",
+      "side": 1,
+      "message": "Added the todo to cros_network_config_types.go",
+      "parentUuid": "b726c5c6_a60c26fe",
+      "revId": "a79c298ecee0a0f3f4fe9c41d02b97dd5b71cc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46de033b_84439626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-10T21:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceaf0a87_bf1d397a",
+      "range": {
+        "startLine": 41,
+        "startChar": 75,
+        "endLine": 41,
+        "endChar": 77
+      },
+      "revId": "a79c298ecee0a0f3f4fe9c41d02b97dd5b71cc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa85568a_a49de5d4",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-03-10T16:29:31Z",
       "side": 1,
       "message": "Nit: %d",
+      "range": {
+        "startLine": 44,
+        "startChar": 75,
+        "endLine": 44,
+        "endChar": 76
+      },
+      "revId": "a79c298ecee0a0f3f4fe9c41d02b97dd5b71cc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9237b77f_c5202403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-10T21:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa85568a_a49de5d4",
       "range": {
         "startLine": 44,
         "startChar": 75,
