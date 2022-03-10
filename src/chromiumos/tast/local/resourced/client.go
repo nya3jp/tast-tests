@@ -6,6 +6,7 @@ package resourced
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 
@@ -18,6 +19,9 @@ const (
 	dbusInterface = "org.chromium.ResourceManager"
 	dbusPath      = "/org/chromium/ResourceManager"
 	dbusService   = "org.chromium.ResourceManager"
+
+	// reseresourcedConnectTimeout limits how long we wait for a connection.
+	resourcedConnectTimeout = 25 * time.Second
 
 	// GameModeOff means no component managed by Resource Manager is in game
 	// mode.
@@ -224,7 +228,9 @@ func (c *Client) SetFullscreenVideoWithTimeout(ctx context.Context, fullscreenVi
 // NewClient makes a new D-Bus wrapper object for communicating with Resource
 // Manager.
 func NewClient(ctx context.Context) (*Client, error) {
-	obj, err := dbusutil.NewDBusObject(ctx, dbusService, dbusInterface, dbusPath)
+	connectCtx, cancel := context.WithTimeout(ctx, resourcedConnectTimeout)
+	defer cancel()
+	obj, err := dbusutil.NewDBusObject(connectCtx, dbusService, dbusInterface, dbusPath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Resource Manager")
 	}

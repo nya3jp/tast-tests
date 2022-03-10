@@ -17,9 +17,6 @@ import (
 // and ChromeOS's available memory counter.
 func ChromeOSAvailableMetrics(ctx context.Context, p *perf.Values, suffix string) error {
 	rm, err := resourced.NewClient(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create Resource Manager client")
-	}
 	margins, err := rm.MemoryMarginsKB(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get ChromeOS memory margins")
