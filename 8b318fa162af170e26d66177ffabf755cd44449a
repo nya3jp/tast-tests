@@ -50,6 +50,23 @@
       "message": "Thanks so much for this cleanup!",
       "revId": "8b318fa162af170e26d66177ffabf755cd44449a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fedd1881_b9f6c832",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T17:29:00Z",
+      "side": 1,
+      "message": "could also be easier to return your own error that says \"Neither type of parent selection exists\" or something like that, since this might otherwise be interpreted to imply that the lack of a password field (err2) caused the lack of the select-parent options (err1).",
+      "revId": "8b318fa162af170e26d66177ffabf755cd44449a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
