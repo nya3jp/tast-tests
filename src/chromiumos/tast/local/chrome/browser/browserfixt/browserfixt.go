@@ -60,7 +60,7 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 
 	case browser.TypeLacros:
 		f := f.(lacrosfixt.FixtValue)
-		l, err := lacros.LaunchWithURL(ctx, f, url)
+		l, err := lacros.LaunchWithURL(ctx, f, url, false)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
