@@ -54,7 +54,7 @@ func init() {
 			}, {
 				Name:              "basic_ytmusic_crosbolt",
 				Timeout:           20 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
@@ -80,7 +80,7 @@ func init() {
 			}, {
 				Name:              "plus_helloworld",
 				Timeout:           15 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraSoftwareDeps: []string{"android_p"},
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
@@ -90,7 +90,7 @@ func init() {
 			}, {
 				Name:              "plus_helloworld_vm",
 				Timeout:           15 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
@@ -109,7 +109,7 @@ func init() {
 			{
 				Name:              "plus_ytmusic_crosbolt",
 				Timeout:           30 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,

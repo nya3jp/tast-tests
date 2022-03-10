@@ -36,7 +36,7 @@ func init() {
 			"cros-commercial-productivity-eng@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 2*time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},

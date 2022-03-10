@@ -32,7 +32,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the total performance of critical user journey for Google Sheets",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      10 * time.Minute,
