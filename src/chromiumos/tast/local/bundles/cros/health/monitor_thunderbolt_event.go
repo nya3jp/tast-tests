@@ -24,7 +24,7 @@ func init() {
 		Contacts: []string{"pathan.jilani@intel.com",
 			"cros-tdm-tpe-eng@google.com",
 			"intel-chrome-system-automation-team@intel.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "crosHealthdRunning",
 	})
