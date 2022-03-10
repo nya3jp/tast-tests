@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc816f3d_b8199da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-03-10T23:23:05Z",
+      "side": 1,
+      "message": "`LacrosVariantUnneeded`, perhaps? I think this particular test is about verifying that when ash crashes in a loop, we can still report it -- Lacros shouldn\u0027t pose issues there as a crash there won\u0027t unmount the cryptohome.",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "6976b5cbe96524ab4a81cde2c4f029749891a50f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
