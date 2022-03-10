@@ -50,6 +50,23 @@
       "message": "Does this CL has any dependency on https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3469828? If so, please add Cq-Depend. Thanks.",
       "revId": "42bf812d647baa41a2565d302d4b65e5564adad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e769e588_b21c221e",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-10T23:16:50Z",
+      "side": 1,
+      "message": "It is just a question. Will it be better if we add a new API Terminate? In this case CroServer can output all logs and then exit gracefully.",
+      "revId": "42bf812d647baa41a2565d302d4b65e5564adad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
