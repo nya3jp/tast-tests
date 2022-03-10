@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5474735f_52706802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T19:59:55Z",
+      "side": 1,
+      "message": "Please also review Achuith\u0027s comments.",
+      "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55baa4c5_2633c879",
@@ -54,6 +71,40 @@
         "endLine": 48,
         "endChar": 73
       },
+      "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe17e660_8f926652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T19:59:55Z",
+      "side": 1,
+      "message": "Maybe I\u0027m mistaken but some of the parameterized tests are marked \"nobatterymetrics\"... do we want to take metrics in those cases, or is that separate from the overall power metrics?",
+      "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e9f20a_afab6a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T19:59:55Z",
+      "side": 1,
+      "message": "Do we want to cause a test failure if this cleanup step fails?",
       "revId": "7dce2624adfc04a6a840919b2439e4b483d17443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
