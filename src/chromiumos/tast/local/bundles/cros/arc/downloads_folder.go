@@ -24,7 +24,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Android app can read files on Downloads folder via FilesApp",
 		Contacts: []string{
-			"cherieccy@google.com",
+			"youkichihosoi@chromium.org",
 			"arc-storage@google.com",
 			"cros-arc-te@google.com",
 		},

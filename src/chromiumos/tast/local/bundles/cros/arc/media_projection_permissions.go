@@ -34,7 +34,7 @@ func init() {
 		Func:         MediaProjectionPermissions,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that Chrome permissions dialog is used when using the MediaProjection API",
-		Contacts:     []string{"cherieccy@google.com", "arc-framework+tast@google.com"},
+		Contacts:     []string{"domlaskowski@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome", "android_p"},

@@ -43,7 +43,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Android app can read files on pseudo file systems using File System Provider (FSP) via FilesApp",
 		Contacts: []string{
-			"cherieccy@google.com",
+			"youkichihosoi@chromium.org",
 			"arc-storage@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
