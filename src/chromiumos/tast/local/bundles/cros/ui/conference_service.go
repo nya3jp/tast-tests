@@ -91,14 +91,16 @@ func confereceChromeOpts(accountPool, cameraVideoPath string) []chrome.Option {
 // chromeArgsWithFileCameraInput returns Chrome extra args as string slice
 // for video test with a Y4M/MJPEG fileName streamed as live camera input.
 func chromeArgsWithFileCameraInput(fileName string) []string {
-	args := []string{
+	if fileName == "" {
+		return []string{}
+	}
+	return []string{
 		// See https://webrtc.github.io/webrtc-org/testing/.
 		// Feed a test pattern to getUserMedia() instead of live camera input.
 		"--use-fake-device-for-media-stream",
 		// Feed a Y4M/MJPEG test file to getUserMedia() instead of live camera input.
 		"--use-file-for-fake-video-capture=" + fileName,
 	}
-	return args
 }
 
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {

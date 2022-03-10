@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -26,6 +27,7 @@ func init() {
 			"tast.cros.ui.ConferenceService",
 		},
 		Data: []string{conference.CameraVideo},
+		Vars: []string{"ui.use_real_camera"},
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
@@ -104,13 +106,22 @@ func GoogleMeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to dial to remote dut: ", err)
 	}
 	defer c.Close(ctx)
-
-	remoteCameraVideoPath, err := conference.PushFileToTmpDir(ctx, s, dut, conference.CameraVideo)
-	if err != nil {
-		s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+	var remoteCameraVideoPath string
+	var useRealCamera bool // Default is false.
+	if val, ok := s.Var("ui.use_real_camera"); ok {
+		useRealCamera, err = strconv.ParseBool(val)
+		if err != nil {
+			s.Fatal("Unable to convert ui.use_real_camera var to bool: ", err)
+		}
 	}
-	defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
-
+	// Use fake camera by default.
+	if !useRealCamera {
+		remoteCameraVideoPath, err = conference.PushFileToTmpDir(ctx, s, dut, conference.CameraVideo)
+		if err != nil {
+			s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+		}
+		defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
+	}
 	client := pb.NewConferenceServiceClient(c.Conn)
 	if _, err := client.RunGoogleMeetScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,
