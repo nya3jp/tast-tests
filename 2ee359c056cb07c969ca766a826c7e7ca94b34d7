@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4e3eb7_f2c370ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-10T06:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f50be1b_d19d3c18",
+      "range": {
+        "startLine": 125,
+        "startChar": 73,
+        "endLine": 125,
+        "endChar": 74
+      },
+      "revId": "2ee359c056cb07c969ca766a826c7e7ca94b34d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "752cf692_736dd7e4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc000cb_f8fbcfa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-10T06:39:38Z",
+      "side": 1,
+      "message": "The purpose of refinement is because the execution time is too long for productivity CUJs. Since Microsoft doesn\u0027t have the same functionality as GDocs (make a copy from the sample sheet). So I did something similar for MS Office. Also, the refinement is quite a bit of work and I split it into 3 smaller CLs for review. Thanks.\nAs for productivity cuj: Refine GDocs CUJ, please refer to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3483695",
+      "parentUuid": "752cf692_736dd7e4",
+      "range": {
+        "startLine": 129,
+        "startChar": 31,
+        "endLine": 129,
+        "endChar": 48
+      },
+      "revId": "2ee359c056cb07c969ca766a826c7e7ca94b34d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65c0c92e_7cf219d3",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-08T02:43:41Z",
       "side": 1,
       "message": "Previously, it checked whether the sample exists, it does not do it anymore?",
+      "range": {
+        "startLine": 130,
+        "startChar": 26,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "2ee359c056cb07c969ca766a826c7e7ca94b34d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "344221bf_4fa89a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-10T06:39:38Z",
+      "side": 1,
+      "message": "We used to check for a sample sheet so we didn\u0027t need to recreate the spreadsheet. As we improve the current procedure, we will copy from the sample sheet and manipulate it then delete it every time as a cleanup. Therefore, the checker is now no longer necessary.",
+      "parentUuid": "65c0c92e_7cf219d3",
       "range": {
         "startLine": 130,
         "startChar": 26,

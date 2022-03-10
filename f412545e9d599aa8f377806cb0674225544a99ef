@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c10abbe_492dc9ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-10T06:39:38Z",
+      "side": 1,
+      "message": "If it fails to delete the file from last test, we will have an existing file for the new test. So probably we still need to check whether the sample exists.",
+      "range": {
+        "startLine": 426,
+        "startChar": 31,
+        "endLine": 426,
+        "endChar": 47
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
