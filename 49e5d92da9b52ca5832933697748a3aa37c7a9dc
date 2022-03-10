@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1845fbf1_b39b1331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-10T21:53:46Z",
+      "side": 1,
+      "message": "Please take a look at my comments. Thanks.",
+      "revId": "49e5d92da9b52ca5832933697748a3aa37c7a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c0a551_01989811",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-10T21:53:46Z",
+      "side": 1,
+      "message": "It is just a question. Not sure if any code chane is needed. Why don\u0027t we just save the value of GetProf here so that we don\u0027t need to parse the value every single time GetProf is called?",
+      "revId": "49e5d92da9b52ca5832933697748a3aa37c7a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6df00f7_a01739c8",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-10T21:53:46Z",
+      "side": 1,
+      "message": "I suggest to have a comma separate list instead of ..,..,.. \"( .., ..., ...)\" so that user does not have to use quote in the input.",
+      "revId": "49e5d92da9b52ca5832933697748a3aa37c7a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
