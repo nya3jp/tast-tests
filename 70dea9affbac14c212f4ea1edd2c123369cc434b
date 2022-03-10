@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93577768_5daa9d27",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-10T17:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f7f4865_847ebcee",
+      "revId": "70dea9affbac14c212f4ea1edd2c123369cc434b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c13b335_2bab6bcd",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-10T03:03:35Z",
       "side": 1,
       "message": "How about \"\" for default value?",
+      "revId": "70dea9affbac14c212f4ea1edd2c123369cc434b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9312711c_5e979258",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-10T17:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c13b335_2bab6bcd",
       "revId": "70dea9affbac14c212f4ea1edd2c123369cc434b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
