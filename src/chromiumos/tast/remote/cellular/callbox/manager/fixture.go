@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/testing"
+	"chromiumos/tast/local/chrome"
 )
 
 // Timeout for methods of Tast fixture.
@@ -33,6 +34,18 @@ func init() {
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{},
 		Vars:            []string{"callboxManager", "callbox"},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     "callboxLoggedIn",
+		Desc:     "Make sure that the chromebook is logged in",
+		Contacts: []string{},
+		Parent:   "callboxManagedFixture",
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
 	})
 }
 

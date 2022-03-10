@@ -23,7 +23,7 @@ func init() {
 		Attr:         []string{},
 		ServiceDeps:  []string{},
 		SoftwareDeps: []string{},
-		Fixture:      "callboxManagedFixture",
+		Fixture:      "callboxLoggedIn",
 		Timeout:      5 * time.Minute,
 	})
 }
