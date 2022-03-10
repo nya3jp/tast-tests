@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "193e7657_1149408c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure Ilya, David and I are the best reviewers, I suggest adding:\n* Hyung Tae to review from Lacros\u0027s perspective.\n* Kyle to review from Variations\u0027s perspective since this is similar to the Ash variations smoke test.",
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce35c917_4d5df933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3ecc1b_2c6abd8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "Is this accurate?",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd8fbd4_febaeebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "Instead of hard-coding, is it better to combine UserDataDir with \u0027Local State\u0027?",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d62b7e96_5cff8d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "Is this extra newline needed?",
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab6af2c_c5dc7c04",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "Should this be false? Otherwise, it\u0027s always true.",
+      "range": {
+        "startLine": 121,
+        "startChar": 27,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9b0a77_5dca6bd4",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "1. Golang uses camel cases.\n2. The name doesn\u0027t indicate it\u0027s a boolean variable, something like isVariationsTest.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984e5e6f_b33813e9",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-03-10T06:09:58Z",
+      "side": 1,
+      "message": "I have a hard time understanding this, why is that?\n\nDo you have a reference to source code explaining why this is the behavior?",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 106
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
