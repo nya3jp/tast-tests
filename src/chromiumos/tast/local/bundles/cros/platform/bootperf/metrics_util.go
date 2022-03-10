@@ -317,11 +317,39 @@ func GatherDiskMetrics(results *platform.GetBootPerfMetricsResponse) {
 	}
 }
 
-// GatherFirmwareBootTime reads and reports firmware startup time. It extracts firmware boot time from the output of `cbmem -t`
+// GatherFirmwareBootTime gets firmware startup time from the firmware log or the
+// timestamp file.
 func GatherFirmwareBootTime(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
+	// Try getting firmware boot time from firmware log first.
+	fw, err := getFirmwareLogBootTime(ctx)
+	if err != nil {
+		fw, err = getFirmwareTimestampBootTime(ctx)
+	}
+	if err != nil {
+		return errors.New("failed to get firmware boot time from log or timestamp")
+	}
+
+	bootTime := results.Metrics["seconds_kernel_to_login"]
+	results.Metrics["seconds_power_on_to_kernel"] = fw
+	results.Metrics["seconds_power_on_to_login"] = fw + bootTime
+	return nil
+}
+
+// getFirmwareTimestampBootTime reads firmware startup time from /tmp/firmware-boot-time.
+func getFirmwareTimestampBootTime(ctx context.Context) (float64, error) {
+	b, err := ioutil.ReadFile("/tmp/firmware-boot-time")
+	for err != nil {
+		return 0, err
+	}
+	l := strings.Split(string(b), "\n")[0]
+	return strconv.ParseFloat(l, 64)
+}
+
+// getFirmwareLogBootTime gets firmware startup time by parsing the output of `cbmem -t`.
+func getFirmwareLogBootTime(ctx context.Context) (float64, error) {
 	stdout, err := readFirmwareTimestamps(ctx)
 	if err != nil {
-		return err
+		return 0.0, err
 	}
 
 	// Parse firmware boot time from the output. `cbmem -t` reports firmware boot time with format of 'Total Time: {comma separated microseconds}'.
@@ -330,20 +358,16 @@ func GatherFirmwareBootTime(ctx context.Context, results *platform.GetBootPerfMe
 	stdoutStr := string(stdout)
 	m := re.FindStringSubmatch(stdoutStr)
 	if m == nil {
-		return errors.Errorf("failed to parse firmware boot time from cbmem output: %s", stdoutStr)
+		return 0.0, errors.Errorf("failed to parse firmware boot time from cbmem output: %s", stdoutStr)
 	}
 	t := strings.ReplaceAll(m[1], ",", "") // Remove all commas.
 
 	fwUsec, err := strconv.ParseUint(t, 10, 64)
 	if err != nil {
-		return errors.Wrapf(err, "failed to parse firmware time %s", t)
+		return 0.0, errors.Wrapf(err, "failed to parse firmware time %s", t)
 	}
 	fw := float64(fwUsec) / 1000000
-
-	bootTime := results.Metrics["seconds_kernel_to_login"]
-	results.Metrics["seconds_power_on_to_kernel"] = fw
-	results.Metrics["seconds_power_on_to_login"] = fw + bootTime
-	return nil
+	return fw, nil
 }
 
 // calculateTimeOffset calculates the time offset between 2 different clock
@@ -613,11 +637,12 @@ func GatherConsoleRamoops(raw map[string][]byte) error {
 	return nil
 }
 
-// StoreFirmwareTimestamps stores the raw firmware timestamps from `cbmem -t`
-func StoreFirmwareTimestamps(ctx context.Context, raw map[string][]byte) error {
+// StoreFirmwareTimestamps stores the raw firmware timestamps from `cbmem -t`.
+func StoreFirmwareTimestamps(ctx context.Context, raw map[string][]byte) {
 	stdout, err := readFirmwareTimestamps(ctx)
-	if err == nil {
-		raw["cbmem-timestamps"] = stdout
+	if err != nil {
+		// Don't err on `cbmem -t` failure. It doesn't work on every device.
+		return
 	}
-	return err
+	raw["cbmem-timestamps"] = stdout
 }

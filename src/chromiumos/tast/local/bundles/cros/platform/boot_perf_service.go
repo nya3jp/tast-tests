@@ -133,9 +133,7 @@ func (*BootPerfService) GetBootPerfRawData(ctx context.Context, _ *empty.Empty) 
 	if err := bootperf.GatherConsoleRamoops(raw); err != nil {
 		return nil, err
 	}
-	if err := bootperf.StoreFirmwareTimestamps(ctx, raw); err != nil {
-		return nil, err
-	}
+	bootperf.StoreFirmwareTimestamps(ctx, raw)
 
 	return &platform.GetBootPerfRawDataResponse{
 		RawData: raw,
