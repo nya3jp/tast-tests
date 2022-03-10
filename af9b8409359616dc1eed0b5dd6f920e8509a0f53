@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd835649_e27212b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-10T23:09:02Z",
+      "side": 1,
+      "message": "This CL looks ok to me, but I think it will be better to Keigo to check and make sure the fixture is properly implemented. Thanks.",
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
