@@ -161,7 +161,7 @@ func (uts *UpdateTestService) ClearUpdate(ctx context.Context, req *lacrosservic
 		testing.ContextLog(ctx, "Failed to touch file: ", err)
 	}
 
-	// Try to unmount provisioned Stateful Lacros, then remove mount points.
+	// Try to unmount provisioned Stateful Lacros, then remove mount points.hello
 	matches, _ := filepath.Glob("/run/imageloader/lacros*/*")
 	for _, match := range matches {
 		if err := testexec.CommandContext(ctx, "umount", "-f", match).Run(); err != nil {
