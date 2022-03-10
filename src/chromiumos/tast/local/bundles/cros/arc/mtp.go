@@ -32,7 +32,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "ARC++/ARCVM Android app can read files on external Android device (with MTP) via FilesApp",
 		Contacts: []string{
-			"cherieccy@google.com",
+			"youkichihosoi@chromium.org",
 			"arc-storage@google.com",
 			"cros-arc-te@google.com",
 		},
