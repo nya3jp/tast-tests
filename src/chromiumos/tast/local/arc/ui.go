@@ -96,3 +96,41 @@ func SwitchPlayStoreAccount(ctx context.Context, arcDevice *androidui.Device, tc
 	}
 	return nil
 }
+
+// ClickAddAccountInSettings clicks Add account > Google in ARC Settings. Settings window should be already open.
+func ClickAddAccountInSettings(ctx context.Context, arcDevice *androidui.Device, tconn *chrome.TestConn) error {
+	const (
+		scrollClassName   = "android.widget.ScrollView"
+		textViewClassName = "android.widget.TextView"
+	)
+
+	// Scroll until Accounts is visible.
+	scrollLayout := arcDevice.Object(androidui.ClassName(scrollClassName),
+		androidui.Scrollable(true))
+	accounts := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
+		androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
+	if err := scrollLayout.WaitForExists(ctx, 10*time.Second); err == nil {
+		scrollLayout.ScrollTo(ctx, accounts)
+	}
+	if err := accounts.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on Accounts")
+	}
+
+	addAccount := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
+		androidui.TextMatches("(?i)Add account"), androidui.Enabled(true))
+	if err := addAccount.WaitForExists(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed finding Add account")
+	}
+	if err := addAccount.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Add account")
+	}
+
+	// Click on Google button which appears only on tablet flow.
+	gaiaButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)Google"), androidui.Enabled(true), androidui.ResourceIDMatches("(android:id/title)"))
+	if err := gaiaButton.WaitForExists(ctx, 10*time.Second); err != nil {
+		testing.ContextLog(ctx, "Google button doesn't exist: ", err)
+	} else if err := gaiaButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Google")
+	}
+	return nil
+}
