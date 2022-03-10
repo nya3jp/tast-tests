@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae7a9f8_ee813168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcNotificationTest2.apk.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T09:26:48Z",
+      "side": 1,
+      "message": "in general, it is hard to check versions with the manually uploaded .apk and tast tests.\nWDYT to import it into tast-tests/android?",
+      "range": {
+        "startLine": 2,
+        "startChar": 59,
+        "endLine": 2,
+        "endChar": 80
+      },
+      "revId": "ac224fd3aad9e19f2fde31cb142a8945d83d8900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "064eb1a6_8a298fc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T09:26:48Z",
+      "side": 1,
+      "message": "it is not recommended to use \"sleep\" to wait for the condition.\nCould you wait for the surface visibility explicitly (maybe by polling or something) explicitly?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "ac224fd3aad9e19f2fde31cb142a8945d83d8900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4aecfa_835a85e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T09:26:48Z",
+      "side": 1,
+      "message": "do you want to fail the test immediately, or can we continue even if one of the style is failing to get more data?\nIf the latter, s.Errorf may be better?",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "ac224fd3aad9e19f2fde31cb142a8945d83d8900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
