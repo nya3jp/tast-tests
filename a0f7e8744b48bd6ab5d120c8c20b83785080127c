@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f507ac4_81dd1e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-10T19:39:36Z",
+      "side": 1,
+      "message": "This uses the new modemfwd signal, so it will be submitted when the other CL lands",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
