@@ -75,7 +75,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer lacros.CloseLacros(ctx, l)
+		defer lacros.CloseLacros(closeCtx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
