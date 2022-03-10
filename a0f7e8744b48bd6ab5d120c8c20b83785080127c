@@ -16,6 +16,91 @@
       "message": "This uses the new modemfwd signal, so it will be submitted when the other CL lands",
       "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1f4eb7b_ba1df650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T20:04:04Z",
+      "side": 1,
+      "message": "Generally looks good, just some clarifying questions/nits etc.",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f285b701_f42048a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemfwd_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T20:04:04Z",
+      "side": 1,
+      "message": "Do we want to fatal, or just log this and continue on? I know we are probably just trying to increase visibility for test state leakage but the blame will show up in the wrong place, and that might lead champs astray.",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b173cc_e0fe3434",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T20:04:04Z",
+      "side": 1,
+      "message": "nit: maybe we should say what type we\u0027re trying to do a type assertion to in here?",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a9bdea5_1be1158f",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T20:04:04Z",
+      "side": 1,
+      "message": "nit: ditto (or maybe just rename it `errStr` in here?)",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2589a8cd_0f2299ca",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-10T20:04:04Z",
+      "side": 1,
+      "message": "this comment can be deleted now, I think",
+      "revId": "a0f7e8744b48bd6ab5d120c8c20b83785080127c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
