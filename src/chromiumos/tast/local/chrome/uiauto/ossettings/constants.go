@@ -75,6 +75,9 @@ var ResetSettings = nodewith.Name("Reset settings").Role(role.Link).HasClass("it
 var AboutChromeOS = nodewith.MultilingualName("About Chrome OS", map[string]string{"de": "Über Chrome OS"}).
 	Role(role.Link)
 
+// MenuButton is a button to show the menu on the left side, only exist when the menu does not exist.
+var MenuButton = nodewith.Name("Main menu").Role(role.Button).Focusable()
+
 // Elements in "AboutChromeOS"
 var (
 	VersionInfo       = nodewith.NameStartingWith("Version ").Role(role.StaticText)
