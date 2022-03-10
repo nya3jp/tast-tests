@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "735db131_7a91faf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-10T22:59:37Z",
+      "side": 1,
+      "message": "Oshima-san, if you\u0027re too busy to review this, please assign to someone on your team",
+      "revId": "e26cc54164a3e7b7b4ffb72aa22fa7246570ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
