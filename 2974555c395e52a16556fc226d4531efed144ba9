@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88caa70_a33e1e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T06:04:40Z",
+      "side": 1,
+      "message": "LGTM to avoid cross TZ iteration now.",
+      "revId": "2974555c395e52a16556fc226d4531efed144ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb73615_571098f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T06:04:40Z",
+      "side": 1,
+      "message": "huge nit/ style:\n\nvar w *ash.Window",
+      "revId": "2974555c395e52a16556fc226d4531efed144ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9ae305_988a6f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T06:04:40Z",
+      "side": 1,
+      "message": "ws, err :\u003d ash.GetAllWindows(...)  (along with above change)",
+      "revId": "2974555c395e52a16556fc226d4531efed144ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e819225c_f1a87281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T06:04:40Z",
+      "side": 1,
+      "message": "w \u003d ws[0] (along with above change, too)",
+      "revId": "2974555c395e52a16556fc226d4531efed144ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7f028e_1591401b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T06:04:40Z",
+      "side": 1,
+      "message": "style/optional: we can move a part of this condition out from polling.\n\nwt :\u003d ash.WindowTypeBrowser\nif bt \u003d\u003d browser.TypeLacros {\n  wt \u003d ash.WindowTypeLacros\n}\n\nif err :\u003d testing.Poll (...\n\n...\n\nif !w.IsVisible || w.IsAnimating || w.WindowType !\u003d wt {\n  ...",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "2974555c395e52a16556fc226d4531efed144ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e59e6a_7417319f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T06:04:40Z",
+      "side": 1,
+      "message": "w (along with above change, too)",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "2974555c395e52a16556fc226d4531efed144ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b311f10_9217af12",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-10T06:04:40Z",
+      "side": 1,
+      "message": "Oh, I meant more simpler way.\n\nws, err :\u003d GetAllWIndows(ctx, tconn)\nif err !\u003d nil {\n  ...\n}\n\nfor _, w :\u003d range ws {\n  if err :\u003d tconn.Call(ctx, nil, \u0027tast.promisify(chrome.autotestPrivate.closeAppWindow)\u0027, w.ID); err !\u003d nil {\n    ...\n  }\n}\n\nreturn testing.Poll(... func(...) error {\n  ws, err :\u003d GetAllWindows(...)\n  if err !\u003d nil {\n    ...\n  }\n  if len(ws) !\u003d 0 {\n    return errors....\n  }\n  return nil\n}, ...)\n\nI\u0027d recommend not to start goroutines newly in this kind of cases.",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 529,
+        "endChar": 16
+      },
+      "revId": "2974555c395e52a16556fc226d4531efed144ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
