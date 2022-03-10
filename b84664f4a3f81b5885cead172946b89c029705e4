@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad15b611_6dde3403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_install_uninstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-03-10T05:59:24Z",
+      "side": 1,
+      "message": "yeah. wow.  no idea what that is. changed to shelf which is what it should have been all along....",
+      "parentUuid": "08667326_1cc85058",
+      "range": {
+        "startLine": 95,
+        "startChar": 48,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "b84664f4a3f81b5885cead172946b89c029705e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "184f13a4_2fde43b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_install_uninstall.go",
         "patchSetId": 4
