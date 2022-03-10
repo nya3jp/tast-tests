@@ -117,39 +117,10 @@ func openAndroidSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 
 // addAndroidAccount adds a second ARC account from ARC Settings->Accounts Screen.
 func addAndroidAccount(ctx context.Context, arcDevice *androidui.Device, cr *chrome.Chrome, tconn *chrome.TestConn, parentPassword, gellerParentUser, gellerParentPass string) error {
-	const (
-		scrollClassName   = "android.widget.ScrollView"
-		textViewClassName = "android.widget.TextView"
-	)
-
 	ui := uiauto.New(tconn)
-	// Scroll until Accounts is visible.
-	scrollLayout := arcDevice.Object(androidui.ClassName(scrollClassName),
-		androidui.Scrollable(true))
-	accounts := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
-	if err := scrollLayout.WaitForExists(ctx, 10*time.Second); err == nil {
-		scrollLayout.ScrollTo(ctx, accounts)
-	}
-	if err := accounts.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on Accounts")
-	}
 
-	addAccount := arcDevice.Object(androidui.ClassName("android.widget.TextView"),
-		androidui.TextMatches("(?i)Add account"), androidui.Enabled(true))
-	if err := addAccount.WaitForExists(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed finding Add account")
-	}
-	if err := addAccount.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Add account")
-	}
-
-	// Click on Google button which appears only on tablet flow.
-	gaiaButton := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)Google"))
-	if err := gaiaButton.WaitForExists(ctx, 10*time.Second); err != nil {
-		testing.ContextLog(ctx, "Google button doesn't exist: ", err)
-	} else if err := gaiaButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Google")
+	if err := arc.ClickAddAccountInSettings(ctx, arcDevice, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Add account dialog from ARC")
 	}
 
 	if err := familylink.NavigateEduCoexistenceFlow(ctx, cr, tconn, parentPassword, gellerParentUser, gellerParentPass); err != nil {
