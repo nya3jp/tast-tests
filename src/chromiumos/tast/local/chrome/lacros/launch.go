@@ -87,7 +87,6 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
 	}
-
 	testing.ContextLog(ctx, "Wait for Lacros window")
 	if err := WaitForLacrosWindow(ctx, tconn, ""); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for lacros")
@@ -105,8 +104,13 @@ func Launch(ctx context.Context, f lacrosfixt.FixtValue) (*Lacros, error) {
 	return LaunchWithURL(ctx, f, chrome.BlankURL)
 }
 
+// Launch launches a fresh instance of lacros-chrome with extra args.
+func LaunchWithExtraArgs(ctx context.Context, f lacrosfixt.FixtValue, extraArgs []string) (*Lacros, error) {
+	return LaunchWithURL(ctx, f, chrome.BlankURL, extraArgs...)
+}
+
 // LaunchWithURL launches a fresh instance of lacros-chrome having the given url.
-func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*Lacros, error) {
+func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string, extraArgs ...string) (*Lacros, error) {
 	succeeded := false
 	defer lacrosfaillog.SaveIf(ctx, f.LacrosPath(), func() bool { return !succeeded })
 
@@ -114,15 +118,30 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
-	// Create a new temporary directory for user data dir.
-	// The directory will be wiped by fixture's Reset(), so if necessary
-	// the log needs to be preserved within the test.
-	// This creates new directory for each invocation to provide isolated environment.
-	userDataDir, err := ioutil.TempDir(f.UserTmpDir(), "")
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
+	var isVariationTest bool = false
+	// if "--variations-server-url" is provided in the args, then it is running a variation smoke test
+	for _, s := range extraArgs {
+		if strings.Contains(s, "--variations-server-url") {
+			isVariationTest = true
+			break
+		}
 	}
-
+	userDataDir := UserDataDir
+	if isVariationTest {
+		// if the lacros launch for variation test, it requires the usage of the 'Local State' under UserDataDir
+		if err := os.MkdirAll(userDataDir, 0755); err != nil {
+			return nil, err
+		}
+	} else {
+		// Create a new temporary directory for user data dir.
+		// The directory will be wiped by fixture's Reset(), so if necessary
+		// the log needs to be preserved within the test.
+		// This creates new directory for each invocation to provide isolated environment.
+		userDataDir, err := ioutil.TempDir(f.UserTmpDir(), "")
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
+		}
+	}
 	// Set user to chronos, since we run lacros as chronos.
 	if err := os.Chown(userDataDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
 		return nil, errors.Wrap(err, "failed to chown user data dir")
@@ -144,6 +163,7 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 	}
 	// The extra args already contain flags for the test extension.
 	args = append(args, f.Chrome().LacrosExtraArgs()...)
+	args = append(args, extraArgs...)
 
 	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
 		"/usr/local/bin/python3", "/usr/local/bin/mojo_connection_lacros_launcher.py",
