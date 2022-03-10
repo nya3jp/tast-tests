@@ -16,6 +16,52 @@
       "message": "Adding tast-owners for code-review +2",
       "revId": "bc62da3041ebc40ef4ed927bf0e5b16bbeffceeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71355369_1fa026cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-03-10T23:45:02Z",
+      "side": 1,
+      "message": "Suggest to run this test 30 repeated and check stability before submission. If the intention of the test is just functionality and not stress test, consider reduce the number of itertions.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 34
+      },
+      "revId": "bc62da3041ebc40ef4ed927bf0e5b16bbeffceeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50543b79_ab55d8ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-03-10T23:45:02Z",
+      "side": 1,
+      "message": "When test fails in any block, better to have cleanup in defer block to reset the device state to original state to avoid issues with other tests.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "bc62da3041ebc40ef4ed927bf0e5b16bbeffceeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
