@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1944bf4_11bd73e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-03-10T10:00:44Z",
+      "side": 1,
+      "message": "Could you try following the setup order like how `a11y.ChromevoxPlainTextEditing` does:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/chromevox_plain_text_editing.go;rcl\u003d0f1b09f327dfbe339740b4e0564938cf93c1bcee;l\u003d97\n\nI tested it on my side and it seems work.",
+      "parentUuid": "e23ea85a_225d5d50",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa695c80_7b260943",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-10T06:33:12Z",
       "side": 1,
       "message": "Expected \"Chromevox spoken feedback is ready.\"\nBut sometimes \"Document scanning now available.\" toast comes first.",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ad9c5d_37ba771a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-03-10T10:00:44Z",
+      "side": 1,
+      "message": "If it is the case, maybe you can first dismiss the toast before starting Chromevox?\nAnd btw, we might not want to test for all the UI components since it might make the test fragile and increase the effort of maintenance.\n\nFor the first version, I think we can just have some key test cases. For example:\n\nTake picture\n  1. The shutter button is accessible using only \"tab\" button\n  2. When the shutter button is focus, the \"Take photo\" is spoken by Chromevox\n  3. Pressing \"space\" when the shutter button is focus can successfully take a picture\n  \nAnd similar for record video. WDYT?",
+      "parentUuid": "fa695c80_7b260943",
       "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
