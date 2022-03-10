@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9345f977_3f969870",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-10T00:34:16Z",
+      "side": 1,
+      "message": "maybe pull this finder out of the functions and make it a variable since it\u0027s used here and in WaitForSmartUnlockReady",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 116
+      },
+      "revId": "2b7ac4934943812e43fdb7545229fccd9bf55474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
