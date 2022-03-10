@@ -19,10 +19,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         APBrowseInternet,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "WiFi AP connect and browse internet",
 		Contacts:     []string{"pathan.jilani@intel.com", "cros-network-health@google.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{},
 		Vars:         []string{"wifissid", "wifipassword"},
 	})
 }
