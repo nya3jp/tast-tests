@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da0f363_223d9e1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-10T08:19:48Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "e4053dd2206124182a913f55efde9120c82742d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4694850_8a323b4d",
@@ -102,6 +119,30 @@
       "side": 1,
       "message": "The killAllErr is intentionally checked after the pgrep error check since a killAllErr can actually be a success as long as pgrep also errors out. An error in killall means that no processes were killed (doesn\u0027t necessarily mean an error actually occured). An error with pgrep with exist code 1 means no processes were found. So, if no processes were killed and no processes were found it is still a successful case as far as KillAll is concerned because we just want them all gone.\n\nThe reason I added this code is that before only the error of killall was returned and everywhere KillAll was used it was simply ignored. Thus, it did not account for the case where killall was successful but did not actually keep things killed (some auto-restart). This also did not account for the case where the process did not exist, which would also cause a killall to return an error.\n\nAnd yeah the duplication here is intentional. I did not see it as enough code to really necessitate adding a common package between hostapd and dnsmasq for just this small function. If you disagree though, I can.",
       "parentUuid": "0b0e900b_d007ea5f",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "e4053dd2206124182a913f55efde9120c82742d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d3a604_cd0b4cb8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-10T08:19:48Z",
+      "side": 1,
+      "message": "thanks a lot about the background 👍\n\nConcerning the order of checking errors - I would suggest leaving a comment then why the order is as is.\n\nConcerning code duplication - also, if we don\u0027t want to create yet any helper package then leaving a comment where is the other cover that does the same. As mentioned before, that is purely for maintenance reason - if someone starts changing KillAll function adjustments should be done in both places otherwise they will diverge.",
+      "parentUuid": "38ee8623_2ce9ea16",
       "range": {
         "startLine": 52,
         "startChar": 0,
