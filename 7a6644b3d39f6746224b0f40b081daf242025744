@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60caf160_9203be69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-03-10T19:47:53Z",
+      "side": 1,
+      "message": "Running `../tast/fast_build.sh -T` has initially failed: an internal test fails. However, it also fails without this CL (on ToT). I have found the culprit CL that broke the test and left a comment there: https://crrev.com/i/4549951.\n\nAfter this, I have checked out at a commit just before breaking CL (in internal test repo) and ensured that all tests pass without this CL and with it.",
+      "revId": "7a6644b3d39f6746224b0f40b081daf242025744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
