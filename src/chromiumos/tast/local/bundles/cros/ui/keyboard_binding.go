@@ -70,7 +70,7 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to detect physical keyboard: ", err)
 	}
 	if !isPhysicalKbDetected {
-		s.Fatal("Failed to detect physical keyboard: no physical keyboard detected")
+		s.Fatal("Failed to find a physical keyboard, this test requires a physical keyboard (b/223069313)")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
