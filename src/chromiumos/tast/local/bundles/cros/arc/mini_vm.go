@@ -26,8 +26,8 @@ func init() {
 		Desc:         "Ensures mini-ARCVM is functional and can be upgraded successfully",
 		Contacts: []string{
 			"wvk@chromium.org",
+			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		Timeout:      4 * time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
