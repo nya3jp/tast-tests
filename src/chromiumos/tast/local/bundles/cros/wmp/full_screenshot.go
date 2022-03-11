@@ -58,6 +58,21 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
+	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
+	originalZoomFactor := displayInfo.DisplayZoomFactor
+	// If the display has been zoomed, the dimensions of the full screenshot might be slightly different.
+	// Zoom the display to a fixed ratio before capturing the screenshot to avoid the issue.
+	newZoomFactor := 1.0
+	property := display.DisplayProperties{DisplayZoomFactor: &newZoomFactor}
+	if err := display.SetDisplayProperties(ctx, tconn, displayInfo.ID, property); err != nil {
+		s.Fatal("Failed to set the display property: ", err)
+	}
+	defer display.SetDisplayProperties(cleanupCtx, tconn, displayInfo.ID, display.DisplayProperties{DisplayZoomFactor: &originalZoomFactor})
+
 	if err := wmp.LaunchScreenCapture(ctx, tconn); err != nil {
 		s.Fatal("Failed to launch 'Screen capture': ", err)
 	}
@@ -75,7 +90,7 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	testing.ContextLog(ctx, "Check the existence and the size of the screenshot")
-	if err := checkScreenshot(ctx, tconn); err != nil {
+	if err := checkScreenshot(ctx, tconn, displayInfo); err != nil {
 		s.Fatal("Failed to check the existence and the size of the screenshot: ", err)
 	}
 }
@@ -101,13 +116,8 @@ func deleteAllScreenshots() error {
 
 // checkScreenshot checks the screenshot's existence.
 // And then verifies its size is the same as the size of the full screen by decoding the screenshot.
-func checkScreenshot(ctx context.Context, tconn *chrome.TestConn) error {
-	infos, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get display info")
-	}
-
-	displayMode, err := infos.GetSelectedMode()
+func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, displayInfo *display.Info) error {
+	displayMode, err := displayInfo.GetSelectedMode()
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
@@ -139,7 +149,7 @@ func checkScreenshot(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	if image.Width != fullScreenSize.Width || image.Height != fullScreenSize.Height {
-		return errors.New("the size of the screenshot doesn't match the size of full screen")
+		return errors.Errorf("the size of the screenshot: (%d x %d), the size of full screen: (%d x %d)", image.Width, image.Height, fullScreenSize.Width, fullScreenSize.Height)
 	}
 
 	return nil
