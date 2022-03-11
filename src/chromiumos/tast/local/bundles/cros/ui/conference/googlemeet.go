@@ -145,19 +145,22 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 	}
 
 	joinConf := func(ctx context.Context) error {
+		actionName := "join conference"
+		joinButton := nodewith.NameRegex(regexp.MustCompile("(Join now|Ask to join)")).Role(role.Button)
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
 		homeScreenLink := nodewith.Name("Return to home screen").Role(role.Link)
 		// Some low-end devices need more time to wait "Join now" button animation loading.
 		waitJoinNowButtonStable := func(ctx context.Context) error {
 			joinForAudioButton := nodewith.Name("Join and use a phone for audio").Role(role.Button)
 			return testing.Poll(ctx, func(ctx context.Context) error {
+				joinForAudioLocation, err := ui.Location(ctx, joinForAudioButton)
+				if err != nil {
+					// No need to compare if joinForAudioButton doesn't exist. Return nil here.
+					return nil
+				}
 				joinNowLocation, err := ui.Location(ctx, joinNowButton)
 				if err != nil {
 					return errors.Wrap(err, "failed to get location of the join now button")
-				}
-				joinForAudioLocation, err := ui.Location(ctx, joinForAudioButton)
-				if err != nil {
-					return errors.Wrap(err, "failed to get location of the join for audio button")
 				}
 				joinNowButtonHeight := joinNowLocation.CenterY()
 				joinForAudioButtonHeight := joinForAudioLocation.CenterY()
@@ -168,13 +171,14 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 				return nil
 			}, &testing.PollOptions{Timeout: shortUITimeout})
 		}
-		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to wait for the 'Join now' button within %v", longUITimeout)
+		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinButton)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to wait for the join button within %v", longUITimeout)
 		}
-		return uiauto.NamedAction("join conference",
-			uiauto.Combine("join conference",
-				waitJoinNowButtonStable,
-				ui.LeftClickUntil(joinNowButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(homeScreenLink))))(ctx)
+		return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+			waitJoinNowButtonStable,
+			ui.LeftClickUntil(joinButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
+			ui.WithTimeout(longUITimeout).WaitUntilGone(homeScreenLink),
+		))(ctx)
 	}
 
 	// enterAccount enter account email and password.
@@ -281,7 +285,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		}
 		testing.ContextLog(ctx, "Select meet account ", meetAccount)
 
-		nextUI := nodewith.NameRegex(regexp.MustCompile("(Join now|Email or phone)")).First()
+		nextUI := nodewith.NameRegex(regexp.MustCompile("(Join now|Ask to join|Email or phone)")).First()
 		if err := uiauto.Combine("select account",
 			ui.WaitUntilExists(meetAccountText),
 			ui.WithTimeout(longUITimeout).LeftClickUntil(meetAccountText, ui.WaitUntilExists(nextUI)),
@@ -456,7 +460,7 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	changeLayout := func(mode string) action.Action {
 		modeNode := nodewith.Name(mode).Role(role.RadioButton)
 		changeLayoutAction := uiauto.Combine("change layout to "+mode,
-			uiauto.NamedAction("click call options", cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433)),
+			uiauto.NamedAction("click call options", cuj.ExpandMenu(conf.tconn, moreOptions, menu, 394)),
 			uiauto.NamedAction("click change layout item", ui.LeftClick(changeLayoutItem)),
 			uiauto.NamedAction("wait for change layout panel", ui.WithTimeout(mediumUITimeout).WaitUntilExists(changeLayoutPanel)),
 			uiauto.NamedAction("click layout "+mode, ui.LeftClick(modeNode)),
