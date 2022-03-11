@@ -16,6 +16,29 @@
       "message": "PTAL. This could be one way to address the issue 4 with ash.CreateWindows in go/lacros-tast-use-cases.\nAs I saw quite a number of tests (12+) run into this scenario, it would be nice to come up with this util and let it deal with the life cycle discrepancy between lacros and ash-chrome.\n\nBy the way, I think this could be further cleaned up if we can revisit https://crrev.com/c/3426334 (a util to close any browser window with a URL). \nAre we good to go with this approach? Any thoughts? Thanks,",
       "revId": "006a49c9613496eafbd62b3b5ee62aac19ccaf5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77771b10_9eae8f1d",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-11T20:36:57Z",
+      "side": 1,
+      "message": "FYI this is what I meant in the previous comment. Would https://crrev.com/c/3426334 be useful (with some cleanup)?",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 84
+      },
+      "revId": "006a49c9613496eafbd62b3b5ee62aac19ccaf5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
