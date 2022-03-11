@@ -6,6 +6,7 @@ package settings
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -107,11 +108,13 @@ func checkUpdate(settings *ossettings.OSSettings) uiauto.Action {
 
 func checkOnlineHelp(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
 	helpRoot := nodewith.Name(apps.Help.Name).HasClass("BrowserFrame").Role(role.Window)
+	titleReg := regexp.MustCompile("Welcome to your (Chromebook|Chromebox)")
 
 	return uiauto.Combine("check get help",
 		settings.LaunchHelpApp(),
-		ui.WaitUntilExists(nodewith.Name("Welcome to your Chromebook").Role(role.StaticText).Ancestor(helpRoot)),
+		ui.WaitUntilExists(nodewith.NameRegex(titleReg).Role(role.StaticText).Ancestor(helpRoot)),
 		ui.LeftClick(nodewith.Name("Close").Ancestor(helpRoot)),
+		ui.WaitUntilGone(helpRoot),
 	)
 }
 
@@ -122,6 +125,7 @@ func checkReportIssue(ui *uiauto.Context, settings *ossettings.OSSettings) uiaut
 		settings.LeftClick(ossettings.ReportIssue),
 		ui.WaitUntilExists(feedbackRoot),
 		ui.LeftClick(nodewith.Name("Close").Ancestor(feedbackRoot)),
+		ui.WaitUntilGone(feedbackRoot),
 	)
 }
 
@@ -146,6 +150,7 @@ func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Act
 		settings.LeftClick(ossettings.BuildDetailsBtn),
 		ui.WaitUntilExists(nodewith.Name("Platform").Role(role.StaticText).Ancestor(detailRoot)),
 		ui.LeftClick(nodewith.Name("Close").HasClass("FrameCaptionButton").Ancestor(detailRoot)),
+		ui.WaitUntilGone(detailRoot),
 		settings.LeftClick(ossettings.BackArrowBtn),
 		settings.WaitUntilGone(ossettings.BackArrowBtn),
 	)
