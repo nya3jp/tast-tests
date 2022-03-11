@@ -352,7 +352,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "av1_common",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			ExtraData:         appendJSONFiles(av1CommonFiles),
 			Val: chromeStackDecodingTestParam{
@@ -361,7 +361,7 @@ func init() {
 			},
 		}, {
 			Name:              "av1_film_grain",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			// Different decoders may use different film grain synthesis methods while
 			// producing a visually correct output (AV1 spec 7.2). Thus we validate
@@ -373,7 +373,7 @@ func init() {
 			},
 		}, {
 			Name:              "av1_10bit_common",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
 			ExtraData:         appendJSONFiles(av110BitCommonFiles),
 			Val: chromeStackDecodingTestParam{
@@ -382,7 +382,7 @@ func init() {
 			},
 		}, {
 			Name:              "av1_10bit_film_grain",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
 			// Different decoders may use different film grain synthesis methods while
 			// producing a visually correct output (AV1 spec 7.2). Thus, for volteer,
@@ -395,7 +395,7 @@ func init() {
 			},
 		}, {
 			Name:              "h264_files_from_bugs",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264FilesFromBugs),
 			Val: chromeStackDecodingTestParam{
@@ -404,7 +404,7 @@ func init() {
 			},
 		}, {
 			Name:              "h264_baseline",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["baseline"]),
 			Val: chromeStackDecodingTestParam{
@@ -413,7 +413,7 @@ func init() {
 			},
 		}, {
 			Name:              "h264_main",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["main"]),
 			Val: chromeStackDecodingTestParam{
@@ -422,7 +422,7 @@ func init() {
 			},
 		}, {
 			Name:              "h264_first_mb_in_slice",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["first_mb_in_slice"]),
@@ -432,7 +432,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp8_comprehensive",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8ComprehensiveFiles),
 			Val: chromeStackDecodingTestParam{
@@ -441,7 +441,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp8_inter",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8InterFiles),
 			Val: chromeStackDecodingTestParam{
@@ -450,7 +450,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp8_inter_multi_coeff",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8InterMultiCoeffFiles),
 			Val: chromeStackDecodingTestParam{
@@ -459,7 +459,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp8_inter_segment",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8InterSegmentFiles),
 			Val: chromeStackDecodingTestParam{
@@ -468,7 +468,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp8_intra",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8IntraFiles),
 			Val: chromeStackDecodingTestParam{
@@ -477,7 +477,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp8_intra_multi_coeff",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8IntraMultiCoeffSegmentFiles),
 			Val: chromeStackDecodingTestParam{
@@ -486,7 +486,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp8_intra_segment",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         appendJSONFiles(vp8IntraSegmentFiles),
 			Val: chromeStackDecodingTestParam{
@@ -495,7 +495,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp9_files_from_bugs",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp9FilesFromBugs),
 			Val: chromeStackDecodingTestParam{
@@ -504,7 +504,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp9_0_group1_buf",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1Buf),
 			Val: chromeStackDecodingTestParam{
@@ -523,7 +523,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp9_0_group1_gf_dist",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1GfDist),
 			Val: chromeStackDecodingTestParam{
@@ -532,7 +532,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp9_0_group1_odd_size",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1OddSize),
 			Val: chromeStackDecodingTestParam{
@@ -541,7 +541,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp9_0_group1_sub8x8",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp90Group1Sub8x8),
 			Val: chromeStackDecodingTestParam{
@@ -560,7 +560,7 @@ func init() {
 			},
 		}, {
 			Name:              "vp9_0_svc",
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         appendJSONFiles(vp9SVCFiles),
 			Val: chromeStackDecodingTestParam{
