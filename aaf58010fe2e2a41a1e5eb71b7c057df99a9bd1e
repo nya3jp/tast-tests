@@ -308,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2730ac8c_bfe0c6db",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-11T03:00:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3553826_6ce17a84",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfe2fecd_202aeac1",
@@ -369,6 +393,30 @@
       "side": 1,
       "message": "I know this is all splitting hairs but rcs is a counter. So it could just be rcs \u003d accuBusy. And then total \u003d numSamples * 100 as the maximum possible counter? Why multiply both with seconds and then divide it out again.",
       "parentUuid": "eb0b2722_a6296693",
+      "range": {
+        "startLine": 163,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da36165a_ab5c2378",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-11T03:00:20Z",
+      "side": 1,
+      "message": "Ah the problem is that the signature of the function, concretely of the\nreturned |counters| uses time.Duration because that\u0027s what RCS is\nmeasured in (see l.76): it\u0027s the amount of ns that the RCS was in\na busy state. The rest of the code (concretely parseAndReportCounter())\nassumes time too.\n\nRe. multiplying or dividing, I thought more semantically correct to\ndivide RCS by 100 to \"remove the percentage\", rather than multiply\nthe denominator by the same 100. But please instruct otherwise.",
+      "parentUuid": "f9b14aa5_ce2f513a",
       "range": {
         "startLine": 163,
         "startChar": 42,
