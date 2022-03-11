@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
@@ -79,4 +80,33 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
+}
+
+// CreateWindows is a util that makes the transition from ash.CreateWindows easy for both ash-chrome and lacros-chrome.
+// It is necessary to address the difference of application life cycle between them.
+// Unlike ash-chrome which instance is always available even with no window open, lacros-chrome needs to opens at least one extra blank window before instantiating.
+// CreateWindows create n browser windows with specified URL and wait for them to become visible.
+// It will fail and return an error if at least one request fails to fulfill. Note that this will
+// parallelize the requests to create windows, which may be bad if the caller
+// wants to measure the performance of Chrome. This should be used for a
+// preparation, before the measurement happens.
+// tconn is from *ash-chrome*.
+func CreateWindows(ctx context.Context, f interface{}, bt browser.Type, tconn *chrome.TestConn, url string, n int) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
+	// TODO(???): Find a way to open a lacros-chrome with a given URL on startup.
+	if url != "" && url != chrome.BlankURL {
+		return nil, nil, nil, errors.Errorf("This URL (%v) not supported by lacros.LaunchWithURL and browserfixt.SetUpWithURL", url)
+	}
+
+	// Open the first window with a given URL.
+	conn, br, closeBrowser, err := SetUpWithURL(ctx, f, bt, url)
+	if err != nil {
+		return nil, nil, nil, err
+	}
+	// Then open the rest.
+	if n > 1 {
+		if err := ash.CreateWindows(ctx, tconn, br, url, n-1); err != nil {
+			return nil, nil, nil, err
+		}
+	}
+	return conn, br, closeBrowser, nil
 }
