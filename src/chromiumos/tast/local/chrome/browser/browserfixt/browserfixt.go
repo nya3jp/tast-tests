@@ -8,9 +8,13 @@ package browserfixt
 
 import (
 	"context"
+	"time"
+
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
@@ -79,4 +83,89 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
+}
+
+// CreateWindows is a util that makes the transition from ash.CreateWindows easy for both ash-chrome and lacros-chrome.
+// It is necessary to address the difference of application life cycle between them.
+// Unlike ash-chrome which instance is always available even with no window open, lacros-chrome needs to opens at least one extra blank window before instantiating.
+// CreateWindows create n browser windows with specified URL and wait for them to become visible. See chromiumos/tast/local/chrome/ash/wm.go for ash.CreateWindows.
+// tconn is from *ash-chrome*.
+func CreateWindows(ctx context.Context, f interface{}, bt browser.Type, tconn *chrome.TestConn, url string, n int) (*browser.Browser, func(ctx context.Context), error) {
+	// TODO(crbug.com/1290318): Find a way to open a lacros-chrome with any chrome:// URLs.
+	// Due to crbug.com/1290318 lacros-chrome can't open any chrome:// URLs other than blank page upon initializing.
+	// For blank URL, use SetUpWithURL for the first window and ash.CreateWindows for the rest.
+	// For other URLs to work around, let lacros-chrome start with a blank page, open the given number of windows with the given URL, then close the first blank page.
+	switch url {
+	case "", chrome.BlankURL:
+		// Open the first window with a given URL on startup.
+		_, br, closeBrowser, err := SetUpWithURL(ctx, f, bt, url)
+		if err != nil {
+			return nil, nil, err
+		}
+		// Continue to open the rest of windows if more than one is requested.
+		if n > 1 {
+			if err := ash.CreateWindows(ctx, tconn, br, url, n-1); err != nil {
+				return nil, nil, err
+			}
+		}
+		return br, closeBrowser, nil
+
+	default:
+		// SetUp will open an extra blank window for lacros-chrome, but no window for ash-chrome.
+		br, closeBrowser, err := SetUp(ctx, f, bt)
+		if err != nil {
+			return nil, nil, err
+		}
+		// Open the exact number of windows for both.
+		if err := ash.CreateWindows(ctx, tconn, br, url, n); err != nil {
+			return nil, nil, err
+		}
+		// Close the extra blank window if lacros-chrome.
+		if bt == browser.TypeLacros {
+			if err := closeWindow(ctx, br, bt, chrome.BlankURL); err != nil {
+				return nil, nil, errors.Wrap(err, "failed to close about:blank for lacros")
+			}
+		}
+		return br, closeBrowser, nil
+	}
+}
+
+// closeWindow finds a first target browser that matches a given url, closes it, then waits until it's gone.
+func closeWindow(ctx context.Context, br *browser.Browser, bt browser.Type, url string) error {
+	if len(url) == 0 {
+		return errors.New("url should not be empty")
+	}
+	targets, err := br.FindTargets(ctx, browser.MatchTargetURL(url))
+	if err != nil {
+		return errors.Wrapf(err, "failed to query for web pages with url (%v) in browser %v", url, bt)
+	}
+	if len(targets) == 0 {
+		return errors.New("no matching target found")
+	}
+
+	allPages, err := br.FindTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
+	if err != nil {
+		return errors.Wrapf(err, "failed to query for all pages in browser %v", bt)
+	}
+	// Check if not all pages are being closed for lacros-chrome, otherwise the process will exit when the last window is closed.
+	// Return an error to prevent it from not being shut down properly.
+	if bt == browser.TypeLacros && len(allPages) == 1 {
+		return errors.Wrap(err, "closing the last window will terminate the lacros-chrome. Instead, call the closeBrowser if browserfixt.SetUp is used to release browser resources properly")
+	}
+
+	// Close a target window, and wait for it to be closed.
+	targetID := targets[0].TargetID
+	if err := br.CloseTarget(ctx, targetID); err != nil {
+		return errors.Wrapf(err, "failed to close a window in browser %v ", bt)
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		match, err := br.IsTargetAvailable(ctx, browser.MatchTargetID(targetID))
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if match {
+			return errors.Errorf("target was not closed, url: %v", url)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
 }
