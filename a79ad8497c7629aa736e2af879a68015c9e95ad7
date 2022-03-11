@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f87c4899_f2d043d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-11T08:04:48Z",
+      "side": 1,
+      "message": "We don\u0027t have google contact. Please suggest if any.",
+      "parentUuid": "ae57b678_c65509df",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ed796a2_413d99d5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
         "patchSetId": 2
