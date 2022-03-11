@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "543ba0f3_396c9535",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-11T07:39:54Z",
+      "side": 1,
+      "message": "We are handling both tablet and clamshell scenarios. This is the standard way used in CUJ test.",
+      "parentUuid": "6ed796a2_413d99d5",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 91
+      },
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b77fd051_4d54ccb8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
         "patchSetId": 2
@@ -60,6 +84,24 @@
       "writtenOn": "2022-03-09T03:09:37Z",
       "side": 1,
       "message": "This is a very long and hard to read function.  Can you extract a few helpers to make this more readable?",
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6dec8a_bbe785dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-11T07:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b77fd051_4d54ccb8",
       "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5f9a39_11b442e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-11T07:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96566f5c_69198f4a",
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c530de6_392dc8e6",
@@ -94,6 +154,24 @@
       "writtenOn": "2022-03-09T03:09:37Z",
       "side": 1,
       "message": "If we exit here the DUT will remain powered off?\n\nPlease use a defer function to ensure that the DUT is always powered back on if possible.",
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07cc99c_4ec35285",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-11T07:39:54Z",
+      "side": 1,
+      "message": "Above said scenario is already handled at L109-119.",
+      "parentUuid": "4c530de6_392dc8e6",
       "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
