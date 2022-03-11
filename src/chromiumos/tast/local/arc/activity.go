@@ -210,9 +210,8 @@ func (opts activityStartCmdBuilder) build() []string {
 	if opts.waitForLaunch {
 		out = append(out, "-W")
 	}
-	if opts.intentAction != "" {
-		out = append(out, "-a", opts.intentAction)
-	}
+	// intentAction has a default value so it will never be empty.
+	out = append(out, "-a", opts.intentAction)
 	if opts.dataURI != "" {
 		out = append(out, "-d", opts.dataURI)
 	}
@@ -258,16 +257,20 @@ func makeActivityStartCmdBuilder() activityStartCmdBuilder {
 		enableNativeDebugging: false,
 		forceStop:             false,
 		waitForLaunch:         false,
-		intentAction:          "",
-		dataURI:               "",
-		user:                  "",
-		displayID:             -1,
-		windowingMode:         -1,
-		activityType:          -1,
-		extraInts:             []extraInt{},
-		extraStrings:          []extraString{},
-		extraStringArrays:     []extraStringArray{},
-		extraBools:            []extraBool{},
+		// android.intent.action.MAIN is the default intent action that is set if -n flag is not used before component name
+		// Since -n is always used before the component name when using act.Start() or act.StartWithDefaultOptions() and some
+		// tests won't specifiy an action, set this as a default value. Some tests require that an intent action is set so an
+		// intent action should always be set.
+		intentAction:      "android.intent.action.MAIN",
+		dataURI:           "",
+		user:              "",
+		displayID:         -1,
+		windowingMode:     -1,
+		activityType:      -1,
+		extraInts:         []extraInt{},
+		extraStrings:      []extraString{},
+		extraStringArrays: []extraStringArray{},
+		extraBools:        []extraBool{},
 	}
 }
 
