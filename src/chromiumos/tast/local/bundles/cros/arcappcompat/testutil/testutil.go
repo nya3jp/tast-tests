@@ -129,12 +129,8 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
 	}
-	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-		s.Fatal("Failed to get window info: ", err)
-	} else if err := window.CloseWindow(ctx, tconn); err != nil {
-		s.Fatal("Failed to close app window before test cases: ", err)
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
+
+	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to stop app before test cases: ", err)
 	}
 	s.Log("Successfully tested launching and closing the app")
@@ -183,12 +179,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 				if appPkgName == asphaltPkgName || appPkgName == homescapesPkgName {
 					HandleDialogBoxes(ctx, s, d, appPkgName)
 				}
-				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-					s.Fatal("Failed to get window info: ", err)
-				} else if err := window.CloseWindow(ctx, tconn); err != nil {
-					s.Fatal("Failed to close app window: ", err)
-				}
-				if err := act.Stop(ctx, tconn); err != nil {
+				if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
 					s.Fatal("Failed to stop app: ", err)
 				}
 			}(cleanupCtx)
@@ -1097,14 +1088,8 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	defer act.Close()
 
 	// Close the app.
-	s.Log("Closing the app")
-	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-		s.Fatal("Failed to get window info: ", err)
-	} else if err := window.CloseWindow(ctx, tconn); err != nil {
-		s.Fatal("Failed to close app window: ", err)
-	}
-	if err := act.Stop(ctx, tconn); err != nil {
-		s.Fatal("Failed to stop app: ", err)
+	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to stop app before test cases: ", err)
 	}
 
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
