@@ -16,6 +16,46 @@
       "message": "jchinlee@, PTAL (since this CL is meaty, not calling tast-owners yet).\n\n\nOthers FYI",
       "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2e2b9a_a33e6d77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-12T05:37:06Z",
+      "side": 1,
+      "message": "nit, didn\u0027t see other issues.",
+      "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd25a6a_0e4cff79",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-12T05:37:06Z",
+      "side": 1,
+      "message": "Any chance to terminate the loop after 2 minutes with a meaningful error message?",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
