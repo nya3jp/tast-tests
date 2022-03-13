@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5011e6_b25cfe30",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-13T15:49:20Z",
+      "side": 1,
+      "message": "# sorry, one more thing I overlooked in the prev iteration.\n\nI think here we need to check if the entry existed.\nlocalState, ok \u003d dict[key]\nif !ok {\n  return nil, errors....",
+      "revId": "583766e54f2ef9c9beb428f7f5c5ba3819bb3263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
