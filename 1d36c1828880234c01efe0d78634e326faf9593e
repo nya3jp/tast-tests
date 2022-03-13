@@ -509,6 +509,30 @@
       },
       "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "699177d4_b3ab1acb",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "Sounds good. Can we mark this comment as resolved?",
+      "parentUuid": "b0d355b5_0824c085",
+      "range": {
+        "startLine": 160,
+        "startChar": 12,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "1d36c1828880234c01efe0d78634e326faf9593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

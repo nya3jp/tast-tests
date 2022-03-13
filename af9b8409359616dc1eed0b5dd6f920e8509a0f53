@@ -16,6 +16,345 @@
       "message": "This CL looks ok to me, but I think it will be better to Keigo to check and make sure the fixture is properly implemented. Thanks.",
       "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b96caee_6d5a84f4",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "Can we have a type of this? e.g.\n\n```\ntype mode\nconst modeStat mode \u003d \"stat\"\nconst modeSched mode \u003d \"sched\"\n...\n```\n\nYou can replace some `string`s with `mode`s then.\nIf mode sounds too generic, you can use `profilerMode` or something.",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23a6a72_3a370ddf",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "nit: Doc comments should be punctuated.\ngo/go-style/decisions#doc-comments\n\nSame for other doc comments.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 79
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc070cc_624796b1",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "Let\u0027s avoid Get prefix.\nhttp://go/go-style/decisions#getters\n\nI think we can call it NewProfilers by updating the method to a function that takes only necessary information. You don\u0027t have to pass entire s, but can make the function return an error, and the caller handle the error.\n\n```\nfunc NewProfilers(modes: []string) ([]Profiler, error) {\n  ...\n  return profs, nil\n}\n```",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d201a555_a95c409c",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this mean. If we want to return nil, we can just pass nil as modes. Can we just remove this case?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1788a2f9_059b257b",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "filePaths ?\n\nLet\u0027s avoid get prefix.\nhttp://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 74,
+        "startChar": 26,
+        "endLine": 74,
+        "endChar": 38
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacdbe15_4a632f35",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "optional: It seems you can remove ctx here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf4dbe27_f5e8ca48",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "FilesExist might be a better name?",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "263248d6_f4d11887",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "optional: ctx is not used, and can be removed?",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 24
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a725e605_99475282",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "nit: add a space. Also, could you add your username to todo? TODO(...).\nYou can file a bug and add a bug number e.g b/1234 as well.",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ce6f87_a882bcc5",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "You can use s.TestContext() here. It seems you don\u0027t have to store f.perfCtx.\ns.TestContext() has the same life time as the test including PreTest and PostTest.",
+      "range": {
+        "startLine": 124,
+        "startChar": 20,
+        "endLine": 124,
+        "endChar": 27
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59a5026_c532bd7d",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "Can we use s.OutDir() here? s.OutDir() returns the test\u0027s outdir. If that\u0027s the case, you can remove f.outDir.",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 37
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47230b4_ca0cf38d",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "nit: ok is more commonly used.",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474dbc60_9423ca89",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "Indent error flow.\nhttp://go/go-style/decisions#indent-error-flow\n\n```\nelse if !ok {\n  return errors.New(...)\n}\nreturn nil\n```",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 3
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a67768_50729165",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "return is not needed here.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4e12a7_79831b2b",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-13T23:49:37Z",
+      "side": 1,
+      "message": "remove blank line.",
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
