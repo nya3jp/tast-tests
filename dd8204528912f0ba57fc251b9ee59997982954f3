@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb6ff376_21582890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_install_uninstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-13T23:54:25Z",
+      "side": 1,
+      "message": "I think you need to add this file into params_test.go and generate the params.",
+      "range": {
+        "startLine": 41,
+        "startChar": 30,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "dd8204528912f0ba57fc251b9ee59997982954f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82bd7b50_f583a27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_install_uninstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-13T23:54:25Z",
+      "side": 1,
+      "message": "Specify what result?",
+      "range": {
+        "startLine": 154,
+        "startChar": 38,
+        "endLine": 154,
+        "endChar": 44
+      },
+      "revId": "dd8204528912f0ba57fc251b9ee59997982954f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
