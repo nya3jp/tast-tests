@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "160b673e_1fb8af40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-13T23:10:22Z",
+      "side": 1,
+      "message": "This assignment makes confusion. sheetName is expected to be a string to me while app.sheetCreated is a bool.",
+      "range": {
+        "startLine": 411,
+        "startChar": 2,
+        "endLine": 411,
+        "endChar": 35
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4c10abbe_492dc9ab",
@@ -19,6 +42,53 @@
         "startChar": 31,
         "endLine": 426,
         "endChar": 47
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f27b050_0f0a67d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-13T23:10:22Z",
+      "side": 1,
+      "message": "I think it could be just removeSheet and then document that it checks the existence of the sheet and remove it if it exists.",
+      "parentUuid": "4c10abbe_492dc9ab",
+      "range": {
+        "startLine": 426,
+        "startChar": 31,
+        "endLine": 426,
+        "endChar": 47
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6f78cb_becaf1f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-13T23:10:22Z",
+      "side": 1,
+      "message": "Where is this from?",
+      "range": {
+        "startLine": 428,
+        "startChar": 42,
+        "endLine": 428,
+        "endChar": 51
       },
       "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
