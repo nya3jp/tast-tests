@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
@@ -52,6 +53,9 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 		waitForActiveInputTime = time.Second * 5
 		// Stores how long the game should be benchmarked.
 		gameBenchmarkTime = time.Minute * 1
+		// The amount of time that the test should wait for the optional play games
+		// prompts which need to be closed.
+		playGamesClosePromptTimeout = time.Second * 45
 	)
 
 	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) error {
@@ -86,10 +90,15 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 				uda.Tap(uidetection.TextBlock([]string{"Offline"})),
 			),
 
-			// Google Play Games may pop-up after this.
+			// Google Play Games may pop-up after this. It could contain a 'Cancel' or 'Not now' prompt.
 			action.IfSuccessThen(
-				uda.WaitUntilExists(uidetection.Word("CANCEL")),
+				uda.WithTimeout(playGamesClosePromptTimeout).WaitUntilExists(uidetection.Word("CANCEL")),
 				uda.Tap(uidetection.Word("CANCEL")),
+			),
+
+			action.IfSuccessThen(
+				testutil.WaitForExists(params.Device.Object(ui.Text("Not now"), ui.ClassName("android.widget.Button")), playGamesClosePromptTimeout),
+				testutil.Click(params.Device.Object(ui.Text("Not now"), ui.ClassName("android.widget.Button"))),
 			),
 
 			// Identify and click "x" button to close announcements pop-up.
