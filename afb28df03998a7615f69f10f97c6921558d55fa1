@@ -34,6 +34,24 @@
       "parentUuid": "bbeaceca_f1270948",
       "revId": "afb28df03998a7615f69f10f97c6921558d55fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8539e4d_60f5249a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-13T22:39:21Z",
+      "side": 1,
+      "message": "It seems to me this question is best answered by Android folks, who should know more about the behaviour of VideoView. I am only a test reviewer and haven\u0027t worked with anything ARC related 😊.\n\nI have, however, hosted files downloaded by Tast via a HTTP server for some tests I\u0027ve written in the past, and that has worked fine. (In fact, you can probably test this yourself by setting up the HTTP server, telling the test to sleep for a while, and manually navigating to the URL in chrome (e.g. http://localhost:port/my_video.mp4) to confirm the file can be downloaded).",
+      "parentUuid": "9134f581_015b4f53",
+      "revId": "afb28df03998a7615f69f10f97c6921558d55fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
