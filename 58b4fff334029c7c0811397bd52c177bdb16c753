@@ -34,6 +34,24 @@
       "parentUuid": "5fee0013_b722f3f6",
       "revId": "58b4fff334029c7c0811397bd52c177bdb16c753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac8ff34_155d1d93",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_event_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-14T16:31:22Z",
+      "side": 1,
+      "message": "Regarding the gwsq bot, I don\u0027t think it pays much attention to patch stacks. That might be something to ask the eng velocity team.\n\nFixing this in a later patch is fine, thanks!",
+      "parentUuid": "7d7d3210_eb19f887",
+      "revId": "58b4fff334029c7c0811397bd52c177bdb16c753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
