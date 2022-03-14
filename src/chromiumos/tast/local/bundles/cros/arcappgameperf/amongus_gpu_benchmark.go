@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/arc/apputil"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -97,8 +98,8 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 			),
 
 			action.IfSuccessThen(
-				testutil.WaitForExists(params.Device.Object(ui.Text("Not now"), ui.ClassName("android.widget.Button")), playGamesClosePromptTimeout),
-				testutil.Click(params.Device.Object(ui.Text("Not now"), ui.ClassName("android.widget.Button"))),
+				apputil.WaitForExists(params.Device.Object(ui.Text("Not now"), ui.ClassName("android.widget.Button")), playGamesClosePromptTimeout),
+				apputil.Click(params.Device.Object(ui.Text("Not now"), ui.ClassName("android.widget.Button"))),
 			),
 
 			// Identify and click "x" button to close announcements pop-up.
