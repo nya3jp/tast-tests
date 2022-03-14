@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4bf61bd_79a2ee36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-03-14T08:32:42Z",
+      "side": 1,
+      "message": "Per comment#26 in the bug ticket (b:200305356), I\u0027ve retained the original keys checked for verifying a physical keyboard, and appended `|| additional key options` to include keys that are also commonly found on DUTs, for example, KEY_ENTER \u0026 KEY_SPACE. Also, KEY_VOLUMEUP can sometimes be recognized as KEY_F10, i.e. on Hayato/Asurada.",
+      "revId": "6e833b3e5a2acea54dfc00978283e96a43e7b3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
