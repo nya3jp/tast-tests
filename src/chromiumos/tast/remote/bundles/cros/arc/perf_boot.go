@@ -52,7 +52,7 @@ func PerfBoot(ctx context.Context, s *testing.State) {
 	service := arc.NewPerfBootServiceClient(cl.Conn)
 
 	if _, err := service.WaitUntilCPUCoolDown(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("PerfBootService.WaitUntilCPUCoolDown returned an error: ", err)
+		s.Log("Warning: PerfBootService.WaitUntilCPUCoolDown returned an error: ", err)
 	}
 
 	s.Log("Rebooting DUT")
