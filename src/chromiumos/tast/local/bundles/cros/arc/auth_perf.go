@@ -71,6 +71,7 @@ func init() {
 				username:          "arc.AuthPerf.managed_username",
 				password:          "arc.AuthPerf.managed_password",
 				maxErrorBootCount: 3,
+				chromeArgs:        []string{"--enable-features=ArcEnableVirtioBlkForData"},
 			},
 		}, {
 			Name:              "unmanaged",
@@ -105,6 +106,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				maxErrorBootCount: 3,
+				chromeArgs:        []string{"--enable-features=ArcEnableVirtioBlkForData"},
 			},
 		}},
 		VarDeps: []string{
