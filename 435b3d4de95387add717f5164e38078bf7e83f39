@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21afbd3_c095f3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-14T06:42:30Z",
+      "side": 1,
+      "message": "This group is used in tast-g3 testing and g3-cros uprev presubmit. I would suggest not to have it for now until it is stable.",
+      "range": {
+        "startLine": 31,
+        "startChar": 82,
+        "endLine": 31,
+        "endChar": 108
+      },
+      "revId": "435b3d4de95387add717f5164e38078bf7e83f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56eefe49_f3cb402c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-14T06:42:30Z",
+      "side": 1,
+      "message": "super nit.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 50
+      },
+      "revId": "435b3d4de95387add717f5164e38078bf7e83f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2930578_974a0d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-14T06:42:30Z",
+      "side": 1,
+      "message": "I am afraid the test can be fragile if the candidates is from ML. One good example removing candidate dependency to validate submit, is to fetch candidate value on the screen. \n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/util/util.go?l\u003d180\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go?l\u003d50",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 39
+      },
+      "revId": "435b3d4de95387add717f5164e38078bf7e83f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9314d8_59f32633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-14T06:42:30Z",
+      "side": 1,
+      "message": "You can add a specific scenario: useractions.AttributeTestScenario: \"Accept first candidate using Tab key\" etc.",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "435b3d4de95387add717f5164e38078bf7e83f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d637eef_85552383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-14T06:42:30Z",
+      "side": 1,
+      "message": "Can you please attach the code link here how it is configured? It does not look good to board list for each feature like GrammarCheck. I am working to clean it up.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "435b3d4de95387add717f5164e38078bf7e83f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
