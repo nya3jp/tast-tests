@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639a027f_44cdb45d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-14T01:55:35Z",
+      "side": 1,
+      "message": "I prefer to rename this to \"wirelessLinkInfo\", it\u0027s the same with mojo interface.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "42a740d5d670ee74f445cb735dabcdf24d9b56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb0f2353_c509fb02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-14T01:55:35Z",
+      "side": 1,
+      "message": "You need to mark this as optional to be consistent with mojo interface. And it\u0027s nil if there is no such field in command line output.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "42a740d5d670ee74f445cb735dabcdf24d9b56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4738e604_34a1b97d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-14T01:55:35Z",
+      "side": 1,
+      "message": "Check if it\u0027s nil here instead of empty object. (After you modified it to optional value.)",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 55
+      },
+      "revId": "42a740d5d670ee74f445cb735dabcdf24d9b56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
