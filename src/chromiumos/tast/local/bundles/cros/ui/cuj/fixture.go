@@ -178,10 +178,13 @@ func (f *prepareCUJFixture) PostTest(ctx context.Context, s *testing.FixtTestSta
 
 // FixtureData is the struct returned by the preconditions.
 type FixtureData struct {
-	Chrome     *chrome.Chrome
+	chrome     *chrome.Chrome
 	ARC        *arc.ARC
 	LacrosFixt lacrosfixt.FixtValue
 }
+
+// Chrome gets the CrOS-chrome instance.
+func (f *FixtureData) Chrome() *chrome.Chrome { return f.chrome }
 
 type loggedInToCUJUserFixture struct {
 	cr              *chrome.Chrome
@@ -315,7 +318,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 	f.cr = cr
 	f.arc = a
 	cr = nil
-	return FixtureData{Chrome: f.cr, ARC: f.arc, LacrosFixt: lacrosFixt}
+	return FixtureData{chrome: f.cr, ARC: f.arc, LacrosFixt: lacrosFixt}
 }
 
 func (f *loggedInToCUJUserFixture) TearDown(ctx context.Context, s *testing.FixtState) {

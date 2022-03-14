@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome"
@@ -112,7 +111,7 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 
 	var cr *chrome.Chrome
 	if !p.wprProxy {
-		cr = s.FixtValue().(cuj.FixtureData).Chrome
+		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	} else {
 		cr = s.PreValue().(*chrome.Chrome)
 	}
