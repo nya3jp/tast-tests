@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "362d0ac2_8016e69b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-03-14T07:58:08Z",
+      "side": 1,
+      "message": "Your version is lack of some steps comparing to it.\nIn `a11y.ChromevoxPlainTextEditing`, it does:\n1. crastestclient.Mute()\n2. a11y.SetFeatureEnabled(a11y.SpokenFeedback)\n3. a11y.NewChromeVoxConn()\n4. a11y.RelevantSpeechMonitor()\n\nCould you try if it is still flaky with the above steps?",
+      "parentUuid": "5d328ae0_4e45c887",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa695c80_7b260943",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 1
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "How can I know there is a toast before opening a camera app?\nAnd because of the toast, shutter button speaking message varies.",
       "parentUuid": "10ad9c5d_37ba771a",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6c7dc8_5bc4f385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-03-14T07:58:08Z",
+      "side": 1,
+      "message": "Can we first launch the camera app, dismiss the toast if there is any and then start to verify the accessibility functionality?",
+      "parentUuid": "b47d6f26_77908903",
       "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
