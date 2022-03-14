@@ -16,6 +16,52 @@
       "message": "PTAL thanks!",
       "revId": "2ba90161df164dc3d361bbba3270ce8af398b7d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2366b6b9_918fb5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-14T01:48:00Z",
+      "side": 1,
+      "message": "nit: add the `Timeout` field with a reasonable value. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dTests%20should%20always%20set%20the%20Timeout",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "2ba90161df164dc3d361bbba3270ce8af398b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b999a50_1fa6acde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-14T01:48:00Z",
+      "side": 1,
+      "message": "nit: use uiauto.UserAction(...)(ctx)...\n\nExmaple: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go;l\u003d211",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 37
+      },
+      "revId": "2ba90161df164dc3d361bbba3270ce8af398b7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
