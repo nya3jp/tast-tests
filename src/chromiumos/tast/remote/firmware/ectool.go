@@ -10,10 +10,13 @@ package firmware
 import (
 	"context"
 	"regexp"
+	"strconv"
+	"strings"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/testing"
 )
 
 // ECToolName specifies which of the many Chromium EC based MCUs ectool will
@@ -46,6 +49,7 @@ var (
 	reRWVersion     = regexp.MustCompile(`RW version:\s*(\S+)\s`)
 	reECHash        = regexp.MustCompile(`hash:\s*(\S+)\s*`)
 	reTabletModeAng = regexp.MustCompile(`tablet_mode_angle=(\d+) hys=(\d+)`)
+	reI2CLookup     = regexp.MustCompile(`Bus: I2C; Port: (\S+); Address: (\S+)`)
 )
 
 // Command return the prebuilt ssh Command with options and args applied.
@@ -90,7 +94,6 @@ func (ec *ECTool) Hash(ctx context.Context) (string, error) {
 	if err != nil {
 		return "", errors.Wrap(err, "running 'ectool echash' on DUT")
 	}
-	// return string(out), nil
 
 	// Parse output to determine whether RO or RW is the active firmware.
 	match := reECHash.FindSubmatch(out)
@@ -128,4 +131,98 @@ func (ec *ECTool) ForceTabletModeAngle(ctx context.Context, tabletModeAngle, hys
 		return errors.Wrap(err, "failed to set tablet_mode_angle to 0")
 	}
 	return nil
+}
+
+// I2CLookupInfo is a way to access the port and address of the i2c.
+type I2CLookupInfo struct {
+	Port    int
+	Address int
+}
+
+// I2CLookup runs ectool locatechip 0 0 to get Port and Address for I2C.
+func (ec *ECTool) I2CLookup(ctx context.Context) (*I2CLookupInfo, error) {
+	out, err := ec.Command(ctx, "locatechip", "0", "0").Output(ssh.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "running 'ectool locatechip 0 0' on DUT")
+	}
+	match := reI2CLookup.FindSubmatch(out)
+	if match == nil || len(match) == 0 {
+		return nil, errors.Wrapf(err, "lookup for I2C failed, got %q", string(out))
+	}
+
+	parsedPort, err := strconv.ParseInt(string(match[1]), 0, 0)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse port val %q as int", string(match[1]))
+	}
+	parsedAddr, err := strconv.ParseInt(string(match[2]), 0, 0)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse addr val %q as int", string(match[2]))
+	}
+
+	return &I2CLookupInfo{Port: int(parsedPort), Address: int(parsedAddr)}, nil
+}
+
+// GPIOGetCmd type holds commands for 'ectool gpioget'.
+type GPIOGetCmd string
+
+const (
+	// ECCbiWp for the 'ectool gpioget ec_cbi_wp' cmd.
+	ECCbiWp GPIOGetCmd = "ec_cbi_wp"
+)
+
+// GPIOGet runs the 'ectool gpioget' with provided command.
+func (ec *ECTool) GPIOGet(ctx context.Context, cmd GPIOGetCmd) (string, error) {
+	out, err := ec.Command(ctx, "gpioget", string(cmd)).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrapf(err, "running 'ectool gpioget %s' on DUT", string(cmd))
+	}
+	return string(out), nil
+}
+
+// I2CCmd type holds commands for interacting with i2c using the ectool.
+type I2CCmd string
+
+const (
+	// I2CRead for the 'ectool i2cread <8 | 16> <port> <addr8> <offset>' cmd.
+	I2CRead I2CCmd = "i2cread"
+	// I2CSpeed for the 'ectool i2cspeed <port> [speed in kHz]' cmd.
+	I2CSpeed I2CCmd = "i2cspeed"
+	// I2CWrite for the 'ectool i2cwrite <8 | 16> <port> <addr8> <offset> <data>' cmd.
+	I2CWrite I2CCmd = "i2cwrite"
+	// I2Cxfer for the 'ectool i2cxfer <port> <addr7> <read_count> [bytes...]' cmd.
+	I2Cxfer I2CCmd = "i2cxfer"
+)
+
+// I2C runs the 'ectool i2c*' with provided command and args.
+func (ec *ECTool) I2C(ctx context.Context, cmd I2CCmd, args ...string) (string, error) {
+	cmdAndArgs := append([]string{string(cmd)}, args...)
+	out, err := ec.Command(ctx, cmdAndArgs...).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrapf(err, "running 'ectool %s' on DUT with args %v", string(cmd), args)
+	}
+	return string(out), nil
+}
+
+// CBICmd type holds commands for interacting with cbi using the ectool.
+type CBICmd string
+
+const (
+	// CBIGet for the 'ectool cbi get <tag> [get_flag]'.
+	CBIGet CBICmd = "get"
+	// CBISet for the 'ectool cbi set <tag> <value/string> <size> [set_flag]'.
+	CBISet CBICmd = "set"
+	// CBIRemove for the 'ectool cbi remove <tag> [set_flag]'.
+	CBIRemove CBICmd = "remove"
+)
+
+// CBI runs the 'ectool cbi' with provided command and args.
+func (ec *ECTool) CBI(ctx context.Context, cmd CBICmd, args ...string) (string, error) {
+	cmdAndArgs := []string{"cbi", string(cmd)}
+	cmdAndArgs = append(cmdAndArgs, args...)
+	testing.ContextLogf(ctx, "Running cmd: 'ectool %s'", strings.Join(cmdAndArgs, " "))
+	out, err := ec.Command(ctx, cmdAndArgs...).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrapf(err, "running 'ectool %s' on DUT with args %v, got: %v", string(cmd), args, string(out))
+	}
+	return string(out), nil
 }
