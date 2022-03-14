@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a922d0f_ebfd4854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-03-14T10:57:36Z",
+      "side": 1,
+      "message": "I tested your latest patch set on ToT and it seems it is pretty stable (?).\nI tried it on two of my devices (Soraka and Grunt) and both of them can pass 10 times consecutively.\nWhat\u0027s the fail rate on your side?",
+      "parentUuid": "4a05dbd4_fd77248f",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa695c80_7b260943",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 1
