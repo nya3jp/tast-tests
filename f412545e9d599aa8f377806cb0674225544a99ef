@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6b8cd64c_b8be1acc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-14T03:42:55Z",
+      "side": 1,
+      "message": "Oh, sheetName is actually a var here which represents the name of the sheet.",
+      "parentUuid": "f53e3c89_4c0dfdce",
+      "range": {
+        "startLine": 411,
+        "startChar": 2,
+        "endLine": 411,
+        "endChar": 35
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4c10abbe_492dc9ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Add into the parameter of `func removeSheet`.",
       "parentUuid": "be6f78cb_becaf1f8",
+      "range": {
+        "startLine": 428,
+        "startChar": 42,
+        "endLine": 428,
+        "endChar": 51
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e20bd8c_3233b8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-14T03:42:55Z",
+      "side": 1,
+      "message": "Please try to compile and run it before submitting the patch. Reviewing would not be able to catch all compile errors.",
+      "parentUuid": "4aed01b6_c7fdcb4e",
       "range": {
         "startLine": 428,
         "startChar": 42,
