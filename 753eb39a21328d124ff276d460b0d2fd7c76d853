@@ -50,6 +50,24 @@
       "message": "nit: Add comments about what are the input |chartPaths| and returned \"[]NamePath\".",
       "revId": "753eb39a21328d124ff276d460b0d2fd7c76d853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8376818e_797c9ad5",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-03-14T02:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a3a783_907f28ce",
+      "revId": "753eb39a21328d124ff276d460b0d2fd7c76d853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
