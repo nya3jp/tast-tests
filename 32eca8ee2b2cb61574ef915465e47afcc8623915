@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae546a9_5d3b66c4",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-03-14T19:57:31Z",
+      "side": 1,
+      "message": "Added poll on 200 milliseconds for 5 seconds.\nObserved around 60 milliseconds on trogdor \u0026 dedede device for Disable/Enable.",
+      "parentUuid": "a08eac89_6d903208",
+      "revId": "32eca8ee2b2cb61574ef915465e47afcc8623915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c388d88f_483b596f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-14T14:20:10Z",
       "side": 1,
       "message": "ditto",
+      "revId": "32eca8ee2b2cb61574ef915465e47afcc8623915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1b40b26_43fddd0d",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-03-14T19:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c388d88f_483b596f",
       "revId": "32eca8ee2b2cb61574ef915465e47afcc8623915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
