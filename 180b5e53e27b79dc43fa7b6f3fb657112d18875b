@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d57009_9a332ed1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-03-14T17:01:01Z",
+      "side": 1,
+      "message": "plan to test on drawlet or drawcia once I access one",
+      "revId": "180b5e53e27b79dc43fa7b6f3fb657112d18875b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
