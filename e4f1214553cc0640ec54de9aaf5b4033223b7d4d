@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aaead44_a73bda3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-03-14T10:34:25Z",
+      "side": 1,
+      "message": "FYI: IIRC, \"arcBooted\" waits for \"ro.arc.boot_completed\" property, which is set before AppLauncherService starts. So there\u0027s a small chance that this test fails for racing issue, as adb key input is dispatched before SystemUI and AppLauncherService get ready.\n\nI\u0027m fine to submit this test as it is. But if you see some flakiness of this test in future, this can be a cause.",
+      "revId": "e4f1214553cc0640ec54de9aaf5b4033223b7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
