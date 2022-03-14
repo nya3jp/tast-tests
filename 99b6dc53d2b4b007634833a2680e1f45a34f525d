@@ -22,6 +22,46 @@
       },
       "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6391313c_ae7ae266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-03-14T08:19:10Z",
+      "side": 1,
+      "message": "I think it\u0027s better to implement HasChrome() interface and then you can use\ncr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()",
+      "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73016fb3_af7fb8ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-03-14T08:19:10Z",
+      "side": 1,
+      "message": "Is it necessary to close the about page in lacros?\nIf not, I guess you can replace this part with the following, to make sure it\u0027s consistent with other tests (check go/remote-management/tast-codelabs/lacros_policy_testing for more details):\nbr, closeBrowser, err :\u003d browserfixt.SetUp(ctx, s.FixtValue(),\n  s.Param().(browser.Type))\nif err !\u003d nil {\n  s.Fatal(\"Failed to open the browser: \", err)\n}\ndefer closeBrowser(cleanupCtx)\n\nWDYT?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
