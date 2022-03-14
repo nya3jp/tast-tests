@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ea3d30_48e8db10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2022-03-14T20:07:51Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with CUJ perf test. What kind of metrics does this test measure?\nWhat would be important would be \"latency to start the animation\" + animation smoothnes.",
+      "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47b0fc7a_db938ba6",
