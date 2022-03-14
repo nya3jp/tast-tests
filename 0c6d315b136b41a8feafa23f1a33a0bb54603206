@@ -16,6 +16,24 @@
       "message": "the intentAction can be still overwritten, and if empty it shouldn\u0027t add empty action?",
       "revId": "0c6d315b136b41a8feafa23f1a33a0bb54603206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602fd35c_bbbb5cd2",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-03-14T17:42:37Z",
+      "side": 1,
+      "message": "You\u0027re right. Change made!",
+      "parentUuid": "48133242_3e0d338c",
+      "revId": "0c6d315b136b41a8feafa23f1a33a0bb54603206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
