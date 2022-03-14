@@ -119,6 +119,19 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		if err := checkLaptopMode(ctx); err != nil {
 			s.Fatal("Unable to determine if DUT is in laptop mode after reboot: ", err)
 		}
+	} else {
+		if err := h.RequireRPCUtils(ctx); err != nil {
+			s.Fatal("Requiring RPC utils: ", err)
+		}
+
+		// Logging in with a testuser session would default
+		// and preserve language setting in English. This would
+		// be useful for later verification on the power menu items.
+		s.Log("Starting a new Chrome service")
+		if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
+			s.Fatal("Failed to create instance of chrome: ", err)
+		}
+		defer h.RPCUtils.CloseChrome(ctx, &empty.Empty{})
 	}
 
 	// Connect to the RPC service on the DUT.
