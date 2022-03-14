@@ -211,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ad7f1b_1a73e597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-14T22:42:40Z",
+      "side": 1,
+      "message": "I left a new comment... but basically is to understand why chdir is needed?\nis there a bug? then it would be good if you file one... if not, then why chdir() is needed.",
+      "parentUuid": "ebe54f4c_0e9c7f4b",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 14
+      },
+      "revId": "39eb4122629fbd695541d12271cfd3da976b1ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72754013_7a28ed0e",
