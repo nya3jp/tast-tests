@@ -117,9 +117,6 @@ func Login(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := lockscreen.WaitForPasswordField(ctx, tconn, username, 15*time.Second); err != nil {
-		s.Fatal("password text field did not appear in the UI: ", err)
-	}
 	s.Log("Waiting for the Smart Lock ready indicator")
 	if err := lockscreen.WaitForSmartUnlockReady(ctx, tconn); err != nil {
 		s.Fatal("Failed waiting for Smart Lock icon to turn green: ", err)
