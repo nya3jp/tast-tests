@@ -16,6 +16,29 @@
       "message": "Yury from perf team is the right person to review this change.",
       "revId": "8a52fb8822885f93d82098f089b6c7d0bc3cfabf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e28cda_bfee1e58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-03-14T16:00:12Z",
+      "side": 1,
+      "message": "this potentially adds serious flakiness to the result. I would recommend to \na) remove completely waiting\n2) use more relaxed cooling profiling. For example: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go;l\u003d373",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "8a52fb8822885f93d82098f089b6c7d0bc3cfabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
