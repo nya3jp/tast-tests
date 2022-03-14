@@ -16,6 +16,24 @@
       "message": "This seems wrong... what exactly is a one-argument sprintf call going to do?",
       "revId": "58b4fff334029c7c0811397bd52c177bdb16c753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7d3210_eb19f887",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_event_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-03-14T16:28:57Z",
+      "side": 1,
+      "message": "This was moved from shillscript.go, so I\u0027m not sure the history of the original review. Somehow I messed up my stack of patches and removed this function in the patch on top of this. (On this note, I think it would make sense for a single tast-owner to review a stack of related patches, but the bot doesn\u0027t seem to do this. Is that intentional?)\n\nI\u0027ll fix that issue up to start.\n\nBut to this comment, I guess this could be rewritten as `msg :\u003d v.String()[1:]`. Since this CL is just moving code around, I can give this a shot as a new change on top of this stack.",
+      "parentUuid": "5fee0013_b722f3f6",
+      "revId": "58b4fff334029c7c0811397bd52c177bdb16c753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
