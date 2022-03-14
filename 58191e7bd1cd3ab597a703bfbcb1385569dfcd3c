@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5abd2591_f8c3060e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-03-14T17:22:39Z",
+      "side": 1,
+      "message": "I don\u0027t know about the automated update, let me ask around to see if there is a better way of doing this. Yes, I update the baseline manually.",
+      "parentUuid": "b59d8c8f_10e5bca9",
+      "revId": "58191e7bd1cd3ab597a703bfbcb1385569dfcd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4b1691c6_c9330add",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/data/root_ca_baseline.json",
         "patchSetId": 2
