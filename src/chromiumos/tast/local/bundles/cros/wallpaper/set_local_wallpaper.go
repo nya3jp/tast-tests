@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SetLocalWallpaper,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test setting local wallpapers in the new wallpaper app",
 		Contacts: []string{
 			"jasontt@google.com",

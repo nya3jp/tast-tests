@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SetOnlineWallpaper,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test setting online wallpapers in the new wallpaper app",
 		Contacts: []string{
 			"jasontt@google.com",
