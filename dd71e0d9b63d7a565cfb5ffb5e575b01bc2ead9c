@@ -50,6 +50,24 @@
       "message": "early-return to reduce block nest.\n  if borderPixels \u003d\u003d 0 {\n    return nil\n  }",
       "revId": "dd71e0d9b63d7a565cfb5ffb5e575b01bc2ead9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c888731d_0cf87bcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-03-14T00:46:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33b535ae_4ade6f0d",
+      "revId": "dd71e0d9b63d7a565cfb5ffb5e575b01bc2ead9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
