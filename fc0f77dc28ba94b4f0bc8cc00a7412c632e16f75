@@ -68,6 +68,24 @@
       "message": "Are you sure the scope of apputil is limited? I cherry picked your CL, imported and referenced from apputil, and it compiled just fine.\n\nCL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3523481",
       "revId": "fc0f77dc28ba94b4f0bc8cc00a7412c632e16f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf5e81a_daff0af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/uiwrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-14T18:21:22Z",
+      "side": 1,
+      "message": "It\u0027s a Tast specific lint they added, not a golang limitation. The tast team chose to disallow this use case (documented here https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code). Since it\u0027s a lint, and not compile error, you\u0027ll only see the error appear when running pre-checks via `repo upload`.",
+      "parentUuid": "5ace7c4e_9d4b74c6",
+      "revId": "fc0f77dc28ba94b4f0bc8cc00a7412c632e16f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
