@@ -16,6 +16,24 @@
       "message": "MiniVM is disabled for VM but not for container",
       "revId": "9c91d1b40525523ece1dfc769a8a68d19b8f4ce6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f3c157_c9d9f0c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-03-14T19:55:25Z",
+      "side": 1,
+      "message": "Yes arc.MiniContainer is still being tested.  This testing is failing 100% since M96.\n\nhttp://tastboard/test/arc.MiniContainer",
+      "parentUuid": "e93feeeb_f6018f8e",
+      "revId": "9c91d1b40525523ece1dfc769a8a68d19b8f4ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
