@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45ff62e_a8abee7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-03-14T16:47:57Z",
+      "side": 1,
+      "message": "Latest patchset removes the deletion of the DBusEventMonitor function form shillscript.go out of this patch and into the parent patch",
+      "revId": "21779ec145ca3418abc39455b2abbcbfde77a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
