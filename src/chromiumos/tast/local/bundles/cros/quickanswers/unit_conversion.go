@@ -6,8 +6,12 @@ package quickanswers
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -18,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UnitConversion,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test Quick Answers unit conversion feature",
 		Contacts: []string{
 			"updowndota@google.com",
@@ -27,13 +31,25 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // UnitConversion tests Quick Answers unit conversion fearture.
 func UnitConversion(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -46,8 +62,16 @@ func UnitConversion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable Quick Answers: ", err)
 	}
 
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	// Open page with source units on it.
-	conn, err := cr.NewConn(ctx, "https://google.com/search?q=50+kg")
+	conn, err := br.NewConn(ctx, "https://google.com/search?q=50+kg")
 	if err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)
 	}

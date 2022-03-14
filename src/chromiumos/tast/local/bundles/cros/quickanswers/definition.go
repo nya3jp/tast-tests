@@ -6,8 +6,12 @@ package quickanswers
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -18,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Definition,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test Quick Answers definition feature",
 		Contacts: []string{
 			"updowndota@google.com",
@@ -27,34 +31,52 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // Definition tests Quick Answers definition feature.
 func Definition(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	ui := uiauto.New(tconn)
-
 	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.quick_answers.enabled", true); err != nil {
 		s.Fatal("Failed to enable Quick Answers: ", err)
 	}
 
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	// Open page with the query word on it.
 	const queryWord = "icosahedron"
-	conn, err := cr.NewConn(ctx, "https://google.com/search?q="+queryWord)
+	conn, err := br.NewConn(ctx, "https://google.com/search?q="+queryWord)
 	if err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
+	ui := uiauto.New(tconn)
 	// Wait for the query word to appear.
 	query := nodewith.Name(queryWord).Role(role.StaticText).First()
 	if err := ui.WaitUntilExists(query)(ctx); err != nil {
