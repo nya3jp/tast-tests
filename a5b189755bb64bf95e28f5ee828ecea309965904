@@ -74,6 +74,24 @@
       "parentUuid": "24628941_c99778ef",
       "revId": "a5b189755bb64bf95e28f5ee828ecea309965904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a2321b_b5fc74f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-14T11:57:10Z",
+      "side": 1,
+      "message": "I\u0027m fine with either. If you need it for something, feel free. I might end up rewriting or deleting it though.",
+      "parentUuid": "78609223_0e9f63df",
+      "revId": "a5b189755bb64bf95e28f5ee828ecea309965904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
