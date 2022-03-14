@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06cf67b4_1c74ea1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T15:39:26Z",
+      "side": 1,
+      "message": "LGTM % nit. \nA very interesting way to have a retry mechanism in place. Did you manage to check that this fix will actually make the test less flaky on those devices that failures were reproducible? ",
+      "revId": "1567f732a26e6eb3430cd0949ba1b267afeaab59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd855d93_9d65868c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T15:39:26Z",
+      "side": 1,
+      "message": "nit: Start the comment with a capital letter and end with a dot.\nThe same below.",
+      "revId": "1567f732a26e6eb3430cd0949ba1b267afeaab59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
