@@ -181,10 +181,8 @@ func trimTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, t
 // Also, perform 4K random read QD32 before and after trim. We should see some speed / latency difference
 // if the device firmware trim data properly.
 func trimTestBlockImpl(ctx context.Context, s *testing.State, trimPath string, rw *FioResultWriter) {
-	filesize, err := PartitionSize(ctx, trimPath)
-	if err != nil {
-		s.Fatal("Failed to acquire size for partition: ", err)
-	}
+	var filesize uint64
+	filesize = 1024 * 1024 * 1024
 	// Make file size multiple of 4 * chunk size to account for all passes,
 	// i.e. 25% = 1/4, 75% = 3/4.
 	filesize = filesize - filesize%(4*TrimChunkSize)
