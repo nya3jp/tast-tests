@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -139,6 +140,12 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	s.Log("Installing app " + appToInstall)
 	if err := playstore.InstallApp(ctx, a, d, appToInstall, -1); err != nil {
 		s.Error("Failed to install app: ", err)
+
+		s.Log("Taking a screenshot as install-failed.png")
+		path := filepath.Join(s.OutDir(), "install-failed.png")
+		if err := screenshot.Capture(ctx, path); err != nil {
+			s.Log("Failed to take a screenshot: ", err)
+		}
 	}
 
 	// Regression check for b/190293594.
