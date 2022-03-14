@@ -72,63 +72,74 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		timeoutWaitForPlayStore = 3 * time.Minute
 	)
 
+	// indicates that the error is retryable and unrelated to core feature under test
+	retry := func(desc string, err error) error {
+		return errors.Wrap(err, "failed to "+desc)
+	}
+
+	// indicates a failure in the core feature under test
+	fatal := func(desc string, err error) error {
+		return testing.PollBreak(errors.Wrap(err, "failed to "+desc))
+	}
+
 	login := chrome.GAIALoginPool(s.RequiredVar(loginPoolVar))
 	packages := strings.Split(s.RequiredVar(packagesVar), ",")
 
-	// Log-in to Chrome and allow to launch ARC if allowed by user policy.
-	cr, err := chrome.New(
-		ctx,
-		login,
-		chrome.ARCSupported(),
-		chrome.ProdPolicy(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Log-in to Chrome and allow to launch ARC if allowed by user policy.
+		cr, err := chrome.New(
+			ctx,
+			login,
+			chrome.ARCSupported(),
+			chrome.ProdPolicy(),
+			chrome.ExtraArgs(arc.DisableSyncFlags()...))
+		if err != nil {
+			return retry("connect to Chrome", err)
+		}
+		defer cr.Close(ctx)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return retry("create test API connection", err)
+		}
 
-	s.Log("Ensuring ARC is enabled by policy")
-	// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
-	if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
-		s.Fatal("Failed to verify ArcEnabled: ", err)
-	}
+		// Ensure chrome://policy shows correct ArcEnabled and ArcPolicy values.
+		if err := policyutil.Verify(ctx, tconn, []policy.Policy{&policy.ArcEnabled{Val: true}}); err != nil {
+			return fatal("verify ArcEnabled in policy", err)
+		}
 
-	s.Log("Verifying force-installed apps in ArcPolicy")
-	if err := arcent.VerifyArcPolicyForceInstalled(ctx, tconn, packages); err != nil {
-		s.Fatal("Failed to verify force-installed apps in ArcPolicy: ", err)
-	}
+		if err := arcent.VerifyArcPolicyForceInstalled(ctx, tconn, packages); err != nil {
+			return fatal("verify force-installed apps", err)
+		}
 
-	a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
-	if err != nil {
-		s.Fatal("Failed to start ARC by user policy: ", err)
-	}
-	defer a.Close(ctx)
+		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
+		if err != nil {
+			return retry("failed to start ARC by policy", err)
+		}
+		defer a.Close(ctx)
+		if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
+			return retry("failed to launch Play Store", err)
+		}
 
-	s.Log("Launching Play Store")
-	if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
-		s.Fatal("Failed to launch Play Store: ", err)
-	}
+		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
+			return fatal("verify packages", err)
+		}
 
-	if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
-		s.Fatal("Package verification failed: ", err)
-	}
+		if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
+			return fatal("launch asset browser", err)
+		}
 
-	if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
-		s.Fatal("Failed to launch asset browser: ", err)
-	}
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+		defer cancel()
+		defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
+			return fatal("verify Play Store is not empty", err)
+		}
 
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
-		s.Fatal("Play Store verification failed: ", err)
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Provisioning flow failed: ", err)
 	}
 }
 
