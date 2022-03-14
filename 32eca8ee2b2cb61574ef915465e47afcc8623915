@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08eac89_6d903208",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-14T14:20:10Z",
+      "side": 1,
+      "message": "you can check more often than once per second if you are timing out after two seconds, I think.\n\n(Might also be OK to increase the timeout, as well. Most of the time it won\u0027t take very long.)",
+      "revId": "32eca8ee2b2cb61574ef915465e47afcc8623915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c388d88f_483b596f",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-14T14:20:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "32eca8ee2b2cb61574ef915465e47afcc8623915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
