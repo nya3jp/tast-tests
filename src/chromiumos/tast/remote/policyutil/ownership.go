@@ -7,12 +7,34 @@ package policyutil
 import (
 	"context"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/hwsec"
+	"chromiumos/tast/rpc"
+	oc "chromiumos/tast/services/cros/hwsec"
+	"chromiumos/tast/testing"
 )
 
-// EnsureTPMAndSystemStateAreReset initialises the required helpers and calls HelperRemote.EnsureTPMAndSystemStateAreReset.
+// EnsureTPMAndSystemStateAreResetLocal initialises the required helpers and calls the EnsureTPMAndSystemStateAreReset locally.
+func EnsureTPMAndSystemStateAreResetLocal(ctx context.Context, dut *dut.DUT, hint *testing.RPCHint) error {
+	cl, err := rpc.Dial(ctx, dut, hint)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer cl.Close(ctx)
+
+	pc := oc.NewOwnershipServiceClient(cl.Conn)
+
+	if _, err := pc.EnsureTPMAndSystemStateAreReset(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to reset the TPM locally")
+	}
+
+	return nil
+}
+
+// EnsureTPMAndSystemStateAreReset initialises the required helpers and calls EnsureTPMAndSystemStateAreReset remotely.
 func EnsureTPMAndSystemStateAreReset(ctx context.Context, d *dut.DUT) error {
 	r := hwsec.NewCmdRunner(d)
 

@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 //go:generate protoc -I . -I ../../../../../../../../platform2/system_api/dbus/attestation --go_out=plugins=grpc:../../../../.. attestation_dbus_service.proto webauthn_service.proto
+//go:generate protoc -I . -I ../../../../../../../../platform2/system_api/dbus/attestation --go_out=plugins=grpc:../../../../.. attestation_dbus_service.proto ownership.proto
 
 package hwsec
 
