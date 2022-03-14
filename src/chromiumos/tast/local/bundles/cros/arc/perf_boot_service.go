@@ -49,7 +49,7 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	// (Currently KeepState option only works for fake login.)
 	// TODO(niwa): Check if we should really use KeepState.
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU(),
-		chrome.KeepState(), chrome.ExtraArgs("--disable-arc-data-wipe", "--ignore-arcvm-dev-conf"))
+		chrome.KeepState(), chrome.ExtraArgs("--disable-arc-data-wipe", "--ignore-arcvm-dev-conf", "--enable-features=ArcEnableVirtioBlkForData"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}

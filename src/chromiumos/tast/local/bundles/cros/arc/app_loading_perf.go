@@ -30,7 +30,7 @@ type testParameters struct {
 
 var (
 	// arcAppLoadingBooted is a precondition similar to arc.Booted() with no opt-in and disables some heavy Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcEnableVirtioBlkForData")...)
 
 	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
 	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore")...)
