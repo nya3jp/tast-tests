@@ -69,8 +69,8 @@ func printPercentageOfAppInstalled(ctx context.Context, d *ui.Device) {
 // installOrUpdate uses the Play Store to install or update an application.
 func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int, op operation) error {
 	const (
-		defaultUITimeout    = 20 * time.Second
-		shortUITimeout      = 10 * time.Second
+		// We use short timeout because all wait operations are inside the retry loop.
+		shortUITimeout      = 5 * time.Second
 		installationTimeout = 90 * time.Second
 
 		accountSetupText          = "Complete account setup"
@@ -147,7 +147,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			// optin finishes. Click "accept" button to accept and dismiss.
 			{termsOfServiceText, acceptButtonText},
 		} {
-			if err := FindAndDismissDialog(ctx, d, val.dialogText, val.buttonText, defaultUITimeout); err != nil {
+			if err := FindAndDismissDialog(ctx, d, val.dialogText, val.buttonText, shortUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
 		}
@@ -187,17 +187,17 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Handle "Want to link your PayPal account" if necessary.
-		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText), ui.Enabled(true)).WaitForExists(ctx, defaultUITimeout); err == nil {
+		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText), ui.Enabled(true)).WaitForExists(ctx, shortUITimeout); err == nil {
 			testing.ContextLog(ctx, "Want to link your paypal account does exist")
 			noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+noThanksButtonText))
-			if err := noThanksButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+			if err := noThanksButton.WaitForExists(ctx, shortUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
 			if err := noThanksButton.Click(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
 			skipButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+skipButtonText))
-			if err := skipButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+			if err := skipButton.WaitForExists(ctx, shortUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
 			if err := skipButton.Click(ctx); err != nil {
@@ -209,14 +209,14 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		if err := d.Object(ui.Text(accountSetupText), ui.Enabled(true)).WaitForExists(ctx, shortUITimeout); err == nil {
 			testing.ContextLog(ctx, "Completing account setup")
 			continueButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+continueButtonText))
-			if err := continueButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+			if err := continueButton.WaitForExists(ctx, shortUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
 			if err := continueButton.Click(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
 			skipButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+skipButtonText))
-			if err := skipButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+			if err := skipButton.WaitForExists(ctx, shortUITimeout); err != nil {
 				return testing.PollBreak(err)
 			}
 			if err := skipButton.Click(ctx); err != nil {
@@ -225,13 +225,13 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Grant permissions if necessary.
-		if err := FindAndDismissDialog(ctx, d, permissionsText, acceptButtonText, defaultUITimeout); err != nil {
+		if err := FindAndDismissDialog(ctx, d, permissionsText, acceptButtonText, shortUITimeout); err != nil {
 			return testing.PollBreak(err)
 		}
 
 		// Wait until progress bar is gone.
 		progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
-		if err := progressBar.WaitForExists(ctx, defaultUITimeout); err == nil {
+		if err := progressBar.WaitForExists(ctx, shortUITimeout); err == nil {
 			// Print the percentage of app installed so far.
 			printPercentageOfAppInstalled(ctx, d)
 			testing.ContextLog(ctx, "Wait until progress bar is gone")
