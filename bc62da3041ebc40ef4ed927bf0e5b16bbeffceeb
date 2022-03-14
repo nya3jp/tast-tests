@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e28653e8_4dc16bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-14T15:21:46Z",
+      "side": 1,
+      "message": "5 seems reasonable. We have had issues where rapid toggles do not behave correctly so there is value in repetition, but as noted, this is a functional test. It will initially be in the unstable suite so we will have an opportunity to ensure that it is stable before moving to the stable suite.\n\nnit: it might be a little more clear (but also more verbose) to have each iteration toggle enabled on then off and repeat it 2 or 3 times, but it also seems fine as-is.",
+      "parentUuid": "771cd8bf_cf30de2a",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 34
+      },
+      "revId": "bc62da3041ebc40ef4ed927bf0e5b16bbeffceeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50543b79_ab55d8ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
         "patchSetId": 10
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Hi Renuga,\nThe fixture is resetting the device and the stack. Isn\u0027t that sufficient?",
       "parentUuid": "50543b79_ab55d8ec",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "bc62da3041ebc40ef4ed927bf0e5b16bbeffceeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60068cf6_6cea9445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ensure_network_state_after_cellular_toggle.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-03-14T15:21:46Z",
+      "side": 1,
+      "message": "Tast actually suggests ensuring initial state rather than restoring to a particular \"default\" state:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nAs noted, we do perform some clean-up for Cellular tests in the fixture.",
+      "parentUuid": "34679ea2_a32d7a79",
       "range": {
         "startLine": 106,
         "startChar": 0,
