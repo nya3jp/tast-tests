@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1286a3_0a1750b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-03-14T11:14:23Z",
+      "side": 1,
+      "message": "if we can factor this out into a helper method and just call it here, it would make the code easier to read IMO",
+      "revId": "1efd70a30b62d7d567884e482715ff3397ad5594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
