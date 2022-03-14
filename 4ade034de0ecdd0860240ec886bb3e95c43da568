@@ -16,6 +16,63 @@
       "message": "Rebased to pick up changes in PrimaryBrowser API. Ready for review.",
       "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b9547d_d01c31e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-14T08:40:44Z",
+      "side": 1,
+      "message": "overall direction looks good.",
+      "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6aaafe7_7a25af60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-14T08:40:44Z",
+      "side": 1,
+      "message": "Is this tearing down important?\nIf not, it is recommended to keep such a state at the end of the test\n(so that we can take a look at the failure case manually, and/or some snapshot (like screenshot) works and helps for the investigation).",
+      "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75507359_ae5232eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-14T08:40:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
