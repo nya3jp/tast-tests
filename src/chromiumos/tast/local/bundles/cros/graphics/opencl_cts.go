@@ -4223,7 +4223,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_char.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_float",
@@ -4233,7 +4233,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_float.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_int",
@@ -4243,7 +4243,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_int.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_long",
@@ -4253,7 +4253,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_long.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_short",
@@ -4263,7 +4263,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_short.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_uchar",
@@ -4273,7 +4273,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_uchar.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_uint",
@@ -4283,7 +4283,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_uint.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_ulong",
@@ -4293,7 +4293,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_ulong.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_async_ushort",
@@ -4303,7 +4303,7 @@ func init() {
 					logFileName:  "buffers-buffer_write_async_ushort.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "buffers_buffer_write_char",
@@ -10743,7 +10743,7 @@ func init() {
 					logFileName:  "image_streams-1Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1darray_cl_half_float",
@@ -10753,7 +10753,7 @@ func init() {
 					logFileName:  "image_streams-1Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1darray_cl_signed_int16",
@@ -10793,7 +10793,7 @@ func init() {
 					logFileName:  "image_streams-1Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1darray_cl_snorm_int8",
@@ -10803,7 +10803,7 @@ func init() {
 					logFileName:  "image_streams-1Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1darray_cl_unorm_int_101010",
@@ -10823,7 +10823,7 @@ func init() {
 					logFileName:  "image_streams-1Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1darray_cl_unorm_int8",
@@ -10833,7 +10833,7 @@ func init() {
 					logFileName:  "image_streams-1Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1darray_cl_unorm_short_555",
@@ -10983,7 +10983,7 @@ func init() {
 					logFileName:  "image_streams-1D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1d_cl_unorm_short_555",
@@ -11043,7 +11043,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_half_float",
@@ -11053,7 +11053,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_signed_int16",
@@ -11093,7 +11093,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_snorm_int8",
@@ -11103,7 +11103,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_unorm_int_101010",
@@ -11123,7 +11123,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_unorm_int8",
@@ -11133,7 +11133,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_unorm_short_555",
@@ -11193,7 +11193,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_half_float",
@@ -11203,7 +11203,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_signed_int16",
@@ -11243,7 +11243,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_snorm_int8",
@@ -11253,7 +11253,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_unorm_int_101010",
@@ -11273,7 +11273,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_unorm_int8",
@@ -11283,7 +11283,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_unorm_short_555",
@@ -11343,7 +11343,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_half_float",
@@ -11353,7 +11353,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_signed_int16",
@@ -11393,7 +11393,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_snorm_int8",
@@ -11403,7 +11403,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_unorm_int_101010",
@@ -11423,7 +11423,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_unorm_int8",
@@ -11433,7 +11433,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_UNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_unorm_short_555",
@@ -11761,7 +11761,7 @@ func init() {
 					executable:   "test_integer_ops",
 					args:         "integer_rotate",
 					logFileName:  "integer_ops-integer_rotate.txt",
-					expectedPass: false,
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -12433,7 +12433,7 @@ func init() {
 					logFileName:  "integer_ops-vector_scalar.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "kernel_image_methods_1darray_cl_float",
@@ -13293,7 +13293,7 @@ func init() {
 					logFileName:  "multiples-context_multiple_contexts_same_device.txt",
 					expectedPass: true,
 				},
-				Timeout: 10 * time.Minute,
+				Timeout: 20 * time.Minute,
 			},
 			{
 				Name: "multiples_context_three_contexts_same_device",
@@ -14813,7 +14813,7 @@ func init() {
 					logFileName:  "thread_dimensions-full_2d_implicit_local.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "thread_dimensions_full_3d_explicit_local",
@@ -14823,7 +14823,7 @@ func init() {
 					logFileName:  "thread_dimensions-full_3d_explicit_local.txt",
 					expectedPass: true,
 				},
-				Timeout: 10 * time.Minute,
+				Timeout: 20 * time.Minute,
 			},
 			{
 				Name: "thread_dimensions_full_3d_implicit_local",
@@ -14833,7 +14833,7 @@ func init() {
 					logFileName:  "thread_dimensions-full_3d_implicit_local.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "thread_dimensions_quick_1d_explicit_local",
