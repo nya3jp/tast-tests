@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e4cfa6_cbec5253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-14T18:38:45Z",
+      "side": 1,
+      "message": "Hi Satoshi, \n\nSince this CL, crrev/c/3521742 will potentially cause the appcompat_smoke, appcompat_release and appcompat suite to start failing again due to flaky installation failures. \nI would suggest not to submit this change. Also I added my comment in the bug, https://buganizer.corp.google.com/issues/224461092#comment5. \n\nRegards,\nMeena ",
+      "revId": "909b5eb41766e94d823896fc0ef499750fd8eff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
