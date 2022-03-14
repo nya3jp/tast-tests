@@ -48,6 +48,21 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 
+	// TODO(b/218907052): Remove fixture after Journeys flag  is enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.chromePolicyLoggedInFeatureJourneys,
+		Desc:     "Logged into a user session with journeys enabled",
+		Contacts: []string{"rodmartin@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOpts: []chrome.Option{chrome.ExtraArgs("--enable-features=Journeys")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromeEnrolledLoggedIn,
 		Desc:     "Logged into a user session with enrollment",

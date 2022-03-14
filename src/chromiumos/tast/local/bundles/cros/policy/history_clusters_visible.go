@@ -35,7 +35,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Fixture: fixture.ChromePolicyLoggedIn,
+			Fixture: fixture.chromePolicyLoggedInFeatureJourneys,
 			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
