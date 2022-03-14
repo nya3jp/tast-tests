@@ -16,6 +16,46 @@
       "message": "Updated with poll interval and time.",
       "revId": "de98b268b685049494d21b6e6315537d3be955a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6912a93_f9abe819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524593
+      },
+      "writtenOn": "2022-03-14T20:19:13Z",
+      "side": 1,
+      "message": "(",
+      "revId": "de98b268b685049494d21b6e6315537d3be955a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa0ae18_8cec65ba",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1524593
+      },
+      "writtenOn": "2022-03-14T20:19:13Z",
+      "side": 1,
+      "message": "I think the key is to add some delay before first checking, or checking multiple times within a predefined an amount of time. I think current code still immediately checks the power state, and it returns and reports error if it is not lower power state yet, which is the same behavior as before.",
+      "range": {
+        "startLine": 349,
+        "startChar": 5,
+        "endLine": 349,
+        "endChar": 14
+      },
+      "revId": "de98b268b685049494d21b6e6315537d3be955a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
