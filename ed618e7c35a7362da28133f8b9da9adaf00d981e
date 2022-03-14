@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b3e367_533f1886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-14T21:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f849595_084ca76a",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0b0bfe_c8427209",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-03-14T08:35:41Z",
       "side": 1,
       "message": "end comment with .",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87984f27_b89d36ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-14T21:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc0b0bfe_c8427209",
       "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c34767f5_d0758528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-14T21:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201606f6_2ad89843",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db27ad73_674a8e2e",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7544d1_0609240e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-14T21:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db27ad73_674a8e2e",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "580ed9d6_815437c1",
@@ -116,6 +188,24 @@
       "writtenOn": "2022-03-14T08:35:41Z",
       "side": 1,
       "message": "split the comment in the line.",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef40cff2_afe0dbbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-14T21:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580ed9d6_815437c1",
       "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
