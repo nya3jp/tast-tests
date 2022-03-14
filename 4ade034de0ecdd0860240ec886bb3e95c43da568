@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43caa25e_c068ce59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-14T16:31:52Z",
+      "side": 1,
+      "message": "IMO teardown is important given that there is no clean up for lacros done in the fixture now and there seems to be some flakes caused by the state in the previous run breaking the assumption that the subsequent tests have. It would probably be worth cleaning up lacros in the fixture in the long run to avoid any order-dependent test flakiness.\n\nI don\u0027t think this cleanup does more harm than good. If something went wrong before reaching to this point, it would exit early and take a snapshot on the failure point. Please let me know if there is anything that has to block this CL submission.",
+      "parentUuid": "f6aaafe7_7a25af60",
+      "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75507359_ae5232eb",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-03-14T08:40:44Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d0fadb_417fc771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-14T16:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75507359_ae5232eb",
       "range": {
         "startLine": 119,
         "startChar": 1,
