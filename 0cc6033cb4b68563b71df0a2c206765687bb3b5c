@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a05dbd4_fd77248f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-03-14T10:25:00Z",
+      "side": 1,
+      "message": "I uploaded new patch.",
+      "parentUuid": "ddf730f4_5a24d754",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa695c80_7b260943",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 1
