@@ -16,6 +16,24 @@
       "message": "When the timeout occurs, FindAndDismissDialog throws an error and we have a PollBreak here which would exit the polling and loop.",
       "revId": "2528e2cccb9572541b336c35d9f0297beff9f490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf2a03c_2acb1595",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-14T13:18:24Z",
+      "side": 1,
+      "message": "Thanks for the comment.\nChanged back to use defaultUITimeout for FindAndDismissDialog()",
+      "parentUuid": "5381720b_4eb3f266",
+      "revId": "2528e2cccb9572541b336c35d9f0297beff9f490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
