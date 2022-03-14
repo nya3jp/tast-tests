@@ -157,8 +157,11 @@ func (c *cryptohomeBinary) getSystemSalt(ctx context.Context, useDBus bool) ([]b
 }
 
 // checkKeyEx calls "cryptohome --action=check_key_ex".
-func (c *cryptohomeBinary) checkKeyEx(ctx context.Context, username, label string, extraFlags []string) ([]byte, error) {
+func (c *cryptohomeBinary) checkKeyEx(ctx context.Context, username, label string, unlockWebAuthnSecret bool, extraFlags []string) ([]byte, error) {
 	args := []string{"--action=check_key_ex", "--user=" + username, "--key_label=" + label}
+	if unlockWebAuthnSecret {
+		args = append(args, "--unlock_webauthn_secret=true")
+	}
 	args = append(args, extraFlags...)
 	return c.call(ctx, args...)
 }

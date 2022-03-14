@@ -92,6 +92,25 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 		}, float64(duration.Microseconds()))
 	}
 
+	// Run |iterations| times CheckKeyEx with unlocking webauthn secret.
+	for i := int64(0); i < iterations; i++ {
+		startTs := time.Now()
+		result, err := utility.CheckVaultAndUnlockWebAuthnSecret(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1))
+		duration := time.Now().Sub(startTs)
+		if err != nil {
+			s.Fatal("Call to CheckKeyEx (with unlocking webauthn secret) with the correct username and password resulted in an error: ", err)
+		}
+		if !result {
+			s.Fatal("Failed to CheckKeyEx() (with unlocking webauthn secret) with the correct username and password: ", err)
+		}
+		value.Append(perf.Metric{
+			Name:      "check_key_ex_unlock_webauthn_secret_duration",
+			Unit:      "us",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, float64(duration.Microseconds()))
+	}
+
 	if err := value.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf-results: ", err)
 	}

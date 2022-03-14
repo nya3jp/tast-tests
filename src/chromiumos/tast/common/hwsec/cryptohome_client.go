@@ -374,10 +374,20 @@ func (u *CryptohomeClient) GetSystemSalt(ctx context.Context, useDBus bool) (str
 	return outs, nil
 }
 
+// CheckVaultAndUnlockWebAuthnSecret checks the vault via |CheckKeyEx| dbus method, and set the unlock_webauthn_secret param to true.
+func (u *CryptohomeClient) CheckVaultAndUnlockWebAuthnSecret(ctx context.Context, label string, authConfig *AuthConfig) (bool, error) {
+	extraFlags := authConfigToExtraFlags(authConfig)
+	_, err := u.binary.checkKeyEx(ctx, authConfig.Username, label, true, extraFlags)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to check key")
+	}
+	return true, nil
+}
+
 // CheckVault checks the vault via |CheckKeyEx| dbus method.
 func (u *CryptohomeClient) CheckVault(ctx context.Context, label string, authConfig *AuthConfig) (bool, error) {
 	extraFlags := authConfigToExtraFlags(authConfig)
-	_, err := u.binary.checkKeyEx(ctx, authConfig.Username, label, extraFlags)
+	_, err := u.binary.checkKeyEx(ctx, authConfig.Username, label, false, extraFlags)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to check key")
 	}
