@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e93feeeb_f6018f8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-03-14T16:09:22Z",
+      "side": 1,
+      "message": "MiniVM is disabled for VM but not for container",
+      "revId": "9c91d1b40525523ece1dfc769a8a68d19b8f4ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
