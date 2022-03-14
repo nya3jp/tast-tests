@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/policyutil/externaldata"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
@@ -48,6 +49,23 @@ type PolicyService struct { // NOLINT
 	fakeDMSRemoval bool
 
 	eds *externaldata.Server
+}
+
+// EnsureTPMAndSystemStateAreReset calls the local EnsureTPMAndSystemStateAreReset hwsec helpers.
+func (c *PolicyService) EnsureTPMAndSystemStateAreReset(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	testing.ContextLog(ctx, "Requesting a local TPM reset")
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create local helper")
+	}
+
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to reset TPMd")
+	}
+
+	return &empty.Empty{}, nil
 }
 
 // GAIAEnrollUsingChrome enrolls the device using dmserver. Specified user is logged in after this function completes.

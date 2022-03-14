@@ -12,6 +12,7 @@ option go_package = "chromiumos/tast/services/cros/policy";
 
 // Policy provides functions to perform enrollment.
 service PolicyService {
+  rpc EnsureTPMAndSystemStateAreReset(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc EnrollUsingChrome(EnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc GAIAEnrollUsingChrome(GAIAEnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc UpdatePolicies(UpdatePoliciesRequest) returns (google.protobuf.Empty) {}

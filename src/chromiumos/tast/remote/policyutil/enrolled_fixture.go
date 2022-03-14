@@ -87,12 +87,24 @@ func checkVPDState(ctx context.Context, d *dut.DUT) error {
 	return nil
 }
 
+// clearOwnership calls EnsureTPMAndSystemStateAreResetLocal and if that fails, EnsureTPMAndSystemStateAreReset.
+// This avoids reboots as much as possible.
+func clearOwnership(ctx context.Context, dut *dut.DUT, hint *testing.RPCHint) error {
+	if err := EnsureTPMAndSystemStateAreResetLocal(ctx, dut, hint); err != nil {
+		testing.ContextLog(ctx, "Local reset failed: ", err)
+
+		return EnsureTPMAndSystemStateAreReset(ctx, dut)
+	}
+
+	return nil
+}
+
 func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if err := checkVPDState(ctx, s.DUT()); err != nil {
 		s.Fatal("VPD broken, skipping enrollment: ", err)
 	}
 
-	if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+	if err := clearOwnership(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
@@ -100,7 +112,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	defer func() {
 		if !ok {
 			s.Log("Removing enrollment after failing SetUp")
-			if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+			if err := clearOwnership(ctx, s.DUT(), s.RPCHint()); err != nil {
 				s.Fatal("Failed to reset TPM: ", err)
 			}
 		}
@@ -153,7 +165,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 }
 
 func (e *enrolledFixt) TearDown(ctx context.Context, s *testing.FixtState) {
-	if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+	if err := clearOwnership(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
