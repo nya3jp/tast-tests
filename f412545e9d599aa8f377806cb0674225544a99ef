@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f53e3c89_4c0dfdce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-14T03:29:34Z",
+      "side": 1,
+      "message": "Only if the document has been modified for automatic saving. So we did clean up and used the \"documentCreated\", \"slideCreated\" and \"sheetCreated\" variables to record if it should be deleted. Since we only specified the name of the sheet(sheetName), \"Document\" and \"Presentation\" are the default file names for Word and Powerpoint.",
+      "parentUuid": "160b673e_1fb8af40",
+      "range": {
+        "startLine": 411,
+        "startChar": 2,
+        "endLine": 411,
+        "endChar": 35
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4c10abbe_492dc9ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2022-03-13T23:10:22Z",
       "side": 1,
       "message": "Where is this from?",
+      "range": {
+        "startLine": 428,
+        "startChar": 42,
+        "endLine": 428,
+        "endChar": 51
+      },
+      "revId": "f412545e9d599aa8f377806cb0674225544a99ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aed01b6_c7fdcb4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-14T03:29:34Z",
+      "side": 1,
+      "message": "Add into the parameter of `func removeSheet`.",
+      "parentUuid": "be6f78cb_becaf1f8",
       "range": {
         "startLine": 428,
         "startChar": 42,
