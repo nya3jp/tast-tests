@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -156,19 +157,15 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 
 	testParam := s.Param().(taskSwitchCUJTestParam)
 
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
-
-	var cs ash.ConnSource
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
-	if !testParam.useLacros {
-		cs = cr
-	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
+	var cs ash.ConnSource
 	if testParam.useLacros {
 		// Launch lacros via shelf.
 		f := s.FixtValue().(cuj.FixtureData).LacrosFixt
@@ -179,6 +176,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer l.Close(ctx)
 		cs = l
+	} else {
+		cs = cr
 	}
 
 	kw, err := input.Keyboard(ctx)
