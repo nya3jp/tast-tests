@@ -263,27 +263,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	var cs ash.ConnSource
-	var cr *chrome.Chrome
-	var bTconn *chrome.TestConn
-
-	if meet.useLacros {
-		cr = s.FixtValue().(lacrosfixt.FixtValue).Chrome()
-	} else {
-		cr = s.FixtValue().(cuj.FixtureData).Chrome
-		cs = cr
-
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
-	}
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 
+	var cs ash.ConnSource
+	var bTconn *chrome.TestConn
 	if meet.useLacros {
 		// Launch lacros via shelf.
 		f := s.FixtValue().(lacrosfixt.FixtValue)
@@ -297,6 +285,13 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
 			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
+	} else {
+		cs = cr
+
+		var err error
+		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get TestAPIConn: ", err)
 		}
 	}
 

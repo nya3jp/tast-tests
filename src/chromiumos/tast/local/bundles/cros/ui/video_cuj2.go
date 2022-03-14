@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
@@ -108,7 +109,7 @@ func init() {
 
 // VideoCUJ2 performs the video cases including youtube web, and youtube app.
 func VideoCUJ2(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(cuj.FixtureData).Chrome
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	cleanupCtx := ctx
