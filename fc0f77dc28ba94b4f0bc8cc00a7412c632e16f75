@@ -51,6 +51,23 @@
       "parentUuid": "49efd91e_72632593",
       "revId": "fc0f77dc28ba94b4f0bc8cc00a7412c632e16f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ace7c4e_9d4b74c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/uiwrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-03-14T18:18:43Z",
+      "side": 1,
+      "message": "Are you sure the scope of apputil is limited? I cherry picked your CL, imported and referenced from apputil, and it compiled just fine.\n\nCL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3523481",
+      "revId": "fc0f77dc28ba94b4f0bc8cc00a7412c632e16f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
