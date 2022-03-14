@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f96dd2f0_c60e7bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcNotificationTest2.apk.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-14T13:09:17Z",
+      "side": 1,
+      "message": "oh I see. Thank you for explanation. this is not the blocker then, but how about talking to yamaguchi@, and he may be able to help you to add androidx lib for the future maintenance.",
+      "parentUuid": "4c66ed0f_f3eff64b",
+      "range": {
+        "startLine": 2,
+        "startChar": 59,
+        "endLine": 2,
+        "endChar": 80
+      },
+      "revId": "ac224fd3aad9e19f2fde31cb142a8945d83d8900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "064eb1a6_8a298fc1",
