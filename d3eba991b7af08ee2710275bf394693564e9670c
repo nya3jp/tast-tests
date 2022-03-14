@@ -22,6 +22,30 @@
       },
       "revId": "d3eba991b7af08ee2710275bf394693564e9670c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fe3b88_8640eb5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-03-14T09:04:57Z",
+      "side": 1,
+      "message": "I tried it before and found that ui.LeftClick/ui.Location basically does the same thing as ui.WaitForLocation.\n\nThe animation displayed by the low end DUT is relatively slow(may take longer than a second), so the captured location is actually not stable, which causes the wrong button to be clicked.\n\nIf I increase the interval of ui.WaitForLocation, each DUT will wait more than 2~3 seconds to click the join button, is this ok?\n\nThe current method does not affect the normal DUT wait time.",
+      "parentUuid": "79b767f9_ed5af28c",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "d3eba991b7af08ee2710275bf394693564e9670c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
