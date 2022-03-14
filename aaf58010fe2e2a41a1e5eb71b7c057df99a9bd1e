@@ -450,6 +450,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bedb0dde_8591c93d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-14T21:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b8b7e4_91dda07d",
+      "range": {
+        "startLine": 281,
+        "startChar": 25,
+        "endLine": 281,
+        "endChar": 28
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9407ef37_4ea72c63",
@@ -463,6 +487,30 @@
       "writtenOn": "2022-03-03T02:14:05Z",
       "side": 1,
       "message": "Is there any way counters is not nil but err is nil?",
+      "range": {
+        "startLine": 282,
+        "startChar": 5,
+        "endLine": 282,
+        "endChar": 13
+      },
+      "revId": "aaf58010fe2e2a41a1e5eb71b7c057df99a9bd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48911b30_963b366d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-14T21:44:59Z",
+      "side": 1,
+      "message": "Not in practice, but yes in theory -- in that case, we should\ntreat it as an error; handling |err| as instructed above should\ncover this.",
+      "parentUuid": "9407ef37_4ea72c63",
       "range": {
         "startLine": 282,
         "startChar": 5,
