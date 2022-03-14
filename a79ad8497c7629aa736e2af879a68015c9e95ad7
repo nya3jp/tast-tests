@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7234b0e_c868bdd6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-14T02:13:03Z",
+      "side": 1,
+      "message": "I guess its ok if there aren\u0027t any, just wanted to remind you if there was one.",
+      "parentUuid": "f87c4899_f2d043d4",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ed796a2_413d99d5",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "We are handling both tablet and clamshell scenarios. This is the standard way used in CUJ test.",
       "parentUuid": "6ed796a2_413d99d5",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 91
+      },
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5ac200_9d6841f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-14T02:13:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "543ba0f3_396c9535",
       "range": {
         "startLine": 39,
         "startChar": 30,
@@ -196,6 +244,24 @@
       "side": 1,
       "message": "Above said scenario is already handled at L109-119.",
       "parentUuid": "4c530de6_392dc8e6",
+      "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a353a632_2250ef8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-14T02:13:03Z",
+      "side": 1,
+      "message": "Thanks, sorry I missed that.",
+      "parentUuid": "d07cc99c_4ec35285",
       "revId": "a79ad8497c7629aa736e2af879a68015c9e95ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
