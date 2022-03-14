@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash"
@@ -69,8 +70,6 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
 	defer func(ctx context.Context) {
 		if err := os.Remove(tmpFileCrosDownloadsPath); err != nil {
 			s.Logf("Cleanup: failed to remove file %s on cleanup: %v", tmpFileCrosDownloadsPath, err)
@@ -79,6 +78,32 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 			s.Error("Failed to unshare all folders: ", err)
 		}
 	}(cleanupCtx)
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	// Install Gedit if not there. This test often seems to run on containers that
+	// do not have Gedit pre-installed even though crostiniBusterLargeContainer is
+	// configured in the test's fixture.
+	s.Log("Checking if Gedit needs installing")
+	out, err := cont.Command(ctx, "sudo", "dpkg", "-s", "gedit").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		if strings.Contains(err.Error(), "exit status 1") {
+			// Gedit not in container. Install
+			if strings.Contains(string(out), "package 'gedit' is not installed") {
+				s.Log("Gedit not found - installing")
+			}
+			if err := cont.Command(ctx, "sudo", "apt-get", "update").Run(testexec.DumpLogOnError); err != nil {
+				s.Fatal("Failed to run apt-update: ", err)
+			}
+			if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "gedit").Run(testexec.DumpLogOnError); err != nil {
+				s.Fatal("Failed to install Gedit: ", err)
+			}
+		} else {
+			s.Fatal("Failed to run dpkg to check for gedit: ", err)
+		}
+	} else {
+		s.Log("Gedit already installed")
+	}
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
@@ -128,7 +153,21 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to type text and save after unsharing folder: ", err)
 	}
 
-	// TODO(zubinpratap) - add screen differ.
+	s.Log("Performing screendiff")
+	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 900, WindowHeightDP: 748}})
+	if err != nil {
+		s.Fatal("Failed to start screen differ: ", err)
+	}
+	defer d.DieOnFailedDiffs()
+
+	if err := uiauto.Combine("Checking screendiff of the Gedit window",
+		crostini.TakeAppScreenshot("gedit"),
+		// Screendiff test. Retrying 4 times, every 600 millis as cursor blinks about
+		// once a second, and blinking causes diffs to fail.
+		d.DiffWindow(ctx, "gedit", screenshot.Retries(4), screenshot.RetryInterval(time.Millisecond*600)),
+	)(ctx); err != nil {
+		s.Fatal("Failed to perform screendiff: ", err)
+	}
 
 	ud := uidetection.NewDefault(tconn)
 
@@ -168,6 +207,7 @@ func setupAndShareFileWithLinux(
 	sharedFolders *sharedfolders.SharedFolders,
 	tmpFileCrosDownloadsPath,
 	tmpFileContents string) error {
+
 	// Create a temp text file in the /Downloads folder to use in this test.
 	if err := ioutil.WriteFile(tmpFileCrosDownloadsPath, []byte(tmpFileContents), 0644); err != nil {
 		return errors.Wrap(err, "failed to create text file in Downloads folder")
