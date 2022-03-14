@@ -424,7 +424,7 @@ func init() {
 			Name:              "h264_first_mb_in_slice",
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "v4l2_codec"},
 			ExtraData:         appendJSONFiles(h264Files["first_mb_in_slice"]),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    h264Files["first_mb_in_slice"],
