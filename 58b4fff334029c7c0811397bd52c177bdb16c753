@@ -52,6 +52,24 @@
       "parentUuid": "7d7d3210_eb19f887",
       "revId": "58b4fff334029c7c0811397bd52c177bdb16c753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "534fce4f_600d7f32",
+        "filename": "src/chromiumos/tast/local/dbusutil/dbus_event_monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-03-14T16:47:01Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll send that a bit later.\n\nI\u0027ve fixed up the patches so the DbusEventMonitor and dbusCallMember functions are correctly removed from shillscript here instead of in the next patch.",
+      "parentUuid": "dac8ff34_155d1d93",
+      "revId": "58b4fff334029c7c0811397bd52c177bdb16c753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
