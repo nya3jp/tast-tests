@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeOSPageInfo,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Check the chrome OS page shows enough information to user",
 		Contacts: []string{
 			"cienet-development@googlegroups.com",
