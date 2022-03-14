@@ -16,6 +16,108 @@
       "message": "Adding tast-owners for code-review +2",
       "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2dd169_e33636ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T08:35:41Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f849595_084ca76a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T08:35:41Z",
+      "side": 1,
+      "message": "Please split the line - line limit for comments is 80 chars.",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0b0bfe_c8427209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T08:35:41Z",
+      "side": 1,
+      "message": "end comment with .",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "201606f6_2ad89843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T08:35:41Z",
+      "side": 1,
+      "message": "end comment with .",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db27ad73_674a8e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T08:35:41Z",
+      "side": 1,
+      "message": "end comment with .",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580ed9d6_815437c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-14T08:35:41Z",
+      "side": 1,
+      "message": "split the comment in the line.",
+      "revId": "ed618e7c35a7362da28133f8b9da9adaf00d981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
