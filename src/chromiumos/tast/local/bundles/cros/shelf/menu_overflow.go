@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MenuOverflow,
-		Desc: "Checks the behavior of shelf menu when it is overflowed",
+		Func:         MenuOverflow,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Checks the behavior of shelf menu when it is overflowed",
 		Contacts: []string{
 			"ting.chen@cienet.com",
 			"cienet-development@googlegroups.com",
