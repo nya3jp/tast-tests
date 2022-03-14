@@ -282,6 +282,11 @@ type nearbyShareFixture struct {
 
 	// Attributes for both chromebooks.
 	attributes []byte
+
+	// RPC connections to the chromebooks. They are initialized in SetUp,
+	// and must be closed in TearDown to free the underlying SSH connections.
+	senderRPCClient   *rpc.Client
+	receiverRPCClient *rpc.Client
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -346,6 +351,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
+	f.senderRPCClient = cl1
 	const crosBaseName = "cros_test"
 	senderDisplayName := nearbycommon.RandomDeviceName(crosBaseName)
 	s.Log("Enabling Nearby Share on DUT1 (Sender). Name: ", senderDisplayName)
@@ -362,6 +368,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Fatal("Failed to dial rpc service on DUT2: ", err)
 	}
+	f.receiverRPCClient = cl2
 	receiverDisplayName := nearbycommon.RandomDeviceName(crosBaseName)
 	s.Log("Enabling Nearby Share on DUT2 (Receiver). Name: ", receiverDisplayName)
 	receiverUsername := s.RequiredVar("nearbyshare.cros2_username")
@@ -446,6 +453,13 @@ func (f *nearbyShareFixture) TearDown(ctx context.Context, s *testing.FixtState)
 	}
 	if _, err := f.receiver.CloseChrome(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to shutdown nearby share service connections for receiver: ", err)
+	}
+	// Close gRPC clients to free underlying SSH resources.
+	if err := f.senderRPCClient.Close(ctx); err != nil {
+		s.Error("Failed to close gRPC client for sender: ", err)
+	}
+	if err := f.receiverRPCClient.Close(ctx); err != nil {
+		s.Error("Failed to close gRPC client for receiver: ", err)
 	}
 }
 
