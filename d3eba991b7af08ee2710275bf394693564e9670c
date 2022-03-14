@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b767f9_ed5af28c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-14T06:22:49Z",
+      "side": 1,
+      "message": "Can you use ui.WaitForLocation() to solve the problem?\n\nThis function checks the element location continuously with certain interval. It succeed if 2 checks returns the same value. Note: The interval and timeout can be customised as well.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "d3eba991b7af08ee2710275bf394693564e9670c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
