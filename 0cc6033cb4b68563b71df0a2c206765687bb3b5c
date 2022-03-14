@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d328ae0_4e45c887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-03-14T07:29:36Z",
+      "side": 1,
+      "message": "Isn\u0027t it equal to the line 48?",
+      "parentUuid": "b1944bf4_11bd73e6",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa695c80_7b260943",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "If it is the case, maybe you can first dismiss the toast before starting Chromevox?\nAnd btw, we might not want to test for all the UI components since it might make the test fragile and increase the effort of maintenance.\n\nFor the first version, I think we can just have some key test cases. For example:\n\nTake picture\n  1. The shutter button is accessible using only \"tab\" button\n  2. When the shutter button is focus, the \"Take photo\" is spoken by Chromevox\n  3. Pressing \"space\" when the shutter button is focus can successfully take a picture\n  \nAnd similar for record video. WDYT?",
       "parentUuid": "fa695c80_7b260943",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47d6f26_77908903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-03-14T07:29:36Z",
+      "side": 1,
+      "message": "How can I know there is a toast before opening a camera app?\nAnd because of the toast, shutter button speaking message varies.",
+      "parentUuid": "10ad9c5d_37ba771a",
       "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
