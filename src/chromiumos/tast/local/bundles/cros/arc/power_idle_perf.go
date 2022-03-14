@@ -124,8 +124,12 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	cr, ok := s.FixtValue().(*chrome.Chrome)
+	hasarc := !ok
 	if !ok {
 		cr = s.FixtValue().(*arc.PreData).Chrome
+		if cr == nil {
+			s.Fatal("Failed to get Chrome from FixtValue")
+		}
 	}
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -160,8 +164,10 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("CPU failed to idle: ", err)
 	}
 
-	if err := arc.CheckNoDex2Oat(s.OutDir()); err != nil {
-		s.Fatal("Failed to verify dex2oat was not running: ", err)
+	if hasarc {
+		if err := arc.CheckNoDex2Oat(s.OutDir()); err != nil {
+			s.Fatal("Failed to verify dex2oat was not running: ", err)
+		}
 	}
 
 	if err := metrics.Start(ctx); err != nil {
