@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fb3d36_b688eda8",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27c0a551_01989811",
+      "revId": "49e5d92da9b52ca5832933697748a3aa37c7a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6df00f7_a01739c8",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-03-10T21:53:46Z",
       "side": 1,
       "message": "I suggest to have a comma separate list instead of ..,..,.. \"( .., ..., ...)\" so that user does not have to use quote in the input.",
+      "revId": "49e5d92da9b52ca5832933697748a3aa37c7a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f97cc7c_ea0ea38e",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6df00f7_a01739c8",
       "revId": "49e5d92da9b52ca5832933697748a3aa37c7a9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
