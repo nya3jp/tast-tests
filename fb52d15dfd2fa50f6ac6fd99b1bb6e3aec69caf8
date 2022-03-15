@@ -86,6 +86,24 @@
       "parentUuid": "a0a622dd_dccd6999",
       "revId": "fb52d15dfd2fa50f6ac6fd99b1bb6e3aec69caf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2778b2bf_7e7c5def",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-15T03:33:20Z",
+      "side": 1,
+      "message": "Hi Ilja,\n\nCan you please help here to upload the file to chromiumos-test-assets-public artifactory?",
+      "parentUuid": "9782b1d0_c2dfdc57",
+      "revId": "fb52d15dfd2fa50f6ac6fd99b1bb6e3aec69caf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
