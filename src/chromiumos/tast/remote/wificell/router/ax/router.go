@@ -8,13 +8,17 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
+
+const nvramCmd = "/bin/nvram"
 
 // Router is used to control an Asus AX wireless router and stores state of the router.
 type Router struct {
@@ -130,4 +134,63 @@ func (r *Router) UpdateConfig(ctx context.Context, recoveryMap map[string]Config
 		}
 	}
 	return nil
+}
+
+// ResolveAXDeviceType attempts to resolve the router's DeviceType based on the
+// wps_modelnum value returned from running "nvram show" on the host.
+func (r *Router) ResolveAXDeviceType(ctx context.Context) (DeviceType, error) {
+	// Retrieve wps_modelnum from host.
+	wpsModelNum, err := resolveWPSModelNumFromHost(ctx, r.host)
+	if err != nil {
+		return -1, err
+	}
+	// Determine DeviceType from wps_modelnum.
+	var deviceType DeviceType
+	switch wpsModelNum {
+	case "RT-AX92U":
+		deviceType = Ax6100
+	case "GT-AX11000":
+		deviceType = GtAx11000
+	case "GT-AXE11000":
+		deviceType = GtAxe11000
+	default:
+		return -1, errors.Errorf("failed to deduce AX DeviceType from unknown wps_modelnum %q", wpsModelNum)
+	}
+	return deviceType, nil
+}
+
+// HostIsAXRouter determines whether the remote host is an AX router.
+func HostIsAXRouter(ctx context.Context, host *ssh.Conn) (bool, error) {
+	// Verify that the host has the nvram command.
+	nvramCmdExists, err := common.HostTestPath(ctx, host, "-x", nvramCmd)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to check for the existence of the command %q", nvramCmd)
+	}
+	if !nvramCmdExists {
+		return false, nil
+	}
+
+	// Verify that the model has an "AX" in it.
+	wpsModelNum, err := resolveWPSModelNumFromHost(ctx, host)
+	if err != nil {
+		return false, err
+	}
+	return strings.Contains(strings.ToLower(wpsModelNum), "ax"), nil
+}
+
+func resolveWPSModelNumFromHost(ctx context.Context, host *ssh.Conn) (string, error) {
+	// Get the results of running 'nvram show' on the host.
+	nvramShowResult, err := host.CommandContext(ctx, nvramCmd, "show").Output()
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to run '%s show' on host", nvramCmd)
+	}
+	nvramShowResultStr := string(nvramShowResult)
+
+	// Parse value of wps_modelnum.
+	valueRegex := regexp.MustCompile("(?m)^wps_modelnum=(.+)$")
+	valueMatch := valueRegex.FindStringSubmatch(nvramShowResultStr)
+	if valueMatch == nil {
+		return "", errors.Wrapf(err, "failed to parse wpa_modelnum from '%s show' output: %q", nvramCmd, string(nvramShowResultStr))
+	}
+	return valueMatch[1], nil
 }

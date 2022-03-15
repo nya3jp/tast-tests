@@ -7,7 +7,9 @@ package ax
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dutcfg"
 )
 
@@ -24,16 +26,41 @@ const SavedConfigLocation = "/tmp/nvram.cfg"
 type DeviceType int
 
 const (
-
 	// GtAx11000 is for the GT-Ax11000 device,
 	GtAx11000 DeviceType = iota
 	// GtAxe11000 is for the GT-Axe11000 device (6e).
 	GtAxe11000
 	// Ax6100 is for the Ax6100 device.
 	Ax6100
-	// Invalid is the default DeviceType.
-	Invalid
+	// Unknown means DeviceType will be resolved based on host.
+	Unknown
 )
+
+var deviceTypeValueToString = map[DeviceType]string{
+	GtAx11000:  "GtAx11000",
+	GtAxe11000: "GtAxe11000",
+	Ax6100:     "Ax6100",
+	Unknown:    "Unknown",
+}
+
+// String returns a human-readable string describing the DeviceType.
+func (dt DeviceType) String() string {
+	typeStr, ok := deviceTypeValueToString[dt]
+	if !ok {
+		return string(rune(dt))
+	}
+	return typeStr
+}
+
+// DeviceTypeFromString parses deviceType for its corresponding DeviceType.
+func DeviceTypeFromString(deviceType string) (DeviceType, error) {
+	for dt, dtStr := range deviceTypeValueToString {
+		if strings.EqualFold(deviceType, dtStr) {
+			return dt, nil
+		}
+	}
+	return -1, errors.Errorf("invalid AX DeviceType %q", deviceType)
+}
 
 // Config stores the necessary information for an AX test to run.
 type Config struct {
