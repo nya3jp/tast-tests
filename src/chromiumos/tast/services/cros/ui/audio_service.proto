@@ -1,0 +1,60 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+import "google/protobuf/empty.proto";
+
+
+// AudioService provides RPC methods to run audio-related operations.
+service AudioService {
+  // New logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // OpenDirectoryAndFile performs launching filesapp and opening particular file
+  // in given directory.
+  rpc OpenDirectoryAndFile (AudioServiceRequest) returns (google.protobuf.Empty) {}
+
+  // GenerateTestRawData generates test raw data file.
+  rpc GenerateTestRawData (AudioServiceRequest) returns (google.protobuf.Empty) {}
+
+  // ConvertRawToWav will convert raw data file to wav file format.
+  rpc ConvertRawToWav (AudioServiceRequest) returns (google.protobuf.Empty) {}
+
+  // KeyboardAccel will create keyboard event and performs keyboard
+  // key press with Accel().
+  rpc KeyboardAccel (AudioServiceRequest) returns (google.protobuf.Empty) {}
+
+  // AudioCrasSelectedOutputDevice will return selected audio device name 
+  // and audio device type.
+  rpc AudioCrasSelectedOutputDevice (google.protobuf.Empty) returns (AudioServiceResponse) {}
+
+  // VerifyFirstRunningDevice will check for audio routing device.
+  rpc VerifyFirstRunningDevice (AudioServiceRequest) returns (google.protobuf.Empty) {}
+
+  // SetActiveNodeByType will set the provided audio node as Active audio node.
+  rpc SetActiveNodeByType(AudioServiceRequest) returns (google.protobuf.Empty) {}
+}
+
+message AudioServiceRequest {
+  string Expr=1;
+  string DirectoryName=2;
+  string FileName=3;
+  int32 DurationInSecs=4;
+  string FilePath=5;
+}
+
+message AudioServiceResponse {
+  string DeviceName=1;
+  string DeviceType=2;
+}
+
