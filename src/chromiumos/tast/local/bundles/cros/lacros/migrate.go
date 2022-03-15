@@ -155,7 +155,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	}
 
 	// TODO(neis): Support -var lacrosDeployedBinary.
-	if _, err := lacros.LaunchFromShelf(ctx, tconn, "/run/lacros"); err != nil {
+	if _, err := lacros.Launch(ctx, tconn, "/run/lacros"); err != nil {
 		s.Fatal("Failed to launch lacros: ", err)
 	}
 

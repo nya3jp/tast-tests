@@ -143,7 +143,7 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 				s.Log("Starting to check that certificate is visible in Lacros")
 				func() {
 					// TODO(neis): Support -var lacrosDeployedBinary.
-					l, err := lacros.LaunchFromShelf(ctx, tconn, "/run/lacros")
+					l, err := lacros.Launch(ctx, tconn, "/run/lacros")
 					if err != nil {
 						s.Fatal("Failed to launch lacros: ", err)
 					}

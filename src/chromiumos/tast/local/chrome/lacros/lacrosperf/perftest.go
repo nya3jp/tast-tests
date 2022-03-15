@@ -130,7 +130,7 @@ func SetupLacrosTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url st
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
 	// Since we also want to wait until the CPU is stabilized as much as possible,
 	// we first open with about:blank to remove startup cost as a variable as much as possible.
-	l, err := lacros.LaunchWithURL(ctx, f, chrome.BlankURL)
+	l, err := lacros.LaunchWithURL(ctx, f.TestAPIConn(), f.LacrosPath(), chrome.BlankURL)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}

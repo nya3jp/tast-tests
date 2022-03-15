@@ -164,7 +164,8 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
-		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+		// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+		l, err := lacros.LaunchDeprecated(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}

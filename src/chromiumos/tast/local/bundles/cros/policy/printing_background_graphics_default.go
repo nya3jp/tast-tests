@@ -97,7 +97,8 @@ func PrintingBackgroundGraphicsDefault(ctx context.Context, s *testing.State) {
 			}
 
 			// Setup browser based on the chrome type.
-			conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), "")
+			// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+			conn, _, closeBrowser, err := browserfixt.SetUpWithURLDeprecated(ctx, s.FixtValue(), s.Param().(browser.Type), "")
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}
