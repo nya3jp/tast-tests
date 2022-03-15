@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChildWallpaperSync,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies Unicorn users can sync the wallpaper",
 		Contacts: []string{
 			"tobyhuang@chromium.org",
