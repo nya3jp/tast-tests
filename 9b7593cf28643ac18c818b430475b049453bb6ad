@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c94237_c620c067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-03-15T10:04:10Z",
+      "side": 1,
+      "message": "More constructive comment now.",
+      "revId": "9b7593cf28643ac18c818b430475b049453bb6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fb6b12d_e285f77f",
@@ -86,6 +103,30 @@
       "side": 1,
       "message": "I\u0027d vote for moving code that handles TPM resets and similar into it\u0027s own service. Here\u0027s an example for a fixture that\u0027s completly policy unrelated but uses your service just to reset the TPM: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/fixture.go?q\u003dfile:go%20TPM%20reset\u0026sq\u003dpackage:chromeos_public\n\nGo being syntactically challenging (having to create two services in policy tests means +X lines) should not be an argument for us to write something that doesn\u0027t make sense semantically.\n\nSo it\u0027d certainly be helpful for understanding tests, just maybe a bit more tedious for writing policy tests.",
       "parentUuid": "30c007d0_e957787b",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "9b7593cf28643ac18c818b430475b049453bb6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb33473e_d40b4009",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-03-15T10:04:10Z",
+      "side": 1,
+      "message": "Just found out that a remote hwsec helper exists already:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/hwsec/helpers.go;l\u003d425?q\u003dEnsureTPMAndSystemStateAreReset%20hwsec%20remote%20helper\u0026sq\u003dpackage:chromeos_public\n\nHow about the option of calling the hwsec helper in ownership.go to keep code duplication down and have the wrapper in one place?",
+      "parentUuid": "e8e748ff_6917a80e",
       "range": {
         "startLine": 15,
         "startChar": 6,
