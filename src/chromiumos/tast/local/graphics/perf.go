@@ -252,6 +252,74 @@ func collectPackagePerformanceCounters(ctx context.Context, interval time.Durati
 			}
 		}
 	}
+
+	return counters, nil
+}
+
+// collectCPUIdleStateCounters tries to gather how much time the Package was in
+// either of a series of C-States by using the kernel's CPUIdle implementation,
+// whose measurements are exposed in a series of debugfs files under
+// sys/devices/system/cpu/cpuX/cpuidle/, where X is the logical core index. See
+// https://www.kernel.org/doc/Documentation/cpuidle/sysfs.txt or
+// https://www.kernel.org/doc/html/latest/admin-guide/pm/cpuidle.html?highlight=cpuidle%20sysfs#representation-of-idle-states
+// for more information.
+func collectCPUIdleStateCounters(ctx context.Context, interval time.Duration) (counters map[string]int64, err error) {
+
+	const maxCounters = 10
+	type timeCounter struct {
+		filePath string
+		name     string
+	}
+	var timeCounters []timeCounter
+
+	for i := 0; i < maxCounters; i++ {
+		// TODO(mcasas): Unclear if cpu0 is good for the package or we'd need to
+		// average among all CPUs.
+		filePath := fmt.Sprintf("/sys/devices/system/cpu/cpu0/cpuidle/state%d/time", i)
+		if _, err := os.Stat(filePath); err != nil {
+			continue
+		}
+		// The C-State is one higher than the CPU idle "state" because c0 is understood
+		// to the "active" state (and it corresponds to an elapsed time measure).
+		name := fmt.Sprintf("c%d", i+1)
+		timeCounters = append(timeCounters, timeCounter{filePath: filePath, name: name})
+	}
+	if len(timeCounters) == 0 {
+		return nil, nil
+	}
+
+	start := time.Now()
+	counters = make(map[string]int64)
+	for _, timeCounter := range timeCounters {
+		v, err := ioutil.ReadFile(timeCounter.filePath)
+		if err != nil {
+			return nil, errors.Wrapf(err, "error reading from %s", timeCounter.filePath)
+		}
+		counters[timeCounter.name], err = strconv.ParseInt(strings.TrimSuffix(string(v), "\n"), 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "error converting %s", string(v))
+		}
+	}
+
+	if err := testing.Sleep(ctx, interval); err != nil {
+		return nil, errors.Wrap(err, "error sleeping")
+	}
+
+	for _, timeCounter := range timeCounters {
+		v, err := ioutil.ReadFile(timeCounter.filePath)
+		if err != nil {
+			return nil, errors.Wrapf(err, "error reading from %s", timeCounter.filePath)
+		}
+		endValue, err := strconv.ParseInt(strings.TrimSuffix(string(v), "\n"), 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "error converting %s", string(v))
+		}
+		counters[timeCounter.name] = endValue - counters[timeCounter.name]
+	}
+
+	elapsed := time.Now().Sub(start)
+	counters["tsc"] = elapsed.Microseconds()
+
 	return counters, nil
 }
 
@@ -318,8 +386,16 @@ func MeasurePackageCStateCounters(ctx context.Context, t time.Duration, p *perf.
 		return errors.Wrap(err, "error collecting C-State performance counters")
 	}
 	if counters == nil {
-		return nil
+		// Give a chance to CpuIdle generic counter readings.
+		counters, err = collectCPUIdleStateCounters(ctx, t)
+		if err != nil {
+			return errors.Wrap(err, "error collecting CpuIdle performance counter")
+		}
+		if counters == nil {
+			return nil
+		}
 	}
+
 	// "tsc" (Time Stamp Counter register) is a special entry because is the
 	// amount of cycles elapsed and gives a reference for all the C-States
 	// counters. We don't report it.
