@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AutomaticCleanupCritical,
-		Desc: "Test critical automatic disk cleanup",
+		Func:         AutomaticCleanupCritical,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test critical automatic disk cleanup",
 		Contacts: []string{
 			"vsavu@google.com",     // Test author
 			"gwendal@chromium.com", // Lead for Chrome OS Storage
@@ -43,23 +44,6 @@ func init() {
 
 func AutomaticCleanupCritical(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
-
-	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
-		chrome.NoLogin(),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment(),
-		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-	)
-	if err != nil {
-		s.Fatal("Chrome start failed: ", err)
-	}
-	defer cr.Close(ctx)
-
-	tconn, err := cr.SigninProfileTestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to open tconn: ", err)
-	}
 
 	for _, param := range []struct {
 		name      string                                   // name is the subtest name.
@@ -83,6 +67,23 @@ func AutomaticCleanupCritical(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// Start a Chrome instance that will fetch policies from the FakeDMS.
+			cr, err := chrome.New(ctx,
+				chrome.NoLogin(),
+				chrome.DMSPolicy(fdms.URL),
+				chrome.KeepEnrollment(),
+				chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			)
+			if err != nil {
+				s.Fatal("Chrome start failed: ", err)
+			}
+			defer cr.Close(ctx)
+
+			tconn, err := cr.SigninProfileTestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to open tconn: ", err)
+			}
+
 			// Update policies.
 			pb := fakedms.NewPolicyBlob()
 			pb.AddPolicies([]policy.Policy{param.policy})
@@ -154,6 +155,9 @@ func AutomaticCleanupCritical(ctx context.Context, s *testing.State) {
 			defer cryptohome.RemoveVault(ctx, user2)
 			// Unmount all users before removal.
 			defer cryptohome.UnmountAll(ctx)
+			// Note that unmount at the end will restart the UI, and disrupt the instance of Chrome
+			// that we've been running. Therefore, it is required to refresh the Chrome instance after
+			// every UnmountAll().
 
 			// Make sure to unmount the second user.
 			if err := cryptohome.UnmountVault(ctx, user2); err != nil {
