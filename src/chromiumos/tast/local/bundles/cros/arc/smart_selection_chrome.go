@@ -69,7 +69,7 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the address to appear.
-	address := nodewith.Name("1600 amphitheatre parkway").Role(role.StaticText)
+	address := nodewith.Name("1600 amphitheatre parkway").Role(role.StaticText).First()
 	if err := ui.WaitUntilExists(address)(ctx); err != nil {
 		s.Fatal("Failed to wait for address to load: ", err)
 	}
