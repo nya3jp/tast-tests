@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -27,19 +28,20 @@ type testParamsTablet struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECVerifyVK,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verify whether virtual keyboard window is present during change in tablet mode",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.CheckVirtualKeyboardService"},
 		Fixture:      fixture.NormalMode,
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.TouchScreen()),
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
 			Val: &testParamsTablet{
 				canDoTabletSwitch: true,
 				tabletModeOn:      "tabletmode on",
-				tabletModeOff:     "tabletmode reset",
+				tabletModeOff:     "tabletmode off",
 			},
 		}, {
 			Name:              "detachable",
@@ -103,7 +105,7 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 			{true, args.tabletModeOn},
 			{false, args.tabletModeOff},
 		} {
-			s.Logf("Tablet mode on: %t", dut.tabletMode)
+			s.Logf("Run test with tablet mode on: %t", dut.tabletMode)
 			if err := verifyVKIsPresent(ctx, h, cvkc, s, dut.tabletMode, dut.tabletState); err != nil {
 				s.Fatal("Failed to verify virtual keyboard status: ", err)
 			}
@@ -111,10 +113,35 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 	}
 }
 
+func checkAndSetTabletMode(ctx context.Context, h *firmware.Helper, s *testing.State, action string) error {
+	// regular expressions.
+	var (
+		tabletmodeNotFound = `Command 'tabletmode' not found or ambiguous`
+		tabletmodeStatus   = `\[\S+ tablet mode (enabled|disabled)\]`
+		basestateNotFound  = `Command 'basestate' not found or ambiguous`
+		basestateStatus    = `\[\S+ base state: (attached|detached)\]`
+		checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `)`
+	)
+	// Run EC command to turn on/off tablet mode.
+	s.Logf("Check command %q exists", action)
+	out, err := h.Servo.RunECCommandGetOutput(ctx, action, []string{checkTabletMode})
+	if err != nil {
+		return errors.Wrapf(err, "failed to run command %q", action)
+	}
+	tabletModeUnavailable := []*regexp.Regexp{regexp.MustCompile(tabletmodeNotFound), regexp.MustCompile(basestateNotFound)}
+	for _, v := range tabletModeUnavailable {
+		if match := v.FindStringSubmatch(out[0][0]); match != nil {
+			return errors.Errorf("device does not support tablet mode: %q", match)
+		}
+	}
+	s.Logf("Current tabletmode status: %q", out[0][1])
+	return nil
+}
+
 func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, s *testing.State, tabletMode bool, command string) error {
 	// Run EC command to put DUT in clamshell/tablet mode.
 	if command != "" {
-		if err := h.Servo.RunECCommand(ctx, command); err != nil {
+		if err := checkAndSetTabletMode(ctx, h, s, command); err != nil {
 			return errors.Wrap(err, "failed to set DUT tablet mode state")
 		}
 	}
@@ -146,5 +173,5 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 				tabletMode, res.IsVirtualKeyboardPresent)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second})
 }
