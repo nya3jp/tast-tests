@@ -39,6 +39,30 @@
       },
       "revId": "e3afa485127b059a7740eecbf6e40cd8fead9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d5fcc7_c8006eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-15T14:56:44Z",
+      "side": 1,
+      "message": "I think because the underlying binary is written to assume all local filepaths.",
+      "parentUuid": "2c3919d9_05f2fa3a",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 22
+      },
+      "revId": "e3afa485127b059a7740eecbf6e40cd8fead9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
