@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47b3aabc_15a6a3ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2022-03-15T00:29:03Z",
+      "side": 1,
+      "message": "Great thanks, I\u0027ve update the previous CL, can you take another look at this one, thanks!",
+      "parentUuid": "32e42c08_1c765b0a",
+      "revId": "84fbc52e003aaf0529e3c057d8586b84a44c3984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0570ebd6_d10eaa0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-03-14T04:42:33Z",
       "side": 1,
       "message": "There seems to be some dupicated codes (setups) in the subtests. How about just defining the unique actions in the subtest? and put the common codes inside the execution of the subtests.\n\nThen the subtest may look like:\n```\nname: \"AcceptSuggestionWithTab\"\nscenarios: ...\nerrStr:...\naction: uiauto.Combine(\"accept multiword suggestion with tab\",\n        keyboard.TypeAction(\"ho\"),\n\tutil.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), \"ho\"),\n\tui.WaitUntilExists(suggestionWindowFinder),\n\tkeyboard.AccelAction(\"Tab\"),\n\tutil.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), \"how are you\"),\n        ),\n...\n```\n\nThen the subtest execution code becomes something like:\n```\nfor _, subtest :\u003d range subtests {\n\ts.Run(ctx, subtest.name, func(ctx context.Context, s *testing.State) {\n\t    defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+string(subtest.name))\n\tif err :\u003d uiauto.UserAction(\n\t\t\"Multiword suggestion\",\n\t\tuiauto.Combine(\"...\",\n\t\t    its.Clear(inputField),\n\t\t    its.ClickFieldAndWaitForActive(inputField),\n\t\t    subtest.action,\n\t\t ),\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "84fbc52e003aaf0529e3c057d8586b84a44c3984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "066b449f_252dbaf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2022-03-15T00:29:03Z",
+      "side": 1,
+      "message": "Good call, updated the code to share the setup in the final subtest loop.",
+      "parentUuid": "0570ebd6_d10eaa0a",
       "range": {
         "startLine": 72,
         "startChar": 1,
