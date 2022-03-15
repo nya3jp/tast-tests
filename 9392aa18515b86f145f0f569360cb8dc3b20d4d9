@@ -50,6 +50,24 @@
       "message": "Just a reminder for review: please let me know if you have any concern or there is anything not addressed yet.",
       "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6464933f_5e8de6de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-15T18:11:42Z",
+      "side": 1,
+      "message": "Thank you, Hyung! JFYI I\u0027m still basing my work (https://crrev.com/c/3508772) on top of this CL.",
+      "parentUuid": "88fd0191_397c0e29",
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
