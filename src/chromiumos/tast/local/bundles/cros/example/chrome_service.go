@@ -15,6 +15,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/services/cros/example"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/policyutil"
 )
 
 func init() {
@@ -67,4 +71,34 @@ func (c *ChromeService) EvalOnTestAPIConn(ctx context.Context, req *example.Eval
 		return nil, err
 	}
 	return &example.EvalOnTestAPIConnResponse{ValueJson: string(res)}, nil
+}
+
+func (c *ChromeService) OpenPage(ctx context.Context, req *example.OpenPageRequest) (*empty.Empty, error) {
+	if c.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	_, err := c.cr.NewConn(ctx, req.Url)
+
+	if err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+func (c *ChromeService) RelaunchAfterUpdate(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	cr := c.cr
+
+	policyutil.OSSettingsPage(ctx, cr, "help")
+
+	tconn, _ := cr.TestAPIConn(ctx)
+
+	ui := uiauto.New(tconn)
+
+	restart := nodewith.Name("Restart").Role(role.Button)
+
+	ui.WaitUntilExists(restart)(ctx)
+	ui.LeftClick(restart)(ctx)
+
+	return &empty.Empty{}, nil
 }
