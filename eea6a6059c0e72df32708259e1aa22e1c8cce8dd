@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59999ed_3ba2eb29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-03-15T10:55:22Z",
+      "side": 1,
+      "message": "Thanks! I think this will make replacing TPM reset everywhere much easier.\n\nCould we also leave a comment (maybe referencing to a bug) at the hwsec remote helper\u0027s TPM reset function that it\u0027s meant to be replaced/a wrapper for the one in ownership_service?\n\nAlso, I noticed that this will most likely break rollback tests, will check and create a dependent CL to fix it if necessary.",
+      "revId": "eea6a6059c0e72df32708259e1aa22e1c8cce8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c880dc_1facf240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/ownership_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-03-15T10:55:22Z",
+      "side": 1,
+      "message": "nit: Does this need to be named if you don\u0027t use it? Same below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "eea6a6059c0e72df32708259e1aa22e1c8cce8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
