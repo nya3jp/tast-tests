@@ -8,6 +8,7 @@
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. chrome_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. automation_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. screen_recorder_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. audio_service.proto
 
 // Package ui provides all ui related types compiled from protobuf.
 package ui
