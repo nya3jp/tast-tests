@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
@@ -26,7 +25,6 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         YoutubeStreamCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Plays YouTube video of different quality and checks for any frame drops and if the audio is routing through expected device",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "andrescj@google.com", "intel-chrome-system-automation-team@intel.com", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -100,7 +98,7 @@ func YoutubeStreamCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer vh.SetVolume(cleanupCtx, originalVolume)
 
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
