@@ -17,7 +17,7 @@ func init() {
 		Func:         ECConsole,
 		Desc:         "Verifies that EC console is working",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Attr:         []string{"group:firmware", "firmware_ec", "firmware_bringup"},
 		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
