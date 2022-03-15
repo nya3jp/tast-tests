@@ -164,7 +164,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 // trimTestBlock is a dispatcher function to start trim test on the boot device
 // and on the slc.
 func trimTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
-	bootDevPartition, err := RootPartitionForTrim(ctx)
+	bootDevPartition, err := FreeRootPartition(ctx)
 	if err != nil {
 		s.Fatal("Failed to select partition for trim stress: ", err)
 	}

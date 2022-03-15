@@ -159,7 +159,7 @@ func RootPartitionForTrim(ctx context.Context) (string, error) {
 
 	testing.ContextLog(ctx, "Diskname: ", diskName, ", root: ", rootDev)
 	if diskName == rootDev {
-		freeRootPart, err := freeRootPartition(ctx)
+		freeRootPart, err := FreeRootPartition(ctx)
 		if err != nil {
 			return "", errors.Wrap(err, "failed selecting free root partition")
 		}
@@ -195,7 +195,7 @@ func rootDevicePartitionName(ctx context.Context) (string, error) {
 	return strings.TrimSpace(string(out)), nil
 }
 
-func freeRootPartition(ctx context.Context) (string, error) {
+func FreeRootPartition(ctx context.Context) (string, error) {
 	partition, err := rootDevicePartitionName(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read root partition info")
