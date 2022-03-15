@@ -16,6 +16,184 @@
       "message": "Hi\n\nCould you take a look at this CL?\n\nThank you in advance.\nRegards\nAndrzej",
       "revId": "b829ed4908aa60f161799188950254a05d1927fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b920ce94_2d3e83bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "+2 % nits\n\nwait for your teammate\u0027s review before submitting",
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73aaeaf_f46aedf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "nit: add docstring\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#doc-comments",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92212f54_86394bb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "huge nit: not need to use parenthesis here... just replace it it with comma",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e88ed9e_d8049963",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "huge nit, here and below: end sentence with period\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-sentences",
+      "range": {
+        "startLine": 43,
+        "startChar": 47,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6bf3778_b2ff7030",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "huge nit: wpa -\u003e WPA",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d94f0b5_b1378133",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "nit: you can do\n\n  for !scanSuccess {\n     ...\n  }",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef12e82_2df17b24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "cont above: ... and you can remove this part of the code",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1ee710_3599dc66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-15T17:04:57Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 117,
+        "startChar": 57,
+        "endLine": 117,
+        "endChar": 58
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
