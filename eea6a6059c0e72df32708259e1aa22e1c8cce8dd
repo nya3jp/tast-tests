@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "174089e3_d8e810be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-03-15T11:11:50Z",
+      "side": 1,
+      "message": "Ok, rollback tests are fine, they don\u0027t use the enrollment fixture.",
+      "revId": "eea6a6059c0e72df32708259e1aa22e1c8cce8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45c880dc_1facf240",
