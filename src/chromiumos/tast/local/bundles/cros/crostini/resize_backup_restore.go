@@ -7,8 +7,10 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/faillog"
@@ -77,12 +79,23 @@ func ResizeBackupRestore(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to shrink container for backup: ", err)
 	}
 
+	userName := strings.Split(cr.NormalizedUser(), "@")[0]
+
 	runInTerminal := func(cmd, outputFile string) error {
-		// Open Terminal app.
-		terminalApp, err := terminalapp.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to open Terminal app: ", err)
+		var terminalApp *terminalapp.TerminalApp
+		// Try to find Terminal app first.
+		if terminalApp, err = terminalapp.Find(ctx, tconn); err != nil {
+			// Failed to find the Terminal app. Try to open the Terminal app.
+			terminalApp, err = terminalapp.Launch(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to open Terminal app: ", err)
+			}
+		} else {
+			if _, err = ash.BringWindowToForeground(ctx, tconn, fmt.Sprintf("Terminal - %s@penguin: ~", userName)); err != nil {
+				s.Fatal("Failed to bring the Terminal app to the front: ", err)
+			}
 		}
+
 		return uiauto.Combine("running '"+cmd+"'",
 			terminalApp.RunCommand(keyboard, fmt.Sprintf("%s > %s 2>&1", cmd, outputFile)),
 			terminalApp.WaitForPrompt())(ctx)
@@ -197,7 +210,7 @@ func ResizeBackupRestore(ctx context.Context, s *testing.State) {
 	if err = st.WaitForUI(settings.RestoreFileWindow)(ctx); err != nil {
 		s.Fatal("Failed to find Restore file window: ", err)
 	}
-	if err = st.LeftClickUI(settings.RestoreTiniFile)(ctx); err != nil {
+	if err = ui.LeftClick(settings.RestoreTiniFile)(ctx); err != nil {
 		s.Fatal("Failed to find .tini in file list: ", err)
 	}
 	// Don't want to unfocus the .tini file here, so just use a raw LeftClick.
