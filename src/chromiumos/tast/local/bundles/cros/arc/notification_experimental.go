@@ -8,16 +8,19 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/android/ui"
+	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -55,7 +58,40 @@ func init() {
 	})
 }
 
-func testForStyle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, ui *uiauto.Context, pc pointer.Context, style string) error {
+func closeNotification(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, mousePc, touchPc pointer.Context, closeWay string) error {
+	notificationBounds, err := ui.Location(ctx, nodewith.ClassName("ArcNotificationContentView"))
+	if err != nil {
+		return errors.Wrap(err, "failed to get the notification bounds")
+	}
+
+	switch closeWay {
+	case "swipeOut":
+		if err := touchPc.Drag(
+			notificationBounds.CenterPoint(),
+			touchPc.DragTo(coords.NewPoint(0, notificationBounds.CenterPoint().Y), time.Second))(ctx); err != nil {
+			return errors.Wrap(err, "failed to swipe out the notification")
+		}
+	case "clickEvent":
+		if err := mousePc.ClickAt(notificationBounds.CenterPoint())(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the notification")
+		}
+	case "clearAllButton":
+		if err := ui.LeftClick(nodewith.Role(role.StaticText).Name("Clear all"))(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'Clear all' button")
+		}
+	case "closeButton":
+		if err := mouse.Move(tconn, notificationBounds.CenterPoint(), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move mouse on the notification")
+		}
+		if err := ui.LeftClick(nodewith.Role(role.Button).Name("Notification close"))(ctx); err != nil {
+			return errors.Wrap(err, "failed to click notification close button")
+		}
+	}
+
+	return nil
+}
+
+func testForStyle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *androidui.Device, ui *uiauto.Context, mousePc, touchPc pointer.Context, style, closeWay string) error {
 	if err := quicksettings.Show(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to open Quick Settings")
 	}
@@ -74,13 +110,8 @@ func testForStyle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui
 		return errors.Wrap(err, "failed to wait for Android to be idle")
 	}
 
-	notificationBounds, err := ui.Location(ctx, nodewith.ClassName("ArcNotificationContentView"))
-	if err != nil {
-		return errors.Wrap(err, "failed to get the notification bounds")
-	}
-
-	if err := pc.ClickAt(notificationBounds.CenterPoint())(ctx); err != nil {
-		return errors.Wrap(err, "failed to click the notification")
+	if err := closeNotification(ctx, tconn, ui, mousePc, touchPc, closeWay); err != nil {
+		return errors.Wrap(err, "failed to close the notification")
 	}
 
 	if err := ash.WaitUntilNotificationGone(ctx, tconn, 5*time.Second, ash.WaitIDContains(notification.ID)); err != nil {
@@ -103,10 +134,16 @@ func NotificationExperimental(ctx context.Context, s *testing.State) {
 	}
 	a := s.FixtValue().(*arc.PreData).ARC
 	d := s.FixtValue().(*arc.PreData).UIDevice
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(5 * time.Second)
 
-	pc := pointer.NewMouse(tconn)
-	defer pc.Close()
+	mousePc := pointer.NewMouse(tconn)
+	defer mousePc.Close()
+
+	touchPc, err := pointer.NewTouch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to set up the touch context: ", err)
+	}
+	defer touchPc.Close()
 
 	// Install the test app.
 	if err := a.Install(ctx, s.DataPath(arcNotificationTest2ApkFilename)); err != nil {
@@ -133,10 +170,12 @@ func NotificationExperimental(ctx context.Context, s *testing.State) {
 
 	// Test a single notification with a style.
 	for _, style := range []string{"basic", "big_text", "big_picture", "inbox", "messaging"} {
-		if err := testForStyle(ctx, tconn, a, d, ui, pc, style); err != nil {
-			s.Errorf("Failed to test a notification with style=%s: %v", style, err)
-			if err := ash.CloseNotifications(ctx, tconn); err != nil {
-				s.Fatal("Failed to close notifications")
+		for _, closeWay := range []string{"swipeOut", "clickEvent", "clearAllButton", "closeButton"} {
+			if err := testForStyle(ctx, tconn, a, d, ui, mousePc, touchPc, style, closeWay); err != nil {
+				s.Errorf("Failed to test a notification with style=%s closeWay=%s: %v", style, closeWay, err)
+				if err := ash.CloseNotifications(ctx, tconn); err != nil {
+					s.Fatal("Failed to close notifications")
+				}
 			}
 		}
 	}
