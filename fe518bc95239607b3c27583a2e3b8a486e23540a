@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec4bc039_98b8bc73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-03-15T01:46:25Z",
+      "side": 1,
+      "message": "Thanks for suggestion!",
+      "parentUuid": "38166a80_9aec338a",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "fe518bc95239607b3c27583a2e3b8a486e23540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39cd01c3_f6713c20",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-14T06:25:12Z",
       "side": 1,
       "message": "This return is redundant IIUC.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 12
+      },
+      "revId": "fe518bc95239607b3c27583a2e3b8a486e23540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77470e03_830b1376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-03-15T01:46:25Z",
+      "side": 1,
+      "message": "Thanks for suggestion!",
+      "parentUuid": "39cd01c3_f6713c20",
       "range": {
         "startLine": 104,
         "startChar": 1,
