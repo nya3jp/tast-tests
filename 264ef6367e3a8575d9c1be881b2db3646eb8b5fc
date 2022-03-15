@@ -34,6 +34,24 @@
       "parentUuid": "d624ca04_3c39a77e",
       "revId": "264ef6367e3a8575d9c1be881b2db3646eb8b5fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef14b3a_94e927a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-03-15T01:15:20Z",
+      "side": 1,
+      "message": "Ah, I see.\nYou need to declare `android.permission.INTERNET` permission in AndroidManifest.xml to allow the app to use internet connection.",
+      "parentUuid": "cf61ebc4_af6c90bf",
+      "revId": "264ef6367e3a8575d9c1be881b2db3646eb8b5fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
