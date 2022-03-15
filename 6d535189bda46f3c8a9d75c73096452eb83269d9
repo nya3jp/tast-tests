@@ -50,6 +50,24 @@
       "message": "I don\u0027t know if the new wallpaper app needs to use Lacros or not. Rubber stamping.",
       "revId": "6d535189bda46f3c8a9d75c73096452eb83269d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed7d8bb_b0c12744",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-15T01:04:53Z",
+      "side": 1,
+      "message": "+hidehiko, can you help confirm if the wallpaper app needs to support Lacros or are we good for the MVP launch?",
+      "parentUuid": "72ee8951_390f1355",
+      "revId": "6d535189bda46f3c8a9d75c73096452eb83269d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
