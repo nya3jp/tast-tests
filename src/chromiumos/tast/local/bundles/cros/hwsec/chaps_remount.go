@@ -26,7 +26,7 @@ func init() {
 			"yich@google.com",
 			"cros-hwsec@chromium.org",
 		},
-		Timeout: 4 * time.Minute,
+		Timeout: 20 * time.Minute,
 	})
 }
 
