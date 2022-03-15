@@ -16,6 +16,40 @@
       "message": "+xiqiruan tobyhuang danan for the test authors\u0027 review\nCan you help determine if each test should have lacros variations? It is great if you can confirm each test since it\u0027s just my initial assessment that may not be correct from the product perspective. Thanks,\n\n+hidehiko for the lacros tast review",
       "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1efb3a1_00d0ec3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309215
+      },
+      "writtenOn": "2022-03-15T21:28:14Z",
+      "side": 1,
+      "message": "This should probably have a Lacros variant since it is behavior that appears in the context of a browser window.",
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9870257d_4a16a7ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309215
+      },
+      "writtenOn": "2022-03-15T21:28:14Z",
+      "side": 1,
+      "message": "This shouldn\u0027t need a Lacros variant because the in-session EDU Coexistence flow is launched from ChromeOS settings, not the browser.",
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
