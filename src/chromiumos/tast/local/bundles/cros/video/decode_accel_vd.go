@@ -28,7 +28,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_decodeaccel"},
 		Params: []testing.Param{{
 			Name:              "av1",
 			Val:               videoDecodeAccelVdTestParam{dataPath: "test-25fps.av1.ivf"},
