@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e06c339_6916e1c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-03-15T11:02:30Z",
+      "side": 1,
+      "message": "Hi vsavu@ PTAL,\n\nThis is meant to fix these errors: https://tastboard.corp.google.com/test/policy.AutofillCreditCardEnabled.lacros",
+      "revId": "6bec9254cbb8c07d7aeceefb8110d75644ca5fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
