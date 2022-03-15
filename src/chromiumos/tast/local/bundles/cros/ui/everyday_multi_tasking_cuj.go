@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj/bluetooth"
 	et "chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj"
 	"chromiumos/tast/local/bundles/cros/ui/setup"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
@@ -152,7 +151,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	app := param.appName
 	enableBT := param.enableBT
 
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	cleanupCtx := ctx

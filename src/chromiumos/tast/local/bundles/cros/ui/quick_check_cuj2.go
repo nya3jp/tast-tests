@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/quickcheckcuj"
 	"chromiumos/tast/local/bundles/cros/ui/setup"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
@@ -69,7 +68,7 @@ func init() {
 
 // QuickCheckCUJ2 measures the system performance after login or wakeup by checking common apps
 func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
