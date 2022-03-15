@@ -207,6 +207,7 @@ func CertificateExists(ctx context.Context, cr *chrome.Chrome, br *browser.Brows
 		ui.LeftClick(certPanel),
 		kb.AccelAction("Tab"),
 		kb.AccelAction("Enter"),
+		ui.WaitUntilExists(nodewith.Role(role.Button).Name("More actions")),
 	)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to open collapsible panel")
 	}
