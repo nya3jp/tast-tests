@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7e159d_18a8d33c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-15T21:19:37Z",
+      "side": 1,
+      "message": "+xiqiruan tobyhuang danan for the test authors\u0027 review\nCan you help determine if each test should have lacros variations? It is great if you can confirm each test since it\u0027s just my initial assessment that may not be correct from the product perspective. Thanks,\n\n+hidehiko for the lacros tast review",
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
