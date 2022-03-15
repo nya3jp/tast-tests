@@ -167,10 +167,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 
 	var cs ash.ConnSource
 	if testParam.useLacros {
-		// Launch lacros via shelf.
+		// Launch lacros.
 		f := s.FixtValue().(cuj.FixtureData).LacrosFixt
-
-		l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
+		l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}

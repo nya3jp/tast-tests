@@ -71,7 +71,8 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	} else {
 		var err error
 		var l *lacros.Lacros
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), bt)
+		// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+		cr, l, cs, err = lacros.SetupDeprecated(ctx, s.FixtValue(), bt)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

@@ -36,7 +36,7 @@ func init() {
 }
 
 func Basic(ctx context.Context, s *testing.State) {
-	l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+	l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn(), s.FixtValue().(lacrosfixt.FixtValue).LacrosPath())
 	defer lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath(), s.HasError)
 
 	if err != nil {

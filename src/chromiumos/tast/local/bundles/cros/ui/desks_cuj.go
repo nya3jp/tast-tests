@@ -63,7 +63,8 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		cs = cr
 	case browser.TypeLacros:
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
+		// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+		cr, l, cs, err = lacros.SetupDeprecated(ctx, s.FixtValue(), browser.TypeLacros)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

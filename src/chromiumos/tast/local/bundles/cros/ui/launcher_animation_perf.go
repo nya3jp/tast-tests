@@ -160,7 +160,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 
 			if numWindows != 0 {
-				_, l, cs, err := lacros.Setup(ctx, f, s.Param().(browser.Type))
+				// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+				_, l, cs, err := lacros.SetupDeprecated(ctx, f, s.Param().(browser.Type))
 				if err != nil {
 					s.Fatal("Failed to setup lacrostest: ", err)
 				}

@@ -72,10 +72,10 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
 	if s.Param().(bool) { // Lacros Chrome
-		// Launch lacros via shelf.
+		// Launch lacros.
 		f := s.FixtValue().(lacrosfixt.FixtValue)
-
-		l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
+		// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+		l, err := lacros.LaunchDeprecated(ctx, f)
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}

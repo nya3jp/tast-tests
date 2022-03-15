@@ -133,7 +133,8 @@ func Chromevox(ctx context.Context, s *testing.State) {
 	defer crastestclient.Unmute(ctxCleanup)
 
 	// Setup a browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(testParam).browserType)
+	// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+	br, closeBrowser, err := browserfixt.SetUpDeprecated(ctx, s.FixtValue(), s.Param().(testParam).browserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
