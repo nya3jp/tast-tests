@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43062e70_5e2199d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-15T08:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90caa0fd_5ba7576d",
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c680ecdc_90169630",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f77156_5ef9ddca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-15T08:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c680ecdc_90169630",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f696973d_48a8f3b0",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-02-17T22:00:48Z",
       "side": 1,
       "message": "can this be a more specific name? it should be a window right?",
+      "range": {
+        "startLine": 120,
+        "startChar": 38,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3e8b8b_96056f17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-15T08:10:37Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f696973d_48a8f3b0",
       "range": {
         "startLine": 120,
         "startChar": 38,
@@ -127,6 +193,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2527c0dc_c5948c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-15T08:10:37Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b0abf400_4483b8fd",
+      "range": {
+        "startLine": 129,
+        "startChar": 45,
+        "endLine": 129,
+        "endChar": 46
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca8db5e_43bc39a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-15T08:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae630ee3_387589e9",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8775c2bb_677faece",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-02-17T22:00:48Z",
       "side": 1,
       "message": "and here",
+      "range": {
+        "startLine": 175,
+        "startChar": 40,
+        "endLine": 175,
+        "endChar": 41
+      },
+      "revId": "be35391bfa091cb390b37fcaae259d10c81dd55b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa76cc28_78ecb8fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/window_resize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-15T08:10:37Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "8775c2bb_677faece",
       "range": {
         "startLine": 175,
         "startChar": 40,
