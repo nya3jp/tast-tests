@@ -280,32 +280,42 @@ var intToRotationAngle = map[int]RotationAngle{
 	-1:  RotateAny,
 }
 
-// RotateToLandscape rotates the primary display orientation to landscape, and returns
+// RotateToLandscape rotates the display only if current orientation type is "portrait", and returns
 // a function that restores the original orientation setting.
 func RotateToLandscape(ctx context.Context, tconn *chrome.TestConn) (func(context.Context) error, error) {
-	pdInfo, err := GetPrimaryInfo(ctx, tconn)
+	orientation, err := GetOrientation(ctx, tconn)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to obtain the orientation info")
 	}
+	testing.ContextLogf(ctx, "Current orientation type: %d; orientation angle: %v", orientation.Angle, orientation.Type)
 
-	if pdInfo.Bounds.Height > pdInfo.Bounds.Width {
-		restoreRotation := RotateAny
-		if val, ok := intToRotationAngle[pdInfo.Rotation]; ok {
-			restoreRotation = val
+	// Rotate the display only if current orientation is in portrait position.
+	if orientation.Type == OrientationPortraitPrimary || orientation.Type == OrientationPortraitSecondary {
+		info, err := GetPrimaryInfo(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to obtain primary display info")
+		}
+		restoreRotation := intToRotationAngle[info.Rotation]
+		testing.ContextLog(ctx, "Current rotation setting: ", restoreRotation)
+
+		// If the orientation angle is equal to 0 or 180, rotate 270 (or 90) degrees.
+		// If the orientation angle is equal to 90 or 270, rotate 0 (or 180) degrees.
+		var targetRotation RotationAngle
+		if orientation.Angle == 0 || orientation.Angle == 180 {
+			targetRotation = Rotate270
 		} else {
-			testing.ContextLogf(ctx, "Display rotation %d is not supported; restore to RotateAny", pdInfo.Rotation)
+			targetRotation = Rotate0
 		}
-		targetRotation := Rotate0
-		if pdInfo.Rotation == 0 || pdInfo.Rotation == 180 {
-			targetRotation = Rotate90
-		}
-		if err := SetDisplayRotationSync(ctx, tconn, pdInfo.ID, targetRotation); err != nil {
+
+		testing.ContextLog(ctx, "Target rotation setting: ", targetRotation)
+		if err := SetDisplayRotationSync(ctx, tconn, info.ID, targetRotation); err != nil {
 			return nil, err
 		}
 		return func(ctx context.Context) error {
-			return SetDisplayRotationSync(ctx, tconn, pdInfo.ID, restoreRotation)
+			return SetDisplayRotationSync(ctx, tconn, info.ID, restoreRotation)
 		}, nil
 	}
+
 	return func(context.Context) error {
 		return nil
 	}, nil

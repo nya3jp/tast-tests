@@ -527,8 +527,8 @@ func rotate(ctx context.Context, tconn *chrome.TestConn) error {
 	// The order of rotation angles will rotate clockwise.
 	testing.ContextLog(ctx, "Rotating the display")
 	rotationAngles := []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0}
-	if pdInfo.Rotation == 90 {
-		rotationAngles = []display.RotationAngle{display.Rotate180, display.Rotate270, display.Rotate0, display.Rotate90}
+	if pdInfo.Rotation == 270 {
+		rotationAngles = []display.RotationAngle{display.Rotate0, display.Rotate90, display.Rotate180, display.Rotate270}
 	}
 	for _, rotation := range rotationAngles {
 		if err = display.SetDisplayRotationSync(ctx, tconn, screen.ID, rotation); err != nil {
