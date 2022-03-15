@@ -145,7 +145,9 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
 		return errors.Wrapf(err, "failed to click HTML element and navigate within %v", timeout)
 	}
-
+	if err := tab.conn.Eval(ctx, "window.location.href", &tab.url); err != nil {
+		return errors.Wrap(err, "failed to get URL")
+	}
 	testing.ContextLogf(ctx, "HTML element clicked [%s], page navigates to: %q", pattern, tab.url)
 	tab.url = strings.TrimSuffix(tab.url, "/")
 
@@ -288,7 +290,7 @@ var allTargets = []struct {
 	{cuj.WikipediaAboutURL, newPageInfo(Basic, wikipedia, `/Wikipedia:About`, `/Wikipedia:Contact_us`)},
 	{cuj.WikipediaHelpURL, newPageInfo(Plus, wikipedia, `/Help:Contents`, `/Help:Introduction`)},
 	{cuj.WikipediaCommunityURL, newPageInfo(Plus, wikipedia, `/Wikipedia:Community_portal`, `/Special:RecentChanges`)},
-	{cuj.WikipediaPandemicURL, newPageInfo(Premium, wikipedia, `/COVID-19_pandemic`, `/Coronavirus_disease_2019`)},
+	{cuj.WikipediaPandemicURL, newPageInfo(Premium, wikipedia, `/COVID-19`, `/Coronavirus_diseases`)},
 
 	{cuj.RedditWallstreetURL, newPageInfo(Basic, reddit, `/r/wallstreetbets/hot/`, `/r/wallstreetbets/new/`)},
 	{cuj.RedditTechNewsURL, newPageInfo(Basic, reddit, `/r/technews/hot/`, `/r/technews/new/`)},
@@ -362,6 +364,30 @@ func generateTabSwitchTargets(caseLevel Level) ([]*chromeWindow, error) {
 	// Shuffle the URLs to random order.
 	rand := rand.New(rand.NewSource(1))
 	rand.Shuffle(len(targets), func(i, j int) { targets[i], targets[j] = targets[j], targets[i] })
+
+	// If even-numbered tabs are Wikipedia or Yahoo tabs, swap to odd-numbered tabs.
+	j := 0
+	isOddTab := func(idx int) bool {
+		return (idx%tabNum)%2 == 0
+	}
+	for i := range targets {
+		if !isOddTab(i) && (targets[i].info.webName == wikipedia || targets[i].info.webName == yahooNews) {
+			for {
+				if j >= len(targets) {
+					break
+				}
+				if isOddTab(j) {
+					webName := targets[j].info.webName
+					if webName != wikipedia && webName != yahooNews {
+						targets[i], targets[j] = targets[j], targets[i]
+						j++
+						break
+					}
+				}
+				j++
+			}
+		}
+	}
 	idx := 0
 	windows := make([]*chromeWindow, winNum)
 	for i := range windows {
