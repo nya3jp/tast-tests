@@ -33,6 +33,93 @@
       "message": "N.B. This has side effects, like showing the mouse, showing the hotseat, and showing a tooltip. This can affect perf tests. We can /attempt/ to try to reverse these side effects but IMO it\u0027s fragile.\n\nIMO we should instead use an autotest private API to do this. Would like to hear if anyone has any other ideas though.",
       "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec27f13_e494fdbb",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-15T15:19:21Z",
+      "side": 1,
+      "message": "curious, how different is this from `apps.Launch` calling chrome.autotestPrivate.launchApp internally? Should we provide both ways? I\u0027ve seen some tests use `apps.Launch`, some `LaunchFromShelf` and others don\u0027t care much. If apps.Launch is reliable it could probably be the default instead?",
+      "parentUuid": "518c7295_d1c2501f",
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95648f0f_75369635",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-15T15:19:21Z",
+      "side": 1,
+      "message": "How is it exposed to test writers? via browserfixt or any generalized version to browser package?",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96d2500_373b5c6f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-15T15:19:21Z",
+      "side": 1,
+      "message": "is it always going to be a blank page target? any comment may help.",
+      "range": {
+        "startLine": 104,
+        "startChar": 59,
+        "endLine": 104,
+        "endChar": 61
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986b9766_126ab436",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-15T15:19:21Z",
+      "side": 1,
+      "message": "nit: `pc`? or ts might be confusing here if there were non-page types of targets.",
+      "range": {
+        "startLine": 118,
+        "startChar": 68,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

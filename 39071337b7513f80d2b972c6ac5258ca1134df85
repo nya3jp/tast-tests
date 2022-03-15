@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c0f2a0_e9793379",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-15T15:19:21Z",
+      "side": 0,
+      "message": "clarification: It could have addressed this already, but how do we make sure lacros.log is saved per test with this new approach?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "39071337b7513f80d2b972c6ac5258ca1134df85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
