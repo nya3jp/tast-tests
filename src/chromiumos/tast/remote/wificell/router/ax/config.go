@@ -31,9 +31,26 @@ const (
 	GtAxe11000
 	// Ax6100 is for the Ax6100 device.
 	Ax6100
-	// Invalid is the default DeviceType.
-	Invalid
+	// Unknown means DeviceType will be resolved based on host.
+	Unknown
 )
+
+func (dt DeviceType) String() string {
+	var typeStr string
+	switch dt {
+	case GtAx11000:
+		typeStr = "Legacy"
+	case GtAxe11000:
+		typeStr = "GtAxe11000"
+	case Ax6100:
+		typeStr = "Ax6100"
+	case Unknown:
+		typeStr = "Unknown"
+	default:
+		typeStr = string(rune(dt))
+	}
+	return typeStr
+}
 
 // Config stores the necessary information for an AX test to run.
 type Config struct {
