@@ -6,7 +6,9 @@ package wifi
 
 import (
 	"context"
+	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/google/gopacket/layers"
 
 	"chromiumos/tast/errors"
@@ -15,6 +17,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
 
@@ -30,6 +33,45 @@ func init() {
 		Fixture:      "wificellFixt",
 		SoftwareDeps: []string{"mbo"},
 	})
+}
+
+func requestScanAndWaitForReport(ctx context.Context, s *testing.State) {
+	tf := s.FixtValue().(*wificell.TestFixture)
+
+	// Wait for the current scan (if any in progress) to finish just
+	// to make sure that below we get scan report for a scan request
+	// issued AFTER modification of MBOAssocDisallow
+	if _, err := tf.WifiClient().WaitScanIdle(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to wait for scan to be idle")
+	}
+	wpaMonitor, stop, ctx, err := tf.StartWPAMonitor(ctx)
+	if err != nil {
+		s.Fatal("Failed to start wpa monitor")
+	}
+	defer stop()
+	scanSuccess := false
+	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	req := &wifi.RequestScansRequest{Count: 1}
+	if _, err := tf.WifiClient().RequestScans(timeoutCtx, req); err != nil {
+		s.Fatal("Failed to request scan: ", err)
+	}
+	for {
+		event, err := wpaMonitor.WaitForEvent(timeoutCtx)
+		if err != nil {
+			s.Fatal("Failed to wait for scan event: ", err)
+		}
+		if event == nil { // timeout
+			break
+		}
+		_, scanSuccess = event.(*wificell.ScanResultsEvent)
+		if scanSuccess {
+			break
+		}
+	}
+	if !scanSuccess {
+		s.Fatal("Unable to get scan results")
+	}
 }
 
 func MBOAssocDisallow(ctx context.Context, s *testing.State) {
@@ -71,6 +113,9 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 	if err := ap.Set(ctx, hostapd.PropertyMBOAssocDisallow, "1"); err != nil {
 		s.Fatal("Unable to set assoc disallow on AP: ", err)
 	}
+
+	// Make sure at least 1 scan with new setting is received
+	requestScanAndWaitForReport(ctx, s)
 
 	s.Log("Attempting to connect to AP")
 	expectFailConnect := func(ctx context.Context) error {
