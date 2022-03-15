@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/productivitycuj"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
@@ -51,7 +50,7 @@ func init() {
 }
 
 func MicrosoftOfficeWebCUJ(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 
 	sampleSheetURL, ok := s.Var("ui.sampleMSOfficeSheetURL")
 	if !ok {

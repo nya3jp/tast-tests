@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cujrunner"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -30,7 +30,7 @@ func init() {
 }
 
 func CUJRunner(ctx context.Context, s *testing.State) {
-	runner := cujrunner.NewRunner(s.FixtValue().(chrome.HasChrome).Chrome())
+	runner := cujrunner.NewRunner(s.FixtValue().(cuj.FixtureData).Chrome)
 	if err := runner.Run(ctx, s, s.DataPath("cuj_config.json")); err != nil {
 		s.Fatal("Failed to run: ", err)
 	}

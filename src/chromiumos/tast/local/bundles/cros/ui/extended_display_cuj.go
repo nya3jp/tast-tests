@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
@@ -57,7 +56,7 @@ func init() {
 // Known issues: b:187165216 describes an issue that click event cannot be executed
 // on extended display on certain models.
 func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	cleanupCtx := ctx
