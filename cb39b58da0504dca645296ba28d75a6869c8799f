@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5eb3455_894c8fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-15T22:48:43Z",
+      "side": 1,
+      "message": "LGTM. Please ask a domain expert to give you a CR+2. \n\nThis is just a question. Do you need to change control file? If so, I suggest you link that CL and this CL together.\n",
+      "revId": "cb39b58da0504dca645296ba28d75a6869c8799f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
