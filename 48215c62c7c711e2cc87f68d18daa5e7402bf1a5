@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c443d2_97a22340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto_with_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-03-15T10:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a4d3ec_551b570f",
+      "range": {
+        "startLine": 25,
+        "startChar": 97,
+        "endLine": 25,
+        "endChar": 134
+      },
+      "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4af4608_9a68711f",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-02-23T10:13:37Z",
       "side": 1,
       "message": "Handle error",
+      "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "985c896c_340671d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto_with_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-03-15T10:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4af4608_9a68711f",
       "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "879eb288_ba2a90bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto_with_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-03-15T10:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bbb9b00_b926661c",
+      "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5fe32cb_5cb03877",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-02-23T10:13:37Z",
       "side": 1,
       "message": "Also here",
+      "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0591543b_e6c33bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto_with_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-03-15T10:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5fe32cb_5cb03877",
       "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b1ac0e_4c31c400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto_with_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-03-15T10:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b191704_64f8ba22",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 9
+      },
+      "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "823ebbbb_ba2f673a",
@@ -128,6 +230,30 @@
       "writtenOn": "2022-02-23T10:13:37Z",
       "side": 1,
       "message": "maybe performRequest?",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 20
+      },
+      "revId": "48215c62c7c711e2cc87f68d18daa5e7402bf1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e48156_17906b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto_with_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-03-15T10:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "823ebbbb_ba2f673a",
       "range": {
         "startLine": 188,
         "startChar": 5,
