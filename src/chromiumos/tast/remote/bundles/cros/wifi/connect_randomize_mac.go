@@ -62,7 +62,7 @@ func ConnectRandomizeMAC(ctx context.Context, s *testing.State) {
 	// pcap but spawn it here and use manually.
 	pcapRouter, ok := tf.Pcap().(support.Capture)
 	if !ok {
-		s.Fatal("Device without capture support - device type: ", tf.Pcap().RouterTypeName())
+		s.Fatal("Device without capture support - device type: ", tf.Pcap().RouterType().String())
 	}
 
 	// Get the MAC address of WiFi interface.

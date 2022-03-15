@@ -174,11 +174,6 @@ func (r *Router) RouterType() support.RouterType {
 	return r.routerType
 }
 
-// RouterTypeName returns the human-readable name of this Router's RouterType.
-func (r Router) RouterTypeName() string {
-	return "Legacy"
-}
-
 // RouterName returns the name of the managed router device.
 func (r *Router) RouterName() string {
 	return r.name
