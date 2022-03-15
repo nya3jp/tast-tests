@@ -402,7 +402,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 			}
 			// Validate that the pcap router actually supports pcap
 			if _, ok := tf.pcap.(support.Capture); !ok {
-				return nil, errors.Errorf("router type %q does not support Capture", tf.pcap.RouterTypeName())
+				return nil, errors.Errorf("router type %q does not support Capture", tf.pcap.RouterType().String())
 			}
 		}
 	}
@@ -440,7 +440,7 @@ func (tf *TestFixture) CollectLogs(ctx context.Context) error {
 		// Assert router can collect logs
 		r, ok := rt.object.(support.Logs)
 		if !ok {
-			return errors.Errorf("router type %q does not support Logs", rt.object.RouterTypeName())
+			return errors.Errorf("router type %q does not support Logs", rt.object.RouterType().String())
 		}
 		err := r.CollectLogs(ctx)
 		if err != nil {
@@ -584,7 +584,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}
 		p, ok := tf.pcap.(support.Capture)
 		if !ok {
-			return nil, errors.Errorf("pcap device with router type %q does not have log capture support", tf.pcap.RouterTypeName())
+			return nil, errors.Errorf("pcap device with router type %q does not have log capture support", tf.pcap.RouterType().String())
 		}
 		capturer, err = p.StartCapture(ctx, name, config.Channel, freqOps)
 		if err != nil {
@@ -644,7 +644,7 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 	defer st.End()
 	p, ok := tf.pcap.(support.Capture)
 	if !ok {
-		return errors.Errorf("router type %q does not support Capture", tf.pcap.RouterTypeName())
+		return errors.Errorf("router type %q does not support Capture", tf.pcap.RouterType().String())
 	}
 	var firstErr error
 
@@ -1142,7 +1142,7 @@ func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, ap *AP
 	ctxForCloseFrameSender := ctx
 	r, ok := tf.Router().(support.FrameSender)
 	if !ok {
-		return errors.Errorf("router type %q does not support FrameSender", tf.Router().RouterTypeName())
+		return errors.Errorf("router type %q does not support FrameSender", tf.Router().RouterType().String())
 	}
 	ctx, cancel := r.ReserveForCloseFrameSender(ctx)
 	defer cancel()

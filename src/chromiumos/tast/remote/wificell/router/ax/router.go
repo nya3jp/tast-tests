@@ -43,11 +43,6 @@ func (r *Router) RouterType() support.RouterType {
 	return r.routerType
 }
 
-// RouterTypeName returns the human-readable name of this Router's RouterType.
-func (r *Router) RouterTypeName() string {
-	return "AsusAX"
-}
-
 // stageRouterParam changes the router configuration in memory. The actual router configuration does not take effect until restartWirelessService is invoked which pulls the configuration from memory.
 func (r *Router) stageRouterParam(ctx context.Context, band RadioEnum, key NVRAMKeyEnum, value string) error {
 	return r.host.CommandContext(ctx, "/bin/nvram", "set", fmt.Sprintf("%s_%s=%s", band, key, value)).Run()
