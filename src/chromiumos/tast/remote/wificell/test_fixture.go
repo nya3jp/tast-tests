@@ -141,6 +141,15 @@ func TFPcapType(rtype support.RouterType) TFOption {
 	}
 }
 
+// TFHostUsers sets the hostname to username map used when choosing the username
+// to use when attempting to connect to the respective hostname. Any hostname
+// not in the map will use the default username, root.
+func TFHostUsers(hostUsers map[string]string) TFOption {
+	return func(tf *TestFixture) {
+		tf.hostUsers = hostUsers
+	}
+}
+
 // TFServiceName is the service needed by TestFixture.
 const TFServiceName = "tast.cros.wifi.ShillService"
 
@@ -156,6 +165,7 @@ type TestFixture struct {
 	rpc        *rpc.Client
 	wifiClient *WifiClient
 
+	hostUsers  map[string]string
 	routers    []routerData
 	routerType support.RouterType
 	pcapType   support.RouterType
@@ -200,8 +210,11 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 
 	var conn *ssh.Conn
 
-	if tf.routerType == support.AxT {
-		sopt.User = "admin"
+	if tf.hostUsers != nil {
+		if username, ok := tf.hostUsers[hostname]; ok {
+			testing.ContextLogf(ctx, "Using ssh username override %q for host %q", username, hostname)
+			sopt.User = username
+		}
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
@@ -1290,6 +1303,11 @@ func resolveRouterTypeFromHost(ctx context.Context, host *ssh.Conn) (support.Rou
 		return -1, err
 	} else if isOpenWrt {
 		return support.OpenWrtT, nil
+	}
+	if isAx, err := ax.HostIsAxRouter(ctx, host); err != nil {
+		return -1, err
+	} else if isAx {
+		return support.AxT, nil
 	}
 	return support.UnknownT, nil
 }
