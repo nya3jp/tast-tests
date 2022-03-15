@@ -22,6 +22,30 @@
       },
       "revId": "9b7593cf28643ac18c818b430475b049453bb6ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dcd150c_9708d05a",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-03-15T09:45:49Z",
+      "side": 1,
+      "message": "-and as (needed to be quick as I saw you already have +2)",
+      "parentUuid": "4fb6b12d_e285f77f",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "9b7593cf28643ac18c818b430475b049453bb6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
