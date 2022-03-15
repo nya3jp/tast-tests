@@ -7,49 +7,14 @@ package lacrosfixt
 import (
 	"context"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
-
-// prepareLacrosBinary ensures that lacros-chrome binary is available on
-// disk and ready to launch. Does not launch the binary.
-// This will extract lacros-chrome to where the lacrosRootPath constant points to.
-func prepareLacrosBinary(ctx context.Context, dataArtifactPath string) error {
-	testing.ContextLog(ctx, "Preparing the environment to run Lacros")
-	if err := os.RemoveAll(lacrosTestPath); err != nil && !os.IsNotExist(err) {
-		return errors.Wrap(err, "failed to remove old test artifacts directory")
-	}
-
-	if err := os.MkdirAll(lacrosTestPath, os.ModePerm); err != nil {
-		return errors.Wrap(err, "failed to make new test artifacts directory")
-	}
-
-	if err := os.Chown(lacrosTestPath, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-		return errors.Wrap(err, "failed to chown test artifacts directory")
-	}
-
-	testing.ContextLog(ctx, "Extracting lacros binary")
-	tarCmd := testexec.CommandContext(ctx, "sudo", "-E", "-u", "chronos",
-		"tar", "-xvf", dataArtifactPath, "-C", lacrosTestPath)
-
-	if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to untar test artifacts")
-	}
-
-	if err := os.Chmod(lacrosRootPath, 0777); err != nil {
-		return errors.Wrap(err, "failed to change permissions of the binary root dir path")
-	}
-
-	return nil
-}
 
 // ExtensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
 func ExtensionArgs(extID, extList string) []string {
@@ -77,17 +42,14 @@ type LacrosConfig struct {
 	deployedPath string // dirpath to lacros executable file
 }
 
-// WithVar is a method to configure from the runtime var lacrosDeployedBinary and external data artifact.
-// It is useful when Lacros should be deployed with the runtime var primariliy in Chromium. This will precede over any existing config.
-// TestingState allows both testing.FixtState and testing.State to be passed in.
+// WithVar is a method to configure from the runtime var lacrosDeployedBinary.
+// It is useful when Lacros should be deployed with the runtime var primariliy
+// in Chromium. This will take precedence over any existing config. TestingState
+// allows both testing.FixtState and testing.State to be passed in.
 func (cfg LacrosConfig) WithVar(s TestingState) LacrosConfig {
 	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
 	// lacros-chrome instead of always downloading from a gcs location.
 	cfg.deployedPath, cfg.deployed = s.Var(LacrosDeployedBinary)
-	// If External, deployedPath is set to the path to the compressed Lacros image that needs to be installed in prepareLacrosBinary later.
-	if cfg.SetupMode == External {
-		cfg.deployedPath = s.DataPath(dataArtifact)
-	}
 	return cfg
 }
 
@@ -127,10 +89,6 @@ func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=rootfs"))
 	case Omaha:
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=stateful"))
-	case External:
-		// If External or deployed we should specify the path.
-		// This will override the lacros-selection argument.
-		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+cfg.deployedPath))
 	}
 	if cfg.deployed {
 		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+cfg.deployedPath))
@@ -176,24 +134,19 @@ func EnsureLacrosReadyForLaunch(ctx context.Context, cfg LacrosConfig) (string, 
 	// Prepare the lacros binary if it isn't deployed already via lacrosDeployedBinary.
 	var lacrosPath string
 	switch cfg.SetupMode {
-	case External:
-		if err := prepareLacrosBinary(ctx, cfg.deployedPath); err != nil {
-			return "", errors.Wrap(err, "failed to prepare lacros-chrome")
+	case Rootfs:
+		// When launched from the rootfs partition, the lacros-chrome is already located
+		// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
+		matches, err := waitForPathToExist(ctx, "/run/lacros/chrome")
+		if err != nil {
+			return "", errors.Wrap(err, "failed to find lacros binary")
 		}
-		lacrosPath = lacrosRootPath
+		lacrosPath = filepath.Dir(matches[0])
 	case Omaha:
 		// When launched by Omaha we need to wait several seconds for lacros to be launchable.
 		// It is ready when the image loader path is created with the chrome executable.
 		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
 		matches, err := waitForPathToExist(ctx, "/run/imageloader/lacros-dogfood*/*/chrome")
-		if err != nil {
-			return "", errors.Wrap(err, "failed to find lacros binary")
-		}
-		lacrosPath = filepath.Dir(matches[0])
-	case Rootfs:
-		// When launched from the rootfs partition, the lacros-chrome is already located
-		// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
-		matches, err := waitForPathToExist(ctx, "/run/lacros/chrome")
 		if err != nil {
 			return "", errors.Wrap(err, "failed to find lacros binary")
 		}

@@ -260,18 +260,8 @@ const (
 	// from ash-chrome to lacros.
 	MojoSocketPath = "/tmp/lacros.socket"
 
-	// dataArtifact holds the name of the tarball which contains the lacros-chrome
-	// binary.
-	dataArtifact = "lacros_binary.tar"
-
 	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
 	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"
-
-	// lacrosTestPath is the file path at which all lacros-chrome related test artifacts are stored.
-	lacrosTestPath = "/usr/local/lacros_test_artifacts"
-
-	// lacrosRootPath is the root directory for lacros-chrome related binaries.
-	lacrosRootPath = lacrosTestPath + "/lacros_binary"
 )
 
 // Verify that *fixtValueImpl implements FixtValue interface.
@@ -365,6 +355,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	if err != nil {
 		s.Fatal("Failed to obtain fixture options: ", err)
 	}
+
 	// If there's a parent fixture and the fixture supplies extra options, use them.
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		opts = append(opts, extraOpts...)
