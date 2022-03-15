@@ -1339,7 +1339,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			support.Capture
 		}
 		if _, ok := apIface.Router().(supportedRouter); !ok {
-			s.Fatalf("Router type %q does not have sufficient support for this test: ", apIface.Router().RouterTypeName())
+			s.Fatalf("Router type %q does not have sufficient support for this test: ", apIface.Router().RouterType().String())
 		}
 
 		defer func(ctx context.Context) {
