@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8483446f_467dd691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0f6893_2ae76b58",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcc55fe7_98aee755",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-09T14:10:11Z",
       "side": 1,
       "message": "can these be a part of testParam, too?",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 48
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc74c50_157dda06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcc55fe7_98aee755",
       "range": {
         "startLine": 82,
         "startChar": 24,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09069b6_92394dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d26d2e0_ad81698d",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87eb125f_acdc83d2",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32132285_35101fcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87eb125f_acdc83d2",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f426e23_4761d46d",
@@ -88,6 +166,30 @@
       "writtenOn": "2022-02-09T14:10:11Z",
       "side": 1,
       "message": "nit/style:\n\nif err :\u003d png.Encode(buf, image); err !\u003d nil {\n  return nil, err\n}\nreturn buf.Bytes(), nil",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 21
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858a82c1_37c21414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f426e23_4761d46d",
       "range": {
         "startLine": 321,
         "startChar": 1,
@@ -117,6 +219,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f063aba_4f15d170",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Now `GeneratePreapreFakeAppsWithIconDataOptions()` accepts the directory path as a parameter instead of creating one by its own.",
+      "parentUuid": "db39f5ad_1e83dde9",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecef7b49_d346dcb5",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 3
@@ -128,6 +248,24 @@
       "writtenOn": "2022-02-09T14:10:11Z",
       "side": 1,
       "message": "could you delete the dir and return nil-value (empty string) on error for consistency?\nDitto for below. (and above, if you can fix the existing code, too).",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8fd5dc_541d3ec9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Now dir is passed through the function parameter.",
+      "parentUuid": "ecef7b49_d346dcb5",
       "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +289,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9667d63a_6811fb13",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Now the directory is passed through the function parameter so it should be obvious that the caller should handle the directory well. Therefore no extra comment is needed as far as I can see.",
+      "parentUuid": "b67c48ad_7c521863",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a828bd4_941c7784",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 3
@@ -162,6 +318,30 @@
       "writtenOn": "2022-02-09T14:10:11Z",
       "side": 1,
       "message": "sytle: could you follow the common message pattern?\n\nunexpected count of icon: got %d, want %d",
+      "range": {
+        "startLine": 281,
+        "startChar": 58,
+        "endLine": 281,
+        "endChar": 81
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2db6610_c02f6a84",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-15T17:27:20Z",
+      "side": 1,
+      "message": "Emmm... But the previous reviewer asked me not to use \":\". See this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3415981/17..23/src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go#b243",
+      "parentUuid": "1a828bd4_941c7784",
       "range": {
         "startLine": 281,
         "startChar": 58,
