@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdae12af_9702e73a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-15T05:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "639a027f_44cdb45d",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "42a740d5d670ee74f445cb735dabcdf24d9b56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb0f2353_c509fb02",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b856cc8_9b9ad5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-15T05:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0f2353_c509fb02",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "42a740d5d670ee74f445cb735dabcdf24d9b56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4738e604_34a1b97d",
@@ -83,6 +131,30 @@
       "writtenOn": "2022-03-14T01:55:35Z",
       "side": 1,
       "message": "Check if it\u0027s nil here instead of empty object. (After you modified it to optional value.)",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 55
+      },
+      "revId": "42a740d5d670ee74f445cb735dabcdf24d9b56b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fd72b2_7955997a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-15T05:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4738e604_34a1b97d",
       "range": {
         "startLine": 117,
         "startChar": 7,
