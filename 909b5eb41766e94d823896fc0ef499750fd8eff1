@@ -16,6 +16,23 @@
       "message": "Hi Satoshi, \n\nSince this CL, crrev/c/3521742 will potentially cause the appcompat_smoke, appcompat_release and appcompat suite to start failing again due to flaky installation failures. \nI would suggest not to submit this change. Also I added my comment in the bug, https://buganizer.corp.google.com/issues/224461092#comment5. \n\nRegards,\nMeena ",
       "revId": "909b5eb41766e94d823896fc0ef499750fd8eff1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8f4d9c_162b8919",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-15T00:35:15Z",
+      "side": 1,
+      "message": "Hi niwa@,\n\nInstead of decreasing the “shortUITimeout \u003d 5 * time.Second in the CL,crrev/c/3521742. This will potentially cause the appcompat_smoke, appcompat_release, appcompat suite and other playstore tests to start failing again due to flaky installation failures.\n\nSince DefaultTimeOut, installationTimeout and ShortTimeOut are different for every tests that are used in InstallApp func in playstore.go (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/playstore/playstore.go;l\u003d263;rcl\u003d1774d78cee3ab944fa2c90b5e47af24998725ed3) file.\nI think it is better to use DefaultTimeOut and ShortTimeOut and InstallationTimeOut (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/playstore/playstore.go;l\u003d72;rcl\u003d1774d78cee3ab944fa2c90b5e47af24998725ed3) as one of the input parameters for InstallApp func (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/playstore/playstore.go;l\u003d263;rcl\u003d1774d78cee3ab944fa2c90b5e47af24998725ed3). So every test could provide their desired DefaultTimeOut, ShortTimeOut and installationTimeout for their tests. This will avoid flaky installation failures for not only appcompat, appcompat_smoke, appcompat_release suites and also for other tests like tast.arc.PlayStore., tast.arc.PlayStoreUprevAppInstall. and many other tests that are relying on playstore.go file. \n\n\n\n\n",
+      "revId": "909b5eb41766e94d823896fc0ef499750fd8eff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
