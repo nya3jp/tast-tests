@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02982c00_3a8697c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-03-15T08:01:41Z",
+      "side": 1,
+      "message": "I tried chromeLoggedIn fixture and used `laucher.SearchAndWaitForAppOpen()` from `cca_ui_launcher.go`, but this is also flaky.\nSometimes `Failed to launch camera app: failed to SearchAndWaitForAppOpen() on step 1: failed to SearchAndLaunchWithQuery(Camera, Camera) on step 1: failed to switch to \u0027FullscreenAllApps\u0027: failed to wait for launcher state: cdp.Runtime: CallFunctionOn: context deadline exceeded` happens.\nChromevox is already enabled before Camera app is fully set.",
+      "parentUuid": "f0a4b566_f3b50701",
+      "revId": "0cc6033cb4b68563b71df0a2c206765687bb3b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa695c80_7b260943",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 1
