@@ -138,6 +138,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f566d7_7c107603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-03-15T17:16:11Z",
+      "side": 1,
+      "message": "LGTM.\n(You need Eric (tast-owner) to +2)",
+      "revId": "85e745ace0c624d3255c563b21ab4c3577c62133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7c24e24_a03c5724",
@@ -175,6 +192,30 @@
       "side": 1,
       "message": "We got these default time requirements from Intel Coreboot team.",
       "parentUuid": "d7c24e24_a03c5724",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 57
+      },
+      "revId": "85e745ace0c624d3255c563b21ab4c3577c62133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57981b6_bba6fbd0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-03-15T17:16:11Z",
+      "side": 1,
+      "message": "FYI: The hardware requirement for bootTime is 8.0 seconds.\n\nhttps://chromeos.google.com/partner/dlm/docs/latest-requirements/chromebook.html#boot-perf-0002-v01",
+      "parentUuid": "a784b591_4d7c1784",
       "range": {
         "startLine": 67,
         "startChar": 0,
