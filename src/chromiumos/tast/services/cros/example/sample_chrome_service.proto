@@ -23,6 +23,14 @@ service ChromeService {
   // background page.
   rpc EvalOnTestAPIConn (EvalOnTestAPIConnRequest)
       returns (EvalOnTestAPIConnResponse) {}
+
+  rpc OpenPage (OpenPageRequest) returns (google.protobuf.Empty) {}
+
+  rpc RelaunchAfterUpdate (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message OpenPageRequest {
+  string url = 1;
 }
 
 message EvalOnTestAPIConnRequest {
