@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeniedSitesBlocked,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that parent-blocked sites are blocked for Unicorn users",
 		Contacts:     []string{"danan@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

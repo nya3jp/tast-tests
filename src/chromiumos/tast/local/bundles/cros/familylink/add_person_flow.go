@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AddPersonFlow,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that you can add a Unicorn user through the Add Person flow",
 		Contacts: []string{
 			"tobyhuang@chromium.org",
