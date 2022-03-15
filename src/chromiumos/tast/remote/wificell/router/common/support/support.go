@@ -45,6 +45,22 @@ func ParseRouterType(rTypeStr string) (RouterType, error) {
 	return rType, nil
 }
 
+// String returns RouterType as a string.
+func (rt RouterType) String() string {
+	var typeStr string
+	switch rt {
+	case LegacyT:
+		typeStr = "Legacy"
+	case AxT:
+		typeStr = "AX"
+	case OpenWrtT:
+		typeStr = "OpenWrt"
+	default:
+		typeStr = string(rune(rt))
+	}
+	return typeStr
+}
+
 // Router contains the basic methods that must be implemented across all routers.
 type Router interface {
 	// Close cleans the resource used by Router.
@@ -53,8 +69,6 @@ type Router interface {
 	RouterName() string
 	// RouterType returns the router type.
 	RouterType() RouterType
-	// RouterTypeName returns the human-readable name of this Router's RouterType.
-	RouterTypeName() string
 }
 
 // Logs shall be implemented if the router supports log collection.
