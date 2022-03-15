@@ -30,8 +30,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CellularPolicyConnection,
-		Desc: "Test that managed eSIM profile can be connected and disconnected and restrict managed only cellular network works properly",
+		Func:         CellularPolicyConnection,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Test that managed eSIM profile can be connected and disconnected and restrict managed only cellular network works properly",
 		Contacts: []string{
 			"jiajunz@google.com",
 			"cros-connectivity@google.com@google.com",
@@ -69,7 +70,7 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clean up: ", err)
 	}
 
-	managedIccid, err := enableManagedProfileBeforeTest(ctx)
+	managedIccid, err := getManagedProfileIccidBeforeTest(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to each cellular network before applying policy: ", err)
 	}
@@ -79,10 +80,6 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API in clean up: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	if err := connectToEachNetworkBeforeTest(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to connect to each cellular network: ", err)
-	}
 
 	for _, param := range []struct {
 		name                            string // subtest name.
@@ -136,9 +133,11 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 			managedDetail := nodewith.ClassName("subpage-arrow").Role(role.Button).Ancestor(managedNetworkWithBuildingIcon)
 
 			if err := uiauto.Combine("connect, click on the managed cellular detail page, verify connected status, disconnect and go back",
-				ui.WithTimeout(time.Minute).LeftClick(managedNetworkWithBuildingIcon),
-				ui.LeftClick(managedDetail),
-				ui.WithTimeout(5*time.Second).WaitUntilExists(ossettings.ConnectedStatus),
+				ui.LeftClick(managedNetworkWithBuildingIcon),
+				ui.WithTimeout(90*time.Second).LeftClick(managedDetail),
+				ui.WaitUntilExists(ossettings.ConnectedStatus),
+				ui.WithTimeout(time.Minute).WaitUntilExists(ossettings.RoamingToggle),
+				ui.EnsureGoneFor(ossettings.ConnectingStatus, 5*time.Second),
 				ui.LeftClick(ossettings.DisconnectButton),
 				ui.WaitUntilExists(ossettings.DisconnectedStatus),
 				ui.LeftClick(ossettings.BackArrowBtn),
@@ -164,10 +163,10 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 				}
 			} else {
 				if err := uiauto.Combine("go to detail page, connect and disconnect unmanaged cellular network",
-					ui.LeftClick(unmanagedNetworkDetail),
-					ui.LeftClick(ossettings.ConnectButton),
-					ui.WithTimeout(time.Minute).WaitUntilExists(ossettings.ConnectedStatus),
-					ui.WaitUntilExists(ossettings.RoamingToggle),
+					ui.LeftClick(unmanagedNetwork),
+					ui.WithTimeout(90*time.Second).LeftClick(unmanagedNetworkDetail),
+					ui.WaitUntilExists(ossettings.ConnectedStatus),
+					ui.WithTimeout(time.Minute).WaitUntilExists(ossettings.RoamingToggle),
 					ui.EnsureGoneFor(ossettings.ConnectingStatus, 5*time.Second),
 					ui.LeftClick(ossettings.DisconnectButton),
 					ui.WaitUntilExists(ossettings.DisconnectedStatus),
@@ -215,55 +214,9 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 	s.Log("Finish managed eSIM profile connection test")
 }
 
-// connectToEachNetworkBeforeTest connect to each cellular networks through UI.
-// This makes sure that each eSIM profile is connectable and also a shill configuration
-// will be created for each cellular service.
-func connectToEachNetworkBeforeTest(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
-	settingApp, err := ossettings.OpenMobileDataSubpage(ctx, tconn, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to navigate to mobile data page")
-	}
-
-	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
-	testing.ContextLog(ctx, "Start connecting to each cellular to make sure Shill config is created")
-
-	connectedNetwork := nodewith.NameContaining("Connected").Role(role.Button).ClassName("layout horizontal center flex")
-
-	if err := ui.WithTimeout(time.Minute).WaitUntilExists(connectedNetwork)(ctx); err != nil {
-		testing.ContextLog(ctx, "Managed cellular network is not auto-connected")
-		if err := ui.LeftClick(managedNetwork)(ctx); err != nil {
-			return errors.Wrap(err, "failed to click on managed network")
-		}
-	}
-
-	if err := uiauto.Combine("go to managed network detail page and verify connected",
-		ui.WithTimeout(time.Minute).LeftClick(managedNetworkDetail),
-		ui.LeftClick(ossettings.DisconnectButton),
-		ui.WaitUntilExists(ossettings.DisconnectedStatus),
-		ui.LeftClick(ossettings.BackArrowBtn),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to verify managed network connected")
-	}
-	if err := uiauto.Combine("click on unmanaged network and verify connected",
-		ui.LeftClick(unmanagedNetwork),
-		ui.WithTimeout(time.Minute).LeftClick(unmanagedNetworkDetail),
-		ui.LeftClick(ossettings.DisconnectButton),
-		ui.WaitUntilExists(ossettings.DisconnectedStatus),
-		ui.LeftClick(ossettings.BackArrowBtn),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to connect to unmanaged network and verify connected")
-	}
-
-	testing.ContextLog(ctx, "Connect to each cellular networks completed")
-	if err := settingApp.Close(ctx); err != nil {
-		return errors.Wrap(err, "failed to close settings app")
-	}
-	return nil
-}
-
-// enableManagedProfileBeforeTest picks one of the profile's ICCID as the managed profile
-// in the following test and enables this profiles on the euicc.
-func enableManagedProfileBeforeTest(ctx context.Context) (managedIccid string, e error) {
+// getManagedProfileIccidBeforeTest picks one of the profile's ICCID as the managed profile
+// for the following test to use and disables all profiles in the euicc.
+func getManagedProfileIccidBeforeTest(ctx context.Context) (managedIccid string, e error) {
 	const prodSimSlotNum = 0
 	euicc, err := hermes.NewEUICC(ctx, prodSimSlotNum)
 	if err != nil {
@@ -301,9 +254,9 @@ func enableManagedProfileBeforeTest(ctx context.Context) (managedIccid string, e
 			managedIccid = iccid
 			testing.ContextLogf(ctx, "Using managed profile iccid: %s", managedIccid)
 
-			if state == hermesconst.ProfileStateDisabled {
-				if err := profile.Call(ctx, hermesconst.ProfileMethodEnable).Err; err != nil {
-					return "", errors.Wrapf(err, "failed to enable profile %s", profile.String())
+			if state == hermesconst.ProfileStateEnabled {
+				if err := profile.Call(ctx, hermesconst.ProfileMethodDisable).Err; err != nil {
+					return "", errors.Wrapf(err, "failed to disable profile %s", profile.String())
 				}
 			}
 
