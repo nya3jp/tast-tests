@@ -6,12 +6,8 @@ package lacros
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
 	"path/filepath"
-	"strings"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -20,9 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
-	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
-	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -40,7 +34,7 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 		return cr, nil, cr, nil
 	case browser.TypeLacros:
 		f := f.(lacrosfixt.FixtValue)
-		l, err := Launch(ctx, f)
+		l, err := Launch(ctx, f.TestAPIConn(), f.LacrosPath())
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -74,8 +68,8 @@ func Connect(ctx context.Context, lacrosPath, userDataDir string) (l *Lacros, re
 	}, nil
 }
 
-// LaunchFromShelf launches lacros-chrome via shelf.
-func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*Lacros, error) {
+// Launch launches lacros.
+func Launch(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*Lacros, error) {
 	// Make sure Lacros app is not running before launch.
 	if running, err := ash.AppRunning(ctx, tconn, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to check if app is not running before launch")
@@ -83,9 +77,9 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 		return nil, errors.New("failed to launch lacros since app is already running. close before launch")
 	}
 
-	testing.ContextLog(ctx, "Launch lacros via Shelf")
-	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
-		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
+	testing.ContextLog(ctx, "Launch lacros")
+	if err := apps.Launch(ctx, tconn, apps.Lacros.ID); err != nil {
+		return nil, errors.Wrap(err, "failed to launch lacros")
 	}
 
 	testing.ContextLog(ctx, "Wait for Lacros window")
@@ -100,105 +94,35 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 	return l, nil
 }
 
-// Launch launches a fresh instance of lacros-chrome.
-func Launch(ctx context.Context, f lacrosfixt.FixtValue) (*Lacros, error) {
-	return LaunchWithURL(ctx, f, chrome.BlankURL)
-}
+// LaunchWithURL launches lacros-chrome and ensures there is one page open
+// with the given URL. Note that this function expects lacros to be closed
+// as a precondition.
+func LaunchWithURL(ctx context.Context, tconn *chrome.TestConn, lacrosPath, url string) (*Lacros, error) {
+	l, err := Launch(ctx, tconn, lacrosPath)
 
-// LaunchWithURL launches a fresh instance of lacros-chrome having the given url.
-func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*Lacros, error) {
-	succeeded := false
-	defer lacrosfaillog.SaveIf(ctx, f.LacrosPath(), func() bool { return !succeeded })
-
-	if err := killLacros(ctx, f.LacrosPath()); err != nil {
-		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
-	}
-
-	// Create a new temporary directory for user data dir.
-	// The directory will be wiped by fixture's Reset(), so if necessary
-	// the log needs to be preserved within the test.
-	// This creates new directory for each invocation to provide isolated environment.
-	userDataDir, err := ioutil.TempDir(f.UserTmpDir(), "")
+	// Get all targets.
+	// TODO(edcourtney): Introduce matcher that matches everything.
+	ts, err := l.FindTargets(ctx, chrome.MatchTargetURLPrefix(""))
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
+		return nil, errors.Wrap(err, "failed to find targets")
 	}
 
-	// Set user to chronos, since we run lacros as chronos.
-	if err := os.Chown(userDataDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-		return nil, errors.Wrap(err, "failed to chown user data dir")
-	}
-
-	args := []string{
-		"--ozone-platform=wayland",                   // Use wayland to connect to exo wayland server.
-		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--user-data-dir=" + userDataDir,             // Specify a --user-data-dir, which holds on-disk state for Chrome.
-		"--lang=en-US",                               // Language
-		"--breakpad-dump-location=" + f.LacrosPath(), // Specify location for breakpad dump files.
-		"--window-size=800,600",
-		"--enable-logging=stderr",       // This flag is necessary to ensure the log file is written. Also include stderr - this matches the shelf launch case.
-		"--enable-gpu-rasterization",    // Enable GPU rasterization. This is necessary to enable OOP rasterization.
-		"--enable-oop-rasterization",    // Enable OOP rasterization.
-		"--enable-webgl-image-chromium", // Enable WebGL image.
-		"--use-cras",                    // Use CrAS.
-		url,                             // Specify first tab to load.
-	}
-	// The extra args already contain flags for the test extension.
-	args = append(args, f.Chrome().LacrosExtraArgs()...)
-
-	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
-		"/usr/local/bin/python3", "/usr/local/bin/mojo_connection_lacros_launcher.py",
-		"-s", lacrosfixt.MojoSocketPath, filepath.Join(f.LacrosPath(), "chrome")}, args...)...)
-	cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
-
-	// Ensure logfile directory is created. If lacros is launched via the shelf,
-	// this is automatically created. But, we are launching via command line.
-	if err := os.MkdirAll(filepath.Dir(lacrosfixt.LacrosLogPath), 0700); err != nil {
-		testing.ContextLog(ctx, "Failed to create lacros.log directory: ", err)
-	}
-
-	if logFile, err := os.Create(lacrosfixt.LacrosLogPath); err != nil {
-		testing.ContextLog(ctx, "Failed to create lacros.log file: ", err)
-	} else {
-		defer logFile.Close()
-		// Redirect both Stdout/Stderr to the same file.
-		// Log lines may be mixed, but it should be ok, because it is for investigation.
-		cmd.Stdout = logFile
-		cmd.Stderr = logFile
-	}
-
-	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
-	if err := cmd.Start(); err != nil {
-		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
-	}
-	defer func() {
-		if cmd == nil {
-			return
+	pc := 0
+	var pt *chrome.Target
+	for _, t := range ts {
+		if t.Type == "page" {
+			pc++
+			pt = t
 		}
-		if err := cmd.Kill(); err != nil {
-			testing.ContextLog(ctx, "Failed to kill lacros-chrome: ", err)
-		}
-		cmd.Wait()
-	}()
-
-	// Wait for a window that matches what a lacros window looks like.
-	if err := WaitForLacrosWindow(ctx, f.TestAPIConn(), ""); err != nil {
-		return nil, err
 	}
-	l, err := Connect(ctx, f.LacrosPath(), userDataDir)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to debugging port")
-	}
-	// Check if the URL passed in is open on the Lacros browser.
-	if matches, err := l.FindTargets(ctx, chrome.MatchTargetURLPrefix(url)); err != nil {
-		return nil, err
-	} else if len(matches) == 0 {
-		return nil, errors.Errorf("failed to find a matching URL: %v", url)
+	if pc != 1 {
+		return nil, errors.Wrapf(err, "expected only one page target, got %q", ts)
 	}
 
-	// Move cmd ownership to l, thus after this line terminating cmd wond't run.
-	l.cmd = cmd
-	cmd = nil
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetID(pt.TargetID))
+	if err := conn.Navigate(ctx, url); err != nil {
+		return nil, errors.Wrap(err, "failed to navigate to url")
+	}
 
-	succeeded = true
 	return l, nil
 }
