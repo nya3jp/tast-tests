@@ -16,6 +16,23 @@
       "message": "Implementation is based on go/dgapi-v2.0-test-plan .",
       "revId": "e334c8dfd06cfd728191354412b43a7989ca2b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d322b640_822e5887",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-15T03:38:12Z",
+      "side": 1,
+      "message": "`--disable-popup-blocking` is needed, because google sign-in window is a popup that gets blocked by default. Adding a flag here allows to reuse the same fixture for existing and new tests.",
+      "revId": "e334c8dfd06cfd728191354412b43a7989ca2b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

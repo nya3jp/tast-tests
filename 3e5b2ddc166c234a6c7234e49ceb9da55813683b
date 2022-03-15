@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04edfade_3da37f3a",
+        "filename": "src/chromiumos/tast/local/playbilling/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-15T03:38:12Z",
+      "side": 0,
+      "message": "This line is redundant, because `chrome.ARCSupported()` is already added in\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go;l\u003d404",
+      "revId": "3e5b2ddc166c234a6c7234e49ceb9da55813683b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
