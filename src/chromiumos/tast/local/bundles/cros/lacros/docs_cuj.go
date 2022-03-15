@@ -194,7 +194,7 @@ func setupLacrosShelfTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, u
 		return nil, nil, errors.Wrap(err, "failed to connect to the test API connection")
 	}
 
-	l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
+	l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to launch lacros")
 	}

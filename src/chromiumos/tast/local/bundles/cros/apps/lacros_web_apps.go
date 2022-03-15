@@ -66,8 +66,8 @@ func LacrosWebApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	// Launch lacros via shelf.
-	l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
+	// Launch lacros.
+	l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
 	if err != nil {
 		s.Fatal("Failed to launch lacros: ", err)
 	}

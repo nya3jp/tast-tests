@@ -164,7 +164,7 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
-		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn(), s.FixtValue().(lacrosfixt.FixtValue).LacrosPath())
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
