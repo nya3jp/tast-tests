@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9222faa3_2923455a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-15T23:25:32Z",
+      "side": 1,
+      "message": "In this CL, the test only measures the metrics that are required to be collected by CUJ tests (see [1]). I think it makes sense to add others in separate CLs.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go",
+      "parentUuid": "77ea3d30_48e8db10",
+      "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47b0fc7a_db938ba6",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-11T02:13:58Z",
       "side": 1,
       "message": "could you also add \"group:cuj\" to attrs?",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6feab786_29371934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-15T23:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b0fc7a_db938ba6",
       "range": {
         "startLine": 29,
         "startChar": 25,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6432ce_12cb91f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-15T23:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6391313c_ae7ae266",
+      "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73016fb3_af7fb8ba",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-03-14T08:19:10Z",
       "side": 1,
       "message": "Is it necessary to close the about page in lacros?\nIf not, I guess you can replace this part with the following, to make sure it\u0027s consistent with other tests (check go/remote-management/tast-codelabs/lacros_policy_testing for more details):\nbr, closeBrowser, err :\u003d browserfixt.SetUp(ctx, s.FixtValue(),\n  s.Param().(browser.Type))\nif err !\u003d nil {\n  s.Fatal(\"Failed to open the browser: \", err)\n}\ndefer closeBrowser(cleanupCtx)\n\nWDYT?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "99b6dc53d2b4b007634833a2680e1f45a34f525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb307775_2d66531d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-15T23:25:32Z",
+      "side": 1,
+      "message": "I think it is somewhat important to close the blank page in Lacros, for a fair performance comparison between Ash Chrome and Lacros Chrome.",
+      "parentUuid": "73016fb3_af7fb8ba",
       "range": {
         "startLine": 57,
         "startChar": 1,
