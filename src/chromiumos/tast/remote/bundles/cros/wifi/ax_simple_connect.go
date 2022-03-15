@@ -204,10 +204,15 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 	var tfOps []wificell.TFOption
 	if router, ok := s.Var("router"); ok && router != "" {
 		tfOps = append(tfOps, wificell.TFRouter(router))
+		tfOps = append(tfOps, wificell.TFHostUsers(map[string]string{
+			router: "admin",
+		}))
+	} else {
+		s.Fatal("Test fixture var 'router' is required")
 	}
 
 	// Parse the router's model.
-	var axType = ax.Invalid
+	var axType = ax.Unknown
 	if routertype, ok := s.Var("routertype"); ok && routertype != "" {
 		if routertype == "gtax11000" {
 			axType = ax.GtAx11000
@@ -218,11 +223,15 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 		}
 		testing.ContextLog(ctx, "test running for ", routertype)
 	}
-	if axType == ax.Invalid {
-		s.Fatal("AxRouterType not defined. Please specify router type with --routertype (gtax11000|gtaxe11000|ax6100)")
-	}
 
-	tfOps = append(tfOps, wificell.TFRouterType(support.AxT))
+	var tfRouterType support.RouterType
+	if axType != ax.Unknown {
+		tfRouterType = support.AxT
+	} else {
+		tfRouterType = support.UnknownT
+	}
+	tfOps = append(tfOps, wificell.TFRouterType(tfRouterType))
+
 	// Assert WiFi is up.
 	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), tfOps...)
 	if err != nil {
@@ -236,9 +245,19 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForClose(ctx)
 	defer cancel()
 
+	if tf.Router().RouterType() != support.AxT {
+		s.Fatal("Test fixture router is not an AX router")
+	}
 	rt, err := tf.AxRouter()
 	if err != nil {
 		s.Fatal("Failed to get ax router: ", err)
+	}
+	if axType == ax.Unknown {
+		axType, err = rt.ResolveAxDeviceType(ctx)
+		if err != nil {
+			s.Fatalf("Failed to resolve AX DeviceType from router, err: %v ", err)
+		}
+		testing.ContextLogf(ctx, "Resolved AX DeviceType to be %q", axType.String())
 	}
 
 	// Back up current router configuration.
@@ -252,7 +271,8 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 	defer cancel()
 	// subroutine to be run by each subtest.
 	testOnce := func(ctx context.Context, s *testing.State, band ax.BandEnum, options []ax.Option, rFac ax.SecConfigParamFac, secFac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
-		cfg := ax.Config{Band: ax.BandToRadio(axType, band),
+		cfg := ax.Config{
+			Band:              ax.BandToRadio(axType, band),
 			Type:              axType,
 			NVRAMOut:          &backupString,
 			RouterRecoveryMap: backupMap}
@@ -264,7 +284,7 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 
 		// Generate security config and update necessary router options
 		if rFac != nil {
-			cfgParamList, err := rFac.Gen(axType, band)
+			cfgParamList, err := rFac.Gen(cfg.Type, band)
 			if err != nil {
 				s.Fatal("Could not generate security ConfigParam list: ", err)
 			}

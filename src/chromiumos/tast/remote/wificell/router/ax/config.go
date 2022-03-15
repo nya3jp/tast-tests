@@ -24,16 +24,33 @@ const SavedConfigLocation = "/tmp/nvram.cfg"
 type DeviceType int
 
 const (
-
 	// GtAx11000 is for the GT-Ax11000 device,
 	GtAx11000 DeviceType = iota
 	// GtAxe11000 is for the GT-Axe11000 device (6e).
 	GtAxe11000
 	// Ax6100 is for the Ax6100 device.
 	Ax6100
-	// Invalid is the default DeviceType.
-	Invalid
+	// Unknown means DeviceType will be resolved based on host.
+	Unknown
 )
+
+// String returns a human-readable string describing the DeviceType.
+func (dt DeviceType) String() string {
+	var typeStr string
+	switch dt {
+	case GtAx11000:
+		typeStr = "Legacy"
+	case GtAxe11000:
+		typeStr = "GtAxe11000"
+	case Ax6100:
+		typeStr = "Ax6100"
+	case Unknown:
+		typeStr = "Unknown"
+	default:
+		typeStr = string(rune(dt))
+	}
+	return typeStr
+}
 
 // Config stores the necessary information for an AX test to run.
 type Config struct {
