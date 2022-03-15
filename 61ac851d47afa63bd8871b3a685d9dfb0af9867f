@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02030db0_60fc2a17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-15T22:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce35c917_4d5df933",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d3ecc1b_2c6abd8a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-10T06:09:58Z",
       "side": 1,
       "message": "Is this accurate?",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffd24ab_5f2289b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-15T22:55:34Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "7d3ecc1b_2c6abd8a",
       "range": {
         "startLine": 27,
         "startChar": 16,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3685d5c9_42494e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-15T22:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd8fbd4_febaeebf",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d62b7e96_5cff8d29",
@@ -100,6 +172,24 @@
       "writtenOn": "2022-03-10T06:09:58Z",
       "side": 1,
       "message": "Is this extra newline needed?",
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "759cf1cb_37b28dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-15T22:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d62b7e96_5cff8d29",
       "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +240,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32b8c06_2401d61b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-15T22:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b9b0a77_5dca6bd4",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fdb3832_78e46040",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-15T22:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aab6af2c_c5dc7c04",
+      "range": {
+        "startLine": 121,
+        "startChar": 27,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "984e5e6f_b33813e9",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-03-10T06:09:58Z",
       "side": 1,
       "message": "I have a hard time understanding this, why is that?\n\nDo you have a reference to source code explaining why this is the behavior?",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 106
+      },
+      "revId": "61ac851d47afa63bd8871b3a685d9dfb0af9867f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec83806c_086a413a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-15T22:55:34Z",
+      "side": 1,
+      "message": "In line 141, userDataDir, err :\u003d ioutil.TempDir(f.UserTmpDir(), \"\") will override userDataDir. For example, if before I run the variation test, I run lacros.Basic test. The userDataDir directory will be deleted.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:components/variations/variations_seed_store.cc;l\u003d443;bpv\u003d1;bpt\u003d1\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:components/variations/variations_seed_store.cc;l\u003d146;bpv\u003d0;bpt\u003d1\n\n\nI use different seeds to override the Local State seeds, open lacros and check chrome://version, variations is different based on different seeds. one old seed that only has one variation; other recent download seeds have more variations.\n\nautotestPrivate.setWhitelistedPref() which is the better way to inject the seed is not available in Lacros\nsettingsPrivate.setPref() is not able to set the seed.(seed pref is not in the allowlist of this API)",
+      "parentUuid": "984e5e6f_b33813e9",
       "range": {
         "startLine": 131,
         "startChar": 2,
