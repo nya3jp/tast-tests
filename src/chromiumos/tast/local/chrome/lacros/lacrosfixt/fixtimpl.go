@@ -260,18 +260,8 @@ const (
 	// from ash-chrome to lacros.
 	MojoSocketPath = "/tmp/lacros.socket"
 
-	// dataArtifact holds the name of the tarball which contains the lacros-chrome
-	// binary.
-	dataArtifact = "lacros_binary.tar"
-
 	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
 	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"
-
-	// lacrosTestPath is the file path at which all lacros-chrome related test artifacts are stored.
-	lacrosTestPath = "/usr/local/lacros_test_artifacts"
-
-	// lacrosRootPath is the root directory for lacros-chrome related binaries.
-	lacrosRootPath = lacrosTestPath + "/lacros_binary"
 )
 
 // Verify that *fixtValueImpl implements FixtValue interface.
