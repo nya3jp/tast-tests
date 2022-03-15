@@ -40,7 +40,7 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 		return cr, nil, cr, nil
 	case browser.TypeLacros:
 		f := f.(lacrosfixt.FixtValue)
-		l, err := Launch(ctx, f)
+		l, err := Launch(ctx, f.TestAPIConn(), f.LacrosPath())
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -74,8 +74,8 @@ func Connect(ctx context.Context, lacrosPath, userDataDir string) (l *Lacros, re
 	}, nil
 }
 
-// LaunchFromShelf launches lacros-chrome via shelf.
-func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*Lacros, error) {
+// Launch launches lacros.
+func Launch(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*Lacros, error) {
 	// Make sure Lacros app is not running before launch.
 	if running, err := ash.AppRunning(ctx, tconn, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to check if app is not running before launch")
@@ -83,9 +83,9 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 		return nil, errors.New("failed to launch lacros since app is already running. close before launch")
 	}
 
-	testing.ContextLog(ctx, "Launch lacros via Shelf")
-	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
-		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
+	testing.ContextLog(ctx, "Launch lacros")
+	if err := apps.Launch(ctx, tconn, apps.Lacros.ID); err != nil {
+		return nil, errors.Wrap(err, "failed to launch lacros")
 	}
 
 	testing.ContextLog(ctx, "Wait for Lacros window")
@@ -100,13 +100,71 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 	return l, nil
 }
 
-// Launch launches a fresh instance of lacros-chrome.
-func Launch(ctx context.Context, f lacrosfixt.FixtValue) (*Lacros, error) {
-	return LaunchWithURL(ctx, f, chrome.BlankURL)
+// LaunchWithURL launches lacros-chrome and ensures there is one page open
+// with the given URL. Note that this function expects lacros to be closed
+// as a precondition.
+func LaunchWithURL(ctx context.Context, tconn *chrome.TestConn, lacrosPath, url string) (*Lacros, error) {
+	l, err := Launch(ctx, tconn, lacrosPath)
+
+	// Get all targets.
+	// TODO(edcourtney): Introduce matcher that matches everything.
+	ts, err := l.FindTargets(ctx, chrome.MatchTargetURLPrefix(""))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find targets")
+	}
+
+	pc := 0
+	var pt *chrome.Target
+	for _, t := range ts {
+		if t.Type == "page" {
+			pc++
+			pt = t
+		}
+	}
+	if pc != 1 {
+		return nil, errors.Wrapf(err, "expected only one page target, got %v", ts)
+	}
+
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetID(pt.TargetID))
+	if err := conn.Navigate(ctx, url); err != nil {
+		return nil, errors.Wrap(err, "failed to navigate to url")
+	}
+
+	return l, nil
 }
 
-// LaunchWithURL launches a fresh instance of lacros-chrome having the given url.
-func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*Lacros, error) {
+// SetupDeprecated is deprecated, please don't use it.
+// TODO(crbug.com/1310159): Remove this.
+func SetupDeprecated(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome, *Lacros, ash.ConnSource, error) {
+	if _, ok := f.(chrome.HasChrome); !ok {
+		return nil, nil, nil, errors.Errorf("unrecognized FixtValue type: %v", f)
+	}
+	cr := f.(chrome.HasChrome).Chrome()
+
+	switch bt {
+	case browser.TypeAsh:
+		return cr, nil, cr, nil
+	case browser.TypeLacros:
+		f := f.(lacrosfixt.FixtValue)
+		l, err := LaunchDeprecated(ctx, f)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
+		}
+		return cr, l, l, nil
+	default:
+		return nil, nil, nil, errors.Errorf("unrecognized Chrome type %s", string(bt))
+	}
+}
+
+// LaunchDeprecated is deprecated, please don't use it.
+// TODO(crbug.com/1310159): Remove this.
+func LaunchDeprecated(ctx context.Context, f lacrosfixt.FixtValue) (*Lacros, error) {
+	return LaunchWithURLDeprecated(ctx, f, chrome.BlankURL)
+}
+
+// LaunchWithURLDeprecated is deprecated, please don't use it.
+// TODO(crbug.com/1310159): Remove this.
+func LaunchWithURLDeprecated(ctx context.Context, f lacrosfixt.FixtValue, url string) (*Lacros, error) {
 	succeeded := false
 	defer lacrosfaillog.SaveIf(ctx, f.LacrosPath(), func() bool { return !succeeded })
 

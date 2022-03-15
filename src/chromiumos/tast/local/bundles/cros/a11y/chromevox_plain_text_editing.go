@@ -60,7 +60,8 @@ func ChromevoxPlainTextEditing(ctx context.Context, s *testing.State) {
 	defer crastestclient.Unmute(cleanupCtx)
 
 	// Setup a browser before opening a new tab.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	// TODO(crbug.com/1310159): Get this test to work with the new launch method.
+	br, closeBrowser, err := browserfixt.SetUpDeprecated(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
