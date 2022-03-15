@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35bb5c47_30857473",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b96caee_6d5a84f4",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23a6a72_3a370ddf",
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d18711a_341b2ea0",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc070cc_624796b1",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d201a555_a95c409c",
@@ -100,6 +148,30 @@
       "writtenOn": "2022-03-13T23:49:37Z",
       "side": 1,
       "message": "I\u0027m not sure what this mean. If we want to return nil, we can just pass nil as modes. Can we just remove this case?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ddb6d04_d4a4f8e0",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d201a555_a95c409c",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -156,6 +228,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a90d7ba_c7b07071",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cacdbe15_4a632f35",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9317214a_229c242d",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1788a2f9_059b257b",
+      "range": {
+        "startLine": 74,
+        "startChar": 26,
+        "endLine": 74,
+        "endChar": 38
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf4dbe27_f5e8ca48",
@@ -202,6 +322,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4e765b_2d79c889",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf4dbe27_f5e8ca48",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd1acde_fd57819a",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "263248d6_f4d11887",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 24
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a725e605_99475282",
@@ -215,6 +383,30 @@
       "writtenOn": "2022-03-13T23:49:37Z",
       "side": 1,
       "message": "nit: add a space. Also, could you add your username to todo? TODO(...).\nYou can file a bug and add a bug number e.g b/1234 as well.",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15c283d_1f674fce",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a725e605_99475282",
       "range": {
         "startLine": 107,
         "startChar": 2,
@@ -271,6 +463,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5f4e54_7759d379",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6ce6f87_a882bcc5",
+      "range": {
+        "startLine": 124,
+        "startChar": 20,
+        "endLine": 124,
+        "endChar": 27
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a04839_3ec867a2",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "s.OutDir() is different here it points to /usr/local/tast_out.../testName instead of /usr/local/tast_out.../profilerRunning which is the correct output location for our fixture. Going to keep f.outDir for this reason.",
+      "parentUuid": "d59a5026_c532bd7d",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 37
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d47230b4_ca0cf38d",
@@ -284,6 +524,30 @@
       "writtenOn": "2022-03-13T23:49:37Z",
       "side": 1,
       "message": "nit: ok is more commonly used.",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "409fa50c_b59dad93",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47230b4_ca0cf38d",
       "range": {
         "startLine": 132,
         "startChar": 5,
@@ -317,6 +581,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8303642e_ff869bf8",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474dbc60_9423ca89",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 3
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56a67768_50729165",
@@ -340,6 +628,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e25ecf_243a3227",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a67768_50729165",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd4e12a7_79831b2b",
@@ -353,6 +665,24 @@
       "writtenOn": "2022-03-13T23:49:37Z",
       "side": 1,
       "message": "remove blank line.",
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4746bb4a_5af6fe40",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-15T18:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4e12a7_79831b2b",
       "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
