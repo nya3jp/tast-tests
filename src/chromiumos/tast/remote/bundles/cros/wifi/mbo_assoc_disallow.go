@@ -72,6 +72,17 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to set assoc disallow on AP: ", err)
 	}
 
+	// Get the name of the DUT WiFi interface and flush BSS from WPA
+	// supplicant to make sure it have seen assoc disallow bit.
+	clientIface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		s.Fatal("Unable to get DUT interface name: ", err)
+	}
+	s.Log("Flushing BSS cache")
+	if err := tf.WifiClient().FlushBSS(ctx, clientIface, 0); err != nil {
+		s.Fatal("Failed to flush BSS list: ", err)
+	}
+
 	s.Log("Attempting to connect to AP")
 	expectFailConnect := func(ctx context.Context) error {
 		if _, err := tf.ConnectWifiAP(ctx, ap); err != nil {
