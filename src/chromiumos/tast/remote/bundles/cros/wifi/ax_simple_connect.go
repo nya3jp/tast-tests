@@ -219,7 +219,8 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 		testing.ContextLog(ctx, "test running for ", routertype)
 	}
 	if axType == ax.Invalid {
-		s.Fatal("AxRouterType not defined. Please specify router type with --routertype (gtax11000|gtaxe11000|ax6100)")
+		s.Log("AxRouterType not defined. Please specify router type with --routertype (gtax11000|gtaxe11000|ax6100). Defaulting to gtaxe11000")
+		axType = ax.GtAxe11000
 	}
 
 	tfOps = append(tfOps, wificell.TFRouterType(support.AxT))

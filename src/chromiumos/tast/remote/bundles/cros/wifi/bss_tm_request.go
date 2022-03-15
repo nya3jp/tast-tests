@@ -132,7 +132,7 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 		defer cancel()
 		connectResp, err := tf.ConnectWifiAP(ctx, ap0)
 		if err != nil {
-			s.Fatal("Failed to connect to AP 0: ", err)
+			s.Fatal("Failed to conne  c t  to AP 0: ", err)
 		}
 		servicePath := connectResp.ServicePath
 		defer func(ctx context.Context) {
