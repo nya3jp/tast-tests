@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2ed5f88_0a55fddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-15T12:15:10Z",
+      "side": 1,
+      "message": "Polling is required as app requires time to install. Only after app installation is finished, new tab will be opened with installed app.",
+      "parentUuid": "a3e371d0_bc2fccd2",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "deca8dd5ce096b67ca5630085bffb5cb3e246d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b695a8d1_72b2b35c",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-07T09:10:28Z",
       "side": 1,
       "message": "new test should not have \"Unknown\" value. Could you set an appropriate state?",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "deca8dd5ce096b67ca5630085bffb5cb3e246d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd8eb7b_a12766c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-15T12:15:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b695a8d1_72b2b35c",
       "range": {
         "startLine": 25,
         "startChar": 37,
