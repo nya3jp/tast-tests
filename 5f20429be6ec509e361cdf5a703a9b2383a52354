@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481d6d13_c71ad561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-15T07:10:57Z",
+      "side": 1,
+      "message": "See comment I made.\n\nI\u0027m still running all the tests to make sure nothing breaks from this. But please take a look at my comment on launch.go.",
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518c7295_d1c2501f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-15T07:10:57Z",
+      "side": 1,
+      "message": "N.B. This has side effects, like showing the mouse, showing the hotseat, and showing a tooltip. This can affect perf tests. We can /attempt/ to try to reverse these side effects but IMO it\u0027s fragile.\n\nIMO we should instead use an autotest private API to do this. Would like to hear if anyone has any other ideas though.",
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
