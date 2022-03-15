@@ -261,18 +261,8 @@ const (
 	// from ash-chrome to lacros.
 	MojoSocketPath = "/tmp/lacros.socket"
 
-	// dataArtifact holds the name of the tarball which contains the lacros-chrome
-	// binary.
-	dataArtifact = "lacros_binary.tar"
-
 	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
 	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"
-
-	// lacrosTestPath is the file path at which all lacros-chrome related test artifacts are stored.
-	lacrosTestPath = "/usr/local/lacros_test_artifacts"
-
-	// lacrosRootPath is the root directory for lacros-chrome related binaries.
-	lacrosRootPath = lacrosTestPath + "/lacros_binary"
 )
 
 // Verify that *fixtValueImpl implements FixtValue interface.
@@ -387,16 +377,6 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	extList := strings.Join(extDirs, ",")
 	opts = append(opts, chrome.LacrosExtraArgs(ExtensionArgs(chrome.TestExtensionID, extList)...))
 
-	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
-	// lacros-chrome instead of always downloading from a gcs location.
-	// This workaround is to be removed soon once lab provisioning is supported for Lacros.
-	deployedPath, deployed := s.Var(LacrosDeployedBinary)
-	if deployed {
-		f.lacrosPath = deployedPath
-	} else if f.mode == External {
-		f.lacrosPath = lacrosRootPath
-	}
-
 	// Note that specifying the feature LacrosSupport has side-effects, so
 	// we specify it even if the lacros path is being overridden by lacrosDeployedBinary.
 	if f.mode == Rootfs {
@@ -407,9 +387,15 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 			chrome.ExtraArgs("--lacros-selection=stateful"))
 	}
 
-	// If External or deployed we should specify the path.
-	// This will override the lacros-selection argument.
-	if deployed || f.mode == External {
+	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
+	// lacros-chrome instead of always downloading from a gcs location.
+	// This workaround is to be removed soon once lab provisioning is supported for Lacros.
+	deployedPath, deployed := s.Var(LacrosDeployedBinary)
+	if deployed {
+		f.lacrosPath = deployedPath
+
+		// If deployed we should specify the path.
+		// This will override the lacros-selection argument.
 		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+f.lacrosPath))
 	}
 
@@ -439,23 +425,19 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 			}
 		}
 		switch f.mode {
-		case External:
-			if err := prepareLacrosBinary(ctx, s); err != nil {
-				s.Fatal("Failed to prepare lacros-chrome, err")
+		case Rootfs:
+			// When launched from the rootfs partition, the lacros-chrome is already located
+			// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
+			matches, err := f.waitForPathToExist(ctx, "/run/lacros/chrome")
+			if err != nil {
+				s.Fatal("Failed to find lacros binary: ", err)
 			}
+			f.lacrosPath = filepath.Dir(matches[0])
 		case Omaha:
 			// When launched by Omaha we need to wait several seconds for lacros to be launchable.
 			// It is ready when the image loader path is created with the chrome executable.
 			testing.ContextLog(ctx, "Waiting for Lacros to initialize")
 			matches, err := f.waitForPathToExist(ctx, "/run/imageloader/lacros-dogfood*/*/chrome")
-			if err != nil {
-				s.Fatal("Failed to find lacros binary: ", err)
-			}
-			f.lacrosPath = filepath.Dir(matches[0])
-		case Rootfs:
-			// When launched from the rootfs partition, the lacros-chrome is already located
-			// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
-			matches, err := f.waitForPathToExist(ctx, "/run/lacros/chrome")
 			if err != nil {
 				s.Fatal("Failed to find lacros binary: ", err)
 			}

@@ -11,12 +11,9 @@ package lacrosfixt
 type SetupMode int
 
 const (
-	// External denotes a lacros-chrome downloaded per the external data dependency.
-	// This may be overridden by a pre-deployed binary by specifying the lacrosDeployedBinary Var.
-	External SetupMode = iota
-	// Omaha is used to get the lacros binary.
-	Omaha
 	// Rootfs is used to force the rootfs version of lacros-chrome. No external data dependency is needed.
 	// For tests that don't care which lacros they are using, use this as a default.
-	Rootfs
+	Rootfs SetupMode = iota
+	// Omaha is used to get the lacros binary.
+	Omaha
 )
