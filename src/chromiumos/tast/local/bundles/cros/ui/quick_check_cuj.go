@@ -69,7 +69,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 
 	if bt == browser.TypeAsh {
-		cr = s.FixtValue().(chrome.HasChrome).Chrome()
+		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {
 		var err error

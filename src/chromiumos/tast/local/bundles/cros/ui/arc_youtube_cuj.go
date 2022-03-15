@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -45,7 +44,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	tconn, err := cr.TestAPIConn(ctx)
