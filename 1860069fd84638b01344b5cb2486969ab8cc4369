@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "026afee5_80690eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-16T00:36:46Z",
+      "side": 1,
+      "message": "One of the big parts of `ui.ChromeVariationsSmoke` is checking that the user session can start without crashing, since the finch seed is loaded and applied when the user logs in. If lacros loads Finch seeds independently of the OS, then I think the browser check in `ui.ChromeVariationsSmoke` will become unnecessary when lacros becomes the only browser, so these tests will be testing two different things at that point (validity of the finch seed for the OS session vs. validity of a different finch seed for the browser).\n\nBased on that I feel like they should be separate tests, but perhaps some of the shared utilities could be moved to a supporting package. WDYT?",
+      "parentUuid": "26baffaa_a2b67640",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04123771_24d4a61a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
         "patchSetId": 4
