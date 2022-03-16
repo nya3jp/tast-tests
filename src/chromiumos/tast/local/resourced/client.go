@@ -112,6 +112,20 @@ func (c *Client) MemoryMarginsKB(ctx context.Context) (Margins, error) {
 	return m, nil
 }
 
+// ComponentMargins holds the component margins returned from Resource Manager.
+type ComponentMargins struct {
+	ChromeCriticalKB, ChromeModerateKB, ArcVMForegroundKB, ArcVMPerceptibleKB, ArcVMCachedKB uint64
+}
+
+// ComponentMarginsKB returns the result of the GetComponentMarginsKB D-Bus method.
+func (c *Client) ComponentMarginsKB(ctx context.Context) (ComponentMargins, error) {
+	var m ComponentMargins
+	if err := c.obj.Call(ctx, "GetComponentMarginsKB").Store(&m.ChromeCriticalKB, &m.ChromeModerateKB, &m.ArcVMForegroundKB, &m.ArcVMPerceptibleKB, &m.ArcVMCachedKB); err != nil {
+		return m, errors.Wrap(err, "failed to call method GetComponentMarginsKB")
+	}
+	return m, nil
+}
+
 // ChromePressureSignal holds values created from the MemoryPressureChrome D-Bus
 // signal.
 type ChromePressureSignal struct {
