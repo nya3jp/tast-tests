@@ -132,6 +132,12 @@ func checkQueryMemoryStatus(ctx context.Context, rm *resourced.Client) error {
 	}
 	testing.ContextLog(ctx, "GetMemoryMarginsKB returns, critical: ", m.CriticalKB, ", moderate: ", m.ModerateKB)
 
+	arcvmMargins, err := rm.ArcVMComponentMarginsKB(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query arcvm component margins")
+	}
+	testing.ContextLog(ctx, "GetArcVmComponentMarginsKB returns, foreground: ", arcvmMargins.ForegroundKB, ", perceptible: ", arcvmMargins.PerceptibleKB, ", cached: ", arcvmMargins.CachedKB)
+
 	return nil
 }
 
