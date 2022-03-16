@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d2eeba_8bc916dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-16T21:03:59Z",
+      "side": 1,
+      "message": "Hi Hyung Tae, thanks for point it out. This test is part of the finch and lacros effort. This is the related design doc https://docs.google.com/document/d/1RYoX2bEKlx4UGRfJFmAzGxsRseKSqpYf6G-7XzFXLbU/edit#heading\u003dh.vjradtbjung9 and we also have a OKR for this. https://screenshot.googleplex.com/7WCRmyikEXsndUN Since (chrome.New with no fixture) is not currently supported by the lacros porting guidelines. Could we keep them both for now?",
+      "parentUuid": "c27af7cf_d53113a3",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04123771_24d4a61a",
@@ -102,6 +126,30 @@
       "writtenOn": "2022-03-16T00:16:03Z",
       "side": 1,
       "message": "nit: \"lacrosPrimary\" would be preferred given the current milestone",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c732c6_fb38592b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-16T21:03:59Z",
+      "side": 1,
+      "message": "This tast test will be run on Lacros CI builder, I think they want to use the stateful lacros instead of rootFS lacros.",
+      "parentUuid": "04123771_24d4a61a",
       "range": {
         "startLine": 31,
         "startChar": 17,
@@ -135,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4b2d0f_2235f2c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-16T21:03:59Z",
+      "side": 1,
+      "message": "I see. Thanks. I think these args are not chrome options. They are parameters used when running a launch lacros script. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/launch.go;l\u003d131-151?q\u003dlacros%2Flaunch.go",
+      "parentUuid": "f9003db5_942d56e2",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f961145_fb3898e3",
@@ -148,6 +220,30 @@
       "writtenOn": "2022-03-16T00:16:03Z",
       "side": 1,
       "message": "If it\u0027s specific to the variation test, it could move to your test package rather than here in the lacros package?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0321e6ad_9c516921",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-16T21:03:59Z",
+      "side": 1,
+      "message": "Do you suggest to create a separate package for variation test? I saw most lacros related tast tests are under this package. Could we keep it here?",
+      "parentUuid": "1f961145_fb3898e3",
       "range": {
         "startLine": 132,
         "startChar": 0,
