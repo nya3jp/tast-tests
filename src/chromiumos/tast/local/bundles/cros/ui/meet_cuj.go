@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -273,10 +272,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
 	if meet.useLacros {
-		// Launch lacros via shelf.
-		f := s.FixtValue().(lacrosfixt.FixtValue)
-
-		l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
+		// Launch lacros.
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}

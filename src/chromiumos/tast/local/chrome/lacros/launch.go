@@ -34,7 +34,7 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 		return cr, nil, cr, nil
 	case browser.TypeLacros:
 		f := f.(lacrosfixt.FixtValue)
-		l, err := Launch(ctx, f.TestAPIConn(), f.LacrosPath())
+		l, err := Launch(ctx, f.TestAPIConn())
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -45,9 +45,14 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 }
 
 // Connect connects to a running lacros instance (e.g launched by the UI) and returns a Lacros object that can be used to interact with it.
-func Connect(ctx context.Context, lacrosPath, userDataDir string) (l *Lacros, retErr error) {
-	debuggingPortPath := filepath.Join(userDataDir, "DevToolsActivePort")
-	execPath := filepath.Join(lacrosPath, "chrome")
+func Connect(ctx context.Context) (l *Lacros, retErr error) {
+	debuggingPortPath := filepath.Join(UserDataDir, "DevToolsActivePort")
+
+	info, err := lacros.InfoSnapshot(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get lacros info")
+	}
+	execPath := filepath.Join(info.LacrosPath, "chrome")
 
 	agg := jslog.NewAggregator()
 	defer func() {
@@ -61,15 +66,13 @@ func Connect(ctx context.Context, lacrosPath, userDataDir string) (l *Lacros, re
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
 	return &Lacros{
-		lacrosPath:  lacrosPath,
-		userDataDir: userDataDir,
-		agg:         agg,
-		sess:        sess,
+		agg:  agg,
+		sess: sess,
 	}, nil
 }
 
 // Launch launches lacros.
-func Launch(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*Lacros, error) {
+func Launch(ctx context.Context, tconn *chrome.TestConn) (*Lacros, error) {
 	// Make sure Lacros app is not running before launch.
 	if running, err := ash.AppRunning(ctx, tconn, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to check if app is not running before launch")
@@ -87,7 +90,7 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*La
 		return nil, errors.Wrap(err, "failed to wait for lacros")
 	}
 
-	l, err := Connect(ctx, lacrosPath, UserDataDir)
+	l, err := Connect(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to lacros")
 	}
@@ -97,8 +100,8 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*La
 // LaunchWithURL launches lacros-chrome and ensures there is one page open
 // with the given URL. Note that this function expects lacros to be closed
 // as a precondition.
-func LaunchWithURL(ctx context.Context, tconn *chrome.TestConn, lacrosPath, url string) (*Lacros, error) {
-	l, err := Launch(ctx, tconn, lacrosPath)
+func LaunchWithURL(ctx context.Context, tconn *chrome.TestConn, url string) (*Lacros, error) {
+	l, err := Launch(ctx, tconn)
 
 	// Get all pages.
 	ts, err := l.FindTargets(ctx, chrome.MatchAllPages())
