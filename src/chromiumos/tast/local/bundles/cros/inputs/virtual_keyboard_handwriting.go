@@ -26,7 +26,6 @@ import (
 var hwTestMessages = []data.Message{data.HandwritingMessageHello}
 var hwTestIMEs = []ime.InputMethod{
 	ime.AlphanumericWithJapaneseKeyboard,
-	ime.Arabic,
 	ime.ChinesePinyin,
 	ime.EnglishUK,
 	ime.EnglishUS,
@@ -37,6 +36,7 @@ var hwTestIMEs = []ime.InputMethod{
 
 var hwTestIMEsUpstream = []ime.InputMethod{
 	ime.EnglishSouthAfrica,
+	ime.Arabic,
 }
 
 func init() {
