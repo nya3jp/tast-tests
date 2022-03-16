@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f20c2d_1075a90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6777db7_66d2cbad",
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42267ce5_bd692990",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-29T03:02:41Z",
       "side": 1,
       "message": "Looks like it is installing an app online? To avoid unexpected internet issue while testing, is it possible to have a static google map app instead?",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291664a6_b99b9d88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Yes we are installing app online. Tried with other ways to have Maps app for that also we require network.",
+      "parentUuid": "42267ce5_bd692990",
       "range": {
         "startLine": 50,
         "startChar": 28,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0bf80b8_27658fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "1. We are unable to have offline app as DUTs will not come with Maps app pre-installed.\n2. We have to install app by having network connection.\n3. Tried to install static maps app but after installing app unable to read UI elements to carry basic maps functionality checks.",
+      "parentUuid": "85ec6eeb_c51781bc",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "292ca77b_f496fcdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
         "patchSetId": 2
@@ -94,6 +160,30 @@
       "writtenOn": "2021-12-29T03:02:41Z",
       "side": 1,
       "message": "nit. a space after //",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f0e081a_28a87336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292ca77b_f496fcdd",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c97f4fe_71123006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15982e3f_d6947246",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 6
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58bf2818_69daa503",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-12-29T03:02:41Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 6
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26895da5_c5e990a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bf2818_69daa503",
       "range": {
         "startLine": 155,
         "startChar": 4,
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83a2a3a_9d18d6ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a7ee206_80050864",
+      "range": {
+        "startLine": 205,
+        "startChar": 5,
+        "endLine": 205,
+        "endChar": 24
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c314882a_24f8bc05",
@@ -186,6 +348,30 @@
       "writtenOn": "2021-12-29T03:02:41Z",
       "side": 1,
       "message": "Can you declare earthMapSwitch in GoogleMapBasicCheck and calls mapFunctionalities directly?",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 18
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b832e90_45bc6780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c314882a_24f8bc05",
       "range": {
         "startLine": 238,
         "startChar": 5,
@@ -213,6 +399,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "397d031f_b449cff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dfd45fc_63b43c84",
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b68ce7b_5abededf",
@@ -226,6 +430,30 @@
       "writtenOn": "2021-12-29T03:02:41Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 22
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6969153_a29c0b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b68ce7b_5abededf",
       "range": {
         "startLine": 246,
         "startChar": 5,
@@ -253,6 +481,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66571da_a340ab94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9d6e3c_fb7bff72",
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0f7be1b_5d80fe88",
@@ -266,6 +512,30 @@
       "writtenOn": "2021-12-29T03:02:41Z",
       "side": 1,
       "message": "how about jsExpr here? From what I can tell, it is more than getting element.",
+      "range": {
+        "startLine": 254,
+        "startChar": 64,
+        "endLine": 254,
+        "endChar": 74
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb7a743_20252a2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f7be1b_5d80fe88",
       "range": {
         "startLine": 254,
         "startChar": 64,
@@ -299,6 +569,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4292da0b_3e0134e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10d3e552_3f0129d5",
+      "range": {
+        "startLine": 269,
+        "startChar": 42,
+        "endLine": 269,
+        "endChar": 66
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a57661cd_06a00b87",
@@ -312,6 +606,30 @@
       "writtenOn": "2021-12-29T03:02:41Z",
       "side": 1,
       "message": "Same",
+      "range": {
+        "startLine": 271,
+        "startChar": 45,
+        "endLine": 271,
+        "endChar": 68
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "483f654d_39be5c23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-16T08:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a57661cd_06a00b87",
       "range": {
         "startLine": 271,
         "startChar": 45,
