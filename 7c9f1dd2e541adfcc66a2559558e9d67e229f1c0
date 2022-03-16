@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e6f3c5_d84a8555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-16T20:59:26Z",
+      "side": 1,
+      "message": "Hi Brian, this seems to be a different issue in handwriting. I will raise a cl to demote it.",
+      "revId": "7c9f1dd2e541adfcc66a2559558e9d67e229f1c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
