@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "202969e8_df3293b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-16T20:10:38Z",
+      "side": 1,
+      "message": "Nice find! I think an even better way to resolve this would be to actually ask wpa_supplicant if the AP is \"assoc disallow\"-ed so that we can further segment the test into separate parts and make it easier to pinpoint exactly where the error was (e.g. was it because the DUT somehow didn\u0027t see the assoc_disallow bit or was it because it ignored it despite seeing it). WDYT?",
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8c45da15_d41ef70b",
@@ -31,6 +48,23 @@
       "writtenOn": "2022-03-15T17:04:57Z",
       "side": 1,
       "message": "+2 % nits\n\nwait for your teammate\u0027s review before submitting",
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257b9c90_783e67e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-16T20:10:38Z",
+      "side": 1,
+      "message": "We prefer the usage of cros-wifi-reviews@google.com for reviews.",
       "revId": "b829ed4908aa60f161799188950254a05d1927fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
