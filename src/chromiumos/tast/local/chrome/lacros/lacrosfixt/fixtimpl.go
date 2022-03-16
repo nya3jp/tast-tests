@@ -6,8 +6,6 @@ package lacrosfixt
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
 	"path/filepath"
 	"time"
 
@@ -254,11 +252,6 @@ var lacrosAshLikeThreadsPriorityArgs = []string{
 }
 
 const (
-	// MojoSocketPath indicates the path of the unix socket that ash-chrome creates.
-	// This unix socket is used for getting the file descriptor needed to connect mojo
-	// from ash-chrome to lacros.
-	MojoSocketPath = "/tmp/lacros.socket"
-
 	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
 	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"
 )
@@ -275,10 +268,6 @@ type fixtValueImpl struct {
 	testAPIConn *chrome.TestConn
 	mode        SetupMode
 	lacrosPath  string
-	// Each Reset() of the fixture creates a new user tmp directory. Use a
-	// pointer here such that FixtValue().UserTmpDir() can return the
-	// current one.  TODO(hidehiko): Clean this up.
-	userTmpDir *string
 }
 
 // Chrome gets the CrOS-chrome instance.
@@ -301,17 +290,6 @@ func (f *fixtValueImpl) LacrosPath() string {
 	return f.lacrosPath
 }
 
-// UserTmpDir returns the path to be used for Lacros's user data directory.
-// This directory will be wiped on every reset call.
-// We used to use generic tmp directory, and kept it until whole Tast run
-// completes, but Lacros user data consumes more disk than other cases,
-// and we hit out-of-diskspace on some devices which has very limited disk
-// space. To avoid that problem, the user data will be wiped for each
-// test run.
-func (f *fixtValueImpl) UserTmpDir() string {
-	return *f.userTmpDir
-}
-
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
 type fixtImpl struct {
 	mode       SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
@@ -321,7 +299,6 @@ type fixtImpl struct {
 	prepared   bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
 	fOpt       chrome.OptionsCallback                        // Function to generate Chrome Options
 	makeValue  func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
-	userTmpDir string                                        // Path to the tmp directory storing lacros user data.
 }
 
 // SetUp is called by tast before each test is run. We use this method to initialize
@@ -343,12 +320,6 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 			f.cleanUp(ctx, s)
 		}
 	}()
-
-	userTmpDir, err := createUserTempDir()
-	if err != nil {
-		s.Fatal("Failed to create new user tmp directory: ", err)
-	}
-	f.userTmpDir = userTmpDir
 
 	opts, err := f.fOpt(ctx, s)
 	if err != nil {
@@ -409,17 +380,6 @@ func (f *fixtImpl) Reset(ctx context.Context) error {
 	if err := f.cr.ResetState(ctx); err != nil {
 		return errors.Wrap(err, "failed resetting existing Chrome session")
 	}
-	if err := os.RemoveAll(f.userTmpDir); err != nil {
-		return errors.Wrap(err, "failed resetting user tmp directory")
-	}
-	// Reset the member temporarily, so even if temp dir creation just below fails,
-	// the state will be kept gracefully.
-	f.userTmpDir = ""
-	userTmpDir, err := createUserTempDir()
-	if err != nil {
-		return errors.Wrap(err, "failed to create new user tmp directory")
-	}
-	f.userTmpDir = userTmpDir
 	return nil
 }
 
@@ -448,13 +408,6 @@ func (f *fixtImpl) cleanUp(ctx context.Context, s *testing.FixtState) {
 		f.cr = nil
 	}
 
-	if f.userTmpDir != "" {
-		if err := os.RemoveAll(f.userTmpDir); err != nil {
-			s.Error("Failed to remove user tmp directory: ", err)
-		}
-		f.userTmpDir = ""
-	}
-
 	f.prepared = false
 }
 
@@ -464,19 +417,5 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath, &f.userTmpDir}
-}
-
-// createUserTempDir creates a temporary directory to store Lacros's user data.
-// On success, it is caller's responsibility to delete the directory eventually.
-func createUserTempDir() (string, error) {
-	dir, err := ioutil.TempDir("", "lacros_user_data")
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create lacros user data directory")
-	}
-	if err := os.Chmod(dir, 0777); err != nil {
-		os.RemoveAll(dir)
-		return "", errors.Wrap(err, "failed to set permissions for lacros user data directory")
-	}
-	return dir, nil
+	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath}
 }

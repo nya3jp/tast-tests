@@ -28,9 +28,6 @@ const UserDataDir = "/home/chronos/user/lacros/"
 // Lacros contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type Lacros struct {
-	lacrosPath  string // Root directory for lacros-chrome.
-	userDataDir string // User data directory
-
 	cmd  *testexec.Cmd // The command context used to start lacros-chrome.
 	agg  *jslog.Aggregator
 	sess *driver.Session // Debug session connected lacros-chrome.

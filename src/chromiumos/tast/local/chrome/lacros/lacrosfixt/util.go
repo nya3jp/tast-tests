@@ -69,11 +69,6 @@ func (cfg *LacrosConfig) WithVar(s TestingState) *LacrosConfig {
 func DefaultOpts(cfg *LacrosConfig) ([]chrome.Option, error) {
 	var opts []chrome.Option
 
-	// mojoSocketPath indicates the path of the unix socket that ash-chrome creates.
-	// This unix socket is used for getting the file descriptor needed to connect mojo
-	// from ash-chrome to lacros.
-	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+MojoSocketPath))
-
 	// Disable launching lacros on login.
 	opts = append(opts, chrome.ExtraArgs("--disable-login-lacros-opening"))
 

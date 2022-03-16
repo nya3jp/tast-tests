@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -73,8 +72,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	var bTconn *chrome.TestConn
 	if s.Param().(bool) { // Lacros Chrome
 		// Launch lacros.
-		f := s.FixtValue().(lacrosfixt.FixtValue)
-		l, err := lacros.Launch(ctx, f.TestAPIConn(), f.LacrosPath())
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}

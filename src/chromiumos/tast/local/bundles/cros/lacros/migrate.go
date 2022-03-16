@@ -177,9 +177,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	// TODO(neis): Support -var lacrosDeployedBinary.
-	l, err := lacros.Launch(ctx, tconn, "/run/lacros")
-	if err != nil {
+	if _, err := lacros.Launch(ctx, tconn); err != nil {
 		s.Fatal("Failed to launch lacros: ", err)
 	}
 

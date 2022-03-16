@@ -62,8 +62,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-	cr, l, cs, err := lacros.SetupDeprecated(ctx, s.FixtValue(), s.Param().(browser.Type))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}

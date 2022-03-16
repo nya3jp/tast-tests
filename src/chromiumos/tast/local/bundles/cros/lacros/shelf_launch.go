@@ -120,7 +120,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	l, err := lacros.Connect(ctx, f.LacrosPath(), lacros.UserDataDir)
+	l, err := lacros.Connect(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}

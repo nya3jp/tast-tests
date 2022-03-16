@@ -30,7 +30,7 @@ func SetUp(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browse
 		return cr.Browser(), func(context.Context) {}, nil
 	case browser.TypeLacros:
 		f := f.(lacrosfixt.FixtValue)
-		l, err := lacros.Launch(ctx, f.TestAPIConn(), f.LacrosPath())
+		l, err := lacros.Launch(ctx, f.TestAPIConn())
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -59,7 +59,7 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 
 	case browser.TypeLacros:
 		f := f.(lacrosfixt.FixtValue)
-		l, err := lacros.LaunchWithURL(ctx, f.TestAPIConn(), f.LacrosPath(), url)
+		l, err := lacros.LaunchWithURL(ctx, f.TestAPIConn(), url)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -133,7 +133,7 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *LacrosConfig,
 			return nil, nil, nil, errors.Wrap(err, "failed to wait for lacros-chrome to be ready")
 		}
 
-		l, err := lacros.Launch(ctx, tconn, lacrosPath)
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			lacrosfaillog.Save(ctx, lacrosPath)
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
@@ -144,65 +144,6 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *LacrosConfig,
 			}
 		}
 		return cr, l.Browser(), closeBrowser, nil
-
-	default:
-		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
-	}
-}
-
-// SetUpDeprecated is deprecated, please don't use it.
-// TODO(crbug.com/1310159): Remove this.
-func SetUpDeprecated(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
-	switch bt {
-	case browser.TypeAsh:
-		cr := f.(chrome.HasChrome).Chrome()
-		return cr.Browser(), func(context.Context) {}, nil
-	case browser.TypeLacros:
-		f := f.(lacrosfixt.FixtValue)
-		l, err := lacros.LaunchDeprecated(ctx, f)
-		if err != nil {
-			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
-		}
-		closeLacros := func(ctx context.Context) {
-			l.Close(ctx) // Ignore error.
-		}
-		return l.Browser(), closeLacros, nil
-	default:
-		return nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
-	}
-}
-
-// SetUpWithURLDeprecated is deprecated, please don't use it.
-// TODO(crbug.com/1310159): Remove this.
-func SetUpWithURLDeprecated(ctx context.Context, f interface{}, bt browser.Type, url string) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
-	switch bt {
-	case browser.TypeAsh:
-		cr := f.(chrome.HasChrome).Chrome()
-		conn, err := cr.NewConn(ctx, url)
-		if err != nil {
-			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
-		}
-		return conn, cr.Browser(), func(context.Context) {}, nil
-
-	case browser.TypeLacros:
-		f := f.(lacrosfixt.FixtValue)
-		l, err := lacros.LaunchWithURLDeprecated(ctx, f, url)
-		if err != nil {
-			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
-		}
-		conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
-		if err != nil {
-			if err := l.Close(ctx); err != nil {
-				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
-			}
-			return nil, nil, nil, errors.Wrap(err, "failed to connect to lacros-chrome")
-		}
-		closeLacros := func(ctx context.Context) {
-			if err := l.Close(ctx); err != nil {
-				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
-			}
-		}
-		return conn, l.Browser(), closeLacros, nil
 
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
