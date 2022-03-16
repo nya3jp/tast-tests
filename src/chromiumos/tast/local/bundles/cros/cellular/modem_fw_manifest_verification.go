@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/cellular"
+	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/testing"
 )
 
@@ -78,6 +79,17 @@ func ModemFWManifestVerification(ctx context.Context, s *testing.State) {
 			}
 			if len(carrierFW.CarrierId) == 0 {
 				s.Fatalf("There is no carrier id defined for carrier FW %q", carrierFW.Version)
+			}
+		}
+	}
+
+	// Verify that the DLC exists in the dlcservice manifest
+	for _, device := range manifest.Device {
+		if device.GetDlcId() != "" {
+			_, err := dlc.GetDlcState(ctx, device.DlcId)
+
+			if err != nil {
+				s.Fatalf("Failed to get state info for DLC %q: %q", device.DlcId, err)
 			}
 		}
 	}
