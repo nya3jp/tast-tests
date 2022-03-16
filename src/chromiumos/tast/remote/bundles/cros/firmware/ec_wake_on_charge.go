@@ -85,6 +85,14 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		return nil
 	}
 	setPowerSupply := func(ctx context.Context, connectPower, hasHibernated bool) error {
+		// For debugging purposes, explicitly log servo connection type. Servo might report that it has
+		// control over pd role even for Type-A. Logging this information would clarify on whether other
+		// failures occur because the pd role wasn't switched in the first place with a type A connection.
+		if connectionType, err := h.Servo.GetString(ctx, "root.dut_connection_type"); err != nil {
+			s.Log("Unable to read servo connection type: ", err)
+		} else {
+			s.Logf("Servo connection type: %s", connectionType)
+		}
 		if connectPower {
 			// Connect power supply.
 			if err := h.SetDUTPower(ctx, true); err != nil {
