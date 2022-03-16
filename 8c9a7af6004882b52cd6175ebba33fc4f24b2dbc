@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "745a5142_4fcbe8dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-16T20:56:51Z",
+      "side": 1,
+      "message": "Removed an unused variable",
+      "revId": "8c9a7af6004882b52cd6175ebba33fc4f24b2dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
