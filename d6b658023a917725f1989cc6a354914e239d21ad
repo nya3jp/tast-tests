@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d93fcc_260a9151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-16T11:39:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "d6b658023a917725f1989cc6a354914e239d21ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e104c38a_426e9186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-16T11:39:14Z",
+      "side": 1,
+      "message": "nit: You may want to wrap this error with an error message.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "d6b658023a917725f1989cc6a354914e239d21ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15ae79f_e38a3c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-16T11:39:14Z",
+      "side": 1,
+      "message": "Why not having time.Hours already in the stressHours variable? Also you could rename variable to stressDuration and that way you will be parameterized the test to whatever duration you want (minutes, hours, days) and with the first suggestion the variable\u0027s name won\u0027t contain the the unit (Hours) as it does now.\n\nWDYT?",
+      "revId": "d6b658023a917725f1989cc6a354914e239d21ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c167ed_f9641948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-16T11:39:14Z",
+      "side": 1,
+      "message": "If I am reading it right - this will be checking if the device that has OutputStream is the same device as it was initially assigned in line 160, right?\n\nBased on the description of the test - \"Verifies audio playback over BT headset for long duration\" and seeing that the sample file raw data was constructed from 440 Hz (I guess), I was expecting to see some kind of sampling done on the captured waveform.\n\nOr maybe I am missing something here 😕",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 4
+      },
+      "revId": "d6b658023a917725f1989cc6a354914e239d21ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
