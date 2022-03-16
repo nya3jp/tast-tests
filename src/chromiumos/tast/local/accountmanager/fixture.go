@@ -107,18 +107,6 @@ func (f FixtureData) LacrosPath() string {
 	return f.LacrosFixt.LacrosPath()
 }
 
-// UserTmpDir returns the path to be used for Lacros's user data directory.
-// This directory will be wiped on every reset call.
-// We used to use generic tmp directory, and kept it until whole Tast run
-// completes, but Lacros user data consumes more disk than other cases,
-// and we hit out-of-diskspace on some devices which has very limited disk
-// space. To avoid that problem, the user data will be wiped for each
-// test run.
-// Implement lacrosfixt.FixtValue interface.
-func (f FixtureData) UserTmpDir() string {
-	return f.LacrosFixt.UserTmpDir()
-}
-
 type accountManagerTestFixture struct {
 	cr  *chrome.Chrome
 	arc *arc.ARC

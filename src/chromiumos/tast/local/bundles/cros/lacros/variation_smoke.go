@@ -97,7 +97,7 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the test API connection: ", err)
 	}
 	func() {
-		l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}
@@ -127,7 +127,7 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 	}()
 
 	func() {
-		l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}

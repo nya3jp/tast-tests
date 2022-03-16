@@ -176,7 +176,7 @@ func Memory(ctx context.Context, s *testing.State) {
 		// Measure memory before launching lacros-chrome.
 		pmf1, pss1 := measureBothChrome(ctx, s)
 
-		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn(), s.FixtValue().(lacrosfixt.FixtValue).LacrosPath())
+		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
