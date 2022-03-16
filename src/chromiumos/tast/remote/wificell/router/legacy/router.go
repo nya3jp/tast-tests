@@ -39,6 +39,8 @@ const (
 	envKeyOpenSslChromiumSkipTrustedPurposeCheck = "OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK"
 )
 
+const lsbReleasePath = "/etc/lsb-release"
+
 // logsToCollect is the list of files on router to collect.
 var logsToCollect = []string{
 	"/var/log/messages",
@@ -892,7 +894,6 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 	ctx, st := timing.Start(ctx, "hostBoard")
 	defer st.End()
 
-	const lsbReleasePath = "/etc/lsb-release"
 	const crosReleaseBoardKey = "CHROMEOS_RELEASE_BOARD"
 
 	cmd := host.CommandContext(ctx, "cat", lsbReleasePath)
@@ -915,4 +916,14 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 // MAC returns the MAC address of iface on this router.
 func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	return r.ipr.MAC(ctx, iface)
+}
+
+// HostIsLegacyRouter determines whether the remote host is a Legacy router.
+func HostIsLegacyRouter(ctx context.Context, host *ssh.Conn) (bool, error) {
+	lsbReleaseMatchIfLegacy := "(?m)^CHROMEOS_RELEASE_BOARD=gale$"
+	matches, err := common.HostFileContentsMatch(ctx, host, lsbReleasePath, lsbReleaseMatchIfLegacy)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to check if remote file %q contents match %q", lsbReleasePath, lsbReleaseMatchIfLegacy)
+	}
+	return matches, nil
 }
