@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6fb311d_107aa813",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T15:38:43Z",
+      "side": 1,
+      "message": "Assuming that both ways are reliable with no flake, I would vote for defaulting to apps.Launch making autotestPrivate API solid and giving an option of launching from shelf via LaunchFromShelf (as it is), so as to avoid any side effects from the hotseat or tooltop as you mentioned.\nIt\u0027d be interesting to hear more from other reviewers though.",
+      "parentUuid": "c4825f97_fd10d249",
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95648f0f_75369635",
         "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
         "patchSetId": 2
@@ -202,6 +220,30 @@
       "side": 1,
       "message": "pc is page count, ts is targets. If there were non-page targets they are included in targets but not in page count, so it seems sensible to me IMHO.\n\nAs for the short names, it\u0027s go style (for better or worse).",
       "parentUuid": "986b9766_126ab436",
+      "range": {
+        "startLine": 118,
+        "startChar": 68,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c1ac2d_b6facf74",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T15:38:43Z",
+      "side": 1,
+      "message": "nit: then could it be rephrased \"expected only one page target, got %q\"?",
+      "parentUuid": "9f8f235d_8b0963e9",
       "range": {
         "startLine": 118,
         "startChar": 68,
