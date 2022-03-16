@@ -9,7 +9,9 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
@@ -41,20 +43,75 @@ func init() {
 		}, {
 			Name: "mock_consent",
 			Val:  crash.MockConsent,
+		}, {
+			Name:              "real_consent_per_user_on",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
+			// No Pre because we must manually log in and out to chrome
+			// on two accounts.
+			Val: crash.RealConsentPerUserOn,
+			// This test performs 2 logins.
+			Timeout: 2*chrome.LoginTimeout + time.Minute,
+		}, {
+			Name:              "real_consent_per_user_off",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
+			// No Pre because we must manually log in and out to chrome
+			// on two accounts.
+			Val: crash.RealConsentPerUserOff,
+			// This test performs 2 logins.
+			Timeout: 2*chrome.LoginTimeout + time.Minute,
 		}},
 	})
 }
 
 func KernelWarning(ctx context.Context, s *testing.State) {
 	opt := crash.WithMockConsent()
-	useConsent := s.Param().(crash.ConsentType)
-	if useConsent == crash.RealConsent {
-		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
-	}
-	if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes("kernel_warning"), opt); err != nil {
-		s.Fatal("SetUpCrashTest failed: ", err)
+	consentType := s.Param().(crash.ConsentType)
+	usePerUser := consentType == crash.RealConsentPerUserOn || consentType == crash.RealConsentPerUserOff
+	if usePerUser {
+		// First, create and log out of chrome, as a primary user (device owner).
+		if err := func() error {
+			cr, err := chrome.New(ctx, chrome.ExtraArgs(crash.ChromeVerboseConsentFlags))
+			if err != nil {
+				return errors.Wrap(err, "chrome startup failed")
+			}
+			defer cr.Close(ctx)
+			if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+				return errors.Wrap(err, "SetUpCrashTest failed")
+			}
+			return nil
+		}(); err != nil {
+			s.Fatal("Setting up crash test failed: ", err)
+		}
+	} else {
+		if consentType == crash.RealConsent {
+			opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
+		}
+		if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes("kernel_warning"), opt); err != nil {
+			s.Fatal("SetUpCrashTest failed: ", err)
+		}
 	}
 	defer crash.TearDownCrashTest(ctx)
+
+	if usePerUser {
+		cr, err := chrome.New(ctx,
+			// Avoid erasing consent we just enabled, and in particular do *not* take ownership.
+			chrome.KeepState(),
+			chrome.FakeLogin(chrome.Creds{User: "additional-user1@gmail.com", Pass: "password"}))
+		if err != nil {
+			s.Fatal("Chrome startup failed: ", err)
+		}
+		defer cr.Close(ctx)
+		if err := crash.CreatePerUserConsent(ctx, consentType == crash.RealConsentPerUserOn); err != nil {
+			s.Fatal("Failed to create per-user consent: ", err)
+		}
+		defer func() {
+			if err := crash.RemovePerUserConsent(ctx); err != nil {
+				s.Error("Failed to clean up per-user consent: ", err)
+			}
+		}()
+	}
 
 	if err := crash.RestartAnomalyDetectorWithSendAll(ctx, true); err != nil {
 		s.Fatal("Failed to restart anomaly detector: ", err)
@@ -87,13 +144,24 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Couldn't get daemon store dirs: ", err)
 	}
-	if useConsent == crash.MockConsent {
+	if consentType == crash.MockConsent {
 		// We might not be logged in, so also allow system crash dir.
 		crashDirs = append(crashDirs, crash.SystemCrashDir)
 	}
 	files, err := crash.WaitForCrashFiles(ctx, crashDirs, expectedRegexes)
-	if err != nil {
+	if err != nil && consentType != crash.RealConsentPerUserOff {
 		s.Fatal("Couldn't find expected files: ", err)
+	}
+	defer func() {
+		if err := crash.RemoveAllFiles(ctx, files); err != nil {
+			s.Log("Couldn't clean up files: ", err)
+		}
+	}()
+	if consentType == crash.RealConsentPerUserOff {
+		if err == nil {
+			s.Fatal("Found crash files but didn't expect to")
+		}
+		return
 	}
 
 	if len(files[metaName]) == 1 {
@@ -116,9 +184,5 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 		if err := crash.MoveFilesToOut(ctx, s.OutDir(), files[metaName]...); err != nil {
 			s.Error("Failed to save additional meta files: ", err)
 		}
-	}
-
-	if err := crash.RemoveAllFiles(ctx, files); err != nil {
-		s.Log("Couldn't clean up files: ", err)
 	}
 }
