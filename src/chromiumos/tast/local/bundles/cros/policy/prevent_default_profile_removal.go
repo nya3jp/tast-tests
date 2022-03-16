@@ -43,7 +43,7 @@ func PreventDefaultProfileRemoval(ctx context.Context, s *testing.State) {
 	f := s.FixtValue().(lacrosfixt.FixtValue)
 
 	// Open an empty Lacros window.
-	l, err := lacros.Launch(ctx, f.TestAPIConn(), f.LacrosPath())
+	l, err := lacros.Launch(ctx, f.TestAPIConn())
 	if err != nil {
 		s.Fatal("Failed to open lacros: ", err)
 	}
