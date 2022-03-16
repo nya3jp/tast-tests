@@ -74,6 +74,7 @@ var expectedWLANDriver = map[string]map[string]string{
 	},
 	wlan.IntelAX211: {
 		"5.10": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"5.15": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	wlan.QualcommAtherosQCA6174: {
 		"4.4":  "wireless/ar10k/ath/ath10k/ath10k_pci.ko",
