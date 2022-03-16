@@ -31,6 +31,11 @@ func init() {
 // FwupdInstallRemote runs the fwupdtool utility and verifies that it
 // can update a device in the system using a remote repository.
 func FwupdInstallRemote(ctx context.Context, s *testing.State) {
+	// make sure dut battery is charging/charged
+	if err := fwupd.SetFwupdChargingState(ctx, true); err != nil {
+		s.Fatal("Failed to set charging state: ", err)
+	}
+
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", fwupd.ReleaseURI)
 	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
 	output, err := cmd.Output(testexec.DumpLogOnError)
