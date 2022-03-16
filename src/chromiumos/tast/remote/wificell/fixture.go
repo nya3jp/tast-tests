@@ -324,30 +324,34 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 
 	// Allow for setting router type
-	rTypeStr, ok := s.Var("routertype")
-	if !ok || rTypeStr == "" {
-		// Default to legacy
-		rTypeStr = "legacy"
-	}
-	if rType, err := support.ParseRouterType(rTypeStr); err != nil {
-		s.Fatalf("Failed to parse routertype %q: ", err)
+	var routerType support.RouterType
+	if rTypeStr, ok := s.Var("routertype"); !ok || rTypeStr == "" {
+		// Default to unknown so that it may be automatically determined with host
+		routerType = support.UnknownT
 	} else {
-		testing.ContextLog(ctx, "routertype: ", rTypeStr)
-		ops = append(ops, TFRouterType(rType))
+		var err error
+		routerType, err = support.ParseRouterType(rTypeStr)
+		if err != nil {
+			s.Fatalf("Failed to parse routertype %q: ", err)
+		}
 	}
+	testing.ContextLog(ctx, "routertype: ", routerType.String())
+	ops = append(ops, TFRouterType(routerType))
 
 	// Allow for setting pcap type
-	rTypeStr, ok = s.Var("pcaptype")
-	if !ok || rTypeStr == "" {
-		// Default to legacy
-		rTypeStr = "legacy"
-	}
-	if rType, err := support.ParseRouterType(rTypeStr); err != nil {
-		s.Fatalf("Failed to parse pcaptype %q: ", err)
+	var pcapType support.RouterType
+	if rTypeStr, ok := s.Var("pcaptype"); !ok || rTypeStr == "" {
+		// Default to unknown so that it may be automatically determined with host
+		pcapType = support.UnknownT
 	} else {
-		testing.ContextLog(ctx, "pcaptype: ", rTypeStr)
-		ops = append(ops, TFPcapType(rType))
+		var err error
+		pcapType, err = support.ParseRouterType(rTypeStr)
+		if err != nil {
+			s.Fatalf("Failed to parse pcaptype %q: ", err)
+		}
 	}
+	testing.ContextLog(ctx, "pcaptype: ", pcapType.String())
+	ops = append(ops, TFPcapType(pcapType))
 
 	tf, err := NewTestFixture(ctx, s.FixtContext(), s.DUT(), s.RPCHint(), ops...)
 	if err != nil {

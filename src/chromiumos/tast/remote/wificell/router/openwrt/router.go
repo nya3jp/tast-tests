@@ -641,3 +641,14 @@ func (r *Router) ReserveForStopCapture(ctx context.Context, capturer *pcap.Captu
 func (r *Router) ReserveForStopRawCapturer(ctx context.Context, capturer *pcap.Capturer) (context.Context, context.CancelFunc) {
 	return capturer.ReserveForClose(ctx)
 }
+
+// HostIsOpenWrtRouter determines whether the remote host is an OpenWrt router.
+func HostIsOpenWrtRouter(ctx context.Context, host *ssh.Conn) (bool, error) {
+	deviceInfoPath := "/etc/device_info"
+	deviceInfoMatchIfOpenWrt := "(?m)^DEVICE_MANUFACTURER='OpenWrt'$"
+	matches, err := common.HostFileContentsMatch(ctx, host, deviceInfoPath, deviceInfoMatchIfOpenWrt)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to check if remote file %q contents match %q", deviceInfoPath, deviceInfoMatchIfOpenWrt)
+	}
+	return matches, nil
+}

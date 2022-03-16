@@ -27,6 +27,8 @@ const (
 	AxT
 	// OpenWrtT is the openwrt router type.
 	OpenWrtT
+	// UnknownT is an unknown router type.
+	UnknownT
 )
 
 // ParseRouterType parses a RouterType from a string.
@@ -39,8 +41,10 @@ func ParseRouterType(rTypeStr string) (RouterType, error) {
 		rType = AxT
 	case "openwrt":
 		rType = OpenWrtT
+	case "unknown", "auto":
+		rType = UnknownT
 	default:
-		return -1, errors.Errorf("unknown RouterType %q", rTypeStr)
+		return -1, errors.Errorf("invalid RouterType %q", rTypeStr)
 	}
 	return rType, nil
 }
@@ -55,6 +59,8 @@ func (rt RouterType) String() string {
 		typeStr = "AX"
 	case OpenWrtT:
 		typeStr = "OpenWrt"
+	case UnknownT:
+		typeStr = "Unknown"
 	default:
 		typeStr = string(rune(rt))
 	}

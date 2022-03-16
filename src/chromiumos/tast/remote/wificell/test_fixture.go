@@ -340,6 +340,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create a router object")
 		}
+		testing.ContextLogf(ctx, "Successfully instantiated %s router controller for router[%d]", routerObj.RouterType().String(), i)
 		rt.object = routerObj
 	}
 	if tf.option.routerAsCapture {
@@ -400,6 +401,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to create a router object for pcap")
 			}
+			testing.ContextLogf(ctx, "Successfully instantiated %s router controller for pcap", tf.pcap.RouterType().String())
 			// Validate that the pcap router actually supports pcap
 			if _, ok := tf.pcap.(support.Capture); !ok {
 				return nil, errors.Errorf("router type %q does not support Capture", tf.pcap.RouterType().String())
@@ -1253,6 +1255,19 @@ func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOp
 func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtype support.RouterType) (router.Base, error) {
 	ctx, st := timing.Start(ctx, "NewRouter")
 	defer st.End()
+
+	if rtype == support.UnknownT {
+		if resolvedType, err := resolveRouterTypeFromHost(ctx, host); err != nil {
+			return nil, errors.Wrap(err, "failed to resolve router type from host")
+		} else if resolvedType == support.UnknownT {
+			rtype = support.LegacyT
+			testing.ContextLogf(ctx, "Unable to resolve specific router type from host, defaulting to %q", rtype.String())
+		} else {
+			rtype = resolvedType
+			testing.ContextLogf(ctx, "Resolved host router type to be %q", rtype.String())
+		}
+	}
+
 	switch rtype {
 	case support.LegacyT:
 		return legacy.NewRouter(ctx, daemonCtx, host, name)
@@ -1263,6 +1278,20 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
+}
+
+func resolveRouterTypeFromHost(ctx context.Context, host *ssh.Conn) (support.RouterType, error) {
+	if isLegacy, err := legacy.HostIsLegacyRouter(ctx, host); err != nil {
+		return -1, err
+	} else if isLegacy {
+		return support.LegacyT, nil
+	}
+	if isOpenWrt, err := openwrt.HostIsOpenWrtRouter(ctx, host); err != nil {
+		return -1, err
+	} else if isOpenWrt {
+		return support.OpenWrtT, nil
+	}
+	return support.UnknownT, nil
 }
 
 // WaitWifiConnected waits until WiFi is connected to the SHILL profile with specific GUID.
