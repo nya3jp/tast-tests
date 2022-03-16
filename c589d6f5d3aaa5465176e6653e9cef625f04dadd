@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb353ef_90cb2af9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-16T14:10:51Z",
+      "side": 1,
+      "message": "Can you link to the CUJs you are automating",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "c589d6f5d3aaa5465176e6653e9cef625f04dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbd9b1e_88ae2295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/onboarding_initial_page_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-16T14:10:51Z",
+      "side": 1,
+      "message": "// TODO(bug #): Remove after we fully launch the feature",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "c589d6f5d3aaa5465176e6653e9cef625f04dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f64a0dd_b6185dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/onboarding_initial_page_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-16T14:10:51Z",
+      "side": 1,
+      "message": "You can define opts with these two instead of appending twice",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 72
+      },
+      "revId": "c589d6f5d3aaa5465176e6653e9cef625f04dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
