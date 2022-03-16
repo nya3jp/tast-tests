@@ -217,6 +217,28 @@ func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 	return ret, nil
 }
 
+// GetDaemonStoreConsentDirs gives the paths to the daemon store consent directories for the currently active sessions.
+func GetDaemonStoreConsentDirs(ctx context.Context) ([]string, error) {
+	sessionManager, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return []string{}, errors.Wrap(err, "couldn't start session manager")
+	}
+
+	sessions, err := sessionManager.RetrieveActiveSessions(ctx)
+	if err != nil {
+		return []string{}, errors.Wrap(err, "couldn't retrieve active sessions")
+	}
+
+	var ret []string
+	for k := range sessions {
+		userhash := sessions[k]
+		ret = append(ret, fmt.Sprintf("/home/root/%s/uma-consent", userhash))
+	}
+	// If no one is logged in, that's okay -- just return an empty list and don't fail.
+	// (Many tests are run when no user is logged in.)
+	return ret, nil
+}
+
 // RegexesNotFound is an error type, used to indicate that
 // WaitForCrashFiles didn't find matches for all of the regexs.
 type RegexesNotFound struct {

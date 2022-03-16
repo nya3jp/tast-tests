@@ -40,6 +40,15 @@ const (
 	// crash-test-in-progress written to in order to preserve them across
 	// reboot.
 	rebootPersistDir = "/mnt/stateful_partition/unencrypted/preserve/"
+
+	// usePerUserMetricsConsent is the file governing whether we use
+	// per-user metrics consent.
+	// TODO(b/214111113): Once all CLs are in and this defaults to on, remove this.
+	usePerUserMetricsConsent = "/run/metrics/use-per-user-consent"
+
+	// daemonStoreConsentName is the name of file in daemon-store that
+	// gives per-user consent state.
+	daemonStoreConsentName = "consent-enabled"
 )
 
 // ConsentType is to be used for parameters to tests, to allow them to determine
@@ -51,6 +60,13 @@ const (
 	MockConsent ConsentType = iota
 	// RealConsent indicates that a test should use the real consent system.
 	RealConsent
+	// RealConsentPerUserOn indicates that a test should use the real
+	// consent system, and also turn *on* per-user consent.
+	RealConsentPerUserOn
+	// RealConsentPerUserOff indicates that a test should use the real
+	// consent system, and also turn *off* per-user consent.
+	// Crashes should not be collected in this case.
+	RealConsentPerUserOff
 )
 
 // SetConsent enables or disables metrics consent, based on the value of consent.
@@ -279,6 +295,11 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 		return errors.Wrap(err, "failed to remove "+collectChromeCrashFile)
 	}
 
+	// Clean up per-user consent so that we do not inadvertently use consent left over from a prior test.
+	if err := RemovePerUserConsent(ctx); err != nil {
+		return errors.Wrap(err, "failed to clean up per-user consent")
+	}
+
 	// Reinitialize crash_reporter in case previous tests have left bad state
 	// in core_pattern, etc.
 	if out, err := testexec.CommandContext(ctx, "/sbin/crash_reporter", "--init").CombinedOutput(); err != nil {
@@ -330,6 +351,56 @@ func UnsetCrashTestInProgress() error {
 		return errors.Wrapf(err, "failed to remove in-progress state file %s", filePath)
 	}
 	return nil
+}
+
+// CreatePerUserConsent creates the per-user consent file with the specified state.
+func CreatePerUserConsent(ctx context.Context, enable bool) error {
+	dirs, err := GetDaemonStoreConsentDirs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store consent dirs")
+	}
+	// Set consent for all active dirs.
+	for _, d := range dirs {
+		f := filepath.Join(d, daemonStoreConsentName)
+		contents := "0"
+		if enable {
+			contents = "1"
+		}
+		if err := ioutil.WriteFile(f, []byte(contents), 0644); err != nil {
+			return errors.Wrapf(err, "failed writing consent-enabled file %s", f)
+		}
+	}
+	// Also create file indicating we should use per-user consent.
+	if err := ioutil.WriteFile(usePerUserMetricsConsent, []byte{}, 0644); err != nil {
+		return errors.Wrap(err, "failed writing use-per-user-consent file")
+	}
+	return nil
+}
+
+// RemovePerUserConsent deletes the per-user consent files so that we fall back to device policy state.
+func RemovePerUserConsent(ctx context.Context) error {
+	dirs, err := GetDaemonStoreConsentDirs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store consent dirs")
+	}
+	// Clear per-user consent for all active dirs.
+	var firstErr error
+	for _, d := range dirs {
+		f := filepath.Join(d, daemonStoreConsentName)
+		if err := os.Remove(f); err != nil && !os.IsNotExist(err) {
+			testing.ContextLogf(ctx, "Error removing consent-enabled file %s: %v", f, err)
+			if firstErr == nil {
+				firstErr = errors.Wrapf(err, "failed removing consent-enabled file %s", f)
+			}
+		}
+	}
+	if err := os.Remove(usePerUserMetricsConsent); err != nil && !os.IsNotExist(err) {
+		testing.ContextLog(ctx, "Failed writing use-per-user-consent file: ", err)
+		if firstErr == nil {
+			firstErr = errors.Wrap(err, "failed writing use-per-user-consent file")
+		}
+	}
+	return firstErr
 }
 
 // setUpCrashTest is a helper function for SetUpCrashTest. We need
