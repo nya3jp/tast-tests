@@ -93,7 +93,7 @@ func SlcDevice(ctx context.Context) (string, error) {
 }
 
 // RemovableDevice returns a removable device for external storage AVL.
-func RemovableDevice(ctx context.Context) (string, error) {
+func RemovableDevice(ctx context.Context, partition bool) (string, error) {
 	info, err := ReadDiskInfo(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed reading disk info")
@@ -109,6 +109,11 @@ func RemovableDevice(ctx context.Context) (string, error) {
 
 	testing.ContextLog(ctx, "Removable device: ", removable.Name)
 	dev := filepath.Join("/dev/", removable.Name)
+
+	if !partition {
+		testing.ContextLog(ctx, "Partitions ignored, using device ", dev)
+		return dev, nil
+	}
 
 	// If the device is partitioned, use partition 1 to preserve the partition table.
 	partitionDevName := AppendPartition(dev, "1")
