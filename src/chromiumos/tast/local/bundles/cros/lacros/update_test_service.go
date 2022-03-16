@@ -96,7 +96,7 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 		lacrosfaillog.StopRecordAndSaveOnError(ctx, tconn, hasRecordStarted, func() bool { return hasError })
 	}(ctxForFailLog)
 
-	l, err := lacros.Launch(ctx, tconn, expectedLacrosDir)
+	l, err := lacros.Launch(ctx, tconn)
 	if err != nil {
 		// TODO(crbug.com/1258664): Log shelf items in case the Lacros app is neither launched nor shown.
 		items, _ := ash.ShelfItems(ctx, tconn)

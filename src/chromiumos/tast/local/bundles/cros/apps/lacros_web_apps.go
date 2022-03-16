@@ -67,7 +67,7 @@ func LacrosWebApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Launch lacros.
-	l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
+	l, err := lacros.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch lacros: ", err)
 	}

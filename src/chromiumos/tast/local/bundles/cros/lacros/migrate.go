@@ -11,9 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -180,13 +178,9 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	lacrosPath, err := lacrosfixt.EnsureLacrosReadyForLaunch(ctx, browserfixt.DefaultLacrosConfig.WithVar(s))
+	l, err := lacros.Launch(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to ensure that Lacros is ready for launch: ", err)
-	}
-	l, err := lacros.Launch(ctx, tconn, lacrosPath)
-	if err != nil {
-		s.Fatal("Failed to launch Lacros: ", err)
+		s.Fatal("Failed to launch lacros: ", err)
 	}
 
 	// Check that the bookmark is present.

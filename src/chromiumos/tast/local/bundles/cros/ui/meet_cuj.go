@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -271,9 +270,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
 	if meet.useLacros {
-		f := s.FixtValue().(lacrosfixt.FixtValue)
-
-		l, err := lacros.Launch(ctx, f.TestAPIConn(), f.LacrosPath())
+		// Launch lacros.
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}
@@ -315,7 +313,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Created a room with the code ", meetingCode)
 	}
 
-	sctx, cancel := context.WithTimeout(ctx, 90 * time.Second)
+	sctx, cancel := context.WithTimeout(ctx, 90*time.Second)
 	defer cancel()
 	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
 	// for the test to detect the video codecs used for encoding and decoding.
@@ -324,7 +322,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			botList, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...)
 			if err != nil {
-				return testing.PollBreak(errors.Errorf("failed to create %d bots: %v", addBotsCount, err))
+				return testing.PollBreak(errors.Wrapf(err, "failed to create %d bots", addBotsCount))
 			}
 			s.Logf("%d bots started", len(botList))
 			// If there are fewer bots created than requested, send another request for more bots.
@@ -655,7 +653,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.getParticipantCount()", &participantCount); err != nil {
 			return errors.Wrap(err, "failed to get participant count")
 		}
-		if expectedParticipantCount := meet.num+1; participantCount != expectedParticipantCount {
+		if expectedParticipantCount := meet.num + 1; participantCount != expectedParticipantCount {
 			return errors.Errorf("got %d participants, expected %d", participantCount, expectedParticipantCount)
 		}
 
