@@ -1,0 +1,26 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.install;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/install";
+
+service OsInstallService {
+  rpc RunOsInstall (RunOsInstallRequest) returns (google.protobuf.Empty) {}
+
+  rpc GetOsInfo (google.protobuf.Empty) returns (GetOsInfoResponse) {}
+}
+
+message RunOsInstallRequest {
+  string SigninProfileTestExtensionID = 1;
+}
+
+message GetOsInfoResponse {
+  bool IsRunningFromInstaller = 1;
+  string Version = 2;
+}
