@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbb3273_ee10c3d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T00:16:03Z",
+      "side": 1,
+      "message": "+edcourtney hidehiko for the lacros tast review",
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26baffaa_a2b67640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T00:16:03Z",
+      "side": 1,
+      "message": "Is there a reason to have the lacros smoke test separated from `ui.ChromeVariationSmoke`? Is it possible to expand it as parameterized tests to work for both ash-chrome and lacros-chrome? \nIMO if the majority of the test code is in common it would help reduce the maintenance cost and keep them consistent between two browser targets.\nhttp://go/lacros-tast-porting if it helps.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04123771_24d4a61a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T00:16:03Z",
+      "side": 1,
+      "message": "nit: \"lacrosPrimary\" would be preferred given the current milestone",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9003db5_942d56e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T00:16:03Z",
+      "side": 1,
+      "message": "If it needs to pass in custom chrome options, you can probably consider adding your own fixture with those options passed in. then call a browserfixt.SetUp* method to get a browser instance that works for both browsers.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f961145_fb3898e3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T00:16:03Z",
+      "side": 1,
+      "message": "If it\u0027s specific to the variation test, it could move to your test package rather than here in the lacros package?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
