@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbyfixture"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -287,9 +288,9 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		arcCacheFilesDir = ".NearbyShare"
 	)
 
-	cr := s.FixtValue().(*nearbyshare.FixtData).Chrome
-	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
-	a := s.FixtValue().(*nearbyshare.FixtData).ARC
+	cr := s.FixtValue().(*nearbyfixture.FixtData).Chrome
+	tconn := s.FixtValue().(*nearbyfixture.FixtData).TestConn
+	a := s.FixtValue().(*nearbyfixture.FixtData).ARC
 
 	s.Log("Installing APK")
 	if err := a.Install(ctx, s.DataPath(apkName), adb.InstallOptionGrantPermissions); err != nil {
@@ -378,9 +379,9 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
-	androidDevice := s.FixtValue().(*nearbyshare.FixtData).AndroidDevice
-	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
+	crosDisplayName := s.FixtValue().(*nearbyfixture.FixtData).CrOSDeviceName
+	androidDevice := s.FixtValue().(*nearbyfixture.FixtData).AndroidDevice
+	androidDisplayName := s.FixtValue().(*nearbyfixture.FixtData).AndroidDeviceName
 
 	s.Log("Starting payload send using Nearby Share on the CrOS device")
 
