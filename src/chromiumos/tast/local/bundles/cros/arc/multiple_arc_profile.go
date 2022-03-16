@@ -105,9 +105,10 @@ func MultipleArcProfile(ctx context.Context, s *testing.State) {
 
 	var translateinstalled bool
 	s.Log("Installing an app in new acount")
-	if err := playstore.InstallApp(ctx, a, d, "com.google.android.apps.dynamite", 3); err != nil {
+
+	if err := playstore.InstallApp(ctx, a, d, "com.google.android.apps.dynamite", &playstore.Options{}); err != nil {
 		s.Log("Failed to install chat app: ", err)
-		if err := playstore.InstallApp(ctx, a, d, "com.google.android.apps.translate", 3); err != nil {
+		if err := playstore.InstallApp(ctx, a, d, "com.google.android.apps.translate", &playstore.Options{}); err != nil {
 			s.Fatal("Failed to install translate app: ", err)
 		}
 		translateinstalled = true

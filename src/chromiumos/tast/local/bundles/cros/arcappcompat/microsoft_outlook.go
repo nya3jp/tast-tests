@@ -182,7 +182,7 @@ func installChromeAndroidApp(ctx context.Context, s *testing.State, tconn *chrom
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
 	// Install chrome android app.
-	if err := playstore.InstallApp(ctx, a, d, chromeAppPkgName, 3); err != nil {
+	if err := playstore.InstallApp(ctx, a, d, chromeAppPkgName, &playstore.Options{}); err != nil {
 		s.Fatal("Failed to install chrome android app: ", err)
 	}
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {

@@ -81,7 +81,7 @@ func PCMarkWorkAndroidApp(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	s.Log("Installing app from play store") // Let users know what's going on because installing APP takes time.
-	if err := playstore.InstallApp(ctx, a, uiDevice, pcmarkPkgName, -1); err != nil {
+	if err := playstore.InstallApp(ctx, a, uiDevice, pcmarkPkgName, &playstore.Options{TryLimit: -1}); err != nil {
 		s.Fatalf("Failed to install %s: %v", pcmarkPkgName, err)
 	}
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {

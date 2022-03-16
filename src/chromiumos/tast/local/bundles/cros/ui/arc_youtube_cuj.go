@@ -60,7 +60,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	defer d.Close(cleanupCtx)
 
 	const ytAppPkgName = "com.google.android.youtube"
-	if err := playstore.InstallApp(ctx, a, d, ytAppPkgName, 3); err != nil {
+	if err := playstore.InstallApp(ctx, a, d, ytAppPkgName, &playstore.Options{}); err != nil {
 		s.Fatal("Failed to install ARC++ YouTube app: ", err)
 	}
 
