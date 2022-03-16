@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/bundles/cros/factory/toolkit"
 	"chromiumos/tast/testing"
 )
 
@@ -96,7 +97,7 @@ func cleanup(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Stopped Goofy")
 
-	if err := uninstallFactoryToolKit(ctx); err != nil {
+	if err := toolkit.UninstallFactoryToolKit(ctx); err != nil {
 		s.Fatal("Failed to uninstall factory toolkit when cleanup: ", err)
 	}
 	s.Log("Uninstalled factory toolkit")
