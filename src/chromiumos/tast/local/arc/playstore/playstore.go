@@ -93,6 +93,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		openButtonText     = "open"
 		playButtonText     = "play"
 		retryButtonText    = "retry"
+		tryAgainButtonText = "try again"
 		skipButtonText     = "skip"
 		noThanksButtonText = "No thanks"
 
@@ -160,7 +161,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 
 		// If retry button appears, reopen the Play Store page by sending the same intent again.
 		// (It tends to work better than clicking the retry button.)
-		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+retryButtonText)).Exists(ctx); err == nil {
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", retryButtonText, tryAgainButtonText))).Exists(ctx); err == nil {
 			if tryLimit == -1 || tries < tryLimit {
 				tries++
 				testing.ContextLogf(ctx, "Retry button is shown. Trying to reopen the Play Store. Total attempts so far: %d", tries)
@@ -187,6 +188,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Handle "Want to link your PayPal account" if necessary.
+		testing.ContextLogf(ctx, "Checking existence of : %s", linkPaypalAccountText)
 		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText), ui.Enabled(true)).WaitForExists(ctx, defaultUITimeout); err == nil {
 			testing.ContextLog(ctx, "Want to link your paypal account does exist")
 			noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+noThanksButtonText))
@@ -206,6 +208,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Complete account setup if necessary.
+		testing.ContextLogf(ctx, "Checking existence of : %s", accountSetupText)
 		if err := d.Object(ui.Text(accountSetupText), ui.Enabled(true)).WaitForExists(ctx, shortUITimeout); err == nil {
 			testing.ContextLog(ctx, "Completing account setup")
 			continueButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+continueButtonText))
@@ -230,6 +233,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Wait until progress bar is gone.
+		testing.ContextLog(ctx, "Checking existence of progress bar")
 		progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
 		if err := progressBar.WaitForExists(ctx, defaultUITimeout); err == nil {
 			// Print the percentage of app installed so far.
