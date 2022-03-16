@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eebefc09_d178d44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-16T09:53:41Z",
+      "side": 1,
+      "message": "Right.\nI\u0027ve changed it now such that there are two versions of the test.",
+      "parentUuid": "e34e1031_c4677387",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "a5b189755bb64bf95e28f5ee828ecea309965904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24628941_c99778ef",
@@ -90,6 +114,24 @@
       "side": 1,
       "message": "I\u0027m fine with either. If you need it for something, feel free. I might end up rewriting or deleting it though.",
       "parentUuid": "78609223_0e9f63df",
+      "revId": "a5b189755bb64bf95e28f5ee828ecea309965904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ad2c66_2d46c60b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-16T09:53:41Z",
+      "side": 1,
+      "message": "Ok I\u0027ll keep it here and revisit once the fixture changes are done.",
+      "parentUuid": "b5a2321b_b5fc74f0",
       "revId": "a5b189755bb64bf95e28f5ee828ecea309965904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
