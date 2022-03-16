@@ -165,7 +165,11 @@ func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrom
 	}
 	defer s.Close(ctx)
 	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "crostini_installer", retErr) }()
-	return s.ui.LeftClick(nextButton)(ctx)
+	installButton := nodewith.Name("Install").Role(role.Button)
+	if err := s.ui.LeftClickUntil(nextButton, s.ui.WaitUntilExists(installButton))(ctx); err != nil {
+		return errors.Wrap(err, "failed to click button Next on the installer")
+	}
+	return nil
 }
 
 // Close closes the Settings App.
