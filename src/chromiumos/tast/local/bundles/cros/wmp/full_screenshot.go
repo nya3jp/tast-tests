@@ -148,8 +148,11 @@ func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, displayInfo *d
 		return errors.Wrap(err, "failed to decode the screenshot")
 	}
 
-	if image.Width != fullScreenSize.Width || image.Height != fullScreenSize.Height {
-		return errors.Errorf("the size of the screenshot: (%d x %d), the size of full screen: (%d x %d)", image.Width, image.Height, fullScreenSize.Width, fullScreenSize.Height)
+	// The orientation could be landscape or portrait.
+	landscapeSizeMatched := image.Width == fullScreenSize.Width && image.Height == fullScreenSize.Height
+	portraitSizeMatched := image.Width == fullScreenSize.Height && image.Height == fullScreenSize.Width
+	if !landscapeSizeMatched && !portraitSizeMatched {
+		return errors.Errorf("screenshot size mismatched: want {Width:%[1]d Height:%[2]d} or {Width:%[2]d Height:%[1]d}, got %+[3]v", image.Width, image.Height, fullScreenSize)
 	}
 
 	return nil
