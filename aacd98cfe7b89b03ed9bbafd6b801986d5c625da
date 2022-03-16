@@ -16,6 +16,23 @@
       "message": "LGTM, it still needs someone to CQ+2",
       "revId": "aacd98cfe7b89b03ed9bbafd6b801986d5c625da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a67c5bc_c4a71b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-16T20:17:46Z",
+      "side": 1,
+      "message": "Wait actually, why not just add Marvell into the WEP hwdep?",
+      "revId": "aacd98cfe7b89b03ed9bbafd6b801986d5c625da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
