@@ -132,6 +132,13 @@ func checkQueryMemoryStatus(ctx context.Context, rm *resourced.Client) error {
 	}
 	testing.ContextLog(ctx, "GetMemoryMarginsKB returns, critical: ", m.CriticalKB, ", moderate: ", m.ModerateKB)
 
+	componentMemoryMargins, err := rm.ComponentMemoryMarginsKB(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query component memory margins")
+	}
+
+	testing.ContextLogf(ctx, "GetComponentMemoryMarginsKB returns %+v", componentMemoryMargins)
+
 	return nil
 }
 
