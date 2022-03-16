@@ -16,6 +16,75 @@
       "message": "Integration test, as promised.",
       "revId": "11e77510e69aadc9ffab317e8c7fbcd4709b1761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd70f422_5a7f22d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-03-16T23:18:25Z",
+      "side": 1,
+      "message": "Nit, move inside the \"else\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "11e77510e69aadc9ffab317e8c7fbcd4709b1761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a094cf_307cfaf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-03-16T23:18:25Z",
+      "side": 1,
+      "message": "I would consider calling RemovePerUserConsent as part of SetUpCrashTest or such. I\u0027d be worried that if something left the file behind, it would mess up all crash tests on the device.",
+      "range": {
+        "startLine": 110,
+        "startChar": 19,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "11e77510e69aadc9ffab317e8c7fbcd4709b1761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915f117a_10c9eb39",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-03-16T23:18:25Z",
+      "side": 1,
+      "message": "Is this really *setting* consent?",
+      "range": {
+        "startLine": 380,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 36
+      },
+      "revId": "11e77510e69aadc9ffab317e8c7fbcd4709b1761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
