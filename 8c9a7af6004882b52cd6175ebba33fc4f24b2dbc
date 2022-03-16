@@ -39,6 +39,30 @@
       },
       "revId": "8c9a7af6004882b52cd6175ebba33fc4f24b2dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc891d08_b8b14a32",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-16T22:21:01Z",
+      "side": 1,
+      "message": "I like your\u0027s more so I updated it, thanks for the suggestion.",
+      "parentUuid": "3313dcfc_2d8bcade",
+      "range": {
+        "startLine": 144,
+        "startChar": 24,
+        "endLine": 144,
+        "endChar": 48
+      },
+      "revId": "8c9a7af6004882b52cd6175ebba33fc4f24b2dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
