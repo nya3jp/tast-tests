@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/crowd-320x180_30frames_20210126.yuv.json",
+  "size": 112,
+  "sha256sum": "23c1e7298f6e3da69e7fb81322c6134a4afde11b5bf6a67a03db85fd40a55063"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/shaka_720_20181218.webm",
+  "size": 49732162,
+  "sha256sum": "b5c1fbbc11199478a2f0e0fcc56ce46ba93838f04720ae598b1947c141cea386"
+}
