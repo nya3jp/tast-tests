@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "420c5b9d_78f8640d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-16T15:44:45Z",
+      "side": 1,
+      "message": "Thanks! Marking as unresolved for now.",
+      "parentUuid": "dfd76c23_cfab03f1",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 15
+      },
+      "revId": "39eb4122629fbd695541d12271cfd3da976b1ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0484e2a5_b4b99535",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
         "patchSetId": 5
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "Don\u0027t use chdir here. Check b/187997099",
       "parentUuid": "661863d2_cf66c5b4",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "39eb4122629fbd695541d12271cfd3da976b1ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c74a9e_8c6c570d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/image_processor.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-16T15:44:45Z",
+      "side": 1,
+      "message": "Marking as unresolved.",
+      "parentUuid": "59aa00ad_1a49b37c",
       "range": {
         "startLine": 98,
         "startChar": 1,
