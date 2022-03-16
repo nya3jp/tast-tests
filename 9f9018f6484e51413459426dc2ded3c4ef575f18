@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa09611c_99ee6144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T20:59:07Z",
+      "side": 1,
+      "message": "Hey reviewers, can you take another look at this? \nI\u0027m hoping that browserfixt.CreateWindows could be a first facing layer for ash.CreateWindows dealing with behavioral discrepancy between ash and lacros-chrome and the issue crbug.com/1290318 as well.\nLooking at go/lacros-tast-porting-tracker, currently at least 12 tests are being blocked on this, which could be addressed by this CL. Thanks,",
+      "revId": "9f9018f6484e51413459426dc2ded3c4ef575f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

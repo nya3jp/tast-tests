@@ -63,6 +63,30 @@
       },
       "revId": "006a49c9613496eafbd62b3b5ee62aac19ccaf5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d14ccd_3573fa3f",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T20:59:07Z",
+      "side": 1,
+      "message": "Thanks for your thought. I\u0027ve added a closeWindow (currently set as private to browserfixt package) to avoid the duplication.",
+      "parentUuid": "72782b94_89f4eded",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 84
+      },
+      "revId": "006a49c9613496eafbd62b3b5ee62aac19ccaf5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
