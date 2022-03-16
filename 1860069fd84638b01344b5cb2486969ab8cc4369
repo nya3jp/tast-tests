@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a4e2182_461e3b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T21:34:02Z",
+      "side": 1,
+      "message": "Fine with me if that\u0027s what you\u0027re aware of.\n\nIIUC (correct me if I\u0027m mistaken) what you\u0027d like to verify on each combination of OS/Lacros builds is the seed for three targets - (1) OS session, (2) ash-chrome as system browser and (3) lacros-chrome as web browser.\n\nui.ChromeVariationsSmoke \u003d\u003e covers (1) and (2)\nlacros.VariationSmoke \u003d\u003e covers (3), but not together with (1)\n\nI guess it should be fine as long as all of them are covered across those tests since making ui.ChromeVariationsSmoke work for both browsers seems to have been blocked, which could be a TODO for the future.\nI\u0027ll probably defer to +hidehiko, edcourtney for the view from the lacros team\u0027s perspective since they are making some changes to lacros launch strategy, which likely conflict with this CL.",
+      "parentUuid": "43d2eeba_8bc916dd",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04123771_24d4a61a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
         "patchSetId": 4
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "This tast test will be run on Lacros CI builder, I think they want to use the stateful lacros instead of rootFS lacros.",
       "parentUuid": "04123771_24d4a61a",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69788b9d_74be7c3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T21:34:02Z",
+      "side": 1,
+      "message": "AFAICT \u0027lacrosPrimary\u0027 is set to use lacros as a primary browser, thus still necessary unless you\u0027re testing lacros side-by-side. Whether rootfs-lacros vs. stateful is rather determined by the one specified with the runtime var in Lacros CI.",
+      "parentUuid": "35c732c6_fb38592b",
       "range": {
         "startLine": 31,
         "startChar": 17,
@@ -209,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae27dabf_f368c186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T21:34:02Z",
+      "side": 1,
+      "message": "You may refer to some examples of the custom fixtures at http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go and use it just for your test.\n\n```\ntesting.AddFixture(\u0026testing.Fixture{\n\tName:     \"lacrosForYourNeed\",  // can name this.\n\tImpl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {\n\t\treturn []chrome.Option{chrome.LacrosExtraArgs(\"--variations-server-url\")}, nil\n\t\t}),\n\tVars:            []string{LacrosDeployedBinary},\n})\n```",
+      "parentUuid": "aa4b2d0f_2235f2c3",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f961145_fb3898e3",
         "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
         "patchSetId": 4
@@ -244,6 +316,30 @@
       "side": 1,
       "message": "Do you suggest to create a separate package for variation test? I saw most lacros related tast tests are under this package. Could we keep it here?",
       "parentUuid": "1f961145_fb3898e3",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9462a2_c57263cf",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T21:34:02Z",
+      "side": 1,
+      "message": "Does it make sense moving this to the top of your test body post your fixture is set, rather than this library code where it is agnostic to user scenarios?",
+      "parentUuid": "0321e6ad_9c516921",
       "range": {
         "startLine": 132,
         "startChar": 0,
