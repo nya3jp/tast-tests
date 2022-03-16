@@ -12,6 +12,7 @@ import (
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbyfixture"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
@@ -57,10 +58,10 @@ func init() {
 
 // PhoneToCrosNotVisible tests in-contact file sharing with an Android device as sender and CrOS device as receiver.
 func PhoneToCrosNotVisible(ctx context.Context, s *testing.State) {
-	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
-	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
-	androidDevice := s.FixtValue().(*nearbyshare.FixtData).AndroidDevice
-	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
+	tconn := s.FixtValue().(*nearbyfixture.FixtData).TestConn
+	crosDisplayName := s.FixtValue().(*nearbyfixture.FixtData).CrOSDeviceName
+	androidDevice := s.FixtValue().(*nearbyfixture.FixtData).AndroidDevice
+	androidDisplayName := s.FixtValue().(*nearbyfixture.FixtData).AndroidDeviceName
 
 	// Extract the test file to the staging directory on the Android device.
 	testData := s.Param().(nearbycommon.TestData)
