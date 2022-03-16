@@ -94,10 +94,10 @@ func checkExitError(err error) error {
 func CrashReporter(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent(), crash.DaemonStore()); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest(ctx, crash.TearDownDaemonStore())
+	defer crash.TearDownCrashTest(ctx)
 
 	daemonStorePaths, err := crash.GetDaemonStoreCrashDirs(ctx)
 	if err != nil {
