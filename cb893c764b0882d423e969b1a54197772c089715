@@ -22,6 +22,30 @@
       },
       "revId": "cb893c764b0882d423e969b1a54197772c089715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81375de1_e6732189",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-16T22:11:56Z",
+      "side": 1,
+      "message": "I did not really like this either. I refactored it to use decorator functions for the flags like we do for options elsewhere and it seems a lot better.",
+      "parentUuid": "96f29101_704d66dc",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "cb893c764b0882d423e969b1a54197772c089715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
