@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7535843f_7ff7f5d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-16T04:58:26Z",
+      "side": 1,
+      "message": "Basically all the tests should have LacrosVariantUnneeded except for DeniedSitesBlocked.",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "db7e159d_18a8d33c",
@@ -84,6 +107,75 @@
       "side": 1,
       "message": "changed to LacrosVariantUnneeded in this CL as you can see below. Resolving this.",
       "parentUuid": "9870257d_4a16a7ee",
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e35cae9_53f48a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-16T04:58:26Z",
+      "side": 1,
+      "message": "I don\u0027t think a Lacros variant is needed because all this test does is open the quick settings menu in the bottom right.",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c36099c_e4ba6efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-16T04:58:26Z",
+      "side": 1,
+      "message": "Why is Lacros variant needed here? This test has nothing to do with a browser.",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcbc0fe0_ec4718c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-16T04:58:26Z",
+      "side": 1,
+      "message": "I don\u0027t think a Lacros variant is needed here because this test just logs in as a Unicorn user.",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 43
+      },
       "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
