@@ -93,6 +93,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		openButtonText     = "open"
 		playButtonText     = "play"
 		retryButtonText    = "retry"
+		tryAgainButtonText = "try again"
 		skipButtonText     = "skip"
 		noThanksButtonText = "No thanks"
 
@@ -160,7 +161,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 
 		// If retry button appears, reopen the Play Store page by sending the same intent again.
 		// (It tends to work better than clicking the retry button.)
-		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+retryButtonText)).Exists(ctx); err == nil {
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", retryButtonText, tryAgainButtonText))).Exists(ctx); err == nil {
 			if tryLimit == -1 || tries < tryLimit {
 				tries++
 				testing.ContextLogf(ctx, "Retry button is shown. Trying to reopen the Play Store. Total attempts so far: %d", tries)
