@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22538ef_56c02b5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-16T23:00:29Z",
+      "side": 1,
+      "message": "Please tast unit test: ./fast_build.sh -T\nIf it is ok, add \n\nTEST\u003dTast unit test passed \n\nto the comment message.\n\nThanks.\n",
+      "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
