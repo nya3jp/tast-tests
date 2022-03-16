@@ -238,14 +238,6 @@ func RebootingTest() Option {
 	}
 }
 
-// DaemonStore indicates that this test wants to use the daemon store
-// directories, so SetUp should stash them.
-func DaemonStore() Option {
-	return func(p *setUpParams) {
-		p.useDaemonStore = true
-	}
-}
-
 // FilterCrashes puts s into the filter-in file, so that the crash reporter only
 // processes matching crashes.
 func FilterCrashes(s string) Option {
@@ -279,14 +271,13 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	for _, opt := range opts {
 		opt(&p)
 	}
-	if p.useDaemonStore {
-		daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get daemon store crash directories")
-		}
-		for _, path := range daemonStorePaths {
-			p.crashDirs = append(p.crashDirs, crashAndStash{path, path + ".real"})
-		}
+	// Unconditionally stash daemon-store crash dirs now that we're almost-always using daemon-store.
+	daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store crash directories")
+	}
+	for _, path := range daemonStorePaths {
+		p.crashDirs = append(p.crashDirs, crashAndStash{path, path + ".real"})
 	}
 
 	// This file usually doesn't exist; don't error out if it doesn't. "Not existing"
@@ -330,7 +321,6 @@ type setUpParams struct {
 	setConsent       bool
 	setMockConsent   bool
 	rebootTest       bool
-	useDaemonStore   bool
 	filterIn         string
 	chrome           *chrome.Chrome
 }
@@ -415,7 +405,6 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 				senderPausePath:  p.senderPausePath,
 				mockSendingPath:  p.mockSendingPath,
 				filterInPath:     p.filterInPath,
-				useDaemonStore:   p.useDaemonStore,
 			})
 		}
 	}()
@@ -528,14 +517,6 @@ func cleanUpStashDir(stashDir, realDir string) error {
 // for details about this pattern.
 type tearDownOption func(p *tearDownParams)
 
-// TearDownDaemonStore indicates that this test used the daemon store
-// directories, so TearDown should restore them.
-func TearDownDaemonStore() tearDownOption {
-	return func(p *tearDownParams) {
-		p.useDaemonStore = true
-	}
-}
-
 // TearDownCrashTest undoes the work of SetUpCrashTest. We assume here that the
 // set of active sessions hasn't changed since SetUpCrashTest was called for
 // the purpose of restoring the per-user-cryptohome crash directories.
@@ -562,23 +543,21 @@ func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 		opt(&p)
 	}
 
-	if p.useDaemonStore {
-		// This could return a different list of paths then the original setup
-		// if a session has started or ended in the meantime. If a new session
-		// has started then the restore will just become a no-op, but if a
-		// session has ended we won't restore the crash files inside that
-		// session's cryptohome. We can't do much about this since we can't
-		// touch a cryptohome while that user isn't logged in.
-		daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to get daemon store crash dirs: ", err)
-			if firstErr == nil {
-				firstErr = errors.Wrap(err, "failed to get daemon store crash directories")
-			}
+	// This could return a different list of paths then the original setup
+	// if a session has started or ended in the meantime. If a new session
+	// has started then the restore will just become a no-op, but if a
+	// session has ended we won't restore the crash files inside that
+	// session's cryptohome. We can't do much about this since we can't
+	// touch a cryptohome while that user isn't logged in.
+	daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get daemon store crash dirs: ", err)
+		if firstErr == nil {
+			firstErr = errors.Wrap(err, "failed to get daemon store crash directories")
 		}
-		for _, path := range daemonStorePaths {
-			p.crashDirs = append(p.crashDirs, crashAndStash{path, path + ".real"})
-		}
+	}
+	for _, path := range daemonStorePaths {
+		p.crashDirs = append(p.crashDirs, crashAndStash{path, path + ".real"})
 	}
 
 	if err := tearDownCrashTest(ctx, &p); err != nil {
@@ -610,7 +589,6 @@ type tearDownParams struct {
 	senderPausePath  string
 	mockSendingPath  string
 	filterInPath     string
-	useDaemonStore   bool
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
