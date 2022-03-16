@@ -56,6 +56,30 @@
       },
       "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5af7663_38ed7018",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-16T01:50:16Z",
+      "side": 1,
+      "message": "Hmm actually when I was working on that I found out some weirdness.\nThis testing.Poll() should timeout after 5 seconds, given l.127,\nbut in fact it doesn\u0027t, waiting in the Recv() call in l.103 until\nit\u0027s signalled, which takes a good amount of time (larger than 5\nseconds, in any case).\n\nWhen I went to the GitHub project we use for this observer I saw\nthat this recv-wait-forever behaviour is intended [1]. They also\nprovide a Ready() method to poll if the channel has any data \navailable. Sadly, this _also_ seems to be blocking, so it works\nin the same way :( \n\nAll in all, this whole polling block is needed because DevTools\nMedia might have data different from the kVideoPlaybackRoughness\nkey, and we want to try until that key is updated. But it \ndoesn\u0027t \"timeout\" per se. I think Tast would have to intervene\nand stop the whole thing, and we would lose the information as\nto where was the execution blocked.\n\nWhile working on this I also changed a bit the execution of this\nfunction to be in parallel with the other measurements in \nplayback.go. What I could do is to have a timeout in parallel\nwith the call to GetVideoPlaybackRoughness() and if it expires,\nreturn an error with a nice message. WDYT?\n\n\n[1] https://github.com/mafredri/cdp/blob/75c683f87449e022185c9b72371ecb82a442e817/rpcc/stream.go#L88-L109",
+      "parentUuid": "0dd25a6a_0e4cff79",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
