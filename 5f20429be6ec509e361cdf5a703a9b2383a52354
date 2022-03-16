@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4825f97_fd10d249",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-16T05:17:56Z",
+      "side": 1,
+      "message": "This is exactly the thing I was looking for, thanks! Let me just verify it works on all existing lacros Tast tests.\n\nIMO we should provide a generic Launch function that launches lacros in a production-similar way. If tests have a specific reason to launch via shelf they can implement it themselves IMO.",
+      "parentUuid": "bec27f13_e494fdbb",
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95648f0f_75369635",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-03-15T15:19:21Z",
       "side": 1,
       "message": "How is it exposed to test writers? via browserfixt or any generalized version to browser package?",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa556aa5_4318fdab",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-16T05:17:56Z",
+      "side": 1,
+      "message": "Same as before - it\u0027s used by browserfixt, and also available to use directly.",
+      "parentUuid": "95648f0f_75369635",
       "range": {
         "startLine": 100,
         "startChar": 5,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "544d2ebe_7bdf3951",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-16T05:17:56Z",
+      "side": 1,
+      "message": "This is just a hack to get all the targets. The semantics of this function are to error if there is not exactly one page. It doesn\u0027t matter what the page is, although every one I have seen is chrome://new-tab",
+      "parentUuid": "a96d2500_373b5c6f",
+      "range": {
+        "startLine": 104,
+        "startChar": 59,
+        "endLine": 104,
+        "endChar": 61
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "986b9766_126ab436",
@@ -112,6 +178,30 @@
       "writtenOn": "2022-03-15T15:19:21Z",
       "side": 1,
       "message": "nit: `pc`? or ts might be confusing here if there were non-page types of targets.",
+      "range": {
+        "startLine": 118,
+        "startChar": 68,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8f235d_8b0963e9",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-16T05:17:56Z",
+      "side": 1,
+      "message": "pc is page count, ts is targets. If there were non-page targets they are included in targets but not in page count, so it seems sensible to me IMHO.\n\nAs for the short names, it\u0027s go style (for better or worse).",
+      "parentUuid": "986b9766_126ab436",
       "range": {
         "startLine": 118,
         "startChar": 68,
