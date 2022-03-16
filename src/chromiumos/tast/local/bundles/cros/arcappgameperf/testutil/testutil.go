@@ -89,7 +89,7 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)
 	}
-	if err := playstore.InstallApp(ctx, a, d, appPkgName, 3); err != nil {
+	if err := playstore.InstallApp(ctx, a, d, appPkgName, &playstore.Options{}); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 
