@@ -65,7 +65,7 @@ func (app *App) Install(ctx context.Context) error {
 	installCtx, cancel := context.WithTimeout(ctx, installationTimeout)
 	defer cancel()
 
-	if err := playstore.InstallOrUpdateAppAndClose(installCtx, app.Tconn, app.A, app.D, app.PkgName, -1); err != nil {
+	if err := playstore.InstallOrUpdateAppAndClose(installCtx, app.Tconn, app.A, app.D, app.PkgName, &playstore.Options{TryLimit: -1}); err != nil {
 		return errors.Wrapf(err, "failed to install %s", app.PkgName)
 	}
 	return nil
