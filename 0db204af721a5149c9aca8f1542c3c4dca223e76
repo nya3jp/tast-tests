@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cf1870_d46160f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-03-16T16:59:24Z",
+      "side": 1,
+      "message": "I\u0027ve added a presubmit check for logs in https://chromium-review.googlesource.com/c/chromium/src/+/3528679",
+      "revId": "0db204af721a5149c9aca8f1542c3c4dca223e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
