@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e8e184e4_6a8ee43f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T15:57:34Z",
+      "side": 1,
+      "message": "Thanks for clarification. will be sending a patch set for that.",
+      "parentUuid": "7535843f_7ff7f5d2",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "db7e159d_18a8d33c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -134,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d317dab6_c30cf4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/multiple_sign_in_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T15:57:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6e35cae9_53f48a08",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c36099c_e4ba6efc",
@@ -159,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adacd99f_f07db7da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T15:57:34Z",
+      "side": 1,
+      "message": "I thought this is primarily to test the fixture \"familyLinkUnicornPolicyLogin\" and it may need a lacros variant once a new fixture enabling lacros is needed in the future. Is it okay to mark it as \"unneeded\" for now?",
+      "parentUuid": "0c36099c_e4ba6efc",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcbc0fe0_ec4718c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
         "patchSetId": 2
@@ -170,6 +242,30 @@
       "writtenOn": "2022-03-16T04:58:26Z",
       "side": 1,
       "message": "I don\u0027t think a Lacros variant is needed here because this test just logs in as a Unicorn user.",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 43
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8a042e_5d899410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T15:57:34Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "dcbc0fe0_ec4718c8",
       "range": {
         "startLine": 19,
         "startChar": 24,
