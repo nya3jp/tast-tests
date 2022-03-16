@@ -122,7 +122,7 @@ func launchAppForHulu(ctx context.Context, s *testing.State, tconn *chrome.TestC
 	const (
 		allowButtonText           = "ALLOW"
 		continueText              = "CONTINUE"
-		enableLocationServiceText = "ENABLE LOCATION SERVICES"
+		enableLocationServiceText = "SHARE LOCATION"
 		loginText                 = "LOG IN"
 		enterEmailID              = "com.hulu.plus:id/email"
 		enterPasswordID           = "com.hulu.plus:id/password"
@@ -276,6 +276,16 @@ func signOutOfHulu(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		logOutOfHuluText = "LOG OUT"
 		homeIconID       = "com.hulu.plus:id/menu_home"
 	)
+	// Press back key to dismiss the pop up.
+	if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+		s.Log("Failed to enter KEYCODE_BACk: ", err)
+	} else {
+		s.Log("Entered KEYCODE_BACK")
+	}
+	// Launch the hulu app.
+	if err := a.Command(ctx, "monkey", "--pct-syskeys", "0", "-p", appPkgName, "-c", "android.intent.category.LAUNCHER", "1").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to start Hulu app: ", err)
+	}
 
 	// Click on account icon.
 	accountIcon := d.Object(ui.ID(accountIconID))
