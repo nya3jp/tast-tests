@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c27af7cf_d53113a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T00:54:24Z",
+      "side": 1,
+      "message": "I see. IIUC ideally it could be parameterized tests that verify the finch seed for the OS session in common then verify a different finch seed for each browser type specified with different params (ash-chrome vs lacros-chrome).\nBy the way, migrating the use case like `ui.ChromeVariationsSmoke` (chrome.New with no fixture) is not currently supported by the lacros porting guidelines until a planned refactoring is completed.\n\n+edcourtney, hidehiko for any insights into this.",
+      "parentUuid": "026afee5_80690eb6",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04123771_24d4a61a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
         "patchSetId": 4

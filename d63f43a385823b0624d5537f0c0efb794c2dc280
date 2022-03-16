@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a65528_a4ca2108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T00:54:24Z",
+      "side": 1,
+      "message": "nit: not used",
+      "range": {
+        "startLine": 75,
+        "startChar": 45,
+        "endLine": 75,
+        "endChar": 61
+      },
+      "revId": "d63f43a385823b0624d5537f0c0efb794c2dc280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
