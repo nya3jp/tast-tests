@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b9c1d7_3d2d08a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_get_details.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "nit: end lines with \u0027.\u0027 character.",
+      "range": {
+        "startLine": 40,
+        "startChar": 51,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bf746a_c1c2b86b",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "why do these 2 need to be joined together? can\u0027t you just do: `.shadowRoot.getElementById(\u0027profile-menu\u0027)` ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 48,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3cde31_7fceb51c",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "I\u0027m wondering if you need all these `NamedAction`s? Can you just have both `apps.Launch` and `webutil.WaitForQuiescence` as toplevel not wrapped in NamedActions?",
+      "range": {
+        "startLine": 67,
+        "startChar": 10,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da43f324_a3210e7c",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "Might be worth at least logging this if an error occurs (even if you can continue on failure) good to have these in logs in case its swallowing a fatal error you actually want for debugging.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f7a009_b922ff4b",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "Is there a bug for this? Seems like a workaround we might want to track a fix for at some point (if no bug, consider raising one and including it here)",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 41
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1b0f0c_9d9e66cd",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "Is there a reason this is only used here and not all throughout this function?",
+      "range": {
+        "startLine": 141,
+        "startChar": 41,
+        "endLine": 141,
+        "endChar": 55
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600dfbb0_e7a0bfd7",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "nit: generally when returning errors they should be lowercase and `s.{Error,Fatal}` should be uppercase.\n\ngo/go-style/decisions#error-strings",
+      "range": {
+        "startLine": 198,
+        "startChar": 20,
+        "endLine": 198,
+        "endChar": 22
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df05cefe_44a81f11",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-16T00:23:54Z",
+      "side": 1,
+      "message": "nit/optional: An alternative here is to have `skuDetails` implement `UnmarshalJSON` and then when you call `json.Unmarshal` this will call your method and you can do your validation there.\n\nUp to you, I don\u0027t think you\u0027ll be saving any lines but is more idiomatic.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 49
+      },
+      "revId": "e16c8e79d5a76a62f66a96baf4ee20ea0a54ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
