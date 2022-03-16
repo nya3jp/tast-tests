@@ -26,6 +26,25 @@ const (
 	updateApp  operation = "update"
 )
 
+// Options contains options used when installing or updating an app.
+type Options struct {
+	// TryLimit limits number of tries to install or update an app.
+	// Default value is 3, and -1 means unlimited.
+	TryLimit int
+
+	// DefaultUITimeout is used when waiting for UI elements.
+	// Default value is 20 sec.
+	DefaultUITimeout time.Duration
+
+	// ShortUITimeout is used when waiting for "Complete account setup" button.
+	// Default value is 10 sec.
+	ShortUITimeout time.Duration
+
+	// InstallationTimeout is used when waiting for app installation.
+	// Default value is 90 sec.
+	InstallationTimeout time.Duration
+}
+
 // FindAndDismissDialog finds a dialog containing text with a corresponding button and presses the button.
 func FindAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
 	if err := d.Object(ui.TextMatches("(?i)" + dialogText)).Exists(ctx); err == nil {
@@ -67,12 +86,8 @@ func printPercentageOfAppInstalled(ctx context.Context, d *ui.Device) {
 }
 
 // installOrUpdate uses the Play Store to install or update an application.
-func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int, op operation) error {
+func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, opt *Options, op operation) error {
 	const (
-		defaultUITimeout    = 20 * time.Second
-		shortUITimeout      = 10 * time.Second
-		installationTimeout = 90 * time.Second
-
 		accountSetupText          = "Complete account setup"
 		permissionsText           = "needs access to"
 		cantDownloadText          = "Can.t download.*"
@@ -99,6 +114,26 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 
 		intentActionView = "android.intent.action.VIEW"
 	)
+
+	o := *opt
+	tryLimit := 3
+	if o.TryLimit != 0 {
+		tryLimit = o.TryLimit
+	}
+	defaultUITimeout := 20 * time.Second
+	if o.DefaultUITimeout != 0 {
+		defaultUITimeout = o.DefaultUITimeout
+	}
+	shortUITimeout := 10 * time.Second
+	if o.ShortUITimeout != 0 {
+		shortUITimeout = o.ShortUITimeout
+	}
+	installationTimeout := 90 * time.Second
+	if o.InstallationTimeout != 0 {
+		installationTimeout = o.InstallationTimeout
+	}
+	testing.ContextLogf(ctx, "Using TryLimit=%d, DefaultUITimeout=%s, ShortUITimeout=%s, InstallationTimeout=%s",
+		tryLimit, defaultUITimeout, shortUITimeout, installationTimeout)
 
 	testing.ContextLog(ctx, "Opening Play Store with Intent")
 	if err := a.WaitIntentHelper(ctx); err != nil {
@@ -188,6 +223,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Handle "Want to link your PayPal account" if necessary.
+		testing.ContextLogf(ctx, "Checking existence of : %s", linkPaypalAccountText)
 		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText), ui.Enabled(true)).WaitForExists(ctx, defaultUITimeout); err == nil {
 			testing.ContextLog(ctx, "Want to link your paypal account does exist")
 			noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+noThanksButtonText))
@@ -207,6 +243,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Complete account setup if necessary.
+		testing.ContextLogf(ctx, "Checking existence of : %s", accountSetupText)
 		if err := d.Object(ui.Text(accountSetupText), ui.Enabled(true)).WaitForExists(ctx, shortUITimeout); err == nil {
 			testing.ContextLog(ctx, "Completing account setup")
 			continueButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+continueButtonText))
@@ -231,6 +268,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Wait until progress bar is gone.
+		testing.ContextLog(ctx, "Checking existence of progress bar")
 		progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
 		if err := progressBar.WaitForExists(ctx, defaultUITimeout); err == nil {
 			// Print the percentage of app installed so far.
@@ -261,7 +299,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 // InstallApp uses the Play Store to install an application.
 // It will wait for the app to finish installing before returning.
 // Play Store should be open to the homepage before running this function.
-func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
+func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, opt *Options) error {
 	installed, err := a.PackageInstalled(ctx, pkgName)
 	if err != nil {
 		return err
@@ -270,7 +308,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 		return nil
 	}
 
-	if err := installOrUpdate(ctx, a, d, pkgName, tryLimit, installApp); err != nil {
+	if err := installOrUpdate(ctx, a, d, pkgName, opt, installApp); err != nil {
 		return err
 	}
 
@@ -288,23 +326,23 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, t
 // InstallOrUpdateApp installs the application via Play Store. If the application is already installed,
 // it updates the app if an update is available.
 // It will wait for the app to finish installing/updating before returning.
-func InstallOrUpdateApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
+func InstallOrUpdateApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, opt *Options) error {
 	installed, err := a.PackageInstalled(ctx, pkgName)
 	if err != nil {
 		return err
 	}
 	if !installed {
-		return InstallApp(ctx, a, d, pkgName, tryLimit)
+		return InstallApp(ctx, a, d, pkgName, opt)
 	}
 	testing.ContextLog(ctx, "App has already been installed; check if an update is available")
-	return installOrUpdate(ctx, a, d, pkgName, tryLimit, updateApp)
+	return installOrUpdate(ctx, a, d, pkgName, opt, updateApp)
 }
 
 // InstallOrUpdateAppAndClose installs or updates an application via Play Store, closes Play Store after installation.
 // If the application is already installed, it updates the app if an update is available.
 // It will wait for the app to finish installing/updating and closes Play Store before returning.
-func InstallOrUpdateAppAndClose(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int) error {
-	if err := InstallOrUpdateApp(ctx, a, d, pkgName, tryLimit); err != nil {
+func InstallOrUpdateAppAndClose(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, pkgName string, opt *Options) error {
+	if err := InstallOrUpdateApp(ctx, a, d, pkgName, opt); err != nil {
 		return err
 	}
 	return optin.ClosePlayStore(ctx, tconn)

@@ -85,7 +85,7 @@ func GFXBenchPublicAndroidApp(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	s.Log("Installing app from play store")
-	if err := playstore.InstallApp(ctx, ar, device, gfxbenchPkgName, -1); err != nil {
+	if err := playstore.InstallApp(ctx, ar, device, gfxbenchPkgName, &playstore.Options{TryLimit: -1}); err != nil {
 		s.Fatalf("Failed to install %s: %v", gfxbenchPkgName, err)
 	}
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {

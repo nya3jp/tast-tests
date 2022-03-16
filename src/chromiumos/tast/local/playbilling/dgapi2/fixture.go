@@ -53,7 +53,7 @@ func (f *playBillingDgapi2Fixture) SetUp(ctx context.Context, s *testing.FixtSta
 
 	// Install the test app.
 	s.Logf("Installing %s", pkgName)
-	if err := playstore.InstallApp(ctx, a, d, pkgName, tryLimit); err != nil {
+	if err := playstore.InstallApp(ctx, a, d, pkgName, &playstore.Options{TryLimit: tryLimit}); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 

@@ -228,7 +228,7 @@ func installGeekbench(ctx context.Context, tconn *chrome.TestConn, device *andro
 	// Ignore APP close error because it doesn't impact the test logic.
 	defer apps.Close(ctx, tconn, apps.PlayStore.ID)
 
-	if err := playstore.InstallApp(ctx, ar, device, geekbenchPkgName, -1); err != nil {
+	if err := playstore.InstallApp(ctx, ar, device, geekbenchPkgName, &playstore.Options{TryLimit: -1}); err != nil {
 		return errors.Wrapf(err, "failed to install %s", geekbenchPkgName)
 	}
 
