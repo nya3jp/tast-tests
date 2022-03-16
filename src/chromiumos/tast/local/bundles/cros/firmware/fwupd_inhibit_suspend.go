@@ -53,6 +53,11 @@ func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
 		s.Fatal("System cannot suspend but no update has started")
 	}
 
+	// make sure dut battery is charging/charged
+	if err := fwupd.SetFwupdChargingState(ctx, true); err != nil {
+		s.Fatal("Failed to set charging state: ", err)
+	}
+
 	// run the update
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", fwupd.ReleaseURI)
 	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
