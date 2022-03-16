@@ -25,7 +25,12 @@ const (
 		`.querySelector("settings-nearby-share-subpage")`
 	showVisibilityDialogJS                              = nearbySettingsSubpageJS + `.showVisibilityDialog_ = true`
 	contactVisibilityJS                                 = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-contact-visibility-dialog").shadowRoot.getElementById("contactVisibility")`
-	onboardingPageJs                                    = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-receive-dialog").shadowRoot.querySelector("nearby-onboarding-page")`
+	onboardingSetUpJs                                   = nearbySettingsSubpageJS + `.shadowRoot.querySelector("#setUpButton").click()`
+	onboardingPageJs                                    = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-receive-dialog").shadowRoot.querySelector("nearby-onboarding-one-page")`
+	onboardingCompleteJs                                = onboardingPageJs + `.shadowRoot.querySelector("nearby-page-template").shadowRoot.querySelector("#actionButton").click()`
+	onboardingGoToVisibilityPageJS                      = onboardingPageJs + `.shadowRoot.querySelector("#visibilityButton").click()`
+	nearbyVisibilityPageJS                              = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-receive-dialog").shadowRoot.querySelector("nearby-visibility-page")`
+	onboardingCompleteVisibilityPageJS                  = nearbyVisibilityPageJS + `.shadowRoot.querySelector("nearby-page-template").shadowRoot.querySelector("#actionButton").click()`
 	toggleNearbyDevicesAreSharingNotificationJS         = nearbySettingsSubpageJS + `.shadowRoot.querySelector("#fastInitiationNotificationToggle").click()`
 	getNearbyDevicesAreSharingNotificationToggleStateJS = nearbySettingsSubpageJS + `.shadowRoot.querySelector("#fastInitiationNotificationToggle").hasAttribute('checked')`
 	contactsJS                                          = contactVisibilityJS + `.contacts`
@@ -95,6 +100,57 @@ func ToggleNearbyDeviceIsSharingNotification(ctx context.Context, tconn *chrome.
 	if err := nearbySettings.conn.Eval(ctx, toggleNearbyDevicesAreSharingNotificationJS, nil); err != nil {
 		return errors.Wrap(err, "failed to set background scanning toggle state")
 	}
+	return nil
+}
+
+// EnableNearbyShareInInitialOnboardingPage enables nearby share in the initial page of the onboarding workflow.
+func EnableNearbyShareInInitialOnboardingPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	nearbySettings, err := LaunchNearbySettings(ctx, tconn, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch nearby share settings")
+	}
+
+	if err := nearbySettings.conn.Eval(ctx, onboardingSetUpJs, nil); err != nil {
+		return errors.Wrap(err, "failed to use set up button to start onboarding workflow")
+	}
+
+	if err := nearbySettings.conn.WaitForExpr(ctx, onboardingPageJs); err != nil {
+		return errors.Wrap(err, "failed waiting for onboarding view to load")
+	}
+
+	if err := nearbySettings.conn.Eval(ctx, onboardingCompleteJs, nil); err != nil {
+		return errors.Wrap(err, "failed completing onboarding on initial page")
+	}
+	return nil
+}
+
+// EnableNearbyShareInVisibilitySelectionPage enables nearby share in the visibility selection page of the onboarding workflow.
+func EnableNearbyShareInVisibilitySelectionPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	nearbySettings, err := LaunchNearbySettings(ctx, tconn, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch nearby share settings")
+	}
+
+	if err := nearbySettings.conn.Eval(ctx, onboardingSetUpJs, nil); err != nil {
+		return errors.Wrap(err, "failed to use set up button to start onboarding workflow")
+	}
+
+	if err := nearbySettings.conn.WaitForExpr(ctx, onboardingPageJs); err != nil {
+		return errors.Wrap(err, "failed waiting for onboarding view to load")
+	}
+
+	if err := nearbySettings.conn.Eval(ctx, onboardingGoToVisibilityPageJS, nil); err != nil {
+		return errors.Wrap(err, "failed attempting to go to visibility selection page")
+	}
+
+	if err := nearbySettings.conn.WaitForExpr(ctx, nearbyVisibilityPageJS); err != nil {
+		return errors.Wrap(err, "failed loading visibility selection page")
+	}
+
+	if err := nearbySettings.conn.Eval(ctx, onboardingCompleteVisibilityPageJS, nil); err != nil {
+		return errors.Wrap(err, "failed completing onboarding on visibility selection page")
+	}
+
 	return nil
 }
 
