@@ -16,6 +16,24 @@
       "message": "Just checking in Andrew to see if there is anything helpful for your review. Thanks,",
       "revId": "abc93a4c7eefac84452b02f28ad3a10c6399a84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86a8a94_1c6627e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-16T20:32:57Z",
+      "side": 1,
+      "message": "Hello, hyungtaekim@ A little bit confused... What can I help on app_rearrangement.go? Your CL description says \"lack of Test API support\"",
+      "parentUuid": "1bc7e9cc_c8942ac6",
+      "revId": "abc93a4c7eefac84452b02f28ad3a10c6399a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
