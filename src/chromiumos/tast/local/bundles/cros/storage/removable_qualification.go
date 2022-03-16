@@ -49,7 +49,7 @@ func RemovableQualification(ctx context.Context, s *testing.State) {
 	testParam.SuspendBlockTimeout = util.DefaultSuspendBlockTimeout
 	testParam.SkipS0iXResidencyCheck = false
 	var err error
-	if testParam.TestDevice, err = util.RemovableDevice(ctx); err != nil {
+	if testParam.TestDevice, err = util.RemovableDevice(ctx, true); err != nil {
 		s.Fatal("Failed to get removable device: ", err)
 	}
 
