@@ -1,0 +1,32 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.factory;
+
+option go_package = "chromiumos/tast/services/cros/factory";
+
+service Toolkit {
+  // Install instructs DUT to perform install command with the installer on DUT.
+  rpc Install (InstallRequest) returns (InstallResponse) {}
+
+  // Uninstall instructs DUT to perform uninstall command.
+  rpc Uninstall (UninstallRequest) returns (UninstallResponse) {}
+}
+
+message InstallRequest {
+  // --no-enable option in toolkit installer, do not enable factory tests after
+  // installing.
+  bool no_enable = 1;
+}
+
+message InstallResponse {
+  // Version installed of the toolkit.
+  string version = 1;
+}
+
+message UninstallRequest {}
+
+message UninstallResponse {}
