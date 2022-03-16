@@ -34,6 +34,24 @@
       "parentUuid": "1bc7e9cc_c8942ac6",
       "revId": "abc93a4c7eefac84452b02f28ad3a10c6399a84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5afda562_59c8d44c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-16T20:43:09Z",
+      "side": 1,
+      "message": "This CL is more auditing whether each needs a lacros variant or not. That\u0027s enough for now.\nLike I said, migrating app_rearrangement.go to lacros would need some refactoring to be done first. I can loop you in once it\u0027s ready for migration. Please let me know if you need any further clarification. Thanks,",
+      "parentUuid": "c86a8a94_1c6627e7",
+      "revId": "abc93a4c7eefac84452b02f28ad3a10c6399a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
