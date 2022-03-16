@@ -240,7 +240,7 @@ func testPerfETMSystemWide(ctx context.Context, s *testing.State) {
 
 	// Test ETM trace decoding and sample synthesis.
 	perfInjectData := filepath.Join(s.OutDir(), "system-wide-perf-inject.data")
-	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i1024il", "--strip", "-i", perfData, "-o", perfInjectData)
+	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=Zi1024il", "--strip", "-i", perfData, "-o", perfInjectData)
 	err = cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
