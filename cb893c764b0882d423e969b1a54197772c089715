@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f29101_704d66dc",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-16T17:50:16Z",
+      "side": 1,
+      "message": "I\u0027m not a huge fan of mixing the casing for these consts. I do see it\u0027s for the purpose of having the uppercased functions of the lowercased consts to have the ability to be preprocessed. Perhaps we can use a decorator or an overarching procesing function to keep the invocation consistent while still abstracting the implementation from the developer?\n\nWDYT?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "cb893c764b0882d423e969b1a54197772c089715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
