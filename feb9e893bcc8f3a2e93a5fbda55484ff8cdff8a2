@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408c254d_d654e005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-16T20:47:36Z",
+      "side": 1,
+      "message": "Note that the default perf timeline uses \"TPS.\" as prefix. And we were using \"Power.\" prefix when collecting power in a different perf time line before this CL.\n\nPower metrics are named after relevant sysfs path names. Example names are \"B0D4\", \"cpu\" etc. They recorded under \"Power.B0D4\", \"Power.cpu\" before. With this CL, they would be \"TPS.B0D4\" and \"TPS.cpu\". It would be confusing to look at, IMHO.\n\nIs there a way to keep \"Power.\" prefix?",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe32fbb_dc2d4177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-16T20:47:36Z",
+      "side": 1,
+      "message": "We might want to handle this error and fail. Or at least log it.",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ff741e_b1d9b742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-16T20:47:36Z",
+      "side": 1,
+      "message": "This might need to happen before power.TestMetrics() listing all thermal senses. I hit a bug before that wifi is listed one of the thermal sensors but the code does not handle it properly. See CL:2627334.",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e972e518_20aa2e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-16T20:47:36Z",
+      "side": 1,
+      "message": "This feels a bit too much manual work. Is there a way that we could tweak power.PowerTest to allow some of the setup to fail and report it?",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
