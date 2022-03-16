@@ -916,3 +916,14 @@ func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	return r.ipr.MAC(ctx, iface)
 }
+
+// HostIsLegacyRouter determines whether the remote host is a Legacy router.
+func HostIsLegacyRouter(ctx context.Context, host *ssh.Conn) (bool, error) {
+	lsbReleaseFilePath := "/etc/lsb-release"
+	lsbReleaseMatchIfLegacy := "^CHROMEOS_RELEASE_BOARD=gale$"
+	matches, err := common.HostFileContentsMatch(ctx, host, lsbReleaseFilePath, lsbReleaseMatchIfLegacy)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to check if remote file %q contents match %q", lsbReleaseFilePath, lsbReleaseMatchIfLegacy)
+	}
+	return matches, nil
+}
