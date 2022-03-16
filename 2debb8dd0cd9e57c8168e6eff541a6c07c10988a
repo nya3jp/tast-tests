@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e658912_cf3d28ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-03-16T23:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63bbe44f_c56d55b5",
+      "revId": "2debb8dd0cd9e57c8168e6eff541a6c07c10988a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9fcb650_0913bc68",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-16T15:38:29Z",
       "side": 1,
       "message": "ditto re: extra space, also \"found %v unexpected certs\" is easier to read",
+      "revId": "2debb8dd0cd9e57c8168e6eff541a6c07c10988a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dc5c48_af50294a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/root_ca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-03-16T23:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9fcb650_0913bc68",
       "revId": "2debb8dd0cd9e57c8168e6eff541a6c07c10988a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
