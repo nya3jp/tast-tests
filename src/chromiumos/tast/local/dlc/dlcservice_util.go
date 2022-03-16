@@ -34,6 +34,15 @@ type Info struct {
 	RootMount string `json:"root_mount"`
 }
 
+// State holds the fields related to the DLC state.
+type State struct {
+	ID            string  `json:"id"`
+	LastErrorCode string  `json:"last_error_code"`
+	Progress      float32 `json:"progress"`
+	RootPath      string  `json:"root_path"`
+	State         int     `json:"state"`
+}
+
 // Install calls the DBus method to install a DLC.
 func Install(ctx context.Context, id, omahaURL string) error {
 	testing.ContextLog(ctx, "Installing DLC: ", id, " using ", omahaURL)
@@ -100,4 +109,19 @@ func List(ctx context.Context) (map[string][]Info, error) {
 	}
 
 	return info, nil
+}
+
+// GetDlcState returns the state of a DLC.
+func GetDlcState(ctx context.Context, id string) (*State, error) {
+	buf, err := testexec.CommandContext(ctx, "dlcservice_util", "--dlc_state", "--id="+id).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the DLC state")
+	}
+
+	var state State
+	if err := json.Unmarshal(buf, &state); err != nil {
+		return nil, err
+	}
+
+	return &state, nil
 }
