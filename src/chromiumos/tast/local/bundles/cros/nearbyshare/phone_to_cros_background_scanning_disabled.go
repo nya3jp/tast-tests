@@ -11,6 +11,7 @@ import (
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbyfixture"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
@@ -48,11 +49,11 @@ func init() {
 
 // PhoneToCrosBackgroundScanningDisabled tests that the background scanning notification does not appear if background scanning is toggled off with an Android device as sender and CrOS device as receiver.
 func PhoneToCrosBackgroundScanningDisabled(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*nearbyshare.FixtData).Chrome
-	tconn := s.FixtValue().(*nearbyshare.FixtData).TestConn
-	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
-	androidDevice := s.FixtValue().(*nearbyshare.FixtData).AndroidDevice
-	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
+	cr := s.FixtValue().(*nearbyfixture.FixtData).Chrome
+	tconn := s.FixtValue().(*nearbyfixture.FixtData).TestConn
+	crosDisplayName := s.FixtValue().(*nearbyfixture.FixtData).CrOSDeviceName
+	androidDevice := s.FixtValue().(*nearbyfixture.FixtData).AndroidDevice
+	androidDisplayName := s.FixtValue().(*nearbyfixture.FixtData).AndroidDeviceName
 
 	if err := nearbyshare.ToggleNearbyDeviceIsSharingNotification(ctx, tconn, cr /*setChecked=*/, false); err != nil {
 		s.Fatal("Failed to toggle background scanning notification: ", err)
