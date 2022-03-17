@@ -70,6 +70,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dab5840_a496b8b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T13:27:26Z",
+      "side": 1,
+      "message": "LGTM with comment to avoid cross TZ iteration.\n",
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3499a7fc_c96ffb45",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T13:27:26Z",
+      "side": 1,
+      "message": "could you clarify which should be called first?",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 109
+      },
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0451df_c2f3a0f4",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T13:27:26Z",
+      "side": 1,
+      "message": "could you use LacrosMode actually?\n\nLacrosAvailability is the policy name, which is not appropriate here.\nSpecifically, there\u0027s the gap between mode and availability.\n\nAvailability has the \"UserChoice\" config, which means that user can decide whether or not enabling Lacros. That shouldn\u0027t be the value of LacrosMode, as it just does not make sense.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb81ad8d_07f20912",
