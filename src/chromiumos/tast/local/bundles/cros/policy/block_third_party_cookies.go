@@ -40,7 +40,6 @@ func init() {
 			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
