@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "def519ca_d043c260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-17T08:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e104c38a_426e9186",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "d6b658023a917725f1989cc6a354914e239d21ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c15ae79f_e38a3c65",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1885950_252660bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-17T08:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c15ae79f_e38a3c65",
+      "revId": "d6b658023a917725f1989cc6a354914e239d21ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84c167ed_f9641948",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-03-16T11:39:14Z",
       "side": 1,
       "message": "If I am reading it right - this will be checking if the device that has OutputStream is the same device as it was initially assigned in line 160, right?\n\nBased on the description of the test - \"Verifies audio playback over BT headset for long duration\" and seeing that the sample file raw data was constructed from 440 Hz (I guess), I was expecting to see some kind of sampling done on the captured waveform.\n\nOr maybe I am missing something here 😕",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 4
+      },
+      "revId": "d6b658023a917725f1989cc6a354914e239d21ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f3d3d6_1437e0a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-17T08:58:14Z",
+      "side": 1,
+      "message": "yes you are right. We are checking if the OutputStream is the same device as it was initially assigned in line 160.\n\nIn our previous audio related patches, we got comment from the Audio team that the audio file needs to be generated on the fly and play that audio. We are just generating the audio file and playing it over BT.",
+      "parentUuid": "84c167ed_f9641948",
       "range": {
         "startLine": 233,
         "startChar": 3,
