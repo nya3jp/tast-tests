@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	factorycommon "chromiumos/tast/common/factory"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 )
@@ -23,8 +24,7 @@ const (
 	// the test image. The path should be synced with factory-mini.ebuild.
 	ToolkitInstallerPath = "/usr/local/factory-toolkit/install_factory_toolkit.run"
 
-	testListName    = "generic_tast"
-	factoryRootPath = "/usr/local/factory"
+	testListName = "generic_tast"
 )
 
 // Installer contains configurations to run the installation of factory toolkit.
@@ -66,8 +66,7 @@ func (i *Installer) installFactoryToolKitFromToolkitInstaller(ctx context.Contex
 	}
 
 	// Get the factory toolkit version.
-	toolkitVersionPath := filepath.Join(factoryRootPath, "/TOOLKIT_VERSION")
-	b, err := ioutil.ReadFile(toolkitVersionPath)
+	b, err := ioutil.ReadFile(factorycommon.ToolkitVersionFilePath)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read version file")
 	}
@@ -110,8 +109,7 @@ func (i *Installer) configureToolkitWithLabEnvironment(ctx context.Context) erro
 		ID string `json:"id"`
 	}
 	var data DataFile
-	testListConfigPath := filepath.Join(factoryRootPath, "py/test/test_lists/active_test_list.json")
-	b, err := ioutil.ReadFile(testListConfigPath)
+	b, err := ioutil.ReadFile(factorycommon.ActiveTestListFilePath)
 	if err != nil {
 		return errors.Wrap(err, "failed to read TestList config file")
 	}
@@ -124,7 +122,7 @@ func (i *Installer) configureToolkitWithLabEnvironment(ctx context.Context) erro
 
 	// TODO(b/205779346): workaround to prevent disk_space_hacks.sh from
 	// deleting directories needed by other test.
-	diskSpaceHackScriptPath := filepath.Join(factoryRootPath, "/init/init.d/disk_space_hacks.sh")
+	diskSpaceHackScriptPath := filepath.Join(factorycommon.FactoryRootPath, "/init/init.d/disk_space_hacks.sh")
 	if err := os.Remove(diskSpaceHackScriptPath); err != nil {
 		return errors.Wrapf(err, "cannot remove %s", diskSpaceHackScriptPath)
 	}
