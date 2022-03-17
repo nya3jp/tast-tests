@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"regexp"
 	"strings"
 	"time"
 
@@ -21,6 +22,12 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// testArgs represents the arguments passed to each parameterized test.
+type testArgs struct {
+	formFactor    string
+	setLaptopMode string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECLaptopMode,
@@ -35,15 +42,23 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
-			Val:               "convertible",
+			Val: &testArgs{
+				formFactor:    "convertible",
+				setLaptopMode: "tabletmode off",
+			},
 		}, {
 			Name:              "clamshell",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
-			Val:               "clamshell",
+			Val: &testArgs{
+				formFactor: "clamshell",
+			},
 		}, {
 			Name:              "detachable",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable), hwdep.Keyboard()),
-			Val:               "detachable",
+			Val: &testArgs{
+				formFactor:    "detachable",
+				setLaptopMode: "basestate attach",
+			},
 		}},
 	})
 }
@@ -74,28 +89,30 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create mode switcher: ", err)
 	}
 
-	checkLaptopMode := func(ctx context.Context) error {
+	checkLaptopMode := func(ctx context.Context) (bool, error) {
 		if err := h.RequireRPCUtils(ctx); err != nil {
-			return errors.Wrap(err, "requiring RPC utils")
+			return false, errors.Wrap(err, "requiring RPC utils")
 		}
 		if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
-			return errors.Wrap(err, "failed to create instance of chrome")
+			return false, errors.Wrap(err, "failed to create instance of chrome")
 		}
 		res, err := h.RPCUtils.EvalTabletMode(ctx, &empty.Empty{})
 		if err != nil {
-			return err
+			return false, err
 		}
-		if res.TabletModeEnabled {
-			return errors.New("DUT's tablet mode status is currently on")
-		}
-		return nil
+		return res.TabletModeEnabled, nil
 	}
 
-	dutType := s.Param().(string)
-	if dutType == "convertible" {
+	args := s.Param().(*testArgs)
+	if args.formFactor != "clamshell" {
 		s.Log("Checking initial state of laptop mode")
-		if err := checkLaptopMode(ctx); err != nil {
+		if inTabletMode, err := checkLaptopMode(ctx); err != nil {
 			s.Fatal("Unable to check DUT in laptop mode before powering off: ", err)
+		} else if inTabletMode {
+			s.Log("DUT is in tablet mode at start. Attempting to turn tablet mode off")
+			if err := checkAndSetLaptopMode(ctx, s, h, args.setLaptopMode); err != nil {
+				s.Fatalf("Failed to set laptop mode using command %s, and got: %v", args.setLaptopMode, err)
+			}
 		}
 
 		s.Log("Setting power off")
@@ -103,9 +120,11 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to power off DUT: ", err)
 		}
 
-		s.Log("Tapping on the power button to power on DUT")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-			s.Fatal("Failed to tap on the power button: ", err)
+		// Rather than send a tab on power button, set DUT's powerstate to ON.
+		// Some DUTs might require longer press on the power button to power
+		// on, i.e. Kukui/Kakadu.
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
+			s.Fatal("Failed to set powerstate to ON: ", err)
 		}
 
 		s.Log("Waiting for the boot to complete")
@@ -116,8 +135,10 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		}
 		h.CloseRPCConnection(ctx)
 		s.Log("Checking DUT remains in laptop mode after having rebooted")
-		if err := checkLaptopMode(ctx); err != nil {
+		if inTabletMode, err := checkLaptopMode(ctx); err != nil {
 			s.Fatal("Unable to determine if DUT is in laptop mode after reboot: ", err)
+		} else if inTabletMode {
+			s.Fatal("DUT booted into tabletmode")
 		}
 	} else {
 		if err := h.RequireRPCUtils(ctx); err != nil {
@@ -234,8 +255,10 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 
 		// When DUT is a detachable, a tap on the power button would turn off the screen.
 		// We are yet to verify if this would be the case in general for all detachables.
-		// As of now, we've observed such behavior on Kukui and Soraka.
-		if dutType != "detachable" {
+		// As of now, we've observed such behavior on Kukui and Soraka, but not on Strongbad.
+		// ModeSwitcherType seems to be one indicator that'll distinguish between them.
+		// We're continuing to identify better indicators.
+		if args.formFactor != "detachable" || h.Config.ModeSwitcherType != firmware.TabletDetachableSwitcher {
 			s.Log("Checking that display remains on")
 			if err := checkDisplay(ctx); err != nil {
 				s.Fatal("Error in verifying display on: ", err)
@@ -268,19 +291,21 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Pressing and holding the power button for 1 second to turn on the power menu")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-			s.Fatal("Failed to press and hold on the power button for 1 second: ", err)
-		}
-
-		// Wait for a short delay.
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			s.Fatal("Failed to sleep: ", err)
-		}
-
-		// Check that pressing the power button for 1 second brings up the power menu.
-		s.Log("Checking that the power menu has appeared")
-		if err := checkPowerMenu(ctx, true); err != nil {
-			s.Fatal("Failed to check the power menu: ", err)
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+				return errors.Wrap(err, "failed to press and hold on the power button for 1 second")
+			}
+			// Wait for a short delay.
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
+			// Check that pressing the power button for 1 second brings up the power menu.
+			if err := checkPowerMenu(ctx, true); err != nil {
+				return errors.Wrap(err, "failed to check the power menu")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 3 * time.Second, Interval: 10 * time.Second}); err != nil {
+			s.Fatal("Power menu was absent following a 1 second press on the power button: ", err)
 		}
 
 		s.Log("Checking that power menu items are displayed correctly")
@@ -316,7 +341,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 
 		// When DUT is a detachable, a tap on the power button will
 		// turn off the screen, instead of the power menu.
-		if dutType != "detachable" {
+		if args.formFactor != "detachable" || h.Config.ModeSwitcherType != firmware.TabletDetachableSwitcher {
 			s.Log("Tapping on the power button to turn off the power menu")
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
@@ -389,4 +414,30 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 	if powerState == "G3" {
 		h.Servo.SetPowerState(ctx, servo.PowerStateOn)
 	}
+}
+
+// checkAndSetLaptopMode first checks if the passed EC command exists, and uses it to turn off tablet mode.
+func checkAndSetLaptopMode(ctx context.Context, s *testing.State, h *firmware.Helper, action string) error {
+	// regular expressions.
+	var (
+		tabletmodeNotFound = `Command 'tabletmode' not found or ambiguous`
+		tabletmodeStatus   = `\[\S+ tablet mode disabled\]`
+		basestateNotFound  = `Command 'basestate' not found or ambiguous`
+		basestateStatus    = `\[\S+ base state: attached\]`
+		checkLaptopMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `)`
+	)
+	// Run EC command to turn on/off tablet mode.
+	s.Logf("Check command %q exists", action)
+	out, err := h.Servo.RunECCommandGetOutput(ctx, action, []string{checkLaptopMode})
+	if err != nil {
+		return errors.Wrapf(err, "failed to run command %q", action)
+	}
+	tabletModeCmdUnavailable := []*regexp.Regexp{regexp.MustCompile(tabletmodeNotFound), regexp.MustCompile(basestateNotFound)}
+	for _, v := range tabletModeCmdUnavailable {
+		if match := v.FindStringSubmatch(out[0][0]); match != nil {
+			return errors.Errorf("device does not support tablet mode: %q", match)
+		}
+	}
+	s.Logf("Current tabletmode status: %q", out[0][1])
+	return nil
 }
