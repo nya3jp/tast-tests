@@ -420,6 +420,30 @@
       },
       "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35d68bd_9bb813e5",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T18:19:31Z",
+      "side": 1,
+      "message": "To be clear, what I meant was moving to somewhere in variation_smoke.go. Just for a heads-up, this is going to be conflict with a pending CL https://crrev.com/c/3524047 that changes the way of launching lacros (and its user data dir as well) that got me think this line of code may not be necessary once the CL gets in.\nEliot, can you confirm?",
+      "parentUuid": "6b2b0e68_5a017f10",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
