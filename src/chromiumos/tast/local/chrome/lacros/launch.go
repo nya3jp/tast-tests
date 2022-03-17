@@ -159,10 +159,6 @@ func LaunchWithURLDeprecated(ctx context.Context, f lacrosfixt.FixtValue, url st
 	succeeded := false
 	defer lacrosfaillog.SaveIf(ctx, f.LacrosPath(), func() bool { return !succeeded })
 
-	if err := killLacros(ctx, f.LacrosPath()); err != nil {
-		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
-	}
-
 	// Create a new temporary directory for user data dir.
 	// The directory will be wiped by fixture's Reset(), so if necessary
 	// the log needs to be preserved within the test.
