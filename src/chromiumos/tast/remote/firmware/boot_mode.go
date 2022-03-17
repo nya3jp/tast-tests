@@ -256,7 +256,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	case fwCommon.BootModeUSBDev:
 		transitionToDev := true
 		transitionToDevUsb := true
-		if msOptsContain(opts, AllowGBBForce) {
+		if msOptsContain(opts, AllowGBBForce) || fromMode == fwCommon.BootModeDev {
 			transitionToDev = false
 		}
 		hasSerialAP := ms.hasSerialAPFirmware(ctx)
