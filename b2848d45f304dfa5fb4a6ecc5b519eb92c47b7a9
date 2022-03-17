@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8805ed83_d0acccce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-17T01:30:17Z",
+      "side": 1,
+      "message": "Confirmed from Puthikorn in https://b.corp.google.com/issues/215445963#comment11, it is safe to read the mode value in that file. I think we should be good to continue the review.",
+      "parentUuid": "fe4a0b14_b6294988",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 79
+      },
+      "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69ed2767_e1600309",
