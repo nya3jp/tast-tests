@@ -51,7 +51,8 @@ main() {
             die "Unknown storage type: ${kind}"
     esac
 
-    exec blogbench -d "${mountpoint}" -i 12
+    blogbench -d "${mountpoint}" -i 12
 }
 
 main "$@"
+exec poweroff -f

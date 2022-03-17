@@ -36,7 +36,8 @@ main() {
     mount --bind "${pjdfstest}" "${mountdir}"
 
     cd "${testdir}"
-    exec runtests -v ./pjdfstest/tests/**/*.t
+    runtests -v ./pjdfstest/tests/**/*.t
 }
 
 main "$@"
+exec poweroff -f
