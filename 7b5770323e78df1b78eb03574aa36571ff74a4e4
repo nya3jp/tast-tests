@@ -22,6 +22,30 @@
       },
       "revId": "7b5770323e78df1b78eb03574aa36571ff74a4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34804a42_2f5492bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T17:02:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b6390fb9_730fe86b",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "7b5770323e78df1b78eb03574aa36571ff74a4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

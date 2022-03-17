@@ -16,6 +16,46 @@
       "message": "Sorry for the long delay. Thank you!",
       "revId": "aad2c1ea5f8dafd2ea2594619f3405749b38b01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068e0b87_1ae978b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T17:02:50Z",
+      "side": 1,
+      "message": "The code looks ok in general, but i\u0027d like to see more detailed documents to make it more clearer.",
+      "revId": "aad2c1ea5f8dafd2ea2594619f3405749b38b01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a667c227_0815a9cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T17:02:50Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 317,
+        "startChar": 8,
+        "endLine": 317,
+        "endChar": 9
+      },
+      "revId": "aad2c1ea5f8dafd2ea2594619f3405749b38b01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

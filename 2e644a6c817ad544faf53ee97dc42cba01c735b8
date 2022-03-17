@@ -237,6 +237,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb903c36_6edcc74a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T17:02:50Z",
+      "side": 1,
+      "message": "I think there\u0027re more things to be documented anyways.\nWhat happens if there are some errors found in a middle way of the generation?\nWill it be all cleaned up? Or does callers need to take care of them?",
+      "parentUuid": "1f063aba_4f15d170",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecef7b49_d346dcb5",
         "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
         "patchSetId": 3
@@ -342,6 +360,30 @@
       "side": 1,
       "message": "Emmm... But the previous reviewer asked me not to use \":\". See this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3415981/17..23/src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go#b243",
       "parentUuid": "1a828bd4_941c7784",
+      "range": {
+        "startLine": 281,
+        "startChar": 58,
+        "endLine": 281,
+        "endChar": 81
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ec5780_498a4650",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T17:02:50Z",
+      "side": 1,
+      "message": "You can search on CS, and \": got ..., want ...\" is very much more common.",
+      "parentUuid": "a2db6610_c02f6a84",
       "range": {
         "startLine": 281,
         "startChar": 58,
