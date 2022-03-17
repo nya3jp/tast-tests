@@ -16,6 +16,24 @@
       "message": "R100 is beta now and I do not see any reason to cherrypick it.",
       "revId": "da489409753acac197518b74bf7eb40eb7fba155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82f20f5_c5501f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-17T01:59:22Z",
+      "side": 1,
+      "message": "Full info on cherry picking to R100. Please refer to https://issuetracker.google.com/224589408. Already approved for merge into M100.",
+      "parentUuid": "fbe36047_0566158f",
+      "revId": "da489409753acac197518b74bf7eb40eb7fba155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
