@@ -224,6 +224,12 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empt
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
 			return nil, errors.Wrap(err, "ChromeOS dialog did not show up")
 		}
+	} else {
+		// Wait for popup alert dialog prompting for power button press.
+		dialog := nodewith.ClassName("MessagePopupView")
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
+			return nil, errors.Wrap(err, "Power button press prompt did not show up")
+		}
 	}
 	return &empty.Empty{}, nil
 }
