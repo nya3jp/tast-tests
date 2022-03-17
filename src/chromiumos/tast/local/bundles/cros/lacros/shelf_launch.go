@@ -51,7 +51,7 @@ func init() {
 			{
 				Name:              "omaha",
 				Fixture:           "lacrosOmaha",
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("eve", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 				ExtraAttr:         []string{"informational"},
 			}},
 	})
@@ -122,6 +122,11 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		// Grab Lacros logs to assist debugging before exiting.
 		lacrosfaillog.Save(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath())
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
+	}
+
+	info, err := lacros.InfoSnapshot(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not get lacros info: ", err)
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
