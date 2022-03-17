@@ -48,6 +48,7 @@ func getLastLine(s string) string {
 // CryptohomeClient wraps and the functions of cryptohomeBinary and parses the outputs to
 // structured data.
 type CryptohomeClient struct {
+	runner               CmdRunner
 	binary               *cryptohomeBinary
 	cryptohomePathBinary *cryptohomePathBinary
 	daemonController     *DaemonController
@@ -56,6 +57,7 @@ type CryptohomeClient struct {
 // NewCryptohomeClient creates a new CryptohomeClient.
 func NewCryptohomeClient(r CmdRunner) *CryptohomeClient {
 	return &CryptohomeClient{
+		runner:               r,
 		binary:               newCryptohomeBinary(r),
 		cryptohomePathBinary: newCryptohomePathBinary(r),
 		daemonController:     NewDaemonController(r),
@@ -179,18 +181,28 @@ func (u *CryptohomeClient) IsMounted(ctx context.Context) (bool, error) {
 
 // Unmount unmounts the vault for username.
 func (u *CryptohomeClient) Unmount(ctx context.Context, username string) (bool, error) {
-	// Restart the UI to make sure nothing is still using cryptohome and unmount the mount point.
-	if err := u.daemonController.Restart(ctx, UIDaemon); err != nil {
-		return false, errors.Wrap(err, "failed to restart the UI")
+	if err := u.UnmountAll(ctx); err != nil {
+		return false, errors.Wrap(err, "failed to unmount all")
 	}
 	return true, nil
 }
 
 // UnmountAll unmounts all vault.
 func (u *CryptohomeClient) UnmountAll(ctx context.Context) error {
-	// Restart the UI to make sure nothing is still using cryptohome and unmount the mount point.
-	if err := u.daemonController.Restart(ctx, UIDaemon); err != nil {
-		return errors.Wrap(err, "failed to restart the UI")
+	goal, _, _, err := u.daemonController.Status(ctx, UIDaemon)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the status of ui")
+	}
+	if goal == startGoal {
+		// Restart the UI to make sure nothing is still using cryptohome and unmount the mount point.
+		if err := u.daemonController.Restart(ctx, UIDaemon); err != nil {
+			return errors.Wrap(err, "failed to restart the UI")
+		}
+	} else {
+		// Running the ui-post-stop directly if UI doesn't start.
+		if _, err := u.runner.Run(ctx, "/usr/share/cros/init/ui-post-stop"); err != nil {
+			return errors.Wrap(err, "failed to run ui-post-stop")
+		}
 	}
 	return nil
 }
