@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bbb37aa_c7c55308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-03-17T21:57:53Z",
+      "side": 1,
+      "message": "Hey Kyle,\nI have some trouble updating the original CL:https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3527375\nSo, I uploaded a new one, and fix the comments in the original CL. Sorry for the inconvenience.",
+      "revId": "34c5401ca0abb2eca67ceab317741bee0943e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
