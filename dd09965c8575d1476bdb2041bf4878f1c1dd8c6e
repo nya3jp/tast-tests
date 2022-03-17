@@ -34,6 +34,24 @@
       "parentUuid": "e22538ef_56c02b5a",
       "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c011c2_9cb516be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-17T06:41:09Z",
+      "side": 1,
+      "message": "What error did you get? \n\nThis?\n\n```\n$ ./fast_build.sh -T\nok  \tchromiumos/tast/autocaps\t(cached)\n# chromiumos/tast/remote/bundles/crosint/hps\n../tast-tests-private/src/chromiumos/tast/remote/bundles/crosint/hps/camerabox_presence.go:101:20: assignment mismatch: 3 variables but chart.New returns 2 values\n../tast-tests-private/src/chromiumos/tast/remote/bundles/crosint/hps/camerabox_presence.go:101:60: cannot use filePaths (type []string) as type string in argument to chart.New\nok  \tchromiumos/tast/cmd/tast\t0.408s\n\n```\n\nIf so, just do a \"git pull --rebase\" in the tast-tests repo. I got the same error today. The unit test passed after I rebased.\n\nIf not, please let me know what the error is. Thanks.",
+      "parentUuid": "01ff4312_29c24786",
+      "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
