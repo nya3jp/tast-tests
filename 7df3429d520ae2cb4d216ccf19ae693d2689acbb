@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc827e12_90ae330f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-03-17T07:42:33Z",
+      "side": 1,
+      "message": "nit: string is unnecessary here",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d39f5ed_fcd072e7",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-03-17T07:42:33Z",
+      "side": 1,
+      "message": "You may want to continue attempting to restore the other config files even if one fails to restore from the backup.",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c609fc_00195ae0",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-03-17T07:42:33Z",
+      "side": 1,
+      "message": "Unless you have a flag in mind that will use this capability, I\u0027d recommend \"type CLIFlag []string\" instead of making it a generator function.",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
