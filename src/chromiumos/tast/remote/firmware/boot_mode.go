@@ -754,6 +754,11 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := ms.PowerOff(ctx); err != nil {
 		return errors.Wrap(err, "powering off DUT")
 	}
+	// Powering off the USB mux has some side effects that take some time. Specifically, you can't turn
+	// it back on again too quickly or the USB stick fails.
+	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		return errors.Wrapf(err, "sleeping before setting usb mux state to %s", usbMux)
+	}
 	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
 		return errors.Wrapf(err, "setting usb mux state to %s while DUT is off", usbMux)
 	}
