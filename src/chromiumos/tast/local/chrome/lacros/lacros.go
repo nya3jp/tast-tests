@@ -64,8 +64,20 @@ func (l *Lacros) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 	return l.sess.StopTracing(ctx)
 }
 
-// Close kills a launched instance of lacros-chrome.
+// Close closes all lacros chrome targets and the dev session.
 func (l *Lacros) Close(ctx context.Context) error {
+	// Get all targets.
+	ts, err := l.sess.FindTargets(ctx, func(t *target.Info) bool { return true })
+	if err != nil {
+		return errors.Wrap(err, "failed to query for all targets")
+	}
+
+	for _, info := range ts {
+		if err := l.sess.CloseTarget(ctx, info.TargetID); err != nil {
+			return err
+		}
+	}
+
 	if err := l.sess.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close connection to lacros-chrome: ", err)
 	}
@@ -79,10 +91,6 @@ func (l *Lacros) Close(ctx context.Context) error {
 		}
 		l.cmd.Wait()
 		l.cmd = nil
-	}
-
-	if err := killLacros(ctx, l.lacrosPath); err != nil {
-		return errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 	return nil
 }
