@@ -296,7 +296,7 @@ func RelevantSpeechMonitor(ctx context.Context, c *chrome.Chrome, tconn *chrome.
 			}
 
 			// Attempt to consume the test utterance.
-			if err := candidateMonitor.Consume(ctx, []SpeechExpectation{StringExpectation{"Testing"}}); err != nil {
+			if err := candidateMonitor.ConsumeAndCheckExpsMatch(ctx, []SpeechExpectation{StringExpectation{"Testing"}}); err != nil {
 				return errors.Wrap(err, "failed to consume the test utterance")
 			}
 
@@ -378,6 +378,7 @@ func (ud UtteranceData) String() string {
 // SpeechExpectation defines an interface for a speech expectation.
 type SpeechExpectation interface {
 	matches(utteranceData UtteranceData) error
+	contains(utteranceData UtteranceData) error
 }
 
 // RegexExpectation represents data for a speech expectation, where |expectation|
@@ -408,9 +409,21 @@ func (re RegexExpectation) matches(utteranceData UtteranceData) error {
 	return nil
 }
 
+func (re RegexExpectation) contains(utteranceData UtteranceData) error {
+	return errors.New("RegexExpectatin only has matches function")
+}
+
 func (se StringExpectation) matches(utteranceData UtteranceData) error {
 	if se.expectation != utteranceData.Utterance {
 		return errors.Errorf("expected utterance: %s does not match utterance: %s", se.expectation, utteranceData.Utterance)
+	}
+
+	return nil
+}
+
+func (se StringExpectation) contains(utteranceData UtteranceData) error {
+	if !strings.Contains(utteranceData.Utterance, se.expectation) {
+		return errors.Errorf("expected utterance: %s is not contained in utterance: %s", se.expectation, utteranceData.Utterance)
 	}
 
 	return nil
@@ -420,6 +433,31 @@ func (oe OptionsExpectation) matches(utteranceData UtteranceData) error {
 	var errs []string
 	if oe.expectation != utteranceData.Utterance {
 		errs = append(errs, fmt.Sprintf("expected utterance: %s does not match utterance: %s", oe.expectation, utteranceData.Utterance))
+	}
+
+	if oe.expectedOptions.Lang != utteranceData.Options.Lang {
+		errs = append(errs, fmt.Sprintf("expected lang: %s does not match lang: %s", oe.expectedOptions.Lang, utteranceData.Options.Lang))
+	}
+
+	if oe.expectedOptions.Pitch != utteranceData.Options.Pitch {
+		errs = append(errs, fmt.Sprintf("expected pitch: %.2f does not match pitch: %.2f", oe.expectedOptions.Pitch, utteranceData.Options.Pitch))
+	}
+
+	if oe.expectedOptions.Rate != utteranceData.Options.Rate {
+		errs = append(errs, fmt.Sprintf("expected rate: %.2f does not match rate: %.2f", oe.expectedOptions.Rate, utteranceData.Options.Rate))
+	}
+
+	if len(errs) > 0 {
+		return errors.New(strings.Join(errs, "; "))
+	}
+
+	return nil
+}
+
+func (oe OptionsExpectation) contains(utteranceData UtteranceData) error {
+	var errs []string
+	if strings.Contains(utteranceData.Utterance, oe.expectation) {
+		errs = append(errs, fmt.Sprintf("expected utterance: %s is not conatined in utterance: %s", oe.expectation, utteranceData.Utterance))
 	}
 
 	if oe.expectedOptions.Lang != utteranceData.Options.Lang {
@@ -463,14 +501,14 @@ func NewOptionsExpectation(utterance, lang string, pitch, rate float32) OptionsE
 	return OptionsExpectation{utterance, SpeakOptions{lang, pitch, rate}}
 }
 
-// Consume ensures that the expectations were spoken by the TTS engine. It also
-// consumes all utterances accumulated in TTS extension's background page.
+// ConsumeAndCheckExpsMatch ensures that the expectations were spoken by the TTS engine.
+// It also consumes all utterances accumulated in TTS extension's background page.
 // For each expectation we:
 // 1. Shift the next spoken utterance off of testUtterances. This ensures that
 // we never compare against stale utterances; a spoken utterance is either
 // matched or discarded.
-// 2. Check if the utterance matches the expectation.
-func (sm *SpeechMonitor) Consume(ctx context.Context, expectations []SpeechExpectation) error {
+// 2. Check if the utterance matches the expectations.
+func (sm *SpeechMonitor) ConsumeAndCheckExpsMatch(ctx context.Context, expectations []SpeechExpectation) error {
 	var actual []UtteranceData
 	for _, exp := range expectations {
 		// Use a poll to allow time for each utterance to be spoken.
@@ -494,9 +532,8 @@ func (sm *SpeechMonitor) Consume(ctx context.Context, expectations []SpeechExpec
 	return nil
 }
 
-// PressKeysAndConsumeExpectations presses keys and ensures that the expectations
-// were spoken by the TTS engine.
-func PressKeysAndConsumeExpectations(ctx context.Context, sm *SpeechMonitor, keySequence []string, expectations []SpeechExpectation) error {
+// PressKeys presses keys
+func PressKeys(ctx context.Context, sm *SpeechMonitor, keySequence []string) error {
 	// Open a connection to the keyboard.
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
@@ -510,8 +547,61 @@ func PressKeysAndConsumeExpectations(ctx context.Context, sm *SpeechMonitor, key
 		}
 	}
 
-	if err := sm.Consume(ctx, expectations); err != nil {
+	return nil
+}
+
+// PressKeysAndConsumeExpectations presses keys and ensures that the expectations
+// matches spoken messages from the TTS engine.
+func PressKeysAndConsumeExpectations(ctx context.Context, sm *SpeechMonitor, keySequence []string, expectations []SpeechExpectation) error {
+	if err := PressKeys(ctx, sm, keySequence); err != nil {
+		return err
+	}
+
+	if err := sm.ConsumeAndCheckExpsMatch(ctx, expectations); err != nil {
 		return errors.Wrapf(err, "error when consuming expectations after pressing keys: %q", keySequence)
+	}
+
+	return nil
+}
+
+// ConsumeAndCheckExpContain ensures that the expectations were spoken by the TTS engine.
+// It also consumes all utterances accumulated in TTS extension's background page.
+// For the expectation we:
+// 1. Shift the next spoken utterance off of testUtterances. This ensures that
+// we never compare against stale utterances; a spoken utterance is either
+// matched or discarded.
+// 2. Check if the utterance contains the expectation.
+func (sm *SpeechMonitor) ConsumeAndCheckExpContain(ctx context.Context, expectation StringExpectation) error {
+	var actual []UtteranceData
+	// Use a poll to allow time for each utterance to be spoken.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var utteranceData UtteranceData
+		if err := sm.conn.Eval(ctx, "testUtterances.shift()", &utteranceData); err != nil {
+			return errors.Wrap(err, "couldn't assign utterance to value of testUtterances.shift() (testUtterances is likely empty)")
+		}
+
+		actual = append(actual, utteranceData)
+		if err := expectation.contains(utteranceData); err != nil {
+			return errors.Wrap(err, "expected utterance/pattern hasn't been contained yet")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Errorf("expected: %q, but got: %q", expectation, actual)
+	}
+
+	return nil
+}
+
+// PressKeysAndCheckExpContain presses keys and ensures that the expectation
+// is included in spoken messages from the TTS engine.
+func PressKeysAndCheckExpContain(ctx context.Context, sm *SpeechMonitor, keySequence []string, expectation StringExpectation) error {
+	if err := PressKeys(ctx, sm, keySequence); err != nil {
+		return err
+	}
+
+	if err := sm.ConsumeAndCheckExpContain(ctx, expectation); err != nil {
+		return errors.Wrapf(err, "error when consuming containing expectation after pressing keys: %q", keySequence)
 	}
 
 	return nil
