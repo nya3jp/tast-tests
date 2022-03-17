@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a824497_bcf788aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T12:53:18Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc827e12_90ae330f",
@@ -19,6 +36,52 @@
         "startChar": 12,
         "endLine": 20,
         "endChar": 18
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f11197_5016a518",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T12:53:18Z",
+      "side": 1,
+      "message": "nit: ConfigDHCP\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed4504b_69d687de",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T12:53:18Z",
+      "side": 1,
+      "message": "nit: add period at the end of the comment. Same in other comments.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 34
       },
       "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -49,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb4cf32b_0afe51cd",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T12:53:18Z",
+      "side": 1,
+      "message": "nit: same: initialisms",
+      "range": {
+        "startLine": 169,
+        "startChar": 12,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97c609fc_00195ae0",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
         "patchSetId": 7
@@ -65,6 +151,52 @@
         "startChar": 3,
         "endLine": 22,
         "endChar": 34
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652c27df_227e00d2",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T12:53:18Z",
+      "side": 1,
+      "message": "nit: rename it to simpleCLIFlag if you are not planning to export this method.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ce39a9_8ec90b21",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T12:53:18Z",
+      "side": 1,
+      "message": "nit: UCI?",
+      "range": {
+        "startLine": 128,
+        "startChar": 17,
+        "endLine": 128,
+        "endChar": 20
       },
       "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
