@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bf7620_eebe82a9",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T13:40:50Z",
+      "side": 1,
+      "message": "we do not explicitly kill lacros now, so maybe update the doc?",
+      "revId": "862979b4cbc0c60b9d10fb7e568d1d0b1c5618ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
