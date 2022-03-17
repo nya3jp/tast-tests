@@ -29,7 +29,7 @@ func init() {
 			"hcyang@google.com",
 			"cros-hwsec@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "tpm1",
