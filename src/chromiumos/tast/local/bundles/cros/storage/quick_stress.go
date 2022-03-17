@@ -74,7 +74,12 @@ func setup(ctx context.Context, s *testing.State) {
 	resultWriter := &util.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir(), false)
 
-	testConfig := &util.TestConfig{ResultWriter: resultWriter, Path: util.BootDeviceFioPath}
+	var path string
+	path, err = util.RootPartitionForTest(ctx)
+	if err != nil {
+		s.Fatal("Failed to set test path: ", err)
+	}
+	testConfig := &util.TestConfig{ResultWriter: resultWriter, Path: path}
 	fioStress(ctx, s, testConfig.WithJob("seq_write"))
 	fioStress(ctx, s, testConfig.WithJob("seq_read"))
 	fioStress(ctx, s, testConfig.WithJob("4k_write"))
@@ -87,13 +92,17 @@ func testBlock(ctx context.Context, s *testing.State) {
 	resultWriter := &util.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir(), false)
 
-	testConfig := &util.TestConfig{Path: util.BootDeviceFioPath}
+	path, err := util.RootPartitionForTest(ctx)
+	if err != nil {
+		s.Fatal("Failed to set test path: ", err)
+	}
+	testConfig := &util.TestConfig{Path: path}
 
 	fioStress(ctx, s,
 		testConfig.
 			WithJob("64k_stress").
 			WithDuration(1*time.Hour))
-	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
+	if err = testing.Sleep(ctx, 5*time.Minute); err != nil {
 		s.Fatal("Sleep failed: ", err)
 	}
 	fioStress(ctx, s,

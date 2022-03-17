@@ -32,14 +32,14 @@ func SetupBenchmarks(ctx context.Context, s *testing.State, rw *FioResultWriter,
 	testConfig := &TestConfig{ResultWriter: rw}
 
 	// Run tests to collect metrics for boot device.
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("seq_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("seq_read"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_write_qd4"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_read_qd4"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("4k_read"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("16k_write"))
-	runFioStress(ctx, s, testConfig.WithPath(BootDeviceFioPath).WithJob("16k_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("seq_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("seq_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_write_qd4"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_read_qd4"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_read"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("16k_write"))
+	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("16k_read"))
 
 	if testParam.IsSlcEnabled {
 		// Run tests to collect metrics for Slc device.
@@ -63,11 +63,11 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, t
 
 	stressTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(BootDeviceFioPath).WithJob("64k_stress").WithDuration(stressTestDuration))
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("64k_stress").WithDuration(stressTestDuration))
 			// NoVerify surf block to exercise device. Run once. Duration can be found in data/recovery
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(BootDeviceFioPath).WithJob("recovery"))
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("recovery"))
 			// Verify surfing block for performance evaluation. Run once. Duration can be found in data/surfing
-			runFioStress(ctx, s, testConfigVerify.WithPath(BootDeviceFioPath).WithJob("surfing"))
+			runFioStress(ctx, s, testConfigVerify.WithPath(testParam.TestDevice).WithJob("surfing"))
 		},
 	}
 
@@ -96,12 +96,12 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *FioResultWrit
 
 	writeTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, writeConfig.WithPath(BootDeviceFioPath))
+			runFioStress(ctx, s, writeConfig.WithPath(testParam.TestDevice))
 		},
 	}
 	verifyTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, verifyConfig.WithPath(BootDeviceFioPath))
+			runFioStress(ctx, s, verifyConfig.WithPath(testParam.TestDevice))
 		},
 	}
 
@@ -144,7 +144,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 
 	tasks := []func(context.Context){
 		func(ctx context.Context) {
-			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, BootDeviceFioPath)
+			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, testParam.TestDevice)
 		},
 		func(ctx context.Context) {
 			runPeriodicPowerSuspend(ctx, testParam.SkipS0iXResidencyCheck)
@@ -164,11 +164,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 // trimTestBlock is a dispatcher function to start trim test on the boot device
 // and on the slc.
 func trimTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
-	bootDevPartition, err := RootPartitionForTrim(ctx)
-	if err != nil {
-		s.Fatal("Failed to select partition for trim stress: ", err)
-	}
-	trimTestBlockImpl(ctx, s, bootDevPartition, rw)
+	trimTestBlockImpl(ctx, s, testParam.TestDevice, rw)
 
 	if testParam.IsSlcEnabled {
 		trimTestBlockImpl(ctx, s, testParam.SlcDevice, rw)
