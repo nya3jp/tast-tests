@@ -63,11 +63,11 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, t
 
 	stressTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(BootDeviceFioPath).WithJob("64k_stress").WithDuration(stressTestDuration))
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("64k_stress").WithDuration(stressTestDuration))
 			// NoVerify surf block to exercise device. Run once. Duration can be found in data/recovery
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(BootDeviceFioPath).WithJob("recovery"))
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("recovery"))
 			// Verify surfing block for performance evaluation. Run once. Duration can be found in data/surfing
-			runFioStress(ctx, s, testConfigVerify.WithPath(BootDeviceFioPath).WithJob("surfing"))
+			runFioStress(ctx, s, testConfigVerify.WithPath(testParam.TestDevice).WithJob("surfing"))
 		},
 	}
 
@@ -96,12 +96,12 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *FioResultWrit
 
 	writeTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, writeConfig.WithPath(BootDeviceFioPath))
+			runFioStress(ctx, s, writeConfig.WithPath(testParam.TestDevice))
 		},
 	}
 	verifyTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, verifyConfig.WithPath(BootDeviceFioPath))
+			runFioStress(ctx, s, verifyConfig.WithPath(testParam.TestDevice))
 		},
 	}
 
@@ -164,11 +164,7 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 // trimTestBlock is a dispatcher function to start trim test on the boot device
 // and on the slc.
 func trimTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
-	bootDevPartition, err := RootPartitionForTrim(ctx)
-	if err != nil {
-		s.Fatal("Failed to select partition for trim stress: ", err)
-	}
-	trimTestBlockImpl(ctx, s, bootDevPartition, rw)
+	trimTestBlockImpl(ctx, s, testParam.TestDevice, rw)
 
 	if testParam.IsSlcEnabled {
 		trimTestBlockImpl(ctx, s, testParam.SlcDevice, rw)

@@ -21,8 +21,6 @@ import (
 
 const (
 	defaultFileSizeBytes = 1024 * 1024 * 1024
-	// BootDeviceFioPath is the pass to test the boot device with.
-	BootDeviceFioPath = "/mnt/stateful_partition/fio_test_data"
 )
 
 var (
@@ -94,12 +92,6 @@ func (t TestConfig) WithJobFile(jobFile string) TestConfig {
 // WithPath sets Path in TestConfig.
 func (t TestConfig) WithPath(path string) TestConfig {
 	t.Path = path
-	return t
-}
-
-// WithBootDevice sets Path to BootDeviceFioPath in TestConfig.
-func (t TestConfig) WithBootDevice() TestConfig {
-	t.Path = BootDeviceFioPath
 	return t
 }
 
