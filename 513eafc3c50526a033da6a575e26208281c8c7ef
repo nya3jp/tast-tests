@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d880ab_3be846f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-17T15:14:26Z",
+      "side": 1,
+      "message": "I only have one question. Please take a look. Thanks.",
+      "revId": "513eafc3c50526a033da6a575e26208281c8c7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1708b58_9d712aa4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-17T15:14:26Z",
+      "side": 1,
+      "message": "Is there any reason that you define the task manager information here instead of apps.go? https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "513eafc3c50526a033da6a575e26208281c8c7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
