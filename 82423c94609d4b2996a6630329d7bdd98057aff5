@@ -22,6 +22,30 @@
       },
       "revId": "82423c94609d4b2996a6630329d7bdd98057aff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "975ea463_e2d88991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-03-17T18:30:36Z",
+      "side": 1,
+      "message": "yup, beat me to it :)",
+      "parentUuid": "b7a8482d_f83c03eb",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "82423c94609d4b2996a6630329d7bdd98057aff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
