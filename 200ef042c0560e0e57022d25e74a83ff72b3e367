@@ -16,6 +16,24 @@
       "message": "to be clear, you\u0027re failing the cq because your CLs aren\u0027t passing `go vet`. consider `fast_build.sh -C`\n\n/sheriff",
       "revId": "200ef042c0560e0e57022d25e74a83ff72b3e367",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6cb9e3_1aded88d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T18:07:32Z",
+      "side": 1,
+      "message": "$ fast_build.sh -C doesn\u0027t seem to tell something relevant to this\n# chromiumos/tast/remote/bundles/crosint/hps\n../platform/tast-tests-private/src/chromiumos/tast/remote/bundles/crosint/hps/camerabox_presence.go:101:20: assignment mismatch: 3 variables but chart.New returns 2 values\n../platform/tast-tests-private/src/chromiumos/tast/remote/bundles/crosint/hps/camerabox_presence.go:101:60: cannot use filePaths (type []string) as type string in argument to chart.New\n\nbut I was able to spot a cause in the CQ logs. Thanks,",
+      "parentUuid": "3143da14_61676927",
+      "revId": "200ef042c0560e0e57022d25e74a83ff72b3e367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
