@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45119c4d_43a5e1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-17T01:50:47Z",
+      "side": 1,
+      "message": "rename the function to better represent reality",
+      "range": {
+        "startLine": 78,
+        "startChar": 34,
+        "endLine": 78,
+        "endChar": 54
+      },
+      "revId": "f97921f58bc1d0520092abeb62329ce13c58b15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6084e4_6eb38e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_blocks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-17T01:50:47Z",
+      "side": 1,
+      "message": "testParam.TestDevice",
+      "range": {
+        "startLine": 172,
+        "startChar": 27,
+        "endLine": 172,
+        "endChar": 43
+      },
+      "revId": "f97921f58bc1d0520092abeb62329ce13c58b15c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
