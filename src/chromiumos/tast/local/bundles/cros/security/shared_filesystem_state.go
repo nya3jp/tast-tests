@@ -191,8 +191,6 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 	ARCVMExpectedSharedMountsUser := map[string]bool{
 		// This sets up the shadow user directory as a shared subtree.
 		"^/home/\\.shadow/\\w+?/mount/user$": true,
-		// See arcvm above.
-		"^/run/arcvm/userhome$": true,
 		// See sdcard above.
 		"^/run/arc/sdcard/write/emulated$": true,
 	}
