@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07da03fa_862b209c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T15:51:15Z",
+      "side": 1,
+      "message": "nit: `ExecPath`? being consistent with ashproc.ExecPath http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/ashproc/proc.go?l\u003d20 and maybe Info \u003d\u003e (Lacros)Proc?\n\nI think this would make it extra clear it\u0027s the dir where the lacros executable is located but not the installed path.\n\nor example of stateful-lacros, the executable path will be a mount point at /run/imageloader/lacros-dogfood-dev/X.X.X.X (which is what we want here), while the installed path is /home/chronos/cros-components/lacros-dogfood-dev/X.X.X.X",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 11
+      },
+      "revId": "57ce25ba9eb2a28e8a9faa3bd2b0d63883df2432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71b56144_ab777c4e",
         "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
         "patchSetId": 1
