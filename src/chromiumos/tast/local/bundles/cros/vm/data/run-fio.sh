@@ -58,17 +58,18 @@ main() {
       die "Unknown storage type: ${kind}"
   esac
 
-  exec fio \
-       --directory="${mountpoint}" \
-       --runtime=2m \
-       --iodepth=16 \
-       --size=512M \
-       --direct=0 \
-       --blocksize=4K \
-       --output="${output}" \
-       --output-format=json \
-       --filename=fio-file \
-       "${jobs[@]}"
+  fio \
+      --directory="${mountpoint}" \
+      --runtime=2m \
+      --iodepth=16 \
+      --size=512M \
+      --direct=0 \
+      --blocksize=4K \
+      --output="${output}" \
+      --output-format=json \
+      --filename=fio-file \
+      "${jobs[@]}"
 }
 
 main "$@"
+exec poweroff -f

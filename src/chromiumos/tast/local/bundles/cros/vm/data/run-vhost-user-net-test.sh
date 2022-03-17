@@ -45,12 +45,13 @@ main() {
     ip route show all
 
     if [[ "${role}" == "server" ]]; then
-        exec iperf3 -V -s -p 1234 -1
+        iperf3 -V -s -p 1234 -1
     else
         # Ensure the server is ready.
         ping -c 5 "${dst_addr}"
-        exec iperf3 -V -c "${dst_addr}" -p 1234 --connect-timeout 3000
+        iperf3 -V -c "${dst_addr}" -p 1234 --connect-timeout 3000
     fi
 }
 
 main "$@"
+exec poweroff -f

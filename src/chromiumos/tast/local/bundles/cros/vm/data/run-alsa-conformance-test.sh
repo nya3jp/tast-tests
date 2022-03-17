@@ -48,3 +48,4 @@ main() {
 }
 
 main "$@"
+exec poweroff -f
