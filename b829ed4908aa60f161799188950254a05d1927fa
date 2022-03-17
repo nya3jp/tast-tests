@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c18528_ed1f5875",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-17T13:12:29Z",
+      "side": 1,
+      "message": "Could you elaborate a bit?  I\u0027m not sure I understand what you\u0027ve meant.  My current understanding is:\n- the fix is OK but ...\n- I would like to make sure that this is the case of missing bit so\n- let\u0027s keep the test as it is but when we find \"assoc\" in pcap then query supplicant for the \"assoc disallow\" and if it is enabled then fail the test but if it is not enabled then do the current \"workaround\", that is wait for scan idle perform scan and then reconnect and test pcap again.\n\nI see some problems with 3rd point, starting with DBus interface of supplicant - right now I don\u0027t see a way to use it to query \"assoc disallow\" bit (of a network) or \"ignore assoc disallow\" bit (of a driver).",
+      "parentUuid": "202969e8_df3293b7",
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8c45da15_d41ef70b",
