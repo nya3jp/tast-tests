@@ -37,7 +37,8 @@ type LacrosMode string
 
 // Valid values for LacrosMode.
 const (
-	LacrosPrimary LacrosMode = "LacrosPrimary"
-	LacrosOnly    LacrosMode = "LacrosOnly"
-	NotSpecified  LacrosMode = "NotSpecified"
+	LacrosSideBySide LacrosMode = "LacrosSideBySide"
+	LacrosPrimary    LacrosMode = "LacrosPrimary"
+	LacrosOnly       LacrosMode = "LacrosOnly"
+	NotSpecified     LacrosMode = "NotSpecified"
 )
