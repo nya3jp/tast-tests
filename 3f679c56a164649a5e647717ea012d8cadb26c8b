@@ -16,6 +16,29 @@
       "message": "Hi Hidehiko and Eliot, if you have a chance, could you take a look?",
       "revId": "3f679c56a164649a5e647717ea012d8cadb26c8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c8cc50_d4ddc097",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T18:24:22Z",
+      "side": 1,
+      "message": "`chrome.ExtraArgs(\"--disable-lacros-keep-alive\", \"--disable-login-lacros-opening\")`\nneeds to be passed in along with \"LacrosPrimary\" to prevent a startup window from popping up.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 65
+      },
+      "revId": "3f679c56a164649a5e647717ea012d8cadb26c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
