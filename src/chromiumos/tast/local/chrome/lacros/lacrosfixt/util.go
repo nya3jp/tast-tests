@@ -77,22 +77,35 @@ type LacrosConfig struct {
 	deployedPath string // dirpath to lacros executable file
 }
 
+// NewLacrosConfig creates a new LacrosConfig instance and returns a pointer.
+func NewLacrosConfig(setupMode SetupMode, lacrosMode LacrosMode) *LacrosConfig {
+	return &LacrosConfig{
+		SetupMode:  setupMode,
+		LacrosMode: lacrosMode,
+	}
+}
+
 // WithVar is a method to configure from the runtime var lacrosDeployedBinary and external data artifact.
 // It is useful when Lacros should be deployed with the runtime var primariliy in Chromium. This will precede over any existing config.
 // TestingState allows both testing.FixtState and testing.State to be passed in.
-func (cfg LacrosConfig) WithVar(s TestingState) LacrosConfig {
+func (cfg *LacrosConfig) WithVar(s TestingState) *LacrosConfig {
 	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
 	// lacros-chrome instead of always downloading from a gcs location.
-	cfg.deployedPath, cfg.deployed = s.Var(LacrosDeployedBinary)
+	deployedPath, deployed := s.Var(LacrosDeployedBinary)
 	// If External, deployedPath is set to the path to the compressed Lacros image that needs to be installed in prepareLacrosBinary later.
 	if cfg.SetupMode == External {
-		cfg.deployedPath = s.DataPath(dataArtifact)
+		deployedPath = s.DataPath(dataArtifact)
 	}
-	return cfg
+	return &LacrosConfig{
+		SetupMode:    cfg.SetupMode,
+		LacrosMode:   cfg.LacrosMode,
+		deployed:     deployed,
+		deployedPath: deployedPath,
+	}
 }
 
 // DefaultOpts returns common chrome options for Lacros given the cfg and setup mode passed in.
-func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
+func DefaultOpts(cfg *LacrosConfig) ([]chrome.Option, error) {
 	var opts []chrome.Option
 
 	// mojoSocketPath indicates the path of the unix socket that ash-chrome creates.
@@ -138,14 +151,14 @@ func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
 
 	// Set required options based on LacrosMode.
 	switch cfg.LacrosMode {
+	case NotSpecified, LacrosSideBySide:
+		// No-op since it's the system default for now.
 	case LacrosPrimary:
 		opts = append(opts,
 			chrome.EnableFeatures("LacrosPrimary"),
 			chrome.ExtraArgs("--disable-lacros-keep-alive", "--disable-login-lacros-opening"))
 	case LacrosOnly:
 		return nil, errors.New("options for LacrosOnly not implemented")
-	case NotSpecified:
-		// TODO: Implement LacrosOnly or other availabilities when needed.
 	}
 	return opts, nil
 }
@@ -153,7 +166,7 @@ func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
 // EnsureLacrosReadyForLaunch waits for the lacros binary to be provisioned and ready for launch in test,
 // then returns the following variables used to launch:
 // - the dir of lacros executable file ('chrome')
-func EnsureLacrosReadyForLaunch(ctx context.Context, cfg LacrosConfig) (string, error) {
+func EnsureLacrosReadyForLaunch(ctx context.Context, cfg *LacrosConfig) (string, error) {
 	testing.ContextLogf(ctx, "Waiting for Lacros ready with config: %+v", cfg)
 	if cfg.deployed {
 		// Skip preparing the lacros binary if it is already deployed for use.
