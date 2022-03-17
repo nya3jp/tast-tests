@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a8c5ebd_237c5c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T16:48:05Z",
+      "side": 1,
+      "message": "The way I see is, in reality, nearly all the wmp.* tests are tied to the same fixture and scheduled to be run together.\n\nThe problem I see is that \u0027lacros fixture\u0027 doesn\u0027t reset the state between tests and the previous run affects the subsequent runs. (example: a new desktop created in the previous run is carried to the next test). For comparison it may not be a problem when \u0027chrome fixture\u0027 is used since it does reset for a clean start.\n\nFYI there is an open comment thread where Eliot and I chatted about resetting the lacros state between tests: https://docs.google.com/document/d/1pKA_7jEGQ_Gh365Fq1x6oXVjoAHiLDpt1RnsDYLfrU8/edit?resourcekey\u003d0-6wmJuP1V5MPI0HUA4F1lfQ\u0026disco\u003dAAAAWtFO4Do\n\nUntil there is a reliable way of resetting, I think we might as well do an individual cleanup to avoid flakiness. A lot of reds already: https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003d%5Ewmp.*\nCan you share your insights into how to address the reset for lacros as a follow-up?",
+      "parentUuid": "715e57f0_924e068b",
+      "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75507359_ae5232eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
         "patchSetId": 8
