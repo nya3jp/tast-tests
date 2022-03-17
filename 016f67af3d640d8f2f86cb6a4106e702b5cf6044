@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f317499_c875a76f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:42:09Z",
+      "side": 1,
+      "message": "how about introducing a new explicit matcher matches with anything?\n(This can be done in another CL, (but then pls add TODO)).",
+      "range": {
+        "startLine": 104,
+        "startChar": 31,
+        "endLine": 104,
+        "endChar": 62
+      },
+      "revId": "016f67af3d640d8f2f86cb6a4106e702b5cf6044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
