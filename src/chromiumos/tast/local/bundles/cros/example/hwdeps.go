@@ -22,6 +22,19 @@ func init() {
 		}, {
 			Name:              "fingerprint",
 			ExtraHardwareDeps: hwdep.D(hwdep.Fingerprint()),
+		}, {
+			Name:              "convertible",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
+		}, {
+			Name:              "clamshell",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
+		}, {
+			// Definition based on following document.
+			// https://chromeos.google.com/partner/dlm/docs/latest-requirements/formfactors.html
+			Name: "tablet",
+			ExtraHardwareDeps: hwdep.D(
+				hwdep.FormFactor(hwdep.Chromeslate),
+			),
 		}},
 	})
 }
