@@ -34,6 +34,24 @@
       "parentUuid": "79a48b06_dc554c1f",
       "revId": "7693fd04ee804a81daccb49c739d5b26e89b4e60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4886716c_0f36f100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-17T22:33:49Z",
+      "side": 1,
+      "message": "Awesome, thanks! This is a really nice catch, good work!",
+      "parentUuid": "926d93a9_1b54f450",
+      "revId": "7693fd04ee804a81daccb49c739d5b26e89b4e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
