@@ -85,6 +85,24 @@
       "message": "sorry for delay. back from ooo.",
       "revId": "6d535189bda46f3c8a9d75c73096452eb83269d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae3ccec_c0d51a6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T16:07:31Z",
+      "side": 1,
+      "message": "Hidehiko, just to confirm is the wallpaper app not going to support lacros and stay with ash? submitting this for now, but please let me know if it\u0027s not the case. Thanks,",
+      "parentUuid": "fed7d8bb_b0c12744",
+      "revId": "6d535189bda46f3c8a9d75c73096452eb83269d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
