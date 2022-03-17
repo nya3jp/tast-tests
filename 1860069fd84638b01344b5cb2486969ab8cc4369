@@ -279,6 +279,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a187572_88e0ef77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-17T17:56:48Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I fixed it.",
+      "parentUuid": "ae27dabf_f368c186",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f961145_fb3898e3",
@@ -340,6 +364,30 @@
       "side": 1,
       "message": "Does it make sense moving this to the top of your test body post your fixture is set, rather than this library code where it is agnostic to user scenarios?",
       "parentUuid": "0321e6ad_9c516921",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2b0e68_5a017f10",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-17T17:56:48Z",
+      "side": 1,
+      "message": "I could move \nif err :\u003d os.MkdirAll(userDataDir, 0755); err !\u003d nil {return nil, err } to the fixtureimpl.go. However the userDataDir is also needed to change and used in line 143.",
+      "parentUuid": "eb9462a2_c57263cf",
       "range": {
         "startLine": 132,
         "startChar": 0,
