@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7105782d_841939f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-17T22:28:24Z",
+      "side": 1,
+      "message": "Mostly good.",
+      "revId": "7d22b2d428e516388c51deb7abda92c78226fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85247b5d_fca43af6",
@@ -20,6 +37,23 @@
         "endLine": 231,
         "endChar": 4
       },
+      "revId": "7d22b2d428e516388c51deb7abda92c78226fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3261397_f2e22e42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-17T22:28:24Z",
+      "side": 1,
+      "message": "Now that we have two possible errors (this and `r.frameDataTracker.Close`) and we should report if either of them fails.\n\nI saw we use `firstErr` trick in a few places,\ne.g.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d361",
       "revId": "7d22b2d428e516388c51deb7abda92c78226fe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
