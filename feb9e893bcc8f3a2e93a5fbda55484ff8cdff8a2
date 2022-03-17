@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8492c155_77a85a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-17T21:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408c254d_d654e005",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abe32fbb_dc2d4177",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-16T20:47:36Z",
       "side": 1,
       "message": "We might want to handle this error and fail. Or at least log it.",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23eea6a_fff65d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-17T21:58:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abe32fbb_dc2d4177",
       "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a76478_fd7bb2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-17T21:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09ff741e_b1d9b742",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e972e518_20aa2e83",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-03-16T20:47:36Z",
       "side": 1,
       "message": "This feels a bit too much manual work. Is there a way that we could tweak power.PowerTest to allow some of the setup to fail and report it?",
+      "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0603a1f0_c267e4d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-17T21:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e972e518_20aa2e83",
       "revId": "feb9e893bcc8f3a2e93a5fbda55484ff8cdff8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
