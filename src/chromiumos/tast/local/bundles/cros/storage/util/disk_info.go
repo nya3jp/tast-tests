@@ -145,8 +145,8 @@ func PartitionSize(ctx context.Context, partition string) (uint64, error) {
 	return uint64(blocks) * 1024, nil
 }
 
-// RootPartitionForTrim returns root partition for trim stress.
-func RootPartitionForTrim(ctx context.Context) (string, error) {
+// RootPartitionForTest returns root partition to use for the tests.
+func RootPartitionForTest(ctx context.Context) (string, error) {
 	diskName, err := fixedDstDrive(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed selecting free root partition")

@@ -20,6 +20,7 @@ import (
 type QualParam struct {
 	IsSlcEnabled           bool
 	SlcDevice              string
+	TestDevice             string
 	RetentionBlockTimeout  time.Duration
 	SuspendBlockTimeout    time.Duration
 	SkipS0iXResidencyCheck bool
