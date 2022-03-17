@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08de7480_21705c2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-03-17T07:10:35Z",
+      "side": 0,
+      "message": "Pls wrap in 72 chars per line.",
+      "revId": "53dfb2ce8ae4c4b4f936437e8b9c92e7e999ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
