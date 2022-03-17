@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55b506fd_10a366ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-17T19:53:10Z",
+      "side": 1,
+      "message": "I have modified this example test to demonstrate how to check for tablet and clamshell.\n\nPlease review. Thanks.",
+      "revId": "7d2d95d0b3bfda68cf2d5d087dd10925e295719c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
