@@ -396,16 +396,40 @@ func (app *GoogleDocs) editCellValue(ctx context.Context, cell, value string) er
 
 // renameFile renames the name of the spreadsheet.
 func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
-	menuBar := nodewith.Name("Menu bar").Role(role.Banner)
-	fileItem := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBar)
-	fileMenu := nodewith.Role(role.Menu)
-	renameItem := nodewith.Name("Rename r").Role(role.MenuItem).Ancestor(fileMenu)
+	menuBarBanner := nodewith.Name("Menu bar").Role(role.Banner)
+	fileItem := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBarBanner)
+	fileExpanded := fileItem.Expanded()
+	renameItem := nodewith.Name("Rename r").Role(role.MenuItem)
 	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
+
+	inputFileName := func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := uiauto.Combine("input file name",
+				app.kb.AccelAction("Ctrl+A"),
+				app.kb.TypeAction(sheetName),
+			)(ctx); err != nil {
+				return err
+			}
+			node, err := app.ui.Info(ctx, renameField)
+			if err != nil {
+				return err
+			}
+			if node.Value != sheetName {
+				return errors.New("file name is incorrect")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: time.Minute})
+	}
+
 	return uiauto.Combine("rename the file",
-		app.ui.WaitUntilExists(menuBar),
-		app.uiHdl.ClickUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileMenu)),
-		app.uiHdl.ClickUntil(renameItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameField)),
-		app.kb.TypeAction(sheetName),
+		app.validateEditMode,
+		app.ui.Retry(retryTimes, uiauto.Combine(`select "Rename" from the "File" menu`,
+			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileItem),
+				app.uiHdl.ClickUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded))),
+			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameItem),
+				app.uiHdl.ClickUntil(renameItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameField))),
+		)),
+		uiauto.NamedAction("input the file name", inputFileName),
 		app.kb.AccelAction("Enter"),
 		app.ui.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
 	)
