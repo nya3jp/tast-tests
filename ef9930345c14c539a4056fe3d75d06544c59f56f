@@ -51,6 +51,29 @@
       "message": "batrapranav@, ejcaruso@: ping. Thank you!",
       "revId": "ef9930345c14c539a4056fe3d75d06544c59f56f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f740873_681a6716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-03-17T07:55:52Z",
+      "side": 1,
+      "message": "add test attributes (Attr) for the test to automatically be run.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "ef9930345c14c539a4056fe3d75d06544c59f56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
