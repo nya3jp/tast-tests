@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe153892_8a0ebb2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-17T16:51:02Z",
+      "side": 1,
+      "message": "Sorry let me clarify:\n\nBefore we attempt a connection, can we confirm that wpa_supplicant has seen that the AP has set the assoc disallow bit? Since it looks like that can\u0027t happen, can we at least confirm that the pcap shows that the bit has been set before we attempt a connection?",
+      "parentUuid": "20c18528_ed1f5875",
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8c45da15_d41ef70b",
