@@ -16,6 +16,24 @@
       "message": "Please tast unit test: ./fast_build.sh -T\nIf it is ok, add \n\nTEST\u003dTast unit test passed \n\nto the comment message.\n\nThanks.\n",
       "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ff4312_29c24786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-17T06:24:42Z",
+      "side": 1,
+      "message": "Hi,\n\nWhen we run this \"./fast_build.sh -T\" inside cros_sdk under \"~/chromiumos/src/platform/tast\" path, it is getting failed and I guess these are failures not related to our CL. \n\nCan you please share some links on how to run this fast_build?",
+      "parentUuid": "e22538ef_56c02b5a",
+      "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
