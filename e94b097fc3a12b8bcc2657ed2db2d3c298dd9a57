@@ -16,6 +16,98 @@
       "message": "Thanks, Ian!",
       "revId": "e94b097fc3a12b8bcc2657ed2db2d3c298dd9a57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de3e450_71f3a90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-17T01:56:57Z",
+      "side": 1,
+      "message": "It is suggested to create a cleanCtx for defer functions, otherwise this would not run if the test failed on ctx timeout.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 4
+      },
+      "revId": "e94b097fc3a12b8bcc2657ed2db2d3c298dd9a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3248f8c_f81871b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-17T01:56:57Z",
+      "side": 1,
+      "message": "This looks weird. Nice to have some comments for good readability.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "e94b097fc3a12b8bcc2657ed2db2d3c298dd9a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc10bb8_b1b0edfd",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-17T01:56:57Z",
+      "side": 1,
+      "message": "Just curious if it is required to check if no active sessions and this array is empty in return.",
+      "range": {
+        "startLine": 237,
+        "startChar": 8,
+        "endLine": 237,
+        "endChar": 11
+      },
+      "revId": "e94b097fc3a12b8bcc2657ed2db2d3c298dd9a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c39245a_1664343c",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-17T01:56:57Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 57
+      },
+      "revId": "e94b097fc3a12b8bcc2657ed2db2d3c298dd9a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
