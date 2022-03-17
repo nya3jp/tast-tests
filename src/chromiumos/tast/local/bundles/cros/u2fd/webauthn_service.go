@@ -77,7 +77,7 @@ func (c *WebauthnService) New(ctx context.Context, req *hwsec.NewRequest) (*empt
 
 	logReader, err := syslog.NewChromeReader(ctx, syslog.ChromeLogFile)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get Chrome log reader")
+		return nil, errors.Wrap(err, "failed to get Chrome log reader")
 	}
 	c.logReader = logReader
 
@@ -142,7 +142,7 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Em
 
 	tconn, err := c.cr.TestAPIConn(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "getting test API connection failed")
+		return nil, errors.Wrap(err, "failed to get test API connection")
 	}
 
 	name := randomUsername()
@@ -189,7 +189,13 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Em
 		// Wait for ChromeOS WebAuthn dialog.
 		dialog := nodewith.ClassName("AuthDialogWidget")
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
-			return nil, errors.Wrap(err, "ChromeOS dialog did not show up")
+			return nil, errors.Wrap(err, "failed to wait for the ChromeOS dialog")
+		}
+	} else {
+		// Wait for popup alert dialog prompting for power button press.
+		dialog := nodewith.ClassName("MessagePopupView")
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for power button press prompt")
 		}
 	}
 	return &empty.Empty{}, nil
@@ -197,7 +203,7 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Em
 
 func (c *WebauthnService) CheckMakeCredential(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if err := util.AssertMakeCredentialSuccess(ctx, c.logReader); err != nil {
-		return nil, errors.Wrap(err, "MakeCredential did not succeed")
+		return nil, errors.Wrap(err, "failed to perform MakeCredential")
 	}
 	return &empty.Empty{}, nil
 }
@@ -207,7 +213,7 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empt
 
 	tconn, err := c.cr.TestAPIConn(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "getting test API connection failed")
+		return nil, errors.Wrap(err, "failed to get test API connection")
 	}
 
 	ui := uiauto.New(tconn)
@@ -222,7 +228,13 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empt
 		// Wait for ChromeOS WebAuthn dialog.
 		dialog := nodewith.ClassName("AuthDialogWidget")
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
-			return nil, errors.Wrap(err, "ChromeOS dialog did not show up")
+			return nil, errors.Wrap(err, "failed to wait for the ChromeOS dialog")
+		}
+	} else {
+		// Wait for popup alert dialog prompting for power button press.
+		dialog := nodewith.ClassName("MessagePopupView")
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for power button press prompt")
 		}
 	}
 	return &empty.Empty{}, nil
@@ -230,7 +242,7 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empt
 
 func (c *WebauthnService) CheckGetAssertion(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if err := util.AssertGetAssertionSuccess(ctx, c.logReader); err != nil {
-		return nil, errors.Wrap(err, "GetAssertion did not succeed")
+		return nil, errors.Wrap(err, "failed to perform GetAssertion")
 	}
 	return &empty.Empty{}, nil
 }
