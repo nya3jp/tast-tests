@@ -75,6 +75,11 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	testParam.RetentionBlockTimeout = util.DefaultRetentionBlockTimeout
 	testParam.SuspendBlockTimeout = util.DefaultSuspendBlockTimeout
 	testParam.SkipS0iXResidencyCheck = false
+	var err error
+	testParam.TestDevice, err = util.RootPartitionForTrim(ctx)
+	if err != nil {
+		s.Fatal("Cannot set free root partition as test device: ", err)
+	}
 
 	if val, ok := s.Var("tast_suspend_block_timeout"); ok {
 		var err error
@@ -84,7 +89,6 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	}
 
 	if val, ok := s.Var("tast_skip_s0ix_check"); ok {
-		var err error
 		if testParam.SkipS0iXResidencyCheck, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_skip_s0ix_check' of type bool: ", err)
 		}
