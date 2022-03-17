@@ -34,6 +34,8 @@ const (
 	arcNotificationTest2NotificationID = "|" + arcNotificationTest2PackageName + "|"
 )
 
+var arcNotificationContentView = nodewith.ClassName("ArcNotificationContentView")
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NotificationExperimental,
@@ -59,7 +61,7 @@ func init() {
 }
 
 func closeNotification(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, mousePc, touchPc pointer.Context, closeWay string) error {
-	notificationBounds, err := ui.Location(ctx, nodewith.ClassName("ArcNotificationContentView"))
+	notificationBounds, err := ui.Location(ctx, arcNotificationContentView)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the notification bounds")
 	}
@@ -91,7 +93,108 @@ func closeNotification(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.C
 	return nil
 }
 
-func testForStyle(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *androidui.Device, ui *uiauto.Context, mousePc, touchPc pointer.Context, style, closeWay string) error {
+func clickExpandButtonAndWaitForAnimation(ctx context.Context, ui *uiauto.Context, mousePc pointer.Context) error {
+	initialBounds, err := ui.Location(ctx, arcNotificationContentView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the notification bounds")
+	}
+
+	previousBounds := initialBounds
+	checkIfAnimating := func(ctx context.Context) error {
+		if currentBounds, err := ui.Location(ctx, arcNotificationContentView); err != nil {
+			return testing.PollBreak(err)
+		} else if currentBounds.Equals(*previousBounds) {
+			previousBounds = currentBounds
+			return errors.New("the notification is still animating")
+		}
+		return nil
+	}
+
+	// TODO(b/224685870): Use UIAutomator to get the button position dynamically when it supports multi-display.
+	if err := mousePc.ClickAt(coords.NewPoint(initialBounds.Right()-28, initialBounds.Top+44))(ctx); err != nil {
+		return errors.Wrap(err, "failed to click the notification")
+	}
+
+	if err := testing.Poll(ctx, checkIfAnimating, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "the notification did not stop animating")
+	}
+
+	return nil
+}
+
+func testExpandButton(ctx context.Context, ui *uiauto.Context, mousePc pointer.Context) error {
+	initialBounds, err := ui.Location(ctx, arcNotificationContentView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the notification bounds")
+	}
+
+	if err := clickExpandButtonAndWaitForAnimation(ctx, ui, mousePc); err != nil {
+		return errors.Wrap(err, "failed to click the expand button to collapse")
+	}
+
+	collapsedBounds, err := ui.Location(ctx, arcNotificationContentView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the notification bounds")
+	}
+
+	if collapsedBounds.Width != initialBounds.Width {
+		return errors.Wrapf(err, "the collapsed width (%d) should be equals to the initial width (%d)", collapsedBounds.Width, initialBounds.Width)
+	}
+	if collapsedBounds.Height >= initialBounds.Height {
+		return errors.Wrapf(err, "the collapsed height (%d) should be less than the initial height (%d)", collapsedBounds.Height, initialBounds.Height)
+	}
+
+	if err := clickExpandButtonAndWaitForAnimation(ctx, ui, mousePc); err != nil {
+		return errors.Wrap(err, "failed to click the expand button to expand")
+	}
+
+	expandedBounds, err := ui.Location(ctx, arcNotificationContentView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the notification bounds")
+	}
+
+	if !expandedBounds.Equals(*initialBounds) {
+		return errors.Wrapf(err, "the expanded bounds (%v) should be equals to the initial bounds (%v)", expandedBounds, initialBounds)
+	}
+
+	return nil
+}
+
+func testExpandNotification(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *androidui.Device, ui *uiauto.Context, mousePc pointer.Context, style string) error {
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Quick Settings")
+	}
+	defer quicksettings.Hide(ctx, tconn)
+
+	if _, err := a.BroadcastIntent(ctx, arcNotificationTest2StartCommand, "-p", arcNotificationTest2PackageName, "--es", "style", style, "--ez", "autoCancel", "true", "--esn", "notify"); err != nil {
+		return errors.Wrap(err, "failed to send a broadcast")
+	}
+
+	notification, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(arcNotificationTest2NotificationID))
+	if err != nil {
+		return errors.Wrap(err, "failed to wait until the notification appears")
+	}
+
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for Android to be idle")
+	}
+
+	if err := testExpandButton(ctx, ui, mousePc); err != nil {
+		return errors.Wrap(err, "failed to test expand button")
+	}
+
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close the notification")
+	}
+
+	if err := ash.WaitUntilNotificationGone(ctx, tconn, 5*time.Second, ash.WaitIDContains(notification.ID)); err != nil {
+		return errors.Wrap(err, "failed to wait until the notification disappears")
+	}
+
+	return nil
+}
+
+func testCloseNotification(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *androidui.Device, ui *uiauto.Context, mousePc, touchPc pointer.Context, style, closeWay string) error {
 	if err := quicksettings.Show(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to open Quick Settings")
 	}
@@ -168,14 +271,24 @@ func NotificationExperimental(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for Android to be idle: ", err)
 	}
 
-	// Test a single notification with a style.
+	// Test notification closing.
 	for _, style := range []string{"basic", "big_text", "big_picture", "inbox", "messaging"} {
 		for _, closeWay := range []string{"swipeOut", "clickEvent", "clearAllButton", "closeButton"} {
-			if err := testForStyle(ctx, tconn, a, d, ui, mousePc, touchPc, style, closeWay); err != nil {
-				s.Errorf("Failed to test a notification with style=%s closeWay=%s: %v", style, closeWay, err)
+			if err := testCloseNotification(ctx, tconn, a, d, ui, mousePc, touchPc, style, closeWay); err != nil {
+				s.Errorf("Failed to test to close a notification with style=%s closeWay=%s: %v", style, closeWay, err)
 				if err := ash.CloseNotifications(ctx, tconn); err != nil {
 					s.Fatal("Failed to close notifications")
 				}
+			}
+		}
+	}
+
+	// Test notification expanding.
+	for _, style := range []string{"big_text", "big_picture", "inbox"} {
+		if err := testExpandNotification(ctx, tconn, a, d, ui, mousePc, style); err != nil {
+			s.Errorf("Failed to test to expand a notification with style=%s: %v", style, err)
+			if err := ash.CloseNotifications(ctx, tconn); err != nil {
+				s.Fatal("Failed to close notifications")
 			}
 		}
 	}
