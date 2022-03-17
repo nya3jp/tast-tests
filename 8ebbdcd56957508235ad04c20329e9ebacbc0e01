@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1787705a_c8655555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-17T20:14:14Z",
+      "side": 1,
+      "message": "Can you PTAL, Hidehiko? \n\nI\u0027ve just rebased this CL on the latest http://crrev.com/c/3499547 patchset. If the general idea is sound and sensible to what you have thought, I\u0027ll finish up a few TODOs in the code and follow-up then on the Chromium side by adding a few histogram metrics for Lacros (per Erik\u0027s suggestion). Thank you.",
+      "revId": "8ebbdcd56957508235ad04c20329e9ebacbc0e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
