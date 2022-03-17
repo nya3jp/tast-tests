@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a602664a_a98aa3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-17T05:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e66a8b_8e726a4b",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51f0d708_3296a9e0",
@@ -132,6 +156,24 @@
       "side": 1,
       "message": "Has this comment been addressed? Please check if you can add google contacts from the CC list of b/195902740. I saw 4 google email addrss from CC list. Thanks.",
       "parentUuid": "b60a8ff1_d37e7f43",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b256d8e_dc6e43a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-17T05:45:20Z",
+      "side": 1,
+      "message": "Hi Shik/Ricky, \n\nCan you please acknowledge if we can add you as a contact person for this test?",
+      "parentUuid": "a8564c89_b9606e5f",
       "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
