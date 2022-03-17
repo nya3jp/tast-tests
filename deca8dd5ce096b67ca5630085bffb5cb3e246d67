@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9972bd72_a5f6824a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:54:05Z",
+      "side": 1,
+      "message": "Hmm... I guess we have miscommunication?\nWhy do you need to repeatedly activate tabs?",
+      "parentUuid": "e2ed5f88_0a55fddd",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "deca8dd5ce096b67ca5630085bffb5cb3e246d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b695a8d1_72b2b35c",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
         "patchSetId": 5
