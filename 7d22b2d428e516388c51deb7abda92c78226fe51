@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85247b5d_fca43af6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-17T22:23:53Z",
+      "side": 1,
+      "message": "Refactor to\n```\ndefer func(ctx context.Context){...}(ctx)\n```\n\nPlus, you may need to reserve time for the cleanup task, see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task\n\nThen this may become something like:\n```\ndefer func(ctx context.Context){...}(cleanupCtx)\n```",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 4
+      },
+      "revId": "7d22b2d428e516388c51deb7abda92c78226fe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
