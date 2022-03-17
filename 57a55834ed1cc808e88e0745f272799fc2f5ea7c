@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ff1c9d6_41a9d80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, but I think we need to create a user first, so we have to start chrome once and restart regardless. Or does tast setup a user *before* the first login?",
+      "parentUuid": "1675bdb7_8da9e852",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97148adf_da9851c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-17T16:50:52Z",
       "side": 1,
       "message": "there is no sense in this line, because there won\u0027t be error in that anon function after that point. Probably you don\u0027t need lines 58-62",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2eb30db_b048216b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "You\u0027re right, thanks.",
+      "parentUuid": "97148adf_da9851c7",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "115b6e1e_b1e163a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "Not sure I understand what you mean here: `ctx` is implicitly in scope of the body of the anonymous function because it\u0027s in the surrounding scope. Do you suggest adding a `ctx context.Context` parameter to the anonymous function and pass the surrounding `ctx` value as a parameter?",
+      "parentUuid": "f014e63a_6c754e54",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16223a48_c4d8baeb",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
         "patchSetId": 2
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-17T16:50:52Z",
       "side": 1,
       "message": "I am not sure whether KeepState is required to pass because there is an option called chrome.DontSkipOOBEAfterLogin. So it looks like by default it should skip OOBE screen",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099f0c6b_946bd817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "I tried removing `chrome.KeepState()`, but then we do indeed get to the OOBE screen. Perhaps `chrome.NoLogin()` disables `chrome.DontSkipOOBEAfterLogin`?",
+      "parentUuid": "16223a48_c4d8baeb",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ec44f0_43e548c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05046dca_bf6b81a9",
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf401bd8_ca86b9e5",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-03-17T16:50:52Z",
       "side": 1,
       "message": "shouldn\u0027t you use utf8.RuneCountInString instead of len as well?",
+      "range": {
+        "startLine": 109,
+        "startChar": 45,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bf15994_4481441a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "`partialPassword` is ascii, so we can use `len` for that. I added a comment explaining this.",
+      "parentUuid": "cf401bd8_ca86b9e5",
       "range": {
         "startLine": 109,
         "startChar": 45,
@@ -186,6 +324,54 @@
       "writtenOn": "2022-03-17T16:50:52Z",
       "side": 1,
       "message": "if you need \"ui\" object just for sleeping, use testing.Sleep instead",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 54
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b19b79b6_e8c4d5ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a96b164_80cca5fe",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481174a5_abc8c5be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-17T18:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7711b7c_bdd1889c",
       "range": {
         "startLine": 114,
         "startChar": 0,
