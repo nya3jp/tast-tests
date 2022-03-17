@@ -94,7 +94,7 @@ func init() {
 				resetType:         firmware.WarmReset,
 				checkBootFromMain: true,
 			},
-			ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 			Timeout:   15 * time.Minute,
 		}, {
 			Name:    "dev_cold",
@@ -104,7 +104,7 @@ func init() {
 				resetType:         firmware.ColdReset,
 				checkBootFromMain: true,
 			},
-			ExtraAttr: []string{"firmware_smoke"},
+			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 			Timeout:   15 * time.Minute,
 		}, {
 			Name:    "dev_to_rec",
