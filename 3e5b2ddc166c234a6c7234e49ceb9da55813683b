@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf27636_2e0f0891",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-17T04:18:51Z",
+      "side": 0,
+      "message": "I\u0027ll submit this after everything is migrated to app launch, so this edge-case won\u0027t happen.",
+      "revId": "3e5b2ddc166c234a6c7234e49ceb9da55813683b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
