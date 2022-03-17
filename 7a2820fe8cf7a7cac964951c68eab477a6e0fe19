@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49413891_f6a78949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-17T17:50:14Z",
+      "side": 1,
+      "message": "It is fine if you find absolute no Google contact.",
+      "parentUuid": "2c3223e1_0dcb5963",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "463c97a9_c62aa574",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
         "patchSetId": 1
