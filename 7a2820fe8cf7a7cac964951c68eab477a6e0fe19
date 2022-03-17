@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c3223e1_0dcb5963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-03-17T07:26:04Z",
+      "side": 1,
+      "message": "Shik and I are not the right contact for this. We cc\u0027d ourselves because we wanted to follow the progress of the bug.\n\nI think it should be someone from the Software or App team.",
+      "parentUuid": "1b256d8e_dc6e43a6",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "463c97a9_c62aa574",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
         "patchSetId": 1
