@@ -16,6 +16,23 @@
       "message": "Hi Leo, what do you think about only adding the tpm1 test case? Attached the link of both tastboard results:\ntpm1: https://tastboard.corp.google.com/test/u2fd.WebauthnUsingPassword.tpm1\ngsc: https://tastboard.corp.google.com/test/u2fd.WebauthnUsingPassword.gsc",
       "revId": "941c614927b78677ac95d64008686fbb06191bb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59523b57_eed43e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-17T07:15:41Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "941c614927b78677ac95d64008686fbb06191bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
