@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03fc1c8_01e3284f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1525457
+      },
+      "writtenOn": "2022-03-17T18:39:43Z",
+      "side": 1,
+      "message": "Updated. Thanks for pointing it out!",
+      "parentUuid": "a9f0b95a_9d604661",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "738671d6f4aaf11533a2bea8c1d3558c20baff45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16086ff8_83f75ea0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-17T18:08:11Z",
       "side": 1,
       "message": "Tast guidelines are usually to add at least 1 personal contact as well",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "738671d6f4aaf11533a2bea8c1d3558c20baff45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da5d31e_af546154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/onboarding_initial_page_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1525457
+      },
+      "writtenOn": "2022-03-17T18:39:43Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "16086ff8_83f75ea0",
       "range": {
         "startLine": 22,
         "startChar": 2,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0909dc7c_796b0fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/onboarding_visibility_page_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525457
+      },
+      "writtenOn": "2022-03-17T18:39:43Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "8dcd40f6_7eecd9b8",
+      "revId": "738671d6f4aaf11533a2bea8c1d3558c20baff45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "892ca6bc_632ae51c",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a01ccaf4_b35cf3a9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1525457
+      },
+      "writtenOn": "2022-03-17T18:39:43Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "892ca6bc_632ae51c",
+      "revId": "738671d6f4aaf11533a2bea8c1d3558c20baff45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75910ee9_b2460b05",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-03-17T18:08:11Z",
       "side": 1,
       "message": "same",
+      "revId": "738671d6f4aaf11533a2bea8c1d3558c20baff45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710f2831_9d0804ee",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1525457
+      },
+      "writtenOn": "2022-03-17T18:39:43Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "75910ee9_b2460b05",
       "revId": "738671d6f4aaf11533a2bea8c1d3558c20baff45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
