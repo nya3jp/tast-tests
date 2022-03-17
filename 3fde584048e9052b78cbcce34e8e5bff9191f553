@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c583c593_27e6c9dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/audio_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "needs to be closed after the use.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 3
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0416406_eb792288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/audio_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "I think this name is taken from crastestclient.FirstRunningDevice, but the responsibility of the function and this one looks different.\nCould you name this properly?\nIs this verifying the first running device name?",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 65
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c1a475_5c64a388",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b029dfd8_08aae366",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89201fda_e6089397",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "this will be true always?",
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795b6bb9_9772ee2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "could you drop \"get\" as we do not use getter prefixes in go?",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 30
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85cd193_a115696c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "brightness sounds enough.",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40856da_940ba0ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-17T16:38:03Z",
+      "side": 1,
+      "message": "could you use testing.POll?\n\n10 mins sounds like too long as a timeout?",
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
