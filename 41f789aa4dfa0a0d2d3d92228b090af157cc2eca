@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60931521_774873a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-17T16:29:56Z",
+      "side": 1,
+      "message": "can you add tbarzic@chromium.org, too",
+      "revId": "41f789aa4dfa0a0d2d3d92228b090af157cc2eca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70dcf6a9_25bf0c2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-17T16:29:56Z",
+      "side": 1,
+      "message": "can we move this to AppDragAndDrop scoped, and pass it into functions that depend on it?",
+      "revId": "41f789aa4dfa0a0d2d3d92228b090af157cc2eca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379b4c04_5945e111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-17T16:29:56Z",
+      "side": 1,
+      "message": "add a comment that the method will fail if the item is not in the `startPage`",
+      "range": {
+        "startLine": 206,
+        "startChar": 45,
+        "endLine": 206,
+        "endChar": 54
+      },
+      "revId": "41f789aa4dfa0a0d2d3d92228b090af157cc2eca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594b0281_9a8495ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-17T16:29:56Z",
+      "side": 1,
+      "message": "add a note that the method may change the current page",
+      "revId": "41f789aa4dfa0a0d2d3d92228b090af157cc2eca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
