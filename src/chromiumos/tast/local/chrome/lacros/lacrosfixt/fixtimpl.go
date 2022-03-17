@@ -359,10 +359,10 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		opts = append(opts, extraOpts...)
 	}
 	// Set default opts for Lacros based on the setup mode and the runtime var.
-	cfg := LacrosConfig{
-		SetupMode:  f.mode,
-		LacrosMode: NotSpecified, // Let fixtures determine how to configure lacros to keep the compatibility with existing lacros fixtures.
-	}.WithVar(s)
+	cfg := NewLacrosConfig(
+		f.mode,
+		NotSpecified, // Let fixtures determine how to configure lacros to keep the compatibility with existing lacros fixtures.
+	).WithVar(s)
 	defaultOpts, err := DefaultOpts(cfg)
 	if err != nil {
 		s.Fatal("Failed to set default options: ", err)
