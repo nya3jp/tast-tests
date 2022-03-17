@@ -110,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "970b78f2_16756b2e",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T15:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3499a7fc_c96ffb45",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 109
+      },
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee0451df_c2f3a0f4",
@@ -123,6 +147,30 @@
       "writtenOn": "2022-03-17T13:27:26Z",
       "side": 1,
       "message": "could you use LacrosMode actually?\n\nLacrosAvailability is the policy name, which is not appropriate here.\nSpecifically, there\u0027s the gap between mode and availability.\n\nAvailability has the \"UserChoice\" config, which means that user can decide whether or not enabling Lacros. That shouldn\u0027t be the value of LacrosMode, as it just does not make sense.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bd3336_feebe5e8",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T15:52:07Z",
+      "side": 1,
+      "message": "Thanks for the clarification. Changed LacrosAvailability to LacrosMode, Mode to SetupMode.",
+      "parentUuid": "ee0451df_c2f3a0f4",
       "range": {
         "startLine": 76,
         "startChar": 1,
@@ -170,6 +218,30 @@
       "side": 1,
       "message": "Right. This could probably be \u0027NotSpecified\u0027 (\u003d side by side for now) until when we\u0027re ready to move our tests to LacrosOnly. I\u0027ll be able to make that change later in a follow-up patch together with other reviewers\u0027 comments. Thanks,",
       "parentUuid": "eb81ad8d_07f20912",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 17
+      },
+      "revId": "9392aa18515b86f145f0f569360cb8dc3b20d4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a725b235_64168ae4",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T15:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f82df17_60465e81",
       "range": {
         "startLine": 146,
         "startChar": 0,
