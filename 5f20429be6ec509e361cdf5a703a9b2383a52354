@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf0b9dae_c82540e9",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-17T04:48:27Z",
+      "side": 1,
+      "message": "No tests currently call LaunchFromShelf and need to call it, so we should remove it IMO.",
+      "parentUuid": "c6fb311d_107aa813",
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95648f0f_75369635",
@@ -244,6 +262,30 @@
       "side": 1,
       "message": "nit: then could it be rephrased \"expected only one page target, got %q\"?",
       "parentUuid": "9f8f235d_8b0963e9",
+      "range": {
+        "startLine": 118,
+        "startChar": 68,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "5f20429be6ec509e361cdf5a703a9b2383a52354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef9bd45_35d1615d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-17T04:48:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30c1ac2d_b6facf74",
       "range": {
         "startLine": 118,
         "startChar": 68,
