@@ -16,6 +16,24 @@
       "message": "It lgtm from a perspective of a tast owner. However, I\u0027m a bit confused about setting trylimit to -1. In addition, most of the options are just default. What is the value of adding the option struct? Please get approval from team member first.",
       "revId": "68867727c0c5c7887a482f06f9cad9b694211463",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "947effe6_ef5b4eaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-17T01:14:13Z",
+      "side": 1,
+      "message": "\u003e setting trylimit to -1. \n\nAs commented on playstore.go:L32, -1 means unlimited.\n\n\u003e What is the value of adding the option struct? \n\nWe are considering modifying timeout values for some callers in separate CLs. b/224461092#comment11\n\nGot an approval from mthiyagarajan@",
+      "parentUuid": "648e1602_85708d66",
+      "revId": "68867727c0c5c7887a482f06f9cad9b694211463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
