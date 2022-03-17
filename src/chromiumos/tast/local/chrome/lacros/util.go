@@ -7,11 +7,9 @@ package lacros
 import (
 	"context"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/process"
-	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -66,26 +64,6 @@ func CloseLacros(ctx context.Context, l *Lacros) {
 	if l != nil {
 		l.Close(ctx) // Ignore error.
 	}
-}
-
-// killLacros kills all binaries whose executable contains the base path
-// to lacros-chrome.
-func killLacros(ctx context.Context, lacrosPath string) error {
-	if lacrosPath == "" {
-		return errors.New("Path to lacros-chrome cannot be empty")
-	}
-
-	// Kills all instances of lacros-chrome and other related executables.
-	pids, err := PidsFromPath(ctx, lacrosPath)
-	if err != nil {
-		return errors.Wrap(err, "error finding pids for lacros-chrome")
-	}
-	for _, pid := range pids {
-		// We ignore errors, since it's possible the process has
-		// already been killed.
-		unix.Kill(pid, syscall.SIGKILL)
-	}
-	return nil
 }
 
 // PidsFromPath returns the pids of all processes with a given path in their
