@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98104913_a8cfc5ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T13:17:42Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "a7f5f8e0c602b5fbb1cb1186e6f732b8db5befff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7757c481_7ea7c857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_google_safe_search.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T13:17:42Z",
+      "side": 1,
+      "message": "nit: 3 * time.Minute is more common\nsame in other places",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "a7f5f8e0c602b5fbb1cb1186e6f732b8db5befff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

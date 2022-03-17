@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2d91dc_cdd905e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_safe_search.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-17T13:17:42Z",
+      "side": 1,
+      "message": "nit: use \"9 * time.Minute\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "e7360c791de0bb3511d19fdfcd61abd69e419c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
