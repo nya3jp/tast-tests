@@ -46,6 +46,30 @@
       },
       "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3481eaa3_345d34ca",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-17T08:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6beac242_203c8e0c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
