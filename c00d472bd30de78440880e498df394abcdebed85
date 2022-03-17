@@ -77,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fdb7f1_1908c83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-17T11:25:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4855fd5c_f8313031",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "c00d472bd30de78440880e498df394abcdebed85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f54e1a8_195c6ef8",
@@ -90,6 +114,24 @@
       "writtenOn": "2022-03-16T13:16:38Z",
       "side": 1,
       "message": "Please flip this condition so the error comes first:\n\n```\nif !isRouterConnected {\n  if ifc.WirelessInterfaces.LinkInfo !\u003d nil {\n    s.Fatal(\"Failed to validate empty LinkInfo data\")\n  }\n  continue\n}\n\n// then go on to verify the LinkInfo\n```",
+      "revId": "c00d472bd30de78440880e498df394abcdebed85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c0ea6f_2be2c38d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-17T11:25:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f54e1a8_195c6ef8",
       "revId": "c00d472bd30de78440880e498df394abcdebed85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
