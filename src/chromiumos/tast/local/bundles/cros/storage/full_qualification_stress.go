@@ -56,8 +56,8 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	start := time.Now()
 
 	testParam := util.QualParam{}
+	var err error
 	if val, ok := s.Var("tast_storage_slc_qual"); ok {
-		var err error
 		if testParam.IsSlcEnabled, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argumet 'storage.QuickUtil.slcQual' of type bool: ", err)
 		}
@@ -75,16 +75,18 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	testParam.RetentionBlockTimeout = util.DefaultRetentionBlockTimeout
 	testParam.SuspendBlockTimeout = util.DefaultSuspendBlockTimeout
 	testParam.SkipS0iXResidencyCheck = false
+	testParam.TestDevice, err = util.RootPartitionForTest(ctx)
+	if err != nil {
+		s.Fatal("Cannot set free root partition as test device: ", err)
+	}
 
 	if val, ok := s.Var("tast_suspend_block_timeout"); ok {
-		var err error
 		if testParam.SuspendBlockTimeout, err = time.ParseDuration(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_suspend_block_timeout' of type Duration: ", err)
 		}
 	}
 
 	if val, ok := s.Var("tast_skip_s0ix_check"); ok {
-		var err error
 		if testParam.SkipS0iXResidencyCheck, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_skip_s0ix_check' of type bool: ", err)
 		}
@@ -92,7 +94,6 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 
 	skipSetup := false
 	if val, ok := s.Var("tast_skip_setup_check"); ok {
-		var err error
 		if skipSetup, err = strconv.ParseBool(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_skip_setup_check' of type bool: ", err)
 		}
