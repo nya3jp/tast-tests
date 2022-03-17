@@ -16,6 +16,24 @@
       "message": "Nice change, thanks for doing this! In general, we should be doing this in all of our tests (i.e. we should never be pinging over the Ethernet interface to verify_connection and whatnot). Is this something you\u0027d be able to take on, Jun?",
       "revId": "7693fd04ee804a81daccb49c739d5b26e89b4e60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "926d93a9_1b54f450",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-03-17T21:35:21Z",
+      "side": 1,
+      "message": "Yes of course! I created a bug b/225205611 and started to looked at all ping related code in tast and autotest. Thanks for you pointers.",
+      "parentUuid": "79a48b06_dc554c1f",
+      "revId": "7693fd04ee804a81daccb49c739d5b26e89b4e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
