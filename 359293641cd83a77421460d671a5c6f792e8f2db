@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7f4c0c_737b20b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "+2 for Tast Review % comments",
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebc0f807_56f53af9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "nit: \"Ax\" reads like an initialism. If so, it should be same-case:\ngo/go-style/decisions#initialisms\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 7
+      },
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c88c01_164f0036",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "why not use RequiredVar?",
+      "range": {
+        "startLine": 205,
+        "startChar": 20,
+        "endLine": 205,
+        "endChar": 23
+      },
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99be54dd_2f1ddd06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "nit/optional: Log lines should start with a capital. (pre-existing)\n\n(And maybe this message could be more meaningful, like \"Using router type: \")",
+      "range": {
+        "startLine": 224,
+        "startChar": 27,
+        "endLine": 224,
+        "endChar": 31
+      },
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f9c0b4_74b28052",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "nit: \"Ax\" reads like an initialism. If so, it should be same-case:\ngo/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 140,
+        "startChar": 24,
+        "endLine": 140,
+        "endChar": 26
+      },
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1755e06_0a97ac6d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "nit: \"Ax\" reads like an initialism. If so, it should be same-case:\ngo/go-style/decisions#initialisms\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 162,
+        "startChar": 11,
+        "endLine": 162,
+        "endChar": 13
+      },
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bbb4d3_bb52695b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "nit: \"Wps\" reads to me like an initialism. If so, it should be same-case:\ngo/go-style/decisions#initialisms\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 11
+      },
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee37285f_7b0f36be",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-17T04:33:29Z",
+      "side": 1,
+      "message": "nit: get... is not idiomatic go unless the concept relates to GET (e.g. HTTP GET).\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 8
+      },
+      "revId": "359293641cd83a77421460d671a5c6f792e8f2db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
