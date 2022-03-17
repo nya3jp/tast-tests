@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e539f090_bef7102f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-17T08:55:55Z",
+      "side": 1,
+      "message": "https://cros-health-prod.googleplex.com/test/policy.BlockThirdPartyCookies.lacros",
+      "revId": "8893190289bcf008e75361ce6904657c01d522ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
