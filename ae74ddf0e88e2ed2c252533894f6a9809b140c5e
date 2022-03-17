@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb5acb4_aa5f5443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-17T15:17:12Z",
+      "side": 1,
+      "message": "nit: just `continue` at the end of this if-block and then you can remove the else and unindent everything that is currently inside of it",
+      "revId": "ae74ddf0e88e2ed2c252533894f6a9809b140c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba9bb13_aeda11cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-17T15:17:12Z",
+      "side": 1,
+      "message": "not for this CL, but we should probably do the same condition inversion with this, so this error check isn\u0027t 50 lines away from the condition it goes with",
+      "revId": "ae74ddf0e88e2ed2c252533894f6a9809b140c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
