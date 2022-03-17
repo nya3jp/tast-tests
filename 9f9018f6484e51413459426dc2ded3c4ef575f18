@@ -16,6 +16,24 @@
       "message": "Hey reviewers, can you take another look at this? \nI\u0027m hoping that browserfixt.CreateWindows could be a first facing layer for ash.CreateWindows dealing with behavioral discrepancy between ash and lacros-chrome and the issue crbug.com/1290318 as well.\nLooking at go/lacros-tast-porting-tracker, currently at least 12 tests are being blocked on this, which could be addressed by this CL. Thanks,",
       "revId": "9f9018f6484e51413459426dc2ded3c4ef575f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9784614_9ac9487d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-17T17:22:46Z",
+      "side": 1,
+      "message": "This needs to be reworked based on the offline discussion with Eliot and Hidehiko. After my second thought, I don\u0027t think this approach of combining SetUp and CreateWindows work everywhere particularly for some tests that call ash.CreateWindows to open additional windows on top of the already opened not from a clean start.\n\nI feel either (1) SetUp returning a closure closeaboutblank or (2) br.Close(AboutBlank or Window) would be the best we can do given the situation.\n\n```\nbr, closeAboutBlank, ... :\u003d browserfixt.SetUp()\nash.CreateWindows(...)\nif BrowserType \u003d\u003d TypeLacros with any other conditions {\n    closeAboutBlank()\n}\n```\n\nHidehiko, Eliot, do you prefer any of these or suggest something else?",
+      "parentUuid": "aa09611c_99ee6144",
+      "revId": "9f9018f6484e51413459426dc2ded3c4ef575f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
