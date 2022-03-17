@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "855fab63_6c0c6537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-17T08:52:22Z",
+      "side": 1,
+      "message": "https://cros-health-prod.googleplex.com/test/policy.BasicAuthOverHTTPEnabled",
+      "revId": "2ae20e5595a9c16dcdc4c5c591810aaef048c847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
