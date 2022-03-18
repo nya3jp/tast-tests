@@ -16,6 +16,24 @@
       "message": "Can BootDeviceFioPath be removed from `src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/storage/util/fio_stress.go`?\n\nHow will the partition selection fits with the removable tests?\n",
       "revId": "3eecb24729786ea62fd3e8013de9b379144e46bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4294619_b6175586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-03-18T21:31:42Z",
+      "side": 1,
+      "message": "Removed BootDeviceFioPath from all files now. \n\nThe partition selection doesn\u0027t effect the removable tests because we use a different function to find the removable device and if possible use partition 1, so they are completely separate.",
+      "parentUuid": "e4ac2377_ef7bfd55",
+      "revId": "3eecb24729786ea62fd3e8013de9b379144e46bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
