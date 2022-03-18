@@ -19,32 +19,51 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type channel int
+
+const (
+	prod channel = iota
+	modulefood
+	dev
+)
+
+const (
+	// These are the default GAIA credentials that will be used to sign in on Android.
+	// This account is not a member of any special Nearby version groups, so the phone will use the prod version.
+	defaultAndroidUsername = "nearbyshare.android_username"
+	defaultAndroidPassword = "nearbyshare.android_password"
+
+	// These are the default GAIA credentials that will be used to sign in on Android.
+	// These accounts are members of the dev and modulefood Nearby version user groups,
+	// so they will use dev and modulefood Nearby versions respectively.
+	devAndroidUsername        = "nearbyshare.dev_android_username"
+	devAndroidPassword        = "nearbyshare.dev_android_password"
+	modulefoodAndroidUsername = "nearbyshare.modulefood_android_username"
+	modulefoodAndroidPassword = "nearbyshare.modulefood_android_password"
+
+	// This is the username that we'll use for non-rooted devices in the lab.
+	unrootedAndroidUsername = "nearbyshare.unrooted_android_username"
+
+	// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account.
+	// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
+	// Adding/removing accounts requires ADB root access, so this will automatically be set to true if root is not available.
+	skipAndroidLogin = "skipAndroidLogin"
+)
+
 // NewNearbyShareAndroid creates a fixture that sets up an Android device for Nearby Share.
-func NewNearbyShareAndroid(androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility) testing.FixtureImpl {
+func NewNearbyShareAndroid(androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, androidNearbyChannel channel) testing.FixtureImpl {
 	return &nearbyShareAndroidFixture{
-		androidDataUsage:  androidDataUsage,
-		androidVisibility: androidVisibility,
+		androidDataUsage:     androidDataUsage,
+		androidVisibility:    androidVisibility,
+		androidNearbyChannel: androidNearbyChannel,
 	}
 }
 
 func init() {
-	const (
-		// These are the default GAIA credentials that will be used to sign in on Android.
-		defaultAndroidUsername = "nearbyshare.android_username"
-		defaultAndroidPassword = "nearbyshare.android_password"
-
-		// This is the username that we'll use for non-rooted devices in the lab.
-		unrootedAndroidUsername = "nearbyshare.unrooted_android_username"
-
-		// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account.
-		// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
-		// Adding/removing accounts requires ADB root access, so this will automatically be set to true if root is not available.
-		skipAndroidLogin = "skipAndroidLogin"
-	)
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareAndroidSetup",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts)",
-		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts),
+		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, prod),
 		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -61,12 +80,55 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareAndroidSetupDev",
+		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts), using the dev version of Nearby",
+		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, dev),
+		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Vars: []string{
+			devAndroidUsername,
+			devAndroidPassword,
+			unrootedAndroidUsername,
+			skipAndroidLogin,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareAndroidSetupModulefood",
+		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts), using the modulefood version of Nearby",
+		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, modulefood),
+		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Vars: []string{
+			modulefoodAndroidUsername,
+			modulefoodAndroidPassword,
+			unrootedAndroidUsername,
+			skipAndroidLogin,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
 }
 
 type nearbyShareAndroidFixture struct {
-	androidDataUsage  nearbysnippet.DataUsage
-	androidVisibility nearbysnippet.Visibility
-	androidDevice     *nearbysnippet.AndroidNearbyDevice
+	androidDataUsage     nearbysnippet.DataUsage
+	androidVisibility    nearbysnippet.Visibility
+	androidDevice        *nearbysnippet.AndroidNearbyDevice
+	androidNearbyChannel channel
 }
 
 func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -98,8 +160,20 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 		loggedIn = b
 	}
-	androidUsername := s.RequiredVar("nearbyshare.android_username")
-	androidPassword := s.RequiredVar("nearbyshare.android_password")
+
+	var androidUsername string
+	var androidPassword string
+	switch f.androidNearbyChannel {
+	case prod:
+		androidUsername = s.RequiredVar(defaultAndroidUsername)
+		androidPassword = s.RequiredVar(defaultAndroidPassword)
+	case modulefood:
+		androidUsername = s.RequiredVar(modulefoodAndroidUsername)
+		androidPassword = s.RequiredVar(modulefoodAndroidPassword)
+	case dev:
+		androidUsername = s.RequiredVar(devAndroidUsername)
+		androidPassword = s.RequiredVar(devAndroidPassword)
+	}
 
 	// If the device is not rooted and skipAndroidLogin was not specified, we'll assume the test is running with an unrooted phone in the lab.
 	// This only affects the username that will be saved in the device_attributes.json log.
@@ -149,10 +223,11 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 
 	f.androidDevice = androidDevice
 	return &FixtData{
-		AndroidDevice:     androidDevice,
-		AndroidDeviceName: androidDisplayName,
-		AndroidUsername:   androidUsername,
-		AndroidLoggedIn:   loggedIn,
+		AndroidDevice:        androidDevice,
+		AndroidDeviceName:    androidDisplayName,
+		AndroidUsername:      androidUsername,
+		AndroidLoggedIn:      loggedIn,
+		AndroidNearbyChannel: f.androidNearbyChannel,
 	}
 
 }
