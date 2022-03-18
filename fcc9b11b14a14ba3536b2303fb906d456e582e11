@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c578f3_b8f64ce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T12:38:15Z",
+      "side": 1,
+      "message": "Hi Judy, would you approve this again?\n\nI added tast/local/playbilling/dgapi2/fixture.go (which was newly created yesterday) and LGTMs are gone.",
+      "revId": "fcc9b11b14a14ba3536b2303fb906d456e582e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
