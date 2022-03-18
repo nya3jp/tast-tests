@@ -137,25 +137,56 @@ func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create Test API connection: ", err)
 			}
 
-			// Attempt to open the file picker by clicking the HTML link that triggers
-			// window.showSaveFilePicker(). We cannot use conn.Eval() for this,
-			// because opening the file picker must be triggered by a user gesture for
-			// security reasons.
 			ui := uiauto.New(tconn)
-			if err := ui.LeftClick(nodewith.Role(role.Link).Name("showSaveFilePicker"))(ctx); err != nil {
-				s.Error("Failed to click link to open the save file picker: ", err)
+			dialogNode := nodewith.Role(role.Dialog).Name("Save file as").ClassName("RootView")
+
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				// Attempt to open the file picker by clicking the HTML link that triggers
+				// window.showSaveFilePicker(). We cannot use conn.Eval() for this,
+				// because opening the file picker must be triggered by a user gesture for
+				// security reasons.
+				if err := ui.LeftClick(nodewith.Role(role.Link).Name("showSaveFilePicker"))(ctx); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to click link to open the save file picker"))
+				}
+
+				// Wait until opening the file picker has either succeeded or failed.
+				var errorMessage string
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					if err := conn.Eval(ctx, "window.errorMessage", &errorMessage); err != nil {
+						return testing.PollBreak(errors.Wrap(err, "failed to evaluate window.errorMessage"))
+					}
+
+					// If the error message is empty, this could mean one of two things:
+					// 1. The asynchronous opening of the file picker has neither succeeded nor failed yet.
+					// 2. The file picker has successfully opened, and the `await window.showSaveFilePicker` call is waiting for the user to select a file
+					if errorMessage == "" {
+						// Continue polling if the dialog hasn't yet opened.
+						return ui.Exists(dialogNode)(ctx)
+					}
+
+					// The error message is non-empty, thus opening the file picker has failed; stop polling.
+					return nil
+				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to wait for the file picker to either open or fail to open"))
+				}
+
+				if errorMessage == "User activation is required to show a file picker." {
+					// Sometimes Chrome will not register the click as a user gesture, and thus not open the file picker.
+					// Return an error here so that we retry the click to open the file picker.
+					return errors.New("failed to open the file picker: The click action was not recognized as a user gesture")
+				} else if errorMessage != "" {
+					s.Logf("Opening the file picker failed with the following error: %s", errorMessage)
+				}
+
+				return nil
+			}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+				s.Fatal("Failed to trigger the file picker: ", err)
 			}
 
-			// Save the file using the file picker dialog if a file picker dialog was
-			// supposed to open, otherwise verify that no dialog has opened.
-			saveFilePickerNode := nodewith.Role(role.Dialog).Name("Save file as").ClassName("RootView")
+			// At this point, the file picker has either opened, or failed to open with an error.
 			if param.wantFileSystemWrite {
-				if err := uiauto.Combine(
-					"save file to disk",
-					ui.WaitUntilExists(saveFilePickerNode),
-					ui.LeftClick(nodewith.Role(role.Button).Name("Save")),
-				)(ctx); err != nil {
-					s.Error("Unable to save file using save file picker: ", err)
+				if err := ui.LeftClick(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
+					s.Fatal("Unable to save file using save file picker: ", err)
 				}
 
 				// Wait for the file to be written to disk and check its contents.
@@ -172,20 +203,9 @@ func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
 					s.Error("Failed to check file on disk: ", err)
 				}
 			} else {
-				if err := ui.EnsureGoneFor(saveFilePickerNode, 5*time.Second)(ctx); err != nil {
-					s.Error("Save file picker opened unexpectedly: ", err)
+				if err := ui.Exists(dialogNode)(ctx); err == nil {
+					s.Error("Save file picker opened unexpectedly")
 				}
-			}
-
-			// Check if the file picker was shown and successfully closed by
-			// inspecting what value the filePickerShownPromise promise resolved to.
-			var filePickerShown bool
-			if err := conn.Eval(ctx, "window.filePickerShownPromise", &filePickerShown); err != nil {
-				s.Fatal("Failed to evaluate window.filePickerShownPromise: ", err)
-			}
-
-			if filePickerShown != param.wantFileSystemWrite {
-				s.Errorf("Unexpected showSaveFilePicker behavior: got %t; want %t", filePickerShown, param.wantFileSystemWrite)
 			}
 		})
 	}
