@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a96d34d_22c927fe",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc827e12_90ae330f",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be8ec7d6_5710a8ec",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21f11197_5016a518",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ed4504b_69d687de",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-03-17T12:53:18Z",
       "side": 1,
       "message": "nit: add period at the end of the comment. Same in other comments.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc4ce9e_5ea51ec3",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Done. This one keeps biting me I\u0027ve got to remember this.",
+      "parentUuid": "7ed4504b_69d687de",
       "range": {
         "startLine": 51,
         "startChar": 29,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9baec8d2_ae8fb6d6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "4d39f5ed_fcd072e7",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb4cf32b_0afe51cd",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-03-17T12:53:18Z",
       "side": 1,
       "message": "nit: same: initialisms",
+      "range": {
+        "startLine": 169,
+        "startChar": 12,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a1026c_35229524",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Actually this one is actually refers to the `dnsmasq` service, which is specifically lowercase in the name (and online documentation of it) so I think it\u0027s best to keep it consistent like this, where the first letter is only capitalized because of the function name.",
+      "parentUuid": "eb4cf32b_0afe51cd",
       "range": {
         "startLine": 169,
         "startChar": 12,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9b5995_b31d23dc",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Oh yeah that\u0027s better, done. I had it as a generator function originally since I was basing it off the TFOption functions like this which had one.",
+      "parentUuid": "97c609fc_00195ae0",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "652c27df_227e00d2",
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d98a14c_6575ae72",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Done.\n\nI was originally planning to allow the export of this so that any arbitrary flag not covered already could be used, but now I realize that if one isn\u0027t covered it\u0027s better for someone to just update this file with a new function for it when they need to.",
+      "parentUuid": "652c27df_227e00d2",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42ce39a9_8ec90b21",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-03-17T12:53:18Z",
       "side": 1,
       "message": "nit: UCI?",
+      "range": {
+        "startLine": 128,
+        "startChar": 17,
+        "endLine": 128,
+        "endChar": 20
+      },
+      "revId": "7df3429d520ae2cb4d216ccf19ae693d2689acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e28d53_31065c22",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/uci/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:34:56Z",
+      "side": 1,
+      "message": "Technically this is referring to the `uci` command specifically, which is lowercase, so we should not treat it as an acronym here and keep it as `Uci`.",
+      "parentUuid": "42ce39a9_8ec90b21",
       "range": {
         "startLine": 128,
         "startChar": 17,
