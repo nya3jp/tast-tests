@@ -6,10 +6,12 @@
 package graphics
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -129,6 +131,7 @@ func collectGPUPerformanceCounters(ctx context.Context, interval time.Duration) 
 	return counters, megaPeriods, nil
 }
 
+// collectAMDBusyCounter gathers AMD GPU utilization stats.
 // AMD does not use the command line tool perf to report GPU utilization, but it
 // provides a sysfs file that can be read with the GPU utilization as a
 // percent, see the kernel amdgpu_pm.c file. This function reads the values
@@ -165,6 +168,49 @@ func collectAMDBusyCounter(ctx context.Context, interval time.Duration) (counter
 	// Divide accuBusy by hundred to remove the percentage.
 	counters["rcs"] = time.Duration(float64(accuBusy) / 100.0 * float64(time.Second))
 	counters["total"] = time.Duration(numSamples * int(time.Second))
+	return counters, 0, nil
+}
+
+// collectMaliPerformanceCounters gathers the amount of GPU cycles the GPU
+// was active. Source code for the mali_stats program this function wraps can
+// be found in "platform/drm-tests/mali_stats.c". We automatically take into
+// account up/down clocking of the GPU by dividing by its maximum frequency.
+func collectMaliPerformanceCounters(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error) {
+	const maliFile = "/dev/mali0"
+	if _, err = os.Stat(maliFile); err != nil {
+		return nil, 0, nil
+	}
+
+	accuBusy := float64(0.0)
+	const samplePeriod = 10 * time.Millisecond
+	numSamples := int(interval / samplePeriod)
+	for i := 0; i < numSamples; i++ {
+		maliStatsCmd := exec.Command("/usr/local/libexec/chrome-binary-tests/mali_stats", "-u", "10000")
+		var out bytes.Buffer
+		maliStatsCmd.Stdout = &out
+
+		err := maliStatsCmd.Run()
+		if err != nil {
+			return nil, 0, errors.Wrap(err, "error running mali_stats")
+		}
+
+		percentUsage, err := strconv.ParseFloat(out.String()[:strings.Index(out.String(), "%")], 64)
+
+		if percentUsage > 100.0 || percentUsage < 0.0 {
+			percentUsage = 100.0
+		}
+
+		if err != nil {
+			return nil, 0, errors.Wrap(err, "error parsing mali_stats output")
+		}
+
+		accuBusy += percentUsage
+	}
+
+	counters = make(map[string]time.Duration)
+	counters["rcs"] = time.Duration(accuBusy / 100.0 * float64(time.Second))
+	counters["total"] = time.Duration(float64(numSamples) * float64(time.Second))
+
 	return counters, 0, nil
 }
 
@@ -284,10 +330,18 @@ func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 		if err != nil {
 			return errors.Wrap(err, "error collecting AMD performance counter")
 		}
-		if counters == nil {
-			return nil
+	}
+	if counters == nil {
+		// Give a chance to Mali-specific counters.
+		counters, megaPeriods, err = collectMaliPerformanceCounters(ctx, t)
+		if err != nil {
+			return errors.Wrap(err, "error collecting Mali performance counter")
 		}
 	}
+	if counters == nil {
+		return nil
+	}
+
 	if counters["total"].Milliseconds() == 0 {
 		return errors.New("total elapsed time counter is zero")
 	}
