@@ -39,6 +39,30 @@
       },
       "revId": "513eafc3c50526a033da6a575e26208281c8c7ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee872c0a_2bc1398d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/taskmanager/taskmanager.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-18T10:11:58Z",
+      "side": 1,
+      "message": "Fixed, added a new definition `apps.TaskManager`",
+      "parentUuid": "a1708b58_9d712aa4",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "513eafc3c50526a033da6a575e26208281c8c7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
