@@ -7,6 +7,8 @@ package firmware
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -23,6 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CheckKeyboardBacklightFunctionality,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Confirm keyboard backlight support and check keyboard backlight functionality",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
@@ -54,6 +57,22 @@ func CheckKeyboardBacklightFunctionality(ctx context.Context, s *testing.State) 
 	serviceClient := pb.NewChromeUIServiceClient(h.RPCClient.Conn)
 	if _, err := serviceClient.EnsureLoginScreen(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to restart ui at login screen: ", err)
+	}
+
+	// Current hardware depencies might miss out on DUTs that actually don't
+	// support keyboard backlight. "EC_KB_BL_EN" and "KB_BL_EN" appear to be
+	// two common names for the gpio in control. Checking whether these gpios
+	// exist would probably help with better sorting out the false positives.
+	// The list may expand to include more gpio names.
+	kbLightGpioNames := []string{"EC_KB_BL_EN", "KB_BL_EN"}
+	s.Logf("Checking if the following keyboard backlight gpios exist: %s", strings.Join(kbLightGpioNames, ", "))
+	if err := grepKbLightGPIO(ctx, h, s, kbLightGpioNames); err != nil {
+		s.Log("Unexpected output when checking on gpio: ", err)
+	}
+
+	// Check whether the pwm value for kb backlight exists.
+	if err := checkKbLightPwm(ctx, s); err != nil {
+		s.Log("Unexpected output when checking on pwm for kb: ", err)
 	}
 
 	initValue, err := checkInitKBBacklight(ctx, h)
@@ -151,5 +170,48 @@ func pressShortcut(ctx context.Context, h *firmware.Helper, actionKey string) er
 	if err := h.Servo.RunECCommand(ctx, altRelease); err != nil {
 		return errors.Wrap(err, "failed to release alt")
 	}
+	return nil
+}
+
+func grepKbLightGPIO(ctx context.Context, h *firmware.Helper, s *testing.State, gpios []string) error {
+	if err := h.Servo.RunECCommand(ctx, "chan 0"); err != nil {
+		return errors.Wrap(err, "failed to send 'chan 0' to EC")
+	}
+	for _, name := range gpios {
+		var (
+			reFoundGpio    = regexp.MustCompile(fmt.Sprintf(`(?i)(0|1)[^\n\r]*\s%s`, name))
+			reNotFoundGpio = regexp.MustCompile(`Parameter\s+(\d+)\s+invalid`)
+			checkGpio      = `(` + reFoundGpio.String() + `|` + reNotFoundGpio.String() + `)`
+		)
+		cmd := fmt.Sprintf("gpioget %s", name)
+		out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, []string{checkGpio})
+		if err != nil {
+			return errors.Wrapf(err, "failed to run command %v, got error", cmd)
+		}
+		if match := reFoundGpio.FindStringSubmatch(out[0][0]); match != nil {
+			s.Logf("Found gpio %s with value %s", name, match[1])
+		} else {
+			s.Logf("Did not find gpio: %s", name)
+		}
+	}
+	if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
+		return errors.Wrap(err, "failed to send 'chan 0xffffffff' to EC")
+	}
+	return nil
+}
+
+func checkKbLightPwm(ctx context.Context, s *testing.State) error {
+	reFoundValue := regexp.MustCompile(`Current PWM duty:\s*\d*`)
+	cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+	out, err := cmd.Command(ctx, "pwmgetduty", "kb").CombinedOutput()
+	if err != nil {
+		msg := strings.Split(strings.TrimSpace(string(out)), "\n")
+		return errors.Errorf("running 'ectool pwmgetduty kb' on DUT failed: %v, and received: %v", err, msg)
+	}
+	match := reFoundValue.FindSubmatch(out)
+	if len(match) == 0 {
+		return errors.New("did not find pwm value for kb")
+	}
+	s.Logf("Found pwm status for kb, %s", string(match[0]))
 	return nil
 }
