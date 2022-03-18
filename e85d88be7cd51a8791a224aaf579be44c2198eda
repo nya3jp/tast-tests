@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b633cc_abd70218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2149fc9_4b1f90b4",
+      "range": {
+        "startLine": 22,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 66
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd9f971c_232e2a6f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89db0e6_56d9ca6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd9f971c_232e2a6f",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279f5aee_7fb48185",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-18T09:40:14Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30411ba7_b5841323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279f5aee_7fb48185",
       "range": {
         "startLine": 42,
         "startChar": 4,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec063405_bdf841af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:20:49Z",
+      "side": 1,
+      "message": "Done.\n\nI think using a regexp for the allowlist is more natural than a map or list. But I don\u0027t feel strongly about it.",
+      "parentUuid": "27eefce3_3b4ec317",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbae1210_cbfa98f0",
@@ -130,6 +226,30 @@
       "writtenOn": "2022-03-18T09:40:14Z",
       "side": 1,
       "message": "How about dumping /proc/cpuinfo and /sys/devices/soc0/machine in tast log when getProperty returns nil?\n out, err :\u003d ioutil.ReadFile(\"/proc/cpuinfo\")\n s.Logf(...)\n \n(I know arc_property_util.cc also dumps /proc/cpuinfo in arc.log, but arc.log is a bit too large so showing it in tast log would be more convenient.)",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cda02b0_44ef9c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:20:49Z",
+      "side": 1,
+      "message": "The tast guide and the repo upload hooks say we shouldn\u0027t have newlines in logs (I originally tried Logf(\"cpuinfo:\\n%s\", cpuinfo_content))\n\nI could remove the \\n but that would be cheating, since it is still putting newlines in the logs.\n\nSo I\u0027ve copied cpuinfo to the test output directory instead.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#common-fmt",
+      "parentUuid": "cbae1210_cbfa98f0",
       "range": {
         "startLine": 62,
         "startChar": 2,
@@ -187,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3173d633_61f24e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4116455_ae44c3c3",
+      "range": {
+        "startLine": 66,
+        "startChar": 10,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b368de99_f4f67361",
@@ -200,6 +344,30 @@
       "writtenOn": "2022-03-18T09:40:14Z",
       "side": 1,
       "message": "I think it\u0027s useful to show found manufacturer/model in log even when match succeeds.\n\ns.Logf(...)",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "903e377d_b041cf82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b368de99_f4f67361",
       "range": {
         "startLine": 68,
         "startChar": 1,
