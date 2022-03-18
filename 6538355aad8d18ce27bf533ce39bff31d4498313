@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be12a889_d2fac113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-18T16:23:43Z",
+      "side": 1,
+      "message": "return onscreen, nil\n\n(i.e. don\u0027t return an error just because the method determines that the item is off screen. calling isItemInPage for items that are not in page may be a legitimate use case; it\u0027s up to the caller to determine whether isItemInPage returning false is an error or not)",
+      "range": {
+        "startLine": 320,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 64
+      },
+      "revId": "6538355aad8d18ce27bf533ce39bff31d4498313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
