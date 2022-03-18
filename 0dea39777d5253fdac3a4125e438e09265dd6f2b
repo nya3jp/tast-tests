@@ -234,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5724412_8d512bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_background_graphics_default.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-03-18T12:45:06Z",
+      "side": 1,
+      "message": "Alright, done!",
+      "parentUuid": "1e4ee91b_8b7b496e",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 104
+      },
+      "revId": "0dea39777d5253fdac3a4125e438e09265dd6f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1af3183_3299be45",
