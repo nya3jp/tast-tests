@@ -167,6 +167,11 @@ func MatchTargetURLPrefix(prefix string) TargetMatcher {
 	return func(t *Target) bool { return strings.HasPrefix(t.URL, prefix) }
 }
 
+// MatchAllPages returns a TargetMatcher that matches all targets that are pages.
+func MatchAllPages() TargetMatcher {
+	return func(t *Target) bool { return t.Type == "page" }
+}
+
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm. It polls until the target is found or ctx's deadline expires.
 // An error is returned if no target is found, tm matches multiple targets, or the connection cannot

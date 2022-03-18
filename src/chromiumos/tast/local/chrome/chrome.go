@@ -592,6 +592,11 @@ func MatchTargetURLPrefix(prefix string) TargetMatcher {
 	return driver.MatchTargetURLPrefix(prefix)
 }
 
+// MatchAllPages returns a TargetMatcher that matches every target that is a page.
+func MatchAllPages() TargetMatcher {
+	return driver.MatchAllPages()
+}
+
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm. It polls until the target is found or ctx's deadline expires.
 // An error is returned if no target is found, tm matches multiple targets, or the connection cannot
