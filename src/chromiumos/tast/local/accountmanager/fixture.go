@@ -101,12 +101,6 @@ func (f FixtureData) Mode() lacrosfixt.SetupMode {
 	return f.LacrosFixt.Mode()
 }
 
-// LacrosPath gets the root directory for lacros-chrome.
-// Implement lacrosfixt.FixtValue interface.
-func (f FixtureData) LacrosPath() string {
-	return f.LacrosFixt.LacrosPath()
-}
-
 type accountManagerTestFixture struct {
 	cr  *chrome.Chrome
 	arc *arc.ARC
