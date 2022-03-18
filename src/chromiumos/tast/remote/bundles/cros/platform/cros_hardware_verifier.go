@@ -94,6 +94,11 @@ func CrosHardwareVerifier(ctx context.Context, s *testing.State) {
 	}
 	s.Log("ComponentValueAllowlists:", fieldsMapping)
 
+	err = waitServiceState(ctx, s.DUT(), s, "hardware_verifier", "stop/waiting")
+	if err != nil {
+		s.Fatal("Service hardware_verifier timed out: ", err)
+	}
+
 	messagesFromProbe, err := probe(ctx, s.DUT(), fieldsMapping)
 	if err != nil {
 		s.Fatal("Cannot get probe results: ", err)
@@ -343,7 +348,7 @@ func report(ctx context.Context, s *testing.State, fieldsMapping requiredFieldSe
 		return nil, errors.Wrap(err, "failed to reboot DUT")
 	}
 	// TODO(crbug/1097710): Remove this check when this is the default behavior.
-	if err := waitSystemServiceRunning(ctx, d, s); err != nil {
+	if err := waitServiceState(ctx, d, s, "system-services", "start/running"); err != nil {
 		return nil, err
 	}
 	if err := pollResultFile(ctx, d, s, resultFilePath, outPath); err != nil {
@@ -413,23 +418,23 @@ func pollResultFile(ctx context.Context, d *dut.DUT, s *testing.State, resultFil
 	return nil
 }
 
-// waitSystemServiceRunning waits system-services to be start/running state.
-func waitSystemServiceRunning(ctx context.Context, d *dut.DUT, s *testing.State) error {
+// waitServiceState waits for a service to be specific state.
+func waitServiceState(ctx context.Context, d *dut.DUT, s *testing.State, service, state string) error {
 	const (
 		pollInterval = time.Second
 		pollTimeout  = 2 * time.Minute
 	)
 
-	s.Log("Wait for system-services to be start/running state")
+	s.Logf("Wait for %s to be %s state", service, state)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		output, err := d.Conn().CommandContext(ctx, "initctl", "status", "system-services").Output()
+		output, err := d.Conn().CommandContext(ctx, "initctl", "status", service).Output()
 		if err != nil {
 			return err
 		}
-		if strings.Contains(string(output), "start/running") {
+		if strings.Contains(string(output), state) {
 			return nil
 		}
-		return errors.New("system-services is not start/running state")
+		return errors.Errorf("%s is not %s state", service, state)
 	}, &testing.PollOptions{Interval: pollInterval, Timeout: pollTimeout}); err != nil {
 		return err
 	}
