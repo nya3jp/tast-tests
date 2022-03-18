@@ -8,6 +8,11 @@ package windowarrangementcuj
 
 import (
 	"context"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -56,9 +61,15 @@ type Connections struct {
 	// depending on the browser in use.
 	BrowserTestConn *chrome.TestConn
 
+	// PipVideoTestURL is the URL of the PIP video test page.
+	PipVideoTestURL string
+
 	// ArcVideoActivity is an ARC activity that plays a video, looped.
 	// If you minimize it, it plays the video in PIP.
 	ArcVideoActivity *arc.Activity
+
+	// WithTestVideo provides the test video URI to ArcVideoActivity.
+	WithTestVideo arc.ActivityStartOption
 }
 
 // DragPoints holds three points, to signify a drag from the first point
@@ -70,13 +81,8 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	testParam := s.Param().(TestParam)
 
 	connection := &Connections{
-		nil,
-		nil,
-		nil,
-		func(ctx context.Context) error { return nil },
-		func(ctx context.Context) error { return nil },
-		nil,
-		nil,
+		Cleanup:         func(ctx context.Context) error { return nil },
+		CloseAboutBlank: func(ctx context.Context) error { return nil },
 	}
 	var l *lacros.Lacros
 	var a *arc.ARC
@@ -137,11 +143,44 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ARC activity")
 	}
-	oldCleanup := connection.Cleanup
+	oldCleanup1 := connection.Cleanup
 	connection.Cleanup = func(ctx context.Context) error {
 		connection.ArcVideoActivity.Close()
-		return oldCleanup(ctx)
+		return oldCleanup1(ctx)
 	}
+
+	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	oldCleanup2 := connection.Cleanup
+	connection.Cleanup = func(ctx context.Context) error {
+		srv.Close()
+		return oldCleanup2(ctx)
+	}
+	connection.PipVideoTestURL = srv.URL + "/pip.html"
+
+	srvURL, err := url.Parse(srv.URL)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse test server URL")
+	}
+	hostPort, err := strconv.Atoi(srvURL.Port())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse test server port")
+	}
+	androidPort, err := a.ReverseTCP(ctx, hostPort)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start reverse port forwarding")
+	}
+	oldCleanup3 := connection.Cleanup
+	connection.Cleanup = func(ctx context.Context) error {
+		var firstErr error
+		if err := a.RemoveReverseTCP(ctx, androidPort); firstErr == nil && err != nil {
+			firstErr = errors.Wrap(err, "failed to stop reverse port forwarding")
+		}
+		if err := oldCleanup3(ctx); firstErr == nil && err != nil {
+			firstErr = err
+		}
+		return firstErr
+	}
+	connection.WithTestVideo = arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/shaka_720.webm", androidPort))
 
 	connection.TestConn, err = connection.Chrome.TestAPIConn(ctx)
 	if err != nil {
