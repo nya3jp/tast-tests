@@ -37,7 +37,7 @@ func init() {
 
 func Basic(ctx context.Context, s *testing.State) {
 	l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
-	defer lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath(), s.HasError)
+	defer lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn(), s.HasError)
 
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)

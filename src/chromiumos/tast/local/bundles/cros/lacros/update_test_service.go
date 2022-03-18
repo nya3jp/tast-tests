@@ -92,7 +92,7 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	defer cancel()
 	defer func(ctx context.Context) {
 		// Save faillogs and screen record only when it fails or returns with an error.
-		lacrosfaillog.SaveIf(ctx, expectedLacrosDir, func() bool { return hasError })
+		lacrosfaillog.SaveIf(ctx, tconn, func() bool { return hasError })
 		lacrosfaillog.StopRecordAndSaveOnError(ctx, tconn, hasRecordStarted, func() bool { return hasError })
 	}(ctxForFailLog)
 
