@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87d8ca2_826d3c56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-18T19:10:23Z",
+      "side": 1,
+      "message": "Hi Kyle, if you have a chance, could you take a look of the logic for variation smoke test? Thanks a lot.",
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
