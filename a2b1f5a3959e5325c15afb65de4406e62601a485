@@ -16,6 +16,29 @@
       "message": "Adding rnanjappan@ for owners approval.",
       "revId": "a2b1f5a3959e5325c15afb65de4406e62601a485",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "000020fa_1b1e68b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-03-18T21:41:48Z",
+      "side": 1,
+      "message": "Can we have the sub-team name owning this instead of arc-eng?",
+      "range": {
+        "startLine": 24,
+        "startChar": 69,
+        "endLine": 24,
+        "endChar": 87
+      },
+      "revId": "a2b1f5a3959e5325c15afb65de4406e62601a485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
