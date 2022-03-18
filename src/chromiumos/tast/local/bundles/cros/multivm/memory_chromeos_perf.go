@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/memory"
 	"chromiumos/tast/local/memory/metrics"
 	"chromiumos/tast/local/multivm"
@@ -35,6 +36,12 @@ func init() {
 			Name:              "with_bg_arc",
 			ExtraSoftwareDeps: []string{"arc"},
 			Pre:               multivm.ArcStarted(),
+		}, {
+			Name:              "with_bg_crostini",
+			ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
+			ExtraSoftwareDeps: []string{"vm_host"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+			Pre:               multivm.CrostiniStarted(),
 		}},
 		Timeout: 10 * time.Minute,
 	})
