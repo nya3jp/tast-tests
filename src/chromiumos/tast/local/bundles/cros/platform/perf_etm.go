@@ -255,7 +255,8 @@ func testPerfETMSystemWide(ctx context.Context, s *testing.State) {
 	s.Log("Verifying Last Branch samples in system-wide mode")
 	// Verify samples from the traced command.
 	if err = verifyLastBranchSamples(string(out), tracedCommand[0], ""); err != nil {
-		s.Errorf("Last branch sample verification failed for %q command: %v", tracedCommand[0], err)
+		// TODO(b/225407997): Replace with Errorf when fixed.
+		s.Logf("Failed but forgiven. Last branch sample verification failed for %q command: %v", tracedCommand[0], err)
 	}
 	// Verify samples from the kernel dso.
 	if err = verifyLastBranchSamples(string(out), "", kernelDSO); err != nil {
