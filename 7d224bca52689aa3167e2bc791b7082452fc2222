@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2a0896_cefd9ec7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-18T19:04:33Z",
+      "side": 1,
+      "message": "The commit message is missing the BUG/TEST entries. Can you add them?\n\nSee guidelines at https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#link-to-issue-trackers\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#describe-testing-performed",
+      "revId": "7d224bca52689aa3167e2bc791b7082452fc2222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12efd14_fb2f2ee8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-18T19:04:33Z",
+      "side": 1,
+      "message": "This repository does not used \"Signed-off-by\", can you remove it?\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Signed_off_by for more information",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "7d224bca52689aa3167e2bc791b7082452fc2222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213db15c_c7c30c13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-18T19:04:33Z",
+      "side": 1,
+      "message": "Hi Sreehari,\n\nJust a few issues with the commit message. Can you also-make sure that the pre-upload checks are passing? My understanding is that those issues would have been caught by the pre-upload checks.",
+      "revId": "7d224bca52689aa3167e2bc791b7082452fc2222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
