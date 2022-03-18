@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e322111_8bcddd30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-18T15:34:18Z",
+      "side": 1,
+      "message": "How can we make sure that lacros is provisioned and installed from omaha for use before launching in this line without waiting that is going to be removed by https://crrev.com/c/3535168?",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d478c86f_28d2b122",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
         "patchSetId": 5
@@ -19,6 +42,52 @@
         "startChar": 11,
         "endLine": 129,
         "endChar": 15
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42970107_bc6e87a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-18T15:34:18Z",
+      "side": 1,
+      "message": "nit: getLacrosInfo or more specific than \u0027info\u0027?",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dfea555_23487089",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-18T15:34:18Z",
+      "side": 1,
+      "message": "nit: if",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 12
       },
       "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
