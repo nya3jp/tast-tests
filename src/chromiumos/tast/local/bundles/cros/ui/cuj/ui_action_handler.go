@@ -6,6 +6,7 @@ package cuj
 
 import (
 	"context"
+	"fmt"
 	"math"
 	"strings"
 	"time"
@@ -834,11 +835,17 @@ func (cl *ClamshellActionHandler) switchToWindowThroughShelf(ctx context.Context
 		}
 	}
 
-	if _, err := cl.clickOpenedAppOnShelf(ctx, appName); err != nil {
-		return errors.Wrapf(err, "failed to click [%s] app icon on shelf", appName)
+	clickAppIcon := func() action.Action {
+		return func(ctx context.Context) error {
+			if _, err := cl.clickOpenedAppOnShelf(ctx, appName); err != nil {
+				return errors.Wrapf(err, "failed to click [%s] app icon on shelf", appName)
+			}
+			return nil
+		}
 	}
 
-	if err := uiauto.Retry(retryTimes, uiauto.Combine("click app icon",
+	if err := uiauto.Retry(retryTimes, uiauto.Combine(fmt.Sprintf("click [%s] app icon and submenu", appName),
+		clickAppIcon(),
 		cl.ui.WithTimeout(5*time.Second).WaitUntilExists(menuItemFinder),
 		cl.ui.LeftClick(menuItemFinder),
 	))(ctx); err != nil {
