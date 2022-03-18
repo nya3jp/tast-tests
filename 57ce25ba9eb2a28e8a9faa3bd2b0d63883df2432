@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb419ad_b52cf2f7",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-18T05:59:28Z",
+      "side": 1,
+      "message": "Discussed offline, added more comments.",
+      "parentUuid": "dda780bc_b780f508",
+      "revId": "57ce25ba9eb2a28e8a9faa3bd2b0d63883df2432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b56144_ab777c4e",
