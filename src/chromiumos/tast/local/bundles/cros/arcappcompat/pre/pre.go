@@ -50,7 +50,7 @@ var appcompatCrossDJ = &arc.GaiaVars{
 
 // AppCompatBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
-var AppCompatBooted = arc.NewPrecondition("arcappcompat_booted", appcompatGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBooted = arc.NewPrecondition("arcappcompat_booted", appcompatGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletMode returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -58,7 +58,7 @@ var AppCompatBootedInTabletMode = arc.NewPrecondition("arcappcompat_booted_in_ta
 
 // AppCompatBootedForHearthstone is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the Hearthstone credentials, and opt-in to the Play Store.
-var AppCompatBootedForHearthstone = arc.NewPrecondition("arcappcompat_bootedForHearthstone", appcompatHearthstone, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBootedForHearthstone = arc.NewPrecondition("arcappcompat_bootedForHearthstone", appcompatHearthstone, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletModeForHearthstone returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -66,7 +66,7 @@ var AppCompatBootedInTabletModeForHearthstone = arc.NewPrecondition("arcappcompa
 
 // AppCompatBootedForNoteshelf is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the Noteshelf credentials, and opt-in to the Play Store.
-var AppCompatBootedForNoteshelf = arc.NewPrecondition("arcappcompat_bootedForNoteshelf", appcompatNoteshelf, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBootedForNoteshelf = arc.NewPrecondition("arcappcompat_bootedForNoteshelf", appcompatNoteshelf, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletModeForNoteshelf returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -74,7 +74,7 @@ var AppCompatBootedInTabletModeForNoteshelf = arc.NewPrecondition("arcappcompat_
 
 // AppCompatBootedForPhotolemur is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the Photolemur credentials, and opt-in to the Play Store.
-var AppCompatBootedForPhotolemur = arc.NewPrecondition("arcappcompat_bootedForPhotolemur", appcompatPhotolemur, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBootedForPhotolemur = arc.NewPrecondition("arcappcompat_bootedForPhotolemur", appcompatPhotolemur, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletModeForPhotolemur returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -82,7 +82,7 @@ var AppCompatBootedInTabletModeForPhotolemur = arc.NewPrecondition("arcappcompat
 
 // AppCompatBootedForMyscriptNebo is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the MyscriptNebo credentials, and opt-in to the Play Store.
-var AppCompatBootedForMyscriptNebo = arc.NewPrecondition("arcappcompat_bootedForMyscriptNebo", appcompatMyscriptNebo, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBootedForMyscriptNebo = arc.NewPrecondition("arcappcompat_bootedForMyscriptNebo", appcompatMyscriptNebo, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletModeForMyscriptNebo returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -90,7 +90,7 @@ var AppCompatBootedInTabletModeForMyscriptNebo = arc.NewPrecondition("arcappcomp
 
 // AppCompatBootedForArtrage is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the Artrage credentials, and opt-in to the Play Store.
-var AppCompatBootedForArtrage = arc.NewPrecondition("arcappcompat_bootedForArtrage", appcompatArtrage, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBootedForArtrage = arc.NewPrecondition("arcappcompat_bootedForArtrage", appcompatArtrage, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletModeForArtrage returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -98,7 +98,7 @@ var AppCompatBootedInTabletModeForArtrage = arc.NewPrecondition("arcappcompat_bo
 
 // AppCompatBootedForCrossDJ is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the CrossDJ credentials, and opt-in to the Play Store.
-var AppCompatBootedForCrossDJ = arc.NewPrecondition("arcappcompat_bootedForCrossDJ", appcompatCrossDJ, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBootedForCrossDJ = arc.NewPrecondition("arcappcompat_bootedForCrossDJ", appcompatCrossDJ, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletModeForCrossDJ returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
@@ -106,7 +106,7 @@ var AppCompatBootedInTabletModeForCrossDJ = arc.NewPrecondition("arcappcompat_bo
 
 // AppCompatBootedUsingTestAccountPool is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
-var AppCompatBootedUsingTestAccountPool = arc.NewPrecondition("arcappcompat_booted_testpool", nil, appcompatGaiaLoginPool, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var AppCompatBootedUsingTestAccountPool = arc.NewPrecondition("arcappcompat_booted_testpool", nil, appcompatGaiaLoginPool, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=clamshell")...)
 
 // AppCompatBootedInTabletModeUsingTestAccountPool returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
