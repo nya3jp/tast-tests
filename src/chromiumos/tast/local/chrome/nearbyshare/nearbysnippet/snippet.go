@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/json"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android"
@@ -362,6 +363,7 @@ type AndroidAttributes struct {
 	DataUsage          string
 	Visibility         string
 	NearbyShareVersion string
+	NearbyShareChannel string
 }
 
 // GetAndroidAttributes returns the AndroidAttributes for the device.
@@ -408,6 +410,12 @@ func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*Androi
 		return nil, err
 	}
 	metadata.NearbyShareVersion = nearbyVersion
+
+	nearbyChannel, err := a.device.ShellCommand(ctx, "sh", "-c", `dumpsys activity service com.google.android.gms/.chimera.PersistentApiService | grep -e "Account Type: .*"`).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	metadata.NearbyShareChannel = strings.TrimPrefix(strings.TrimSpace(string(nearbyChannel)), "Account Type: ")
 
 	return &metadata, nil
 }

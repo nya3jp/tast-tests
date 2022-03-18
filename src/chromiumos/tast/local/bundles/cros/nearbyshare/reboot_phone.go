@@ -22,7 +22,7 @@ func init() {
 			"kyleshima@chromium.org",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:    []string{"group:nearby-share"},
+		Attr:    []string{"group:nearby-share", "group:nearby-share-prod", "group:nearby-share-dev"},
 		Timeout: 3 * time.Minute,
 	})
 }

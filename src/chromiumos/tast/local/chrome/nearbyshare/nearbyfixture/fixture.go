@@ -54,6 +54,8 @@ func init() {
 	// We have a lot of fixtures for all the various Nearby Share use cases we test.
 	// Add new non-parent fixtures in separate files and functions to keep this one manageable.
 	addModulefoodAndroidFixtures()
+	addProdAndroidFixtures()
+	addDevAndroidFixtures()
 	addBackgroundScanningFixtures()
 	addARCFixtures()
 	addWebRTCAndWLANFixtures()
@@ -102,6 +104,9 @@ type FixtData struct {
 
 	// AndroidUsername is the GAIA account logged in on Android.
 	AndroidUsername string
+
+	// AndroidNearbyChannel is the channel of Nearby the phone is using.
+	AndroidNearbyChannel channel
 
 	// ARC is the ARC instance, if enabled.
 	ARC *arc.ARC
