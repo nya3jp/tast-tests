@@ -106,26 +106,17 @@ func Launch(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*La
 func LaunchWithURL(ctx context.Context, tconn *chrome.TestConn, lacrosPath, url string) (*Lacros, error) {
 	l, err := Launch(ctx, tconn, lacrosPath)
 
-	// Get all targets.
-	// TODO(edcourtney): Introduce matcher that matches everything.
-	ts, err := l.FindTargets(ctx, chrome.MatchTargetURLPrefix(""))
+	// Get all pages.
+	ts, err := l.FindTargets(ctx, chrome.MatchAllPages())
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to find targets")
+		return nil, errors.Wrap(err, "failed to find pages")
 	}
 
-	pc := 0
-	var pt *chrome.Target
-	for _, t := range ts {
-		if t.Type == "page" {
-			pc++
-			pt = t
-		}
-	}
-	if pc != 1 {
+	if len(ts) != 1 {
 		return nil, errors.Wrapf(err, "expected only one page target, got %v", ts)
 	}
 
-	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetID(pt.TargetID))
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetID(ts[0].TargetID))
 	if err := conn.Navigate(ctx, url); err != nil {
 		return nil, errors.Wrap(err, "failed to navigate to url")
 	}
