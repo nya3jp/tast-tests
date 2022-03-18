@@ -84,6 +84,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dda780bc_b780f508",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-18T03:20:13Z",
+      "side": 1,
+      "message": "Replied on the ash-chrome CL: \"Can the path ever be updated while lacros is running?\n\nJFYI the reason I included isRunning in this struct is so we can ignore lacrosPath if it\u0027s false. There may be some case we want the \u0027old\u0027 value of lacrosPath though, so I didn\u0027t go all the way and forcibly make it empty.\"",
+      "parentUuid": "aa73e3f4_55c1f28b",
+      "revId": "57ce25ba9eb2a28e8a9faa3bd2b0d63883df2432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b344a62_ff61e5de",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-18T03:20:13Z",
+      "side": 1,
+      "message": "ExecPath refers to chrome, so it\u0027s a path to an executable, so idk if it makes that much difference. Calling this LacrosPath is consistent with what it already means (temporally). Let me add a comment to clarify this.",
+      "parentUuid": "4d9ebe25_058ac156",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 11
+      },
+      "revId": "57ce25ba9eb2a28e8a9faa3bd2b0d63883df2432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71b56144_ab777c4e",
         "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
         "patchSetId": 1
@@ -118,6 +160,54 @@
       "writtenOn": "2022-03-17T13:51:53Z",
       "side": 1,
       "message": "could you clarify tconn needs to be the ash\u0027s one?",
+      "range": {
+        "startLine": 126,
+        "startChar": 34,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "57ce25ba9eb2a28e8a9faa3bd2b0d63883df2432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6778e58f_81b603ec",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-18T03:20:13Z",
+      "side": 1,
+      "message": "lint also won\u0027t let me call the struct LacrosInfo. changed to something else that emphasises that the info is a snapshot.",
+      "parentUuid": "71b56144_ab777c4e",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 12
+      },
+      "revId": "57ce25ba9eb2a28e8a9faa3bd2b0d63883df2432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9bcaeb_cb9c8671",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-18T03:20:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f22594be_f7a0bb72",
       "range": {
         "startLine": 126,
         "startChar": 34,
