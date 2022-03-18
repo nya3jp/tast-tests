@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d562695_4a0053f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-18T06:44:54Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm modulo nit",
+      "revId": "dea4d5e644c6c6dfc78dc999bef54973ff45fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24adefdb_de4a96d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-18T06:44:54Z",
+      "side": 1,
+      "message": "nit: no capital letter, phrase like \"failed to wait for power button press prompt\"",
+      "range": {
+        "startLine": 231,
+        "startChar": 33,
+        "endLine": 231,
+        "endChar": 74
+      },
+      "revId": "dea4d5e644c6c6dfc78dc999bef54973ff45fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
