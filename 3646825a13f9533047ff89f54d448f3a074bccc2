@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0a96bf1_b325b73c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-18T18:44:21Z",
+      "side": 1,
+      "message": "Approvals have been automatically reset again. What does everybody think now?",
+      "parentUuid": "58242b2d_c1c0f813",
+      "revId": "3646825a13f9533047ff89f54d448f3a074bccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa7fb235_390a746a",
         "filename": "android/ArcPipVideoTest/res/raw/shaka_720.webm",
         "patchSetId": 4
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "It is intentional, but now someone has already told me why it is not okay to put such a large file in the code base. I am seeking help to address that, here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3510834",
       "parentUuid": "aa7fb235_390a746a",
+      "revId": "3646825a13f9533047ff89f54d448f3a074bccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e178ba_7949d977",
+        "filename": "android/ArcPipVideoTest/res/raw/shaka_720.webm",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-18T18:44:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ab7c43_439a0de0",
       "revId": "3646825a13f9533047ff89f54d448f3a074bccc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
