@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee41a93c_b62360a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-03-18T11:39:35Z",
+      "side": 1,
+      "message": "Hmm, maybe you can try to add some logs to understand the information of CCA node, and then use such information with `nodewith.Name()` or any other method to get the node so that we can wait for it after starting the app.\n\nIf there is really no way to do so, I am also okay to keep it as is.",
+      "parentUuid": "8945b95b_0a185acb",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "1c56ee4bc5ccffb3a6e039f7d5ae1ce091bcc05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e00ad03e_507ccc28",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 6
