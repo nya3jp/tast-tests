@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27eefce3_3b4ec317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T10:33:49Z",
+      "side": 1,
+      "message": "Actually \"Intel, AMD, Qualcomm, Mediatek, Rockchip\"",
+      "parentUuid": "a2561189_f77ed579",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbae1210_cbfa98f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
         "patchSetId": 1
@@ -129,6 +153,30 @@
       "writtenOn": "2022-03-18T09:40:14Z",
       "side": 1,
       "message": "Would you use a stricter pattern for now?\nIt seems that Intel/AMD/Qualcomm use only [0-9A-Za-z -] in model name.\nhttps://paste.googleplex.com/6043915976179712\n \nWe can consider using more robust pattern when we promote this test to critical.",
+      "range": {
+        "startLine": 66,
+        "startChar": 10,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4116455_ae44c3c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T10:33:49Z",
+      "side": 1,
+      "message": "Actually Mediatek uses \"/\" in model name.",
+      "parentUuid": "19cbefc6_e8e92ced",
       "range": {
         "startLine": 66,
         "startChar": 10,
