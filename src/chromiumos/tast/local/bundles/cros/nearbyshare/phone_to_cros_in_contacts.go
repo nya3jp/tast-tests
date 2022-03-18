@@ -29,7 +29,6 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
@@ -41,6 +40,7 @@ func init() {
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 					MimeType:        nearbycommon.MimeTypeJpeg,
 				},
+				ExtraAttr: []string{"group:nearby-share"},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
@@ -53,6 +53,7 @@ func init() {
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 					MimeType:        nearbycommon.MimeTypePng,
 				},
+				ExtraAttr: []string{"group:nearby-share"},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
@@ -65,6 +66,7 @@ func init() {
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 					MimeType:        nearbycommon.MimeTypeJpeg,
 				},
+				ExtraAttr: []string{"group:nearby-share"},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
@@ -77,6 +79,7 @@ func init() {
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 					MimeType:        nearbycommon.MimeTypePng,
 				},
+				ExtraAttr: []string{"group:nearby-share"},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
@@ -89,6 +92,7 @@ func init() {
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 					MimeType:        nearbycommon.MimeTypeTextPlain,
 				},
+				ExtraAttr: []string{"group:nearby-share"},
 				ExtraData: []string{"big_txt.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
@@ -101,8 +105,37 @@ func init() {
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 					MimeType:        nearbycommon.MimeTypeTextPlain,
 				},
+				ExtraAttr: []string{"group:nearby-share"},
 				ExtraData: []string{"big_txt.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
+			// Android Nearby prod tests
+			{
+				Name:    "dataoffline_allcontacts_jpg11kb_prod",
+				Fixture: "nearbyShareDataUsageOfflineAllContactsProd",
+				Val: nearbycommon.TestData{
+					Filename:        "small_jpg.zip",
+					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
+					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+					MimeType:        nearbycommon.MimeTypeJpeg,
+				},
+				ExtraAttr: []string{"group:nearby-share-prod"},
+				ExtraData: []string{"small_jpg.zip"},
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+			},
+			// Android Nearby Dev tests
+			{
+				Name:    "dataoffline_allcontacts_jpg11kb_dev",
+				Fixture: "nearbyShareDataUsageOfflineAllContactsDev",
+				Val: nearbycommon.TestData{
+					Filename:        "small_jpg.zip",
+					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
+					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+					MimeType:        nearbycommon.MimeTypeJpeg,
+				},
+				ExtraAttr: []string{"group:nearby-share-dev"},
+				ExtraData: []string{"small_jpg.zip"},
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 		},
 	})

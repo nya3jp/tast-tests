@@ -67,13 +67,11 @@ func init() {
 		customCrOSUsername = "cros_username"
 		customCrOSPassword = "cros_password"
 
-		defaultAndroidUsername = "nearbyshare.android_username"
-		defaultAndroidPassword = "nearbyshare.android_password"
-
 		// Set this var to True to prevent the tests from clearing existing user accounts from the DUT.
 		keepState = nearbycommon.KeepStateVar
 	)
 
+	// Basic login fixtures for general CrOS<->Android sharing. The Android account for these fixtures uses the modulefood version of Nearby Share.
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareGAIALogin",
 		Desc: "CrOS login with GAIA and Nearby Share flags enabled",
@@ -122,6 +120,105 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 
+	// Basic login fixtures for general CrOS<->Android sharing. The Android account for these fixtures uses the production version of Nearby Share.
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginProd",
+		Desc: "CrOS login with GAIA and Nearby Share flags enabled",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetupProd",
+		Impl:   NewNearbyShareLogin(false, false, false, defaultMediums),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			prodAndroidUsername,
+			prodAndroidPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginAndroidAccountProd",
+		Desc: "CrOS login with Android nearby share account and Nearby Share enabled",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetupProd",
+		Impl:   NewNearbyShareLogin(false, false, true, defaultMediums),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			prodAndroidUsername,
+			prodAndroidPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	// Basic login fixtures for general CrOS<->Android sharing. The Android account for these fixtures uses the dev version of Nearby Share.
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginDev",
+		Desc: "CrOS login with GAIA and Nearby Share flags enabled",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetupDev",
+		Impl:   NewNearbyShareLogin(false, false, false, defaultMediums),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			devAndroidUsername,
+			devAndroidPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginAndroidAccountDev",
+		Desc: "CrOS login with Android nearby share account and Nearby Share enabled",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetupDev",
+		Impl:   NewNearbyShareLogin(false, false, true, defaultMediums),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			devAndroidUsername,
+			devAndroidPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	// Fixture for testing shares initiated via background scanning.
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareGAIALoginBackgroundScanningEnabled",
 		Desc: "CrOS login with GAIA; Nearby Share and Background scanning flags enabled",
@@ -146,6 +243,7 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 
+	// Fixture for testing shares initiated from the ARC sharesheet.
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareGAIALoginARCEnabled",
 		Desc: "CrOS login with GAIA, Nearby Share flags enabled, and ARC enabled",
@@ -171,6 +269,7 @@ func init() {
 		PostTestTimeout: resetTimeout,
 	})
 
+	// Fixtures for testing different online transfer media (WebRTC and WLAN).
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareGAIALoginWebRTCAndWLAN",
 		Desc: "CrOS login with GAIA; use WebRTC and WLAN upgrade mediums",
@@ -269,11 +368,20 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 		crosUsername = customUser
 		crosPassword = customPass
 	} else if f.useAndroidAccount {
-
 		// Logging in on the same account as the Phone ensures that certificates are distributed to the CrOS device. Android prepends the logged in account to contacts. This works around the delay in syncing contacts from contacts.google.com to the Phones local address book, causing the CrOS device to fail during discovery because it is not able to dec.
 		s.Log("Logging in with Android GAIA credentials")
-		crosUsername = s.RequiredVar("nearbyshare.android_username")
-		crosPassword = s.RequiredVar("nearbyshare.android_password")
+		switch s.ParentValue().(*FixtData).AndroidNearbyChannel {
+		case modulefood:
+			crosUsername = s.RequiredVar(defaultAndroidUsername)
+			crosPassword = s.RequiredVar(defaultAndroidPassword)
+		case prod:
+			crosUsername = s.RequiredVar(prodAndroidUsername)
+			crosPassword = s.RequiredVar(prodAndroidPassword)
+		case dev:
+			crosUsername = s.RequiredVar(devAndroidUsername)
+			crosPassword = s.RequiredVar(devAndroidPassword)
+		}
+
 	} else {
 		s.Log("Logging in with default GAIA credentials")
 	}
