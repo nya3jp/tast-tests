@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf968615_f382385a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2022-03-18T01:27:25Z",
+      "side": 1,
+      "message": "Please add Wes also in future Settings CLs.",
+      "revId": "1c6b7b0db1bdbe924bacdc1b1a40f82aa42b8be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0013e97b_9326f442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2022-03-18T01:27:25Z",
+      "side": 1,
+      "message": "nit: ensure the input node is visible.",
+      "range": {
+        "startLine": 144,
+        "startChar": 92,
+        "endLine": 144,
+        "endChar": 129
+      },
+      "revId": "1c6b7b0db1bdbe924bacdc1b1a40f82aa42b8be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0843d38_2e141dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2022-03-18T01:27:25Z",
+      "side": 1,
+      "message": "nit: be collapsed",
+      "range": {
+        "startLine": 144,
+        "startChar": 25,
+        "endLine": 144,
+        "endChar": 34
+      },
+      "revId": "1c6b7b0db1bdbe924bacdc1b1a40f82aa42b8be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
