@@ -33,6 +33,24 @@
       "message": "I\u0027ve had it suggested to me before that we should try to avoid direct command execution in favor of supporting libraries when possible.\n\nMaybe this function could be changed to use linuxssh.ReadFile[1] to get the remote file contents, and then use the regexp package to process them here instead? \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/ssh/linuxssh/fileutil.go;l\u003d52",
       "revId": "52d6ec75d12bedd54c387b4ac741b1fa2095885b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c565bbcf_f1957bcd",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-18T19:35:41Z",
+      "side": 1,
+      "message": "I like this idea better than using grep, I\u0027ve changed it to do that and split it up the file existence checking to a separate utility function.",
+      "parentUuid": "833fd64c_b2737991",
+      "revId": "52d6ec75d12bedd54c387b4ac741b1fa2095885b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
