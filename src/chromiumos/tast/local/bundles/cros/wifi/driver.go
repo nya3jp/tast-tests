@@ -12,10 +12,11 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/wifi/wlan"
+	dinfo "chromiumos/tast/local/bundles/cros/wifi/wlan"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/wlan"
 )
 
 func init() {
@@ -31,7 +32,7 @@ func init() {
 	})
 }
 
-var expectedWLANDriver = map[string]map[string]string{
+var expectedWLANDriver = map[int32]map[string]string{
 	wlan.Intel7260: {
 		"3.8":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"3.14": "wireless-3.8/iwl7000/iwlwifi/iwlwifi.ko",
@@ -153,16 +154,16 @@ func Driver(ctx context.Context, s *testing.State) {
 	// TODO(oka): Original test skips if "wifi" is not initialized (USE="-wifi").
 	// Consider if we should do it.
 	// https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/890121
-	devInfo, err := wlan.DeviceInfo(ctx, netIf)
+	devInfo, err := wlan.DeviceInfo()
 	if err != nil {
 		s.Fatal("Failed to get device name: ", err)
 	}
 
 	// If the device is Intel, check if it supports
 	// 160 MHz / 80 MHz wide channels and log this information.
-	wlan.LogBandwidthSupport(ctx, devInfo)
+	dinfo.LogBandwidthSupport(ctx, devInfo)
 
-	if _, ok := expectedWLANDriver[devInfo.Name]; !ok {
+	if _, ok := expectedWLANDriver[devInfo.ID]; !ok {
 		s.Fatal("Unexpected device ", devInfo.Name)
 	}
 
@@ -172,7 +173,7 @@ func Driver(ctx context.Context, s *testing.State) {
 	}
 	baseRevision := strings.Join(strings.Split(u.Release, ".")[:2], ".")
 
-	expectedPath, ok := expectedWLANDriver[devInfo.Name][baseRevision]
+	expectedPath, ok := expectedWLANDriver[devInfo.ID][baseRevision]
 	if !ok {
 		s.Fatalf("Unexpected base revision %v for device %v", baseRevision, devInfo.Name)
 	}
