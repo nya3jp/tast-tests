@@ -130,6 +130,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f624ab3_ea274c5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-18T00:02:02Z",
+      "side": 1,
+      "message": "Do you think this func can be better placed in the test_fixture.go file? I suspect this delay function can potentially be used to also help address other racey tests.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92212f54_86394bb5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
         "patchSetId": 1
@@ -215,6 +238,29 @@
         "startChar": 1,
         "endLine": 59,
         "endChar": 6
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9640f139_beab8697",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-18T00:02:02Z",
+      "side": 1,
+      "message": "should we have a new timeout here? I\u0027m concerned about the situation where we report a timeout in this function when RequestScans takes up the vast majority of the timeout time which will make this function look erroneous when in fact RequestScans is problematic. WDYT?",
+      "range": {
+        "startLine": 60,
+        "startChar": 40,
+        "endLine": 60,
+        "endChar": 50
       },
       "revId": "b829ed4908aa60f161799188950254a05d1927fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
