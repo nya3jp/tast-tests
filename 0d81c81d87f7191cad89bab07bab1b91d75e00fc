@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817ec0ca_0690319e",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-18T22:20:19Z",
+      "side": 1,
+      "message": "nit: Maybe s/We/Mali_stats/ ? (Because we don\u0027t normalize by\nfrequency in this file.",
+      "range": {
+        "startLine": 176,
+        "startChar": 50,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "0d81c81d87f7191cad89bab07bab1b91d75e00fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fcca70_2e5a4eda",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-18T22:20:19Z",
+      "side": 1,
+      "message": "nit: Just double checking that running mali_stats every\n10 milliseconds is not too often? IOW if the command is\ngoing to integrate the GPU utilization along a period of\ntime, we could run it e.g. every second (usually |interval|\nis 25s FTR).",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 33
+      },
+      "revId": "0d81c81d87f7191cad89bab07bab1b91d75e00fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a07e5b_d25bcbcf",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-18T22:20:19Z",
+      "side": 1,
+      "message": "nit: Shouldn\u0027t this go in l.198? I.e. directly return nil if \nParseFloat() fails.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 3
+      },
+      "revId": "0d81c81d87f7191cad89bab07bab1b91d75e00fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
