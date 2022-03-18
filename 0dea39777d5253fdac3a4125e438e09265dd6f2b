@@ -212,6 +212,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e4ee91b_8b7b496e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_background_graphics_default.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-18T12:30:13Z",
+      "side": 1,
+      "message": "oh... that\u0027s interesting. I think you are right and closeBrowser() should close the lacros browser. I was confused a bit, because faillog.DumpUITreeWithScreenshotOnError does not depend on \"conn\" object created at tline 100.\n\nCan you add a brief comment before this statement that we need to dump UI tree before closing browser?\n\nOne more moment, you can use cleanupCtx for that function as well.",
+      "parentUuid": "a58a43ef_8f04a207",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 104
+      },
+      "revId": "0dea39777d5253fdac3a4125e438e09265dd6f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1af3183_3299be45",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_background_graphics_default.go",
         "patchSetId": 1
