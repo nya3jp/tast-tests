@@ -50,6 +50,23 @@
       "message": "Is it possible to split the cl into smaller ones? Usually, it would be easy to review if the size of cl is under 150 lines.",
       "revId": "21a5df9de1373e0d7e8fbec0d586fb6f3a8eb198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26d3c2a_4784c132",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-03-18T21:15:48Z",
+      "side": 1,
+      "message": "Chris, is it possible to split this cl into only one dock test with its required libraries? This will greatly speed up the code review process. ",
+      "revId": "21a5df9de1373e0d7e8fbec0d586fb6f3a8eb198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
