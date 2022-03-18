@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "17e88bd9adf1f03c5d574a7cbb21d229e2aa018e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64836ddc_397b3a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle_temperature.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-18T09:10:48Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d thermal.Snapshot(...); err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "17e88bd9adf1f03c5d574a7cbb21d229e2aa018e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
