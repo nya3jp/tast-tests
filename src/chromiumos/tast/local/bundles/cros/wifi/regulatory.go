@@ -64,6 +64,7 @@ func Regulatory(ctx context.Context, s *testing.State) {
 		wlan.Intel22560,
 		wlan.IntelAX211,
 		wlan.QualcommWCN6855,
+		wlan.QualcommWCN6750,
 	}
 
 	expectSelfManaged := false
