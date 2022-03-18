@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c309e20e_045cf2f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-18T18:31:52Z",
+      "side": 1,
+      "message": "Adding rnanjappan@ for owners approval.",
+      "revId": "a2b1f5a3959e5325c15afb65de4406e62601a485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
