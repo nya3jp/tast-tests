@@ -47,8 +47,9 @@ func DefaultCoolDownConfig(mode CoolDownMode) CoolDownConfig {
 	}
 }
 
-// WaitUntilCoolDown waits until CPU is cooled down and returns the time it took to cool down.
-func WaitUntilCoolDown(ctx context.Context, config CoolDownConfig) (time.Duration, error) {
+// Temperature returns the CPU temperature in milli-Celsius units. It
+// also returns the name of the thermal zone it chose.
+func Temperature(ctx context.Context) (int, string, error) {
 	const (
 		// thermalZonePath is the path to thermal zone directories.
 		thermalZonePath = "/sys/class/thermal/thermal_zone*"
@@ -62,6 +63,52 @@ func WaitUntilCoolDown(ctx context.Context, config CoolDownConfig) (time.Duratio
 		"charger-thermal",
 	}
 
+	zonePaths, err := filepath.Glob(thermalZonePath)
+	if err != nil || len(zonePaths) == 0 {
+		return 0, "", errors.Wrapf(err, "failed to glob %s", thermalZonePath)
+	}
+
+	for _, zonePath := range zonePaths {
+		b, err := ioutil.ReadFile(filepath.Join(zonePath, "mode"))
+		// No need to return on error because mode file doesn't always exist.
+		if err == nil && strings.TrimSpace(string(b)) == "disabled" {
+			continue
+		}
+
+		zoneTypePath := filepath.Join(zonePath, "type")
+		b, err = ioutil.ReadFile(zoneTypePath)
+		if err != nil {
+			return 0, "", errors.Wrapf(err, "failed to read %q", zoneTypePath)
+		}
+		zoneType := strings.TrimSpace(string(b))
+		ignoreZone := false
+		for _, zoneToIgnore := range thermalIgnoreTypes {
+			if strings.Contains(zoneType, zoneToIgnore) {
+				ignoreZone = true
+				break
+			}
+		}
+		if ignoreZone {
+			continue
+		}
+
+		zoneTempPath := filepath.Join(zonePath, "temp")
+		b, err = ioutil.ReadFile(zoneTempPath)
+		if err != nil {
+			return 0, "", errors.Wrapf(err, "failed to read %q", zoneTempPath)
+		}
+		zoneTemp, err := strconv.Atoi(strings.TrimSpace(string(b)))
+		if err != nil {
+			return 0, "", errors.Wrapf(err, "failed to parse temperature value in %q", zoneTempPath)
+		}
+
+		return zoneTemp, zoneType, nil
+	}
+	return 0, "", errors.New("could not find valid thermal zone to read temperature from")
+}
+
+// WaitUntilCoolDown waits until CPU is cooled down and returns the time it took to cool down.
+func WaitUntilCoolDown(ctx context.Context, config CoolDownConfig) (time.Duration, error) {
 	timeBefore := time.Now()
 
 	switch config.CoolDownMode {
@@ -77,56 +124,16 @@ func WaitUntilCoolDown(ctx context.Context, config CoolDownConfig) (time.Duratio
 		return 0, errors.New("invalid cool down mode")
 	}
 
-	zonePaths, err := filepath.Glob(thermalZonePath)
-	if err != nil || len(zonePaths) == 0 {
-		return 0, errors.Wrapf(err, "failed to glob %s", thermalZonePath)
-	}
-
 	testing.ContextLog(ctx, "Waiting until CPU is cooled down")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		for _, zonePath := range zonePaths {
-			b, err := ioutil.ReadFile(filepath.Join(zonePath, "mode"))
-			// No need to return on error because mode file doesn't always exist.
-			if err == nil && strings.TrimSpace(string(b)) == "disabled" {
-				continue
-			}
+		t, z, err := Temperature(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get CPU temperature"))
+		}
 
-			zoneTypePath := filepath.Join(zonePath, "type")
-			b, err = ioutil.ReadFile(zoneTypePath)
-			if err != nil {
-				return testing.PollBreak(
-					errors.Wrapf(err, "failed to read %q", zoneTypePath))
-			}
-			zoneType := strings.TrimSpace(string(b))
-			ignoreZone := false
-			for _, zoneToIgnore := range thermalIgnoreTypes {
-				if strings.Contains(zoneType, zoneToIgnore) {
-					ignoreZone = true
-					break
-				}
-			}
-			if ignoreZone {
-				continue
-			}
-
-			zoneTempPath := filepath.Join(zonePath, "temp")
-			b, err = ioutil.ReadFile(zoneTempPath)
-			if err != nil {
-				return testing.PollBreak(
-					errors.Wrapf(err, "failed to read %q", zoneTempPath))
-			}
-			zoneTemp, err := strconv.Atoi(strings.TrimSpace(string(b)))
-			if err != nil {
-				return testing.PollBreak(errors.Wrapf(err,
-					"failed to parse temperature value in %q", zoneTempPath))
-			}
-
-			if zoneTemp > config.TemperatureThreshold {
-				testing.ContextLogf(ctx, "Waiting until %s temperature (%d) falls below %d",
-					zoneType, zoneTemp, config.TemperatureThreshold)
-				return errors.Errorf("timed out while waiting until %s temperature (%d) falls below %d",
-					zoneType, zoneTemp, config.TemperatureThreshold)
-			}
+		if t > config.TemperatureThreshold {
+			testing.ContextLogf(ctx, "Waiting until %s temperature (%d) falls below %d", z, t, config.TemperatureThreshold)
+			return errors.Errorf("timed out while waiting until %s temperature (%d) falls below %d", z, t, config.TemperatureThreshold)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: config.PollTimeout, Interval: config.PollInterval}); err != nil {
