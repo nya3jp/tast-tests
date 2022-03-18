@@ -6,8 +6,6 @@ package ui
 
 import (
 	"context"
-	"net/http"
-	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"time"
@@ -215,29 +213,26 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, conns.TestConn)
 
-	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer srv.Close()
-
-	connPiP, err := conns.Source.NewConn(ctx, srv.URL+"/pip.html")
+	connPiP, err := conns.Source.NewConn(ctx, conns.PipVideoTestURL)
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
 	defer connPiP.Close()
 	// Close the browser window at the end of the test. If it is left playing a video, it
-	// will cause the above-deferred function call srv.Close() to block for a few minutes.
+	// will cause the test server's Close() function to block for a few minutes.
 	defer connPiP.CloseTarget(closeCtx)
 
 	if err := webutil.WaitForQuiescence(ctx, connPiP, timeout); err != nil {
 		s.Fatal("Failed to wait for pip.html to achieve quiescence: ", err)
 	}
 
-	connNoPiP, err := conns.Source.NewConn(ctx, srv.URL+"/pip.html")
+	connNoPiP, err := conns.Source.NewConn(ctx, conns.PipVideoTestURL)
 	if err != nil {
 		s.Fatal("Failed to load pip.html: ", err)
 	}
 	defer connNoPiP.Close()
 	// Close the browser window at the end of the test. If it is left playing a video, it
-	// will cause the above-deferred function call srv.Close() to block for a few minutes.
+	// will cause the test server's Close() function to block for a few minutes.
 	defer connNoPiP.CloseTarget(closeCtx)
 
 	if err := webutil.WaitForQuiescence(ctx, connNoPiP, timeout); err != nil {
