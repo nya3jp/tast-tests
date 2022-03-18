@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecedf4fc_89d81da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-18T12:25:21Z",
+      "side": 1,
+      "message": "ack. makes sense.",
+      "parentUuid": "6ff1c9d6_41a9d80b",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97148adf_da9851c7",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Not sure I understand what you mean here: `ctx` is implicitly in scope of the body of the anonymous function because it\u0027s in the surrounding scope. Do you suggest adding a `ctx context.Context` parameter to the anonymous function and pass the surrounding `ctx` value as a parameter?",
       "parentUuid": "f014e63a_6c754e54",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d1b41c_46cdc514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-18T12:25:21Z",
+      "side": 1,
+      "message": "Yes, it\u0027s error prone to implicitly use context from another scope.",
+      "parentUuid": "115b6e1e_b1e163a6",
       "range": {
         "startLine": 64,
         "startChar": 2,
