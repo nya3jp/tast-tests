@@ -115,7 +115,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	s.Log("Checking that Lacros window is visible")
 	if err := lacros.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
 		// Grab Lacros logs to assist debugging before exiting.
-		lacrosfaillog.Save(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath())
+		lacrosfaillog.Save(ctx, tconn)
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 

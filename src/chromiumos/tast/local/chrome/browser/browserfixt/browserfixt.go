@@ -128,14 +128,9 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *LacrosConfig,
 			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome test API")
 		}
 
-		lacrosPath, err := lacrosfixt.EnsureLacrosReadyForLaunch(ctx, cfg)
-		if err != nil {
-			return nil, nil, nil, errors.Wrap(err, "failed to wait for lacros-chrome to be ready")
-		}
-
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
-			lacrosfaillog.Save(ctx, lacrosPath)
+			lacrosfaillog.Save(ctx, tconn)
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
 		closeBrowser := func(ctx context.Context) {

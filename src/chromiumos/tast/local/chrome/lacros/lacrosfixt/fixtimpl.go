@@ -267,7 +267,6 @@ type fixtValueImpl struct {
 	chrome      *chrome.Chrome
 	testAPIConn *chrome.TestConn
 	mode        SetupMode
-	lacrosPath  string
 }
 
 // Chrome gets the CrOS-chrome instance.
@@ -285,20 +284,14 @@ func (f *fixtValueImpl) Mode() SetupMode {
 	return f.mode
 }
 
-// LacrosPath gets the root directory for lacros-chrome.
-func (f *fixtValueImpl) LacrosPath() string {
-	return f.lacrosPath
-}
-
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
 type fixtImpl struct {
-	mode       SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath string                                        // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
-	cr         *chrome.Chrome                                // Connection to CrOS-chrome.
-	tconn      *chrome.TestConn                              // Test-connection for CrOS-chrome.
-	prepared   bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	fOpt       chrome.OptionsCallback                        // Function to generate Chrome Options
-	makeValue  func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
+	mode      SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
+	cr        *chrome.Chrome                                // Connection to CrOS-chrome.
+	tconn     *chrome.TestConn                              // Test-connection for CrOS-chrome.
+	prepared  bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	fOpt      chrome.OptionsCallback                        // Function to generate Chrome Options
+	makeValue func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
 }
 
 // SetUp is called by tast before each test is run. We use this method to initialize
@@ -308,7 +301,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	defer st.End()
 
 	if f.prepared {
-		s.Logf("Fixture has already been prepared. Returning a cached one. mode: %v, lacros path: %v", f.mode, f.lacrosPath)
+		s.Log("Fixture has already been prepared. Returning a cached one. mode: ", f.mode)
 		return f.buildFixtData(ctx, s)
 	}
 
@@ -347,13 +340,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	lacrosPath, err := EnsureLacrosReadyForLaunch(ctx, cfg)
-	if err != nil {
-		s.Fatal("Failed to wait for the lacros binary to be ready for use: ", err)
+	if cfg.deployed {
+		testing.ContextLog(ctx, "Using lacros located at ", cfg.deployedPath)
 	}
-	f.lacrosPath = lacrosPath
-
-	testing.ContextLog(ctx, "Using lacros located at ", f.lacrosPath)
 
 	val := f.buildFixtData(ctx, s)
 	chrome.Lock()
@@ -417,5 +406,5 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath}
+	return &fixtValueImpl{f.cr, f.tconn, f.mode}
 }

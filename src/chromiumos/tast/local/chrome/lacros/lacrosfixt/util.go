@@ -5,15 +5,11 @@
 package lacrosfixt
 
 import (
-	"context"
 	"io/ioutil"
-	"path/filepath"
 	"strings"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
 )
 
 // ExtensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
@@ -117,71 +113,19 @@ func DefaultOpts(cfg *LacrosConfig) ([]chrome.Option, error) {
 	case LacrosOnly:
 		return nil, errors.New("options for LacrosOnly not implemented")
 	}
-	return opts, nil
-}
-
-// EnsureLacrosReadyForLaunch waits for the lacros binary to be provisioned and ready for launch in test,
-// then returns the following variables used to launch:
-// - the dir of lacros executable file ('chrome')
-func EnsureLacrosReadyForLaunch(ctx context.Context, cfg *LacrosConfig) (string, error) {
-	testing.ContextLogf(ctx, "Waiting for Lacros ready with config: %+v", cfg)
-	if cfg.deployed {
-		// Skip preparing the lacros binary if it is already deployed for use.
-		return cfg.deployedPath, nil
-	}
 
 	// Throw an error if lacros has been deployed, but the var lacrosDeployedBinary is unset.
-	if cfg.SetupMode == Omaha || cfg.SetupMode == Rootfs {
+	if !cfg.deployed && (cfg.SetupMode == Omaha || cfg.SetupMode == Rootfs) {
 		config, err := ioutil.ReadFile("/etc/chrome_dev.conf")
 		if err == nil {
 			for _, line := range strings.Split(string(config), "\n") {
 				line = strings.TrimSpace(line)
 				if strings.HasPrefix(line, "--lacros-chrome-path") {
-					return "", errors.New("found --lacros-chrome-path in /etc/chrome_dev.conf, but lacrosDeployedBinary is not specified")
+					return nil, errors.New("found --lacros-chrome-path in /etc/chrome_dev.conf, but lacrosDeployedBinary is not specified")
 				}
 			}
 		}
 	}
 
-	// Prepare the lacros binary if it isn't deployed already via lacrosDeployedBinary.
-	var lacrosPath string
-	switch cfg.SetupMode {
-	case Rootfs:
-		// When launched from the rootfs partition, the lacros-chrome is already located
-		// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
-		matches, err := waitForPathToExist(ctx, "/run/lacros/chrome")
-		if err != nil {
-			return "", errors.Wrap(err, "failed to find lacros binary")
-		}
-		lacrosPath = filepath.Dir(matches[0])
-	case Omaha:
-		// When launched by Omaha we need to wait several seconds for lacros to be launchable.
-		// It is ready when the image loader path is created with the chrome executable.
-		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
-		matches, err := waitForPathToExist(ctx, "/run/imageloader/lacros-dogfood*/*/chrome")
-		if err != nil {
-			return "", errors.Wrap(err, "failed to find lacros binary")
-		}
-		lacrosPath = filepath.Dir(matches[0])
-	default:
-		return "", errors.Errorf("Unrecognized mode: %s", cfg.SetupMode)
-	}
-
-	return lacrosPath, nil
-}
-
-// waitForPathToExist is a helper method that waits the given binary path to be present
-// then returns the matching paths or it will be timed out if the ctx's timeout is reached.
-func waitForPathToExist(ctx context.Context, pattern string) (matches []string, err error) {
-	return matches, testing.Poll(ctx, func(ctx context.Context) error {
-		m, err := filepath.Glob(pattern)
-		if err != nil {
-			return errors.Wrapf(err, "binary path does not exist yet. expected: %v", pattern)
-		}
-		if len(m) == 0 {
-			return errors.New("binary path does not exist yet. expected: " + pattern)
-		}
-		matches = append(matches, m...)
-		return nil
-	}, &testing.PollOptions{Interval: 5 * time.Second})
+	return opts, nil
 }
