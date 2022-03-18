@@ -207,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc184228_09ab98ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-18T15:07:03Z",
+      "side": 1,
+      "message": "Ok, good to know",
+      "parentUuid": "65d1b41c_46cdc514",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "57a55834ed1cc808e88e0745f272799fc2f5ea7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16223a48_c4d8baeb",
