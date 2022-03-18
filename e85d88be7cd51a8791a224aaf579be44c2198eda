@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2149fc9_4b1f90b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T09:40:14Z",
+      "side": 1,
+      "message": "Please make yourself the first contact.",
+      "range": {
+        "startLine": 22,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 66
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9f971c_232e2a6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T09:40:14Z",
+      "side": 1,
+      "message": "Would you file a separate bug for this instead of using b/175610620 ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279f5aee_7fb48185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T09:40:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2561189_f77ed579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T09:40:14Z",
+      "side": 1,
+      "message": "Would you do allowlist based matching for manufacturer?\n\nI think it\u0027s useful to confirm all possible SOC manufacturers on existing ChromeOS devices using this test.\n\nMaybe we can start with \"Intel, AMD, Qualcomm\".",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbae1210_cbfa98f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T09:40:14Z",
+      "side": 1,
+      "message": "How about dumping /proc/cpuinfo and /sys/devices/soc0/machine in tast log when getProperty returns nil?\n out, err :\u003d ioutil.ReadFile(\"/proc/cpuinfo\")\n s.Logf(...)\n \n(I know arc_property_util.cc also dumps /proc/cpuinfo in arc.log, but arc.log is a bit too large so showing it in tast log would be more convenient.)",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19cbefc6_e8e92ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T09:40:14Z",
+      "side": 1,
+      "message": "Would you use a stricter pattern for now?\nIt seems that Intel/AMD/Qualcomm use only [0-9A-Za-z -] in model name.\nhttps://paste.googleplex.com/6043915976179712\n \nWe can consider using more robust pattern when we promote this test to critical.",
+      "range": {
+        "startLine": 66,
+        "startChar": 10,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b368de99_f4f67361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-18T09:40:14Z",
+      "side": 1,
+      "message": "I think it\u0027s useful to show found manufacturer/model in log even when match succeeds.\n\ns.Logf(...)",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "e85d88be7cd51a8791a224aaf579be44c2198eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
