@@ -31,9 +31,9 @@ func init() {
 
 func readTCC(ctx context.Context) (int, int, error) {
 	// Read MSR at 0x1a2h for TCC and TCC offset
-	out, err := testexec.CommandContext(ctx, "iotools", "rdmsr", "0", "0x1a2h").Output()
+	out, err := testexec.CommandContext(ctx, "iotools", "rdmsr", "0", "0x1a2").Output()
 	if err != nil {
-		return 0, 0, errors.Wrap(err, "can't read MSR 0x1a2h")
+		return 0, 0, errors.Wrap(err, "can't read MSR 0x1a2")
 	}
 	rawData, err := strconv.ParseInt(strings.TrimSuffix(string(out), "\n"), 0, 64)
 	if err != nil {
