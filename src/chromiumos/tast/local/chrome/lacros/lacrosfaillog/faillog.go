@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/faillog"
@@ -24,9 +25,10 @@ const lacrosFaillogDir = "lacros_faillog"
 
 // SaveIf saves a lacros specific faillog if the hasError closure returns true.
 // The intended use for this is to pass testing.State's HasError to this.
-func SaveIf(ctx context.Context, lacrosPath string, hasError func() bool) {
+// tconn should be the ash-chrome TestConn.
+func SaveIf(ctx context.Context, tconn *chrome.TestConn, hasError func() bool) {
 	if hasError() {
-		Save(ctx, lacrosPath)
+		Save(ctx, tconn)
 	}
 }
 
@@ -34,7 +36,8 @@ func SaveIf(ctx context.Context, lacrosPath string, hasError func() bool) {
 // then it does nothing. This is to support the use case of adding multiple
 // calls to Save over a test, and only getting the faillog for the first
 // failure.
-func Save(ctx context.Context, lacrosPath string) {
+// tconn should be the ash-chrome TestConn.
+func Save(ctx context.Context, tconn *chrome.TestConn) {
 	// Runs the given command with redirecting its stdout to outpath.
 	// On error, logging it then ignored.
 	run := func(outpath string, cmds ...string) {
@@ -79,7 +82,12 @@ func Save(ctx context.Context, lacrosPath string) {
 	run(filepath.Join(dir, "mount.txt"), "mount")
 
 	// Also check the dearchived files.
-	run(filepath.Join(dir, "lacros-ls.txt"), "ls", "-l", lacrosPath)
+	info, err := lacros.InfoSnapshot(ctx, tconn)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get lacros info: ", err)
+	} else {
+		run(filepath.Join(dir, "lacros-ls.txt"), "ls", "-l", info.LacrosPath)
+	}
 
 	// Copy lacros log at the point of failure.
 	if err := fsutil.CopyFile(lacrosfixt.LacrosLogPath, filepath.Join(dir, "lacros.log")); err != nil {

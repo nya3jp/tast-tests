@@ -45,7 +45,7 @@ func AudioPlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
 	defer func() {
-		lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath(), s.HasError)
+		lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn(), s.HasError)
 		l.Close(ctx)
 	}()
 

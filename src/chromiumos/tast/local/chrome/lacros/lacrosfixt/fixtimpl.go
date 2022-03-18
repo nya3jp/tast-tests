@@ -270,7 +270,6 @@ type fixtValueImpl struct {
 	chrome      *chrome.Chrome
 	testAPIConn *chrome.TestConn
 	mode        SetupMode
-	lacrosPath  string
 }
 
 // Chrome gets the CrOS-chrome instance.
@@ -288,20 +287,14 @@ func (f *fixtValueImpl) Mode() SetupMode {
 	return f.mode
 }
 
-// LacrosPath gets the root directory for lacros-chrome.
-func (f *fixtValueImpl) LacrosPath() string {
-	return f.lacrosPath
-}
-
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
 type fixtImpl struct {
-	mode       SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath string                                        // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
-	cr         *chrome.Chrome                                // Connection to CrOS-chrome.
-	tconn      *chrome.TestConn                              // Test-connection for CrOS-chrome.
-	prepared   bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	fOpt       chrome.OptionsCallback                        // Function to generate Chrome Options
-	makeValue  func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
+	mode      SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
+	cr        *chrome.Chrome                                // Connection to CrOS-chrome.
+	tconn     *chrome.TestConn                              // Test-connection for CrOS-chrome.
+	prepared  bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	fOpt      chrome.OptionsCallback                        // Function to generate Chrome Options
+	makeValue func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
 }
 
 // SetUp is called by tast before each test is run. We use this method to initialize
@@ -311,7 +304,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	defer st.End()
 
 	if f.prepared {
-		s.Logf("Fixture has already been prepared. Returning a cached one. mode: %v, lacros path: %v", f.mode, f.lacrosPath)
+		s.Log("Fixture has already been prepared. Returning a cached one. mode: ", f.mode)
 		return f.buildFixtData(ctx, s)
 	}
 
@@ -362,11 +355,10 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	// This workaround is to be removed soon once lab provisioning is supported for Lacros.
 	deployedPath, deployed := s.Var(LacrosDeployedBinary)
 	if deployed {
-		f.lacrosPath = deployedPath
-
+		testing.ContextLog(ctx, "Using lacros located at ", deployedPath)
 		// If deployed we should specify the path.
 		// This will override the lacros-selection argument.
-		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+f.lacrosPath))
+		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+deployedPath))
 	}
 
 	// If there's a parent fixture and the fixture supplies extra options, use them.
@@ -394,30 +386,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 				}
 			}
 		}
-		switch f.mode {
-		case Rootfs:
-			// When launched from the rootfs partition, the lacros-chrome is already located
-			// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
-			matches, err := f.waitForPathToExist(ctx, "/run/lacros/chrome")
-			if err != nil {
-				s.Fatal("Failed to find lacros binary: ", err)
-			}
-			f.lacrosPath = filepath.Dir(matches[0])
-		case Omaha:
-			// When launched by Omaha we need to wait several seconds for lacros to be launchable.
-			// It is ready when the image loader path is created with the chrome executable.
-			testing.ContextLog(ctx, "Waiting for Lacros to initialize")
-			matches, err := f.waitForPathToExist(ctx, "/run/imageloader/lacros-dogfood*/*/chrome")
-			if err != nil {
-				s.Fatal("Failed to find lacros binary: ", err)
-			}
-			f.lacrosPath = filepath.Dir(matches[0])
-		default:
-			s.Fatal("Unrecognized mode: ", f.mode)
-		}
 	}
-
-	testing.ContextLog(ctx, "Using lacros located at ", f.lacrosPath)
 
 	val := f.buildFixtData(ctx, s)
 	chrome.Lock()
@@ -481,21 +450,5 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath}
-}
-
-// waitForPathToExist is a helper method that waits the given binary path to be present
-// then returns the matching paths or it will be timed out if the ctx's timeout is reached.
-func (f *fixtImpl) waitForPathToExist(ctx context.Context, pattern string) (matches []string, err error) {
-	return matches, testing.Poll(ctx, func(ctx context.Context) error {
-		m, err := filepath.Glob(pattern)
-		if err != nil {
-			return errors.Wrapf(err, "binary path does not exist yet. expected: %v", pattern)
-		}
-		if len(m) == 0 {
-			return errors.New("binary path does not exist yet. expected: " + pattern)
-		}
-		matches = append(matches, m...)
-		return nil
-	}, &testing.PollOptions{Interval: 5 * time.Second})
+	return &fixtValueImpl{f.cr, f.tconn, f.mode}
 }
