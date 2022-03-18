@@ -186,6 +186,11 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
 func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	r := &Recorder{cr: cr}
 
 	var err error
@@ -259,14 +264,14 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if success {
 			return
 		}
 		if err := r.frameDataTracker.Stop(ctx, r.tconn); err != nil {
 			testing.ContextLog(ctx, "Failed to stop frame data tracker: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	if err := r.zramInfoTracker.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start ZramInfoTracker")
