@@ -16,6 +16,109 @@
       "message": "sorry for the delay, I have not had much time this week. I will try to get to this tomorrow, but feel free to assign a different reviewer if you need this sooner",
       "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515f4cb0_95e4a801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T00:36:19Z",
+      "side": 1,
+      "message": "Mostly looks good from a Tast perspective, just a few q\u0027s and comments. You may also want to have someone more familiar with the domain review this test as well (we usually recommend a teammate or someone with domain knowledge review the test in addition to a Tast reviewer)",
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4969f17_b5c73f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T00:36:19Z",
+      "side": 1,
+      "message": "is this arg always part of the command? if so, maybe this could be simpler by omitting \"--duration\" and \"\" from `quipperArgs`, and then then using append() to build the final thing here without a loop",
+      "range": {
+        "startLine": 75,
+        "startChar": 13,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161cf9c7_75b4cebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T00:36:19Z",
+      "side": 1,
+      "message": "It might help to define this as a constant somewhere and add some context, as someone unfamiliar with this test\u0027s contents, it is a bit mysterious",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6051a4b_359d9616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T00:36:19Z",
+      "side": 1,
+      "message": "While I don\u0027t think there\u0027s any specific guidance against it, modifying the test params within the subtests seems a bit odd to me and contrary to the purpose of using params. Some commentary would be good here to point out why you need to use a different value than the one provided in the params. Maybe it might also make sense to change `getPerfOutput` to accept a variable duration input - then you can use tc.durationSecs for subtests that should use the parameter value, and different values for special casees.",
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "860d8478_82386e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T00:36:19Z",
+      "side": 1,
+      "message": "maybe return (bool, error) to properly surface errors to help with debugging?",
+      "range": {
+        "startLine": 247,
+        "startChar": 59,
+        "endLine": 247,
+        "endChar": 63
+      },
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
