@@ -9,9 +9,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
@@ -24,6 +27,11 @@ const (
 	chromeAppTest rearrangmentTestType = "ChromeAppTest" // Verify the rearrangement behavior on a Chrome app.
 	fileAppTest   rearrangmentTestType = "FileAppTest"   // Verify the rearrangement behavior on the File app.
 )
+
+type testParam struct {
+	bt       browser.Type
+	testType rearrangmentTestType
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -41,32 +49,53 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "rearrange_chrome_apps",
-				Val:     chromeAppTest,
+				Val:     testParam{browser.TypeAsh, chromeAppTest},
 				Fixture: "install2Apps",
 			},
 			{
 				Name:    "rearrange_file_app",
-				Val:     fileAppTest,
+				Val:     testParam{browser.TypeAsh, fileAppTest},
 				Fixture: "chromeLoggedIn",
 			},
+			{
+				Name:              "rearrange_chrome_apps_lacros",
+				Val:               testParam{browser.TypeLacros, chromeAppTest},
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "install2Apps",
+			},
 		},
+		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
 // AppRearrangement tests app icon rearrangement on the shelf.
 func AppRearrangement(ctx context.Context, s *testing.State) {
+	// Reserve some time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	var cr *chrome.Chrome
 
-	testType := s.Param().(rearrangmentTestType)
+	testType := s.Param().(testParam).testType
+	bt := s.Param().(testParam).bt
 	switch testType {
 	case chromeAppTest:
+		var closeBrowser func(ctx context.Context)
 		var err error
-		cr, err = chrome.New(ctx, s.FixtValue().([]chrome.Option)...)
-
+		// TODO(crbug.com/1309565): The install2Apps or else should return the fake app extensions for primary browser.
+		opts := s.FixtValue().([]chrome.Option)
+		// TODO(crbug.com/1302531): Figure out how to disable web apps installation. Otherwise, default apps will get populated in the shelf during testing, causing the test to fail to verify the shelf indices of the target app.
+		opts = append(opts, chrome.LacrosExtraArgs("--disable-default-apps"))
+		// Connect to a fresh ash-chrome instance (cr) and get a browser instance (br) for browser functionality.
+		cr, _ /*br*/, closeBrowser, err = browserfixt.SetUpWithNewChrome(
+			ctx, bt, browserfixt.DefaultLacrosConfig.WithVar(s), opts...)
 		if err != nil {
-			s.Fatal("Failed to start chrome: ", err)
+			s.Fatalf("Failed to start %v browser: %v", bt, err)
 		}
-		defer cr.Close(ctx)
+		defer cr.Close(cleanupCtx)
+		defer closeBrowser(cleanupCtx)
+
 	case fileAppTest:
 		cr = s.FixtValue().(*chrome.Chrome)
 	}
@@ -88,14 +117,14 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not find the Chrome app: ", err)
+		s.Fatal("Could not find the primary browser app info: ", err)
 	}
 
 	var itemsToUnpin []string
 	for _, item := range items {
-		if item.AppID != chromeApp.ID {
+		if item.AppID != browserApp.ID {
 			itemsToUnpin = append(itemsToUnpin, item.AppID)
 		}
 	}
@@ -146,7 +175,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for shelf icon animation to finish: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{browserApp.ID, apps.Settings.ID, targetAppID}); err != nil {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
@@ -165,7 +194,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move the target app from the third slot to the first slot: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, chromeApp.ID, apps.Settings.ID}); err != nil {
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, browserApp.ID, apps.Settings.ID}); err != nil {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
@@ -173,11 +202,12 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move the target app from the first slot to the third slot")
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{browserApp.ID, apps.Settings.ID, targetAppID}); err != nil {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
 	// Launch the target app.
+	// TODO(crbug.com/1309565): The fake app opens a page in ash-chrome only even when lacros is set to primary browser.
 	if err := ash.LaunchAppFromShelf(ctx, tconn, targetAppName, targetAppID); err != nil {
 		s.Fatalf("Failed to launch %s(%s) from the shelf: %v", targetAppName, targetAppID, err)
 	}
@@ -195,7 +225,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move the target app with the activated window from the third slot to the first slot: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, chromeApp.ID, apps.Settings.ID}); err != nil {
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{targetAppID, browserApp.ID, apps.Settings.ID}); err != nil {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
@@ -203,7 +233,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move the target app with the activated window from the first slot to the third slot")
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{browserApp.ID, apps.Settings.ID, targetAppID}); err != nil {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
@@ -216,7 +246,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move the unpinned app from the third slot to the first slot: ", err)
 	}
 
-	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{chromeApp.ID, apps.Settings.ID, targetAppID}); err != nil {
+	if err := ash.VerifyShelfIconIndices(ctx, tconn, []string{browserApp.ID, apps.Settings.ID, targetAppID}); err != nil {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
