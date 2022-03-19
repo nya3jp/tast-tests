@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "64ff0243d39ee2b73642e82cde3194a212e6bdda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21ff399_ccd4a760",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-03-19T06:10:23Z",
+      "side": 1,
+      "message": "LGTM from hwsec perspective.\n\nNote that as previously mentioned I think we should integrate the ui post stop logic into Unmount() instead of tangling it here, however, that\u0027s out of the scope of this CL and I should talk to Sarthak instead after the launch on lvm-stateful is over.",
+      "revId": "64ff0243d39ee2b73642e82cde3194a212e6bdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
