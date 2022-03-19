@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14af8e73_699c8f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "Yeah I think it would be best to get some input from those more familiar with finch on lacros. My feeling is that lacros.VariationSmoke shouldn\u0027t need to cover (1) in favor of testing both finch mechanisms independently, unless it\u0027s conceivable that an OS finch experiment could break lacros while not affecting the OS session.",
+      "parentUuid": "9a4e2182_461e3b55",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04123771_24d4a61a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
         "patchSetId": 4

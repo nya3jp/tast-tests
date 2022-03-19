@@ -16,6 +16,173 @@
       "message": "Hi Kyle, if you have a chance, could you take a look of the logic for variation smoke test? Thanks a lot.",
       "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c24c4e8_48e1e01f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "LGTM with some suggestions, and also pointing out some things you\u0027ll need to think about to eventually integrate this with the smoke test builder recipe",
+      "parentUuid": "c87d8ca2_826d3c56",
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a29106a_19759250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "You\u0027ll need to add these same runtime variables eventually when you want to integrate this test with Stephen\u0027s builder recipe:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go;l\u003d40\n\n(not needed immediately, could do this in a follow up CL)",
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb435fc4_5f78023f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "this part is pretty much the same as in the OS test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go;l\u003d45-64\n\nif you want, you could move this into a support package that both tests could share. something like a package named `variations` in src/platform/tast-tests/src/chromiumos/tast/local/chrome/",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 1
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727ca53d_3df89b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "these could also be constants in a shared package. I\u0027ll probably try to add the local HTTP server to my test next week btw, I\u0027ll CC you when I do so you can add it here too",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 2
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19cc6730_70f1dc5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "this won\u0027t actually close lacros here, since defers run when the surrounding function returns. you\u0027d want to wrap L160-L203 in another anonymous func like before, in order to use a defer to control the browser closing here.",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 20
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425f9faf_c6d927a8",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "this hard-coding could potentially be problematic when integrating with the builder recipe. the OS version uses a runtime variable that the recipe can specify channels when triggering these tests:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go;l\u003d40",
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6de70dc_cf1ebdb3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 103,
+        "startChar": 53,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d37252_b6804cef",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-19T01:08:38Z",
+      "side": 1,
+      "message": "no need for this assignment, I believe `var userDataDir string` will initialize it with an empty value by default",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
