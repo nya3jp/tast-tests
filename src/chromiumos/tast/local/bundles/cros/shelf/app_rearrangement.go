@@ -17,6 +17,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
@@ -36,12 +39,13 @@ const (
 type rearrangmentTestType struct {
 	appType  rearrangmentTargetAppType
 	underRTL bool // If true, the system UI is adapted to right-to-left languages.
+	bt       browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppRearrangement,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests the rearrangement of shelf app icons",
 		Contacts: []string{
 			"andrewxu@chromium.org",
@@ -52,92 +56,166 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Data:         []string{"web_app_install_force_list_index.html", "web_app_install_force_list_manifest.json", "web_app_install_force_list_service-worker.js", "web_app_install_force_list_icon-192x192.png", "web_app_install_force_list_icon-512x512.png"},
-		Params: []testing.Param{
-			{
-				Name: "rearrange_chrome_apps",
-				Val: rearrangmentTestType{
-					appType:  chromeAppTest,
-					underRTL: false,
-				},
-				Fixture: "install2Apps",
+		Params: []testing.Param{{
+			Name: "rearrange_chrome_apps",
+			Val: rearrangmentTestType{
+				appType:  chromeAppTest,
+				underRTL: false,
+				bt:       browser.TypeAsh,
 			},
-			{
-				Name: "rearrange_chrome_apps_rtl",
-				Val: rearrangmentTestType{
-					appType:  chromeAppTest,
-					underRTL: true,
-				},
-				Fixture: "install2Apps",
+			Fixture: "install2Apps",
+		}, {
+			Name: "rearrange_chrome_apps_rtl",
+			Val: rearrangmentTestType{
+				appType:  chromeAppTest,
+				underRTL: true,
+				bt:       browser.TypeAsh,
 			},
-			{
-				Name: "rearrange_file_app",
-				Val: rearrangmentTestType{
-					appType:  fileAppTest,
-					underRTL: false,
-				},
-				Fixture: "install2Apps",
+			Fixture: "install2Apps",
+		}, {
+			Name: "rearrange_file_app",
+			Val: rearrangmentTestType{
+				appType:  fileAppTest,
+				underRTL: false,
+				bt:       browser.TypeAsh,
 			},
-			{
-				Name: "rearrange_file_app_rtl",
-				Val: rearrangmentTestType{
-					appType:  fileAppTest,
-					underRTL: true,
-				},
-				Fixture: "install2Apps",
+			Fixture: "install2Apps",
+		}, {
+			Name: "rearrange_file_app_rtl",
+			Val: rearrangmentTestType{
+				appType:  fileAppTest,
+				underRTL: true,
+				bt:       browser.TypeAsh,
 			},
-			{
-				Name: "rearrange_pwa_app",
-				Val: rearrangmentTestType{
-					appType:  pwaAppTest,
-					underRTL: false,
-				},
-				Fixture: fixture.ChromePolicyLoggedIn,
+			Fixture: "install2Apps",
+		}, {
+			Name: "rearrange_pwa_app",
+			Val: rearrangmentTestType{
+				appType:  pwaAppTest,
+				underRTL: false,
+				bt:       browser.TypeAsh,
 			},
-			{
-				Name: "rearrange_android_app_androidp",
-				Val: rearrangmentTestType{
-					appType:  androidAppTest,
-					underRTL: false,
-				},
-				Fixture:           "arcBooted",
-				ExtraSoftwareDeps: []string{"android_p"},
+			Fixture: fixture.ChromePolicyLoggedIn,
+		}, {
+			Name: "rearrange_android_app_androidp",
+			Val: rearrangmentTestType{
+				appType:  androidAppTest,
+				underRTL: false,
+				bt:       browser.TypeAsh,
 			},
-			{
-				Name: "rearrange_android_app_androidvm",
-				Val: rearrangmentTestType{
-					appType:  androidAppTest,
-					underRTL: false,
-				},
-				Fixture:           "arcBooted",
-				ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name: "rearrange_android_app_androidvm",
+			Val: rearrangmentTestType{
+				appType:  androidAppTest,
+				underRTL: false,
+				bt:       browser.TypeAsh,
 			},
-		},
+			Fixture:           "arcBooted",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name: "rearrange_chrome_apps_lacros",
+			Val: rearrangmentTestType{
+				appType:  chromeAppTest,
+				underRTL: false,
+				bt:       browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "install2LacrosApps",
+		}, {
+			Name: "rearrange_chrome_apps_rtl_lacros",
+			Val: rearrangmentTestType{
+				appType:  chromeAppTest,
+				underRTL: true,
+				bt:       browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "install2LacrosApps",
+		}, {
+			Name: "rearrange_file_app_lacros",
+			Val: rearrangmentTestType{
+				appType:  fileAppTest,
+				underRTL: false,
+				bt:       browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "install2LacrosApps",
+		}, {
+			Name: "rearrange_file_app_rtl_lacros",
+			Val: rearrangmentTestType{
+				appType:  fileAppTest,
+				underRTL: true,
+				bt:       browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "install2LacrosApps",
+		}, {
+			Name: "rearrange_pwa_app_lacros",
+			Val: rearrangmentTestType{
+				appType:  pwaAppTest,
+				underRTL: false,
+				bt:       browser.TypeLacros,
+			},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+		}, {
+			Name: "rearrange_android_app_androidp_lacros",
+			Val: rearrangmentTestType{
+				appType:  androidAppTest,
+				underRTL: false,
+				bt:       browser.TypeLacros,
+			},
+			Fixture:           "lacrosWithArcBooted",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+		}, {
+			Name: "rearrange_android_app_androidvm_lacros",
+			Val: rearrangmentTestType{
+				appType:  androidAppTest,
+				underRTL: false,
+				bt:       browser.TypeLacros,
+			},
+			Fixture:           "lacrosWithArcBooted",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+		}},
 	})
 }
 
 // AppRearrangement tests app icon rearrangement on the shelf.
 func AppRearrangement(ctx context.Context, s *testing.State) {
+	// Reserve some time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	var cr *chrome.Chrome
+	var closeBrowser func(ctx context.Context)
+	var err error
 
 	testType := s.Param().(rearrangmentTestType)
 	testAppType := testType.appType
 	isunderRTL := testType.underRTL
+	bt := testType.bt
 	switch testAppType {
 	case chromeAppTest, fileAppTest:
-		var err error
 		options := s.FixtValue().([]chrome.Option)
 		if isunderRTL {
 			options = append(options, chrome.ExtraArgs("--lang=ar"))
 		}
-
-		cr, err = chrome.New(ctx, options...)
-
+		cr, _, closeBrowser, err = browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), options...)
 		if err != nil {
-			s.Fatal("Failed to start chrome: ", err)
+			s.Fatalf("Failed to start %v browser: %v", bt, err)
 		}
-		defer cr.Close(ctx)
+		defer cr.Close(cleanupCtx)
+		defer closeBrowser(cleanupCtx)
 	case pwaAppTest:
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
+		// Setup the browser based on the type. ash-chrome can load PWA immediately on startup, but lacros-chrome won't until lacros process starts first.
+		_, closeBrowser, err = browserfixt.SetUp(ctx, cr, bt)
+		if err != nil {
+			s.Fatalf("Failed to start %v browser: %v", bt, err)
+		}
+		defer closeBrowser(cleanupCtx)
 	case androidAppTest:
 		cr = s.FixtValue().(*arc.PreData).Chrome
 	}
@@ -166,14 +244,14 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
-		s.Fatal("Could not find the Chrome app: ", err)
+		s.Fatal("Could not find the primary browser app info: ", err)
 	}
 
 	var itemsToUnpin []string
 	for _, item := range items {
-		if item.AppID != chromeApp.ID {
+		if item.AppID != browserApp.ID {
 			itemsToUnpin = append(itemsToUnpin, item.AppID)
 		}
 	}
@@ -205,8 +283,8 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		}
 
 		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
-		defaultAppIDsInPinOrder = []string{chromeApp.ID, apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
-		updatedAppIDsInPinOrder = []string{fakeAppIDs[0], chromeApp.ID, apps.Settings.ID, fakeAppIDs[1]}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], fakeAppIDs[0]}
+		updatedAppIDsInPinOrder = []string{fakeAppIDs[0], browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
 
 	case fileAppTest:
 		fakeAppIDs, err := fakeAppIDs(ctx, tconn)
@@ -219,8 +297,8 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		}
 
 		appIDsToPin = []string{apps.Settings.ID, fakeAppIDs[1], apps.Files.ID}
-		defaultAppIDsInPinOrder = []string{chromeApp.ID, apps.Settings.ID, fakeAppIDs[1], apps.Files.ID}
-		updatedAppIDsInPinOrder = []string{apps.Files.ID, chromeApp.ID, apps.Settings.ID, fakeAppIDs[1]}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, fakeAppIDs[1], apps.Files.ID}
+		updatedAppIDsInPinOrder = []string{apps.Files.ID, browserApp.ID, apps.Settings.ID, fakeAppIDs[1]}
 
 	case pwaAppTest:
 		fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
@@ -231,8 +309,8 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		}
 
 		appIDsToPin = []string{apps.Settings.ID, apps.Files.ID, pwaAppID}
-		defaultAppIDsInPinOrder = []string{chromeApp.ID, apps.Settings.ID, apps.Files.ID, pwaAppID}
-		updatedAppIDsInPinOrder = []string{pwaAppID, chromeApp.ID, apps.Settings.ID, apps.Files.ID}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.Files.ID, pwaAppID}
+		updatedAppIDsInPinOrder = []string{pwaAppID, browserApp.ID, apps.Settings.ID, apps.Files.ID}
 
 		// Use a shortened context for test operations to reserve time for cleanup.
 		cleanupCtx := ctx
@@ -257,8 +335,8 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		}
 
 		appIDsToPin = []string{apps.Settings.ID, apps.Files.ID, installedArcAppID}
-		defaultAppIDsInPinOrder = []string{chromeApp.ID, apps.Settings.ID, apps.Files.ID, installedArcAppID}
-		updatedAppIDsInPinOrder = []string{installedArcAppID, chromeApp.ID, apps.Settings.ID, apps.Files.ID}
+		defaultAppIDsInPinOrder = []string{browserApp.ID, apps.Settings.ID, apps.Files.ID, installedArcAppID}
+		updatedAppIDsInPinOrder = []string{installedArcAppID, browserApp.ID, apps.Settings.ID, apps.Files.ID}
 	}
 
 	// Pin additional apps to create a more complex scenario for testing.
