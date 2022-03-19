@@ -8,6 +8,8 @@ import (
 	"context"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -19,6 +21,13 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name: "lacros",
+			Val:  browser.TypeLacros,
+		}},
+		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -28,19 +37,24 @@ func ForceRegion(ctx context.Context, s *testing.State) {
 		wantLang = "ja"
 	)
 
-	cr, err := chrome.New(ctx, chrome.Region(region))
+	// Connect to a fresh ash-chrome instance (cr) and get a browser instance (br) for browser functionality.
+	bt := s.Param().(browser.Type)
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, browserfixt.DefaultLacrosConfig.WithVar(s),
+		chrome.Region(region))
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatalf("Chrome login failed with %v browser: %v", bt, err)
 	}
 	defer cr.Close(ctx)
+	defer closeBrowser(ctx)
 
-	conn, err := cr.TestAPIConn(ctx)
+	// Get a TestConn to active browser.
+	bTconn, err := br.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
 	var lang string
-	if err := conn.Eval(ctx, "chrome.i18n.getUILanguage()", &lang); err != nil {
+	if err := bTconn.Eval(ctx, "chrome.i18n.getUILanguage()", &lang); err != nil {
 		s.Fatal("Failed to call chrome.i18n.getUILanguage: ", err)
 	} else if lang != wantLang {
 		s.Fatalf("UI language is %s; want %s", lang, wantLang)
