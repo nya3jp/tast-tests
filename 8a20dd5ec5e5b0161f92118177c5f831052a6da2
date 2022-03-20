@@ -16,6 +16,29 @@
       "message": "lgtm\n\nThanks.",
       "revId": "8a20dd5ec5e5b0161f92118177c5f831052a6da2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a083d1de_c90fc777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-20T09:03:06Z",
+      "side": 1,
+      "message": "Checking `firstErr \u003d\u003d nil` is trivial here as firstErr is always nil (zero value) here.",
+      "range": {
+        "startLine": 359,
+        "startChar": 37,
+        "endLine": 359,
+        "endChar": 56
+      },
+      "revId": "8a20dd5ec5e5b0161f92118177c5f831052a6da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
