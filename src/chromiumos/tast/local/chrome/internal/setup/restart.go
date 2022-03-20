@@ -62,6 +62,8 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 		"--force-hwid-check-result-for-test=success", // Forcefully ignore incorrect hardware IDs on devices.
 		"--keep-login-events-for-testing",            // Keep LoginEventRecorder data for later retrieval by tests.
+		"--force-color-profile=srgb",                 // Force chrome to treat the display as sRGB.
+		"--force-raster-color-profile=srgb",          // Force rendering to run in the sRGB color space.
 	}
 	if !cfg.EnableRestoreTabs() {
 		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)
