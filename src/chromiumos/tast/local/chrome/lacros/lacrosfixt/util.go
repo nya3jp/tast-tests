@@ -109,6 +109,10 @@ func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
 	// expectations more predirectable, and thus make the tests more stable.
 	opts = append(opts, chrome.LacrosExtraArgs("--disable-features=ChromeWhatsNewUI"))
 
+	// Force color profile to sRGB regardless of device. See b/221643955 for details.
+	opts = append(opts, chrome.LacrosExtraArgs("--force-color-profile=srgb"))
+	opts = append(opts, chrome.LacrosExtraArgs("--force-raster-color-profile=srgb"))
+
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
