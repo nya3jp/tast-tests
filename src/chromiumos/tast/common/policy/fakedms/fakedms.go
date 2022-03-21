@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -42,7 +41,7 @@ const StateFile = "state.json"
 // TODO(crbug.com/1187473): Remove
 const EnrollmentFakeDMSDir = "/var/enrolling-fdms"
 
-var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
+var testserverPath = filepath.Join(depsDir, "fake_dmserver")
 var testserverPythonImports = []string{
 	depsDir,
 	filepath.Join(depsDir, "tlslite"),
@@ -100,17 +99,17 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	}()
 
 	args := []string{
-		testserverPath,
-		"--config-file", policyPath,
-		"--log-file", logPath,
-		"--client-state", statePath,
-		"--log-level", "DEBUG",
-		// cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
-		// See exec.Cmd for more info.
-		"--startup-pipe", "3",
+		// testserverPath,
+		policyPath,
+		logPath,
+		statePath,
+		// "--log-level", "DEBUG",
+		// // cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
+		// // See exec.Cmd for more info.
+		// "--startup-pipe", "3",
 	}
 
-	cmd := testexec.CommandContext(ctx, "/usr/local/bin/python3", args...)
+	cmd := testexec.CommandContext(ctx, testserverPath, args...)
 
 	// Add necessary imports to the server command's PYTHONPATH.
 	newPP := strings.Join(testserverPythonImports, ":")
@@ -121,6 +120,10 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		cmd:        cmd,
 		done:       make(chan struct{}, 1),
 		policyPath: policyPath,
+	}
+
+	if err := ioutil.WriteFile(logPath, []byte{}, 0644); err != nil {
+		testing.ContextLog(ctx, "Could not write to logs file: ", err)
 	}
 
 	if err = fdms.start(ctx, fr); err != nil {
@@ -154,22 +157,22 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 
 	go func() {
 		// Ignore the first 4 bytes.
-		b4 := make([]byte, 4)
-		if _, err := io.ReadFull(p, b4); err != nil {
-			pDone <- pResult{Err: errors.Wrap(err, "could not read from startup-pipe")}
-			return
-		}
+		// b4 := make([]byte, 4)
+		// if _, err := io.ReadFull(p, b4); err != nil {
+		// 	pDone <- pResult{Err: errors.Wrap(err, "could not read from startup-pipe")}
+		// 	return
+		// }
 
-		var addr struct {
-			Host string
-			Port int
-		}
-		if err := json.NewDecoder(p).Decode(&addr); err != nil {
-			pDone <- pResult{Err: errors.Wrap(err, "could not read host/port info")}
-			return
-		}
+		// var addr struct {
+		// 	Host string
+		// 	Port int
+		// }
+		// if err := json.NewDecoder(p).Decode(&addr); err != nil {
+		// 	pDone <- pResult{Err: errors.Wrap(err, "could not read host/port info")}
+		// 	return
+		// }
 
-		pDone <- pResult{URL: fmt.Sprintf("http://%s:%d", addr.Host, addr.Port)}
+		pDone <- pResult{URL: fmt.Sprintf("http://127.0.0.1:5544")}
 	}()
 
 	// Wait for server to write host/port info or to exit prematurely.

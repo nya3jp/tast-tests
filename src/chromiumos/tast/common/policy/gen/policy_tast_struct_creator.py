@@ -47,10 +47,13 @@ package policy
 
 import (
 \t"encoding/json"
+\t"fmt"
+\t"reflect"
 
 \t"github.com/google/go-cmp/cmp"
 \t"github.com/google/go-cmp/cmp/cmpopts"
 
+\t"chromiumos/policy/chromium/policy/enterprise_management_proto"
 \t"chromiumos/tast/errors"
 )
 """
@@ -75,9 +78,76 @@ func (p *{self.name}) UntypedV() interface{{}} {{ return p.Val }}
 func (p *{self.name}) UnmarshalAs(m json.RawMessage) (interface{{}}, error) {{
 {self.unmarshal}
 }}
+func (p *{self.name}) SetProto(blob *Blob) {{
+{self.proto_value}
+}}
 func (p *{self.name}) Equal(iface interface{{}}) bool {{
 {self.eq}
 }}
+"""
+
+# Helper functions to set different protos
+HELPER_FUNCTIONS = """
+func SetStringListPolicyProto(p *reflect.Value, val interface{}) {
+\ttmpProto := enterprise_management_proto.StringListPolicyProto{Value: &enterprise_management_proto.StringList{}}
+\tp.Set(reflect.New(reflect.TypeOf(tmpProto)))
+\tp.Elem().FieldByName("Value").Set(reflect.New(reflect.TypeOf(tmpProto.Value).Elem()))
+\tsliceType := reflect.TypeOf(make([]string, 0))
+\tstringSliceReflect := reflect.MakeSlice(sliceType, 0, 0)
+\tfor _, v := range val.([]string) {
+\t\trv := reflect.ValueOf(v)
+\t\tstringSliceReflect = reflect.Append(stringSliceReflect, rv)
+\t}
+\tp.Elem().FieldByName("Value").Elem().FieldByName("Entries").Set(stringSliceReflect)
+}
+
+func SetStringPolicyProto(p *reflect.Value, val interface{}) {
+\ttmpProto := enterprise_management_proto.StringPolicyProto{}
+\tp.Set(reflect.New(reflect.TypeOf(tmpProto)))
+\tvar tmp string
+\tswitch v := val.(type) {
+\tcase string:
+\t\ttmp = v
+\tdefault:
+\t\tout, err := json.Marshal(v)
+\t\tif err != nil {
+\t\t\tpanic(errors.Wrap(err, "couldn't marshal the policy value to json"))
+\t\t}
+\t\ttmp = string(out)
+\t}
+\tp.Elem().FieldByName("Value").Set(reflect.ValueOf(&tmp))
+}
+
+func SetBooleanPolicyProto(p *reflect.Value, val interface{}) {
+\ttmpProto := enterprise_management_proto.BooleanPolicyProto{}
+\tp.Set(reflect.New(reflect.TypeOf(tmpProto)))
+\ttmp := val.(bool)
+\tp.Elem().FieldByName("Value").Set(reflect.ValueOf(&tmp))
+}
+
+func SetIntegerPolicyProto(p *reflect.Value, val interface{}) {
+\ttmpProto := enterprise_management_proto.IntegerPolicyProto{}
+\tp.Set(reflect.New(reflect.TypeOf(tmpProto)))
+\ttmp := int64(val.(int))
+\tp.Elem().FieldByName("Value").Set(reflect.ValueOf(&tmp))
+}
+
+func SetUserPolicyProto(policyProtoValue *reflect.Value, val interface{}) {
+\tswitch policyProtoValue.Type() {
+\tcase reflect.TypeOf(&enterprise_management_proto.StringListPolicyProto{}):
+\t\tSetStringListPolicyProto(policyProtoValue, val)
+\tcase reflect.TypeOf(&enterprise_management_proto.StringPolicyProto{}):
+\t\tSetStringPolicyProto(policyProtoValue, val)
+\tcase reflect.TypeOf(&enterprise_management_proto.BooleanPolicyProto{}):
+\t\tSetBooleanPolicyProto(policyProtoValue, val)
+\tcase reflect.TypeOf(&enterprise_management_proto.IntegerPolicyProto{}):
+\t\tSetIntegerPolicyProto(policyProtoValue, val)
+\tdefault:
+\t\terrorString := fmt.Sprintf("Undefined User Policy proto type. found type: %v", policyProtoValue.Type())
+\t\tpanic(errorString)
+\t}
+}
+
 """
 
 # Header for the section containing definitions of Reference values.
@@ -433,6 +503,8 @@ class Policy(object):
     self.scope, self.device_field = self.get_scope_and_field(
         self.name, p, device_field_lookup)
 
+    self.proto_value = self.get_proto_value(self.name, p)
+
     # schema: The JSON schema for this policy's value.
     if 'schema' not in p:
       raise_key_error('schema', p)
@@ -450,6 +522,15 @@ class Policy(object):
     self.unmarshal = None
     # code: All code (other than reference value code) that needs to be added.
     self.code = None
+
+  @staticmethod
+  def get_proto_value(name, p):
+    """Return the proto value of the policy given its name."""
+    if p.get('device_only', False):
+      return ''
+      # return 'blob.DevicePolicies.' + name + '.Value = &p.Val'
+    else:
+      return 'policyProtoValue := reflect.ValueOf(&blob.UserPolicies.' + name + ').Elem()\nSetUserPolicyProto(&policyProtoValue, p.Val)'
 
   @staticmethod
   def get_scope_and_field(name, p, lookup):
@@ -749,6 +830,7 @@ def write_code(output_path, policies_by_id, schema_ids):
   with open(output_path, 'w') as fh:
     # Write Chrome OS policy structs.
     fh.write(HEADER)
+    fh.write(HELPER_FUNCTIONS)
     for i in sorted(policies_by_id.keys()):
       fh.write(policies_by_id[i].code)
 
