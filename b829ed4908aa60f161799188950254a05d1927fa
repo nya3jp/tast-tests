@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c450ac8b_6b0ba3cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "I like the idea.  I\u0027ve just pushed that version.  It works ... however I have to note that I also tried original version (just to make sure that this is a fix) and this time it worked on cherry/tomato too.  So I guess we can try that version.  If it cleans up the stainless then we are good if it does not then we might go back to the first patchset.",
+      "parentUuid": "43c23e0a_dde0275d",
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8c45da15_d41ef70b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -169,6 +187,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3f2575_5312d60b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Ricardo, I\u0027ve removed this function and switched to using FlushBSS, so I\u0027m marking your comments as resolved.",
+      "parentUuid": "a73aaeaf_f46aedf2",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d0b5f2_2f899562",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Yes it would be a candidate for general util, however I like using FlushBSS for that purpose better, so the current version it is removed.",
+      "parentUuid": "7f624ab3_ea274c5e",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92212f54_86394bb5",
@@ -182,6 +248,30 @@
       "writtenOn": "2022-03-15T17:04:57Z",
       "side": 1,
       "message": "huge nit: not need to use parenthesis here... just replace it it with comma",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9592f6_2978d23f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Function removed.",
+      "parentUuid": "92212f54_86394bb5",
       "range": {
         "startLine": 41,
         "startChar": 29,
@@ -215,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "140fdf85_95355264",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Function removed.",
+      "parentUuid": "7e88ed9e_d8049963",
+      "range": {
+        "startLine": 43,
+        "startChar": 47,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6bf3778_b2ff7030",
@@ -228,6 +342,30 @@
       "writtenOn": "2022-03-15T17:04:57Z",
       "side": 1,
       "message": "huge nit: wpa -\u003e WPA",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90bc99c8_8d0b6025",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Function removed.",
+      "parentUuid": "e6bf3778_b2ff7030",
       "range": {
         "startLine": 49,
         "startChar": 27,
@@ -261,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5d7bed_37440f6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Function removed.",
+      "parentUuid": "1d94f0b5_b1378133",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9640f139_beab8697",
@@ -274,6 +436,30 @@
       "writtenOn": "2022-03-18T00:02:02Z",
       "side": 1,
       "message": "should we have a new timeout here? I\u0027m concerned about the situation where we report a timeout in this function when RequestScans takes up the vast majority of the timeout time which will make this function look erroneous when in fact RequestScans is problematic. WDYT?",
+      "range": {
+        "startLine": 60,
+        "startChar": 40,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefcea67_a8b6c707",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure.  The 10s timeout was meant to get the new report (and that includes request for it), so I guess it was OK to use the same context.  Marking resolved since this function is gone now.",
+      "parentUuid": "9640f139_beab8697",
       "range": {
         "startLine": 60,
         "startChar": 40,
@@ -307,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10529ca_6ad5a04f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Function removed.",
+      "parentUuid": "8ef12e82_2df17b24",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de1ee710_3599dc66",
@@ -320,6 +530,30 @@
       "writtenOn": "2022-03-15T17:04:57Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 117,
+        "startChar": 57,
+        "endLine": 117,
+        "endChar": 58
+      },
+      "revId": "b829ed4908aa60f161799188950254a05d1927fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80a546e_e38c95c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-21T11:15:38Z",
+      "side": 1,
+      "message": "Reworked.",
+      "parentUuid": "de1ee710_3599dc66",
       "range": {
         "startLine": 117,
         "startChar": 57,
