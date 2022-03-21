@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84b97dc4_e5275756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-21T19:45:33Z",
+      "side": 1,
+      "message": "If someone runs this test locally though, they might already have this set on their DUT, right?",
+      "parentUuid": "59be8f7e_c3c5b991",
+      "revId": "4870fe550c22c9a592fa73bb95f3f392b413f337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d7d02dc_96ea2db9",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
         "patchSetId": 4
