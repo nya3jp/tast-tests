@@ -50,6 +50,7 @@ import (
 
 \t"github.com/google/go-cmp/cmp"
 \t"github.com/google/go-cmp/cmp/cmpopts"
+\t"google.golang.org/protobuf/reflect/protoreflect"
 
 \t"chromiumos/tast/errors"
 )
@@ -74,6 +75,9 @@ func (p *{self.name}) Status() Status    {{ return p.Stat }}
 func (p *{self.name}) UntypedV() interface{{}} {{ return p.Val }}
 func (p *{self.name}) UnmarshalAs(m json.RawMessage) (interface{{}}, error) {{
 {self.unmarshal}
+}}
+func (p *{self.name}) SetProto(m *protoreflect.Message) {{
+{self.proto_value}
 }}
 func (p *{self.name}) Equal(iface interface{{}}) bool {{
 {self.eq}
@@ -433,6 +437,8 @@ class Policy(object):
     self.scope, self.device_field = self.get_scope_and_field(
         self.name, p, device_field_lookup)
 
+    self.proto_value = self.get_proto_value(self.name, p, self.device_field)
+
     # schema: The JSON schema for this policy's value.
     if 'schema' not in p:
       raise_key_error('schema', p)
@@ -450,6 +456,15 @@ class Policy(object):
     self.unmarshal = None
     # code: All code (other than reference value code) that needs to be added.
     self.code = None
+
+  @staticmethod
+  def get_proto_value(name, p, device_field):
+    """Return the proto value of the policy given its name."""
+    if p.get('device_only', False):
+      return 'SetDeviceProto(m, \"' + device_field.split('.')[0] + '\", \"' + device_field.split('.')[1] + '\", p.Val)'
+      # return 'blob.DevicePolicies.' + name + '.Value = &p.Val'
+    else:
+      return 'SetUserProto(m, p.Name(), p.Val)'
 
   @staticmethod
   def get_scope_and_field(name, p, lookup):

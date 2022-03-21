@@ -10,13 +10,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
-	"strings"
 	"time"
 
 	"chromiumos/tast/caller"
@@ -26,8 +24,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Necessary dependencies (as defined in policy-testserver ebuild).
-const depsDir = "/usr/local/share/policy_testserver/"
+// depsDir is the directory where the executable binary of the fake_dmserver is located.
+const depsDir = "/usr/local/libexec/chrome-binary-tests/"
 
 // LogFile is the name of the log file for FakeDMS.
 const LogFile = "fakedms.log"
@@ -46,13 +44,7 @@ const ExtensionPolicyDir = "data"
 // TODO(crbug.com/1187473): Remove
 const EnrollmentFakeDMSDir = "/var/enrolling-fdms"
 
-var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
-var testserverPythonImports = []string{
-	depsDir,
-	filepath.Join(depsDir, "tlslite"),
-	filepath.Join(depsDir, "testserver"),
-	filepath.Join(depsDir, "proto_bindings"),
-}
+var testserverPath = filepath.Join(depsDir, "fake_dmserver")
 
 // Regular expression to match any characters in the policy selector that must
 // be sanitized prior to this selector being as as part of the file name.
@@ -110,22 +102,17 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	}()
 
 	args := []string{
-		testserverPath,
-		"--config-file", policyPath,
-		"--data-dir", extensionPolicyDir,
-		"--log-file", logPath,
-		"--client-state", statePath,
-		"--log-level", "DEBUG",
+		fmt.Sprintf("--policy-blob-path=%s", policyPath),
+		fmt.Sprintf("--log-path=%s", logPath),
+		fmt.Sprintf("--data-dir=%s", extensionPolicyDir),
+		fmt.Sprintf("--client-state-path=%s", statePath),
 		// cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
 		// See exec.Cmd for more info.
-		"--startup-pipe", "3",
+		"--startup-pipe=3",
 	}
 
-	cmd := testexec.CommandContext(ctx, "/usr/local/bin/python3", args...)
+	cmd := testexec.CommandContext(ctx, testserverPath, args...)
 
-	// Add necessary imports to the server command's PYTHONPATH.
-	newPP := strings.Join(testserverPythonImports, ":")
-	cmd.Env = append(cmd.Env, "PYTHONPATH="+newPP)
 	cmd.ExtraFiles = []*os.File{fw}
 
 	fdms := &FakeDMS{
@@ -165,13 +152,6 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 	pDone := make(chan pResult, 1)
 
 	go func() {
-		// Ignore the first 4 bytes.
-		b4 := make([]byte, 4)
-		if _, err := io.ReadFull(p, b4); err != nil {
-			pDone <- pResult{Err: errors.Wrap(err, "could not read from startup-pipe")}
-			return
-		}
-
 		var addr struct {
 			Host string
 			Port int
@@ -325,7 +305,7 @@ func (fdms *FakeDMS) kill(ctx context.Context) {
 
 // Stop will stop the FakeDMS and return once the command has exited.
 func (fdms *FakeDMS) Stop(ctx context.Context) {
-	resp, err := http.Get(fdms.URL + "/configuration/test/exit")
+	resp, err := http.Get(fdms.URL + "/test/exit")
 	if err == nil {
 		resp.Body.Close()
 		if resp.StatusCode == 200 {
