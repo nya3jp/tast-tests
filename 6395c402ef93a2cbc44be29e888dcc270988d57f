@@ -16,6 +16,24 @@
       "message": "For now only manual runs, asked on the mailing thread about how to save guard cq and postsubmit runs against getting stuck at a wrong version..",
       "revId": "6395c402ef93a2cbc44be29e888dcc270988d57f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfe4242_97fc2a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-03-21T20:23:29Z",
+      "side": 1,
+      "message": "I think you can add it to the autoupdate group.\nYou can add it",
+      "parentUuid": "6ae8e1ad_8ea3459b",
+      "revId": "6395c402ef93a2cbc44be29e888dcc270988d57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
