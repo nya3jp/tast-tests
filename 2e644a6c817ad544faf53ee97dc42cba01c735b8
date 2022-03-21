@@ -253,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97dd4f48_47fc3b91",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-21T05:09:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb903c36_6edcc74a",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecef7b49_d346dcb5",
@@ -384,6 +402,30 @@
       "side": 1,
       "message": "You can search on CS, and \": got ..., want ...\" is very much more common.",
       "parentUuid": "a2db6610_c02f6a84",
+      "range": {
+        "startLine": 281,
+        "startChar": 58,
+        "endLine": 281,
+        "endChar": 81
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e901a430_61db9d48",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-21T05:09:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ec5780_498a4650",
       "range": {
         "startLine": 281,
         "startChar": 58,
