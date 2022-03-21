@@ -33,6 +33,24 @@
       "message": "Do we want to pass `ctx` as an arg like suggested in\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3530156/3..7/src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go#b231\n\n, except that we don\u0027t need to reserve time?",
       "revId": "f41ef190d83a63d779653f326a6425a8962b06cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3508bfd0_d5deea8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-21T19:47:50Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3539318",
+      "parentUuid": "e076a7e3_3ae89098",
+      "revId": "f41ef190d83a63d779653f326a6425a8962b06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
