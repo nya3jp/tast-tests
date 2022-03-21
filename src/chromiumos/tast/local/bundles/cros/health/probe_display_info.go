@@ -326,11 +326,18 @@ func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayIn
 
 	if horizontalRaw, err := getModetestModeInfo(ctx, modeInfoHdisplay); err != nil {
 		return err
+	} else if verticalRaw, err := getModetestModeInfo(ctx, modeInfoVdisplay); err != nil {
+		return err
+	} else if horizontalRaw == "" && verticalRaw == "" {
+		// It means that we can't get the info in use, or default preferred info.
+		// Then we need to check if cros_healthd reports nothing.
+		if EDP.ResolutionHorizontal != nil || EDP.ResolutionVertical != nil {
+			return errors.New("There is no resolution info, but cros_healthd report it")
+		}
+		return nil
 	} else if horizontal, err := strconv.ParseUint(horizontalRaw, 10, 32); err != nil {
 		return err
 	} else if err := compareUint32Pointer(EDP.ResolutionHorizontal, uint32(horizontal), "ResolutionHorizontal"); err != nil {
-		return err
-	} else if verticalRaw, err := getModetestModeInfo(ctx, modeInfoVdisplay); err != nil {
 		return err
 	} else if vertical, err := strconv.ParseUint(verticalRaw, 10, 32); err != nil {
 		return err
@@ -354,13 +361,20 @@ func verifyEmbeddedDisplayRefreshRate(ctx context.Context, EDP *embeddedDisplayI
 	var wantRefreshRate float64
 	if htotalRaw, err := getModetestModeInfo(ctx, modeInfoHtotal); err != nil {
 		return err
-	} else if htotal, err := strconv.ParseUint(htotalRaw, 10, 32); err != nil {
-		return err
 	} else if vtotalRaw, err := getModetestModeInfo(ctx, modeInfoVtotal); err != nil {
 		return err
-	} else if vtotal, err := strconv.ParseUint(vtotalRaw, 10, 32); err != nil {
-		return err
 	} else if clockRaw, err := getModetestModeInfo(ctx, modeInfoClock); err != nil {
+		return err
+	} else if htotalRaw == "" && vtotalRaw == "" && clockRaw == "" {
+		// It means that we can't get the info in use, or default preferred info.
+		// Then we need to check if cros_healthd reports nothing.
+		if EDP.RefreshRate != nil {
+			return errors.New("There is no refresh rate info, but cros_healthd report it")
+		}
+		return nil
+	} else if htotal, err := strconv.ParseUint(htotalRaw, 10, 32); err != nil {
+		return err
+	} else if vtotal, err := strconv.ParseUint(vtotalRaw, 10, 32); err != nil {
 		return err
 	} else if clock, err := strconv.ParseUint(clockRaw, 10, 32); err != nil {
 		return err
