@@ -67,6 +67,24 @@
       "message": "nit: although a bit wordy, the standard of:\n\nif err :\u003d ... ; err !\u003d nil \n..\n\nis suggested to be consistent.",
       "revId": "64ff0243d39ee2b73642e82cde3194a212e6bdda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c338d314_0558ab6f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-03-21T02:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed435574_893f150f",
+      "revId": "64ff0243d39ee2b73642e82cde3194a212e6bdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
