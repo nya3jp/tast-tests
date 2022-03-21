@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10fcb2a4_33b0d73a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "First pass. Just quick overall comment, it makes it a little harder to review when you have a bunch of inline gerrit comments. Best to either make those actual inline code comments or refactor the code to handle the inline comment.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "546721b3_b083053d",
@@ -54,6 +71,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1cfea0d_41f8a59e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_one_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "Is this statefulness something that can be addressed in the fixture? Are we able to clear the browser cache or something to get the state back to baseline?",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84c47b2_75ef57fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_one_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "Might be worth just folding these into a single comment indicating the stability. The API might fluctuate over time whilst these comments will end up stale and could lead to a confusing comment.",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b93873c_e7ec164f",
         "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
         "patchSetId": 1
@@ -65,6 +128,123 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 1,
       "message": "A lot of code in this file is moved from `src/chromiumos/tast/local/playbilling/testapp.go`.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab75e4e_df0532bc",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: lowercase w",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53da716e_f7de2e05",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "\u003e \"defiend\" is a possible misspelling of \"defined\".\n\nPlease fix.",
+      "parentUuid": "5e67b5a1_51838487",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 71
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803d2487_4fa4da32",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "\u003e \"defiend\" is a possible misspelling of \"defined\".\n\nPlease fix.",
+      "parentUuid": "87d11a4e_4c4fd404",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57454837_0bf287d1",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: lowercase c",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4709eb_6e5ec642",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: allow invoking billing actions?",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 46
+      },
       "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +268,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9655ffed_2316dafc",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "Is this correct? I think this might be ClickElementByCDP right? you\u0027re identifying the location using JS but then dispatching a mouse click via CDP.",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ff28efa_27f875a5",
         "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
         "patchSetId": 1
@@ -105,6 +308,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a214288_047b8e1f",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "If a test shares a fixture you could still have 2 login sessions in the event of one of the chrome logins failing and the set up being done again. Not sure if this changes the logic but thought I\u0027d mention just in case!",
+      "parentUuid": "7ff28efa_27f875a5",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a40f7d2e_f331b77c",
         "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
         "patchSetId": 1
@@ -116,6 +337,29 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 1,
       "message": "Tap points confirmation is not consistent and does not appear 100% of time (could depend on user settings).",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0a7fef_d3885a7c",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: This comment is difficult to parse, maybe wrap \"You already own this item\" in comments to indicate that\u0027s the text in the window.",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 54
+      },
       "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +400,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "429b8a10_cdd5bfca",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "Given the implicit conversions JS does, it might be worth being explicit about this evaluation, e.g. `%s \u003d\u003d\u003d true` etc. just in case some truthy falsy unknown values cause implicit conversions and odd bugs.",
+      "range": {
+        "startLine": 148,
+        "startChar": 24,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf08f002_277c1def",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "This goes for all the occurrences of these: AFAICT the `uiauto.Combine` step includes the combined name in the error message. This makes these `return errors.Wrap` steps redundant. I\u0027d suggest either return `uiauto.Combine` directly and have this return an `Action` or invoke `ctx` on `uiauto.Combine` and just return that, e.g.\n```\nreturn uiauto.Combine(\"...\", steps)\n```\nor\n```\nreturn uiauto.Combine(\"...\", steps)(ctx)\n```",
+      "range": {
+        "startLine": 199,
+        "startChar": 9,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77e79adb_5c297fb7",
         "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
         "patchSetId": 1
@@ -167,6 +457,190 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 1,
       "message": "Retries and sleep will make logs assessment more stable.\nIt is the main failure reason in https://tastboard.corp.google.com/test/appsplatform.Dgapi2GetDetails.vm .",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913ff81c_53ebbb39",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "This is not ideal to have in a function, if you really need a sleep (i.e. there is not other signal you can wait for) consider using `testing.Poll` instead which has these principles included\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go;l\u003d30-44;drc\u003de2fe706ffdd02eb70704b8a3b0a72215ef08c147",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b999bdd6_599a5dd0",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "Just small note (I\u0027ll leave resolved) this feels like it might be a bottleneck later on if there is a lot of logs or multiple usages of `verifyLogs`. You could potentially setup a log watcher which runs as a goroutine and gathers logs whilst the app is running then have them cached at the end.\n\nAgain only an issue if size of logs or usages of verifyLogs proliferates.",
+      "range": {
+        "startLine": 236,
+        "startChar": 8,
+        "endLine": 236,
+        "endChar": 21
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eedaf33_7e63afa3",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: good to stay consistent with error messages, e.g. \"failed to find\" or \"unable to find\" throughout.",
+      "range": {
+        "startLine": 246,
+        "startChar": 22,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3beda5f8_f2ac8b5b",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: better for readability if you explicitly initialize this with `false`.",
+      "range": {
+        "startLine": 267,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 23
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6380e207_e43f904c",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: good to stay consistent with formatting quotes, single quotes for runes, double quotes for characters with no escaping, backticks for when double or single quotes are used in the message.",
+      "range": {
+        "startLine": 275,
+        "startChar": 24,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a87bf39_f2f8253f",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: might be worth exposing a `webutil.WaitForQuiescenceAction` at `chromiumos/tast/local/chrome/webutil` for your use, this pattern is spreading throughout the code.",
+      "range": {
+        "startLine": 296,
+        "startChar": 10,
+        "endLine": 296,
+        "endChar": 35
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dce97b5_40f25e13",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "nit: end lines with \u0027.\u0027 character.",
+      "range": {
+        "startLine": 305,
+        "startChar": 106,
+        "endLine": 305,
+        "endChar": 107
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9488d7e_d8c33171",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-21T04:21:41Z",
+      "side": 1,
+      "message": "Am I missing something here, the code looks like it\u0027s just purchasing once, is this expected to be called after the `PurchaseOneTime` function? I\u0027d expect this to execute twice or 2 invocations of `PurchaseOneTime` to be called.",
+      "range": {
+        "startLine": 306,
+        "startChar": 25,
+        "endLine": 306,
+        "endChar": 48
+      },
       "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
