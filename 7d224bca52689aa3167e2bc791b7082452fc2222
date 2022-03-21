@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d94b75b0_d15920f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330854
+      },
+      "writtenOn": "2022-03-21T13:29:51Z",
+      "side": 1,
+      "message": "Thanks for the references. added FIXED instead of BUG as this PR will fix the issue.",
+      "parentUuid": "5c2a0896_cefd9ec7",
+      "revId": "7d224bca52689aa3167e2bc791b7082452fc2222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d12efd14_fb2f2ee8",
@@ -43,6 +61,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d3971cf3_894de182",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330854
+      },
+      "writtenOn": "2022-03-21T13:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d12efd14_fb2f2ee8",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "7d224bca52689aa3167e2bc791b7082452fc2222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "213db15c_c7c30c13",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2022-03-18T19:04:33Z",
       "side": 1,
       "message": "Hi Sreehari,\n\nJust a few issues with the commit message. Can you also-make sure that the pre-upload checks are passing? My understanding is that those issues would have been caught by the pre-upload checks.",
+      "revId": "7d224bca52689aa3167e2bc791b7082452fc2222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28693c27_2477a94d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330854
+      },
+      "writtenOn": "2022-03-21T13:29:51Z",
+      "side": 1,
+      "message": "we are facing some setup issues to use repo upload command. \nfor the patch set#3 i have selected yes for Run hook scripts to make sure no new commit message issues.",
+      "parentUuid": "213db15c_c7c30c13",
       "revId": "7d224bca52689aa3167e2bc791b7082452fc2222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
