@@ -76,7 +76,7 @@ const (
 	vp9 videoCodecReport = 1
 )
 
-const defaultTestTimeout = 10 * time.Minute
+const defaultTestTimeout = 20 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
