@@ -12,6 +12,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
+	"google.golang.org/protobuf/reflect/protoreflect"
 
 	"chromiumos/tast/errors"
 )
@@ -26,7 +27,6 @@ type HomepageLocation struct {
 }
 
 func (p *HomepageLocation) Name() string          { return "HomepageLocation" }
-func (p *HomepageLocation) Field() string         { return "" }
 func (p *HomepageLocation) Scope() Scope          { return ScopeUser }
 func (p *HomepageLocation) Status() Status        { return p.Stat }
 func (p *HomepageLocation) UntypedV() interface{} { return p.Val }
@@ -36,6 +36,9 @@ func (p *HomepageLocation) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *HomepageLocation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HomepageLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -55,7 +58,6 @@ type HomepageIsNewTabPage struct {
 }
 
 func (p *HomepageIsNewTabPage) Name() string          { return "HomepageIsNewTabPage" }
-func (p *HomepageIsNewTabPage) Field() string         { return "" }
 func (p *HomepageIsNewTabPage) Scope() Scope          { return ScopeUser }
 func (p *HomepageIsNewTabPage) Status() Status        { return p.Stat }
 func (p *HomepageIsNewTabPage) UntypedV() interface{} { return p.Val }
@@ -65,6 +67,9 @@ func (p *HomepageIsNewTabPage) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HomepageIsNewTabPage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HomepageIsNewTabPage) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -84,7 +89,6 @@ type AlternateErrorPagesEnabled struct {
 }
 
 func (p *AlternateErrorPagesEnabled) Name() string          { return "AlternateErrorPagesEnabled" }
-func (p *AlternateErrorPagesEnabled) Field() string         { return "" }
 func (p *AlternateErrorPagesEnabled) Scope() Scope          { return ScopeUser }
 func (p *AlternateErrorPagesEnabled) Status() Status        { return p.Stat }
 func (p *AlternateErrorPagesEnabled) UntypedV() interface{} { return p.Val }
@@ -94,6 +98,9 @@ func (p *AlternateErrorPagesEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AlternateErrorPagesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AlternateErrorPagesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -113,7 +120,6 @@ type SearchSuggestEnabled struct {
 }
 
 func (p *SearchSuggestEnabled) Name() string          { return "SearchSuggestEnabled" }
-func (p *SearchSuggestEnabled) Field() string         { return "" }
 func (p *SearchSuggestEnabled) Scope() Scope          { return ScopeUser }
 func (p *SearchSuggestEnabled) Status() Status        { return p.Stat }
 func (p *SearchSuggestEnabled) UntypedV() interface{} { return p.Val }
@@ -123,6 +129,9 @@ func (p *SearchSuggestEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SearchSuggestEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SearchSuggestEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -142,7 +151,6 @@ type JavascriptEnabled struct {
 }
 
 func (p *JavascriptEnabled) Name() string          { return "JavascriptEnabled" }
-func (p *JavascriptEnabled) Field() string         { return "" }
 func (p *JavascriptEnabled) Scope() Scope          { return ScopeUser }
 func (p *JavascriptEnabled) Status() Status        { return p.Stat }
 func (p *JavascriptEnabled) UntypedV() interface{} { return p.Val }
@@ -152,6 +160,9 @@ func (p *JavascriptEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *JavascriptEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavascriptEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -171,7 +182,6 @@ type IncognitoEnabled struct {
 }
 
 func (p *IncognitoEnabled) Name() string          { return "IncognitoEnabled" }
-func (p *IncognitoEnabled) Field() string         { return "" }
 func (p *IncognitoEnabled) Scope() Scope          { return ScopeUser }
 func (p *IncognitoEnabled) Status() Status        { return p.Stat }
 func (p *IncognitoEnabled) UntypedV() interface{} { return p.Val }
@@ -181,6 +191,9 @@ func (p *IncognitoEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *IncognitoEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IncognitoEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -200,7 +213,6 @@ type SavingBrowserHistoryDisabled struct {
 }
 
 func (p *SavingBrowserHistoryDisabled) Name() string          { return "SavingBrowserHistoryDisabled" }
-func (p *SavingBrowserHistoryDisabled) Field() string         { return "" }
 func (p *SavingBrowserHistoryDisabled) Scope() Scope          { return ScopeUser }
 func (p *SavingBrowserHistoryDisabled) Status() Status        { return p.Stat }
 func (p *SavingBrowserHistoryDisabled) UntypedV() interface{} { return p.Val }
@@ -210,6 +222,9 @@ func (p *SavingBrowserHistoryDisabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SavingBrowserHistoryDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SavingBrowserHistoryDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -229,7 +244,6 @@ type PrintingEnabled struct {
 }
 
 func (p *PrintingEnabled) Name() string          { return "PrintingEnabled" }
-func (p *PrintingEnabled) Field() string         { return "" }
 func (p *PrintingEnabled) Scope() Scope          { return ScopeUser }
 func (p *PrintingEnabled) Status() Status        { return p.Stat }
 func (p *PrintingEnabled) UntypedV() interface{} { return p.Val }
@@ -239,6 +253,9 @@ func (p *PrintingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrintingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -258,7 +275,6 @@ type SafeBrowsingEnabled struct {
 }
 
 func (p *SafeBrowsingEnabled) Name() string          { return "SafeBrowsingEnabled" }
-func (p *SafeBrowsingEnabled) Field() string         { return "" }
 func (p *SafeBrowsingEnabled) Scope() Scope          { return ScopeUser }
 func (p *SafeBrowsingEnabled) Status() Status        { return p.Stat }
 func (p *SafeBrowsingEnabled) UntypedV() interface{} { return p.Val }
@@ -268,6 +284,9 @@ func (p *SafeBrowsingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SafeBrowsingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -287,7 +306,6 @@ type PasswordManagerEnabled struct {
 }
 
 func (p *PasswordManagerEnabled) Name() string          { return "PasswordManagerEnabled" }
-func (p *PasswordManagerEnabled) Field() string         { return "" }
 func (p *PasswordManagerEnabled) Scope() Scope          { return ScopeUser }
 func (p *PasswordManagerEnabled) Status() Status        { return p.Stat }
 func (p *PasswordManagerEnabled) UntypedV() interface{} { return p.Val }
@@ -297,6 +315,9 @@ func (p *PasswordManagerEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PasswordManagerEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordManagerEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -316,7 +337,6 @@ type AutoFillEnabled struct {
 }
 
 func (p *AutoFillEnabled) Name() string          { return "AutoFillEnabled" }
-func (p *AutoFillEnabled) Field() string         { return "" }
 func (p *AutoFillEnabled) Scope() Scope          { return ScopeUser }
 func (p *AutoFillEnabled) Status() Status        { return p.Stat }
 func (p *AutoFillEnabled) UntypedV() interface{} { return p.Val }
@@ -326,6 +346,9 @@ func (p *AutoFillEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutoFillEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoFillEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -345,7 +368,6 @@ type SyncDisabled struct {
 }
 
 func (p *SyncDisabled) Name() string          { return "SyncDisabled" }
-func (p *SyncDisabled) Field() string         { return "" }
 func (p *SyncDisabled) Scope() Scope          { return ScopeUser }
 func (p *SyncDisabled) Status() Status        { return p.Stat }
 func (p *SyncDisabled) UntypedV() interface{} { return p.Val }
@@ -355,6 +377,9 @@ func (p *SyncDisabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SyncDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SyncDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -374,7 +399,6 @@ type ProxyMode struct {
 }
 
 func (p *ProxyMode) Name() string          { return "ProxyMode" }
-func (p *ProxyMode) Field() string         { return "" }
 func (p *ProxyMode) Scope() Scope          { return ScopeUser }
 func (p *ProxyMode) Status() Status        { return p.Stat }
 func (p *ProxyMode) UntypedV() interface{} { return p.Val }
@@ -384,6 +408,9 @@ func (p *ProxyMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -403,7 +430,6 @@ type ProxyServerMode struct {
 }
 
 func (p *ProxyServerMode) Name() string          { return "ProxyServerMode" }
-func (p *ProxyServerMode) Field() string         { return "" }
 func (p *ProxyServerMode) Scope() Scope          { return ScopeUser }
 func (p *ProxyServerMode) Status() Status        { return p.Stat }
 func (p *ProxyServerMode) UntypedV() interface{} { return p.Val }
@@ -413,6 +439,9 @@ func (p *ProxyServerMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ProxyServerMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyServerMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -432,7 +461,6 @@ type ProxyServer struct {
 }
 
 func (p *ProxyServer) Name() string          { return "ProxyServer" }
-func (p *ProxyServer) Field() string         { return "" }
 func (p *ProxyServer) Scope() Scope          { return ScopeUser }
 func (p *ProxyServer) Status() Status        { return p.Stat }
 func (p *ProxyServer) UntypedV() interface{} { return p.Val }
@@ -442,6 +470,9 @@ func (p *ProxyServer) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyServer) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyServer) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -461,7 +492,6 @@ type ProxyPacUrl struct {
 }
 
 func (p *ProxyPacUrl) Name() string          { return "ProxyPacUrl" }
-func (p *ProxyPacUrl) Field() string         { return "" }
 func (p *ProxyPacUrl) Scope() Scope          { return ScopeUser }
 func (p *ProxyPacUrl) Status() Status        { return p.Stat }
 func (p *ProxyPacUrl) UntypedV() interface{} { return p.Val }
@@ -471,6 +501,9 @@ func (p *ProxyPacUrl) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyPacUrl) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyPacUrl) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -490,7 +523,6 @@ type ProxyBypassList struct {
 }
 
 func (p *ProxyBypassList) Name() string          { return "ProxyBypassList" }
-func (p *ProxyBypassList) Field() string         { return "" }
 func (p *ProxyBypassList) Scope() Scope          { return ScopeUser }
 func (p *ProxyBypassList) Status() Status        { return p.Stat }
 func (p *ProxyBypassList) UntypedV() interface{} { return p.Val }
@@ -500,6 +532,9 @@ func (p *ProxyBypassList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyBypassList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyBypassList) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -519,7 +554,6 @@ type AuthSchemes struct {
 }
 
 func (p *AuthSchemes) Name() string          { return "AuthSchemes" }
-func (p *AuthSchemes) Field() string         { return "" }
 func (p *AuthSchemes) Scope() Scope          { return ScopeUser }
 func (p *AuthSchemes) Status() Status        { return p.Stat }
 func (p *AuthSchemes) UntypedV() interface{} { return p.Val }
@@ -529,6 +563,9 @@ func (p *AuthSchemes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AuthSchemes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AuthSchemes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -548,7 +585,6 @@ type DisableAuthNegotiateCnameLookup struct {
 }
 
 func (p *DisableAuthNegotiateCnameLookup) Name() string          { return "DisableAuthNegotiateCnameLookup" }
-func (p *DisableAuthNegotiateCnameLookup) Field() string         { return "" }
 func (p *DisableAuthNegotiateCnameLookup) Scope() Scope          { return ScopeUser }
 func (p *DisableAuthNegotiateCnameLookup) Status() Status        { return p.Stat }
 func (p *DisableAuthNegotiateCnameLookup) UntypedV() interface{} { return p.Val }
@@ -558,6 +594,9 @@ func (p *DisableAuthNegotiateCnameLookup) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisableAuthNegotiateCnameLookup) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DisableAuthNegotiateCnameLookup) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -577,7 +616,6 @@ type EnableAuthNegotiatePort struct {
 }
 
 func (p *EnableAuthNegotiatePort) Name() string          { return "EnableAuthNegotiatePort" }
-func (p *EnableAuthNegotiatePort) Field() string         { return "" }
 func (p *EnableAuthNegotiatePort) Scope() Scope          { return ScopeUser }
 func (p *EnableAuthNegotiatePort) Status() Status        { return p.Stat }
 func (p *EnableAuthNegotiatePort) UntypedV() interface{} { return p.Val }
@@ -587,6 +625,9 @@ func (p *EnableAuthNegotiatePort) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableAuthNegotiatePort) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableAuthNegotiatePort) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -606,7 +647,6 @@ type ExtensionInstallForcelist struct {
 }
 
 func (p *ExtensionInstallForcelist) Name() string          { return "ExtensionInstallForcelist" }
-func (p *ExtensionInstallForcelist) Field() string         { return "" }
 func (p *ExtensionInstallForcelist) Scope() Scope          { return ScopeUser }
 func (p *ExtensionInstallForcelist) Status() Status        { return p.Stat }
 func (p *ExtensionInstallForcelist) UntypedV() interface{} { return p.Val }
@@ -616,6 +656,9 @@ func (p *ExtensionInstallForcelist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallForcelist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallForcelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -635,7 +678,6 @@ type ShowHomeButton struct {
 }
 
 func (p *ShowHomeButton) Name() string          { return "ShowHomeButton" }
-func (p *ShowHomeButton) Field() string         { return "" }
 func (p *ShowHomeButton) Scope() Scope          { return ScopeUser }
 func (p *ShowHomeButton) Status() Status        { return p.Stat }
 func (p *ShowHomeButton) UntypedV() interface{} { return p.Val }
@@ -645,6 +687,9 @@ func (p *ShowHomeButton) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ShowHomeButton) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShowHomeButton) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -664,7 +709,6 @@ type DeveloperToolsDisabled struct {
 }
 
 func (p *DeveloperToolsDisabled) Name() string          { return "DeveloperToolsDisabled" }
-func (p *DeveloperToolsDisabled) Field() string         { return "" }
 func (p *DeveloperToolsDisabled) Scope() Scope          { return ScopeUser }
 func (p *DeveloperToolsDisabled) Status() Status        { return p.Stat }
 func (p *DeveloperToolsDisabled) UntypedV() interface{} { return p.Val }
@@ -674,6 +718,9 @@ func (p *DeveloperToolsDisabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeveloperToolsDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeveloperToolsDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -693,7 +740,6 @@ type RestoreOnStartup struct {
 }
 
 func (p *RestoreOnStartup) Name() string          { return "RestoreOnStartup" }
-func (p *RestoreOnStartup) Field() string         { return "" }
 func (p *RestoreOnStartup) Scope() Scope          { return ScopeUser }
 func (p *RestoreOnStartup) Status() Status        { return p.Stat }
 func (p *RestoreOnStartup) UntypedV() interface{} { return p.Val }
@@ -703,6 +749,9 @@ func (p *RestoreOnStartup) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RestoreOnStartup) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RestoreOnStartup) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -722,7 +771,6 @@ type RestoreOnStartupURLs struct {
 }
 
 func (p *RestoreOnStartupURLs) Name() string          { return "RestoreOnStartupURLs" }
-func (p *RestoreOnStartupURLs) Field() string         { return "" }
 func (p *RestoreOnStartupURLs) Scope() Scope          { return ScopeUser }
 func (p *RestoreOnStartupURLs) Status() Status        { return p.Stat }
 func (p *RestoreOnStartupURLs) UntypedV() interface{} { return p.Val }
@@ -732,6 +780,9 @@ func (p *RestoreOnStartupURLs) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RestoreOnStartupURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RestoreOnStartupURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -751,7 +802,6 @@ type BlockThirdPartyCookies struct {
 }
 
 func (p *BlockThirdPartyCookies) Name() string          { return "BlockThirdPartyCookies" }
-func (p *BlockThirdPartyCookies) Field() string         { return "" }
 func (p *BlockThirdPartyCookies) Scope() Scope          { return ScopeUser }
 func (p *BlockThirdPartyCookies) Status() Status        { return p.Stat }
 func (p *BlockThirdPartyCookies) UntypedV() interface{} { return p.Val }
@@ -761,6 +811,9 @@ func (p *BlockThirdPartyCookies) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BlockThirdPartyCookies) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BlockThirdPartyCookies) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -780,7 +833,6 @@ type DefaultSearchProviderEnabled struct {
 }
 
 func (p *DefaultSearchProviderEnabled) Name() string          { return "DefaultSearchProviderEnabled" }
-func (p *DefaultSearchProviderEnabled) Field() string         { return "" }
 func (p *DefaultSearchProviderEnabled) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderEnabled) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderEnabled) UntypedV() interface{} { return p.Val }
@@ -790,6 +842,9 @@ func (p *DefaultSearchProviderEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -809,7 +864,6 @@ type DefaultSearchProviderName struct {
 }
 
 func (p *DefaultSearchProviderName) Name() string          { return "DefaultSearchProviderName" }
-func (p *DefaultSearchProviderName) Field() string         { return "" }
 func (p *DefaultSearchProviderName) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderName) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderName) UntypedV() interface{} { return p.Val }
@@ -819,6 +873,9 @@ func (p *DefaultSearchProviderName) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderName) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -838,7 +895,6 @@ type DefaultSearchProviderKeyword struct {
 }
 
 func (p *DefaultSearchProviderKeyword) Name() string          { return "DefaultSearchProviderKeyword" }
-func (p *DefaultSearchProviderKeyword) Field() string         { return "" }
 func (p *DefaultSearchProviderKeyword) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderKeyword) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderKeyword) UntypedV() interface{} { return p.Val }
@@ -848,6 +904,9 @@ func (p *DefaultSearchProviderKeyword) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderKeyword) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderKeyword) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -867,7 +926,6 @@ type DefaultSearchProviderSearchURL struct {
 }
 
 func (p *DefaultSearchProviderSearchURL) Name() string          { return "DefaultSearchProviderSearchURL" }
-func (p *DefaultSearchProviderSearchURL) Field() string         { return "" }
 func (p *DefaultSearchProviderSearchURL) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderSearchURL) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderSearchURL) UntypedV() interface{} { return p.Val }
@@ -877,6 +935,9 @@ func (p *DefaultSearchProviderSearchURL) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSearchURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderSearchURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -896,7 +957,6 @@ type DefaultSearchProviderSuggestURL struct {
 }
 
 func (p *DefaultSearchProviderSuggestURL) Name() string          { return "DefaultSearchProviderSuggestURL" }
-func (p *DefaultSearchProviderSuggestURL) Field() string         { return "" }
 func (p *DefaultSearchProviderSuggestURL) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderSuggestURL) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderSuggestURL) UntypedV() interface{} { return p.Val }
@@ -906,6 +966,9 @@ func (p *DefaultSearchProviderSuggestURL) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSuggestURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderSuggestURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -925,7 +988,6 @@ type DefaultSearchProviderIconURL struct {
 }
 
 func (p *DefaultSearchProviderIconURL) Name() string          { return "DefaultSearchProviderIconURL" }
-func (p *DefaultSearchProviderIconURL) Field() string         { return "" }
 func (p *DefaultSearchProviderIconURL) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderIconURL) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderIconURL) UntypedV() interface{} { return p.Val }
@@ -935,6 +997,9 @@ func (p *DefaultSearchProviderIconURL) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderIconURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderIconURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -954,7 +1019,6 @@ type DefaultSearchProviderEncodings struct {
 }
 
 func (p *DefaultSearchProviderEncodings) Name() string          { return "DefaultSearchProviderEncodings" }
-func (p *DefaultSearchProviderEncodings) Field() string         { return "" }
 func (p *DefaultSearchProviderEncodings) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderEncodings) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderEncodings) UntypedV() interface{} { return p.Val }
@@ -964,6 +1028,9 @@ func (p *DefaultSearchProviderEncodings) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderEncodings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderEncodings) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -983,7 +1050,6 @@ type DefaultCookiesSetting struct {
 }
 
 func (p *DefaultCookiesSetting) Name() string          { return "DefaultCookiesSetting" }
-func (p *DefaultCookiesSetting) Field() string         { return "" }
 func (p *DefaultCookiesSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultCookiesSetting) Status() Status        { return p.Stat }
 func (p *DefaultCookiesSetting) UntypedV() interface{} { return p.Val }
@@ -993,6 +1059,9 @@ func (p *DefaultCookiesSetting) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultCookiesSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultCookiesSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1012,7 +1081,6 @@ type DefaultImagesSetting struct {
 }
 
 func (p *DefaultImagesSetting) Name() string          { return "DefaultImagesSetting" }
-func (p *DefaultImagesSetting) Field() string         { return "" }
 func (p *DefaultImagesSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultImagesSetting) Status() Status        { return p.Stat }
 func (p *DefaultImagesSetting) UntypedV() interface{} { return p.Val }
@@ -1022,6 +1090,9 @@ func (p *DefaultImagesSetting) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultImagesSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultImagesSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1041,7 +1112,6 @@ type DefaultJavaScriptSetting struct {
 }
 
 func (p *DefaultJavaScriptSetting) Name() string          { return "DefaultJavaScriptSetting" }
-func (p *DefaultJavaScriptSetting) Field() string         { return "" }
 func (p *DefaultJavaScriptSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultJavaScriptSetting) Status() Status        { return p.Stat }
 func (p *DefaultJavaScriptSetting) UntypedV() interface{} { return p.Val }
@@ -1051,6 +1121,9 @@ func (p *DefaultJavaScriptSetting) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultJavaScriptSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultJavaScriptSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1070,7 +1143,6 @@ type DefaultPopupsSetting struct {
 }
 
 func (p *DefaultPopupsSetting) Name() string          { return "DefaultPopupsSetting" }
-func (p *DefaultPopupsSetting) Field() string         { return "" }
 func (p *DefaultPopupsSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultPopupsSetting) Status() Status        { return p.Stat }
 func (p *DefaultPopupsSetting) UntypedV() interface{} { return p.Val }
@@ -1080,6 +1152,9 @@ func (p *DefaultPopupsSetting) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultPopupsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultPopupsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1099,7 +1174,6 @@ type DefaultNotificationsSetting struct {
 }
 
 func (p *DefaultNotificationsSetting) Name() string          { return "DefaultNotificationsSetting" }
-func (p *DefaultNotificationsSetting) Field() string         { return "" }
 func (p *DefaultNotificationsSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultNotificationsSetting) Status() Status        { return p.Stat }
 func (p *DefaultNotificationsSetting) UntypedV() interface{} { return p.Val }
@@ -1109,6 +1183,9 @@ func (p *DefaultNotificationsSetting) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultNotificationsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultNotificationsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1128,7 +1205,6 @@ type DefaultGeolocationSetting struct {
 }
 
 func (p *DefaultGeolocationSetting) Name() string          { return "DefaultGeolocationSetting" }
-func (p *DefaultGeolocationSetting) Field() string         { return "" }
 func (p *DefaultGeolocationSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultGeolocationSetting) Status() Status        { return p.Stat }
 func (p *DefaultGeolocationSetting) UntypedV() interface{} { return p.Val }
@@ -1138,6 +1214,9 @@ func (p *DefaultGeolocationSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultGeolocationSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultGeolocationSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1157,7 +1236,6 @@ type Disable3DAPIs struct {
 }
 
 func (p *Disable3DAPIs) Name() string          { return "Disable3DAPIs" }
-func (p *Disable3DAPIs) Field() string         { return "" }
 func (p *Disable3DAPIs) Scope() Scope          { return ScopeUser }
 func (p *Disable3DAPIs) Status() Status        { return p.Stat }
 func (p *Disable3DAPIs) UntypedV() interface{} { return p.Val }
@@ -1167,6 +1245,9 @@ func (p *Disable3DAPIs) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *Disable3DAPIs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *Disable3DAPIs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1186,7 +1267,6 @@ type PolicyRefreshRate struct {
 }
 
 func (p *PolicyRefreshRate) Name() string          { return "PolicyRefreshRate" }
-func (p *PolicyRefreshRate) Field() string         { return "" }
 func (p *PolicyRefreshRate) Scope() Scope          { return ScopeUser }
 func (p *PolicyRefreshRate) Status() Status        { return p.Stat }
 func (p *PolicyRefreshRate) UntypedV() interface{} { return p.Val }
@@ -1196,6 +1276,9 @@ func (p *PolicyRefreshRate) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PolicyRefreshRate) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PolicyRefreshRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1215,7 +1298,6 @@ type ChromeOsLockOnIdleSuspend struct {
 }
 
 func (p *ChromeOsLockOnIdleSuspend) Name() string          { return "ChromeOsLockOnIdleSuspend" }
-func (p *ChromeOsLockOnIdleSuspend) Field() string         { return "" }
 func (p *ChromeOsLockOnIdleSuspend) Scope() Scope          { return ScopeUser }
 func (p *ChromeOsLockOnIdleSuspend) Status() Status        { return p.Stat }
 func (p *ChromeOsLockOnIdleSuspend) UntypedV() interface{} { return p.Val }
@@ -1225,6 +1307,9 @@ func (p *ChromeOsLockOnIdleSuspend) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ChromeOsLockOnIdleSuspend) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ChromeOsLockOnIdleSuspend) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1244,7 +1329,6 @@ type DownloadDirectory struct {
 }
 
 func (p *DownloadDirectory) Name() string          { return "DownloadDirectory" }
-func (p *DownloadDirectory) Field() string         { return "" }
 func (p *DownloadDirectory) Scope() Scope          { return ScopeUser }
 func (p *DownloadDirectory) Status() Status        { return p.Stat }
 func (p *DownloadDirectory) UntypedV() interface{} { return p.Val }
@@ -1254,6 +1338,9 @@ func (p *DownloadDirectory) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DownloadDirectory) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DownloadDirectory) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -1273,7 +1360,6 @@ type CookiesBlockedForUrls struct {
 }
 
 func (p *CookiesBlockedForUrls) Name() string          { return "CookiesBlockedForUrls" }
-func (p *CookiesBlockedForUrls) Field() string         { return "" }
 func (p *CookiesBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *CookiesBlockedForUrls) Status() Status        { return p.Stat }
 func (p *CookiesBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -1283,6 +1369,9 @@ func (p *CookiesBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CookiesBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CookiesBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1302,7 +1391,6 @@ type CookiesSessionOnlyForUrls struct {
 }
 
 func (p *CookiesSessionOnlyForUrls) Name() string          { return "CookiesSessionOnlyForUrls" }
-func (p *CookiesSessionOnlyForUrls) Field() string         { return "" }
 func (p *CookiesSessionOnlyForUrls) Scope() Scope          { return ScopeUser }
 func (p *CookiesSessionOnlyForUrls) Status() Status        { return p.Stat }
 func (p *CookiesSessionOnlyForUrls) UntypedV() interface{} { return p.Val }
@@ -1312,6 +1400,9 @@ func (p *CookiesSessionOnlyForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CookiesSessionOnlyForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CookiesSessionOnlyForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1331,7 +1422,6 @@ type ImagesAllowedForUrls struct {
 }
 
 func (p *ImagesAllowedForUrls) Name() string          { return "ImagesAllowedForUrls" }
-func (p *ImagesAllowedForUrls) Field() string         { return "" }
 func (p *ImagesAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *ImagesAllowedForUrls) Status() Status        { return p.Stat }
 func (p *ImagesAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -1341,6 +1431,9 @@ func (p *ImagesAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ImagesAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ImagesAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1360,7 +1453,6 @@ type ImagesBlockedForUrls struct {
 }
 
 func (p *ImagesBlockedForUrls) Name() string          { return "ImagesBlockedForUrls" }
-func (p *ImagesBlockedForUrls) Field() string         { return "" }
 func (p *ImagesBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *ImagesBlockedForUrls) Status() Status        { return p.Stat }
 func (p *ImagesBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -1370,6 +1462,9 @@ func (p *ImagesBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ImagesBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ImagesBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1389,7 +1484,6 @@ type JavaScriptAllowedForUrls struct {
 }
 
 func (p *JavaScriptAllowedForUrls) Name() string          { return "JavaScriptAllowedForUrls" }
-func (p *JavaScriptAllowedForUrls) Field() string         { return "" }
 func (p *JavaScriptAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *JavaScriptAllowedForUrls) Status() Status        { return p.Stat }
 func (p *JavaScriptAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -1399,6 +1493,9 @@ func (p *JavaScriptAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavaScriptAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1418,7 +1515,6 @@ type JavaScriptBlockedForUrls struct {
 }
 
 func (p *JavaScriptBlockedForUrls) Name() string          { return "JavaScriptBlockedForUrls" }
-func (p *JavaScriptBlockedForUrls) Field() string         { return "" }
 func (p *JavaScriptBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *JavaScriptBlockedForUrls) Status() Status        { return p.Stat }
 func (p *JavaScriptBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -1428,6 +1524,9 @@ func (p *JavaScriptBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavaScriptBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1447,7 +1546,6 @@ type PopupsAllowedForUrls struct {
 }
 
 func (p *PopupsAllowedForUrls) Name() string          { return "PopupsAllowedForUrls" }
-func (p *PopupsAllowedForUrls) Field() string         { return "" }
 func (p *PopupsAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *PopupsAllowedForUrls) Status() Status        { return p.Stat }
 func (p *PopupsAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -1457,6 +1555,9 @@ func (p *PopupsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PopupsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PopupsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1476,7 +1577,6 @@ type PopupsBlockedForUrls struct {
 }
 
 func (p *PopupsBlockedForUrls) Name() string          { return "PopupsBlockedForUrls" }
-func (p *PopupsBlockedForUrls) Field() string         { return "" }
 func (p *PopupsBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *PopupsBlockedForUrls) Status() Status        { return p.Stat }
 func (p *PopupsBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -1486,6 +1586,9 @@ func (p *PopupsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PopupsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PopupsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1505,7 +1608,6 @@ type CookiesAllowedForUrls struct {
 }
 
 func (p *CookiesAllowedForUrls) Name() string          { return "CookiesAllowedForUrls" }
-func (p *CookiesAllowedForUrls) Field() string         { return "" }
 func (p *CookiesAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *CookiesAllowedForUrls) Status() Status        { return p.Stat }
 func (p *CookiesAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -1515,6 +1617,9 @@ func (p *CookiesAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CookiesAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CookiesAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1534,7 +1639,6 @@ type TranslateEnabled struct {
 }
 
 func (p *TranslateEnabled) Name() string          { return "TranslateEnabled" }
-func (p *TranslateEnabled) Field() string         { return "" }
 func (p *TranslateEnabled) Scope() Scope          { return ScopeUser }
 func (p *TranslateEnabled) Status() Status        { return p.Stat }
 func (p *TranslateEnabled) UntypedV() interface{} { return p.Val }
@@ -1544,6 +1648,9 @@ func (p *TranslateEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TranslateEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TranslateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1563,7 +1670,6 @@ type BookmarkBarEnabled struct {
 }
 
 func (p *BookmarkBarEnabled) Name() string          { return "BookmarkBarEnabled" }
-func (p *BookmarkBarEnabled) Field() string         { return "" }
 func (p *BookmarkBarEnabled) Scope() Scope          { return ScopeUser }
 func (p *BookmarkBarEnabled) Status() Status        { return p.Stat }
 func (p *BookmarkBarEnabled) UntypedV() interface{} { return p.Val }
@@ -1573,6 +1679,9 @@ func (p *BookmarkBarEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BookmarkBarEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BookmarkBarEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1592,7 +1701,6 @@ type EditBookmarksEnabled struct {
 }
 
 func (p *EditBookmarksEnabled) Name() string          { return "EditBookmarksEnabled" }
-func (p *EditBookmarksEnabled) Field() string         { return "" }
 func (p *EditBookmarksEnabled) Scope() Scope          { return ScopeUser }
 func (p *EditBookmarksEnabled) Status() Status        { return p.Stat }
 func (p *EditBookmarksEnabled) UntypedV() interface{} { return p.Val }
@@ -1602,6 +1710,9 @@ func (p *EditBookmarksEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EditBookmarksEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EditBookmarksEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1621,7 +1732,6 @@ type DisabledSchemes struct {
 }
 
 func (p *DisabledSchemes) Name() string          { return "DisabledSchemes" }
-func (p *DisabledSchemes) Field() string         { return "" }
 func (p *DisabledSchemes) Scope() Scope          { return ScopeUser }
 func (p *DisabledSchemes) Status() Status        { return p.Stat }
 func (p *DisabledSchemes) UntypedV() interface{} { return p.Val }
@@ -1631,6 +1741,9 @@ func (p *DisabledSchemes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DisabledSchemes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DisabledSchemes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1650,7 +1763,6 @@ type AllowCrossOriginAuthPrompt struct {
 }
 
 func (p *AllowCrossOriginAuthPrompt) Name() string          { return "AllowCrossOriginAuthPrompt" }
-func (p *AllowCrossOriginAuthPrompt) Field() string         { return "" }
 func (p *AllowCrossOriginAuthPrompt) Scope() Scope          { return ScopeUser }
 func (p *AllowCrossOriginAuthPrompt) Status() Status        { return p.Stat }
 func (p *AllowCrossOriginAuthPrompt) UntypedV() interface{} { return p.Val }
@@ -1660,6 +1772,9 @@ func (p *AllowCrossOriginAuthPrompt) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowCrossOriginAuthPrompt) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowCrossOriginAuthPrompt) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1678,10 +1793,7 @@ type DevicePolicyRefreshRate struct {
 	Val  int
 }
 
-func (p *DevicePolicyRefreshRate) Name() string { return "DevicePolicyRefreshRate" }
-func (p *DevicePolicyRefreshRate) Field() string {
-	return "device_policy_refresh_rate.device_policy_refresh_rate"
-}
+func (p *DevicePolicyRefreshRate) Name() string          { return "DevicePolicyRefreshRate" }
 func (p *DevicePolicyRefreshRate) Scope() Scope          { return ScopeDevice }
 func (p *DevicePolicyRefreshRate) Status() Status        { return p.Stat }
 func (p *DevicePolicyRefreshRate) UntypedV() interface{} { return p.Val }
@@ -1691,6 +1803,9 @@ func (p *DevicePolicyRefreshRate) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DevicePolicyRefreshRate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_policy_refresh_rate", "device_policy_refresh_rate", p.Val)
 }
 func (p *DevicePolicyRefreshRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1710,7 +1825,6 @@ type ChromeOsReleaseChannel struct {
 }
 
 func (p *ChromeOsReleaseChannel) Name() string          { return "ChromeOsReleaseChannel" }
-func (p *ChromeOsReleaseChannel) Field() string         { return "release_channel.release_channel" }
 func (p *ChromeOsReleaseChannel) Scope() Scope          { return ScopeDevice }
 func (p *ChromeOsReleaseChannel) Status() Status        { return p.Stat }
 func (p *ChromeOsReleaseChannel) UntypedV() interface{} { return p.Val }
@@ -1720,6 +1834,9 @@ func (p *ChromeOsReleaseChannel) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ChromeOsReleaseChannel) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "release_channel", "release_channel", p.Val)
 }
 func (p *ChromeOsReleaseChannel) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -1739,7 +1856,6 @@ type MaxConnectionsPerProxy struct {
 }
 
 func (p *MaxConnectionsPerProxy) Name() string          { return "MaxConnectionsPerProxy" }
-func (p *MaxConnectionsPerProxy) Field() string         { return "" }
 func (p *MaxConnectionsPerProxy) Scope() Scope          { return ScopeUser }
 func (p *MaxConnectionsPerProxy) Status() Status        { return p.Stat }
 func (p *MaxConnectionsPerProxy) UntypedV() interface{} { return p.Val }
@@ -1749,6 +1865,9 @@ func (p *MaxConnectionsPerProxy) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *MaxConnectionsPerProxy) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *MaxConnectionsPerProxy) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1768,7 +1887,6 @@ type IncognitoModeAvailability struct {
 }
 
 func (p *IncognitoModeAvailability) Name() string          { return "IncognitoModeAvailability" }
-func (p *IncognitoModeAvailability) Field() string         { return "" }
 func (p *IncognitoModeAvailability) Scope() Scope          { return ScopeUser }
 func (p *IncognitoModeAvailability) Status() Status        { return p.Stat }
 func (p *IncognitoModeAvailability) UntypedV() interface{} { return p.Val }
@@ -1778,6 +1896,9 @@ func (p *IncognitoModeAvailability) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IncognitoModeAvailability) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IncognitoModeAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1797,7 +1918,6 @@ type RemoteAccessHostFirewallTraversal struct {
 }
 
 func (p *RemoteAccessHostFirewallTraversal) Name() string          { return "RemoteAccessHostFirewallTraversal" }
-func (p *RemoteAccessHostFirewallTraversal) Field() string         { return "" }
 func (p *RemoteAccessHostFirewallTraversal) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostFirewallTraversal) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostFirewallTraversal) UntypedV() interface{} { return p.Val }
@@ -1807,6 +1927,9 @@ func (p *RemoteAccessHostFirewallTraversal) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostFirewallTraversal) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostFirewallTraversal) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1826,7 +1949,6 @@ type AutoSelectCertificateForUrls struct {
 }
 
 func (p *AutoSelectCertificateForUrls) Name() string          { return "AutoSelectCertificateForUrls" }
-func (p *AutoSelectCertificateForUrls) Field() string         { return "" }
 func (p *AutoSelectCertificateForUrls) Scope() Scope          { return ScopeUser }
 func (p *AutoSelectCertificateForUrls) Status() Status        { return p.Stat }
 func (p *AutoSelectCertificateForUrls) UntypedV() interface{} { return p.Val }
@@ -1836,6 +1958,9 @@ func (p *AutoSelectCertificateForUrls) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoSelectCertificateForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoSelectCertificateForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1855,7 +1980,6 @@ type NotificationsAllowedForUrls struct {
 }
 
 func (p *NotificationsAllowedForUrls) Name() string          { return "NotificationsAllowedForUrls" }
-func (p *NotificationsAllowedForUrls) Field() string         { return "" }
 func (p *NotificationsAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *NotificationsAllowedForUrls) Status() Status        { return p.Stat }
 func (p *NotificationsAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -1865,6 +1989,9 @@ func (p *NotificationsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *NotificationsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NotificationsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1884,7 +2011,6 @@ type NotificationsBlockedForUrls struct {
 }
 
 func (p *NotificationsBlockedForUrls) Name() string          { return "NotificationsBlockedForUrls" }
-func (p *NotificationsBlockedForUrls) Field() string         { return "" }
 func (p *NotificationsBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *NotificationsBlockedForUrls) Status() Status        { return p.Stat }
 func (p *NotificationsBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -1894,6 +2020,9 @@ func (p *NotificationsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *NotificationsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NotificationsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1914,7 +2043,6 @@ type OpenNetworkConfiguration struct {
 }
 
 func (p *OpenNetworkConfiguration) Name() string          { return "OpenNetworkConfiguration" }
-func (p *OpenNetworkConfiguration) Field() string         { return "" }
 func (p *OpenNetworkConfiguration) Scope() Scope          { return ScopeUser }
 func (p *OpenNetworkConfiguration) Status() Status        { return p.Stat }
 func (p *OpenNetworkConfiguration) UntypedV() interface{} { return p.Val }
@@ -1924,6 +2052,9 @@ func (p *OpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
+}
+func (p *OpenNetworkConfiguration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*ONC)
@@ -1943,10 +2074,7 @@ type DeviceOpenNetworkConfiguration struct {
 	Val  *ONC
 }
 
-func (p *DeviceOpenNetworkConfiguration) Name() string { return "DeviceOpenNetworkConfiguration" }
-func (p *DeviceOpenNetworkConfiguration) Field() string {
-	return "open_network_configuration.open_network_configuration"
-}
+func (p *DeviceOpenNetworkConfiguration) Name() string          { return "DeviceOpenNetworkConfiguration" }
 func (p *DeviceOpenNetworkConfiguration) Scope() Scope          { return ScopeDevice }
 func (p *DeviceOpenNetworkConfiguration) Status() Status        { return p.Stat }
 func (p *DeviceOpenNetworkConfiguration) UntypedV() interface{} { return p.Val }
@@ -1956,6 +2084,9 @@ func (p *DeviceOpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
+}
+func (p *DeviceOpenNetworkConfiguration) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "open_network_configuration", "open_network_configuration", p.Val)
 }
 func (p *DeviceOpenNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*ONC)
@@ -1984,7 +2115,6 @@ type ProxySettingsValue struct {
 }
 
 func (p *ProxySettings) Name() string          { return "ProxySettings" }
-func (p *ProxySettings) Field() string         { return "" }
 func (p *ProxySettings) Scope() Scope          { return ScopeUser }
 func (p *ProxySettings) Status() Status        { return p.Stat }
 func (p *ProxySettings) UntypedV() interface{} { return p.Val }
@@ -1994,6 +2124,9 @@ func (p *ProxySettings) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *ProxySettingsValue", m)
 	}
 	return v, nil
+}
+func (p *ProxySettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxySettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*ProxySettingsValue)
@@ -2013,7 +2146,6 @@ type ReportDeviceVersionInfo struct {
 }
 
 func (p *ReportDeviceVersionInfo) Name() string          { return "ReportDeviceVersionInfo" }
-func (p *ReportDeviceVersionInfo) Field() string         { return "device_reporting.report_version_info" }
 func (p *ReportDeviceVersionInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceVersionInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceVersionInfo) UntypedV() interface{} { return p.Val }
@@ -2023,6 +2155,9 @@ func (p *ReportDeviceVersionInfo) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceVersionInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_version_info", p.Val)
 }
 func (p *ReportDeviceVersionInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2042,7 +2177,6 @@ type ReportDeviceActivityTimes struct {
 }
 
 func (p *ReportDeviceActivityTimes) Name() string          { return "ReportDeviceActivityTimes" }
-func (p *ReportDeviceActivityTimes) Field() string         { return "device_reporting.report_activity_times" }
 func (p *ReportDeviceActivityTimes) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceActivityTimes) Status() Status        { return p.Stat }
 func (p *ReportDeviceActivityTimes) UntypedV() interface{} { return p.Val }
@@ -2052,6 +2186,9 @@ func (p *ReportDeviceActivityTimes) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceActivityTimes) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_activity_times", p.Val)
 }
 func (p *ReportDeviceActivityTimes) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2071,7 +2208,6 @@ type ReportDeviceBootMode struct {
 }
 
 func (p *ReportDeviceBootMode) Name() string          { return "ReportDeviceBootMode" }
-func (p *ReportDeviceBootMode) Field() string         { return "device_reporting.report_boot_mode" }
 func (p *ReportDeviceBootMode) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceBootMode) Status() Status        { return p.Stat }
 func (p *ReportDeviceBootMode) UntypedV() interface{} { return p.Val }
@@ -2081,6 +2217,9 @@ func (p *ReportDeviceBootMode) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBootMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_boot_mode", p.Val)
 }
 func (p *ReportDeviceBootMode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2100,7 +2239,6 @@ type DeviceAllowNewUsers struct {
 }
 
 func (p *DeviceAllowNewUsers) Name() string          { return "DeviceAllowNewUsers" }
-func (p *DeviceAllowNewUsers) Field() string         { return "allow_new_users.allow_new_users" }
 func (p *DeviceAllowNewUsers) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAllowNewUsers) Status() Status        { return p.Stat }
 func (p *DeviceAllowNewUsers) UntypedV() interface{} { return p.Val }
@@ -2110,6 +2248,9 @@ func (p *DeviceAllowNewUsers) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAllowNewUsers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_new_users", "allow_new_users", p.Val)
 }
 func (p *DeviceAllowNewUsers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2129,7 +2270,6 @@ type DeviceGuestModeEnabled struct {
 }
 
 func (p *DeviceGuestModeEnabled) Name() string          { return "DeviceGuestModeEnabled" }
-func (p *DeviceGuestModeEnabled) Field() string         { return "guest_mode_enabled.guest_mode_enabled" }
 func (p *DeviceGuestModeEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceGuestModeEnabled) Status() Status        { return p.Stat }
 func (p *DeviceGuestModeEnabled) UntypedV() interface{} { return p.Val }
@@ -2139,6 +2279,9 @@ func (p *DeviceGuestModeEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceGuestModeEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "guest_mode_enabled", "guest_mode_enabled", p.Val)
 }
 func (p *DeviceGuestModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2158,7 +2301,6 @@ type DeviceShowUserNamesOnSignin struct {
 }
 
 func (p *DeviceShowUserNamesOnSignin) Name() string          { return "DeviceShowUserNamesOnSignin" }
-func (p *DeviceShowUserNamesOnSignin) Field() string         { return "show_user_names.show_user_names" }
 func (p *DeviceShowUserNamesOnSignin) Scope() Scope          { return ScopeDevice }
 func (p *DeviceShowUserNamesOnSignin) Status() Status        { return p.Stat }
 func (p *DeviceShowUserNamesOnSignin) UntypedV() interface{} { return p.Val }
@@ -2168,6 +2310,9 @@ func (p *DeviceShowUserNamesOnSignin) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceShowUserNamesOnSignin) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "show_user_names", "show_user_names", p.Val)
 }
 func (p *DeviceShowUserNamesOnSignin) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2187,7 +2332,6 @@ type DeviceDataRoamingEnabled struct {
 }
 
 func (p *DeviceDataRoamingEnabled) Name() string          { return "DeviceDataRoamingEnabled" }
-func (p *DeviceDataRoamingEnabled) Field() string         { return "data_roaming_enabled.data_roaming_enabled" }
 func (p *DeviceDataRoamingEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceDataRoamingEnabled) Status() Status        { return p.Stat }
 func (p *DeviceDataRoamingEnabled) UntypedV() interface{} { return p.Val }
@@ -2197,6 +2341,9 @@ func (p *DeviceDataRoamingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceDataRoamingEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "data_roaming_enabled", "data_roaming_enabled", p.Val)
 }
 func (p *DeviceDataRoamingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2216,7 +2363,6 @@ type DeviceMetricsReportingEnabled struct {
 }
 
 func (p *DeviceMetricsReportingEnabled) Name() string          { return "DeviceMetricsReportingEnabled" }
-func (p *DeviceMetricsReportingEnabled) Field() string         { return "metrics_enabled.metrics_enabled" }
 func (p *DeviceMetricsReportingEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceMetricsReportingEnabled) Status() Status        { return p.Stat }
 func (p *DeviceMetricsReportingEnabled) UntypedV() interface{} { return p.Val }
@@ -2226,6 +2372,9 @@ func (p *DeviceMetricsReportingEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceMetricsReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "metrics_enabled", "metrics_enabled", p.Val)
 }
 func (p *DeviceMetricsReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2244,10 +2393,7 @@ type DeviceEphemeralUsersEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceEphemeralUsersEnabled) Name() string { return "DeviceEphemeralUsersEnabled" }
-func (p *DeviceEphemeralUsersEnabled) Field() string {
-	return "ephemeral_users_enabled.ephemeral_users_enabled"
-}
+func (p *DeviceEphemeralUsersEnabled) Name() string          { return "DeviceEphemeralUsersEnabled" }
 func (p *DeviceEphemeralUsersEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceEphemeralUsersEnabled) Status() Status        { return p.Stat }
 func (p *DeviceEphemeralUsersEnabled) UntypedV() interface{} { return p.Val }
@@ -2257,6 +2403,9 @@ func (p *DeviceEphemeralUsersEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceEphemeralUsersEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "ephemeral_users_enabled", "ephemeral_users_enabled", p.Val)
 }
 func (p *DeviceEphemeralUsersEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2276,7 +2425,6 @@ type EnableOnlineRevocationChecks struct {
 }
 
 func (p *EnableOnlineRevocationChecks) Name() string          { return "EnableOnlineRevocationChecks" }
-func (p *EnableOnlineRevocationChecks) Field() string         { return "" }
 func (p *EnableOnlineRevocationChecks) Scope() Scope          { return ScopeUser }
 func (p *EnableOnlineRevocationChecks) Status() Status        { return p.Stat }
 func (p *EnableOnlineRevocationChecks) UntypedV() interface{} { return p.Val }
@@ -2286,6 +2434,9 @@ func (p *EnableOnlineRevocationChecks) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableOnlineRevocationChecks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableOnlineRevocationChecks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2304,10 +2455,7 @@ type ChromeOsReleaseChannelDelegated struct {
 	Val  bool
 }
 
-func (p *ChromeOsReleaseChannelDelegated) Name() string { return "ChromeOsReleaseChannelDelegated" }
-func (p *ChromeOsReleaseChannelDelegated) Field() string {
-	return "release_channel.release_channel_delegated"
-}
+func (p *ChromeOsReleaseChannelDelegated) Name() string          { return "ChromeOsReleaseChannelDelegated" }
 func (p *ChromeOsReleaseChannelDelegated) Scope() Scope          { return ScopeDevice }
 func (p *ChromeOsReleaseChannelDelegated) Status() Status        { return p.Stat }
 func (p *ChromeOsReleaseChannelDelegated) UntypedV() interface{} { return p.Val }
@@ -2317,6 +2465,9 @@ func (p *ChromeOsReleaseChannelDelegated) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ChromeOsReleaseChannelDelegated) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "release_channel", "release_channel_delegated", p.Val)
 }
 func (p *ChromeOsReleaseChannelDelegated) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2336,7 +2487,6 @@ type DeviceAutoUpdateDisabled struct {
 }
 
 func (p *DeviceAutoUpdateDisabled) Name() string          { return "DeviceAutoUpdateDisabled" }
-func (p *DeviceAutoUpdateDisabled) Field() string         { return "auto_update_settings.update_disabled" }
 func (p *DeviceAutoUpdateDisabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAutoUpdateDisabled) Status() Status        { return p.Stat }
 func (p *DeviceAutoUpdateDisabled) UntypedV() interface{} { return p.Val }
@@ -2346,6 +2496,9 @@ func (p *DeviceAutoUpdateDisabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutoUpdateDisabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "update_disabled", p.Val)
 }
 func (p *DeviceAutoUpdateDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2365,7 +2518,6 @@ type DriveDisabled struct {
 }
 
 func (p *DriveDisabled) Name() string          { return "DriveDisabled" }
-func (p *DriveDisabled) Field() string         { return "" }
 func (p *DriveDisabled) Scope() Scope          { return ScopeUser }
 func (p *DriveDisabled) Status() Status        { return p.Stat }
 func (p *DriveDisabled) UntypedV() interface{} { return p.Val }
@@ -2375,6 +2527,9 @@ func (p *DriveDisabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DriveDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DriveDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2394,7 +2549,6 @@ type DriveDisabledOverCellular struct {
 }
 
 func (p *DriveDisabledOverCellular) Name() string          { return "DriveDisabledOverCellular" }
-func (p *DriveDisabledOverCellular) Field() string         { return "" }
 func (p *DriveDisabledOverCellular) Scope() Scope          { return ScopeUser }
 func (p *DriveDisabledOverCellular) Status() Status        { return p.Stat }
 func (p *DriveDisabledOverCellular) UntypedV() interface{} { return p.Val }
@@ -2404,6 +2558,9 @@ func (p *DriveDisabledOverCellular) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DriveDisabledOverCellular) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DriveDisabledOverCellular) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2422,10 +2579,7 @@ type DeviceTargetVersionPrefix struct {
 	Val  string
 }
 
-func (p *DeviceTargetVersionPrefix) Name() string { return "DeviceTargetVersionPrefix" }
-func (p *DeviceTargetVersionPrefix) Field() string {
-	return "auto_update_settings.target_version_prefix"
-}
+func (p *DeviceTargetVersionPrefix) Name() string          { return "DeviceTargetVersionPrefix" }
 func (p *DeviceTargetVersionPrefix) Scope() Scope          { return ScopeDevice }
 func (p *DeviceTargetVersionPrefix) Status() Status        { return p.Stat }
 func (p *DeviceTargetVersionPrefix) UntypedV() interface{} { return p.Val }
@@ -2435,6 +2589,9 @@ func (p *DeviceTargetVersionPrefix) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceTargetVersionPrefix) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "target_version_prefix", p.Val)
 }
 func (p *DeviceTargetVersionPrefix) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -2455,7 +2612,6 @@ type ReportDeviceLocation struct {
 }
 
 func (p *ReportDeviceLocation) Name() string          { return "ReportDeviceLocation" }
-func (p *ReportDeviceLocation) Field() string         { return "device_reporting.report_location" }
 func (p *ReportDeviceLocation) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceLocation) Status() Status        { return p.Stat }
 func (p *ReportDeviceLocation) UntypedV() interface{} { return p.Val }
@@ -2465,6 +2621,9 @@ func (p *ReportDeviceLocation) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceLocation) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_location", p.Val)
 }
 func (p *ReportDeviceLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2484,7 +2643,6 @@ type PinnedLauncherApps struct {
 }
 
 func (p *PinnedLauncherApps) Name() string          { return "PinnedLauncherApps" }
-func (p *PinnedLauncherApps) Field() string         { return "" }
 func (p *PinnedLauncherApps) Scope() Scope          { return ScopeUser }
 func (p *PinnedLauncherApps) Status() Status        { return p.Stat }
 func (p *PinnedLauncherApps) UntypedV() interface{} { return p.Val }
@@ -2494,6 +2652,9 @@ func (p *PinnedLauncherApps) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PinnedLauncherApps) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PinnedLauncherApps) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2512,10 +2673,7 @@ type DeviceUpdateScatterFactor struct {
 	Val  int
 }
 
-func (p *DeviceUpdateScatterFactor) Name() string { return "DeviceUpdateScatterFactor" }
-func (p *DeviceUpdateScatterFactor) Field() string {
-	return "auto_update_settings.scatter_factor_in_seconds"
-}
+func (p *DeviceUpdateScatterFactor) Name() string          { return "DeviceUpdateScatterFactor" }
 func (p *DeviceUpdateScatterFactor) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUpdateScatterFactor) Status() Status        { return p.Stat }
 func (p *DeviceUpdateScatterFactor) UntypedV() interface{} { return p.Val }
@@ -2525,6 +2683,9 @@ func (p *DeviceUpdateScatterFactor) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceUpdateScatterFactor) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "scatter_factor_in_seconds", p.Val)
 }
 func (p *DeviceUpdateScatterFactor) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -2546,9 +2707,6 @@ type DeviceUpdateAllowedConnectionTypes struct {
 func (p *DeviceUpdateAllowedConnectionTypes) Name() string {
 	return "DeviceUpdateAllowedConnectionTypes"
 }
-func (p *DeviceUpdateAllowedConnectionTypes) Field() string {
-	return "auto_update_settings.allowed_connection_types"
-}
 func (p *DeviceUpdateAllowedConnectionTypes) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUpdateAllowedConnectionTypes) Status() Status        { return p.Stat }
 func (p *DeviceUpdateAllowedConnectionTypes) UntypedV() interface{} { return p.Val }
@@ -2558,6 +2716,9 @@ func (p *DeviceUpdateAllowedConnectionTypes) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceUpdateAllowedConnectionTypes) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "allowed_connection_types", p.Val)
 }
 func (p *DeviceUpdateAllowedConnectionTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2577,7 +2738,6 @@ type ExtensionInstallSources struct {
 }
 
 func (p *ExtensionInstallSources) Name() string          { return "ExtensionInstallSources" }
-func (p *ExtensionInstallSources) Field() string         { return "" }
 func (p *ExtensionInstallSources) Scope() Scope          { return ScopeUser }
 func (p *ExtensionInstallSources) Status() Status        { return p.Stat }
 func (p *ExtensionInstallSources) UntypedV() interface{} { return p.Val }
@@ -2587,6 +2747,9 @@ func (p *ExtensionInstallSources) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallSources) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallSources) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2606,7 +2769,6 @@ type DefaultMediaStreamSetting struct {
 }
 
 func (p *DefaultMediaStreamSetting) Name() string          { return "DefaultMediaStreamSetting" }
-func (p *DefaultMediaStreamSetting) Field() string         { return "" }
 func (p *DefaultMediaStreamSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultMediaStreamSetting) Status() Status        { return p.Stat }
 func (p *DefaultMediaStreamSetting) UntypedV() interface{} { return p.Val }
@@ -2616,6 +2778,9 @@ func (p *DefaultMediaStreamSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultMediaStreamSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultMediaStreamSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -2635,7 +2800,6 @@ type DisableSafeBrowsingProceedAnyway struct {
 }
 
 func (p *DisableSafeBrowsingProceedAnyway) Name() string          { return "DisableSafeBrowsingProceedAnyway" }
-func (p *DisableSafeBrowsingProceedAnyway) Field() string         { return "" }
 func (p *DisableSafeBrowsingProceedAnyway) Scope() Scope          { return ScopeUser }
 func (p *DisableSafeBrowsingProceedAnyway) Status() Status        { return p.Stat }
 func (p *DisableSafeBrowsingProceedAnyway) UntypedV() interface{} { return p.Val }
@@ -2645,6 +2809,9 @@ func (p *DisableSafeBrowsingProceedAnyway) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisableSafeBrowsingProceedAnyway) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DisableSafeBrowsingProceedAnyway) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2664,7 +2831,6 @@ type SpellCheckServiceEnabled struct {
 }
 
 func (p *SpellCheckServiceEnabled) Name() string          { return "SpellCheckServiceEnabled" }
-func (p *SpellCheckServiceEnabled) Field() string         { return "" }
 func (p *SpellCheckServiceEnabled) Scope() Scope          { return ScopeUser }
 func (p *SpellCheckServiceEnabled) Status() Status        { return p.Stat }
 func (p *SpellCheckServiceEnabled) UntypedV() interface{} { return p.Val }
@@ -2674,6 +2840,9 @@ func (p *SpellCheckServiceEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SpellCheckServiceEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpellCheckServiceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2693,7 +2862,6 @@ type ExternalStorageDisabled struct {
 }
 
 func (p *ExternalStorageDisabled) Name() string          { return "ExternalStorageDisabled" }
-func (p *ExternalStorageDisabled) Field() string         { return "" }
 func (p *ExternalStorageDisabled) Scope() Scope          { return ScopeUser }
 func (p *ExternalStorageDisabled) Status() Status        { return p.Stat }
 func (p *ExternalStorageDisabled) UntypedV() interface{} { return p.Val }
@@ -2703,6 +2871,9 @@ func (p *ExternalStorageDisabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ExternalStorageDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExternalStorageDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2722,7 +2893,6 @@ type DisableScreenshots struct {
 }
 
 func (p *DisableScreenshots) Name() string          { return "DisableScreenshots" }
-func (p *DisableScreenshots) Field() string         { return "" }
 func (p *DisableScreenshots) Scope() Scope          { return ScopeUser }
 func (p *DisableScreenshots) Status() Status        { return p.Stat }
 func (p *DisableScreenshots) UntypedV() interface{} { return p.Val }
@@ -2732,6 +2902,9 @@ func (p *DisableScreenshots) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisableScreenshots) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DisableScreenshots) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2751,7 +2924,6 @@ type RemoteAccessHostDomain struct {
 }
 
 func (p *RemoteAccessHostDomain) Name() string          { return "RemoteAccessHostDomain" }
-func (p *RemoteAccessHostDomain) Field() string         { return "" }
 func (p *RemoteAccessHostDomain) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostDomain) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostDomain) UntypedV() interface{} { return p.Val }
@@ -2761,6 +2933,9 @@ func (p *RemoteAccessHostDomain) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostDomain) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostDomain) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -2780,7 +2955,6 @@ type SystemTimezone struct {
 }
 
 func (p *SystemTimezone) Name() string          { return "SystemTimezone" }
-func (p *SystemTimezone) Field() string         { return "system_timezone.timezone" }
 func (p *SystemTimezone) Scope() Scope          { return ScopeDevice }
 func (p *SystemTimezone) Status() Status        { return p.Stat }
 func (p *SystemTimezone) UntypedV() interface{} { return p.Val }
@@ -2790,6 +2964,9 @@ func (p *SystemTimezone) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SystemTimezone) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_timezone", "timezone", p.Val)
 }
 func (p *SystemTimezone) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -2809,7 +2986,6 @@ type AudioOutputAllowed struct {
 }
 
 func (p *AudioOutputAllowed) Name() string          { return "AudioOutputAllowed" }
-func (p *AudioOutputAllowed) Field() string         { return "" }
 func (p *AudioOutputAllowed) Scope() Scope          { return ScopeUser }
 func (p *AudioOutputAllowed) Status() Status        { return p.Stat }
 func (p *AudioOutputAllowed) UntypedV() interface{} { return p.Val }
@@ -2819,6 +2995,9 @@ func (p *AudioOutputAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AudioOutputAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AudioOutputAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2838,7 +3017,6 @@ type AudioCaptureAllowed struct {
 }
 
 func (p *AudioCaptureAllowed) Name() string          { return "AudioCaptureAllowed" }
-func (p *AudioCaptureAllowed) Field() string         { return "" }
 func (p *AudioCaptureAllowed) Scope() Scope          { return ScopeUser }
 func (p *AudioCaptureAllowed) Status() Status        { return p.Stat }
 func (p *AudioCaptureAllowed) UntypedV() interface{} { return p.Val }
@@ -2848,6 +3026,9 @@ func (p *AudioCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AudioCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AudioCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2869,7 +3050,6 @@ type DefaultSearchProviderAlternateURLs struct {
 func (p *DefaultSearchProviderAlternateURLs) Name() string {
 	return "DefaultSearchProviderAlternateURLs"
 }
-func (p *DefaultSearchProviderAlternateURLs) Field() string         { return "" }
 func (p *DefaultSearchProviderAlternateURLs) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderAlternateURLs) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderAlternateURLs) UntypedV() interface{} { return p.Val }
@@ -2879,6 +3059,9 @@ func (p *DefaultSearchProviderAlternateURLs) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderAlternateURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderAlternateURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2898,7 +3081,6 @@ type ForceSafeSearch struct {
 }
 
 func (p *ForceSafeSearch) Name() string          { return "ForceSafeSearch" }
-func (p *ForceSafeSearch) Field() string         { return "" }
 func (p *ForceSafeSearch) Scope() Scope          { return ScopeUser }
 func (p *ForceSafeSearch) Status() Status        { return p.Stat }
 func (p *ForceSafeSearch) UntypedV() interface{} { return p.Val }
@@ -2908,6 +3090,9 @@ func (p *ForceSafeSearch) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceSafeSearch) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceSafeSearch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2962,7 +3147,6 @@ type DeviceLocalAccountInfo struct {
 }
 
 func (p *DeviceLocalAccounts) Name() string          { return "DeviceLocalAccounts" }
-func (p *DeviceLocalAccounts) Field() string         { return "device_local_accounts.account" }
 func (p *DeviceLocalAccounts) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLocalAccounts) Status() Status        { return p.Stat }
 func (p *DeviceLocalAccounts) UntypedV() interface{} { return p.Val }
@@ -2972,6 +3156,9 @@ func (p *DeviceLocalAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as []DeviceLocalAccountInfo", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccounts) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "account", p.Val)
 }
 func (p *DeviceLocalAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]DeviceLocalAccountInfo)
@@ -2991,7 +3178,6 @@ type ShowLogoutButtonInTray struct {
 }
 
 func (p *ShowLogoutButtonInTray) Name() string          { return "ShowLogoutButtonInTray" }
-func (p *ShowLogoutButtonInTray) Field() string         { return "" }
 func (p *ShowLogoutButtonInTray) Scope() Scope          { return ScopeUser }
 func (p *ShowLogoutButtonInTray) Status() Status        { return p.Stat }
 func (p *ShowLogoutButtonInTray) UntypedV() interface{} { return p.Val }
@@ -3001,6 +3187,9 @@ func (p *ShowLogoutButtonInTray) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ShowLogoutButtonInTray) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShowLogoutButtonInTray) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3020,7 +3209,6 @@ type BuiltInDnsClientEnabled struct {
 }
 
 func (p *BuiltInDnsClientEnabled) Name() string          { return "BuiltInDnsClientEnabled" }
-func (p *BuiltInDnsClientEnabled) Field() string         { return "" }
 func (p *BuiltInDnsClientEnabled) Scope() Scope          { return ScopeUser }
 func (p *BuiltInDnsClientEnabled) Status() Status        { return p.Stat }
 func (p *BuiltInDnsClientEnabled) UntypedV() interface{} { return p.Val }
@@ -3030,6 +3218,9 @@ func (p *BuiltInDnsClientEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BuiltInDnsClientEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BuiltInDnsClientEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3049,7 +3240,6 @@ type ShelfAutoHideBehavior struct {
 }
 
 func (p *ShelfAutoHideBehavior) Name() string          { return "ShelfAutoHideBehavior" }
-func (p *ShelfAutoHideBehavior) Field() string         { return "" }
 func (p *ShelfAutoHideBehavior) Scope() Scope          { return ScopeUser }
 func (p *ShelfAutoHideBehavior) Status() Status        { return p.Stat }
 func (p *ShelfAutoHideBehavior) UntypedV() interface{} { return p.Val }
@@ -3059,6 +3249,9 @@ func (p *ShelfAutoHideBehavior) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ShelfAutoHideBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShelfAutoHideBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3078,7 +3271,6 @@ type VideoCaptureAllowed struct {
 }
 
 func (p *VideoCaptureAllowed) Name() string          { return "VideoCaptureAllowed" }
-func (p *VideoCaptureAllowed) Field() string         { return "" }
 func (p *VideoCaptureAllowed) Scope() Scope          { return ScopeUser }
 func (p *VideoCaptureAllowed) Status() Status        { return p.Stat }
 func (p *VideoCaptureAllowed) UntypedV() interface{} { return p.Val }
@@ -3088,6 +3280,9 @@ func (p *VideoCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VideoCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VideoCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3107,7 +3302,6 @@ type ExtensionAllowedTypes struct {
 }
 
 func (p *ExtensionAllowedTypes) Name() string          { return "ExtensionAllowedTypes" }
-func (p *ExtensionAllowedTypes) Field() string         { return "" }
 func (p *ExtensionAllowedTypes) Scope() Scope          { return ScopeUser }
 func (p *ExtensionAllowedTypes) Status() Status        { return p.Stat }
 func (p *ExtensionAllowedTypes) UntypedV() interface{} { return p.Val }
@@ -3117,6 +3311,9 @@ func (p *ExtensionAllowedTypes) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionAllowedTypes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionAllowedTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -3136,7 +3333,6 @@ type UserDisplayName struct {
 }
 
 func (p *UserDisplayName) Name() string          { return "UserDisplayName" }
-func (p *UserDisplayName) Field() string         { return "" }
 func (p *UserDisplayName) Scope() Scope          { return ScopeUser }
 func (p *UserDisplayName) Status() Status        { return p.Stat }
 func (p *UserDisplayName) UntypedV() interface{} { return p.Val }
@@ -3146,6 +3342,9 @@ func (p *UserDisplayName) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *UserDisplayName) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserDisplayName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3165,7 +3364,6 @@ type SessionLengthLimit struct {
 }
 
 func (p *SessionLengthLimit) Name() string          { return "SessionLengthLimit" }
-func (p *SessionLengthLimit) Field() string         { return "" }
 func (p *SessionLengthLimit) Scope() Scope          { return ScopeUser }
 func (p *SessionLengthLimit) Status() Status        { return p.Stat }
 func (p *SessionLengthLimit) UntypedV() interface{} { return p.Val }
@@ -3175,6 +3373,9 @@ func (p *SessionLengthLimit) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SessionLengthLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SessionLengthLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3194,7 +3395,6 @@ type ScreenDimDelayAC struct {
 }
 
 func (p *ScreenDimDelayAC) Name() string          { return "ScreenDimDelayAC" }
-func (p *ScreenDimDelayAC) Field() string         { return "" }
 func (p *ScreenDimDelayAC) Scope() Scope          { return ScopeUser }
 func (p *ScreenDimDelayAC) Status() Status        { return p.Stat }
 func (p *ScreenDimDelayAC) UntypedV() interface{} { return p.Val }
@@ -3204,6 +3404,9 @@ func (p *ScreenDimDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenDimDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenDimDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3223,7 +3426,6 @@ type ScreenOffDelayAC struct {
 }
 
 func (p *ScreenOffDelayAC) Name() string          { return "ScreenOffDelayAC" }
-func (p *ScreenOffDelayAC) Field() string         { return "" }
 func (p *ScreenOffDelayAC) Scope() Scope          { return ScopeUser }
 func (p *ScreenOffDelayAC) Status() Status        { return p.Stat }
 func (p *ScreenOffDelayAC) UntypedV() interface{} { return p.Val }
@@ -3233,6 +3435,9 @@ func (p *ScreenOffDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenOffDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenOffDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3252,7 +3457,6 @@ type ScreenLockDelayAC struct {
 }
 
 func (p *ScreenLockDelayAC) Name() string          { return "ScreenLockDelayAC" }
-func (p *ScreenLockDelayAC) Field() string         { return "" }
 func (p *ScreenLockDelayAC) Scope() Scope          { return ScopeUser }
 func (p *ScreenLockDelayAC) Status() Status        { return p.Stat }
 func (p *ScreenLockDelayAC) UntypedV() interface{} { return p.Val }
@@ -3262,6 +3466,9 @@ func (p *ScreenLockDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenLockDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenLockDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3281,7 +3488,6 @@ type IdleDelayAC struct {
 }
 
 func (p *IdleDelayAC) Name() string          { return "IdleDelayAC" }
-func (p *IdleDelayAC) Field() string         { return "" }
 func (p *IdleDelayAC) Scope() Scope          { return ScopeUser }
 func (p *IdleDelayAC) Status() Status        { return p.Stat }
 func (p *IdleDelayAC) UntypedV() interface{} { return p.Val }
@@ -3291,6 +3497,9 @@ func (p *IdleDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3310,7 +3519,6 @@ type ScreenDimDelayBattery struct {
 }
 
 func (p *ScreenDimDelayBattery) Name() string          { return "ScreenDimDelayBattery" }
-func (p *ScreenDimDelayBattery) Field() string         { return "" }
 func (p *ScreenDimDelayBattery) Scope() Scope          { return ScopeUser }
 func (p *ScreenDimDelayBattery) Status() Status        { return p.Stat }
 func (p *ScreenDimDelayBattery) UntypedV() interface{} { return p.Val }
@@ -3320,6 +3528,9 @@ func (p *ScreenDimDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenDimDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenDimDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3339,7 +3550,6 @@ type ScreenOffDelayBattery struct {
 }
 
 func (p *ScreenOffDelayBattery) Name() string          { return "ScreenOffDelayBattery" }
-func (p *ScreenOffDelayBattery) Field() string         { return "" }
 func (p *ScreenOffDelayBattery) Scope() Scope          { return ScopeUser }
 func (p *ScreenOffDelayBattery) Status() Status        { return p.Stat }
 func (p *ScreenOffDelayBattery) UntypedV() interface{} { return p.Val }
@@ -3349,6 +3559,9 @@ func (p *ScreenOffDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenOffDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenOffDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3368,7 +3581,6 @@ type ScreenLockDelayBattery struct {
 }
 
 func (p *ScreenLockDelayBattery) Name() string          { return "ScreenLockDelayBattery" }
-func (p *ScreenLockDelayBattery) Field() string         { return "" }
 func (p *ScreenLockDelayBattery) Scope() Scope          { return ScopeUser }
 func (p *ScreenLockDelayBattery) Status() Status        { return p.Stat }
 func (p *ScreenLockDelayBattery) UntypedV() interface{} { return p.Val }
@@ -3378,6 +3590,9 @@ func (p *ScreenLockDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenLockDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenLockDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3397,7 +3612,6 @@ type IdleDelayBattery struct {
 }
 
 func (p *IdleDelayBattery) Name() string          { return "IdleDelayBattery" }
-func (p *IdleDelayBattery) Field() string         { return "" }
 func (p *IdleDelayBattery) Scope() Scope          { return ScopeUser }
 func (p *IdleDelayBattery) Status() Status        { return p.Stat }
 func (p *IdleDelayBattery) UntypedV() interface{} { return p.Val }
@@ -3407,6 +3621,9 @@ func (p *IdleDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3426,7 +3643,6 @@ type IdleAction struct {
 }
 
 func (p *IdleAction) Name() string          { return "IdleAction" }
-func (p *IdleAction) Field() string         { return "" }
 func (p *IdleAction) Scope() Scope          { return ScopeUser }
 func (p *IdleAction) Status() Status        { return p.Stat }
 func (p *IdleAction) UntypedV() interface{} { return p.Val }
@@ -3436,6 +3652,9 @@ func (p *IdleAction) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleAction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleAction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3455,7 +3674,6 @@ type LidCloseAction struct {
 }
 
 func (p *LidCloseAction) Name() string          { return "LidCloseAction" }
-func (p *LidCloseAction) Field() string         { return "" }
 func (p *LidCloseAction) Scope() Scope          { return ScopeUser }
 func (p *LidCloseAction) Status() Status        { return p.Stat }
 func (p *LidCloseAction) UntypedV() interface{} { return p.Val }
@@ -3465,6 +3683,9 @@ func (p *LidCloseAction) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *LidCloseAction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LidCloseAction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3484,7 +3705,6 @@ type PowerManagementUsesAudioActivity struct {
 }
 
 func (p *PowerManagementUsesAudioActivity) Name() string          { return "PowerManagementUsesAudioActivity" }
-func (p *PowerManagementUsesAudioActivity) Field() string         { return "" }
 func (p *PowerManagementUsesAudioActivity) Scope() Scope          { return ScopeUser }
 func (p *PowerManagementUsesAudioActivity) Status() Status        { return p.Stat }
 func (p *PowerManagementUsesAudioActivity) UntypedV() interface{} { return p.Val }
@@ -3494,6 +3714,9 @@ func (p *PowerManagementUsesAudioActivity) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PowerManagementUsesAudioActivity) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PowerManagementUsesAudioActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3513,7 +3736,6 @@ type PowerManagementUsesVideoActivity struct {
 }
 
 func (p *PowerManagementUsesVideoActivity) Name() string          { return "PowerManagementUsesVideoActivity" }
-func (p *PowerManagementUsesVideoActivity) Field() string         { return "" }
 func (p *PowerManagementUsesVideoActivity) Scope() Scope          { return ScopeUser }
 func (p *PowerManagementUsesVideoActivity) Status() Status        { return p.Stat }
 func (p *PowerManagementUsesVideoActivity) UntypedV() interface{} { return p.Val }
@@ -3523,6 +3745,9 @@ func (p *PowerManagementUsesVideoActivity) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PowerManagementUsesVideoActivity) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PowerManagementUsesVideoActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3544,9 +3769,6 @@ type DeviceAllowRedeemChromeOsRegistrationOffers struct {
 func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Name() string {
 	return "DeviceAllowRedeemChromeOsRegistrationOffers"
 }
-func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Field() string {
-	return "allow_redeem_offers.allow_redeem_offers"
-}
 func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Status() Status        { return p.Stat }
 func (p *DeviceAllowRedeemChromeOsRegistrationOffers) UntypedV() interface{} { return p.Val }
@@ -3556,6 +3778,9 @@ func (p *DeviceAllowRedeemChromeOsRegistrationOffers) UnmarshalAs(m json.RawMess
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAllowRedeemChromeOsRegistrationOffers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_redeem_offers", "allow_redeem_offers", p.Val)
 }
 func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3575,7 +3800,6 @@ type TermsOfServiceURL struct {
 }
 
 func (p *TermsOfServiceURL) Name() string          { return "TermsOfServiceURL" }
-func (p *TermsOfServiceURL) Field() string         { return "" }
 func (p *TermsOfServiceURL) Scope() Scope          { return ScopeUser }
 func (p *TermsOfServiceURL) Status() Status        { return p.Stat }
 func (p *TermsOfServiceURL) UntypedV() interface{} { return p.Val }
@@ -3585,6 +3809,9 @@ func (p *TermsOfServiceURL) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *TermsOfServiceURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TermsOfServiceURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3604,7 +3831,6 @@ type AllowDeletingBrowserHistory struct {
 }
 
 func (p *AllowDeletingBrowserHistory) Name() string          { return "AllowDeletingBrowserHistory" }
-func (p *AllowDeletingBrowserHistory) Field() string         { return "" }
 func (p *AllowDeletingBrowserHistory) Scope() Scope          { return ScopeUser }
 func (p *AllowDeletingBrowserHistory) Status() Status        { return p.Stat }
 func (p *AllowDeletingBrowserHistory) UntypedV() interface{} { return p.Val }
@@ -3614,6 +3840,9 @@ func (p *AllowDeletingBrowserHistory) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowDeletingBrowserHistory) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowDeletingBrowserHistory) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3635,7 +3864,6 @@ type ShowAccessibilityOptionsInSystemTrayMenu struct {
 func (p *ShowAccessibilityOptionsInSystemTrayMenu) Name() string {
 	return "ShowAccessibilityOptionsInSystemTrayMenu"
 }
-func (p *ShowAccessibilityOptionsInSystemTrayMenu) Field() string         { return "" }
 func (p *ShowAccessibilityOptionsInSystemTrayMenu) Scope() Scope          { return ScopeUser }
 func (p *ShowAccessibilityOptionsInSystemTrayMenu) Status() Status        { return p.Stat }
 func (p *ShowAccessibilityOptionsInSystemTrayMenu) UntypedV() interface{} { return p.Val }
@@ -3645,6 +3873,9 @@ func (p *ShowAccessibilityOptionsInSystemTrayMenu) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ShowAccessibilityOptionsInSystemTrayMenu) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShowAccessibilityOptionsInSystemTrayMenu) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3664,7 +3895,6 @@ type HideWebStoreIcon struct {
 }
 
 func (p *HideWebStoreIcon) Name() string          { return "HideWebStoreIcon" }
-func (p *HideWebStoreIcon) Field() string         { return "" }
 func (p *HideWebStoreIcon) Scope() Scope          { return ScopeUser }
 func (p *HideWebStoreIcon) Status() Status        { return p.Stat }
 func (p *HideWebStoreIcon) UntypedV() interface{} { return p.Val }
@@ -3674,6 +3904,9 @@ func (p *HideWebStoreIcon) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HideWebStoreIcon) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HideWebStoreIcon) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3693,7 +3926,6 @@ type UptimeLimit struct {
 }
 
 func (p *UptimeLimit) Name() string          { return "UptimeLimit" }
-func (p *UptimeLimit) Field() string         { return "uptime_limit.uptime_limit" }
 func (p *UptimeLimit) Scope() Scope          { return ScopeDevice }
 func (p *UptimeLimit) Status() Status        { return p.Stat }
 func (p *UptimeLimit) UntypedV() interface{} { return p.Val }
@@ -3703,6 +3935,9 @@ func (p *UptimeLimit) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *UptimeLimit) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "uptime_limit", "uptime_limit", p.Val)
 }
 func (p *UptimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3722,7 +3957,6 @@ type RebootAfterUpdate struct {
 }
 
 func (p *RebootAfterUpdate) Name() string          { return "RebootAfterUpdate" }
-func (p *RebootAfterUpdate) Field() string         { return "auto_update_settings.reboot_after_update" }
 func (p *RebootAfterUpdate) Scope() Scope          { return ScopeDevice }
 func (p *RebootAfterUpdate) Status() Status        { return p.Stat }
 func (p *RebootAfterUpdate) UntypedV() interface{} { return p.Val }
@@ -3732,6 +3966,9 @@ func (p *RebootAfterUpdate) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RebootAfterUpdate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "reboot_after_update", p.Val)
 }
 func (p *RebootAfterUpdate) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3751,7 +3988,6 @@ type DeviceLocalAccountAutoLoginId struct {
 }
 
 func (p *DeviceLocalAccountAutoLoginId) Name() string          { return "DeviceLocalAccountAutoLoginId" }
-func (p *DeviceLocalAccountAutoLoginId) Field() string         { return "device_local_accounts.auto_login_id" }
 func (p *DeviceLocalAccountAutoLoginId) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLocalAccountAutoLoginId) Status() Status        { return p.Stat }
 func (p *DeviceLocalAccountAutoLoginId) UntypedV() interface{} { return p.Val }
@@ -3761,6 +3997,9 @@ func (p *DeviceLocalAccountAutoLoginId) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccountAutoLoginId) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "auto_login_id", p.Val)
 }
 func (p *DeviceLocalAccountAutoLoginId) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3779,10 +4018,7 @@ type DeviceLocalAccountAutoLoginDelay struct {
 	Val  int
 }
 
-func (p *DeviceLocalAccountAutoLoginDelay) Name() string { return "DeviceLocalAccountAutoLoginDelay" }
-func (p *DeviceLocalAccountAutoLoginDelay) Field() string {
-	return "device_local_accounts.auto_login_delay"
-}
+func (p *DeviceLocalAccountAutoLoginDelay) Name() string          { return "DeviceLocalAccountAutoLoginDelay" }
 func (p *DeviceLocalAccountAutoLoginDelay) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLocalAccountAutoLoginDelay) Status() Status        { return p.Stat }
 func (p *DeviceLocalAccountAutoLoginDelay) UntypedV() interface{} { return p.Val }
@@ -3792,6 +4028,9 @@ func (p *DeviceLocalAccountAutoLoginDelay) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccountAutoLoginDelay) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "auto_login_delay", p.Val)
 }
 func (p *DeviceLocalAccountAutoLoginDelay) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3811,7 +4050,6 @@ type IdleWarningDelayAC struct {
 }
 
 func (p *IdleWarningDelayAC) Name() string          { return "IdleWarningDelayAC" }
-func (p *IdleWarningDelayAC) Field() string         { return "" }
 func (p *IdleWarningDelayAC) Scope() Scope          { return ScopeUser }
 func (p *IdleWarningDelayAC) Status() Status        { return p.Stat }
 func (p *IdleWarningDelayAC) UntypedV() interface{} { return p.Val }
@@ -3821,6 +4059,9 @@ func (p *IdleWarningDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleWarningDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleWarningDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3840,7 +4081,6 @@ type IdleWarningDelayBattery struct {
 }
 
 func (p *IdleWarningDelayBattery) Name() string          { return "IdleWarningDelayBattery" }
-func (p *IdleWarningDelayBattery) Field() string         { return "" }
 func (p *IdleWarningDelayBattery) Scope() Scope          { return ScopeUser }
 func (p *IdleWarningDelayBattery) Status() Status        { return p.Stat }
 func (p *IdleWarningDelayBattery) UntypedV() interface{} { return p.Val }
@@ -3850,6 +4090,9 @@ func (p *IdleWarningDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleWarningDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleWarningDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3868,7 +4111,6 @@ type DeviceVariationsRestrictParameter struct {
 }
 
 func (p *DeviceVariationsRestrictParameter) Name() string          { return "DeviceVariationsRestrictParameter" }
-func (p *DeviceVariationsRestrictParameter) Field() string         { return "variations_parameter.parameter" }
 func (p *DeviceVariationsRestrictParameter) Scope() Scope          { return ScopeDevice }
 func (p *DeviceVariationsRestrictParameter) Status() Status        { return p.Stat }
 func (p *DeviceVariationsRestrictParameter) UntypedV() interface{} { return p.Val }
@@ -3878,6 +4120,9 @@ func (p *DeviceVariationsRestrictParameter) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceVariationsRestrictParameter) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "variations_parameter", "parameter", p.Val)
 }
 func (p *DeviceVariationsRestrictParameter) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3897,7 +4142,6 @@ type AttestationEnabledForUser struct {
 }
 
 func (p *AttestationEnabledForUser) Name() string          { return "AttestationEnabledForUser" }
-func (p *AttestationEnabledForUser) Field() string         { return "" }
 func (p *AttestationEnabledForUser) Scope() Scope          { return ScopeUser }
 func (p *AttestationEnabledForUser) Status() Status        { return p.Stat }
 func (p *AttestationEnabledForUser) UntypedV() interface{} { return p.Val }
@@ -3907,6 +4151,9 @@ func (p *AttestationEnabledForUser) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AttestationEnabledForUser) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AttestationEnabledForUser) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3928,9 +4175,6 @@ type DeviceLocalAccountAutoLoginBailoutEnabled struct {
 func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Name() string {
 	return "DeviceLocalAccountAutoLoginBailoutEnabled"
 }
-func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Field() string {
-	return "device_local_accounts.enable_auto_login_bailout"
-}
 func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLocalAccountAutoLoginBailoutEnabled) UntypedV() interface{} { return p.Val }
@@ -3940,6 +4184,9 @@ func (p *DeviceLocalAccountAutoLoginBailoutEnabled) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccountAutoLoginBailoutEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "enable_auto_login_bailout", p.Val)
 }
 func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3959,7 +4206,6 @@ type AllowScreenWakeLocks struct {
 }
 
 func (p *AllowScreenWakeLocks) Name() string          { return "AllowScreenWakeLocks" }
-func (p *AllowScreenWakeLocks) Field() string         { return "" }
 func (p *AllowScreenWakeLocks) Scope() Scope          { return ScopeUser }
 func (p *AllowScreenWakeLocks) Status() Status        { return p.Stat }
 func (p *AllowScreenWakeLocks) UntypedV() interface{} { return p.Val }
@@ -3969,6 +4215,9 @@ func (p *AllowScreenWakeLocks) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowScreenWakeLocks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowScreenWakeLocks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3987,10 +4236,7 @@ type AttestationEnabledForDevice struct {
 	Val  bool
 }
 
-func (p *AttestationEnabledForDevice) Name() string { return "AttestationEnabledForDevice" }
-func (p *AttestationEnabledForDevice) Field() string {
-	return "attestation_settings.attestation_enabled"
-}
+func (p *AttestationEnabledForDevice) Name() string          { return "AttestationEnabledForDevice" }
 func (p *AttestationEnabledForDevice) Scope() Scope          { return ScopeDevice }
 func (p *AttestationEnabledForDevice) Status() Status        { return p.Stat }
 func (p *AttestationEnabledForDevice) UntypedV() interface{} { return p.Val }
@@ -4000,6 +4246,9 @@ func (p *AttestationEnabledForDevice) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AttestationEnabledForDevice) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "attestation_settings", "attestation_enabled", p.Val)
 }
 func (p *AttestationEnabledForDevice) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4019,7 +4268,6 @@ type AudioCaptureAllowedUrls struct {
 }
 
 func (p *AudioCaptureAllowedUrls) Name() string          { return "AudioCaptureAllowedUrls" }
-func (p *AudioCaptureAllowedUrls) Field() string         { return "" }
 func (p *AudioCaptureAllowedUrls) Scope() Scope          { return ScopeUser }
 func (p *AudioCaptureAllowedUrls) Status() Status        { return p.Stat }
 func (p *AudioCaptureAllowedUrls) UntypedV() interface{} { return p.Val }
@@ -4029,6 +4277,9 @@ func (p *AudioCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AudioCaptureAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AudioCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -4048,7 +4299,6 @@ type VideoCaptureAllowedUrls struct {
 }
 
 func (p *VideoCaptureAllowedUrls) Name() string          { return "VideoCaptureAllowedUrls" }
-func (p *VideoCaptureAllowedUrls) Field() string         { return "" }
 func (p *VideoCaptureAllowedUrls) Scope() Scope          { return ScopeUser }
 func (p *VideoCaptureAllowedUrls) Status() Status        { return p.Stat }
 func (p *VideoCaptureAllowedUrls) UntypedV() interface{} { return p.Val }
@@ -4058,6 +4308,9 @@ func (p *VideoCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *VideoCaptureAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -4077,7 +4330,6 @@ type UserActivityScreenDimDelayScale struct {
 }
 
 func (p *UserActivityScreenDimDelayScale) Name() string          { return "UserActivityScreenDimDelayScale" }
-func (p *UserActivityScreenDimDelayScale) Field() string         { return "" }
 func (p *UserActivityScreenDimDelayScale) Scope() Scope          { return ScopeUser }
 func (p *UserActivityScreenDimDelayScale) Status() Status        { return p.Stat }
 func (p *UserActivityScreenDimDelayScale) UntypedV() interface{} { return p.Val }
@@ -4087,6 +4339,9 @@ func (p *UserActivityScreenDimDelayScale) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *UserActivityScreenDimDelayScale) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserActivityScreenDimDelayScale) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4106,7 +4361,6 @@ type LargeCursorEnabled struct {
 }
 
 func (p *LargeCursorEnabled) Name() string          { return "LargeCursorEnabled" }
-func (p *LargeCursorEnabled) Field() string         { return "" }
 func (p *LargeCursorEnabled) Scope() Scope          { return ScopeUser }
 func (p *LargeCursorEnabled) Status() Status        { return p.Stat }
 func (p *LargeCursorEnabled) UntypedV() interface{} { return p.Val }
@@ -4116,6 +4370,9 @@ func (p *LargeCursorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LargeCursorEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4135,7 +4392,6 @@ type SpokenFeedbackEnabled struct {
 }
 
 func (p *SpokenFeedbackEnabled) Name() string          { return "SpokenFeedbackEnabled" }
-func (p *SpokenFeedbackEnabled) Field() string         { return "" }
 func (p *SpokenFeedbackEnabled) Scope() Scope          { return ScopeUser }
 func (p *SpokenFeedbackEnabled) Status() Status        { return p.Stat }
 func (p *SpokenFeedbackEnabled) UntypedV() interface{} { return p.Val }
@@ -4145,6 +4401,9 @@ func (p *SpokenFeedbackEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SpokenFeedbackEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4164,7 +4423,6 @@ type HighContrastEnabled struct {
 }
 
 func (p *HighContrastEnabled) Name() string          { return "HighContrastEnabled" }
-func (p *HighContrastEnabled) Field() string         { return "" }
 func (p *HighContrastEnabled) Scope() Scope          { return ScopeUser }
 func (p *HighContrastEnabled) Status() Status        { return p.Stat }
 func (p *HighContrastEnabled) UntypedV() interface{} { return p.Val }
@@ -4174,6 +4432,9 @@ func (p *HighContrastEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HighContrastEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4193,7 +4454,6 @@ type ScreenMagnifierType struct {
 }
 
 func (p *ScreenMagnifierType) Name() string          { return "ScreenMagnifierType" }
-func (p *ScreenMagnifierType) Field() string         { return "" }
 func (p *ScreenMagnifierType) Scope() Scope          { return ScopeUser }
 func (p *ScreenMagnifierType) Status() Status        { return p.Stat }
 func (p *ScreenMagnifierType) UntypedV() interface{} { return p.Val }
@@ -4203,6 +4463,9 @@ func (p *ScreenMagnifierType) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenMagnifierType) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4224,9 +4487,6 @@ type DeviceLoginScreenDefaultLargeCursorEnabled struct {
 func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Name() string {
 	return "DeviceLoginScreenDefaultLargeCursorEnabled"
 }
-func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Field() string {
-	return "accessibility_settings.login_screen_default_large_cursor_enabled"
-}
 func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenDefaultLargeCursorEnabled) UntypedV() interface{} { return p.Val }
@@ -4236,6 +4496,9 @@ func (p *DeviceLoginScreenDefaultLargeCursorEnabled) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultLargeCursorEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_large_cursor_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4257,9 +4520,6 @@ type DeviceLoginScreenDefaultSpokenFeedbackEnabled struct {
 func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Name() string {
 	return "DeviceLoginScreenDefaultSpokenFeedbackEnabled"
 }
-func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Field() string {
-	return "accessibility_settings.login_screen_default_spoken_feedback_enabled"
-}
 func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) UntypedV() interface{} { return p.Val }
@@ -4269,6 +4529,9 @@ func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_spoken_feedback_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4290,9 +4553,6 @@ type DeviceLoginScreenDefaultHighContrastEnabled struct {
 func (p *DeviceLoginScreenDefaultHighContrastEnabled) Name() string {
 	return "DeviceLoginScreenDefaultHighContrastEnabled"
 }
-func (p *DeviceLoginScreenDefaultHighContrastEnabled) Field() string {
-	return "accessibility_settings.login_screen_default_high_contrast_enabled"
-}
 func (p *DeviceLoginScreenDefaultHighContrastEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenDefaultHighContrastEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenDefaultHighContrastEnabled) UntypedV() interface{} { return p.Val }
@@ -4302,6 +4562,9 @@ func (p *DeviceLoginScreenDefaultHighContrastEnabled) UnmarshalAs(m json.RawMess
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultHighContrastEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_high_contrast_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDefaultHighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4323,9 +4586,6 @@ type DeviceLoginScreenDefaultScreenMagnifierType struct {
 func (p *DeviceLoginScreenDefaultScreenMagnifierType) Name() string {
 	return "DeviceLoginScreenDefaultScreenMagnifierType"
 }
-func (p *DeviceLoginScreenDefaultScreenMagnifierType) Field() string {
-	return "accessibility_settings.login_screen_default_screen_magnifier_type"
-}
 func (p *DeviceLoginScreenDefaultScreenMagnifierType) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenDefaultScreenMagnifierType) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenDefaultScreenMagnifierType) UntypedV() interface{} { return p.Val }
@@ -4335,6 +4595,9 @@ func (p *DeviceLoginScreenDefaultScreenMagnifierType) UnmarshalAs(m json.RawMess
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultScreenMagnifierType) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_screen_magnifier_type", p.Val)
 }
 func (p *DeviceLoginScreenDefaultScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4354,7 +4617,6 @@ type PresentationScreenDimDelayScale struct {
 }
 
 func (p *PresentationScreenDimDelayScale) Name() string          { return "PresentationScreenDimDelayScale" }
-func (p *PresentationScreenDimDelayScale) Field() string         { return "" }
 func (p *PresentationScreenDimDelayScale) Scope() Scope          { return ScopeUser }
 func (p *PresentationScreenDimDelayScale) Status() Status        { return p.Stat }
 func (p *PresentationScreenDimDelayScale) UntypedV() interface{} { return p.Val }
@@ -4364,6 +4626,9 @@ func (p *PresentationScreenDimDelayScale) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PresentationScreenDimDelayScale) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PresentationScreenDimDelayScale) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4383,7 +4648,6 @@ type IdleActionBattery struct {
 }
 
 func (p *IdleActionBattery) Name() string          { return "IdleActionBattery" }
-func (p *IdleActionBattery) Field() string         { return "" }
 func (p *IdleActionBattery) Scope() Scope          { return ScopeUser }
 func (p *IdleActionBattery) Status() Status        { return p.Stat }
 func (p *IdleActionBattery) UntypedV() interface{} { return p.Val }
@@ -4393,6 +4657,9 @@ func (p *IdleActionBattery) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleActionBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleActionBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4411,10 +4678,7 @@ type ReportDeviceNetworkInterfaces struct {
 	Val  bool
 }
 
-func (p *ReportDeviceNetworkInterfaces) Name() string { return "ReportDeviceNetworkInterfaces" }
-func (p *ReportDeviceNetworkInterfaces) Field() string {
-	return "device_reporting.report_network_interfaces"
-}
+func (p *ReportDeviceNetworkInterfaces) Name() string          { return "ReportDeviceNetworkInterfaces" }
 func (p *ReportDeviceNetworkInterfaces) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceNetworkInterfaces) Status() Status        { return p.Stat }
 func (p *ReportDeviceNetworkInterfaces) UntypedV() interface{} { return p.Val }
@@ -4424,6 +4688,9 @@ func (p *ReportDeviceNetworkInterfaces) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkInterfaces) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_interfaces", p.Val)
 }
 func (p *ReportDeviceNetworkInterfaces) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4449,10 +4716,7 @@ type DeviceLoginScreenPowerManagementValue struct {
 	UserActivityScreenDimDelayScale int                                `json:"UserActivityScreenDimDelayScale"`
 }
 
-func (p *DeviceLoginScreenPowerManagement) Name() string { return "DeviceLoginScreenPowerManagement" }
-func (p *DeviceLoginScreenPowerManagement) Field() string {
-	return "login_screen_power_management.login_screen_power_management"
-}
+func (p *DeviceLoginScreenPowerManagement) Name() string          { return "DeviceLoginScreenPowerManagement" }
 func (p *DeviceLoginScreenPowerManagement) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenPowerManagement) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenPowerManagement) UntypedV() interface{} { return p.Val }
@@ -4462,6 +4726,9 @@ func (p *DeviceLoginScreenPowerManagement) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceLoginScreenPowerManagementValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenPowerManagement) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_power_management", "login_screen_power_management", p.Val)
 }
 func (p *DeviceLoginScreenPowerManagement) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceLoginScreenPowerManagementValue)
@@ -4481,7 +4748,6 @@ type IdleActionAC struct {
 }
 
 func (p *IdleActionAC) Name() string          { return "IdleActionAC" }
-func (p *IdleActionAC) Field() string         { return "" }
 func (p *IdleActionAC) Scope() Scope          { return ScopeUser }
 func (p *IdleActionAC) Status() Status        { return p.Stat }
 func (p *IdleActionAC) UntypedV() interface{} { return p.Val }
@@ -4491,6 +4757,9 @@ func (p *IdleActionAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleActionAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleActionAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4510,7 +4779,6 @@ type ManagedBookmarks struct {
 }
 
 func (p *ManagedBookmarks) Name() string          { return "ManagedBookmarks" }
-func (p *ManagedBookmarks) Field() string         { return "" }
 func (p *ManagedBookmarks) Scope() Scope          { return ScopeUser }
 func (p *ManagedBookmarks) Status() Status        { return p.Stat }
 func (p *ManagedBookmarks) UntypedV() interface{} { return p.Val }
@@ -4520,6 +4788,9 @@ func (p *ManagedBookmarks) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []*RefBookmarkType", m)
 	}
 	return v, nil
+}
+func (p *ManagedBookmarks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ManagedBookmarks) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefBookmarkType)
@@ -4539,7 +4810,6 @@ type MaxInvalidationFetchDelay struct {
 }
 
 func (p *MaxInvalidationFetchDelay) Name() string          { return "MaxInvalidationFetchDelay" }
-func (p *MaxInvalidationFetchDelay) Field() string         { return "" }
 func (p *MaxInvalidationFetchDelay) Scope() Scope          { return ScopeUser }
 func (p *MaxInvalidationFetchDelay) Status() Status        { return p.Stat }
 func (p *MaxInvalidationFetchDelay) UntypedV() interface{} { return p.Val }
@@ -4549,6 +4819,9 @@ func (p *MaxInvalidationFetchDelay) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *MaxInvalidationFetchDelay) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *MaxInvalidationFetchDelay) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4568,7 +4841,6 @@ type DefaultSearchProviderImageURL struct {
 }
 
 func (p *DefaultSearchProviderImageURL) Name() string          { return "DefaultSearchProviderImageURL" }
-func (p *DefaultSearchProviderImageURL) Field() string         { return "" }
 func (p *DefaultSearchProviderImageURL) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderImageURL) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderImageURL) UntypedV() interface{} { return p.Val }
@@ -4578,6 +4850,9 @@ func (p *DefaultSearchProviderImageURL) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderImageURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderImageURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4599,7 +4874,6 @@ type DefaultSearchProviderSearchURLPostParams struct {
 func (p *DefaultSearchProviderSearchURLPostParams) Name() string {
 	return "DefaultSearchProviderSearchURLPostParams"
 }
-func (p *DefaultSearchProviderSearchURLPostParams) Field() string         { return "" }
 func (p *DefaultSearchProviderSearchURLPostParams) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderSearchURLPostParams) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderSearchURLPostParams) UntypedV() interface{} { return p.Val }
@@ -4609,6 +4883,9 @@ func (p *DefaultSearchProviderSearchURLPostParams) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSearchURLPostParams) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderSearchURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4630,7 +4907,6 @@ type DefaultSearchProviderSuggestURLPostParams struct {
 func (p *DefaultSearchProviderSuggestURLPostParams) Name() string {
 	return "DefaultSearchProviderSuggestURLPostParams"
 }
-func (p *DefaultSearchProviderSuggestURLPostParams) Field() string         { return "" }
 func (p *DefaultSearchProviderSuggestURLPostParams) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderSuggestURLPostParams) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderSuggestURLPostParams) UntypedV() interface{} { return p.Val }
@@ -4640,6 +4916,9 @@ func (p *DefaultSearchProviderSuggestURLPostParams) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSuggestURLPostParams) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderSuggestURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4661,7 +4940,6 @@ type DefaultSearchProviderImageURLPostParams struct {
 func (p *DefaultSearchProviderImageURLPostParams) Name() string {
 	return "DefaultSearchProviderImageURLPostParams"
 }
-func (p *DefaultSearchProviderImageURLPostParams) Field() string         { return "" }
 func (p *DefaultSearchProviderImageURLPostParams) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderImageURLPostParams) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderImageURLPostParams) UntypedV() interface{} { return p.Val }
@@ -4671,6 +4949,9 @@ func (p *DefaultSearchProviderImageURLPostParams) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderImageURLPostParams) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderImageURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4692,7 +4973,6 @@ type RequireOnlineRevocationChecksForLocalAnchors struct {
 func (p *RequireOnlineRevocationChecksForLocalAnchors) Name() string {
 	return "RequireOnlineRevocationChecksForLocalAnchors"
 }
-func (p *RequireOnlineRevocationChecksForLocalAnchors) Field() string         { return "" }
 func (p *RequireOnlineRevocationChecksForLocalAnchors) Scope() Scope          { return ScopeUser }
 func (p *RequireOnlineRevocationChecksForLocalAnchors) Status() Status        { return p.Stat }
 func (p *RequireOnlineRevocationChecksForLocalAnchors) UntypedV() interface{} { return p.Val }
@@ -4702,6 +4982,9 @@ func (p *RequireOnlineRevocationChecksForLocalAnchors) UnmarshalAs(m json.RawMes
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RequireOnlineRevocationChecksForLocalAnchors) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RequireOnlineRevocationChecksForLocalAnchors) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4721,7 +5004,6 @@ type SystemUse24HourClock struct {
 }
 
 func (p *SystemUse24HourClock) Name() string          { return "SystemUse24HourClock" }
-func (p *SystemUse24HourClock) Field() string         { return "use_24hour_clock.use_24hour_clock" }
 func (p *SystemUse24HourClock) Scope() Scope          { return ScopeDevice }
 func (p *SystemUse24HourClock) Status() Status        { return p.Stat }
 func (p *SystemUse24HourClock) UntypedV() interface{} { return p.Val }
@@ -4731,6 +5013,9 @@ func (p *SystemUse24HourClock) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SystemUse24HourClock) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "use_24hour_clock", "use_24hour_clock", p.Val)
 }
 func (p *SystemUse24HourClock) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4750,7 +5035,6 @@ type DefaultSearchProviderNewTabURL struct {
 }
 
 func (p *DefaultSearchProviderNewTabURL) Name() string          { return "DefaultSearchProviderNewTabURL" }
-func (p *DefaultSearchProviderNewTabURL) Field() string         { return "" }
 func (p *DefaultSearchProviderNewTabURL) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderNewTabURL) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderNewTabURL) UntypedV() interface{} { return p.Val }
@@ -4760,6 +5044,9 @@ func (p *DefaultSearchProviderNewTabURL) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderNewTabURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderNewTabURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4781,9 +5068,6 @@ type AttestationForContentProtectionEnabled struct {
 func (p *AttestationForContentProtectionEnabled) Name() string {
 	return "AttestationForContentProtectionEnabled"
 }
-func (p *AttestationForContentProtectionEnabled) Field() string {
-	return "attestation_settings.content_protection_enabled"
-}
 func (p *AttestationForContentProtectionEnabled) Scope() Scope          { return ScopeDevice }
 func (p *AttestationForContentProtectionEnabled) Status() Status        { return p.Stat }
 func (p *AttestationForContentProtectionEnabled) UntypedV() interface{} { return p.Val }
@@ -4793,6 +5077,9 @@ func (p *AttestationForContentProtectionEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AttestationForContentProtectionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "attestation_settings", "content_protection_enabled", p.Val)
 }
 func (p *AttestationForContentProtectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4812,7 +5099,6 @@ type FullscreenAllowed struct {
 }
 
 func (p *FullscreenAllowed) Name() string          { return "FullscreenAllowed" }
-func (p *FullscreenAllowed) Field() string         { return "" }
 func (p *FullscreenAllowed) Scope() Scope          { return ScopeUser }
 func (p *FullscreenAllowed) Status() Status        { return p.Stat }
 func (p *FullscreenAllowed) UntypedV() interface{} { return p.Val }
@@ -4822,6 +5108,9 @@ func (p *FullscreenAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FullscreenAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FullscreenAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4841,7 +5130,6 @@ type DeviceAutoUpdateP2PEnabled struct {
 }
 
 func (p *DeviceAutoUpdateP2PEnabled) Name() string          { return "DeviceAutoUpdateP2PEnabled" }
-func (p *DeviceAutoUpdateP2PEnabled) Field() string         { return "auto_update_settings.p2p_enabled" }
 func (p *DeviceAutoUpdateP2PEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAutoUpdateP2PEnabled) Status() Status        { return p.Stat }
 func (p *DeviceAutoUpdateP2PEnabled) UntypedV() interface{} { return p.Val }
@@ -4851,6 +5139,9 @@ func (p *DeviceAutoUpdateP2PEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutoUpdateP2PEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "p2p_enabled", p.Val)
 }
 func (p *DeviceAutoUpdateP2PEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4869,10 +5160,7 @@ type DeviceUpdateHttpDownloadsEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceUpdateHttpDownloadsEnabled) Name() string { return "DeviceUpdateHttpDownloadsEnabled" }
-func (p *DeviceUpdateHttpDownloadsEnabled) Field() string {
-	return "auto_update_settings.http_downloads_enabled"
-}
+func (p *DeviceUpdateHttpDownloadsEnabled) Name() string          { return "DeviceUpdateHttpDownloadsEnabled" }
 func (p *DeviceUpdateHttpDownloadsEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUpdateHttpDownloadsEnabled) Status() Status        { return p.Stat }
 func (p *DeviceUpdateHttpDownloadsEnabled) UntypedV() interface{} { return p.Val }
@@ -4882,6 +5170,9 @@ func (p *DeviceUpdateHttpDownloadsEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceUpdateHttpDownloadsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "http_downloads_enabled", p.Val)
 }
 func (p *DeviceUpdateHttpDownloadsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4902,7 +5193,6 @@ type ChromeOsMultiProfileUserBehavior struct {
 }
 
 func (p *ChromeOsMultiProfileUserBehavior) Name() string          { return "ChromeOsMultiProfileUserBehavior" }
-func (p *ChromeOsMultiProfileUserBehavior) Field() string         { return "" }
 func (p *ChromeOsMultiProfileUserBehavior) Scope() Scope          { return ScopeUser }
 func (p *ChromeOsMultiProfileUserBehavior) Status() Status        { return p.Stat }
 func (p *ChromeOsMultiProfileUserBehavior) UntypedV() interface{} { return p.Val }
@@ -4912,6 +5202,9 @@ func (p *ChromeOsMultiProfileUserBehavior) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ChromeOsMultiProfileUserBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ChromeOsMultiProfileUserBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4931,7 +5224,6 @@ type WaitForInitialUserActivity struct {
 }
 
 func (p *WaitForInitialUserActivity) Name() string          { return "WaitForInitialUserActivity" }
-func (p *WaitForInitialUserActivity) Field() string         { return "" }
 func (p *WaitForInitialUserActivity) Scope() Scope          { return ScopeUser }
 func (p *WaitForInitialUserActivity) Status() Status        { return p.Stat }
 func (p *WaitForInitialUserActivity) UntypedV() interface{} { return p.Val }
@@ -4941,6 +5233,9 @@ func (p *WaitForInitialUserActivity) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WaitForInitialUserActivity) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WaitForInitialUserActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4960,7 +5255,6 @@ type ReportDeviceUsers struct {
 }
 
 func (p *ReportDeviceUsers) Name() string          { return "ReportDeviceUsers" }
-func (p *ReportDeviceUsers) Field() string         { return "device_reporting.report_users" }
 func (p *ReportDeviceUsers) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceUsers) Status() Status        { return p.Stat }
 func (p *ReportDeviceUsers) UntypedV() interface{} { return p.Val }
@@ -4970,6 +5264,9 @@ func (p *ReportDeviceUsers) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceUsers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_users", p.Val)
 }
 func (p *ReportDeviceUsers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4994,7 +5291,6 @@ type UserAvatarImageValue struct {
 }
 
 func (p *UserAvatarImage) Name() string          { return "UserAvatarImage" }
-func (p *UserAvatarImage) Field() string         { return "" }
 func (p *UserAvatarImage) Scope() Scope          { return ScopeUser }
 func (p *UserAvatarImage) Status() Status        { return p.Stat }
 func (p *UserAvatarImage) UntypedV() interface{} { return p.Val }
@@ -5004,6 +5300,9 @@ func (p *UserAvatarImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *UserAvatarImageValue", m)
 	}
 	return v, nil
+}
+func (p *UserAvatarImage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserAvatarImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*UserAvatarImageValue)
@@ -5025,9 +5324,6 @@ type DeviceLocalAccountPromptForNetworkWhenOffline struct {
 func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Name() string {
 	return "DeviceLocalAccountPromptForNetworkWhenOffline"
 }
-func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Field() string {
-	return "device_local_accounts.prompt_for_network_when_offline"
-}
 func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Status() Status        { return p.Stat }
 func (p *DeviceLocalAccountPromptForNetworkWhenOffline) UntypedV() interface{} { return p.Val }
@@ -5037,6 +5333,9 @@ func (p *DeviceLocalAccountPromptForNetworkWhenOffline) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccountPromptForNetworkWhenOffline) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "prompt_for_network_when_offline", p.Val)
 }
 func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5056,7 +5355,6 @@ type SAMLOfflineSigninTimeLimit struct {
 }
 
 func (p *SAMLOfflineSigninTimeLimit) Name() string          { return "SAMLOfflineSigninTimeLimit" }
-func (p *SAMLOfflineSigninTimeLimit) Field() string         { return "" }
 func (p *SAMLOfflineSigninTimeLimit) Scope() Scope          { return ScopeUser }
 func (p *SAMLOfflineSigninTimeLimit) Status() Status        { return p.Stat }
 func (p *SAMLOfflineSigninTimeLimit) UntypedV() interface{} { return p.Val }
@@ -5066,6 +5364,9 @@ func (p *SAMLOfflineSigninTimeLimit) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SAMLOfflineSigninTimeLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SAMLOfflineSigninTimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5085,7 +5386,6 @@ type VirtualKeyboardEnabled struct {
 }
 
 func (p *VirtualKeyboardEnabled) Name() string          { return "VirtualKeyboardEnabled" }
-func (p *VirtualKeyboardEnabled) Field() string         { return "" }
 func (p *VirtualKeyboardEnabled) Scope() Scope          { return ScopeUser }
 func (p *VirtualKeyboardEnabled) Status() Status        { return p.Stat }
 func (p *VirtualKeyboardEnabled) UntypedV() interface{} { return p.Val }
@@ -5095,6 +5395,9 @@ func (p *VirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5116,9 +5419,6 @@ type DeviceLoginScreenDefaultVirtualKeyboardEnabled struct {
 func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Name() string {
 	return "DeviceLoginScreenDefaultVirtualKeyboardEnabled"
 }
-func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Field() string {
-	return "accessibility_settings.login_screen_default_virtual_keyboard_enabled"
-}
 func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) UntypedV() interface{} { return p.Val }
@@ -5128,6 +5428,9 @@ func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) UnmarshalAs(m json.RawM
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_virtual_keyboard_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5152,7 +5455,6 @@ type PowerManagementIdleSettingsValue struct {
 }
 
 func (p *PowerManagementIdleSettings) Name() string          { return "PowerManagementIdleSettings" }
-func (p *PowerManagementIdleSettings) Field() string         { return "" }
 func (p *PowerManagementIdleSettings) Scope() Scope          { return ScopeUser }
 func (p *PowerManagementIdleSettings) Status() Status        { return p.Stat }
 func (p *PowerManagementIdleSettings) UntypedV() interface{} { return p.Val }
@@ -5162,6 +5464,9 @@ func (p *PowerManagementIdleSettings) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as *PowerManagementIdleSettingsValue", m)
 	}
 	return v, nil
+}
+func (p *PowerManagementIdleSettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PowerManagementIdleSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*PowerManagementIdleSettingsValue)
@@ -5186,7 +5491,6 @@ type ScreenLockDelaysValue struct {
 }
 
 func (p *ScreenLockDelays) Name() string          { return "ScreenLockDelays" }
-func (p *ScreenLockDelays) Field() string         { return "" }
 func (p *ScreenLockDelays) Scope() Scope          { return ScopeUser }
 func (p *ScreenLockDelays) Status() Status        { return p.Stat }
 func (p *ScreenLockDelays) UntypedV() interface{} { return p.Val }
@@ -5196,6 +5500,9 @@ func (p *ScreenLockDelays) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *ScreenLockDelaysValue", m)
 	}
 	return v, nil
+}
+func (p *ScreenLockDelays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenLockDelays) Equal(iface interface{}) bool {
 	v, ok := iface.(*ScreenLockDelaysValue)
@@ -5215,7 +5522,6 @@ type KeyboardDefaultToFunctionKeys struct {
 }
 
 func (p *KeyboardDefaultToFunctionKeys) Name() string          { return "KeyboardDefaultToFunctionKeys" }
-func (p *KeyboardDefaultToFunctionKeys) Field() string         { return "" }
 func (p *KeyboardDefaultToFunctionKeys) Scope() Scope          { return ScopeUser }
 func (p *KeyboardDefaultToFunctionKeys) Status() Status        { return p.Stat }
 func (p *KeyboardDefaultToFunctionKeys) UntypedV() interface{} { return p.Val }
@@ -5225,6 +5531,9 @@ func (p *KeyboardDefaultToFunctionKeys) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KeyboardDefaultToFunctionKeys) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KeyboardDefaultToFunctionKeys) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5243,7 +5552,6 @@ type WPADQuickCheckEnabled struct {
 }
 
 func (p *WPADQuickCheckEnabled) Name() string          { return "WPADQuickCheckEnabled" }
-func (p *WPADQuickCheckEnabled) Field() string         { return "" }
 func (p *WPADQuickCheckEnabled) Scope() Scope          { return ScopeUser }
 func (p *WPADQuickCheckEnabled) Status() Status        { return p.Stat }
 func (p *WPADQuickCheckEnabled) UntypedV() interface{} { return p.Val }
@@ -5253,6 +5561,9 @@ func (p *WPADQuickCheckEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WPADQuickCheckEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WPADQuickCheckEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5277,7 +5588,6 @@ type WallpaperImageValue struct {
 }
 
 func (p *WallpaperImage) Name() string          { return "WallpaperImage" }
-func (p *WallpaperImage) Field() string         { return "" }
 func (p *WallpaperImage) Scope() Scope          { return ScopeUser }
 func (p *WallpaperImage) Status() Status        { return p.Stat }
 func (p *WallpaperImage) UntypedV() interface{} { return p.Val }
@@ -5287,6 +5597,9 @@ func (p *WallpaperImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *WallpaperImageValue", m)
 	}
 	return v, nil
+}
+func (p *WallpaperImage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WallpaperImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*WallpaperImageValue)
@@ -5308,7 +5621,6 @@ type RemoteAccessHostAllowRelayedConnection struct {
 func (p *RemoteAccessHostAllowRelayedConnection) Name() string {
 	return "RemoteAccessHostAllowRelayedConnection"
 }
-func (p *RemoteAccessHostAllowRelayedConnection) Field() string         { return "" }
 func (p *RemoteAccessHostAllowRelayedConnection) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostAllowRelayedConnection) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostAllowRelayedConnection) UntypedV() interface{} { return p.Val }
@@ -5318,6 +5630,9 @@ func (p *RemoteAccessHostAllowRelayedConnection) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostAllowRelayedConnection) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostAllowRelayedConnection) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5337,7 +5652,6 @@ type RemoteAccessHostUdpPortRange struct {
 }
 
 func (p *RemoteAccessHostUdpPortRange) Name() string          { return "RemoteAccessHostUdpPortRange" }
-func (p *RemoteAccessHostUdpPortRange) Field() string         { return "" }
 func (p *RemoteAccessHostUdpPortRange) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostUdpPortRange) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostUdpPortRange) UntypedV() interface{} { return p.Val }
@@ -5347,6 +5661,9 @@ func (p *RemoteAccessHostUdpPortRange) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostUdpPortRange) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostUdpPortRange) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -5366,7 +5683,6 @@ type DeviceBlockDevmode struct {
 }
 
 func (p *DeviceBlockDevmode) Name() string          { return "DeviceBlockDevmode" }
-func (p *DeviceBlockDevmode) Field() string         { return "system_settings.block_devmode" }
 func (p *DeviceBlockDevmode) Scope() Scope          { return ScopeDevice }
 func (p *DeviceBlockDevmode) Status() Status        { return p.Stat }
 func (p *DeviceBlockDevmode) UntypedV() interface{} { return p.Val }
@@ -5376,6 +5692,9 @@ func (p *DeviceBlockDevmode) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceBlockDevmode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_settings", "block_devmode", p.Val)
 }
 func (p *DeviceBlockDevmode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5400,7 +5719,6 @@ type RegisteredProtocolHandlersValue struct {
 }
 
 func (p *RegisteredProtocolHandlers) Name() string          { return "RegisteredProtocolHandlers" }
-func (p *RegisteredProtocolHandlers) Field() string         { return "" }
 func (p *RegisteredProtocolHandlers) Scope() Scope          { return ScopeUser }
 func (p *RegisteredProtocolHandlers) Status() Status        { return p.Stat }
 func (p *RegisteredProtocolHandlers) UntypedV() interface{} { return p.Val }
@@ -5410,6 +5728,9 @@ func (p *RegisteredProtocolHandlers) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []*RegisteredProtocolHandlersValue", m)
 	}
 	return v, nil
+}
+func (p *RegisteredProtocolHandlers) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RegisteredProtocolHandlers) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RegisteredProtocolHandlersValue)
@@ -5429,7 +5750,6 @@ type TouchVirtualKeyboardEnabled struct {
 }
 
 func (p *TouchVirtualKeyboardEnabled) Name() string          { return "TouchVirtualKeyboardEnabled" }
-func (p *TouchVirtualKeyboardEnabled) Field() string         { return "" }
 func (p *TouchVirtualKeyboardEnabled) Scope() Scope          { return ScopeUser }
 func (p *TouchVirtualKeyboardEnabled) Status() Status        { return p.Stat }
 func (p *TouchVirtualKeyboardEnabled) UntypedV() interface{} { return p.Val }
@@ -5439,6 +5759,9 @@ func (p *TouchVirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TouchVirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TouchVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5458,7 +5781,6 @@ type DeviceTransferSAMLCookies struct {
 }
 
 func (p *DeviceTransferSAMLCookies) Name() string          { return "DeviceTransferSAMLCookies" }
-func (p *DeviceTransferSAMLCookies) Field() string         { return "saml_settings.transfer_saml_cookies" }
 func (p *DeviceTransferSAMLCookies) Scope() Scope          { return ScopeDevice }
 func (p *DeviceTransferSAMLCookies) Status() Status        { return p.Stat }
 func (p *DeviceTransferSAMLCookies) UntypedV() interface{} { return p.Val }
@@ -5468,6 +5790,9 @@ func (p *DeviceTransferSAMLCookies) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceTransferSAMLCookies) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "saml_settings", "transfer_saml_cookies", p.Val)
 }
 func (p *DeviceTransferSAMLCookies) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5488,7 +5813,6 @@ type EasyUnlockAllowed struct {
 }
 
 func (p *EasyUnlockAllowed) Name() string          { return "EasyUnlockAllowed" }
-func (p *EasyUnlockAllowed) Field() string         { return "" }
 func (p *EasyUnlockAllowed) Scope() Scope          { return ScopeUser }
 func (p *EasyUnlockAllowed) Status() Status        { return p.Stat }
 func (p *EasyUnlockAllowed) UntypedV() interface{} { return p.Val }
@@ -5498,6 +5822,9 @@ func (p *EasyUnlockAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EasyUnlockAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EasyUnlockAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5517,7 +5844,6 @@ type NetworkPredictionOptions struct {
 }
 
 func (p *NetworkPredictionOptions) Name() string          { return "NetworkPredictionOptions" }
-func (p *NetworkPredictionOptions) Field() string         { return "" }
 func (p *NetworkPredictionOptions) Scope() Scope          { return ScopeUser }
 func (p *NetworkPredictionOptions) Status() Status        { return p.Stat }
 func (p *NetworkPredictionOptions) UntypedV() interface{} { return p.Val }
@@ -5527,6 +5853,9 @@ func (p *NetworkPredictionOptions) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *NetworkPredictionOptions) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NetworkPredictionOptions) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5546,7 +5875,6 @@ type SessionLocales struct {
 }
 
 func (p *SessionLocales) Name() string          { return "SessionLocales" }
-func (p *SessionLocales) Field() string         { return "" }
 func (p *SessionLocales) Scope() Scope          { return ScopeUser }
 func (p *SessionLocales) Status() Status        { return p.Stat }
 func (p *SessionLocales) UntypedV() interface{} { return p.Val }
@@ -5556,6 +5884,9 @@ func (p *SessionLocales) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SessionLocales) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SessionLocales) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -5575,7 +5906,6 @@ type BrowserGuestModeEnabled struct {
 }
 
 func (p *BrowserGuestModeEnabled) Name() string          { return "BrowserGuestModeEnabled" }
-func (p *BrowserGuestModeEnabled) Field() string         { return "" }
 func (p *BrowserGuestModeEnabled) Scope() Scope          { return ScopeUser }
 func (p *BrowserGuestModeEnabled) Status() Status        { return p.Stat }
 func (p *BrowserGuestModeEnabled) UntypedV() interface{} { return p.Val }
@@ -5585,6 +5915,9 @@ func (p *BrowserGuestModeEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BrowserGuestModeEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BrowserGuestModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5604,7 +5937,6 @@ type BrowserAddPersonEnabled struct {
 }
 
 func (p *BrowserAddPersonEnabled) Name() string          { return "BrowserAddPersonEnabled" }
-func (p *BrowserAddPersonEnabled) Field() string         { return "" }
 func (p *BrowserAddPersonEnabled) Scope() Scope          { return ScopeUser }
 func (p *BrowserAddPersonEnabled) Status() Status        { return p.Stat }
 func (p *BrowserAddPersonEnabled) UntypedV() interface{} { return p.Val }
@@ -5614,6 +5946,9 @@ func (p *BrowserAddPersonEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BrowserAddPersonEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BrowserAddPersonEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5644,7 +5979,6 @@ type ExtensionSettingsValue struct {
 }
 
 func (p *ExtensionSettings) Name() string          { return "ExtensionSettings" }
-func (p *ExtensionSettings) Field() string         { return "" }
 func (p *ExtensionSettings) Scope() Scope          { return ScopeUser }
 func (p *ExtensionSettings) Status() Status        { return p.Stat }
 func (p *ExtensionSettings) UntypedV() interface{} { return p.Val }
@@ -5654,6 +5988,9 @@ func (p *ExtensionSettings) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as map[string]*ExtensionSettingsValue", m)
 	}
 	return v, nil
+}
+func (p *ExtensionSettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(map[string]*ExtensionSettingsValue)
@@ -5673,7 +6010,6 @@ type SSLVersionMin struct {
 }
 
 func (p *SSLVersionMin) Name() string          { return "SSLVersionMin" }
-func (p *SSLVersionMin) Field() string         { return "" }
 func (p *SSLVersionMin) Scope() Scope          { return ScopeUser }
 func (p *SSLVersionMin) Status() Status        { return p.Stat }
 func (p *SSLVersionMin) UntypedV() interface{} { return p.Val }
@@ -5683,6 +6019,9 @@ func (p *SSLVersionMin) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SSLVersionMin) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SSLVersionMin) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -5702,7 +6041,6 @@ type ForceGoogleSafeSearch struct {
 }
 
 func (p *ForceGoogleSafeSearch) Name() string          { return "ForceGoogleSafeSearch" }
-func (p *ForceGoogleSafeSearch) Field() string         { return "" }
 func (p *ForceGoogleSafeSearch) Scope() Scope          { return ScopeUser }
 func (p *ForceGoogleSafeSearch) Status() Status        { return p.Stat }
 func (p *ForceGoogleSafeSearch) UntypedV() interface{} { return p.Val }
@@ -5712,6 +6050,9 @@ func (p *ForceGoogleSafeSearch) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceGoogleSafeSearch) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceGoogleSafeSearch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5731,7 +6072,6 @@ type ForceYouTubeSafetyMode struct {
 }
 
 func (p *ForceYouTubeSafetyMode) Name() string          { return "ForceYouTubeSafetyMode" }
-func (p *ForceYouTubeSafetyMode) Field() string         { return "" }
 func (p *ForceYouTubeSafetyMode) Scope() Scope          { return ScopeUser }
 func (p *ForceYouTubeSafetyMode) Status() Status        { return p.Stat }
 func (p *ForceYouTubeSafetyMode) UntypedV() interface{} { return p.Val }
@@ -5741,6 +6081,9 @@ func (p *ForceYouTubeSafetyMode) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceYouTubeSafetyMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceYouTubeSafetyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5760,7 +6103,6 @@ type DeviceRebootOnShutdown struct {
 }
 
 func (p *DeviceRebootOnShutdown) Name() string          { return "DeviceRebootOnShutdown" }
-func (p *DeviceRebootOnShutdown) Field() string         { return "reboot_on_shutdown.reboot_on_shutdown" }
 func (p *DeviceRebootOnShutdown) Scope() Scope          { return ScopeDevice }
 func (p *DeviceRebootOnShutdown) Status() Status        { return p.Stat }
 func (p *DeviceRebootOnShutdown) UntypedV() interface{} { return p.Val }
@@ -5770,6 +6112,9 @@ func (p *DeviceRebootOnShutdown) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceRebootOnShutdown) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "reboot_on_shutdown", "reboot_on_shutdown", p.Val)
 }
 func (p *DeviceRebootOnShutdown) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5789,7 +6134,6 @@ type ReportDeviceHardwareStatus struct {
 }
 
 func (p *ReportDeviceHardwareStatus) Name() string          { return "ReportDeviceHardwareStatus" }
-func (p *ReportDeviceHardwareStatus) Field() string         { return "device_reporting.report_hardware_status" }
 func (p *ReportDeviceHardwareStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceHardwareStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceHardwareStatus) UntypedV() interface{} { return p.Val }
@@ -5799,6 +6143,9 @@ func (p *ReportDeviceHardwareStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceHardwareStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_hardware_status", p.Val)
 }
 func (p *ReportDeviceHardwareStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5818,7 +6165,6 @@ type ReportDeviceSessionStatus struct {
 }
 
 func (p *ReportDeviceSessionStatus) Name() string          { return "ReportDeviceSessionStatus" }
-func (p *ReportDeviceSessionStatus) Field() string         { return "device_reporting.report_session_status" }
 func (p *ReportDeviceSessionStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceSessionStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceSessionStatus) UntypedV() interface{} { return p.Val }
@@ -5828,6 +6174,9 @@ func (p *ReportDeviceSessionStatus) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceSessionStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_session_status", p.Val)
 }
 func (p *ReportDeviceSessionStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5847,7 +6196,6 @@ type ReportUploadFrequency struct {
 }
 
 func (p *ReportUploadFrequency) Name() string          { return "ReportUploadFrequency" }
-func (p *ReportUploadFrequency) Field() string         { return "device_reporting.device_status_frequency" }
 func (p *ReportUploadFrequency) Scope() Scope          { return ScopeDevice }
 func (p *ReportUploadFrequency) Status() Status        { return p.Stat }
 func (p *ReportUploadFrequency) UntypedV() interface{} { return p.Val }
@@ -5857,6 +6205,9 @@ func (p *ReportUploadFrequency) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ReportUploadFrequency) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "device_status_frequency", p.Val)
 }
 func (p *ReportUploadFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5876,7 +6227,6 @@ type HeartbeatEnabled struct {
 }
 
 func (p *HeartbeatEnabled) Name() string          { return "HeartbeatEnabled" }
-func (p *HeartbeatEnabled) Field() string         { return "device_heartbeat_settings.heartbeat_enabled" }
 func (p *HeartbeatEnabled) Scope() Scope          { return ScopeDevice }
 func (p *HeartbeatEnabled) Status() Status        { return p.Stat }
 func (p *HeartbeatEnabled) UntypedV() interface{} { return p.Val }
@@ -5886,6 +6236,9 @@ func (p *HeartbeatEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HeartbeatEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_heartbeat_settings", "heartbeat_enabled", p.Val)
 }
 func (p *HeartbeatEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5905,7 +6258,6 @@ type HeartbeatFrequency struct {
 }
 
 func (p *HeartbeatFrequency) Name() string          { return "HeartbeatFrequency" }
-func (p *HeartbeatFrequency) Field() string         { return "device_heartbeat_settings.heartbeat_frequency" }
 func (p *HeartbeatFrequency) Scope() Scope          { return ScopeDevice }
 func (p *HeartbeatFrequency) Status() Status        { return p.Stat }
 func (p *HeartbeatFrequency) UntypedV() interface{} { return p.Val }
@@ -5915,6 +6267,9 @@ func (p *HeartbeatFrequency) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *HeartbeatFrequency) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_heartbeat_settings", "heartbeat_frequency", p.Val)
 }
 func (p *HeartbeatFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5937,7 +6292,6 @@ type CaptivePortalAuthenticationIgnoresProxy struct {
 func (p *CaptivePortalAuthenticationIgnoresProxy) Name() string {
 	return "CaptivePortalAuthenticationIgnoresProxy"
 }
-func (p *CaptivePortalAuthenticationIgnoresProxy) Field() string         { return "" }
 func (p *CaptivePortalAuthenticationIgnoresProxy) Scope() Scope          { return ScopeUser }
 func (p *CaptivePortalAuthenticationIgnoresProxy) Status() Status        { return p.Stat }
 func (p *CaptivePortalAuthenticationIgnoresProxy) UntypedV() interface{} { return p.Val }
@@ -5947,6 +6301,9 @@ func (p *CaptivePortalAuthenticationIgnoresProxy) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CaptivePortalAuthenticationIgnoresProxy) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CaptivePortalAuthenticationIgnoresProxy) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5965,7 +6322,6 @@ type ExtensionCacheSize struct {
 }
 
 func (p *ExtensionCacheSize) Name() string          { return "ExtensionCacheSize" }
-func (p *ExtensionCacheSize) Field() string         { return "extension_cache_size.extension_cache_size" }
 func (p *ExtensionCacheSize) Scope() Scope          { return ScopeDevice }
 func (p *ExtensionCacheSize) Status() Status        { return p.Stat }
 func (p *ExtensionCacheSize) UntypedV() interface{} { return p.Val }
@@ -5975,6 +6331,9 @@ func (p *ExtensionCacheSize) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ExtensionCacheSize) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "extension_cache_size", "extension_cache_size", p.Val)
 }
 func (p *ExtensionCacheSize) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5996,9 +6355,6 @@ type DeviceLoginScreenDomainAutoComplete struct {
 func (p *DeviceLoginScreenDomainAutoComplete) Name() string {
 	return "DeviceLoginScreenDomainAutoComplete"
 }
-func (p *DeviceLoginScreenDomainAutoComplete) Field() string {
-	return "login_screen_domain_auto_complete.login_screen_domain_auto_complete"
-}
 func (p *DeviceLoginScreenDomainAutoComplete) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenDomainAutoComplete) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenDomainAutoComplete) UntypedV() interface{} { return p.Val }
@@ -6008,6 +6364,9 @@ func (p *DeviceLoginScreenDomainAutoComplete) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDomainAutoComplete) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_domain_auto_complete", "login_screen_domain_auto_complete", p.Val)
 }
 func (p *DeviceLoginScreenDomainAutoComplete) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -6026,7 +6385,6 @@ type ForceMaximizeOnFirstRun struct {
 }
 
 func (p *ForceMaximizeOnFirstRun) Name() string          { return "ForceMaximizeOnFirstRun" }
-func (p *ForceMaximizeOnFirstRun) Field() string         { return "" }
 func (p *ForceMaximizeOnFirstRun) Scope() Scope          { return ScopeUser }
 func (p *ForceMaximizeOnFirstRun) Status() Status        { return p.Stat }
 func (p *ForceMaximizeOnFirstRun) UntypedV() interface{} { return p.Val }
@@ -6036,6 +6394,9 @@ func (p *ForceMaximizeOnFirstRun) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceMaximizeOnFirstRun) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceMaximizeOnFirstRun) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6055,7 +6416,6 @@ type SSLErrorOverrideAllowed struct {
 }
 
 func (p *SSLErrorOverrideAllowed) Name() string          { return "SSLErrorOverrideAllowed" }
-func (p *SSLErrorOverrideAllowed) Field() string         { return "" }
 func (p *SSLErrorOverrideAllowed) Scope() Scope          { return ScopeUser }
 func (p *SSLErrorOverrideAllowed) Status() Status        { return p.Stat }
 func (p *SSLErrorOverrideAllowed) UntypedV() interface{} { return p.Val }
@@ -6065,6 +6425,9 @@ func (p *SSLErrorOverrideAllowed) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SSLErrorOverrideAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SSLErrorOverrideAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6083,7 +6446,6 @@ type QuicAllowed struct {
 }
 
 func (p *QuicAllowed) Name() string          { return "QuicAllowed" }
-func (p *QuicAllowed) Field() string         { return "" }
 func (p *QuicAllowed) Scope() Scope          { return ScopeUser }
 func (p *QuicAllowed) Status() Status        { return p.Stat }
 func (p *QuicAllowed) UntypedV() interface{} { return p.Val }
@@ -6093,6 +6455,9 @@ func (p *QuicAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuicAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuicAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6116,7 +6481,6 @@ type KeyPermissionsValue struct {
 }
 
 func (p *KeyPermissions) Name() string          { return "KeyPermissions" }
-func (p *KeyPermissions) Field() string         { return "" }
 func (p *KeyPermissions) Scope() Scope          { return ScopeUser }
 func (p *KeyPermissions) Status() Status        { return p.Stat }
 func (p *KeyPermissions) UntypedV() interface{} { return p.Val }
@@ -6126,6 +6490,9 @@ func (p *KeyPermissions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as map[string]*KeyPermissionsValue", m)
 	}
 	return v, nil
+}
+func (p *KeyPermissions) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KeyPermissions) Equal(iface interface{}) bool {
 	v, ok := iface.(map[string]*KeyPermissionsValue)
@@ -6144,10 +6511,7 @@ type LogUploadEnabled struct {
 	Val  bool
 }
 
-func (p *LogUploadEnabled) Name() string { return "LogUploadEnabled" }
-func (p *LogUploadEnabled) Field() string {
-	return "device_log_upload_settings.system_log_upload_enabled"
-}
+func (p *LogUploadEnabled) Name() string          { return "LogUploadEnabled" }
 func (p *LogUploadEnabled) Scope() Scope          { return ScopeDevice }
 func (p *LogUploadEnabled) Status() Status        { return p.Stat }
 func (p *LogUploadEnabled) UntypedV() interface{} { return p.Val }
@@ -6157,6 +6521,9 @@ func (p *LogUploadEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LogUploadEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_log_upload_settings", "system_log_upload_enabled", p.Val)
 }
 func (p *LogUploadEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6176,7 +6543,6 @@ type UnifiedDesktopEnabledByDefault struct {
 }
 
 func (p *UnifiedDesktopEnabledByDefault) Name() string          { return "UnifiedDesktopEnabledByDefault" }
-func (p *UnifiedDesktopEnabledByDefault) Field() string         { return "" }
 func (p *UnifiedDesktopEnabledByDefault) Scope() Scope          { return ScopeUser }
 func (p *UnifiedDesktopEnabledByDefault) Status() Status        { return p.Stat }
 func (p *UnifiedDesktopEnabledByDefault) UntypedV() interface{} { return p.Val }
@@ -6186,6 +6552,9 @@ func (p *UnifiedDesktopEnabledByDefault) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UnifiedDesktopEnabledByDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UnifiedDesktopEnabledByDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6205,7 +6574,6 @@ type DefaultPrinterSelection struct {
 }
 
 func (p *DefaultPrinterSelection) Name() string          { return "DefaultPrinterSelection" }
-func (p *DefaultPrinterSelection) Field() string         { return "" }
 func (p *DefaultPrinterSelection) Scope() Scope          { return ScopeUser }
 func (p *DefaultPrinterSelection) Status() Status        { return p.Stat }
 func (p *DefaultPrinterSelection) UntypedV() interface{} { return p.Val }
@@ -6215,6 +6583,9 @@ func (p *DefaultPrinterSelection) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultPrinterSelection) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultPrinterSelection) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -6234,7 +6605,6 @@ type AllowDinosaurEasterEgg struct {
 }
 
 func (p *AllowDinosaurEasterEgg) Name() string          { return "AllowDinosaurEasterEgg" }
-func (p *AllowDinosaurEasterEgg) Field() string         { return "" }
 func (p *AllowDinosaurEasterEgg) Scope() Scope          { return ScopeUser }
 func (p *AllowDinosaurEasterEgg) Status() Status        { return p.Stat }
 func (p *AllowDinosaurEasterEgg) UntypedV() interface{} { return p.Val }
@@ -6244,6 +6614,9 @@ func (p *AllowDinosaurEasterEgg) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowDinosaurEasterEgg) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowDinosaurEasterEgg) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6262,10 +6635,7 @@ type DisplayRotationDefault struct {
 	Val  int
 }
 
-func (p *DisplayRotationDefault) Name() string { return "DisplayRotationDefault" }
-func (p *DisplayRotationDefault) Field() string {
-	return "display_rotation_default.display_rotation_default"
-}
+func (p *DisplayRotationDefault) Name() string          { return "DisplayRotationDefault" }
 func (p *DisplayRotationDefault) Scope() Scope          { return ScopeDevice }
 func (p *DisplayRotationDefault) Status() Status        { return p.Stat }
 func (p *DisplayRotationDefault) UntypedV() interface{} { return p.Val }
@@ -6275,6 +6645,9 @@ func (p *DisplayRotationDefault) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DisplayRotationDefault) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "display_rotation_default", "display_rotation_default", p.Val)
 }
 func (p *DisplayRotationDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6294,7 +6667,6 @@ type RemoteAccessHostClientDomain struct {
 }
 
 func (p *RemoteAccessHostClientDomain) Name() string          { return "RemoteAccessHostClientDomain" }
-func (p *RemoteAccessHostClientDomain) Field() string         { return "" }
 func (p *RemoteAccessHostClientDomain) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostClientDomain) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostClientDomain) UntypedV() interface{} { return p.Val }
@@ -6304,6 +6676,9 @@ func (p *RemoteAccessHostClientDomain) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostClientDomain) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostClientDomain) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -6324,7 +6699,6 @@ type ArcEnabled struct {
 }
 
 func (p *ArcEnabled) Name() string          { return "ArcEnabled" }
-func (p *ArcEnabled) Field() string         { return "" }
 func (p *ArcEnabled) Scope() Scope          { return ScopeUser }
 func (p *ArcEnabled) Status() Status        { return p.Stat }
 func (p *ArcEnabled) UntypedV() interface{} { return p.Val }
@@ -6334,6 +6708,9 @@ func (p *ArcEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6366,7 +6743,6 @@ type ArcPolicyValue struct {
 }
 
 func (p *ArcPolicy) Name() string          { return "ArcPolicy" }
-func (p *ArcPolicy) Field() string         { return "" }
 func (p *ArcPolicy) Scope() Scope          { return ScopeUser }
 func (p *ArcPolicy) Status() Status        { return p.Stat }
 func (p *ArcPolicy) UntypedV() interface{} { return p.Val }
@@ -6380,6 +6756,9 @@ func (p *ArcPolicy) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as ArcPolicyValue", m)
 	}
 	return value, nil
+}
+func (p *ArcPolicy) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcPolicy) Equal(iface interface{}) bool {
 	v, ok := iface.(*ArcPolicyValue)
@@ -6398,10 +6777,7 @@ type AllowKioskAppControlChromeVersion struct {
 	Val  bool
 }
 
-func (p *AllowKioskAppControlChromeVersion) Name() string { return "AllowKioskAppControlChromeVersion" }
-func (p *AllowKioskAppControlChromeVersion) Field() string {
-	return "allow_kiosk_app_control_chrome_version.allow_kiosk_app_control_chrome_version"
-}
+func (p *AllowKioskAppControlChromeVersion) Name() string          { return "AllowKioskAppControlChromeVersion" }
 func (p *AllowKioskAppControlChromeVersion) Scope() Scope          { return ScopeDevice }
 func (p *AllowKioskAppControlChromeVersion) Status() Status        { return p.Stat }
 func (p *AllowKioskAppControlChromeVersion) UntypedV() interface{} { return p.Val }
@@ -6411,6 +6787,9 @@ func (p *AllowKioskAppControlChromeVersion) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowKioskAppControlChromeVersion) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_kiosk_app_control_chrome_version", "allow_kiosk_app_control_chrome_version", p.Val)
 }
 func (p *AllowKioskAppControlChromeVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6430,7 +6809,6 @@ type DefaultWebBluetoothGuardSetting struct {
 }
 
 func (p *DefaultWebBluetoothGuardSetting) Name() string          { return "DefaultWebBluetoothGuardSetting" }
-func (p *DefaultWebBluetoothGuardSetting) Field() string         { return "" }
 func (p *DefaultWebBluetoothGuardSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultWebBluetoothGuardSetting) Status() Status        { return p.Stat }
 func (p *DefaultWebBluetoothGuardSetting) UntypedV() interface{} { return p.Val }
@@ -6440,6 +6818,9 @@ func (p *DefaultWebBluetoothGuardSetting) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebBluetoothGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWebBluetoothGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6458,10 +6839,7 @@ type LoginAuthenticationBehavior struct {
 	Val  int
 }
 
-func (p *LoginAuthenticationBehavior) Name() string { return "LoginAuthenticationBehavior" }
-func (p *LoginAuthenticationBehavior) Field() string {
-	return "login_authentication_behavior.login_authentication_behavior"
-}
+func (p *LoginAuthenticationBehavior) Name() string          { return "LoginAuthenticationBehavior" }
 func (p *LoginAuthenticationBehavior) Scope() Scope          { return ScopeDevice }
 func (p *LoginAuthenticationBehavior) Status() Status        { return p.Stat }
 func (p *LoginAuthenticationBehavior) UntypedV() interface{} { return p.Val }
@@ -6471,6 +6849,9 @@ func (p *LoginAuthenticationBehavior) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *LoginAuthenticationBehavior) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_authentication_behavior", "login_authentication_behavior", p.Val)
 }
 func (p *LoginAuthenticationBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6489,7 +6870,6 @@ type DeviceAllowBluetooth struct {
 }
 
 func (p *DeviceAllowBluetooth) Name() string          { return "DeviceAllowBluetooth" }
-func (p *DeviceAllowBluetooth) Field() string         { return "allow_bluetooth.allow_bluetooth" }
 func (p *DeviceAllowBluetooth) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAllowBluetooth) Status() Status        { return p.Stat }
 func (p *DeviceAllowBluetooth) UntypedV() interface{} { return p.Val }
@@ -6499,6 +6879,9 @@ func (p *DeviceAllowBluetooth) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAllowBluetooth) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_bluetooth", "allow_bluetooth", p.Val)
 }
 func (p *DeviceAllowBluetooth) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6517,7 +6900,6 @@ type SuppressUnsupportedOSWarning struct {
 }
 
 func (p *SuppressUnsupportedOSWarning) Name() string          { return "SuppressUnsupportedOSWarning" }
-func (p *SuppressUnsupportedOSWarning) Field() string         { return "" }
 func (p *SuppressUnsupportedOSWarning) Scope() Scope          { return ScopeUser }
 func (p *SuppressUnsupportedOSWarning) Status() Status        { return p.Stat }
 func (p *SuppressUnsupportedOSWarning) UntypedV() interface{} { return p.Val }
@@ -6527,6 +6909,9 @@ func (p *SuppressUnsupportedOSWarning) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SuppressUnsupportedOSWarning) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SuppressUnsupportedOSWarning) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6545,10 +6930,7 @@ type DeviceQuirksDownloadEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceQuirksDownloadEnabled) Name() string { return "DeviceQuirksDownloadEnabled" }
-func (p *DeviceQuirksDownloadEnabled) Field() string {
-	return "quirks_download_enabled.quirks_download_enabled"
-}
+func (p *DeviceQuirksDownloadEnabled) Name() string          { return "DeviceQuirksDownloadEnabled" }
 func (p *DeviceQuirksDownloadEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceQuirksDownloadEnabled) Status() Status        { return p.Stat }
 func (p *DeviceQuirksDownloadEnabled) UntypedV() interface{} { return p.Val }
@@ -6558,6 +6940,9 @@ func (p *DeviceQuirksDownloadEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceQuirksDownloadEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "quirks_download_enabled", "quirks_download_enabled", p.Val)
 }
 func (p *DeviceQuirksDownloadEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6576,10 +6961,7 @@ type SystemTimezoneAutomaticDetection struct {
 	Val  int
 }
 
-func (p *SystemTimezoneAutomaticDetection) Name() string { return "SystemTimezoneAutomaticDetection" }
-func (p *SystemTimezoneAutomaticDetection) Field() string {
-	return "system_timezone.timezone_detection_type"
-}
+func (p *SystemTimezoneAutomaticDetection) Name() string          { return "SystemTimezoneAutomaticDetection" }
 func (p *SystemTimezoneAutomaticDetection) Scope() Scope          { return ScopeDevice }
 func (p *SystemTimezoneAutomaticDetection) Status() Status        { return p.Stat }
 func (p *SystemTimezoneAutomaticDetection) UntypedV() interface{} { return p.Val }
@@ -6589,6 +6971,9 @@ func (p *SystemTimezoneAutomaticDetection) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SystemTimezoneAutomaticDetection) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_timezone", "timezone_detection_type", p.Val)
 }
 func (p *SystemTimezoneAutomaticDetection) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6608,7 +6993,6 @@ type TaskManagerEndProcessEnabled struct {
 }
 
 func (p *TaskManagerEndProcessEnabled) Name() string          { return "TaskManagerEndProcessEnabled" }
-func (p *TaskManagerEndProcessEnabled) Field() string         { return "" }
 func (p *TaskManagerEndProcessEnabled) Scope() Scope          { return ScopeUser }
 func (p *TaskManagerEndProcessEnabled) Status() Status        { return p.Stat }
 func (p *TaskManagerEndProcessEnabled) UntypedV() interface{} { return p.Val }
@@ -6618,6 +7002,9 @@ func (p *TaskManagerEndProcessEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TaskManagerEndProcessEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TaskManagerEndProcessEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6637,7 +7024,6 @@ type LoginVideoCaptureAllowedUrls struct {
 }
 
 func (p *LoginVideoCaptureAllowedUrls) Name() string          { return "LoginVideoCaptureAllowedUrls" }
-func (p *LoginVideoCaptureAllowedUrls) Field() string         { return "login_video_capture_allowed_urls.urls" }
 func (p *LoginVideoCaptureAllowedUrls) Scope() Scope          { return ScopeDevice }
 func (p *LoginVideoCaptureAllowedUrls) Status() Status        { return p.Stat }
 func (p *LoginVideoCaptureAllowedUrls) UntypedV() interface{} { return p.Val }
@@ -6647,6 +7033,9 @@ func (p *LoginVideoCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *LoginVideoCaptureAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_video_capture_allowed_urls", "urls", p.Val)
 }
 func (p *LoginVideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -6666,7 +7055,6 @@ type AllowScreenLock struct {
 }
 
 func (p *AllowScreenLock) Name() string          { return "AllowScreenLock" }
-func (p *AllowScreenLock) Field() string         { return "" }
 func (p *AllowScreenLock) Scope() Scope          { return ScopeUser }
 func (p *AllowScreenLock) Status() Status        { return p.Stat }
 func (p *AllowScreenLock) UntypedV() interface{} { return p.Val }
@@ -6676,6 +7064,9 @@ func (p *AllowScreenLock) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowScreenLock) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowScreenLock) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6695,7 +7086,6 @@ type ArcCertificatesSyncMode struct {
 }
 
 func (p *ArcCertificatesSyncMode) Name() string          { return "ArcCertificatesSyncMode" }
-func (p *ArcCertificatesSyncMode) Field() string         { return "" }
 func (p *ArcCertificatesSyncMode) Scope() Scope          { return ScopeUser }
 func (p *ArcCertificatesSyncMode) Status() Status        { return p.Stat }
 func (p *ArcCertificatesSyncMode) UntypedV() interface{} { return p.Val }
@@ -6705,6 +7095,9 @@ func (p *ArcCertificatesSyncMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ArcCertificatesSyncMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcCertificatesSyncMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6724,7 +7117,6 @@ type AllowedDomainsForApps struct {
 }
 
 func (p *AllowedDomainsForApps) Name() string          { return "AllowedDomainsForApps" }
-func (p *AllowedDomainsForApps) Field() string         { return "" }
 func (p *AllowedDomainsForApps) Scope() Scope          { return ScopeUser }
 func (p *AllowedDomainsForApps) Status() Status        { return p.Stat }
 func (p *AllowedDomainsForApps) UntypedV() interface{} { return p.Val }
@@ -6734,6 +7126,9 @@ func (p *AllowedDomainsForApps) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AllowedDomainsForApps) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowedDomainsForApps) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -6752,7 +7147,6 @@ type EnableMediaRouter struct {
 }
 
 func (p *EnableMediaRouter) Name() string          { return "EnableMediaRouter" }
-func (p *EnableMediaRouter) Field() string         { return "" }
 func (p *EnableMediaRouter) Scope() Scope          { return ScopeUser }
 func (p *EnableMediaRouter) Status() Status        { return p.Stat }
 func (p *EnableMediaRouter) UntypedV() interface{} { return p.Val }
@@ -6762,6 +7156,9 @@ func (p *EnableMediaRouter) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableMediaRouter) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableMediaRouter) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6783,7 +7180,6 @@ type CertificateTransparencyEnforcementDisabledForUrls struct {
 func (p *CertificateTransparencyEnforcementDisabledForUrls) Name() string {
 	return "CertificateTransparencyEnforcementDisabledForUrls"
 }
-func (p *CertificateTransparencyEnforcementDisabledForUrls) Field() string         { return "" }
 func (p *CertificateTransparencyEnforcementDisabledForUrls) Scope() Scope          { return ScopeUser }
 func (p *CertificateTransparencyEnforcementDisabledForUrls) Status() Status        { return p.Stat }
 func (p *CertificateTransparencyEnforcementDisabledForUrls) UntypedV() interface{} { return p.Val }
@@ -6793,6 +7189,9 @@ func (p *CertificateTransparencyEnforcementDisabledForUrls) UnmarshalAs(m json.R
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CertificateTransparencyEnforcementDisabledForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CertificateTransparencyEnforcementDisabledForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -6811,10 +7210,7 @@ type DeviceLoginScreenExtensions struct {
 	Val  []string
 }
 
-func (p *DeviceLoginScreenExtensions) Name() string { return "DeviceLoginScreenExtensions" }
-func (p *DeviceLoginScreenExtensions) Field() string {
-	return "device_login_screen_extensions.device_login_screen_extensions"
-}
+func (p *DeviceLoginScreenExtensions) Name() string          { return "DeviceLoginScreenExtensions" }
 func (p *DeviceLoginScreenExtensions) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenExtensions) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenExtensions) UntypedV() interface{} { return p.Val }
@@ -6824,6 +7220,9 @@ func (p *DeviceLoginScreenExtensions) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenExtensions) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_extensions", "device_login_screen_extensions", p.Val)
 }
 func (p *DeviceLoginScreenExtensions) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -6842,7 +7241,6 @@ type WebRtcUdpPortRange struct {
 }
 
 func (p *WebRtcUdpPortRange) Name() string          { return "WebRtcUdpPortRange" }
-func (p *WebRtcUdpPortRange) Field() string         { return "" }
 func (p *WebRtcUdpPortRange) Scope() Scope          { return ScopeUser }
 func (p *WebRtcUdpPortRange) Status() Status        { return p.Stat }
 func (p *WebRtcUdpPortRange) UntypedV() interface{} { return p.Val }
@@ -6852,6 +7250,9 @@ func (p *WebRtcUdpPortRange) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *WebRtcUdpPortRange) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebRtcUdpPortRange) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -6870,7 +7271,6 @@ type ComponentUpdatesEnabled struct {
 }
 
 func (p *ComponentUpdatesEnabled) Name() string          { return "ComponentUpdatesEnabled" }
-func (p *ComponentUpdatesEnabled) Field() string         { return "" }
 func (p *ComponentUpdatesEnabled) Scope() Scope          { return ScopeUser }
 func (p *ComponentUpdatesEnabled) Status() Status        { return p.Stat }
 func (p *ComponentUpdatesEnabled) UntypedV() interface{} { return p.Val }
@@ -6880,6 +7280,9 @@ func (p *ComponentUpdatesEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ComponentUpdatesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ComponentUpdatesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6899,7 +7302,6 @@ type ExternalStorageReadOnly struct {
 }
 
 func (p *ExternalStorageReadOnly) Name() string          { return "ExternalStorageReadOnly" }
-func (p *ExternalStorageReadOnly) Field() string         { return "" }
 func (p *ExternalStorageReadOnly) Scope() Scope          { return ScopeUser }
 func (p *ExternalStorageReadOnly) Status() Status        { return p.Stat }
 func (p *ExternalStorageReadOnly) UntypedV() interface{} { return p.Val }
@@ -6909,6 +7311,9 @@ func (p *ExternalStorageReadOnly) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ExternalStorageReadOnly) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExternalStorageReadOnly) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6928,7 +7333,6 @@ type ForceYouTubeRestrict struct {
 }
 
 func (p *ForceYouTubeRestrict) Name() string          { return "ForceYouTubeRestrict" }
-func (p *ForceYouTubeRestrict) Field() string         { return "" }
 func (p *ForceYouTubeRestrict) Scope() Scope          { return ScopeUser }
 func (p *ForceYouTubeRestrict) Status() Status        { return p.Stat }
 func (p *ForceYouTubeRestrict) UntypedV() interface{} { return p.Val }
@@ -6938,6 +7342,9 @@ func (p *ForceYouTubeRestrict) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ForceYouTubeRestrict) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceYouTubeRestrict) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6957,7 +7364,6 @@ type ReportArcStatusEnabled struct {
 }
 
 func (p *ReportArcStatusEnabled) Name() string          { return "ReportArcStatusEnabled" }
-func (p *ReportArcStatusEnabled) Field() string         { return "" }
 func (p *ReportArcStatusEnabled) Scope() Scope          { return ScopeUser }
 func (p *ReportArcStatusEnabled) Status() Status        { return p.Stat }
 func (p *ReportArcStatusEnabled) UntypedV() interface{} { return p.Val }
@@ -6967,6 +7373,9 @@ func (p *ReportArcStatusEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportArcStatusEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ReportArcStatusEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6986,7 +7395,6 @@ type QuickUnlockTimeout struct {
 }
 
 func (p *QuickUnlockTimeout) Name() string          { return "QuickUnlockTimeout" }
-func (p *QuickUnlockTimeout) Field() string         { return "" }
 func (p *QuickUnlockTimeout) Scope() Scope          { return ScopeUser }
 func (p *QuickUnlockTimeout) Status() Status        { return p.Stat }
 func (p *QuickUnlockTimeout) UntypedV() interface{} { return p.Val }
@@ -6996,6 +7404,9 @@ func (p *QuickUnlockTimeout) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *QuickUnlockTimeout) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickUnlockTimeout) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7015,7 +7426,6 @@ type PinUnlockMinimumLength struct {
 }
 
 func (p *PinUnlockMinimumLength) Name() string          { return "PinUnlockMinimumLength" }
-func (p *PinUnlockMinimumLength) Field() string         { return "" }
 func (p *PinUnlockMinimumLength) Scope() Scope          { return ScopeUser }
 func (p *PinUnlockMinimumLength) Status() Status        { return p.Stat }
 func (p *PinUnlockMinimumLength) UntypedV() interface{} { return p.Val }
@@ -7025,6 +7435,9 @@ func (p *PinUnlockMinimumLength) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PinUnlockMinimumLength) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PinUnlockMinimumLength) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7044,7 +7457,6 @@ type PinUnlockMaximumLength struct {
 }
 
 func (p *PinUnlockMaximumLength) Name() string          { return "PinUnlockMaximumLength" }
-func (p *PinUnlockMaximumLength) Field() string         { return "" }
 func (p *PinUnlockMaximumLength) Scope() Scope          { return ScopeUser }
 func (p *PinUnlockMaximumLength) Status() Status        { return p.Stat }
 func (p *PinUnlockMaximumLength) UntypedV() interface{} { return p.Val }
@@ -7054,6 +7466,9 @@ func (p *PinUnlockMaximumLength) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PinUnlockMaximumLength) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PinUnlockMaximumLength) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7073,7 +7488,6 @@ type PinUnlockWeakPinsAllowed struct {
 }
 
 func (p *PinUnlockWeakPinsAllowed) Name() string          { return "PinUnlockWeakPinsAllowed" }
-func (p *PinUnlockWeakPinsAllowed) Field() string         { return "" }
 func (p *PinUnlockWeakPinsAllowed) Scope() Scope          { return ScopeUser }
 func (p *PinUnlockWeakPinsAllowed) Status() Status        { return p.Stat }
 func (p *PinUnlockWeakPinsAllowed) UntypedV() interface{} { return p.Val }
@@ -7083,6 +7497,9 @@ func (p *PinUnlockWeakPinsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PinUnlockWeakPinsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PinUnlockWeakPinsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7107,7 +7524,6 @@ type DeviceWallpaperImageValue struct {
 }
 
 func (p *DeviceWallpaperImage) Name() string          { return "DeviceWallpaperImage" }
-func (p *DeviceWallpaperImage) Field() string         { return "device_wallpaper_image.device_wallpaper_image" }
 func (p *DeviceWallpaperImage) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWallpaperImage) Status() Status        { return p.Stat }
 func (p *DeviceWallpaperImage) UntypedV() interface{} { return p.Val }
@@ -7117,6 +7533,9 @@ func (p *DeviceWallpaperImage) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceWallpaperImageValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceWallpaperImage) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wallpaper_image", "device_wallpaper_image", p.Val)
 }
 func (p *DeviceWallpaperImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceWallpaperImageValue)
@@ -7136,7 +7555,6 @@ type NewTabPageLocation struct {
 }
 
 func (p *NewTabPageLocation) Name() string          { return "NewTabPageLocation" }
-func (p *NewTabPageLocation) Field() string         { return "" }
 func (p *NewTabPageLocation) Scope() Scope          { return ScopeUser }
 func (p *NewTabPageLocation) Status() Status        { return p.Stat }
 func (p *NewTabPageLocation) UntypedV() interface{} { return p.Val }
@@ -7146,6 +7564,9 @@ func (p *NewTabPageLocation) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *NewTabPageLocation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NewTabPageLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -7164,7 +7585,6 @@ type ShowCastIconInToolbar struct {
 }
 
 func (p *ShowCastIconInToolbar) Name() string          { return "ShowCastIconInToolbar" }
-func (p *ShowCastIconInToolbar) Field() string         { return "" }
 func (p *ShowCastIconInToolbar) Scope() Scope          { return ScopeUser }
 func (p *ShowCastIconInToolbar) Status() Status        { return p.Stat }
 func (p *ShowCastIconInToolbar) UntypedV() interface{} { return p.Val }
@@ -7174,6 +7594,9 @@ func (p *ShowCastIconInToolbar) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ShowCastIconInToolbar) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShowCastIconInToolbar) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7192,7 +7615,6 @@ type DeviceLoginScreenLocales struct {
 }
 
 func (p *DeviceLoginScreenLocales) Name() string          { return "DeviceLoginScreenLocales" }
-func (p *DeviceLoginScreenLocales) Field() string         { return "login_screen_locales.login_screen_locales" }
 func (p *DeviceLoginScreenLocales) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenLocales) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenLocales) UntypedV() interface{} { return p.Val }
@@ -7202,6 +7624,9 @@ func (p *DeviceLoginScreenLocales) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenLocales) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_locales", "login_screen_locales", p.Val)
 }
 func (p *DeviceLoginScreenLocales) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7220,10 +7645,7 @@ type DeviceLoginScreenInputMethods struct {
 	Val  []string
 }
 
-func (p *DeviceLoginScreenInputMethods) Name() string { return "DeviceLoginScreenInputMethods" }
-func (p *DeviceLoginScreenInputMethods) Field() string {
-	return "login_screen_input_methods.login_screen_input_methods"
-}
+func (p *DeviceLoginScreenInputMethods) Name() string          { return "DeviceLoginScreenInputMethods" }
 func (p *DeviceLoginScreenInputMethods) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenInputMethods) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenInputMethods) UntypedV() interface{} { return p.Val }
@@ -7233,6 +7655,9 @@ func (p *DeviceLoginScreenInputMethods) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenInputMethods) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_input_methods", "login_screen_input_methods", p.Val)
 }
 func (p *DeviceLoginScreenInputMethods) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7253,7 +7678,6 @@ type InstantTetheringAllowed struct {
 }
 
 func (p *InstantTetheringAllowed) Name() string          { return "InstantTetheringAllowed" }
-func (p *InstantTetheringAllowed) Field() string         { return "" }
 func (p *InstantTetheringAllowed) Scope() Scope          { return ScopeUser }
 func (p *InstantTetheringAllowed) Status() Status        { return p.Stat }
 func (p *InstantTetheringAllowed) UntypedV() interface{} { return p.Val }
@@ -7263,6 +7687,9 @@ func (p *InstantTetheringAllowed) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *InstantTetheringAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InstantTetheringAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7282,7 +7709,6 @@ type RemoteAccessHostDomainList struct {
 }
 
 func (p *RemoteAccessHostDomainList) Name() string          { return "RemoteAccessHostDomainList" }
-func (p *RemoteAccessHostDomainList) Field() string         { return "" }
 func (p *RemoteAccessHostDomainList) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostDomainList) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostDomainList) UntypedV() interface{} { return p.Val }
@@ -7292,6 +7718,9 @@ func (p *RemoteAccessHostDomainList) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostDomainList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7311,7 +7740,6 @@ type RemoteAccessHostClientDomainList struct {
 }
 
 func (p *RemoteAccessHostClientDomainList) Name() string          { return "RemoteAccessHostClientDomainList" }
-func (p *RemoteAccessHostClientDomainList) Field() string         { return "" }
 func (p *RemoteAccessHostClientDomainList) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostClientDomainList) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostClientDomainList) UntypedV() interface{} { return p.Val }
@@ -7321,6 +7749,9 @@ func (p *RemoteAccessHostClientDomainList) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostClientDomainList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostClientDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7340,7 +7771,6 @@ type DownloadRestrictions struct {
 }
 
 func (p *DownloadRestrictions) Name() string          { return "DownloadRestrictions" }
-func (p *DownloadRestrictions) Field() string         { return "" }
 func (p *DownloadRestrictions) Scope() Scope          { return ScopeUser }
 func (p *DownloadRestrictions) Status() Status        { return p.Stat }
 func (p *DownloadRestrictions) UntypedV() interface{} { return p.Val }
@@ -7350,6 +7780,9 @@ func (p *DownloadRestrictions) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DownloadRestrictions) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DownloadRestrictions) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7367,10 +7800,7 @@ type DeviceSecondFactorAuthentication struct {
 	Val  int
 }
 
-func (p *DeviceSecondFactorAuthentication) Name() string { return "DeviceSecondFactorAuthentication" }
-func (p *DeviceSecondFactorAuthentication) Field() string {
-	return "device_second_factor_authentication.mode"
-}
+func (p *DeviceSecondFactorAuthentication) Name() string          { return "DeviceSecondFactorAuthentication" }
 func (p *DeviceSecondFactorAuthentication) Scope() Scope          { return ScopeDevice }
 func (p *DeviceSecondFactorAuthentication) Status() Status        { return p.Stat }
 func (p *DeviceSecondFactorAuthentication) UntypedV() interface{} { return p.Val }
@@ -7380,6 +7810,9 @@ func (p *DeviceSecondFactorAuthentication) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceSecondFactorAuthentication) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_second_factor_authentication", "mode", p.Val)
 }
 func (p *DeviceSecondFactorAuthentication) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7401,7 +7834,6 @@ type CastReceiverEnabled struct {
 }
 
 func (p *CastReceiverEnabled) Name() string          { return "CastReceiverEnabled" }
-func (p *CastReceiverEnabled) Field() string         { return "" }
 func (p *CastReceiverEnabled) Scope() Scope          { return ScopeUser }
 func (p *CastReceiverEnabled) Status() Status        { return p.Stat }
 func (p *CastReceiverEnabled) UntypedV() interface{} { return p.Val }
@@ -7411,6 +7843,9 @@ func (p *CastReceiverEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CastReceiverEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CastReceiverEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7431,7 +7866,6 @@ type CastReceiverName struct {
 }
 
 func (p *CastReceiverName) Name() string          { return "CastReceiverName" }
-func (p *CastReceiverName) Field() string         { return "cast_receiver_name.name" }
 func (p *CastReceiverName) Scope() Scope          { return ScopeDevice }
 func (p *CastReceiverName) Status() Status        { return p.Stat }
 func (p *CastReceiverName) UntypedV() interface{} { return p.Val }
@@ -7441,6 +7875,9 @@ func (p *CastReceiverName) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *CastReceiverName) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "cast_receiver_name", "name", p.Val)
 }
 func (p *CastReceiverName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -7460,7 +7897,6 @@ type AutofillCreditCardEnabled struct {
 }
 
 func (p *AutofillCreditCardEnabled) Name() string          { return "AutofillCreditCardEnabled" }
-func (p *AutofillCreditCardEnabled) Field() string         { return "" }
 func (p *AutofillCreditCardEnabled) Scope() Scope          { return ScopeUser }
 func (p *AutofillCreditCardEnabled) Status() Status        { return p.Stat }
 func (p *AutofillCreditCardEnabled) UntypedV() interface{} { return p.Val }
@@ -7470,6 +7906,9 @@ func (p *AutofillCreditCardEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutofillCreditCardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutofillCreditCardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7489,7 +7928,6 @@ type NtlmV2Enabled struct {
 }
 
 func (p *NtlmV2Enabled) Name() string          { return "NtlmV2Enabled" }
-func (p *NtlmV2Enabled) Field() string         { return "" }
 func (p *NtlmV2Enabled) Scope() Scope          { return ScopeUser }
 func (p *NtlmV2Enabled) Status() Status        { return p.Stat }
 func (p *NtlmV2Enabled) UntypedV() interface{} { return p.Val }
@@ -7499,6 +7937,9 @@ func (p *NtlmV2Enabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NtlmV2Enabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NtlmV2Enabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7518,7 +7959,6 @@ type PromptForDownloadLocation struct {
 }
 
 func (p *PromptForDownloadLocation) Name() string          { return "PromptForDownloadLocation" }
-func (p *PromptForDownloadLocation) Field() string         { return "" }
 func (p *PromptForDownloadLocation) Scope() Scope          { return ScopeUser }
 func (p *PromptForDownloadLocation) Status() Status        { return p.Stat }
 func (p *PromptForDownloadLocation) UntypedV() interface{} { return p.Val }
@@ -7528,6 +7968,9 @@ func (p *PromptForDownloadLocation) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PromptForDownloadLocation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PromptForDownloadLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7549,9 +7992,6 @@ type DeviceLoginScreenAutoSelectCertificateForUrls struct {
 func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Name() string {
 	return "DeviceLoginScreenAutoSelectCertificateForUrls"
 }
-func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Field() string {
-	return "device_login_screen_auto_select_certificate_for_urls.login_screen_auto_select_certificate_rules"
-}
 func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenAutoSelectCertificateForUrls) UntypedV() interface{} { return p.Val }
@@ -7561,6 +8001,9 @@ func (p *DeviceLoginScreenAutoSelectCertificateForUrls) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenAutoSelectCertificateForUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_auto_select_certificate_for_urls", "login_screen_auto_select_certificate_rules", p.Val)
 }
 func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7578,10 +8021,7 @@ type UnaffiliatedArcAllowed struct {
 	Val  bool
 }
 
-func (p *UnaffiliatedArcAllowed) Name() string { return "UnaffiliatedArcAllowed" }
-func (p *UnaffiliatedArcAllowed) Field() string {
-	return "unaffiliated_arc_allowed.unaffiliated_arc_allowed"
-}
+func (p *UnaffiliatedArcAllowed) Name() string          { return "UnaffiliatedArcAllowed" }
 func (p *UnaffiliatedArcAllowed) Scope() Scope          { return ScopeDevice }
 func (p *UnaffiliatedArcAllowed) Status() Status        { return p.Stat }
 func (p *UnaffiliatedArcAllowed) UntypedV() interface{} { return p.Val }
@@ -7591,6 +8031,9 @@ func (p *UnaffiliatedArcAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UnaffiliatedArcAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "unaffiliated_arc_allowed", "unaffiliated_arc_allowed", p.Val)
 }
 func (p *UnaffiliatedArcAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7609,7 +8052,6 @@ type IsolateOrigins struct {
 }
 
 func (p *IsolateOrigins) Name() string          { return "IsolateOrigins" }
-func (p *IsolateOrigins) Field() string         { return "" }
 func (p *IsolateOrigins) Scope() Scope          { return ScopeUser }
 func (p *IsolateOrigins) Status() Status        { return p.Stat }
 func (p *IsolateOrigins) UntypedV() interface{} { return p.Val }
@@ -7619,6 +8061,9 @@ func (p *IsolateOrigins) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *IsolateOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IsolateOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -7637,7 +8082,6 @@ type SitePerProcess struct {
 }
 
 func (p *SitePerProcess) Name() string          { return "SitePerProcess" }
-func (p *SitePerProcess) Field() string         { return "" }
 func (p *SitePerProcess) Scope() Scope          { return ScopeUser }
 func (p *SitePerProcess) Status() Status        { return p.Stat }
 func (p *SitePerProcess) UntypedV() interface{} { return p.Val }
@@ -7647,6 +8091,9 @@ func (p *SitePerProcess) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SitePerProcess) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SitePerProcess) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7666,7 +8113,6 @@ type DefaultDownloadDirectory struct {
 }
 
 func (p *DefaultDownloadDirectory) Name() string          { return "DefaultDownloadDirectory" }
-func (p *DefaultDownloadDirectory) Field() string         { return "" }
 func (p *DefaultDownloadDirectory) Scope() Scope          { return ScopeUser }
 func (p *DefaultDownloadDirectory) Status() Status        { return p.Stat }
 func (p *DefaultDownloadDirectory) UntypedV() interface{} { return p.Val }
@@ -7676,6 +8122,9 @@ func (p *DefaultDownloadDirectory) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultDownloadDirectory) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultDownloadDirectory) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -7695,7 +8144,6 @@ type SecurityKeyPermitAttestation struct {
 }
 
 func (p *SecurityKeyPermitAttestation) Name() string          { return "SecurityKeyPermitAttestation" }
-func (p *SecurityKeyPermitAttestation) Field() string         { return "" }
 func (p *SecurityKeyPermitAttestation) Scope() Scope          { return ScopeUser }
 func (p *SecurityKeyPermitAttestation) Status() Status        { return p.Stat }
 func (p *SecurityKeyPermitAttestation) UntypedV() interface{} { return p.Val }
@@ -7705,6 +8153,9 @@ func (p *SecurityKeyPermitAttestation) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SecurityKeyPermitAttestation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SecurityKeyPermitAttestation) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7724,7 +8175,6 @@ type DeviceHostnameTemplate struct {
 }
 
 func (p *DeviceHostnameTemplate) Name() string          { return "DeviceHostnameTemplate" }
-func (p *DeviceHostnameTemplate) Field() string         { return "network_hostname.device_hostname_template" }
 func (p *DeviceHostnameTemplate) Scope() Scope          { return ScopeDevice }
 func (p *DeviceHostnameTemplate) Status() Status        { return p.Stat }
 func (p *DeviceHostnameTemplate) UntypedV() interface{} { return p.Val }
@@ -7734,6 +8184,9 @@ func (p *DeviceHostnameTemplate) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceHostnameTemplate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "network_hostname", "device_hostname_template", p.Val)
 }
 func (p *DeviceHostnameTemplate) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -7755,7 +8208,6 @@ type AbusiveExperienceInterventionEnforce struct {
 func (p *AbusiveExperienceInterventionEnforce) Name() string {
 	return "AbusiveExperienceInterventionEnforce"
 }
-func (p *AbusiveExperienceInterventionEnforce) Field() string         { return "" }
 func (p *AbusiveExperienceInterventionEnforce) Scope() Scope          { return ScopeUser }
 func (p *AbusiveExperienceInterventionEnforce) Status() Status        { return p.Stat }
 func (p *AbusiveExperienceInterventionEnforce) UntypedV() interface{} { return p.Val }
@@ -7765,6 +8217,9 @@ func (p *AbusiveExperienceInterventionEnforce) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AbusiveExperienceInterventionEnforce) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AbusiveExperienceInterventionEnforce) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7784,7 +8239,6 @@ type SpellcheckLanguage struct {
 }
 
 func (p *SpellcheckLanguage) Name() string          { return "SpellcheckLanguage" }
-func (p *SpellcheckLanguage) Field() string         { return "" }
 func (p *SpellcheckLanguage) Scope() Scope          { return ScopeUser }
 func (p *SpellcheckLanguage) Status() Status        { return p.Stat }
 func (p *SpellcheckLanguage) UntypedV() interface{} { return p.Val }
@@ -7794,6 +8248,9 @@ func (p *SpellcheckLanguage) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SpellcheckLanguage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpellcheckLanguage) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7814,7 +8271,6 @@ type SecondaryGoogleAccountSigninAllowed struct {
 func (p *SecondaryGoogleAccountSigninAllowed) Name() string {
 	return "SecondaryGoogleAccountSigninAllowed"
 }
-func (p *SecondaryGoogleAccountSigninAllowed) Field() string         { return "" }
 func (p *SecondaryGoogleAccountSigninAllowed) Scope() Scope          { return ScopeUser }
 func (p *SecondaryGoogleAccountSigninAllowed) Status() Status        { return p.Stat }
 func (p *SecondaryGoogleAccountSigninAllowed) UntypedV() interface{} { return p.Val }
@@ -7824,6 +8280,9 @@ func (p *SecondaryGoogleAccountSigninAllowed) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SecondaryGoogleAccountSigninAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SecondaryGoogleAccountSigninAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7843,7 +8302,6 @@ type SpellcheckEnabled struct {
 }
 
 func (p *SpellcheckEnabled) Name() string          { return "SpellcheckEnabled" }
-func (p *SpellcheckEnabled) Field() string         { return "" }
 func (p *SpellcheckEnabled) Scope() Scope          { return ScopeUser }
 func (p *SpellcheckEnabled) Status() Status        { return p.Stat }
 func (p *SpellcheckEnabled) UntypedV() interface{} { return p.Val }
@@ -7853,6 +8311,9 @@ func (p *SpellcheckEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SpellcheckEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpellcheckEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7872,7 +8333,6 @@ type AdsSettingForIntrusiveAdsSites struct {
 }
 
 func (p *AdsSettingForIntrusiveAdsSites) Name() string          { return "AdsSettingForIntrusiveAdsSites" }
-func (p *AdsSettingForIntrusiveAdsSites) Field() string         { return "" }
 func (p *AdsSettingForIntrusiveAdsSites) Scope() Scope          { return ScopeUser }
 func (p *AdsSettingForIntrusiveAdsSites) Status() Status        { return p.Stat }
 func (p *AdsSettingForIntrusiveAdsSites) UntypedV() interface{} { return p.Val }
@@ -7882,6 +8342,9 @@ func (p *AdsSettingForIntrusiveAdsSites) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *AdsSettingForIntrusiveAdsSites) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AdsSettingForIntrusiveAdsSites) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7901,7 +8364,6 @@ type PasswordProtectionWarningTrigger struct {
 }
 
 func (p *PasswordProtectionWarningTrigger) Name() string          { return "PasswordProtectionWarningTrigger" }
-func (p *PasswordProtectionWarningTrigger) Field() string         { return "" }
 func (p *PasswordProtectionWarningTrigger) Scope() Scope          { return ScopeUser }
 func (p *PasswordProtectionWarningTrigger) Status() Status        { return p.Stat }
 func (p *PasswordProtectionWarningTrigger) UntypedV() interface{} { return p.Val }
@@ -7911,6 +8373,9 @@ func (p *PasswordProtectionWarningTrigger) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PasswordProtectionWarningTrigger) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordProtectionWarningTrigger) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7929,10 +8394,7 @@ type DeviceKerberosEncryptionTypes struct {
 	Val  int
 }
 
-func (p *DeviceKerberosEncryptionTypes) Name() string { return "DeviceKerberosEncryptionTypes" }
-func (p *DeviceKerberosEncryptionTypes) Field() string {
-	return "device_kerberos_encryption_types.types"
-}
+func (p *DeviceKerberosEncryptionTypes) Name() string          { return "DeviceKerberosEncryptionTypes" }
 func (p *DeviceKerberosEncryptionTypes) Scope() Scope          { return ScopeDevice }
 func (p *DeviceKerberosEncryptionTypes) Status() Status        { return p.Stat }
 func (p *DeviceKerberosEncryptionTypes) UntypedV() interface{} { return p.Val }
@@ -7942,6 +8404,9 @@ func (p *DeviceKerberosEncryptionTypes) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceKerberosEncryptionTypes) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_kerberos_encryption_types", "types", p.Val)
 }
 func (p *DeviceKerberosEncryptionTypes) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7963,9 +8428,6 @@ type DeviceUserPolicyLoopbackProcessingMode struct {
 func (p *DeviceUserPolicyLoopbackProcessingMode) Name() string {
 	return "DeviceUserPolicyLoopbackProcessingMode"
 }
-func (p *DeviceUserPolicyLoopbackProcessingMode) Field() string {
-	return "device_user_policy_loopback_processing_mode.mode"
-}
 func (p *DeviceUserPolicyLoopbackProcessingMode) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUserPolicyLoopbackProcessingMode) Status() Status        { return p.Stat }
 func (p *DeviceUserPolicyLoopbackProcessingMode) UntypedV() interface{} { return p.Val }
@@ -7975,6 +8437,9 @@ func (p *DeviceUserPolicyLoopbackProcessingMode) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceUserPolicyLoopbackProcessingMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_user_policy_loopback_processing_mode", "mode", p.Val)
 }
 func (p *DeviceUserPolicyLoopbackProcessingMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7994,7 +8459,6 @@ type RelaunchNotification struct {
 }
 
 func (p *RelaunchNotification) Name() string          { return "RelaunchNotification" }
-func (p *RelaunchNotification) Field() string         { return "" }
 func (p *RelaunchNotification) Scope() Scope          { return ScopeUser }
 func (p *RelaunchNotification) Status() Status        { return p.Stat }
 func (p *RelaunchNotification) UntypedV() interface{} { return p.Val }
@@ -8004,6 +8468,9 @@ func (p *RelaunchNotification) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RelaunchNotification) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RelaunchNotification) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8023,7 +8490,6 @@ type RelaunchNotificationPeriod struct {
 }
 
 func (p *RelaunchNotificationPeriod) Name() string          { return "RelaunchNotificationPeriod" }
-func (p *RelaunchNotificationPeriod) Field() string         { return "" }
 func (p *RelaunchNotificationPeriod) Scope() Scope          { return ScopeUser }
 func (p *RelaunchNotificationPeriod) Status() Status        { return p.Stat }
 func (p *RelaunchNotificationPeriod) UntypedV() interface{} { return p.Val }
@@ -8033,6 +8499,9 @@ func (p *RelaunchNotificationPeriod) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RelaunchNotificationPeriod) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RelaunchNotificationPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8051,10 +8520,7 @@ type VirtualMachinesAllowed struct {
 	Val  bool
 }
 
-func (p *VirtualMachinesAllowed) Name() string { return "VirtualMachinesAllowed" }
-func (p *VirtualMachinesAllowed) Field() string {
-	return "virtual_machines_allowed.virtual_machines_allowed"
-}
+func (p *VirtualMachinesAllowed) Name() string          { return "VirtualMachinesAllowed" }
 func (p *VirtualMachinesAllowed) Scope() Scope          { return ScopeDevice }
 func (p *VirtualMachinesAllowed) Status() Status        { return p.Stat }
 func (p *VirtualMachinesAllowed) UntypedV() interface{} { return p.Val }
@@ -8064,6 +8530,9 @@ func (p *VirtualMachinesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VirtualMachinesAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "virtual_machines_allowed", "virtual_machines_allowed", p.Val)
 }
 func (p *VirtualMachinesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8083,7 +8552,6 @@ type PasswordProtectionLoginURLs struct {
 }
 
 func (p *PasswordProtectionLoginURLs) Name() string          { return "PasswordProtectionLoginURLs" }
-func (p *PasswordProtectionLoginURLs) Field() string         { return "" }
 func (p *PasswordProtectionLoginURLs) Scope() Scope          { return ScopeUser }
 func (p *PasswordProtectionLoginURLs) Status() Status        { return p.Stat }
 func (p *PasswordProtectionLoginURLs) UntypedV() interface{} { return p.Val }
@@ -8093,6 +8561,9 @@ func (p *PasswordProtectionLoginURLs) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PasswordProtectionLoginURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordProtectionLoginURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8114,7 +8585,6 @@ type PasswordProtectionChangePasswordURL struct {
 func (p *PasswordProtectionChangePasswordURL) Name() string {
 	return "PasswordProtectionChangePasswordURL"
 }
-func (p *PasswordProtectionChangePasswordURL) Field() string         { return "" }
 func (p *PasswordProtectionChangePasswordURL) Scope() Scope          { return ScopeUser }
 func (p *PasswordProtectionChangePasswordURL) Status() Status        { return p.Stat }
 func (p *PasswordProtectionChangePasswordURL) UntypedV() interface{} { return p.Val }
@@ -8124,6 +8594,9 @@ func (p *PasswordProtectionChangePasswordURL) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PasswordProtectionChangePasswordURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordProtectionChangePasswordURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -8142,10 +8615,7 @@ type DeviceMachinePasswordChangeRate struct {
 	Val  int
 }
 
-func (p *DeviceMachinePasswordChangeRate) Name() string { return "DeviceMachinePasswordChangeRate" }
-func (p *DeviceMachinePasswordChangeRate) Field() string {
-	return "device_machine_password_change_rate.rate_days"
-}
+func (p *DeviceMachinePasswordChangeRate) Name() string          { return "DeviceMachinePasswordChangeRate" }
 func (p *DeviceMachinePasswordChangeRate) Scope() Scope          { return ScopeDevice }
 func (p *DeviceMachinePasswordChangeRate) Status() Status        { return p.Stat }
 func (p *DeviceMachinePasswordChangeRate) UntypedV() interface{} { return p.Val }
@@ -8155,6 +8625,9 @@ func (p *DeviceMachinePasswordChangeRate) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceMachinePasswordChangeRate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_machine_password_change_rate", "rate_days", p.Val)
 }
 func (p *DeviceMachinePasswordChangeRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8173,10 +8646,7 @@ type DeviceRollbackAllowedMilestones struct {
 	Val  int
 }
 
-func (p *DeviceRollbackAllowedMilestones) Name() string { return "DeviceRollbackAllowedMilestones" }
-func (p *DeviceRollbackAllowedMilestones) Field() string {
-	return "auto_update_settings.rollback_allowed_milestones"
-}
+func (p *DeviceRollbackAllowedMilestones) Name() string          { return "DeviceRollbackAllowedMilestones" }
 func (p *DeviceRollbackAllowedMilestones) Scope() Scope          { return ScopeDevice }
 func (p *DeviceRollbackAllowedMilestones) Status() Status        { return p.Stat }
 func (p *DeviceRollbackAllowedMilestones) UntypedV() interface{} { return p.Val }
@@ -8186,6 +8656,9 @@ func (p *DeviceRollbackAllowedMilestones) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceRollbackAllowedMilestones) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "rollback_allowed_milestones", p.Val)
 }
 func (p *DeviceRollbackAllowedMilestones) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8204,10 +8677,7 @@ type DeviceRollbackToTargetVersion struct {
 	Val  int
 }
 
-func (p *DeviceRollbackToTargetVersion) Name() string { return "DeviceRollbackToTargetVersion" }
-func (p *DeviceRollbackToTargetVersion) Field() string {
-	return "auto_update_settings.rollback_to_target_version"
-}
+func (p *DeviceRollbackToTargetVersion) Name() string          { return "DeviceRollbackToTargetVersion" }
 func (p *DeviceRollbackToTargetVersion) Scope() Scope          { return ScopeDevice }
 func (p *DeviceRollbackToTargetVersion) Status() Status        { return p.Stat }
 func (p *DeviceRollbackToTargetVersion) UntypedV() interface{} { return p.Val }
@@ -8217,6 +8687,9 @@ func (p *DeviceRollbackToTargetVersion) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceRollbackToTargetVersion) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "rollback_to_target_version", p.Val)
 }
 func (p *DeviceRollbackToTargetVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8238,7 +8711,6 @@ type SafeBrowsingExtendedReportingEnabled struct {
 func (p *SafeBrowsingExtendedReportingEnabled) Name() string {
 	return "SafeBrowsingExtendedReportingEnabled"
 }
-func (p *SafeBrowsingExtendedReportingEnabled) Field() string         { return "" }
 func (p *SafeBrowsingExtendedReportingEnabled) Scope() Scope          { return ScopeUser }
 func (p *SafeBrowsingExtendedReportingEnabled) Status() Status        { return p.Stat }
 func (p *SafeBrowsingExtendedReportingEnabled) UntypedV() interface{} { return p.Val }
@@ -8248,6 +8720,9 @@ func (p *SafeBrowsingExtendedReportingEnabled) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingExtendedReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SafeBrowsingExtendedReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8267,7 +8742,6 @@ type AutoplayAllowed struct {
 }
 
 func (p *AutoplayAllowed) Name() string          { return "AutoplayAllowed" }
-func (p *AutoplayAllowed) Field() string         { return "" }
 func (p *AutoplayAllowed) Scope() Scope          { return ScopeUser }
 func (p *AutoplayAllowed) Status() Status        { return p.Stat }
 func (p *AutoplayAllowed) UntypedV() interface{} { return p.Val }
@@ -8277,6 +8751,9 @@ func (p *AutoplayAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutoplayAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoplayAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8296,7 +8773,6 @@ type DefaultWebUsbGuardSetting struct {
 }
 
 func (p *DefaultWebUsbGuardSetting) Name() string          { return "DefaultWebUsbGuardSetting" }
-func (p *DefaultWebUsbGuardSetting) Field() string         { return "" }
 func (p *DefaultWebUsbGuardSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultWebUsbGuardSetting) Status() Status        { return p.Stat }
 func (p *DefaultWebUsbGuardSetting) UntypedV() interface{} { return p.Val }
@@ -8306,6 +8782,9 @@ func (p *DefaultWebUsbGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebUsbGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWebUsbGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8327,7 +8806,6 @@ type CertificateTransparencyEnforcementDisabledForCas struct {
 func (p *CertificateTransparencyEnforcementDisabledForCas) Name() string {
 	return "CertificateTransparencyEnforcementDisabledForCas"
 }
-func (p *CertificateTransparencyEnforcementDisabledForCas) Field() string         { return "" }
 func (p *CertificateTransparencyEnforcementDisabledForCas) Scope() Scope          { return ScopeUser }
 func (p *CertificateTransparencyEnforcementDisabledForCas) Status() Status        { return p.Stat }
 func (p *CertificateTransparencyEnforcementDisabledForCas) UntypedV() interface{} { return p.Val }
@@ -8337,6 +8815,9 @@ func (p *CertificateTransparencyEnforcementDisabledForCas) UnmarshalAs(m json.Ra
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CertificateTransparencyEnforcementDisabledForCas) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CertificateTransparencyEnforcementDisabledForCas) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8358,7 +8839,6 @@ type CertificateTransparencyEnforcementDisabledForLegacyCas struct {
 func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Name() string {
 	return "CertificateTransparencyEnforcementDisabledForLegacyCas"
 }
-func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Field() string         { return "" }
 func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Scope() Scope          { return ScopeUser }
 func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Status() Status        { return p.Stat }
 func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) UntypedV() interface{} { return p.Val }
@@ -8368,6 +8848,9 @@ func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) UnmarshalAs(m j
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8387,7 +8870,6 @@ type MediaRouterCastAllowAllIPs struct {
 }
 
 func (p *MediaRouterCastAllowAllIPs) Name() string          { return "MediaRouterCastAllowAllIPs" }
-func (p *MediaRouterCastAllowAllIPs) Field() string         { return "" }
 func (p *MediaRouterCastAllowAllIPs) Scope() Scope          { return ScopeUser }
 func (p *MediaRouterCastAllowAllIPs) Status() Status        { return p.Stat }
 func (p *MediaRouterCastAllowAllIPs) UntypedV() interface{} { return p.Val }
@@ -8397,6 +8879,9 @@ func (p *MediaRouterCastAllowAllIPs) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *MediaRouterCastAllowAllIPs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *MediaRouterCastAllowAllIPs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8416,7 +8901,6 @@ type WebUsbAskForUrls struct {
 }
 
 func (p *WebUsbAskForUrls) Name() string          { return "WebUsbAskForUrls" }
-func (p *WebUsbAskForUrls) Field() string         { return "" }
 func (p *WebUsbAskForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebUsbAskForUrls) Status() Status        { return p.Stat }
 func (p *WebUsbAskForUrls) UntypedV() interface{} { return p.Val }
@@ -8426,6 +8910,9 @@ func (p *WebUsbAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebUsbAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebUsbAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8445,7 +8932,6 @@ type WebUsbBlockedForUrls struct {
 }
 
 func (p *WebUsbBlockedForUrls) Name() string          { return "WebUsbBlockedForUrls" }
-func (p *WebUsbBlockedForUrls) Field() string         { return "" }
 func (p *WebUsbBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebUsbBlockedForUrls) Status() Status        { return p.Stat }
 func (p *WebUsbBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -8455,6 +8941,9 @@ func (p *WebUsbBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebUsbBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebUsbBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8474,7 +8963,6 @@ type DeveloperToolsAvailability struct {
 }
 
 func (p *DeveloperToolsAvailability) Name() string          { return "DeveloperToolsAvailability" }
-func (p *DeveloperToolsAvailability) Field() string         { return "" }
 func (p *DeveloperToolsAvailability) Scope() Scope          { return ScopeUser }
 func (p *DeveloperToolsAvailability) Status() Status        { return p.Stat }
 func (p *DeveloperToolsAvailability) UntypedV() interface{} { return p.Val }
@@ -8484,6 +8972,9 @@ func (p *DeveloperToolsAvailability) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeveloperToolsAvailability) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeveloperToolsAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8502,7 +8993,6 @@ type AllowedLanguages struct {
 }
 
 func (p *AllowedLanguages) Name() string          { return "AllowedLanguages" }
-func (p *AllowedLanguages) Field() string         { return "" }
 func (p *AllowedLanguages) Scope() Scope          { return ScopeUser }
 func (p *AllowedLanguages) Status() Status        { return p.Stat }
 func (p *AllowedLanguages) UntypedV() interface{} { return p.Val }
@@ -8512,6 +9002,9 @@ func (p *AllowedLanguages) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AllowedLanguages) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowedLanguages) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8531,7 +9024,6 @@ type ArcAppInstallEventLoggingEnabled struct {
 }
 
 func (p *ArcAppInstallEventLoggingEnabled) Name() string          { return "ArcAppInstallEventLoggingEnabled" }
-func (p *ArcAppInstallEventLoggingEnabled) Field() string         { return "" }
 func (p *ArcAppInstallEventLoggingEnabled) Scope() Scope          { return ScopeUser }
 func (p *ArcAppInstallEventLoggingEnabled) Status() Status        { return p.Stat }
 func (p *ArcAppInstallEventLoggingEnabled) UntypedV() interface{} { return p.Val }
@@ -8541,6 +9033,9 @@ func (p *ArcAppInstallEventLoggingEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcAppInstallEventLoggingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcAppInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8598,7 +9093,6 @@ type UsageTimeLimitValueOverridesActionSpecificData struct {
 }
 
 func (p *UsageTimeLimit) Name() string          { return "UsageTimeLimit" }
-func (p *UsageTimeLimit) Field() string         { return "" }
 func (p *UsageTimeLimit) Scope() Scope          { return ScopeUser }
 func (p *UsageTimeLimit) Status() Status        { return p.Stat }
 func (p *UsageTimeLimit) UntypedV() interface{} { return p.Val }
@@ -8608,6 +9102,9 @@ func (p *UsageTimeLimit) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *UsageTimeLimitValue", m)
 	}
 	return v, nil
+}
+func (p *UsageTimeLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UsageTimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(*UsageTimeLimitValue)
@@ -8627,7 +9124,6 @@ type ArcBackupRestoreServiceEnabled struct {
 }
 
 func (p *ArcBackupRestoreServiceEnabled) Name() string          { return "ArcBackupRestoreServiceEnabled" }
-func (p *ArcBackupRestoreServiceEnabled) Field() string         { return "" }
 func (p *ArcBackupRestoreServiceEnabled) Scope() Scope          { return ScopeUser }
 func (p *ArcBackupRestoreServiceEnabled) Status() Status        { return p.Stat }
 func (p *ArcBackupRestoreServiceEnabled) UntypedV() interface{} { return p.Val }
@@ -8637,6 +9133,9 @@ func (p *ArcBackupRestoreServiceEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ArcBackupRestoreServiceEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcBackupRestoreServiceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8656,7 +9155,6 @@ type ArcGoogleLocationServicesEnabled struct {
 }
 
 func (p *ArcGoogleLocationServicesEnabled) Name() string          { return "ArcGoogleLocationServicesEnabled" }
-func (p *ArcGoogleLocationServicesEnabled) Field() string         { return "" }
 func (p *ArcGoogleLocationServicesEnabled) Scope() Scope          { return ScopeUser }
 func (p *ArcGoogleLocationServicesEnabled) Status() Status        { return p.Stat }
 func (p *ArcGoogleLocationServicesEnabled) UntypedV() interface{} { return p.Val }
@@ -8666,6 +9164,9 @@ func (p *ArcGoogleLocationServicesEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ArcGoogleLocationServicesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcGoogleLocationServicesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8685,7 +9186,6 @@ type EnableSyncConsent struct {
 }
 
 func (p *EnableSyncConsent) Name() string          { return "EnableSyncConsent" }
-func (p *EnableSyncConsent) Field() string         { return "" }
 func (p *EnableSyncConsent) Scope() Scope          { return ScopeUser }
 func (p *EnableSyncConsent) Status() Status        { return p.Stat }
 func (p *EnableSyncConsent) UntypedV() interface{} { return p.Val }
@@ -8695,6 +9195,9 @@ func (p *EnableSyncConsent) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableSyncConsent) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableSyncConsent) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8718,10 +9221,7 @@ type DeviceAutoUpdateTimeRestrictionsValue struct {
 	Start *RefDisallowedTimeInterval `json:"start"`
 }
 
-func (p *DeviceAutoUpdateTimeRestrictions) Name() string { return "DeviceAutoUpdateTimeRestrictions" }
-func (p *DeviceAutoUpdateTimeRestrictions) Field() string {
-	return "auto_update_settings.disallowed_time_intervals"
-}
+func (p *DeviceAutoUpdateTimeRestrictions) Name() string          { return "DeviceAutoUpdateTimeRestrictions" }
 func (p *DeviceAutoUpdateTimeRestrictions) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAutoUpdateTimeRestrictions) Status() Status        { return p.Stat }
 func (p *DeviceAutoUpdateTimeRestrictions) UntypedV() interface{} { return p.Val }
@@ -8731,6 +9231,9 @@ func (p *DeviceAutoUpdateTimeRestrictions) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as []*DeviceAutoUpdateTimeRestrictionsValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutoUpdateTimeRestrictions) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "disallowed_time_intervals", p.Val)
 }
 func (p *DeviceAutoUpdateTimeRestrictions) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DeviceAutoUpdateTimeRestrictionsValue)
@@ -8750,7 +9253,6 @@ type PromotionalTabsEnabled struct {
 }
 
 func (p *PromotionalTabsEnabled) Name() string          { return "PromotionalTabsEnabled" }
-func (p *PromotionalTabsEnabled) Field() string         { return "" }
 func (p *PromotionalTabsEnabled) Scope() Scope          { return ScopeUser }
 func (p *PromotionalTabsEnabled) Status() Status        { return p.Stat }
 func (p *PromotionalTabsEnabled) UntypedV() interface{} { return p.Val }
@@ -8760,6 +9262,9 @@ func (p *PromotionalTabsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PromotionalTabsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PromotionalTabsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8779,7 +9284,6 @@ type SafeSitesFilterBehavior struct {
 }
 
 func (p *SafeSitesFilterBehavior) Name() string          { return "SafeSitesFilterBehavior" }
-func (p *SafeSitesFilterBehavior) Field() string         { return "" }
 func (p *SafeSitesFilterBehavior) Scope() Scope          { return ScopeUser }
 func (p *SafeSitesFilterBehavior) Status() Status        { return p.Stat }
 func (p *SafeSitesFilterBehavior) UntypedV() interface{} { return p.Val }
@@ -8789,6 +9293,9 @@ func (p *SafeSitesFilterBehavior) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SafeSitesFilterBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SafeSitesFilterBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8808,7 +9315,6 @@ type AllowedInputMethods struct {
 }
 
 func (p *AllowedInputMethods) Name() string          { return "AllowedInputMethods" }
-func (p *AllowedInputMethods) Field() string         { return "" }
 func (p *AllowedInputMethods) Scope() Scope          { return ScopeUser }
 func (p *AllowedInputMethods) Status() Status        { return p.Stat }
 func (p *AllowedInputMethods) UntypedV() interface{} { return p.Val }
@@ -8818,6 +9324,9 @@ func (p *AllowedInputMethods) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AllowedInputMethods) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowedInputMethods) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8838,7 +9347,6 @@ type OverrideSecurityRestrictionsOnInsecureOrigin struct {
 func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Name() string {
 	return "OverrideSecurityRestrictionsOnInsecureOrigin"
 }
-func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Field() string         { return "" }
 func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Scope() Scope          { return ScopeUser }
 func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Status() Status        { return p.Stat }
 func (p *OverrideSecurityRestrictionsOnInsecureOrigin) UntypedV() interface{} { return p.Val }
@@ -8848,6 +9356,9 @@ func (p *OverrideSecurityRestrictionsOnInsecureOrigin) UnmarshalAs(m json.RawMes
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *OverrideSecurityRestrictionsOnInsecureOrigin) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8867,7 +9378,6 @@ type DeviceUpdateStagingSchedule struct {
 }
 
 func (p *DeviceUpdateStagingSchedule) Name() string          { return "DeviceUpdateStagingSchedule" }
-func (p *DeviceUpdateStagingSchedule) Field() string         { return "auto_update_settings.staging_schedule" }
 func (p *DeviceUpdateStagingSchedule) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUpdateStagingSchedule) Status() Status        { return p.Stat }
 func (p *DeviceUpdateStagingSchedule) UntypedV() interface{} { return p.Val }
@@ -8877,6 +9387,9 @@ func (p *DeviceUpdateStagingSchedule) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []*RefDayPercentagePair", m)
 	}
 	return v, nil
+}
+func (p *DeviceUpdateStagingSchedule) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "staging_schedule", p.Val)
 }
 func (p *DeviceUpdateStagingSchedule) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefDayPercentagePair)
@@ -8896,7 +9409,6 @@ type AutofillAddressEnabled struct {
 }
 
 func (p *AutofillAddressEnabled) Name() string          { return "AutofillAddressEnabled" }
-func (p *AutofillAddressEnabled) Field() string         { return "" }
 func (p *AutofillAddressEnabled) Scope() Scope          { return ScopeUser }
 func (p *AutofillAddressEnabled) Status() Status        { return p.Stat }
 func (p *AutofillAddressEnabled) UntypedV() interface{} { return p.Val }
@@ -8906,6 +9418,9 @@ func (p *AutofillAddressEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutofillAddressEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutofillAddressEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8927,7 +9442,6 @@ type UrlKeyedAnonymizedDataCollectionEnabled struct {
 func (p *UrlKeyedAnonymizedDataCollectionEnabled) Name() string {
 	return "UrlKeyedAnonymizedDataCollectionEnabled"
 }
-func (p *UrlKeyedAnonymizedDataCollectionEnabled) Field() string         { return "" }
 func (p *UrlKeyedAnonymizedDataCollectionEnabled) Scope() Scope          { return ScopeUser }
 func (p *UrlKeyedAnonymizedDataCollectionEnabled) Status() Status        { return p.Stat }
 func (p *UrlKeyedAnonymizedDataCollectionEnabled) UntypedV() interface{} { return p.Val }
@@ -8937,6 +9451,9 @@ func (p *UrlKeyedAnonymizedDataCollectionEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UrlKeyedAnonymizedDataCollectionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UrlKeyedAnonymizedDataCollectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8955,7 +9472,6 @@ type NetworkFileSharesAllowed struct {
 }
 
 func (p *NetworkFileSharesAllowed) Name() string          { return "NetworkFileSharesAllowed" }
-func (p *NetworkFileSharesAllowed) Field() string         { return "" }
 func (p *NetworkFileSharesAllowed) Scope() Scope          { return ScopeUser }
 func (p *NetworkFileSharesAllowed) Status() Status        { return p.Stat }
 func (p *NetworkFileSharesAllowed) UntypedV() interface{} { return p.Val }
@@ -8965,6 +9481,9 @@ func (p *NetworkFileSharesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NetworkFileSharesAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NetworkFileSharesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8986,7 +9505,6 @@ type DeviceLocalAccountManagedSessionEnabled struct {
 func (p *DeviceLocalAccountManagedSessionEnabled) Name() string {
 	return "DeviceLocalAccountManagedSessionEnabled"
 }
-func (p *DeviceLocalAccountManagedSessionEnabled) Field() string         { return "" }
 func (p *DeviceLocalAccountManagedSessionEnabled) Scope() Scope          { return ScopeUser }
 func (p *DeviceLocalAccountManagedSessionEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLocalAccountManagedSessionEnabled) UntypedV() interface{} { return p.Val }
@@ -8996,6 +9514,9 @@ func (p *DeviceLocalAccountManagedSessionEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccountManagedSessionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeviceLocalAccountManagedSessionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9015,7 +9536,6 @@ type WebRtcEventLogCollectionAllowed struct {
 }
 
 func (p *WebRtcEventLogCollectionAllowed) Name() string          { return "WebRtcEventLogCollectionAllowed" }
-func (p *WebRtcEventLogCollectionAllowed) Field() string         { return "" }
 func (p *WebRtcEventLogCollectionAllowed) Scope() Scope          { return ScopeUser }
 func (p *WebRtcEventLogCollectionAllowed) Status() Status        { return p.Stat }
 func (p *WebRtcEventLogCollectionAllowed) UntypedV() interface{} { return p.Val }
@@ -9025,6 +9545,9 @@ func (p *WebRtcEventLogCollectionAllowed) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WebRtcEventLogCollectionAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebRtcEventLogCollectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9044,7 +9567,6 @@ type PowerSmartDimEnabled struct {
 }
 
 func (p *PowerSmartDimEnabled) Name() string          { return "PowerSmartDimEnabled" }
-func (p *PowerSmartDimEnabled) Field() string         { return "" }
 func (p *PowerSmartDimEnabled) Scope() Scope          { return ScopeUser }
 func (p *PowerSmartDimEnabled) Status() Status        { return p.Stat }
 func (p *PowerSmartDimEnabled) UntypedV() interface{} { return p.Val }
@@ -9054,6 +9576,9 @@ func (p *PowerSmartDimEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PowerSmartDimEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PowerSmartDimEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9075,7 +9600,6 @@ type CoalesceH2ConnectionsWithClientCertificatesForHosts struct {
 func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Name() string {
 	return "CoalesceH2ConnectionsWithClientCertificatesForHosts"
 }
-func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Field() string         { return "" }
 func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Scope() Scope          { return ScopeUser }
 func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Status() Status        { return p.Stat }
 func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) UntypedV() interface{} { return p.Val }
@@ -9085,6 +9609,9 @@ func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) UnmarshalAs(m json
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -9105,7 +9632,6 @@ type NetBiosShareDiscoveryEnabled struct {
 }
 
 func (p *NetBiosShareDiscoveryEnabled) Name() string          { return "NetBiosShareDiscoveryEnabled" }
-func (p *NetBiosShareDiscoveryEnabled) Field() string         { return "" }
 func (p *NetBiosShareDiscoveryEnabled) Scope() Scope          { return ScopeUser }
 func (p *NetBiosShareDiscoveryEnabled) Status() Status        { return p.Stat }
 func (p *NetBiosShareDiscoveryEnabled) UntypedV() interface{} { return p.Val }
@@ -9115,6 +9641,9 @@ func (p *NetBiosShareDiscoveryEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NetBiosShareDiscoveryEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NetBiosShareDiscoveryEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9148,7 +9677,6 @@ type WebAppInstallForceListValueCustomIcon struct {
 }
 
 func (p *WebAppInstallForceList) Name() string          { return "WebAppInstallForceList" }
-func (p *WebAppInstallForceList) Field() string         { return "" }
 func (p *WebAppInstallForceList) Scope() Scope          { return ScopeUser }
 func (p *WebAppInstallForceList) Status() Status        { return p.Stat }
 func (p *WebAppInstallForceList) UntypedV() interface{} { return p.Val }
@@ -9158,6 +9686,9 @@ func (p *WebAppInstallForceList) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as []*WebAppInstallForceListValue", m)
 	}
 	return v, nil
+}
+func (p *WebAppInstallForceList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebAppInstallForceList) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebAppInstallForceListValue)
@@ -9178,7 +9709,6 @@ type SmsMessagesAllowed struct {
 }
 
 func (p *SmsMessagesAllowed) Name() string          { return "SmsMessagesAllowed" }
-func (p *SmsMessagesAllowed) Field() string         { return "" }
 func (p *SmsMessagesAllowed) Scope() Scope          { return ScopeUser }
 func (p *SmsMessagesAllowed) Status() Status        { return p.Stat }
 func (p *SmsMessagesAllowed) UntypedV() interface{} { return p.Val }
@@ -9188,6 +9718,9 @@ func (p *SmsMessagesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SmsMessagesAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SmsMessagesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9207,7 +9740,6 @@ type PrintingAllowedColorModes struct {
 }
 
 func (p *PrintingAllowedColorModes) Name() string          { return "PrintingAllowedColorModes" }
-func (p *PrintingAllowedColorModes) Field() string         { return "" }
 func (p *PrintingAllowedColorModes) Scope() Scope          { return ScopeUser }
 func (p *PrintingAllowedColorModes) Status() Status        { return p.Stat }
 func (p *PrintingAllowedColorModes) UntypedV() interface{} { return p.Val }
@@ -9217,6 +9749,9 @@ func (p *PrintingAllowedColorModes) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedColorModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAllowedColorModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9236,7 +9771,6 @@ type PrintingAllowedDuplexModes struct {
 }
 
 func (p *PrintingAllowedDuplexModes) Name() string          { return "PrintingAllowedDuplexModes" }
-func (p *PrintingAllowedDuplexModes) Field() string         { return "" }
 func (p *PrintingAllowedDuplexModes) Scope() Scope          { return ScopeUser }
 func (p *PrintingAllowedDuplexModes) Status() Status        { return p.Stat }
 func (p *PrintingAllowedDuplexModes) UntypedV() interface{} { return p.Val }
@@ -9246,6 +9780,9 @@ func (p *PrintingAllowedDuplexModes) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedDuplexModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAllowedDuplexModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9265,7 +9802,6 @@ type PrintingColorDefault struct {
 }
 
 func (p *PrintingColorDefault) Name() string          { return "PrintingColorDefault" }
-func (p *PrintingColorDefault) Field() string         { return "" }
 func (p *PrintingColorDefault) Scope() Scope          { return ScopeUser }
 func (p *PrintingColorDefault) Status() Status        { return p.Stat }
 func (p *PrintingColorDefault) UntypedV() interface{} { return p.Val }
@@ -9275,6 +9811,9 @@ func (p *PrintingColorDefault) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingColorDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingColorDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9294,7 +9833,6 @@ type PrintingDuplexDefault struct {
 }
 
 func (p *PrintingDuplexDefault) Name() string          { return "PrintingDuplexDefault" }
-func (p *PrintingDuplexDefault) Field() string         { return "" }
 func (p *PrintingDuplexDefault) Scope() Scope          { return ScopeUser }
 func (p *PrintingDuplexDefault) Status() Status        { return p.Stat }
 func (p *PrintingDuplexDefault) UntypedV() interface{} { return p.Val }
@@ -9304,6 +9842,9 @@ func (p *PrintingDuplexDefault) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingDuplexDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingDuplexDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9333,7 +9874,6 @@ type PrintingPaperSizeDefaultValueCustomSize struct {
 }
 
 func (p *PrintingPaperSizeDefault) Name() string          { return "PrintingPaperSizeDefault" }
-func (p *PrintingPaperSizeDefault) Field() string         { return "" }
 func (p *PrintingPaperSizeDefault) Scope() Scope          { return ScopeUser }
 func (p *PrintingPaperSizeDefault) Status() Status        { return p.Stat }
 func (p *PrintingPaperSizeDefault) UntypedV() interface{} { return p.Val }
@@ -9343,6 +9883,9 @@ func (p *PrintingPaperSizeDefault) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as *PrintingPaperSizeDefaultValue", m)
 	}
 	return v, nil
+}
+func (p *PrintingPaperSizeDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingPaperSizeDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(*PrintingPaperSizeDefaultValue)
@@ -9362,7 +9905,6 @@ type PrintHeaderFooter struct {
 }
 
 func (p *PrintHeaderFooter) Name() string          { return "PrintHeaderFooter" }
-func (p *PrintHeaderFooter) Field() string         { return "" }
 func (p *PrintHeaderFooter) Scope() Scope          { return ScopeUser }
 func (p *PrintHeaderFooter) Status() Status        { return p.Stat }
 func (p *PrintHeaderFooter) UntypedV() interface{} { return p.Val }
@@ -9372,6 +9914,9 @@ func (p *PrintHeaderFooter) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrintHeaderFooter) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintHeaderFooter) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9391,7 +9936,6 @@ type CrostiniAllowed struct {
 }
 
 func (p *CrostiniAllowed) Name() string          { return "CrostiniAllowed" }
-func (p *CrostiniAllowed) Field() string         { return "" }
 func (p *CrostiniAllowed) Scope() Scope          { return ScopeUser }
 func (p *CrostiniAllowed) Status() Status        { return p.Stat }
 func (p *CrostiniAllowed) UntypedV() interface{} { return p.Val }
@@ -9401,6 +9945,9 @@ func (p *CrostiniAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9419,10 +9966,7 @@ type DeviceUnaffiliatedCrostiniAllowed struct {
 	Val  bool
 }
 
-func (p *DeviceUnaffiliatedCrostiniAllowed) Name() string { return "DeviceUnaffiliatedCrostiniAllowed" }
-func (p *DeviceUnaffiliatedCrostiniAllowed) Field() string {
-	return "device_unaffiliated_crostini_allowed.device_unaffiliated_crostini_allowed"
-}
+func (p *DeviceUnaffiliatedCrostiniAllowed) Name() string          { return "DeviceUnaffiliatedCrostiniAllowed" }
 func (p *DeviceUnaffiliatedCrostiniAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUnaffiliatedCrostiniAllowed) Status() Status        { return p.Stat }
 func (p *DeviceUnaffiliatedCrostiniAllowed) UntypedV() interface{} { return p.Val }
@@ -9432,6 +9976,9 @@ func (p *DeviceUnaffiliatedCrostiniAllowed) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceUnaffiliatedCrostiniAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_unaffiliated_crostini_allowed", "device_unaffiliated_crostini_allowed", p.Val)
 }
 func (p *DeviceUnaffiliatedCrostiniAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9453,7 +10000,6 @@ type EnterpriseHardwarePlatformAPIEnabled struct {
 func (p *EnterpriseHardwarePlatformAPIEnabled) Name() string {
 	return "EnterpriseHardwarePlatformAPIEnabled"
 }
-func (p *EnterpriseHardwarePlatformAPIEnabled) Field() string         { return "" }
 func (p *EnterpriseHardwarePlatformAPIEnabled) Scope() Scope          { return ScopeUser }
 func (p *EnterpriseHardwarePlatformAPIEnabled) Status() Status        { return p.Stat }
 func (p *EnterpriseHardwarePlatformAPIEnabled) UntypedV() interface{} { return p.Val }
@@ -9463,6 +10009,9 @@ func (p *EnterpriseHardwarePlatformAPIEnabled) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnterpriseHardwarePlatformAPIEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnterpriseHardwarePlatformAPIEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9482,7 +10031,6 @@ type ReportCrostiniUsageEnabled struct {
 }
 
 func (p *ReportCrostiniUsageEnabled) Name() string          { return "ReportCrostiniUsageEnabled" }
-func (p *ReportCrostiniUsageEnabled) Field() string         { return "" }
 func (p *ReportCrostiniUsageEnabled) Scope() Scope          { return ScopeUser }
 func (p *ReportCrostiniUsageEnabled) Status() Status        { return p.Stat }
 func (p *ReportCrostiniUsageEnabled) UntypedV() interface{} { return p.Val }
@@ -9492,6 +10040,9 @@ func (p *ReportCrostiniUsageEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportCrostiniUsageEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ReportCrostiniUsageEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9511,7 +10062,6 @@ type VpnConfigAllowed struct {
 }
 
 func (p *VpnConfigAllowed) Name() string          { return "VpnConfigAllowed" }
-func (p *VpnConfigAllowed) Field() string         { return "" }
 func (p *VpnConfigAllowed) Scope() Scope          { return ScopeUser }
 func (p *VpnConfigAllowed) Status() Status        { return p.Stat }
 func (p *VpnConfigAllowed) UntypedV() interface{} { return p.Val }
@@ -9521,6 +10071,9 @@ func (p *VpnConfigAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VpnConfigAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VpnConfigAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9550,7 +10103,6 @@ type WebUsbAllowDevicesForUrlsValueDevices struct {
 }
 
 func (p *WebUsbAllowDevicesForUrls) Name() string          { return "WebUsbAllowDevicesForUrls" }
-func (p *WebUsbAllowDevicesForUrls) Field() string         { return "" }
 func (p *WebUsbAllowDevicesForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebUsbAllowDevicesForUrls) Status() Status        { return p.Stat }
 func (p *WebUsbAllowDevicesForUrls) UntypedV() interface{} { return p.Val }
@@ -9560,6 +10112,9 @@ func (p *WebUsbAllowDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []*WebUsbAllowDevicesForUrlsValue", m)
 	}
 	return v, nil
+}
+func (p *WebUsbAllowDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebUsbAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebUsbAllowDevicesForUrlsValue)
@@ -9580,7 +10135,6 @@ type SmartLockSigninAllowed struct {
 }
 
 func (p *SmartLockSigninAllowed) Name() string          { return "SmartLockSigninAllowed" }
-func (p *SmartLockSigninAllowed) Field() string         { return "" }
 func (p *SmartLockSigninAllowed) Scope() Scope          { return ScopeUser }
 func (p *SmartLockSigninAllowed) Status() Status        { return p.Stat }
 func (p *SmartLockSigninAllowed) UntypedV() interface{} { return p.Val }
@@ -9590,6 +10144,9 @@ func (p *SmartLockSigninAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SmartLockSigninAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SmartLockSigninAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9609,7 +10166,6 @@ type NTLMShareAuthenticationEnabled struct {
 }
 
 func (p *NTLMShareAuthenticationEnabled) Name() string          { return "NTLMShareAuthenticationEnabled" }
-func (p *NTLMShareAuthenticationEnabled) Field() string         { return "" }
 func (p *NTLMShareAuthenticationEnabled) Scope() Scope          { return ScopeUser }
 func (p *NTLMShareAuthenticationEnabled) Status() Status        { return p.Stat }
 func (p *NTLMShareAuthenticationEnabled) UntypedV() interface{} { return p.Val }
@@ -9619,6 +10175,9 @@ func (p *NTLMShareAuthenticationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTLMShareAuthenticationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NTLMShareAuthenticationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9645,7 +10204,6 @@ type NetworkFileSharesPreconfiguredSharesValue struct {
 func (p *NetworkFileSharesPreconfiguredShares) Name() string {
 	return "NetworkFileSharesPreconfiguredShares"
 }
-func (p *NetworkFileSharesPreconfiguredShares) Field() string         { return "" }
 func (p *NetworkFileSharesPreconfiguredShares) Scope() Scope          { return ScopeUser }
 func (p *NetworkFileSharesPreconfiguredShares) Status() Status        { return p.Stat }
 func (p *NetworkFileSharesPreconfiguredShares) UntypedV() interface{} { return p.Val }
@@ -9655,6 +10213,9 @@ func (p *NetworkFileSharesPreconfiguredShares) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as []*NetworkFileSharesPreconfiguredSharesValue", m)
 	}
 	return v, nil
+}
+func (p *NetworkFileSharesPreconfiguredShares) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NetworkFileSharesPreconfiguredShares) Equal(iface interface{}) bool {
 	v, ok := iface.([]*NetworkFileSharesPreconfiguredSharesValue)
@@ -9674,7 +10235,6 @@ type AllowWakeLocks struct {
 }
 
 func (p *AllowWakeLocks) Name() string          { return "AllowWakeLocks" }
-func (p *AllowWakeLocks) Field() string         { return "" }
 func (p *AllowWakeLocks) Scope() Scope          { return ScopeUser }
 func (p *AllowWakeLocks) Status() Status        { return p.Stat }
 func (p *AllowWakeLocks) UntypedV() interface{} { return p.Val }
@@ -9684,6 +10244,9 @@ func (p *AllowWakeLocks) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowWakeLocks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowWakeLocks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9708,7 +10271,6 @@ type ScreenBrightnessPercentValue struct {
 }
 
 func (p *ScreenBrightnessPercent) Name() string          { return "ScreenBrightnessPercent" }
-func (p *ScreenBrightnessPercent) Field() string         { return "" }
 func (p *ScreenBrightnessPercent) Scope() Scope          { return ScopeUser }
 func (p *ScreenBrightnessPercent) Status() Status        { return p.Stat }
 func (p *ScreenBrightnessPercent) UntypedV() interface{} { return p.Val }
@@ -9718,6 +10280,9 @@ func (p *ScreenBrightnessPercent) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as *ScreenBrightnessPercentValue", m)
 	}
 	return v, nil
+}
+func (p *ScreenBrightnessPercent) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenBrightnessPercent) Equal(iface interface{}) bool {
 	v, ok := iface.(*ScreenBrightnessPercentValue)
@@ -9737,7 +10302,6 @@ type CloudReportingEnabled struct {
 }
 
 func (p *CloudReportingEnabled) Name() string          { return "CloudReportingEnabled" }
-func (p *CloudReportingEnabled) Field() string         { return "" }
 func (p *CloudReportingEnabled) Scope() Scope          { return ScopeUser }
 func (p *CloudReportingEnabled) Status() Status        { return p.Stat }
 func (p *CloudReportingEnabled) UntypedV() interface{} { return p.Val }
@@ -9747,6 +10311,9 @@ func (p *CloudReportingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CloudReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CloudReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9765,10 +10332,7 @@ type DeviceWiFiFastTransitionEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceWiFiFastTransitionEnabled) Name() string { return "DeviceWiFiFastTransitionEnabled" }
-func (p *DeviceWiFiFastTransitionEnabled) Field() string {
-	return "device_wifi_fast_transition_enabled.device_wifi_fast_transition_enabled"
-}
+func (p *DeviceWiFiFastTransitionEnabled) Name() string          { return "DeviceWiFiFastTransitionEnabled" }
 func (p *DeviceWiFiFastTransitionEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWiFiFastTransitionEnabled) Status() Status        { return p.Stat }
 func (p *DeviceWiFiFastTransitionEnabled) UntypedV() interface{} { return p.Val }
@@ -9778,6 +10342,9 @@ func (p *DeviceWiFiFastTransitionEnabled) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWiFiFastTransitionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wifi_fast_transition_enabled", "device_wifi_fast_transition_enabled", p.Val)
 }
 func (p *DeviceWiFiFastTransitionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9805,10 +10372,7 @@ type DeviceDisplayResolutionValue struct {
 	Recommended             bool `json:"recommended"`
 }
 
-func (p *DeviceDisplayResolution) Name() string { return "DeviceDisplayResolution" }
-func (p *DeviceDisplayResolution) Field() string {
-	return "device_display_resolution.device_display_resolution"
-}
+func (p *DeviceDisplayResolution) Name() string          { return "DeviceDisplayResolution" }
 func (p *DeviceDisplayResolution) Scope() Scope          { return ScopeDevice }
 func (p *DeviceDisplayResolution) Status() Status        { return p.Stat }
 func (p *DeviceDisplayResolution) UntypedV() interface{} { return p.Val }
@@ -9818,6 +10382,9 @@ func (p *DeviceDisplayResolution) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceDisplayResolutionValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceDisplayResolution) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_display_resolution", "device_display_resolution", p.Val)
 }
 func (p *DeviceDisplayResolution) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceDisplayResolutionValue)
@@ -9837,7 +10404,6 @@ type PluginVmAllowed struct {
 }
 
 func (p *PluginVmAllowed) Name() string          { return "PluginVmAllowed" }
-func (p *PluginVmAllowed) Field() string         { return "plugin_vm_allowed.plugin_vm_allowed" }
 func (p *PluginVmAllowed) Scope() Scope          { return ScopeDevice }
 func (p *PluginVmAllowed) Status() Status        { return p.Stat }
 func (p *PluginVmAllowed) UntypedV() interface{} { return p.Val }
@@ -9847,6 +10413,9 @@ func (p *PluginVmAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PluginVmAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "plugin_vm_allowed", "plugin_vm_allowed", p.Val)
 }
 func (p *PluginVmAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9871,7 +10440,6 @@ type PluginVmImageValue struct {
 }
 
 func (p *PluginVmImage) Name() string          { return "PluginVmImage" }
-func (p *PluginVmImage) Field() string         { return "" }
 func (p *PluginVmImage) Scope() Scope          { return ScopeUser }
 func (p *PluginVmImage) Status() Status        { return p.Stat }
 func (p *PluginVmImage) UntypedV() interface{} { return p.Val }
@@ -9881,6 +10449,9 @@ func (p *PluginVmImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *PluginVmImageValue", m)
 	}
 	return v, nil
+}
+func (p *PluginVmImage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PluginVmImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*PluginVmImageValue)
@@ -9902,7 +10473,6 @@ type PrintingSendUsernameAndFilenameEnabled struct {
 func (p *PrintingSendUsernameAndFilenameEnabled) Name() string {
 	return "PrintingSendUsernameAndFilenameEnabled"
 }
-func (p *PrintingSendUsernameAndFilenameEnabled) Field() string         { return "" }
 func (p *PrintingSendUsernameAndFilenameEnabled) Scope() Scope          { return ScopeUser }
 func (p *PrintingSendUsernameAndFilenameEnabled) Status() Status        { return p.Stat }
 func (p *PrintingSendUsernameAndFilenameEnabled) UntypedV() interface{} { return p.Val }
@@ -9912,6 +10482,9 @@ func (p *PrintingSendUsernameAndFilenameEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrintingSendUsernameAndFilenameEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingSendUsernameAndFilenameEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9937,7 +10510,6 @@ type ParentAccessCodeConfigValue struct {
 }
 
 func (p *ParentAccessCodeConfig) Name() string          { return "ParentAccessCodeConfig" }
-func (p *ParentAccessCodeConfig) Field() string         { return "" }
 func (p *ParentAccessCodeConfig) Scope() Scope          { return ScopeUser }
 func (p *ParentAccessCodeConfig) Status() Status        { return p.Stat }
 func (p *ParentAccessCodeConfig) UntypedV() interface{} { return p.Val }
@@ -9947,6 +10519,9 @@ func (p *ParentAccessCodeConfig) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as sensitive string", m)
 	}
 	return v, nil
+}
+func (p *ParentAccessCodeConfig) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ParentAccessCodeConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9967,7 +10542,6 @@ type DeviceGpoCacheLifetime struct {
 }
 
 func (p *DeviceGpoCacheLifetime) Name() string          { return "DeviceGpoCacheLifetime" }
-func (p *DeviceGpoCacheLifetime) Field() string         { return "device_gpo_cache_lifetime.lifetime_hours" }
 func (p *DeviceGpoCacheLifetime) Scope() Scope          { return ScopeDevice }
 func (p *DeviceGpoCacheLifetime) Status() Status        { return p.Stat }
 func (p *DeviceGpoCacheLifetime) UntypedV() interface{} { return p.Val }
@@ -9977,6 +10551,9 @@ func (p *DeviceGpoCacheLifetime) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceGpoCacheLifetime) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_gpo_cache_lifetime", "lifetime_hours", p.Val)
 }
 func (p *DeviceGpoCacheLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -9995,10 +10572,7 @@ type DeviceAuthDataCacheLifetime struct {
 	Val  int
 }
 
-func (p *DeviceAuthDataCacheLifetime) Name() string { return "DeviceAuthDataCacheLifetime" }
-func (p *DeviceAuthDataCacheLifetime) Field() string {
-	return "device_auth_data_cache_lifetime.lifetime_hours"
-}
+func (p *DeviceAuthDataCacheLifetime) Name() string          { return "DeviceAuthDataCacheLifetime" }
 func (p *DeviceAuthDataCacheLifetime) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAuthDataCacheLifetime) Status() Status        { return p.Stat }
 func (p *DeviceAuthDataCacheLifetime) UntypedV() interface{} { return p.Val }
@@ -10008,6 +10582,9 @@ func (p *DeviceAuthDataCacheLifetime) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceAuthDataCacheLifetime) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_auth_data_cache_lifetime", "lifetime_hours", p.Val)
 }
 func (p *DeviceAuthDataCacheLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10027,7 +10604,6 @@ type ReportDevicePowerStatus struct {
 }
 
 func (p *ReportDevicePowerStatus) Name() string          { return "ReportDevicePowerStatus" }
-func (p *ReportDevicePowerStatus) Field() string         { return "device_reporting.report_power_status" }
 func (p *ReportDevicePowerStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDevicePowerStatus) Status() Status        { return p.Stat }
 func (p *ReportDevicePowerStatus) UntypedV() interface{} { return p.Val }
@@ -10037,6 +10613,9 @@ func (p *ReportDevicePowerStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDevicePowerStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_power_status", p.Val)
 }
 func (p *ReportDevicePowerStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10056,7 +10635,6 @@ type ReportDeviceStorageStatus struct {
 }
 
 func (p *ReportDeviceStorageStatus) Name() string          { return "ReportDeviceStorageStatus" }
-func (p *ReportDeviceStorageStatus) Field() string         { return "device_reporting.report_storage_status" }
 func (p *ReportDeviceStorageStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceStorageStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceStorageStatus) UntypedV() interface{} { return p.Val }
@@ -10066,6 +10644,9 @@ func (p *ReportDeviceStorageStatus) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceStorageStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_storage_status", p.Val)
 }
 func (p *ReportDeviceStorageStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10085,7 +10666,6 @@ type ReportDeviceBoardStatus struct {
 }
 
 func (p *ReportDeviceBoardStatus) Name() string          { return "ReportDeviceBoardStatus" }
-func (p *ReportDeviceBoardStatus) Field() string         { return "device_reporting.report_board_status" }
 func (p *ReportDeviceBoardStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceBoardStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceBoardStatus) UntypedV() interface{} { return p.Val }
@@ -10095,6 +10675,9 @@ func (p *ReportDeviceBoardStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBoardStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_board_status", p.Val)
 }
 func (p *ReportDeviceBoardStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10116,7 +10699,6 @@ type ClientCertificateManagementAllowed struct {
 func (p *ClientCertificateManagementAllowed) Name() string {
 	return "ClientCertificateManagementAllowed"
 }
-func (p *ClientCertificateManagementAllowed) Field() string         { return "" }
 func (p *ClientCertificateManagementAllowed) Scope() Scope          { return ScopeUser }
 func (p *ClientCertificateManagementAllowed) Status() Status        { return p.Stat }
 func (p *ClientCertificateManagementAllowed) UntypedV() interface{} { return p.Val }
@@ -10126,6 +10708,9 @@ func (p *ClientCertificateManagementAllowed) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ClientCertificateManagementAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ClientCertificateManagementAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10143,10 +10728,7 @@ type DeviceRebootOnUserSignout struct {
 	Val  int
 }
 
-func (p *DeviceRebootOnUserSignout) Name() string { return "DeviceRebootOnUserSignout" }
-func (p *DeviceRebootOnUserSignout) Field() string {
-	return "device_reboot_on_user_signout.reboot_on_signout_mode"
-}
+func (p *DeviceRebootOnUserSignout) Name() string          { return "DeviceRebootOnUserSignout" }
 func (p *DeviceRebootOnUserSignout) Scope() Scope          { return ScopeDevice }
 func (p *DeviceRebootOnUserSignout) Status() Status        { return p.Stat }
 func (p *DeviceRebootOnUserSignout) UntypedV() interface{} { return p.Val }
@@ -10156,6 +10738,9 @@ func (p *DeviceRebootOnUserSignout) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceRebootOnUserSignout) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reboot_on_user_signout", "reboot_on_signout_mode", p.Val)
 }
 func (p *DeviceRebootOnUserSignout) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10175,7 +10760,6 @@ type SchedulerConfiguration struct {
 }
 
 func (p *SchedulerConfiguration) Name() string          { return "SchedulerConfiguration" }
-func (p *SchedulerConfiguration) Field() string         { return "" }
 func (p *SchedulerConfiguration) Scope() Scope          { return ScopeUser }
 func (p *SchedulerConfiguration) Status() Status        { return p.Stat }
 func (p *SchedulerConfiguration) UntypedV() interface{} { return p.Val }
@@ -10185,6 +10769,9 @@ func (p *SchedulerConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SchedulerConfiguration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SchedulerConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10204,7 +10791,6 @@ type CrostiniExportImportUIAllowed struct {
 }
 
 func (p *CrostiniExportImportUIAllowed) Name() string          { return "CrostiniExportImportUIAllowed" }
-func (p *CrostiniExportImportUIAllowed) Field() string         { return "" }
 func (p *CrostiniExportImportUIAllowed) Scope() Scope          { return ScopeUser }
 func (p *CrostiniExportImportUIAllowed) Status() Status        { return p.Stat }
 func (p *CrostiniExportImportUIAllowed) UntypedV() interface{} { return p.Val }
@@ -10214,6 +10800,9 @@ func (p *CrostiniExportImportUIAllowed) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniExportImportUIAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniExportImportUIAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10233,7 +10822,6 @@ type PrintingAllowedPinModes struct {
 }
 
 func (p *PrintingAllowedPinModes) Name() string          { return "PrintingAllowedPinModes" }
-func (p *PrintingAllowedPinModes) Field() string         { return "" }
 func (p *PrintingAllowedPinModes) Scope() Scope          { return ScopeUser }
 func (p *PrintingAllowedPinModes) Status() Status        { return p.Stat }
 func (p *PrintingAllowedPinModes) UntypedV() interface{} { return p.Val }
@@ -10243,6 +10831,9 @@ func (p *PrintingAllowedPinModes) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedPinModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAllowedPinModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10262,7 +10853,6 @@ type PrintingPinDefault struct {
 }
 
 func (p *PrintingPinDefault) Name() string          { return "PrintingPinDefault" }
-func (p *PrintingPinDefault) Field() string         { return "" }
 func (p *PrintingPinDefault) Scope() Scope          { return ScopeUser }
 func (p *PrintingPinDefault) Status() Status        { return p.Stat }
 func (p *PrintingPinDefault) UntypedV() interface{} { return p.Val }
@@ -10272,6 +10862,9 @@ func (p *PrintingPinDefault) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingPinDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingPinDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10291,7 +10884,6 @@ type VoiceInteractionContextEnabled struct {
 }
 
 func (p *VoiceInteractionContextEnabled) Name() string          { return "VoiceInteractionContextEnabled" }
-func (p *VoiceInteractionContextEnabled) Field() string         { return "" }
 func (p *VoiceInteractionContextEnabled) Scope() Scope          { return ScopeUser }
 func (p *VoiceInteractionContextEnabled) Status() Status        { return p.Stat }
 func (p *VoiceInteractionContextEnabled) UntypedV() interface{} { return p.Val }
@@ -10301,6 +10893,9 @@ func (p *VoiceInteractionContextEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VoiceInteractionContextEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VoiceInteractionContextEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10320,7 +10915,6 @@ type AuthNegotiateDelegateByKdcPolicy struct {
 }
 
 func (p *AuthNegotiateDelegateByKdcPolicy) Name() string          { return "AuthNegotiateDelegateByKdcPolicy" }
-func (p *AuthNegotiateDelegateByKdcPolicy) Field() string         { return "" }
 func (p *AuthNegotiateDelegateByKdcPolicy) Scope() Scope          { return ScopeUser }
 func (p *AuthNegotiateDelegateByKdcPolicy) Status() Status        { return p.Stat }
 func (p *AuthNegotiateDelegateByKdcPolicy) UntypedV() interface{} { return p.Val }
@@ -10330,6 +10924,9 @@ func (p *AuthNegotiateDelegateByKdcPolicy) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AuthNegotiateDelegateByKdcPolicy) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AuthNegotiateDelegateByKdcPolicy) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10349,7 +10946,6 @@ type VoiceInteractionHotwordEnabled struct {
 }
 
 func (p *VoiceInteractionHotwordEnabled) Name() string          { return "VoiceInteractionHotwordEnabled" }
-func (p *VoiceInteractionHotwordEnabled) Field() string         { return "" }
 func (p *VoiceInteractionHotwordEnabled) Scope() Scope          { return ScopeUser }
 func (p *VoiceInteractionHotwordEnabled) Status() Status        { return p.Stat }
 func (p *VoiceInteractionHotwordEnabled) UntypedV() interface{} { return p.Val }
@@ -10359,6 +10955,9 @@ func (p *VoiceInteractionHotwordEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VoiceInteractionHotwordEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VoiceInteractionHotwordEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10377,10 +10976,7 @@ type DeviceWilcoDtcAllowed struct {
 	Val  bool
 }
 
-func (p *DeviceWilcoDtcAllowed) Name() string { return "DeviceWilcoDtcAllowed" }
-func (p *DeviceWilcoDtcAllowed) Field() string {
-	return "device_wilco_dtc_allowed.device_wilco_dtc_allowed"
-}
+func (p *DeviceWilcoDtcAllowed) Name() string          { return "DeviceWilcoDtcAllowed" }
 func (p *DeviceWilcoDtcAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWilcoDtcAllowed) Status() Status        { return p.Stat }
 func (p *DeviceWilcoDtcAllowed) UntypedV() interface{} { return p.Val }
@@ -10390,6 +10986,9 @@ func (p *DeviceWilcoDtcAllowed) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWilcoDtcAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wilco_dtc_allowed", "device_wilco_dtc_allowed", p.Val)
 }
 func (p *DeviceWilcoDtcAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10413,10 +11012,7 @@ type DeviceWilcoDtcConfigurationValue struct {
 	Url  string `json:"url"`
 }
 
-func (p *DeviceWilcoDtcConfiguration) Name() string { return "DeviceWilcoDtcConfiguration" }
-func (p *DeviceWilcoDtcConfiguration) Field() string {
-	return "device_wilco_dtc_configuration.device_wilco_dtc_configuration"
-}
+func (p *DeviceWilcoDtcConfiguration) Name() string          { return "DeviceWilcoDtcConfiguration" }
 func (p *DeviceWilcoDtcConfiguration) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWilcoDtcConfiguration) Status() Status        { return p.Stat }
 func (p *DeviceWilcoDtcConfiguration) UntypedV() interface{} { return p.Val }
@@ -10426,6 +11022,9 @@ func (p *DeviceWilcoDtcConfiguration) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceWilcoDtcConfigurationValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceWilcoDtcConfiguration) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wilco_dtc_configuration", "device_wilco_dtc_configuration", p.Val)
 }
 func (p *DeviceWilcoDtcConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceWilcoDtcConfigurationValue)
@@ -10445,7 +11044,6 @@ type DeviceWiFiAllowed struct {
 }
 
 func (p *DeviceWiFiAllowed) Name() string          { return "DeviceWiFiAllowed" }
-func (p *DeviceWiFiAllowed) Field() string         { return "device_wifi_allowed.device_wifi_allowed" }
 func (p *DeviceWiFiAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWiFiAllowed) Status() Status        { return p.Stat }
 func (p *DeviceWiFiAllowed) UntypedV() interface{} { return p.Val }
@@ -10455,6 +11053,9 @@ func (p *DeviceWiFiAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWiFiAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wifi_allowed", "device_wifi_allowed", p.Val)
 }
 func (p *DeviceWiFiAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10474,7 +11075,6 @@ type DevicePowerPeakShiftEnabled struct {
 }
 
 func (p *DevicePowerPeakShiftEnabled) Name() string          { return "DevicePowerPeakShiftEnabled" }
-func (p *DevicePowerPeakShiftEnabled) Field() string         { return "device_power_peak_shift.enabled" }
 func (p *DevicePowerPeakShiftEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DevicePowerPeakShiftEnabled) Status() Status        { return p.Stat }
 func (p *DevicePowerPeakShiftEnabled) UntypedV() interface{} { return p.Val }
@@ -10484,6 +11084,9 @@ func (p *DevicePowerPeakShiftEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerPeakShiftEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_power_peak_shift", "enabled", p.Val)
 }
 func (p *DevicePowerPeakShiftEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10505,9 +11108,6 @@ type DevicePowerPeakShiftBatteryThreshold struct {
 func (p *DevicePowerPeakShiftBatteryThreshold) Name() string {
 	return "DevicePowerPeakShiftBatteryThreshold"
 }
-func (p *DevicePowerPeakShiftBatteryThreshold) Field() string {
-	return "device_power_peak_shift.battery_threshold"
-}
 func (p *DevicePowerPeakShiftBatteryThreshold) Scope() Scope          { return ScopeDevice }
 func (p *DevicePowerPeakShiftBatteryThreshold) Status() Status        { return p.Stat }
 func (p *DevicePowerPeakShiftBatteryThreshold) UntypedV() interface{} { return p.Val }
@@ -10517,6 +11117,9 @@ func (p *DevicePowerPeakShiftBatteryThreshold) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerPeakShiftBatteryThreshold) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_power_peak_shift", "battery_threshold", p.Val)
 }
 func (p *DevicePowerPeakShiftBatteryThreshold) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10547,7 +11150,6 @@ type DevicePowerPeakShiftDayConfigValueEntries struct {
 }
 
 func (p *DevicePowerPeakShiftDayConfig) Name() string          { return "DevicePowerPeakShiftDayConfig" }
-func (p *DevicePowerPeakShiftDayConfig) Field() string         { return "device_power_peak_shift.day_configs" }
 func (p *DevicePowerPeakShiftDayConfig) Scope() Scope          { return ScopeDevice }
 func (p *DevicePowerPeakShiftDayConfig) Status() Status        { return p.Stat }
 func (p *DevicePowerPeakShiftDayConfig) UntypedV() interface{} { return p.Val }
@@ -10557,6 +11159,9 @@ func (p *DevicePowerPeakShiftDayConfig) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as *DevicePowerPeakShiftDayConfigValue", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerPeakShiftDayConfig) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_power_peak_shift", "day_configs", p.Val)
 }
 func (p *DevicePowerPeakShiftDayConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(*DevicePowerPeakShiftDayConfigValue)
@@ -10576,7 +11181,6 @@ type DeviceBootOnAcEnabled struct {
 }
 
 func (p *DeviceBootOnAcEnabled) Name() string          { return "DeviceBootOnAcEnabled" }
-func (p *DeviceBootOnAcEnabled) Field() string         { return "device_boot_on_ac.enabled" }
 func (p *DeviceBootOnAcEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceBootOnAcEnabled) Status() Status        { return p.Stat }
 func (p *DeviceBootOnAcEnabled) UntypedV() interface{} { return p.Val }
@@ -10586,6 +11190,9 @@ func (p *DeviceBootOnAcEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceBootOnAcEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_boot_on_ac", "enabled", p.Val)
 }
 func (p *DeviceBootOnAcEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10605,7 +11212,6 @@ type SignedHTTPExchangeEnabled struct {
 }
 
 func (p *SignedHTTPExchangeEnabled) Name() string          { return "SignedHTTPExchangeEnabled" }
-func (p *SignedHTTPExchangeEnabled) Field() string         { return "" }
 func (p *SignedHTTPExchangeEnabled) Scope() Scope          { return ScopeUser }
 func (p *SignedHTTPExchangeEnabled) Status() Status        { return p.Stat }
 func (p *SignedHTTPExchangeEnabled) UntypedV() interface{} { return p.Val }
@@ -10615,6 +11221,9 @@ func (p *SignedHTTPExchangeEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SignedHTTPExchangeEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SignedHTTPExchangeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10633,10 +11242,7 @@ type DeviceQuickFixBuildToken struct {
 	Val  string
 }
 
-func (p *DeviceQuickFixBuildToken) Name() string { return "DeviceQuickFixBuildToken" }
-func (p *DeviceQuickFixBuildToken) Field() string {
-	return "auto_update_settings.device_quick_fix_build_token"
-}
+func (p *DeviceQuickFixBuildToken) Name() string          { return "DeviceQuickFixBuildToken" }
 func (p *DeviceQuickFixBuildToken) Scope() Scope          { return ScopeDevice }
 func (p *DeviceQuickFixBuildToken) Status() Status        { return p.Stat }
 func (p *DeviceQuickFixBuildToken) UntypedV() interface{} { return p.Val }
@@ -10646,6 +11252,9 @@ func (p *DeviceQuickFixBuildToken) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceQuickFixBuildToken) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "device_quick_fix_build_token", p.Val)
 }
 func (p *DeviceQuickFixBuildToken) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10667,7 +11276,6 @@ type SamlInSessionPasswordChangeEnabled struct {
 func (p *SamlInSessionPasswordChangeEnabled) Name() string {
 	return "SamlInSessionPasswordChangeEnabled"
 }
-func (p *SamlInSessionPasswordChangeEnabled) Field() string         { return "" }
 func (p *SamlInSessionPasswordChangeEnabled) Scope() Scope          { return ScopeUser }
 func (p *SamlInSessionPasswordChangeEnabled) Status() Status        { return p.Stat }
 func (p *SamlInSessionPasswordChangeEnabled) UntypedV() interface{} { return p.Val }
@@ -10677,6 +11285,9 @@ func (p *SamlInSessionPasswordChangeEnabled) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SamlInSessionPasswordChangeEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SamlInSessionPasswordChangeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10696,7 +11307,6 @@ type DeviceDockMacAddressSource struct {
 }
 
 func (p *DeviceDockMacAddressSource) Name() string          { return "DeviceDockMacAddressSource" }
-func (p *DeviceDockMacAddressSource) Field() string         { return "device_dock_mac_address_source.source" }
 func (p *DeviceDockMacAddressSource) Scope() Scope          { return ScopeDevice }
 func (p *DeviceDockMacAddressSource) Status() Status        { return p.Stat }
 func (p *DeviceDockMacAddressSource) UntypedV() interface{} { return p.Val }
@@ -10706,6 +11316,9 @@ func (p *DeviceDockMacAddressSource) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceDockMacAddressSource) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_dock_mac_address_source", "source", p.Val)
 }
 func (p *DeviceDockMacAddressSource) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10727,9 +11340,6 @@ type DeviceAdvancedBatteryChargeModeEnabled struct {
 func (p *DeviceAdvancedBatteryChargeModeEnabled) Name() string {
 	return "DeviceAdvancedBatteryChargeModeEnabled"
 }
-func (p *DeviceAdvancedBatteryChargeModeEnabled) Field() string {
-	return "device_advanced_battery_charge_mode.enabled"
-}
 func (p *DeviceAdvancedBatteryChargeModeEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAdvancedBatteryChargeModeEnabled) Status() Status        { return p.Stat }
 func (p *DeviceAdvancedBatteryChargeModeEnabled) UntypedV() interface{} { return p.Val }
@@ -10739,6 +11349,9 @@ func (p *DeviceAdvancedBatteryChargeModeEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAdvancedBatteryChargeModeEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_advanced_battery_charge_mode", "enabled", p.Val)
 }
 func (p *DeviceAdvancedBatteryChargeModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10770,9 +11383,6 @@ type DeviceAdvancedBatteryChargeModeDayConfigValueEntries struct {
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) Name() string {
 	return "DeviceAdvancedBatteryChargeModeDayConfig"
 }
-func (p *DeviceAdvancedBatteryChargeModeDayConfig) Field() string {
-	return "device_advanced_battery_charge_mode.day_configs"
-}
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) Status() Status        { return p.Stat }
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) UntypedV() interface{} { return p.Val }
@@ -10782,6 +11392,9 @@ func (p *DeviceAdvancedBatteryChargeModeDayConfig) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceAdvancedBatteryChargeModeDayConfigValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_advanced_battery_charge_mode", "day_configs", p.Val)
 }
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceAdvancedBatteryChargeModeDayConfigValue)
@@ -10800,10 +11413,7 @@ type DeviceBatteryChargeMode struct {
 	Val  int
 }
 
-func (p *DeviceBatteryChargeMode) Name() string { return "DeviceBatteryChargeMode" }
-func (p *DeviceBatteryChargeMode) Field() string {
-	return "device_battery_charge_mode.battery_charge_mode"
-}
+func (p *DeviceBatteryChargeMode) Name() string          { return "DeviceBatteryChargeMode" }
 func (p *DeviceBatteryChargeMode) Scope() Scope          { return ScopeDevice }
 func (p *DeviceBatteryChargeMode) Status() Status        { return p.Stat }
 func (p *DeviceBatteryChargeMode) UntypedV() interface{} { return p.Val }
@@ -10813,6 +11423,9 @@ func (p *DeviceBatteryChargeMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceBatteryChargeMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_battery_charge_mode", "battery_charge_mode", p.Val)
 }
 func (p *DeviceBatteryChargeMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10834,9 +11447,6 @@ type DeviceBatteryChargeCustomStartCharging struct {
 func (p *DeviceBatteryChargeCustomStartCharging) Name() string {
 	return "DeviceBatteryChargeCustomStartCharging"
 }
-func (p *DeviceBatteryChargeCustomStartCharging) Field() string {
-	return "device_battery_charge_mode.custom_charge_start"
-}
 func (p *DeviceBatteryChargeCustomStartCharging) Scope() Scope          { return ScopeDevice }
 func (p *DeviceBatteryChargeCustomStartCharging) Status() Status        { return p.Stat }
 func (p *DeviceBatteryChargeCustomStartCharging) UntypedV() interface{} { return p.Val }
@@ -10846,6 +11456,9 @@ func (p *DeviceBatteryChargeCustomStartCharging) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceBatteryChargeCustomStartCharging) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_battery_charge_mode", "custom_charge_start", p.Val)
 }
 func (p *DeviceBatteryChargeCustomStartCharging) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10867,9 +11480,6 @@ type DeviceBatteryChargeCustomStopCharging struct {
 func (p *DeviceBatteryChargeCustomStopCharging) Name() string {
 	return "DeviceBatteryChargeCustomStopCharging"
 }
-func (p *DeviceBatteryChargeCustomStopCharging) Field() string {
-	return "device_battery_charge_mode.custom_charge_stop"
-}
 func (p *DeviceBatteryChargeCustomStopCharging) Scope() Scope          { return ScopeDevice }
 func (p *DeviceBatteryChargeCustomStopCharging) Status() Status        { return p.Stat }
 func (p *DeviceBatteryChargeCustomStopCharging) UntypedV() interface{} { return p.Val }
@@ -10879,6 +11489,9 @@ func (p *DeviceBatteryChargeCustomStopCharging) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceBatteryChargeCustomStopCharging) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_battery_charge_mode", "custom_charge_stop", p.Val)
 }
 func (p *DeviceBatteryChargeCustomStopCharging) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10898,7 +11511,6 @@ type DeviceUsbPowerShareEnabled struct {
 }
 
 func (p *DeviceUsbPowerShareEnabled) Name() string          { return "DeviceUsbPowerShareEnabled" }
-func (p *DeviceUsbPowerShareEnabled) Field() string         { return "device_usb_power_share.enabled" }
 func (p *DeviceUsbPowerShareEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUsbPowerShareEnabled) Status() Status        { return p.Stat }
 func (p *DeviceUsbPowerShareEnabled) UntypedV() interface{} { return p.Val }
@@ -10908,6 +11520,9 @@ func (p *DeviceUsbPowerShareEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceUsbPowerShareEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_usb_power_share", "enabled", p.Val)
 }
 func (p *DeviceUsbPowerShareEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10927,7 +11542,6 @@ type PolicyListMultipleSourceMergeList struct {
 }
 
 func (p *PolicyListMultipleSourceMergeList) Name() string          { return "PolicyListMultipleSourceMergeList" }
-func (p *PolicyListMultipleSourceMergeList) Field() string         { return "" }
 func (p *PolicyListMultipleSourceMergeList) Scope() Scope          { return ScopeUser }
 func (p *PolicyListMultipleSourceMergeList) Status() Status        { return p.Stat }
 func (p *PolicyListMultipleSourceMergeList) UntypedV() interface{} { return p.Val }
@@ -10937,6 +11551,9 @@ func (p *PolicyListMultipleSourceMergeList) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PolicyListMultipleSourceMergeList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PolicyListMultipleSourceMergeList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -10958,7 +11575,6 @@ type SamlPasswordExpirationAdvanceWarningDays struct {
 func (p *SamlPasswordExpirationAdvanceWarningDays) Name() string {
 	return "SamlPasswordExpirationAdvanceWarningDays"
 }
-func (p *SamlPasswordExpirationAdvanceWarningDays) Field() string         { return "" }
 func (p *SamlPasswordExpirationAdvanceWarningDays) Scope() Scope          { return ScopeUser }
 func (p *SamlPasswordExpirationAdvanceWarningDays) Status() Status        { return p.Stat }
 func (p *SamlPasswordExpirationAdvanceWarningDays) UntypedV() interface{} { return p.Val }
@@ -10968,6 +11584,9 @@ func (p *SamlPasswordExpirationAdvanceWarningDays) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SamlPasswordExpirationAdvanceWarningDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SamlPasswordExpirationAdvanceWarningDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10993,10 +11612,7 @@ type DeviceScheduledUpdateCheckValue struct {
 	UpdateCheckTime *RefTime `json:"update_check_time"`
 }
 
-func (p *DeviceScheduledUpdateCheck) Name() string { return "DeviceScheduledUpdateCheck" }
-func (p *DeviceScheduledUpdateCheck) Field() string {
-	return "device_scheduled_update_check.device_scheduled_update_check_settings"
-}
+func (p *DeviceScheduledUpdateCheck) Name() string          { return "DeviceScheduledUpdateCheck" }
 func (p *DeviceScheduledUpdateCheck) Scope() Scope          { return ScopeDevice }
 func (p *DeviceScheduledUpdateCheck) Status() Status        { return p.Stat }
 func (p *DeviceScheduledUpdateCheck) UntypedV() interface{} { return p.Val }
@@ -11006,6 +11622,9 @@ func (p *DeviceScheduledUpdateCheck) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceScheduledUpdateCheckValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceScheduledUpdateCheck) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_scheduled_update_check", "device_scheduled_update_check_settings", p.Val)
 }
 func (p *DeviceScheduledUpdateCheck) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceScheduledUpdateCheckValue)
@@ -11025,7 +11644,6 @@ type KerberosEnabled struct {
 }
 
 func (p *KerberosEnabled) Name() string          { return "KerberosEnabled" }
-func (p *KerberosEnabled) Field() string         { return "" }
 func (p *KerberosEnabled) Scope() Scope          { return ScopeUser }
 func (p *KerberosEnabled) Status() Status        { return p.Stat }
 func (p *KerberosEnabled) UntypedV() interface{} { return p.Val }
@@ -11035,6 +11653,9 @@ func (p *KerberosEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KerberosEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11054,7 +11675,6 @@ type KerberosRememberPasswordEnabled struct {
 }
 
 func (p *KerberosRememberPasswordEnabled) Name() string          { return "KerberosRememberPasswordEnabled" }
-func (p *KerberosRememberPasswordEnabled) Field() string         { return "" }
 func (p *KerberosRememberPasswordEnabled) Scope() Scope          { return ScopeUser }
 func (p *KerberosRememberPasswordEnabled) Status() Status        { return p.Stat }
 func (p *KerberosRememberPasswordEnabled) UntypedV() interface{} { return p.Val }
@@ -11064,6 +11684,9 @@ func (p *KerberosRememberPasswordEnabled) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KerberosRememberPasswordEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosRememberPasswordEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11083,7 +11706,6 @@ type KerberosAddAccountsAllowed struct {
 }
 
 func (p *KerberosAddAccountsAllowed) Name() string          { return "KerberosAddAccountsAllowed" }
-func (p *KerberosAddAccountsAllowed) Field() string         { return "" }
 func (p *KerberosAddAccountsAllowed) Scope() Scope          { return ScopeUser }
 func (p *KerberosAddAccountsAllowed) Status() Status        { return p.Stat }
 func (p *KerberosAddAccountsAllowed) UntypedV() interface{} { return p.Val }
@@ -11093,6 +11715,9 @@ func (p *KerberosAddAccountsAllowed) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KerberosAddAccountsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosAddAccountsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11136,7 +11761,6 @@ type KerberosAccountsValueOmitKrb5conf struct {
 func (v *KerberosAccountsValueOmitKrb5conf) SetPassword(password string) { v.Password = password }
 
 func (p *KerberosAccounts) Name() string          { return "KerberosAccounts" }
-func (p *KerberosAccounts) Field() string         { return "" }
 func (p *KerberosAccounts) Scope() Scope          { return ScopeUser }
 func (p *KerberosAccounts) Status() Status        { return p.Stat }
 func (p *KerberosAccounts) UntypedV() interface{} { return p.Val }
@@ -11158,6 +11782,9 @@ func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		}
 	}
 	return value, nil
+}
+func (p *KerberosAccounts) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]KerberosAccountsValueIf)
@@ -11183,7 +11810,6 @@ type StickyKeysEnabled struct {
 }
 
 func (p *StickyKeysEnabled) Name() string          { return "StickyKeysEnabled" }
-func (p *StickyKeysEnabled) Field() string         { return "" }
 func (p *StickyKeysEnabled) Scope() Scope          { return ScopeUser }
 func (p *StickyKeysEnabled) Status() Status        { return p.Stat }
 func (p *StickyKeysEnabled) UntypedV() interface{} { return p.Val }
@@ -11193,6 +11819,9 @@ func (p *StickyKeysEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *StickyKeysEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *StickyKeysEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11214,7 +11843,6 @@ type PolicyDictionaryMultipleSourceMergeList struct {
 func (p *PolicyDictionaryMultipleSourceMergeList) Name() string {
 	return "PolicyDictionaryMultipleSourceMergeList"
 }
-func (p *PolicyDictionaryMultipleSourceMergeList) Field() string         { return "" }
 func (p *PolicyDictionaryMultipleSourceMergeList) Scope() Scope          { return ScopeUser }
 func (p *PolicyDictionaryMultipleSourceMergeList) Status() Status        { return p.Stat }
 func (p *PolicyDictionaryMultipleSourceMergeList) UntypedV() interface{} { return p.Val }
@@ -11224,6 +11852,9 @@ func (p *PolicyDictionaryMultipleSourceMergeList) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PolicyDictionaryMultipleSourceMergeList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PolicyDictionaryMultipleSourceMergeList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -11243,7 +11874,6 @@ type RelaunchHeadsUpPeriod struct {
 }
 
 func (p *RelaunchHeadsUpPeriod) Name() string          { return "RelaunchHeadsUpPeriod" }
-func (p *RelaunchHeadsUpPeriod) Field() string         { return "" }
 func (p *RelaunchHeadsUpPeriod) Scope() Scope          { return ScopeUser }
 func (p *RelaunchHeadsUpPeriod) Status() Status        { return p.Stat }
 func (p *RelaunchHeadsUpPeriod) UntypedV() interface{} { return p.Val }
@@ -11253,6 +11883,9 @@ func (p *RelaunchHeadsUpPeriod) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RelaunchHeadsUpPeriod) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RelaunchHeadsUpPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -11273,7 +11906,6 @@ type StartupBrowserWindowLaunchSuppressed struct {
 func (p *StartupBrowserWindowLaunchSuppressed) Name() string {
 	return "StartupBrowserWindowLaunchSuppressed"
 }
-func (p *StartupBrowserWindowLaunchSuppressed) Field() string         { return "" }
 func (p *StartupBrowserWindowLaunchSuppressed) Scope() Scope          { return ScopeUser }
 func (p *StartupBrowserWindowLaunchSuppressed) Status() Status        { return p.Stat }
 func (p *StartupBrowserWindowLaunchSuppressed) UntypedV() interface{} { return p.Val }
@@ -11283,6 +11915,9 @@ func (p *StartupBrowserWindowLaunchSuppressed) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *StartupBrowserWindowLaunchSuppressed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *StartupBrowserWindowLaunchSuppressed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11302,7 +11937,6 @@ type UserFeedbackAllowed struct {
 }
 
 func (p *UserFeedbackAllowed) Name() string          { return "UserFeedbackAllowed" }
-func (p *UserFeedbackAllowed) Field() string         { return "" }
 func (p *UserFeedbackAllowed) Scope() Scope          { return ScopeUser }
 func (p *UserFeedbackAllowed) Status() Status        { return p.Stat }
 func (p *UserFeedbackAllowed) UntypedV() interface{} { return p.Val }
@@ -11312,6 +11946,9 @@ func (p *UserFeedbackAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserFeedbackAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserFeedbackAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11330,10 +11967,7 @@ type DevicePowerwashAllowed struct {
 	Val  bool
 }
 
-func (p *DevicePowerwashAllowed) Name() string { return "DevicePowerwashAllowed" }
-func (p *DevicePowerwashAllowed) Field() string {
-	return "device_powerwash_allowed.device_powerwash_allowed"
-}
+func (p *DevicePowerwashAllowed) Name() string          { return "DevicePowerwashAllowed" }
 func (p *DevicePowerwashAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DevicePowerwashAllowed) Status() Status        { return p.Stat }
 func (p *DevicePowerwashAllowed) UntypedV() interface{} { return p.Val }
@@ -11343,6 +11977,9 @@ func (p *DevicePowerwashAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerwashAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_powerwash_allowed", "device_powerwash_allowed", p.Val)
 }
 func (p *DevicePowerwashAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11367,7 +12004,6 @@ type ExternalPrintServersValue struct {
 }
 
 func (p *ExternalPrintServers) Name() string          { return "ExternalPrintServers" }
-func (p *ExternalPrintServers) Field() string         { return "" }
 func (p *ExternalPrintServers) Scope() Scope          { return ScopeUser }
 func (p *ExternalPrintServers) Status() Status        { return p.Stat }
 func (p *ExternalPrintServers) UntypedV() interface{} { return p.Val }
@@ -11377,6 +12013,9 @@ func (p *ExternalPrintServers) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as *ExternalPrintServersValue", m)
 	}
 	return v, nil
+}
+func (p *ExternalPrintServers) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExternalPrintServers) Equal(iface interface{}) bool {
 	v, ok := iface.(*ExternalPrintServersValue)
@@ -11396,7 +12035,6 @@ type SelectToSpeakEnabled struct {
 }
 
 func (p *SelectToSpeakEnabled) Name() string          { return "SelectToSpeakEnabled" }
-func (p *SelectToSpeakEnabled) Field() string         { return "" }
 func (p *SelectToSpeakEnabled) Scope() Scope          { return ScopeUser }
 func (p *SelectToSpeakEnabled) Status() Status        { return p.Stat }
 func (p *SelectToSpeakEnabled) UntypedV() interface{} { return p.Val }
@@ -11406,6 +12044,9 @@ func (p *SelectToSpeakEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SelectToSpeakEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SelectToSpeakEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11426,7 +12067,6 @@ type CrostiniRootAccessAllowed struct {
 }
 
 func (p *CrostiniRootAccessAllowed) Name() string          { return "CrostiniRootAccessAllowed" }
-func (p *CrostiniRootAccessAllowed) Field() string         { return "" }
 func (p *CrostiniRootAccessAllowed) Scope() Scope          { return ScopeUser }
 func (p *CrostiniRootAccessAllowed) Status() Status        { return p.Stat }
 func (p *CrostiniRootAccessAllowed) UntypedV() interface{} { return p.Val }
@@ -11436,6 +12076,9 @@ func (p *CrostiniRootAccessAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniRootAccessAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniRootAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11455,7 +12098,6 @@ type VmManagementCliAllowed struct {
 }
 
 func (p *VmManagementCliAllowed) Name() string          { return "VmManagementCliAllowed" }
-func (p *VmManagementCliAllowed) Field() string         { return "" }
 func (p *VmManagementCliAllowed) Scope() Scope          { return ScopeUser }
 func (p *VmManagementCliAllowed) Status() Status        { return p.Stat }
 func (p *VmManagementCliAllowed) UntypedV() interface{} { return p.Val }
@@ -11465,6 +12107,9 @@ func (p *VmManagementCliAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VmManagementCliAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VmManagementCliAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11484,7 +12129,6 @@ type CACertificateManagementAllowed struct {
 }
 
 func (p *CACertificateManagementAllowed) Name() string          { return "CACertificateManagementAllowed" }
-func (p *CACertificateManagementAllowed) Field() string         { return "" }
 func (p *CACertificateManagementAllowed) Scope() Scope          { return ScopeUser }
 func (p *CACertificateManagementAllowed) Status() Status        { return p.Stat }
 func (p *CACertificateManagementAllowed) UntypedV() interface{} { return p.Val }
@@ -11494,6 +12138,9 @@ func (p *CACertificateManagementAllowed) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *CACertificateManagementAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CACertificateManagementAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -11513,7 +12160,6 @@ type PasswordLeakDetectionEnabled struct {
 }
 
 func (p *PasswordLeakDetectionEnabled) Name() string          { return "PasswordLeakDetectionEnabled" }
-func (p *PasswordLeakDetectionEnabled) Field() string         { return "" }
 func (p *PasswordLeakDetectionEnabled) Scope() Scope          { return ScopeUser }
 func (p *PasswordLeakDetectionEnabled) Status() Status        { return p.Stat }
 func (p *PasswordLeakDetectionEnabled) UntypedV() interface{} { return p.Val }
@@ -11523,6 +12169,9 @@ func (p *PasswordLeakDetectionEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PasswordLeakDetectionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordLeakDetectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11542,7 +12191,6 @@ type LockScreenMediaPlaybackEnabled struct {
 }
 
 func (p *LockScreenMediaPlaybackEnabled) Name() string          { return "LockScreenMediaPlaybackEnabled" }
-func (p *LockScreenMediaPlaybackEnabled) Field() string         { return "" }
 func (p *LockScreenMediaPlaybackEnabled) Scope() Scope          { return ScopeUser }
 func (p *LockScreenMediaPlaybackEnabled) Status() Status        { return p.Stat }
 func (p *LockScreenMediaPlaybackEnabled) UntypedV() interface{} { return p.Val }
@@ -11552,6 +12200,9 @@ func (p *LockScreenMediaPlaybackEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LockScreenMediaPlaybackEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LockScreenMediaPlaybackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11572,7 +12223,6 @@ type DnsOverHttpsMode struct {
 }
 
 func (p *DnsOverHttpsMode) Name() string          { return "DnsOverHttpsMode" }
-func (p *DnsOverHttpsMode) Field() string         { return "" }
 func (p *DnsOverHttpsMode) Scope() Scope          { return ScopeUser }
 func (p *DnsOverHttpsMode) Status() Status        { return p.Stat }
 func (p *DnsOverHttpsMode) UntypedV() interface{} { return p.Val }
@@ -11582,6 +12232,9 @@ func (p *DnsOverHttpsMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DnsOverHttpsMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DnsOverHttpsMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -11601,7 +12254,6 @@ type PolicyAtomicGroupsEnabled struct {
 }
 
 func (p *PolicyAtomicGroupsEnabled) Name() string          { return "PolicyAtomicGroupsEnabled" }
-func (p *PolicyAtomicGroupsEnabled) Field() string         { return "" }
 func (p *PolicyAtomicGroupsEnabled) Scope() Scope          { return ScopeUser }
 func (p *PolicyAtomicGroupsEnabled) Status() Status        { return p.Stat }
 func (p *PolicyAtomicGroupsEnabled) UntypedV() interface{} { return p.Val }
@@ -11611,6 +12263,9 @@ func (p *PolicyAtomicGroupsEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PolicyAtomicGroupsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PolicyAtomicGroupsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11630,7 +12285,6 @@ type DictationEnabled struct {
 }
 
 func (p *DictationEnabled) Name() string          { return "DictationEnabled" }
-func (p *DictationEnabled) Field() string         { return "" }
 func (p *DictationEnabled) Scope() Scope          { return ScopeUser }
 func (p *DictationEnabled) Status() Status        { return p.Stat }
 func (p *DictationEnabled) UntypedV() interface{} { return p.Val }
@@ -11640,6 +12294,9 @@ func (p *DictationEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DictationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DictationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11659,7 +12316,6 @@ type KeyboardFocusHighlightEnabled struct {
 }
 
 func (p *KeyboardFocusHighlightEnabled) Name() string          { return "KeyboardFocusHighlightEnabled" }
-func (p *KeyboardFocusHighlightEnabled) Field() string         { return "" }
 func (p *KeyboardFocusHighlightEnabled) Scope() Scope          { return ScopeUser }
 func (p *KeyboardFocusHighlightEnabled) Status() Status        { return p.Stat }
 func (p *KeyboardFocusHighlightEnabled) UntypedV() interface{} { return p.Val }
@@ -11669,6 +12325,9 @@ func (p *KeyboardFocusHighlightEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KeyboardFocusHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KeyboardFocusHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11688,7 +12347,6 @@ type CursorHighlightEnabled struct {
 }
 
 func (p *CursorHighlightEnabled) Name() string          { return "CursorHighlightEnabled" }
-func (p *CursorHighlightEnabled) Field() string         { return "" }
 func (p *CursorHighlightEnabled) Scope() Scope          { return ScopeUser }
 func (p *CursorHighlightEnabled) Status() Status        { return p.Stat }
 func (p *CursorHighlightEnabled) UntypedV() interface{} { return p.Val }
@@ -11698,6 +12356,9 @@ func (p *CursorHighlightEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CursorHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CursorHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11717,7 +12378,6 @@ type CaretHighlightEnabled struct {
 }
 
 func (p *CaretHighlightEnabled) Name() string          { return "CaretHighlightEnabled" }
-func (p *CaretHighlightEnabled) Field() string         { return "" }
 func (p *CaretHighlightEnabled) Scope() Scope          { return ScopeUser }
 func (p *CaretHighlightEnabled) Status() Status        { return p.Stat }
 func (p *CaretHighlightEnabled) UntypedV() interface{} { return p.Val }
@@ -11727,6 +12387,9 @@ func (p *CaretHighlightEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CaretHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CaretHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11746,7 +12409,6 @@ type MonoAudioEnabled struct {
 }
 
 func (p *MonoAudioEnabled) Name() string          { return "MonoAudioEnabled" }
-func (p *MonoAudioEnabled) Field() string         { return "" }
 func (p *MonoAudioEnabled) Scope() Scope          { return ScopeUser }
 func (p *MonoAudioEnabled) Status() Status        { return p.Stat }
 func (p *MonoAudioEnabled) UntypedV() interface{} { return p.Val }
@@ -11756,6 +12418,9 @@ func (p *MonoAudioEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *MonoAudioEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *MonoAudioEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11775,7 +12440,6 @@ type AutoclickEnabled struct {
 }
 
 func (p *AutoclickEnabled) Name() string          { return "AutoclickEnabled" }
-func (p *AutoclickEnabled) Field() string         { return "" }
 func (p *AutoclickEnabled) Scope() Scope          { return ScopeUser }
 func (p *AutoclickEnabled) Status() Status        { return p.Stat }
 func (p *AutoclickEnabled) UntypedV() interface{} { return p.Val }
@@ -11785,6 +12449,9 @@ func (p *AutoclickEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutoclickEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoclickEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11806,9 +12473,6 @@ type DeviceLoginScreenLargeCursorEnabled struct {
 func (p *DeviceLoginScreenLargeCursorEnabled) Name() string {
 	return "DeviceLoginScreenLargeCursorEnabled"
 }
-func (p *DeviceLoginScreenLargeCursorEnabled) Field() string {
-	return "accessibility_settings.login_screen_large_cursor_enabled"
-}
 func (p *DeviceLoginScreenLargeCursorEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenLargeCursorEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenLargeCursorEnabled) UntypedV() interface{} { return p.Val }
@@ -11818,6 +12482,9 @@ func (p *DeviceLoginScreenLargeCursorEnabled) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenLargeCursorEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_large_cursor_enabled", p.Val)
 }
 func (p *DeviceLoginScreenLargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11836,7 +12503,6 @@ type HSTSPolicyBypassList struct {
 }
 
 func (p *HSTSPolicyBypassList) Name() string          { return "HSTSPolicyBypassList" }
-func (p *HSTSPolicyBypassList) Field() string         { return "" }
 func (p *HSTSPolicyBypassList) Scope() Scope          { return ScopeUser }
 func (p *HSTSPolicyBypassList) Status() Status        { return p.Stat }
 func (p *HSTSPolicyBypassList) UntypedV() interface{} { return p.Val }
@@ -11846,6 +12512,9 @@ func (p *HSTSPolicyBypassList) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *HSTSPolicyBypassList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HSTSPolicyBypassList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -11864,10 +12533,7 @@ type ReportDeviceOsUpdateStatus struct {
 	Val  bool
 }
 
-func (p *ReportDeviceOsUpdateStatus) Name() string { return "ReportDeviceOsUpdateStatus" }
-func (p *ReportDeviceOsUpdateStatus) Field() string {
-	return "device_reporting.report_os_update_status"
-}
+func (p *ReportDeviceOsUpdateStatus) Name() string          { return "ReportDeviceOsUpdateStatus" }
 func (p *ReportDeviceOsUpdateStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceOsUpdateStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceOsUpdateStatus) UntypedV() interface{} { return p.Val }
@@ -11877,6 +12543,9 @@ func (p *ReportDeviceOsUpdateStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceOsUpdateStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_os_update_status", p.Val)
 }
 func (p *ReportDeviceOsUpdateStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11908,9 +12577,6 @@ type DeviceLoginScreenWebUsbAllowDevicesForUrlsValueDevices struct {
 func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Name() string {
 	return "DeviceLoginScreenWebUsbAllowDevicesForUrls"
 }
-func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Field() string {
-	return "device_login_screen_webusb_allow_devices_for_urls.device_login_screen_webusb_allow_devices_for_urls"
-}
 func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) UntypedV() interface{} { return p.Val }
@@ -11920,6 +12586,9 @@ func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as []*DeviceLoginScreenWebUsbAllowDevicesForUrlsValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_webusb_allow_devices_for_urls", "device_login_screen_webusb_allow_devices_for_urls", p.Val)
 }
 func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DeviceLoginScreenWebUsbAllowDevicesForUrlsValue)
@@ -11941,9 +12610,6 @@ type DeviceLoginScreenSpokenFeedbackEnabled struct {
 func (p *DeviceLoginScreenSpokenFeedbackEnabled) Name() string {
 	return "DeviceLoginScreenSpokenFeedbackEnabled"
 }
-func (p *DeviceLoginScreenSpokenFeedbackEnabled) Field() string {
-	return "accessibility_settings.login_screen_spoken_feedback_enabled"
-}
 func (p *DeviceLoginScreenSpokenFeedbackEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenSpokenFeedbackEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenSpokenFeedbackEnabled) UntypedV() interface{} { return p.Val }
@@ -11953,6 +12619,9 @@ func (p *DeviceLoginScreenSpokenFeedbackEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenSpokenFeedbackEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_spoken_feedback_enabled", p.Val)
 }
 func (p *DeviceLoginScreenSpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11974,9 +12643,6 @@ type DeviceLoginScreenHighContrastEnabled struct {
 func (p *DeviceLoginScreenHighContrastEnabled) Name() string {
 	return "DeviceLoginScreenHighContrastEnabled"
 }
-func (p *DeviceLoginScreenHighContrastEnabled) Field() string {
-	return "accessibility_settings.login_screen_high_contrast_enabled"
-}
 func (p *DeviceLoginScreenHighContrastEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenHighContrastEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenHighContrastEnabled) UntypedV() interface{} { return p.Val }
@@ -11986,6 +12652,9 @@ func (p *DeviceLoginScreenHighContrastEnabled) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenHighContrastEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_high_contrast_enabled", p.Val)
 }
 func (p *DeviceLoginScreenHighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12007,9 +12676,6 @@ type DeviceLoginScreenVirtualKeyboardEnabled struct {
 func (p *DeviceLoginScreenVirtualKeyboardEnabled) Name() string {
 	return "DeviceLoginScreenVirtualKeyboardEnabled"
 }
-func (p *DeviceLoginScreenVirtualKeyboardEnabled) Field() string {
-	return "accessibility_settings.login_screen_virtual_keyboard_enabled"
-}
 func (p *DeviceLoginScreenVirtualKeyboardEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenVirtualKeyboardEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenVirtualKeyboardEnabled) UntypedV() interface{} { return p.Val }
@@ -12019,6 +12685,9 @@ func (p *DeviceLoginScreenVirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenVirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_virtual_keyboard_enabled", p.Val)
 }
 func (p *DeviceLoginScreenVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12038,7 +12707,6 @@ type CloudExtensionRequestEnabled struct {
 }
 
 func (p *CloudExtensionRequestEnabled) Name() string          { return "CloudExtensionRequestEnabled" }
-func (p *CloudExtensionRequestEnabled) Field() string         { return "" }
 func (p *CloudExtensionRequestEnabled) Scope() Scope          { return ScopeUser }
 func (p *CloudExtensionRequestEnabled) Status() Status        { return p.Stat }
 func (p *CloudExtensionRequestEnabled) UntypedV() interface{} { return p.Val }
@@ -12048,6 +12716,9 @@ func (p *CloudExtensionRequestEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CloudExtensionRequestEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CloudExtensionRequestEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12069,9 +12740,6 @@ type DeviceLoginScreenSystemInfoEnforced struct {
 func (p *DeviceLoginScreenSystemInfoEnforced) Name() string {
 	return "DeviceLoginScreenSystemInfoEnforced"
 }
-func (p *DeviceLoginScreenSystemInfoEnforced) Field() string {
-	return "device_login_screen_system_info_enforced.value"
-}
 func (p *DeviceLoginScreenSystemInfoEnforced) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenSystemInfoEnforced) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenSystemInfoEnforced) UntypedV() interface{} { return p.Val }
@@ -12081,6 +12749,9 @@ func (p *DeviceLoginScreenSystemInfoEnforced) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenSystemInfoEnforced) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_system_info_enforced", "value", p.Val)
 }
 func (p *DeviceLoginScreenSystemInfoEnforced) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12100,7 +12771,6 @@ type SharedClipboardEnabled struct {
 }
 
 func (p *SharedClipboardEnabled) Name() string          { return "SharedClipboardEnabled" }
-func (p *SharedClipboardEnabled) Field() string         { return "" }
 func (p *SharedClipboardEnabled) Scope() Scope          { return ScopeUser }
 func (p *SharedClipboardEnabled) Status() Status        { return p.Stat }
 func (p *SharedClipboardEnabled) UntypedV() interface{} { return p.Val }
@@ -12110,6 +12780,9 @@ func (p *SharedClipboardEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SharedClipboardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SharedClipboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12128,10 +12801,7 @@ type DeviceLoginScreenDictationEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceLoginScreenDictationEnabled) Name() string { return "DeviceLoginScreenDictationEnabled" }
-func (p *DeviceLoginScreenDictationEnabled) Field() string {
-	return "accessibility_settings.login_screen_dictation_enabled"
-}
+func (p *DeviceLoginScreenDictationEnabled) Name() string          { return "DeviceLoginScreenDictationEnabled" }
 func (p *DeviceLoginScreenDictationEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenDictationEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenDictationEnabled) UntypedV() interface{} { return p.Val }
@@ -12141,6 +12811,9 @@ func (p *DeviceLoginScreenDictationEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDictationEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_dictation_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDictationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12162,9 +12835,6 @@ type DeviceLoginScreenSelectToSpeakEnabled struct {
 func (p *DeviceLoginScreenSelectToSpeakEnabled) Name() string {
 	return "DeviceLoginScreenSelectToSpeakEnabled"
 }
-func (p *DeviceLoginScreenSelectToSpeakEnabled) Field() string {
-	return "accessibility_settings.login_screen_select_to_speak_enabled"
-}
 func (p *DeviceLoginScreenSelectToSpeakEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenSelectToSpeakEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenSelectToSpeakEnabled) UntypedV() interface{} { return p.Val }
@@ -12174,6 +12844,9 @@ func (p *DeviceLoginScreenSelectToSpeakEnabled) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenSelectToSpeakEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_select_to_speak_enabled", p.Val)
 }
 func (p *DeviceLoginScreenSelectToSpeakEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12195,9 +12868,6 @@ type DeviceLoginScreenCursorHighlightEnabled struct {
 func (p *DeviceLoginScreenCursorHighlightEnabled) Name() string {
 	return "DeviceLoginScreenCursorHighlightEnabled"
 }
-func (p *DeviceLoginScreenCursorHighlightEnabled) Field() string {
-	return "accessibility_settings.login_screen_cursor_highlight_enabled"
-}
 func (p *DeviceLoginScreenCursorHighlightEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenCursorHighlightEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenCursorHighlightEnabled) UntypedV() interface{} { return p.Val }
@@ -12207,6 +12877,9 @@ func (p *DeviceLoginScreenCursorHighlightEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenCursorHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_cursor_highlight_enabled", p.Val)
 }
 func (p *DeviceLoginScreenCursorHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12228,9 +12901,6 @@ type DeviceLoginScreenCaretHighlightEnabled struct {
 func (p *DeviceLoginScreenCaretHighlightEnabled) Name() string {
 	return "DeviceLoginScreenCaretHighlightEnabled"
 }
-func (p *DeviceLoginScreenCaretHighlightEnabled) Field() string {
-	return "accessibility_settings.login_screen_caret_highlight_enabled"
-}
 func (p *DeviceLoginScreenCaretHighlightEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenCaretHighlightEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenCaretHighlightEnabled) UntypedV() interface{} { return p.Val }
@@ -12240,6 +12910,9 @@ func (p *DeviceLoginScreenCaretHighlightEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenCaretHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_caret_highlight_enabled", p.Val)
 }
 func (p *DeviceLoginScreenCaretHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12258,10 +12931,7 @@ type DeviceLoginScreenMonoAudioEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceLoginScreenMonoAudioEnabled) Name() string { return "DeviceLoginScreenMonoAudioEnabled" }
-func (p *DeviceLoginScreenMonoAudioEnabled) Field() string {
-	return "accessibility_settings.login_screen_mono_audio_enabled"
-}
+func (p *DeviceLoginScreenMonoAudioEnabled) Name() string          { return "DeviceLoginScreenMonoAudioEnabled" }
 func (p *DeviceLoginScreenMonoAudioEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenMonoAudioEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenMonoAudioEnabled) UntypedV() interface{} { return p.Val }
@@ -12271,6 +12941,9 @@ func (p *DeviceLoginScreenMonoAudioEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenMonoAudioEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_mono_audio_enabled", p.Val)
 }
 func (p *DeviceLoginScreenMonoAudioEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12289,10 +12962,7 @@ type DeviceLoginScreenAutoclickEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceLoginScreenAutoclickEnabled) Name() string { return "DeviceLoginScreenAutoclickEnabled" }
-func (p *DeviceLoginScreenAutoclickEnabled) Field() string {
-	return "accessibility_settings.login_screen_autoclick_enabled"
-}
+func (p *DeviceLoginScreenAutoclickEnabled) Name() string          { return "DeviceLoginScreenAutoclickEnabled" }
 func (p *DeviceLoginScreenAutoclickEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenAutoclickEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenAutoclickEnabled) UntypedV() interface{} { return p.Val }
@@ -12302,6 +12972,9 @@ func (p *DeviceLoginScreenAutoclickEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenAutoclickEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_autoclick_enabled", p.Val)
 }
 func (p *DeviceLoginScreenAutoclickEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12323,9 +12996,6 @@ type DeviceLoginScreenStickyKeysEnabled struct {
 func (p *DeviceLoginScreenStickyKeysEnabled) Name() string {
 	return "DeviceLoginScreenStickyKeysEnabled"
 }
-func (p *DeviceLoginScreenStickyKeysEnabled) Field() string {
-	return "accessibility_settings.login_screen_sticky_keys_enabled"
-}
 func (p *DeviceLoginScreenStickyKeysEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenStickyKeysEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenStickyKeysEnabled) UntypedV() interface{} { return p.Val }
@@ -12335,6 +13005,9 @@ func (p *DeviceLoginScreenStickyKeysEnabled) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenStickyKeysEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_sticky_keys_enabled", p.Val)
 }
 func (p *DeviceLoginScreenStickyKeysEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12356,9 +13029,6 @@ type DeviceLoginScreenKeyboardFocusHighlightEnabled struct {
 func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Name() string {
 	return "DeviceLoginScreenKeyboardFocusHighlightEnabled"
 }
-func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Field() string {
-	return "accessibility_settings.login_screen_keyboard_focus_highlight_enabled"
-}
 func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) UntypedV() interface{} { return p.Val }
@@ -12368,6 +13038,9 @@ func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) UnmarshalAs(m json.RawM
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_keyboard_focus_highlight_enabled", p.Val)
 }
 func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12387,7 +13060,6 @@ type ShelfAlignment struct {
 }
 
 func (p *ShelfAlignment) Name() string          { return "ShelfAlignment" }
-func (p *ShelfAlignment) Field() string         { return "" }
 func (p *ShelfAlignment) Scope() Scope          { return ScopeUser }
 func (p *ShelfAlignment) Status() Status        { return p.Stat }
 func (p *ShelfAlignment) UntypedV() interface{} { return p.Val }
@@ -12397,6 +13069,9 @@ func (p *ShelfAlignment) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ShelfAlignment) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShelfAlignment) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12418,7 +13093,6 @@ type PrintingAllowedBackgroundGraphicsModes struct {
 func (p *PrintingAllowedBackgroundGraphicsModes) Name() string {
 	return "PrintingAllowedBackgroundGraphicsModes"
 }
-func (p *PrintingAllowedBackgroundGraphicsModes) Field() string         { return "" }
 func (p *PrintingAllowedBackgroundGraphicsModes) Scope() Scope          { return ScopeUser }
 func (p *PrintingAllowedBackgroundGraphicsModes) Status() Status        { return p.Stat }
 func (p *PrintingAllowedBackgroundGraphicsModes) UntypedV() interface{} { return p.Val }
@@ -12428,6 +13102,9 @@ func (p *PrintingAllowedBackgroundGraphicsModes) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedBackgroundGraphicsModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAllowedBackgroundGraphicsModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12447,7 +13124,6 @@ type PrintingBackgroundGraphicsDefault struct {
 }
 
 func (p *PrintingBackgroundGraphicsDefault) Name() string          { return "PrintingBackgroundGraphicsDefault" }
-func (p *PrintingBackgroundGraphicsDefault) Field() string         { return "" }
 func (p *PrintingBackgroundGraphicsDefault) Scope() Scope          { return ScopeUser }
 func (p *PrintingBackgroundGraphicsDefault) Status() Status        { return p.Stat }
 func (p *PrintingBackgroundGraphicsDefault) UntypedV() interface{} { return p.Val }
@@ -12457,6 +13133,9 @@ func (p *PrintingBackgroundGraphicsDefault) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingBackgroundGraphicsDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingBackgroundGraphicsDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12478,7 +13157,6 @@ type LegacySameSiteCookieBehaviorEnabledForDomainList struct {
 func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Name() string {
 	return "LegacySameSiteCookieBehaviorEnabledForDomainList"
 }
-func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Field() string         { return "" }
 func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Scope() Scope          { return ScopeUser }
 func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Status() Status        { return p.Stat }
 func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) UntypedV() interface{} { return p.Val }
@@ -12488,6 +13166,9 @@ func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) UnmarshalAs(m json.Ra
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12507,7 +13188,6 @@ type PrintJobHistoryExpirationPeriod struct {
 }
 
 func (p *PrintJobHistoryExpirationPeriod) Name() string          { return "PrintJobHistoryExpirationPeriod" }
-func (p *PrintJobHistoryExpirationPeriod) Field() string         { return "" }
 func (p *PrintJobHistoryExpirationPeriod) Scope() Scope          { return ScopeUser }
 func (p *PrintJobHistoryExpirationPeriod) Status() Status        { return p.Stat }
 func (p *PrintJobHistoryExpirationPeriod) UntypedV() interface{} { return p.Val }
@@ -12517,6 +13197,9 @@ func (p *PrintJobHistoryExpirationPeriod) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintJobHistoryExpirationPeriod) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintJobHistoryExpirationPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -12538,9 +13221,6 @@ type DeviceLoginScreenScreenMagnifierType struct {
 func (p *DeviceLoginScreenScreenMagnifierType) Name() string {
 	return "DeviceLoginScreenScreenMagnifierType"
 }
-func (p *DeviceLoginScreenScreenMagnifierType) Field() string {
-	return "accessibility_settings.login_screen_screen_magnifier_type"
-}
 func (p *DeviceLoginScreenScreenMagnifierType) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenScreenMagnifierType) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenScreenMagnifierType) UntypedV() interface{} { return p.Val }
@@ -12550,6 +13230,9 @@ func (p *DeviceLoginScreenScreenMagnifierType) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenScreenMagnifierType) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_screen_magnifier_type", p.Val)
 }
 func (p *DeviceLoginScreenScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -12569,7 +13252,6 @@ type DefaultInsecureContentSetting struct {
 }
 
 func (p *DefaultInsecureContentSetting) Name() string          { return "DefaultInsecureContentSetting" }
-func (p *DefaultInsecureContentSetting) Field() string         { return "" }
 func (p *DefaultInsecureContentSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultInsecureContentSetting) Status() Status        { return p.Stat }
 func (p *DefaultInsecureContentSetting) UntypedV() interface{} { return p.Val }
@@ -12579,6 +13261,9 @@ func (p *DefaultInsecureContentSetting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultInsecureContentSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultInsecureContentSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -12598,7 +13283,6 @@ type InsecureContentAllowedForUrls struct {
 }
 
 func (p *InsecureContentAllowedForUrls) Name() string          { return "InsecureContentAllowedForUrls" }
-func (p *InsecureContentAllowedForUrls) Field() string         { return "" }
 func (p *InsecureContentAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *InsecureContentAllowedForUrls) Status() Status        { return p.Stat }
 func (p *InsecureContentAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -12608,6 +13292,9 @@ func (p *InsecureContentAllowedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *InsecureContentAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsecureContentAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12627,7 +13314,6 @@ type InsecureContentBlockedForUrls struct {
 }
 
 func (p *InsecureContentBlockedForUrls) Name() string          { return "InsecureContentBlockedForUrls" }
-func (p *InsecureContentBlockedForUrls) Field() string         { return "" }
 func (p *InsecureContentBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *InsecureContentBlockedForUrls) Status() Status        { return p.Stat }
 func (p *InsecureContentBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -12637,6 +13323,9 @@ func (p *InsecureContentBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *InsecureContentBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsecureContentBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12658,9 +13347,6 @@ type DeviceWebBasedAttestationAllowedUrls struct {
 func (p *DeviceWebBasedAttestationAllowedUrls) Name() string {
 	return "DeviceWebBasedAttestationAllowedUrls"
 }
-func (p *DeviceWebBasedAttestationAllowedUrls) Field() string {
-	return "device_web_based_attestation_allowed_urls.value"
-}
 func (p *DeviceWebBasedAttestationAllowedUrls) Scope() Scope          { return ScopeDevice }
 func (p *DeviceWebBasedAttestationAllowedUrls) Status() Status        { return p.Stat }
 func (p *DeviceWebBasedAttestationAllowedUrls) UntypedV() interface{} { return p.Val }
@@ -12670,6 +13356,9 @@ func (p *DeviceWebBasedAttestationAllowedUrls) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceWebBasedAttestationAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_web_based_attestation_allowed_urls", "value", p.Val)
 }
 func (p *DeviceWebBasedAttestationAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12691,9 +13380,6 @@ type DeviceShowNumericKeyboardForPassword struct {
 func (p *DeviceShowNumericKeyboardForPassword) Name() string {
 	return "DeviceShowNumericKeyboardForPassword"
 }
-func (p *DeviceShowNumericKeyboardForPassword) Field() string {
-	return "device_show_numeric_keyboard_for_password.value"
-}
 func (p *DeviceShowNumericKeyboardForPassword) Scope() Scope          { return ScopeDevice }
 func (p *DeviceShowNumericKeyboardForPassword) Status() Status        { return p.Stat }
 func (p *DeviceShowNumericKeyboardForPassword) UntypedV() interface{} { return p.Val }
@@ -12703,6 +13389,9 @@ func (p *DeviceShowNumericKeyboardForPassword) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceShowNumericKeyboardForPassword) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_show_numeric_keyboard_for_password", "value", p.Val)
 }
 func (p *DeviceShowNumericKeyboardForPassword) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12727,7 +13416,6 @@ type CrostiniAnsiblePlaybookValue struct {
 }
 
 func (p *CrostiniAnsiblePlaybook) Name() string          { return "CrostiniAnsiblePlaybook" }
-func (p *CrostiniAnsiblePlaybook) Field() string         { return "" }
 func (p *CrostiniAnsiblePlaybook) Scope() Scope          { return ScopeUser }
 func (p *CrostiniAnsiblePlaybook) Status() Status        { return p.Stat }
 func (p *CrostiniAnsiblePlaybook) UntypedV() interface{} { return p.Val }
@@ -12737,6 +13425,9 @@ func (p *CrostiniAnsiblePlaybook) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as *CrostiniAnsiblePlaybookValue", m)
 	}
 	return v, nil
+}
+func (p *CrostiniAnsiblePlaybook) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniAnsiblePlaybook) Equal(iface interface{}) bool {
 	v, ok := iface.(*CrostiniAnsiblePlaybookValue)
@@ -12755,7 +13446,6 @@ type WebRtcLocalIpsAllowedUrls struct {
 }
 
 func (p *WebRtcLocalIpsAllowedUrls) Name() string          { return "WebRtcLocalIpsAllowedUrls" }
-func (p *WebRtcLocalIpsAllowedUrls) Field() string         { return "" }
 func (p *WebRtcLocalIpsAllowedUrls) Scope() Scope          { return ScopeUser }
 func (p *WebRtcLocalIpsAllowedUrls) Status() Status        { return p.Stat }
 func (p *WebRtcLocalIpsAllowedUrls) UntypedV() interface{} { return p.Val }
@@ -12765,6 +13455,9 @@ func (p *WebRtcLocalIpsAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebRtcLocalIpsAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebRtcLocalIpsAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12807,7 +13500,6 @@ type PerAppTimeLimitsValueResetAt struct {
 }
 
 func (p *PerAppTimeLimits) Name() string          { return "PerAppTimeLimits" }
-func (p *PerAppTimeLimits) Field() string         { return "" }
 func (p *PerAppTimeLimits) Scope() Scope          { return ScopeUser }
 func (p *PerAppTimeLimits) Status() Status        { return p.Stat }
 func (p *PerAppTimeLimits) UntypedV() interface{} { return p.Val }
@@ -12817,6 +13509,9 @@ func (p *PerAppTimeLimits) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *PerAppTimeLimitsValue", m)
 	}
 	return v, nil
+}
+func (p *PerAppTimeLimits) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PerAppTimeLimits) Equal(iface interface{}) bool {
 	v, ok := iface.(*PerAppTimeLimitsValue)
@@ -12836,7 +13531,6 @@ type DnsOverHttpsTemplates struct {
 }
 
 func (p *DnsOverHttpsTemplates) Name() string          { return "DnsOverHttpsTemplates" }
-func (p *DnsOverHttpsTemplates) Field() string         { return "" }
 func (p *DnsOverHttpsTemplates) Scope() Scope          { return ScopeUser }
 func (p *DnsOverHttpsTemplates) Status() Status        { return p.Stat }
 func (p *DnsOverHttpsTemplates) UntypedV() interface{} { return p.Val }
@@ -12846,6 +13540,9 @@ func (p *DnsOverHttpsTemplates) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DnsOverHttpsTemplates) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DnsOverHttpsTemplates) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12865,7 +13562,6 @@ type GloballyScopeHTTPAuthCacheEnabled struct {
 }
 
 func (p *GloballyScopeHTTPAuthCacheEnabled) Name() string          { return "GloballyScopeHTTPAuthCacheEnabled" }
-func (p *GloballyScopeHTTPAuthCacheEnabled) Field() string         { return "" }
 func (p *GloballyScopeHTTPAuthCacheEnabled) Scope() Scope          { return ScopeUser }
 func (p *GloballyScopeHTTPAuthCacheEnabled) Status() Status        { return p.Stat }
 func (p *GloballyScopeHTTPAuthCacheEnabled) UntypedV() interface{} { return p.Val }
@@ -12875,6 +13571,9 @@ func (p *GloballyScopeHTTPAuthCacheEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *GloballyScopeHTTPAuthCacheEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *GloballyScopeHTTPAuthCacheEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12894,7 +13593,6 @@ type ClickToCallEnabled struct {
 }
 
 func (p *ClickToCallEnabled) Name() string          { return "ClickToCallEnabled" }
-func (p *ClickToCallEnabled) Field() string         { return "" }
 func (p *ClickToCallEnabled) Scope() Scope          { return ScopeUser }
 func (p *ClickToCallEnabled) Status() Status        { return p.Stat }
 func (p *ClickToCallEnabled) UntypedV() interface{} { return p.Val }
@@ -12904,6 +13602,9 @@ func (p *ClickToCallEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ClickToCallEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ClickToCallEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12925,9 +13626,6 @@ type DeviceLoginScreenShowOptionsInSystemTrayMenu struct {
 func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Name() string {
 	return "DeviceLoginScreenShowOptionsInSystemTrayMenu"
 }
-func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Field() string {
-	return "accessibility_settings.login_screen_show_options_in_system_tray_menu_enabled"
-}
 func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) UntypedV() interface{} { return p.Val }
@@ -12937,6 +13635,9 @@ func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) UnmarshalAs(m json.RawMes
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_show_options_in_system_tray_menu_enabled", p.Val)
 }
 func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12956,7 +13657,6 @@ type PrinterTypeDenyList struct {
 }
 
 func (p *PrinterTypeDenyList) Name() string          { return "PrinterTypeDenyList" }
-func (p *PrinterTypeDenyList) Field() string         { return "" }
 func (p *PrinterTypeDenyList) Scope() Scope          { return ScopeUser }
 func (p *PrinterTypeDenyList) Status() Status        { return p.Stat }
 func (p *PrinterTypeDenyList) UntypedV() interface{} { return p.Val }
@@ -12966,6 +13666,9 @@ func (p *PrinterTypeDenyList) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrinterTypeDenyList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrinterTypeDenyList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12984,7 +13687,6 @@ type SyncTypesListDisabled struct {
 }
 
 func (p *SyncTypesListDisabled) Name() string          { return "SyncTypesListDisabled" }
-func (p *SyncTypesListDisabled) Field() string         { return "" }
 func (p *SyncTypesListDisabled) Scope() Scope          { return ScopeUser }
 func (p *SyncTypesListDisabled) Status() Status        { return p.Stat }
 func (p *SyncTypesListDisabled) UntypedV() interface{} { return p.Val }
@@ -12994,6 +13696,9 @@ func (p *SyncTypesListDisabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SyncTypesListDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SyncTypesListDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -13015,7 +13720,6 @@ type AmbientAuthenticationInPrivateModesEnabled struct {
 func (p *AmbientAuthenticationInPrivateModesEnabled) Name() string {
 	return "AmbientAuthenticationInPrivateModesEnabled"
 }
-func (p *AmbientAuthenticationInPrivateModesEnabled) Field() string         { return "" }
 func (p *AmbientAuthenticationInPrivateModesEnabled) Scope() Scope          { return ScopeUser }
 func (p *AmbientAuthenticationInPrivateModesEnabled) Status() Status        { return p.Stat }
 func (p *AmbientAuthenticationInPrivateModesEnabled) UntypedV() interface{} { return p.Val }
@@ -13025,6 +13729,9 @@ func (p *AmbientAuthenticationInPrivateModesEnabled) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *AmbientAuthenticationInPrivateModesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AmbientAuthenticationInPrivateModesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -13044,7 +13751,6 @@ type PaymentMethodQueryEnabled struct {
 }
 
 func (p *PaymentMethodQueryEnabled) Name() string          { return "PaymentMethodQueryEnabled" }
-func (p *PaymentMethodQueryEnabled) Field() string         { return "" }
 func (p *PaymentMethodQueryEnabled) Scope() Scope          { return ScopeUser }
 func (p *PaymentMethodQueryEnabled) Status() Status        { return p.Stat }
 func (p *PaymentMethodQueryEnabled) UntypedV() interface{} { return p.Val }
@@ -13054,6 +13760,9 @@ func (p *PaymentMethodQueryEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PaymentMethodQueryEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PaymentMethodQueryEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13075,7 +13784,6 @@ type StricterMixedContentTreatmentEnabled struct {
 func (p *StricterMixedContentTreatmentEnabled) Name() string {
 	return "StricterMixedContentTreatmentEnabled"
 }
-func (p *StricterMixedContentTreatmentEnabled) Field() string         { return "" }
 func (p *StricterMixedContentTreatmentEnabled) Scope() Scope          { return ScopeUser }
 func (p *StricterMixedContentTreatmentEnabled) Status() Status        { return p.Stat }
 func (p *StricterMixedContentTreatmentEnabled) UntypedV() interface{} { return p.Val }
@@ -13085,6 +13793,9 @@ func (p *StricterMixedContentTreatmentEnabled) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *StricterMixedContentTreatmentEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *StricterMixedContentTreatmentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13105,7 +13816,6 @@ type NTPCustomBackgroundEnabled struct {
 }
 
 func (p *NTPCustomBackgroundEnabled) Name() string          { return "NTPCustomBackgroundEnabled" }
-func (p *NTPCustomBackgroundEnabled) Field() string         { return "" }
 func (p *NTPCustomBackgroundEnabled) Scope() Scope          { return ScopeUser }
 func (p *NTPCustomBackgroundEnabled) Status() Status        { return p.Stat }
 func (p *NTPCustomBackgroundEnabled) UntypedV() interface{} { return p.Val }
@@ -13115,6 +13825,9 @@ func (p *NTPCustomBackgroundEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTPCustomBackgroundEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NTPCustomBackgroundEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13134,7 +13847,6 @@ type DNSInterceptionChecksEnabled struct {
 }
 
 func (p *DNSInterceptionChecksEnabled) Name() string          { return "DNSInterceptionChecksEnabled" }
-func (p *DNSInterceptionChecksEnabled) Field() string         { return "" }
 func (p *DNSInterceptionChecksEnabled) Scope() Scope          { return ScopeUser }
 func (p *DNSInterceptionChecksEnabled) Status() Status        { return p.Stat }
 func (p *DNSInterceptionChecksEnabled) UntypedV() interface{} { return p.Val }
@@ -13144,6 +13856,9 @@ func (p *DNSInterceptionChecksEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DNSInterceptionChecksEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DNSInterceptionChecksEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13163,7 +13878,6 @@ type PrimaryMouseButtonSwitch struct {
 }
 
 func (p *PrimaryMouseButtonSwitch) Name() string          { return "PrimaryMouseButtonSwitch" }
-func (p *PrimaryMouseButtonSwitch) Field() string         { return "" }
 func (p *PrimaryMouseButtonSwitch) Scope() Scope          { return ScopeUser }
 func (p *PrimaryMouseButtonSwitch) Status() Status        { return p.Stat }
 func (p *PrimaryMouseButtonSwitch) UntypedV() interface{} { return p.Val }
@@ -13173,6 +13887,9 @@ func (p *PrimaryMouseButtonSwitch) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrimaryMouseButtonSwitch) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13192,7 +13909,6 @@ type ReportDeviceCpuInfo struct {
 }
 
 func (p *ReportDeviceCpuInfo) Name() string          { return "ReportDeviceCpuInfo" }
-func (p *ReportDeviceCpuInfo) Field() string         { return "device_reporting.report_cpu_info" }
 func (p *ReportDeviceCpuInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceCpuInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceCpuInfo) UntypedV() interface{} { return p.Val }
@@ -13202,6 +13918,9 @@ func (p *ReportDeviceCpuInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceCpuInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_cpu_info", p.Val)
 }
 func (p *ReportDeviceCpuInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13223,9 +13942,6 @@ type DeviceLoginScreenPrimaryMouseButtonSwitch struct {
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Name() string {
 	return "DeviceLoginScreenPrimaryMouseButtonSwitch"
 }
-func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Field() string {
-	return "login_screen_primary_mouse_button_switch.value"
-}
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) UntypedV() interface{} { return p.Val }
@@ -13235,6 +13951,9 @@ func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_primary_mouse_button_switch", "value", p.Val)
 }
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13254,7 +13973,6 @@ type AccessibilityShortcutsEnabled struct {
 }
 
 func (p *AccessibilityShortcutsEnabled) Name() string          { return "AccessibilityShortcutsEnabled" }
-func (p *AccessibilityShortcutsEnabled) Field() string         { return "" }
 func (p *AccessibilityShortcutsEnabled) Scope() Scope          { return ScopeUser }
 func (p *AccessibilityShortcutsEnabled) Status() Status        { return p.Stat }
 func (p *AccessibilityShortcutsEnabled) UntypedV() interface{} { return p.Val }
@@ -13264,6 +13982,9 @@ func (p *AccessibilityShortcutsEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AccessibilityShortcutsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AccessibilityShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13283,7 +14004,6 @@ type ReportDeviceGraphicsStatus struct {
 }
 
 func (p *ReportDeviceGraphicsStatus) Name() string          { return "ReportDeviceGraphicsStatus" }
-func (p *ReportDeviceGraphicsStatus) Field() string         { return "device_reporting.report_graphics_status" }
 func (p *ReportDeviceGraphicsStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceGraphicsStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceGraphicsStatus) UntypedV() interface{} { return p.Val }
@@ -13293,6 +14013,9 @@ func (p *ReportDeviceGraphicsStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceGraphicsStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_graphics_status", p.Val)
 }
 func (p *ReportDeviceGraphicsStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13314,9 +14037,6 @@ type DeviceLoginScreenAccessibilityShortcutsEnabled struct {
 func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Name() string {
 	return "DeviceLoginScreenAccessibilityShortcutsEnabled"
 }
-func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Field() string {
-	return "accessibility_settings.login_screen_shortcuts_enabled"
-}
 func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) UntypedV() interface{} { return p.Val }
@@ -13326,6 +14046,9 @@ func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) UnmarshalAs(m json.RawM
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_shortcuts_enabled", p.Val)
 }
 func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13344,10 +14067,7 @@ type ReportDeviceCrashReportInfo struct {
 	Val  bool
 }
 
-func (p *ReportDeviceCrashReportInfo) Name() string { return "ReportDeviceCrashReportInfo" }
-func (p *ReportDeviceCrashReportInfo) Field() string {
-	return "device_reporting.report_crash_report_info"
-}
+func (p *ReportDeviceCrashReportInfo) Name() string          { return "ReportDeviceCrashReportInfo" }
 func (p *ReportDeviceCrashReportInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceCrashReportInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceCrashReportInfo) UntypedV() interface{} { return p.Val }
@@ -13357,6 +14077,9 @@ func (p *ReportDeviceCrashReportInfo) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceCrashReportInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_crash_report_info", p.Val)
 }
 func (p *ReportDeviceCrashReportInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13376,7 +14099,6 @@ type ScreenCaptureAllowed struct {
 }
 
 func (p *ScreenCaptureAllowed) Name() string          { return "ScreenCaptureAllowed" }
-func (p *ScreenCaptureAllowed) Field() string         { return "" }
 func (p *ScreenCaptureAllowed) Scope() Scope          { return ScopeUser }
 func (p *ScreenCaptureAllowed) Status() Status        { return p.Stat }
 func (p *ScreenCaptureAllowed) UntypedV() interface{} { return p.Val }
@@ -13386,6 +14108,9 @@ func (p *ScreenCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ScreenCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13416,7 +14141,6 @@ type DeviceMinimumVersionValueRequirements struct {
 }
 
 func (p *DeviceMinimumVersion) Name() string          { return "DeviceMinimumVersion" }
-func (p *DeviceMinimumVersion) Field() string         { return "device_minimum_version.value" }
 func (p *DeviceMinimumVersion) Scope() Scope          { return ScopeDevice }
 func (p *DeviceMinimumVersion) Status() Status        { return p.Stat }
 func (p *DeviceMinimumVersion) UntypedV() interface{} { return p.Val }
@@ -13426,6 +14150,9 @@ func (p *DeviceMinimumVersion) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceMinimumVersionValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceMinimumVersion) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_minimum_version", "value", p.Val)
 }
 func (p *DeviceMinimumVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceMinimumVersionValue)
@@ -13445,7 +14172,6 @@ type ReportDeviceTimezoneInfo struct {
 }
 
 func (p *ReportDeviceTimezoneInfo) Name() string          { return "ReportDeviceTimezoneInfo" }
-func (p *ReportDeviceTimezoneInfo) Field() string         { return "device_reporting.report_timezone_info" }
 func (p *ReportDeviceTimezoneInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceTimezoneInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceTimezoneInfo) UntypedV() interface{} { return p.Val }
@@ -13455,6 +14181,9 @@ func (p *ReportDeviceTimezoneInfo) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceTimezoneInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_timezone_info", p.Val)
 }
 func (p *ReportDeviceTimezoneInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13481,7 +14210,6 @@ type SystemProxySettingsValue struct {
 }
 
 func (p *SystemProxySettings) Name() string          { return "SystemProxySettings" }
-func (p *SystemProxySettings) Field() string         { return "system_proxy_settings.system_proxy_settings" }
 func (p *SystemProxySettings) Scope() Scope          { return ScopeDevice }
 func (p *SystemProxySettings) Status() Status        { return p.Stat }
 func (p *SystemProxySettings) UntypedV() interface{} { return p.Val }
@@ -13491,6 +14219,9 @@ func (p *SystemProxySettings) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as *SystemProxySettingsValue", m)
 	}
 	return v, nil
+}
+func (p *SystemProxySettings) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_proxy_settings", "system_proxy_settings", p.Val)
 }
 func (p *SystemProxySettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*SystemProxySettingsValue)
@@ -13510,7 +14241,6 @@ type DeviceChromeVariations struct {
 }
 
 func (p *DeviceChromeVariations) Name() string          { return "DeviceChromeVariations" }
-func (p *DeviceChromeVariations) Field() string         { return "device_chrome_variations_type.value" }
 func (p *DeviceChromeVariations) Scope() Scope          { return ScopeDevice }
 func (p *DeviceChromeVariations) Status() Status        { return p.Stat }
 func (p *DeviceChromeVariations) UntypedV() interface{} { return p.Val }
@@ -13520,6 +14250,9 @@ func (p *DeviceChromeVariations) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceChromeVariations) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_chrome_variations_type", "value", p.Val)
 }
 func (p *DeviceChromeVariations) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -13541,9 +14274,6 @@ type DeviceLoginScreenPrivacyScreenEnabled struct {
 func (p *DeviceLoginScreenPrivacyScreenEnabled) Name() string {
 	return "DeviceLoginScreenPrivacyScreenEnabled"
 }
-func (p *DeviceLoginScreenPrivacyScreenEnabled) Field() string {
-	return "device_login_screen_privacy_screen_enabled.enabled"
-}
 func (p *DeviceLoginScreenPrivacyScreenEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenPrivacyScreenEnabled) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenPrivacyScreenEnabled) UntypedV() interface{} { return p.Val }
@@ -13553,6 +14283,9 @@ func (p *DeviceLoginScreenPrivacyScreenEnabled) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenPrivacyScreenEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_privacy_screen_enabled", "enabled", p.Val)
 }
 func (p *DeviceLoginScreenPrivacyScreenEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13572,7 +14305,6 @@ type PrivacyScreenEnabled struct {
 }
 
 func (p *PrivacyScreenEnabled) Name() string          { return "PrivacyScreenEnabled" }
-func (p *PrivacyScreenEnabled) Field() string         { return "" }
 func (p *PrivacyScreenEnabled) Scope() Scope          { return ScopeUser }
 func (p *PrivacyScreenEnabled) Status() Status        { return p.Stat }
 func (p *PrivacyScreenEnabled) UntypedV() interface{} { return p.Val }
@@ -13582,6 +14314,9 @@ func (p *PrivacyScreenEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrivacyScreenEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrivacyScreenEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13602,7 +14337,6 @@ type ForceLogoutUnauthenticatedUserEnabled struct {
 func (p *ForceLogoutUnauthenticatedUserEnabled) Name() string {
 	return "ForceLogoutUnauthenticatedUserEnabled"
 }
-func (p *ForceLogoutUnauthenticatedUserEnabled) Field() string         { return "" }
 func (p *ForceLogoutUnauthenticatedUserEnabled) Scope() Scope          { return ScopeUser }
 func (p *ForceLogoutUnauthenticatedUserEnabled) Status() Status        { return p.Stat }
 func (p *ForceLogoutUnauthenticatedUserEnabled) UntypedV() interface{} { return p.Val }
@@ -13612,6 +14346,9 @@ func (p *ForceLogoutUnauthenticatedUserEnabled) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceLogoutUnauthenticatedUserEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceLogoutUnauthenticatedUserEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13640,7 +14377,6 @@ type RequiredClientCertificateForUserValue struct {
 }
 
 func (p *RequiredClientCertificateForUser) Name() string          { return "RequiredClientCertificateForUser" }
-func (p *RequiredClientCertificateForUser) Field() string         { return "" }
 func (p *RequiredClientCertificateForUser) Scope() Scope          { return ScopeUser }
 func (p *RequiredClientCertificateForUser) Status() Status        { return p.Stat }
 func (p *RequiredClientCertificateForUser) UntypedV() interface{} { return p.Val }
@@ -13650,6 +14386,9 @@ func (p *RequiredClientCertificateForUser) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as []*RequiredClientCertificateForUserValue", m)
 	}
 	return v, nil
+}
+func (p *RequiredClientCertificateForUser) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RequiredClientCertificateForUser) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RequiredClientCertificateForUserValue)
@@ -13680,9 +14419,6 @@ type RequiredClientCertificateForDeviceValue struct {
 func (p *RequiredClientCertificateForDevice) Name() string {
 	return "RequiredClientCertificateForDevice"
 }
-func (p *RequiredClientCertificateForDevice) Field() string {
-	return "required_client_certificate_for_device.required_client_certificate_for_device"
-}
 func (p *RequiredClientCertificateForDevice) Scope() Scope          { return ScopeDevice }
 func (p *RequiredClientCertificateForDevice) Status() Status        { return p.Stat }
 func (p *RequiredClientCertificateForDevice) UntypedV() interface{} { return p.Val }
@@ -13692,6 +14428,9 @@ func (p *RequiredClientCertificateForDevice) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []*RequiredClientCertificateForDeviceValue", m)
 	}
 	return v, nil
+}
+func (p *RequiredClientCertificateForDevice) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "required_client_certificate_for_device", "required_client_certificate_for_device", p.Val)
 }
 func (p *RequiredClientCertificateForDevice) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RequiredClientCertificateForDeviceValue)
@@ -13711,7 +14450,6 @@ type ReportDeviceMemoryInfo struct {
 }
 
 func (p *ReportDeviceMemoryInfo) Name() string          { return "ReportDeviceMemoryInfo" }
-func (p *ReportDeviceMemoryInfo) Field() string         { return "device_reporting.report_memory_info" }
 func (p *ReportDeviceMemoryInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceMemoryInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceMemoryInfo) UntypedV() interface{} { return p.Val }
@@ -13721,6 +14459,9 @@ func (p *ReportDeviceMemoryInfo) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceMemoryInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_memory_info", p.Val)
 }
 func (p *ReportDeviceMemoryInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13740,7 +14481,6 @@ type SafeBrowsingProtectionLevel struct {
 }
 
 func (p *SafeBrowsingProtectionLevel) Name() string          { return "SafeBrowsingProtectionLevel" }
-func (p *SafeBrowsingProtectionLevel) Field() string         { return "" }
 func (p *SafeBrowsingProtectionLevel) Scope() Scope          { return ScopeUser }
 func (p *SafeBrowsingProtectionLevel) Status() Status        { return p.Stat }
 func (p *SafeBrowsingProtectionLevel) UntypedV() interface{} { return p.Val }
@@ -13750,6 +14490,9 @@ func (p *SafeBrowsingProtectionLevel) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingProtectionLevel) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SafeBrowsingProtectionLevel) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -13769,7 +14512,6 @@ type AdvancedProtectionAllowed struct {
 }
 
 func (p *AdvancedProtectionAllowed) Name() string          { return "AdvancedProtectionAllowed" }
-func (p *AdvancedProtectionAllowed) Field() string         { return "" }
 func (p *AdvancedProtectionAllowed) Scope() Scope          { return ScopeUser }
 func (p *AdvancedProtectionAllowed) Status() Status        { return p.Stat }
 func (p *AdvancedProtectionAllowed) UntypedV() interface{} { return p.Val }
@@ -13779,6 +14521,9 @@ func (p *AdvancedProtectionAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AdvancedProtectionAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AdvancedProtectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13798,7 +14543,6 @@ type ReportDeviceBacklightInfo struct {
 }
 
 func (p *ReportDeviceBacklightInfo) Name() string          { return "ReportDeviceBacklightInfo" }
-func (p *ReportDeviceBacklightInfo) Field() string         { return "device_reporting.report_backlight_info" }
 func (p *ReportDeviceBacklightInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceBacklightInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceBacklightInfo) UntypedV() interface{} { return p.Val }
@@ -13808,6 +14552,9 @@ func (p *ReportDeviceBacklightInfo) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBacklightInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_backlight_info", p.Val)
 }
 func (p *ReportDeviceBacklightInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13826,7 +14573,6 @@ type ScrollToTextFragmentEnabled struct {
 }
 
 func (p *ScrollToTextFragmentEnabled) Name() string          { return "ScrollToTextFragmentEnabled" }
-func (p *ScrollToTextFragmentEnabled) Field() string         { return "" }
 func (p *ScrollToTextFragmentEnabled) Scope() Scope          { return ScopeUser }
 func (p *ScrollToTextFragmentEnabled) Status() Status        { return p.Stat }
 func (p *ScrollToTextFragmentEnabled) UntypedV() interface{} { return p.Val }
@@ -13836,6 +14582,9 @@ func (p *ScrollToTextFragmentEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ScrollToTextFragmentEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScrollToTextFragmentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13855,7 +14604,6 @@ type SystemFeaturesDisableList struct {
 }
 
 func (p *SystemFeaturesDisableList) Name() string          { return "SystemFeaturesDisableList" }
-func (p *SystemFeaturesDisableList) Field() string         { return "" }
 func (p *SystemFeaturesDisableList) Scope() Scope          { return ScopeUser }
 func (p *SystemFeaturesDisableList) Status() Status        { return p.Stat }
 func (p *SystemFeaturesDisableList) UntypedV() interface{} { return p.Val }
@@ -13865,6 +14613,9 @@ func (p *SystemFeaturesDisableList) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SystemFeaturesDisableList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SystemFeaturesDisableList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -13885,7 +14636,6 @@ type CrostiniArcAdbSideloadingAllowed struct {
 }
 
 func (p *CrostiniArcAdbSideloadingAllowed) Name() string          { return "CrostiniArcAdbSideloadingAllowed" }
-func (p *CrostiniArcAdbSideloadingAllowed) Field() string         { return "" }
 func (p *CrostiniArcAdbSideloadingAllowed) Scope() Scope          { return ScopeUser }
 func (p *CrostiniArcAdbSideloadingAllowed) Status() Status        { return p.Stat }
 func (p *CrostiniArcAdbSideloadingAllowed) UntypedV() interface{} { return p.Val }
@@ -13895,6 +14645,9 @@ func (p *CrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *CrostiniArcAdbSideloadingAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -13914,7 +14667,6 @@ type FloatingAccessibilityMenuEnabled struct {
 }
 
 func (p *FloatingAccessibilityMenuEnabled) Name() string          { return "FloatingAccessibilityMenuEnabled" }
-func (p *FloatingAccessibilityMenuEnabled) Field() string         { return "" }
 func (p *FloatingAccessibilityMenuEnabled) Scope() Scope          { return ScopeUser }
 func (p *FloatingAccessibilityMenuEnabled) Status() Status        { return p.Stat }
 func (p *FloatingAccessibilityMenuEnabled) UntypedV() interface{} { return p.Val }
@@ -13924,6 +14676,9 @@ func (p *FloatingAccessibilityMenuEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FloatingAccessibilityMenuEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FloatingAccessibilityMenuEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13943,7 +14698,6 @@ type PrintingMaxSheetsAllowed struct {
 }
 
 func (p *PrintingMaxSheetsAllowed) Name() string          { return "PrintingMaxSheetsAllowed" }
-func (p *PrintingMaxSheetsAllowed) Field() string         { return "" }
 func (p *PrintingMaxSheetsAllowed) Scope() Scope          { return ScopeUser }
 func (p *PrintingMaxSheetsAllowed) Status() Status        { return p.Stat }
 func (p *PrintingMaxSheetsAllowed) UntypedV() interface{} { return p.Val }
@@ -13953,6 +14707,9 @@ func (p *PrintingMaxSheetsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintingMaxSheetsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingMaxSheetsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14007,7 +14764,6 @@ type OnFileAttachedEnterpriseConnectorValueCustomMessages struct {
 }
 
 func (p *OnFileAttachedEnterpriseConnector) Name() string          { return "OnFileAttachedEnterpriseConnector" }
-func (p *OnFileAttachedEnterpriseConnector) Field() string         { return "" }
 func (p *OnFileAttachedEnterpriseConnector) Scope() Scope          { return ScopeUser }
 func (p *OnFileAttachedEnterpriseConnector) Status() Status        { return p.Stat }
 func (p *OnFileAttachedEnterpriseConnector) UntypedV() interface{} { return p.Val }
@@ -14017,6 +14773,9 @@ func (p *OnFileAttachedEnterpriseConnector) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []*OnFileAttachedEnterpriseConnectorValue", m)
 	}
 	return v, nil
+}
+func (p *OnFileAttachedEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OnFileAttachedEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileAttachedEnterpriseConnectorValue)
@@ -14039,9 +14798,6 @@ type DeviceCrostiniArcAdbSideloadingAllowed struct {
 func (p *DeviceCrostiniArcAdbSideloadingAllowed) Name() string {
 	return "DeviceCrostiniArcAdbSideloadingAllowed"
 }
-func (p *DeviceCrostiniArcAdbSideloadingAllowed) Field() string {
-	return "device_crostini_arc_adb_sideloading_allowed.mode"
-}
 func (p *DeviceCrostiniArcAdbSideloadingAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceCrostiniArcAdbSideloadingAllowed) Status() Status        { return p.Stat }
 func (p *DeviceCrostiniArcAdbSideloadingAllowed) UntypedV() interface{} { return p.Val }
@@ -14051,6 +14807,9 @@ func (p *DeviceCrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceCrostiniArcAdbSideloadingAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_crostini_arc_adb_sideloading_allowed", "mode", p.Val)
 }
 func (p *DeviceCrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14107,7 +14866,6 @@ type OnFileDownloadedEnterpriseConnectorValueCustomMessages struct {
 func (p *OnFileDownloadedEnterpriseConnector) Name() string {
 	return "OnFileDownloadedEnterpriseConnector"
 }
-func (p *OnFileDownloadedEnterpriseConnector) Field() string         { return "" }
 func (p *OnFileDownloadedEnterpriseConnector) Scope() Scope          { return ScopeUser }
 func (p *OnFileDownloadedEnterpriseConnector) Status() Status        { return p.Stat }
 func (p *OnFileDownloadedEnterpriseConnector) UntypedV() interface{} { return p.Val }
@@ -14117,6 +14875,9 @@ func (p *OnFileDownloadedEnterpriseConnector) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as []*OnFileDownloadedEnterpriseConnectorValue", m)
 	}
 	return v, nil
+}
+func (p *OnFileDownloadedEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OnFileDownloadedEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileDownloadedEnterpriseConnectorValue)
@@ -14172,7 +14933,6 @@ type OnBulkDataEntryEnterpriseConnectorValueCustomMessages struct {
 func (p *OnBulkDataEntryEnterpriseConnector) Name() string {
 	return "OnBulkDataEntryEnterpriseConnector"
 }
-func (p *OnBulkDataEntryEnterpriseConnector) Field() string         { return "" }
 func (p *OnBulkDataEntryEnterpriseConnector) Scope() Scope          { return ScopeUser }
 func (p *OnBulkDataEntryEnterpriseConnector) Status() Status        { return p.Stat }
 func (p *OnBulkDataEntryEnterpriseConnector) UntypedV() interface{} { return p.Val }
@@ -14182,6 +14942,9 @@ func (p *OnBulkDataEntryEnterpriseConnector) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []*OnBulkDataEntryEnterpriseConnectorValue", m)
 	}
 	return v, nil
+}
+func (p *OnBulkDataEntryEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OnBulkDataEntryEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnBulkDataEntryEnterpriseConnectorValue)
@@ -14201,7 +14964,6 @@ type PluginVmUserId struct {
 }
 
 func (p *PluginVmUserId) Name() string          { return "PluginVmUserId" }
-func (p *PluginVmUserId) Field() string         { return "" }
 func (p *PluginVmUserId) Scope() Scope          { return ScopeUser }
 func (p *PluginVmUserId) Status() Status        { return p.Stat }
 func (p *PluginVmUserId) UntypedV() interface{} { return p.Val }
@@ -14211,6 +14973,9 @@ func (p *PluginVmUserId) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PluginVmUserId) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PluginVmUserId) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -14243,7 +15008,6 @@ type OnSecurityEventEnterpriseConnectorValueEnabledOptInEvents struct {
 func (p *OnSecurityEventEnterpriseConnector) Name() string {
 	return "OnSecurityEventEnterpriseConnector"
 }
-func (p *OnSecurityEventEnterpriseConnector) Field() string         { return "" }
 func (p *OnSecurityEventEnterpriseConnector) Scope() Scope          { return ScopeUser }
 func (p *OnSecurityEventEnterpriseConnector) Status() Status        { return p.Stat }
 func (p *OnSecurityEventEnterpriseConnector) UntypedV() interface{} { return p.Val }
@@ -14253,6 +15017,9 @@ func (p *OnSecurityEventEnterpriseConnector) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []*OnSecurityEventEnterpriseConnectorValue", m)
 	}
 	return v, nil
+}
+func (p *OnSecurityEventEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OnSecurityEventEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnSecurityEventEnterpriseConnectorValue)
@@ -14272,7 +15039,6 @@ type AutoOpenFileTypes struct {
 }
 
 func (p *AutoOpenFileTypes) Name() string          { return "AutoOpenFileTypes" }
-func (p *AutoOpenFileTypes) Field() string         { return "" }
 func (p *AutoOpenFileTypes) Scope() Scope          { return ScopeUser }
 func (p *AutoOpenFileTypes) Status() Status        { return p.Stat }
 func (p *AutoOpenFileTypes) UntypedV() interface{} { return p.Val }
@@ -14282,6 +15048,9 @@ func (p *AutoOpenFileTypes) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoOpenFileTypes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoOpenFileTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -14301,7 +15070,6 @@ type LoginDisplayPasswordButtonEnabled struct {
 }
 
 func (p *LoginDisplayPasswordButtonEnabled) Name() string          { return "LoginDisplayPasswordButtonEnabled" }
-func (p *LoginDisplayPasswordButtonEnabled) Field() string         { return "" }
 func (p *LoginDisplayPasswordButtonEnabled) Scope() Scope          { return ScopeUser }
 func (p *LoginDisplayPasswordButtonEnabled) Status() Status        { return p.Stat }
 func (p *LoginDisplayPasswordButtonEnabled) UntypedV() interface{} { return p.Val }
@@ -14311,6 +15079,9 @@ func (p *LoginDisplayPasswordButtonEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LoginDisplayPasswordButtonEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LoginDisplayPasswordButtonEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14330,7 +15101,6 @@ type ReportDeviceAppInfo struct {
 }
 
 func (p *ReportDeviceAppInfo) Name() string          { return "ReportDeviceAppInfo" }
-func (p *ReportDeviceAppInfo) Field() string         { return "device_reporting.report_app_info" }
 func (p *ReportDeviceAppInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceAppInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceAppInfo) UntypedV() interface{} { return p.Val }
@@ -14340,6 +15110,9 @@ func (p *ReportDeviceAppInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceAppInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_app_info", p.Val)
 }
 func (p *ReportDeviceAppInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14359,7 +15132,6 @@ type AccessibilityImageLabelsEnabled struct {
 }
 
 func (p *AccessibilityImageLabelsEnabled) Name() string          { return "AccessibilityImageLabelsEnabled" }
-func (p *AccessibilityImageLabelsEnabled) Field() string         { return "" }
 func (p *AccessibilityImageLabelsEnabled) Scope() Scope          { return ScopeUser }
 func (p *AccessibilityImageLabelsEnabled) Status() Status        { return p.Stat }
 func (p *AccessibilityImageLabelsEnabled) UntypedV() interface{} { return p.Val }
@@ -14369,6 +15141,9 @@ func (p *AccessibilityImageLabelsEnabled) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AccessibilityImageLabelsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AccessibilityImageLabelsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14388,7 +15163,6 @@ type UserPluginVmAllowed struct {
 }
 
 func (p *UserPluginVmAllowed) Name() string          { return "UserPluginVmAllowed" }
-func (p *UserPluginVmAllowed) Field() string         { return "" }
 func (p *UserPluginVmAllowed) Scope() Scope          { return ScopeUser }
 func (p *UserPluginVmAllowed) Status() Status        { return p.Stat }
 func (p *UserPluginVmAllowed) UntypedV() interface{} { return p.Val }
@@ -14398,6 +15172,9 @@ func (p *UserPluginVmAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserPluginVmAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserPluginVmAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14417,7 +15194,6 @@ type AutoOpenAllowedForURLs struct {
 }
 
 func (p *AutoOpenAllowedForURLs) Name() string          { return "AutoOpenAllowedForURLs" }
-func (p *AutoOpenAllowedForURLs) Field() string         { return "" }
 func (p *AutoOpenAllowedForURLs) Scope() Scope          { return ScopeUser }
 func (p *AutoOpenAllowedForURLs) Status() Status        { return p.Stat }
 func (p *AutoOpenAllowedForURLs) UntypedV() interface{} { return p.Val }
@@ -14427,6 +15203,9 @@ func (p *AutoOpenAllowedForURLs) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoOpenAllowedForURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoOpenAllowedForURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -14446,7 +15225,6 @@ type ReportDeviceBluetoothInfo struct {
 }
 
 func (p *ReportDeviceBluetoothInfo) Name() string          { return "ReportDeviceBluetoothInfo" }
-func (p *ReportDeviceBluetoothInfo) Field() string         { return "device_reporting.report_bluetooth_info" }
 func (p *ReportDeviceBluetoothInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceBluetoothInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceBluetoothInfo) UntypedV() interface{} { return p.Val }
@@ -14456,6 +15234,9 @@ func (p *ReportDeviceBluetoothInfo) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBluetoothInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_bluetooth_info", p.Val)
 }
 func (p *ReportDeviceBluetoothInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14475,7 +15256,6 @@ type ReportDeviceFanInfo struct {
 }
 
 func (p *ReportDeviceFanInfo) Name() string          { return "ReportDeviceFanInfo" }
-func (p *ReportDeviceFanInfo) Field() string         { return "device_reporting.report_fan_info" }
 func (p *ReportDeviceFanInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceFanInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceFanInfo) UntypedV() interface{} { return p.Val }
@@ -14485,6 +15265,9 @@ func (p *ReportDeviceFanInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceFanInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_fan_info", p.Val)
 }
 func (p *ReportDeviceFanInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14504,7 +15287,6 @@ type ReportDeviceVpdInfo struct {
 }
 
 func (p *ReportDeviceVpdInfo) Name() string          { return "ReportDeviceVpdInfo" }
-func (p *ReportDeviceVpdInfo) Field() string         { return "device_reporting.report_vpd_info" }
 func (p *ReportDeviceVpdInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceVpdInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceVpdInfo) UntypedV() interface{} { return p.Val }
@@ -14514,6 +15296,9 @@ func (p *ReportDeviceVpdInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceVpdInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_vpd_info", p.Val)
 }
 func (p *ReportDeviceVpdInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14533,7 +15318,6 @@ type EnableExperimentalPolicies struct {
 }
 
 func (p *EnableExperimentalPolicies) Name() string          { return "EnableExperimentalPolicies" }
-func (p *EnableExperimentalPolicies) Field() string         { return "" }
 func (p *EnableExperimentalPolicies) Scope() Scope          { return ScopeUser }
 func (p *EnableExperimentalPolicies) Status() Status        { return p.Stat }
 func (p *EnableExperimentalPolicies) UntypedV() interface{} { return p.Val }
@@ -14543,6 +15327,9 @@ func (p *EnableExperimentalPolicies) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *EnableExperimentalPolicies) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableExperimentalPolicies) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -14562,7 +15349,6 @@ type PluginVmDataCollectionAllowed struct {
 }
 
 func (p *PluginVmDataCollectionAllowed) Name() string          { return "PluginVmDataCollectionAllowed" }
-func (p *PluginVmDataCollectionAllowed) Field() string         { return "" }
 func (p *PluginVmDataCollectionAllowed) Scope() Scope          { return ScopeUser }
 func (p *PluginVmDataCollectionAllowed) Status() Status        { return p.Stat }
 func (p *PluginVmDataCollectionAllowed) UntypedV() interface{} { return p.Val }
@@ -14572,6 +15358,9 @@ func (p *PluginVmDataCollectionAllowed) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PluginVmDataCollectionAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PluginVmDataCollectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14591,7 +15380,6 @@ type IntensiveWakeUpThrottlingEnabled struct {
 }
 
 func (p *IntensiveWakeUpThrottlingEnabled) Name() string          { return "IntensiveWakeUpThrottlingEnabled" }
-func (p *IntensiveWakeUpThrottlingEnabled) Field() string         { return "" }
 func (p *IntensiveWakeUpThrottlingEnabled) Scope() Scope          { return ScopeUser }
 func (p *IntensiveWakeUpThrottlingEnabled) Status() Status        { return p.Stat }
 func (p *IntensiveWakeUpThrottlingEnabled) UntypedV() interface{} { return p.Val }
@@ -14601,6 +15389,9 @@ func (p *IntensiveWakeUpThrottlingEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *IntensiveWakeUpThrottlingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IntensiveWakeUpThrottlingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14619,10 +15410,7 @@ type DeviceMinimumVersionAueMessage struct {
 	Val  string
 }
 
-func (p *DeviceMinimumVersionAueMessage) Name() string { return "DeviceMinimumVersionAueMessage" }
-func (p *DeviceMinimumVersionAueMessage) Field() string {
-	return "device_minimum_version_aue_message.value"
-}
+func (p *DeviceMinimumVersionAueMessage) Name() string          { return "DeviceMinimumVersionAueMessage" }
 func (p *DeviceMinimumVersionAueMessage) Scope() Scope          { return ScopeDevice }
 func (p *DeviceMinimumVersionAueMessage) Status() Status        { return p.Stat }
 func (p *DeviceMinimumVersionAueMessage) UntypedV() interface{} { return p.Val }
@@ -14632,6 +15420,9 @@ func (p *DeviceMinimumVersionAueMessage) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceMinimumVersionAueMessage) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_minimum_version_aue_message", "value", p.Val)
 }
 func (p *DeviceMinimumVersionAueMessage) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -14653,7 +15444,6 @@ type DefaultSearchProviderContextMenuAccessAllowed struct {
 func (p *DefaultSearchProviderContextMenuAccessAllowed) Name() string {
 	return "DefaultSearchProviderContextMenuAccessAllowed"
 }
-func (p *DefaultSearchProviderContextMenuAccessAllowed) Field() string         { return "" }
 func (p *DefaultSearchProviderContextMenuAccessAllowed) Scope() Scope          { return ScopeUser }
 func (p *DefaultSearchProviderContextMenuAccessAllowed) Status() Status        { return p.Stat }
 func (p *DefaultSearchProviderContextMenuAccessAllowed) UntypedV() interface{} { return p.Val }
@@ -14663,6 +15453,9 @@ func (p *DefaultSearchProviderContextMenuAccessAllowed) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderContextMenuAccessAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderContextMenuAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14682,7 +15475,6 @@ type CrostiniPortForwardingAllowed struct {
 }
 
 func (p *CrostiniPortForwardingAllowed) Name() string          { return "CrostiniPortForwardingAllowed" }
-func (p *CrostiniPortForwardingAllowed) Field() string         { return "" }
 func (p *CrostiniPortForwardingAllowed) Scope() Scope          { return ScopeUser }
 func (p *CrostiniPortForwardingAllowed) Status() Status        { return p.Stat }
 func (p *CrostiniPortForwardingAllowed) UntypedV() interface{} { return p.Val }
@@ -14692,6 +15484,9 @@ func (p *CrostiniPortForwardingAllowed) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniPortForwardingAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniPortForwardingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14719,7 +15514,6 @@ type VirtualKeyboardFeaturesValue struct {
 }
 
 func (p *VirtualKeyboardFeatures) Name() string          { return "VirtualKeyboardFeatures" }
-func (p *VirtualKeyboardFeatures) Field() string         { return "" }
 func (p *VirtualKeyboardFeatures) Scope() Scope          { return ScopeUser }
 func (p *VirtualKeyboardFeatures) Status() Status        { return p.Stat }
 func (p *VirtualKeyboardFeatures) UntypedV() interface{} { return p.Val }
@@ -14729,6 +15523,9 @@ func (p *VirtualKeyboardFeatures) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as *VirtualKeyboardFeaturesValue", m)
 	}
 	return v, nil
+}
+func (p *VirtualKeyboardFeatures) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VirtualKeyboardFeatures) Equal(iface interface{}) bool {
 	v, ok := iface.(*VirtualKeyboardFeaturesValue)
@@ -14749,7 +15546,6 @@ type PinUnlockAutosubmitEnabled struct {
 }
 
 func (p *PinUnlockAutosubmitEnabled) Name() string          { return "PinUnlockAutosubmitEnabled" }
-func (p *PinUnlockAutosubmitEnabled) Field() string         { return "" }
 func (p *PinUnlockAutosubmitEnabled) Scope() Scope          { return ScopeUser }
 func (p *PinUnlockAutosubmitEnabled) Status() Status        { return p.Stat }
 func (p *PinUnlockAutosubmitEnabled) UntypedV() interface{} { return p.Val }
@@ -14759,6 +15555,9 @@ func (p *PinUnlockAutosubmitEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PinUnlockAutosubmitEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PinUnlockAutosubmitEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14778,7 +15577,6 @@ type LockScreenReauthenticationEnabled struct {
 }
 
 func (p *LockScreenReauthenticationEnabled) Name() string          { return "LockScreenReauthenticationEnabled" }
-func (p *LockScreenReauthenticationEnabled) Field() string         { return "" }
 func (p *LockScreenReauthenticationEnabled) Scope() Scope          { return ScopeUser }
 func (p *LockScreenReauthenticationEnabled) Status() Status        { return p.Stat }
 func (p *LockScreenReauthenticationEnabled) UntypedV() interface{} { return p.Val }
@@ -14788,6 +15586,9 @@ func (p *LockScreenReauthenticationEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LockScreenReauthenticationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LockScreenReauthenticationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14807,7 +15608,6 @@ type DeletePrintJobHistoryAllowed struct {
 }
 
 func (p *DeletePrintJobHistoryAllowed) Name() string          { return "DeletePrintJobHistoryAllowed" }
-func (p *DeletePrintJobHistoryAllowed) Field() string         { return "" }
 func (p *DeletePrintJobHistoryAllowed) Scope() Scope          { return ScopeUser }
 func (p *DeletePrintJobHistoryAllowed) Status() Status        { return p.Stat }
 func (p *DeletePrintJobHistoryAllowed) UntypedV() interface{} { return p.Val }
@@ -14817,6 +15617,9 @@ func (p *DeletePrintJobHistoryAllowed) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeletePrintJobHistoryAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeletePrintJobHistoryAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14837,7 +15640,6 @@ type EmojiSuggestionEnabled struct {
 }
 
 func (p *EmojiSuggestionEnabled) Name() string          { return "EmojiSuggestionEnabled" }
-func (p *EmojiSuggestionEnabled) Field() string         { return "" }
 func (p *EmojiSuggestionEnabled) Scope() Scope          { return ScopeUser }
 func (p *EmojiSuggestionEnabled) Status() Status        { return p.Stat }
 func (p *EmojiSuggestionEnabled) UntypedV() interface{} { return p.Val }
@@ -14847,6 +15649,9 @@ func (p *EmojiSuggestionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EmojiSuggestionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EmojiSuggestionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14868,9 +15673,6 @@ type ManagedGuestSessionPrivacyWarningsEnabled struct {
 func (p *ManagedGuestSessionPrivacyWarningsEnabled) Name() string {
 	return "ManagedGuestSessionPrivacyWarningsEnabled"
 }
-func (p *ManagedGuestSessionPrivacyWarningsEnabled) Field() string {
-	return "managed_guest_session_privacy_warnings.enabled"
-}
 func (p *ManagedGuestSessionPrivacyWarningsEnabled) Scope() Scope          { return ScopeDevice }
 func (p *ManagedGuestSessionPrivacyWarningsEnabled) Status() Status        { return p.Stat }
 func (p *ManagedGuestSessionPrivacyWarningsEnabled) UntypedV() interface{} { return p.Val }
@@ -14880,6 +15682,9 @@ func (p *ManagedGuestSessionPrivacyWarningsEnabled) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ManagedGuestSessionPrivacyWarningsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "managed_guest_session_privacy_warnings", "enabled", p.Val)
 }
 func (p *ManagedGuestSessionPrivacyWarningsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14899,7 +15704,6 @@ type PluginVmRequiredFreeDiskSpace struct {
 }
 
 func (p *PluginVmRequiredFreeDiskSpace) Name() string          { return "PluginVmRequiredFreeDiskSpace" }
-func (p *PluginVmRequiredFreeDiskSpace) Field() string         { return "" }
 func (p *PluginVmRequiredFreeDiskSpace) Scope() Scope          { return ScopeUser }
 func (p *PluginVmRequiredFreeDiskSpace) Status() Status        { return p.Stat }
 func (p *PluginVmRequiredFreeDiskSpace) UntypedV() interface{} { return p.Val }
@@ -14909,6 +15713,9 @@ func (p *PluginVmRequiredFreeDiskSpace) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PluginVmRequiredFreeDiskSpace) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PluginVmRequiredFreeDiskSpace) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14929,7 +15736,6 @@ type SuggestedContentEnabled struct {
 }
 
 func (p *SuggestedContentEnabled) Name() string          { return "SuggestedContentEnabled" }
-func (p *SuggestedContentEnabled) Field() string         { return "" }
 func (p *SuggestedContentEnabled) Scope() Scope          { return ScopeUser }
 func (p *SuggestedContentEnabled) Status() Status        { return p.Stat }
 func (p *SuggestedContentEnabled) UntypedV() interface{} { return p.Val }
@@ -14939,6 +15745,9 @@ func (p *SuggestedContentEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SuggestedContentEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SuggestedContentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14958,7 +15767,6 @@ type EnterpriseRealTimeUrlCheckMode struct {
 }
 
 func (p *EnterpriseRealTimeUrlCheckMode) Name() string          { return "EnterpriseRealTimeUrlCheckMode" }
-func (p *EnterpriseRealTimeUrlCheckMode) Field() string         { return "" }
 func (p *EnterpriseRealTimeUrlCheckMode) Scope() Scope          { return ScopeUser }
 func (p *EnterpriseRealTimeUrlCheckMode) Status() Status        { return p.Stat }
 func (p *EnterpriseRealTimeUrlCheckMode) UntypedV() interface{} { return p.Val }
@@ -14968,6 +15776,9 @@ func (p *EnterpriseRealTimeUrlCheckMode) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *EnterpriseRealTimeUrlCheckMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnterpriseRealTimeUrlCheckMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14986,7 +15797,6 @@ type AssistantOnboardingMode struct {
 }
 
 func (p *AssistantOnboardingMode) Name() string          { return "AssistantOnboardingMode" }
-func (p *AssistantOnboardingMode) Field() string         { return "" }
 func (p *AssistantOnboardingMode) Scope() Scope          { return ScopeUser }
 func (p *AssistantOnboardingMode) Status() Status        { return p.Stat }
 func (p *AssistantOnboardingMode) UntypedV() interface{} { return p.Val }
@@ -14996,6 +15806,9 @@ func (p *AssistantOnboardingMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AssistantOnboardingMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AssistantOnboardingMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -15021,7 +15834,6 @@ type DeviceExternalPrintServersValue struct {
 }
 
 func (p *DeviceExternalPrintServers) Name() string          { return "DeviceExternalPrintServers" }
-func (p *DeviceExternalPrintServers) Field() string         { return "external_print_servers.external_policy" }
 func (p *DeviceExternalPrintServers) Scope() Scope          { return ScopeDevice }
 func (p *DeviceExternalPrintServers) Status() Status        { return p.Stat }
 func (p *DeviceExternalPrintServers) UntypedV() interface{} { return p.Val }
@@ -15031,6 +15843,9 @@ func (p *DeviceExternalPrintServers) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceExternalPrintServersValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceExternalPrintServers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "external_print_servers", "external_policy", p.Val)
 }
 func (p *DeviceExternalPrintServers) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceExternalPrintServersValue)
@@ -15053,9 +15868,6 @@ type DeviceExternalPrintServersAllowlist struct {
 func (p *DeviceExternalPrintServersAllowlist) Name() string {
 	return "DeviceExternalPrintServersAllowlist"
 }
-func (p *DeviceExternalPrintServersAllowlist) Field() string {
-	return "external_print_servers_allowlist.allowlist"
-}
 func (p *DeviceExternalPrintServersAllowlist) Scope() Scope          { return ScopeDevice }
 func (p *DeviceExternalPrintServersAllowlist) Status() Status        { return p.Stat }
 func (p *DeviceExternalPrintServersAllowlist) UntypedV() interface{} { return p.Val }
@@ -15065,6 +15877,9 @@ func (p *DeviceExternalPrintServersAllowlist) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceExternalPrintServersAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "external_print_servers_allowlist", "allowlist", p.Val)
 }
 func (p *DeviceExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15084,7 +15899,6 @@ type SafeBrowsingAllowlistDomains struct {
 }
 
 func (p *SafeBrowsingAllowlistDomains) Name() string          { return "SafeBrowsingAllowlistDomains" }
-func (p *SafeBrowsingAllowlistDomains) Field() string         { return "" }
 func (p *SafeBrowsingAllowlistDomains) Scope() Scope          { return ScopeUser }
 func (p *SafeBrowsingAllowlistDomains) Status() Status        { return p.Stat }
 func (p *SafeBrowsingAllowlistDomains) UntypedV() interface{} { return p.Val }
@@ -15094,6 +15908,9 @@ func (p *SafeBrowsingAllowlistDomains) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingAllowlistDomains) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SafeBrowsingAllowlistDomains) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15113,7 +15930,6 @@ type DevicePrintersAccessMode struct {
 }
 
 func (p *DevicePrintersAccessMode) Name() string          { return "DevicePrintersAccessMode" }
-func (p *DevicePrintersAccessMode) Field() string         { return "device_printers_access_mode.access_mode" }
 func (p *DevicePrintersAccessMode) Scope() Scope          { return ScopeDevice }
 func (p *DevicePrintersAccessMode) Status() Status        { return p.Stat }
 func (p *DevicePrintersAccessMode) UntypedV() interface{} { return p.Val }
@@ -15123,6 +15939,9 @@ func (p *DevicePrintersAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DevicePrintersAccessMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers_access_mode", "access_mode", p.Val)
 }
 func (p *DevicePrintersAccessMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -15142,7 +15961,6 @@ type DevicePrintersBlocklist struct {
 }
 
 func (p *DevicePrintersBlocklist) Name() string          { return "DevicePrintersBlocklist" }
-func (p *DevicePrintersBlocklist) Field() string         { return "device_printers_blocklist.blocklist" }
 func (p *DevicePrintersBlocklist) Scope() Scope          { return ScopeDevice }
 func (p *DevicePrintersBlocklist) Status() Status        { return p.Stat }
 func (p *DevicePrintersBlocklist) UntypedV() interface{} { return p.Val }
@@ -15152,6 +15970,9 @@ func (p *DevicePrintersBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DevicePrintersBlocklist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers_blocklist", "blocklist", p.Val)
 }
 func (p *DevicePrintersBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15171,7 +15992,6 @@ type DevicePrintersAllowlist struct {
 }
 
 func (p *DevicePrintersAllowlist) Name() string          { return "DevicePrintersAllowlist" }
-func (p *DevicePrintersAllowlist) Field() string         { return "device_printers_allowlist.allowlist" }
 func (p *DevicePrintersAllowlist) Scope() Scope          { return ScopeDevice }
 func (p *DevicePrintersAllowlist) Status() Status        { return p.Stat }
 func (p *DevicePrintersAllowlist) UntypedV() interface{} { return p.Val }
@@ -15181,6 +16001,9 @@ func (p *DevicePrintersAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DevicePrintersAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers_allowlist", "allowlist", p.Val)
 }
 func (p *DevicePrintersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15200,7 +16023,6 @@ type URLBlocklist struct {
 }
 
 func (p *URLBlocklist) Name() string          { return "URLBlocklist" }
-func (p *URLBlocklist) Field() string         { return "" }
 func (p *URLBlocklist) Scope() Scope          { return ScopeUser }
 func (p *URLBlocklist) Status() Status        { return p.Stat }
 func (p *URLBlocklist) UntypedV() interface{} { return p.Val }
@@ -15210,6 +16032,9 @@ func (p *URLBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *URLBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *URLBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15229,7 +16054,6 @@ type URLAllowlist struct {
 }
 
 func (p *URLAllowlist) Name() string          { return "URLAllowlist" }
-func (p *URLAllowlist) Field() string         { return "" }
 func (p *URLAllowlist) Scope() Scope          { return ScopeUser }
 func (p *URLAllowlist) Status() Status        { return p.Stat }
 func (p *URLAllowlist) UntypedV() interface{} { return p.Val }
@@ -15239,6 +16063,9 @@ func (p *URLAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *URLAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *URLAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15258,7 +16085,6 @@ type ExtensionInstallAllowlist struct {
 }
 
 func (p *ExtensionInstallAllowlist) Name() string          { return "ExtensionInstallAllowlist" }
-func (p *ExtensionInstallAllowlist) Field() string         { return "" }
 func (p *ExtensionInstallAllowlist) Scope() Scope          { return ScopeUser }
 func (p *ExtensionInstallAllowlist) Status() Status        { return p.Stat }
 func (p *ExtensionInstallAllowlist) UntypedV() interface{} { return p.Val }
@@ -15268,6 +16094,9 @@ func (p *ExtensionInstallAllowlist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15288,7 +16117,6 @@ type ShowFullUrlsInAddressBar struct {
 }
 
 func (p *ShowFullUrlsInAddressBar) Name() string          { return "ShowFullUrlsInAddressBar" }
-func (p *ShowFullUrlsInAddressBar) Field() string         { return "" }
 func (p *ShowFullUrlsInAddressBar) Scope() Scope          { return ScopeUser }
 func (p *ShowFullUrlsInAddressBar) Status() Status        { return p.Stat }
 func (p *ShowFullUrlsInAddressBar) UntypedV() interface{} { return p.Val }
@@ -15298,6 +16126,9 @@ func (p *ShowFullUrlsInAddressBar) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ShowFullUrlsInAddressBar) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShowFullUrlsInAddressBar) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15317,7 +16148,6 @@ type ExtensionInstallBlocklist struct {
 }
 
 func (p *ExtensionInstallBlocklist) Name() string          { return "ExtensionInstallBlocklist" }
-func (p *ExtensionInstallBlocklist) Field() string         { return "" }
 func (p *ExtensionInstallBlocklist) Scope() Scope          { return ScopeUser }
 func (p *ExtensionInstallBlocklist) Status() Status        { return p.Stat }
 func (p *ExtensionInstallBlocklist) UntypedV() interface{} { return p.Val }
@@ -15327,6 +16157,9 @@ func (p *ExtensionInstallBlocklist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15346,7 +16179,6 @@ type ReportDeviceSystemInfo struct {
 }
 
 func (p *ReportDeviceSystemInfo) Name() string          { return "ReportDeviceSystemInfo" }
-func (p *ReportDeviceSystemInfo) Field() string         { return "device_reporting.report_system_info" }
 func (p *ReportDeviceSystemInfo) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceSystemInfo) Status() Status        { return p.Stat }
 func (p *ReportDeviceSystemInfo) UntypedV() interface{} { return p.Val }
@@ -15356,6 +16188,9 @@ func (p *ReportDeviceSystemInfo) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceSystemInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_system_info", p.Val)
 }
 func (p *ReportDeviceSystemInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15375,7 +16210,6 @@ type AutoplayAllowlist struct {
 }
 
 func (p *AutoplayAllowlist) Name() string          { return "AutoplayAllowlist" }
-func (p *AutoplayAllowlist) Field() string         { return "" }
 func (p *AutoplayAllowlist) Scope() Scope          { return ScopeUser }
 func (p *AutoplayAllowlist) Status() Status        { return p.Stat }
 func (p *AutoplayAllowlist) UntypedV() interface{} { return p.Val }
@@ -15385,6 +16219,9 @@ func (p *AutoplayAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoplayAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoplayAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15409,7 +16246,6 @@ type DevicePrintersValue struct {
 }
 
 func (p *DevicePrinters) Name() string          { return "DevicePrinters" }
-func (p *DevicePrinters) Field() string         { return "device_printers.external_policy" }
 func (p *DevicePrinters) Scope() Scope          { return ScopeDevice }
 func (p *DevicePrinters) Status() Status        { return p.Stat }
 func (p *DevicePrinters) UntypedV() interface{} { return p.Val }
@@ -15419,6 +16255,9 @@ func (p *DevicePrinters) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *DevicePrintersValue", m)
 	}
 	return v, nil
+}
+func (p *DevicePrinters) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers", "external_policy", p.Val)
 }
 func (p *DevicePrinters) Equal(iface interface{}) bool {
 	v, ok := iface.(*DevicePrintersValue)
@@ -15438,7 +16277,6 @@ type AuthNegotiateDelegateAllowlist struct {
 }
 
 func (p *AuthNegotiateDelegateAllowlist) Name() string          { return "AuthNegotiateDelegateAllowlist" }
-func (p *AuthNegotiateDelegateAllowlist) Field() string         { return "" }
 func (p *AuthNegotiateDelegateAllowlist) Scope() Scope          { return ScopeUser }
 func (p *AuthNegotiateDelegateAllowlist) Status() Status        { return p.Stat }
 func (p *AuthNegotiateDelegateAllowlist) UntypedV() interface{} { return p.Val }
@@ -15448,6 +16286,9 @@ func (p *AuthNegotiateDelegateAllowlist) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AuthNegotiateDelegateAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AuthNegotiateDelegateAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -15467,7 +16308,6 @@ type AuthServerAllowlist struct {
 }
 
 func (p *AuthServerAllowlist) Name() string          { return "AuthServerAllowlist" }
-func (p *AuthServerAllowlist) Field() string         { return "" }
 func (p *AuthServerAllowlist) Scope() Scope          { return ScopeUser }
 func (p *AuthServerAllowlist) Status() Status        { return p.Stat }
 func (p *AuthServerAllowlist) UntypedV() interface{} { return p.Val }
@@ -15477,6 +16317,9 @@ func (p *AuthServerAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AuthServerAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AuthServerAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -15496,7 +16339,6 @@ type InsecureFormsWarningsEnabled struct {
 }
 
 func (p *InsecureFormsWarningsEnabled) Name() string          { return "InsecureFormsWarningsEnabled" }
-func (p *InsecureFormsWarningsEnabled) Field() string         { return "" }
 func (p *InsecureFormsWarningsEnabled) Scope() Scope          { return ScopeUser }
 func (p *InsecureFormsWarningsEnabled) Status() Status        { return p.Stat }
 func (p *InsecureFormsWarningsEnabled) UntypedV() interface{} { return p.Val }
@@ -15506,6 +16348,9 @@ func (p *InsecureFormsWarningsEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *InsecureFormsWarningsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsecureFormsWarningsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15525,7 +16370,6 @@ type SpellcheckLanguageBlocklist struct {
 }
 
 func (p *SpellcheckLanguageBlocklist) Name() string          { return "SpellcheckLanguageBlocklist" }
-func (p *SpellcheckLanguageBlocklist) Field() string         { return "" }
 func (p *SpellcheckLanguageBlocklist) Scope() Scope          { return ScopeUser }
 func (p *SpellcheckLanguageBlocklist) Status() Status        { return p.Stat }
 func (p *SpellcheckLanguageBlocklist) UntypedV() interface{} { return p.Val }
@@ -15535,6 +16379,9 @@ func (p *SpellcheckLanguageBlocklist) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SpellcheckLanguageBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpellcheckLanguageBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15554,7 +16401,6 @@ type ExternalPrintServersAllowlist struct {
 }
 
 func (p *ExternalPrintServersAllowlist) Name() string          { return "ExternalPrintServersAllowlist" }
-func (p *ExternalPrintServersAllowlist) Field() string         { return "" }
 func (p *ExternalPrintServersAllowlist) Scope() Scope          { return ScopeUser }
 func (p *ExternalPrintServersAllowlist) Status() Status        { return p.Stat }
 func (p *ExternalPrintServersAllowlist) UntypedV() interface{} { return p.Val }
@@ -15564,6 +16410,9 @@ func (p *ExternalPrintServersAllowlist) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExternalPrintServersAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15583,7 +16432,6 @@ type DefaultSerialGuardSetting struct {
 }
 
 func (p *DefaultSerialGuardSetting) Name() string          { return "DefaultSerialGuardSetting" }
-func (p *DefaultSerialGuardSetting) Field() string         { return "" }
 func (p *DefaultSerialGuardSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultSerialGuardSetting) Status() Status        { return p.Stat }
 func (p *DefaultSerialGuardSetting) UntypedV() interface{} { return p.Val }
@@ -15593,6 +16441,9 @@ func (p *DefaultSerialGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultSerialGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSerialGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -15612,7 +16463,6 @@ type SerialAskForUrls struct {
 }
 
 func (p *SerialAskForUrls) Name() string          { return "SerialAskForUrls" }
-func (p *SerialAskForUrls) Field() string         { return "" }
 func (p *SerialAskForUrls) Scope() Scope          { return ScopeUser }
 func (p *SerialAskForUrls) Status() Status        { return p.Stat }
 func (p *SerialAskForUrls) UntypedV() interface{} { return p.Val }
@@ -15622,6 +16472,9 @@ func (p *SerialAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SerialAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SerialAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15641,7 +16494,6 @@ type SerialBlockedForUrls struct {
 }
 
 func (p *SerialBlockedForUrls) Name() string          { return "SerialBlockedForUrls" }
-func (p *SerialBlockedForUrls) Field() string         { return "" }
 func (p *SerialBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *SerialBlockedForUrls) Status() Status        { return p.Stat }
 func (p *SerialBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -15651,6 +16503,9 @@ func (p *SerialBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SerialBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SerialBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15670,7 +16525,6 @@ type DefaultSensorsSetting struct {
 }
 
 func (p *DefaultSensorsSetting) Name() string          { return "DefaultSensorsSetting" }
-func (p *DefaultSensorsSetting) Field() string         { return "" }
 func (p *DefaultSensorsSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultSensorsSetting) Status() Status        { return p.Stat }
 func (p *DefaultSensorsSetting) UntypedV() interface{} { return p.Val }
@@ -15680,6 +16534,9 @@ func (p *DefaultSensorsSetting) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultSensorsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSensorsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -15699,7 +16556,6 @@ type SensorsAllowedForUrls struct {
 }
 
 func (p *SensorsAllowedForUrls) Name() string          { return "SensorsAllowedForUrls" }
-func (p *SensorsAllowedForUrls) Field() string         { return "" }
 func (p *SensorsAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *SensorsAllowedForUrls) Status() Status        { return p.Stat }
 func (p *SensorsAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -15709,6 +16565,9 @@ func (p *SensorsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SensorsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SensorsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15728,7 +16587,6 @@ type SensorsBlockedForUrls struct {
 }
 
 func (p *SensorsBlockedForUrls) Name() string          { return "SensorsBlockedForUrls" }
-func (p *SensorsBlockedForUrls) Field() string         { return "" }
 func (p *SensorsBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *SensorsBlockedForUrls) Status() Status        { return p.Stat }
 func (p *SensorsBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -15738,6 +16596,9 @@ func (p *SensorsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SensorsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SensorsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15757,10 +16618,7 @@ type DeviceChannelDowngradeBehavior struct {
 	Val  int
 }
 
-func (p *DeviceChannelDowngradeBehavior) Name() string { return "DeviceChannelDowngradeBehavior" }
-func (p *DeviceChannelDowngradeBehavior) Field() string {
-	return "auto_update_settings.channel_downgrade_behavior"
-}
+func (p *DeviceChannelDowngradeBehavior) Name() string          { return "DeviceChannelDowngradeBehavior" }
 func (p *DeviceChannelDowngradeBehavior) Scope() Scope          { return ScopeDevice }
 func (p *DeviceChannelDowngradeBehavior) Status() Status        { return p.Stat }
 func (p *DeviceChannelDowngradeBehavior) UntypedV() interface{} { return p.Val }
@@ -15770,6 +16628,9 @@ func (p *DeviceChannelDowngradeBehavior) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceChannelDowngradeBehavior) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "channel_downgrade_behavior", p.Val)
 }
 func (p *DeviceChannelDowngradeBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -15789,7 +16650,6 @@ type NoteTakingAppsLockScreenAllowlist struct {
 }
 
 func (p *NoteTakingAppsLockScreenAllowlist) Name() string          { return "NoteTakingAppsLockScreenAllowlist" }
-func (p *NoteTakingAppsLockScreenAllowlist) Field() string         { return "" }
 func (p *NoteTakingAppsLockScreenAllowlist) Scope() Scope          { return ScopeUser }
 func (p *NoteTakingAppsLockScreenAllowlist) Status() Status        { return p.Stat }
 func (p *NoteTakingAppsLockScreenAllowlist) UntypedV() interface{} { return p.Val }
@@ -15799,6 +16659,9 @@ func (p *NoteTakingAppsLockScreenAllowlist) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *NoteTakingAppsLockScreenAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NoteTakingAppsLockScreenAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15819,7 +16682,6 @@ type NearbyShareAllowed struct {
 }
 
 func (p *NearbyShareAllowed) Name() string          { return "NearbyShareAllowed" }
-func (p *NearbyShareAllowed) Field() string         { return "" }
 func (p *NearbyShareAllowed) Scope() Scope          { return ScopeUser }
 func (p *NearbyShareAllowed) Status() Status        { return p.Stat }
 func (p *NearbyShareAllowed) UntypedV() interface{} { return p.Val }
@@ -15829,6 +16691,9 @@ func (p *NearbyShareAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NearbyShareAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NearbyShareAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15858,7 +16723,6 @@ type PerAppTimeLimitsAllowlistValueAppList struct {
 }
 
 func (p *PerAppTimeLimitsAllowlist) Name() string          { return "PerAppTimeLimitsAllowlist" }
-func (p *PerAppTimeLimitsAllowlist) Field() string         { return "" }
 func (p *PerAppTimeLimitsAllowlist) Scope() Scope          { return ScopeUser }
 func (p *PerAppTimeLimitsAllowlist) Status() Status        { return p.Stat }
 func (p *PerAppTimeLimitsAllowlist) UntypedV() interface{} { return p.Val }
@@ -15868,6 +16732,9 @@ func (p *PerAppTimeLimitsAllowlist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as *PerAppTimeLimitsAllowlistValue", m)
 	}
 	return v, nil
+}
+func (p *PerAppTimeLimitsAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PerAppTimeLimitsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(*PerAppTimeLimitsAllowlistValue)
@@ -15889,9 +16756,6 @@ type DeviceShowLowDiskSpaceNotification struct {
 func (p *DeviceShowLowDiskSpaceNotification) Name() string {
 	return "DeviceShowLowDiskSpaceNotification"
 }
-func (p *DeviceShowLowDiskSpaceNotification) Field() string {
-	return "device_show_low_disk_space_notification.device_show_low_disk_space_notification"
-}
 func (p *DeviceShowLowDiskSpaceNotification) Scope() Scope          { return ScopeDevice }
 func (p *DeviceShowLowDiskSpaceNotification) Status() Status        { return p.Stat }
 func (p *DeviceShowLowDiskSpaceNotification) UntypedV() interface{} { return p.Val }
@@ -15901,6 +16765,9 @@ func (p *DeviceShowLowDiskSpaceNotification) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceShowLowDiskSpaceNotification) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_show_low_disk_space_notification", "device_show_low_disk_space_notification", p.Val)
 }
 func (p *DeviceShowLowDiskSpaceNotification) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15920,7 +16787,6 @@ type DeviceUserAllowlist struct {
 }
 
 func (p *DeviceUserAllowlist) Name() string          { return "DeviceUserAllowlist" }
-func (p *DeviceUserAllowlist) Field() string         { return "user_allowlist.user_allowlist" }
 func (p *DeviceUserAllowlist) Scope() Scope          { return ScopeDevice }
 func (p *DeviceUserAllowlist) Status() Status        { return p.Stat }
 func (p *DeviceUserAllowlist) UntypedV() interface{} { return p.Val }
@@ -15930,6 +16796,9 @@ func (p *DeviceUserAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceUserAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "user_allowlist", "user_allowlist", p.Val)
 }
 func (p *DeviceUserAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15948,7 +16817,6 @@ type UsbDetachableAllowlist struct {
 }
 
 func (p *UsbDetachableAllowlist) Name() string          { return "UsbDetachableAllowlist" }
-func (p *UsbDetachableAllowlist) Field() string         { return "usb_detachable_allowlist.id" }
 func (p *UsbDetachableAllowlist) Scope() Scope          { return ScopeDevice }
 func (p *UsbDetachableAllowlist) Status() Status        { return p.Stat }
 func (p *UsbDetachableAllowlist) UntypedV() interface{} { return p.Val }
@@ -15958,6 +16826,9 @@ func (p *UsbDetachableAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as []*RefUsbDeviceIdInclusive", m)
 	}
 	return v, nil
+}
+func (p *UsbDetachableAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "usb_detachable_allowlist", "id", p.Val)
 }
 func (p *UsbDetachableAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefUsbDeviceIdInclusive)
@@ -15979,7 +16850,6 @@ type InsecurePrivateNetworkRequestsAllowed struct {
 func (p *InsecurePrivateNetworkRequestsAllowed) Name() string {
 	return "InsecurePrivateNetworkRequestsAllowed"
 }
-func (p *InsecurePrivateNetworkRequestsAllowed) Field() string         { return "" }
 func (p *InsecurePrivateNetworkRequestsAllowed) Scope() Scope          { return ScopeUser }
 func (p *InsecurePrivateNetworkRequestsAllowed) Status() Status        { return p.Stat }
 func (p *InsecurePrivateNetworkRequestsAllowed) UntypedV() interface{} { return p.Val }
@@ -15989,6 +16859,9 @@ func (p *InsecurePrivateNetworkRequestsAllowed) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *InsecurePrivateNetworkRequestsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsecurePrivateNetworkRequestsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16010,7 +16883,6 @@ type InsecurePrivateNetworkRequestsAllowedForUrls struct {
 func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Name() string {
 	return "InsecurePrivateNetworkRequestsAllowedForUrls"
 }
-func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Field() string         { return "" }
 func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Status() Status        { return p.Stat }
 func (p *InsecurePrivateNetworkRequestsAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -16020,6 +16892,9 @@ func (p *InsecurePrivateNetworkRequestsAllowedForUrls) UnmarshalAs(m json.RawMes
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *InsecurePrivateNetworkRequestsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16039,7 +16914,6 @@ type UserPrintersAllowed struct {
 }
 
 func (p *UserPrintersAllowed) Name() string          { return "UserPrintersAllowed" }
-func (p *UserPrintersAllowed) Field() string         { return "" }
 func (p *UserPrintersAllowed) Scope() Scope          { return ScopeUser }
 func (p *UserPrintersAllowed) Status() Status        { return p.Stat }
 func (p *UserPrintersAllowed) UntypedV() interface{} { return p.Val }
@@ -16049,6 +16923,9 @@ func (p *UserPrintersAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserPrintersAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserPrintersAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16068,7 +16945,6 @@ type Printers struct {
 }
 
 func (p *Printers) Name() string          { return "Printers" }
-func (p *Printers) Field() string         { return "" }
 func (p *Printers) Scope() Scope          { return ScopeUser }
 func (p *Printers) Status() Status        { return p.Stat }
 func (p *Printers) UntypedV() interface{} { return p.Val }
@@ -16078,6 +16954,9 @@ func (p *Printers) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *Printers) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *Printers) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16102,7 +16981,6 @@ type PrintersBulkConfigurationValue struct {
 }
 
 func (p *PrintersBulkConfiguration) Name() string          { return "PrintersBulkConfiguration" }
-func (p *PrintersBulkConfiguration) Field() string         { return "" }
 func (p *PrintersBulkConfiguration) Scope() Scope          { return ScopeUser }
 func (p *PrintersBulkConfiguration) Status() Status        { return p.Stat }
 func (p *PrintersBulkConfiguration) UntypedV() interface{} { return p.Val }
@@ -16112,6 +16990,9 @@ func (p *PrintersBulkConfiguration) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as *PrintersBulkConfigurationValue", m)
 	}
 	return v, nil
+}
+func (p *PrintersBulkConfiguration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintersBulkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*PrintersBulkConfigurationValue)
@@ -16131,7 +17012,6 @@ type DeviceReleaseLtsTag struct {
 }
 
 func (p *DeviceReleaseLtsTag) Name() string          { return "DeviceReleaseLtsTag" }
-func (p *DeviceReleaseLtsTag) Field() string         { return "release_channel.release_lts_tag" }
 func (p *DeviceReleaseLtsTag) Scope() Scope          { return ScopeDevice }
 func (p *DeviceReleaseLtsTag) Status() Status        { return p.Stat }
 func (p *DeviceReleaseLtsTag) UntypedV() interface{} { return p.Val }
@@ -16141,6 +17021,9 @@ func (p *DeviceReleaseLtsTag) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceReleaseLtsTag) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "release_channel", "release_lts_tag", p.Val)
 }
 func (p *DeviceReleaseLtsTag) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16160,7 +17043,6 @@ type PrintersBulkAccessMode struct {
 }
 
 func (p *PrintersBulkAccessMode) Name() string          { return "PrintersBulkAccessMode" }
-func (p *PrintersBulkAccessMode) Field() string         { return "" }
 func (p *PrintersBulkAccessMode) Scope() Scope          { return ScopeUser }
 func (p *PrintersBulkAccessMode) Status() Status        { return p.Stat }
 func (p *PrintersBulkAccessMode) UntypedV() interface{} { return p.Val }
@@ -16170,6 +17052,9 @@ func (p *PrintersBulkAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintersBulkAccessMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintersBulkAccessMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16189,7 +17074,6 @@ type DefaultFileSystemReadGuardSetting struct {
 }
 
 func (p *DefaultFileSystemReadGuardSetting) Name() string          { return "DefaultFileSystemReadGuardSetting" }
-func (p *DefaultFileSystemReadGuardSetting) Field() string         { return "" }
 func (p *DefaultFileSystemReadGuardSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultFileSystemReadGuardSetting) Status() Status        { return p.Stat }
 func (p *DefaultFileSystemReadGuardSetting) UntypedV() interface{} { return p.Val }
@@ -16199,6 +17083,9 @@ func (p *DefaultFileSystemReadGuardSetting) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultFileSystemReadGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultFileSystemReadGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16220,7 +17107,6 @@ type DefaultFileSystemWriteGuardSetting struct {
 func (p *DefaultFileSystemWriteGuardSetting) Name() string {
 	return "DefaultFileSystemWriteGuardSetting"
 }
-func (p *DefaultFileSystemWriteGuardSetting) Field() string         { return "" }
 func (p *DefaultFileSystemWriteGuardSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultFileSystemWriteGuardSetting) Status() Status        { return p.Stat }
 func (p *DefaultFileSystemWriteGuardSetting) UntypedV() interface{} { return p.Val }
@@ -16230,6 +17116,9 @@ func (p *DefaultFileSystemWriteGuardSetting) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultFileSystemWriteGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultFileSystemWriteGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16249,7 +17138,6 @@ type FileSystemReadAskForUrls struct {
 }
 
 func (p *FileSystemReadAskForUrls) Name() string          { return "FileSystemReadAskForUrls" }
-func (p *FileSystemReadAskForUrls) Field() string         { return "" }
 func (p *FileSystemReadAskForUrls) Scope() Scope          { return ScopeUser }
 func (p *FileSystemReadAskForUrls) Status() Status        { return p.Stat }
 func (p *FileSystemReadAskForUrls) UntypedV() interface{} { return p.Val }
@@ -16259,6 +17147,9 @@ func (p *FileSystemReadAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemReadAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FileSystemReadAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16278,7 +17169,6 @@ type FileSystemReadBlockedForUrls struct {
 }
 
 func (p *FileSystemReadBlockedForUrls) Name() string          { return "FileSystemReadBlockedForUrls" }
-func (p *FileSystemReadBlockedForUrls) Field() string         { return "" }
 func (p *FileSystemReadBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *FileSystemReadBlockedForUrls) Status() Status        { return p.Stat }
 func (p *FileSystemReadBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -16288,6 +17178,9 @@ func (p *FileSystemReadBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemReadBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FileSystemReadBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16307,7 +17200,6 @@ type FileSystemWriteAskForUrls struct {
 }
 
 func (p *FileSystemWriteAskForUrls) Name() string          { return "FileSystemWriteAskForUrls" }
-func (p *FileSystemWriteAskForUrls) Field() string         { return "" }
 func (p *FileSystemWriteAskForUrls) Scope() Scope          { return ScopeUser }
 func (p *FileSystemWriteAskForUrls) Status() Status        { return p.Stat }
 func (p *FileSystemWriteAskForUrls) UntypedV() interface{} { return p.Val }
@@ -16317,6 +17209,9 @@ func (p *FileSystemWriteAskForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemWriteAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FileSystemWriteAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16336,7 +17231,6 @@ type FileSystemWriteBlockedForUrls struct {
 }
 
 func (p *FileSystemWriteBlockedForUrls) Name() string          { return "FileSystemWriteBlockedForUrls" }
-func (p *FileSystemWriteBlockedForUrls) Field() string         { return "" }
 func (p *FileSystemWriteBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *FileSystemWriteBlockedForUrls) Status() Status        { return p.Stat }
 func (p *FileSystemWriteBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -16346,6 +17240,9 @@ func (p *FileSystemWriteBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemWriteBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FileSystemWriteBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16365,7 +17262,6 @@ type PrintersBulkBlocklist struct {
 }
 
 func (p *PrintersBulkBlocklist) Name() string          { return "PrintersBulkBlocklist" }
-func (p *PrintersBulkBlocklist) Field() string         { return "" }
 func (p *PrintersBulkBlocklist) Scope() Scope          { return ScopeUser }
 func (p *PrintersBulkBlocklist) Status() Status        { return p.Stat }
 func (p *PrintersBulkBlocklist) UntypedV() interface{} { return p.Val }
@@ -16375,6 +17271,9 @@ func (p *PrintersBulkBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrintersBulkBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintersBulkBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16394,7 +17293,6 @@ type PrintersBulkAllowlist struct {
 }
 
 func (p *PrintersBulkAllowlist) Name() string          { return "PrintersBulkAllowlist" }
-func (p *PrintersBulkAllowlist) Field() string         { return "" }
 func (p *PrintersBulkAllowlist) Scope() Scope          { return ScopeUser }
 func (p *PrintersBulkAllowlist) Status() Status        { return p.Stat }
 func (p *PrintersBulkAllowlist) UntypedV() interface{} { return p.Val }
@@ -16404,6 +17302,9 @@ func (p *PrintersBulkAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrintersBulkAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintersBulkAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16423,7 +17324,6 @@ type LookalikeWarningAllowlistDomains struct {
 }
 
 func (p *LookalikeWarningAllowlistDomains) Name() string          { return "LookalikeWarningAllowlistDomains" }
-func (p *LookalikeWarningAllowlistDomains) Field() string         { return "" }
 func (p *LookalikeWarningAllowlistDomains) Scope() Scope          { return ScopeUser }
 func (p *LookalikeWarningAllowlistDomains) Status() Status        { return p.Stat }
 func (p *LookalikeWarningAllowlistDomains) UntypedV() interface{} { return p.Val }
@@ -16433,6 +17333,9 @@ func (p *LookalikeWarningAllowlistDomains) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *LookalikeWarningAllowlistDomains) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LookalikeWarningAllowlistDomains) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16452,7 +17355,6 @@ type PrintingAPIExtensionsAllowlist struct {
 }
 
 func (p *PrintingAPIExtensionsAllowlist) Name() string          { return "PrintingAPIExtensionsAllowlist" }
-func (p *PrintingAPIExtensionsAllowlist) Field() string         { return "" }
 func (p *PrintingAPIExtensionsAllowlist) Scope() Scope          { return ScopeUser }
 func (p *PrintingAPIExtensionsAllowlist) Status() Status        { return p.Stat }
 func (p *PrintingAPIExtensionsAllowlist) UntypedV() interface{} { return p.Val }
@@ -16462,6 +17364,9 @@ func (p *PrintingAPIExtensionsAllowlist) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAPIExtensionsAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAPIExtensionsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16482,7 +17387,6 @@ type QuickUnlockModeAllowlist struct {
 }
 
 func (p *QuickUnlockModeAllowlist) Name() string          { return "QuickUnlockModeAllowlist" }
-func (p *QuickUnlockModeAllowlist) Field() string         { return "" }
 func (p *QuickUnlockModeAllowlist) Scope() Scope          { return ScopeUser }
 func (p *QuickUnlockModeAllowlist) Status() Status        { return p.Stat }
 func (p *QuickUnlockModeAllowlist) UntypedV() interface{} { return p.Val }
@@ -16492,6 +17396,9 @@ func (p *QuickUnlockModeAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *QuickUnlockModeAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickUnlockModeAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16511,7 +17418,6 @@ type AttestationExtensionAllowlist struct {
 }
 
 func (p *AttestationExtensionAllowlist) Name() string          { return "AttestationExtensionAllowlist" }
-func (p *AttestationExtensionAllowlist) Field() string         { return "" }
 func (p *AttestationExtensionAllowlist) Scope() Scope          { return ScopeUser }
 func (p *AttestationExtensionAllowlist) Status() Status        { return p.Stat }
 func (p *AttestationExtensionAllowlist) UntypedV() interface{} { return p.Val }
@@ -16521,6 +17427,9 @@ func (p *AttestationExtensionAllowlist) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AttestationExtensionAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AttestationExtensionAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16561,7 +17470,6 @@ type DataLeakPreventionRulesListValueRestrictions struct {
 }
 
 func (p *DataLeakPreventionRulesList) Name() string          { return "DataLeakPreventionRulesList" }
-func (p *DataLeakPreventionRulesList) Field() string         { return "" }
 func (p *DataLeakPreventionRulesList) Scope() Scope          { return ScopeUser }
 func (p *DataLeakPreventionRulesList) Status() Status        { return p.Stat }
 func (p *DataLeakPreventionRulesList) UntypedV() interface{} { return p.Val }
@@ -16571,6 +17479,9 @@ func (p *DataLeakPreventionRulesList) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []*DataLeakPreventionRulesListValue", m)
 	}
 	return v, nil
+}
+func (p *DataLeakPreventionRulesList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DataLeakPreventionRulesList) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DataLeakPreventionRulesListValue)
@@ -16589,7 +17500,6 @@ type WebRtcAllowLegacyTLSProtocols struct {
 }
 
 func (p *WebRtcAllowLegacyTLSProtocols) Name() string          { return "WebRtcAllowLegacyTLSProtocols" }
-func (p *WebRtcAllowLegacyTLSProtocols) Field() string         { return "" }
 func (p *WebRtcAllowLegacyTLSProtocols) Scope() Scope          { return ScopeUser }
 func (p *WebRtcAllowLegacyTLSProtocols) Status() Status        { return p.Stat }
 func (p *WebRtcAllowLegacyTLSProtocols) UntypedV() interface{} { return p.Val }
@@ -16599,6 +17509,9 @@ func (p *WebRtcAllowLegacyTLSProtocols) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WebRtcAllowLegacyTLSProtocols) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebRtcAllowLegacyTLSProtocols) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16618,7 +17531,6 @@ type MediaRecommendationsEnabled struct {
 }
 
 func (p *MediaRecommendationsEnabled) Name() string          { return "MediaRecommendationsEnabled" }
-func (p *MediaRecommendationsEnabled) Field() string         { return "" }
 func (p *MediaRecommendationsEnabled) Scope() Scope          { return ScopeUser }
 func (p *MediaRecommendationsEnabled) Status() Status        { return p.Stat }
 func (p *MediaRecommendationsEnabled) UntypedV() interface{} { return p.Val }
@@ -16628,6 +17540,9 @@ func (p *MediaRecommendationsEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *MediaRecommendationsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *MediaRecommendationsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16646,10 +17561,7 @@ type DeviceFamilyLinkAccountsAllowed struct {
 	Val  bool
 }
 
-func (p *DeviceFamilyLinkAccountsAllowed) Name() string { return "DeviceFamilyLinkAccountsAllowed" }
-func (p *DeviceFamilyLinkAccountsAllowed) Field() string {
-	return "family_link_accounts_allowed.family_link_accounts_allowed"
-}
+func (p *DeviceFamilyLinkAccountsAllowed) Name() string          { return "DeviceFamilyLinkAccountsAllowed" }
 func (p *DeviceFamilyLinkAccountsAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceFamilyLinkAccountsAllowed) Status() Status        { return p.Stat }
 func (p *DeviceFamilyLinkAccountsAllowed) UntypedV() interface{} { return p.Val }
@@ -16659,6 +17571,9 @@ func (p *DeviceFamilyLinkAccountsAllowed) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceFamilyLinkAccountsAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "family_link_accounts_allowed", "family_link_accounts_allowed", p.Val)
 }
 func (p *DeviceFamilyLinkAccountsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16678,7 +17593,6 @@ type EduCoexistenceToSVersion struct {
 }
 
 func (p *EduCoexistenceToSVersion) Name() string          { return "EduCoexistenceToSVersion" }
-func (p *EduCoexistenceToSVersion) Field() string         { return "" }
 func (p *EduCoexistenceToSVersion) Scope() Scope          { return ScopeUser }
 func (p *EduCoexistenceToSVersion) Status() Status        { return p.Stat }
 func (p *EduCoexistenceToSVersion) UntypedV() interface{} { return p.Val }
@@ -16688,6 +17602,9 @@ func (p *EduCoexistenceToSVersion) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *EduCoexistenceToSVersion) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EduCoexistenceToSVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16712,7 +17629,6 @@ type BrowsingDataLifetimeValue struct {
 }
 
 func (p *BrowsingDataLifetime) Name() string          { return "BrowsingDataLifetime" }
-func (p *BrowsingDataLifetime) Field() string         { return "" }
 func (p *BrowsingDataLifetime) Scope() Scope          { return ScopeUser }
 func (p *BrowsingDataLifetime) Status() Status        { return p.Stat }
 func (p *BrowsingDataLifetime) UntypedV() interface{} { return p.Val }
@@ -16722,6 +17638,9 @@ func (p *BrowsingDataLifetime) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []*BrowsingDataLifetimeValue", m)
 	}
 	return v, nil
+}
+func (p *BrowsingDataLifetime) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BrowsingDataLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.([]*BrowsingDataLifetimeValue)
@@ -16741,7 +17660,6 @@ type IntranetRedirectBehavior struct {
 }
 
 func (p *IntranetRedirectBehavior) Name() string          { return "IntranetRedirectBehavior" }
-func (p *IntranetRedirectBehavior) Field() string         { return "" }
 func (p *IntranetRedirectBehavior) Scope() Scope          { return ScopeUser }
 func (p *IntranetRedirectBehavior) Status() Status        { return p.Stat }
 func (p *IntranetRedirectBehavior) UntypedV() interface{} { return p.Val }
@@ -16751,6 +17669,9 @@ func (p *IntranetRedirectBehavior) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IntranetRedirectBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IntranetRedirectBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16774,10 +17695,7 @@ type DeviceArcDataSnapshotHoursValue struct {
 	Timezone  string                    `json:"timezone"`
 }
 
-func (p *DeviceArcDataSnapshotHours) Name() string { return "DeviceArcDataSnapshotHours" }
-func (p *DeviceArcDataSnapshotHours) Field() string {
-	return "arc_data_snapshot_hours.arc_data_snapshot_hours"
-}
+func (p *DeviceArcDataSnapshotHours) Name() string          { return "DeviceArcDataSnapshotHours" }
 func (p *DeviceArcDataSnapshotHours) Scope() Scope          { return ScopeDevice }
 func (p *DeviceArcDataSnapshotHours) Status() Status        { return p.Stat }
 func (p *DeviceArcDataSnapshotHours) UntypedV() interface{} { return p.Val }
@@ -16787,6 +17705,9 @@ func (p *DeviceArcDataSnapshotHours) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceArcDataSnapshotHoursValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceArcDataSnapshotHours) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "arc_data_snapshot_hours", "arc_data_snapshot_hours", p.Val)
 }
 func (p *DeviceArcDataSnapshotHours) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceArcDataSnapshotHoursValue)
@@ -16807,7 +17728,6 @@ type PhoneHubAllowed struct {
 }
 
 func (p *PhoneHubAllowed) Name() string          { return "PhoneHubAllowed" }
-func (p *PhoneHubAllowed) Field() string         { return "" }
 func (p *PhoneHubAllowed) Scope() Scope          { return ScopeUser }
 func (p *PhoneHubAllowed) Status() Status        { return p.Stat }
 func (p *PhoneHubAllowed) UntypedV() interface{} { return p.Val }
@@ -16817,6 +17737,9 @@ func (p *PhoneHubAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PhoneHubAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PhoneHubAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16836,7 +17759,6 @@ type PhoneHubNotificationsAllowed struct {
 }
 
 func (p *PhoneHubNotificationsAllowed) Name() string          { return "PhoneHubNotificationsAllowed" }
-func (p *PhoneHubNotificationsAllowed) Field() string         { return "" }
 func (p *PhoneHubNotificationsAllowed) Scope() Scope          { return ScopeUser }
 func (p *PhoneHubNotificationsAllowed) Status() Status        { return p.Stat }
 func (p *PhoneHubNotificationsAllowed) UntypedV() interface{} { return p.Val }
@@ -16846,6 +17768,9 @@ func (p *PhoneHubNotificationsAllowed) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PhoneHubNotificationsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PhoneHubNotificationsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16865,7 +17790,6 @@ type PhoneHubTaskContinuationAllowed struct {
 }
 
 func (p *PhoneHubTaskContinuationAllowed) Name() string          { return "PhoneHubTaskContinuationAllowed" }
-func (p *PhoneHubTaskContinuationAllowed) Field() string         { return "" }
 func (p *PhoneHubTaskContinuationAllowed) Scope() Scope          { return ScopeUser }
 func (p *PhoneHubTaskContinuationAllowed) Status() Status        { return p.Stat }
 func (p *PhoneHubTaskContinuationAllowed) UntypedV() interface{} { return p.Val }
@@ -16875,6 +17799,9 @@ func (p *PhoneHubTaskContinuationAllowed) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PhoneHubTaskContinuationAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PhoneHubTaskContinuationAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16895,7 +17822,6 @@ type WifiSyncAndroidAllowed struct {
 }
 
 func (p *WifiSyncAndroidAllowed) Name() string          { return "WifiSyncAndroidAllowed" }
-func (p *WifiSyncAndroidAllowed) Field() string         { return "" }
 func (p *WifiSyncAndroidAllowed) Scope() Scope          { return ScopeUser }
 func (p *WifiSyncAndroidAllowed) Status() Status        { return p.Stat }
 func (p *WifiSyncAndroidAllowed) UntypedV() interface{} { return p.Val }
@@ -16905,6 +17831,9 @@ func (p *WifiSyncAndroidAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WifiSyncAndroidAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WifiSyncAndroidAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16924,7 +17853,6 @@ type SecurityTokenSessionBehavior struct {
 }
 
 func (p *SecurityTokenSessionBehavior) Name() string          { return "SecurityTokenSessionBehavior" }
-func (p *SecurityTokenSessionBehavior) Field() string         { return "" }
 func (p *SecurityTokenSessionBehavior) Scope() Scope          { return ScopeUser }
 func (p *SecurityTokenSessionBehavior) Status() Status        { return p.Stat }
 func (p *SecurityTokenSessionBehavior) UntypedV() interface{} { return p.Val }
@@ -16934,6 +17862,9 @@ func (p *SecurityTokenSessionBehavior) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SecurityTokenSessionBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SecurityTokenSessionBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16955,7 +17886,6 @@ type SecurityTokenSessionNotificationSeconds struct {
 func (p *SecurityTokenSessionNotificationSeconds) Name() string {
 	return "SecurityTokenSessionNotificationSeconds"
 }
-func (p *SecurityTokenSessionNotificationSeconds) Field() string         { return "" }
 func (p *SecurityTokenSessionNotificationSeconds) Scope() Scope          { return ScopeUser }
 func (p *SecurityTokenSessionNotificationSeconds) Status() Status        { return p.Stat }
 func (p *SecurityTokenSessionNotificationSeconds) UntypedV() interface{} { return p.Val }
@@ -16965,6 +17895,9 @@ func (p *SecurityTokenSessionNotificationSeconds) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SecurityTokenSessionNotificationSeconds) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SecurityTokenSessionNotificationSeconds) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16984,7 +17917,6 @@ type FullscreenAlertEnabled struct {
 }
 
 func (p *FullscreenAlertEnabled) Name() string          { return "FullscreenAlertEnabled" }
-func (p *FullscreenAlertEnabled) Field() string         { return "" }
 func (p *FullscreenAlertEnabled) Scope() Scope          { return ScopeUser }
 func (p *FullscreenAlertEnabled) Status() Status        { return p.Stat }
 func (p *FullscreenAlertEnabled) UntypedV() interface{} { return p.Val }
@@ -16994,6 +17926,9 @@ func (p *FullscreenAlertEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FullscreenAlertEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FullscreenAlertEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17013,7 +17948,6 @@ type NTPCardsVisible struct {
 }
 
 func (p *NTPCardsVisible) Name() string          { return "NTPCardsVisible" }
-func (p *NTPCardsVisible) Field() string         { return "" }
 func (p *NTPCardsVisible) Scope() Scope          { return ScopeUser }
 func (p *NTPCardsVisible) Status() Status        { return p.Stat }
 func (p *NTPCardsVisible) UntypedV() interface{} { return p.Val }
@@ -17023,6 +17957,9 @@ func (p *NTPCardsVisible) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTPCardsVisible) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NTPCardsVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17042,7 +17979,6 @@ type BasicAuthOverHttpEnabled struct {
 }
 
 func (p *BasicAuthOverHttpEnabled) Name() string          { return "BasicAuthOverHttpEnabled" }
-func (p *BasicAuthOverHttpEnabled) Field() string         { return "" }
 func (p *BasicAuthOverHttpEnabled) Scope() Scope          { return ScopeUser }
 func (p *BasicAuthOverHttpEnabled) Status() Status        { return p.Stat }
 func (p *BasicAuthOverHttpEnabled) UntypedV() interface{} { return p.Val }
@@ -17052,6 +17988,9 @@ func (p *BasicAuthOverHttpEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BasicAuthOverHttpEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BasicAuthOverHttpEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17071,7 +18010,6 @@ type SystemFeaturesDisableMode struct {
 }
 
 func (p *SystemFeaturesDisableMode) Name() string          { return "SystemFeaturesDisableMode" }
-func (p *SystemFeaturesDisableMode) Field() string         { return "" }
 func (p *SystemFeaturesDisableMode) Scope() Scope          { return ScopeUser }
 func (p *SystemFeaturesDisableMode) Status() Status        { return p.Stat }
 func (p *SystemFeaturesDisableMode) UntypedV() interface{} { return p.Val }
@@ -17081,6 +18019,9 @@ func (p *SystemFeaturesDisableMode) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SystemFeaturesDisableMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SystemFeaturesDisableMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -17100,7 +18041,6 @@ type ClearBrowsingDataOnExitList struct {
 }
 
 func (p *ClearBrowsingDataOnExitList) Name() string          { return "ClearBrowsingDataOnExitList" }
-func (p *ClearBrowsingDataOnExitList) Field() string         { return "" }
 func (p *ClearBrowsingDataOnExitList) Scope() Scope          { return ScopeUser }
 func (p *ClearBrowsingDataOnExitList) Status() Status        { return p.Stat }
 func (p *ClearBrowsingDataOnExitList) UntypedV() interface{} { return p.Val }
@@ -17110,6 +18050,9 @@ func (p *ClearBrowsingDataOnExitList) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ClearBrowsingDataOnExitList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ClearBrowsingDataOnExitList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17130,7 +18073,6 @@ type ProfilePickerOnStartupAvailability struct {
 func (p *ProfilePickerOnStartupAvailability) Name() string {
 	return "ProfilePickerOnStartupAvailability"
 }
-func (p *ProfilePickerOnStartupAvailability) Field() string         { return "" }
 func (p *ProfilePickerOnStartupAvailability) Scope() Scope          { return ScopeUser }
 func (p *ProfilePickerOnStartupAvailability) Status() Status        { return p.Stat }
 func (p *ProfilePickerOnStartupAvailability) UntypedV() interface{} { return p.Val }
@@ -17140,6 +18082,9 @@ func (p *ProfilePickerOnStartupAvailability) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ProfilePickerOnStartupAvailability) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProfilePickerOnStartupAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17165,7 +18110,6 @@ type ManagedConfigurationPerOriginValue struct {
 }
 
 func (p *ManagedConfigurationPerOrigin) Name() string          { return "ManagedConfigurationPerOrigin" }
-func (p *ManagedConfigurationPerOrigin) Field() string         { return "" }
 func (p *ManagedConfigurationPerOrigin) Scope() Scope          { return ScopeUser }
 func (p *ManagedConfigurationPerOrigin) Status() Status        { return p.Stat }
 func (p *ManagedConfigurationPerOrigin) UntypedV() interface{} { return p.Val }
@@ -17175,6 +18119,9 @@ func (p *ManagedConfigurationPerOrigin) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []*ManagedConfigurationPerOriginValue", m)
 	}
 	return v, nil
+}
+func (p *ManagedConfigurationPerOrigin) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ManagedConfigurationPerOrigin) Equal(iface interface{}) bool {
 	v, ok := iface.([]*ManagedConfigurationPerOriginValue)
@@ -17194,7 +18141,6 @@ type BrowserLabsEnabled struct {
 }
 
 func (p *BrowserLabsEnabled) Name() string          { return "BrowserLabsEnabled" }
-func (p *BrowserLabsEnabled) Field() string         { return "" }
 func (p *BrowserLabsEnabled) Scope() Scope          { return ScopeUser }
 func (p *BrowserLabsEnabled) Status() Status        { return p.Stat }
 func (p *BrowserLabsEnabled) UntypedV() interface{} { return p.Val }
@@ -17204,6 +18150,9 @@ func (p *BrowserLabsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BrowserLabsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BrowserLabsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17225,9 +18174,6 @@ type DeviceAllowMGSToStoreDisplayProperties struct {
 func (p *DeviceAllowMGSToStoreDisplayProperties) Name() string {
 	return "DeviceAllowMGSToStoreDisplayProperties"
 }
-func (p *DeviceAllowMGSToStoreDisplayProperties) Field() string {
-	return "device_allow_mgs_to_store_display_properties.value"
-}
 func (p *DeviceAllowMGSToStoreDisplayProperties) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAllowMGSToStoreDisplayProperties) Status() Status        { return p.Stat }
 func (p *DeviceAllowMGSToStoreDisplayProperties) UntypedV() interface{} { return p.Val }
@@ -17237,6 +18183,9 @@ func (p *DeviceAllowMGSToStoreDisplayProperties) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAllowMGSToStoreDisplayProperties) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_allow_mgs_to_store_display_properties", "value", p.Val)
 }
 func (p *DeviceAllowMGSToStoreDisplayProperties) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17256,7 +18205,6 @@ type SSLErrorOverrideAllowedForOrigins struct {
 }
 
 func (p *SSLErrorOverrideAllowedForOrigins) Name() string          { return "SSLErrorOverrideAllowedForOrigins" }
-func (p *SSLErrorOverrideAllowedForOrigins) Field() string         { return "" }
 func (p *SSLErrorOverrideAllowedForOrigins) Scope() Scope          { return ScopeUser }
 func (p *SSLErrorOverrideAllowedForOrigins) Status() Status        { return p.Stat }
 func (p *SSLErrorOverrideAllowedForOrigins) UntypedV() interface{} { return p.Val }
@@ -17266,6 +18214,9 @@ func (p *SSLErrorOverrideAllowedForOrigins) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SSLErrorOverrideAllowedForOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SSLErrorOverrideAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17285,7 +18236,6 @@ type GaiaOfflineSigninTimeLimitDays struct {
 }
 
 func (p *GaiaOfflineSigninTimeLimitDays) Name() string          { return "GaiaOfflineSigninTimeLimitDays" }
-func (p *GaiaOfflineSigninTimeLimitDays) Field() string         { return "" }
 func (p *GaiaOfflineSigninTimeLimitDays) Scope() Scope          { return ScopeUser }
 func (p *GaiaOfflineSigninTimeLimitDays) Status() Status        { return p.Stat }
 func (p *GaiaOfflineSigninTimeLimitDays) UntypedV() interface{} { return p.Val }
@@ -17295,6 +18245,9 @@ func (p *GaiaOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *GaiaOfflineSigninTimeLimitDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *GaiaOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17335,7 +18288,6 @@ type SendDownloadToCloudEnterpriseConnectorValueDisable struct {
 func (p *SendDownloadToCloudEnterpriseConnector) Name() string {
 	return "SendDownloadToCloudEnterpriseConnector"
 }
-func (p *SendDownloadToCloudEnterpriseConnector) Field() string         { return "" }
 func (p *SendDownloadToCloudEnterpriseConnector) Scope() Scope          { return ScopeUser }
 func (p *SendDownloadToCloudEnterpriseConnector) Status() Status        { return p.Stat }
 func (p *SendDownloadToCloudEnterpriseConnector) UntypedV() interface{} { return p.Val }
@@ -17345,6 +18297,9 @@ func (p *SendDownloadToCloudEnterpriseConnector) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as []*SendDownloadToCloudEnterpriseConnectorValue", m)
 	}
 	return v, nil
+}
+func (p *SendDownloadToCloudEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SendDownloadToCloudEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*SendDownloadToCloudEnterpriseConnectorValue)
@@ -17363,10 +18318,7 @@ type DeviceSystemWideTracingEnabled struct {
 	Val  bool
 }
 
-func (p *DeviceSystemWideTracingEnabled) Name() string { return "DeviceSystemWideTracingEnabled" }
-func (p *DeviceSystemWideTracingEnabled) Field() string {
-	return "device_system_wide_tracing_enabled.enabled"
-}
+func (p *DeviceSystemWideTracingEnabled) Name() string          { return "DeviceSystemWideTracingEnabled" }
 func (p *DeviceSystemWideTracingEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceSystemWideTracingEnabled) Status() Status        { return p.Stat }
 func (p *DeviceSystemWideTracingEnabled) UntypedV() interface{} { return p.Val }
@@ -17376,6 +18328,9 @@ func (p *DeviceSystemWideTracingEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceSystemWideTracingEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_system_wide_tracing_enabled", "enabled", p.Val)
 }
 func (p *DeviceSystemWideTracingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17397,9 +18352,6 @@ type DevicePciPeripheralDataAccessEnabled struct {
 func (p *DevicePciPeripheralDataAccessEnabled) Name() string {
 	return "DevicePciPeripheralDataAccessEnabled"
 }
-func (p *DevicePciPeripheralDataAccessEnabled) Field() string {
-	return "device_pci_peripheral_data_access_enabled_v2.enabled"
-}
 func (p *DevicePciPeripheralDataAccessEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DevicePciPeripheralDataAccessEnabled) Status() Status        { return p.Stat }
 func (p *DevicePciPeripheralDataAccessEnabled) UntypedV() interface{} { return p.Val }
@@ -17409,6 +18361,9 @@ func (p *DevicePciPeripheralDataAccessEnabled) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePciPeripheralDataAccessEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_pci_peripheral_data_access_enabled_v2", "enabled", p.Val)
 }
 func (p *DevicePciPeripheralDataAccessEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17430,7 +18385,6 @@ type ContextAwareAccessSignalsAllowlist struct {
 func (p *ContextAwareAccessSignalsAllowlist) Name() string {
 	return "ContextAwareAccessSignalsAllowlist"
 }
-func (p *ContextAwareAccessSignalsAllowlist) Field() string         { return "" }
 func (p *ContextAwareAccessSignalsAllowlist) Scope() Scope          { return ScopeUser }
 func (p *ContextAwareAccessSignalsAllowlist) Status() Status        { return p.Stat }
 func (p *ContextAwareAccessSignalsAllowlist) UntypedV() interface{} { return p.Val }
@@ -17440,6 +18394,9 @@ func (p *ContextAwareAccessSignalsAllowlist) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ContextAwareAccessSignalsAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17462,7 +18419,6 @@ type FetchKeepaliveDurationSecondsOnShutdown struct {
 func (p *FetchKeepaliveDurationSecondsOnShutdown) Name() string {
 	return "FetchKeepaliveDurationSecondsOnShutdown"
 }
-func (p *FetchKeepaliveDurationSecondsOnShutdown) Field() string         { return "" }
 func (p *FetchKeepaliveDurationSecondsOnShutdown) Scope() Scope          { return ScopeUser }
 func (p *FetchKeepaliveDurationSecondsOnShutdown) Status() Status        { return p.Stat }
 func (p *FetchKeepaliveDurationSecondsOnShutdown) UntypedV() interface{} { return p.Val }
@@ -17472,6 +18428,9 @@ func (p *FetchKeepaliveDurationSecondsOnShutdown) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *FetchKeepaliveDurationSecondsOnShutdown) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FetchKeepaliveDurationSecondsOnShutdown) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17493,7 +18452,6 @@ type SuppressDifferentOriginSubframeDialogs struct {
 func (p *SuppressDifferentOriginSubframeDialogs) Name() string {
 	return "SuppressDifferentOriginSubframeDialogs"
 }
-func (p *SuppressDifferentOriginSubframeDialogs) Field() string         { return "" }
 func (p *SuppressDifferentOriginSubframeDialogs) Scope() Scope          { return ScopeUser }
 func (p *SuppressDifferentOriginSubframeDialogs) Status() Status        { return p.Stat }
 func (p *SuppressDifferentOriginSubframeDialogs) UntypedV() interface{} { return p.Val }
@@ -17503,6 +18461,9 @@ func (p *SuppressDifferentOriginSubframeDialogs) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SuppressDifferentOriginSubframeDialogs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SuppressDifferentOriginSubframeDialogs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17522,7 +18483,6 @@ type DeviceBorealisAllowed struct {
 }
 
 func (p *DeviceBorealisAllowed) Name() string          { return "DeviceBorealisAllowed" }
-func (p *DeviceBorealisAllowed) Field() string         { return "device_borealis_allowed.allowed" }
 func (p *DeviceBorealisAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceBorealisAllowed) Status() Status        { return p.Stat }
 func (p *DeviceBorealisAllowed) UntypedV() interface{} { return p.Val }
@@ -17532,6 +18492,9 @@ func (p *DeviceBorealisAllowed) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceBorealisAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_borealis_allowed", "allowed", p.Val)
 }
 func (p *DeviceBorealisAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17551,7 +18514,6 @@ type UserBorealisAllowed struct {
 }
 
 func (p *UserBorealisAllowed) Name() string          { return "UserBorealisAllowed" }
-func (p *UserBorealisAllowed) Field() string         { return "" }
 func (p *UserBorealisAllowed) Scope() Scope          { return ScopeUser }
 func (p *UserBorealisAllowed) Status() Status        { return p.Stat }
 func (p *UserBorealisAllowed) UntypedV() interface{} { return p.Val }
@@ -17561,6 +18523,9 @@ func (p *UserBorealisAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserBorealisAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserBorealisAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17581,7 +18546,6 @@ type LacrosSecondaryProfilesAllowed struct {
 }
 
 func (p *LacrosSecondaryProfilesAllowed) Name() string          { return "LacrosSecondaryProfilesAllowed" }
-func (p *LacrosSecondaryProfilesAllowed) Field() string         { return "" }
 func (p *LacrosSecondaryProfilesAllowed) Scope() Scope          { return ScopeUser }
 func (p *LacrosSecondaryProfilesAllowed) Status() Status        { return p.Stat }
 func (p *LacrosSecondaryProfilesAllowed) UntypedV() interface{} { return p.Val }
@@ -17591,6 +18555,9 @@ func (p *LacrosSecondaryProfilesAllowed) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LacrosSecondaryProfilesAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LacrosSecondaryProfilesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17612,7 +18579,6 @@ type GaiaLockScreenOfflineSigninTimeLimitDays struct {
 func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Name() string {
 	return "GaiaLockScreenOfflineSigninTimeLimitDays"
 }
-func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Field() string         { return "" }
 func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Scope() Scope          { return ScopeUser }
 func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Status() Status        { return p.Stat }
 func (p *GaiaLockScreenOfflineSigninTimeLimitDays) UntypedV() interface{} { return p.Val }
@@ -17622,6 +18588,9 @@ func (p *GaiaLockScreenOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *GaiaLockScreenOfflineSigninTimeLimitDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17643,7 +18612,6 @@ type SamlLockScreenOfflineSigninTimeLimitDays struct {
 func (p *SamlLockScreenOfflineSigninTimeLimitDays) Name() string {
 	return "SamlLockScreenOfflineSigninTimeLimitDays"
 }
-func (p *SamlLockScreenOfflineSigninTimeLimitDays) Field() string         { return "" }
 func (p *SamlLockScreenOfflineSigninTimeLimitDays) Scope() Scope          { return ScopeUser }
 func (p *SamlLockScreenOfflineSigninTimeLimitDays) Status() Status        { return p.Stat }
 func (p *SamlLockScreenOfflineSigninTimeLimitDays) UntypedV() interface{} { return p.Val }
@@ -17653,6 +18621,9 @@ func (p *SamlLockScreenOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SamlLockScreenOfflineSigninTimeLimitDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SamlLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17673,7 +18644,6 @@ type ReportDevicePrintJobs struct {
 }
 
 func (p *ReportDevicePrintJobs) Name() string          { return "ReportDevicePrintJobs" }
-func (p *ReportDevicePrintJobs) Field() string         { return "device_reporting.report_print_jobs" }
 func (p *ReportDevicePrintJobs) Scope() Scope          { return ScopeDevice }
 func (p *ReportDevicePrintJobs) Status() Status        { return p.Stat }
 func (p *ReportDevicePrintJobs) UntypedV() interface{} { return p.Val }
@@ -17683,6 +18653,9 @@ func (p *ReportDevicePrintJobs) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDevicePrintJobs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_print_jobs", p.Val)
 }
 func (p *ReportDevicePrintJobs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17702,7 +18675,6 @@ type SerialAllowAllPortsForUrls struct {
 }
 
 func (p *SerialAllowAllPortsForUrls) Name() string          { return "SerialAllowAllPortsForUrls" }
-func (p *SerialAllowAllPortsForUrls) Field() string         { return "" }
 func (p *SerialAllowAllPortsForUrls) Scope() Scope          { return ScopeUser }
 func (p *SerialAllowAllPortsForUrls) Status() Status        { return p.Stat }
 func (p *SerialAllowAllPortsForUrls) UntypedV() interface{} { return p.Val }
@@ -17712,6 +18684,9 @@ func (p *SerialAllowAllPortsForUrls) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SerialAllowAllPortsForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SerialAllowAllPortsForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17741,7 +18716,6 @@ type SerialAllowUsbDevicesForUrlsValueDevices struct {
 }
 
 func (p *SerialAllowUsbDevicesForUrls) Name() string          { return "SerialAllowUsbDevicesForUrls" }
-func (p *SerialAllowUsbDevicesForUrls) Field() string         { return "" }
 func (p *SerialAllowUsbDevicesForUrls) Scope() Scope          { return ScopeUser }
 func (p *SerialAllowUsbDevicesForUrls) Status() Status        { return p.Stat }
 func (p *SerialAllowUsbDevicesForUrls) UntypedV() interface{} { return p.Val }
@@ -17751,6 +18725,9 @@ func (p *SerialAllowUsbDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []*SerialAllowUsbDevicesForUrlsValue", m)
 	}
 	return v, nil
+}
+func (p *SerialAllowUsbDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SerialAllowUsbDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*SerialAllowUsbDevicesForUrlsValue)
@@ -17771,7 +18748,6 @@ type ForcedLanguages struct {
 }
 
 func (p *ForcedLanguages) Name() string          { return "ForcedLanguages" }
-func (p *ForcedLanguages) Field() string         { return "" }
 func (p *ForcedLanguages) Scope() Scope          { return ScopeUser }
 func (p *ForcedLanguages) Status() Status        { return p.Stat }
 func (p *ForcedLanguages) UntypedV() interface{} { return p.Val }
@@ -17781,6 +18757,9 @@ func (p *ForcedLanguages) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ForcedLanguages) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForcedLanguages) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17800,7 +18779,6 @@ type CECPQ2Enabled struct {
 }
 
 func (p *CECPQ2Enabled) Name() string          { return "CECPQ2Enabled" }
-func (p *CECPQ2Enabled) Field() string         { return "" }
 func (p *CECPQ2Enabled) Scope() Scope          { return ScopeUser }
 func (p *CECPQ2Enabled) Status() Status        { return p.Stat }
 func (p *CECPQ2Enabled) UntypedV() interface{} { return p.Val }
@@ -17810,6 +18788,9 @@ func (p *CECPQ2Enabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CECPQ2Enabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CECPQ2Enabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17829,7 +18810,6 @@ type WebRtcIPHandling struct {
 }
 
 func (p *WebRtcIPHandling) Name() string          { return "WebRtcIPHandling" }
-func (p *WebRtcIPHandling) Field() string         { return "" }
 func (p *WebRtcIPHandling) Scope() Scope          { return ScopeUser }
 func (p *WebRtcIPHandling) Status() Status        { return p.Stat }
 func (p *WebRtcIPHandling) UntypedV() interface{} { return p.Val }
@@ -17839,6 +18819,9 @@ func (p *WebRtcIPHandling) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *WebRtcIPHandling) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebRtcIPHandling) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -17858,7 +18841,6 @@ type PdfAnnotationsEnabled struct {
 }
 
 func (p *PdfAnnotationsEnabled) Name() string          { return "PdfAnnotationsEnabled" }
-func (p *PdfAnnotationsEnabled) Field() string         { return "" }
 func (p *PdfAnnotationsEnabled) Scope() Scope          { return ScopeUser }
 func (p *PdfAnnotationsEnabled) Status() Status        { return p.Stat }
 func (p *PdfAnnotationsEnabled) UntypedV() interface{} { return p.Val }
@@ -17868,6 +18850,9 @@ func (p *PdfAnnotationsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PdfAnnotationsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PdfAnnotationsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17886,10 +18871,7 @@ type DeviceAllowedBluetoothServices struct {
 	Val  []string
 }
 
-func (p *DeviceAllowedBluetoothServices) Name() string { return "DeviceAllowedBluetoothServices" }
-func (p *DeviceAllowedBluetoothServices) Field() string {
-	return "device_allowed_bluetooth_services.allowlist"
-}
+func (p *DeviceAllowedBluetoothServices) Name() string          { return "DeviceAllowedBluetoothServices" }
 func (p *DeviceAllowedBluetoothServices) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAllowedBluetoothServices) Status() Status        { return p.Stat }
 func (p *DeviceAllowedBluetoothServices) UntypedV() interface{} { return p.Val }
@@ -17899,6 +18881,9 @@ func (p *DeviceAllowedBluetoothServices) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceAllowedBluetoothServices) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_allowed_bluetooth_services", "allowlist", p.Val)
 }
 func (p *DeviceAllowedBluetoothServices) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17918,7 +18903,6 @@ type ExplicitlyAllowedNetworkPorts struct {
 }
 
 func (p *ExplicitlyAllowedNetworkPorts) Name() string          { return "ExplicitlyAllowedNetworkPorts" }
-func (p *ExplicitlyAllowedNetworkPorts) Field() string         { return "" }
 func (p *ExplicitlyAllowedNetworkPorts) Scope() Scope          { return ScopeUser }
 func (p *ExplicitlyAllowedNetworkPorts) Status() Status        { return p.Stat }
 func (p *ExplicitlyAllowedNetworkPorts) UntypedV() interface{} { return p.Val }
@@ -17928,6 +18912,9 @@ func (p *ExplicitlyAllowedNetworkPorts) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExplicitlyAllowedNetworkPorts) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExplicitlyAllowedNetworkPorts) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17946,10 +18933,7 @@ type DeviceDebugPacketCaptureAllowed struct {
 	Val  bool
 }
 
-func (p *DeviceDebugPacketCaptureAllowed) Name() string { return "DeviceDebugPacketCaptureAllowed" }
-func (p *DeviceDebugPacketCaptureAllowed) Field() string {
-	return "device_debug_packet_capture_allowed.allowed"
-}
+func (p *DeviceDebugPacketCaptureAllowed) Name() string          { return "DeviceDebugPacketCaptureAllowed" }
 func (p *DeviceDebugPacketCaptureAllowed) Scope() Scope          { return ScopeDevice }
 func (p *DeviceDebugPacketCaptureAllowed) Status() Status        { return p.Stat }
 func (p *DeviceDebugPacketCaptureAllowed) UntypedV() interface{} { return p.Val }
@@ -17959,6 +18943,9 @@ func (p *DeviceDebugPacketCaptureAllowed) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceDebugPacketCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_debug_packet_capture_allowed", "allowed", p.Val)
 }
 func (p *DeviceDebugPacketCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17980,7 +18967,6 @@ type SuggestLogoutAfterClosingLastWindow struct {
 func (p *SuggestLogoutAfterClosingLastWindow) Name() string {
 	return "SuggestLogoutAfterClosingLastWindow"
 }
-func (p *SuggestLogoutAfterClosingLastWindow) Field() string         { return "" }
 func (p *SuggestLogoutAfterClosingLastWindow) Scope() Scope          { return ScopeUser }
 func (p *SuggestLogoutAfterClosingLastWindow) Status() Status        { return p.Stat }
 func (p *SuggestLogoutAfterClosingLastWindow) UntypedV() interface{} { return p.Val }
@@ -17990,6 +18976,9 @@ func (p *SuggestLogoutAfterClosingLastWindow) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SuggestLogoutAfterClosingLastWindow) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SuggestLogoutAfterClosingLastWindow) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18010,7 +18999,6 @@ type SharedArrayBufferUnrestrictedAccessAllowed struct {
 func (p *SharedArrayBufferUnrestrictedAccessAllowed) Name() string {
 	return "SharedArrayBufferUnrestrictedAccessAllowed"
 }
-func (p *SharedArrayBufferUnrestrictedAccessAllowed) Field() string         { return "" }
 func (p *SharedArrayBufferUnrestrictedAccessAllowed) Scope() Scope          { return ScopeUser }
 func (p *SharedArrayBufferUnrestrictedAccessAllowed) Status() Status        { return p.Stat }
 func (p *SharedArrayBufferUnrestrictedAccessAllowed) UntypedV() interface{} { return p.Val }
@@ -18020,6 +19008,9 @@ func (p *SharedArrayBufferUnrestrictedAccessAllowed) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SharedArrayBufferUnrestrictedAccessAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SharedArrayBufferUnrestrictedAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18048,7 +19039,6 @@ type RelaunchWindowValueEntries struct {
 }
 
 func (p *RelaunchWindow) Name() string          { return "RelaunchWindow" }
-func (p *RelaunchWindow) Field() string         { return "" }
 func (p *RelaunchWindow) Scope() Scope          { return ScopeUser }
 func (p *RelaunchWindow) Status() Status        { return p.Stat }
 func (p *RelaunchWindow) UntypedV() interface{} { return p.Val }
@@ -18058,6 +19048,9 @@ func (p *RelaunchWindow) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as *RelaunchWindowValue", m)
 	}
 	return v, nil
+}
+func (p *RelaunchWindow) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RelaunchWindow) Equal(iface interface{}) bool {
 	v, ok := iface.(*RelaunchWindowValue)
@@ -18077,7 +19070,6 @@ type LacrosAvailability struct {
 }
 
 func (p *LacrosAvailability) Name() string          { return "LacrosAvailability" }
-func (p *LacrosAvailability) Field() string         { return "" }
 func (p *LacrosAvailability) Scope() Scope          { return ScopeUser }
 func (p *LacrosAvailability) Status() Status        { return p.Stat }
 func (p *LacrosAvailability) UntypedV() interface{} { return p.Val }
@@ -18087,6 +19079,9 @@ func (p *LacrosAvailability) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *LacrosAvailability) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LacrosAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18107,7 +19102,6 @@ type DataLeakPreventionReportingEnabled struct {
 func (p *DataLeakPreventionReportingEnabled) Name() string {
 	return "DataLeakPreventionReportingEnabled"
 }
-func (p *DataLeakPreventionReportingEnabled) Field() string         { return "" }
 func (p *DataLeakPreventionReportingEnabled) Scope() Scope          { return ScopeUser }
 func (p *DataLeakPreventionReportingEnabled) Status() Status        { return p.Stat }
 func (p *DataLeakPreventionReportingEnabled) UntypedV() interface{} { return p.Val }
@@ -18117,6 +19111,9 @@ func (p *DataLeakPreventionReportingEnabled) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DataLeakPreventionReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DataLeakPreventionReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18136,7 +19133,6 @@ type AdditionalDnsQueryTypesEnabled struct {
 }
 
 func (p *AdditionalDnsQueryTypesEnabled) Name() string          { return "AdditionalDnsQueryTypesEnabled" }
-func (p *AdditionalDnsQueryTypesEnabled) Field() string         { return "" }
 func (p *AdditionalDnsQueryTypesEnabled) Scope() Scope          { return ScopeUser }
 func (p *AdditionalDnsQueryTypesEnabled) Status() Status        { return p.Stat }
 func (p *AdditionalDnsQueryTypesEnabled) UntypedV() interface{} { return p.Val }
@@ -18146,6 +19142,9 @@ func (p *AdditionalDnsQueryTypesEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AdditionalDnsQueryTypesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AdditionalDnsQueryTypesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18165,7 +19164,6 @@ type ManagedAccountsSigninRestriction struct {
 }
 
 func (p *ManagedAccountsSigninRestriction) Name() string          { return "ManagedAccountsSigninRestriction" }
-func (p *ManagedAccountsSigninRestriction) Field() string         { return "" }
 func (p *ManagedAccountsSigninRestriction) Scope() Scope          { return ScopeUser }
 func (p *ManagedAccountsSigninRestriction) Status() Status        { return p.Stat }
 func (p *ManagedAccountsSigninRestriction) UntypedV() interface{} { return p.Val }
@@ -18175,6 +19173,9 @@ func (p *ManagedAccountsSigninRestriction) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ManagedAccountsSigninRestriction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ManagedAccountsSigninRestriction) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18200,10 +19201,7 @@ type DeviceScheduledRebootValue struct {
 	RebootTime *RefTime `json:"reboot_time"`
 }
 
-func (p *DeviceScheduledReboot) Name() string { return "DeviceScheduledReboot" }
-func (p *DeviceScheduledReboot) Field() string {
-	return "device_scheduled_reboot.device_scheduled_reboot_settings"
-}
+func (p *DeviceScheduledReboot) Name() string          { return "DeviceScheduledReboot" }
 func (p *DeviceScheduledReboot) Scope() Scope          { return ScopeDevice }
 func (p *DeviceScheduledReboot) Status() Status        { return p.Stat }
 func (p *DeviceScheduledReboot) UntypedV() interface{} { return p.Val }
@@ -18213,6 +19211,9 @@ func (p *DeviceScheduledReboot) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as *DeviceScheduledRebootValue", m)
 	}
 	return v, nil
+}
+func (p *DeviceScheduledReboot) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_scheduled_reboot", "device_scheduled_reboot_settings", p.Val)
 }
 func (p *DeviceScheduledReboot) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceScheduledRebootValue)
@@ -18232,7 +19233,6 @@ type ReportDeviceLoginLogout struct {
 }
 
 func (p *ReportDeviceLoginLogout) Name() string          { return "ReportDeviceLoginLogout" }
-func (p *ReportDeviceLoginLogout) Field() string         { return "device_reporting.report_login_logout" }
 func (p *ReportDeviceLoginLogout) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceLoginLogout) Status() Status        { return p.Stat }
 func (p *ReportDeviceLoginLogout) UntypedV() interface{} { return p.Val }
@@ -18242,6 +19242,9 @@ func (p *ReportDeviceLoginLogout) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceLoginLogout) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_login_logout", p.Val)
 }
 func (p *ReportDeviceLoginLogout) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18260,7 +19263,6 @@ type RemoteDebuggingAllowed struct {
 }
 
 func (p *RemoteDebuggingAllowed) Name() string          { return "RemoteDebuggingAllowed" }
-func (p *RemoteDebuggingAllowed) Field() string         { return "" }
 func (p *RemoteDebuggingAllowed) Scope() Scope          { return ScopeUser }
 func (p *RemoteDebuggingAllowed) Status() Status        { return p.Stat }
 func (p *RemoteDebuggingAllowed) UntypedV() interface{} { return p.Val }
@@ -18270,6 +19272,9 @@ func (p *RemoteDebuggingAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteDebuggingAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteDebuggingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18289,7 +19294,6 @@ type DeviceAttributesAllowedForOrigins struct {
 }
 
 func (p *DeviceAttributesAllowedForOrigins) Name() string          { return "DeviceAttributesAllowedForOrigins" }
-func (p *DeviceAttributesAllowedForOrigins) Field() string         { return "" }
 func (p *DeviceAttributesAllowedForOrigins) Scope() Scope          { return ScopeUser }
 func (p *DeviceAttributesAllowedForOrigins) Status() Status        { return p.Stat }
 func (p *DeviceAttributesAllowedForOrigins) UntypedV() interface{} { return p.Val }
@@ -18299,6 +19303,9 @@ func (p *DeviceAttributesAllowedForOrigins) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceAttributesAllowedForOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeviceAttributesAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18318,7 +19325,6 @@ type DefaultJavaScriptJitSetting struct {
 }
 
 func (p *DefaultJavaScriptJitSetting) Name() string          { return "DefaultJavaScriptJitSetting" }
-func (p *DefaultJavaScriptJitSetting) Field() string         { return "" }
 func (p *DefaultJavaScriptJitSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultJavaScriptJitSetting) Status() Status        { return p.Stat }
 func (p *DefaultJavaScriptJitSetting) UntypedV() interface{} { return p.Val }
@@ -18328,6 +19334,9 @@ func (p *DefaultJavaScriptJitSetting) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultJavaScriptJitSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultJavaScriptJitSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18347,7 +19356,6 @@ type JavaScriptJitAllowedForSites struct {
 }
 
 func (p *JavaScriptJitAllowedForSites) Name() string          { return "JavaScriptJitAllowedForSites" }
-func (p *JavaScriptJitAllowedForSites) Field() string         { return "" }
 func (p *JavaScriptJitAllowedForSites) Scope() Scope          { return ScopeUser }
 func (p *JavaScriptJitAllowedForSites) Status() Status        { return p.Stat }
 func (p *JavaScriptJitAllowedForSites) UntypedV() interface{} { return p.Val }
@@ -18357,6 +19365,9 @@ func (p *JavaScriptJitAllowedForSites) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptJitAllowedForSites) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavaScriptJitAllowedForSites) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18376,7 +19387,6 @@ type JavaScriptJitBlockedForSites struct {
 }
 
 func (p *JavaScriptJitBlockedForSites) Name() string          { return "JavaScriptJitBlockedForSites" }
-func (p *JavaScriptJitBlockedForSites) Field() string         { return "" }
 func (p *JavaScriptJitBlockedForSites) Scope() Scope          { return ScopeUser }
 func (p *JavaScriptJitBlockedForSites) Status() Status        { return p.Stat }
 func (p *JavaScriptJitBlockedForSites) UntypedV() interface{} { return p.Val }
@@ -18386,6 +19396,9 @@ func (p *JavaScriptJitBlockedForSites) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptJitBlockedForSites) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavaScriptJitBlockedForSites) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18405,7 +19418,6 @@ type HttpsOnlyMode struct {
 }
 
 func (p *HttpsOnlyMode) Name() string          { return "HttpsOnlyMode" }
-func (p *HttpsOnlyMode) Field() string         { return "" }
 func (p *HttpsOnlyMode) Scope() Scope          { return ScopeUser }
 func (p *HttpsOnlyMode) Status() Status        { return p.Stat }
 func (p *HttpsOnlyMode) UntypedV() interface{} { return p.Val }
@@ -18415,6 +19427,9 @@ func (p *HttpsOnlyMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *HttpsOnlyMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HttpsOnlyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18434,7 +19449,6 @@ type ReportDeviceAudioStatus struct {
 }
 
 func (p *ReportDeviceAudioStatus) Name() string          { return "ReportDeviceAudioStatus" }
-func (p *ReportDeviceAudioStatus) Field() string         { return "device_reporting.report_audio_status" }
 func (p *ReportDeviceAudioStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceAudioStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceAudioStatus) UntypedV() interface{} { return p.Val }
@@ -18444,6 +19458,9 @@ func (p *ReportDeviceAudioStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceAudioStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_audio_status", p.Val)
 }
 func (p *ReportDeviceAudioStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18462,10 +19479,7 @@ type DeviceHostnameUserConfigurable struct {
 	Val  bool
 }
 
-func (p *DeviceHostnameUserConfigurable) Name() string { return "DeviceHostnameUserConfigurable" }
-func (p *DeviceHostnameUserConfigurable) Field() string {
-	return "hostname_user_configurable.device_hostname_user_configurable"
-}
+func (p *DeviceHostnameUserConfigurable) Name() string          { return "DeviceHostnameUserConfigurable" }
 func (p *DeviceHostnameUserConfigurable) Scope() Scope          { return ScopeDevice }
 func (p *DeviceHostnameUserConfigurable) Status() Status        { return p.Stat }
 func (p *DeviceHostnameUserConfigurable) UntypedV() interface{} { return p.Val }
@@ -18475,6 +19489,9 @@ func (p *DeviceHostnameUserConfigurable) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceHostnameUserConfigurable) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "hostname_user_configurable", "device_hostname_user_configurable", p.Val)
 }
 func (p *DeviceHostnameUserConfigurable) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18493,10 +19510,7 @@ type ReportDeviceNetworkConfiguration struct {
 	Val  bool
 }
 
-func (p *ReportDeviceNetworkConfiguration) Name() string { return "ReportDeviceNetworkConfiguration" }
-func (p *ReportDeviceNetworkConfiguration) Field() string {
-	return "device_reporting.report_network_configuration"
-}
+func (p *ReportDeviceNetworkConfiguration) Name() string          { return "ReportDeviceNetworkConfiguration" }
 func (p *ReportDeviceNetworkConfiguration) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceNetworkConfiguration) Status() Status        { return p.Stat }
 func (p *ReportDeviceNetworkConfiguration) UntypedV() interface{} { return p.Val }
@@ -18506,6 +19520,9 @@ func (p *ReportDeviceNetworkConfiguration) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkConfiguration) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_configuration", p.Val)
 }
 func (p *ReportDeviceNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18525,7 +19542,6 @@ type ReportDeviceNetworkStatus struct {
 }
 
 func (p *ReportDeviceNetworkStatus) Name() string          { return "ReportDeviceNetworkStatus" }
-func (p *ReportDeviceNetworkStatus) Field() string         { return "device_reporting.report_network_status" }
 func (p *ReportDeviceNetworkStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceNetworkStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceNetworkStatus) UntypedV() interface{} { return p.Val }
@@ -18535,6 +19551,9 @@ func (p *ReportDeviceNetworkStatus) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_status", p.Val)
 }
 func (p *ReportDeviceNetworkStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18555,7 +19574,6 @@ type DataLeakPreventionClipboardCheckSizeLimit struct {
 func (p *DataLeakPreventionClipboardCheckSizeLimit) Name() string {
 	return "DataLeakPreventionClipboardCheckSizeLimit"
 }
-func (p *DataLeakPreventionClipboardCheckSizeLimit) Field() string         { return "" }
 func (p *DataLeakPreventionClipboardCheckSizeLimit) Scope() Scope          { return ScopeUser }
 func (p *DataLeakPreventionClipboardCheckSizeLimit) Status() Status        { return p.Stat }
 func (p *DataLeakPreventionClipboardCheckSizeLimit) UntypedV() interface{} { return p.Val }
@@ -18565,6 +19583,9 @@ func (p *DataLeakPreventionClipboardCheckSizeLimit) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DataLeakPreventionClipboardCheckSizeLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DataLeakPreventionClipboardCheckSizeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18586,7 +19607,6 @@ type RestrictedManagedGuestSessionExtensionCleanupExemptList struct {
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Name() string {
 	return "RestrictedManagedGuestSessionExtensionCleanupExemptList"
 }
-func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Field() string  { return "" }
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Scope() Scope   { return ScopeUser }
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Status() Status { return p.Stat }
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) UntypedV() interface{} {
@@ -18598,6 +19618,9 @@ func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) UnmarshalAs(m 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18618,7 +19641,6 @@ type DisplayCapturePermissionsPolicyEnabled struct {
 func (p *DisplayCapturePermissionsPolicyEnabled) Name() string {
 	return "DisplayCapturePermissionsPolicyEnabled"
 }
-func (p *DisplayCapturePermissionsPolicyEnabled) Field() string         { return "" }
 func (p *DisplayCapturePermissionsPolicyEnabled) Scope() Scope          { return ScopeUser }
 func (p *DisplayCapturePermissionsPolicyEnabled) Status() Status        { return p.Stat }
 func (p *DisplayCapturePermissionsPolicyEnabled) UntypedV() interface{} { return p.Val }
@@ -18628,6 +19650,9 @@ func (p *DisplayCapturePermissionsPolicyEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisplayCapturePermissionsPolicyEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DisplayCapturePermissionsPolicyEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18647,7 +19672,6 @@ type ScreenCaptureAllowedByOrigins struct {
 }
 
 func (p *ScreenCaptureAllowedByOrigins) Name() string          { return "ScreenCaptureAllowedByOrigins" }
-func (p *ScreenCaptureAllowedByOrigins) Field() string         { return "" }
 func (p *ScreenCaptureAllowedByOrigins) Scope() Scope          { return ScopeUser }
 func (p *ScreenCaptureAllowedByOrigins) Status() Status        { return p.Stat }
 func (p *ScreenCaptureAllowedByOrigins) UntypedV() interface{} { return p.Val }
@@ -18657,6 +19681,9 @@ func (p *ScreenCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ScreenCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18676,7 +19703,6 @@ type WindowCaptureAllowedByOrigins struct {
 }
 
 func (p *WindowCaptureAllowedByOrigins) Name() string          { return "WindowCaptureAllowedByOrigins" }
-func (p *WindowCaptureAllowedByOrigins) Field() string         { return "" }
 func (p *WindowCaptureAllowedByOrigins) Scope() Scope          { return ScopeUser }
 func (p *WindowCaptureAllowedByOrigins) Status() Status        { return p.Stat }
 func (p *WindowCaptureAllowedByOrigins) UntypedV() interface{} { return p.Val }
@@ -18686,6 +19712,9 @@ func (p *WindowCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WindowCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WindowCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18705,7 +19734,6 @@ type TabCaptureAllowedByOrigins struct {
 }
 
 func (p *TabCaptureAllowedByOrigins) Name() string          { return "TabCaptureAllowedByOrigins" }
-func (p *TabCaptureAllowedByOrigins) Field() string         { return "" }
 func (p *TabCaptureAllowedByOrigins) Scope() Scope          { return ScopeUser }
 func (p *TabCaptureAllowedByOrigins) Status() Status        { return p.Stat }
 func (p *TabCaptureAllowedByOrigins) UntypedV() interface{} { return p.Val }
@@ -18715,6 +19743,9 @@ func (p *TabCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *TabCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18736,7 +19767,6 @@ type SameOriginTabCaptureAllowedByOrigins struct {
 func (p *SameOriginTabCaptureAllowedByOrigins) Name() string {
 	return "SameOriginTabCaptureAllowedByOrigins"
 }
-func (p *SameOriginTabCaptureAllowedByOrigins) Field() string         { return "" }
 func (p *SameOriginTabCaptureAllowedByOrigins) Scope() Scope          { return ScopeUser }
 func (p *SameOriginTabCaptureAllowedByOrigins) Status() Status        { return p.Stat }
 func (p *SameOriginTabCaptureAllowedByOrigins) UntypedV() interface{} { return p.Val }
@@ -18746,6 +19776,9 @@ func (p *SameOriginTabCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SameOriginTabCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SameOriginTabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18767,7 +19800,6 @@ type AssistantVoiceMatchEnabledDuringOobe struct {
 func (p *AssistantVoiceMatchEnabledDuringOobe) Name() string {
 	return "AssistantVoiceMatchEnabledDuringOobe"
 }
-func (p *AssistantVoiceMatchEnabledDuringOobe) Field() string         { return "" }
 func (p *AssistantVoiceMatchEnabledDuringOobe) Scope() Scope          { return ScopeUser }
 func (p *AssistantVoiceMatchEnabledDuringOobe) Status() Status        { return p.Stat }
 func (p *AssistantVoiceMatchEnabledDuringOobe) UntypedV() interface{} { return p.Val }
@@ -18777,6 +19809,9 @@ func (p *AssistantVoiceMatchEnabledDuringOobe) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AssistantVoiceMatchEnabledDuringOobe) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AssistantVoiceMatchEnabledDuringOobe) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18796,7 +19831,6 @@ type LensRegionSearchEnabled struct {
 }
 
 func (p *LensRegionSearchEnabled) Name() string          { return "LensRegionSearchEnabled" }
-func (p *LensRegionSearchEnabled) Field() string         { return "" }
 func (p *LensRegionSearchEnabled) Scope() Scope          { return ScopeUser }
 func (p *LensRegionSearchEnabled) Status() Status        { return p.Stat }
 func (p *LensRegionSearchEnabled) UntypedV() interface{} { return p.Val }
@@ -18806,6 +19840,9 @@ func (p *LensRegionSearchEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LensRegionSearchEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LensRegionSearchEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18825,7 +19862,6 @@ type ArcAppToWebAppSharingEnabled struct {
 }
 
 func (p *ArcAppToWebAppSharingEnabled) Name() string          { return "ArcAppToWebAppSharingEnabled" }
-func (p *ArcAppToWebAppSharingEnabled) Field() string         { return "" }
 func (p *ArcAppToWebAppSharingEnabled) Scope() Scope          { return ScopeUser }
 func (p *ArcAppToWebAppSharingEnabled) Status() Status        { return p.Stat }
 func (p *ArcAppToWebAppSharingEnabled) UntypedV() interface{} { return p.Val }
@@ -18835,6 +19871,9 @@ func (p *ArcAppToWebAppSharingEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcAppToWebAppSharingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcAppToWebAppSharingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18856,7 +19895,6 @@ type EnhancedNetworkVoicesInSelectToSpeakAllowed struct {
 func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Name() string {
 	return "EnhancedNetworkVoicesInSelectToSpeakAllowed"
 }
-func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Field() string         { return "" }
 func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Scope() Scope          { return ScopeUser }
 func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Status() Status        { return p.Stat }
 func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) UntypedV() interface{} { return p.Val }
@@ -18866,6 +19904,9 @@ func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) UnmarshalAs(m json.RawMess
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18885,7 +19926,6 @@ type PrintRasterizePdfDpi struct {
 }
 
 func (p *PrintRasterizePdfDpi) Name() string          { return "PrintRasterizePdfDpi" }
-func (p *PrintRasterizePdfDpi) Field() string         { return "" }
 func (p *PrintRasterizePdfDpi) Scope() Scope          { return ScopeUser }
 func (p *PrintRasterizePdfDpi) Status() Status        { return p.Stat }
 func (p *PrintRasterizePdfDpi) UntypedV() interface{} { return p.Val }
@@ -18895,6 +19935,9 @@ func (p *PrintRasterizePdfDpi) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintRasterizePdfDpi) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintRasterizePdfDpi) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18913,10 +19956,7 @@ type DeviceTargetVersionSelector struct {
 	Val  string
 }
 
-func (p *DeviceTargetVersionSelector) Name() string { return "DeviceTargetVersionSelector" }
-func (p *DeviceTargetVersionSelector) Field() string {
-	return "auto_update_settings.target_version_selector"
-}
+func (p *DeviceTargetVersionSelector) Name() string          { return "DeviceTargetVersionSelector" }
 func (p *DeviceTargetVersionSelector) Scope() Scope          { return ScopeDevice }
 func (p *DeviceTargetVersionSelector) Status() Status        { return p.Stat }
 func (p *DeviceTargetVersionSelector) UntypedV() interface{} { return p.Val }
@@ -18926,6 +19966,9 @@ func (p *DeviceTargetVersionSelector) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceTargetVersionSelector) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "target_version_selector", p.Val)
 }
 func (p *DeviceTargetVersionSelector) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18947,9 +19990,6 @@ type DeviceRestrictedManagedGuestSessionEnabled struct {
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Name() string {
 	return "DeviceRestrictedManagedGuestSessionEnabled"
 }
-func (p *DeviceRestrictedManagedGuestSessionEnabled) Field() string {
-	return "device_restricted_managed_guest_session_enabled.enabled"
-}
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Status() Status        { return p.Stat }
 func (p *DeviceRestrictedManagedGuestSessionEnabled) UntypedV() interface{} { return p.Val }
@@ -18959,6 +19999,9 @@ func (p *DeviceRestrictedManagedGuestSessionEnabled) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceRestrictedManagedGuestSessionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_restricted_managed_guest_session_enabled", "enabled", p.Val)
 }
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18978,7 +20021,6 @@ type PrintPdfAsImageDefault struct {
 }
 
 func (p *PrintPdfAsImageDefault) Name() string          { return "PrintPdfAsImageDefault" }
-func (p *PrintPdfAsImageDefault) Field() string         { return "" }
 func (p *PrintPdfAsImageDefault) Scope() Scope          { return ScopeUser }
 func (p *PrintPdfAsImageDefault) Status() Status        { return p.Stat }
 func (p *PrintPdfAsImageDefault) UntypedV() interface{} { return p.Val }
@@ -18988,6 +20030,9 @@ func (p *PrintPdfAsImageDefault) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrintPdfAsImageDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintPdfAsImageDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19006,7 +20051,6 @@ type FullRestoreEnabled struct {
 }
 
 func (p *FullRestoreEnabled) Name() string          { return "FullRestoreEnabled" }
-func (p *FullRestoreEnabled) Field() string         { return "" }
 func (p *FullRestoreEnabled) Scope() Scope          { return ScopeUser }
 func (p *FullRestoreEnabled) Status() Status        { return p.Stat }
 func (p *FullRestoreEnabled) UntypedV() interface{} { return p.Val }
@@ -19016,6 +20060,9 @@ func (p *FullRestoreEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FullRestoreEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FullRestoreEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19034,7 +20081,6 @@ type GhostWindowEnabled struct {
 }
 
 func (p *GhostWindowEnabled) Name() string          { return "GhostWindowEnabled" }
-func (p *GhostWindowEnabled) Field() string         { return "" }
 func (p *GhostWindowEnabled) Scope() Scope          { return ScopeUser }
 func (p *GhostWindowEnabled) Status() Status        { return p.Stat }
 func (p *GhostWindowEnabled) UntypedV() interface{} { return p.Val }
@@ -19044,6 +20090,9 @@ func (p *GhostWindowEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *GhostWindowEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *GhostWindowEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19063,7 +20112,6 @@ type ReportDeviceSecurityStatus struct {
 }
 
 func (p *ReportDeviceSecurityStatus) Name() string          { return "ReportDeviceSecurityStatus" }
-func (p *ReportDeviceSecurityStatus) Field() string         { return "device_reporting.report_security_status" }
 func (p *ReportDeviceSecurityStatus) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceSecurityStatus) Status() Status        { return p.Stat }
 func (p *ReportDeviceSecurityStatus) UntypedV() interface{} { return p.Val }
@@ -19073,6 +20121,9 @@ func (p *ReportDeviceSecurityStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceSecurityStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_security_status", p.Val)
 }
 func (p *ReportDeviceSecurityStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19091,10 +20142,7 @@ type EnableDeviceGranularReporting struct {
 	Val  bool
 }
 
-func (p *EnableDeviceGranularReporting) Name() string { return "EnableDeviceGranularReporting" }
-func (p *EnableDeviceGranularReporting) Field() string {
-	return "device_reporting.enable_granular_reporting"
-}
+func (p *EnableDeviceGranularReporting) Name() string          { return "EnableDeviceGranularReporting" }
 func (p *EnableDeviceGranularReporting) Scope() Scope          { return ScopeDevice }
 func (p *EnableDeviceGranularReporting) Status() Status        { return p.Stat }
 func (p *EnableDeviceGranularReporting) UntypedV() interface{} { return p.Val }
@@ -19104,6 +20152,9 @@ func (p *EnableDeviceGranularReporting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableDeviceGranularReporting) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "enable_granular_reporting", p.Val)
 }
 func (p *EnableDeviceGranularReporting) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19125,9 +20176,6 @@ type DeviceLoginScreenPromptOnMultipleMatchingCertificates struct {
 func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Name() string {
 	return "DeviceLoginScreenPromptOnMultipleMatchingCertificates"
 }
-func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Field() string {
-	return "login_screen_prompt_on_multiple_matching_certificates.value"
-}
 func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) UntypedV() interface{} { return p.Val }
@@ -19137,6 +20185,9 @@ func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) UnmarshalAs(m js
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_prompt_on_multiple_matching_certificates", "value", p.Val)
 }
 func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19158,7 +20209,6 @@ type PromptOnMultipleMatchingCertificates struct {
 func (p *PromptOnMultipleMatchingCertificates) Name() string {
 	return "PromptOnMultipleMatchingCertificates"
 }
-func (p *PromptOnMultipleMatchingCertificates) Field() string         { return "" }
 func (p *PromptOnMultipleMatchingCertificates) Scope() Scope          { return ScopeUser }
 func (p *PromptOnMultipleMatchingCertificates) Status() Status        { return p.Stat }
 func (p *PromptOnMultipleMatchingCertificates) UntypedV() interface{} { return p.Val }
@@ -19168,6 +20218,9 @@ func (p *PromptOnMultipleMatchingCertificates) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PromptOnMultipleMatchingCertificates) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PromptOnMultipleMatchingCertificates) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19186,7 +20239,6 @@ type SideSearchEnabled struct {
 }
 
 func (p *SideSearchEnabled) Name() string          { return "SideSearchEnabled" }
-func (p *SideSearchEnabled) Field() string         { return "" }
 func (p *SideSearchEnabled) Scope() Scope          { return ScopeUser }
 func (p *SideSearchEnabled) Status() Status        { return p.Stat }
 func (p *SideSearchEnabled) UntypedV() interface{} { return p.Val }
@@ -19196,6 +20248,9 @@ func (p *SideSearchEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SideSearchEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SideSearchEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19215,7 +20270,6 @@ type AccessCodeCastEnabled struct {
 }
 
 func (p *AccessCodeCastEnabled) Name() string          { return "AccessCodeCastEnabled" }
-func (p *AccessCodeCastEnabled) Field() string         { return "" }
 func (p *AccessCodeCastEnabled) Scope() Scope          { return ScopeUser }
 func (p *AccessCodeCastEnabled) Status() Status        { return p.Stat }
 func (p *AccessCodeCastEnabled) UntypedV() interface{} { return p.Val }
@@ -19225,6 +20279,9 @@ func (p *AccessCodeCastEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AccessCodeCastEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AccessCodeCastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19244,7 +20301,6 @@ type AccessCodeCastDeviceDuration struct {
 }
 
 func (p *AccessCodeCastDeviceDuration) Name() string          { return "AccessCodeCastDeviceDuration" }
-func (p *AccessCodeCastDeviceDuration) Field() string         { return "" }
 func (p *AccessCodeCastDeviceDuration) Scope() Scope          { return ScopeUser }
 func (p *AccessCodeCastDeviceDuration) Status() Status        { return p.Stat }
 func (p *AccessCodeCastDeviceDuration) UntypedV() interface{} { return p.Val }
@@ -19254,6 +20310,9 @@ func (p *AccessCodeCastDeviceDuration) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *AccessCodeCastDeviceDuration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AccessCodeCastDeviceDuration) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -19274,7 +20333,6 @@ type DeskTemplatesEnabled struct {
 }
 
 func (p *DeskTemplatesEnabled) Name() string          { return "DeskTemplatesEnabled" }
-func (p *DeskTemplatesEnabled) Field() string         { return "" }
 func (p *DeskTemplatesEnabled) Scope() Scope          { return ScopeUser }
 func (p *DeskTemplatesEnabled) Status() Status        { return p.Stat }
 func (p *DeskTemplatesEnabled) UntypedV() interface{} { return p.Val }
@@ -19284,6 +20342,9 @@ func (p *DeskTemplatesEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeskTemplatesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeskTemplatesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19309,7 +20370,6 @@ type PreconfiguredDeskTemplatesValue struct {
 }
 
 func (p *PreconfiguredDeskTemplates) Name() string          { return "PreconfiguredDeskTemplates" }
-func (p *PreconfiguredDeskTemplates) Field() string         { return "" }
 func (p *PreconfiguredDeskTemplates) Scope() Scope          { return ScopeUser }
 func (p *PreconfiguredDeskTemplates) Status() Status        { return p.Stat }
 func (p *PreconfiguredDeskTemplates) UntypedV() interface{} { return p.Val }
@@ -19319,6 +20379,9 @@ func (p *PreconfiguredDeskTemplates) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as *PreconfiguredDeskTemplatesValue", m)
 	}
 	return v, nil
+}
+func (p *PreconfiguredDeskTemplates) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PreconfiguredDeskTemplates) Equal(iface interface{}) bool {
 	v, ok := iface.(*PreconfiguredDeskTemplatesValue)
@@ -19339,7 +20402,6 @@ type FastPairEnabled struct {
 }
 
 func (p *FastPairEnabled) Name() string          { return "FastPairEnabled" }
-func (p *FastPairEnabled) Field() string         { return "" }
 func (p *FastPairEnabled) Scope() Scope          { return ScopeUser }
 func (p *FastPairEnabled) Status() Status        { return p.Stat }
 func (p *FastPairEnabled) UntypedV() interface{} { return p.Val }
@@ -19349,6 +20411,9 @@ func (p *FastPairEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FastPairEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FastPairEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19367,7 +20432,6 @@ type SandboxExternalProtocolBlocked struct {
 }
 
 func (p *SandboxExternalProtocolBlocked) Name() string          { return "SandboxExternalProtocolBlocked" }
-func (p *SandboxExternalProtocolBlocked) Field() string         { return "" }
 func (p *SandboxExternalProtocolBlocked) Scope() Scope          { return ScopeUser }
 func (p *SandboxExternalProtocolBlocked) Status() Status        { return p.Stat }
 func (p *SandboxExternalProtocolBlocked) UntypedV() interface{} { return p.Val }
@@ -19377,6 +20441,9 @@ func (p *SandboxExternalProtocolBlocked) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SandboxExternalProtocolBlocked) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SandboxExternalProtocolBlocked) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19398,9 +20465,6 @@ type ReportDeviceNetworkTelemetryCollectionRateMs struct {
 func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Name() string {
 	return "ReportDeviceNetworkTelemetryCollectionRateMs"
 }
-func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Field() string {
-	return "device_reporting.report_network_telemetry_collection_rate_ms"
-}
 func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Status() Status        { return p.Stat }
 func (p *ReportDeviceNetworkTelemetryCollectionRateMs) UntypedV() interface{} { return p.Val }
@@ -19410,6 +20474,9 @@ func (p *ReportDeviceNetworkTelemetryCollectionRateMs) UnmarshalAs(m json.RawMes
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkTelemetryCollectionRateMs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_telemetry_collection_rate_ms", p.Val)
 }
 func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -19431,9 +20498,6 @@ type ReportDeviceNetworkTelemetryEventCheckingRateMs struct {
 func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Name() string {
 	return "ReportDeviceNetworkTelemetryEventCheckingRateMs"
 }
-func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Field() string {
-	return "device_reporting.report_network_telemetry_event_checking_rate_ms"
-}
 func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Status() Status        { return p.Stat }
 func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) UntypedV() interface{} { return p.Val }
@@ -19443,6 +20507,9 @@ func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) UnmarshalAs(m json.Raw
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_telemetry_event_checking_rate_ms", p.Val)
 }
 func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -19461,10 +20528,7 @@ type KioskCRXManifestUpdateURLIgnored struct {
 	Val  bool
 }
 
-func (p *KioskCRXManifestUpdateURLIgnored) Name() string { return "KioskCRXManifestUpdateURLIgnored" }
-func (p *KioskCRXManifestUpdateURLIgnored) Field() string {
-	return "kiosk_crx_manifest_update_url_ignored.value"
-}
+func (p *KioskCRXManifestUpdateURLIgnored) Name() string          { return "KioskCRXManifestUpdateURLIgnored" }
 func (p *KioskCRXManifestUpdateURLIgnored) Scope() Scope          { return ScopeDevice }
 func (p *KioskCRXManifestUpdateURLIgnored) Status() Status        { return p.Stat }
 func (p *KioskCRXManifestUpdateURLIgnored) UntypedV() interface{} { return p.Val }
@@ -19474,6 +20538,9 @@ func (p *KioskCRXManifestUpdateURLIgnored) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KioskCRXManifestUpdateURLIgnored) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "kiosk_crx_manifest_update_url_ignored", "value", p.Val)
 }
 func (p *KioskCRXManifestUpdateURLIgnored) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19493,7 +20560,6 @@ type QuickAnswersEnabled struct {
 }
 
 func (p *QuickAnswersEnabled) Name() string          { return "QuickAnswersEnabled" }
-func (p *QuickAnswersEnabled) Field() string         { return "" }
 func (p *QuickAnswersEnabled) Scope() Scope          { return ScopeUser }
 func (p *QuickAnswersEnabled) Status() Status        { return p.Stat }
 func (p *QuickAnswersEnabled) UntypedV() interface{} { return p.Val }
@@ -19503,6 +20569,9 @@ func (p *QuickAnswersEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickAnswersEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19522,7 +20591,6 @@ type QuickAnswersDefinitionEnabled struct {
 }
 
 func (p *QuickAnswersDefinitionEnabled) Name() string          { return "QuickAnswersDefinitionEnabled" }
-func (p *QuickAnswersDefinitionEnabled) Field() string         { return "" }
 func (p *QuickAnswersDefinitionEnabled) Scope() Scope          { return ScopeUser }
 func (p *QuickAnswersDefinitionEnabled) Status() Status        { return p.Stat }
 func (p *QuickAnswersDefinitionEnabled) UntypedV() interface{} { return p.Val }
@@ -19532,6 +20600,9 @@ func (p *QuickAnswersDefinitionEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersDefinitionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickAnswersDefinitionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19551,7 +20622,6 @@ type QuickAnswersTranslationEnabled struct {
 }
 
 func (p *QuickAnswersTranslationEnabled) Name() string          { return "QuickAnswersTranslationEnabled" }
-func (p *QuickAnswersTranslationEnabled) Field() string         { return "" }
 func (p *QuickAnswersTranslationEnabled) Scope() Scope          { return ScopeUser }
 func (p *QuickAnswersTranslationEnabled) Status() Status        { return p.Stat }
 func (p *QuickAnswersTranslationEnabled) UntypedV() interface{} { return p.Val }
@@ -19561,6 +20631,9 @@ func (p *QuickAnswersTranslationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersTranslationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickAnswersTranslationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19580,7 +20653,6 @@ type QuickAnswersUnitConversionEnabled struct {
 }
 
 func (p *QuickAnswersUnitConversionEnabled) Name() string          { return "QuickAnswersUnitConversionEnabled" }
-func (p *QuickAnswersUnitConversionEnabled) Field() string         { return "" }
 func (p *QuickAnswersUnitConversionEnabled) Scope() Scope          { return ScopeUser }
 func (p *QuickAnswersUnitConversionEnabled) Status() Status        { return p.Stat }
 func (p *QuickAnswersUnitConversionEnabled) UntypedV() interface{} { return p.Val }
@@ -19590,6 +20662,9 @@ func (p *QuickAnswersUnitConversionEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersUnitConversionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickAnswersUnitConversionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19611,7 +20686,6 @@ type CORSNonWildcardRequestHeadersSupport struct {
 func (p *CORSNonWildcardRequestHeadersSupport) Name() string {
 	return "CORSNonWildcardRequestHeadersSupport"
 }
-func (p *CORSNonWildcardRequestHeadersSupport) Field() string         { return "" }
 func (p *CORSNonWildcardRequestHeadersSupport) Scope() Scope          { return ScopeUser }
 func (p *CORSNonWildcardRequestHeadersSupport) Status() Status        { return p.Stat }
 func (p *CORSNonWildcardRequestHeadersSupport) UntypedV() interface{} { return p.Val }
@@ -19621,6 +20695,9 @@ func (p *CORSNonWildcardRequestHeadersSupport) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CORSNonWildcardRequestHeadersSupport) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CORSNonWildcardRequestHeadersSupport) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19642,7 +20719,6 @@ type RemoteAccessHostClipboardSizeBytes struct {
 func (p *RemoteAccessHostClipboardSizeBytes) Name() string {
 	return "RemoteAccessHostClipboardSizeBytes"
 }
-func (p *RemoteAccessHostClipboardSizeBytes) Field() string         { return "" }
 func (p *RemoteAccessHostClipboardSizeBytes) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostClipboardSizeBytes) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostClipboardSizeBytes) UntypedV() interface{} { return p.Val }
@@ -19652,6 +20728,9 @@ func (p *RemoteAccessHostClipboardSizeBytes) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostClipboardSizeBytes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostClipboardSizeBytes) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -19673,7 +20752,6 @@ type RemoteAccessHostAllowRemoteSupportConnections struct {
 func (p *RemoteAccessHostAllowRemoteSupportConnections) Name() string {
 	return "RemoteAccessHostAllowRemoteSupportConnections"
 }
-func (p *RemoteAccessHostAllowRemoteSupportConnections) Field() string         { return "" }
 func (p *RemoteAccessHostAllowRemoteSupportConnections) Scope() Scope          { return ScopeUser }
 func (p *RemoteAccessHostAllowRemoteSupportConnections) Status() Status        { return p.Stat }
 func (p *RemoteAccessHostAllowRemoteSupportConnections) UntypedV() interface{} { return p.Val }
@@ -19683,6 +20761,9 @@ func (p *RemoteAccessHostAllowRemoteSupportConnections) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostAllowRemoteSupportConnections) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostAllowRemoteSupportConnections) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19704,7 +20785,6 @@ type UserAgentClientHintsGREASEUpdateEnabled struct {
 func (p *UserAgentClientHintsGREASEUpdateEnabled) Name() string {
 	return "UserAgentClientHintsGREASEUpdateEnabled"
 }
-func (p *UserAgentClientHintsGREASEUpdateEnabled) Field() string         { return "" }
 func (p *UserAgentClientHintsGREASEUpdateEnabled) Scope() Scope          { return ScopeUser }
 func (p *UserAgentClientHintsGREASEUpdateEnabled) Status() Status        { return p.Stat }
 func (p *UserAgentClientHintsGREASEUpdateEnabled) UntypedV() interface{} { return p.Val }
@@ -19714,6 +20794,9 @@ func (p *UserAgentClientHintsGREASEUpdateEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserAgentClientHintsGREASEUpdateEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserAgentClientHintsGREASEUpdateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19733,7 +20816,6 @@ type DeviceI18nShortcutsEnabled struct {
 }
 
 func (p *DeviceI18nShortcutsEnabled) Name() string          { return "DeviceI18nShortcutsEnabled" }
-func (p *DeviceI18nShortcutsEnabled) Field() string         { return "device_i18n_shortcuts_enabled.enabled" }
 func (p *DeviceI18nShortcutsEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceI18nShortcutsEnabled) Status() Status        { return p.Stat }
 func (p *DeviceI18nShortcutsEnabled) UntypedV() interface{} { return p.Val }
@@ -19743,6 +20825,9 @@ func (p *DeviceI18nShortcutsEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceI18nShortcutsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_i18n_shortcuts_enabled", "enabled", p.Val)
 }
 func (p *DeviceI18nShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19762,7 +20847,6 @@ type HistoryClustersVisible struct {
 }
 
 func (p *HistoryClustersVisible) Name() string          { return "HistoryClustersVisible" }
-func (p *HistoryClustersVisible) Field() string         { return "" }
 func (p *HistoryClustersVisible) Scope() Scope          { return ScopeUser }
 func (p *HistoryClustersVisible) Status() Status        { return p.Stat }
 func (p *HistoryClustersVisible) UntypedV() interface{} { return p.Val }
@@ -19772,6 +20856,9 @@ func (p *HistoryClustersVisible) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HistoryClustersVisible) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HistoryClustersVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19790,10 +20877,7 @@ type ChromadToCloudMigrationEnabled struct {
 	Val  bool
 }
 
-func (p *ChromadToCloudMigrationEnabled) Name() string { return "ChromadToCloudMigrationEnabled" }
-func (p *ChromadToCloudMigrationEnabled) Field() string {
-	return "chromad_to_cloud_migration_enabled.value"
-}
+func (p *ChromadToCloudMigrationEnabled) Name() string          { return "ChromadToCloudMigrationEnabled" }
 func (p *ChromadToCloudMigrationEnabled) Scope() Scope          { return ScopeDevice }
 func (p *ChromadToCloudMigrationEnabled) Status() Status        { return p.Stat }
 func (p *ChromadToCloudMigrationEnabled) UntypedV() interface{} { return p.Val }
@@ -19803,6 +20887,9 @@ func (p *ChromadToCloudMigrationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ChromadToCloudMigrationEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "chromad_to_cloud_migration_enabled", "value", p.Val)
 }
 func (p *ChromadToCloudMigrationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19829,7 +20916,6 @@ type CopyPreventionSettingsValue struct {
 }
 
 func (p *CopyPreventionSettings) Name() string          { return "CopyPreventionSettings" }
-func (p *CopyPreventionSettings) Field() string         { return "" }
 func (p *CopyPreventionSettings) Scope() Scope          { return ScopeUser }
 func (p *CopyPreventionSettings) Status() Status        { return p.Stat }
 func (p *CopyPreventionSettings) UntypedV() interface{} { return p.Val }
@@ -19839,6 +20925,9 @@ func (p *CopyPreventionSettings) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as *CopyPreventionSettingsValue", m)
 	}
 	return v, nil
+}
+func (p *CopyPreventionSettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CopyPreventionSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*CopyPreventionSettingsValue)
@@ -19860,9 +20949,6 @@ type ReportDeviceAudioStatusCheckingRateMs struct {
 func (p *ReportDeviceAudioStatusCheckingRateMs) Name() string {
 	return "ReportDeviceAudioStatusCheckingRateMs"
 }
-func (p *ReportDeviceAudioStatusCheckingRateMs) Field() string {
-	return "device_reporting.report_device_audio_status_checking_rate_ms"
-}
 func (p *ReportDeviceAudioStatusCheckingRateMs) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceAudioStatusCheckingRateMs) Status() Status        { return p.Stat }
 func (p *ReportDeviceAudioStatusCheckingRateMs) UntypedV() interface{} { return p.Val }
@@ -19872,6 +20958,9 @@ func (p *ReportDeviceAudioStatusCheckingRateMs) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceAudioStatusCheckingRateMs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_device_audio_status_checking_rate_ms", p.Val)
 }
 func (p *ReportDeviceAudioStatusCheckingRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -19893,7 +20982,6 @@ type KeepFullscreenWithoutNotificationUrlAllowList struct {
 func (p *KeepFullscreenWithoutNotificationUrlAllowList) Name() string {
 	return "KeepFullscreenWithoutNotificationUrlAllowList"
 }
-func (p *KeepFullscreenWithoutNotificationUrlAllowList) Field() string         { return "" }
 func (p *KeepFullscreenWithoutNotificationUrlAllowList) Scope() Scope          { return ScopeUser }
 func (p *KeepFullscreenWithoutNotificationUrlAllowList) Status() Status        { return p.Stat }
 func (p *KeepFullscreenWithoutNotificationUrlAllowList) UntypedV() interface{} { return p.Val }
@@ -19903,6 +20991,9 @@ func (p *KeepFullscreenWithoutNotificationUrlAllowList) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -19915,7 +21006,6 @@ func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{})
 // ****************************************************************************
 // 931. OnPrintEnterpriseConnector
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type OnPrintEnterpriseConnector struct {
 	Stat Status
@@ -19957,7 +21047,6 @@ type OnPrintEnterpriseConnectorValueCustomMessages struct {
 }
 
 func (p *OnPrintEnterpriseConnector) Name() string          { return "OnPrintEnterpriseConnector" }
-func (p *OnPrintEnterpriseConnector) Field() string         { return "" }
 func (p *OnPrintEnterpriseConnector) Scope() Scope          { return ScopeUser }
 func (p *OnPrintEnterpriseConnector) Status() Status        { return p.Stat }
 func (p *OnPrintEnterpriseConnector) UntypedV() interface{} { return p.Val }
@@ -19967,6 +21056,9 @@ func (p *OnPrintEnterpriseConnector) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []*OnPrintEnterpriseConnectorValue", m)
 	}
 	return v, nil
+}
+func (p *OnPrintEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OnPrintEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnPrintEnterpriseConnectorValue)
@@ -19986,7 +21078,6 @@ type UserAgentReduction struct {
 }
 
 func (p *UserAgentReduction) Name() string          { return "UserAgentReduction" }
-func (p *UserAgentReduction) Field() string         { return "" }
 func (p *UserAgentReduction) Scope() Scope          { return ScopeUser }
 func (p *UserAgentReduction) Status() Status        { return p.Stat }
 func (p *UserAgentReduction) UntypedV() interface{} { return p.Val }
@@ -19996,6 +21087,9 @@ func (p *UserAgentReduction) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *UserAgentReduction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserAgentReduction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20015,7 +21109,6 @@ type OriginAgentClusterDefaultEnabled struct {
 }
 
 func (p *OriginAgentClusterDefaultEnabled) Name() string          { return "OriginAgentClusterDefaultEnabled" }
-func (p *OriginAgentClusterDefaultEnabled) Field() string         { return "" }
 func (p *OriginAgentClusterDefaultEnabled) Scope() Scope          { return ScopeUser }
 func (p *OriginAgentClusterDefaultEnabled) Status() Status        { return p.Stat }
 func (p *OriginAgentClusterDefaultEnabled) UntypedV() interface{} { return p.Val }
@@ -20025,6 +21118,9 @@ func (p *OriginAgentClusterDefaultEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *OriginAgentClusterDefaultEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OriginAgentClusterDefaultEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20043,10 +21139,7 @@ type DeviceLoginScreenWebUILazyLoading struct {
 	Val  bool
 }
 
-func (p *DeviceLoginScreenWebUILazyLoading) Name() string { return "DeviceLoginScreenWebUILazyLoading" }
-func (p *DeviceLoginScreenWebUILazyLoading) Field() string {
-	return "login_web_ui_lazy_loading.enabled"
-}
+func (p *DeviceLoginScreenWebUILazyLoading) Name() string          { return "DeviceLoginScreenWebUILazyLoading" }
 func (p *DeviceLoginScreenWebUILazyLoading) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenWebUILazyLoading) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenWebUILazyLoading) UntypedV() interface{} { return p.Val }
@@ -20056,6 +21149,9 @@ func (p *DeviceLoginScreenWebUILazyLoading) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenWebUILazyLoading) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_web_ui_lazy_loading", "enabled", p.Val)
 }
 func (p *DeviceLoginScreenWebUILazyLoading) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20075,7 +21171,6 @@ type ProjectorEnabled struct {
 }
 
 func (p *ProjectorEnabled) Name() string          { return "ProjectorEnabled" }
-func (p *ProjectorEnabled) Field() string         { return "" }
 func (p *ProjectorEnabled) Scope() Scope          { return ScopeUser }
 func (p *ProjectorEnabled) Status() Status        { return p.Stat }
 func (p *ProjectorEnabled) UntypedV() interface{} { return p.Val }
@@ -20085,6 +21180,9 @@ func (p *ProjectorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ProjectorEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProjectorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20105,7 +21203,6 @@ type PhoneHubCameraRollAllowed struct {
 }
 
 func (p *PhoneHubCameraRollAllowed) Name() string          { return "PhoneHubCameraRollAllowed" }
-func (p *PhoneHubCameraRollAllowed) Field() string         { return "" }
 func (p *PhoneHubCameraRollAllowed) Scope() Scope          { return ScopeUser }
 func (p *PhoneHubCameraRollAllowed) Status() Status        { return p.Stat }
 func (p *PhoneHubCameraRollAllowed) UntypedV() interface{} { return p.Val }
@@ -20115,6 +21212,9 @@ func (p *PhoneHubCameraRollAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PhoneHubCameraRollAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PhoneHubCameraRollAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20134,7 +21234,6 @@ type EcheAllowed struct {
 }
 
 func (p *EcheAllowed) Name() string          { return "EcheAllowed" }
-func (p *EcheAllowed) Field() string         { return "" }
 func (p *EcheAllowed) Scope() Scope          { return ScopeUser }
 func (p *EcheAllowed) Status() Status        { return p.Stat }
 func (p *EcheAllowed) UntypedV() interface{} { return p.Val }
@@ -20144,6 +21243,9 @@ func (p *EcheAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EcheAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EcheAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20165,9 +21267,6 @@ type DeviceKeylockerForStorageEncryptionEnabled struct {
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Name() string {
 	return "DeviceKeylockerForStorageEncryptionEnabled"
 }
-func (p *DeviceKeylockerForStorageEncryptionEnabled) Field() string {
-	return "keylocker_for_storage_encryption_enabled.enabled"
-}
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Status() Status        { return p.Stat }
 func (p *DeviceKeylockerForStorageEncryptionEnabled) UntypedV() interface{} { return p.Val }
@@ -20177,6 +21276,9 @@ func (p *DeviceKeylockerForStorageEncryptionEnabled) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceKeylockerForStorageEncryptionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "keylocker_for_storage_encryption_enabled", "enabled", p.Val)
 }
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20196,7 +21298,6 @@ type ReportCRDSessions struct {
 }
 
 func (p *ReportCRDSessions) Name() string          { return "ReportCRDSessions" }
-func (p *ReportCRDSessions) Field() string         { return "device_reporting.report_crd_sessions" }
 func (p *ReportCRDSessions) Scope() Scope          { return ScopeDevice }
 func (p *ReportCRDSessions) Status() Status        { return p.Stat }
 func (p *ReportCRDSessions) UntypedV() interface{} { return p.Val }
@@ -20206,6 +21307,9 @@ func (p *ReportCRDSessions) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportCRDSessions) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_crd_sessions", p.Val)
 }
 func (p *ReportCRDSessions) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20223,10 +21327,7 @@ type DeviceRunAutomaticCleanupOnLogin struct {
 	Val  bool
 }
 
-func (p *DeviceRunAutomaticCleanupOnLogin) Name() string { return "DeviceRunAutomaticCleanupOnLogin" }
-func (p *DeviceRunAutomaticCleanupOnLogin) Field() string {
-	return "device_run_automatic_cleanup_on_login.value"
-}
+func (p *DeviceRunAutomaticCleanupOnLogin) Name() string          { return "DeviceRunAutomaticCleanupOnLogin" }
 func (p *DeviceRunAutomaticCleanupOnLogin) Scope() Scope          { return ScopeDevice }
 func (p *DeviceRunAutomaticCleanupOnLogin) Status() Status        { return p.Stat }
 func (p *DeviceRunAutomaticCleanupOnLogin) UntypedV() interface{} { return p.Val }
@@ -20236,6 +21337,9 @@ func (p *DeviceRunAutomaticCleanupOnLogin) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceRunAutomaticCleanupOnLogin) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_run_automatic_cleanup_on_login", "value", p.Val)
 }
 func (p *DeviceRunAutomaticCleanupOnLogin) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20255,7 +21359,6 @@ type NTPMiddleSlotAnnouncementVisible struct {
 }
 
 func (p *NTPMiddleSlotAnnouncementVisible) Name() string          { return "NTPMiddleSlotAnnouncementVisible" }
-func (p *NTPMiddleSlotAnnouncementVisible) Field() string         { return "" }
 func (p *NTPMiddleSlotAnnouncementVisible) Scope() Scope          { return ScopeUser }
 func (p *NTPMiddleSlotAnnouncementVisible) Status() Status        { return p.Stat }
 func (p *NTPMiddleSlotAnnouncementVisible) UntypedV() interface{} { return p.Val }
@@ -20265,6 +21368,9 @@ func (p *NTPMiddleSlotAnnouncementVisible) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTPMiddleSlotAnnouncementVisible) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NTPMiddleSlotAnnouncementVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20285,7 +21391,6 @@ type CloudProfileReportingEnabled struct {
 }
 
 func (p *CloudProfileReportingEnabled) Name() string          { return "CloudProfileReportingEnabled" }
-func (p *CloudProfileReportingEnabled) Field() string         { return "" }
 func (p *CloudProfileReportingEnabled) Scope() Scope          { return ScopeUser }
 func (p *CloudProfileReportingEnabled) Status() Status        { return p.Stat }
 func (p *CloudProfileReportingEnabled) UntypedV() interface{} { return p.Val }
@@ -20295,6 +21400,9 @@ func (p *CloudProfileReportingEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CloudProfileReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CloudProfileReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20314,7 +21422,6 @@ type DefaultWebHidGuardSetting struct {
 }
 
 func (p *DefaultWebHidGuardSetting) Name() string          { return "DefaultWebHidGuardSetting" }
-func (p *DefaultWebHidGuardSetting) Field() string         { return "" }
 func (p *DefaultWebHidGuardSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultWebHidGuardSetting) Status() Status        { return p.Stat }
 func (p *DefaultWebHidGuardSetting) UntypedV() interface{} { return p.Val }
@@ -20324,6 +21431,9 @@ func (p *DefaultWebHidGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebHidGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWebHidGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20343,7 +21453,6 @@ type WebHidAskForUrls struct {
 }
 
 func (p *WebHidAskForUrls) Name() string          { return "WebHidAskForUrls" }
-func (p *WebHidAskForUrls) Field() string         { return "" }
 func (p *WebHidAskForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebHidAskForUrls) Status() Status        { return p.Stat }
 func (p *WebHidAskForUrls) UntypedV() interface{} { return p.Val }
@@ -20353,6 +21462,9 @@ func (p *WebHidAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebHidAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20372,7 +21484,6 @@ type WebHidBlockedForUrls struct {
 }
 
 func (p *WebHidBlockedForUrls) Name() string          { return "WebHidBlockedForUrls" }
-func (p *WebHidBlockedForUrls) Field() string         { return "" }
 func (p *WebHidBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebHidBlockedForUrls) Status() Status        { return p.Stat }
 func (p *WebHidBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -20382,6 +21493,9 @@ func (p *WebHidBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebHidBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20403,7 +21517,6 @@ type PasswordDismissCompromisedAlertEnabled struct {
 func (p *PasswordDismissCompromisedAlertEnabled) Name() string {
 	return "PasswordDismissCompromisedAlertEnabled"
 }
-func (p *PasswordDismissCompromisedAlertEnabled) Field() string         { return "" }
 func (p *PasswordDismissCompromisedAlertEnabled) Scope() Scope          { return ScopeUser }
 func (p *PasswordDismissCompromisedAlertEnabled) Status() Status        { return p.Stat }
 func (p *PasswordDismissCompromisedAlertEnabled) UntypedV() interface{} { return p.Val }
@@ -20413,6 +21526,9 @@ func (p *PasswordDismissCompromisedAlertEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PasswordDismissCompromisedAlertEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordDismissCompromisedAlertEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20434,7 +21550,6 @@ type ExemptDomainFileTypePairsFromFileTypeDownloadWarnings struct {
 func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Name() string {
 	return "ExemptDomainFileTypePairsFromFileTypeDownloadWarnings"
 }
-func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Field() string         { return "" }
 func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Scope() Scope          { return ScopeUser }
 func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Status() Status        { return p.Stat }
 func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) UntypedV() interface{} { return p.Val }
@@ -20444,6 +21559,9 @@ func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) UnmarshalAs(m js
 		return nil, errors.Wrapf(err, "could not read %s as []*RefDomainFiletypePair", m)
 	}
 	return v, nil
+}
+func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefDomainFiletypePair)
@@ -20463,7 +21581,6 @@ type FirstPartySetsEnabled struct {
 }
 
 func (p *FirstPartySetsEnabled) Name() string          { return "FirstPartySetsEnabled" }
-func (p *FirstPartySetsEnabled) Field() string         { return "" }
 func (p *FirstPartySetsEnabled) Scope() Scope          { return ScopeUser }
 func (p *FirstPartySetsEnabled) Status() Status        { return p.Stat }
 func (p *FirstPartySetsEnabled) UntypedV() interface{} { return p.Val }
@@ -20473,6 +21590,9 @@ func (p *FirstPartySetsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FirstPartySetsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FirstPartySetsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20494,7 +21614,6 @@ type ForceMajorVersionToMinorPositionInUserAgent struct {
 func (p *ForceMajorVersionToMinorPositionInUserAgent) Name() string {
 	return "ForceMajorVersionToMinorPositionInUserAgent"
 }
-func (p *ForceMajorVersionToMinorPositionInUserAgent) Field() string         { return "" }
 func (p *ForceMajorVersionToMinorPositionInUserAgent) Scope() Scope          { return ScopeUser }
 func (p *ForceMajorVersionToMinorPositionInUserAgent) Status() Status        { return p.Stat }
 func (p *ForceMajorVersionToMinorPositionInUserAgent) UntypedV() interface{} { return p.Val }
@@ -20504,6 +21623,9 @@ func (p *ForceMajorVersionToMinorPositionInUserAgent) UnmarshalAs(m json.RawMess
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ForceMajorVersionToMinorPositionInUserAgent) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceMajorVersionToMinorPositionInUserAgent) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20525,7 +21647,6 @@ type AllHttpAuthSchemesAllowedForOrigins struct {
 func (p *AllHttpAuthSchemesAllowedForOrigins) Name() string {
 	return "AllHttpAuthSchemesAllowedForOrigins"
 }
-func (p *AllHttpAuthSchemesAllowedForOrigins) Field() string         { return "" }
 func (p *AllHttpAuthSchemesAllowedForOrigins) Scope() Scope          { return ScopeUser }
 func (p *AllHttpAuthSchemesAllowedForOrigins) Status() Status        { return p.Stat }
 func (p *AllHttpAuthSchemesAllowedForOrigins) UntypedV() interface{} { return p.Val }
@@ -20535,6 +21656,9 @@ func (p *AllHttpAuthSchemesAllowedForOrigins) UnmarshalAs(m json.RawMessage) (in
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AllHttpAuthSchemesAllowedForOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllHttpAuthSchemesAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20554,7 +21678,6 @@ type DefaultWindowPlacementSetting struct {
 }
 
 func (p *DefaultWindowPlacementSetting) Name() string          { return "DefaultWindowPlacementSetting" }
-func (p *DefaultWindowPlacementSetting) Field() string         { return "" }
 func (p *DefaultWindowPlacementSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultWindowPlacementSetting) Status() Status        { return p.Stat }
 func (p *DefaultWindowPlacementSetting) UntypedV() interface{} { return p.Val }
@@ -20564,6 +21687,9 @@ func (p *DefaultWindowPlacementSetting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWindowPlacementSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWindowPlacementSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20583,7 +21709,6 @@ type ReportDevicePeripherals struct {
 }
 
 func (p *ReportDevicePeripherals) Name() string          { return "ReportDevicePeripherals" }
-func (p *ReportDevicePeripherals) Field() string         { return "device_reporting.report_peripherals" }
 func (p *ReportDevicePeripherals) Scope() Scope          { return ScopeDevice }
 func (p *ReportDevicePeripherals) Status() Status        { return p.Stat }
 func (p *ReportDevicePeripherals) UntypedV() interface{} { return p.Val }
@@ -20593,6 +21718,9 @@ func (p *ReportDevicePeripherals) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDevicePeripherals) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_peripherals", p.Val)
 }
 func (p *ReportDevicePeripherals) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20612,7 +21740,6 @@ type WebHidAllowAllDevicesForUrls struct {
 }
 
 func (p *WebHidAllowAllDevicesForUrls) Name() string          { return "WebHidAllowAllDevicesForUrls" }
-func (p *WebHidAllowAllDevicesForUrls) Field() string         { return "" }
 func (p *WebHidAllowAllDevicesForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebHidAllowAllDevicesForUrls) Status() Status        { return p.Stat }
 func (p *WebHidAllowAllDevicesForUrls) UntypedV() interface{} { return p.Val }
@@ -20622,6 +21749,9 @@ func (p *WebHidAllowAllDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebHidAllowAllDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidAllowAllDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20651,7 +21781,6 @@ type WebHidAllowDevicesForUrlsValueDevices struct {
 }
 
 func (p *WebHidAllowDevicesForUrls) Name() string          { return "WebHidAllowDevicesForUrls" }
-func (p *WebHidAllowDevicesForUrls) Field() string         { return "" }
 func (p *WebHidAllowDevicesForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebHidAllowDevicesForUrls) Status() Status        { return p.Stat }
 func (p *WebHidAllowDevicesForUrls) UntypedV() interface{} { return p.Val }
@@ -20661,6 +21790,9 @@ func (p *WebHidAllowDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []*WebHidAllowDevicesForUrlsValue", m)
 	}
 	return v, nil
+}
+func (p *WebHidAllowDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebHidAllowDevicesForUrlsValue)
@@ -20692,7 +21824,6 @@ type WebHidAllowDevicesWithHidUsagesForUrlsValueUsages struct {
 func (p *WebHidAllowDevicesWithHidUsagesForUrls) Name() string {
 	return "WebHidAllowDevicesWithHidUsagesForUrls"
 }
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) Field() string         { return "" }
 func (p *WebHidAllowDevicesWithHidUsagesForUrls) Scope() Scope          { return ScopeUser }
 func (p *WebHidAllowDevicesWithHidUsagesForUrls) Status() Status        { return p.Stat }
 func (p *WebHidAllowDevicesWithHidUsagesForUrls) UntypedV() interface{} { return p.Val }
@@ -20702,6 +21833,9 @@ func (p *WebHidAllowDevicesWithHidUsagesForUrls) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as []*WebHidAllowDevicesWithHidUsagesForUrlsValue", m)
 	}
 	return v, nil
+}
+func (p *WebHidAllowDevicesWithHidUsagesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidAllowDevicesWithHidUsagesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebHidAllowDevicesWithHidUsagesForUrlsValue)
@@ -20720,7 +21854,6 @@ type SecondaryGoogleAccountUsage struct {
 }
 
 func (p *SecondaryGoogleAccountUsage) Name() string          { return "SecondaryGoogleAccountUsage" }
-func (p *SecondaryGoogleAccountUsage) Field() string         { return "" }
 func (p *SecondaryGoogleAccountUsage) Scope() Scope          { return ScopeUser }
 func (p *SecondaryGoogleAccountUsage) Status() Status        { return p.Stat }
 func (p *SecondaryGoogleAccountUsage) UntypedV() interface{} { return p.Val }
@@ -20730,6 +21863,9 @@ func (p *SecondaryGoogleAccountUsage) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SecondaryGoogleAccountUsage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SecondaryGoogleAccountUsage) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -20751,9 +21887,6 @@ type DeviceEncryptedReportingPipelineEnabled struct {
 func (p *DeviceEncryptedReportingPipelineEnabled) Name() string {
 	return "DeviceEncryptedReportingPipelineEnabled"
 }
-func (p *DeviceEncryptedReportingPipelineEnabled) Field() string {
-	return "device_reporting.encrypted_reporting_pipeline_enabled"
-}
 func (p *DeviceEncryptedReportingPipelineEnabled) Scope() Scope          { return ScopeDevice }
 func (p *DeviceEncryptedReportingPipelineEnabled) Status() Status        { return p.Stat }
 func (p *DeviceEncryptedReportingPipelineEnabled) UntypedV() interface{} { return p.Val }
@@ -20763,6 +21896,9 @@ func (p *DeviceEncryptedReportingPipelineEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceEncryptedReportingPipelineEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "encrypted_reporting_pipeline_enabled", p.Val)
 }
 func (p *DeviceEncryptedReportingPipelineEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20784,7 +21920,6 @@ type IsolatedAppsDeveloperModeAllowed struct {
 }
 
 func (p *IsolatedAppsDeveloperModeAllowed) Name() string          { return "IsolatedAppsDeveloperModeAllowed" }
-func (p *IsolatedAppsDeveloperModeAllowed) Field() string         { return "" }
 func (p *IsolatedAppsDeveloperModeAllowed) Scope() Scope          { return ScopeUser }
 func (p *IsolatedAppsDeveloperModeAllowed) Status() Status        { return p.Stat }
 func (p *IsolatedAppsDeveloperModeAllowed) UntypedV() interface{} { return p.Val }
@@ -20794,6 +21929,9 @@ func (p *IsolatedAppsDeveloperModeAllowed) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *IsolatedAppsDeveloperModeAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IsolatedAppsDeveloperModeAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20812,7 +21950,6 @@ type FloatingWorkspaceEnabled struct {
 }
 
 func (p *FloatingWorkspaceEnabled) Name() string          { return "FloatingWorkspaceEnabled" }
-func (p *FloatingWorkspaceEnabled) Field() string         { return "" }
 func (p *FloatingWorkspaceEnabled) Scope() Scope          { return ScopeUser }
 func (p *FloatingWorkspaceEnabled) Status() Status        { return p.Stat }
 func (p *FloatingWorkspaceEnabled) UntypedV() interface{} { return p.Val }
@@ -20822,6 +21959,9 @@ func (p *FloatingWorkspaceEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FloatingWorkspaceEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FloatingWorkspaceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20841,7 +21981,6 @@ type WindowPlacementAllowedForUrls struct {
 }
 
 func (p *WindowPlacementAllowedForUrls) Name() string          { return "WindowPlacementAllowedForUrls" }
-func (p *WindowPlacementAllowedForUrls) Field() string         { return "" }
 func (p *WindowPlacementAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *WindowPlacementAllowedForUrls) Status() Status        { return p.Stat }
 func (p *WindowPlacementAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -20851,6 +21990,9 @@ func (p *WindowPlacementAllowedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WindowPlacementAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WindowPlacementAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20870,7 +22012,6 @@ type WindowPlacementBlockedForUrls struct {
 }
 
 func (p *WindowPlacementBlockedForUrls) Name() string          { return "WindowPlacementBlockedForUrls" }
-func (p *WindowPlacementBlockedForUrls) Field() string         { return "" }
 func (p *WindowPlacementBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *WindowPlacementBlockedForUrls) Status() Status        { return p.Stat }
 func (p *WindowPlacementBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -20880,6 +22021,9 @@ func (p *WindowPlacementBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WindowPlacementBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WindowPlacementBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20899,7 +22043,6 @@ type CloudReportingUploadFrequency struct {
 }
 
 func (p *CloudReportingUploadFrequency) Name() string          { return "CloudReportingUploadFrequency" }
-func (p *CloudReportingUploadFrequency) Field() string         { return "" }
 func (p *CloudReportingUploadFrequency) Scope() Scope          { return ScopeUser }
 func (p *CloudReportingUploadFrequency) Status() Status        { return p.Stat }
 func (p *CloudReportingUploadFrequency) UntypedV() interface{} { return p.Val }
@@ -20909,6 +22052,9 @@ func (p *CloudReportingUploadFrequency) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *CloudReportingUploadFrequency) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CloudReportingUploadFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20928,7 +22074,6 @@ type WebAuthnFactors struct {
 }
 
 func (p *WebAuthnFactors) Name() string          { return "WebAuthnFactors" }
-func (p *WebAuthnFactors) Field() string         { return "" }
 func (p *WebAuthnFactors) Scope() Scope          { return ScopeUser }
 func (p *WebAuthnFactors) Status() Status        { return p.Stat }
 func (p *WebAuthnFactors) UntypedV() interface{} { return p.Val }
@@ -20938,6 +22083,9 @@ func (p *WebAuthnFactors) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebAuthnFactors) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebAuthnFactors) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20959,7 +22107,6 @@ type WebAuthenticationRemoteProxiedRequestsAllowed struct {
 func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Name() string {
 	return "WebAuthenticationRemoteProxiedRequestsAllowed"
 }
-func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Field() string         { return "" }
 func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Scope() Scope          { return ScopeUser }
 func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Status() Status        { return p.Stat }
 func (p *WebAuthenticationRemoteProxiedRequestsAllowed) UntypedV() interface{} { return p.Val }
@@ -20969,6 +22116,9 @@ func (p *WebAuthenticationRemoteProxiedRequestsAllowed) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20987,7 +22137,6 @@ type WebSQLAccess struct {
 }
 
 func (p *WebSQLAccess) Name() string          { return "WebSQLAccess" }
-func (p *WebSQLAccess) Field() string         { return "" }
 func (p *WebSQLAccess) Scope() Scope          { return ScopeUser }
 func (p *WebSQLAccess) Status() Status        { return p.Stat }
 func (p *WebSQLAccess) UntypedV() interface{} { return p.Val }
@@ -20997,6 +22146,9 @@ func (p *WebSQLAccess) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WebSQLAccess) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebSQLAccess) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21021,21 +22173,20 @@ type FirstPartySetsOverridesValue struct {
 }
 
 type FirstPartySetsOverridesValueReplacements struct {
-	CcTLDs       map[string][]string `json:"ccTLDs"`
-	Members      []string            `json:"members,omitempty"`
-	Owner        string              `json:"owner"`
-	ServiceSites []string            `json:"serviceSites,omitempty"`
+	AssociatedSites []string            `json:"associatedSites,omitempty"`
+	CcTLDs          map[string][]string `json:"ccTLDs"`
+	Primary         string              `json:"primary"`
+	ServiceSites    []string            `json:"serviceSites,omitempty"`
 }
 
 type FirstPartySetsOverridesValueAdditions struct {
-	CcTLDs       map[string][]string `json:"ccTLDs"`
-	Members      []string            `json:"members,omitempty"`
-	Owner        string              `json:"owner"`
-	ServiceSites []string            `json:"serviceSites,omitempty"`
+	AssociatedSites []string            `json:"associatedSites,omitempty"`
+	CcTLDs          map[string][]string `json:"ccTLDs"`
+	Primary         string              `json:"primary"`
+	ServiceSites    []string            `json:"serviceSites,omitempty"`
 }
 
 func (p *FirstPartySetsOverrides) Name() string          { return "FirstPartySetsOverrides" }
-func (p *FirstPartySetsOverrides) Field() string         { return "" }
 func (p *FirstPartySetsOverrides) Scope() Scope          { return ScopeUser }
 func (p *FirstPartySetsOverrides) Status() Status        { return p.Stat }
 func (p *FirstPartySetsOverrides) UntypedV() interface{} { return p.Val }
@@ -21045,6 +22196,9 @@ func (p *FirstPartySetsOverrides) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as *FirstPartySetsOverridesValue", m)
 	}
 	return v, nil
+}
+func (p *FirstPartySetsOverrides) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FirstPartySetsOverrides) Equal(iface interface{}) bool {
 	v, ok := iface.(*FirstPartySetsOverridesValue)
@@ -21064,7 +22218,6 @@ type DownloadBubbleEnabled struct {
 }
 
 func (p *DownloadBubbleEnabled) Name() string          { return "DownloadBubbleEnabled" }
-func (p *DownloadBubbleEnabled) Field() string         { return "" }
 func (p *DownloadBubbleEnabled) Scope() Scope          { return ScopeUser }
 func (p *DownloadBubbleEnabled) Status() Status        { return p.Stat }
 func (p *DownloadBubbleEnabled) UntypedV() interface{} { return p.Val }
@@ -21074,6 +22227,9 @@ func (p *DownloadBubbleEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DownloadBubbleEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DownloadBubbleEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21096,7 +22252,6 @@ type DevicePowerAdaptiveChargingEnabled struct {
 func (p *DevicePowerAdaptiveChargingEnabled) Name() string {
 	return "DevicePowerAdaptiveChargingEnabled"
 }
-func (p *DevicePowerAdaptiveChargingEnabled) Field() string         { return "" }
 func (p *DevicePowerAdaptiveChargingEnabled) Scope() Scope          { return ScopeUser }
 func (p *DevicePowerAdaptiveChargingEnabled) Status() Status        { return p.Stat }
 func (p *DevicePowerAdaptiveChargingEnabled) UntypedV() interface{} { return p.Val }
@@ -21106,6 +22261,9 @@ func (p *DevicePowerAdaptiveChargingEnabled) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerAdaptiveChargingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DevicePowerAdaptiveChargingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21127,7 +22285,6 @@ type GetDisplayMediaSetSelectAllScreensAllowedForUrls struct {
 func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) Name() string {
 	return "GetDisplayMediaSetSelectAllScreensAllowedForUrls"
 }
-func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) Field() string         { return "" }
 func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) Status() Status        { return p.Stat }
 func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -21137,6 +22294,9 @@ func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) UnmarshalAs(m json.Ra
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -21157,7 +22317,6 @@ type SystemTerminalSshAllowed struct {
 }
 
 func (p *SystemTerminalSshAllowed) Name() string          { return "SystemTerminalSshAllowed" }
-func (p *SystemTerminalSshAllowed) Field() string         { return "" }
 func (p *SystemTerminalSshAllowed) Scope() Scope          { return ScopeUser }
 func (p *SystemTerminalSshAllowed) Status() Status        { return p.Stat }
 func (p *SystemTerminalSshAllowed) UntypedV() interface{} { return p.Val }
@@ -21167,6 +22326,9 @@ func (p *SystemTerminalSshAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SystemTerminalSshAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SystemTerminalSshAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21186,7 +22348,6 @@ type InsightsExtensionEnabled struct {
 }
 
 func (p *InsightsExtensionEnabled) Name() string          { return "InsightsExtensionEnabled" }
-func (p *InsightsExtensionEnabled) Field() string         { return "" }
 func (p *InsightsExtensionEnabled) Scope() Scope          { return ScopeUser }
 func (p *InsightsExtensionEnabled) Status() Status        { return p.Stat }
 func (p *InsightsExtensionEnabled) UntypedV() interface{} { return p.Val }
@@ -21196,6 +22357,9 @@ func (p *InsightsExtensionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *InsightsExtensionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsightsExtensionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21215,7 +22379,6 @@ type DefaultLocalFontsSetting struct {
 }
 
 func (p *DefaultLocalFontsSetting) Name() string          { return "DefaultLocalFontsSetting" }
-func (p *DefaultLocalFontsSetting) Field() string         { return "" }
 func (p *DefaultLocalFontsSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultLocalFontsSetting) Status() Status        { return p.Stat }
 func (p *DefaultLocalFontsSetting) UntypedV() interface{} { return p.Val }
@@ -21225,6 +22388,9 @@ func (p *DefaultLocalFontsSetting) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultLocalFontsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultLocalFontsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -21244,7 +22410,6 @@ type LocalFontsAllowedForUrls struct {
 }
 
 func (p *LocalFontsAllowedForUrls) Name() string          { return "LocalFontsAllowedForUrls" }
-func (p *LocalFontsAllowedForUrls) Field() string         { return "" }
 func (p *LocalFontsAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *LocalFontsAllowedForUrls) Status() Status        { return p.Stat }
 func (p *LocalFontsAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -21254,6 +22419,9 @@ func (p *LocalFontsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *LocalFontsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LocalFontsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -21273,7 +22441,6 @@ type LocalFontsBlockedForUrls struct {
 }
 
 func (p *LocalFontsBlockedForUrls) Name() string          { return "LocalFontsBlockedForUrls" }
-func (p *LocalFontsBlockedForUrls) Field() string         { return "" }
 func (p *LocalFontsBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *LocalFontsBlockedForUrls) Status() Status        { return p.Stat }
 func (p *LocalFontsBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -21283,6 +22450,9 @@ func (p *LocalFontsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *LocalFontsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LocalFontsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -21304,7 +22474,6 @@ type ProjectorDogfoodForFamilyLinkEnabled struct {
 func (p *ProjectorDogfoodForFamilyLinkEnabled) Name() string {
 	return "ProjectorDogfoodForFamilyLinkEnabled"
 }
-func (p *ProjectorDogfoodForFamilyLinkEnabled) Field() string         { return "" }
 func (p *ProjectorDogfoodForFamilyLinkEnabled) Scope() Scope          { return ScopeUser }
 func (p *ProjectorDogfoodForFamilyLinkEnabled) Status() Status        { return p.Stat }
 func (p *ProjectorDogfoodForFamilyLinkEnabled) UntypedV() interface{} { return p.Val }
@@ -21314,6 +22483,9 @@ func (p *ProjectorDogfoodForFamilyLinkEnabled) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ProjectorDogfoodForFamilyLinkEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProjectorDogfoodForFamilyLinkEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21333,7 +22505,6 @@ type UrlParamFilterEnabled struct {
 }
 
 func (p *UrlParamFilterEnabled) Name() string          { return "UrlParamFilterEnabled" }
-func (p *UrlParamFilterEnabled) Field() string         { return "" }
 func (p *UrlParamFilterEnabled) Scope() Scope          { return ScopeUser }
 func (p *UrlParamFilterEnabled) Status() Status        { return p.Stat }
 func (p *UrlParamFilterEnabled) UntypedV() interface{} { return p.Val }
@@ -21343,6 +22514,9 @@ func (p *UrlParamFilterEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UrlParamFilterEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UrlParamFilterEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21362,7 +22536,6 @@ type DefaultClipboardSetting struct {
 }
 
 func (p *DefaultClipboardSetting) Name() string          { return "DefaultClipboardSetting" }
-func (p *DefaultClipboardSetting) Field() string         { return "" }
 func (p *DefaultClipboardSetting) Scope() Scope          { return ScopeUser }
 func (p *DefaultClipboardSetting) Status() Status        { return p.Stat }
 func (p *DefaultClipboardSetting) UntypedV() interface{} { return p.Val }
@@ -21372,6 +22545,9 @@ func (p *DefaultClipboardSetting) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultClipboardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultClipboardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -21391,7 +22567,6 @@ type ClipboardAllowedForUrls struct {
 }
 
 func (p *ClipboardAllowedForUrls) Name() string          { return "ClipboardAllowedForUrls" }
-func (p *ClipboardAllowedForUrls) Field() string         { return "" }
 func (p *ClipboardAllowedForUrls) Scope() Scope          { return ScopeUser }
 func (p *ClipboardAllowedForUrls) Status() Status        { return p.Stat }
 func (p *ClipboardAllowedForUrls) UntypedV() interface{} { return p.Val }
@@ -21401,6 +22576,9 @@ func (p *ClipboardAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ClipboardAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ClipboardAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -21420,7 +22598,6 @@ type ClipboardBlockedForUrls struct {
 }
 
 func (p *ClipboardBlockedForUrls) Name() string          { return "ClipboardBlockedForUrls" }
-func (p *ClipboardBlockedForUrls) Field() string         { return "" }
 func (p *ClipboardBlockedForUrls) Scope() Scope          { return ScopeUser }
 func (p *ClipboardBlockedForUrls) Status() Status        { return p.Stat }
 func (p *ClipboardBlockedForUrls) UntypedV() interface{} { return p.Val }
@@ -21430,6 +22607,9 @@ func (p *ClipboardBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ClipboardBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ClipboardBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -21450,7 +22630,6 @@ type OsColorMode struct {
 }
 
 func (p *OsColorMode) Name() string          { return "OsColorMode" }
-func (p *OsColorMode) Field() string         { return "" }
 func (p *OsColorMode) Scope() Scope          { return ScopeUser }
 func (p *OsColorMode) Status() Status        { return p.Stat }
 func (p *OsColorMode) UntypedV() interface{} { return p.Val }
@@ -21460,6 +22639,9 @@ func (p *OsColorMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *OsColorMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OsColorMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -21498,7 +22680,6 @@ type OnFileTransferEnterpriseConnectorValueCustomMessages struct {
 }
 
 func (p *OnFileTransferEnterpriseConnector) Name() string          { return "OnFileTransferEnterpriseConnector" }
-func (p *OnFileTransferEnterpriseConnector) Field() string         { return "" }
 func (p *OnFileTransferEnterpriseConnector) Scope() Scope          { return ScopeUser }
 func (p *OnFileTransferEnterpriseConnector) Status() Status        { return p.Stat }
 func (p *OnFileTransferEnterpriseConnector) UntypedV() interface{} { return p.Val }
@@ -21509,8 +22690,41 @@ func (p *OnFileTransferEnterpriseConnector) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *OnFileTransferEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *OnFileTransferEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileTransferEnterpriseConnectorValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 993. WebSQLNonSecureContextEnabled
+// ****************************************************************************
+type WebSQLNonSecureContextEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *WebSQLNonSecureContextEnabled) Name() string          { return "WebSQLNonSecureContextEnabled" }
+func (p *WebSQLNonSecureContextEnabled) Scope() Scope          { return ScopeUser }
+func (p *WebSQLNonSecureContextEnabled) Status() Status        { return p.Stat }
+func (p *WebSQLNonSecureContextEnabled) UntypedV() interface{} { return p.Val }
+func (p *WebSQLNonSecureContextEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *WebSQLNonSecureContextEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *WebSQLNonSecureContextEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -21528,7 +22742,6 @@ type NewWindowsInKioskAllowed struct {
 }
 
 func (p *NewWindowsInKioskAllowed) Name() string          { return "NewWindowsInKioskAllowed" }
-func (p *NewWindowsInKioskAllowed) Field() string         { return "" }
 func (p *NewWindowsInKioskAllowed) Scope() Scope          { return ScopeUser }
 func (p *NewWindowsInKioskAllowed) Status() Status        { return p.Stat }
 func (p *NewWindowsInKioskAllowed) UntypedV() interface{} { return p.Val }
@@ -21538,6 +22751,9 @@ func (p *NewWindowsInKioskAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NewWindowsInKioskAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NewWindowsInKioskAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21557,7 +22773,6 @@ type EncryptedClientHelloEnabled struct {
 }
 
 func (p *EncryptedClientHelloEnabled) Name() string          { return "EncryptedClientHelloEnabled" }
-func (p *EncryptedClientHelloEnabled) Field() string         { return "" }
 func (p *EncryptedClientHelloEnabled) Scope() Scope          { return ScopeUser }
 func (p *EncryptedClientHelloEnabled) Status() Status        { return p.Stat }
 func (p *EncryptedClientHelloEnabled) UntypedV() interface{} { return p.Val }
@@ -21567,6 +22782,9 @@ func (p *EncryptedClientHelloEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EncryptedClientHelloEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EncryptedClientHelloEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21585,10 +22803,7 @@ type DeviceAutofillSAMLUsername struct {
 	Val  string
 }
 
-func (p *DeviceAutofillSAMLUsername) Name() string { return "DeviceAutofillSAMLUsername" }
-func (p *DeviceAutofillSAMLUsername) Field() string {
-	return "saml_username.url_parameter_to_autofill_saml_username"
-}
+func (p *DeviceAutofillSAMLUsername) Name() string          { return "DeviceAutofillSAMLUsername" }
 func (p *DeviceAutofillSAMLUsername) Scope() Scope          { return ScopeDevice }
 func (p *DeviceAutofillSAMLUsername) Status() Status        { return p.Stat }
 func (p *DeviceAutofillSAMLUsername) UntypedV() interface{} { return p.Val }
@@ -21598,6 +22813,9 @@ func (p *DeviceAutofillSAMLUsername) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutofillSAMLUsername) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "saml_username", "url_parameter_to_autofill_saml_username", p.Val)
 }
 func (p *DeviceAutofillSAMLUsername) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -21618,7 +22836,6 @@ type KerberosDomainAutocomplete struct {
 }
 
 func (p *KerberosDomainAutocomplete) Name() string          { return "KerberosDomainAutocomplete" }
-func (p *KerberosDomainAutocomplete) Field() string         { return "" }
 func (p *KerberosDomainAutocomplete) Scope() Scope          { return ScopeUser }
 func (p *KerberosDomainAutocomplete) Status() Status        { return p.Stat }
 func (p *KerberosDomainAutocomplete) UntypedV() interface{} { return p.Val }
@@ -21628,6 +22845,9 @@ func (p *KerberosDomainAutocomplete) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *KerberosDomainAutocomplete) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosDomainAutocomplete) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -21648,7 +22868,6 @@ type KerberosDefaultConfiguration struct {
 }
 
 func (p *KerberosDefaultConfiguration) Name() string          { return "KerberosDefaultConfiguration" }
-func (p *KerberosDefaultConfiguration) Field() string         { return "" }
 func (p *KerberosDefaultConfiguration) Scope() Scope          { return ScopeUser }
 func (p *KerberosDefaultConfiguration) Status() Status        { return p.Stat }
 func (p *KerberosDefaultConfiguration) UntypedV() interface{} { return p.Val }
@@ -21658,6 +22877,9 @@ func (p *KerberosDefaultConfiguration) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *KerberosDefaultConfiguration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosDefaultConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -21680,9 +22902,6 @@ type DeviceLoginScreenContextAwareAccessSignalsAllowlist struct {
 func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Name() string {
 	return "DeviceLoginScreenContextAwareAccessSignalsAllowlist"
 }
-func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Field() string {
-	return "device_login_screen_context_aware_access_signals_allowlist.value"
-}
 func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Scope() Scope          { return ScopeDevice }
 func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Status() Status        { return p.Stat }
 func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) UntypedV() interface{} { return p.Val }
@@ -21692,6 +22911,9 @@ func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) UnmarshalAs(m json
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_context_aware_access_signals_allowlist", "value", p.Val)
 }
 func (p *DeviceLoginScreenContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -21711,10 +22933,7 @@ type DevicePrintingClientNameTemplate struct {
 	Val  string
 }
 
-func (p *DevicePrintingClientNameTemplate) Name() string { return "DevicePrintingClientNameTemplate" }
-func (p *DevicePrintingClientNameTemplate) Field() string {
-	return "device_printing_client_name_template.client_name_template"
-}
+func (p *DevicePrintingClientNameTemplate) Name() string          { return "DevicePrintingClientNameTemplate" }
 func (p *DevicePrintingClientNameTemplate) Scope() Scope          { return ScopeDevice }
 func (p *DevicePrintingClientNameTemplate) Status() Status        { return p.Stat }
 func (p *DevicePrintingClientNameTemplate) UntypedV() interface{} { return p.Val }
@@ -21724,6 +22943,9 @@ func (p *DevicePrintingClientNameTemplate) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DevicePrintingClientNameTemplate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printing_client_name_template", "client_name_template", p.Val)
 }
 func (p *DevicePrintingClientNameTemplate) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -21746,9 +22968,6 @@ type ReportDeviceSignalStrengthEventDrivenTelemetry struct {
 func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) Name() string {
 	return "ReportDeviceSignalStrengthEventDrivenTelemetry"
 }
-func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) Field() string {
-	return "device_reporting.report_signal_strength_event_driven_telemetry.entries"
-}
 func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) Scope() Scope          { return ScopeDevice }
 func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) Status() Status        { return p.Stat }
 func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) UntypedV() interface{} { return p.Val }
@@ -21759,8 +22978,73 @@ func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) UnmarshalAs(m json.RawM
 	}
 	return v, nil
 }
+func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_signal_strength_event_driven_telemetry.entries", p.Val)
+}
 func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1011. AssistantWebEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type AssistantWebEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *AssistantWebEnabled) Name() string          { return "AssistantWebEnabled" }
+func (p *AssistantWebEnabled) Scope() Scope          { return ScopeUser }
+func (p *AssistantWebEnabled) Status() Status        { return p.Stat }
+func (p *AssistantWebEnabled) UntypedV() interface{} { return p.Val }
+func (p *AssistantWebEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *AssistantWebEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *AssistantWebEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1012. LacrosDataBackwardMigrationMode
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type LacrosDataBackwardMigrationMode struct {
+	Stat Status
+	Val  string
+}
+
+func (p *LacrosDataBackwardMigrationMode) Name() string          { return "LacrosDataBackwardMigrationMode" }
+func (p *LacrosDataBackwardMigrationMode) Scope() Scope          { return ScopeUser }
+func (p *LacrosDataBackwardMigrationMode) Status() Status        { return p.Stat }
+func (p *LacrosDataBackwardMigrationMode) UntypedV() interface{} { return p.Val }
+func (p *LacrosDataBackwardMigrationMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *LacrosDataBackwardMigrationMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *LacrosDataBackwardMigrationMode) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
 	if !ok {
 		return ok
 	}

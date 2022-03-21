@@ -173,6 +173,7 @@ func ChromePolicyPageStatusTimestamps(ctx context.Context, s *testing.State) {
 	// Simulate 500 error on the server while reloading policies, check that fetch
 	// timestamp is at 0 secs ago whilst policy timestamp is still at 1 min ago.
 	pb := policy.NewBlob()
+	pb.RequestErrors = make(map[string]int)
 	pb.RequestErrors["policy"] = 500
 	if err = policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		s.Fatal("Failed to simulate error 500 on the policy server: ", err)
