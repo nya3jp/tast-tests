@@ -429,7 +429,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter,
 		[]int64{1, 20}))
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cuj.NewRecorder(closeCtx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

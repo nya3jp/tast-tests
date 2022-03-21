@@ -31,6 +31,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FrontlineWorkerCUJ,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the performance of Frontline Worker CUJ",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -195,7 +196,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(cleanupRecorderCtx, cr, nil, cuj.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

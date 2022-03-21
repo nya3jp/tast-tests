@@ -185,6 +185,8 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
+// Note: Pass a context with time reserved for cleanup (often called cleanupCtx
+// or closeCtx) because if this function fails, it may have some cleanup to do.
 func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
 	r := &Recorder{cr: cr}
 

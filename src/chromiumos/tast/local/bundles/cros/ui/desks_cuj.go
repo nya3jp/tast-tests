@@ -118,7 +118,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wake display: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(cleanupCtx, cr, nil, cuj.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
