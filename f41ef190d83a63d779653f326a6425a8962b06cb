@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b24311be_d00e9762",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-21T22:19:46Z",
+      "side": 1,
+      "message": "Passing `cleanupCtx` to a non-cleanup function poses a risk to other deferred functions. Normally, a test should not assume that a function never times out, as the helper functions are subject to changes without modifying the tests.\n\nPlease just pass `ctx` to `cuj.NewRecorder` no matter if it has cleanups.",
+      "parentUuid": "748554b0_f61ee48f",
+      "revId": "f41ef190d83a63d779653f326a6425a8962b06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e076a7e3_3ae89098",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
