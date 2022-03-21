@@ -10,13 +10,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
-	"strings"
 	"time"
 
 	"chromiumos/tast/caller"
@@ -25,9 +23,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
-
-// Necessary dependencies (as defined in policy-testserver ebuild).
-const depsDir = "/usr/local/share/policy_testserver/"
 
 // LogFile is the name of the log file for FakeDMS.
 const LogFile = "fakedms.log"
@@ -38,21 +33,13 @@ const PolicyFile = "policy.json"
 // StateFile is the name of the state file for FakeDMS.
 const StateFile = "state.json"
 
-// ExtensionPolicyDir is a subdirectory for storage of extension policy files.
-const ExtensionPolicyDir = "data"
-
 // EnrollmentFakeDMSDir is the directory where FakeDMS stores state during enrollment.
 // Used to share state between the enrolled fixture and the fakeDMSEnrolled fixtures.
 // TODO(crbug.com/1187473): Remove
 const EnrollmentFakeDMSDir = "/var/enrolling-fdms"
 
-var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
-var testserverPythonImports = []string{
-	depsDir,
-	filepath.Join(depsDir, "tlslite"),
-	filepath.Join(depsDir, "testserver"),
-	filepath.Join(depsDir, "proto_bindings"),
-}
+// fakeDMServerPath is the path where the executable binary of the fake_dmserver is located.
+var fakeDMServerPath = "/usr/local/libexec/chrome-binary-tests/fake_dmserver"
 
 // Regular expression to match any characters in the policy selector that must
 // be sanitized prior to this selector being as as part of the file name.
@@ -60,12 +47,10 @@ var selectorSanitizeRE = regexp.MustCompile("[^A-Za-z0-9.@-]")
 
 // A FakeDMS struct contains information about a running policy_testserver instance.
 type FakeDMS struct {
-	cmd                *testexec.Cmd // fakedms process
-	URL                string        // fakedms url; needs to be passed to Chrome; set in start()
-	done               chan struct{} // channel that is closed when Wait() completes
-	policyPath         string        // where policies are written for server to read
-	extensionPolicyDir string        // where extension policies are written for server to read
-
+	cmd                             *testexec.Cmd              // fakedms process
+	URL                             string                     // fakedms url; needs to be passed to Chrome; set in start()
+	done                            chan struct{}              // channel that is closed when Wait() completes
+	policyPath                      string                     // where policies are written for server to read
 	persistentPolicies              []policy.Policy            // policies that are always set
 	persistentPublicAccountPolicies map[string][]policy.Policy // public account policies that are always set
 	persistentPolicyUser            *string                    // policyUser that is always set, nil if not used
@@ -86,13 +71,7 @@ func (fdms *FakeDMS) FakeDMS() *FakeDMS {
 // outDir is used to write logs and policies, and should either be in a
 // temporary location (and deleted by caller) or in the test's results directory.
 func New(ctx context.Context, outDir string) (*FakeDMS, error) {
-	if _, err := os.Stat(depsDir); err != nil {
-		// Do not try to start server command if it will immediately fail.
-		return nil, errors.Wrap(err, "cannot find necessary dependencies folder: "+depsDir)
-	}
-
 	policyPath := filepath.Join(outDir, PolicyFile)
-	extensionPolicyDir := filepath.Join(outDir, ExtensionPolicyDir)
 	logPath := filepath.Join(outDir, LogFile)
 	statePath := filepath.Join(outDir, StateFile)
 
@@ -110,29 +89,22 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	}()
 
 	args := []string{
-		testserverPath,
-		"--config-file", policyPath,
-		"--data-dir", extensionPolicyDir,
-		"--log-file", logPath,
-		"--client-state", statePath,
-		"--log-level", "DEBUG",
+		fmt.Sprintf("--policy-blob-path=%s", policyPath),
+		fmt.Sprintf("--log-path=%s", logPath),
+		fmt.Sprintf("--client-state-path=%s", statePath),
 		// cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
 		// See exec.Cmd for more info.
-		"--startup-pipe", "3",
+		"--startup-pipe=3",
 	}
 
-	cmd := testexec.CommandContext(ctx, "/usr/local/bin/python3", args...)
+	cmd := testexec.CommandContext(ctx, fakeDMServerPath, args...)
 
-	// Add necessary imports to the server command's PYTHONPATH.
-	newPP := strings.Join(testserverPythonImports, ":")
-	cmd.Env = append(cmd.Env, "PYTHONPATH="+newPP)
 	cmd.ExtraFiles = []*os.File{fw}
 
 	fdms := &FakeDMS{
-		cmd:                cmd,
-		done:               make(chan struct{}, 1),
-		policyPath:         policyPath,
-		extensionPolicyDir: extensionPolicyDir,
+		cmd:        cmd,
+		done:       make(chan struct{}, 1),
+		policyPath: policyPath,
 	}
 
 	if err = fdms.start(ctx, fr); err != nil {
@@ -165,13 +137,6 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 	pDone := make(chan pResult, 1)
 
 	go func() {
-		// Ignore the first 4 bytes.
-		b4 := make([]byte, 4)
-		if _, err := io.ReadFull(p, b4); err != nil {
-			pDone <- pResult{Err: errors.Wrap(err, "could not read from startup-pipe")}
-			return
-		}
-
 		var addr struct {
 			Host string
 			Port int
@@ -224,37 +189,6 @@ func (fdms *FakeDMS) WritePolicyBlob(pb *policy.Blob) error {
 
 	if err := ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
 		return errors.Wrap(err, "could not write JSON to file")
-	}
-
-	if err := fdms.WriteExtensionPolicies(pb); err != nil {
-		return errors.Wrap(err, "could not write extension policies")
-	}
-
-	return nil
-}
-
-// WriteExtensionPolicies writes extension policies as files in data dir.
-func (fdms *FakeDMS) WriteExtensionPolicies(pb *policy.Blob) error {
-	// Remove and re-create the dir each time to ensure that files for deleted
-	// policies are correctly removed as well.
-	if err := os.RemoveAll(fdms.extensionPolicyDir); err != nil {
-		return errors.Wrap(err, "failed to remove data dir")
-	}
-	if pb.ExtensionPM == nil || len(pb.ExtensionPM) == 0 {
-		return nil
-	}
-	if err := os.MkdirAll(fdms.extensionPolicyDir, 0755); err != nil {
-		return errors.Wrap(err, "failed to create data dir")
-	}
-
-	for id, pJSON := range pb.ExtensionPM {
-		selector := fmt.Sprintf("google/chrome/extension/%s", id)
-		// Replace characters that can't be part of a filename with an underscore.
-		sanitizedSelector := selectorSanitizeRE.ReplaceAll([]byte(selector), []byte("_"))
-		path := filepath.Join(fdms.extensionPolicyDir, fmt.Sprintf("policy_%s.data", sanitizedSelector))
-		if err := ioutil.WriteFile(path, pJSON, 0644); err != nil {
-			return errors.Wrapf(err, "failed to write policy for extension %s", id)
-		}
 	}
 
 	return nil
@@ -325,7 +259,7 @@ func (fdms *FakeDMS) kill(ctx context.Context) {
 
 // Stop will stop the FakeDMS and return once the command has exited.
 func (fdms *FakeDMS) Stop(ctx context.Context) {
-	resp, err := http.Get(fdms.URL + "/configuration/test/exit")
+	resp, err := http.Get(fdms.URL + "/test/exit")
 	if err == nil {
 		resp.Body.Close()
 		if resp.StatusCode == 200 {
