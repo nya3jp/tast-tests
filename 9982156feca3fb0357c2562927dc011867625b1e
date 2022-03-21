@@ -77,6 +77,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14f1a599_7c641eb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-03-21T18:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e1aafc_87f86747",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "9982156feca3fb0357c2562927dc011867625b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "af3d6599_e9500c51",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_login.go",
         "patchSetId": 2
@@ -88,6 +112,30 @@
       "writtenOn": "2022-03-21T00:09:48Z",
       "side": 1,
       "message": "Just FYI, sometimes even removeErr is nil (os.Remove succeeds), the file may still exist. I am not sure if this will happen in your test, but if it does, you may try polling these operations.",
+      "range": {
+        "startLine": 70,
+        "startChar": 70,
+        "endLine": 70,
+        "endChar": 79
+      },
+      "revId": "9982156feca3fb0357c2562927dc011867625b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ee4c27_de20e89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-03-21T18:43:54Z",
+      "side": 1,
+      "message": "Ack, I don\u0027t think this has been a problem for us in the ChromeCrashLoop test, which this logic is based on, but if we observe the test failing with a nil error here we\u0027ll revisit.",
+      "parentUuid": "af3d6599_e9500c51",
       "range": {
         "startLine": 70,
         "startChar": 70,
@@ -111,6 +159,30 @@
       "writtenOn": "2022-03-21T00:09:48Z",
       "side": 1,
       "message": "Just want to check that if the default poll options are reasonble here. The defaults are: interval \u003d 100ms and timeout \u003d global timeout (Test.Timeout field).\n\nIn many cases, you may need to set your own poll options.",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 7
+      },
+      "revId": "9982156feca3fb0357c2562927dc011867625b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3071a7b6_4a58d11f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-03-21T18:43:54Z",
+      "side": 1,
+      "message": "Those seem reasonable to me.",
+      "parentUuid": "7311fec7_cd168021",
       "range": {
         "startLine": 84,
         "startChar": 4,
