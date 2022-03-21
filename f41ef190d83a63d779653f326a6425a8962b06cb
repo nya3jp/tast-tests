@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3787248f_36ad1871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-21T21:26:16Z",
+      "side": 1,
+      "message": "You should not pass `cleanupCtx` to cuj.NewRecorder (which is not a cleanup task). Because if cuj.NewRecorder reaches the timeout with cleanupCtx, all deferred functions in the test will not be executed.\n\nIn the case that cuj.NewRecorder has some cleanup task, you should reserve time inside cuj.NewRecorder (create a cleanupCtx in cuj.NewRecorder and use it for cleanup, see the other CL).",
+      "revId": "f41ef190d83a63d779653f326a6425a8962b06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e076a7e3_3ae89098",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
