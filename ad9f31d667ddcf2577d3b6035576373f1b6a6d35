@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42784a9_ae9f1173",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-21T16:30:24Z",
+      "side": 1,
+      "message": "IIUC, this testing.Poll always returns an error. Could you check the conditions?",
+      "range": {
+        "startLine": 190,
+        "startChar": 8,
+        "endLine": 190,
+        "endChar": 20
+      },
+      "revId": "ad9f31d667ddcf2577d3b6035576373f1b6a6d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de0eee7_e1a758dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-21T16:30:24Z",
+      "side": 1,
+      "message": "looks no-op now?",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 11
+      },
+      "revId": "ad9f31d667ddcf2577d3b6035576373f1b6a6d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
