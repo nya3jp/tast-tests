@@ -16,6 +16,23 @@
       "message": "lgtm",
       "revId": "969defaa286e98c8991a5c1cc184ec97e3edb7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e589004b_c3aaf4c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-21T21:28:46Z",
+      "side": 1,
+      "message": "reserve cleanupCtx in the begining of the function:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\n```\nthen use cleanupCtx for the defered function:\n```\ndefer func(ctx context.Context){...}(cleanupCtx)\n```",
+      "revId": "969defaa286e98c8991a5c1cc184ec97e3edb7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
