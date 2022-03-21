@@ -39,12 +39,16 @@ const (
 // Conference contains user's operation when enter a confernece room.
 type Conference interface {
 	Join(ctx context.Context, room string, toBlur bool) error
-	VideoAudioControl(ctx context.Context) error
+	SetLayoutMax(ctx context.Context) error
+	SetLayoutMin(ctx context.Context) error
 	SwitchTabs(ctx context.Context) error
-	ChangeLayout(ctx context.Context) error
+	VideoAudioControl(ctx context.Context) error
+	TypingInChat(ctx context.Context) error
 	BackgroundChange(ctx context.Context) error
 	Presenting(ctx context.Context, application googleApplication) error
 	End(ctx context.Context) error
+	LostNetworkCount() int
+	DisplayAllParticipantsTime() time.Duration
 }
 
 const participantError = "number of participants is incorrect (ERROR - PARTICIPANT NUMBER)"

@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/input"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -128,7 +129,11 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to test API")
 		}
-
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to initialize keyboard input")
+		}
+		defer kb.Close()
 		var tabletMode bool
 		cleanupCtx := ctx
 		ctx, cancelTablet := ctxutil.Shorten(ctx, 5*time.Second)
@@ -195,8 +200,8 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		// Creates a Google Meet conference instance which implements conference.Conference methods
 		// which provides conference operations.
-		gmcli := conference.NewGoogleMeetConference(cr, tconn, uiHandler, tabletMode, req.ExtendedDisplay, int(req.RoomSize), meet.Account, meet.Password, outDir)
-		defer gmcli.End(ctx)
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, kb, uiHandler, tabletMode, req.ExtendedDisplay, int(req.RoomSize), meet.Account, meet.Password, outDir)
+		defer gmcli.End(cleanupCtx)
 		// Shorten context a bit to allow for cleanup if Run fails.
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 		defer cancel()
@@ -331,6 +336,11 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to test API")
 	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to initialize keyboard input")
+	}
+	defer kb.Close()
 	var tabletMode bool
 	cleanupCtx := ctx
 	ctx, cancelTablet := ctxutil.Shorten(ctx, 5*time.Second)
@@ -367,8 +377,8 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 	// Creates a Zoom conference instance which implements conference.Conference methods.
 	// which provides conference operations.
-	zmcli := conference.NewZoomConference(cr, tconn, uiHandler, tabletMode, int(req.RoomSize), account, outDir)
-	defer zmcli.End(ctx)
+	zmcli := conference.NewZoomConference(cr, tconn, kb, uiHandler, tabletMode, int(req.RoomSize), account, outDir)
+	defer zmcli.End(cleanupCtx)
 	// Sends a http request that ask for creating a Zoom conferece with
 	// specified participants and also return clean up method for closing
 	// opened conference.

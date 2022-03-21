@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
@@ -29,7 +30,7 @@ type Prepare func(context.Context) (string, Cleanup, error)
 func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, roomSize int) (retErr error) {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	inviteLink, cleanup, err := prepare(ctx)
@@ -103,19 +104,19 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 			if err := conf.Join(ctx, inviteLink, toBlur); err != nil {
 				return err
 			}
-
-			// Basic
-			if err := conf.SwitchTabs(ctx); err != nil {
-				return err
-			}
-
-			if err := conf.VideoAudioControl(ctx); err != nil {
-				return err
-			}
-
-			if err := conf.ChangeLayout(ctx); err != nil {
-				return err
-			}
+			// Basic steps:
+			// 1. Set the layout to max tiled grid. (Google meet: "Tiled", Zoom: "Gallery")
+			// 2. Switch to another tab (wikipedia) and back to meeting.
+			// 3. Use video and audio control buttons.
+			// 4. Open chat window and type.
+			// 5. Set the layout to a minimal tiled grid. (Google meet: "Spotlight", Zoom: "Speacker View")
+			return uiauto.Combine("basic actions",
+				conf.SetLayoutMax,
+				conf.SwitchTabs,
+				conf.VideoAudioControl,
+				conf.TypingInChat,
+				conf.SetLayoutMin,
+			)(ctx)
 		}
 
 		// Plus and premium tier.
@@ -157,6 +158,18 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 	}, float64(browserStartTime.Milliseconds()))
+
+	pv.Set(perf.Metric{
+		Name:      "TPS.Meet.NetworkLost",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}, float64(conf.LostNetworkCount()))
+
+	pv.Set(perf.Metric{
+		Name:      "TPS.Meet.DisplayAllParticipantsTime",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+	}, float64(conf.DisplayAllParticipantsTime().Seconds()))
 
 	if err := pv.Save(outDir); err != nil {
 		return errors.Wrap(err, "failed to save perf data")
