@@ -29,6 +29,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeServiceGRPC,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check basic functionality of ChromeService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -41,7 +42,7 @@ func init() {
 		}, {
 			Name: "fake_login",
 			Val: &pb.NewRequest{
-				LoginMode: pb.LoginMode_FAKE_LOGIN,
+				LoginMode: pb.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 				Credentials: &pb.NewRequest_Credentials{
 					Username: defaultUsername,
 					Password: defaultPassword,
@@ -54,7 +55,7 @@ func init() {
 		}, {
 			Name: "fake_login_try_reuse_sessions",
 			Val: &pb.NewRequest{
-				LoginMode: pb.LoginMode_FAKE_LOGIN,
+				LoginMode: pb.LoginMode_LOGIN_MODE_FAKE_LOGIN,
 				Credentials: &pb.NewRequest_Credentials{
 					Username: defaultUsername,
 					Password: defaultPassword,
@@ -70,7 +71,7 @@ func init() {
 			Val: &pb.NewRequest{
 				// The test definition block has no access to testing.State and "ui.gaiaPoolDefault".
 				// Credentials will be populated based on "ui.gaiaPoolDefault" in the main test function.
-				LoginMode: pb.LoginMode_GAIA_LOGIN,
+				LoginMode: pb.LoginMode_LOGIN_MODE_GAIA_LOGIN,
 			},
 		}},
 	})
@@ -94,7 +95,7 @@ func ChromeServiceGRPC(ctx context.Context, s *testing.State) {
 
 	// Populate credentials from Tast variable for the Gaia login test case.
 	loginReq := s.Param().(*pb.NewRequest)
-	if loginReq.LoginMode == pb.LoginMode_GAIA_LOGIN && loginReq.Credentials == nil {
+	if loginReq.LoginMode == pb.LoginMode_LOGIN_MODE_GAIA_LOGIN && loginReq.Credentials == nil {
 		if loginReq.Credentials, err = pickRandomCreds(s.RequiredVar("ui.gaiaPoolDefault")); err != nil {
 			s.Fatal("Failed to get login credentials: ", err)
 		}

@@ -78,9 +78,9 @@ message NewRequest {
 
 // LoginMode describes the user mode for the login.
 enum LoginMode {
-  UNSPECIFIED = 0;
-  NO_LOGIN = 1;     // restart Chrome but don't log in
-  FAKE_LOGIN = 2;   // fake login with no authentication
-  GAIA_LOGIN = 3;   // real network-based login using GAIA backend
-  GUEST_LOGIN = 4;  // sign in as ephemeral guest user
+  LOGIN_MODE_UNSPECIFIED = 0;
+  LOGIN_MODE_NO_LOGIN = 1;     // restart Chrome but don't log in
+  LOGIN_MODE_FAKE_LOGIN = 2;   // fake login with no authentication
+  LOGIN_MODE_GAIA_LOGIN = 3;   // real network-based login using GAIA backend
+  LOGIN_MODE_GUEST_LOGIN = 4;  // sign in as ephemeral guest user
 }
