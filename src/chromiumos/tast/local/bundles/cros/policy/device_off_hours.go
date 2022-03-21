@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	empb "chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/pci"
 	"chromiumos/tast/common/policy"
@@ -59,41 +60,32 @@ func DeviceOffHours(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	type RefWeeklyTime struct {
-		DayOfWeek int `json:"day_of_week"`
-		Time      int `json:"time"`
-	}
-	type RefWeeklyTimeIntervals struct {
-		End   *RefWeeklyTime `json:"end"`
-		Start *RefWeeklyTime `json:"start"`
-	}
-
 	const guestModeEnabledIdx = 3 // see components/policy/proto/chrome_device_policy.proto
 	const guestModeName = "DeviceGuestModeEnabled"
 
 	// alwaysOff: Intervals covering the whole week.
-	alwaysOff := []*RefWeeklyTimeIntervals{
+	alwaysOff := []*empb.WeeklyTimeIntervalProto{
 		{
-			Start: &RefWeeklyTime{DayOfWeek: 1, Time: 0},
-			End:   &RefWeeklyTime{DayOfWeek: 7, Time: 0},
+			Start: &empb.WeeklyTimeProto{DayOfWeek: &[]empb.WeeklyTimeProto_DayOfWeek{1}[0], Time: &[]int32{0}[0]},
+			End:   &empb.WeeklyTimeProto{DayOfWeek: &[]empb.WeeklyTimeProto_DayOfWeek{7}[0], Time: &[]int32{0}[0]},
 		},
 		{
-			Start: &RefWeeklyTime{DayOfWeek: 7, Time: 0},
-			End:   &RefWeeklyTime{DayOfWeek: 1, Time: 0},
+			Start: &empb.WeeklyTimeProto{DayOfWeek: &[]empb.WeeklyTimeProto_DayOfWeek{7}[0], Time: &[]int32{0}[0]},
+			End:   &empb.WeeklyTimeProto{DayOfWeek: &[]empb.WeeklyTimeProto_DayOfWeek{1}[0], Time: &[]int32{0}[0]},
 		},
 	}
 	// neverOff: Interval covering no time at all.
-	neverOff := []*RefWeeklyTimeIntervals{
+	neverOff := []*empb.WeeklyTimeIntervalProto{
 		{
-			Start: &RefWeeklyTime{DayOfWeek: 1, Time: 0},
-			End:   &RefWeeklyTime{DayOfWeek: 1, Time: 0},
+			Start: &empb.WeeklyTimeProto{DayOfWeek: &[]empb.WeeklyTimeProto_DayOfWeek{1}[0], Time: &[]int32{0}[0]},
+			End:   &empb.WeeklyTimeProto{DayOfWeek: &[]empb.WeeklyTimeProto_DayOfWeek{1}[0], Time: &[]int32{0}[0]},
 		},
 	}
 
 	for _, param := range []struct {
-		name      string                    // subtest name.
-		intervals []*RefWeeklyTimeIntervals // off hours intervals.
-		active    bool                      // Whether or not we expect off-hours to be active
+		name      string                          // subtest name.
+		intervals []*empb.WeeklyTimeIntervalProto // off hours intervals.
+		active    bool                            // Whether or not we expect off-hours to be active
 	}{
 		{
 			name:      "ActiveOffHours",
@@ -109,9 +101,13 @@ func DeviceOffHours(ctx context.Context, s *testing.State) {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			pb := policy.NewBlob()
 			pb.AddPolicy(&policy.DeviceGuestModeEnabled{Val: false})
-			pb.AddLegacyDevicePolicy("device_off_hours.intervals", param.intervals)
-			pb.AddLegacyDevicePolicy("device_off_hours.timezone", "Europe/Berlin")
-			pb.AddLegacyDevicePolicy("device_off_hours.ignored_policy_proto_tags", []int{guestModeEnabledIdx})
+
+			pb.DeviceProto = &empb.ChromeDeviceSettingsProto{}
+			proto := empb.DeviceOffHoursProto{}
+			proto.Intervals = param.intervals
+			proto.Timezone = &[]string{"Europe/Berlin"}[0]
+			proto.IgnoredPolicyProtoTags = []int32{guestModeEnabledIdx}
+			pb.DeviceProto.DeviceOffHours = &proto
 
 			// Update policies.
 			if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
