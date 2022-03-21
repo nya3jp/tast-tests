@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
+	policyBlob "chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -49,7 +50,7 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 	policyDLP := policy.RestrictiveDLPPolicyForClipboard()
 
 	// Update the policy blob.
-	pb := fakedms.NewPolicyBlob()
+	pb := policyBlob.NewBlob()
 	pb.AddPolicies(policyDLP)
 	if err := fakeDMS.WritePolicyBlob(pb); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
@@ -195,7 +196,7 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 func setUpExtension(ctx context.Context, s *testing.State, extDir string) (string, error) {
 	for _, name := range []string{"manifest.json", "background.js", "content.js"} {
 		if err := fsutil.CopyFile(s.DataPath(name), filepath.Join(extDir, name)); err != nil {
-			return "", errors.Wrapf(err, "failed to copy file %s: %v", name, err)
+			return "", errors.Wrapf(err, "failed to copy file %s", name)
 		}
 	}
 

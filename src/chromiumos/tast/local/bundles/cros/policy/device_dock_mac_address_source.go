@@ -179,7 +179,7 @@ func DeviceDockMacAddressSource(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicies([]policy.Policy{&tc.value})
 
 			if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {

@@ -96,7 +96,7 @@ func setupFakePolicyServer(ctx context.Context, outdir, policyUser string) (*fak
 	var policies = []policy.Policy{&policy.ArcEnabled{Val: true, Stat: policy.StatusSet}}
 
 	// Add the new policy to fmds
-	blob := fakedms.NewPolicyBlob()
+	blob := policy.NewBlob()
 	blob.PolicyUser = policyUser
 	if err := blob.AddPolicies(policies); err != nil {
 		fdms.Stop(ctx)

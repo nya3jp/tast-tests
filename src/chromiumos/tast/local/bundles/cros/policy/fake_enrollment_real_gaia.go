@@ -45,7 +45,7 @@ func FakeEnrollmentRealGAIA(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar("policy.FakeEnrollmentRealGAIA.username")
 	password := s.RequiredVar("policy.FakeEnrollmentRealGAIA.password")
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.PolicyUser = username
 	pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
 	pb.UserAffiliationIds = []string{"default_affiliation_id"}

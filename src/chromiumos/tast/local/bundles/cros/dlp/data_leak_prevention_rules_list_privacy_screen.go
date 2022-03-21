@@ -82,7 +82,7 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 	}
 
 	// Update the policy blob.
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.AddPolicies(policyDLP)
 
 	// Update policy.

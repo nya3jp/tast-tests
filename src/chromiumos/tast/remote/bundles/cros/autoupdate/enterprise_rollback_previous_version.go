@@ -14,7 +14,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
@@ -169,7 +169,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	}
 	// RPC client will be closed before reboot to rollback.
 
-	policyJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+	policyJSON, err := json.Marshal(policy.NewBlob())
 	if err != nil {
 		s.Fatal("Failed to serialize policies: ", err)
 	}

@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -96,7 +95,7 @@ func DailyTimeLimit(ctx context.Context, s *testing.State) {
 	policies := []policy.Policy{
 		usageLimitPolicy,
 	}
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
 	pb.AddPolicies(policies)
 

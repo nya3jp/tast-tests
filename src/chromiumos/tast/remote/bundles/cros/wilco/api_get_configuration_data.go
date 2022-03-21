@@ -13,7 +13,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
@@ -77,7 +76,7 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to serve policy: ", err)
 		}
 
-		pb := fakedms.NewPolicyBlob()
+		pb := policy.NewBlob()
 		pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
 		pb.AddPolicy(&policy.DeviceWilcoDtcConfiguration{
 			Val: &policy.DeviceWilcoDtcConfigurationValue{

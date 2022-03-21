@@ -118,7 +118,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chr
 			policies = append(policies, cfg.m.ExtraPolicies...)
 		}
 
-		pb := fakedms.NewPolicyBlob()
+		pb := policy.NewBlob()
 		pb.AddPolicies(policies)
 		// Handle public account policies.
 		if cfg.m.PublicAccountPolicies != nil {

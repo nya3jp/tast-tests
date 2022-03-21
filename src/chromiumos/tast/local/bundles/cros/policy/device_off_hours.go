@@ -101,7 +101,7 @@ func DeviceOffHours(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicy(&policy.DeviceGuestModeEnabled{Val: false})
 			pb.AddLegacyDevicePolicy("device_off_hours.intervals", param.intervals)
 			pb.AddLegacyDevicePolicy("device_off_hours.timezone", "Europe/Berlin")
