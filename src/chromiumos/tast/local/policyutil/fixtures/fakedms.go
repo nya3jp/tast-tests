@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -82,7 +83,7 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 		s.Fatal("Failed to ping FakeDMS: ", err)
 	}
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 
 	if err := fdms.WritePolicyBlob(pb); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
@@ -109,7 +110,7 @@ func (f *fakeDMSFixture) Reset(ctx context.Context) error {
 	}
 
 	// Write policy blob.
-	if err := f.fakeDMS.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+	if err := f.fakeDMS.WritePolicyBlob(policy.NewBlob()); err != nil {
 		return errors.Wrap(err, "failed to clear policies in FakeDMS")
 	}
 

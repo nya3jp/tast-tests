@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
@@ -68,7 +67,7 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 		},
 	}
 	policies := []policy.Policy{blockedAppsPolicy, arcEnabledPolicy}
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
 	pb.AddPolicies(policies)
 

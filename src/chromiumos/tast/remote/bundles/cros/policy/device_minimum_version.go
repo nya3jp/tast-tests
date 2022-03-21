@@ -12,7 +12,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
@@ -60,7 +59,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 
 	// Start with empty policy and set policy value after logging into the session so that
 	// the user can be force logged out as per policy behavior.
-	emptyPb := fakedms.NewPolicyBlob()
+	emptyPb := policy.NewBlob()
 	emptyJSON, err := json.Marshal(emptyPb)
 	if err != nil {
 		s.Fatal("Failed to serialize empty policies: ", err)
@@ -73,7 +72,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Updating policies in session")
-	minimumVersionPb := fakedms.NewPolicyBlob()
+	minimumVersionPb := policy.NewBlob()
 	minimumVersionPb.AddPolicy(&policy.DeviceMinimumVersion{
 		Val: &policy.DeviceMinimumVersionValue{
 			Requirements: []*policy.DeviceMinimumVersionValueRequirements{

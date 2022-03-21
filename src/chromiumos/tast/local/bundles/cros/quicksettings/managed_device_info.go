@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -46,7 +47,7 @@ func ManagedDeviceInfo(ctx context.Context, s *testing.State) {
 	}
 	defer fdms.Stop(ctx)
 
-	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+	if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 

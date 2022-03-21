@@ -53,13 +53,13 @@ func ServeAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chro
 
 // serveAndRefresh is a helper function. Similar to ServeAndRefresh but also accepts the test connection.
 func serveAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, ps []policy.Policy) error {
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.AddPolicies(ps)
 	return serveBlobAndRefresh(ctx, fdms, cr, tconn, pb)
 }
 
 // ServeBlobAndRefresh updates the policy blob of FakeDMS and refreshes the policies in Chrome.
-func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, pb *fakedms.PolicyBlob) error {
+func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, pb *policy.Blob) error {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
@@ -68,7 +68,7 @@ func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.
 }
 
 // serveBlobAndRefresh is a helper function. Similar to ServeBlobAndRefresh but also accepts the test connection.
-func serveBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, pb *fakedms.PolicyBlob) error {
+func serveBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, pb *policy.Blob) error {
 	// Make sure FakeDMS is still running.
 	if err := fdms.Ping(ctx); err != nil {
 		return errors.Wrap(err, "failed to ping FakeDMS")
@@ -97,11 +97,11 @@ func RefreshChromePolicies(ctx context.Context, cr *chrome.Chrome) error {
 
 // ResetChrome resets chrome and removes all policies previously served by the FakeDMS.
 func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
-	return ResetChromeWithBlob(ctx, fdms, cr, fakedms.NewPolicyBlob())
+	return ResetChromeWithBlob(ctx, fdms, cr, policy.NewBlob())
 }
 
 // ResetChromeWithBlob resets chrome and replaces all policies previously served by the FakeDMS with PolicyBlob.
-func ResetChromeWithBlob(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, pb *fakedms.PolicyBlob) error {
+func ResetChromeWithBlob(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, pb *policy.Blob) error {
 	ctx, cancel := context.WithTimeout(ctx, chrome.ResetTimeout)
 	defer cancel()
 

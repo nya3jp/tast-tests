@@ -121,7 +121,7 @@ func (w *wilcoDTCFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	w.cr = cr
 	w.fdms = fdms
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	// wilco_dtc and wilco_dtc_supportd only run for affiliated users.
 	pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
 	pb.UserAffiliationIds = []string{"default_affiliation_id"}

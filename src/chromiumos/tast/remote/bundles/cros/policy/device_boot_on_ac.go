@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -118,7 +117,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 			defer cl.Close(ctx)
 
 			pc := ps.NewPolicyServiceClient(cl.Conn)
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicy(tc.policy)
 
 			pJSON, err := json.Marshal(pb)

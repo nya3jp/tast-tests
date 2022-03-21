@@ -63,7 +63,7 @@ func SecondaryGoogleAccountSigninAllowed(ctx context.Context, s *testing.State) 
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Update the policy blob.
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicies([]policy.Policy{param.policy})
 			if err := fakeDMS.WritePolicyBlob(pb); err != nil {
 				s.Fatal("Failed to write policies to FakeDMS: ", err)

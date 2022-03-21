@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/tunneled1x"
 	"chromiumos/tast/common/wifi/security/wpa"
@@ -245,7 +244,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 			}
 
 			s.Log("Provision Wi-Fi policy and waiting for DUT to auto connect to device-wide network")
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicy(tc.policy)
 			pb.AddPolicy(&userNetPolicy)
 
