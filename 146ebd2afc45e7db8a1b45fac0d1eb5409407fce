@@ -303,6 +303,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5d9c771_108b98d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-03-21T16:58:01Z",
+      "side": 1,
+      "message": "+1 to what Aga said. One of the primary purposes of writing Tast tests for our team was to guard against Lacros regressions.Therefore, we should test with Lacros where reasonable.\n\nLacrosVariantNeeded\n* familylink.DeniedSitesBlocked \u003c- Uses a browser, similar to MatureSitesBlocked.\n* familylink.EducoexistenceInsession \u003c- As Aga mentioned, we should check that the secondary account propagates to Lacros.\n* familylink.AddPersonFlow \u003c- Testing a custom fixture.\n* familylink.PolicyLogin \u003c- Testing a custom fixture.\n* familylink.UnicornLogin \u003c- Testing a custom fixture.\n* familylink.GellerLogin \u003c- Testing a custom fixture, should be changed to LacrosVariantNeeded.\n* familylink.IncognitoModeDisabled \u003c- keep LacrosVariantNeeded, we also need to check that incognito mode is disabled for Lacros.\n\nLacrosVariantUnneeded\n* familylink.BedTimeLimit \u003c- Doesn\u0027t interact with browser.\n* familylink.DailyTimeLimit \u003c- Doesn\u0027t interact with browser.\n* familylink.ChildWallpaperSync \u003c- I don\u0027t think the wallpaper app is going to support Lacros and it\u0027s staying with Ash.\n* familylink.NonEduCoexistenceInsession \u003c- unlike EducoexistenceInsession, doesn\u0027t successfully add a secondary account so no need to test with Lacros. Keep LacrosVariantUnneeded.\n* familylink.EducoexistenceArc \u003c- although this tests adds an EDU secondary account, keep LacrosVariantUnneeded since we\u0027re already testing secondary account propagation to Lacros in EducoexistenceInsession.\n* familylink.MultipleSignInDisabled \u003c- Only opening and checking quick settings, no browser interaction.\n\nAga WDYT?",
+      "parentUuid": "3baec858_fa212d63",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcbc0fe0_ec4718c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
         "patchSetId": 2
