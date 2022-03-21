@@ -7,6 +7,8 @@ package policy
 
 import (
 	"encoding/json"
+
+	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
 // Policy is an interface for a more specific policy type.  All the
@@ -55,6 +57,9 @@ type Policy interface {
 	// interface will have the password while the input value will have
 	// "********". Those two strings are considered equal in this example.
 	Equal(interface{}) bool
+
+	// SetProto sets the proto value of the policy.
+	SetProto(*protoreflect.Message)
 }
 
 // Scope is a property of the policy and indicates whether it is a User or

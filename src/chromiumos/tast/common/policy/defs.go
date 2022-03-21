@@ -12,6 +12,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
+	"google.golang.org/protobuf/reflect/protoreflect"
 
 	"chromiumos/tast/errors"
 )
@@ -36,6 +37,9 @@ func (p *HomepageLocation) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *HomepageLocation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HomepageLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -66,6 +70,9 @@ func (p *HomepageIsNewTabPage) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *HomepageIsNewTabPage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *HomepageIsNewTabPage) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -94,6 +101,9 @@ func (p *AlternateErrorPagesEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AlternateErrorPagesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AlternateErrorPagesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -124,6 +134,9 @@ func (p *SearchSuggestEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *SearchSuggestEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SearchSuggestEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -152,6 +165,9 @@ func (p *JavascriptEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *JavascriptEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavascriptEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -182,6 +198,9 @@ func (p *IncognitoEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *IncognitoEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *IncognitoEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -210,6 +229,9 @@ func (p *SavingBrowserHistoryDisabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SavingBrowserHistoryDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SavingBrowserHistoryDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -240,6 +262,9 @@ func (p *PrintingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PrintingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -268,6 +293,9 @@ func (p *SafeBrowsingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SafeBrowsingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -298,6 +326,9 @@ func (p *PasswordManagerEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PasswordManagerEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PasswordManagerEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -326,6 +357,9 @@ func (p *AutoFillEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutoFillEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoFillEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -356,6 +390,9 @@ func (p *SyncDisabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *SyncDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SyncDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -384,6 +421,9 @@ func (p *ProxyMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -414,6 +454,9 @@ func (p *ProxyServerMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ProxyServerMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ProxyServerMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -442,6 +485,9 @@ func (p *ProxyServer) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyServer) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyServer) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -472,6 +518,9 @@ func (p *ProxyPacUrl) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ProxyPacUrl) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ProxyPacUrl) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -500,6 +549,9 @@ func (p *ProxyBypassList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyBypassList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProxyBypassList) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -530,6 +582,9 @@ func (p *AuthSchemes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *AuthSchemes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AuthSchemes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -558,6 +613,9 @@ func (p *DisableAuthNegotiateCnameLookup) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisableAuthNegotiateCnameLookup) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DisableAuthNegotiateCnameLookup) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -588,6 +646,9 @@ func (p *EnableAuthNegotiatePort) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *EnableAuthNegotiatePort) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *EnableAuthNegotiatePort) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -616,6 +677,9 @@ func (p *ExtensionInstallForcelist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallForcelist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallForcelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -646,6 +710,9 @@ func (p *ShowHomeButton) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ShowHomeButton) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ShowHomeButton) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -674,6 +741,9 @@ func (p *DeveloperToolsDisabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeveloperToolsDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeveloperToolsDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -704,6 +774,9 @@ func (p *RestoreOnStartup) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *RestoreOnStartup) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RestoreOnStartup) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -732,6 +805,9 @@ func (p *RestoreOnStartupURLs) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RestoreOnStartupURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RestoreOnStartupURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -762,6 +838,9 @@ func (p *BlockThirdPartyCookies) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *BlockThirdPartyCookies) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *BlockThirdPartyCookies) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -790,6 +869,9 @@ func (p *DefaultSearchProviderEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -820,6 +902,9 @@ func (p *DefaultSearchProviderName) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderName) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSearchProviderName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -848,6 +933,9 @@ func (p *DefaultSearchProviderKeyword) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderKeyword) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderKeyword) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -878,6 +966,9 @@ func (p *DefaultSearchProviderSearchURL) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderSearchURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSearchProviderSearchURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -906,6 +997,9 @@ func (p *DefaultSearchProviderSuggestURL) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSuggestURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderSuggestURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -936,6 +1030,9 @@ func (p *DefaultSearchProviderIconURL) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderIconURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSearchProviderIconURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -964,6 +1061,9 @@ func (p *DefaultSearchProviderEncodings) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderEncodings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderEncodings) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -994,6 +1094,9 @@ func (p *DefaultCookiesSetting) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *DefaultCookiesSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultCookiesSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1022,6 +1125,9 @@ func (p *DefaultImagesSetting) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultImagesSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultImagesSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1052,6 +1158,9 @@ func (p *DefaultJavaScriptSetting) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DefaultJavaScriptSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultJavaScriptSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1080,6 +1189,9 @@ func (p *DefaultPopupsSetting) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultPopupsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultPopupsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1110,6 +1222,9 @@ func (p *DefaultNotificationsSetting) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DefaultNotificationsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultNotificationsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1138,6 +1253,9 @@ func (p *DefaultGeolocationSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultGeolocationSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultGeolocationSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1168,6 +1286,9 @@ func (p *Disable3DAPIs) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *Disable3DAPIs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *Disable3DAPIs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -1196,6 +1317,9 @@ func (p *PolicyRefreshRate) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PolicyRefreshRate) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PolicyRefreshRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1226,6 +1350,9 @@ func (p *ChromeOsLockOnIdleSuspend) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ChromeOsLockOnIdleSuspend) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ChromeOsLockOnIdleSuspend) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -1254,6 +1381,9 @@ func (p *DownloadDirectory) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DownloadDirectory) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DownloadDirectory) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -1284,6 +1414,9 @@ func (p *CookiesBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *CookiesBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CookiesBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1312,6 +1445,9 @@ func (p *CookiesSessionOnlyForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CookiesSessionOnlyForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CookiesSessionOnlyForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1342,6 +1478,9 @@ func (p *ImagesAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *ImagesAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ImagesAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1370,6 +1509,9 @@ func (p *ImagesBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ImagesBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ImagesBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1400,6 +1542,9 @@ func (p *JavaScriptAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *JavaScriptAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *JavaScriptAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1428,6 +1573,9 @@ func (p *JavaScriptBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavaScriptBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1458,6 +1606,9 @@ func (p *PopupsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *PopupsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PopupsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1486,6 +1637,9 @@ func (p *PopupsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PopupsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PopupsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1516,6 +1670,9 @@ func (p *CookiesAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *CookiesAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CookiesAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1544,6 +1701,9 @@ func (p *TranslateEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TranslateEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TranslateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1574,6 +1734,9 @@ func (p *BookmarkBarEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *BookmarkBarEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *BookmarkBarEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -1602,6 +1765,9 @@ func (p *EditBookmarksEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EditBookmarksEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EditBookmarksEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1632,6 +1798,9 @@ func (p *DisabledSchemes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DisabledSchemes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DisabledSchemes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1660,6 +1829,9 @@ func (p *AllowCrossOriginAuthPrompt) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowCrossOriginAuthPrompt) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowCrossOriginAuthPrompt) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1692,6 +1864,9 @@ func (p *DevicePolicyRefreshRate) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DevicePolicyRefreshRate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_policy_refresh_rate", "device_policy_refresh_rate", p.Val)
+}
 func (p *DevicePolicyRefreshRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1720,6 +1895,9 @@ func (p *ChromeOsReleaseChannel) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ChromeOsReleaseChannel) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "release_channel", "release_channel", p.Val)
 }
 func (p *ChromeOsReleaseChannel) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -1779,6 +1957,9 @@ func (p *IncognitoModeAvailability) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *IncognitoModeAvailability) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *IncognitoModeAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1807,6 +1988,9 @@ func (p *RemoteAccessHostFirewallTraversal) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostFirewallTraversal) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostFirewallTraversal) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1837,6 +2021,9 @@ func (p *AutoSelectCertificateForUrls) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *AutoSelectCertificateForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AutoSelectCertificateForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1865,6 +2052,9 @@ func (p *NotificationsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *NotificationsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NotificationsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1895,6 +2085,9 @@ func (p *NotificationsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *NotificationsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *NotificationsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1924,6 +2117,9 @@ func (p *OpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
+}
+func (p *OpenNetworkConfiguration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*ONC)
@@ -1956,6 +2152,9 @@ func (p *DeviceOpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
+}
+func (p *DeviceOpenNetworkConfiguration) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "open_network_configuration", "open_network_configuration", p.Val)
 }
 func (p *DeviceOpenNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*ONC)
@@ -1995,6 +2194,9 @@ func (p *ProxySettings) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ProxySettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ProxySettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*ProxySettingsValue)
 	if !ok {
@@ -2023,6 +2225,9 @@ func (p *ReportDeviceVersionInfo) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceVersionInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_version_info", p.Val)
 }
 func (p *ReportDeviceVersionInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2053,6 +2258,9 @@ func (p *ReportDeviceActivityTimes) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceActivityTimes) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_activity_times", p.Val)
+}
 func (p *ReportDeviceActivityTimes) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2081,6 +2289,9 @@ func (p *ReportDeviceBootMode) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBootMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_boot_mode", p.Val)
 }
 func (p *ReportDeviceBootMode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2111,6 +2322,9 @@ func (p *DeviceAllowNewUsers) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *DeviceAllowNewUsers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_new_users", "allow_new_users", p.Val)
+}
 func (p *DeviceAllowNewUsers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2139,6 +2353,9 @@ func (p *DeviceGuestModeEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceGuestModeEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "guest_mode_enabled", "guest_mode_enabled", p.Val)
 }
 func (p *DeviceGuestModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2169,6 +2386,9 @@ func (p *DeviceShowUserNamesOnSignin) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceShowUserNamesOnSignin) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "show_user_names", "show_user_names", p.Val)
+}
 func (p *DeviceShowUserNamesOnSignin) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2198,6 +2418,9 @@ func (p *DeviceDataRoamingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DeviceDataRoamingEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "data_roaming_enabled", "data_roaming_enabled", p.Val)
+}
 func (p *DeviceDataRoamingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2226,6 +2449,9 @@ func (p *DeviceMetricsReportingEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceMetricsReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "metrics_enabled", "metrics_enabled", p.Val)
 }
 func (p *DeviceMetricsReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2258,6 +2484,9 @@ func (p *DeviceEphemeralUsersEnabled) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceEphemeralUsersEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "ephemeral_users_enabled", "ephemeral_users_enabled", p.Val)
+}
 func (p *DeviceEphemeralUsersEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2286,6 +2515,9 @@ func (p *EnableOnlineRevocationChecks) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableOnlineRevocationChecks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableOnlineRevocationChecks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2318,6 +2550,9 @@ func (p *ChromeOsReleaseChannelDelegated) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *ChromeOsReleaseChannelDelegated) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "release_channel", "release_channel_delegated", p.Val)
+}
 func (p *ChromeOsReleaseChannelDelegated) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2346,6 +2581,9 @@ func (p *DeviceAutoUpdateDisabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutoUpdateDisabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "update_disabled", p.Val)
 }
 func (p *DeviceAutoUpdateDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2376,6 +2614,9 @@ func (p *DriveDisabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DriveDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DriveDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2404,6 +2645,9 @@ func (p *DriveDisabledOverCellular) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DriveDisabledOverCellular) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DriveDisabledOverCellular) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2436,6 +2680,9 @@ func (p *DeviceTargetVersionPrefix) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DeviceTargetVersionPrefix) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "target_version_prefix", p.Val)
+}
 func (p *DeviceTargetVersionPrefix) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -2466,6 +2713,9 @@ func (p *ReportDeviceLocation) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *ReportDeviceLocation) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_location", p.Val)
+}
 func (p *ReportDeviceLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2494,6 +2744,9 @@ func (p *PinnedLauncherApps) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PinnedLauncherApps) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PinnedLauncherApps) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2525,6 +2778,9 @@ func (p *DeviceUpdateScatterFactor) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceUpdateScatterFactor) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "scatter_factor_in_seconds", p.Val)
 }
 func (p *DeviceUpdateScatterFactor) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -2559,6 +2815,9 @@ func (p *DeviceUpdateAllowedConnectionTypes) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DeviceUpdateAllowedConnectionTypes) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "allowed_connection_types", p.Val)
+}
 func (p *DeviceUpdateAllowedConnectionTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -2587,6 +2846,9 @@ func (p *ExtensionInstallSources) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallSources) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallSources) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2617,6 +2879,9 @@ func (p *DefaultMediaStreamSetting) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DefaultMediaStreamSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultMediaStreamSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -2645,6 +2910,9 @@ func (p *DisableSafeBrowsingProceedAnyway) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisableSafeBrowsingProceedAnyway) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DisableSafeBrowsingProceedAnyway) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2675,6 +2943,9 @@ func (p *SpellCheckServiceEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *SpellCheckServiceEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SpellCheckServiceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2703,6 +2974,9 @@ func (p *ExternalStorageDisabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ExternalStorageDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExternalStorageDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2733,6 +3007,9 @@ func (p *DisableScreenshots) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *DisableScreenshots) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DisableScreenshots) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2761,6 +3038,9 @@ func (p *RemoteAccessHostDomain) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostDomain) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostDomain) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -2791,6 +3071,9 @@ func (p *SystemTimezone) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *SystemTimezone) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_timezone", "timezone", p.Val)
+}
 func (p *SystemTimezone) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -2820,6 +3103,9 @@ func (p *AudioOutputAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *AudioOutputAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AudioOutputAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2848,6 +3134,9 @@ func (p *AudioCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AudioCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AudioCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2880,6 +3169,9 @@ func (p *DefaultSearchProviderAlternateURLs) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderAlternateURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSearchProviderAlternateURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -2908,6 +3200,9 @@ func (p *ForceSafeSearch) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceSafeSearch) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceSafeSearch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2973,6 +3268,9 @@ func (p *DeviceLocalAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccounts) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "account", p.Val)
+}
 func (p *DeviceLocalAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]DeviceLocalAccountInfo)
 	if !ok {
@@ -3001,6 +3299,9 @@ func (p *ShowLogoutButtonInTray) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ShowLogoutButtonInTray) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShowLogoutButtonInTray) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3031,6 +3332,9 @@ func (p *BuiltInDnsClientEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *BuiltInDnsClientEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *BuiltInDnsClientEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3059,6 +3363,9 @@ func (p *ShelfAutoHideBehavior) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ShelfAutoHideBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShelfAutoHideBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3089,6 +3396,9 @@ func (p *VideoCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *VideoCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *VideoCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3117,6 +3427,9 @@ func (p *ExtensionAllowedTypes) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionAllowedTypes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionAllowedTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -3147,6 +3460,9 @@ func (p *UserDisplayName) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UserDisplayName) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UserDisplayName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -3175,6 +3491,9 @@ func (p *SessionLengthLimit) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SessionLengthLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SessionLengthLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3205,6 +3524,9 @@ func (p *ScreenDimDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ScreenDimDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ScreenDimDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3233,6 +3555,9 @@ func (p *ScreenOffDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenOffDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenOffDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3263,6 +3588,9 @@ func (p *ScreenLockDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *ScreenLockDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ScreenLockDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3291,6 +3619,9 @@ func (p *IdleDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3321,6 +3652,9 @@ func (p *ScreenDimDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ScreenDimDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ScreenDimDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3349,6 +3683,9 @@ func (p *ScreenOffDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenOffDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenOffDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3379,6 +3716,9 @@ func (p *ScreenLockDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ScreenLockDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ScreenLockDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3407,6 +3747,9 @@ func (p *IdleDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3437,6 +3780,9 @@ func (p *IdleAction) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *IdleAction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *IdleAction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3465,6 +3811,9 @@ func (p *LidCloseAction) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *LidCloseAction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LidCloseAction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3495,6 +3844,9 @@ func (p *PowerManagementUsesAudioActivity) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *PowerManagementUsesAudioActivity) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PowerManagementUsesAudioActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3523,6 +3875,9 @@ func (p *PowerManagementUsesVideoActivity) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PowerManagementUsesVideoActivity) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PowerManagementUsesVideoActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3557,6 +3912,9 @@ func (p *DeviceAllowRedeemChromeOsRegistrationOffers) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *DeviceAllowRedeemChromeOsRegistrationOffers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_redeem_offers", "allow_redeem_offers", p.Val)
+}
 func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3586,6 +3944,9 @@ func (p *TermsOfServiceURL) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *TermsOfServiceURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *TermsOfServiceURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -3614,6 +3975,9 @@ func (p *AllowDeletingBrowserHistory) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowDeletingBrowserHistory) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowDeletingBrowserHistory) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3646,6 +4010,9 @@ func (p *ShowAccessibilityOptionsInSystemTrayMenu) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *ShowAccessibilityOptionsInSystemTrayMenu) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ShowAccessibilityOptionsInSystemTrayMenu) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3674,6 +4041,9 @@ func (p *HideWebStoreIcon) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HideWebStoreIcon) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HideWebStoreIcon) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3704,6 +4074,9 @@ func (p *UptimeLimit) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UptimeLimit) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "uptime_limit", "uptime_limit", p.Val)
+}
 func (p *UptimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3733,6 +4106,9 @@ func (p *RebootAfterUpdate) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *RebootAfterUpdate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "reboot_after_update", p.Val)
+}
 func (p *RebootAfterUpdate) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3761,6 +4137,9 @@ func (p *DeviceLocalAccountAutoLoginId) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccountAutoLoginId) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "auto_login_id", p.Val)
 }
 func (p *DeviceLocalAccountAutoLoginId) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3793,6 +4172,9 @@ func (p *DeviceLocalAccountAutoLoginDelay) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountAutoLoginDelay) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "auto_login_delay", p.Val)
+}
 func (p *DeviceLocalAccountAutoLoginDelay) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3821,6 +4203,9 @@ func (p *IdleWarningDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleWarningDelayAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleWarningDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3851,6 +4236,9 @@ func (p *IdleWarningDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *IdleWarningDelayBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *IdleWarningDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3878,6 +4266,9 @@ func (p *DeviceVariationsRestrictParameter) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceVariationsRestrictParameter) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "variations_parameter", "parameter", p.Val)
 }
 func (p *DeviceVariationsRestrictParameter) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3907,6 +4298,9 @@ func (p *AttestationEnabledForUser) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AttestationEnabledForUser) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AttestationEnabledForUser) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3941,6 +4335,9 @@ func (p *DeviceLocalAccountAutoLoginBailoutEnabled) UnmarshalAs(m json.RawMessag
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountAutoLoginBailoutEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "enable_auto_login_bailout", p.Val)
+}
 func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3969,6 +4366,9 @@ func (p *AllowScreenWakeLocks) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowScreenWakeLocks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowScreenWakeLocks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4001,6 +4401,9 @@ func (p *AttestationEnabledForDevice) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *AttestationEnabledForDevice) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "attestation_settings", "attestation_enabled", p.Val)
+}
 func (p *AttestationEnabledForDevice) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4029,6 +4432,9 @@ func (p *AudioCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AudioCaptureAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AudioCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -4059,6 +4465,9 @@ func (p *VideoCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *VideoCaptureAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *VideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -4087,6 +4496,9 @@ func (p *UserActivityScreenDimDelayScale) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *UserActivityScreenDimDelayScale) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserActivityScreenDimDelayScale) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4117,6 +4529,9 @@ func (p *LargeCursorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *LargeCursorEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *LargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4145,6 +4560,9 @@ func (p *SpokenFeedbackEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SpokenFeedbackEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4175,6 +4593,9 @@ func (p *HighContrastEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *HighContrastEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *HighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4203,6 +4624,9 @@ func (p *ScreenMagnifierType) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenMagnifierType) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4237,6 +4661,9 @@ func (p *DeviceLoginScreenDefaultLargeCursorEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDefaultLargeCursorEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_large_cursor_enabled", p.Val)
+}
 func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4269,6 +4696,9 @@ func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_spoken_feedback_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4303,6 +4733,9 @@ func (p *DeviceLoginScreenDefaultHighContrastEnabled) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDefaultHighContrastEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_high_contrast_enabled", p.Val)
+}
 func (p *DeviceLoginScreenDefaultHighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4336,6 +4769,9 @@ func (p *DeviceLoginScreenDefaultScreenMagnifierType) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDefaultScreenMagnifierType) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_screen_magnifier_type", p.Val)
+}
 func (p *DeviceLoginScreenDefaultScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -4365,6 +4801,9 @@ func (p *PresentationScreenDimDelayScale) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *PresentationScreenDimDelayScale) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PresentationScreenDimDelayScale) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -4393,6 +4832,9 @@ func (p *IdleActionBattery) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleActionBattery) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleActionBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4424,6 +4866,9 @@ func (p *ReportDeviceNetworkInterfaces) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkInterfaces) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_interfaces", p.Val)
 }
 func (p *ReportDeviceNetworkInterfaces) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4463,6 +4908,9 @@ func (p *DeviceLoginScreenPowerManagement) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPowerManagement) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_power_management", "login_screen_power_management", p.Val)
+}
 func (p *DeviceLoginScreenPowerManagement) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceLoginScreenPowerManagementValue)
 	if !ok {
@@ -4491,6 +4939,9 @@ func (p *IdleActionAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleActionAC) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IdleActionAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4521,6 +4972,9 @@ func (p *ManagedBookmarks) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ManagedBookmarks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ManagedBookmarks) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefBookmarkType)
 	if !ok {
@@ -4550,6 +5004,9 @@ func (p *MaxInvalidationFetchDelay) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *MaxInvalidationFetchDelay) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *MaxInvalidationFetchDelay) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -4578,6 +5035,9 @@ func (p *DefaultSearchProviderImageURL) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderImageURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderImageURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4610,6 +5070,9 @@ func (p *DefaultSearchProviderSearchURLPostParams) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderSearchURLPostParams) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSearchProviderSearchURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -4640,6 +5103,9 @@ func (p *DefaultSearchProviderSuggestURLPostParams) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSuggestURLPostParams) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderSuggestURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4672,6 +5138,9 @@ func (p *DefaultSearchProviderImageURLPostParams) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderImageURLPostParams) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSearchProviderImageURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -4703,6 +5172,9 @@ func (p *RequireOnlineRevocationChecksForLocalAnchors) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *RequireOnlineRevocationChecksForLocalAnchors) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RequireOnlineRevocationChecksForLocalAnchors) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4732,6 +5204,9 @@ func (p *SystemUse24HourClock) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *SystemUse24HourClock) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "use_24hour_clock", "use_24hour_clock", p.Val)
+}
 func (p *SystemUse24HourClock) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4760,6 +5235,9 @@ func (p *DefaultSearchProviderNewTabURL) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderNewTabURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSearchProviderNewTabURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4794,6 +5272,9 @@ func (p *AttestationForContentProtectionEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *AttestationForContentProtectionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "attestation_settings", "content_protection_enabled", p.Val)
+}
 func (p *AttestationForContentProtectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4823,6 +5304,9 @@ func (p *FullscreenAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *FullscreenAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *FullscreenAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4851,6 +5335,9 @@ func (p *DeviceAutoUpdateP2PEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutoUpdateP2PEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "p2p_enabled", p.Val)
 }
 func (p *DeviceAutoUpdateP2PEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4883,6 +5370,9 @@ func (p *DeviceUpdateHttpDownloadsEnabled) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceUpdateHttpDownloadsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "http_downloads_enabled", p.Val)
+}
 func (p *DeviceUpdateHttpDownloadsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4913,6 +5403,9 @@ func (p *ChromeOsMultiProfileUserBehavior) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *ChromeOsMultiProfileUserBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ChromeOsMultiProfileUserBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -4942,6 +5435,9 @@ func (p *WaitForInitialUserActivity) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *WaitForInitialUserActivity) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WaitForInitialUserActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4970,6 +5466,9 @@ func (p *ReportDeviceUsers) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceUsers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_users", p.Val)
 }
 func (p *ReportDeviceUsers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5005,6 +5504,9 @@ func (p *UserAvatarImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UserAvatarImage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UserAvatarImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*UserAvatarImageValue)
 	if !ok {
@@ -5038,6 +5540,9 @@ func (p *DeviceLocalAccountPromptForNetworkWhenOffline) UnmarshalAs(m json.RawMe
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountPromptForNetworkWhenOffline) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_local_accounts", "prompt_for_network_when_offline", p.Val)
+}
 func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5067,6 +5572,9 @@ func (p *SAMLOfflineSigninTimeLimit) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *SAMLOfflineSigninTimeLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SAMLOfflineSigninTimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -5095,6 +5603,9 @@ func (p *VirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5128,6 +5639,9 @@ func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) UnmarshalAs(m json.RawM
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_default_virtual_keyboard_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5163,6 +5677,9 @@ func (p *PowerManagementIdleSettings) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *PowerManagementIdleSettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PowerManagementIdleSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*PowerManagementIdleSettingsValue)
 	if !ok {
@@ -5197,6 +5714,9 @@ func (p *ScreenLockDelays) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ScreenLockDelays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ScreenLockDelays) Equal(iface interface{}) bool {
 	v, ok := iface.(*ScreenLockDelaysValue)
 	if !ok {
@@ -5226,6 +5746,9 @@ func (p *KeyboardDefaultToFunctionKeys) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *KeyboardDefaultToFunctionKeys) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *KeyboardDefaultToFunctionKeys) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5253,6 +5776,9 @@ func (p *WPADQuickCheckEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WPADQuickCheckEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WPADQuickCheckEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5288,6 +5814,9 @@ func (p *WallpaperImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *WallpaperImage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WallpaperImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*WallpaperImageValue)
 	if !ok {
@@ -5319,6 +5848,9 @@ func (p *RemoteAccessHostAllowRelayedConnection) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostAllowRelayedConnection) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RemoteAccessHostAllowRelayedConnection) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5348,6 +5880,9 @@ func (p *RemoteAccessHostUdpPortRange) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostUdpPortRange) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RemoteAccessHostUdpPortRange) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -5376,6 +5911,9 @@ func (p *DeviceBlockDevmode) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceBlockDevmode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_settings", "block_devmode", p.Val)
 }
 func (p *DeviceBlockDevmode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5411,6 +5949,9 @@ func (p *RegisteredProtocolHandlers) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *RegisteredProtocolHandlers) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RegisteredProtocolHandlers) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RegisteredProtocolHandlersValue)
 	if !ok {
@@ -5440,6 +5981,9 @@ func (p *TouchVirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *TouchVirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *TouchVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5468,6 +6012,9 @@ func (p *DeviceTransferSAMLCookies) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceTransferSAMLCookies) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "saml_settings", "transfer_saml_cookies", p.Val)
 }
 func (p *DeviceTransferSAMLCookies) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5499,6 +6046,9 @@ func (p *EasyUnlockAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *EasyUnlockAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *EasyUnlockAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5527,6 +6077,9 @@ func (p *NetworkPredictionOptions) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *NetworkPredictionOptions) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NetworkPredictionOptions) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5557,6 +6110,9 @@ func (p *SessionLocales) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *SessionLocales) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SessionLocales) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -5586,6 +6142,9 @@ func (p *BrowserGuestModeEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *BrowserGuestModeEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *BrowserGuestModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5614,6 +6173,9 @@ func (p *BrowserAddPersonEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BrowserAddPersonEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BrowserAddPersonEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5655,6 +6217,9 @@ func (p *ExtensionSettings) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *ExtensionSettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ExtensionSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(map[string]*ExtensionSettingsValue)
 	if !ok {
@@ -5683,6 +6248,9 @@ func (p *SSLVersionMin) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SSLVersionMin) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SSLVersionMin) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -5713,6 +6281,9 @@ func (p *ForceGoogleSafeSearch) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ForceGoogleSafeSearch) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ForceGoogleSafeSearch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5741,6 +6312,9 @@ func (p *ForceYouTubeSafetyMode) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceYouTubeSafetyMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceYouTubeSafetyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5771,6 +6345,9 @@ func (p *DeviceRebootOnShutdown) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *DeviceRebootOnShutdown) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "reboot_on_shutdown", "reboot_on_shutdown", p.Val)
+}
 func (p *DeviceRebootOnShutdown) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5799,6 +6376,9 @@ func (p *ReportDeviceHardwareStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceHardwareStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_hardware_status", p.Val)
 }
 func (p *ReportDeviceHardwareStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5829,6 +6409,9 @@ func (p *ReportDeviceSessionStatus) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceSessionStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_session_status", p.Val)
+}
 func (p *ReportDeviceSessionStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5857,6 +6440,9 @@ func (p *ReportUploadFrequency) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ReportUploadFrequency) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "device_status_frequency", p.Val)
 }
 func (p *ReportUploadFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5887,6 +6473,9 @@ func (p *HeartbeatEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *HeartbeatEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_heartbeat_settings", "heartbeat_enabled", p.Val)
+}
 func (p *HeartbeatEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5915,6 +6504,9 @@ func (p *HeartbeatFrequency) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *HeartbeatFrequency) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_heartbeat_settings", "heartbeat_frequency", p.Val)
 }
 func (p *HeartbeatFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5948,6 +6540,9 @@ func (p *CaptivePortalAuthenticationIgnoresProxy) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *CaptivePortalAuthenticationIgnoresProxy) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CaptivePortalAuthenticationIgnoresProxy) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5975,6 +6570,9 @@ func (p *ExtensionCacheSize) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ExtensionCacheSize) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "extension_cache_size", "extension_cache_size", p.Val)
 }
 func (p *ExtensionCacheSize) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6009,6 +6607,9 @@ func (p *DeviceLoginScreenDomainAutoComplete) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDomainAutoComplete) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_domain_auto_complete", "login_screen_domain_auto_complete", p.Val)
+}
 func (p *DeviceLoginScreenDomainAutoComplete) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6036,6 +6637,9 @@ func (p *ForceMaximizeOnFirstRun) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceMaximizeOnFirstRun) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceMaximizeOnFirstRun) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6066,6 +6670,9 @@ func (p *SSLErrorOverrideAllowed) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *SSLErrorOverrideAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SSLErrorOverrideAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6093,6 +6700,9 @@ func (p *QuicAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuicAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuicAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6127,6 +6737,9 @@ func (p *KeyPermissions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *KeyPermissions) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *KeyPermissions) Equal(iface interface{}) bool {
 	v, ok := iface.(map[string]*KeyPermissionsValue)
 	if !ok {
@@ -6158,6 +6771,9 @@ func (p *LogUploadEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *LogUploadEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_log_upload_settings", "system_log_upload_enabled", p.Val)
+}
 func (p *LogUploadEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6186,6 +6802,9 @@ func (p *UnifiedDesktopEnabledByDefault) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UnifiedDesktopEnabledByDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UnifiedDesktopEnabledByDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6216,6 +6835,9 @@ func (p *DefaultPrinterSelection) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DefaultPrinterSelection) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultPrinterSelection) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6244,6 +6866,9 @@ func (p *AllowDinosaurEasterEgg) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowDinosaurEasterEgg) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowDinosaurEasterEgg) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6276,6 +6901,9 @@ func (p *DisplayRotationDefault) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *DisplayRotationDefault) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "display_rotation_default", "display_rotation_default", p.Val)
+}
 func (p *DisplayRotationDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6304,6 +6932,9 @@ func (p *RemoteAccessHostClientDomain) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostClientDomain) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostClientDomain) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -6334,6 +6965,9 @@ func (p *ArcEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6379,6 +7013,9 @@ func (p *ArcPolicy) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return value, nil
 }
+func (p *ArcPolicy) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ArcPolicy) Equal(iface interface{}) bool {
 	v, ok := iface.(*ArcPolicyValue)
 	if !ok {
@@ -6410,6 +7047,9 @@ func (p *AllowKioskAppControlChromeVersion) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *AllowKioskAppControlChromeVersion) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_kiosk_app_control_chrome_version", "allow_kiosk_app_control_chrome_version", p.Val)
+}
 func (p *AllowKioskAppControlChromeVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6438,6 +7078,9 @@ func (p *DefaultWebBluetoothGuardSetting) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebBluetoothGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWebBluetoothGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6470,6 +7113,9 @@ func (p *LoginAuthenticationBehavior) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *LoginAuthenticationBehavior) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_authentication_behavior", "login_authentication_behavior", p.Val)
+}
 func (p *LoginAuthenticationBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6498,6 +7144,9 @@ func (p *DeviceAllowBluetooth) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *DeviceAllowBluetooth) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "allow_bluetooth", "allow_bluetooth", p.Val)
+}
 func (p *DeviceAllowBluetooth) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6525,6 +7174,9 @@ func (p *SuppressUnsupportedOSWarning) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SuppressUnsupportedOSWarning) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SuppressUnsupportedOSWarning) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6557,6 +7209,9 @@ func (p *DeviceQuirksDownloadEnabled) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceQuirksDownloadEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "quirks_download_enabled", "quirks_download_enabled", p.Val)
+}
 func (p *DeviceQuirksDownloadEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6588,6 +7243,9 @@ func (p *SystemTimezoneAutomaticDetection) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *SystemTimezoneAutomaticDetection) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_timezone", "timezone_detection_type", p.Val)
+}
 func (p *SystemTimezoneAutomaticDetection) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6616,6 +7274,9 @@ func (p *TaskManagerEndProcessEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TaskManagerEndProcessEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TaskManagerEndProcessEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6646,6 +7307,9 @@ func (p *LoginVideoCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *LoginVideoCaptureAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_video_capture_allowed_urls", "urls", p.Val)
+}
 func (p *LoginVideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -6674,6 +7338,9 @@ func (p *AllowScreenLock) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowScreenLock) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowScreenLock) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6704,6 +7371,9 @@ func (p *ArcCertificatesSyncMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ArcCertificatesSyncMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ArcCertificatesSyncMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6733,6 +7403,9 @@ func (p *AllowedDomainsForApps) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *AllowedDomainsForApps) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AllowedDomainsForApps) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6760,6 +7433,9 @@ func (p *EnableMediaRouter) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableMediaRouter) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableMediaRouter) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6792,6 +7468,9 @@ func (p *CertificateTransparencyEnforcementDisabledForUrls) UnmarshalAs(m json.R
 	}
 	return v, nil
 }
+func (p *CertificateTransparencyEnforcementDisabledForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CertificateTransparencyEnforcementDisabledForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -6823,6 +7502,9 @@ func (p *DeviceLoginScreenExtensions) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenExtensions) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_extensions", "device_login_screen_extensions", p.Val)
+}
 func (p *DeviceLoginScreenExtensions) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -6851,6 +7533,9 @@ func (p *WebRtcUdpPortRange) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *WebRtcUdpPortRange) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebRtcUdpPortRange) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6878,6 +7563,9 @@ func (p *ComponentUpdatesEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ComponentUpdatesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ComponentUpdatesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6908,6 +7596,9 @@ func (p *ExternalStorageReadOnly) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ExternalStorageReadOnly) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ExternalStorageReadOnly) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6936,6 +7627,9 @@ func (p *ForceYouTubeRestrict) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ForceYouTubeRestrict) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceYouTubeRestrict) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6966,6 +7660,9 @@ func (p *ReportArcStatusEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ReportArcStatusEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ReportArcStatusEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6994,6 +7691,9 @@ func (p *QuickUnlockTimeout) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *QuickUnlockTimeout) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickUnlockTimeout) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7024,6 +7724,9 @@ func (p *PinUnlockMinimumLength) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PinUnlockMinimumLength) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PinUnlockMinimumLength) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -7053,6 +7756,9 @@ func (p *PinUnlockMaximumLength) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PinUnlockMaximumLength) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PinUnlockMaximumLength) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -7081,6 +7787,9 @@ func (p *PinUnlockWeakPinsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PinUnlockWeakPinsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PinUnlockWeakPinsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7116,6 +7825,9 @@ func (p *DeviceWallpaperImage) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *DeviceWallpaperImage) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wallpaper_image", "device_wallpaper_image", p.Val)
+}
 func (p *DeviceWallpaperImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceWallpaperImageValue)
 	if !ok {
@@ -7145,6 +7857,9 @@ func (p *NewTabPageLocation) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *NewTabPageLocation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *NewTabPageLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -7173,6 +7888,9 @@ func (p *ShowCastIconInToolbar) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ShowCastIconInToolbar) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ShowCastIconInToolbar) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7200,6 +7918,9 @@ func (p *DeviceLoginScreenLocales) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenLocales) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_locales", "login_screen_locales", p.Val)
 }
 func (p *DeviceLoginScreenLocales) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7232,6 +7953,9 @@ func (p *DeviceLoginScreenInputMethods) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenInputMethods) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_input_methods", "login_screen_input_methods", p.Val)
+}
 func (p *DeviceLoginScreenInputMethods) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7262,6 +7986,9 @@ func (p *InstantTetheringAllowed) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *InstantTetheringAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *InstantTetheringAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7290,6 +8017,9 @@ func (p *RemoteAccessHostDomainList) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostDomainList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7320,6 +8050,9 @@ func (p *RemoteAccessHostClientDomainList) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostClientDomainList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RemoteAccessHostClientDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7348,6 +8081,9 @@ func (p *DownloadRestrictions) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DownloadRestrictions) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DownloadRestrictions) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7378,6 +8114,9 @@ func (p *DeviceSecondFactorAuthentication) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceSecondFactorAuthentication) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_second_factor_authentication", "mode", p.Val)
 }
 func (p *DeviceSecondFactorAuthentication) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7410,6 +8149,9 @@ func (p *CastReceiverEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *CastReceiverEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CastReceiverEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7440,6 +8182,9 @@ func (p *CastReceiverName) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *CastReceiverName) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "cast_receiver_name", "name", p.Val)
+}
 func (p *CastReceiverName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -7468,6 +8213,9 @@ func (p *AutofillCreditCardEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutofillCreditCardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutofillCreditCardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7498,6 +8246,9 @@ func (p *NtlmV2Enabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *NtlmV2Enabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *NtlmV2Enabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7526,6 +8277,9 @@ func (p *PromptForDownloadLocation) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PromptForDownloadLocation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PromptForDownloadLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7560,6 +8314,9 @@ func (p *DeviceLoginScreenAutoSelectCertificateForUrls) UnmarshalAs(m json.RawMe
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenAutoSelectCertificateForUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_auto_select_certificate_for_urls", "login_screen_auto_select_certificate_rules", p.Val)
+}
 func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7590,6 +8347,9 @@ func (p *UnaffiliatedArcAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *UnaffiliatedArcAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "unaffiliated_arc_allowed", "unaffiliated_arc_allowed", p.Val)
+}
 func (p *UnaffiliatedArcAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7618,6 +8378,9 @@ func (p *IsolateOrigins) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *IsolateOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *IsolateOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -7645,6 +8408,9 @@ func (p *SitePerProcess) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SitePerProcess) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SitePerProcess) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7675,6 +8441,9 @@ func (p *DefaultDownloadDirectory) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DefaultDownloadDirectory) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultDownloadDirectory) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -7704,6 +8473,9 @@ func (p *SecurityKeyPermitAttestation) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *SecurityKeyPermitAttestation) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SecurityKeyPermitAttestation) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7732,6 +8504,9 @@ func (p *DeviceHostnameTemplate) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceHostnameTemplate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "network_hostname", "device_hostname_template", p.Val)
 }
 func (p *DeviceHostnameTemplate) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -7764,6 +8539,9 @@ func (p *AbusiveExperienceInterventionEnforce) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *AbusiveExperienceInterventionEnforce) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AbusiveExperienceInterventionEnforce) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7792,6 +8570,9 @@ func (p *SpellcheckLanguage) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SpellcheckLanguage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpellcheckLanguage) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7823,6 +8604,9 @@ func (p *SecondaryGoogleAccountSigninAllowed) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *SecondaryGoogleAccountSigninAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SecondaryGoogleAccountSigninAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7851,6 +8635,9 @@ func (p *SpellcheckEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SpellcheckEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SpellcheckEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7881,6 +8668,9 @@ func (p *AdsSettingForIntrusiveAdsSites) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *AdsSettingForIntrusiveAdsSites) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AdsSettingForIntrusiveAdsSites) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -7909,6 +8699,9 @@ func (p *PasswordProtectionWarningTrigger) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PasswordProtectionWarningTrigger) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordProtectionWarningTrigger) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7940,6 +8733,9 @@ func (p *DeviceKerberosEncryptionTypes) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceKerberosEncryptionTypes) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_kerberos_encryption_types", "types", p.Val)
 }
 func (p *DeviceKerberosEncryptionTypes) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7974,6 +8770,9 @@ func (p *DeviceUserPolicyLoopbackProcessingMode) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceUserPolicyLoopbackProcessingMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_user_policy_loopback_processing_mode", "mode", p.Val)
+}
 func (p *DeviceUserPolicyLoopbackProcessingMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8003,6 +8802,9 @@ func (p *RelaunchNotification) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *RelaunchNotification) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RelaunchNotification) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8031,6 +8833,9 @@ func (p *RelaunchNotificationPeriod) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RelaunchNotificationPeriod) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RelaunchNotificationPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8063,6 +8868,9 @@ func (p *VirtualMachinesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *VirtualMachinesAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "virtual_machines_allowed", "virtual_machines_allowed", p.Val)
+}
 func (p *VirtualMachinesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -8091,6 +8899,9 @@ func (p *PasswordProtectionLoginURLs) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PasswordProtectionLoginURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PasswordProtectionLoginURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8123,6 +8934,9 @@ func (p *PasswordProtectionChangePasswordURL) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *PasswordProtectionChangePasswordURL) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PasswordProtectionChangePasswordURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -8153,6 +8967,9 @@ func (p *DeviceMachinePasswordChangeRate) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceMachinePasswordChangeRate) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_machine_password_change_rate", "rate_days", p.Val)
 }
 func (p *DeviceMachinePasswordChangeRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8185,6 +9002,9 @@ func (p *DeviceRollbackAllowedMilestones) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *DeviceRollbackAllowedMilestones) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "rollback_allowed_milestones", p.Val)
+}
 func (p *DeviceRollbackAllowedMilestones) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8215,6 +9035,9 @@ func (p *DeviceRollbackToTargetVersion) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceRollbackToTargetVersion) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "rollback_to_target_version", p.Val)
 }
 func (p *DeviceRollbackToTargetVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8247,6 +9070,9 @@ func (p *SafeBrowsingExtendedReportingEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *SafeBrowsingExtendedReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SafeBrowsingExtendedReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -8276,6 +9102,9 @@ func (p *AutoplayAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *AutoplayAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AutoplayAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -8304,6 +9133,9 @@ func (p *DefaultWebUsbGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebUsbGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWebUsbGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8336,6 +9168,9 @@ func (p *CertificateTransparencyEnforcementDisabledForCas) UnmarshalAs(m json.Ra
 	}
 	return v, nil
 }
+func (p *CertificateTransparencyEnforcementDisabledForCas) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CertificateTransparencyEnforcementDisabledForCas) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -8367,6 +9202,9 @@ func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) UnmarshalAs(m j
 	}
 	return v, nil
 }
+func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -8396,8 +9234,46 @@ func (p *MediaRouterCastAllowAllIPs) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *MediaRouterCastAllowAllIPs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *MediaRouterCastAllowAllIPs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 438. DeviceSamlLoginAuthenticationType
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type DeviceSamlLoginAuthenticationType struct {
+	Stat Status
+	Val  int
+}
+
+func (p *DeviceSamlLoginAuthenticationType) Name() string { return "DeviceSamlLoginAuthenticationType" }
+func (p *DeviceSamlLoginAuthenticationType) Field() string {
+	return "saml_login_authentication_type.saml_login_authentication_type"
+}
+func (p *DeviceSamlLoginAuthenticationType) Scope() Scope          { return ScopeDevice }
+func (p *DeviceSamlLoginAuthenticationType) Status() Status        { return p.Stat }
+func (p *DeviceSamlLoginAuthenticationType) UntypedV() interface{} { return p.Val }
+func (p *DeviceSamlLoginAuthenticationType) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *DeviceSamlLoginAuthenticationType) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "saml_login_authentication_type", "saml_login_authentication_type", p.Val)
+}
+func (p *DeviceSamlLoginAuthenticationType) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
@@ -8424,6 +9300,9 @@ func (p *WebUsbAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebUsbAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebUsbAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8454,6 +9333,9 @@ func (p *WebUsbBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *WebUsbBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebUsbBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -8483,6 +9365,9 @@ func (p *DeveloperToolsAvailability) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeveloperToolsAvailability) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DeveloperToolsAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8510,6 +9395,9 @@ func (p *AllowedLanguages) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AllowedLanguages) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowedLanguages) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8539,6 +9427,9 @@ func (p *ArcAppInstallEventLoggingEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcAppInstallEventLoggingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcAppInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8607,6 +9498,9 @@ func (p *UsageTimeLimit) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UsageTimeLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UsageTimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(*UsageTimeLimitValue)
 	if !ok {
@@ -8635,6 +9529,9 @@ func (p *ArcBackupRestoreServiceEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ArcBackupRestoreServiceEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcBackupRestoreServiceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8665,6 +9562,9 @@ func (p *ArcGoogleLocationServicesEnabled) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *ArcGoogleLocationServicesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ArcGoogleLocationServicesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8693,6 +9593,9 @@ func (p *EnableSyncConsent) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableSyncConsent) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EnableSyncConsent) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8730,6 +9633,9 @@ func (p *DeviceAutoUpdateTimeRestrictions) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceAutoUpdateTimeRestrictions) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "disallowed_time_intervals", p.Val)
+}
 func (p *DeviceAutoUpdateTimeRestrictions) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DeviceAutoUpdateTimeRestrictionsValue)
 	if !ok {
@@ -8758,6 +9664,9 @@ func (p *PromotionalTabsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PromotionalTabsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PromotionalTabsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8788,6 +9697,9 @@ func (p *SafeSitesFilterBehavior) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *SafeSitesFilterBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SafeSitesFilterBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8816,6 +9728,9 @@ func (p *AllowedInputMethods) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AllowedInputMethods) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowedInputMethods) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8847,6 +9762,9 @@ func (p *OverrideSecurityRestrictionsOnInsecureOrigin) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *OverrideSecurityRestrictionsOnInsecureOrigin) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -8876,6 +9794,9 @@ func (p *DeviceUpdateStagingSchedule) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceUpdateStagingSchedule) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "staging_schedule", p.Val)
+}
 func (p *DeviceUpdateStagingSchedule) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefDayPercentagePair)
 	if !ok {
@@ -8904,6 +9825,9 @@ func (p *AutofillAddressEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutofillAddressEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutofillAddressEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8936,6 +9860,9 @@ func (p *UrlKeyedAnonymizedDataCollectionEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *UrlKeyedAnonymizedDataCollectionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UrlKeyedAnonymizedDataCollectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -8963,6 +9890,9 @@ func (p *NetworkFileSharesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NetworkFileSharesAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NetworkFileSharesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8995,6 +9925,9 @@ func (p *DeviceLocalAccountManagedSessionEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountManagedSessionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DeviceLocalAccountManagedSessionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9024,6 +9957,9 @@ func (p *WebRtcEventLogCollectionAllowed) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *WebRtcEventLogCollectionAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebRtcEventLogCollectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9052,6 +9988,9 @@ func (p *PowerSmartDimEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PowerSmartDimEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PowerSmartDimEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9084,6 +10023,9 @@ func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) UnmarshalAs(m json
 	}
 	return v, nil
 }
+func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -9113,6 +10055,9 @@ func (p *NetBiosShareDiscoveryEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NetBiosShareDiscoveryEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NetBiosShareDiscoveryEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9157,6 +10102,9 @@ func (p *WebAppInstallForceList) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *WebAppInstallForceList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebAppInstallForceList) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebAppInstallForceListValue)
 	if !ok {
@@ -9187,6 +10135,9 @@ func (p *SmsMessagesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *SmsMessagesAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SmsMessagesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9215,6 +10166,9 @@ func (p *PrintingAllowedColorModes) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedColorModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAllowedColorModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9245,6 +10199,9 @@ func (p *PrintingAllowedDuplexModes) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *PrintingAllowedDuplexModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintingAllowedDuplexModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -9274,6 +10231,9 @@ func (p *PrintingColorDefault) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *PrintingColorDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintingColorDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -9302,6 +10262,9 @@ func (p *PrintingDuplexDefault) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingDuplexDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingDuplexDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9342,6 +10305,9 @@ func (p *PrintingPaperSizeDefault) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *PrintingPaperSizeDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintingPaperSizeDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(*PrintingPaperSizeDefaultValue)
 	if !ok {
@@ -9371,6 +10337,9 @@ func (p *PrintHeaderFooter) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *PrintHeaderFooter) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintHeaderFooter) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9399,6 +10368,9 @@ func (p *CrostiniAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9431,6 +10403,9 @@ func (p *DeviceUnaffiliatedCrostiniAllowed) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceUnaffiliatedCrostiniAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_unaffiliated_crostini_allowed", "device_unaffiliated_crostini_allowed", p.Val)
+}
 func (p *DeviceUnaffiliatedCrostiniAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9462,6 +10437,9 @@ func (p *EnterpriseHardwarePlatformAPIEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *EnterpriseHardwarePlatformAPIEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *EnterpriseHardwarePlatformAPIEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9491,6 +10469,9 @@ func (p *ReportCrostiniUsageEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *ReportCrostiniUsageEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ReportCrostiniUsageEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9519,6 +10500,9 @@ func (p *VpnConfigAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VpnConfigAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VpnConfigAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9559,6 +10543,9 @@ func (p *WebUsbAllowDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *WebUsbAllowDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebUsbAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebUsbAllowDevicesForUrlsValue)
 	if !ok {
@@ -9589,6 +10576,9 @@ func (p *SmartLockSigninAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *SmartLockSigninAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SmartLockSigninAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9617,6 +10607,9 @@ func (p *NTLMShareAuthenticationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTLMShareAuthenticationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NTLMShareAuthenticationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9654,6 +10647,9 @@ func (p *NetworkFileSharesPreconfiguredShares) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *NetworkFileSharesPreconfiguredShares) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *NetworkFileSharesPreconfiguredShares) Equal(iface interface{}) bool {
 	v, ok := iface.([]*NetworkFileSharesPreconfiguredSharesValue)
 	if !ok {
@@ -9682,6 +10678,9 @@ func (p *AllowWakeLocks) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowWakeLocks) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AllowWakeLocks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9717,6 +10716,9 @@ func (p *ScreenBrightnessPercent) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ScreenBrightnessPercent) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ScreenBrightnessPercent) Equal(iface interface{}) bool {
 	v, ok := iface.(*ScreenBrightnessPercentValue)
 	if !ok {
@@ -9745,6 +10747,9 @@ func (p *CloudReportingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CloudReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CloudReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9776,6 +10781,9 @@ func (p *DeviceWiFiFastTransitionEnabled) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWiFiFastTransitionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wifi_fast_transition_enabled", "device_wifi_fast_transition_enabled", p.Val)
 }
 func (p *DeviceWiFiFastTransitionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9817,6 +10825,9 @@ func (p *DeviceDisplayResolution) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DeviceDisplayResolution) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_display_resolution", "device_display_resolution", p.Val)
+}
 func (p *DeviceDisplayResolution) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceDisplayResolutionValue)
 	if !ok {
@@ -9845,6 +10856,9 @@ func (p *PluginVmAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PluginVmAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "plugin_vm_allowed", "plugin_vm_allowed", p.Val)
 }
 func (p *PluginVmAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9880,6 +10894,9 @@ func (p *PluginVmImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PluginVmImage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PluginVmImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*PluginVmImageValue)
 	if !ok {
@@ -9910,6 +10927,9 @@ func (p *PrintingSendUsernameAndFilenameEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrintingSendUsernameAndFilenameEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingSendUsernameAndFilenameEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9946,6 +10966,9 @@ func (p *ParentAccessCodeConfig) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ParentAccessCodeConfig) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ParentAccessCodeConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -9975,6 +10998,9 @@ func (p *DeviceGpoCacheLifetime) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceGpoCacheLifetime) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_gpo_cache_lifetime", "lifetime_hours", p.Val)
 }
 func (p *DeviceGpoCacheLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10007,6 +11033,9 @@ func (p *DeviceAuthDataCacheLifetime) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceAuthDataCacheLifetime) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_auth_data_cache_lifetime", "lifetime_hours", p.Val)
+}
 func (p *DeviceAuthDataCacheLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10035,6 +11064,9 @@ func (p *ReportDevicePowerStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDevicePowerStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_power_status", p.Val)
 }
 func (p *ReportDevicePowerStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10065,6 +11097,9 @@ func (p *ReportDeviceStorageStatus) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceStorageStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_storage_status", p.Val)
+}
 func (p *ReportDeviceStorageStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10093,6 +11128,9 @@ func (p *ReportDeviceBoardStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBoardStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_board_status", p.Val)
 }
 func (p *ReportDeviceBoardStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10125,6 +11163,9 @@ func (p *ClientCertificateManagementAllowed) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *ClientCertificateManagementAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ClientCertificateManagementAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10155,6 +11196,9 @@ func (p *DeviceRebootOnUserSignout) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DeviceRebootOnUserSignout) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reboot_on_user_signout", "reboot_on_signout_mode", p.Val)
+}
 func (p *DeviceRebootOnUserSignout) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10183,6 +11227,9 @@ func (p *SchedulerConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SchedulerConfiguration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SchedulerConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10213,6 +11260,9 @@ func (p *CrostiniExportImportUIAllowed) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *CrostiniExportImportUIAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CrostiniExportImportUIAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10241,6 +11291,9 @@ func (p *PrintingAllowedPinModes) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedPinModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAllowedPinModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10271,6 +11324,9 @@ func (p *PrintingPinDefault) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *PrintingPinDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintingPinDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -10299,6 +11355,9 @@ func (p *VoiceInteractionContextEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VoiceInteractionContextEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VoiceInteractionContextEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10329,6 +11388,9 @@ func (p *AuthNegotiateDelegateByKdcPolicy) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *AuthNegotiateDelegateByKdcPolicy) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AuthNegotiateDelegateByKdcPolicy) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10357,6 +11419,9 @@ func (p *VoiceInteractionHotwordEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VoiceInteractionHotwordEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VoiceInteractionHotwordEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10388,6 +11453,9 @@ func (p *DeviceWilcoDtcAllowed) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWilcoDtcAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wilco_dtc_allowed", "device_wilco_dtc_allowed", p.Val)
 }
 func (p *DeviceWilcoDtcAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10425,6 +11493,9 @@ func (p *DeviceWilcoDtcConfiguration) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceWilcoDtcConfiguration) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wilco_dtc_configuration", "device_wilco_dtc_configuration", p.Val)
+}
 func (p *DeviceWilcoDtcConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceWilcoDtcConfigurationValue)
 	if !ok {
@@ -10454,6 +11525,9 @@ func (p *DeviceWiFiAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *DeviceWiFiAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_wifi_allowed", "device_wifi_allowed", p.Val)
+}
 func (p *DeviceWiFiAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10482,6 +11556,9 @@ func (p *DevicePowerPeakShiftEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerPeakShiftEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_power_peak_shift", "enabled", p.Val)
 }
 func (p *DevicePowerPeakShiftEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10515,6 +11592,9 @@ func (p *DevicePowerPeakShiftBatteryThreshold) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerPeakShiftBatteryThreshold) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_power_peak_shift", "battery_threshold", p.Val)
 }
 func (p *DevicePowerPeakShiftBatteryThreshold) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10556,6 +11636,9 @@ func (p *DevicePowerPeakShiftDayConfig) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *DevicePowerPeakShiftDayConfig) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_power_peak_shift", "day_configs", p.Val)
+}
 func (p *DevicePowerPeakShiftDayConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(*DevicePowerPeakShiftDayConfigValue)
 	if !ok {
@@ -10585,6 +11668,9 @@ func (p *DeviceBootOnAcEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *DeviceBootOnAcEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_boot_on_ac", "enabled", p.Val)
+}
 func (p *DeviceBootOnAcEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10613,6 +11699,9 @@ func (p *SignedHTTPExchangeEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SignedHTTPExchangeEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SignedHTTPExchangeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10645,6 +11734,9 @@ func (p *DeviceQuickFixBuildToken) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DeviceQuickFixBuildToken) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "device_quick_fix_build_token", p.Val)
+}
 func (p *DeviceQuickFixBuildToken) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -10676,6 +11768,9 @@ func (p *SamlInSessionPasswordChangeEnabled) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *SamlInSessionPasswordChangeEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SamlInSessionPasswordChangeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10704,6 +11799,9 @@ func (p *DeviceDockMacAddressSource) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceDockMacAddressSource) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_dock_mac_address_source", "source", p.Val)
 }
 func (p *DeviceDockMacAddressSource) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10737,6 +11835,9 @@ func (p *DeviceAdvancedBatteryChargeModeEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAdvancedBatteryChargeModeEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_advanced_battery_charge_mode", "enabled", p.Val)
 }
 func (p *DeviceAdvancedBatteryChargeModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10781,6 +11882,9 @@ func (p *DeviceAdvancedBatteryChargeModeDayConfig) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_advanced_battery_charge_mode", "day_configs", p.Val)
+}
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceAdvancedBatteryChargeModeDayConfigValue)
 	if !ok {
@@ -10811,6 +11915,9 @@ func (p *DeviceBatteryChargeMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceBatteryChargeMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_battery_charge_mode", "battery_charge_mode", p.Val)
 }
 func (p *DeviceBatteryChargeMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10845,6 +11952,9 @@ func (p *DeviceBatteryChargeCustomStartCharging) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceBatteryChargeCustomStartCharging) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_battery_charge_mode", "custom_charge_start", p.Val)
+}
 func (p *DeviceBatteryChargeCustomStartCharging) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10878,6 +11988,9 @@ func (p *DeviceBatteryChargeCustomStopCharging) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *DeviceBatteryChargeCustomStopCharging) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_battery_charge_mode", "custom_charge_stop", p.Val)
+}
 func (p *DeviceBatteryChargeCustomStopCharging) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10907,6 +12020,9 @@ func (p *DeviceUsbPowerShareEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceUsbPowerShareEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_usb_power_share", "enabled", p.Val)
+}
 func (p *DeviceUsbPowerShareEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10935,6 +12051,9 @@ func (p *PolicyListMultipleSourceMergeList) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PolicyListMultipleSourceMergeList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PolicyListMultipleSourceMergeList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -10966,6 +12085,9 @@ func (p *SamlPasswordExpirationAdvanceWarningDays) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SamlPasswordExpirationAdvanceWarningDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SamlPasswordExpirationAdvanceWarningDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -11005,6 +12127,9 @@ func (p *DeviceScheduledUpdateCheck) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceScheduledUpdateCheck) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_scheduled_update_check", "device_scheduled_update_check_settings", p.Val)
+}
 func (p *DeviceScheduledUpdateCheck) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceScheduledUpdateCheckValue)
 	if !ok {
@@ -11033,6 +12158,9 @@ func (p *KerberosEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KerberosEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11063,6 +12191,9 @@ func (p *KerberosRememberPasswordEnabled) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *KerberosRememberPasswordEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *KerberosRememberPasswordEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11091,6 +12222,9 @@ func (p *KerberosAddAccountsAllowed) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KerberosAddAccountsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KerberosAddAccountsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11157,6 +12291,9 @@ func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return value, nil
 }
+func (p *KerberosAccounts) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]KerberosAccountsValueIf)
 	if !ok {
@@ -11192,7 +12329,42 @@ func (p *StickyKeysEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *StickyKeysEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *StickyKeysEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 563. AppRecommendationZeroStateEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type AppRecommendationZeroStateEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *AppRecommendationZeroStateEnabled) Name() string          { return "AppRecommendationZeroStateEnabled" }
+func (p *AppRecommendationZeroStateEnabled) Field() string         { return "" }
+func (p *AppRecommendationZeroStateEnabled) Scope() Scope          { return ScopeUser }
+func (p *AppRecommendationZeroStateEnabled) Status() Status        { return p.Stat }
+func (p *AppRecommendationZeroStateEnabled) UntypedV() interface{} { return p.Val }
+func (p *AppRecommendationZeroStateEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *AppRecommendationZeroStateEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *AppRecommendationZeroStateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -11223,6 +12395,9 @@ func (p *PolicyDictionaryMultipleSourceMergeList) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *PolicyDictionaryMultipleSourceMergeList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PolicyDictionaryMultipleSourceMergeList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -11251,6 +12426,9 @@ func (p *RelaunchHeadsUpPeriod) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RelaunchHeadsUpPeriod) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RelaunchHeadsUpPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -11282,6 +12460,9 @@ func (p *StartupBrowserWindowLaunchSuppressed) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *StartupBrowserWindowLaunchSuppressed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *StartupBrowserWindowLaunchSuppressed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11310,6 +12491,9 @@ func (p *UserFeedbackAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserFeedbackAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserFeedbackAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11341,6 +12525,9 @@ func (p *DevicePowerwashAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerwashAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_powerwash_allowed", "device_powerwash_allowed", p.Val)
 }
 func (p *DevicePowerwashAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11376,6 +12563,9 @@ func (p *ExternalPrintServers) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *ExternalPrintServers) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ExternalPrintServers) Equal(iface interface{}) bool {
 	v, ok := iface.(*ExternalPrintServersValue)
 	if !ok {
@@ -11404,6 +12594,9 @@ func (p *SelectToSpeakEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SelectToSpeakEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SelectToSpeakEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11435,6 +12628,9 @@ func (p *CrostiniRootAccessAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *CrostiniRootAccessAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CrostiniRootAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11463,6 +12659,9 @@ func (p *VmManagementCliAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VmManagementCliAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *VmManagementCliAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11493,6 +12692,9 @@ func (p *CACertificateManagementAllowed) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *CACertificateManagementAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CACertificateManagementAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -11522,6 +12724,9 @@ func (p *PasswordLeakDetectionEnabled) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *PasswordLeakDetectionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PasswordLeakDetectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11550,6 +12755,9 @@ func (p *LockScreenMediaPlaybackEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LockScreenMediaPlaybackEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LockScreenMediaPlaybackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11581,6 +12789,9 @@ func (p *DnsOverHttpsMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DnsOverHttpsMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DnsOverHttpsMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -11609,6 +12820,9 @@ func (p *PolicyAtomicGroupsEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PolicyAtomicGroupsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PolicyAtomicGroupsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11639,6 +12853,9 @@ func (p *DictationEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DictationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DictationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11667,6 +12884,9 @@ func (p *KeyboardFocusHighlightEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KeyboardFocusHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KeyboardFocusHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11697,6 +12917,9 @@ func (p *CursorHighlightEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *CursorHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CursorHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11725,6 +12948,9 @@ func (p *CaretHighlightEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CaretHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CaretHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11755,6 +12981,9 @@ func (p *MonoAudioEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *MonoAudioEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *MonoAudioEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11783,6 +13012,9 @@ func (p *AutoclickEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutoclickEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoclickEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11817,6 +13049,9 @@ func (p *DeviceLoginScreenLargeCursorEnabled) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenLargeCursorEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_large_cursor_enabled", p.Val)
+}
 func (p *DeviceLoginScreenLargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11844,6 +13079,9 @@ func (p *HSTSPolicyBypassList) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *HSTSPolicyBypassList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HSTSPolicyBypassList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -11875,6 +13113,9 @@ func (p *ReportDeviceOsUpdateStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceOsUpdateStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_os_update_status", p.Val)
 }
 func (p *ReportDeviceOsUpdateStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11919,6 +13160,9 @@ func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_webusb_allow_devices_for_urls", "device_login_screen_webusb_allow_devices_for_urls", p.Val)
+}
 func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DeviceLoginScreenWebUsbAllowDevicesForUrlsValue)
 	if !ok {
@@ -11951,6 +13195,9 @@ func (p *DeviceLoginScreenSpokenFeedbackEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenSpokenFeedbackEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_spoken_feedback_enabled", p.Val)
 }
 func (p *DeviceLoginScreenSpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11985,6 +13232,9 @@ func (p *DeviceLoginScreenHighContrastEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenHighContrastEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_high_contrast_enabled", p.Val)
+}
 func (p *DeviceLoginScreenHighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12018,6 +13268,9 @@ func (p *DeviceLoginScreenVirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenVirtualKeyboardEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_virtual_keyboard_enabled", p.Val)
+}
 func (p *DeviceLoginScreenVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12046,6 +13299,9 @@ func (p *CloudExtensionRequestEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CloudExtensionRequestEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CloudExtensionRequestEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12080,6 +13336,9 @@ func (p *DeviceLoginScreenSystemInfoEnforced) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenSystemInfoEnforced) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_system_info_enforced", "value", p.Val)
+}
 func (p *DeviceLoginScreenSystemInfoEnforced) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12108,6 +13367,9 @@ func (p *SharedClipboardEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SharedClipboardEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SharedClipboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12139,6 +13401,9 @@ func (p *DeviceLoginScreenDictationEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDictationEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_dictation_enabled", p.Val)
 }
 func (p *DeviceLoginScreenDictationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12173,6 +13438,9 @@ func (p *DeviceLoginScreenSelectToSpeakEnabled) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenSelectToSpeakEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_select_to_speak_enabled", p.Val)
+}
 func (p *DeviceLoginScreenSelectToSpeakEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12205,6 +13473,9 @@ func (p *DeviceLoginScreenCursorHighlightEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenCursorHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_cursor_highlight_enabled", p.Val)
 }
 func (p *DeviceLoginScreenCursorHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12239,6 +13510,9 @@ func (p *DeviceLoginScreenCaretHighlightEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenCaretHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_caret_highlight_enabled", p.Val)
+}
 func (p *DeviceLoginScreenCaretHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12270,6 +13544,9 @@ func (p *DeviceLoginScreenMonoAudioEnabled) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenMonoAudioEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_mono_audio_enabled", p.Val)
+}
 func (p *DeviceLoginScreenMonoAudioEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12300,6 +13577,9 @@ func (p *DeviceLoginScreenAutoclickEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenAutoclickEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_autoclick_enabled", p.Val)
 }
 func (p *DeviceLoginScreenAutoclickEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12334,6 +13614,9 @@ func (p *DeviceLoginScreenStickyKeysEnabled) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenStickyKeysEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_sticky_keys_enabled", p.Val)
+}
 func (p *DeviceLoginScreenStickyKeysEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12367,6 +13650,9 @@ func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) UnmarshalAs(m json.RawM
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_keyboard_focus_highlight_enabled", p.Val)
+}
 func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12395,6 +13681,9 @@ func (p *ShelfAlignment) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ShelfAlignment) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ShelfAlignment) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12427,6 +13716,9 @@ func (p *PrintingAllowedBackgroundGraphicsModes) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *PrintingAllowedBackgroundGraphicsModes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintingAllowedBackgroundGraphicsModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -12455,6 +13747,9 @@ func (p *PrintingBackgroundGraphicsDefault) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingBackgroundGraphicsDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingBackgroundGraphicsDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12487,6 +13782,9 @@ func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) UnmarshalAs(m json.Ra
 	}
 	return v, nil
 }
+func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -12515,6 +13813,9 @@ func (p *PrintJobHistoryExpirationPeriod) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintJobHistoryExpirationPeriod) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintJobHistoryExpirationPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -12549,6 +13850,9 @@ func (p *DeviceLoginScreenScreenMagnifierType) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenScreenMagnifierType) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_screen_magnifier_type", p.Val)
+}
 func (p *DeviceLoginScreenScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -12577,6 +13881,9 @@ func (p *DefaultInsecureContentSetting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultInsecureContentSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultInsecureContentSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -12607,6 +13914,9 @@ func (p *InsecureContentAllowedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *InsecureContentAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *InsecureContentAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -12635,6 +13945,9 @@ func (p *InsecureContentBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *InsecureContentBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsecureContentBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12669,6 +13982,9 @@ func (p *DeviceWebBasedAttestationAllowedUrls) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DeviceWebBasedAttestationAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_web_based_attestation_allowed_urls", "value", p.Val)
+}
 func (p *DeviceWebBasedAttestationAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -12701,6 +14017,9 @@ func (p *DeviceShowNumericKeyboardForPassword) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceShowNumericKeyboardForPassword) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_show_numeric_keyboard_for_password", "value", p.Val)
 }
 func (p *DeviceShowNumericKeyboardForPassword) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12736,6 +14055,9 @@ func (p *CrostiniAnsiblePlaybook) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *CrostiniAnsiblePlaybook) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CrostiniAnsiblePlaybook) Equal(iface interface{}) bool {
 	v, ok := iface.(*CrostiniAnsiblePlaybookValue)
 	if !ok {
@@ -12763,6 +14085,9 @@ func (p *WebRtcLocalIpsAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebRtcLocalIpsAllowedUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebRtcLocalIpsAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12816,6 +14141,9 @@ func (p *PerAppTimeLimits) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PerAppTimeLimits) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PerAppTimeLimits) Equal(iface interface{}) bool {
 	v, ok := iface.(*PerAppTimeLimitsValue)
 	if !ok {
@@ -12844,6 +14172,9 @@ func (p *DnsOverHttpsTemplates) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DnsOverHttpsTemplates) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DnsOverHttpsTemplates) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12874,6 +14205,9 @@ func (p *GloballyScopeHTTPAuthCacheEnabled) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *GloballyScopeHTTPAuthCacheEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *GloballyScopeHTTPAuthCacheEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12902,6 +14236,9 @@ func (p *ClickToCallEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ClickToCallEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ClickToCallEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12936,6 +14273,9 @@ func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_show_options_in_system_tray_menu_enabled", p.Val)
+}
 func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12965,6 +14305,9 @@ func (p *PrinterTypeDenyList) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *PrinterTypeDenyList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrinterTypeDenyList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -12992,6 +14335,9 @@ func (p *SyncTypesListDisabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SyncTypesListDisabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SyncTypesListDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -13024,6 +14370,9 @@ func (p *AmbientAuthenticationInPrivateModesEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *AmbientAuthenticationInPrivateModesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AmbientAuthenticationInPrivateModesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -13052,6 +14401,9 @@ func (p *PaymentMethodQueryEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PaymentMethodQueryEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PaymentMethodQueryEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13084,6 +14436,9 @@ func (p *StricterMixedContentTreatmentEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *StricterMixedContentTreatmentEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *StricterMixedContentTreatmentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13114,6 +14469,9 @@ func (p *NTPCustomBackgroundEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *NTPCustomBackgroundEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *NTPCustomBackgroundEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13142,6 +14500,9 @@ func (p *DNSInterceptionChecksEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DNSInterceptionChecksEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DNSInterceptionChecksEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13172,6 +14533,9 @@ func (p *PrimaryMouseButtonSwitch) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *PrimaryMouseButtonSwitch) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13200,6 +14564,9 @@ func (p *ReportDeviceCpuInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceCpuInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_cpu_info", p.Val)
 }
 func (p *ReportDeviceCpuInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13234,6 +14601,9 @@ func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) UnmarshalAs(m json.RawMessag
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_primary_mouse_button_switch", "value", p.Val)
+}
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13263,6 +14633,9 @@ func (p *AccessibilityShortcutsEnabled) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *AccessibilityShortcutsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AccessibilityShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13291,6 +14664,9 @@ func (p *ReportDeviceGraphicsStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceGraphicsStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_graphics_status", p.Val)
 }
 func (p *ReportDeviceGraphicsStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13325,6 +14701,9 @@ func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) UnmarshalAs(m json.RawM
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "accessibility_settings", "login_screen_shortcuts_enabled", p.Val)
+}
 func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13356,6 +14735,9 @@ func (p *ReportDeviceCrashReportInfo) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *ReportDeviceCrashReportInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_crash_report_info", p.Val)
+}
 func (p *ReportDeviceCrashReportInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13384,6 +14766,9 @@ func (p *ScreenCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ScreenCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13425,6 +14810,9 @@ func (p *DeviceMinimumVersion) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *DeviceMinimumVersion) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_minimum_version", "value", p.Val)
+}
 func (p *DeviceMinimumVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceMinimumVersionValue)
 	if !ok {
@@ -13453,6 +14841,9 @@ func (p *ReportDeviceTimezoneInfo) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceTimezoneInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_timezone_info", p.Val)
 }
 func (p *ReportDeviceTimezoneInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13490,6 +14881,9 @@ func (p *SystemProxySettings) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *SystemProxySettings) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "system_proxy_settings", "system_proxy_settings", p.Val)
+}
 func (p *SystemProxySettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*SystemProxySettingsValue)
 	if !ok {
@@ -13518,6 +14912,9 @@ func (p *DeviceChromeVariations) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceChromeVariations) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_chrome_variations_type", "value", p.Val)
 }
 func (p *DeviceChromeVariations) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -13552,6 +14949,9 @@ func (p *DeviceLoginScreenPrivacyScreenEnabled) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPrivacyScreenEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_login_screen_privacy_screen_enabled", "enabled", p.Val)
+}
 func (p *DeviceLoginScreenPrivacyScreenEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13580,6 +14980,9 @@ func (p *PrivacyScreenEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrivacyScreenEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrivacyScreenEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13610,6 +15013,9 @@ func (p *ForceLogoutUnauthenticatedUserEnabled) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceLogoutUnauthenticatedUserEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ForceLogoutUnauthenticatedUserEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13648,6 +15054,9 @@ func (p *RequiredClientCertificateForUser) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as []*RequiredClientCertificateForUserValue", m)
 	}
 	return v, nil
+}
+func (p *RequiredClientCertificateForUser) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RequiredClientCertificateForUser) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RequiredClientCertificateForUserValue)
@@ -13691,6 +15100,9 @@ func (p *RequiredClientCertificateForDevice) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *RequiredClientCertificateForDevice) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "required_client_certificate_for_device", "required_client_certificate_for_device", p.Val)
+}
 func (p *RequiredClientCertificateForDevice) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RequiredClientCertificateForDeviceValue)
 	if !ok {
@@ -13719,6 +15131,9 @@ func (p *ReportDeviceMemoryInfo) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceMemoryInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_memory_info", p.Val)
 }
 func (p *ReportDeviceMemoryInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13749,6 +15164,9 @@ func (p *SafeBrowsingProtectionLevel) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *SafeBrowsingProtectionLevel) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SafeBrowsingProtectionLevel) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -13777,6 +15195,9 @@ func (p *AdvancedProtectionAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AdvancedProtectionAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AdvancedProtectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13807,6 +15228,9 @@ func (p *ReportDeviceBacklightInfo) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceBacklightInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_backlight_info", p.Val)
+}
 func (p *ReportDeviceBacklightInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13834,6 +15258,9 @@ func (p *ScrollToTextFragmentEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ScrollToTextFragmentEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScrollToTextFragmentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13863,6 +15290,9 @@ func (p *SystemFeaturesDisableList) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SystemFeaturesDisableList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SystemFeaturesDisableList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -13894,6 +15324,9 @@ func (p *CrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *CrostiniArcAdbSideloadingAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -13923,6 +15356,9 @@ func (p *FloatingAccessibilityMenuEnabled) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *FloatingAccessibilityMenuEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *FloatingAccessibilityMenuEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13951,6 +15387,9 @@ func (p *PrintingMaxSheetsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintingMaxSheetsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingMaxSheetsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14016,6 +15455,9 @@ func (p *OnFileAttachedEnterpriseConnector) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *OnFileAttachedEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *OnFileAttachedEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileAttachedEnterpriseConnectorValue)
 	if !ok {
@@ -14049,6 +15491,9 @@ func (p *DeviceCrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceCrostiniArcAdbSideloadingAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_crostini_arc_adb_sideloading_allowed", "mode", p.Val)
 }
 func (p *DeviceCrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14116,6 +15561,9 @@ func (p *OnFileDownloadedEnterpriseConnector) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *OnFileDownloadedEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *OnFileDownloadedEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileDownloadedEnterpriseConnectorValue)
 	if !ok {
@@ -14181,6 +15629,9 @@ func (p *OnBulkDataEntryEnterpriseConnector) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *OnBulkDataEntryEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *OnBulkDataEntryEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnBulkDataEntryEnterpriseConnectorValue)
 	if !ok {
@@ -14209,6 +15660,9 @@ func (p *PluginVmUserId) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PluginVmUserId) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PluginVmUserId) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -14252,6 +15706,9 @@ func (p *OnSecurityEventEnterpriseConnector) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *OnSecurityEventEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *OnSecurityEventEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnSecurityEventEnterpriseConnectorValue)
 	if !ok {
@@ -14280,6 +15737,9 @@ func (p *AutoOpenFileTypes) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoOpenFileTypes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoOpenFileTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -14310,6 +15770,9 @@ func (p *LoginDisplayPasswordButtonEnabled) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *LoginDisplayPasswordButtonEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *LoginDisplayPasswordButtonEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14338,6 +15801,9 @@ func (p *ReportDeviceAppInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceAppInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_app_info", p.Val)
 }
 func (p *ReportDeviceAppInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14368,6 +15834,9 @@ func (p *AccessibilityImageLabelsEnabled) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *AccessibilityImageLabelsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AccessibilityImageLabelsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14396,6 +15865,9 @@ func (p *UserPluginVmAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserPluginVmAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UserPluginVmAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14426,6 +15898,9 @@ func (p *AutoOpenAllowedForURLs) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *AutoOpenAllowedForURLs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AutoOpenAllowedForURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -14454,6 +15929,9 @@ func (p *ReportDeviceBluetoothInfo) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBluetoothInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_bluetooth_info", p.Val)
 }
 func (p *ReportDeviceBluetoothInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14484,6 +15962,9 @@ func (p *ReportDeviceFanInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *ReportDeviceFanInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_fan_info", p.Val)
+}
 func (p *ReportDeviceFanInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14512,6 +15993,9 @@ func (p *ReportDeviceVpdInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceVpdInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_vpd_info", p.Val)
 }
 func (p *ReportDeviceVpdInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14542,6 +16026,9 @@ func (p *EnableExperimentalPolicies) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *EnableExperimentalPolicies) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *EnableExperimentalPolicies) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -14571,6 +16058,9 @@ func (p *PluginVmDataCollectionAllowed) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *PluginVmDataCollectionAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PluginVmDataCollectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14599,6 +16089,9 @@ func (p *IntensiveWakeUpThrottlingEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *IntensiveWakeUpThrottlingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IntensiveWakeUpThrottlingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14631,6 +16124,9 @@ func (p *DeviceMinimumVersionAueMessage) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceMinimumVersionAueMessage) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_minimum_version_aue_message", "value", p.Val)
+}
 func (p *DeviceMinimumVersionAueMessage) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -14662,6 +16158,9 @@ func (p *DefaultSearchProviderContextMenuAccessAllowed) UnmarshalAs(m json.RawMe
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderContextMenuAccessAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSearchProviderContextMenuAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14690,6 +16189,9 @@ func (p *CrostiniPortForwardingAllowed) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniPortForwardingAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *CrostiniPortForwardingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14728,6 +16230,9 @@ func (p *VirtualKeyboardFeatures) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *VirtualKeyboardFeatures) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *VirtualKeyboardFeatures) Equal(iface interface{}) bool {
 	v, ok := iface.(*VirtualKeyboardFeaturesValue)
 	if !ok {
@@ -14758,6 +16263,9 @@ func (p *PinUnlockAutosubmitEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *PinUnlockAutosubmitEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PinUnlockAutosubmitEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14786,6 +16294,9 @@ func (p *LockScreenReauthenticationEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LockScreenReauthenticationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LockScreenReauthenticationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14816,6 +16327,9 @@ func (p *DeletePrintJobHistoryAllowed) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *DeletePrintJobHistoryAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DeletePrintJobHistoryAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14845,6 +16359,9 @@ func (p *EmojiSuggestionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EmojiSuggestionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EmojiSuggestionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14879,6 +16396,9 @@ func (p *ManagedGuestSessionPrivacyWarningsEnabled) UnmarshalAs(m json.RawMessag
 	}
 	return v, nil
 }
+func (p *ManagedGuestSessionPrivacyWarningsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "managed_guest_session_privacy_warnings", "enabled", p.Val)
+}
 func (p *ManagedGuestSessionPrivacyWarningsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14907,6 +16427,9 @@ func (p *PluginVmRequiredFreeDiskSpace) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PluginVmRequiredFreeDiskSpace) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PluginVmRequiredFreeDiskSpace) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14938,7 +16461,43 @@ func (p *SuggestedContentEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *SuggestedContentEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SuggestedContentEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type ExtensionInstallEventLoggingEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ExtensionInstallEventLoggingEnabled) Name() string {
+	return "ExtensionInstallEventLoggingEnabled"
+}
+func (p *ExtensionInstallEventLoggingEnabled) Field() string         { return "" }
+func (p *ExtensionInstallEventLoggingEnabled) Scope() Scope          { return ScopeUser }
+func (p *ExtensionInstallEventLoggingEnabled) Status() Status        { return p.Stat }
+func (p *ExtensionInstallEventLoggingEnabled) UntypedV() interface{} { return p.Val }
+func (p *ExtensionInstallEventLoggingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ExtensionInstallEventLoggingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *ExtensionInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -14967,6 +16526,9 @@ func (p *EnterpriseRealTimeUrlCheckMode) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *EnterpriseRealTimeUrlCheckMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *EnterpriseRealTimeUrlCheckMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -14994,6 +16556,9 @@ func (p *AssistantOnboardingMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AssistantOnboardingMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AssistantOnboardingMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -15030,6 +16595,9 @@ func (p *DeviceExternalPrintServers) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceExternalPrintServers) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "external_print_servers", "external_policy", p.Val)
+}
 func (p *DeviceExternalPrintServers) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceExternalPrintServersValue)
 	if !ok {
@@ -15064,6 +16632,9 @@ func (p *DeviceExternalPrintServersAllowlist) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceExternalPrintServersAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "external_print_servers_allowlist", "allowlist", p.Val)
+}
 func (p *DeviceExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15092,6 +16663,9 @@ func (p *SafeBrowsingAllowlistDomains) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingAllowlistDomains) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SafeBrowsingAllowlistDomains) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15122,6 +16696,9 @@ func (p *DevicePrintersAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DevicePrintersAccessMode) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers_access_mode", "access_mode", p.Val)
+}
 func (p *DevicePrintersAccessMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -15150,6 +16727,9 @@ func (p *DevicePrintersBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DevicePrintersBlocklist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers_blocklist", "blocklist", p.Val)
 }
 func (p *DevicePrintersBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15180,6 +16760,9 @@ func (p *DevicePrintersAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DevicePrintersAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers_allowlist", "allowlist", p.Val)
+}
 func (p *DevicePrintersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15208,6 +16791,9 @@ func (p *URLBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *URLBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *URLBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15238,6 +16824,9 @@ func (p *URLAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *URLAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *URLAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15266,6 +16855,9 @@ func (p *ExtensionInstallAllowlist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15297,6 +16889,9 @@ func (p *ShowFullUrlsInAddressBar) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *ShowFullUrlsInAddressBar) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ShowFullUrlsInAddressBar) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15325,6 +16920,9 @@ func (p *ExtensionInstallBlocklist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExtensionInstallBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15355,6 +16953,9 @@ func (p *ReportDeviceSystemInfo) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ReportDeviceSystemInfo) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_system_info", p.Val)
+}
 func (p *ReportDeviceSystemInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15383,6 +16984,9 @@ func (p *AutoplayAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoplayAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AutoplayAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15418,6 +17022,9 @@ func (p *DevicePrinters) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DevicePrinters) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_printers", "external_policy", p.Val)
+}
 func (p *DevicePrinters) Equal(iface interface{}) bool {
 	v, ok := iface.(*DevicePrintersValue)
 	if !ok {
@@ -15446,6 +17053,9 @@ func (p *AuthNegotiateDelegateAllowlist) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AuthNegotiateDelegateAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AuthNegotiateDelegateAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -15476,6 +17086,9 @@ func (p *AuthServerAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *AuthServerAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AuthServerAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -15504,6 +17117,9 @@ func (p *InsecureFormsWarningsEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *InsecureFormsWarningsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsecureFormsWarningsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15534,6 +17150,9 @@ func (p *SpellcheckLanguageBlocklist) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *SpellcheckLanguageBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SpellcheckLanguageBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15562,6 +17181,9 @@ func (p *ExternalPrintServersAllowlist) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExternalPrintServersAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15592,6 +17214,9 @@ func (p *DefaultSerialGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DefaultSerialGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultSerialGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -15620,6 +17245,9 @@ func (p *SerialAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SerialAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SerialAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15650,6 +17278,9 @@ func (p *SerialBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *SerialBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SerialBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15678,6 +17309,9 @@ func (p *DefaultSensorsSetting) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultSensorsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultSensorsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -15708,6 +17342,9 @@ func (p *SensorsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *SensorsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SensorsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15736,6 +17373,9 @@ func (p *SensorsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SensorsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SensorsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15769,6 +17409,9 @@ func (p *DeviceChannelDowngradeBehavior) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceChannelDowngradeBehavior) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "channel_downgrade_behavior", p.Val)
+}
 func (p *DeviceChannelDowngradeBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -15797,6 +17440,9 @@ func (p *NoteTakingAppsLockScreenAllowlist) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *NoteTakingAppsLockScreenAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NoteTakingAppsLockScreenAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15827,6 +17473,9 @@ func (p *NearbyShareAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NearbyShareAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NearbyShareAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15867,6 +17516,9 @@ func (p *PerAppTimeLimitsAllowlist) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *PerAppTimeLimitsAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PerAppTimeLimitsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(*PerAppTimeLimitsAllowlistValue)
 	if !ok {
@@ -15900,6 +17552,9 @@ func (p *DeviceShowLowDiskSpaceNotification) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DeviceShowLowDiskSpaceNotification) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_show_low_disk_space_notification", "device_show_low_disk_space_notification", p.Val)
+}
 func (p *DeviceShowLowDiskSpaceNotification) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15929,6 +17584,9 @@ func (p *DeviceUserAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *DeviceUserAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "user_allowlist", "user_allowlist", p.Val)
+}
 func (p *DeviceUserAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15956,6 +17614,9 @@ func (p *UsbDetachableAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as []*RefUsbDeviceIdInclusive", m)
 	}
 	return v, nil
+}
+func (p *UsbDetachableAllowlist) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "usb_detachable_allowlist", "id", p.Val)
 }
 func (p *UsbDetachableAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefUsbDeviceIdInclusive)
@@ -15988,6 +17649,9 @@ func (p *InsecurePrivateNetworkRequestsAllowed) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *InsecurePrivateNetworkRequestsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *InsecurePrivateNetworkRequestsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16019,6 +17683,9 @@ func (p *InsecurePrivateNetworkRequestsAllowedForUrls) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *InsecurePrivateNetworkRequestsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16048,6 +17715,9 @@ func (p *UserPrintersAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *UserPrintersAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UserPrintersAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16076,6 +17746,9 @@ func (p *Printers) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *Printers) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *Printers) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16111,6 +17784,9 @@ func (p *PrintersBulkConfiguration) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *PrintersBulkConfiguration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintersBulkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*PrintersBulkConfigurationValue)
 	if !ok {
@@ -16139,6 +17815,9 @@ func (p *DeviceReleaseLtsTag) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceReleaseLtsTag) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "release_channel", "release_lts_tag", p.Val)
 }
 func (p *DeviceReleaseLtsTag) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16169,6 +17848,9 @@ func (p *PrintersBulkAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PrintersBulkAccessMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintersBulkAccessMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -16197,6 +17879,9 @@ func (p *DefaultFileSystemReadGuardSetting) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultFileSystemReadGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultFileSystemReadGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16229,6 +17914,9 @@ func (p *DefaultFileSystemWriteGuardSetting) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DefaultFileSystemWriteGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultFileSystemWriteGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -16257,6 +17945,9 @@ func (p *FileSystemReadAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemReadAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FileSystemReadAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16287,6 +17978,9 @@ func (p *FileSystemReadBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *FileSystemReadBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *FileSystemReadBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16315,6 +18009,9 @@ func (p *FileSystemWriteAskForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemWriteAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FileSystemWriteAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16345,6 +18042,9 @@ func (p *FileSystemWriteBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *FileSystemWriteBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *FileSystemWriteBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16373,6 +18073,9 @@ func (p *PrintersBulkBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrintersBulkBlocklist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintersBulkBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16403,6 +18106,9 @@ func (p *PrintersBulkAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *PrintersBulkAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintersBulkAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16432,6 +18138,9 @@ func (p *LookalikeWarningAllowlistDomains) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *LookalikeWarningAllowlistDomains) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *LookalikeWarningAllowlistDomains) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16460,6 +18169,9 @@ func (p *PrintingAPIExtensionsAllowlist) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAPIExtensionsAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintingAPIExtensionsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16491,6 +18203,9 @@ func (p *QuickUnlockModeAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *QuickUnlockModeAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *QuickUnlockModeAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16519,6 +18234,9 @@ func (p *AttestationExtensionAllowlist) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AttestationExtensionAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AttestationExtensionAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16570,6 +18288,9 @@ func (p *DataLeakPreventionRulesList) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DataLeakPreventionRulesList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DataLeakPreventionRulesList) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DataLeakPreventionRulesListValue)
 	if !ok {
@@ -16597,6 +18318,9 @@ func (p *WebRtcAllowLegacyTLSProtocols) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WebRtcAllowLegacyTLSProtocols) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebRtcAllowLegacyTLSProtocols) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16626,6 +18350,9 @@ func (p *MediaRecommendationsEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *MediaRecommendationsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *MediaRecommendationsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16658,6 +18385,9 @@ func (p *DeviceFamilyLinkAccountsAllowed) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *DeviceFamilyLinkAccountsAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "family_link_accounts_allowed", "family_link_accounts_allowed", p.Val)
+}
 func (p *DeviceFamilyLinkAccountsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16686,6 +18416,9 @@ func (p *EduCoexistenceToSVersion) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *EduCoexistenceToSVersion) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EduCoexistenceToSVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16721,6 +18454,9 @@ func (p *BrowsingDataLifetime) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *BrowsingDataLifetime) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *BrowsingDataLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.([]*BrowsingDataLifetimeValue)
 	if !ok {
@@ -16749,6 +18485,9 @@ func (p *IntranetRedirectBehavior) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IntranetRedirectBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *IntranetRedirectBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16786,6 +18525,9 @@ func (p *DeviceArcDataSnapshotHours) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceArcDataSnapshotHours) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "arc_data_snapshot_hours", "arc_data_snapshot_hours", p.Val)
+}
 func (p *DeviceArcDataSnapshotHours) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceArcDataSnapshotHoursValue)
 	if !ok {
@@ -16816,6 +18558,9 @@ func (p *PhoneHubAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PhoneHubAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PhoneHubAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16845,6 +18590,9 @@ func (p *PhoneHubNotificationsAllowed) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *PhoneHubNotificationsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PhoneHubNotificationsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16873,6 +18621,9 @@ func (p *PhoneHubTaskContinuationAllowed) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PhoneHubTaskContinuationAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PhoneHubTaskContinuationAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16904,6 +18655,9 @@ func (p *WifiSyncAndroidAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *WifiSyncAndroidAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WifiSyncAndroidAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16932,6 +18686,9 @@ func (p *SecurityTokenSessionBehavior) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SecurityTokenSessionBehavior) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SecurityTokenSessionBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16964,6 +18721,9 @@ func (p *SecurityTokenSessionNotificationSeconds) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *SecurityTokenSessionNotificationSeconds) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SecurityTokenSessionNotificationSeconds) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -16992,6 +18752,9 @@ func (p *FullscreenAlertEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FullscreenAlertEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FullscreenAlertEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17022,6 +18785,9 @@ func (p *NTPCardsVisible) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *NTPCardsVisible) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *NTPCardsVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17050,6 +18816,9 @@ func (p *BasicAuthOverHttpEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BasicAuthOverHttpEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BasicAuthOverHttpEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17080,6 +18849,9 @@ func (p *SystemFeaturesDisableMode) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *SystemFeaturesDisableMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SystemFeaturesDisableMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -17108,6 +18880,9 @@ func (p *ClearBrowsingDataOnExitList) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ClearBrowsingDataOnExitList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ClearBrowsingDataOnExitList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17174,6 +18949,9 @@ func (p *ManagedConfigurationPerOrigin) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *ManagedConfigurationPerOrigin) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ManagedConfigurationPerOrigin) Equal(iface interface{}) bool {
 	v, ok := iface.([]*ManagedConfigurationPerOriginValue)
 	if !ok {
@@ -17202,6 +18980,9 @@ func (p *BrowserLabsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BrowserLabsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *BrowserLabsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17236,6 +19017,9 @@ func (p *DeviceAllowMGSToStoreDisplayProperties) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceAllowMGSToStoreDisplayProperties) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_allow_mgs_to_store_display_properties", "value", p.Val)
+}
 func (p *DeviceAllowMGSToStoreDisplayProperties) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17265,6 +19049,9 @@ func (p *SSLErrorOverrideAllowedForOrigins) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *SSLErrorOverrideAllowedForOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SSLErrorOverrideAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -17293,6 +19080,9 @@ func (p *GaiaOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *GaiaOfflineSigninTimeLimitDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *GaiaOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17344,6 +19134,9 @@ func (p *SendDownloadToCloudEnterpriseConnector) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *SendDownloadToCloudEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SendDownloadToCloudEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*SendDownloadToCloudEnterpriseConnectorValue)
 	if !ok {
@@ -17374,6 +19167,9 @@ func (p *DeviceSystemWideTracingEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceSystemWideTracingEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_system_wide_tracing_enabled", "enabled", p.Val)
 }
 func (p *DeviceSystemWideTracingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17408,6 +19204,9 @@ func (p *DevicePciPeripheralDataAccessEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DevicePciPeripheralDataAccessEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_pci_peripheral_data_access_enabled_v2", "enabled", p.Val)
+}
 func (p *DevicePciPeripheralDataAccessEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17438,6 +19237,9 @@ func (p *ContextAwareAccessSignalsAllowlist) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ContextAwareAccessSignalsAllowlist) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17471,6 +19273,9 @@ func (p *FetchKeepaliveDurationSecondsOnShutdown) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *FetchKeepaliveDurationSecondsOnShutdown) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *FetchKeepaliveDurationSecondsOnShutdown) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -17502,6 +19307,9 @@ func (p *SuppressDifferentOriginSubframeDialogs) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *SuppressDifferentOriginSubframeDialogs) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SuppressDifferentOriginSubframeDialogs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17530,6 +19338,9 @@ func (p *DeviceBorealisAllowed) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceBorealisAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_borealis_allowed", "allowed", p.Val)
 }
 func (p *DeviceBorealisAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17560,6 +19371,9 @@ func (p *UserBorealisAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *UserBorealisAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UserBorealisAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17589,6 +19403,9 @@ func (p *LacrosSecondaryProfilesAllowed) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LacrosSecondaryProfilesAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LacrosSecondaryProfilesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17621,6 +19438,9 @@ func (p *GaiaLockScreenOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *GaiaLockScreenOfflineSigninTimeLimitDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -17652,6 +19472,9 @@ func (p *SamlLockScreenOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *SamlLockScreenOfflineSigninTimeLimitDays) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SamlLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -17682,6 +19505,9 @@ func (p *ReportDevicePrintJobs) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ReportDevicePrintJobs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_print_jobs", p.Val)
+}
 func (p *ReportDevicePrintJobs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17710,6 +19536,9 @@ func (p *SerialAllowAllPortsForUrls) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SerialAllowAllPortsForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SerialAllowAllPortsForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17749,6 +19578,9 @@ func (p *SerialAllowUsbDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []*SerialAllowUsbDevicesForUrlsValue", m)
 	}
 	return v, nil
+}
+func (p *SerialAllowUsbDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SerialAllowUsbDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*SerialAllowUsbDevicesForUrlsValue)
@@ -17809,6 +19641,9 @@ func (p *CECPQ2Enabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *CECPQ2Enabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CECPQ2Enabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17838,6 +19673,9 @@ func (p *WebRtcIPHandling) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *WebRtcIPHandling) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebRtcIPHandling) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -17866,6 +19704,9 @@ func (p *PdfAnnotationsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PdfAnnotationsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PdfAnnotationsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17898,6 +19739,9 @@ func (p *DeviceAllowedBluetoothServices) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceAllowedBluetoothServices) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_allowed_bluetooth_services", "allowlist", p.Val)
+}
 func (p *DeviceAllowedBluetoothServices) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -17926,6 +19770,9 @@ func (p *ExplicitlyAllowedNetworkPorts) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExplicitlyAllowedNetworkPorts) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ExplicitlyAllowedNetworkPorts) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17958,6 +19805,9 @@ func (p *DeviceDebugPacketCaptureAllowed) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *DeviceDebugPacketCaptureAllowed) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_debug_packet_capture_allowed", "allowed", p.Val)
+}
 func (p *DeviceDebugPacketCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17989,6 +19839,9 @@ func (p *SuggestLogoutAfterClosingLastWindow) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *SuggestLogoutAfterClosingLastWindow) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SuggestLogoutAfterClosingLastWindow) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18018,6 +19871,9 @@ func (p *SharedArrayBufferUnrestrictedAccessAllowed) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SharedArrayBufferUnrestrictedAccessAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SharedArrayBufferUnrestrictedAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18057,6 +19913,9 @@ func (p *RelaunchWindow) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *RelaunchWindow) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RelaunchWindow) Equal(iface interface{}) bool {
 	v, ok := iface.(*RelaunchWindowValue)
 	if !ok {
@@ -18085,6 +19944,9 @@ func (p *LacrosAvailability) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *LacrosAvailability) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LacrosAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18116,6 +19978,9 @@ func (p *DataLeakPreventionReportingEnabled) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DataLeakPreventionReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DataLeakPreventionReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18145,6 +20010,9 @@ func (p *AdditionalDnsQueryTypesEnabled) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *AdditionalDnsQueryTypesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AdditionalDnsQueryTypesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18173,6 +20041,9 @@ func (p *ManagedAccountsSigninRestriction) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ManagedAccountsSigninRestriction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ManagedAccountsSigninRestriction) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18212,6 +20083,9 @@ func (p *DeviceScheduledReboot) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *DeviceScheduledReboot) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_scheduled_reboot", "device_scheduled_reboot_settings", p.Val)
+}
 func (p *DeviceScheduledReboot) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceScheduledRebootValue)
 	if !ok {
@@ -18241,6 +20115,9 @@ func (p *ReportDeviceLoginLogout) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ReportDeviceLoginLogout) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_login_logout", p.Val)
+}
 func (p *ReportDeviceLoginLogout) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18268,6 +20145,9 @@ func (p *RemoteDebuggingAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteDebuggingAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteDebuggingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18298,6 +20178,9 @@ func (p *DeviceAttributesAllowedForOrigins) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceAttributesAllowedForOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DeviceAttributesAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18326,6 +20209,9 @@ func (p *DefaultJavaScriptJitSetting) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultJavaScriptJitSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultJavaScriptJitSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18356,6 +20242,9 @@ func (p *JavaScriptJitAllowedForSites) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *JavaScriptJitAllowedForSites) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *JavaScriptJitAllowedForSites) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18384,6 +20273,9 @@ func (p *JavaScriptJitBlockedForSites) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptJitBlockedForSites) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *JavaScriptJitBlockedForSites) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18414,6 +20306,9 @@ func (p *HttpsOnlyMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *HttpsOnlyMode) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *HttpsOnlyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -18442,6 +20337,9 @@ func (p *ReportDeviceAudioStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceAudioStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_audio_status", p.Val)
 }
 func (p *ReportDeviceAudioStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18474,6 +20372,9 @@ func (p *DeviceHostnameUserConfigurable) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceHostnameUserConfigurable) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "hostname_user_configurable", "device_hostname_user_configurable", p.Val)
+}
 func (p *DeviceHostnameUserConfigurable) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18505,6 +20406,9 @@ func (p *ReportDeviceNetworkConfiguration) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *ReportDeviceNetworkConfiguration) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_configuration", p.Val)
+}
 func (p *ReportDeviceNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18533,6 +20437,9 @@ func (p *ReportDeviceNetworkStatus) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_status", p.Val)
 }
 func (p *ReportDeviceNetworkStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18563,6 +20470,9 @@ func (p *DataLeakPreventionClipboardCheckSizeLimit) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DataLeakPreventionClipboardCheckSizeLimit) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DataLeakPreventionClipboardCheckSizeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18597,6 +20507,9 @@ func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) UnmarshalAs(m 
 	}
 	return v, nil
 }
+func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18627,6 +20540,9 @@ func (p *DisplayCapturePermissionsPolicyEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DisplayCapturePermissionsPolicyEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DisplayCapturePermissionsPolicyEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18655,6 +20571,9 @@ func (p *ScreenCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ScreenCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ScreenCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18685,6 +20604,9 @@ func (p *WindowCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *WindowCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WindowCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18713,6 +20635,9 @@ func (p *TabCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *TabCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *TabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18745,6 +20670,9 @@ func (p *SameOriginTabCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *SameOriginTabCaptureAllowedByOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SameOriginTabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18776,6 +20704,9 @@ func (p *AssistantVoiceMatchEnabledDuringOobe) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *AssistantVoiceMatchEnabledDuringOobe) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AssistantVoiceMatchEnabledDuringOobe) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18805,6 +20736,9 @@ func (p *LensRegionSearchEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *LensRegionSearchEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *LensRegionSearchEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18833,6 +20767,9 @@ func (p *ArcAppToWebAppSharingEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcAppToWebAppSharingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ArcAppToWebAppSharingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18865,6 +20802,9 @@ func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18893,6 +20833,9 @@ func (p *PrintRasterizePdfDpi) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintRasterizePdfDpi) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *PrintRasterizePdfDpi) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18924,6 +20867,9 @@ func (p *DeviceTargetVersionSelector) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceTargetVersionSelector) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "auto_update_settings", "target_version_selector", p.Val)
 }
 func (p *DeviceTargetVersionSelector) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18958,6 +20904,9 @@ func (p *DeviceRestrictedManagedGuestSessionEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceRestrictedManagedGuestSessionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_restricted_managed_guest_session_enabled", "enabled", p.Val)
+}
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18987,6 +20936,9 @@ func (p *PrintPdfAsImageDefault) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PrintPdfAsImageDefault) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PrintPdfAsImageDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19014,6 +20966,9 @@ func (p *FullRestoreEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FullRestoreEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FullRestoreEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19043,6 +20998,9 @@ func (p *GhostWindowEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *GhostWindowEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *GhostWindowEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19071,6 +21029,9 @@ func (p *ReportDeviceSecurityStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceSecurityStatus) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_security_status", p.Val)
 }
 func (p *ReportDeviceSecurityStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19102,6 +21063,9 @@ func (p *EnableDeviceGranularReporting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableDeviceGranularReporting) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "enable_granular_reporting", p.Val)
 }
 func (p *EnableDeviceGranularReporting) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19136,6 +21100,9 @@ func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) UnmarshalAs(m js
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_screen_prompt_on_multiple_matching_certificates", "value", p.Val)
+}
 func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19167,6 +21134,9 @@ func (p *PromptOnMultipleMatchingCertificates) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *PromptOnMultipleMatchingCertificates) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PromptOnMultipleMatchingCertificates) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19194,6 +21164,9 @@ func (p *SideSearchEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SideSearchEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SideSearchEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19224,6 +21197,9 @@ func (p *AccessCodeCastEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *AccessCodeCastEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AccessCodeCastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19252,6 +21228,9 @@ func (p *AccessCodeCastDeviceDuration) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *AccessCodeCastDeviceDuration) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *AccessCodeCastDeviceDuration) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -19282,6 +21261,9 @@ func (p *DeskTemplatesEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeskTemplatesEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DeskTemplatesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19318,6 +21300,9 @@ func (p *PreconfiguredDeskTemplates) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *PreconfiguredDeskTemplates) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PreconfiguredDeskTemplates) Equal(iface interface{}) bool {
 	v, ok := iface.(*PreconfiguredDeskTemplatesValue)
 	if !ok {
@@ -19348,6 +21333,9 @@ func (p *FastPairEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *FastPairEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *FastPairEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19375,6 +21363,9 @@ func (p *SandboxExternalProtocolBlocked) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SandboxExternalProtocolBlocked) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SandboxExternalProtocolBlocked) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19409,6 +21400,9 @@ func (p *ReportDeviceNetworkTelemetryCollectionRateMs) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *ReportDeviceNetworkTelemetryCollectionRateMs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_telemetry_collection_rate_ms", p.Val)
+}
 func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19442,6 +21436,9 @@ func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) UnmarshalAs(m json.Raw
 	}
 	return v, nil
 }
+func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_network_telemetry_event_checking_rate_ms", p.Val)
+}
 func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19473,6 +21470,9 @@ func (p *KioskCRXManifestUpdateURLIgnored) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *KioskCRXManifestUpdateURLIgnored) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "kiosk_crx_manifest_update_url_ignored", "value", p.Val)
+}
 func (p *KioskCRXManifestUpdateURLIgnored) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19501,6 +21501,9 @@ func (p *QuickAnswersEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickAnswersEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19531,6 +21534,9 @@ func (p *QuickAnswersDefinitionEnabled) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *QuickAnswersDefinitionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *QuickAnswersDefinitionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19560,6 +21566,9 @@ func (p *QuickAnswersTranslationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *QuickAnswersTranslationEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *QuickAnswersTranslationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19588,6 +21597,9 @@ func (p *QuickAnswersUnitConversionEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersUnitConversionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *QuickAnswersUnitConversionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19651,6 +21663,9 @@ func (p *RemoteAccessHostClipboardSizeBytes) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostClipboardSizeBytes) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *RemoteAccessHostClipboardSizeBytes) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19681,6 +21696,9 @@ func (p *RemoteAccessHostAllowRemoteSupportConnections) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostAllowRemoteSupportConnections) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *RemoteAccessHostAllowRemoteSupportConnections) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19713,6 +21731,9 @@ func (p *UserAgentClientHintsGREASEUpdateEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *UserAgentClientHintsGREASEUpdateEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UserAgentClientHintsGREASEUpdateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19742,6 +21763,9 @@ func (p *DeviceI18nShortcutsEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceI18nShortcutsEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_i18n_shortcuts_enabled", "enabled", p.Val)
+}
 func (p *DeviceI18nShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19770,6 +21794,9 @@ func (p *HistoryClustersVisible) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HistoryClustersVisible) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *HistoryClustersVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19801,6 +21828,9 @@ func (p *ChromadToCloudMigrationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ChromadToCloudMigrationEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "chromad_to_cloud_migration_enabled", "value", p.Val)
 }
 func (p *ChromadToCloudMigrationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19838,6 +21868,9 @@ func (p *CopyPreventionSettings) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *CopyPreventionSettings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CopyPreventionSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*CopyPreventionSettingsValue)
 	if !ok {
@@ -19871,6 +21904,9 @@ func (p *ReportDeviceAudioStatusCheckingRateMs) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *ReportDeviceAudioStatusCheckingRateMs) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_device_audio_status_checking_rate_ms", p.Val)
+}
 func (p *ReportDeviceAudioStatusCheckingRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19901,6 +21937,9 @@ func (p *KeepFullscreenWithoutNotificationUrlAllowList) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -19966,6 +22005,9 @@ func (p *OnPrintEnterpriseConnector) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *OnPrintEnterpriseConnector) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *OnPrintEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnPrintEnterpriseConnectorValue)
 	if !ok {
@@ -19995,6 +22037,9 @@ func (p *UserAgentReduction) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *UserAgentReduction) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *UserAgentReduction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -20023,6 +22068,9 @@ func (p *OriginAgentClusterDefaultEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *OriginAgentClusterDefaultEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *OriginAgentClusterDefaultEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20055,6 +22103,9 @@ func (p *DeviceLoginScreenWebUILazyLoading) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenWebUILazyLoading) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "login_web_ui_lazy_loading", "enabled", p.Val)
+}
 func (p *DeviceLoginScreenWebUILazyLoading) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20083,6 +22134,9 @@ func (p *ProjectorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ProjectorEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *ProjectorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20114,6 +22168,9 @@ func (p *PhoneHubCameraRollAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *PhoneHubCameraRollAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PhoneHubCameraRollAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20142,6 +22199,9 @@ func (p *EcheAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EcheAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *EcheAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20176,6 +22236,9 @@ func (p *DeviceKeylockerForStorageEncryptionEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceKeylockerForStorageEncryptionEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "keylocker_for_storage_encryption_enabled", "enabled", p.Val)
+}
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20204,6 +22267,9 @@ func (p *ReportCRDSessions) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportCRDSessions) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_crd_sessions", p.Val)
 }
 func (p *ReportCRDSessions) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20235,6 +22301,9 @@ func (p *DeviceRunAutomaticCleanupOnLogin) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceRunAutomaticCleanupOnLogin) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_run_automatic_cleanup_on_login", "value", p.Val)
+}
 func (p *DeviceRunAutomaticCleanupOnLogin) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20263,6 +22332,9 @@ func (p *NTPMiddleSlotAnnouncementVisible) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTPMiddleSlotAnnouncementVisible) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *NTPMiddleSlotAnnouncementVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20294,6 +22366,9 @@ func (p *CloudProfileReportingEnabled) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *CloudProfileReportingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CloudProfileReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20322,6 +22397,9 @@ func (p *DefaultWebHidGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebHidGuardSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWebHidGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20352,6 +22430,9 @@ func (p *WebHidAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *WebHidAskForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebHidAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -20380,6 +22461,9 @@ func (p *WebHidBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebHidBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20412,6 +22496,9 @@ func (p *PasswordDismissCompromisedAlertEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *PasswordDismissCompromisedAlertEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *PasswordDismissCompromisedAlertEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20443,6 +22530,9 @@ func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) UnmarshalAs(m js
 	}
 	return v, nil
 }
+func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefDomainFiletypePair)
 	if !ok {
@@ -20471,6 +22561,9 @@ func (p *FirstPartySetsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FirstPartySetsEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FirstPartySetsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20503,6 +22596,9 @@ func (p *ForceMajorVersionToMinorPositionInUserAgent) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *ForceMajorVersionToMinorPositionInUserAgent) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ForceMajorVersionToMinorPositionInUserAgent) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -20534,6 +22630,9 @@ func (p *AllHttpAuthSchemesAllowedForOrigins) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *AllHttpAuthSchemesAllowedForOrigins) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *AllHttpAuthSchemesAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -20562,6 +22661,9 @@ func (p *DefaultWindowPlacementSetting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWindowPlacementSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DefaultWindowPlacementSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20592,6 +22694,9 @@ func (p *ReportDevicePeripherals) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ReportDevicePeripherals) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "report_peripherals", p.Val)
+}
 func (p *ReportDevicePeripherals) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20620,6 +22725,9 @@ func (p *WebHidAllowAllDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebHidAllowAllDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidAllowAllDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20659,6 +22767,9 @@ func (p *WebHidAllowDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []*WebHidAllowDevicesForUrlsValue", m)
 	}
 	return v, nil
+}
+func (p *WebHidAllowDevicesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebHidAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebHidAllowDevicesForUrlsValue)
@@ -20701,6 +22812,9 @@ func (p *WebHidAllowDevicesWithHidUsagesForUrls) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *WebHidAllowDevicesWithHidUsagesForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebHidAllowDevicesWithHidUsagesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebHidAllowDevicesWithHidUsagesForUrlsValue)
 	if !ok {
@@ -20728,6 +22842,9 @@ func (p *SecondaryGoogleAccountUsage) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SecondaryGoogleAccountUsage) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *SecondaryGoogleAccountUsage) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -20762,6 +22879,9 @@ func (p *DeviceEncryptedReportingPipelineEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DeviceEncryptedReportingPipelineEnabled) SetProto(m *protoreflect.Message) {
+	SetDeviceProto(m, "device_reporting", "encrypted_reporting_pipeline_enabled", p.Val)
+}
 func (p *DeviceEncryptedReportingPipelineEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20793,6 +22913,9 @@ func (p *IsolatedAppsDeveloperModeAllowed) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *IsolatedAppsDeveloperModeAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *IsolatedAppsDeveloperModeAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20820,6 +22943,9 @@ func (p *FloatingWorkspaceEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FloatingWorkspaceEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *FloatingWorkspaceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20850,6 +22976,9 @@ func (p *WindowPlacementAllowedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *WindowPlacementAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WindowPlacementAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -20878,6 +23007,9 @@ func (p *WindowPlacementBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WindowPlacementBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WindowPlacementBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20908,8 +23040,42 @@ func (p *CloudReportingUploadFrequency) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *CloudReportingUploadFrequency) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *CloudReportingUploadFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 963. OptimizationGuideFetchingEnabled
+// ****************************************************************************
+type OptimizationGuideFetchingEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *OptimizationGuideFetchingEnabled) Name() string          { return "OptimizationGuideFetchingEnabled" }
+func (p *OptimizationGuideFetchingEnabled) Field() string         { return "" }
+func (p *OptimizationGuideFetchingEnabled) Scope() Scope          { return ScopeUser }
+func (p *OptimizationGuideFetchingEnabled) Status() Status        { return p.Stat }
+func (p *OptimizationGuideFetchingEnabled) UntypedV() interface{} { return p.Val }
+func (p *OptimizationGuideFetchingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *OptimizationGuideFetchingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
+func (p *OptimizationGuideFetchingEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -20936,6 +23102,9 @@ func (p *WebAuthnFactors) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebAuthnFactors) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebAuthnFactors) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20968,6 +23137,9 @@ func (p *WebAuthenticationRemoteProxiedRequestsAllowed) UnmarshalAs(m json.RawMe
 	}
 	return v, nil
 }
+func (p *WebAuthenticationRemoteProxiedRequestsAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *WebAuthenticationRemoteProxiedRequestsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20995,6 +23167,9 @@ func (p *WebSQLAccess) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WebSQLAccess) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *WebSQLAccess) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21044,6 +23219,9 @@ func (p *FirstPartySetsOverrides) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *FirstPartySetsOverrides) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *FirstPartySetsOverrides) Equal(iface interface{}) bool {
 	v, ok := iface.(*FirstPartySetsOverridesValue)
 	if !ok {
@@ -21072,6 +23250,9 @@ func (p *DownloadBubbleEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DownloadBubbleEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *DownloadBubbleEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21105,6 +23286,9 @@ func (p *DevicePowerAdaptiveChargingEnabled) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DevicePowerAdaptiveChargingEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DevicePowerAdaptiveChargingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -21136,6 +23320,9 @@ func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) UnmarshalAs(m json.Ra
 	}
 	return v, nil
 }
+func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *GetDisplayMediaSetSelectAllScreensAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -21166,6 +23353,9 @@ func (p *SystemTerminalSshAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *SystemTerminalSshAllowed) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *SystemTerminalSshAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -21194,6 +23384,9 @@ func (p *InsightsExtensionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *InsightsExtensionEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *InsightsExtensionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -21224,6 +23417,9 @@ func (p *DefaultLocalFontsSetting) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DefaultLocalFontsSetting) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *DefaultLocalFontsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -21253,6 +23449,9 @@ func (p *LocalFontsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *LocalFontsAllowedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *LocalFontsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -21281,6 +23480,9 @@ func (p *LocalFontsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *LocalFontsBlockedForUrls) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *LocalFontsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -21313,6 +23515,9 @@ func (p *ProjectorDogfoodForFamilyLinkEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *ProjectorDogfoodForFamilyLinkEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
+}
 func (p *ProjectorDogfoodForFamilyLinkEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -21341,6 +23546,9 @@ func (p *UrlParamFilterEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UrlParamFilterEnabled) SetProto(m *protoreflect.Message) {
+	SetUserProto(m, p.Name(), p.Val)
 }
 func (p *UrlParamFilterEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
