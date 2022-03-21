@@ -117,6 +117,30 @@
       },
       "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42ea45c_75427f69",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-21T06:01:19Z",
+      "side": 1,
+      "message": "I got an error `failed to get initial tablet_mode_angle values: failed to retrieve tablet_mode_angle settings: exit status 1` from ModeValues(ctx) function.\n\nI tried on local DUT and leased device in Skylab as well. Not sure why it does not work on my end.",
+      "parentUuid": "f5b2b728_f07792fe",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
