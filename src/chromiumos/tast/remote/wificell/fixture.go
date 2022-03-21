@@ -13,7 +13,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/common/policy/fakedms"
+	policyBlob "chromiumos/tast/common/policy"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
@@ -240,7 +240,7 @@ func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, s *testing.Fi
 
 func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState) error {
 	pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
-	pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+	pJSON, err := json.Marshal(policyBlob.NewBlob())
 	if err != nil {
 		return errors.Wrap(err, "failed to serialize policies")
 	}

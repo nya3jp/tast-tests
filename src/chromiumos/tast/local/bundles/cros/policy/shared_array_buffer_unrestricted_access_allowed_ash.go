@@ -86,7 +86,7 @@ func SharedArrayBufferUnrestrictedAccessAllowedAsh(ctx context.Context, s *testi
 			// dynamic refresh, which means that we need to restart the browser for
 			// every subtest. This works out of the box for Lacros, but requires us
 			// to manually close and reopen Ash Chrome.
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicies([]policy.Policy{param.policy})
 			if err := fdms.WritePolicyBlob(pb); err != nil {
 				s.Fatal("Failed to write policies to FakeDMS: ", err)

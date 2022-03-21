@@ -100,7 +100,7 @@ func (p *persistentFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 	p.fdms.SetPersistentPolicyUser(p.policyUser)
 
 	// Write the policy blob with persistent values set as the one set by FakeDMS is the default.
-	if err := p.fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+	if err := p.fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 

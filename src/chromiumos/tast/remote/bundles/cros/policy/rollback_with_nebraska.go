@@ -15,7 +15,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/updateutil"
@@ -135,7 +134,7 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 		updateClient := aupb.NewUpdateServiceClient(cl.Conn)
 
 		// Enroll DUT.
-		pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+		pJSON, err := json.Marshal(policy.NewBlob())
 		if err != nil {
 			s.Fatal("Failed to serialize policies: ", err)
 		}
@@ -158,7 +157,7 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 			&policy.ChromeOsReleaseChannel{Val: params.channel},
 			&policy.ChromeOsReleaseChannelDelegated{Val: false},
 		}
-		policyBlob := fakedms.NewPolicyBlob()
+		policyBlob := policy.NewBlob()
 		policyBlob.AddPolicies(rollbackPolicies)
 
 		pJSON, err = json.Marshal(policyBlob)

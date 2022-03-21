@@ -11,7 +11,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
@@ -55,7 +55,7 @@ func Enrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+	pJSON, err := json.Marshal(policy.NewBlob())
 	if err != nil {
 		s.Fatal("Failed to serialize policies: ", err)
 	}

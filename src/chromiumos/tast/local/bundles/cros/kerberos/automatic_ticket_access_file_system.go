@@ -52,7 +52,7 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 		Password:  password,
 	}
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.AddPolicies([]policy.Policy{
 		&policy.KerberosEnabled{Val: true},
 		&policy.KerberosAccounts{

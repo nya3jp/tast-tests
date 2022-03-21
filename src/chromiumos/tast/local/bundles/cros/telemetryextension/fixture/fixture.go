@@ -259,7 +259,7 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 }
 
 func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Context, fdms *fakedms.FakeDMS, username, password string) error {
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.PolicyUser = username
 
 	// Telemetry Extension works only for affiliated users.

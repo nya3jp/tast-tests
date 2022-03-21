@@ -85,7 +85,7 @@ func AutomaticCleanupCritical(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicies([]policy.Policy{param.policy})
 			if err := fdms.WritePolicyBlob(pb); err != nil {
 				s.Fatal("Failed to write policies: ", err)

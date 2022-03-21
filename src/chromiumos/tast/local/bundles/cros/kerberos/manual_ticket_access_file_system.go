@@ -46,7 +46,7 @@ func ManualTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	domain := s.RequiredVar("kerberos.domain")
 	config := kerberos.ConstructConfig(domain, username)
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.AddPolicies([]policy.Policy{
 		&policy.KerberosEnabled{Val: true},
 	})

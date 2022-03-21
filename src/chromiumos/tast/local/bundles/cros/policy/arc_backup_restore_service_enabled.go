@@ -76,7 +76,7 @@ func ArcBackupRestoreServiceEnabled(ctx context.Context, s *testing.State) {
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Update the policy blob.
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicies([]policy.Policy{param.value})
 			if err := fdms.WritePolicyBlob(pb); err != nil {
 				s.Fatal("Failed to write policies to FakeDMS: ", err)

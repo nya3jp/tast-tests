@@ -82,7 +82,7 @@ func DeviceWilcoDtcAllowedEnrolled(ctx context.Context, s *testing.State) {
 		// So we have to be sure that IsUserAffiliated flag is updated and only
 		// after it change policy value.
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.DeviceAffiliationIds = tc.affiliationIDs
 			pb.UserAffiliationIds = tc.affiliationIDs
 

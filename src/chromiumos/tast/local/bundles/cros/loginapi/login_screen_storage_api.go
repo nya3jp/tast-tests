@@ -79,7 +79,7 @@ func LoginScreenStorageAPI(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.AddPolicies(policies)
 	pb.AddPublicAccountPolicy(accountID, &policy.ExtensionInstallForcelist{
 		Val: []string{mgs.InSessionExtensionID},

@@ -12,7 +12,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -81,7 +80,7 @@ func BedTimeLimit(ctx context.Context, s *testing.State) {
 		usageLimitPolicy,
 	}
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
 	pb.AddPolicies(policies)
 

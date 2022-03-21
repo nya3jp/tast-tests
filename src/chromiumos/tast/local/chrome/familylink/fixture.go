@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -291,7 +292,7 @@ func (f *familyLinkFixture) TearDown(ctx context.Context, s *testing.FixtState) 
 
 func (f *familyLinkFixture) Reset(ctx context.Context) error {
 	if f.fdms != nil {
-		pb := fakedms.NewPolicyBlob()
+		pb := policy.NewBlob()
 		pb.PolicyUser = f.policyUser
 		if err := policyutil.ResetChromeWithBlob(ctx, f.fdms, f.cr, pb); err != nil {
 			return errors.Wrap(err, "failed to reset chrome")

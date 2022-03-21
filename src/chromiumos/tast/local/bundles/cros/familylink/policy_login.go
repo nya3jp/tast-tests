@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -39,7 +38,7 @@ func PolicyLogin(ctx context.Context, s *testing.State) {
 		&policy.ForceGoogleSafeSearch{Val: true},
 	}
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.PolicyUser = s.FixtValue().(*familylink.FixtData).PolicyUser
 	pb.AddPolicies(policies)
 
