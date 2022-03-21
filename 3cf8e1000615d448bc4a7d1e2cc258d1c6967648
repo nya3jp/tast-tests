@@ -16,6 +16,29 @@
       "message": "Thanks!",
       "revId": "3cf8e1000615d448bc4a7d1e2cc258d1c6967648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b3b866_215a6102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-21T06:33:32Z",
+      "side": 1,
+      "message": "It seems that CQs are failing with the following error. Please add \"arc\" to SoftwareDeps.\n\nhttps://ci.chromium.org/ui/p/chromeos/builders/cq/amd64-generic-cq/b8819154803316694689/overview\n(Click \"build api stdout\" under \"call response: tast-local-tests-cros\ncontent_copy\")\n\n tast-local-tests-cros-0.0.2-r9816: --- FAIL: TestSoftwareDeps (0.00s)\n tast-local-tests-cros-0.0.2-r9816:     testcheck.go:104: arc.SocProperties: missing software dependency \"android_vm|android_vm_r|android_p|arc\"",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "3cf8e1000615d448bc4a7d1e2cc258d1c6967648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
