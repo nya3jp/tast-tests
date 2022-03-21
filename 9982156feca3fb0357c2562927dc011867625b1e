@@ -33,6 +33,92 @@
       "message": "+cc jackshira FYI",
       "revId": "9982156feca3fb0357c2562927dc011867625b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e144c5a_05361033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-21T00:09:48Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "9982156feca3fb0357c2562927dc011867625b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e1aafc_87f86747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-21T00:09:48Z",
+      "side": 1,
+      "message": "nit: add the `Timeout` field with a reasonable value. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dTests%20should%20always%20set%20the%20Timeout%20field",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "9982156feca3fb0357c2562927dc011867625b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3d6599_e9500c51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-21T00:09:48Z",
+      "side": 1,
+      "message": "Just FYI, sometimes even removeErr is nil (os.Remove succeeds), the file may still exist. I am not sure if this will happen in your test, but if it does, you may try polling these operations.",
+      "range": {
+        "startLine": 70,
+        "startChar": 70,
+        "endLine": 70,
+        "endChar": 79
+      },
+      "revId": "9982156feca3fb0357c2562927dc011867625b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7311fec7_cd168021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-21T00:09:48Z",
+      "side": 1,
+      "message": "Just want to check that if the default poll options are reasonble here. The defaults are: interval \u003d 100ms and timeout \u003d global timeout (Test.Timeout field).\n\nIn many cases, you may need to set your own poll options.",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 7
+      },
+      "revId": "9982156feca3fb0357c2562927dc011867625b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
