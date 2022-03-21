@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77961db0_dce4db09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-21T11:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9030dfe2_92cac9f6",
+      "revId": "a6d7cae34521a9d951aa5e6a6ac893d3768a9af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db60cdaf_61e7aee1",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-21T01:01:03Z",
       "side": 1,
       "message": "nit: wrap the error so it has context",
+      "revId": "a6d7cae34521a9d951aa5e6a6ac893d3768a9af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3021f6f_c0b65358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-21T11:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db60cdaf_61e7aee1",
       "revId": "a6d7cae34521a9d951aa5e6a6ac893d3768a9af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
