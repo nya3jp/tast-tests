@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "691d9614_b5f2426c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/check_sku_purchase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "546721b3_b083053d",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cb9ee8e_da33c47b",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 1,
       "message": "Extracted into a more high-level function for consistency.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ee6a9c_094aa761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/check_sku_purchase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6cb9ee8e_da33c47b",
       "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -176,6 +212,24 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 1,
       "message": "A lot of code in this file is moved from `src/chromiumos/tast/local/playbilling/testapp.go`.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5e36db1_29e562d1",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b93873c_e7ec164f",
       "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -481,6 +535,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "124caf4a_c3cf7e65",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d88d46f1_42ecbfbc",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ff28efa_27f875a5",
@@ -551,6 +623,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bfa2864_3ed0d473",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a40f7d2e_f331b77c",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a0a7fef_d3885a7c",
@@ -615,6 +705,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "208c5992_8754eee2",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82076d5a_d04cb530",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e8cc151_485296b3",
@@ -628,6 +736,24 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 1,
       "message": "Sorted alphabetically, added `arc` (needed for app installation).",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaeef0e0_2fb298e2",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e8cc151_485296b3",
       "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -739,6 +865,24 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 1,
       "message": "Retries and sleep will make logs assessment more stable.\nIt is the main failure reason in https://tastboard.corp.google.com/test/appsplatform.Dgapi2GetDetails.vm .",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa355c51_b3e70abb",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77e79adb_5c297fb7",
       "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

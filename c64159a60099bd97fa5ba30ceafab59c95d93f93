@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7b024b_f9e60bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_get_details.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "f77c3386_194376b7",
+      "revId": "c64159a60099bd97fa5ba30ceafab59c95d93f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02bb38a3_23f79e7c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 0,
       "message": "Moved installation away from `SetUp` into `PreTest`, because parent fixture\u0027s `Reset` method removes all the installed apps.\nThis is also the reason for the timeout changes.",
+      "revId": "c64159a60099bd97fa5ba30ceafab59c95d93f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0ab63b_90babd41",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "02bb38a3_23f79e7c",
       "revId": "c64159a60099bd97fa5ba30ceafab59c95d93f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "072e9310_9561f310",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "f9d55bc1_d17173e9",
+      "revId": "c64159a60099bd97fa5ba30ceafab59c95d93f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e7773ec_6be66a9d",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-03-21T03:29:23Z",
       "side": 0,
       "message": "Code moved to `src/chromiumos/tast/local/playbilling/billingutils.go`.",
+      "revId": "c64159a60099bd97fa5ba30ceafab59c95d93f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75162392_e66020a2",
+        "filename": "src/chromiumos/tast/local/playbilling/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:18:49Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "5e7773ec_6be66a9d",
       "revId": "c64159a60099bd97fa5ba30ceafab59c95d93f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
