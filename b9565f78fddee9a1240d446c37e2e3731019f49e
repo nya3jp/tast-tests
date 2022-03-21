@@ -16,6 +16,23 @@
       "message": "Hi Seewai, David,\n\nWhen I was migrating the 4 grpc services to google3, google3 generated 3 proto warnings for automation_service.proto and chrome_service.proto.\n\nThis change is small despite the number of lines of changes.\n\nCan you please help review this? \n\nThanks,\nJonathan\n",
       "revId": "b9565f78fddee9a1240d446c37e2e3731019f49e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11489687_ee122e9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-21T21:19:00Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "b9565f78fddee9a1240d446c37e2e3731019f49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
