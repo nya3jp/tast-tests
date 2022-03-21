@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97dc3689_d2ac41f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-03-21T22:37:50Z",
+      "side": 1,
+      "message": "that\u0027s correct. fixed.",
+      "parentUuid": "84b97dc4_e5275756",
+      "revId": "4870fe550c22c9a592fa73bb95f3f392b413f337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d7d02dc_96ea2db9",
