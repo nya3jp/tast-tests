@@ -6,6 +6,10 @@ package drivefs
 
 import (
 	"context"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"time"
 
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
@@ -83,4 +87,83 @@ func (d *APIClient) RemoveFileByID(ctx context.Context, fileID string) error {
 	}
 
 	return service.Files.Delete(fileID).Do()
+}
+
+// RenewRefreshTokenForAccount obtains a new OAuth refresh token for an account logged in
+// on the chrome.Chrome instance. This is used by filemanager.DrivefsNewRefreshTokens
+// test to easily obtain a set of new refresh tokens for the pooled GAIA logins.
+func RenewRefreshTokenForAccount(ctx context.Context, cr *chrome.Chrome, oauthCredentials string) (string, error) {
+	config, err := google.ConfigFromJSON([]byte(oauthCredentials), drive.DriveFileScope)
+	if err != nil {
+		return "", errors.Wrap(err, "failed parsing supplied oauth credentials")
+	}
+
+	// Create a channel that we can push the auth code into from the local server instance.
+	authCodeChan := make(chan string)
+	state := fmt.Sprintf("st%d", time.Now().UnixNano())
+
+	// Sets up a local server instance to handle the oauth redirect flow.
+	handler := serveAuthCodeRoute(ctx, state, authCodeChan)
+	ts := httptest.NewServer(http.HandlerFunc(handler))
+	defer ts.Close()
+
+	// Generate the oauth consent URL.
+	config.RedirectURL = ts.URL
+	authURL := config.AuthCodeURL(state)
+
+	// Start a renderer and navigate to the oauth consent URL.
+	conn, err := cr.NewConn(ctx, authURL)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to navigate to auth url: %s", authURL)
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	// Wait for the profile element on oauth consent screen and click current user.
+	if err := waitAndClickElement(ctx, conn, "document.querySelector('div[data-authuser=\"0\"]')"); err != nil {
+		return "", err
+	}
+
+	// Wait for the oauth approval screen to show then click the final Allow.
+	if err := waitAndClickElement(ctx, conn, "document.evaluate('//span[text()=\"Continue\"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue"); err != nil {
+		return "", err
+	}
+
+	authCode := <-authCodeChan
+
+	// Exchange the supplied oauth credentials and auth code for oauth token.
+	token, err := config.Exchange(ctx, authCode)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to exchange the auth code")
+	}
+
+	return token.RefreshToken, nil
+}
+
+// serveAuthCodeRoute returns a http.Handler like function with state and auth code channel closed over.
+func serveAuthCodeRoute(ctx context.Context, state string, authCodeChan chan string) func(rw http.ResponseWriter, req *http.Request) {
+	return func(rw http.ResponseWriter, req *http.Request) {
+		if code := req.FormValue("code"); code != "" && req.FormValue("state") == state {
+			rw.(http.Flusher).Flush()
+			authCodeChan <- code
+			return
+		}
+
+		http.Error(rw, "", 500)
+	}
+}
+
+// waitAndClickElement simply waits until the element exists on the page.
+// Once it exists it clicks the element supplied, the supplied element
+// must be a singleton, this does not handle multiple elements.
+func waitAndClickElement(ctx context.Context, conn *chrome.Conn, jsExpr string) error {
+	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, fmt.Sprintf("%s != null", jsExpr), time.Minute); err != nil {
+		return errors.Wrapf(err, "failed waiting for html element selector to be non-null: %s", jsExpr)
+	}
+
+	if err := conn.Eval(ctx, fmt.Sprintf("%s.click()", jsExpr), nil); err != nil {
+		return errors.Wrapf(err, "failed to click the html element selector: %s", jsExpr)
+	}
+
+	return nil
 }
