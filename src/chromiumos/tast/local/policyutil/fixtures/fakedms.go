@@ -78,6 +78,8 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
 
+	testing.Sleep(ctx, 5*time.Second)
+
 	// Make sure FakeDMS is running.
 	if err := fdms.Ping(ctx); err != nil {
 		s.Fatal("Failed to ping FakeDMS: ", err)

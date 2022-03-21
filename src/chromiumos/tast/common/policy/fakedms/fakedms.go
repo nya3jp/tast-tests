@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -42,7 +41,7 @@ const StateFile = "state.json"
 // TODO(crbug.com/1187473): Remove
 const EnrollmentFakeDMSDir = "/var/enrolling-fdms"
 
-var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
+var testserverPath = filepath.Join(depsDir, "fake_dmserver")
 var testserverPythonImports = []string{
 	depsDir,
 	filepath.Join(depsDir, "tlslite"),
@@ -100,17 +99,16 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	}()
 
 	args := []string{
-		testserverPath,
-		"--config-file", policyPath,
-		"--log-file", logPath,
-		"--client-state", statePath,
-		"--log-level", "DEBUG",
+		fmt.Sprintf("--policy-blob-path=%s", policyPath),
+		fmt.Sprintf("--log-path=%s", logPath),
+		fmt.Sprintf("--client-state-path=%s", statePath),
+		"--log-level=DEBUG",
 		// cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
 		// See exec.Cmd for more info.
-		"--startup-pipe", "3",
+		"--startup-pipe=3",
 	}
 
-	cmd := testexec.CommandContext(ctx, "/usr/local/bin/python3", args...)
+	cmd := testexec.CommandContext(ctx, testserverPath, args...)
 
 	// Add necessary imports to the server command's PYTHONPATH.
 	newPP := strings.Join(testserverPythonImports, ":")
@@ -153,13 +151,6 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 	pDone := make(chan pResult, 1)
 
 	go func() {
-		// Ignore the first 4 bytes.
-		b4 := make([]byte, 4)
-		if _, err := io.ReadFull(p, b4); err != nil {
-			pDone <- pResult{Err: errors.Wrap(err, "could not read from startup-pipe")}
-			return
-		}
-
 		var addr struct {
 			Host string
 			Port int
@@ -282,7 +273,7 @@ func (fdms *FakeDMS) kill(ctx context.Context) {
 
 // Stop will stop the FakeDMS and return once the command has exited.
 func (fdms *FakeDMS) Stop(ctx context.Context) {
-	resp, err := http.Get(fdms.URL + "/configuration/test/exit")
+	resp, err := http.Get(fdms.URL + "/test/exit")
 	if err == nil {
 		resp.Body.Close()
 		if resp.StatusCode == 200 {

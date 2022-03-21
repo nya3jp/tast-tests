@@ -32,7 +32,7 @@ const (
 
 var (
 	// MgsAccountID is the default MGS ID.
-	MgsAccountID = "defaultMgsSetByTast"
+	MgsAccountID = "defaultMgsSetByTast@managedchrome.com"
 	// AccountType is the default public session account type.
 	AccountType = policy.AccountTypePublicSession
 
