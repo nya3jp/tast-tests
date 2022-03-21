@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "762875e5_20180c2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-21T18:33:57Z",
+      "side": 1,
+      "message": "We should be doing more than this. Specifically, we want to test the whole system from end to end, simulating a power mode switch and expecting that set_wifi_transmit_power is eventually called.",
+      "revId": "cdcf3cee69231c55c5a19f7161172620a3dfd265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
