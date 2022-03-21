@@ -128,7 +128,10 @@ message NodeWith {
     // creates a condition with Collapsed set to true.
     bool collapsed = 6;
     // creates a condition with Default set to true.
-    bool default = 7;
+    // Note that the underlying field is "default". It is deemed to be unsafe
+    // by proto static analysis for potential keyword conflict with programming
+    // languages, so the field is renamed "is_default".
+    bool is_default = 7;
     // creates a condition with Editable set to true.
     bool editable = 8;
     // creates a condition with Expanded set to true.
@@ -154,7 +157,10 @@ message NodeWith {
     // creates a condition with Offscreen set to true.
     bool offscreen = 19;
     // creates a condition with Protected set to true.
-    bool protected = 20;
+    // Note that the underlying field is "protected". It is deemed to be unsafe
+    // by proto static analysis for potential keyword conflict with programming
+    // languages, so the field is renamed "is_protected".
+    bool is_protected = 20;
     // creates a condition with Required set to true.
     bool required = 21;
     // creates a condition with RichlyEditable set to true.

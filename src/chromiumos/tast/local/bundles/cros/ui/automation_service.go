@@ -316,7 +316,7 @@ func toFinder(input *pb.Finder) (*nodewith.Finder, error) {
 			f = f.AutofillAvailable()
 		case *pb.NodeWith_Collapsed:
 			f = f.Collapsed()
-		case *pb.NodeWith_Default:
+		case *pb.NodeWith_IsDefault:
 			f = f.Default()
 		case *pb.NodeWith_Editable:
 			f = f.Editable()
@@ -342,7 +342,7 @@ func toFinder(input *pb.Finder) (*nodewith.Finder, error) {
 			f = f.Multiselectable()
 		case *pb.NodeWith_Offscreen:
 			f = f.Offscreen()
-		case *pb.NodeWith_Protected:
+		case *pb.NodeWith_IsProtected:
 			f = f.Protected()
 		case *pb.NodeWith_Required:
 			f = f.Required()

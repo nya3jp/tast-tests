@@ -98,13 +98,13 @@ func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
 	}
 
 	switch req.GetLoginMode() {
-	case pb.LoginMode_NO_LOGIN:
+	case pb.LoginMode_LOGIN_MODE_NO_LOGIN:
 		options = append(options, chrome.NoLogin())
-	case pb.LoginMode_FAKE_LOGIN:
+	case pb.LoginMode_LOGIN_MODE_FAKE_LOGIN:
 		options = append(options, chrome.FakeLogin(toCreds(req.Credentials)))
-	case pb.LoginMode_GAIA_LOGIN:
+	case pb.LoginMode_LOGIN_MODE_GAIA_LOGIN:
 		options = append(options, chrome.GAIALogin(toCreds(req.Credentials)))
-	case pb.LoginMode_GUEST_LOGIN:
+	case pb.LoginMode_LOGIN_MODE_GUEST_LOGIN:
 		options = append(options, chrome.GuestLogin())
 	default:
 		options = append(options, chrome.FakeLogin(defaultCreds))
