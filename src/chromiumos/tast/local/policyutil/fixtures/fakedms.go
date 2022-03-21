@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -77,12 +78,16 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
 
+	testing.Sleep(ctx, 5*time.Second)
+
 	// Make sure FakeDMS is running.
 	if err := fdms.Ping(ctx); err != nil {
 		s.Fatal("Failed to ping FakeDMS: ", err)
 	}
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
+
+	// testing.Sleep(ctx, 60 * time.Second)
 
 	if err := fdms.WritePolicyBlob(pb); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
@@ -109,7 +114,7 @@ func (f *fakeDMSFixture) Reset(ctx context.Context) error {
 	}
 
 	// Write policy blob.
-	if err := f.fakeDMS.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+	if err := f.fakeDMS.WritePolicyBlob(policy.NewBlob()); err != nil {
 		return errors.Wrap(err, "failed to clear policies in FakeDMS")
 	}
 
@@ -125,9 +130,9 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 	// Copy FakeDMS log to the current tests OutDir.
 	src := filepath.Join(f.fdmsDir, fakedms.LogFile)
 	dst := filepath.Join(s.OutDir(), fakedms.LogFile)
-	if err := fsutil.CopyFile(src, dst); err != nil {
-		s.Error("Failed to copy FakeDMS logs: ", err)
-	}
+	// if err := fsutil.CopyFile(src, dst); err != nil {
+	// 	s.Error("Failed to copy FakeDMS logs: ", err)
+	// }
 
 	// Copy FakeDMS policies to the current tests OutDir.
 	// Add prefix to avoid conflic with the Chrome fixture.

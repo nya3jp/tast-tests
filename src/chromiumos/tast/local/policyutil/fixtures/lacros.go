@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -99,7 +100,7 @@ func init() {
 				s.Fatal("Failed to parse managed user creds: ", err)
 			}
 			fdms.SetPersistentPolicyUser(&gaiaCreds.User)
-			if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+			if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
 				s.Fatal("Failed to write policies to FakeDMS: ", err)
 			}
 			opts := []chrome.Option{chrome.DMSPolicy(fdms.URL),

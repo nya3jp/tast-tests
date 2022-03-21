@@ -33,14 +33,14 @@ func init() {
 	})
 }
 
-func updatePolicyBlob(fdms *fakedms.FakeDMS, pb *fakedms.PolicyBlob, value *policy.DeviceEphemeralUsersEnabled) error {
+func updatePolicyBlob(fdms *fakedms.FakeDMS, pb *policy.Blob, value *policy.DeviceEphemeralUsersEnabled) error {
 	pb.AddPolicy(value)
 	return fdms.WritePolicyBlob(pb)
 }
 
 func DeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 
 	for _, param := range []struct {
 		// name is the subtest name.

@@ -64,7 +64,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 	defer fdms.Stop(ctx)
 
-	if err := fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
+	if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 

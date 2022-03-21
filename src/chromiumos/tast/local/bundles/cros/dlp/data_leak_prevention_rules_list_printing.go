@@ -210,7 +210,7 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+s.Param().(printingTestParams).name)
 
 	// Update the policy blob.
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.AddPolicies(s.Param().(printingTestParams).policyDLP)
 
 	// Update policy.

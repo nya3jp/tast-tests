@@ -12,7 +12,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bundles/cros/wilco/wilcoextension"
 	"chromiumos/tast/remote/policyutil"
@@ -64,7 +63,7 @@ func APISendMessageToUI(ctx context.Context, s *testing.State) { // NOLINT
 	wc := wilco.NewWilcoServiceClient(cl.Conn)
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
 	// wilco_dtc and wilco_dtc_supportd only run for affiliated users
 	pb.DeviceAffiliationIds = []string{"default"}

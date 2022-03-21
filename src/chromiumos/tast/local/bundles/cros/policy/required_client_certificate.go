@@ -168,9 +168,9 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 	}
 }
 
-func newPolicyBlobWithAffiliation() *fakedms.PolicyBlob {
+func newPolicyBlobWithAffiliation() *policy.Blob {
 	affiliationIds := []string{"default_affiliation_id"}
-	pb := fakedms.NewPolicyBlob()
+	pb := policy.NewBlob()
 	pb.DeviceAffiliationIds = affiliationIds
 	pb.UserAffiliationIds = affiliationIds
 	return pb

@@ -12,7 +12,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -109,7 +109,7 @@ func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
 	}
 	defer client.Close(ctx)
 
-	policyJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+	policyJSON, err := json.Marshal(policy.NewBlob())
 	if err != nil {
 		return errors.Wrap(err, "failed to serialize policies")
 	}

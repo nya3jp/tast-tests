@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -124,7 +123,7 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 			}
 
 			pc := ps.NewPolicyServiceClient(cl.Conn)
-			pb := fakedms.NewPolicyBlob()
+			pb := policy.NewBlob()
 			pb.AddPolicy(tc.policy)
 
 			pJSON, err := json.Marshal(pb)

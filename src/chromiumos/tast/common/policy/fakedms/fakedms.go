@@ -195,7 +195,7 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 }
 
 // WritePolicyBlob will write the given PolicyBlob to be read by the FakeDMS.
-func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
+func (fdms *FakeDMS) WritePolicyBlob(pb *policy.Blob) error {
 	// Make sure persistent policies are always set.
 	pb.AddPolicies(fdms.persistentPolicies)
 	for k, v := range fdms.persistentPublicAccountPolicies {
@@ -220,7 +220,7 @@ func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
 // WritePolicyBlobRaw writes the given PolicyBlob JSON string to be read by the FakeDMS.
 // To apply persistent settings, pJSON is unmarshalled and then marshalled as PolicyBlob.
 func (fdms *FakeDMS) WritePolicyBlobRaw(pJSON []byte) error {
-	var pb PolicyBlob
+	var pb policy.Blob
 	if err := json.Unmarshal(pJSON, &pb); err != nil {
 		return errors.Wrap(err, "failed to parse raw policy blob")
 	}

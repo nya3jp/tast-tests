@@ -13,7 +13,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
@@ -112,7 +111,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 		}(cleanupCtx, originalContent)
 
 		// Enroll DUT.
-		pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+		pJSON, err := json.Marshal(policy.NewBlob())
 		if err != nil {
 			s.Fatal("Failed to serialize policies: ", err)
 		}
@@ -136,7 +135,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 			&policy.ChromeOsReleaseChannel{Val: "stable-channel"},
 			&policy.ChromeOsReleaseChannelDelegated{Val: false},
 		}
-		policyBlob := fakedms.NewPolicyBlob()
+		policyBlob := policy.NewBlob()
 		policyBlob.AddPolicies(rollbackPolicies)
 
 		pJSON, err = json.Marshal(policyBlob)

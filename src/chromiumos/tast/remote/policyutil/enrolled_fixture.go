@@ -15,6 +15,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -142,7 +143,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		}
 	}()
 
-	pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+	pJSON, err := json.Marshal(policy.NewBlob())
 	if err != nil {
 		s.Fatal("Failed to serialize policies: ", err)
 	}
