@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7dc40b_2efcecb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "`TEST\u003dtast run dut appsplatform.Dgapi2GetDetails.vm appsplatform.Dgapi2OneTime.vm appsplatform.CheckSkuPurchase.vm` fails because of the play billing issue b/225737831 .",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "546721b3_b083053d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/check_sku_purchase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "Extracted common functionality, changed to be a noop, if there is no confirmation window present. This will fix `Failed to click the \"Yes, always\" radio button` failures in https://tastboard.corp.google.com/test/appsplatform.CheckSkuPurchase.vm .",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb9ee8e_da33c47b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/check_sku_purchase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "Extracted into a more high-level function for consistency.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b93873c_e7ec164f",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "A lot of code in this file is moved from `src/chromiumos/tast/local/playbilling/testapp.go`.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88d46f1_42ecbfbc",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "The intention is to return `action.Action` in all public methods.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff28efa_27f875a5",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "Required auth confirmation is not consistent and does not appear 100% of time (could depend on user settings). It will never appear twice in the same login session (e.g. if tests share a fixture).",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40f7d2e_f331b77c",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "Tap points confirmation is not consistent and does not appear 100% of time (could depend on user settings).",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82076d5a_d04cb530",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "Moved sign in and sign out into `PreTest` and `PostTest` to keep tests DRY.",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8cc151_485296b3",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "Sorted alphabetically, added `arc` (needed for app installation).",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e79adb_5c297fb7",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T03:29:23Z",
+      "side": 1,
+      "message": "Retries and sleep will make logs assessment more stable.\nIt is the main failure reason in https://tastboard.corp.google.com/test/appsplatform.Dgapi2GetDetails.vm .",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
