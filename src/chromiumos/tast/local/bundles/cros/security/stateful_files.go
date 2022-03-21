@@ -60,6 +60,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		// See also crx-import.sh for details.
 		chk.NewPattern(chk.Path("encrypted/var/cache/external_cache.tmp"), chk.Users("chronos", "root"), chk.Groups("chronos", "root"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/external_cache"), chk.Users("chronos"), chk.Groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("encrypted/var/cache/hermes"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/ldconfig"), chk.Users("root"), chk.Groups("root"), chk.NotMode(077)),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/modemfwd"), chk.Users("modem"), chk.Groups("modem"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/cache/modem-utilities"), chk.Users("shill-scripts"), chk.Groups("shill-scripts"), chk.Mode(0664)),
