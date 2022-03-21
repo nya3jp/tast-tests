@@ -16,6 +16,46 @@
       "message": "Thanks, Ian!",
       "revId": "1c957a1e35377a5818b3e7651380a4bf80c7fccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2d6b54_36eae342",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:57:01Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "1c957a1e35377a5818b3e7651380a4bf80c7fccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcfcd8e3_3a26aab6",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:57:01Z",
+      "side": 1,
+      "message": "nit: daemon",
+      "range": {
+        "startLine": 274,
+        "startChar": 26,
+        "endLine": 274,
+        "endChar": 32
+      },
+      "revId": "1c957a1e35377a5818b3e7651380a4bf80c7fccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
