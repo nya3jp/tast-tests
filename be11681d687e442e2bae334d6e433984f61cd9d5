@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ebe2073_05d5ad92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_one_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "The state is stored in the firebase backend of the app. So, no.\nI suggested the owner of the app to create unique SKUs every time an app is rendered as an option. This would allow us to ignore previous state (you\u0027ll never see it again). If I understood it right, this might not be possible. However, Joyce mentioned, she might be able to create a pool of SKUs. This will reduce potential race conditions between different concurrent test runs.",
+      "parentUuid": "e1cfea0d_41f8a59e",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e84c47b2_75ef57fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_one_time.go",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "Might be worth just folding these into a single comment indicating the stability. The API might fluctuate over time whilst these comments will end up stale and could lead to a confusing comment.",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490e590c_52a0deca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_one_time.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e84c47b2_75ef57fa",
       "range": {
         "startLine": 65,
         "startChar": 23,
@@ -179,6 +227,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac888f1_6317e257",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dab75e4e_df0532bc",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc241426_4f9eebc7",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53da716e_f7de2e05",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 71
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "803d2487_4fa4da32",
@@ -226,6 +322,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006ef3ba_9812ff91",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57454837_0bf287d1",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c942e48_181b5ea8",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803d2487_4fa4da32",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c4709eb_6e5ec642",
@@ -239,6 +383,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "nit: allow invoking billing actions?",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b9b55e_309459bf",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c4709eb_6e5ec642",
       "range": {
         "startLine": 69,
         "startChar": 15,
@@ -289,6 +457,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4122177f_9f7e87e1",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Renamed.",
+      "parentUuid": "9655ffed_2316dafc",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ff28efa_27f875a5",
@@ -324,6 +516,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8464d5_e2d766d8",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "I think, you are right. Yes, existing logic will still apply.",
+      "parentUuid": "8a214288_047b8e1f",
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a40f7d2e_f331b77c",
@@ -354,6 +564,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "nit: This comment is difficult to parse, maybe wrap \"You already own this item\" in comments to indicate that\u0027s the text in the window.",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 54
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af03dee5_4b65d381",
+        "filename": "src/chromiumos/tast/local/playbilling/billingutils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a0a7fef_d3885a7c",
       "range": {
         "startLine": 127,
         "startChar": 3,
@@ -421,6 +655,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4df2a80_d0734206",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "429b8a10_cdd5bfca",
+      "range": {
+        "startLine": 148,
+        "startChar": 24,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf08f002_277c1def",
@@ -434,6 +692,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "This goes for all the occurrences of these: AFAICT the `uiauto.Combine` step includes the combined name in the error message. This makes these `return errors.Wrap` steps redundant. I\u0027d suggest either return `uiauto.Combine` directly and have this return an `Action` or invoke `ctx` on `uiauto.Combine` and just return that, e.g.\n```\nreturn uiauto.Combine(\"...\", steps)\n```\nor\n```\nreturn uiauto.Combine(\"...\", steps)(ctx)\n```",
+      "range": {
+        "startLine": 199,
+        "startChar": 9,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b932f24_dad9eced",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "It makes sense, thank you.\nChanged all the usages to return `return uiauto.Combine(\"...\", steps)(ctx)`.",
+      "parentUuid": "cf08f002_277c1def",
       "range": {
         "startLine": 199,
         "startChar": 9,
@@ -474,6 +756,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "This is not ideal to have in a function, if you really need a sleep (i.e. there is not other signal you can wait for) consider using `testing.Poll` instead which has these principles included\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go;l\u003d30-44;drc\u003de2fe706ffdd02eb70704b8a3b0a72215ef08c147",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7acf340_d61ba85b",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "913ff81c_53ebbb39",
       "range": {
         "startLine": 209,
         "startChar": 2,
@@ -530,6 +836,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e446b1_18649de0",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eedaf33_7e63afa3",
+      "range": {
+        "startLine": 246,
+        "startChar": 22,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3beda5f8_f2ac8b5b",
@@ -543,6 +873,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "nit: better for readability if you explicitly initialize this with `false`.",
+      "range": {
+        "startLine": 267,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 23
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83de74b0_ed715ab3",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3beda5f8_f2ac8b5b",
       "range": {
         "startLine": 267,
         "startChar": 2,
@@ -576,6 +930,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4728428_517979a5",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6380e207_e43f904c",
+      "range": {
+        "startLine": 275,
+        "startChar": 24,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a87bf39_f2f8253f",
@@ -589,6 +967,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "nit: might be worth exposing a `webutil.WaitForQuiescenceAction` at `chromiumos/tast/local/chrome/webutil` for your use, this pattern is spreading throughout the code.",
+      "range": {
+        "startLine": 296,
+        "startChar": 10,
+        "endLine": 296,
+        "endChar": 35
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c24147a_befe1dd4",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a87bf39_f2f8253f",
       "range": {
         "startLine": 296,
         "startChar": 10,
@@ -622,6 +1024,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "367cf184_5bceaca3",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dce97b5_40f25e13",
+      "range": {
+        "startLine": 305,
+        "startChar": 106,
+        "endLine": 305,
+        "endChar": 107
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9488d7e_d8c33171",
@@ -635,6 +1061,30 @@
       "writtenOn": "2022-03-21T04:21:41Z",
       "side": 1,
       "message": "Am I missing something here, the code looks like it\u0027s just purchasing once, is this expected to be called after the `PurchaseOneTime` function? I\u0027d expect this to execute twice or 2 invocations of `PurchaseOneTime` to be called.",
+      "range": {
+        "startLine": 306,
+        "startChar": 25,
+        "endLine": 306,
+        "endChar": 48
+      },
+      "revId": "be11681d687e442e2bae334d6e433984f61cd9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0789b4_5a5e842e",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-21T06:16:26Z",
+      "side": 1,
+      "message": "Changed to `TryPurchaseOneTimeItemSecondTime`. It\u0027s a mouthful, but it should convey the meaning better.",
+      "parentUuid": "a9488d7e_d8c33171",
       "range": {
         "startLine": 306,
         "startChar": 25,
