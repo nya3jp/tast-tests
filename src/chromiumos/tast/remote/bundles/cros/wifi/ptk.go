@@ -104,13 +104,21 @@ func PTK(ctx context.Context, s *testing.State) {
 	defer cancel()
 	waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		s.Fatal("DUT: failed to get the client WiFi interface: ", err)
+	}
+
 	s.Logf("Pinging with count=%d interval=%g second(s)", pingCount, pingInterval)
 	// As we need to record ping loss, we cannot use tf.PingFromDUT() here.
 	pingCtx, cancel := ctxutil.Shorten(waitCtx, waitBuffer)
 	defer cancel()
 	pr := remoteping.NewRemoteRunner(s.DUT().Conn())
+	// b/225205611: Bind ping used in all WiFi Tests to WiFiInterface
+	// So specify or overwrite pingOpts of SourceIface
 	res, err := pr.Ping(pingCtx, ap.ServerIP().String(), ping.Count(pingCount),
-		ping.Interval(pingInterval), ping.SaveOutput("ptk_ping.log"))
+		ping.Interval(pingInterval), ping.SaveOutput("ptk_ping.log"),
+		ping.BindAddress(true), ping.SourceIface(iface))
 	if err != nil {
 		s.Fatal("Failed to ping from DUT: ", err)
 	}

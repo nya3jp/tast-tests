@@ -1400,6 +1400,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, float64(resp.ConfigurationTime)/1e9)
+
 		ping := func(ctx context.Context) error {
 			return tf.PingFromDUT(ctx, apIface.ServerIP().String(), pingOps...)
 		}

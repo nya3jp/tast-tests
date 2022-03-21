@@ -147,9 +147,19 @@ func RoamContPing(ctx context.Context, s *testing.State) {
 	var vf *verifier.Verifier
 	var resultAssertF func(context.Context, []verifier.ResultType)
 	pingF := func(ctx context.Context) (verifier.ResultType, error) {
+		iface, err := tf.ClientInterface(ctx)
+		if err != nil {
+			s.Fatal("DUT: failed to get the client WiFi interface: ", err)
+		}
+
+		opts := param.Param.(pingParam).opts
+		// b/225205611: Bind ping used in all WiFi Tests to WiFiInterface
+		// So specify or overwrite pingOpts of SourceIface
+		opts = append(opts, ping.BindAddress(true), ping.SourceIface(iface))
+
 		// We need more result data than a simple tf.PingFromDUT(), so we use a separate runner.
 		pr := remoteping.NewRemoteRunner(s.DUT().Conn())
-		res, err := pr.Ping(ctx, wifiutil.ServerIP(), param.Param.(pingParam).opts...)
+		res, err := pr.Ping(ctx, wifiutil.ServerIP(), opts...)
 		if err != nil {
 			testing.ContextLog(ctx, "ping error: ", err)
 			return verifier.ResultType{}, err

@@ -805,10 +805,20 @@ func (tf *TestFixture) ReserveForDisconnect(ctx context.Context) (context.Contex
 
 // PingFromDUT tests the connectivity between DUT and target IP.
 func (tf *TestFixture) PingFromDUT(ctx context.Context, targetIP string, opts ...ping.Option) error {
+	iface, err := tf.ClientInterface(ctx)
+	if err != nil {
+		return errors.Wrap(err, "DUT: failed to get the client WiFi interface")
+	}
+
+	// b/225205611: Bind ping used in all WiFi Tests to WiFiInterface
+	// So specify or overwrite pingOpts of SourceIface
+	opts = append(opts, ping.BindAddress(true), ping.SourceIface(iface))
+
 	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
 	defer st.End()
 
 	pr := remoteping.NewRemoteRunner(tf.dut.Conn())
+
 	res, err := pr.Ping(ctx, targetIP, opts...)
 	if err != nil {
 		return err
