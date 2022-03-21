@@ -16,6 +16,40 @@
       "message": "PTAL, as discussed, at this CL that adds a test for the SharedArrayBufferUnrestrictedAccessAllowed policy on Ash.",
       "revId": "ecd327af1c58c90117f06215e37a636d4d8f2e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70929c63_2c272e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_array_buffer_unrestricted_access_allowed_ash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-21T10:34:30Z",
+      "side": 1,
+      "message": "nit: reflow comment.",
+      "revId": "ecd327af1c58c90117f06215e37a636d4d8f2e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc496f5_af0a1522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_array_buffer_unrestricted_access_allowed_lacros.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-21T10:34:30Z",
+      "side": 1,
+      "message": "No need to change the name here.",
+      "revId": "ecd327af1c58c90117f06215e37a636d4d8f2e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
