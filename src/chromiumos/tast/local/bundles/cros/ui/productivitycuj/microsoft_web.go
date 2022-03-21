@@ -179,6 +179,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleShee
 		uiauto.Sleep(dataWaitTime), // Given time to paste data.
 		app.selectBox("H1"),
 		app.kb.TypeAction(sheetText),
+		app.kb.AccelAction("Enter"),
 	)
 
 	if err := uiauto.Combine("create the example spreadsheet",
@@ -474,8 +475,10 @@ func (app *MicrosoftWebOffice) maybeCloseOneDriveTab(tabName string) action.Acti
 	}
 }
 
-// checkSignIn checks if it is logged in, if not, try to log in.
+// checkSignIn checks if it is signed in, if not, try to sign in.
 func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
+	testing.ContextLog(ctx, "Check if already signed in")
+
 	// If the account manager exists, it means it has been logged in. Skip the login procedure.
 	accountManager := nodewith.NameContaining("Account manager for").Role(role.Button)
 	if err := app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(accountManager)(ctx); err != nil {
@@ -673,27 +676,36 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	appLauncherOpened := nodewith.Name("App launcher opened").Role(role.GenericContainer)
 	closeAppLauncher := nodewith.Name("Close the app launcher").Role(role.Button).Ancestor(appLauncherOpened)
 	oneDriveLink := nodewith.Name("OneDrive").Role(role.Link).Ancestor(appLauncherOpened)
-	if err := uiauto.Combine("navigate to OneDrive",
-		uiauto.NamedAction("check if already logged in", app.checkSignIn),
-		app.uiHdl.ClickUntil(appLauncher, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeAppLauncher)),
-		app.uiHdl.Click(oneDriveLink),
-	)(ctx); err != nil {
-		return nil, err
+	goToOffice := nodewith.Name("Go to Office").Role(role.Link)
+
+	navigateToOneDrive := func() uiauto.Action {
+		return uiauto.Retry(retryTimes, func(ctx context.Context) error {
+			if err := uiauto.Combine("navigate to OneDrive",
+				app.uiHdl.Click(appLauncher),
+				app.ui.WaitUntilExists(closeAppLauncher),
+				app.uiHdl.Click(oneDriveLink),
+			)(ctx); err == nil {
+				return nil
+			}
+			return uiauto.Combine(`click the "Office" link`,
+				app.uiHdl.Click(goToOffice),
+				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(goToOffice),
+			)(ctx)
+		})
 	}
 
 	myFiles := nodewith.Name("My files").Role(role.Heading).First()
-	if err := app.reload(myFiles, func(ctx context.Context) error { return nil })(ctx); err != nil {
-		return nil, err
-	}
-
 	alertDialog := nodewith.Role(role.AlertDialog).First()
 	closeDialog := nodewith.Name("Close dialog").Role(role.Button).Ancestor(alertDialog)
-	if err := uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeDialog), app.uiHdl.Click(closeDialog))(ctx); err != nil {
-		return nil, errors.Wrap(err, `failed to close the "Let's get you started" dialog`)
-	}
-
 	gotItButton := nodewith.Name("Got it").Role(role.Button)
-	if err := uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotItButton), app.uiHdl.Click(gotItButton))(ctx); err != nil {
+
+	if err := uiauto.Combine("check if already signed in and navigate to OneDrive",
+		app.checkSignIn,
+		navigateToOneDrive(),
+		app.reload(myFiles, func(ctx context.Context) error { return nil }),
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeDialog), app.uiHdl.Click(closeDialog)),
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotItButton), app.uiHdl.Click(gotItButton)),
+	)(ctx); err != nil {
 		return nil, err
 	}
 
@@ -1175,7 +1187,7 @@ func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 				return err
 			}
 			if node.Value != fileName {
-				return errors.New("file name is incorrect")
+				return errors.Errorf("file name is incorrect: got: %s; want: %s", node.Value, fileName)
 			}
 			return nil
 		}
@@ -1185,6 +1197,7 @@ func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 		}
 
 		return app.ui.Retry(retryTimes, uiauto.Combine("rename the document: "+fileName,
+			app.ui.WaitUntilExists(fileNameTextField.Focused()),
 			app.uiHdl.Click(fileNameTextField),
 			app.kb.AccelAction("Ctrl+A"),
 			uiauto.Sleep(dataWaitTime), // Given time to select all data.
