@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b47ff56_b308136b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/clear_password_after_inactivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-21T10:54:30Z",
+      "side": 1,
+      "message": "You\u0027re right, thanks. I moved the `...Margin` declaration down to where it\u0027s used.",
+      "parentUuid": "e338d52d_bf409d1e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "42b83d7718f911e6eddc5c474b4a2b923e73b51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf8ec42f_9c079107",
