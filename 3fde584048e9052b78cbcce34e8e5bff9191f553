@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c08b5e_27ceab98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/audio_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c583c593_27e6c9dd",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 3
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0416406_eb792288",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-17T16:38:03Z",
       "side": 1,
       "message": "I think this name is taken from crastestclient.FirstRunningDevice, but the responsibility of the function and this one looks different.\nCould you name this properly?\nIs this verifying the first running device name?",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 65
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93aded99_4ad42222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/audio_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Yes, it is verifying first running device name. Now function renamed accordingly.",
+      "parentUuid": "c0416406_eb792288",
       "range": {
         "startLine": 163,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6013806e_dac732b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39c1a475_5c64a388",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b029dfd8_08aae366",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21be78b5_49acafa6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b029dfd8_08aae366",
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89201fda_e6089397",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-03-17T16:38:03Z",
       "side": 1,
       "message": "this will be true always?",
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac1195c_9ddd355b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89201fda_e6089397",
       "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +258,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa1b9f6_7486b8b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85cd193_a115696c",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db987df_f86b10f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "795b6bb9_9772ee2b",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 30
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c40856da_940ba0ad",
@@ -163,6 +319,24 @@
       "writtenOn": "2022-03-17T16:38:03Z",
       "side": 1,
       "message": "could you use testing.POll?\n\n10 mins sounds like too long as a timeout?",
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0036cb2_8d9d5651",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-21T09:46:20Z",
+      "side": 1,
+      "message": "Now added polling.\nTimeout of 10mins is required as DUT goes to display off state between 6-10mins and 10mins is the max timeout for display to go off.",
+      "parentUuid": "c40856da_940ba0ad",
       "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
