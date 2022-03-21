@@ -7,6 +7,8 @@ package policy
 
 import (
 	"encoding/json"
+
+	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
 // Policy is an interface for a more specific policy type.  All the
@@ -15,10 +17,6 @@ type Policy interface {
 	// Name returns the name of the policy as it shows up in chrome://policy.
 	// The name is an inherent property of the policy.
 	Name() string
-
-	// Field returns the groupname.fieldname of the device policy, or "" for
-	// non device policies. The field is an inherent property of the policy.
-	Field() string
 
 	// Scope returns the Scope of this policy, e.g. whether it is a user or
 	// device policy. A Scope is an inherent property of the policy.
@@ -55,6 +53,9 @@ type Policy interface {
 	// interface will have the password while the input value will have
 	// "********". Those two strings are considered equal in this example.
 	Equal(interface{}) bool
+
+	// SetProto sets the proto value of the policy.
+	SetProto(*protoreflect.Message)
 }
 
 // Scope is a property of the policy and indicates whether it is a User or
