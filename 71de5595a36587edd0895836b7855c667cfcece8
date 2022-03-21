@@ -1,0 +1,256 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059597ca_3248f6f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "Should it be in the UI package and not in the audio?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b114a1f_f89b34ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "Are you going to run it in the Google Chrome OS lab?",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4338303_c9caa23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "nit: add blank line before",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bcf6579_3b546098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "nit: move ui closer to the first use, i.e. before line 75",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46f4f9c_f17b8b08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "same: add blank line before",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87151c7f_1e2ca7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "same: add blank line before",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3221bf6_947c3521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "nit: err :\u003d",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f36c783e_27edf2f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "it\u0027s preferred to don\u0027t use \"sh\", use rec command directly",
+      "range": {
+        "startLine": 111,
+        "startChar": 40,
+        "endLine": 111,
+        "endChar": 55
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0405626_50853fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore returned error",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 11
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd823d45_b7926e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "Maybe use ytbWeb.Close() method instead?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12008ec_86f44af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "pass ctx here by value",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 4
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b608c380_04f94abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-21T11:55:07Z",
+      "side": 1,
+      "message": "nit: dont ignore returned error",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 14
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
