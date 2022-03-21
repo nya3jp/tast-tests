@@ -1,0 +1,84 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package appsplatform
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/playbilling/dgapi2"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         Dgapi2OneTime,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Verify the app has proper info",
+		Contacts: []string{
+			"jshikaram@chromium.org",
+			"ashpakov@google.com", // until Sept 2022
+			"chromeos-apps-foundation-team@google.com",
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "playBillingDgapi2Fixture",
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
+		Timeout: 5 * time.Minute,
+	})
+}
+
+// Dgapi2OneTime Checks install play allows purchase one time
+func Dgapi2OneTime(ctx context.Context, s *testing.State) {
+	p := s.FixtValue().(*dgapi2.FixtDgapiData)
+	cr := p.Chrome
+	testApp := p.TestApp
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "Dgapi2OneTime")
+
+	// TODO(b/225738360): as the tested app is stateful, we might observe purchases from the previous test runs.
+	// Need to consume them, if available, before we proceed with the test.
+	if err := testApp.TryConsumeOneTime(ctx); err != nil {
+		s.Fatal("Failed to consume a onetime sku: ", err)
+	}
+
+	if err := testApp.PurchaseOneTime(ctx); err != nil {
+		s.Fatal("Failed to sign into test app: ", err)
+	}
+
+	if err := testApp.VerifyLogsContain(ctx, "Sku onetime was purchased"); err != nil {
+		s.Fatal("Failed to verify logs: ", err)
+	}
+
+	// TODO(b/225737831): uncomment once the stability of billing is fixed.
+	// // Need to attempt to buy it for the second time and observe an error.
+	// if err := testApp.TryPurchaseOneTimeTwice(ctx); err != nil {
+	// 	s.Fatal("Failed to try buying onetime item twice")
+	// }
+
+	if err := testApp.TryConsumeOneTime(ctx); err != nil {
+		s.Fatal("Failed to consume a onetime sku: ", err)
+	}
+
+	// TODO(b/225737831): uncomment once the stability of billing is fixed.
+	// // Verify, can purchase after consumption.
+	// if err := testApp.PurchaseOneTime(ctx); err != nil {
+	// 	s.Fatal("Failed to sign into test app: ", err)
+	// }
+
+	// if err := testApp.TryConsumeOneTime(ctx); err != nil {
+	// 	s.Fatal("Failed to consume a onetime sku: ", err)
+	// }
+}

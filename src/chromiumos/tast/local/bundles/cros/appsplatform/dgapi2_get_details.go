@@ -48,10 +48,6 @@ func Dgapi2GetDetails(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "Dgapi2GetDetails")
 
-	if err := testApp.SignIn(ctx); err != nil {
-		s.Fatal("Failed to sign into test app: ", err)
-	}
-
 	if err := testApp.VerifyDetailsLogs(ctx); err != nil {
 		s.Fatal("Failed to verify logs: ", err)
 	}

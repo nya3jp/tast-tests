@@ -50,17 +50,11 @@ func CheckSkuPurchase(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the buy button on the billing dialog: ", err)
 	}
 
-	// Ensure authentication requires for all purchases is clicked.
-	if err := testApp.ClickButtonOnArcPaymentOverlay(ctx, "RadioButton", "Yes, always"); err != nil {
-		s.Fatal("Failed to click the \"Yes, always\" radio button: ", err)
+	if err := testApp.RequiredAuthConfirm(ctx); err != nil {
+		s.Fatal("Failed to confirm required auth: ", err)
 	}
 
-	// Click the ok button after always has been selected.
-	if err := testApp.ClickButtonOnArcPaymentOverlay(ctx, "Button", "OK"); err != nil {
-		s.Fatal("Failed to click the OK button: ", err)
-	}
-
-	if err := testApp.CheckPresenceOfArcObject(ctx, "android.widget.TextView", "Payment successful"); err != nil {
+	if err := testApp.CheckPaymentSuccessful(ctx); err != nil {
 		s.Fatal("Failed to find Payment successful: ", err)
 	}
 }

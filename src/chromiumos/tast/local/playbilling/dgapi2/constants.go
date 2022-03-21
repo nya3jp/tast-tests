@@ -18,6 +18,10 @@ const (
 	profileMenuJS         = appBarJS + `.shadowRoot.getElementById('profile-menu')`
 	profileMenuLoggedInJS = profileMenuJS + `.loggedIn`
 	profileMenuSignInJS   = profileMenuJS + `._requestSignIn()`
+	profileMenuSignOutJS  = profileMenuJS + `._requestSignOut()`
 	logBoxJS              = `document.getElementById('log-box')`
 	logBoxLogLinesJS      = logBoxJS + `.innerHTML.replace(/<br>\s*$/, '').split('    ')`
+	itemListJS            = `document.getElementById('items-to-buy')`
+	itemsJS               = itemListJS + `.shadowRoot.querySelectorAll('sku-holder')`
+	oneTimeID             = "onetime"
 )
