@@ -33,6 +33,24 @@
       "message": "reserve cleanupCtx in the begining of the function:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\n```\nthen use cleanupCtx for the defered function:\n```\ndefer func(ctx context.Context){...}(cleanupCtx)\n```",
       "revId": "969defaa286e98c8991a5c1cc184ec97e3edb7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef34803_901a410b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-21T21:58:59Z",
+      "side": 1,
+      "message": "Avery tried that in CL:3536470.\n\nThere is a problem with that. `cuj.NewRecorder` uses the passed-in ctx to start `perf.Timeline` etc. `defer cancel()` would cancel the context and effectively cancels the `perf.Timeline`. \n\nIf we use that approach, then `cuj.NewRecorder` needs to return `cancel` as part of its return value and let caller to do the deferred call. It add more burden to the caller of `cuj.NewRecorder`.\n\nThe affected deferred call is only needed when `cuj.NewRecorder` fails. It should not happen normally. And `cuj.NewRecorder` is called early on a test to collect metrics generated during the test. When it fails, `ctx` should have enough time for the clean up the work to finish.\n\nGiven this, I would prefer to just use the passed-in `ctx` for the deferred call, instead of doing the shorten, return the cancel to let caller to do the deferred cancel.",
+      "parentUuid": "e589004b_c3aaf4c9",
+      "revId": "969defaa286e98c8991a5c1cc184ec97e3edb7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
