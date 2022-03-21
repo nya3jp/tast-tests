@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d5bb5f_f553f684",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-21T22:06:22Z",
+      "side": 1,
+      "message": "Would it be possible to simplify, the way exsting SimpleConnect tests are named?\n\nOnly specify \"hidden\" if we\u0027re trying to connect to a hidden SSID, otherwise assume the default and don\u0027t mention anything in the name.\n\nAnd for passwordless vs psk, \"open\" is the default (not mentioned) but if we\u0027re not connecting to an open network then we specify wep, wpa2, etc.\n\n\nAs an example \"80211axopenhidden\" would be called \"80211axhidden\" and \"80211axwpabroadcast6ghz\" would be called \"80211axwpa6ghz\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "1976266e7246c7a68c803c222a6f6beb04318f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
