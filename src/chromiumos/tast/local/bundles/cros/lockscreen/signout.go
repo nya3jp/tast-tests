@@ -9,9 +9,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -27,51 +30,74 @@ import (
 type testParam struct {
 	withShortcut bool
 	checkCrashes bool
+	bt           browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Signout,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test signout from the lock screen",
 		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{{
-			Val: testParam{false, false},
+			Val: testParam{false, false, browser.TypeAsh},
 		}, {
 			Name: "shortcut",
-			Val:  testParam{true, false},
+			Val:  testParam{true, false, browser.TypeAsh},
 		}, {
 			Name: "check_crashes",
-			Val:  testParam{false, true},
+			Val:  testParam{false, true, browser.TypeAsh},
+		}, {
+			Name:              "lacros",
+			Val:               testParam{false, false, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:              "shortcut_lacros",
+			Val:               testParam{true, false, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:              "check_crashes_lacros",
+			Val:               testParam{false, true, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
+		Vars: []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
 func Signout(ctx context.Context, s *testing.State) {
 	signoutWithKeyboardShortcut := s.Param().(testParam).withShortcut
 	checkCrashes := s.Param().(testParam).checkCrashes
+	bt := s.Param().(testParam).bt
+
+	// Reserve some time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Separate function for the first chrome run to isolate from the second run. For example so it does not generate UI tree two times on error.
 	func() {
-		cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
+		cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, browserfixt.DefaultLacrosConfig.WithVar(s),
+			chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 		if err != nil {
-			s.Fatal("Chrome login failed: ", err)
+			s.Fatalf("Chrome login failed with %v browser: %v", bt, err)
 		}
-		defer cr.Close(ctx)
+		defer cr.Close(cleanupCtx)
+		defer closeBrowser(cleanupCtx)
 
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
 			s.Fatal("Getting test API connection failed: ", err)
 		}
 
-		_, err = cr.NewConn(ctx, "chrome://settings")
+		_, err = br.NewConn(ctx, "chrome://settings")
 		if err != nil {
 			s.Fatal("Failed to open a tab: ", err)
 		}
-		_, err = cr.NewConn(ctx, "chrome://os-credits")
+		// NOTE: NewConn can't handle chrome://os-credits or os:// URLs that needs to be routed to headless ash-chrome from lacros-chrome.
+		_, err = br.NewConn(ctx, "chrome://version")
 		if err != nil {
 			s.Fatal("Failed to open a tab: ", err)
 		}
@@ -88,7 +114,7 @@ func Signout(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+		defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 		oldProc, err := ashproc.Root()
 		if err != nil {
@@ -174,7 +200,7 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("Getting signing test API connection failed: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if _, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.ReadyForPassword }, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for login screen: ", err)
