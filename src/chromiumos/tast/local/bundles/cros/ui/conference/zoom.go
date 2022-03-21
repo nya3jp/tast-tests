@@ -27,13 +27,17 @@ import (
 
 // ZoomConference implements the Conference interface.
 type ZoomConference struct {
-	cr         *chrome.Chrome
-	tconn      *chrome.TestConn
-	uiHandler  cuj.UIActionHandler
-	tabletMode bool
-	roomSize   int
-	account    string
-	outDir     string
+	cr                         *chrome.Chrome
+	tconn                      *chrome.TestConn
+	kb                         *input.KeyboardEventWriter
+	ui                         *uiauto.Context
+	uiHandler                  cuj.UIActionHandler
+	displayAllParticipantsTime time.Duration
+	tabletMode                 bool
+	roomSize                   int
+	networkLostCount           int
+	account                    string
+	outDir                     string
 }
 
 // Zoom has two versions of ui that need to be captured.
@@ -48,7 +52,7 @@ const (
 
 // Join joins a new conference room.
 func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) error {
-	ui := uiauto.New(conf.tconn)
+	ui := conf.ui
 	openZoomAndSignIn := func(ctx context.Context) error {
 		conn, err := conf.cr.NewConn(ctx, cuj.ZoomURL)
 		if err != nil {
@@ -216,9 +220,73 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	)(ctx)
 }
 
+// SetLayoutMax sets the conference UI layout to max tiled grid.
+func (conf *ZoomConference) SetLayoutMax(ctx context.Context) error {
+	return uiauto.Combine("set layout to max",
+		conf.changeLayout("Gallery View"),
+		uiauto.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
+	)(ctx)
+}
+
+// SetLayoutMin sets the conference UI layout to minimal tiled grid.
+func (conf *ZoomConference) SetLayoutMin(ctx context.Context) error {
+	return uiauto.Combine("set layout to minimal",
+		conf.changeLayout("Speaker View"),
+		uiauto.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
+	)(ctx)
+}
+
+// changeLayout changes the conference UI layout.
+func (conf *ZoomConference) changeLayout(mode string) action.Action {
+	return func(ctx context.Context) error {
+		ui := conf.ui
+		viewButton := nodewith.Name("View").Role(role.Button)
+		viewMenu := nodewith.Role(role.Menu).HasClass("dropdown-menu")
+		speakerNode := nodewith.Name("Speaker View").Role(role.MenuItem)
+		// Sometimes the zoom's menu disappears too fast. Add retry to check whether the device supports
+		// speaker and gallery view.
+		if err := uiauto.Combine("check view button",
+			conf.showInterface,
+			ui.LeftClickUntil(viewButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(viewMenu)),
+			ui.WithTimeout(shortUITimeout).WaitUntilExists(speakerNode),
+		)(ctx); err != nil {
+			// Some DUTs don't support 'Speacker View' and 'Gallery View'.
+			testing.ContextLog(ctx, "Speaker and Gallery View is not supported on this device, ignore changing the layout")
+			return nil
+		}
+
+		modeNode := nodewith.Name(mode).Role(role.MenuItem)
+		actionName := "Change layout to " + mode
+		return uiauto.NamedAction(actionName,
+			ui.Retry(3, uiauto.Combine(actionName,
+				conf.showInterface,
+				uiauto.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
+				ui.LeftClick(modeNode),
+			)))(ctx)
+	}
+}
+
+// SwitchTabs switches the chrome tabs.
+func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
+	testing.ContextLog(ctx, "Open wiki page")
+	wikiConn, err := conf.cr.NewConn(ctx, cuj.WikipediaURL)
+	if err != nil {
+		return errors.Wrap(err, "failed to open the wiki url")
+	}
+	defer wikiConn.Close()
+
+	if err := webutil.WaitForQuiescence(ctx, wikiConn, longUITimeout); err != nil {
+		return errors.Wrap(err, "failed to wait for wiki page to finish loading")
+	}
+	return uiauto.Combine("switch tab",
+		uiauto.NamedAction("stay wiki page for 3 seconds", uiauto.Sleep(3*time.Second)),
+		uiauto.NamedAction("switch to zoom tab", conf.uiHandler.SwitchToChromeTabByName("Zoom")),
+	)(ctx)
+}
+
 // VideoAudioControl controls the video and audio during conference.
 func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
-	ui := uiauto.New(conf.tconn)
+	ui := conf.ui
 	toggleVideo := func(ctx context.Context) error {
 		cameraButton := nodewith.NameRegex(regexp.MustCompile(cameraRegexCapture)).Role(role.Button).Focusable()
 		info, err := ui.Info(ctx, cameraButton)
@@ -266,69 +334,29 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 	)(ctx)
 }
 
-// SwitchTabs switches the chrome tabs.
-func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to initialize keyboard input")
-	}
-	defer kb.Close()
-
-	testing.ContextLog(ctx, "Open wiki page")
-	wikiConn, err := conf.cr.NewConn(ctx, cuj.WikipediaURL)
-	if err != nil {
-		return errors.Wrap(err, "failed to open the wiki url")
-	}
-	defer wikiConn.Close()
-
-	if err := kb.Accel(ctx, "Ctrl+Tab"); err != nil {
-		return errors.Wrap(err, "failed to switch tab")
-	}
-
-	return nil
-}
-
-// ChangeLayout changes the conference UI layout.
-func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
+// TypingInChat opens chat window and type.
+func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
 	const (
-		view         = "View"
-		speaker      = "Speaker View"
-		gallery      = "Gallery View"
-		shortTimeout = time.Second
+		actionName = "open chat window and type"
+		message    = "Hello! How are you?"
 	)
-	ui := uiauto.New(conf.tconn)
-	viewButton := nodewith.Name(view).First()
-	speakerNode := nodewith.Name(speaker).Role(role.MenuItem)
-	// Sometimes the zoom's menu disappears too fast. Add retry to check whether the device supports
-	// speaker and gallery view.
-	if err := ui.Retry(3, uiauto.Combine("check view button",
-		conf.showInterface,
-		ui.WithTimeout(shortTimeout).LeftClick(viewButton),
-		ui.WithTimeout(shortTimeout).WaitUntilExists(speakerNode),
-	))(ctx); err != nil {
-		// Some DUTs don't support 'Speacker View' and 'Gallery View'.
-		testing.ContextLog(ctx, "Speaker and Gallery View is not supported on this device, ignore changing the layout")
-		return nil
-	}
-
-	for _, mode := range []string{speaker, gallery} {
-		modeNode := nodewith.Name(mode).Role(role.MenuItem)
-		selectMode := func(ctx context.Context) error {
-			return uiauto.Combine("select layout mode",
-				conf.showInterface,
-				uiauto.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
-				ui.LeftClick(modeNode),
-			)(ctx)
-		}
-		testing.ContextLogf(ctx, "Change layout to %q", mode)
-		if err := uiauto.Combine("change layout to '"+mode+"'",
-			ui.Retry(3, selectMode),
-			uiauto.Sleep(viewingTime), //After applying new layout, give it 5 seconds for viewing before applying next one.
-		)(ctx); err != nil {
-			return err
-		}
-	}
-	return nil
+	chatButton := nodewith.Name("open the chat pane").Role(role.Button)
+	chatTextField := nodewith.Name("Type message here ...").Role(role.TextField)
+	messageText := nodewith.Name(message).Role(role.StaticText).First()
+	manageChatPanel := nodewith.Name("Manage Chat Panel").Role(role.PopUpButton)
+	manageChatPanelMenu := nodewith.Name("Manage Chat Panel").Role(role.Menu)
+	closeButton := nodewith.Name("Close").Role(role.MenuItem).Ancestor(manageChatPanelMenu)
+	return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+		conf.ui.LeftClick(chatButton),
+		conf.ui.WaitUntilExists(chatTextField),
+		conf.ui.LeftClickUntil(chatTextField, conf.ui.WithTimeout(shortUITimeout).WaitUntilExists(chatTextField.Focused())),
+		conf.kb.TypeAction(message),
+		conf.kb.AccelAction("enter"),
+		conf.ui.WaitUntilExists(messageText),
+		uiauto.Sleep(viewingTime), // After typing, wait 5 seconds for viewing.
+		conf.ui.LeftClick(manageChatPanel),
+		conf.ui.LeftClick(closeButton),
+	))(ctx)
 }
 
 // BackgroundChange changes the background to patterned background and reset to none.
@@ -336,7 +364,7 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 // Zoom doesn't have background blur option for web version so changing background is used to fullfil
 // the requirement.
 func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
-	ui := uiauto.New(conf.tconn)
+	ui := conf.ui
 	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 	changeBackground := func(backgroundNumber int) error {
 		settingsButton := nodewith.Name("Settings").Role(role.Button).Ancestor(webArea)
@@ -406,12 +434,6 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to initialize keyboard input")
-	}
-	defer kb.Close()
-
 	var appTabName string
 	switch application {
 	case googleSlides:
@@ -460,7 +482,7 @@ var _ Conference = (*ZoomConference)(nil)
 
 // showInterface moves mouse or taps in web area in order to make the menu interface reappear.
 func (conf *ZoomConference) showInterface(ctx context.Context) error {
-	ui := uiauto.New(conf.tconn)
+	ui := conf.ui
 	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 	information := nodewith.Name("Meeting information").Role(role.Button).Ancestor(webArea)
 
@@ -495,12 +517,25 @@ func (conf *ZoomConference) showInterface(ctx context.Context) error {
 	}, &testing.PollOptions{Timeout: mediumUITimeout})
 }
 
+// LostNetworkCount returns the count of lost network connections.
+func (conf *ZoomConference) LostNetworkCount() int {
+	return conf.networkLostCount
+}
+
+// DisplayAllParticipantsTime returns the loading time for displaying all participants.
+func (conf *ZoomConference) DisplayAllParticipantsTime() time.Duration {
+	return conf.displayAllParticipantsTime
+}
+
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
-func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler, tabletMode bool,
-	roomSize int, account, outDir string) *ZoomConference {
+func NewZoomConference(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter,
+	uiHandler cuj.UIActionHandler, tabletMode bool, roomSize int, account, outDir string) *ZoomConference {
+	ui := uiauto.New(tconn)
 	return &ZoomConference{
 		cr:         cr,
 		tconn:      tconn,
+		kb:         kb,
+		ui:         ui,
 		uiHandler:  uiHandler,
 		tabletMode: tabletMode,
 		roomSize:   roomSize,
