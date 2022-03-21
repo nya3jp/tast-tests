@@ -212,6 +212,11 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 		ctx, cancel = tf.ReserveForDisconnect(ctx)
 		defer cancel()
 
+		iface, err := tf.ClientInterface(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "DUT: failed to get the client WiFi interface")
+		}
+
 		pr := remoteping.NewRemoteRunner(s.DUT().Conn())
 		var count int
 		var desc string
@@ -226,7 +231,12 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 			pingLogPath = "ping_no_bgscan.log"
 		}
 		s.Logf("Pinging router %s, count=%d, interval=%f", desc, count, pingInterval)
-		pingStats, err := pr.Ping(ctx, ap1.ServerIP().String(), ping.Count(count), ping.Interval(pingInterval), ping.SaveOutput(pingLogPath))
+		// Bind ping used in all WiFi Tests to WiFiInterface. Otherwise if the
+		// WiFi interface is not up yet they will be routed through the Ethernet
+		// interface. Also see b/225205611 for details.
+		pingStats, err := pr.Ping(ctx, ap1.ServerIP().String(), ping.Count(count),
+			ping.Interval(pingInterval), ping.SaveOutput(pingLogPath),
+			ping.BindAddress(true), ping.SourceIface(iface))
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to ping router with bgscan")
 		}
