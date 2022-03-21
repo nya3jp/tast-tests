@@ -147,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78440f9a_2ca41f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-21T22:40:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0bf80b8_27658fd2",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "292ca77b_f496fcdd",
@@ -236,6 +260,29 @@
         "startChar": 4,
         "endLine": 136,
         "endChar": 6
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78d69cd_81c15cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-21T22:40:36Z",
+      "side": 1,
+      "message": "Just double check. Is the removal of this comparison in patchset3 intended?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
       },
       "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

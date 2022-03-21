@@ -122,6 +122,29 @@
       "message": "Hi Po-Hsien Wang,\n\nCan you please review this CL?",
       "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757fd8d8_93287826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-21T22:40:36Z",
+      "side": 1,
+      "message": "perceptually identical",
+      "range": {
+        "startLine": 151,
+        "startChar": 41,
+        "endLine": 151,
+        "endChar": 50
+      },
+      "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
