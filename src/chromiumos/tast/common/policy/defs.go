@@ -19913,7 +19913,6 @@ func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{})
 // ****************************************************************************
 // 931. OnPrintEnterpriseConnector
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 // ****************************************************************************
 type OnPrintEnterpriseConnector struct {
 	Stat Status
@@ -21019,17 +21018,17 @@ type FirstPartySetsOverridesValue struct {
 }
 
 type FirstPartySetsOverridesValueReplacements struct {
-	CcTLDs       map[string][]string `json:"ccTLDs"`
-	Members      []string            `json:"members,omitempty"`
-	Owner        string              `json:"owner"`
-	ServiceSites []string            `json:"serviceSites,omitempty"`
+	AssociatedSites []string            `json:"associatedSites,omitempty"`
+	CcTLDs          map[string][]string `json:"ccTLDs"`
+	Primary         string              `json:"primary"`
+	ServiceSites    []string            `json:"serviceSites,omitempty"`
 }
 
 type FirstPartySetsOverridesValueAdditions struct {
-	CcTLDs       map[string][]string `json:"ccTLDs"`
-	Members      []string            `json:"members,omitempty"`
-	Owner        string              `json:"owner"`
-	ServiceSites []string            `json:"serviceSites,omitempty"`
+	AssociatedSites []string            `json:"associatedSites,omitempty"`
+	CcTLDs          map[string][]string `json:"ccTLDs"`
+	Primary         string              `json:"primary"`
+	ServiceSites    []string            `json:"serviceSites,omitempty"`
 }
 
 func (p *FirstPartySetsOverrides) Name() string          { return "FirstPartySetsOverrides" }
@@ -21516,6 +21515,34 @@ func (p *OnFileTransferEnterpriseConnector) Equal(iface interface{}) bool {
 }
 
 // ****************************************************************************
+// 993. WebSQLNonSecureContextEnabled
+// ****************************************************************************
+type WebSQLNonSecureContextEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *WebSQLNonSecureContextEnabled) Name() string          { return "WebSQLNonSecureContextEnabled" }
+func (p *WebSQLNonSecureContextEnabled) Field() string         { return "" }
+func (p *WebSQLNonSecureContextEnabled) Scope() Scope          { return ScopeUser }
+func (p *WebSQLNonSecureContextEnabled) Status() Status        { return p.Stat }
+func (p *WebSQLNonSecureContextEnabled) UntypedV() interface{} { return p.Val }
+func (p *WebSQLNonSecureContextEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *WebSQLNonSecureContextEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
 // 995. NewWindowsInKioskAllowed
 // This policy can be modified without rebooting.
 // This is a future policy, it is not present in stable builds.
@@ -21759,6 +21786,64 @@ func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) UnmarshalAs(m json.RawM
 }
 func (p *ReportDeviceSignalStrengthEventDrivenTelemetry) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1011. AssistantWebEnabled
+// This policy can be modified without rebooting.
+// ****************************************************************************
+type AssistantWebEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *AssistantWebEnabled) Name() string          { return "AssistantWebEnabled" }
+func (p *AssistantWebEnabled) Field() string         { return "" }
+func (p *AssistantWebEnabled) Scope() Scope          { return ScopeUser }
+func (p *AssistantWebEnabled) Status() Status        { return p.Stat }
+func (p *AssistantWebEnabled) UntypedV() interface{} { return p.Val }
+func (p *AssistantWebEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *AssistantWebEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+// ****************************************************************************
+// 1012. LacrosDataBackwardMigrationMode
+// This is a future policy, it is not present in stable builds.
+// ****************************************************************************
+type LacrosDataBackwardMigrationMode struct {
+	Stat Status
+	Val  string
+}
+
+func (p *LacrosDataBackwardMigrationMode) Name() string          { return "LacrosDataBackwardMigrationMode" }
+func (p *LacrosDataBackwardMigrationMode) Field() string         { return "" }
+func (p *LacrosDataBackwardMigrationMode) Scope() Scope          { return ScopeUser }
+func (p *LacrosDataBackwardMigrationMode) Status() Status        { return p.Stat }
+func (p *LacrosDataBackwardMigrationMode) UntypedV() interface{} { return p.Val }
+func (p *LacrosDataBackwardMigrationMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *LacrosDataBackwardMigrationMode) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
 	if !ok {
 		return ok
 	}
