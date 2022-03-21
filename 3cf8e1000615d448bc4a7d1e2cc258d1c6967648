@@ -39,6 +39,30 @@
       },
       "revId": "3cf8e1000615d448bc4a7d1e2cc258d1c6967648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07dcfd78_cfd53629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soc_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1130184
+      },
+      "writtenOn": "2022-03-21T19:09:16Z",
+      "side": 1,
+      "message": "Thank you for the pointer. I see this check is done in `registration_test.go`\n\nI\u0027ve added the dep and updated my email in the commit and the Contacts to use my @chromium.org address.",
+      "parentUuid": "81b3b866_215a6102",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "3cf8e1000615d448bc4a7d1e2cc258d1c6967648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
