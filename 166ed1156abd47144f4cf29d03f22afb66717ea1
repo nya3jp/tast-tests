@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a18894_0d093d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-21T19:34:15Z",
+      "side": 1,
+      "message": "Do we want to put it in `group:cuj` too ?",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1978ad6d_2b46c0f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-21T19:34:15Z",
+      "side": 1,
+      "message": "This `if` seems to be a duplicate of L107-121 above. Copy-paste error ?",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ab68d7_d2dd2eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-21T19:34:15Z",
+      "side": 1,
+      "message": "So we would test with all windows maximized instead of side by side?",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa93268_e9b5d89b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-21T19:34:15Z",
+      "side": 1,
+      "message": "Should we sanity check to ensure the doc is scrolled for real? And is it feasible?",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df801a4f_38c52374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-21T19:34:15Z",
+      "side": 1,
+      "message": "This seems to be a similar 2-finger scroll like what we did for the doc window. Is there a way to share the code?\n\ne.g.\n```\n  openAnd2FingerScroll :\u003d function(ctx Context, url string) {\n    ...\n  }\n  \n  openAnd2FingerScroll(ctx, docsURL)\n  \n  ...\n  \n  openAnd2FingerScroll(ctx, gmailURL)\n```",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
