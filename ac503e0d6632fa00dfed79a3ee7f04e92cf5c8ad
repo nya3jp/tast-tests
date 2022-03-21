@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b88309_e80b1fbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-21T17:05:37Z",
+      "side": 1,
+      "message": "SLGMT % nit",
+      "revId": "ac503e0d6632fa00dfed79a3ee7f04e92cf5c8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df5ad955_3be3a813",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-21T17:05:37Z",
+      "side": 1,
+      "message": "huge nit, grammar: has",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "ac503e0d6632fa00dfed79a3ee7f04e92cf5c8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
