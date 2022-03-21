@@ -259,14 +259,14 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if success {
 			return
 		}
 		if err := r.frameDataTracker.Stop(ctx, r.tconn); err != nil {
 			testing.ContextLog(ctx, "Failed to stop frame data tracker: ", err)
 		}
-	}()
+	}(ctx)
 
 	if err := r.zramInfoTracker.Start(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start ZramInfoTracker")
