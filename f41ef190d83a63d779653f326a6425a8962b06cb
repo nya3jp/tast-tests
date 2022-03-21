@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "748554b0_f61ee48f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-21T22:03:39Z",
+      "side": 1,
+      "message": "There is only one `deferred` call to clean up in case `cuj.NewRecorder` fails. Well, firstly it should not normally fail. Secondly, `cuj.NewRecorder` is called early in test so that it collects metrics generated during test. `ctx` should not reach timeout during `cuj.NewRecorder`. If it does, we have bigger problems to solve.\n\nIMHO, it does not really matter which Context we pass in. Either way it should work.",
+      "parentUuid": "3787248f_36ad1871",
+      "revId": "f41ef190d83a63d779653f326a6425a8962b06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e076a7e3_3ae89098",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
