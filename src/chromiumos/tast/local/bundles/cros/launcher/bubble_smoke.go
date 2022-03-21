@@ -37,7 +37,7 @@ func init() {
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",
-			"jamescook@chromium.org",
+			"tbarzic@chromium.org",
 		},
 		// TODO(https://crbug.com/1255265): Remove "informational" once stable.
 		Attr:         []string{"group:mainline", "informational"},
