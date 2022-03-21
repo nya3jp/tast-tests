@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6093c6d_8ce32260",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-21T14:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "817ec0ca_0690319e",
+      "range": {
+        "startLine": 176,
+        "startChar": 50,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "0d81c81d87f7191cad89bab07bab1b91d75e00fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28fcca70_2e5a4eda",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7410846e_b57584ca",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-21T14:26:46Z",
+      "side": 1,
+      "message": "Ah, in that case I can change it. I wasn\u0027t sure how long each test ran, so I copied the AMD GPU code in the hopes that 10ms was a good balance between granularity and overhead. But if it\u0027s usually 25s, then 1 second intervals probably work better.",
+      "parentUuid": "28fcca70_2e5a4eda",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 33
+      },
+      "revId": "0d81c81d87f7191cad89bab07bab1b91d75e00fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39a07e5b_d25bcbcf",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-18T22:20:19Z",
       "side": 1,
       "message": "nit: Shouldn\u0027t this go in l.198? I.e. directly return nil if \nParseFloat() fails.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 3
+      },
+      "revId": "0d81c81d87f7191cad89bab07bab1b91d75e00fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8cc16ca_7bd7bae1",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-21T14:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a07e5b_d25bcbcf",
       "range": {
         "startLine": 203,
         "startChar": 0,
