@@ -6,6 +6,7 @@ package conference
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -74,4 +76,15 @@ func allowPagePermissions(tconn *chrome.TestConn) action.Action {
 			ui.WaitUntilExists(accessButton),
 		))
 	return uiauto.IfSuccessThen(ui.WithTimeout(3*time.Second).WaitUntilExists(blockedButton), allowPermission)
+}
+
+// takeScreenshot returns an action which captures a fullscreen screenshot.
+func takeScreenshot(cr *chrome.Chrome, outDir, name string) action.Action {
+	return func(ctx context.Context) error {
+		path := fmt.Sprintf("%s/screenshot-%s.png", outDir, name)
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+			testing.ContextLog(ctx, "Failed to capture screenshot: ", err)
+		}
+		return nil
+	}
 }
