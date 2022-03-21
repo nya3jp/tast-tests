@@ -9,12 +9,75 @@ package policy
 
 import (
 	"encoding/json"
+	"fmt"
+	"reflect"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/errors"
 )
+
+func SetStringListPolicyProto(p *reflect.Value, val interface{}) {
+	tmpProto := enterprise_management_proto.StringListPolicyProto{Value: &enterprise_management_proto.StringList{}}
+	p.Set(reflect.New(reflect.TypeOf(tmpProto)))
+	p.Elem().FieldByName("Value").Set(reflect.New(reflect.TypeOf(tmpProto.Value).Elem()))
+	sliceType := reflect.TypeOf(make([]string, 0))
+	stringSliceReflect := reflect.MakeSlice(sliceType, 0, 0)
+	for _, v := range val.([]string) {
+		rv := reflect.ValueOf(v)
+		stringSliceReflect = reflect.Append(stringSliceReflect, rv)
+	}
+	p.Elem().FieldByName("Value").Elem().FieldByName("Entries").Set(stringSliceReflect)
+}
+
+func SetStringPolicyProto(p *reflect.Value, val interface{}) {
+	tmpProto := enterprise_management_proto.StringPolicyProto{}
+	p.Set(reflect.New(reflect.TypeOf(tmpProto)))
+	var tmp string
+	switch v := val.(type) {
+	case string:
+		tmp = v
+	default:
+		out, err := json.Marshal(v)
+		if err != nil {
+			panic(errors.Wrap(err, "couldn't marshal the policy value to json"))
+		}
+		tmp = string(out)
+	}
+	p.Elem().FieldByName("Value").Set(reflect.ValueOf(&tmp))
+}
+
+func SetBooleanPolicyProto(p *reflect.Value, val interface{}) {
+	tmpProto := enterprise_management_proto.BooleanPolicyProto{}
+	p.Set(reflect.New(reflect.TypeOf(tmpProto)))
+	tmp := val.(bool)
+	p.Elem().FieldByName("Value").Set(reflect.ValueOf(&tmp))
+}
+
+func SetIntegerPolicyProto(p *reflect.Value, val interface{}) {
+	tmpProto := enterprise_management_proto.IntegerPolicyProto{}
+	p.Set(reflect.New(reflect.TypeOf(tmpProto)))
+	tmp := int64(val.(int))
+	p.Elem().FieldByName("Value").Set(reflect.ValueOf(&tmp))
+}
+
+func SetUserPolicyProto(policyProtoValue *reflect.Value, val interface{}) {
+	switch policyProtoValue.Type() {
+	case reflect.TypeOf(&enterprise_management_proto.StringListPolicyProto{}):
+		SetStringListPolicyProto(policyProtoValue, val)
+	case reflect.TypeOf(&enterprise_management_proto.StringPolicyProto{}):
+		SetStringPolicyProto(policyProtoValue, val)
+	case reflect.TypeOf(&enterprise_management_proto.BooleanPolicyProto{}):
+		SetBooleanPolicyProto(policyProtoValue, val)
+	case reflect.TypeOf(&enterprise_management_proto.IntegerPolicyProto{}):
+		SetIntegerPolicyProto(policyProtoValue, val)
+	default:
+		errorString := fmt.Sprintf("Undefined User Policy proto type. found type: %v", policyProtoValue.Type())
+		panic(errorString)
+	}
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // 1. HomepageLocation
@@ -36,6 +99,10 @@ func (p *HomepageLocation) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *HomepageLocation) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.HomepageLocation).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *HomepageLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -66,6 +133,10 @@ func (p *HomepageIsNewTabPage) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *HomepageIsNewTabPage) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.HomepageIsNewTabPage).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *HomepageIsNewTabPage) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -94,6 +165,10 @@ func (p *AlternateErrorPagesEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AlternateErrorPagesEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AlternateErrorPagesEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AlternateErrorPagesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -124,6 +199,10 @@ func (p *SearchSuggestEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *SearchSuggestEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SearchSuggestEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SearchSuggestEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -152,6 +231,10 @@ func (p *JavascriptEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *JavascriptEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.JavascriptEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *JavascriptEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -182,6 +265,10 @@ func (p *IncognitoEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *IncognitoEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IncognitoEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *IncognitoEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -210,6 +297,10 @@ func (p *SavingBrowserHistoryDisabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SavingBrowserHistoryDisabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SavingBrowserHistoryDisabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SavingBrowserHistoryDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -240,6 +331,10 @@ func (p *PrintingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PrintingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -268,6 +363,10 @@ func (p *SafeBrowsingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SafeBrowsingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SafeBrowsingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -298,6 +397,10 @@ func (p *PasswordManagerEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PasswordManagerEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PasswordManagerEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PasswordManagerEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -326,6 +429,10 @@ func (p *AutoFillEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutoFillEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoFillEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AutoFillEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -356,6 +463,10 @@ func (p *SyncDisabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *SyncDisabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SyncDisabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SyncDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -384,6 +495,10 @@ func (p *ProxyMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ProxyMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ProxyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -414,6 +529,10 @@ func (p *ProxyServerMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ProxyServerMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ProxyServerMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ProxyServerMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -442,6 +561,10 @@ func (p *ProxyServer) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyServer) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ProxyServer).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ProxyServer) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -472,6 +595,10 @@ func (p *ProxyPacUrl) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ProxyPacUrl) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ProxyPacUrl).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ProxyPacUrl) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -500,6 +627,10 @@ func (p *ProxyBypassList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ProxyBypassList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ProxyBypassList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ProxyBypassList) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -530,6 +661,10 @@ func (p *AuthSchemes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *AuthSchemes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AuthSchemes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AuthSchemes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -558,6 +693,10 @@ func (p *DisableAuthNegotiateCnameLookup) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisableAuthNegotiateCnameLookup) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DisableAuthNegotiateCnameLookup).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DisableAuthNegotiateCnameLookup) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -588,8 +727,142 @@ func (p *EnableAuthNegotiatePort) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *EnableAuthNegotiatePort) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnableAuthNegotiatePort).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *EnableAuthNegotiatePort) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 29. AuthServerWhitelist
+///////////////////////////////////////////////////////////////////////////////
+type AuthServerWhitelist struct {
+	Stat Status
+	Val  string
+}
+
+func (p *AuthServerWhitelist) Name() string          { return "AuthServerWhitelist" }
+func (p *AuthServerWhitelist) Field() string         { return "" }
+func (p *AuthServerWhitelist) Scope() Scope          { return ScopeUser }
+func (p *AuthServerWhitelist) Status() Status        { return p.Stat }
+func (p *AuthServerWhitelist) UntypedV() interface{} { return p.Val }
+func (p *AuthServerWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *AuthServerWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AuthServerWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *AuthServerWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 30. AuthNegotiateDelegateWhitelist
+///////////////////////////////////////////////////////////////////////////////
+type AuthNegotiateDelegateWhitelist struct {
+	Stat Status
+	Val  string
+}
+
+func (p *AuthNegotiateDelegateWhitelist) Name() string          { return "AuthNegotiateDelegateWhitelist" }
+func (p *AuthNegotiateDelegateWhitelist) Field() string         { return "" }
+func (p *AuthNegotiateDelegateWhitelist) Scope() Scope          { return ScopeUser }
+func (p *AuthNegotiateDelegateWhitelist) Status() Status        { return p.Stat }
+func (p *AuthNegotiateDelegateWhitelist) UntypedV() interface{} { return p.Val }
+func (p *AuthNegotiateDelegateWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *AuthNegotiateDelegateWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AuthNegotiateDelegateWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *AuthNegotiateDelegateWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 32. ExtensionInstallBlacklist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ExtensionInstallBlacklist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *ExtensionInstallBlacklist) Name() string          { return "ExtensionInstallBlacklist" }
+func (p *ExtensionInstallBlacklist) Field() string         { return "" }
+func (p *ExtensionInstallBlacklist) Scope() Scope          { return ScopeUser }
+func (p *ExtensionInstallBlacklist) Status() Status        { return p.Stat }
+func (p *ExtensionInstallBlacklist) UntypedV() interface{} { return p.Val }
+func (p *ExtensionInstallBlacklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *ExtensionInstallBlacklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionInstallBlacklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *ExtensionInstallBlacklist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 33. ExtensionInstallWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ExtensionInstallWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *ExtensionInstallWhitelist) Name() string          { return "ExtensionInstallWhitelist" }
+func (p *ExtensionInstallWhitelist) Field() string         { return "" }
+func (p *ExtensionInstallWhitelist) Scope() Scope          { return ScopeUser }
+func (p *ExtensionInstallWhitelist) Status() Status        { return p.Stat }
+func (p *ExtensionInstallWhitelist) UntypedV() interface{} { return p.Val }
+func (p *ExtensionInstallWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *ExtensionInstallWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionInstallWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *ExtensionInstallWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -616,6 +889,10 @@ func (p *ExtensionInstallForcelist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallForcelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionInstallForcelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExtensionInstallForcelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -646,6 +923,10 @@ func (p *ShowHomeButton) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ShowHomeButton) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ShowHomeButton).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ShowHomeButton) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -674,6 +955,10 @@ func (p *DeveloperToolsDisabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeveloperToolsDisabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DeveloperToolsDisabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DeveloperToolsDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -704,6 +989,10 @@ func (p *RestoreOnStartup) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *RestoreOnStartup) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RestoreOnStartup).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RestoreOnStartup) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -732,6 +1021,10 @@ func (p *RestoreOnStartupURLs) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RestoreOnStartupURLs) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RestoreOnStartupURLs).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RestoreOnStartupURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -762,6 +1055,10 @@ func (p *BlockThirdPartyCookies) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *BlockThirdPartyCookies) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.BlockThirdPartyCookies).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *BlockThirdPartyCookies) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -790,6 +1087,10 @@ func (p *DefaultSearchProviderEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSearchProviderEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -820,6 +1121,10 @@ func (p *DefaultSearchProviderName) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderName) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderName).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSearchProviderName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -848,6 +1153,10 @@ func (p *DefaultSearchProviderKeyword) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderKeyword) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderKeyword).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSearchProviderKeyword) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -878,6 +1187,10 @@ func (p *DefaultSearchProviderSearchURL) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderSearchURL) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderSearchURL).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSearchProviderSearchURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -906,6 +1219,10 @@ func (p *DefaultSearchProviderSuggestURL) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSuggestURL) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderSuggestURL).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSearchProviderSuggestURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -936,6 +1253,10 @@ func (p *DefaultSearchProviderIconURL) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderIconURL) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderIconURL).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSearchProviderIconURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -964,6 +1285,10 @@ func (p *DefaultSearchProviderEncodings) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderEncodings) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderEncodings).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSearchProviderEncodings) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -994,6 +1319,10 @@ func (p *DefaultCookiesSetting) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *DefaultCookiesSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultCookiesSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultCookiesSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1022,6 +1351,10 @@ func (p *DefaultImagesSetting) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultImagesSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultImagesSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultImagesSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1052,6 +1385,10 @@ func (p *DefaultJavaScriptSetting) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DefaultJavaScriptSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultJavaScriptSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultJavaScriptSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1080,6 +1417,10 @@ func (p *DefaultPopupsSetting) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultPopupsSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultPopupsSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultPopupsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1110,6 +1451,10 @@ func (p *DefaultNotificationsSetting) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DefaultNotificationsSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultNotificationsSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultNotificationsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1138,6 +1483,10 @@ func (p *DefaultGeolocationSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultGeolocationSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultGeolocationSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultGeolocationSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1168,6 +1517,10 @@ func (p *Disable3DAPIs) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *Disable3DAPIs) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.Disable3DAPIs).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *Disable3DAPIs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -1196,6 +1549,10 @@ func (p *PolicyRefreshRate) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PolicyRefreshRate) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PolicyRefreshRate).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PolicyRefreshRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -1226,6 +1583,10 @@ func (p *ChromeOsLockOnIdleSuspend) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ChromeOsLockOnIdleSuspend) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ChromeOsLockOnIdleSuspend).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ChromeOsLockOnIdleSuspend) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -1254,6 +1615,10 @@ func (p *DownloadDirectory) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DownloadDirectory) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DownloadDirectory).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DownloadDirectory) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -1284,6 +1649,10 @@ func (p *CookiesBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *CookiesBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CookiesBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CookiesBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1312,6 +1681,10 @@ func (p *CookiesSessionOnlyForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *CookiesSessionOnlyForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CookiesSessionOnlyForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CookiesSessionOnlyForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1342,6 +1715,10 @@ func (p *ImagesAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *ImagesAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ImagesAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ImagesAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1370,6 +1747,10 @@ func (p *ImagesBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ImagesBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ImagesBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ImagesBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1400,6 +1781,10 @@ func (p *JavaScriptAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *JavaScriptAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.JavaScriptAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *JavaScriptAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1428,6 +1813,10 @@ func (p *JavaScriptBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.JavaScriptBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *JavaScriptBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1458,6 +1847,10 @@ func (p *PopupsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *PopupsAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PopupsAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PopupsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1486,6 +1879,10 @@ func (p *PopupsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PopupsBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PopupsBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PopupsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1516,6 +1913,10 @@ func (p *CookiesAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *CookiesAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CookiesAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CookiesAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1544,6 +1945,10 @@ func (p *TranslateEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TranslateEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.TranslateEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *TranslateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1574,6 +1979,10 @@ func (p *BookmarkBarEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *BookmarkBarEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.BookmarkBarEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *BookmarkBarEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -1602,6 +2011,10 @@ func (p *EditBookmarksEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EditBookmarksEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EditBookmarksEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *EditBookmarksEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1632,6 +2045,10 @@ func (p *DisabledSchemes) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DisabledSchemes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DisabledSchemes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DisabledSchemes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1660,6 +2077,10 @@ func (p *AllowCrossOriginAuthPrompt) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowCrossOriginAuthPrompt) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowCrossOriginAuthPrompt).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowCrossOriginAuthPrompt) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1692,6 +2113,9 @@ func (p *DevicePolicyRefreshRate) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DevicePolicyRefreshRate) SetProto(blob *Blob) {
+
+}
 func (p *DevicePolicyRefreshRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1720,6 +2144,9 @@ func (p *ChromeOsReleaseChannel) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ChromeOsReleaseChannel) SetProto(blob *Blob) {
+
 }
 func (p *ChromeOsReleaseChannel) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -1750,6 +2177,10 @@ func (p *IncognitoModeAvailability) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *IncognitoModeAvailability) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IncognitoModeAvailability).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *IncognitoModeAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -1778,6 +2209,10 @@ func (p *RemoteAccessHostFirewallTraversal) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostFirewallTraversal) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostFirewallTraversal).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RemoteAccessHostFirewallTraversal) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -1808,7 +2243,77 @@ func (p *AutoSelectCertificateForUrls) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *AutoSelectCertificateForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoSelectCertificateForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AutoSelectCertificateForUrls) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 103. URLBlacklist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type URLBlacklist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *URLBlacklist) Name() string          { return "URLBlacklist" }
+func (p *URLBlacklist) Field() string         { return "" }
+func (p *URLBlacklist) Scope() Scope          { return ScopeUser }
+func (p *URLBlacklist) Status() Status        { return p.Stat }
+func (p *URLBlacklist) UntypedV() interface{} { return p.Val }
+func (p *URLBlacklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *URLBlacklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.URLBlacklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *URLBlacklist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 104. URLWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type URLWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *URLWhitelist) Name() string          { return "URLWhitelist" }
+func (p *URLWhitelist) Field() string         { return "" }
+func (p *URLWhitelist) Scope() Scope          { return ScopeUser }
+func (p *URLWhitelist) Status() Status        { return p.Stat }
+func (p *URLWhitelist) UntypedV() interface{} { return p.Val }
+func (p *URLWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *URLWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.URLWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *URLWhitelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
 		return ok
@@ -1836,6 +2341,10 @@ func (p *NotificationsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *NotificationsAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NotificationsAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NotificationsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -1866,6 +2375,10 @@ func (p *NotificationsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *NotificationsBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NotificationsBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *NotificationsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -1895,6 +2408,10 @@ func (p *OpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
+}
+func (p *OpenNetworkConfiguration) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.OpenNetworkConfiguration).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*ONC)
@@ -1927,6 +2444,9 @@ func (p *DeviceOpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
+}
+func (p *DeviceOpenNetworkConfiguration) SetProto(blob *Blob) {
+
 }
 func (p *DeviceOpenNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*ONC)
@@ -1966,6 +2486,10 @@ func (p *ProxySettings) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ProxySettings) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ProxySettings).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ProxySettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*ProxySettingsValue)
 	if !ok {
@@ -1994,6 +2518,9 @@ func (p *ReportDeviceVersionInfo) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceVersionInfo) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceVersionInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2024,6 +2551,9 @@ func (p *ReportDeviceActivityTimes) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceActivityTimes) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceActivityTimes) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2053,6 +2583,9 @@ func (p *ReportDeviceBootMode) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *ReportDeviceBootMode) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceBootMode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2081,6 +2614,9 @@ func (p *DeviceUserWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceUserWhitelist) SetProto(blob *Blob) {
+
 }
 func (p *DeviceUserWhitelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2115,6 +2651,9 @@ func (p *DeviceAllowNewUsers) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *DeviceAllowNewUsers) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAllowNewUsers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2143,6 +2682,9 @@ func (p *DeviceGuestModeEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceGuestModeEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceGuestModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2173,6 +2715,9 @@ func (p *DeviceShowUserNamesOnSignin) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceShowUserNamesOnSignin) SetProto(blob *Blob) {
+
+}
 func (p *DeviceShowUserNamesOnSignin) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2202,6 +2747,9 @@ func (p *DeviceDataRoamingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DeviceDataRoamingEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceDataRoamingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2230,6 +2778,9 @@ func (p *DeviceMetricsReportingEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceMetricsReportingEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceMetricsReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2262,6 +2813,9 @@ func (p *DeviceEphemeralUsersEnabled) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceEphemeralUsersEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceEphemeralUsersEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2290,6 +2844,10 @@ func (p *EnableOnlineRevocationChecks) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableOnlineRevocationChecks) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnableOnlineRevocationChecks).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *EnableOnlineRevocationChecks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2322,6 +2880,9 @@ func (p *ChromeOsReleaseChannelDelegated) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *ChromeOsReleaseChannelDelegated) SetProto(blob *Blob) {
+
+}
 func (p *ChromeOsReleaseChannelDelegated) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2350,6 +2911,9 @@ func (p *DeviceAutoUpdateDisabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutoUpdateDisabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceAutoUpdateDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2380,6 +2944,10 @@ func (p *DriveDisabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DriveDisabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DriveDisabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DriveDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2408,6 +2976,10 @@ func (p *DriveDisabledOverCellular) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DriveDisabledOverCellular) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DriveDisabledOverCellular).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DriveDisabledOverCellular) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2440,6 +3012,9 @@ func (p *DeviceTargetVersionPrefix) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DeviceTargetVersionPrefix) SetProto(blob *Blob) {
+
+}
 func (p *DeviceTargetVersionPrefix) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -2470,6 +3045,9 @@ func (p *ReportDeviceLocation) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *ReportDeviceLocation) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2498,6 +3076,10 @@ func (p *PinnedLauncherApps) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PinnedLauncherApps) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PinnedLauncherApps).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PinnedLauncherApps) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2529,6 +3111,9 @@ func (p *DeviceUpdateScatterFactor) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceUpdateScatterFactor) SetProto(blob *Blob) {
+
 }
 func (p *DeviceUpdateScatterFactor) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -2563,6 +3148,9 @@ func (p *DeviceUpdateAllowedConnectionTypes) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DeviceUpdateAllowedConnectionTypes) SetProto(blob *Blob) {
+
+}
 func (p *DeviceUpdateAllowedConnectionTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -2591,6 +3179,10 @@ func (p *ExtensionInstallSources) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallSources) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionInstallSources).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExtensionInstallSources) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -2621,6 +3213,10 @@ func (p *DefaultMediaStreamSetting) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DefaultMediaStreamSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultMediaStreamSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultMediaStreamSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -2649,6 +3245,10 @@ func (p *DisableSafeBrowsingProceedAnyway) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DisableSafeBrowsingProceedAnyway) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DisableSafeBrowsingProceedAnyway).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DisableSafeBrowsingProceedAnyway) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2679,6 +3279,10 @@ func (p *SpellCheckServiceEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *SpellCheckServiceEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SpellCheckServiceEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SpellCheckServiceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2707,6 +3311,10 @@ func (p *ExternalStorageDisabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ExternalStorageDisabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExternalStorageDisabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExternalStorageDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2737,6 +3345,10 @@ func (p *DisableScreenshots) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *DisableScreenshots) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DisableScreenshots).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DisableScreenshots) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2765,6 +3377,10 @@ func (p *RemoteAccessHostDomain) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostDomain) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostDomain).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RemoteAccessHostDomain) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -2795,6 +3411,9 @@ func (p *SystemTimezone) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *SystemTimezone) SetProto(blob *Blob) {
+
+}
 func (p *SystemTimezone) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -2824,6 +3443,10 @@ func (p *AudioOutputAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *AudioOutputAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AudioOutputAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AudioOutputAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -2852,6 +3475,10 @@ func (p *AudioCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AudioCaptureAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AudioCaptureAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AudioCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2884,6 +3511,10 @@ func (p *DefaultSearchProviderAlternateURLs) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderAlternateURLs) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderAlternateURLs).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSearchProviderAlternateURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -2912,6 +3543,10 @@ func (p *ForceSafeSearch) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceSafeSearch) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ForceSafeSearch).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ForceSafeSearch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -2977,6 +3612,9 @@ func (p *DeviceLocalAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccounts) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLocalAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]DeviceLocalAccountInfo)
 	if !ok {
@@ -3005,6 +3643,10 @@ func (p *ShowLogoutButtonInTray) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ShowLogoutButtonInTray) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ShowLogoutButtonInTray).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ShowLogoutButtonInTray) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3035,6 +3677,10 @@ func (p *BuiltInDnsClientEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *BuiltInDnsClientEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.BuiltInDnsClientEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *BuiltInDnsClientEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3063,6 +3709,10 @@ func (p *ShelfAutoHideBehavior) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ShelfAutoHideBehavior) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ShelfAutoHideBehavior).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ShelfAutoHideBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3093,6 +3743,10 @@ func (p *VideoCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *VideoCaptureAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VideoCaptureAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *VideoCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3121,6 +3775,10 @@ func (p *ExtensionAllowedTypes) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionAllowedTypes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionAllowedTypes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExtensionAllowedTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -3151,6 +3809,10 @@ func (p *UserDisplayName) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UserDisplayName) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserDisplayName).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UserDisplayName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -3179,6 +3841,10 @@ func (p *SessionLengthLimit) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SessionLengthLimit) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SessionLengthLimit).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SessionLengthLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3209,6 +3875,10 @@ func (p *ScreenDimDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ScreenDimDelayAC) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenDimDelayAC).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ScreenDimDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3237,6 +3907,10 @@ func (p *ScreenOffDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenOffDelayAC) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenOffDelayAC).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ScreenOffDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3267,6 +3941,10 @@ func (p *ScreenLockDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *ScreenLockDelayAC) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenLockDelayAC).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ScreenLockDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3295,6 +3973,10 @@ func (p *IdleDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleDelayAC) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IdleDelayAC).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *IdleDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3325,6 +4007,10 @@ func (p *ScreenDimDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ScreenDimDelayBattery) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenDimDelayBattery).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ScreenDimDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3353,6 +4039,10 @@ func (p *ScreenOffDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenOffDelayBattery) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenOffDelayBattery).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ScreenOffDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3383,6 +4073,10 @@ func (p *ScreenLockDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ScreenLockDelayBattery) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenLockDelayBattery).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ScreenLockDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3411,6 +4105,10 @@ func (p *IdleDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleDelayBattery) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IdleDelayBattery).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *IdleDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3441,6 +4139,10 @@ func (p *IdleAction) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *IdleAction) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IdleAction).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *IdleAction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3469,6 +4171,10 @@ func (p *LidCloseAction) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *LidCloseAction) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LidCloseAction).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *LidCloseAction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3499,6 +4205,10 @@ func (p *PowerManagementUsesAudioActivity) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *PowerManagementUsesAudioActivity) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PowerManagementUsesAudioActivity).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PowerManagementUsesAudioActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3527,6 +4237,10 @@ func (p *PowerManagementUsesVideoActivity) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PowerManagementUsesVideoActivity) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PowerManagementUsesVideoActivity).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PowerManagementUsesVideoActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3561,6 +4275,9 @@ func (p *DeviceAllowRedeemChromeOsRegistrationOffers) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *DeviceAllowRedeemChromeOsRegistrationOffers) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3590,6 +4307,10 @@ func (p *TermsOfServiceURL) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *TermsOfServiceURL) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.TermsOfServiceURL).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *TermsOfServiceURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -3618,6 +4339,10 @@ func (p *AllowDeletingBrowserHistory) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowDeletingBrowserHistory) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowDeletingBrowserHistory).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowDeletingBrowserHistory) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3650,6 +4375,10 @@ func (p *ShowAccessibilityOptionsInSystemTrayMenu) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *ShowAccessibilityOptionsInSystemTrayMenu) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ShowAccessibilityOptionsInSystemTrayMenu).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ShowAccessibilityOptionsInSystemTrayMenu) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3678,6 +4407,10 @@ func (p *HideWebStoreIcon) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HideWebStoreIcon) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.HideWebStoreIcon).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *HideWebStoreIcon) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -3708,6 +4441,9 @@ func (p *UptimeLimit) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UptimeLimit) SetProto(blob *Blob) {
+
+}
 func (p *UptimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3737,6 +4473,9 @@ func (p *RebootAfterUpdate) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *RebootAfterUpdate) SetProto(blob *Blob) {
+
+}
 func (p *RebootAfterUpdate) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3765,6 +4504,9 @@ func (p *DeviceLocalAccountAutoLoginId) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLocalAccountAutoLoginId) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLocalAccountAutoLoginId) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3797,6 +4539,9 @@ func (p *DeviceLocalAccountAutoLoginDelay) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountAutoLoginDelay) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLocalAccountAutoLoginDelay) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3825,6 +4570,10 @@ func (p *IdleWarningDelayAC) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleWarningDelayAC) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IdleWarningDelayAC).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *IdleWarningDelayAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -3855,6 +4604,10 @@ func (p *IdleWarningDelayBattery) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *IdleWarningDelayBattery) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IdleWarningDelayBattery).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *IdleWarningDelayBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -3882,6 +4635,9 @@ func (p *DeviceVariationsRestrictParameter) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceVariationsRestrictParameter) SetProto(blob *Blob) {
+
 }
 func (p *DeviceVariationsRestrictParameter) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -3912,8 +4668,45 @@ func (p *AttestationEnabledForUser) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *AttestationEnabledForUser) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AttestationEnabledForUser).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AttestationEnabledForUser) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 201. AttestationExtensionWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type AttestationExtensionWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *AttestationExtensionWhitelist) Name() string          { return "AttestationExtensionWhitelist" }
+func (p *AttestationExtensionWhitelist) Field() string         { return "" }
+func (p *AttestationExtensionWhitelist) Scope() Scope          { return ScopeUser }
+func (p *AttestationExtensionWhitelist) Status() Status        { return p.Stat }
+func (p *AttestationExtensionWhitelist) UntypedV() interface{} { return p.Val }
+func (p *AttestationExtensionWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *AttestationExtensionWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AttestationExtensionWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *AttestationExtensionWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -3945,6 +4738,9 @@ func (p *DeviceLocalAccountAutoLoginBailoutEnabled) UnmarshalAs(m json.RawMessag
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountAutoLoginBailoutEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -3973,6 +4769,10 @@ func (p *AllowScreenWakeLocks) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowScreenWakeLocks) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowScreenWakeLocks).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowScreenWakeLocks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4005,6 +4805,9 @@ func (p *AttestationEnabledForDevice) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *AttestationEnabledForDevice) SetProto(blob *Blob) {
+
+}
 func (p *AttestationEnabledForDevice) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4033,6 +4836,10 @@ func (p *AudioCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AudioCaptureAllowedUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AudioCaptureAllowedUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AudioCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -4063,6 +4870,10 @@ func (p *VideoCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *VideoCaptureAllowedUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VideoCaptureAllowedUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *VideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -4091,6 +4902,10 @@ func (p *UserActivityScreenDimDelayScale) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *UserActivityScreenDimDelayScale) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserActivityScreenDimDelayScale).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *UserActivityScreenDimDelayScale) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4121,6 +4936,10 @@ func (p *LargeCursorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *LargeCursorEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LargeCursorEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *LargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4149,6 +4968,10 @@ func (p *SpokenFeedbackEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SpokenFeedbackEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SpokenFeedbackEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4179,6 +5002,10 @@ func (p *HighContrastEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *HighContrastEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.HighContrastEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *HighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4207,6 +5034,10 @@ func (p *ScreenMagnifierType) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ScreenMagnifierType) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenMagnifierType).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4241,6 +5072,9 @@ func (p *DeviceLoginScreenDefaultLargeCursorEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDefaultLargeCursorEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4273,6 +5107,9 @@ func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4307,6 +5144,9 @@ func (p *DeviceLoginScreenDefaultHighContrastEnabled) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDefaultHighContrastEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenDefaultHighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4340,6 +5180,9 @@ func (p *DeviceLoginScreenDefaultScreenMagnifierType) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDefaultScreenMagnifierType) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenDefaultScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -4369,6 +5212,10 @@ func (p *PresentationScreenDimDelayScale) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *PresentationScreenDimDelayScale) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PresentationScreenDimDelayScale).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PresentationScreenDimDelayScale) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -4397,6 +5244,10 @@ func (p *IdleActionBattery) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleActionBattery) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IdleActionBattery).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *IdleActionBattery) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4428,6 +5279,9 @@ func (p *ReportDeviceNetworkInterfaces) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkInterfaces) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceNetworkInterfaces) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4467,6 +5321,9 @@ func (p *DeviceLoginScreenPowerManagement) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPowerManagement) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenPowerManagement) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceLoginScreenPowerManagementValue)
 	if !ok {
@@ -4495,6 +5352,10 @@ func (p *IdleActionAC) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IdleActionAC) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IdleActionAC).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *IdleActionAC) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -4525,6 +5386,10 @@ func (p *ManagedBookmarks) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ManagedBookmarks) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ManagedBookmarks).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ManagedBookmarks) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefBookmarkType)
 	if !ok {
@@ -4554,6 +5419,10 @@ func (p *MaxInvalidationFetchDelay) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *MaxInvalidationFetchDelay) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.MaxInvalidationFetchDelay).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *MaxInvalidationFetchDelay) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -4582,6 +5451,10 @@ func (p *DefaultSearchProviderImageURL) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderImageURL) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderImageURL).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSearchProviderImageURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4614,6 +5487,10 @@ func (p *DefaultSearchProviderSearchURLPostParams) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderSearchURLPostParams) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderSearchURLPostParams).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSearchProviderSearchURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -4644,6 +5521,10 @@ func (p *DefaultSearchProviderSuggestURLPostParams) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderSuggestURLPostParams) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderSuggestURLPostParams).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSearchProviderSuggestURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4676,6 +5557,10 @@ func (p *DefaultSearchProviderImageURLPostParams) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderImageURLPostParams) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderImageURLPostParams).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSearchProviderImageURLPostParams) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -4707,6 +5592,10 @@ func (p *RequireOnlineRevocationChecksForLocalAnchors) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *RequireOnlineRevocationChecksForLocalAnchors) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RequireOnlineRevocationChecksForLocalAnchors).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RequireOnlineRevocationChecksForLocalAnchors) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4736,6 +5625,9 @@ func (p *SystemUse24HourClock) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *SystemUse24HourClock) SetProto(blob *Blob) {
+
+}
 func (p *SystemUse24HourClock) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4764,6 +5656,10 @@ func (p *DefaultSearchProviderNewTabURL) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DefaultSearchProviderNewTabURL) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderNewTabURL).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSearchProviderNewTabURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -4798,6 +5694,9 @@ func (p *AttestationForContentProtectionEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *AttestationForContentProtectionEnabled) SetProto(blob *Blob) {
+
+}
 func (p *AttestationForContentProtectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4827,6 +5726,10 @@ func (p *FullscreenAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *FullscreenAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FullscreenAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *FullscreenAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4855,6 +5758,9 @@ func (p *DeviceAutoUpdateP2PEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAutoUpdateP2PEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceAutoUpdateP2PEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -4887,6 +5793,9 @@ func (p *DeviceUpdateHttpDownloadsEnabled) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceUpdateHttpDownloadsEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceUpdateHttpDownloadsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4917,6 +5826,10 @@ func (p *ChromeOsMultiProfileUserBehavior) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *ChromeOsMultiProfileUserBehavior) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ChromeOsMultiProfileUserBehavior).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ChromeOsMultiProfileUserBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -4946,6 +5859,10 @@ func (p *WaitForInitialUserActivity) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *WaitForInitialUserActivity) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WaitForInitialUserActivity).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WaitForInitialUserActivity) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -4974,6 +5891,9 @@ func (p *ReportDeviceUsers) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceUsers) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceUsers) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5009,6 +5929,10 @@ func (p *UserAvatarImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UserAvatarImage) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserAvatarImage).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UserAvatarImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*UserAvatarImageValue)
 	if !ok {
@@ -5042,6 +5966,9 @@ func (p *DeviceLocalAccountPromptForNetworkWhenOffline) UnmarshalAs(m json.RawMe
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountPromptForNetworkWhenOffline) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5071,6 +5998,10 @@ func (p *SAMLOfflineSigninTimeLimit) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *SAMLOfflineSigninTimeLimit) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SAMLOfflineSigninTimeLimit).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SAMLOfflineSigninTimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -5099,6 +6030,10 @@ func (p *VirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VirtualKeyboardEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VirtualKeyboardEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *VirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5132,6 +6067,9 @@ func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) UnmarshalAs(m json.RawM
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5167,6 +6105,10 @@ func (p *PowerManagementIdleSettings) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *PowerManagementIdleSettings) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PowerManagementIdleSettings).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PowerManagementIdleSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*PowerManagementIdleSettingsValue)
 	if !ok {
@@ -5201,6 +6143,10 @@ func (p *ScreenLockDelays) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *ScreenLockDelays) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenLockDelays).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ScreenLockDelays) Equal(iface interface{}) bool {
 	v, ok := iface.(*ScreenLockDelaysValue)
 	if !ok {
@@ -5230,6 +6176,10 @@ func (p *KeyboardDefaultToFunctionKeys) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *KeyboardDefaultToFunctionKeys) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KeyboardDefaultToFunctionKeys).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *KeyboardDefaultToFunctionKeys) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5257,6 +6207,10 @@ func (p *WPADQuickCheckEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WPADQuickCheckEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WPADQuickCheckEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *WPADQuickCheckEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5292,6 +6246,10 @@ func (p *WallpaperImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *WallpaperImage) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WallpaperImage).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WallpaperImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*WallpaperImageValue)
 	if !ok {
@@ -5323,6 +6281,10 @@ func (p *RemoteAccessHostAllowRelayedConnection) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostAllowRelayedConnection) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostAllowRelayedConnection).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RemoteAccessHostAllowRelayedConnection) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5352,6 +6314,10 @@ func (p *RemoteAccessHostUdpPortRange) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostUdpPortRange) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostUdpPortRange).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RemoteAccessHostUdpPortRange) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -5380,6 +6346,9 @@ func (p *DeviceBlockDevmode) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceBlockDevmode) SetProto(blob *Blob) {
+
 }
 func (p *DeviceBlockDevmode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5415,6 +6384,10 @@ func (p *RegisteredProtocolHandlers) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *RegisteredProtocolHandlers) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RegisteredProtocolHandlers).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RegisteredProtocolHandlers) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RegisteredProtocolHandlersValue)
 	if !ok {
@@ -5444,6 +6417,10 @@ func (p *TouchVirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *TouchVirtualKeyboardEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.TouchVirtualKeyboardEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *TouchVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5472,6 +6449,9 @@ func (p *DeviceTransferSAMLCookies) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceTransferSAMLCookies) SetProto(blob *Blob) {
+
 }
 func (p *DeviceTransferSAMLCookies) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5503,6 +6483,10 @@ func (p *EasyUnlockAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *EasyUnlockAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EasyUnlockAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *EasyUnlockAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5531,6 +6515,10 @@ func (p *NetworkPredictionOptions) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *NetworkPredictionOptions) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NetworkPredictionOptions).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NetworkPredictionOptions) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5561,66 +6549,12 @@ func (p *SessionLocales) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *SessionLocales) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SessionLocales).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SessionLocales) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 275. BrowserGuestModeEnabled
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type BrowserGuestModeEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *BrowserGuestModeEnabled) Name() string          { return "BrowserGuestModeEnabled" }
-func (p *BrowserGuestModeEnabled) Field() string         { return "" }
-func (p *BrowserGuestModeEnabled) Scope() Scope          { return ScopeUser }
-func (p *BrowserGuestModeEnabled) Status() Status        { return p.Stat }
-func (p *BrowserGuestModeEnabled) UntypedV() interface{} { return p.Val }
-func (p *BrowserGuestModeEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *BrowserGuestModeEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 276. BrowserAddPersonEnabled
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type BrowserAddPersonEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *BrowserAddPersonEnabled) Name() string          { return "BrowserAddPersonEnabled" }
-func (p *BrowserAddPersonEnabled) Field() string         { return "" }
-func (p *BrowserAddPersonEnabled) Scope() Scope          { return ScopeUser }
-func (p *BrowserAddPersonEnabled) Status() Status        { return p.Stat }
-func (p *BrowserAddPersonEnabled) UntypedV() interface{} { return p.Val }
-func (p *BrowserAddPersonEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *BrowserAddPersonEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -5659,6 +6593,10 @@ func (p *ExtensionSettings) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *ExtensionSettings) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionSettings).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ExtensionSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(map[string]*ExtensionSettingsValue)
 	if !ok {
@@ -5687,6 +6625,10 @@ func (p *SSLVersionMin) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SSLVersionMin) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SSLVersionMin).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SSLVersionMin) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -5717,6 +6659,10 @@ func (p *ForceGoogleSafeSearch) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ForceGoogleSafeSearch) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ForceGoogleSafeSearch).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ForceGoogleSafeSearch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5745,6 +6691,10 @@ func (p *ForceYouTubeSafetyMode) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceYouTubeSafetyMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ForceYouTubeSafetyMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ForceYouTubeSafetyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5775,6 +6725,9 @@ func (p *DeviceRebootOnShutdown) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *DeviceRebootOnShutdown) SetProto(blob *Blob) {
+
+}
 func (p *DeviceRebootOnShutdown) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5803,6 +6756,9 @@ func (p *ReportDeviceHardwareStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceHardwareStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceHardwareStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -5833,6 +6789,9 @@ func (p *ReportDeviceSessionStatus) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceSessionStatus) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceSessionStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5861,6 +6820,9 @@ func (p *ReportUploadFrequency) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ReportUploadFrequency) SetProto(blob *Blob) {
+
 }
 func (p *ReportUploadFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5891,6 +6853,9 @@ func (p *HeartbeatEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *HeartbeatEnabled) SetProto(blob *Blob) {
+
+}
 func (p *HeartbeatEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5919,6 +6884,9 @@ func (p *HeartbeatFrequency) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *HeartbeatFrequency) SetProto(blob *Blob) {
+
 }
 func (p *HeartbeatFrequency) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -5952,6 +6920,10 @@ func (p *CaptivePortalAuthenticationIgnoresProxy) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *CaptivePortalAuthenticationIgnoresProxy) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CaptivePortalAuthenticationIgnoresProxy).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CaptivePortalAuthenticationIgnoresProxy) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -5979,6 +6951,9 @@ func (p *ExtensionCacheSize) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ExtensionCacheSize) SetProto(blob *Blob) {
+
 }
 func (p *ExtensionCacheSize) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6013,6 +6988,9 @@ func (p *DeviceLoginScreenDomainAutoComplete) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenDomainAutoComplete) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenDomainAutoComplete) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6040,6 +7018,10 @@ func (p *ForceMaximizeOnFirstRun) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceMaximizeOnFirstRun) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ForceMaximizeOnFirstRun).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ForceMaximizeOnFirstRun) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6070,6 +7052,10 @@ func (p *SSLErrorOverrideAllowed) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *SSLErrorOverrideAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SSLErrorOverrideAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SSLErrorOverrideAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6097,6 +7083,10 @@ func (p *QuicAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuicAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuicAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *QuicAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6131,6 +7121,10 @@ func (p *KeyPermissions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *KeyPermissions) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KeyPermissions).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *KeyPermissions) Equal(iface interface{}) bool {
 	v, ok := iface.(map[string]*KeyPermissionsValue)
 	if !ok {
@@ -6162,6 +7156,9 @@ func (p *LogUploadEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *LogUploadEnabled) SetProto(blob *Blob) {
+
+}
 func (p *LogUploadEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6190,6 +7187,10 @@ func (p *UnifiedDesktopEnabledByDefault) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UnifiedDesktopEnabledByDefault) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UnifiedDesktopEnabledByDefault).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *UnifiedDesktopEnabledByDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6220,6 +7221,10 @@ func (p *DefaultPrinterSelection) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DefaultPrinterSelection) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultPrinterSelection).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultPrinterSelection) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6248,6 +7253,10 @@ func (p *AllowDinosaurEasterEgg) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowDinosaurEasterEgg) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowDinosaurEasterEgg).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowDinosaurEasterEgg) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6280,6 +7289,9 @@ func (p *DisplayRotationDefault) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *DisplayRotationDefault) SetProto(blob *Blob) {
+
+}
 func (p *DisplayRotationDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6308,6 +7320,10 @@ func (p *RemoteAccessHostClientDomain) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostClientDomain) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostClientDomain).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RemoteAccessHostClientDomain) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -6338,6 +7354,10 @@ func (p *ArcEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ArcEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ArcEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6383,6 +7403,10 @@ func (p *ArcPolicy) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return value, nil
 }
+func (p *ArcPolicy) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ArcPolicy).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ArcPolicy) Equal(iface interface{}) bool {
 	v, ok := iface.(*ArcPolicyValue)
 	if !ok {
@@ -6414,6 +7438,9 @@ func (p *AllowKioskAppControlChromeVersion) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *AllowKioskAppControlChromeVersion) SetProto(blob *Blob) {
+
+}
 func (p *AllowKioskAppControlChromeVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6442,6 +7469,10 @@ func (p *DefaultWebBluetoothGuardSetting) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebBluetoothGuardSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultWebBluetoothGuardSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultWebBluetoothGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6474,6 +7505,9 @@ func (p *LoginAuthenticationBehavior) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *LoginAuthenticationBehavior) SetProto(blob *Blob) {
+
+}
 func (p *LoginAuthenticationBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6501,6 +7535,9 @@ func (p *UsbDetachableWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as []*RefUsbDeviceId", m)
 	}
 	return v, nil
+}
+func (p *UsbDetachableWhitelist) SetProto(blob *Blob) {
+
 }
 func (p *UsbDetachableWhitelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefUsbDeviceId)
@@ -6530,6 +7567,9 @@ func (p *DeviceAllowBluetooth) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *DeviceAllowBluetooth) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAllowBluetooth) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6557,6 +7597,10 @@ func (p *SuppressUnsupportedOSWarning) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SuppressUnsupportedOSWarning) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SuppressUnsupportedOSWarning).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SuppressUnsupportedOSWarning) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6589,6 +7633,9 @@ func (p *DeviceQuirksDownloadEnabled) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceQuirksDownloadEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceQuirksDownloadEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6620,6 +7667,9 @@ func (p *SystemTimezoneAutomaticDetection) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *SystemTimezoneAutomaticDetection) SetProto(blob *Blob) {
+
+}
 func (p *SystemTimezoneAutomaticDetection) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6648,6 +7698,10 @@ func (p *TaskManagerEndProcessEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TaskManagerEndProcessEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.TaskManagerEndProcessEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *TaskManagerEndProcessEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6678,6 +7732,9 @@ func (p *LoginVideoCaptureAllowedUrls) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *LoginVideoCaptureAllowedUrls) SetProto(blob *Blob) {
+
+}
 func (p *LoginVideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -6706,6 +7763,10 @@ func (p *AllowScreenLock) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowScreenLock) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowScreenLock).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowScreenLock) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6736,6 +7797,10 @@ func (p *ArcCertificatesSyncMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ArcCertificatesSyncMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ArcCertificatesSyncMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ArcCertificatesSyncMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -6765,6 +7830,10 @@ func (p *AllowedDomainsForApps) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *AllowedDomainsForApps) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowedDomainsForApps).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AllowedDomainsForApps) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6792,6 +7861,10 @@ func (p *EnableMediaRouter) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableMediaRouter) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnableMediaRouter).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *EnableMediaRouter) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6824,6 +7897,10 @@ func (p *CertificateTransparencyEnforcementDisabledForUrls) UnmarshalAs(m json.R
 	}
 	return v, nil
 }
+func (p *CertificateTransparencyEnforcementDisabledForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CertificateTransparencyEnforcementDisabledForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CertificateTransparencyEnforcementDisabledForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -6855,6 +7932,9 @@ func (p *DeviceLoginScreenExtensions) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenExtensions) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenExtensions) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -6883,6 +7963,10 @@ func (p *WebRtcUdpPortRange) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *WebRtcUdpPortRange) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebRtcUdpPortRange).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WebRtcUdpPortRange) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -6910,6 +7994,10 @@ func (p *ComponentUpdatesEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ComponentUpdatesEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ComponentUpdatesEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ComponentUpdatesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -6940,6 +8028,10 @@ func (p *ExternalStorageReadOnly) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ExternalStorageReadOnly) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExternalStorageReadOnly).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ExternalStorageReadOnly) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -6968,6 +8060,10 @@ func (p *ForceYouTubeRestrict) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ForceYouTubeRestrict) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ForceYouTubeRestrict).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ForceYouTubeRestrict) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -6998,8 +8094,79 @@ func (p *ReportArcStatusEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ReportArcStatusEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ReportArcStatusEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ReportArcStatusEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 350. NativePrinters
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NativePrinters struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *NativePrinters) Name() string          { return "NativePrinters" }
+func (p *NativePrinters) Field() string         { return "" }
+func (p *NativePrinters) Scope() Scope          { return ScopeUser }
+func (p *NativePrinters) Status() Status        { return p.Stat }
+func (p *NativePrinters) UntypedV() interface{} { return p.Val }
+func (p *NativePrinters) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *NativePrinters) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NativePrinters).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *NativePrinters) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 352. QuickUnlockModeWhitelist
+// This policy has a default value of [].
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type QuickUnlockModeWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *QuickUnlockModeWhitelist) Name() string          { return "QuickUnlockModeWhitelist" }
+func (p *QuickUnlockModeWhitelist) Field() string         { return "" }
+func (p *QuickUnlockModeWhitelist) Scope() Scope          { return ScopeUser }
+func (p *QuickUnlockModeWhitelist) Status() Status        { return p.Stat }
+func (p *QuickUnlockModeWhitelist) UntypedV() interface{} { return p.Val }
+func (p *QuickUnlockModeWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *QuickUnlockModeWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuickUnlockModeWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *QuickUnlockModeWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -7026,6 +8193,10 @@ func (p *QuickUnlockTimeout) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *QuickUnlockTimeout) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuickUnlockTimeout).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *QuickUnlockTimeout) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7056,6 +8227,10 @@ func (p *PinUnlockMinimumLength) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PinUnlockMinimumLength) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PinUnlockMinimumLength).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PinUnlockMinimumLength) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -7085,6 +8260,10 @@ func (p *PinUnlockMaximumLength) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PinUnlockMaximumLength) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PinUnlockMaximumLength).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PinUnlockMaximumLength) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -7113,6 +8292,10 @@ func (p *PinUnlockWeakPinsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PinUnlockWeakPinsAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PinUnlockWeakPinsAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PinUnlockWeakPinsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7148,6 +8331,9 @@ func (p *DeviceWallpaperImage) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *DeviceWallpaperImage) SetProto(blob *Blob) {
+
+}
 func (p *DeviceWallpaperImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceWallpaperImageValue)
 	if !ok {
@@ -7177,6 +8363,10 @@ func (p *NewTabPageLocation) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *NewTabPageLocation) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NewTabPageLocation).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *NewTabPageLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -7205,6 +8395,10 @@ func (p *ShowCastIconInToolbar) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ShowCastIconInToolbar) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ShowCastIconInToolbar).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ShowCastIconInToolbar) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7232,6 +8426,9 @@ func (p *DeviceLoginScreenLocales) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenLocales) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLoginScreenLocales) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7264,6 +8461,9 @@ func (p *DeviceLoginScreenInputMethods) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenInputMethods) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenInputMethods) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7294,6 +8494,10 @@ func (p *InstantTetheringAllowed) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *InstantTetheringAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.InstantTetheringAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *InstantTetheringAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7322,6 +8526,10 @@ func (p *RemoteAccessHostDomainList) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostDomainList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostDomainList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RemoteAccessHostDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7352,6 +8560,10 @@ func (p *RemoteAccessHostClientDomainList) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostClientDomainList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostClientDomainList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RemoteAccessHostClientDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7380,6 +8592,10 @@ func (p *DownloadRestrictions) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DownloadRestrictions) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DownloadRestrictions).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DownloadRestrictions) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7411,8 +8627,44 @@ func (p *DeviceSecondFactorAuthentication) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceSecondFactorAuthentication) SetProto(blob *Blob) {
+
+}
 func (p *DeviceSecondFactorAuthentication) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 377. NoteTakingAppsLockScreenWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NoteTakingAppsLockScreenWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *NoteTakingAppsLockScreenWhitelist) Name() string          { return "NoteTakingAppsLockScreenWhitelist" }
+func (p *NoteTakingAppsLockScreenWhitelist) Field() string         { return "" }
+func (p *NoteTakingAppsLockScreenWhitelist) Scope() Scope          { return ScopeUser }
+func (p *NoteTakingAppsLockScreenWhitelist) Status() Status        { return p.Stat }
+func (p *NoteTakingAppsLockScreenWhitelist) UntypedV() interface{} { return p.Val }
+func (p *NoteTakingAppsLockScreenWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *NoteTakingAppsLockScreenWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NoteTakingAppsLockScreenWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *NoteTakingAppsLockScreenWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -7441,6 +8693,10 @@ func (p *CastReceiverEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CastReceiverEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CastReceiverEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CastReceiverEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7472,8 +8728,148 @@ func (p *CastReceiverName) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *CastReceiverName) SetProto(blob *Blob) {
+
+}
 func (p *CastReceiverName) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 382. NativePrintersBulkConfiguration
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NativePrintersBulkConfiguration struct {
+	Stat Status
+	Val  *NativePrintersBulkConfigurationValue
+}
+
+type NativePrintersBulkConfigurationValue struct {
+	Hash string `json:"hash"`
+	Url  string `json:"url"`
+}
+
+func (p *NativePrintersBulkConfiguration) Name() string          { return "NativePrintersBulkConfiguration" }
+func (p *NativePrintersBulkConfiguration) Field() string         { return "" }
+func (p *NativePrintersBulkConfiguration) Scope() Scope          { return ScopeUser }
+func (p *NativePrintersBulkConfiguration) Status() Status        { return p.Stat }
+func (p *NativePrintersBulkConfiguration) UntypedV() interface{} { return p.Val }
+func (p *NativePrintersBulkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *NativePrintersBulkConfigurationValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *NativePrintersBulkConfigurationValue", m)
+	}
+	return v, nil
+}
+func (p *NativePrintersBulkConfiguration) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NativePrintersBulkConfiguration).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *NativePrintersBulkConfiguration) Equal(iface interface{}) bool {
+	v, ok := iface.(*NativePrintersBulkConfigurationValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 383. NativePrintersBulkAccessMode
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NativePrintersBulkAccessMode struct {
+	Stat Status
+	Val  int
+}
+
+func (p *NativePrintersBulkAccessMode) Name() string          { return "NativePrintersBulkAccessMode" }
+func (p *NativePrintersBulkAccessMode) Field() string         { return "" }
+func (p *NativePrintersBulkAccessMode) Scope() Scope          { return ScopeUser }
+func (p *NativePrintersBulkAccessMode) Status() Status        { return p.Stat }
+func (p *NativePrintersBulkAccessMode) UntypedV() interface{} { return p.Val }
+func (p *NativePrintersBulkAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *NativePrintersBulkAccessMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NativePrintersBulkAccessMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *NativePrintersBulkAccessMode) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 384. NativePrintersBulkBlacklist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NativePrintersBulkBlacklist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *NativePrintersBulkBlacklist) Name() string          { return "NativePrintersBulkBlacklist" }
+func (p *NativePrintersBulkBlacklist) Field() string         { return "" }
+func (p *NativePrintersBulkBlacklist) Scope() Scope          { return ScopeUser }
+func (p *NativePrintersBulkBlacklist) Status() Status        { return p.Stat }
+func (p *NativePrintersBulkBlacklist) UntypedV() interface{} { return p.Val }
+func (p *NativePrintersBulkBlacklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *NativePrintersBulkBlacklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NativePrintersBulkBlacklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *NativePrintersBulkBlacklist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 385. NativePrintersBulkWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NativePrintersBulkWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *NativePrintersBulkWhitelist) Name() string          { return "NativePrintersBulkWhitelist" }
+func (p *NativePrintersBulkWhitelist) Field() string         { return "" }
+func (p *NativePrintersBulkWhitelist) Scope() Scope          { return ScopeUser }
+func (p *NativePrintersBulkWhitelist) Status() Status        { return p.Stat }
+func (p *NativePrintersBulkWhitelist) UntypedV() interface{} { return p.Val }
+func (p *NativePrintersBulkWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *NativePrintersBulkWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NativePrintersBulkWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *NativePrintersBulkWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -7506,6 +8902,9 @@ func (p *DeviceNativePrinters) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *DeviceNativePrinters) SetProto(blob *Blob) {
+
+}
 func (p *DeviceNativePrinters) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceNativePrintersValue)
 	if !ok {
@@ -7536,6 +8935,9 @@ func (p *DeviceNativePrintersAccessMode) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceNativePrintersAccessMode) SetProto(blob *Blob) {
+
 }
 func (p *DeviceNativePrintersAccessMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -7568,6 +8970,9 @@ func (p *DeviceNativePrintersBlacklist) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *DeviceNativePrintersBlacklist) SetProto(blob *Blob) {
+
+}
 func (p *DeviceNativePrintersBlacklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7599,6 +9004,9 @@ func (p *DeviceNativePrintersWhitelist) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *DeviceNativePrintersWhitelist) SetProto(blob *Blob) {
+
+}
 func (p *DeviceNativePrintersWhitelist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7627,6 +9035,10 @@ func (p *AutofillCreditCardEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutofillCreditCardEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutofillCreditCardEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AutofillCreditCardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7657,6 +9069,10 @@ func (p *NtlmV2Enabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *NtlmV2Enabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NtlmV2Enabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *NtlmV2Enabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7685,6 +9101,10 @@ func (p *PromptForDownloadLocation) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PromptForDownloadLocation) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PromptForDownloadLocation).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PromptForDownloadLocation) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7719,6 +9139,9 @@ func (p *DeviceLoginScreenAutoSelectCertificateForUrls) UnmarshalAs(m json.RawMe
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenAutoSelectCertificateForUrls) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7749,6 +9172,9 @@ func (p *UnaffiliatedArcAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *UnaffiliatedArcAllowed) SetProto(blob *Blob) {
+
+}
 func (p *UnaffiliatedArcAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7777,6 +9203,10 @@ func (p *IsolateOrigins) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *IsolateOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IsolateOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *IsolateOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -7804,6 +9234,10 @@ func (p *SitePerProcess) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SitePerProcess) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SitePerProcess).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SitePerProcess) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -7834,6 +9268,10 @@ func (p *DefaultDownloadDirectory) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DefaultDownloadDirectory) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultDownloadDirectory).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultDownloadDirectory) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -7863,6 +9301,10 @@ func (p *SecurityKeyPermitAttestation) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *SecurityKeyPermitAttestation) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SecurityKeyPermitAttestation).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SecurityKeyPermitAttestation) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -7891,6 +9333,9 @@ func (p *DeviceHostnameTemplate) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceHostnameTemplate) SetProto(blob *Blob) {
+
 }
 func (p *DeviceHostnameTemplate) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -7923,6 +9368,10 @@ func (p *AbusiveExperienceInterventionEnforce) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *AbusiveExperienceInterventionEnforce) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AbusiveExperienceInterventionEnforce).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AbusiveExperienceInterventionEnforce) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -7951,6 +9400,10 @@ func (p *SpellcheckLanguage) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SpellcheckLanguage) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SpellcheckLanguage).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SpellcheckLanguage) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -7982,6 +9435,10 @@ func (p *SecondaryGoogleAccountSigninAllowed) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *SecondaryGoogleAccountSigninAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SecondaryGoogleAccountSigninAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SecondaryGoogleAccountSigninAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -8010,6 +9467,10 @@ func (p *SpellcheckEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SpellcheckEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SpellcheckEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SpellcheckEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8040,6 +9501,10 @@ func (p *AdsSettingForIntrusiveAdsSites) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *AdsSettingForIntrusiveAdsSites) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AdsSettingForIntrusiveAdsSites).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AdsSettingForIntrusiveAdsSites) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8068,6 +9533,10 @@ func (p *PasswordProtectionWarningTrigger) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PasswordProtectionWarningTrigger) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PasswordProtectionWarningTrigger).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PasswordProtectionWarningTrigger) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8099,6 +9568,9 @@ func (p *DeviceKerberosEncryptionTypes) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceKerberosEncryptionTypes) SetProto(blob *Blob) {
+
 }
 func (p *DeviceKerberosEncryptionTypes) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8133,6 +9605,9 @@ func (p *DeviceUserPolicyLoopbackProcessingMode) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceUserPolicyLoopbackProcessingMode) SetProto(blob *Blob) {
+
+}
 func (p *DeviceUserPolicyLoopbackProcessingMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8162,6 +9637,10 @@ func (p *RelaunchNotification) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *RelaunchNotification) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RelaunchNotification).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RelaunchNotification) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8190,6 +9669,10 @@ func (p *RelaunchNotificationPeriod) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RelaunchNotificationPeriod) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RelaunchNotificationPeriod).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RelaunchNotificationPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8222,8 +9705,44 @@ func (p *VirtualMachinesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *VirtualMachinesAllowed) SetProto(blob *Blob) {
+
+}
 func (p *VirtualMachinesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 422. SafeBrowsingWhitelistDomains
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type SafeBrowsingWhitelistDomains struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *SafeBrowsingWhitelistDomains) Name() string          { return "SafeBrowsingWhitelistDomains" }
+func (p *SafeBrowsingWhitelistDomains) Field() string         { return "" }
+func (p *SafeBrowsingWhitelistDomains) Scope() Scope          { return ScopeUser }
+func (p *SafeBrowsingWhitelistDomains) Status() Status        { return p.Stat }
+func (p *SafeBrowsingWhitelistDomains) UntypedV() interface{} { return p.Val }
+func (p *SafeBrowsingWhitelistDomains) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *SafeBrowsingWhitelistDomains) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SafeBrowsingWhitelistDomains).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *SafeBrowsingWhitelistDomains) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -8250,6 +9769,10 @@ func (p *PasswordProtectionLoginURLs) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PasswordProtectionLoginURLs) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PasswordProtectionLoginURLs).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PasswordProtectionLoginURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8282,6 +9805,10 @@ func (p *PasswordProtectionChangePasswordURL) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *PasswordProtectionChangePasswordURL) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PasswordProtectionChangePasswordURL).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PasswordProtectionChangePasswordURL) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -8312,6 +9839,9 @@ func (p *DeviceMachinePasswordChangeRate) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceMachinePasswordChangeRate) SetProto(blob *Blob) {
+
 }
 func (p *DeviceMachinePasswordChangeRate) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8344,6 +9874,9 @@ func (p *DeviceRollbackAllowedMilestones) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *DeviceRollbackAllowedMilestones) SetProto(blob *Blob) {
+
+}
 func (p *DeviceRollbackAllowedMilestones) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8374,6 +9907,9 @@ func (p *DeviceRollbackToTargetVersion) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceRollbackToTargetVersion) SetProto(blob *Blob) {
+
 }
 func (p *DeviceRollbackToTargetVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8406,6 +9942,10 @@ func (p *SafeBrowsingExtendedReportingEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *SafeBrowsingExtendedReportingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SafeBrowsingExtendedReportingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SafeBrowsingExtendedReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -8435,7 +9975,77 @@ func (p *AutoplayAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *AutoplayAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoplayAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AutoplayAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 431. AutoplayWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type AutoplayWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *AutoplayWhitelist) Name() string          { return "AutoplayWhitelist" }
+func (p *AutoplayWhitelist) Field() string         { return "" }
+func (p *AutoplayWhitelist) Scope() Scope          { return ScopeUser }
+func (p *AutoplayWhitelist) Status() Status        { return p.Stat }
+func (p *AutoplayWhitelist) UntypedV() interface{} { return p.Val }
+func (p *AutoplayWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *AutoplayWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoplayWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *AutoplayWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 433. UserNativePrintersAllowed
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type UserNativePrintersAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *UserNativePrintersAllowed) Name() string          { return "UserNativePrintersAllowed" }
+func (p *UserNativePrintersAllowed) Field() string         { return "" }
+func (p *UserNativePrintersAllowed) Scope() Scope          { return ScopeUser }
+func (p *UserNativePrintersAllowed) Status() Status        { return p.Stat }
+func (p *UserNativePrintersAllowed) UntypedV() interface{} { return p.Val }
+func (p *UserNativePrintersAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *UserNativePrintersAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserNativePrintersAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *UserNativePrintersAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -8463,6 +10073,10 @@ func (p *DefaultWebUsbGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebUsbGuardSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultWebUsbGuardSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultWebUsbGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8495,6 +10109,10 @@ func (p *CertificateTransparencyEnforcementDisabledForCas) UnmarshalAs(m json.Ra
 	}
 	return v, nil
 }
+func (p *CertificateTransparencyEnforcementDisabledForCas) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CertificateTransparencyEnforcementDisabledForCas).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CertificateTransparencyEnforcementDisabledForCas) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -8526,6 +10144,10 @@ func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) UnmarshalAs(m j
 	}
 	return v, nil
 }
+func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CertificateTransparencyEnforcementDisabledForLegacyCas).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -8554,6 +10176,10 @@ func (p *MediaRouterCastAllowAllIPs) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *MediaRouterCastAllowAllIPs) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.MediaRouterCastAllowAllIPs).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *MediaRouterCastAllowAllIPs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8587,6 +10213,9 @@ func (p *DeviceSamlLoginAuthenticationType) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceSamlLoginAuthenticationType) SetProto(blob *Blob) {
+
+}
 func (p *DeviceSamlLoginAuthenticationType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8615,6 +10244,10 @@ func (p *WebUsbAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebUsbAskForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebUsbAskForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *WebUsbAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8645,6 +10278,10 @@ func (p *WebUsbBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *WebUsbBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebUsbBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WebUsbBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -8674,6 +10311,10 @@ func (p *DeveloperToolsAvailability) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeveloperToolsAvailability) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DeveloperToolsAvailability).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DeveloperToolsAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8701,6 +10342,10 @@ func (p *AllowedLanguages) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AllowedLanguages) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowedLanguages).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowedLanguages) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -8730,6 +10375,10 @@ func (p *ArcAppInstallEventLoggingEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcAppInstallEventLoggingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ArcAppInstallEventLoggingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ArcAppInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8798,6 +10447,10 @@ func (p *UsageTimeLimit) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *UsageTimeLimit) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UsageTimeLimit).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UsageTimeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(*UsageTimeLimitValue)
 	if !ok {
@@ -8826,6 +10479,10 @@ func (p *ArcBackupRestoreServiceEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *ArcBackupRestoreServiceEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ArcBackupRestoreServiceEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ArcBackupRestoreServiceEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -8856,6 +10513,10 @@ func (p *ArcGoogleLocationServicesEnabled) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *ArcGoogleLocationServicesEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ArcGoogleLocationServicesEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ArcGoogleLocationServicesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -8884,6 +10545,10 @@ func (p *EnableSyncConsent) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableSyncConsent) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnableSyncConsent).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *EnableSyncConsent) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8921,6 +10586,9 @@ func (p *DeviceAutoUpdateTimeRestrictions) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceAutoUpdateTimeRestrictions) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAutoUpdateTimeRestrictions) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DeviceAutoUpdateTimeRestrictionsValue)
 	if !ok {
@@ -8949,6 +10617,10 @@ func (p *PromotionalTabsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PromotionalTabsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PromotionalTabsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PromotionalTabsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -8979,6 +10651,10 @@ func (p *SafeSitesFilterBehavior) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *SafeSitesFilterBehavior) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SafeSitesFilterBehavior).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SafeSitesFilterBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -9007,6 +10683,10 @@ func (p *AllowedInputMethods) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AllowedInputMethods) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowedInputMethods).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowedInputMethods) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -9038,6 +10718,10 @@ func (p *OverrideSecurityRestrictionsOnInsecureOrigin) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *OverrideSecurityRestrictionsOnInsecureOrigin) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.OverrideSecurityRestrictionsOnInsecureOrigin).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -9067,6 +10751,9 @@ func (p *DeviceUpdateStagingSchedule) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceUpdateStagingSchedule) SetProto(blob *Blob) {
+
+}
 func (p *DeviceUpdateStagingSchedule) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefDayPercentagePair)
 	if !ok {
@@ -9095,6 +10782,10 @@ func (p *AutofillAddressEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutofillAddressEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutofillAddressEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AutofillAddressEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9127,6 +10818,10 @@ func (p *UrlKeyedAnonymizedDataCollectionEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *UrlKeyedAnonymizedDataCollectionEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UrlKeyedAnonymizedDataCollectionEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UrlKeyedAnonymizedDataCollectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9154,6 +10849,10 @@ func (p *NetworkFileSharesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NetworkFileSharesAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NetworkFileSharesAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NetworkFileSharesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9186,6 +10885,10 @@ func (p *DeviceLocalAccountManagedSessionEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DeviceLocalAccountManagedSessionEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DeviceLocalAccountManagedSessionEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DeviceLocalAccountManagedSessionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9215,6 +10918,10 @@ func (p *WebRtcEventLogCollectionAllowed) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *WebRtcEventLogCollectionAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebRtcEventLogCollectionAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WebRtcEventLogCollectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9243,6 +10950,10 @@ func (p *PowerSmartDimEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PowerSmartDimEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PowerSmartDimEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PowerSmartDimEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9275,6 +10986,10 @@ func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) UnmarshalAs(m json
 	}
 	return v, nil
 }
+func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CoalesceH2ConnectionsWithClientCertificatesForHosts).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -9304,6 +11019,10 @@ func (p *NetBiosShareDiscoveryEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NetBiosShareDiscoveryEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NetBiosShareDiscoveryEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NetBiosShareDiscoveryEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9348,6 +11067,10 @@ func (p *WebAppInstallForceList) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *WebAppInstallForceList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebAppInstallForceList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WebAppInstallForceList) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebAppInstallForceListValue)
 	if !ok {
@@ -9378,6 +11101,10 @@ func (p *SmsMessagesAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *SmsMessagesAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SmsMessagesAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SmsMessagesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9406,6 +11133,10 @@ func (p *PrintingAllowedColorModes) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedColorModes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingAllowedColorModes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintingAllowedColorModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9436,6 +11167,10 @@ func (p *PrintingAllowedDuplexModes) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *PrintingAllowedDuplexModes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingAllowedDuplexModes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintingAllowedDuplexModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -9465,6 +11200,10 @@ func (p *PrintingColorDefault) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *PrintingColorDefault) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingColorDefault).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintingColorDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -9493,6 +11232,10 @@ func (p *PrintingDuplexDefault) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingDuplexDefault) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingDuplexDefault).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintingDuplexDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -9533,6 +11276,10 @@ func (p *PrintingPaperSizeDefault) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *PrintingPaperSizeDefault) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingPaperSizeDefault).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintingPaperSizeDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(*PrintingPaperSizeDefaultValue)
 	if !ok {
@@ -9562,6 +11309,10 @@ func (p *PrintHeaderFooter) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *PrintHeaderFooter) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintHeaderFooter).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintHeaderFooter) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9590,6 +11341,10 @@ func (p *CrostiniAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CrostiniAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CrostiniAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9622,6 +11377,9 @@ func (p *DeviceUnaffiliatedCrostiniAllowed) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceUnaffiliatedCrostiniAllowed) SetProto(blob *Blob) {
+
+}
 func (p *DeviceUnaffiliatedCrostiniAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9653,6 +11411,10 @@ func (p *EnterpriseHardwarePlatformAPIEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *EnterpriseHardwarePlatformAPIEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnterpriseHardwarePlatformAPIEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *EnterpriseHardwarePlatformAPIEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9682,6 +11444,10 @@ func (p *ReportCrostiniUsageEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *ReportCrostiniUsageEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ReportCrostiniUsageEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ReportCrostiniUsageEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9710,6 +11476,10 @@ func (p *VpnConfigAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VpnConfigAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VpnConfigAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *VpnConfigAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9750,6 +11520,10 @@ func (p *WebUsbAllowDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *WebUsbAllowDevicesForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebUsbAllowDevicesForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WebUsbAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*WebUsbAllowDevicesForUrlsValue)
 	if !ok {
@@ -9780,6 +11554,10 @@ func (p *SmartLockSigninAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *SmartLockSigninAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SmartLockSigninAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SmartLockSigninAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -9808,6 +11586,10 @@ func (p *NTLMShareAuthenticationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTLMShareAuthenticationEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NTLMShareAuthenticationEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NTLMShareAuthenticationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9845,6 +11627,10 @@ func (p *NetworkFileSharesPreconfiguredShares) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *NetworkFileSharesPreconfiguredShares) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NetworkFileSharesPreconfiguredShares).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *NetworkFileSharesPreconfiguredShares) Equal(iface interface{}) bool {
 	v, ok := iface.([]*NetworkFileSharesPreconfiguredSharesValue)
 	if !ok {
@@ -9873,6 +11659,10 @@ func (p *AllowWakeLocks) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AllowWakeLocks) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllowWakeLocks).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AllowWakeLocks) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9908,6 +11698,10 @@ func (p *ScreenBrightnessPercent) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ScreenBrightnessPercent) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenBrightnessPercent).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ScreenBrightnessPercent) Equal(iface interface{}) bool {
 	v, ok := iface.(*ScreenBrightnessPercentValue)
 	if !ok {
@@ -9936,6 +11730,10 @@ func (p *CloudReportingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CloudReportingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CloudReportingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CloudReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -9967,6 +11765,9 @@ func (p *DeviceWiFiFastTransitionEnabled) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWiFiFastTransitionEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceWiFiFastTransitionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10008,6 +11809,9 @@ func (p *DeviceDisplayResolution) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DeviceDisplayResolution) SetProto(blob *Blob) {
+
+}
 func (p *DeviceDisplayResolution) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceDisplayResolutionValue)
 	if !ok {
@@ -10036,6 +11840,9 @@ func (p *PluginVmAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PluginVmAllowed) SetProto(blob *Blob) {
+
 }
 func (p *PluginVmAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10071,6 +11878,10 @@ func (p *PluginVmImage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PluginVmImage) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PluginVmImage).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PluginVmImage) Equal(iface interface{}) bool {
 	v, ok := iface.(*PluginVmImageValue)
 	if !ok {
@@ -10101,6 +11912,10 @@ func (p *PrintingSendUsernameAndFilenameEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrintingSendUsernameAndFilenameEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingSendUsernameAndFilenameEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintingSendUsernameAndFilenameEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10137,6 +11952,10 @@ func (p *ParentAccessCodeConfig) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ParentAccessCodeConfig) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ParentAccessCodeConfig).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ParentAccessCodeConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -10166,6 +11985,9 @@ func (p *DeviceGpoCacheLifetime) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceGpoCacheLifetime) SetProto(blob *Blob) {
+
 }
 func (p *DeviceGpoCacheLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10198,6 +12020,9 @@ func (p *DeviceAuthDataCacheLifetime) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceAuthDataCacheLifetime) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAuthDataCacheLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10226,6 +12051,9 @@ func (p *ReportDevicePowerStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDevicePowerStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDevicePowerStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10256,6 +12084,9 @@ func (p *ReportDeviceStorageStatus) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceStorageStatus) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceStorageStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10284,6 +12115,9 @@ func (p *ReportDeviceBoardStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBoardStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceBoardStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10316,6 +12150,10 @@ func (p *ClientCertificateManagementAllowed) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *ClientCertificateManagementAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ClientCertificateManagementAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ClientCertificateManagementAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10346,6 +12184,9 @@ func (p *DeviceRebootOnUserSignout) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DeviceRebootOnUserSignout) SetProto(blob *Blob) {
+
+}
 func (p *DeviceRebootOnUserSignout) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -10374,6 +12215,10 @@ func (p *SchedulerConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SchedulerConfiguration) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SchedulerConfiguration).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SchedulerConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10404,6 +12249,10 @@ func (p *CrostiniExportImportUIAllowed) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *CrostiniExportImportUIAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CrostiniExportImportUIAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CrostiniExportImportUIAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10432,6 +12281,10 @@ func (p *PrintingAllowedPinModes) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAllowedPinModes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingAllowedPinModes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintingAllowedPinModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -10462,6 +12315,10 @@ func (p *PrintingPinDefault) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *PrintingPinDefault) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingPinDefault).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintingPinDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -10490,6 +12347,10 @@ func (p *VoiceInteractionContextEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VoiceInteractionContextEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VoiceInteractionContextEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *VoiceInteractionContextEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10520,6 +12381,10 @@ func (p *AuthNegotiateDelegateByKdcPolicy) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *AuthNegotiateDelegateByKdcPolicy) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AuthNegotiateDelegateByKdcPolicy).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AuthNegotiateDelegateByKdcPolicy) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10548,6 +12413,10 @@ func (p *VoiceInteractionHotwordEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VoiceInteractionHotwordEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VoiceInteractionHotwordEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *VoiceInteractionHotwordEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10579,6 +12448,9 @@ func (p *DeviceWilcoDtcAllowed) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWilcoDtcAllowed) SetProto(blob *Blob) {
+
 }
 func (p *DeviceWilcoDtcAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10616,8 +12488,44 @@ func (p *DeviceWilcoDtcConfiguration) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DeviceWilcoDtcConfiguration) SetProto(blob *Blob) {
+
+}
 func (p *DeviceWilcoDtcConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceWilcoDtcConfigurationValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 536. SpellcheckLanguageBlacklist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type SpellcheckLanguageBlacklist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *SpellcheckLanguageBlacklist) Name() string          { return "SpellcheckLanguageBlacklist" }
+func (p *SpellcheckLanguageBlacklist) Field() string         { return "" }
+func (p *SpellcheckLanguageBlacklist) Scope() Scope          { return ScopeUser }
+func (p *SpellcheckLanguageBlacklist) Status() Status        { return p.Stat }
+func (p *SpellcheckLanguageBlacklist) UntypedV() interface{} { return p.Val }
+func (p *SpellcheckLanguageBlacklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *SpellcheckLanguageBlacklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SpellcheckLanguageBlacklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *SpellcheckLanguageBlacklist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -10644,6 +12552,9 @@ func (p *DeviceWiFiAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceWiFiAllowed) SetProto(blob *Blob) {
+
 }
 func (p *DeviceWiFiAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10673,6 +12584,9 @@ func (p *DevicePowerPeakShiftEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerPeakShiftEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DevicePowerPeakShiftEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10706,6 +12620,9 @@ func (p *DevicePowerPeakShiftBatteryThreshold) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerPeakShiftBatteryThreshold) SetProto(blob *Blob) {
+
 }
 func (p *DevicePowerPeakShiftBatteryThreshold) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10747,6 +12664,9 @@ func (p *DevicePowerPeakShiftDayConfig) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *DevicePowerPeakShiftDayConfig) SetProto(blob *Blob) {
+
+}
 func (p *DevicePowerPeakShiftDayConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(*DevicePowerPeakShiftDayConfigValue)
 	if !ok {
@@ -10776,6 +12696,9 @@ func (p *DeviceBootOnAcEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *DeviceBootOnAcEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceBootOnAcEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10804,6 +12727,10 @@ func (p *SignedHTTPExchangeEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SignedHTTPExchangeEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SignedHTTPExchangeEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SignedHTTPExchangeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10836,6 +12763,9 @@ func (p *DeviceQuickFixBuildToken) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DeviceQuickFixBuildToken) SetProto(blob *Blob) {
+
+}
 func (p *DeviceQuickFixBuildToken) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -10867,6 +12797,10 @@ func (p *SamlInSessionPasswordChangeEnabled) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *SamlInSessionPasswordChangeEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SamlInSessionPasswordChangeEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SamlInSessionPasswordChangeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -10895,6 +12829,9 @@ func (p *DeviceDockMacAddressSource) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceDockMacAddressSource) SetProto(blob *Blob) {
+
 }
 func (p *DeviceDockMacAddressSource) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -10928,6 +12865,9 @@ func (p *DeviceAdvancedBatteryChargeModeEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceAdvancedBatteryChargeModeEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceAdvancedBatteryChargeModeEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -10972,6 +12912,9 @@ func (p *DeviceAdvancedBatteryChargeModeDayConfig) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *DeviceAdvancedBatteryChargeModeDayConfig) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAdvancedBatteryChargeModeDayConfig) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceAdvancedBatteryChargeModeDayConfigValue)
 	if !ok {
@@ -11002,6 +12945,9 @@ func (p *DeviceBatteryChargeMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceBatteryChargeMode) SetProto(blob *Blob) {
+
 }
 func (p *DeviceBatteryChargeMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -11036,6 +12982,9 @@ func (p *DeviceBatteryChargeCustomStartCharging) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceBatteryChargeCustomStartCharging) SetProto(blob *Blob) {
+
+}
 func (p *DeviceBatteryChargeCustomStartCharging) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -11069,6 +13018,9 @@ func (p *DeviceBatteryChargeCustomStopCharging) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *DeviceBatteryChargeCustomStopCharging) SetProto(blob *Blob) {
+
+}
 func (p *DeviceBatteryChargeCustomStopCharging) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -11098,6 +13050,9 @@ func (p *DeviceUsbPowerShareEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceUsbPowerShareEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceUsbPowerShareEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11126,6 +13081,10 @@ func (p *PolicyListMultipleSourceMergeList) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PolicyListMultipleSourceMergeList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PolicyListMultipleSourceMergeList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PolicyListMultipleSourceMergeList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -11157,6 +13116,10 @@ func (p *SamlPasswordExpirationAdvanceWarningDays) UnmarshalAs(m json.RawMessage
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *SamlPasswordExpirationAdvanceWarningDays) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SamlPasswordExpirationAdvanceWarningDays).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SamlPasswordExpirationAdvanceWarningDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -11196,6 +13159,9 @@ func (p *DeviceScheduledUpdateCheck) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceScheduledUpdateCheck) SetProto(blob *Blob) {
+
+}
 func (p *DeviceScheduledUpdateCheck) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceScheduledUpdateCheckValue)
 	if !ok {
@@ -11224,6 +13190,10 @@ func (p *KerberosEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KerberosEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KerberosEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *KerberosEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11254,6 +13224,10 @@ func (p *KerberosRememberPasswordEnabled) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *KerberosRememberPasswordEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KerberosRememberPasswordEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *KerberosRememberPasswordEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11282,6 +13256,10 @@ func (p *KerberosAddAccountsAllowed) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KerberosAddAccountsAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KerberosAddAccountsAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *KerberosAddAccountsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11348,6 +13326,10 @@ func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return value, nil
 }
+func (p *KerberosAccounts) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KerberosAccounts).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]KerberosAccountsValueIf)
 	if !ok {
@@ -11383,6 +13365,10 @@ func (p *StickyKeysEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 	}
 	return v, nil
 }
+func (p *StickyKeysEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.StickyKeysEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *StickyKeysEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11411,6 +13397,10 @@ func (p *AppRecommendationZeroStateEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AppRecommendationZeroStateEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AppRecommendationZeroStateEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AppRecommendationZeroStateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11443,6 +13433,10 @@ func (p *PolicyDictionaryMultipleSourceMergeList) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *PolicyDictionaryMultipleSourceMergeList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PolicyDictionaryMultipleSourceMergeList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PolicyDictionaryMultipleSourceMergeList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -11471,6 +13465,10 @@ func (p *RelaunchHeadsUpPeriod) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *RelaunchHeadsUpPeriod) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RelaunchHeadsUpPeriod).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RelaunchHeadsUpPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -11502,6 +13500,10 @@ func (p *StartupBrowserWindowLaunchSuppressed) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *StartupBrowserWindowLaunchSuppressed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.StartupBrowserWindowLaunchSuppressed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *StartupBrowserWindowLaunchSuppressed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11530,6 +13532,10 @@ func (p *UserFeedbackAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserFeedbackAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserFeedbackAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *UserFeedbackAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11561,6 +13567,9 @@ func (p *DevicePowerwashAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DevicePowerwashAllowed) SetProto(blob *Blob) {
+
 }
 func (p *DevicePowerwashAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11596,6 +13605,10 @@ func (p *ExternalPrintServers) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *ExternalPrintServers) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExternalPrintServers).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ExternalPrintServers) Equal(iface interface{}) bool {
 	v, ok := iface.(*ExternalPrintServersValue)
 	if !ok {
@@ -11624,6 +13637,10 @@ func (p *SelectToSpeakEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SelectToSpeakEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SelectToSpeakEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SelectToSpeakEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11655,6 +13672,10 @@ func (p *CrostiniRootAccessAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *CrostiniRootAccessAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CrostiniRootAccessAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CrostiniRootAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11683,6 +13704,10 @@ func (p *VmManagementCliAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *VmManagementCliAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VmManagementCliAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *VmManagementCliAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11713,6 +13738,10 @@ func (p *CACertificateManagementAllowed) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *CACertificateManagementAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CACertificateManagementAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CACertificateManagementAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -11742,6 +13771,10 @@ func (p *PasswordLeakDetectionEnabled) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *PasswordLeakDetectionEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PasswordLeakDetectionEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PasswordLeakDetectionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11770,6 +13803,10 @@ func (p *LockScreenMediaPlaybackEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LockScreenMediaPlaybackEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LockScreenMediaPlaybackEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *LockScreenMediaPlaybackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11801,6 +13838,10 @@ func (p *DnsOverHttpsMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DnsOverHttpsMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DnsOverHttpsMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DnsOverHttpsMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -11829,6 +13870,10 @@ func (p *PolicyAtomicGroupsEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PolicyAtomicGroupsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PolicyAtomicGroupsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PolicyAtomicGroupsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11859,6 +13904,10 @@ func (p *DictationEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DictationEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DictationEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DictationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11887,6 +13936,10 @@ func (p *KeyboardFocusHighlightEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *KeyboardFocusHighlightEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KeyboardFocusHighlightEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *KeyboardFocusHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11917,6 +13970,10 @@ func (p *CursorHighlightEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *CursorHighlightEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CursorHighlightEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CursorHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -11945,6 +14002,10 @@ func (p *CaretHighlightEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CaretHighlightEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CaretHighlightEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CaretHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -11975,6 +14036,10 @@ func (p *MonoAudioEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *MonoAudioEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.MonoAudioEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *MonoAudioEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12003,6 +14068,10 @@ func (p *AutoclickEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AutoclickEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoclickEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AutoclickEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12037,6 +14106,9 @@ func (p *DeviceLoginScreenLargeCursorEnabled) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenLargeCursorEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenLargeCursorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12064,6 +14136,10 @@ func (p *HSTSPolicyBypassList) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *HSTSPolicyBypassList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.HSTSPolicyBypassList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *HSTSPolicyBypassList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12095,6 +14171,9 @@ func (p *ReportDeviceOsUpdateStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceOsUpdateStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceOsUpdateStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12139,6 +14218,9 @@ func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DeviceLoginScreenWebUsbAllowDevicesForUrlsValue)
 	if !ok {
@@ -12171,6 +14253,9 @@ func (p *DeviceLoginScreenSpokenFeedbackEnabled) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenSpokenFeedbackEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLoginScreenSpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12205,6 +14290,9 @@ func (p *DeviceLoginScreenHighContrastEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenHighContrastEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenHighContrastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12238,6 +14326,9 @@ func (p *DeviceLoginScreenVirtualKeyboardEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenVirtualKeyboardEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12266,6 +14357,10 @@ func (p *CloudExtensionRequestEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CloudExtensionRequestEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CloudExtensionRequestEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CloudExtensionRequestEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12300,6 +14395,9 @@ func (p *DeviceLoginScreenSystemInfoEnforced) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenSystemInfoEnforced) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenSystemInfoEnforced) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12328,6 +14426,10 @@ func (p *SharedClipboardEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SharedClipboardEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SharedClipboardEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SharedClipboardEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12359,6 +14461,9 @@ func (p *DeviceLoginScreenDictationEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenDictationEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLoginScreenDictationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12393,6 +14498,9 @@ func (p *DeviceLoginScreenSelectToSpeakEnabled) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenSelectToSpeakEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenSelectToSpeakEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12425,6 +14533,9 @@ func (p *DeviceLoginScreenCursorHighlightEnabled) UnmarshalAs(m json.RawMessage)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenCursorHighlightEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLoginScreenCursorHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12459,6 +14570,9 @@ func (p *DeviceLoginScreenCaretHighlightEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenCaretHighlightEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenCaretHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12490,6 +14604,9 @@ func (p *DeviceLoginScreenMonoAudioEnabled) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenMonoAudioEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenMonoAudioEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12520,6 +14637,9 @@ func (p *DeviceLoginScreenAutoclickEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceLoginScreenAutoclickEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceLoginScreenAutoclickEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12554,6 +14674,9 @@ func (p *DeviceLoginScreenStickyKeysEnabled) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenStickyKeysEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenStickyKeysEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12587,6 +14710,9 @@ func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) UnmarshalAs(m json.RawM
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -12615,6 +14741,10 @@ func (p *ShelfAlignment) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *ShelfAlignment) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ShelfAlignment).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ShelfAlignment) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12647,6 +14777,10 @@ func (p *PrintingAllowedBackgroundGraphicsModes) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *PrintingAllowedBackgroundGraphicsModes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingAllowedBackgroundGraphicsModes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintingAllowedBackgroundGraphicsModes) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -12675,6 +14809,10 @@ func (p *PrintingBackgroundGraphicsDefault) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PrintingBackgroundGraphicsDefault) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingBackgroundGraphicsDefault).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintingBackgroundGraphicsDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -12707,6 +14845,10 @@ func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) UnmarshalAs(m json.Ra
 	}
 	return v, nil
 }
+func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LegacySameSiteCookieBehaviorEnabledForDomainList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -12735,6 +14877,10 @@ func (p *PrintJobHistoryExpirationPeriod) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintJobHistoryExpirationPeriod) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintJobHistoryExpirationPeriod).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintJobHistoryExpirationPeriod) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -12769,8 +14915,44 @@ func (p *DeviceLoginScreenScreenMagnifierType) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenScreenMagnifierType) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenScreenMagnifierType) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 631. ExternalPrintServersWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ExternalPrintServersWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *ExternalPrintServersWhitelist) Name() string          { return "ExternalPrintServersWhitelist" }
+func (p *ExternalPrintServersWhitelist) Field() string         { return "" }
+func (p *ExternalPrintServersWhitelist) Scope() Scope          { return ScopeUser }
+func (p *ExternalPrintServersWhitelist) Status() Status        { return p.Stat }
+func (p *ExternalPrintServersWhitelist) UntypedV() interface{} { return p.Val }
+func (p *ExternalPrintServersWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *ExternalPrintServersWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExternalPrintServersWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *ExternalPrintServersWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -12797,6 +14979,10 @@ func (p *DefaultInsecureContentSetting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultInsecureContentSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultInsecureContentSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultInsecureContentSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -12827,6 +15013,10 @@ func (p *InsecureContentAllowedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *InsecureContentAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.InsecureContentAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *InsecureContentAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -12855,6 +15045,10 @@ func (p *InsecureContentBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *InsecureContentBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.InsecureContentBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *InsecureContentBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -12889,6 +15083,9 @@ func (p *DeviceWebBasedAttestationAllowedUrls) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DeviceWebBasedAttestationAllowedUrls) SetProto(blob *Blob) {
+
+}
 func (p *DeviceWebBasedAttestationAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -12921,6 +15118,9 @@ func (p *DeviceShowNumericKeyboardForPassword) UnmarshalAs(m json.RawMessage) (i
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceShowNumericKeyboardForPassword) SetProto(blob *Blob) {
+
 }
 func (p *DeviceShowNumericKeyboardForPassword) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -12956,6 +15156,10 @@ func (p *CrostiniAnsiblePlaybook) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *CrostiniAnsiblePlaybook) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CrostiniAnsiblePlaybook).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CrostiniAnsiblePlaybook) Equal(iface interface{}) bool {
 	v, ok := iface.(*CrostiniAnsiblePlaybookValue)
 	if !ok {
@@ -12983,6 +15187,10 @@ func (p *WebRtcLocalIpsAllowedUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebRtcLocalIpsAllowedUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebRtcLocalIpsAllowedUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *WebRtcLocalIpsAllowedUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -13036,6 +15244,10 @@ func (p *PerAppTimeLimits) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PerAppTimeLimits) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PerAppTimeLimits).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PerAppTimeLimits) Equal(iface interface{}) bool {
 	v, ok := iface.(*PerAppTimeLimitsValue)
 	if !ok {
@@ -13064,6 +15276,10 @@ func (p *DnsOverHttpsTemplates) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DnsOverHttpsTemplates) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DnsOverHttpsTemplates).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DnsOverHttpsTemplates) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -13094,6 +15310,10 @@ func (p *GloballyScopeHTTPAuthCacheEnabled) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *GloballyScopeHTTPAuthCacheEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.GloballyScopeHTTPAuthCacheEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *GloballyScopeHTTPAuthCacheEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13122,6 +15342,10 @@ func (p *ClickToCallEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ClickToCallEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ClickToCallEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ClickToCallEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13156,6 +15380,9 @@ func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13185,6 +15412,10 @@ func (p *PrinterTypeDenyList) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *PrinterTypeDenyList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrinterTypeDenyList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrinterTypeDenyList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -13212,6 +15443,10 @@ func (p *SyncTypesListDisabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SyncTypesListDisabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SyncTypesListDisabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SyncTypesListDisabled) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -13244,6 +15479,10 @@ func (p *AmbientAuthenticationInPrivateModesEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *AmbientAuthenticationInPrivateModesEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AmbientAuthenticationInPrivateModesEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AmbientAuthenticationInPrivateModesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -13272,6 +15511,10 @@ func (p *PaymentMethodQueryEnabled) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PaymentMethodQueryEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PaymentMethodQueryEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PaymentMethodQueryEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13304,6 +15547,10 @@ func (p *StricterMixedContentTreatmentEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *StricterMixedContentTreatmentEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.StricterMixedContentTreatmentEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *StricterMixedContentTreatmentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13334,6 +15581,10 @@ func (p *NTPCustomBackgroundEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *NTPCustomBackgroundEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NTPCustomBackgroundEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *NTPCustomBackgroundEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13362,6 +15613,10 @@ func (p *DNSInterceptionChecksEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DNSInterceptionChecksEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DNSInterceptionChecksEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DNSInterceptionChecksEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13392,6 +15647,10 @@ func (p *PrimaryMouseButtonSwitch) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *PrimaryMouseButtonSwitch) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrimaryMouseButtonSwitch).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13420,6 +15679,9 @@ func (p *ReportDeviceCpuInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceCpuInfo) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceCpuInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13454,8 +15716,54 @@ func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) UnmarshalAs(m json.RawMessag
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 658. PerAppTimeLimitsWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type PerAppTimeLimitsWhitelist struct {
+	Stat Status
+	Val  *PerAppTimeLimitsWhitelistValue
+}
+
+type PerAppTimeLimitsWhitelistValue struct {
+	AppList []*PerAppTimeLimitsWhitelistValueAppList `json:"app_list,omitempty"`
+	UrlList []string                                 `json:"url_list,omitempty"`
+}
+
+type PerAppTimeLimitsWhitelistValueAppList struct {
+	AppId   string `json:"app_id"`
+	AppType string `json:"app_type"`
+}
+
+func (p *PerAppTimeLimitsWhitelist) Name() string          { return "PerAppTimeLimitsWhitelist" }
+func (p *PerAppTimeLimitsWhitelist) Field() string         { return "" }
+func (p *PerAppTimeLimitsWhitelist) Scope() Scope          { return ScopeUser }
+func (p *PerAppTimeLimitsWhitelist) Status() Status        { return p.Stat }
+func (p *PerAppTimeLimitsWhitelist) UntypedV() interface{} { return p.Val }
+func (p *PerAppTimeLimitsWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v *PerAppTimeLimitsWhitelistValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as *PerAppTimeLimitsWhitelistValue", m)
+	}
+	return v, nil
+}
+func (p *PerAppTimeLimitsWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PerAppTimeLimitsWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *PerAppTimeLimitsWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.(*PerAppTimeLimitsWhitelistValue)
 	if !ok {
 		return ok
 	}
@@ -13482,6 +15790,10 @@ func (p *AccessibilityShortcutsEnabled) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AccessibilityShortcutsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AccessibilityShortcutsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AccessibilityShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13511,6 +15823,9 @@ func (p *ReportDeviceGraphicsStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceGraphicsStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceGraphicsStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13545,8 +15860,44 @@ func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) UnmarshalAs(m json.RawM
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 664. PrintingAPIExtensionsWhitelist
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type PrintingAPIExtensionsWhitelist struct {
+	Stat Status
+	Val  []string
+}
+
+func (p *PrintingAPIExtensionsWhitelist) Name() string          { return "PrintingAPIExtensionsWhitelist" }
+func (p *PrintingAPIExtensionsWhitelist) Field() string         { return "" }
+func (p *PrintingAPIExtensionsWhitelist) Scope() Scope          { return ScopeUser }
+func (p *PrintingAPIExtensionsWhitelist) Status() Status        { return p.Stat }
+func (p *PrintingAPIExtensionsWhitelist) UntypedV() interface{} { return p.Val }
+func (p *PrintingAPIExtensionsWhitelist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []string", m)
+	}
+	return v, nil
+}
+func (p *PrintingAPIExtensionsWhitelist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingAPIExtensionsWhitelist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
+func (p *PrintingAPIExtensionsWhitelist) Equal(iface interface{}) bool {
+	v, ok := iface.([]string)
 	if !ok {
 		return ok
 	}
@@ -13576,6 +15927,9 @@ func (p *ReportDeviceCrashReportInfo) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *ReportDeviceCrashReportInfo) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceCrashReportInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13604,6 +15958,10 @@ func (p *ScreenCaptureAllowed) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ScreenCaptureAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenCaptureAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ScreenCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13645,6 +16003,9 @@ func (p *DeviceMinimumVersion) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *DeviceMinimumVersion) SetProto(blob *Blob) {
+
+}
 func (p *DeviceMinimumVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceMinimumVersionValue)
 	if !ok {
@@ -13673,6 +16034,9 @@ func (p *ReportDeviceTimezoneInfo) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceTimezoneInfo) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceTimezoneInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13710,6 +16074,9 @@ func (p *SystemProxySettings) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *SystemProxySettings) SetProto(blob *Blob) {
+
+}
 func (p *SystemProxySettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*SystemProxySettingsValue)
 	if !ok {
@@ -13738,6 +16105,9 @@ func (p *DeviceChromeVariations) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceChromeVariations) SetProto(blob *Blob) {
+
 }
 func (p *DeviceChromeVariations) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -13772,6 +16142,9 @@ func (p *DeviceLoginScreenPrivacyScreenEnabled) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPrivacyScreenEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenPrivacyScreenEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -13800,6 +16173,10 @@ func (p *PrivacyScreenEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PrivacyScreenEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrivacyScreenEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrivacyScreenEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13830,6 +16207,10 @@ func (p *ForceLogoutUnauthenticatedUserEnabled) UnmarshalAs(m json.RawMessage) (
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ForceLogoutUnauthenticatedUserEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ForceLogoutUnauthenticatedUserEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ForceLogoutUnauthenticatedUserEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13868,6 +16249,10 @@ func (p *RequiredClientCertificateForUser) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as []*RequiredClientCertificateForUserValue", m)
 	}
 	return v, nil
+}
+func (p *RequiredClientCertificateForUser) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RequiredClientCertificateForUser).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RequiredClientCertificateForUser) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RequiredClientCertificateForUserValue)
@@ -13911,6 +16296,9 @@ func (p *RequiredClientCertificateForDevice) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *RequiredClientCertificateForDevice) SetProto(blob *Blob) {
+
+}
 func (p *RequiredClientCertificateForDevice) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RequiredClientCertificateForDeviceValue)
 	if !ok {
@@ -13939,6 +16327,9 @@ func (p *ReportDeviceMemoryInfo) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceMemoryInfo) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceMemoryInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -13969,6 +16360,10 @@ func (p *SafeBrowsingProtectionLevel) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *SafeBrowsingProtectionLevel) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SafeBrowsingProtectionLevel).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SafeBrowsingProtectionLevel) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -13997,6 +16392,10 @@ func (p *AdvancedProtectionAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AdvancedProtectionAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AdvancedProtectionAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AdvancedProtectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14027,6 +16426,9 @@ func (p *ReportDeviceBacklightInfo) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *ReportDeviceBacklightInfo) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceBacklightInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14054,6 +16456,10 @@ func (p *ScrollToTextFragmentEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ScrollToTextFragmentEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScrollToTextFragmentEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ScrollToTextFragmentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14083,6 +16489,10 @@ func (p *SystemFeaturesDisableList) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SystemFeaturesDisableList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SystemFeaturesDisableList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SystemFeaturesDisableList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -14114,6 +16524,10 @@ func (p *CrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *CrostiniArcAdbSideloadingAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CrostiniArcAdbSideloadingAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -14143,6 +16557,10 @@ func (p *FloatingAccessibilityMenuEnabled) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *FloatingAccessibilityMenuEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FloatingAccessibilityMenuEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *FloatingAccessibilityMenuEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14171,6 +16589,10 @@ func (p *PrintingMaxSheetsAllowed) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintingMaxSheetsAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingMaxSheetsAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintingMaxSheetsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14229,6 +16651,10 @@ func (p *OnFileAttachedEnterpriseConnector) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *OnFileAttachedEnterpriseConnector) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.OnFileAttachedEnterpriseConnector).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *OnFileAttachedEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileAttachedEnterpriseConnectorValue)
 	if !ok {
@@ -14262,6 +16688,9 @@ func (p *DeviceCrostiniArcAdbSideloadingAllowed) UnmarshalAs(m json.RawMessage) 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DeviceCrostiniArcAdbSideloadingAllowed) SetProto(blob *Blob) {
+
 }
 func (p *DeviceCrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -14322,6 +16751,10 @@ func (p *OnFileDownloadedEnterpriseConnector) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *OnFileDownloadedEnterpriseConnector) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.OnFileDownloadedEnterpriseConnector).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *OnFileDownloadedEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnFileDownloadedEnterpriseConnectorValue)
 	if !ok {
@@ -14380,6 +16813,10 @@ func (p *OnBulkDataEntryEnterpriseConnector) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *OnBulkDataEntryEnterpriseConnector) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.OnBulkDataEntryEnterpriseConnector).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *OnBulkDataEntryEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnBulkDataEntryEnterpriseConnectorValue)
 	if !ok {
@@ -14408,6 +16845,10 @@ func (p *PluginVmUserId) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *PluginVmUserId) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PluginVmUserId).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PluginVmUserId) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -14451,6 +16892,10 @@ func (p *OnSecurityEventEnterpriseConnector) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *OnSecurityEventEnterpriseConnector) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.OnSecurityEventEnterpriseConnector).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *OnSecurityEventEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnSecurityEventEnterpriseConnectorValue)
 	if !ok {
@@ -14479,6 +16924,10 @@ func (p *AutoOpenFileTypes) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoOpenFileTypes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoOpenFileTypes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AutoOpenFileTypes) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -14509,6 +16958,10 @@ func (p *LoginDisplayPasswordButtonEnabled) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *LoginDisplayPasswordButtonEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LoginDisplayPasswordButtonEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *LoginDisplayPasswordButtonEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14537,6 +16990,9 @@ func (p *ReportDeviceAppInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceAppInfo) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceAppInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14567,6 +17023,10 @@ func (p *AccessibilityImageLabelsEnabled) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *AccessibilityImageLabelsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AccessibilityImageLabelsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AccessibilityImageLabelsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14595,6 +17055,10 @@ func (p *UserPluginVmAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *UserPluginVmAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserPluginVmAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *UserPluginVmAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14625,6 +17089,10 @@ func (p *AutoOpenAllowedForURLs) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *AutoOpenAllowedForURLs) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoOpenAllowedForURLs).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AutoOpenAllowedForURLs) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -14653,6 +17121,9 @@ func (p *ReportDeviceBluetoothInfo) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceBluetoothInfo) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceBluetoothInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14683,6 +17154,9 @@ func (p *ReportDeviceFanInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *ReportDeviceFanInfo) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceFanInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14711,6 +17185,9 @@ func (p *ReportDeviceVpdInfo) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceVpdInfo) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceVpdInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14741,6 +17218,10 @@ func (p *EnableExperimentalPolicies) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *EnableExperimentalPolicies) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnableExperimentalPolicies).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *EnableExperimentalPolicies) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -14770,6 +17251,10 @@ func (p *PluginVmDataCollectionAllowed) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *PluginVmDataCollectionAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PluginVmDataCollectionAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PluginVmDataCollectionAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14798,6 +17283,10 @@ func (p *IntensiveWakeUpThrottlingEnabled) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *IntensiveWakeUpThrottlingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IntensiveWakeUpThrottlingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *IntensiveWakeUpThrottlingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14830,6 +17319,9 @@ func (p *DeviceMinimumVersionAueMessage) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceMinimumVersionAueMessage) SetProto(blob *Blob) {
+
+}
 func (p *DeviceMinimumVersionAueMessage) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -14861,6 +17353,10 @@ func (p *DefaultSearchProviderContextMenuAccessAllowed) UnmarshalAs(m json.RawMe
 	}
 	return v, nil
 }
+func (p *DefaultSearchProviderContextMenuAccessAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSearchProviderContextMenuAccessAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSearchProviderContextMenuAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14889,6 +17385,10 @@ func (p *CrostiniPortForwardingAllowed) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CrostiniPortForwardingAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CrostiniPortForwardingAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CrostiniPortForwardingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -14927,6 +17427,10 @@ func (p *VirtualKeyboardFeatures) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *VirtualKeyboardFeatures) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.VirtualKeyboardFeatures).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *VirtualKeyboardFeatures) Equal(iface interface{}) bool {
 	v, ok := iface.(*VirtualKeyboardFeaturesValue)
 	if !ok {
@@ -14957,6 +17461,10 @@ func (p *PinUnlockAutosubmitEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *PinUnlockAutosubmitEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PinUnlockAutosubmitEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PinUnlockAutosubmitEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -14985,6 +17493,10 @@ func (p *LockScreenReauthenticationEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LockScreenReauthenticationEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LockScreenReauthenticationEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *LockScreenReauthenticationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15015,6 +17527,10 @@ func (p *DeletePrintJobHistoryAllowed) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *DeletePrintJobHistoryAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DeletePrintJobHistoryAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DeletePrintJobHistoryAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15044,6 +17560,10 @@ func (p *EmojiSuggestionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EmojiSuggestionEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EmojiSuggestionEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *EmojiSuggestionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15078,6 +17598,9 @@ func (p *ManagedGuestSessionPrivacyWarningsEnabled) UnmarshalAs(m json.RawMessag
 	}
 	return v, nil
 }
+func (p *ManagedGuestSessionPrivacyWarningsEnabled) SetProto(blob *Blob) {
+
+}
 func (p *ManagedGuestSessionPrivacyWarningsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15106,6 +17629,10 @@ func (p *PluginVmRequiredFreeDiskSpace) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PluginVmRequiredFreeDiskSpace) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PluginVmRequiredFreeDiskSpace).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PluginVmRequiredFreeDiskSpace) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -15136,6 +17663,10 @@ func (p *SuggestedContentEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SuggestedContentEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SuggestedContentEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SuggestedContentEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15168,6 +17699,10 @@ func (p *ExtensionInstallEventLoggingEnabled) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *ExtensionInstallEventLoggingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionInstallEventLoggingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ExtensionInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15197,6 +17732,10 @@ func (p *EnterpriseRealTimeUrlCheckMode) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *EnterpriseRealTimeUrlCheckMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnterpriseRealTimeUrlCheckMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *EnterpriseRealTimeUrlCheckMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -15224,6 +17763,10 @@ func (p *AssistantOnboardingMode) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AssistantOnboardingMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AssistantOnboardingMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AssistantOnboardingMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -15260,6 +17803,9 @@ func (p *DeviceExternalPrintServers) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceExternalPrintServers) SetProto(blob *Blob) {
+
+}
 func (p *DeviceExternalPrintServers) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceExternalPrintServersValue)
 	if !ok {
@@ -15294,6 +17840,9 @@ func (p *DeviceExternalPrintServersAllowlist) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *DeviceExternalPrintServersAllowlist) SetProto(blob *Blob) {
+
+}
 func (p *DeviceExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15322,6 +17871,10 @@ func (p *SafeBrowsingAllowlistDomains) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SafeBrowsingAllowlistDomains) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SafeBrowsingAllowlistDomains).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SafeBrowsingAllowlistDomains) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15352,6 +17905,9 @@ func (p *DevicePrintersAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *DevicePrintersAccessMode) SetProto(blob *Blob) {
+
+}
 func (p *DevicePrintersAccessMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -15380,6 +17936,9 @@ func (p *DevicePrintersBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *DevicePrintersBlocklist) SetProto(blob *Blob) {
+
 }
 func (p *DevicePrintersBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15410,6 +17969,9 @@ func (p *DevicePrintersAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *DevicePrintersAllowlist) SetProto(blob *Blob) {
+
+}
 func (p *DevicePrintersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15438,6 +18000,10 @@ func (p *URLBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *URLBlocklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.URLBlocklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *URLBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15468,6 +18034,10 @@ func (p *URLAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *URLAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.URLAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *URLAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15496,6 +18066,10 @@ func (p *ExtensionInstallAllowlist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionInstallAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExtensionInstallAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15527,6 +18101,10 @@ func (p *ShowFullUrlsInAddressBar) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *ShowFullUrlsInAddressBar) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ShowFullUrlsInAddressBar).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ShowFullUrlsInAddressBar) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15555,6 +18133,10 @@ func (p *ExtensionInstallBlocklist) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExtensionInstallBlocklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExtensionInstallBlocklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExtensionInstallBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15585,6 +18167,9 @@ func (p *ReportDeviceSystemInfo) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *ReportDeviceSystemInfo) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceSystemInfo) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -15613,6 +18198,10 @@ func (p *AutoplayAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AutoplayAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AutoplayAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AutoplayAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15648,6 +18237,9 @@ func (p *DevicePrinters) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *DevicePrinters) SetProto(blob *Blob) {
+
+}
 func (p *DevicePrinters) Equal(iface interface{}) bool {
 	v, ok := iface.(*DevicePrintersValue)
 	if !ok {
@@ -15676,6 +18268,10 @@ func (p *AuthNegotiateDelegateAllowlist) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *AuthNegotiateDelegateAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AuthNegotiateDelegateAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AuthNegotiateDelegateAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -15706,6 +18302,10 @@ func (p *AuthServerAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *AuthServerAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AuthServerAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AuthServerAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -15734,6 +18334,10 @@ func (p *InsecureFormsWarningsEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *InsecureFormsWarningsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.InsecureFormsWarningsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *InsecureFormsWarningsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -15764,6 +18368,10 @@ func (p *SpellcheckLanguageBlocklist) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *SpellcheckLanguageBlocklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SpellcheckLanguageBlocklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SpellcheckLanguageBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15792,6 +18400,10 @@ func (p *ExternalPrintServersAllowlist) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExternalPrintServersAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExternalPrintServersAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15822,6 +18434,10 @@ func (p *DefaultSerialGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *DefaultSerialGuardSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSerialGuardSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultSerialGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -15850,6 +18466,10 @@ func (p *SerialAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SerialAskForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SerialAskForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SerialAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15880,6 +18500,10 @@ func (p *SerialBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *SerialBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SerialBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SerialBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15908,6 +18532,10 @@ func (p *DefaultSensorsSetting) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultSensorsSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultSensorsSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultSensorsSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -15938,6 +18566,10 @@ func (p *SensorsAllowedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *SensorsAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SensorsAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SensorsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -15966,6 +18598,10 @@ func (p *SensorsBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SensorsBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SensorsBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SensorsBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -15999,6 +18635,9 @@ func (p *DeviceChannelDowngradeBehavior) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceChannelDowngradeBehavior) SetProto(blob *Blob) {
+
+}
 func (p *DeviceChannelDowngradeBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -16027,6 +18666,10 @@ func (p *NoteTakingAppsLockScreenAllowlist) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *NoteTakingAppsLockScreenAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NoteTakingAppsLockScreenAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NoteTakingAppsLockScreenAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16057,6 +18700,10 @@ func (p *NearbyShareAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NearbyShareAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NearbyShareAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NearbyShareAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16097,6 +18744,10 @@ func (p *PerAppTimeLimitsAllowlist) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *PerAppTimeLimitsAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PerAppTimeLimitsAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PerAppTimeLimitsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.(*PerAppTimeLimitsAllowlistValue)
 	if !ok {
@@ -16130,6 +18781,9 @@ func (p *DeviceShowLowDiskSpaceNotification) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DeviceShowLowDiskSpaceNotification) SetProto(blob *Blob) {
+
+}
 func (p *DeviceShowLowDiskSpaceNotification) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16159,6 +18813,9 @@ func (p *DeviceUserAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *DeviceUserAllowlist) SetProto(blob *Blob) {
+
+}
 func (p *DeviceUserAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16186,6 +18843,9 @@ func (p *UsbDetachableAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as []*RefUsbDeviceIdInclusive", m)
 	}
 	return v, nil
+}
+func (p *UsbDetachableAllowlist) SetProto(blob *Blob) {
+
 }
 func (p *UsbDetachableAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefUsbDeviceIdInclusive)
@@ -16218,6 +18878,10 @@ func (p *InsecurePrivateNetworkRequestsAllowed) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *InsecurePrivateNetworkRequestsAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.InsecurePrivateNetworkRequestsAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *InsecurePrivateNetworkRequestsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16249,6 +18913,10 @@ func (p *InsecurePrivateNetworkRequestsAllowedForUrls) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *InsecurePrivateNetworkRequestsAllowedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.InsecurePrivateNetworkRequestsAllowedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16278,6 +18946,10 @@ func (p *UserPrintersAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *UserPrintersAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserPrintersAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UserPrintersAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16306,6 +18978,10 @@ func (p *Printers) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *Printers) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.Printers).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *Printers) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16341,6 +19017,10 @@ func (p *PrintersBulkConfiguration) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *PrintersBulkConfiguration) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintersBulkConfiguration).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintersBulkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(*PrintersBulkConfigurationValue)
 	if !ok {
@@ -16369,6 +19049,9 @@ func (p *DeviceReleaseLtsTag) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceReleaseLtsTag) SetProto(blob *Blob) {
+
 }
 func (p *DeviceReleaseLtsTag) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16399,6 +19082,10 @@ func (p *PrintersBulkAccessMode) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PrintersBulkAccessMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintersBulkAccessMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintersBulkAccessMode) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -16427,6 +19114,10 @@ func (p *DefaultFileSystemReadGuardSetting) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultFileSystemReadGuardSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultFileSystemReadGuardSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultFileSystemReadGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -16459,6 +19150,10 @@ func (p *DefaultFileSystemWriteGuardSetting) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DefaultFileSystemWriteGuardSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultFileSystemWriteGuardSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DefaultFileSystemWriteGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -16487,6 +19182,10 @@ func (p *FileSystemReadAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemReadAskForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FileSystemReadAskForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *FileSystemReadAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16517,6 +19216,10 @@ func (p *FileSystemReadBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *FileSystemReadBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FileSystemReadBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *FileSystemReadBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16545,6 +19248,10 @@ func (p *FileSystemWriteAskForUrls) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *FileSystemWriteAskForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FileSystemWriteAskForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *FileSystemWriteAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16575,6 +19282,10 @@ func (p *FileSystemWriteBlockedForUrls) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *FileSystemWriteBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FileSystemWriteBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *FileSystemWriteBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16603,6 +19314,10 @@ func (p *PrintersBulkBlocklist) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrintersBulkBlocklist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintersBulkBlocklist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintersBulkBlocklist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16633,6 +19348,10 @@ func (p *PrintersBulkAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *PrintersBulkAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintersBulkAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintersBulkAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16662,6 +19381,10 @@ func (p *LookalikeWarningAllowlistDomains) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *LookalikeWarningAllowlistDomains) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LookalikeWarningAllowlistDomains).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *LookalikeWarningAllowlistDomains) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16690,6 +19413,10 @@ func (p *PrintingAPIExtensionsAllowlist) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *PrintingAPIExtensionsAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintingAPIExtensionsAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintingAPIExtensionsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16721,6 +19448,10 @@ func (p *QuickUnlockModeAllowlist) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *QuickUnlockModeAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuickUnlockModeAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *QuickUnlockModeAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -16749,6 +19480,10 @@ func (p *AttestationExtensionAllowlist) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *AttestationExtensionAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AttestationExtensionAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AttestationExtensionAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -16800,6 +19535,10 @@ func (p *DataLeakPreventionRulesList) UnmarshalAs(m json.RawMessage) (interface{
 	}
 	return v, nil
 }
+func (p *DataLeakPreventionRulesList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DataLeakPreventionRulesList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DataLeakPreventionRulesList) Equal(iface interface{}) bool {
 	v, ok := iface.([]*DataLeakPreventionRulesListValue)
 	if !ok {
@@ -16827,6 +19566,10 @@ func (p *WebRtcAllowLegacyTLSProtocols) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *WebRtcAllowLegacyTLSProtocols) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebRtcAllowLegacyTLSProtocols).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *WebRtcAllowLegacyTLSProtocols) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16856,6 +19599,10 @@ func (p *MediaRecommendationsEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *MediaRecommendationsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.MediaRecommendationsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *MediaRecommendationsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -16888,6 +19635,9 @@ func (p *DeviceFamilyLinkAccountsAllowed) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *DeviceFamilyLinkAccountsAllowed) SetProto(blob *Blob) {
+
+}
 func (p *DeviceFamilyLinkAccountsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -16916,6 +19666,10 @@ func (p *EduCoexistenceToSVersion) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *EduCoexistenceToSVersion) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EduCoexistenceToSVersion).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *EduCoexistenceToSVersion) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -16951,6 +19705,10 @@ func (p *BrowsingDataLifetime) UnmarshalAs(m json.RawMessage) (interface{}, erro
 	}
 	return v, nil
 }
+func (p *BrowsingDataLifetime) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.BrowsingDataLifetime).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *BrowsingDataLifetime) Equal(iface interface{}) bool {
 	v, ok := iface.([]*BrowsingDataLifetimeValue)
 	if !ok {
@@ -16979,6 +19737,10 @@ func (p *IntranetRedirectBehavior) UnmarshalAs(m json.RawMessage) (interface{}, 
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *IntranetRedirectBehavior) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.IntranetRedirectBehavior).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *IntranetRedirectBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17016,6 +19778,9 @@ func (p *DeviceArcDataSnapshotHours) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceArcDataSnapshotHours) SetProto(blob *Blob) {
+
+}
 func (p *DeviceArcDataSnapshotHours) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceArcDataSnapshotHoursValue)
 	if !ok {
@@ -17046,6 +19811,10 @@ func (p *PhoneHubAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *PhoneHubAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PhoneHubAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PhoneHubAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17075,6 +19844,10 @@ func (p *PhoneHubNotificationsAllowed) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *PhoneHubNotificationsAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PhoneHubNotificationsAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PhoneHubNotificationsAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17103,6 +19876,10 @@ func (p *PhoneHubTaskContinuationAllowed) UnmarshalAs(m json.RawMessage) (interf
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PhoneHubTaskContinuationAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PhoneHubTaskContinuationAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PhoneHubTaskContinuationAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17134,6 +19911,10 @@ func (p *WifiSyncAndroidAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *WifiSyncAndroidAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WifiSyncAndroidAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WifiSyncAndroidAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17162,6 +19943,10 @@ func (p *SecurityTokenSessionBehavior) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *SecurityTokenSessionBehavior) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SecurityTokenSessionBehavior).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SecurityTokenSessionBehavior) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -17194,6 +19979,10 @@ func (p *SecurityTokenSessionNotificationSeconds) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *SecurityTokenSessionNotificationSeconds) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SecurityTokenSessionNotificationSeconds).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SecurityTokenSessionNotificationSeconds) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -17221,6 +20010,10 @@ func (p *TargetBlankImpliesNoOpener) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *TargetBlankImpliesNoOpener) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.TargetBlankImpliesNoOpener).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *TargetBlankImpliesNoOpener) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17251,6 +20044,10 @@ func (p *FullscreenAlertEnabled) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *FullscreenAlertEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FullscreenAlertEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *FullscreenAlertEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17279,6 +20076,10 @@ func (p *NTPCardsVisible) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTPCardsVisible) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NTPCardsVisible).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NTPCardsVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17309,6 +20110,10 @@ func (p *BasicAuthOverHttpEnabled) UnmarshalAs(m json.RawMessage) (interface{}, 
 	}
 	return v, nil
 }
+func (p *BasicAuthOverHttpEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.BasicAuthOverHttpEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *BasicAuthOverHttpEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17338,6 +20143,10 @@ func (p *SystemFeaturesDisableMode) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *SystemFeaturesDisableMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SystemFeaturesDisableMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SystemFeaturesDisableMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -17366,6 +20175,10 @@ func (p *ClearBrowsingDataOnExitList) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ClearBrowsingDataOnExitList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ClearBrowsingDataOnExitList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ClearBrowsingDataOnExitList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17402,6 +20215,10 @@ func (p *ManagedConfigurationPerOrigin) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *ManagedConfigurationPerOrigin) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ManagedConfigurationPerOrigin).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ManagedConfigurationPerOrigin) Equal(iface interface{}) bool {
 	v, ok := iface.([]*ManagedConfigurationPerOriginValue)
 	if !ok {
@@ -17430,6 +20247,10 @@ func (p *BrowserLabsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *BrowserLabsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.BrowserLabsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *BrowserLabsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17464,6 +20285,9 @@ func (p *DeviceAllowMGSToStoreDisplayProperties) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DeviceAllowMGSToStoreDisplayProperties) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAllowMGSToStoreDisplayProperties) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17493,6 +20317,10 @@ func (p *SSLErrorOverrideAllowedForOrigins) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *SSLErrorOverrideAllowedForOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SSLErrorOverrideAllowedForOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SSLErrorOverrideAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -17521,6 +20349,10 @@ func (p *GaiaOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *GaiaOfflineSigninTimeLimitDays) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.GaiaOfflineSigninTimeLimitDays).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *GaiaOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -17572,6 +20404,10 @@ func (p *SendDownloadToCloudEnterpriseConnector) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *SendDownloadToCloudEnterpriseConnector) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SendDownloadToCloudEnterpriseConnector).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SendDownloadToCloudEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*SendDownloadToCloudEnterpriseConnectorValue)
 	if !ok {
@@ -17602,6 +20438,9 @@ func (p *DeviceSystemWideTracingEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceSystemWideTracingEnabled) SetProto(blob *Blob) {
+
 }
 func (p *DeviceSystemWideTracingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17636,6 +20475,9 @@ func (p *DevicePciPeripheralDataAccessEnabled) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *DevicePciPeripheralDataAccessEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DevicePciPeripheralDataAccessEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17666,6 +20508,10 @@ func (p *ContextAwareAccessSignalsAllowlist) UnmarshalAs(m json.RawMessage) (int
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ContextAwareAccessSignalsAllowlist) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ContextAwareAccessSignalsAllowlist).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17699,6 +20545,10 @@ func (p *FetchKeepaliveDurationSecondsOnShutdown) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *FetchKeepaliveDurationSecondsOnShutdown) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FetchKeepaliveDurationSecondsOnShutdown).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *FetchKeepaliveDurationSecondsOnShutdown) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -17730,6 +20580,10 @@ func (p *SuppressDifferentOriginSubframeDialogs) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *SuppressDifferentOriginSubframeDialogs) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SuppressDifferentOriginSubframeDialogs).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SuppressDifferentOriginSubframeDialogs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17758,6 +20612,9 @@ func (p *DeviceBorealisAllowed) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeviceBorealisAllowed) SetProto(blob *Blob) {
+
 }
 func (p *DeviceBorealisAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17788,6 +20645,10 @@ func (p *UserBorealisAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error
 	}
 	return v, nil
 }
+func (p *UserBorealisAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserBorealisAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UserBorealisAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17817,6 +20678,10 @@ func (p *LacrosSecondaryProfilesAllowed) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LacrosSecondaryProfilesAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LacrosSecondaryProfilesAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *LacrosSecondaryProfilesAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -17849,6 +20714,10 @@ func (p *GaiaLockScreenOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *GaiaLockScreenOfflineSigninTimeLimitDays) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.GaiaLockScreenOfflineSigninTimeLimitDays).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -17880,6 +20749,10 @@ func (p *SamlLockScreenOfflineSigninTimeLimitDays) UnmarshalAs(m json.RawMessage
 	}
 	return v, nil
 }
+func (p *SamlLockScreenOfflineSigninTimeLimitDays) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SamlLockScreenOfflineSigninTimeLimitDays).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SamlLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -17910,6 +20783,9 @@ func (p *ReportDevicePrintJobs) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *ReportDevicePrintJobs) SetProto(blob *Blob) {
+
+}
 func (p *ReportDevicePrintJobs) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -17938,6 +20814,10 @@ func (p *SerialAllowAllPortsForUrls) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *SerialAllowAllPortsForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SerialAllowAllPortsForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SerialAllowAllPortsForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -17978,6 +20858,10 @@ func (p *SerialAllowUsbDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *SerialAllowUsbDevicesForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SerialAllowUsbDevicesForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SerialAllowUsbDevicesForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]*SerialAllowUsbDevicesForUrlsValue)
 	if !ok {
@@ -18006,6 +20890,10 @@ func (p *CECPQ2Enabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *CECPQ2Enabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CECPQ2Enabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *CECPQ2Enabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18036,6 +20924,10 @@ func (p *WebRtcIPHandling) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *WebRtcIPHandling) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebRtcIPHandling).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WebRtcIPHandling) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -18064,6 +20956,10 @@ func (p *PdfAnnotationsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *PdfAnnotationsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PdfAnnotationsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PdfAnnotationsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18096,6 +20992,9 @@ func (p *DeviceAllowedBluetoothServices) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceAllowedBluetoothServices) SetProto(blob *Blob) {
+
+}
 func (p *DeviceAllowedBluetoothServices) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18124,6 +21023,10 @@ func (p *ExplicitlyAllowedNetworkPorts) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ExplicitlyAllowedNetworkPorts) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExplicitlyAllowedNetworkPorts).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ExplicitlyAllowedNetworkPorts) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18156,6 +21059,9 @@ func (p *DeviceDebugPacketCaptureAllowed) UnmarshalAs(m json.RawMessage) (interf
 	}
 	return v, nil
 }
+func (p *DeviceDebugPacketCaptureAllowed) SetProto(blob *Blob) {
+
+}
 func (p *DeviceDebugPacketCaptureAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18187,6 +21093,10 @@ func (p *SuggestLogoutAfterClosingLastWindow) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *SuggestLogoutAfterClosingLastWindow) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SuggestLogoutAfterClosingLastWindow).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SuggestLogoutAfterClosingLastWindow) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18216,6 +21126,10 @@ func (p *SharedArrayBufferUnrestrictedAccessAllowed) UnmarshalAs(m json.RawMessa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SharedArrayBufferUnrestrictedAccessAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SharedArrayBufferUnrestrictedAccessAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SharedArrayBufferUnrestrictedAccessAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18255,6 +21169,10 @@ func (p *RelaunchWindow) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *RelaunchWindow) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RelaunchWindow).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RelaunchWindow) Equal(iface interface{}) bool {
 	v, ok := iface.(*RelaunchWindowValue)
 	if !ok {
@@ -18283,6 +21201,10 @@ func (p *LacrosAvailability) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *LacrosAvailability) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LacrosAvailability).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *LacrosAvailability) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -18314,6 +21236,10 @@ func (p *DataLeakPreventionReportingEnabled) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *DataLeakPreventionReportingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DataLeakPreventionReportingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DataLeakPreventionReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18342,6 +21268,10 @@ func (p *AdditionalDnsQueryTypesEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *AdditionalDnsQueryTypesEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AdditionalDnsQueryTypesEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *AdditionalDnsQueryTypesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18372,6 +21302,10 @@ func (p *ManagedAccountsSigninRestriction) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *ManagedAccountsSigninRestriction) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ManagedAccountsSigninRestriction).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ManagedAccountsSigninRestriction) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -18400,6 +21334,10 @@ func (p *LockIconInAddressBarEnabled) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *LockIconInAddressBarEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LockIconInAddressBarEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *LockIconInAddressBarEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18439,6 +21377,9 @@ func (p *DeviceScheduledReboot) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *DeviceScheduledReboot) SetProto(blob *Blob) {
+
+}
 func (p *DeviceScheduledReboot) Equal(iface interface{}) bool {
 	v, ok := iface.(*DeviceScheduledRebootValue)
 	if !ok {
@@ -18468,6 +21409,9 @@ func (p *ReportDeviceLoginLogout) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ReportDeviceLoginLogout) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceLoginLogout) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18495,6 +21439,10 @@ func (p *RemoteDebuggingAllowed) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteDebuggingAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteDebuggingAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RemoteDebuggingAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18525,6 +21473,10 @@ func (p *DeviceAttributesAllowedForOrigins) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceAttributesAllowedForOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DeviceAttributesAllowedForOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DeviceAttributesAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18553,6 +21505,10 @@ func (p *DefaultJavaScriptJitSetting) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultJavaScriptJitSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultJavaScriptJitSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultJavaScriptJitSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18583,6 +21539,10 @@ func (p *JavaScriptJitAllowedForSites) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *JavaScriptJitAllowedForSites) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.JavaScriptJitAllowedForSites).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *JavaScriptJitAllowedForSites) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18611,6 +21571,10 @@ func (p *JavaScriptJitBlockedForSites) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *JavaScriptJitBlockedForSites) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.JavaScriptJitBlockedForSites).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *JavaScriptJitBlockedForSites) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18641,6 +21605,10 @@ func (p *HttpsOnlyMode) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *HttpsOnlyMode) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.HttpsOnlyMode).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *HttpsOnlyMode) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
 	if !ok {
@@ -18669,6 +21637,9 @@ func (p *ReportDeviceAudioStatus) UnmarshalAs(m json.RawMessage) (interface{}, e
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceAudioStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceAudioStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18701,6 +21672,9 @@ func (p *DeviceHostnameUserConfigurable) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *DeviceHostnameUserConfigurable) SetProto(blob *Blob) {
+
+}
 func (p *DeviceHostnameUserConfigurable) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18732,6 +21706,9 @@ func (p *ReportDeviceNetworkConfiguration) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *ReportDeviceNetworkConfiguration) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceNetworkConfiguration) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18760,6 +21737,9 @@ func (p *ReportDeviceNetworkStatus) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceNetworkStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceNetworkStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -18790,6 +21770,10 @@ func (p *DataLeakPreventionClipboardCheckSizeLimit) UnmarshalAs(m json.RawMessag
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DataLeakPreventionClipboardCheckSizeLimit) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DataLeakPreventionClipboardCheckSizeLimit).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DataLeakPreventionClipboardCheckSizeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -18824,6 +21808,10 @@ func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) UnmarshalAs(m 
 	}
 	return v, nil
 }
+func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RestrictedManagedGuestSessionExtensionCleanupExemptList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18854,6 +21842,10 @@ func (p *DisplayCapturePermissionsPolicyEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *DisplayCapturePermissionsPolicyEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DisplayCapturePermissionsPolicyEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *DisplayCapturePermissionsPolicyEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -18882,6 +21874,10 @@ func (p *ScreenCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *ScreenCaptureAllowedByOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ScreenCaptureAllowedByOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ScreenCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18912,6 +21908,10 @@ func (p *WindowCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *WindowCaptureAllowedByOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WindowCaptureAllowedByOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WindowCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -18940,6 +21940,10 @@ func (p *TabCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *TabCaptureAllowedByOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.TabCaptureAllowedByOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *TabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -18972,6 +21976,10 @@ func (p *SameOriginTabCaptureAllowedByOrigins) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *SameOriginTabCaptureAllowedByOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SameOriginTabCaptureAllowedByOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *SameOriginTabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -19003,6 +22011,10 @@ func (p *AssistantVoiceMatchEnabledDuringOobe) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *AssistantVoiceMatchEnabledDuringOobe) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AssistantVoiceMatchEnabledDuringOobe).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AssistantVoiceMatchEnabledDuringOobe) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19032,6 +22044,10 @@ func (p *LensRegionSearchEnabled) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *LensRegionSearchEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.LensRegionSearchEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *LensRegionSearchEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19060,6 +22076,10 @@ func (p *ArcAppToWebAppSharingEnabled) UnmarshalAs(m json.RawMessage) (interface
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ArcAppToWebAppSharingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ArcAppToWebAppSharingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ArcAppToWebAppSharingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19092,6 +22112,10 @@ func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EnhancedNetworkVoicesInSelectToSpeakAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19120,6 +22144,10 @@ func (p *PrintRasterizePdfDpi) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *PrintRasterizePdfDpi) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintRasterizePdfDpi).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *PrintRasterizePdfDpi) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -19151,6 +22179,9 @@ func (p *DeviceTargetVersionSelector) UnmarshalAs(m json.RawMessage) (interface{
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
 	return v, nil
+}
+func (p *DeviceTargetVersionSelector) SetProto(blob *Blob) {
+
 }
 func (p *DeviceTargetVersionSelector) Equal(iface interface{}) bool {
 	v, ok := iface.(string)
@@ -19185,6 +22216,9 @@ func (p *DeviceRestrictedManagedGuestSessionEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceRestrictedManagedGuestSessionEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19214,6 +22248,10 @@ func (p *PrintPdfAsImageDefault) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *PrintPdfAsImageDefault) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PrintPdfAsImageDefault).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PrintPdfAsImageDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19241,6 +22279,10 @@ func (p *FullRestoreEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FullRestoreEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FullRestoreEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *FullRestoreEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19270,6 +22312,10 @@ func (p *GhostWindowEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *GhostWindowEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.GhostWindowEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *GhostWindowEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19298,6 +22344,9 @@ func (p *ReportDeviceSecurityStatus) UnmarshalAs(m json.RawMessage) (interface{}
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportDeviceSecurityStatus) SetProto(blob *Blob) {
+
 }
 func (p *ReportDeviceSecurityStatus) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19329,6 +22378,9 @@ func (p *EnableDeviceGranularReporting) UnmarshalAs(m json.RawMessage) (interfac
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EnableDeviceGranularReporting) SetProto(blob *Blob) {
+
 }
 func (p *EnableDeviceGranularReporting) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19363,6 +22415,9 @@ func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) UnmarshalAs(m js
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19394,6 +22449,10 @@ func (p *PromptOnMultipleMatchingCertificates) UnmarshalAs(m json.RawMessage) (i
 	}
 	return v, nil
 }
+func (p *PromptOnMultipleMatchingCertificates) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PromptOnMultipleMatchingCertificates).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PromptOnMultipleMatchingCertificates) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19421,6 +22480,10 @@ func (p *SideSearchEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SideSearchEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SideSearchEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SideSearchEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19452,6 +22515,10 @@ func (p *AccessCodeCastEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 	}
 	return v, nil
 }
+func (p *AccessCodeCastEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AccessCodeCastEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AccessCodeCastEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19482,6 +22549,10 @@ func (p *AccessCodeCastDeviceDuration) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *AccessCodeCastDeviceDuration) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AccessCodeCastDeviceDuration).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AccessCodeCastDeviceDuration) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19511,6 +22582,10 @@ func (p *DeskTemplatesEnabled) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *DeskTemplatesEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DeskTemplatesEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DeskTemplatesEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19547,6 +22622,10 @@ func (p *PreconfiguredDeskTemplates) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *PreconfiguredDeskTemplates) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PreconfiguredDeskTemplates).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PreconfiguredDeskTemplates) Equal(iface interface{}) bool {
 	v, ok := iface.(*PreconfiguredDeskTemplatesValue)
 	if !ok {
@@ -19577,6 +22656,10 @@ func (p *FastPairEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *FastPairEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FastPairEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *FastPairEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19604,6 +22687,10 @@ func (p *SandboxExternalProtocolBlocked) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *SandboxExternalProtocolBlocked) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.SandboxExternalProtocolBlocked).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *SandboxExternalProtocolBlocked) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19639,6 +22726,9 @@ func (p *ReportDeviceNetworkTelemetryCollectionRateMs) UnmarshalAs(m json.RawMes
 	}
 	return v, nil
 }
+func (p *ReportDeviceNetworkTelemetryCollectionRateMs) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19673,6 +22763,9 @@ func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) UnmarshalAs(m json.Raw
 	}
 	return v, nil
 }
+func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19704,6 +22797,9 @@ func (p *KioskCRXManifestUpdateURLIgnored) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *KioskCRXManifestUpdateURLIgnored) SetProto(blob *Blob) {
+
+}
 func (p *KioskCRXManifestUpdateURLIgnored) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19732,6 +22828,10 @@ func (p *QuickAnswersEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuickAnswersEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *QuickAnswersEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19762,6 +22862,10 @@ func (p *QuickAnswersDefinitionEnabled) UnmarshalAs(m json.RawMessage) (interfac
 	}
 	return v, nil
 }
+func (p *QuickAnswersDefinitionEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuickAnswersDefinitionEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *QuickAnswersDefinitionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19791,6 +22895,10 @@ func (p *QuickAnswersTranslationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 	}
 	return v, nil
 }
+func (p *QuickAnswersTranslationEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuickAnswersTranslationEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *QuickAnswersTranslationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19819,6 +22927,10 @@ func (p *QuickAnswersUnitConversionEnabled) UnmarshalAs(m json.RawMessage) (inte
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *QuickAnswersUnitConversionEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.QuickAnswersUnitConversionEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *QuickAnswersUnitConversionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19851,6 +22963,10 @@ func (p *RemoteAccessHostClipboardSizeBytes) UnmarshalAs(m json.RawMessage) (int
 	}
 	return v, nil
 }
+func (p *RemoteAccessHostClipboardSizeBytes) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostClipboardSizeBytes).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *RemoteAccessHostClipboardSizeBytes) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -19881,6 +22997,10 @@ func (p *RemoteAccessHostAllowRemoteSupportConnections) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *RemoteAccessHostAllowRemoteSupportConnections) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.RemoteAccessHostAllowRemoteSupportConnections).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *RemoteAccessHostAllowRemoteSupportConnections) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -19913,6 +23033,10 @@ func (p *UserAgentClientHintsGREASEUpdateEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *UserAgentClientHintsGREASEUpdateEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserAgentClientHintsGREASEUpdateEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UserAgentClientHintsGREASEUpdateEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19942,6 +23066,9 @@ func (p *DeviceI18nShortcutsEnabled) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *DeviceI18nShortcutsEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceI18nShortcutsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -19970,6 +23097,10 @@ func (p *HistoryClustersVisible) UnmarshalAs(m json.RawMessage) (interface{}, er
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *HistoryClustersVisible) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.HistoryClustersVisible).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *HistoryClustersVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20001,6 +23132,9 @@ func (p *ChromadToCloudMigrationEnabled) UnmarshalAs(m json.RawMessage) (interfa
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ChromadToCloudMigrationEnabled) SetProto(blob *Blob) {
+
 }
 func (p *ChromadToCloudMigrationEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20038,6 +23172,10 @@ func (p *CopyPreventionSettings) UnmarshalAs(m json.RawMessage) (interface{}, er
 	}
 	return v, nil
 }
+func (p *CopyPreventionSettings) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CopyPreventionSettings).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CopyPreventionSettings) Equal(iface interface{}) bool {
 	v, ok := iface.(*CopyPreventionSettingsValue)
 	if !ok {
@@ -20072,6 +23210,9 @@ func (p *ReportDeviceAudioStatusCheckingRateMs) UnmarshalAs(m json.RawMessage) (
 	}
 	return v, nil
 }
+func (p *ReportDeviceAudioStatusCheckingRateMs) SetProto(blob *Blob) {
+
+}
 func (p *ReportDeviceAudioStatusCheckingRateMs) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -20102,6 +23243,10 @@ func (p *KeepFullscreenWithoutNotificationUrlAllowList) UnmarshalAs(m json.RawMe
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.KeepFullscreenWithoutNotificationUrlAllowList).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20160,6 +23305,10 @@ func (p *OnPrintEnterpriseConnector) UnmarshalAs(m json.RawMessage) (interface{}
 	}
 	return v, nil
 }
+func (p *OnPrintEnterpriseConnector) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.OnPrintEnterpriseConnector).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *OnPrintEnterpriseConnector) Equal(iface interface{}) bool {
 	v, ok := iface.([]*OnPrintEnterpriseConnectorValue)
 	if !ok {
@@ -20189,37 +23338,12 @@ func (p *UserAgentReduction) UnmarshalAs(m json.RawMessage) (interface{}, error)
 	}
 	return v, nil
 }
+func (p *UserAgentReduction) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.UserAgentReduction).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *UserAgentReduction) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 933. OriginAgentClusterDefaultEnabled
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type OriginAgentClusterDefaultEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *OriginAgentClusterDefaultEnabled) Name() string          { return "OriginAgentClusterDefaultEnabled" }
-func (p *OriginAgentClusterDefaultEnabled) Field() string         { return "" }
-func (p *OriginAgentClusterDefaultEnabled) Scope() Scope          { return ScopeUser }
-func (p *OriginAgentClusterDefaultEnabled) Status() Status        { return p.Stat }
-func (p *OriginAgentClusterDefaultEnabled) UntypedV() interface{} { return p.Val }
-func (p *OriginAgentClusterDefaultEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *OriginAgentClusterDefaultEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -20249,6 +23373,9 @@ func (p *DeviceLoginScreenWebUILazyLoading) UnmarshalAs(m json.RawMessage) (inte
 	}
 	return v, nil
 }
+func (p *DeviceLoginScreenWebUILazyLoading) SetProto(blob *Blob) {
+
+}
 func (p *DeviceLoginScreenWebUILazyLoading) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20277,6 +23404,10 @@ func (p *ProjectorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ProjectorEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ProjectorEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *ProjectorEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20308,6 +23439,10 @@ func (p *PhoneHubCameraRollAllowed) UnmarshalAs(m json.RawMessage) (interface{},
 	}
 	return v, nil
 }
+func (p *PhoneHubCameraRollAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PhoneHubCameraRollAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PhoneHubCameraRollAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20336,6 +23471,10 @@ func (p *EcheAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *EcheAllowed) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.EcheAllowed).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *EcheAllowed) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20370,6 +23509,9 @@ func (p *DeviceKeylockerForStorageEncryptionEnabled) UnmarshalAs(m json.RawMessa
 	}
 	return v, nil
 }
+func (p *DeviceKeylockerForStorageEncryptionEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20398,6 +23540,9 @@ func (p *ReportCRDSessions) UnmarshalAs(m json.RawMessage) (interface{}, error) 
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *ReportCRDSessions) SetProto(blob *Blob) {
+
 }
 func (p *ReportCRDSessions) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20429,6 +23574,9 @@ func (p *DeviceRunAutomaticCleanupOnLogin) UnmarshalAs(m json.RawMessage) (inter
 	}
 	return v, nil
 }
+func (p *DeviceRunAutomaticCleanupOnLogin) SetProto(blob *Blob) {
+
+}
 func (p *DeviceRunAutomaticCleanupOnLogin) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20457,6 +23605,10 @@ func (p *NTPMiddleSlotAnnouncementVisible) UnmarshalAs(m json.RawMessage) (inter
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *NTPMiddleSlotAnnouncementVisible) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.NTPMiddleSlotAnnouncementVisible).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *NTPMiddleSlotAnnouncementVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20488,6 +23640,10 @@ func (p *CloudProfileReportingEnabled) UnmarshalAs(m json.RawMessage) (interface
 	}
 	return v, nil
 }
+func (p *CloudProfileReportingEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.CloudProfileReportingEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *CloudProfileReportingEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20516,6 +23672,10 @@ func (p *DefaultWebHidGuardSetting) UnmarshalAs(m json.RawMessage) (interface{},
 		return nil, errors.Wrapf(err, "could not read %s as int", m)
 	}
 	return v, nil
+}
+func (p *DefaultWebHidGuardSetting) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.DefaultWebHidGuardSetting).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *DefaultWebHidGuardSetting) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
@@ -20546,6 +23706,10 @@ func (p *WebHidAskForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	}
 	return v, nil
 }
+func (p *WebHidAskForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebHidAskForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *WebHidAskForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
@@ -20574,6 +23738,10 @@ func (p *WebHidBlockedForUrls) UnmarshalAs(m json.RawMessage) (interface{}, erro
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
+}
+func (p *WebHidBlockedForUrls) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.WebHidBlockedForUrls).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *WebHidBlockedForUrls) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
@@ -20606,6 +23774,10 @@ func (p *PasswordDismissCompromisedAlertEnabled) UnmarshalAs(m json.RawMessage) 
 	}
 	return v, nil
 }
+func (p *PasswordDismissCompromisedAlertEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.PasswordDismissCompromisedAlertEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *PasswordDismissCompromisedAlertEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
@@ -20637,6 +23809,10 @@ func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) UnmarshalAs(m js
 	}
 	return v, nil
 }
+func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ExemptDomainFileTypePairsFromFileTypeDownloadWarnings).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ExemptDomainFileTypePairsFromFileTypeDownloadWarnings) Equal(iface interface{}) bool {
 	v, ok := iface.([]*RefDomainFiletypePair)
 	if !ok {
@@ -20665,6 +23841,10 @@ func (p *FirstPartySetsEnabled) UnmarshalAs(m json.RawMessage) (interface{}, err
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
+}
+func (p *FirstPartySetsEnabled) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.FirstPartySetsEnabled).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
 }
 func (p *FirstPartySetsEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
@@ -20697,6 +23877,10 @@ func (p *ForceMajorVersionToMinorPositionInUserAgent) UnmarshalAs(m json.RawMess
 	}
 	return v, nil
 }
+func (p *ForceMajorVersionToMinorPositionInUserAgent) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.ForceMajorVersionToMinorPositionInUserAgent).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *ForceMajorVersionToMinorPositionInUserAgent) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
 	if !ok {
@@ -20728,37 +23912,12 @@ func (p *AllHttpAuthSchemesAllowedForOrigins) UnmarshalAs(m json.RawMessage) (in
 	}
 	return v, nil
 }
+func (p *AllHttpAuthSchemesAllowedForOrigins) SetProto(blob *Blob) {
+	policyProtoValue := reflect.ValueOf(&blob.UserPolicies.AllHttpAuthSchemesAllowedForOrigins).Elem()
+	SetUserPolicyProto(&policyProtoValue, p.Val)
+}
 func (p *AllHttpAuthSchemesAllowedForOrigins) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 951. DefaultWindowPlacementSetting
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type DefaultWindowPlacementSetting struct {
-	Stat Status
-	Val  int
-}
-
-func (p *DefaultWindowPlacementSetting) Name() string          { return "DefaultWindowPlacementSetting" }
-func (p *DefaultWindowPlacementSetting) Field() string         { return "" }
-func (p *DefaultWindowPlacementSetting) Scope() Scope          { return ScopeUser }
-func (p *DefaultWindowPlacementSetting) Status() Status        { return p.Stat }
-func (p *DefaultWindowPlacementSetting) UntypedV() interface{} { return p.Val }
-func (p *DefaultWindowPlacementSetting) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v int
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as int", m)
-	}
-	return v, nil
-}
-func (p *DefaultWindowPlacementSetting) Equal(iface interface{}) bool {
-	v, ok := iface.(int)
 	if !ok {
 		return ok
 	}
@@ -20786,146 +23945,11 @@ func (p *ReportDevicePeripherals) UnmarshalAs(m json.RawMessage) (interface{}, e
 	}
 	return v, nil
 }
+func (p *ReportDevicePeripherals) SetProto(blob *Blob) {
+
+}
 func (p *ReportDevicePeripherals) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 953. WebHidAllowAllDevicesForUrls
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type WebHidAllowAllDevicesForUrls struct {
-	Stat Status
-	Val  []string
-}
-
-func (p *WebHidAllowAllDevicesForUrls) Name() string          { return "WebHidAllowAllDevicesForUrls" }
-func (p *WebHidAllowAllDevicesForUrls) Field() string         { return "" }
-func (p *WebHidAllowAllDevicesForUrls) Scope() Scope          { return ScopeUser }
-func (p *WebHidAllowAllDevicesForUrls) Status() Status        { return p.Stat }
-func (p *WebHidAllowAllDevicesForUrls) UntypedV() interface{} { return p.Val }
-func (p *WebHidAllowAllDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []string", m)
-	}
-	return v, nil
-}
-func (p *WebHidAllowAllDevicesForUrls) Equal(iface interface{}) bool {
-	v, ok := iface.([]string)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 954. WebHidAllowDevicesForUrls
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type WebHidAllowDevicesForUrls struct {
-	Stat Status
-	Val  []*WebHidAllowDevicesForUrlsValue
-}
-
-type WebHidAllowDevicesForUrlsValue struct {
-	Devices []*WebHidAllowDevicesForUrlsValueDevices `json:"devices,omitempty"`
-	Urls    []string                                 `json:"urls,omitempty"`
-}
-
-type WebHidAllowDevicesForUrlsValueDevices struct {
-	ProductId int `json:"product_id"`
-	VendorId  int `json:"vendor_id"`
-}
-
-func (p *WebHidAllowDevicesForUrls) Name() string          { return "WebHidAllowDevicesForUrls" }
-func (p *WebHidAllowDevicesForUrls) Field() string         { return "" }
-func (p *WebHidAllowDevicesForUrls) Scope() Scope          { return ScopeUser }
-func (p *WebHidAllowDevicesForUrls) Status() Status        { return p.Stat }
-func (p *WebHidAllowDevicesForUrls) UntypedV() interface{} { return p.Val }
-func (p *WebHidAllowDevicesForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []*WebHidAllowDevicesForUrlsValue
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []*WebHidAllowDevicesForUrlsValue", m)
-	}
-	return v, nil
-}
-func (p *WebHidAllowDevicesForUrls) Equal(iface interface{}) bool {
-	v, ok := iface.([]*WebHidAllowDevicesForUrlsValue)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 955. WebHidAllowDevicesWithHidUsagesForUrls
-// This policy can be modified without rebooting.
-///////////////////////////////////////////////////////////////////////////////
-type WebHidAllowDevicesWithHidUsagesForUrls struct {
-	Stat Status
-	Val  []*WebHidAllowDevicesWithHidUsagesForUrlsValue
-}
-
-type WebHidAllowDevicesWithHidUsagesForUrlsValue struct {
-	Urls   []string                                             `json:"urls,omitempty"`
-	Usages []*WebHidAllowDevicesWithHidUsagesForUrlsValueUsages `json:"usages,omitempty"`
-}
-
-type WebHidAllowDevicesWithHidUsagesForUrlsValueUsages struct {
-	Usage     int `json:"usage"`
-	UsagePage int `json:"usage_page"`
-}
-
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) Name() string {
-	return "WebHidAllowDevicesWithHidUsagesForUrls"
-}
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) Field() string         { return "" }
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) Scope() Scope          { return ScopeUser }
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) Status() Status        { return p.Stat }
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) UntypedV() interface{} { return p.Val }
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v []*WebHidAllowDevicesWithHidUsagesForUrlsValue
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as []*WebHidAllowDevicesWithHidUsagesForUrlsValue", m)
-	}
-	return v, nil
-}
-func (p *WebHidAllowDevicesWithHidUsagesForUrls) Equal(iface interface{}) bool {
-	v, ok := iface.([]*WebHidAllowDevicesWithHidUsagesForUrlsValue)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 956. SecondaryGoogleAccountUsage
-// This is a future policy, it is not present in stable builds.
-///////////////////////////////////////////////////////////////////////////////
-type SecondaryGoogleAccountUsage struct {
-	Stat Status
-	Val  string
-}
-
-func (p *SecondaryGoogleAccountUsage) Name() string          { return "SecondaryGoogleAccountUsage" }
-func (p *SecondaryGoogleAccountUsage) Field() string         { return "" }
-func (p *SecondaryGoogleAccountUsage) Scope() Scope          { return ScopeUser }
-func (p *SecondaryGoogleAccountUsage) Status() Status        { return p.Stat }
-func (p *SecondaryGoogleAccountUsage) UntypedV() interface{} { return p.Val }
-func (p *SecondaryGoogleAccountUsage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
-	}
-	return v, nil
-}
-func (p *SecondaryGoogleAccountUsage) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
 	if !ok {
 		return ok
 	}
@@ -20957,8 +23981,40 @@ func (p *DeviceEncryptedReportingPipelineEnabled) UnmarshalAs(m json.RawMessage)
 	}
 	return v, nil
 }
+func (p *DeviceEncryptedReportingPipelineEnabled) SetProto(blob *Blob) {
+
+}
 func (p *DeviceEncryptedReportingPipelineEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 956. SecondaryGoogleAccountUsage
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type SecondaryGoogleAccountUsage struct {
+	Stat Status
+	Val  string
+}
+
+func (p *SecondaryGoogleAccountUsage) Name() string          { return "SecondaryGoogleAccountUsage" }
+func (p *SecondaryGoogleAccountUsage) Field() string         { return "" }
+func (p *SecondaryGoogleAccountUsage) Scope() Scope          { return ScopeUser }
+func (p *SecondaryGoogleAccountUsage) Status() Status        { return p.Stat }
+func (p *SecondaryGoogleAccountUsage) UntypedV() interface{} { return p.Val }
+func (p *SecondaryGoogleAccountUsage) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v string
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as string", m)
+	}
+	return v, nil
+}
+func (p *SecondaryGoogleAccountUsage) Equal(iface interface{}) bool {
+	v, ok := iface.(string)
 	if !ok {
 		return ok
 	}

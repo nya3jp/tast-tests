@@ -78,6 +78,8 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 		s.Fatal("Failed to start FakeDMS: ", err)
 	}
 
+	testing.Sleep(ctx, 5*time.Second)
+
 	// Make sure FakeDMS is running.
 	if err := fdms.Ping(ctx); err != nil {
 		s.Fatal("Failed to ping FakeDMS: ", err)
@@ -126,9 +128,9 @@ func (f *fakeDMSFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 	// Copy FakeDMS log to the current tests OutDir.
 	src := filepath.Join(f.fdmsDir, fakedms.LogFile)
 	dst := filepath.Join(s.OutDir(), fakedms.LogFile)
-	if err := fsutil.CopyFile(src, dst); err != nil {
-		s.Error("Failed to copy FakeDMS logs: ", err)
-	}
+	// if err := fsutil.CopyFile(src, dst); err != nil {
+	// 	s.Error("Failed to copy FakeDMS logs: ", err)
+	// }
 
 	// Copy FakeDMS policies to the current tests OutDir.
 	// Add prefix to avoid conflic with the Chrome fixture.
