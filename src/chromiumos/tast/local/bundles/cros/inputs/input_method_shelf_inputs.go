@@ -89,6 +89,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 	voiceInputItem := nodewith.Name("Voice").HasClass("SystemMenuButton")
 	voicePrivacyConfirmButton := nodewith.Name("Got it").HasClass("voice-got-it")
 	handwritingInputItem := nodewith.Name("Handwriting").HasClass("SystemMenuButton")
+	handwritingPrivacyConfirmButton := nodewith.Name("Got it").HasClass("button")
 	emojiInputMenuItem := nodewith.Name("Emojis").HasClass("SystemMenuButton")
 
 	voiceInputData, ok := data.VoiceMessageHello.GetInputData(testIME)
@@ -145,6 +146,11 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			its.ClickFieldAndWaitForActive(inputField),
 			ui.LeftClick(imeMenuTrayButtonFinder),
 			ui.LeftClick(handwritingInputItem),
+			// The privacy dialog does not appear on all devices.
+			ui.IfSuccessThen(
+				ui.WithTimeout(2*time.Second).WaitUntilExists(handwritingPrivacyConfirmButton),
+				ui.LeftClick(handwritingPrivacyConfirmButton),
+			),
 			func(ctx context.Context) error {
 				hwCtx, err := vkb.NewContext(cr, tconn).NewHandwritingContext(ctx)
 				if err != nil {
