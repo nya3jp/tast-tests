@@ -96,11 +96,11 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 
-	defer func() {
+	defer func(ctx context.Context) {
 		if err := recorder.Close(ctx); err != nil {
 			s.Error("Failed to stop recorder: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
