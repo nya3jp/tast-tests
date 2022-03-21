@@ -5,8 +5,12 @@
 package policy
 
 import (
+	"encoding/base64"
 	"encoding/json"
 
+	"google.golang.org/protobuf/proto"
+
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/errors"
 )
 
@@ -20,6 +24,9 @@ const (
 // A Blob is a struct that marshals into what is expected by Chrome's
 // policy_testserver.py.
 type Blob struct {
+	UserPolicies         []Policy                     `json:"-"`
+	DevicePolicies       []Policy                     `json:"-"`
+	PAPolicies           map[string][]Policy          `json:"-"`
 	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
 	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
 	ExtensionPM          BlobPolicyMap                `json:"-"` // Extension policies are passed via separate files.
@@ -63,6 +70,13 @@ type BlobInitialState struct {
 	PackagedLicense bool   `json:"is_license_packaged_with_device,omitempty"`
 }
 
+// Field struct is a sub-struct used in a PolicyBlob.
+type Field struct {
+	PolicyType string `json:"policy_type"`
+	EntityID   string `json:"entity_id,omitempty"`
+	Value      string `json:"value"`
+}
+
 // A BlobPolicyMap is a map of policy names to their JSON values.
 type BlobPolicyMap map[string]json.RawMessage
 
@@ -97,6 +111,7 @@ func (pb *Blob) AddPolicy(p Policy) error {
 	}
 	switch p.Scope() {
 	case ScopeUser:
+		pb.UserPolicies = append(pb.UserPolicies, p)
 		if p.Status() == StatusSetRecommended {
 			if err := pb.addRecommendedUserPolicy(p); err != nil {
 				return err
@@ -107,6 +122,7 @@ func (pb *Blob) AddPolicy(p Policy) error {
 			}
 		}
 	case ScopeDevice:
+		pb.DevicePolicies = append(pb.DevicePolicies, p)
 		if err := pb.addDevicePolicy(p); err != nil {
 			return err
 		}
@@ -150,6 +166,10 @@ func (pb *Blob) AddPublicAccountPolicy(accountID string, p Policy) error {
 // associated with the accountID. The account ID should match one of the
 // accounts set in the DeviceLocalAccounts policy.
 func (pb *Blob) AddPublicAccountPolicies(accountID string, policies []Policy) error {
+	if pb.PAPolicies == nil {
+		pb.PAPolicies = make(map[string][]Policy)
+	}
+	pb.PAPolicies[accountID] = append(pb.PAPolicies[accountID], policies...)
 	for _, p := range policies {
 		if err := pb.AddPublicAccountPolicy(accountID, p); err != nil {
 			return errors.Wrapf(err, "could not add policy to the account %s", accountID)
@@ -196,9 +216,7 @@ func (pb *Blob) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	if pb.PublicAccountPs == nil {
-		return b, nil
-	}
+	var policies []Field
 
 	var m map[string]interface{}
 	err = json.Unmarshal(b, &m)
@@ -206,8 +224,80 @@ func (pb *Blob) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	for k, v := range pb.PublicAccountPs {
-		m["google/chromeos/publicaccount/"+k] = v
+	userProto := enterprise_management_proto.CloudPolicySettings{}
+	userProtoMessage := userProto.ProtoReflect().New()
+	for _, p := range pb.UserPolicies {
+		p.SetProto(&userProtoMessage)
+	}
+
+	userOut, err := proto.Marshal(userProtoMessage.Interface())
+	if err != nil {
+		return nil, err
+	}
+	policies = append(policies, Field{
+		PolicyType: "google/chromeos/user",
+		Value:      base64.StdEncoding.EncodeToString(userOut),
+	})
+
+	deviceProto := enterprise_management_proto.ChromeDeviceSettingsProto{}
+	deviceProtoMessage := deviceProto.ProtoReflect().New()
+	for _, p := range pb.DevicePolicies {
+		p.SetProto(&deviceProtoMessage)
+	}
+	deviceOut, err := proto.Marshal(deviceProtoMessage.Interface())
+	if err != nil {
+		return nil, err
+	}
+	policies = append(policies, Field{
+		PolicyType: "google/chromeos/device",
+		Value:      base64.StdEncoding.EncodeToString(deviceOut),
+	})
+
+	if pb.PAPolicies != nil {
+		for k, v := range pb.PAPolicies {
+			paProto := enterprise_management_proto.CloudPolicySettings{}
+			paProtoMessage := paProto.ProtoReflect().New()
+			for _, p := range v {
+				p.SetProto(&paProtoMessage)
+			}
+			paOut, err := proto.Marshal(paProtoMessage.Interface())
+			if err != nil {
+				return nil, err
+			}
+			policies = append(policies, Field{
+				PolicyType: "google/chromeos/publicaccount",
+				EntityID:   k,
+				Value:      base64.StdEncoding.EncodeToString(paOut),
+			})
+		}
+	}
+
+	if pb.PublicAccountPs != nil {
+		for k, v := range pb.PublicAccountPs {
+			m["google/chromeos/publicaccount/"+k] = v
+		}
+	}
+
+	m["policies"] = policies
+
+	var externalPolicies []Field
+
+	if pb.ExtensionPM != nil {
+		for id, pJSON := range pb.ExtensionPM {
+			exOut, err := pJSON.MarshalJSON()
+			if err != nil {
+				return nil, err
+			}
+			externalPolicies = append(externalPolicies, Field{
+				PolicyType: "google/chrome/extension",
+				EntityID:   id,
+				Value:      base64.StdEncoding.EncodeToString(exOut),
+			})
+		}
+	}
+
+	if len(externalPolicies) > 0 {
+		m["external_policies"] = externalPolicies
 	}
 
 	return json.Marshal(m)

@@ -27,7 +27,13 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+		}, {
+			Name:      "cpp_fake_dmserver",
+			ExtraAttr: []string{"informational"},
+			Fixture:   fixture.ChromePolicyLoggedInCppFakeDMS,
+		}},
 		SearchFlags: []*testing.StringPair{
 			pci.SearchFlag(&policy.AllowDinosaurEasterEgg{}, pci.VerifiedFunctionalityJS),
 		},

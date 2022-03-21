@@ -29,6 +29,9 @@ import (
 // Necessary dependencies (as defined in policy-testserver ebuild).
 const depsDir = "/usr/local/share/policy_testserver/"
 
+// cppFakeDmserverDir is the directory where the executable binary of the fake_dmserver is located.
+const cppFakeDmserverDir = "/usr/local/libexec/chrome-binary-tests/"
+
 // LogFile is the name of the log file for FakeDMS.
 const LogFile = "fakedms.log"
 
@@ -45,6 +48,8 @@ const ExtensionPolicyDir = "data"
 // Used to share state between the enrolled fixture and the fakeDMSEnrolled fixtures.
 // TODO(crbug.com/1187473): Remove
 const EnrollmentFakeDMSDir = "/var/enrolling-fdms"
+
+var fakeDmserverPath = filepath.Join(cppFakeDmserverDir, "fake_dmserver")
 
 var testserverPath = filepath.Join(depsDir, "policy_testserver.py")
 var testserverPythonImports = []string{
@@ -69,6 +74,7 @@ type FakeDMS struct {
 	persistentPolicies              []policy.Policy            // policies that are always set
 	persistentPublicAccountPolicies map[string][]policy.Policy // public account policies that are always set
 	persistentPolicyUser            *string                    // policyUser that is always set, nil if not used
+	useCpp                          bool                       // useCpp is a flag to use the new C++ fake_dmserver instead of the python server
 }
 
 // HasFakeDMS is an interface for fixture values that contain a FakeDMS instance. It allows
@@ -133,6 +139,59 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		done:               make(chan struct{}, 1),
 		policyPath:         policyPath,
 		extensionPolicyDir: extensionPolicyDir,
+		useCpp:             false,
+	}
+
+	if err = fdms.start(ctx, fr); err != nil {
+		return nil, err
+	}
+	return fdms, nil
+}
+
+// NewCpp creates and starts a fake Domain Management Server to serve policies.
+// outDir is used to write logs and policies, and should either be in a
+// temporary location (and deleted by caller) or in the test's results directory.
+func NewCpp(ctx context.Context, outDir string) (*FakeDMS, error) {
+	if _, err := os.Stat(cppFakeDmserverDir); err != nil {
+		// Do not try to start server command if it will immediately fail.
+		return nil, errors.Wrap(err, "cannot find necessary dependencies folder: "+cppFakeDmserverDir)
+	}
+
+	policyPath := filepath.Join(outDir, PolicyFile)
+	logPath := filepath.Join(outDir, LogFile)
+	statePath := filepath.Join(outDir, StateFile)
+
+	fr, fw, err := os.Pipe()
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot create startup-pipe file")
+	}
+	defer func() {
+		if err := fr.Close(); err != nil {
+			testing.ContextLog(ctx, "Could not close startup-pipe read file: ", err)
+		}
+		if err := fw.Close(); err != nil {
+			testing.ContextLog(ctx, "Could not close startup-pipe write file: ", err)
+		}
+	}()
+
+	args := []string{
+		fmt.Sprintf("--policy-blob-path=%s", policyPath),
+		fmt.Sprintf("--log-path=%s", logPath),
+		fmt.Sprintf("--client-state-path=%s", statePath),
+		// cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
+		// See exec.Cmd for more info.
+		"--startup-pipe=3",
+	}
+
+	cmd := testexec.CommandContext(ctx, fakeDmserverPath, args...)
+
+	cmd.ExtraFiles = []*os.File{fw}
+
+	fdms := &FakeDMS{
+		cmd:        cmd,
+		done:       make(chan struct{}, 1),
+		policyPath: policyPath,
+		useCpp:     true,
 	}
 
 	if err = fdms.start(ctx, fr); err != nil {
@@ -165,13 +224,14 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 	pDone := make(chan pResult, 1)
 
 	go func() {
-		// Ignore the first 4 bytes.
-		b4 := make([]byte, 4)
-		if _, err := io.ReadFull(p, b4); err != nil {
-			pDone <- pResult{Err: errors.Wrap(err, "could not read from startup-pipe")}
-			return
+		if !fdms.useCpp {
+			// Ignore the first 4 bytes.
+			b4 := make([]byte, 4)
+			if _, err := io.ReadFull(p, b4); err != nil {
+				pDone <- pResult{Err: errors.Wrap(err, "could not read from startup-pipe")}
+				return
+			}
 		}
-
 		var addr struct {
 			Host string
 			Port int
@@ -325,7 +385,7 @@ func (fdms *FakeDMS) kill(ctx context.Context) {
 
 // Stop will stop the FakeDMS and return once the command has exited.
 func (fdms *FakeDMS) Stop(ctx context.Context) {
-	resp, err := http.Get(fdms.URL + "/configuration/test/exit")
+	resp, err := http.Get(fdms.URL + "/test/exit")
 	if err == nil {
 		resp.Body.Close()
 		if resp.StatusCode == 200 {

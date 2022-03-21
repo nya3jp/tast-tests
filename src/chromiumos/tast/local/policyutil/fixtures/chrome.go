@@ -35,6 +35,17 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMS,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:            fixture.ChromePolicyLoggedInCppFakeDMS,
+		Desc:            "Logged into a user session",
+		Contacts:        []string{"vsavu@google.com", "mohamedaomar@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl:            &policyChromeFixture{},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMS,
+	})
 
 	// TODO(b/230901276): Remove once policy.UserAvatarImage is either removed or updated.
 	testing.AddFixture(&testing.Fixture{
@@ -52,6 +63,22 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMS,
 	})
+	// TODO(b/230901276): Remove once policy.UserAvatarImage is either removed or updated.
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyLoggedInWithoutPersonalizationHubCppFakeDMS,
+		Desc:     "Logged into a user session with \"Personalization Hub\" turned off",
+		Contacts: []string{"pzliu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.DisablePersonalizationHub()}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMS,
+	})
 
 	// ChromePolicyLoggedInLockscreen is identical to ChromePolicyLoggedIn, but will isolate test failures better.
 	// TODO(b/231276590): Remove once ChromePolicyLoggedIn can clear the lockscreen.
@@ -65,6 +92,19 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMS,
+	})
+	// ChromePolicyLoggedInLockscreenCppFakeDMS is identical to ChromePolicyLoggedInCppFakeDMS, but will isolate test failures better.
+	// TODO(b/231276590): Remove once ChromePolicyLoggedInCppFakeDMS can clear the lockscreen.
+	testing.AddFixture(&testing.Fixture{
+		Name:            fixture.ChromePolicyLoggedInLockscreenCppFakeDMS,
+		Desc:            "Logged into a user session and allow lockscreen to be used",
+		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl:            &policyChromeFixture{},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMS,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -82,6 +122,21 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMS,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyLoggedInIsolatedAppCppFakeDMS,
+		Desc:     "Logged into a user session with web app isolation enabled",
+		Contacts: []string{"simonha@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.EnableFeatures("WebAppEnableIsolatedStorage")}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMS,
+	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromePolicyLoggedInFeatureChromeLabs,
@@ -97,6 +152,21 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMS,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyLoggedInFeatureChromeLabsCppFakeDMS,
+		Desc:     "Logged into a user session with chrome labs enabled",
+		Contacts: []string{"samicolon@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.EnableFeatures("ChromeLabs")}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMS,
 	})
 
 	// TODO(b/218907052): Remove fixture after Journeys flag  is enabled by default.
@@ -115,6 +185,22 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMS,
 	})
+	// TODO(b/218907052): Remove fixture after Journeys flag  is enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyLoggedInFeatureJourneysCppFakeDMS,
+		Desc:     "Logged into a user session with journeys enabled",
+		Contacts: []string{"rodmartin@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.EnableFeatures("Journeys")}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMS,
+	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromeEnrolledLoggedIn,
@@ -130,6 +216,21 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMSEnrolled,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromeEnrolledLoggedInCppFakeDMS,
+		Desc:     "Logged into a user session with enrollment",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.KeepEnrollment()}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMSEnrolled,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -149,6 +250,23 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromeEnrolledLoggedInARCCppFakeDMS,
+		Desc:     "Logged into a user session with enrollment with ARC support",
+		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.KeepEnrollment(), chrome.ARCEnabled(),
+					chrome.ExtraArgs("--arc-availability=officially-supported")}, nil
+			},
+			waitForARC: true,
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMSEnrolled,
+	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromeAdminDeskTemplatesLoggedIn,
@@ -164,6 +282,21 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMS,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromeAdminDeskTemplatesLoggedInCppFakeDMS,
+		Desc:     "Logged into a user session with admin desk templates",
+		Contacts: []string{"zhumatthew@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{chrome.EnableFeatures("DesksTemplates")}, nil
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.CPPFakeDMS,
 	})
 }
 

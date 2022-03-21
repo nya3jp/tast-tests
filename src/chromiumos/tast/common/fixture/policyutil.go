@@ -16,6 +16,10 @@ const (
 	FakeDMS = "fakeDMS"
 	// FakeDMSEnrolled is a fixture name.
 	FakeDMSEnrolled = "fakeDMSEnrolled"
+	// CPPFakeDMS is a fixture name.
+	CPPFakeDMS = "cppFakeDMS"
+	// CPPFakeDMSEnrolled is a fixture name.
+	CPPFakeDMSEnrolled = "cppFakeDMSEnrolled"
 )
 
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/chrome.go.
@@ -38,6 +42,25 @@ const (
 	ChromeEnrolledLoggedInARC = "chromeEnrolledLoggedInARC"
 	// ChromeAdminDeskTemplatesLoggedIn is a fixture name.
 	ChromeAdminDeskTemplatesLoggedIn = "chromeAdminDeskTemplatesLoggedIn"
+
+	// ChromePolicyLoggedInCppFakeDMS is a fixture name.
+	ChromePolicyLoggedInCppFakeDMS = "cppChromePolicyLoggedIn"
+	// ChromePolicyLoggedInWithoutPersonalizationHubCppFakeDMS is a fixture name.
+	ChromePolicyLoggedInWithoutPersonalizationHubCppFakeDMS = "cppChromePolicyLoggedInWithoutPersonalizationHub"
+	// ChromePolicyLoggedInLockscreenCppFakeDMS is a fixture name.
+	ChromePolicyLoggedInLockscreenCppFakeDMS = "cppChromePolicyLoggedInLockscreen"
+	// ChromePolicyLoggedInIsolatedAppCppFakeDMS is a fixture name.
+	ChromePolicyLoggedInIsolatedAppCppFakeDMS = "cppChromePolicyLoggedInIsolatedApp"
+	// ChromePolicyLoggedInFeatureJourneysCppFakeDMS is a fixture name.
+	ChromePolicyLoggedInFeatureJourneysCppFakeDMS = "cppChromePolicyLoggedInFeatureJourneys"
+	// ChromePolicyLoggedInFeatureChromeLabsCppFakeDMS is a fixture name.
+	ChromePolicyLoggedInFeatureChromeLabsCppFakeDMS = "cppChromePolicyLoggedInFeatureChromeLabs"
+	// ChromeEnrolledLoggedInCppFakeDMS is a fixture name.
+	ChromeEnrolledLoggedInCppFakeDMS = "cppChromeEnrolledLoggedIn"
+	// ChromeEnrolledLoggedInARCCppFakeDMS is a fixture name.
+	ChromeEnrolledLoggedInARCCppFakeDMS = "cppChromeEnrolledLoggedInARC"
+	// ChromeAdminDeskTemplatesLoggedInCppFakeDMS is a fixture name.
+	ChromeAdminDeskTemplatesLoggedInCppFakeDMS = "cppChromeAdminDeskTemplatesLoggedIn"
 )
 
 // Fixtures defined in chromiumos/tast/local/mgs/fixture.go.
