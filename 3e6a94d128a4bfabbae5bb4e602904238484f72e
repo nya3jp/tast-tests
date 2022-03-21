@@ -80,6 +80,30 @@
       },
       "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae1d83df_e2c592ca",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-21T23:13:05Z",
+      "side": 1,
+      "message": "Looking at testing.Poll[1], it assumes f() honors the ctx timeout.\nIf Recv is not honoring the ctx timeout, it may running longer than 5 minutes. It\u0027s better to put it into another goroutine and kill it if timeout is occurred. \nYour plan sounds great to me. \n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testingutil/poll.go;l\u003d44?q\u003df:tast%20testingutil%20Poll",
+      "parentUuid": "d5af7663_38ed7018",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
