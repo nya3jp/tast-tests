@@ -16,6 +16,24 @@
       "message": "Added missing images.\nRemoved unnecessary context shortening code.\nRemoved chdir in favor of a command line argument (which has not yet landed crrev.com/c/3078283).\n\nLeaving as unverified until the new argument lands in the test binary and Chrome uprevs.",
       "revId": "270d76585b43ef37d2e32f909bfe8403d3e3be13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed29497_de1ce4b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-03-21T16:12:40Z",
+      "side": 1,
+      "message": "Note: The command line change for adding the source directory to the test binary has landed in ToT. We still need to wait for a Chrome uprev to pick up the changes in the ChromeOS image.",
+      "parentUuid": "0a1b17a8_e192490c",
+      "revId": "270d76585b43ef37d2e32f909bfe8403d3e3be13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
