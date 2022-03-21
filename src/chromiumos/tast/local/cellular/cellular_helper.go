@@ -422,7 +422,7 @@ func (h *Helper) CaptureDBusLogs(ctx context.Context) error {
 
 // ResetModem calls Device.ResetModem(cellular) and returns true if the reset succeeded, or an error otherwise.
 func (h *Helper) ResetModem(ctx context.Context) (time.Duration, error) {
-	ctx, st := timing.Start(ctx, "Helper.Enable")
+	ctx, st := timing.Start(ctx, "Helper.ResetModem")
 	defer st.End()
 
 	start := time.Now()
