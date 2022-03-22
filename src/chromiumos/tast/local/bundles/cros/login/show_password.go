@@ -43,6 +43,9 @@ func init() {
 			Name: "switch_to_password",
 			Val:  testParams{true, true},
 		}},
+		// We need two LoginTimeouts because we log on once to create a user and then reboot (reboot is almost as expensive as login). We then perform some fast UI operations.
+		Timeout:      2*chrome.LoginTimeout + time.Minute,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
 
