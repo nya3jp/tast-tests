@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/uidetection"
+	"chromiumos/tast/local/uidetection/params"
 	"chromiumos/tast/testing"
 )
 
@@ -50,7 +51,7 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 	ud := uidetection.NewDefault(tconn)
 	ui := uiauto.New(tconn)
 
-	chromeIcon := uidetection.CustomIcon(s.DataPath("logo_chrome.png"))
+	chromeIcon := uidetection.CustomIcon(s.DataPath("logo_chrome.png"), params.MinConfidence(0.6))
 	addShortcut := uidetection.TextBlock([]string{"Add", "shortcut"})
 	bottomBar := nodewith.ClassName("ShelfView")
 	notificationArea := nodewith.ClassName("StatusAreaWidget")

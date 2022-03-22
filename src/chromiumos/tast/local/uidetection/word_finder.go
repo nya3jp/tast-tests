@@ -6,14 +6,23 @@ package uidetection
 
 import (
 	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
+
+	"chromiumos/tast/local/uidetection/params"
 )
 
 // Word returns a finder for a given word.
-func Word(word string) *Finder {
+func Word(word string, paramList ...params.TextParam) *Finder {
+	textParams := params.DefaultTextParams()
+	for _, param := range paramList {
+		param(textParams)
+	}
 	detectionRequest := &pb.DetectionRequest{
 		DetectionRequestType: &pb.DetectionRequest_WordDetectionRequest{
 			WordDetectionRequest: &pb.WordDetectionRequest{
-				Word: word,
+				Word:               word,
+				RegexMode:          textParams.RegexMode,
+				DisableApproxMatch: textParams.DisableApproxMatch,
+				MaxEditDistance:    &textParams.MaxEditDistance,
 			},
 		},
 	}
