@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5009f8_540e344f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2022-03-22T01:26:44Z",
+      "side": 1,
+      "message": "curious what\u0027s the different between `WaitForLocation` and `WaitUntilExists`? and when to use which?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 19
+      },
+      "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
