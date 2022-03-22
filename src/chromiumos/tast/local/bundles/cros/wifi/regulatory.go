@@ -11,12 +11,12 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wifi/regdb"
-	"chromiumos/tast/local/bundles/cros/wifi/wlan"
 	network_iface "chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
+	"chromiumos/tast/testing/wlan"
 )
 
 func init() {
@@ -49,13 +49,13 @@ func Regulatory(ctx context.Context, s *testing.State) {
 	}
 	s.Log("WiFi interface: ", iface)
 
-	devInfo, err := wlan.DeviceInfo(ctx, iface)
+	devInfo, err := wlan.DeviceInfo()
 	if err != nil {
 		s.Fatal("Failed to get device info: ", err)
 	}
 
 	// List of self-managed platforms
-	selfManagedDevices := []string{
+	selfManagedDevices := []int32{
 		wlan.Intel7260,
 		wlan.Intel7265,
 		wlan.Intel9000,
@@ -68,7 +68,7 @@ func Regulatory(ctx context.Context, s *testing.State) {
 
 	expectSelfManaged := false
 	for _, name := range selfManagedDevices {
-		if name == devInfo.Name {
+		if name == devInfo.ID {
 			expectSelfManaged = true
 			break
 		}
