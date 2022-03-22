@@ -15,11 +15,19 @@ import (
 // generally representing an entire text element.
 // E.g. use uidetection.TextBlock([]string{"Save", "As"})
 // to find the "Save As" menu item.
-func TextBlock(words []string) *Finder {
+func TextBlock(words []string, paramList ...TextParam) *Finder {
+	textParams := DefaultTextParams()
+	for _, param := range paramList {
+		param(textParams)
+	}
+
 	detectionRequest := &pb.DetectionRequest{
 		DetectionRequestType: &pb.DetectionRequest_TextBlockDetectionRequest{
 			TextBlockDetectionRequest: &pb.TextBlockDetectionRequest{
-				Words: words,
+				Words:              words,
+				RegexMode:          textParams.RegexMode,
+				DisableApproxMatch: textParams.DisableApproxMatch,
+				MaxEditDistance:    &textParams.MaxEditDistance,
 			},
 		},
 	}
