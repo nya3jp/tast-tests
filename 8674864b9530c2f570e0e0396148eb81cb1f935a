@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b91fe78_81b9e9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-22T11:44:14Z",
+      "side": 1,
+      "message": "Can we move this to ash now? (Otherwise I can\u0027t submit this CL due to presubmit check.)\n\nActually, I was surprised that we still don\u0027t have a WaitForWindow function, which is all I need here.",
+      "revId": "8674864b9530c2f570e0e0396148eb81cb1f935a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
