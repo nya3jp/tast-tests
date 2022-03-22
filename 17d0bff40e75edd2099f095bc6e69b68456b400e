@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b908a5e5_eedd2f5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-03-22T18:58:27Z",
+      "side": 1,
+      "message": "It\u0027s such a great piece of input! I didn\u0027t know it until now. simple_connect.go should be untouched in my CL since the fix is in test_fixture.go.",
+      "parentUuid": "c482be1b_770ccdc4",
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e1af6ce_bc06c57d",
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acaf7b64_5cab51df",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-03-22T18:58:27Z",
+      "side": 1,
+      "message": "ACK, changing all occurrences now with more comments.",
+      "parentUuid": "2e1af6ce_bc06c57d",
+      "range": {
+        "startLine": 813,
+        "startChar": 4,
+        "endLine": 814,
+        "endChar": 51
+      },
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "151ef90e_0776f1f5",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -71,6 +113,24 @@
       "writtenOn": "2022-03-22T16:16:35Z",
       "side": 1,
       "message": "supernit: why the newline?",
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76eada86_f97279cf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-03-22T18:58:27Z",
+      "side": 1,
+      "message": "ACK. Remove it.",
+      "parentUuid": "151ef90e_0776f1f5",
       "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
