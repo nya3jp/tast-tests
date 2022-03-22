@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18f526d_389443b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2022-03-22T01:07:05Z",
+      "side": 1,
+      "message": "I found there is 4 ID for ADL-N, so 0x54f0 is enough, right?\n\n#define PCI_DID_INTEL_ADL_N_CNVI_WIFI_0\t\t0x54f0\n#define PCI_DID_INTEL_ADL_N_CNVI_WIFI_1\t\t0x54f1\n#define PCI_DID_INTEL_ADL_N_CNVI_WIFI_2\t\t0x54f2\n#define PCI_DID_INTEL_ADL_N_CNVI_WIFI_3\t\t0x54f3",
+      "revId": "e613dbfa469a9e0381f06b7b34d7ad35a4999d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
