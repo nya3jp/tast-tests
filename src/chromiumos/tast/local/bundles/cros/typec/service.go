@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/services/cros/typec"
 	"chromiumos/tast/testing"
 )

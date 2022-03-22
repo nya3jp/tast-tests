@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )

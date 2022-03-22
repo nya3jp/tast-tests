@@ -12,9 +12,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cswitch"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
