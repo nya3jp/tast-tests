@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a8dc56_2375b110",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-03-22T19:01:36Z",
+      "side": 1,
+      "message": "Note that many more tests use VerifyConnection, which uses PingFromDUT. Can we do a full matfunc run?",
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1229ada3_f7949f14",
