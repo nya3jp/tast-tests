@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/wifi/wlan"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/wlan"
 )
 
 func init() {
@@ -31,7 +31,7 @@ func init() {
 	})
 }
 
-var expectedWLANDriver = map[string]map[string]string{
+var expectedWLANDriver = map[wlan.DeviceID]map[string]string{
 	wlan.Intel7260: {
 		"3.8":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"3.14": "wireless-3.8/iwl7000/iwlwifi/iwlwifi.ko",
@@ -143,6 +143,28 @@ var expectedWLANDriver = map[string]map[string]string{
 }
 
 func Driver(ctx context.Context, s *testing.State) {
+	const (
+		intelVendorNum   = "0x8086"
+		support160MHz    = '0'
+		supportOnly80MHz = '2'
+	)
+
+	logBandwidthSupport := func(ctx context.Context, dev *wlan.DevInfo) {
+		if dev.Vendor != intelVendorNum {
+			return
+		}
+		if len(dev.Subsystem) < 4 {
+			return
+		}
+		if dev.Subsystem[3] == support160MHz {
+			testing.ContextLog(ctx, "Bandwidth Support: Supports 160 MHz Bandwidth")
+		} else if dev.Subsystem[3] == supportOnly80MHz {
+			testing.ContextLog(ctx, "Bandwidth Support: Supports only 80 MHz Bandwidth")
+		} else {
+			testing.ContextLog(ctx, "Bandwidth Support: Doesn't support (80 MHz , 160 MHz) Bandwidth")
+		}
+	}
+
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
@@ -156,16 +178,16 @@ func Driver(ctx context.Context, s *testing.State) {
 	// TODO(oka): Original test skips if "wifi" is not initialized (USE="-wifi").
 	// Consider if we should do it.
 	// https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/890121
-	devInfo, err := wlan.DeviceInfo(ctx, netIf)
+	devInfo, err := wlan.DeviceInfo()
 	if err != nil {
 		s.Fatal("Failed to get device name: ", err)
 	}
 
 	// If the device is Intel, check if it supports
 	// 160 MHz / 80 MHz wide channels and log this information.
-	wlan.LogBandwidthSupport(ctx, devInfo)
+	logBandwidthSupport(ctx, devInfo)
 
-	if _, ok := expectedWLANDriver[devInfo.Name]; !ok {
+	if _, ok := expectedWLANDriver[devInfo.ID]; !ok {
 		s.Fatal("Unexpected device ", devInfo.Name)
 	}
 
@@ -175,7 +197,7 @@ func Driver(ctx context.Context, s *testing.State) {
 	}
 	baseRevision := strings.Join(strings.Split(u.Release, ".")[:2], ".")
 
-	expectedPath, ok := expectedWLANDriver[devInfo.Name][baseRevision]
+	expectedPath, ok := expectedWLANDriver[devInfo.ID][baseRevision]
 	if !ok {
 		s.Fatalf("Unexpected base revision %v for device %v", baseRevision, devInfo.Name)
 	}
