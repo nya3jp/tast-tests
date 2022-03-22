@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aacc78b_fd45c3f3",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-22T02:56:59Z",
+      "side": 1,
+      "message": "This always returns false, error or true, nil.\n\nShould this be simplified to just return an error type? Or is the return value you\u0027re discarding with _ perhaps useful?",
+      "revId": "cb9a41b618b25bd98e1799556a62b3962671231c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
