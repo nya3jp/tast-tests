@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af39a13_4b879c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:32:04Z",
+      "side": 1,
+      "message": "Please run tast unit test: fast_build.sh -T \n\nThanks.",
+      "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d07f32_de72b698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:32:04Z",
+      "side": 1,
+      "message": "Do you have a Google contact?",
+      "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00bc57cf_7f177249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:32:04Z",
+      "side": 1,
+      "message": "Please put some comments on what this function do.",
+      "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7603ec5f_22e6bfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:32:04Z",
+      "side": 1,
+      "message": "Should you check the len of adaptors first?",
+      "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
