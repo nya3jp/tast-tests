@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5da077_c4f23801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T16:25:29Z",
+      "side": 1,
+      "message": "nit: Insert an empty line above to break the function definition and call site.",
+      "revId": "ca1b4387d8ff6d4e5a20c4837495849f8d96daeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8370d0_a3342f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T16:25:29Z",
+      "side": 1,
+      "message": "nit: Let\u0027s move this up under `maximizeAllWindows` to keep inner functions together.",
+      "revId": "ca1b4387d8ff6d4e5a20c4837495849f8d96daeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

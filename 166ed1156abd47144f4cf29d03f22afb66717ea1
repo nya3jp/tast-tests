@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08bb8fa3_db4bb250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T16:25:29Z",
+      "side": 1,
+      "message": "Let\u0027s confirm with Art.\n\nWhen all window are maximized, the lower windows are occluded. We have special handing for occluded windows. For a WebContents window, its renderer would uses less resources (cpu gpu etc) when occluded. So it would have impact on the metrics we collect.\n\nIf we look at \"Test Details\" sheet in the spreadsheet doc, it mentions put Meet window in lower right 1/8 of display. Not sure about 4k external display part though.",
+      "parentUuid": "ef2d0b19_c13a9fe9",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3aa93268_e9b5d89b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
         "patchSetId": 6
