@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68399020_5c2414a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T21:56:00Z",
+      "side": 1,
+      "message": "IMHO, it sounds like a problem with these tests. Otherwise, we would be adding more and more logic to chrome.ResetState(). E.g. what if a test lock screen but does not unlock, what if a test installs an android app but does not uninstall it and causing other test fail to install the same app again etc. The list could go on and on.",
+      "revId": "2c899369d66f01ab61c930e3006ad11ea52894b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
