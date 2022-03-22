@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5b1842_215dbc04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2022-03-22T02:20:13Z",
+      "side": 1,
+      "message": "It was migrated to b/187792770 which is still open.",
+      "parentUuid": "0609ddcf_9f71ac46",
+      "revId": "cb76f466f5c5c7289aa73b80508c4995ad60d55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fb23c90_90fb4229",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-21T13:38:09Z",
       "side": 1,
       "message": "micro nit/not for this CL: probably better to just inline these constants on line L438.",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 2
+      },
+      "revId": "cb76f466f5c5c7289aa73b80508c4995ad60d55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d75dfb_99d05141",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2022-03-22T02:20:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2fb23c90_90fb4229",
       "range": {
         "startLine": 423,
         "startChar": 0,
