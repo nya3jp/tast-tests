@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b116bb74_c8498291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-22T22:41:22Z",
+      "side": 1,
+      "message": "Ack -- probably covered by the discussion in the next file.",
+      "parentUuid": "443d8c8e_d864b4b7",
+      "range": {
+        "startLine": 185,
+        "startChar": 25,
+        "endLine": 185,
+        "endChar": 39
+      },
+      "revId": "9d0ce58f75ba5bd09a1e5353758528c3c26510aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d355a66a_1b77f2c3",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b02cb67_7ffebba4",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-22T22:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d355a66a_1b77f2c3",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "9d0ce58f75ba5bd09a1e5353758528c3c26510aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f01538a_4285f377",
@@ -111,6 +159,24 @@
       "writtenOn": "2022-03-21T23:13:05Z",
       "side": 1,
       "message": "Can we have mulitple s.Name\u003d\u003dplatformProperty? Should we just break the outer loop?",
+      "revId": "9d0ce58f75ba5bd09a1e5353758528c3c26510aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff87516_459e5b1d",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-22T22:41:22Z",
+      "side": 1,
+      "message": "I don\u0027t think that could happen, the s.Name keys are unique.",
+      "parentUuid": "0f01538a_4285f377",
       "revId": "9d0ce58f75ba5bd09a1e5353758528c3c26510aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

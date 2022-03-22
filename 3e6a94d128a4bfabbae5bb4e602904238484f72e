@@ -104,6 +104,30 @@
       },
       "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe298d34_691dc7b6",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-22T22:41:22Z",
+      "side": 1,
+      "message": "All right, that makes sense! I sandwiched the poll inside a go func()\nthat pings a channel, and put that in parallel with a timeout. Tried\na few times and seems to work!",
+      "parentUuid": "ae1d83df_e2c592ca",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "3e6a94d128a4bfabbae5bb4e602904238484f72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
