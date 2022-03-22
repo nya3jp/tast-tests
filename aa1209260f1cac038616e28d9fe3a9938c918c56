@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d8c605_4f6bc03d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-03-22T16:57:38Z",
+      "side": 1,
+      "message": "This is \"proof of concept\" Cl to record TPS values from lacros tests.\n\nXiyuan, please review. Do you think this approach is feasible?\n\nIn addition to the above it fails presubmit checks because of the import hooks:\n```\n[FAILED] chromiumos/platform/tast-tests: tast_lint                           \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go:16:2: import of chromiumos/tast/local/bundles/cros/ui/cuj is only allowed from chromiumos/tast/local/bundles/*/ui or its descendant\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n```\n\nWhat would be the best approach to fix this?",
+      "revId": "aa1209260f1cac038616e28d9fe3a9938c918c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
