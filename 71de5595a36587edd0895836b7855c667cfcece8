@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da6ea48e_030ea965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "we are making use of the cuj package to stream the YouTube video. Since we cannot import the ui/cuj/ inside the audio/, we have the script in ui package.",
+      "parentUuid": "059597ca_3248f6f9",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b114a1f_f89b34ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-21T11:55:07Z",
       "side": 1,
       "message": "Are you going to run it in the Google Chrome OS lab?",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d113aba_81c50b01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "No. We are planning to run them in Intel and ODM/OEM labs only.",
+      "parentUuid": "9b114a1f_f89b34ff",
       "range": {
         "startLine": 29,
         "startChar": 18,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "564937ea_8ac1a21a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4338303_c9caa23c",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bcf6579_3b546098",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-03-21T11:55:07Z",
       "side": 1,
       "message": "nit: move ui closer to the first use, i.e. before line 75",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abf9904_2add6e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bcf6579_3b546098",
       "revId": "71de5595a36587edd0895836b7855c667cfcece8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24acd6a0_ba1dabb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d46f4f9c_f17b8b08",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87151c7f_1e2ca7d6",
@@ -115,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d37768_19e0ddb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87151c7f_1e2ca7d6",
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3221bf6_947c3521",
@@ -128,6 +248,30 @@
       "writtenOn": "2022-03-21T11:55:07Z",
       "side": 1,
       "message": "nit: err :\u003d",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "740d9f17_c5a8ca9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3221bf6_947c3521",
       "range": {
         "startLine": 82,
         "startChar": 4,
@@ -161,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfd6a16_3cf07cab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f36c783e_27edf2f1",
+      "range": {
+        "startLine": 111,
+        "startChar": 40,
+        "endLine": 111,
+        "endChar": 55
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0405626_50853fc9",
@@ -174,6 +342,30 @@
       "writtenOn": "2022-03-21T11:55:07Z",
       "side": 1,
       "message": "nit: don\u0027t ignore returned error",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 11
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff557b2_4a6ff239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0405626_50853fc9",
       "range": {
         "startLine": 122,
         "startChar": 2,
@@ -209,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b933481c_3972d315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "ytbWeb.Close() will close the YouTube tab.\n\nHere we are closing the audio player which is playing the recorded the audio file.",
+      "parentUuid": "dd823d45_b7926e29",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f12008ec_86f44af0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
         "patchSetId": 1
@@ -220,6 +436,30 @@
       "writtenOn": "2022-03-21T11:55:07Z",
       "side": 1,
       "message": "pass ctx here by value",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 4
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "884158b8_ed2f4a65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f12008ec_86f44af0",
       "range": {
         "startLine": 126,
         "startChar": 2,
@@ -243,6 +483,30 @@
       "writtenOn": "2022-03-21T11:55:07Z",
       "side": 1,
       "message": "nit: dont ignore returned error",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 14
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76486740_76b56cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T10:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b608c380_04f94abb",
       "range": {
         "startLine": 134,
         "startChar": 1,
