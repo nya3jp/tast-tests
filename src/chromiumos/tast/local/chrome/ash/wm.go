@@ -836,19 +836,30 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 	return nil
 }
 
-// BrowserTitleMatch returns a func to check whether a browser window matches the type and title.
-func BrowserTitleMatch(bt browser.Type, title string) func(w *Window) bool {
+// BrowserTitleMatch returns a func to check whether a window is a browser window of matching type and title.
+func BrowserTitleMatch(bt browser.Type, titlePrefix string) func(w *Window) bool {
 	// The browser is a lacros browser.
 	f := func(w *Window) bool {
-		return w.WindowType == WindowTypeLacros && strings.HasPrefix(w.Title, title)
+		return w.WindowType == WindowTypeLacros && strings.HasPrefix(w.Title, titlePrefix)
 	}
 
 	// The browser is a chrome browser.
 	if bt == browser.TypeAsh {
-		title = "Chrome - " + title
+		titlePrefix = "Chrome - " + titlePrefix
 		f = func(w *Window) bool {
-			return w.WindowType == WindowTypeBrowser && strings.HasPrefix(w.Title, title)
+			return w.WindowType == WindowTypeBrowser && strings.HasPrefix(w.Title, titlePrefix)
 		}
 	}
 	return f
+}
+
+// BrowserTypeMatch returns a func to check whether a window is a browser window of the given type.
+func BrowserTypeMatch(bt browser.Type) func(w *Window) bool {
+	wt := WindowTypeLacros
+	if bt == browser.TypeAsh {
+		wt = WindowTypeBrowser
+	}
+	return func(w *Window) bool {
+		return w.WindowType == wt
+	}
 }
