@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da700d4_de023e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T18:38:11Z",
+      "side": 0,
+      "message": "`cr` and `tconn` in Recorder is always ash-chrome. Let\u0027s add a comment to make it clear. \n\nDo you change this because we need lacros-chrome to get metrics? If so, this is currently supported via MetricConfig, where we could specify which TestConn to use to fetch the metric [1]. Check out CL:3166054 that makes lacros variations to pull browser metrics from the correct browser.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go;rcl\u003dbf43e75fcf6127efdc81183ef1d3adb147372f05;l\u003d65",
+      "revId": "0287ca7242155279cf7aedf2e2fe293d378cae7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
