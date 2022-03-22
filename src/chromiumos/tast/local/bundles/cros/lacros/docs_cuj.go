@@ -9,10 +9,12 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -51,42 +53,23 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	// Run against ash-chrome.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, tconn, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		return lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
+	if ashPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
+		conn, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
+		return cr, conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
-		pv.Set(perf.Metric{
-			Name:      "docs.load.ash",
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, loadTime.Seconds())
-
-		pv.Set(perf.Metric{
-			Name:      "docs.load_and_visible.ash",
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, visibleLoadTime.Seconds())
+		pv.MergeWithSuffix(".ash", ashPerfValues)
 	}
 
 	// Run against lacros.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, tconn, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+	if lacrosPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
 		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
-		return conn, cleanup, err
+		return cr, conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchmark: ", err)
 	} else {
-		pv.Set(perf.Metric{
-			Name:      "docs.load.lacros",
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, loadTime.Seconds())
-
-		pv.Set(perf.Metric{
-			Name:      "docs.load_and_visible.lacros",
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, visibleLoadTime.Seconds())
+		pv.MergeWithSuffix(".lacros", lacrosPerfValues)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
@@ -98,48 +81,96 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 // It returns the page loading time (loadTime) and the user-visible milestone of loading the page
 // (visibleLoadTime), given the latter really captures the real user experience speacially when
 // loading large pages.
-// tconn is a test connection to the ash-chrome test connection.
 func runDocsPageLoad(
 	ctx context.Context,
-	tconn *chrome.TestConn,
 	url string,
-	setup func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error)) (time.Duration, time.Duration, error) {
-	conn, cleanup, err := setup(ctx, chrome.BlankURL)
+	setup func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error)) (*perf.Values, error) {
+	cr, conn, cleanup, err := setup(ctx, chrome.BlankURL)
 	if err != nil {
-		return 0.0, 0.0, errors.Wrap(err, "failed to open a new tab")
+		return nil, errors.Wrap(err, "failed to open a new tab")
 	}
 	defer cleanup(ctx)
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to test API")
+	}
+
 	w, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, "about:blank")
 	if err != nil {
-		return 0.0, 0.0, err
+		return nil, err
 	}
 
 	// Maximize browser window (either ash-chrome or lacros) to ensure a consistent state.
 	if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized); err != nil {
-		return 0.0, 0.0, errors.Wrap(err, "failed to maximize window")
+		return nil, errors.Wrap(err, "failed to maximize window")
 	}
 
-	start := time.Now()
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	testCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
-	// Navigate the blankpage to the document file to be loaded.
-	// This blocks until the loading is completed and is a important metric already.
-	if err := conn.Navigate(ctx, url); err != nil {
-		return 0.0, 0.0, errors.Wrap(err, "failed to navigate a blankpage to the URL")
+	cujRecorder, err := cujrecorder.NewRecorder(testCtx, cr, nil, cujrecorder.RecorderOptions{})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a CUJ recorder")
+	}
+	defer func(ctx context.Context) {
+		if err := cujRecorder.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "ERROR: Failed to close recorder: ", err)
+		}
+	}(closeCtx)
+
+	// The callback that is passed as a second parameter to the
+	// cujRecorder.Run() function is the main focus point of this test. It
+	// runs the test scenario and the TPS score will be calculated
+	// automatically by the cujrecorder. The performance metrics are
+	// calculated below after the cujRecorder.Run().
+	var loadTime time.Duration
+	var visibleLoadTime time.Duration
+	if err := cujRecorder.Run(testCtx, func(ctx context.Context) error {
+		start := time.Now()
+
+		// Navigate the blankpage to the document file to be loaded.
+		// This blocks until the loading is completed and is a important metric already.
+		if err := conn.Navigate(ctx, url); err != nil {
+			return errors.Wrap(err, "failed to navigate a blankpage to the URL")
+		}
+
+		// Save load time perf data as well.
+		loadTime = time.Since(start)
+
+		// Check whether comment link is loaded and visible.
+		// WaitForExpr has to be used since the comment link is not updated immediately.
+		const expr = `document.querySelector("#docos-stream-view > div.docos-docoview-tesla-conflict.docos-docoview-resolve-button-visible.docos-anchoreddocoview.docos-docoview-active.docos-docoview-active-experiment")
+		.innerText`
+		if err := conn.WaitForExpr(ctx, expr); err != nil {
+			return errors.Wrap(err, "failed to wait the comment link to be loaded and visible")
+		}
+
+		visibleLoadTime = time.Since(start)
+		return nil
+	}); err != nil {
+		return nil, errors.Wrap(err, "failed to run the test scenario")
 	}
 
-	// Save load time perf data as well.
-	loadTime := time.Since(start)
+	pv := perf.NewValues()
 
-	// Check whether comment link is loaded and visible.
-	// WaitForExpr has to be used since the comment link is not updated immediately.
-	const expr = `document.querySelector("#docos-stream-view > div.docos-docoview-tesla-conflict.docos-docoview-resolve-button-visible.docos-anchoreddocoview.docos-docoview-active.docos-docoview-active-experiment")
-	.innerText`
-	if err := conn.WaitForExpr(ctx, expr); err != nil {
-		return 0.0, 0.0, errors.Wrap(err, "failed to wait the comment link to be loaded and visible")
+	pv.Set(perf.Metric{
+		Name:      "docs.load",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
+	}, time.Duration(loadTime).Seconds())
+
+	pv.Set(perf.Metric{
+		Name:      "docs.load_and_visible",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
+	}, time.Duration(visibleLoadTime).Seconds())
+
+	if err := cujRecorder.Record(testCtx, pv); err != nil {
+		return nil, errors.Wrap(err, "failed to collect the data from the recorder")
 	}
 
-	visibleLoadTime := time.Since(start)
-
-	return time.Duration(loadTime), time.Duration(visibleLoadTime), nil
+	return pv, nil
 }

@@ -177,20 +177,28 @@ func NewValues() *Values {
 	return &Values{values: make(map[Metric][]float64)}
 }
 
-// Merge merges all data points of vs into this Values structure.
-func (p *Values) Merge(vs ...*Values) {
+// MergeWithSuffix merges all data points of vs into this Values structure
+// optionally adding suffix to the value name.
+func (p *Values) MergeWithSuffix(suffix string, vs ...*Values) {
 	for _, val := range vs {
 		for k, v := range val.values {
+			suffixedK := k
+			suffixedK.Name += suffix
 			if k.Multiple {
-				p.Append(k, v...)
+				p.Append(suffixedK, v...)
 			} else {
-				if _, c := p.values[k]; c {
+				if _, c := p.values[suffixedK]; c {
 					panic("Single-valued metric already present. Cannot merge with another value.")
 				}
-				p.Set(k, v...)
+				p.Set(suffixedK, v...)
 			}
 		}
 	}
+}
+
+// Merge merges all data points of vs into this Values structure.
+func (p *Values) Merge(vs ...*Values) {
+	p.MergeWithSuffix("", vs...)
 }
 
 // NewValuesFromProto creates a Values from a perfpf.Values.
