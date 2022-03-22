@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c5fabe_ba7afac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-22T17:57:34Z",
+      "side": 1,
+      "message": "Done. Actually I was wondering if it\u0027s okay to close the conn to the last opened window that would terminate the lacros process and invalidate the browser instance.",
+      "parentUuid": "49dac587_0e2754ab",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "c1cad01fd72eadef02bf058dfee1edd4e30163e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b22169a_20f7c696",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-22T13:50:11Z",
       "side": 1,
       "message": "these should be lacros specific, so should not be a part of browser (expect to work for both ash/lacros), I think.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 1
+      },
+      "revId": "c1cad01fd72eadef02bf058dfee1edd4e30163e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e71638_ea678266",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-22T17:57:34Z",
+      "side": 1,
+      "message": "Do we expect test writers to deal with both `browserfixt` for APIs and `lacrosfixt` for these consts? My initial thought was `browserfixt` being solely a user-facing layer when browser abstraction used.\nDone removing this reexport.",
+      "parentUuid": "3b22169a_20f7c696",
       "range": {
         "startLine": 99,
         "startChar": 0,
