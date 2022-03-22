@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -147,6 +148,11 @@ func PrintingEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create an empty page: ", err)
 			}
 			defer conn.Close()
+
+			// Wait for browser window.
+			if err := ash.WaitForCondition(ctx, tconn, ash.BrowserTypeMatch(data.browserType), nil); err != nil {
+				s.Fatal("Unexpected window state: ", err)
+			}
 
 			// Make a call to the test case body.
 			printingPossible, err := data.testFunc(ctx, tconn)
