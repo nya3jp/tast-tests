@@ -29,7 +29,7 @@ func init() {
 	})
 }
 
-// CheckVirtualKeyboardService implements the methods defiend in CheckVirtualKeyboardServiceServer.
+// CheckVirtualKeyboardService implements the methods defined in CheckVirtualKeyboardServiceServer.
 type CheckVirtualKeyboardService struct {
 	cr    *chrome.Chrome
 	tconn *chrome.TestConn

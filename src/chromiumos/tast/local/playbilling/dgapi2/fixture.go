@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -25,9 +24,9 @@ func init() {
 			"ashpakov@google.com", // until Sept 2022
 		},
 		Parent:          "arcBootedForPlayBilling",
-		SetUpTimeout:    5 * time.Minute,
-		PreTestTimeout:  30 * time.Second,
-		PostTestTimeout: arc.PostTestTimeout + 30*time.Second,
+		SetUpTimeout:    30 * time.Second,
+		PreTestTimeout:  5 * time.Minute,
+		PostTestTimeout: 30 * time.Second,
 	})
 }
 
@@ -47,29 +46,21 @@ type FixtDgapiData struct {
 }
 
 func (f *playBillingDgapi2Fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	a := s.ParentValue().(*arc.PreData).ARC
-	d := s.ParentValue().(*arc.PreData).UIDevice
-	cr := s.ParentValue().(*arc.PreData).Chrome
+	p := s.ParentValue().(*arc.PreData)
 
-	// Install the test app.
-	s.Logf("Installing %s", pkgName)
-	if err := playstore.InstallApp(ctx, a, d, pkgName, &playstore.Options{TryLimit: tryLimit}); err != nil {
-		s.Fatal("Failed to install app: ", err)
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := p.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed getting Test API connection: ", err)
 	}
 
-	testApp, err := NewTestAppDgapi2(ctx, cr, d, tconn)
+	testApp, err := NewTestAppDgapi2(ctx, p.Chrome, p.UIDevice, tconn, p.ARC)
 	if err != nil {
 		s.Fatal("Failed trying to setup Dgapi2 test app: ", err)
 	}
 
 	f.TestApp = testApp
 
-	return &FixtDgapiData{cr, testApp}
+	return &FixtDgapiData{p.Chrome, testApp}
 }
 
 func (f *playBillingDgapi2Fixture) Reset(ctx context.Context) error {
@@ -77,12 +68,26 @@ func (f *playBillingDgapi2Fixture) Reset(ctx context.Context) error {
 }
 
 func (f *playBillingDgapi2Fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	s.Logf("Installing %s", pkgName)
+	if err := f.TestApp.InstallApp(ctx); err != nil {
+		s.Fatal("Failed to install Dgapi2 test app: ", err)
+	}
+
 	if err := f.TestApp.Launch(ctx); err != nil {
 		s.Fatal("Failed to launch Dgapi2 test app: ", err)
+	}
+
+	s.Log("Signing in")
+	if err := f.TestApp.SignIn(ctx); err != nil {
+		s.Fatal("Failed to sign into test app: ", err)
 	}
 }
 
 func (f *playBillingDgapi2Fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.TestApp.SignOut(ctx); err != nil {
+		s.Fatal("Failed to sign out of test app: ", err)
+	}
+
 	if err := f.TestApp.Close(ctx); err != nil {
 		s.Fatal("Failed to close Dgapi2 test app: ", err)
 	}

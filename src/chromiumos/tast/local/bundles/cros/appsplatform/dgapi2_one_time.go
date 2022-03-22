@@ -16,9 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Dgapi2GetDetails,
+		Func:         Dgapi2OneTime,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify DGAPI2 test app returns expected details",
+		Desc:         "Verify the app has proper info",
 		Contacts: []string{
 			"jshikaram@chromium.org",
 			"ashpakov@google.com", // until Sept 2022
@@ -37,8 +37,8 @@ func init() {
 	})
 }
 
-// Dgapi2GetDetails Checks DGAPI2 test app returns details.
-func Dgapi2GetDetails(ctx context.Context, s *testing.State) {
+// Dgapi2OneTime Checks DGAPI2 test app allows to purchase a onetime sku.
+func Dgapi2OneTime(ctx context.Context, s *testing.State) {
 	p := s.FixtValue().(*dgapi2.FixtDgapiData)
 	cr := p.Chrome
 	testApp := p.TestApp
@@ -46,9 +46,27 @@ func Dgapi2GetDetails(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "Dgapi2GetDetails")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "Dgapi2OneTime")
 
-	if err := testApp.VerifyDetailsLogs(ctx); err != nil {
+	// TODO(b/225738360): as the tested app is stateful, we might observe purchases from the previous test runs.
+	// Need to consume them, if available, before we proceed with the test.
+	if err := testApp.TryConsumeOneTime(ctx); err != nil {
+		s.Fatal("Failed to consume a onetime sku: ", err)
+	}
+
+	if err := testApp.PurchaseOneTime(ctx); err != nil {
+		s.Fatal("Failed to sign into test app: ", err)
+	}
+
+	if err := testApp.VerifyLogsContain(ctx, "Sku onetime was purchased"); err != nil {
 		s.Fatal("Failed to verify logs: ", err)
 	}
+
+	// TODO(b/225737831): attempt to buy onetime sku for the second time and observe an error.
+
+	if err := testApp.TryConsumeOneTime(ctx); err != nil {
+		s.Fatal("Failed to consume a onetime sku: ", err)
+	}
+
+	// TODO(b/225737831): attempt to buy onetime sku and consume it without errors
 }
