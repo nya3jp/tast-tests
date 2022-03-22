@@ -16,6 +16,24 @@
       "message": "I think copy the \"typec/typecutils/utils.go\" file to our directory is not a good idea.\n\nMaybe moving the whole \"typecutils/\" to \"tast-tests/src/chromiumos/tast/local/\" is better.",
       "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccd80c8_cb3c386a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/thunderbolt/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-22T03:31:24Z",
+      "side": 1,
+      "message": "@pmalani, health Tast tests need this util, I suggest to move the typecutils to \"tast-tests/src/chromiumos/tast/local/\", so we can share with the same code. WDYT?",
+      "parentUuid": "0d64b5db_2ddb4655",
+      "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
