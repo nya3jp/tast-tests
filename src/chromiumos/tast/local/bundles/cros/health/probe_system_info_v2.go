@@ -134,7 +134,7 @@ func expectedBootMode() (string, error) {
 func expectedOsInfo(ctx context.Context) (osInfo, error) {
 	const (
 		cfgCodeName      = "/name"
-		cfgMarketingName = "/branding/marketing-name"
+		cfgMarketingName = "/arc/build-properties/marketing-name"
 		cfgOemName       = "/branding/oem-name"
 	)
 	var r osInfo
