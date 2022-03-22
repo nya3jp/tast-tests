@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e429608c_c5eedb27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:36:27Z",
+      "side": 1,
+      "message": "Please run tast unit test: fast_build.sh -T \n\nThanks.",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f865d332_1dd210cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:36:27Z",
+      "side": 1,
+      "message": "Do you have a Google contact?",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fbf3520_2cad0bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:36:27Z",
+      "side": 1,
+      "message": "Do you need to check for the len of the adapters?",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dce1302_6f929c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-22T17:36:27Z",
+      "side": 1,
+      "message": "Is this check necessary? What happen if the adapter is powered and you call SetPowered(ctx, true)?",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
