@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8b4e001_99396055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-22T21:12:51Z",
+      "side": 1,
+      "message": "Looks like it shows a clickable icon but it won\u0027t launch anything until the actual provisioning is completed from Omaha. Rootfs should not be used explicitly since it\u0027s not the test target.\nI\u0027m a bit concerned about polling in clicking the shelf icon because (1) it may hide a real issue (https://crbug.com/1277898) and (2) it may cause a race in launching.\n\nI\u0027m not sure about apps.Launch, but this test is intended to test launching from shelf.\n\nSorry for bringing this back, but I believe it won\u0027t do any harm to have an API to ensure the lacros is provisioned/installed and ready for launch. How does this sound?",
+      "parentUuid": "07726dd4_24cd4a21",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d478c86f_28d2b122",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
         "patchSetId": 5
