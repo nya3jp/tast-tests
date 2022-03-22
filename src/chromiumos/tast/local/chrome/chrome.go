@@ -506,6 +506,14 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 
+	finished := false
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.setOverviewModeState)(false)", &finished); err != nil {
+		return errors.Wrap(err, "failed to ensure not in overview")
+	}
+	if !finished {
+		return errors.New("the overview mode animation is canceled")
+	}
+
 	// Clear all notifications in case a test generated some but did not close them.
 	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
 		return errors.Wrap(err, "failed to clear notifications")
