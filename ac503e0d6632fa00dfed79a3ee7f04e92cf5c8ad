@@ -39,6 +39,30 @@
       },
       "revId": "ac503e0d6632fa00dfed79a3ee7f04e92cf5c8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b95618b_608d2922",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mbo_assoc_disallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-22T14:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5ad955_3be3a813",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "ac503e0d6632fa00dfed79a3ee7f04e92cf5c8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
