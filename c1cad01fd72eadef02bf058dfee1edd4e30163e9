@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49dac587_0e2754ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-22T13:50:11Z",
+      "side": 1,
+      "message": "should be closed at the end?",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "c1cad01fd72eadef02bf058dfee1edd4e30163e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b22169a_20f7c696",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-22T13:50:11Z",
+      "side": 1,
+      "message": "these should be lacros specific, so should not be a part of browser (expect to work for both ash/lacros), I think.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 1
+      },
+      "revId": "c1cad01fd72eadef02bf058dfee1edd4e30163e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
