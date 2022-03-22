@@ -28,7 +28,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      10 * time.Minute,
+		Timeout:      1 * time.Hour,
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{
 			// Format for test cases is as follows:

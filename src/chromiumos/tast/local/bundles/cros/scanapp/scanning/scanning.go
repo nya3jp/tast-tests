@@ -8,7 +8,6 @@ package scanning
 import (
 	"context"
 	"math"
-	"math/rand"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -88,22 +87,6 @@ func RemoveScans(pattern string) error {
 	}
 
 	return nil
-}
-
-// calculateNumScans returns the minimum number of scans necessary to test each
-// option at least once.
-func calculateNumScans(numColorModes, numPageSizes, numResolutions int) int {
-	numScans := numColorModes
-
-	if numPageSizes > numScans {
-		numScans = numPageSizes
-	}
-
-	if numResolutions > numScans {
-		numScans = numResolutions
-	}
-
-	return numScans
 }
 
 // toIdentifyColorspace converts from `colorMode` to the colorspace output by
@@ -410,8 +393,6 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		s.Fatal("Failed to sleep after selecting scanner: ", err)
 	}
 
-	rand.Seed(time.Now().UnixNano())
-
 	for _, source := range scanner.SupportedSources {
 		s.Log("Testing source: ", source.SourceType)
 
@@ -440,65 +421,53 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 			}
 		}
 
-		rand.Shuffle(len(source.SupportedColorModes), func(i, j int) {
-			source.SupportedColorModes[i], source.SupportedColorModes[j] = source.SupportedColorModes[j], source.SupportedColorModes[i]
-		})
-		rand.Shuffle(len(source.SupportedPageSizes), func(i, j int) {
-			source.SupportedPageSizes[i], source.SupportedPageSizes[j] = source.SupportedPageSizes[j], source.SupportedPageSizes[i]
-		})
-		rand.Shuffle(len(source.SupportedResolutions), func(i, j int) {
-			source.SupportedResolutions[i], source.SupportedResolutions[j] = source.SupportedResolutions[j], source.SupportedResolutions[i]
-		})
-
-		numScans := calculateNumScans(len(source.SupportedColorModes), len(source.SupportedPageSizes), len(source.SupportedResolutions))
-		for i := 0; i < numScans; i++ {
-			colorMode := source.SupportedColorModes[i%len(source.SupportedColorModes)]
+		for _, colorMode := range source.SupportedColorModes {
 			if err := app.SelectColorMode(colorMode)(ctx); err != nil {
 				s.Fatalf("Failed to select color mode: %s: %v", colorMode, err)
 			}
+			for _, pageSize := range source.SupportedPageSizes {
+				if err := app.SelectPageSize(pageSize)(ctx); err != nil {
+					s.Fatalf("Failed to select page size: %s: %v", pageSize, err)
+				}
+				for _, resolution := range source.SupportedResolutions {
+					if err := app.SelectResolution(resolution)(ctx); err != nil {
+						s.Fatalf("Failed to select resolution: %s, %v", resolution, err)
+					}
 
-			pageSize := source.SupportedPageSizes[i%len(source.SupportedPageSizes)]
-			if err := app.SelectPageSize(pageSize)(ctx); err != nil {
-				s.Fatalf("Failed to select page size: %s: %v", pageSize, err)
-			}
+					if source.SourceType != scanapp.SourceFlatbed {
+						continue
+					}
 
-			resolution := source.SupportedResolutions[i%len(source.SupportedResolutions)]
-			if err := app.SelectResolution(resolution)(ctx); err != nil {
-				s.Fatalf("Failed to select resolution: %s, %v", resolution, err)
-			}
+					// Make sure printer connected notifications don't cover the
+					// Scan button.
+					if err := ash.CloseNotifications(ctx, tconn); err != nil {
+						s.Fatal("Failed to close notifications: ", err)
+					}
 
-			if source.SourceType != scanapp.SourceFlatbed {
-				continue
-			}
+					s.Logf("Testing scan combination: {%v %v %v}", colorMode, pageSize, resolution)
 
-			// Make sure printer connected notifications don't cover the
-			// Scan button.
-			if err := ash.CloseNotifications(ctx, tconn); err != nil {
-				s.Fatal("Failed to close notifications: ", err)
-			}
+					if err := uiauto.Combine("scan",
+						app.Scan(),
+						app.ClickDone(),
+					)(ctx); err != nil {
+						s.Fatal("Failed to perform scan: ", err)
+					}
 
-			s.Logf("Testing scan combination: {%v %v %v}", colorMode, pageSize, resolution)
+					scan, err := GetScan(DefaultScanPattern)
+					if err != nil {
+						s.Fatal("Failed to find scan: ", err)
+					}
 
-			if err := uiauto.Combine("scan",
-				app.Scan(),
-				app.ClickDone(),
-			)(ctx); err != nil {
-				s.Fatal("Failed to perform scan: ", err)
-			}
+					err = verifyScannedImage(ctx, scan, pageSize, resolution, colorMode, source.SourceDimensions)
+					if err != nil {
+						s.Error("Failed to verify scanned image: ", err)
+					}
 
-			scan, err := GetScan(DefaultScanPattern)
-			if err != nil {
-				s.Fatal("Failed to find scan: ", err)
-			}
-
-			err = verifyScannedImage(ctx, scan, pageSize, resolution, colorMode, source.SourceDimensions)
-			if err != nil {
-				s.Error("Failed to verify scanned image: ", err)
-			}
-
-			err = RemoveScans(DefaultScanPattern)
-			if err != nil {
-				s.Error("Failed to remove scans: ", err)
+					err = RemoveScans(DefaultScanPattern)
+					if err != nil {
+						s.Error("Failed to remove scans: ", err)
+					}
+				}
 			}
 		}
 	}
