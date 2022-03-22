@@ -63,6 +63,30 @@
       },
       "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c44bce0_d2a04fc5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-03-22T06:24:36Z",
+      "side": 1,
+      "message": "Please copy the reply as the code comment as it is non-trivial and its the motivation for the CL.",
+      "parentUuid": "d268e889_3406a82a",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 19
+      },
+      "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
