@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3576d9e4_d1b48a5b",
+        "filename": "src/chromiumos/tast/services/cros/factory/toolkit.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-03-22T03:56:10Z",
+      "side": 1,
+      "message": "nit: I\u0027ve seen a usage is that creating `UninstallRequest` as an empty `Message` to simply future scalability. (so does the response)\n\nIt would be easier to extend the fields in future.",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "7041c9dec5d990e6ad8945126aa555882939e151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
