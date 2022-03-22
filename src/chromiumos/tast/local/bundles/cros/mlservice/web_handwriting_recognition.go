@@ -11,14 +11,15 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebHandwritingRecognition,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks Web Handwriting Recognition API works correctly with ml_service",
 		Contacts: []string{
 			"qjw@chromium.org",               // Test author
@@ -28,6 +29,15 @@ func init() {
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome", "ondevice_handwriting"},
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Val:     browser.TypeAsh,
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 		Data: []string{
 			"web_handwriting_recognition.html",
 			"web_handwriting_recognition_drawing_abc.json",
@@ -45,20 +55,15 @@ func WebHandwritingRecognition(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	// Launch chrome.
-	cr, err := chrome.New(
-		ctx,
-		chrome.ExtraArgs("--enable-experimental-web-platform-features"),
-		// TODO(https://crbug.com/1177374): Remove the below feature when no longer needed.
-		chrome.EnableFeatures("HandwritingRecognitionWebPlatformApi"),
-	)
+	// Open browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
-		s.Fatal("Failed to start chrome: ", err)
+		s.Fatal("Failed to set up browser: ", err)
 	}
-	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	// Open the test page.
-	conn, err := cr.NewConn(ctx, server.URL+"/web_handwriting_recognition.html")
+	conn, err := br.NewConn(ctx, server.URL+"/web_handwriting_recognition.html")
 	if err != nil {
 		s.Fatal("Failed to open test web page: ", err)
 	}
