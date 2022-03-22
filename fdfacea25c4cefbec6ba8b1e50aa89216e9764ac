@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcf9391_21568feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T21:42:05Z",
+      "side": 1,
+      "message": "BTW, we need to decide where to put the bond credentials. If we decide to put it in ui.yaml to be shared for all ui tests, we need to update this. And we need to land the other CL first for this CL to pass cQ.",
+      "revId": "fdfacea25c4cefbec6ba8b1e50aa89216e9764ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
