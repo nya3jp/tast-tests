@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08095196_4b217d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/web_handwriting_recognition.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-22T14:26:27Z",
+      "side": 0,
+      "message": "clarification: just to double check, you no longer need these flags?\nIf so, could you comment in the commit message?",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 64
+      },
+      "revId": "a3a92be1f06d1b01e02210291eb794955f94e2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
