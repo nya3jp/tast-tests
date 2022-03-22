@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d223ed04_77d05613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/gestures_for_small_screen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-03-22T11:15:08Z",
+      "side": 1,
+      "message": "This message seems incorrect: fullscreen mode is not checked/enforced.",
+      "revId": "0418d6fcb34c51eeba2dad38226ea8c6dbd50ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
