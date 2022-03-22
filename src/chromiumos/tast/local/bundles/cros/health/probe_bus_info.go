@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
+	"chromiumos/tast/local/bundles/cros/health/thunderbolt"
 	"chromiumos/tast/local/bundles/cros/health/usb"
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
@@ -75,7 +75,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			}
 		}
 		// Checking whether the Thunderbolt device is connected or not.
-		port, _ := typecutils.CheckPortsForTBTPartner(ctx)
+		port, _ := thunderbolt.CheckPortsForTBTPartner(ctx)
 		if port != -1 {
 			// For accesing the Thunderbolt device we have to disable the data protection access from UI.
 			portStr := strconv.Itoa(port)
@@ -96,7 +96,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			}
 			defer cr.Close(ctx)
 
-			if err := typecutils.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
+			if err := thunderbolt.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
 				s.Fatal("Failed to enable peripheral data access setting: ", err)
 			}
 
@@ -109,7 +109,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			}
 
 			err = testing.Poll(ctx, func(ctx context.Context) error {
-				return typecutils.CheckTBTDevice(true)
+				return thunderbolt.CheckTBTDevice(true)
 			}, &testing.PollOptions{Timeout: 20 * time.Second})
 			if err != nil {
 				s.Fatal("Failed to verify Thunderbolt device connected: ", err)
