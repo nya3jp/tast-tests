@@ -12,8 +12,8 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )

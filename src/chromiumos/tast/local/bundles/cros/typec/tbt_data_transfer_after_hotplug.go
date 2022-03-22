@@ -20,9 +20,9 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cswitch"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -30,6 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TbtDataTransferAfterHotplug,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "TBT data tarnsfer after hot plug",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:typec"},

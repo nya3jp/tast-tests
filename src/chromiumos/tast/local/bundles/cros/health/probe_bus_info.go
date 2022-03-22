@@ -17,9 +17,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
+	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -149,8 +149,8 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			if len(tbtDevs) > 0 {
 				s.Fatal("Failed to validate empty Thunderbolt data")
 			}
-			return
 		}
+		return
 	}
 
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
