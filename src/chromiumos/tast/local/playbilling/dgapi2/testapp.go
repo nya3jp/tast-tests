@@ -9,18 +9,25 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
+	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/playbilling"
+	"chromiumos/tast/testing"
 )
 
 // TestAppDgapi2 represents the Play Billing test PWA and ARC Payments Overlay.
 type TestAppDgapi2 struct {
 	appconn     *chrome.Conn
+	arc         *arc.ARC
 	cr          *chrome.Chrome
 	tconn       *chrome.TestConn
 	uiAutomator *ui.Device
@@ -43,18 +50,28 @@ type skuDetails struct {
 }
 
 // NewTestAppDgapi2 returns a reference to a new DGAPI2 Test App.
-func NewTestAppDgapi2(ctx context.Context, cr *chrome.Chrome, d *ui.Device, tconn *chrome.TestConn) (*TestAppDgapi2, error) {
+func NewTestAppDgapi2(ctx context.Context, cr *chrome.Chrome, d *ui.Device, tconn *chrome.TestConn, a *arc.ARC) (*TestAppDgapi2, error) {
 	return &TestAppDgapi2{
+		appconn:     nil,
+		arc:         a,
 		cr:          cr,
 		tconn:       tconn,
-		appconn:     nil,
 		uiAutomator: d,
 	}, nil
 }
 
+// InstallApp installs DGAPI2 test app.
+func (ta *TestAppDgapi2) InstallApp(ctx context.Context) error {
+	if err := playstore.InstallApp(ctx, ta.arc, ta.uiAutomator, pkgName, &playstore.Options{TryLimit: -1}); err != nil {
+		return errors.Wrapf(err, "failed to install app %q", pkgName)
+	}
+
+	return nil
+}
+
 // Launch starts a new TestAppDgapi2 window.
 func (ta *TestAppDgapi2) Launch(ctx context.Context) error {
-	if err := uiauto.Combine("launch",
+	return uiauto.Combine("launch test app",
 		func(ctx context.Context) error {
 			return apps.Launch(ctx, ta.tconn, appID)
 		},
@@ -63,14 +80,7 @@ func (ta *TestAppDgapi2) Launch(ctx context.Context) error {
 			ta.appconn = appconn
 			return err
 		},
-		func(ctx context.Context) error {
-			return webutil.WaitForQuiescence(ctx, ta.appconn, uiTimeout)
-		},
-	)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to launch %q", appName)
-	}
-
-	return nil
+	)(ctx)
 }
 
 // Close opposite of Launch, closes TestAppDgapi2 window and existing connections.
@@ -90,7 +100,7 @@ func (ta *TestAppDgapi2) Close(ctx context.Context) error {
 
 // SignIn logs into the app.
 func (ta *TestAppDgapi2) SignIn(ctx context.Context) error {
-	if err := uiauto.Combine("sign in user",
+	return uiauto.Combine("sign in user",
 		func(ctx context.Context) error {
 			return ta.appconn.WaitForExprWithTimeout(ctx, profileMenuJS, uiTimeout)
 		},
@@ -106,18 +116,11 @@ func (ta *TestAppDgapi2) SignIn(ctx context.Context) error {
 				return nil
 			},
 		),
-		func(context.Context) error {
-			return webutil.WaitForQuiescence(ctx, ta.appconn, uiTimeout)
-		},
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to sign in")
-	}
-
-	return nil
+	)(ctx)
 }
 
 func (ta *TestAppDgapi2) isSignedIn(ctx context.Context, appConn *chrome.Conn) (bool, error) {
-	var signedIn bool
+	signedIn := false
 	if err := appConn.Eval(ctx, profileMenuLoggedInJS, &signedIn); err != nil {
 		return signedIn, errors.Wrap(err, "failed to get loggedIn status")
 	}
@@ -125,8 +128,20 @@ func (ta *TestAppDgapi2) isSignedIn(ctx context.Context, appConn *chrome.Conn) (
 	return signedIn, nil
 }
 
+// waitSignedInState wait until signed in state changes to expect one.
+func (ta *TestAppDgapi2) waitSignedInState(ctx context.Context, expectedSignedInState bool) error {
+	jsExpr := ""
+	if expectedSignedInState {
+		jsExpr = fmt.Sprintf("!!%s === true", profileMenuLoggedInJS)
+	} else {
+		jsExpr = fmt.Sprintf("!%s === true", profileMenuLoggedInJS)
+	}
+
+	return ta.appconn.WaitForExprWithTimeout(ctx, jsExpr, uiTimeout)
+}
+
 func (ta *TestAppDgapi2) signIn(ctx context.Context, appConn *chrome.Conn, cr *chrome.Chrome) error {
-	var signInConn *chrome.Conn = nil
+	var signInConn *chrome.Conn
 
 	defer func() {
 		if signInConn != nil {
@@ -135,38 +150,48 @@ func (ta *TestAppDgapi2) signIn(ctx context.Context, appConn *chrome.Conn, cr *c
 	}()
 
 	userEntryJS := fmt.Sprintf(`document.querySelector("[data-email='%s']")`, cr.Creds().User)
-	if err := uiauto.Combine("Sign in user",
+	return uiauto.Combine("sign in the user",
 		func(context.Context) error { return appConn.Eval(ctx, profileMenuSignInJS, nil) },
 		func(context.Context) error {
-			var err error
 			ctxWithTimeout, cancel := context.WithTimeout(ctx, uiTimeout)
 			defer cancel()
+			var err error
 			signInConn, err = cr.NewConnForTarget(ctxWithTimeout, chrome.MatchTargetURLPrefix(accountURL))
 			return err
 		},
-		func(context.Context) error {
-			return webutil.WaitForQuiescence(ctx, signInConn, uiTimeout)
-		},
+		webutil.WaitForQuiescenceAction(signInConn, uiTimeout),
 		func(context.Context) error {
 			return signInConn.WaitForExprWithTimeout(ctx, userEntryJS, uiTimeout)
 		},
 		func(context.Context) error {
 			return signInConn.Eval(ctx, fmt.Sprintf("%s.click()", userEntryJS), nil)
 		},
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to sign in the user")
-	}
-
-	return nil
+		func(context.Context) error {
+			return ta.waitSignedInState(ctx, true)
+		},
+	)(ctx)
 }
 
-// getLogs returns logs.
-func (ta *TestAppDgapi2) getLogs(ctx context.Context) ([]string, error) {
-	var result []string
-	if err := ta.appconn.Eval(ctx, logBoxLogLinesJS, &result); err != nil {
-		return nil, errors.Wrap(err, "failed to get logs")
-	}
-	return result, nil
+// SignOut signs out of the app.
+func (ta *TestAppDgapi2) SignOut(ctx context.Context) error {
+	return uiauto.Combine("sign out the user",
+		func(context.Context) error {
+			return ta.appconn.Eval(ctx, profileMenuSignOutJS, nil)
+		},
+		webutil.WaitForQuiescenceAction(ta.appconn, uiTimeout),
+	)(ctx)
+}
+
+// verifyLogs retrieves logs, executes verifyFn on them and returns the result.
+func (ta *TestAppDgapi2) verifyLogs(ctx context.Context, verifyFn func(logs []string) error) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var logs []string
+		if err := ta.appconn.Eval(ctx, logBoxLogLinesJS, &logs); err != nil {
+			return errors.Wrap(err, "failed to retrieve logs")
+		}
+
+		return verifyFn(logs)
+	}, &testing.PollOptions{Timeout: uiTimeout, Interval: time.Second})
 }
 
 func isItemValid(r skuDetails) bool {
@@ -184,32 +209,139 @@ func all(vs []skuDetails, f func(skuDetails) bool) bool {
 
 // VerifyDetailsLogs verifies logs contain expected getDetails response.
 func (ta *TestAppDgapi2) VerifyDetailsLogs(ctx context.Context) error {
-	logs, err := ta.getLogs(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to read logs")
-	}
-
-	var foundEntry string
-	getDetailsPrefix := "getDetails returned "
-	for _, v := range logs {
-		if strings.HasPrefix(v, getDetailsPrefix) {
-			foundEntry = v
+	return ta.verifyLogs(ctx, func(logs []string) error {
+		foundEntry := ""
+		getDetailsPrefix := "getDetails returned "
+		for _, v := range logs {
+			if strings.HasPrefix(v, getDetailsPrefix) {
+				foundEntry = v
+			}
 		}
+
+		if foundEntry == "" {
+			return errors.New(`failed to find a log entry starting with "getDetails returned "`)
+		}
+
+		var detailsResult []skuDetails
+		if err := json.Unmarshal([]byte(strings.Trim(foundEntry, getDetailsPrefix)), &detailsResult); err != nil {
+			return errors.Wrap(err, "unable to parse json")
+		}
+
+		areItemsValid := all(detailsResult, isItemValid)
+
+		if !areItemsValid {
+			return errors.Errorf("returned json items aren't valid: %v", detailsResult)
+		}
+
+		return nil
+	})
+}
+
+// VerifyLogsContain verifies logs contain a specific entry.
+func (ta *TestAppDgapi2) VerifyLogsContain(ctx context.Context, str string) error {
+	return ta.verifyLogs(ctx, func(logs []string) error {
+		isEntryFound := false
+		for _, v := range logs {
+			if v == str {
+				isEntryFound = true
+			}
+		}
+
+		if !isEntryFound {
+			return errors.Errorf("unable to find a log entry starting with %q", str)
+		}
+
+		return nil
+	})
+}
+
+// PurchaseOneTime purchases a onetime item.
+func (ta *TestAppDgapi2) PurchaseOneTime(ctx context.Context) error {
+	findItemJS := ta.skuSelectorByID(oneTimeID)
+	purchaseItemButtonJS := fmt.Sprintf("%s.shadowRoot.querySelector('mwc-button')", findItemJS)
+
+	return uiauto.Combine(fmt.Sprintf("purchase item with ID %q", oneTimeID),
+		func(ctx context.Context) error {
+			return ta.appconn.WaitForExprWithTimeout(ctx, findItemJS, uiTimeout)
+		},
+		playbilling.ClickElementByCDP(ta.appconn, purchaseItemButtonJS),
+		playbilling.Click1TapBuy(ta.uiAutomator),
+		playbilling.RequiredAuthConfirm(ta.uiAutomator),
+		playbilling.TapPointsDecline(ta.uiAutomator),
+		webutil.WaitForQuiescenceAction(ta.appconn, uiTimeout),
+	)(ctx)
+}
+
+// TryPurchaseOneTimeItemSecondTime attempts to purchase a onetime item second time, fail and close the error window.
+func (ta *TestAppDgapi2) TryPurchaseOneTimeItemSecondTime(ctx context.Context) error {
+	findItemJS := ta.skuSelectorByID(oneTimeID)
+	purchaseItemButtonJS := fmt.Sprintf("%s.shadowRoot.querySelector('mwc-button')", findItemJS)
+
+	return uiauto.Combine(fmt.Sprintf("purchase item with ID %q second time", oneTimeID),
+		func(ctx context.Context) error {
+			return ta.appconn.WaitForExprWithTimeout(ctx, findItemJS, uiTimeout)
+		},
+		playbilling.ClickElementByCDP(ta.appconn, purchaseItemButtonJS),
+		playbilling.AlreadyOwnErrorClose(ta.uiAutomator),
+	)(ctx)
+}
+
+// TryConsumeOneTime consumes a onetime item.
+func (ta *TestAppDgapi2) TryConsumeOneTime(ctx context.Context) error {
+	findItemJS := ta.skuSelectorByID(oneTimeID)
+	consumeItemJS := fmt.Sprintf("%s.consume()", findItemJS)
+
+	return action.IfSuccessThen(
+		func(ctx context.Context) error {
+			isPurchased, err := ta.isPurchased(ctx, oneTimeID)
+			if err != nil {
+				return errors.Wrapf(err, "failed to get purchased status of item %s", findItemJS)
+			}
+
+			if !isPurchased {
+				return errors.Wrapf(err, "item %s is not purchased - unable to consume it", oneTimeID)
+			}
+
+			return nil
+		},
+		uiauto.Combine("consume a onetime sku",
+			func(context.Context) error {
+				return ta.appconn.Eval(ctx, consumeItemJS, nil)
+			},
+			func(context.Context) error {
+				return ta.waitPurchasedState(ctx, oneTimeID, false)
+			},
+		),
+	)(ctx)
+}
+
+// isPurchased Checks if an item is purchased
+func (ta *TestAppDgapi2) isPurchased(ctx context.Context, itemID string) (bool, error) {
+	isPurchased := false
+	if err := ta.appconn.Eval(ctx, ta.purchaseStatusByID(itemID), &isPurchased); err != nil {
+		return isPurchased, errors.Wrapf(err, "failed to get purchased status of item %s", itemID)
 	}
 
-	if foundEntry == "" {
-		return errors.New(`unable to find a log entry starting with "getDetails returned "`)
+	return isPurchased, nil
+}
+
+// waitPurchasedState wait until an item purchased state changes to expect one.
+func (ta *TestAppDgapi2) waitPurchasedState(ctx context.Context, itemID string, expectedPurchasedState bool) error {
+	jsExpr := ""
+	if expectedPurchasedState {
+		jsExpr = fmt.Sprintf("!!%s === true", ta.purchaseStatusByID(itemID))
+	} else {
+		jsExpr = fmt.Sprintf("!%s === true", ta.purchaseStatusByID(itemID))
 	}
 
-	var detailsResult []skuDetails
-	if err := json.Unmarshal([]byte(strings.Trim(foundEntry, getDetailsPrefix)), &detailsResult); err != nil {
-		return errors.Wrap(err, "unable to parse json")
-	}
+	return ta.appconn.WaitForExprWithTimeout(ctx, jsExpr, uiTimeout)
+}
 
-	areItemsValid := all(detailsResult, isItemValid)
+func (ta *TestAppDgapi2) skuSelectorByID(itemID string) string {
+	return fmt.Sprintf(`[...%s].find(i => i.details.itemId === "%s")`, itemsJS, oneTimeID)
+}
 
-	if !areItemsValid {
-		return errors.Errorf("returned json items aren't valid: %v", detailsResult)
-	}
-	return nil
+func (ta *TestAppDgapi2) purchaseStatusByID(itemID string) string {
+	// for purchase status definition see https://github.com/chromeos/pwa-play-billing/blob/main/src/js/components/sku-list.js#L117
+	return fmt.Sprintf("!!%s.consume", ta.skuSelectorByID(itemID))
 }
