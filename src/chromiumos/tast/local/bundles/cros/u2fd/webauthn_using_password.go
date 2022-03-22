@@ -29,7 +29,7 @@ func init() {
 			"hcyang@google.com",
 			"cros-hwsec@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "tpm1",
@@ -37,7 +37,6 @@ func init() {
 		}, {
 			Name:              "gsc",
 			ExtraSoftwareDeps: []string{"gsc"},
-			ExtraAttr:         []string{"informational"},
 		}},
 		Timeout: 5 * time.Minute,
 	})
