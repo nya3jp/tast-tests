@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3c40da_75dd702f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-22T15:49:24Z",
+      "side": 1,
+      "message": "nit: pull this out into a nextPage variable to avoid the duplication and make it easier to follow.",
+      "revId": "2e26cd952693751f02f2a8763dd90c12b4b43469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1d4f81_dfaadaab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-22T15:49:24Z",
+      "side": 1,
+      "message": "nit: how about `page` or `pageNumber` as a variable name? `n` isn\u0027t very descriptive.",
+      "revId": "2e26cd952693751f02f2a8763dd90c12b4b43469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5441136e_4683012d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-22T15:49:24Z",
+      "side": 1,
+      "message": "wrap this error to provide context",
+      "revId": "2e26cd952693751f02f2a8763dd90c12b4b43469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
