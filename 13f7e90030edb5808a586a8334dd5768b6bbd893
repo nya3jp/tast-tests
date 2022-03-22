@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750e287a_91191254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "Lock",
+      "range": {
+        "startLine": 36,
+        "startChar": 55,
+        "endLine": 36,
+        "endChar": 59
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfff40d2_cea8ec4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "Let\u0027s use language \"Signin with Smart Lock\" since that\u0027s used elsewhere? Please also make clear in a comment that this is a sub-feature of Smart Lock.",
+      "range": {
+        "startLine": 87,
+        "startChar": 17,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89541d90_3e5ba922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "Also verify that Smart Lock is still visible at the lock screen?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 62
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133237cf_cb331a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "Is 10 second sleep necessary?",
+      "range": {
+        "startLine": 125,
+        "startChar": 32,
+        "endLine": 125,
+        "endChar": 46
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93e8ce4_68c86259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "nit: Chrome OS",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95db3c5_2a953781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "same nit",
+      "range": {
+        "startLine": 130,
+        "startChar": 40,
+        "endLine": 130,
+        "endChar": 48
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cae0fdd_e1037512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "same nit",
+      "range": {
+        "startLine": 151,
+        "startChar": 40,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4216d53a_7dc999ce",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "marshal",
+      "range": {
+        "startLine": 56,
+        "startChar": 37,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee6bc7a_93d53966",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "nit: Smart Lock",
+      "range": {
+        "startLine": 94,
+        "startChar": 44,
+        "endLine": 94,
+        "endChar": 54
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67654a14_3e7219a5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:16:16Z",
+      "side": 1,
+      "message": "This string literal is repeated twice -- should it be a constant?",
+      "range": {
+        "startLine": 204,
+        "startChar": 52,
+        "endLine": 204,
+        "endChar": 66
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
