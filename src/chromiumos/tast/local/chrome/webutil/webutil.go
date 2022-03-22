@@ -56,6 +56,13 @@ func WaitForQuiescence(ctx context.Context, conn *chrome.Conn, timeout time.Dura
 		})()`, timeout)
 }
 
+// WaitForQuiescenceAction waits for the given chrome.Conn gets quiescence.
+func WaitForQuiescenceAction(conn *chrome.Conn, timeout time.Duration) uiauto.Action {
+	return func(ctx context.Context) error {
+		return WaitForQuiescence(ctx, conn, timeout)
+	}
+}
+
 // WaitForRender waits for the tab connected to the given chrome.Conn is rendered.
 func WaitForRender(ctx context.Context, conn *chrome.Conn, timeout time.Duration) error {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
