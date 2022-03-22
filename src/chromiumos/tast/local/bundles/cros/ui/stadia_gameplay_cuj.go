@@ -136,7 +136,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 			perf.SmallerIsBetter, []int64{50, 80}, bTconn),
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, cr.Browser(), nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

@@ -124,8 +124,14 @@ type record struct {
 
 // Recorder is a utility to measure various metrics for CUJ-style tests.
 type Recorder struct {
-	cr    *chrome.Chrome
-	tconn *chrome.TestConn
+	// Connection to Ash Chrome.
+	ashChrome *chrome.Chrome
+	ashTconn  *chrome.TestConn
+
+	// Connection to main browser (could be link to the same Ash Chrome or
+	// Lacros).
+	browser *browser.Browser
+	tconn   *chrome.TestConn
 
 	// Metrics names keyed by relevant chrome.TestConn pointer.
 	names map[*chrome.TestConn][]string
@@ -185,13 +191,17 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
-	r := &Recorder{cr: cr}
+func NewRecorder(ctx context.Context, ashChrome *chrome.Chrome, browser *browser.Browser, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
+	r := &Recorder{ashChrome: ashChrome, browser: browser}
 
 	var err error
-	r.tconn, err = cr.TestAPIConn(ctx)
+	r.ashTconn, err = ashChrome.TestAPIConn(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to test API")
+		return nil, errors.Wrap(err, "failed to connect to the Ash test API")
+	}
+	r.tconn, err = browser.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to the Browser test API")
 	}
 
 	r.gpuDataSource = perfSrc.NewGPUDataSource(r.tconn)
@@ -256,14 +266,14 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 
 	success := false
 
-	if err := r.frameDataTracker.Start(ctx, r.tconn); err != nil {
+	if err := r.frameDataTracker.Start(ctx, r.ashTconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start FrameDataTracker")
 	}
 	defer func() {
 		if success {
 			return
 		}
-		if err := r.frameDataTracker.Stop(ctx, r.tconn); err != nil {
+		if err := r.frameDataTracker.Stop(ctx, r.ashTconn); err != nil {
 			testing.ContextLog(ctx, "Failed to stop frame data tracker: ", err)
 		}
 	}()
@@ -287,7 +297,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 	// Chrome with --keep-login-events-for-testing flag that will start
 	// LoginEventRecorder data collection automatically. But we do it here
 	// just in case Chrome was started with different parameters.
-	if err := r.loginEventRecorder.Prepare(ctx, r.tconn); err != nil {
+	if err := r.loginEventRecorder.Prepare(ctx, r.ashTconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording login event data")
 	}
 
@@ -304,7 +314,7 @@ func (r *Recorder) EnableTracing(traceDir string) {
 // Close clears states for all trackers.
 func (r *Recorder) Close(ctx context.Context) error {
 	r.gpuDataSource.Close()
-	return r.frameDataTracker.Close(ctx, r.tconn)
+	return r.frameDataTracker.Close(ctx, r.ashTconn)
 }
 
 // StartRecording starts to record CUJ data.
@@ -345,14 +355,14 @@ func (r *Recorder) StartRecording(ctx context.Context) (runCtx context.Context, 
 	}(ctx)
 
 	if r.traceDir != "" {
-		if err := r.cr.StartTracing(ctx,
+		if err := r.browser.StartTracing(ctx,
 			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
 			browser.DisableSystrace()); err != nil {
 			testing.ContextLog(ctx, "Failed to start tracing: ", err)
 			return nil, errors.Wrap(err, "failed to start tracing")
 		}
 		stopTracing := func(ctx context.Context) error {
-			tr, err := r.cr.StopTracing(ctx)
+			tr, err := r.browser.StopTracing(ctx)
 			if err != nil {
 				testing.ContextLog(ctx, "Failed to stop tracing: ", err)
 				return errors.Wrap(err, "failed to stop tracing")
@@ -506,7 +516,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	// We want to conduct all of Stop tasks even when some of them fails.  Return
 	// an error when one of them has failed.
 	var stopErr error
-	if err := r.frameDataTracker.Stop(ctx, r.tconn); err != nil {
+	if err := r.frameDataTracker.Stop(ctx, r.ashTconn); err != nil {
 		testing.ContextLog(ctx, "Failed to stop FrameDataTracker: ", err)
 		stopErr = errors.Wrap(err, "failed to stop FrameDataTracker")
 	}
@@ -539,7 +549,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			stopErr = errors.Wrap(err, "failed to stop MemInfoTracker")
 		}
 	}
-	if err := r.loginEventRecorder.FetchLoginEvents(ctx, r.tconn); err != nil {
+	if err := r.loginEventRecorder.FetchLoginEvents(ctx, r.ashTconn); err != nil {
 		testing.ContextLog(ctx, "Failed to fetch login events date: ", err)
 		if stopErr == nil {
 			stopErr = errors.Wrap(err, "failed to fetch login events")
