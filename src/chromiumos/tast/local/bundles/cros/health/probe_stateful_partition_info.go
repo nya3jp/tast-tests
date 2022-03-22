@@ -9,11 +9,11 @@ import (
 	"context"
 	"os"
 	"strings"
-	"syscall"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
+	"chromiumos/tast/local/spaced"
 	"chromiumos/tast/testing"
 )
 
@@ -36,28 +36,37 @@ func init() {
 	})
 }
 
-func absDiff(a, b uint64) uint64 {
+func absDiff(a, b int64) int64 {
 	if a > b {
 		return a - b
 	}
 	return b - a
 }
 
-func validateStatefulPartitionData(statefulPartition *statefulPartitionInfo) error {
-	var stat syscall.Statfs_t
-	if err := syscall.Statfs("/mnt/stateful_partition", &stat); err != nil {
-		return errors.Wrap(err, "failed to get disk stats for /mnt/stateful_partition")
+func validateStatefulPartitionData(ctx context.Context, statefulPartition *statefulPartitionInfo) error {
+	statefulMount := "/mnt/stateful_partition"
+	margin := int64(100000000) // 100MB
+
+	spaced, err := spaced.NewClient(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create spaced client")
 	}
 
-	realAvailable := stat.Bavail * uint64(stat.Bsize)
-	margin := uint64(100000000) // 100MB
-	realTotal := stat.Blocks * uint64(stat.Bsize)
+	realAvailable, err := spaced.FreeDiskSpace(ctx, statefulMount)
+	if err != nil {
+		return errors.Wrap(err, "failed to query free disk space")
+	}
 
-	if absDiff(uint64(statefulPartition.AvailableSpace), realAvailable) > margin {
+	realTotal, err := spaced.TotalDiskSpace(ctx, statefulMount)
+	if err != nil {
+		return errors.Wrap(err, "failed to query total disk space")
+	}
+
+	if absDiff(int64(statefulPartition.AvailableSpace), realAvailable) > margin {
 		return errors.Errorf("invalid available_space: got %v; want %v +- %v", statefulPartition.AvailableSpace, realAvailable, margin)
 	}
 
-	if uint64(statefulPartition.TotalSpace) != realTotal {
+	if int64(statefulPartition.TotalSpace) != realTotal {
 		return errors.Errorf("invalid total_space: got %v; want %v", statefulPartition.TotalSpace, realTotal)
 	}
 
@@ -103,7 +112,7 @@ func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get stateful partition telemetry info: ", err)
 	}
 
-	if err := validateStatefulPartitionData(&statefulPartition); err != nil {
+	if err := validateStatefulPartitionData(ctx, &statefulPartition); err != nil {
 		s.Fatalf("Failed to validate stateful partition data, err [%v]", err)
 	}
 }
