@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3576b706_046e45fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1525413
+      },
+      "writtenOn": "2022-03-22T23:06:23Z",
+      "side": 1,
+      "message": "Since I only have 2 tests here, is it still beneficial to make one test based on `Fixture: ChromeLoggedIn`?",
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
