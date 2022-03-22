@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194cf909_c0238229",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T09:22:26Z",
+      "side": 1,
+      "message": "qq: Is this flag needed for migration, or will persist? I\u0027m asking because I thought we always use stdout in rpctcp mode.",
+      "range": {
+        "startLine": 112,
+        "startChar": 60,
+        "endLine": 112,
+        "endChar": 73
+      },
+      "revId": "13e1a85617e2bd818156c002c2fd74c32c8d2c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
