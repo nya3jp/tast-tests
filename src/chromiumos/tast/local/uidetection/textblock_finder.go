@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
+
+	"chromiumos/tast/local/uidetection/params"
 )
 
 // TextBlock returns a finder for a given textblock.
@@ -15,11 +17,19 @@ import (
 // generally representing an entire text element.
 // E.g. use uidetection.TextBlock([]string{"Save", "As"})
 // to find the "Save As" menu item.
-func TextBlock(words []string) *Finder {
+func TextBlock(words []string, paramList ...params.TextParam) *Finder {
+	textParams := params.DefaultTextParams()
+	for _, param := range paramList {
+		param(textParams)
+	}
+
 	detectionRequest := &pb.DetectionRequest{
 		DetectionRequestType: &pb.DetectionRequest_TextBlockDetectionRequest{
 			TextBlockDetectionRequest: &pb.TextBlockDetectionRequest{
-				Words: words,
+				Words:              words,
+				RegexMode:          textParams.RegexMode,
+				DisableApproxMatch: textParams.DisableApproxMatch,
+				MaxEditDistance:    &textParams.MaxEditDistance,
 			},
 		},
 	}
