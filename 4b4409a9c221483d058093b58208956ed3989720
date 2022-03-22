@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d1e562_202aae7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-22T16:24:06Z",
+      "side": 1,
+      "message": "if the problem is screen rotation why not \n1. get the actual rotation at the beginning of the test\n2. set rotation to a known rotation (e.g. 0 degreees)\n3. defer restoring original rotation from before the test\n\nHere is an example of restoring the rotation:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go;l\u003d186?q\u003dSetDisplayRotationSync%20\u0026sq\u003dpackage:%5Echrom",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 170
+      },
+      "revId": "4b4409a9c221483d058093b58208956ed3989720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
