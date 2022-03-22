@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046143ed_8d05931d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-22T23:43:54Z",
+      "side": 1,
+      "message": "Pending further investigation as current solution does not work on all boards.",
+      "revId": "cb98bbbabbe3c8a8f16c38ae5e1c10b0da40cae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
