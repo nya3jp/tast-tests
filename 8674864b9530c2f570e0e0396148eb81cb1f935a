@@ -16,6 +16,24 @@
       "message": "Can we move this to ash now? (Otherwise I can\u0027t submit this CL due to presubmit check.)\n\nActually, I was surprised that we still don\u0027t have a WaitForWindow function, which is all I need here.",
       "revId": "8674864b9530c2f570e0e0396148eb81cb1f935a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6424e3c_5c6441be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-22T18:09:38Z",
+      "side": 1,
+      "message": "IIRC Hidehiko suggested having a predicate matcher in ash/wm.go which hasn\u0027t existed and polling via ash.WaitForCondition with it in tests. See the relevant comment https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3494599/comments/80a13673_bb34745b\n\nI\u0027m not sure if wmputils.EnsureOnlyBrowserWindowOpen satisfies your test in that it has more specific checks for wmp* tests to see it\u0027s the only opened window that is visible and completed animation. I\u0027m okay to move it to ash if you want.",
+      "parentUuid": "4b91fe78_81b9e9bd",
+      "revId": "8674864b9530c2f570e0e0396148eb81cb1f935a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
