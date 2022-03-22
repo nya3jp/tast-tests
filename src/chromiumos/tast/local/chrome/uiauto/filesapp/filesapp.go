@@ -57,6 +57,7 @@ const (
 	MyFiles     = "My files"
 	Playfiles   = "Play files"
 	Recent      = "Recent"
+	Images      = "Images"
 )
 
 // FilesApp represents an instance of the Files App.
