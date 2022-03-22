@@ -35,7 +35,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.LacrosPolicyLoggedIn,
 	})
 }
