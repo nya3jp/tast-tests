@@ -9,11 +9,18 @@ import (
 )
 
 // Word returns a finder for a given word.
-func Word(word string) *Finder {
+func Word(word string, paramList ...TextParam) *Finder {
+	textParams := DefaultTextParams()
+	for _, param := range paramList {
+		param(textParams)
+	}
 	detectionRequest := &pb.DetectionRequest{
 		DetectionRequestType: &pb.DetectionRequest_WordDetectionRequest{
 			WordDetectionRequest: &pb.WordDetectionRequest{
-				Word: word,
+				Word:               word,
+				RegexMode:          textParams.RegexMode,
+				DisableApproxMatch: textParams.DisableApproxMatch,
+				MaxEditDistance:    &textParams.MaxEditDistance,
 			},
 		},
 	}
