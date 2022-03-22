@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrossVersionLogin,
-		Desc: "Verifies login functionality accross the version",
+		Func:         CrossVersionLogin,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies login functionality accross the version",
 		Contacts: []string{
 			"chingkang@google.com",
 			"cros-hwsec@chromium.org",
@@ -46,6 +47,9 @@ func init() {
 				"R96-14268.0.0_betty_20211216",
 				"R97-14324.0.0_betty_20211216",
 				"R98-14388.0.0_betty_20220105",
+				"R99-14469.4.0_betty_20220322",
+				"R100-14526.0.0_betty_20220322",
+				"R101-14588.0.0_betty_20220322",
 			},
 			ExtraData: []string{
 				"cross_version_login/R91-13904.0.0_betty_20211216_data.tar.gz",
@@ -62,6 +66,12 @@ func init() {
 				"cross_version_login/R97-14324.0.0_betty_20211216_config.json",
 				"cross_version_login/R98-14388.0.0_betty_20220105_data.tar.gz",
 				"cross_version_login/R98-14388.0.0_betty_20220105_config.json",
+				"cross_version_login/R99-14469.4.0_betty_20220322_data.tar.gz",
+				"cross_version_login/R99-14469.4.0_betty_20220322_config.json",
+				"cross_version_login/R100-14526.0.0_betty_20220322_data.tar.gz",
+				"cross_version_login/R100-14526.0.0_betty_20220322_config.json",
+				"cross_version_login/R101-14588.0.0_betty_20220322_data.tar.gz",
+				"cross_version_login/R101-14588.0.0_betty_20220322_config.json",
 			},
 		}, {
 			Name:              "tpm_dynamic",
@@ -70,6 +80,9 @@ func init() {
 				"R96-14268.0.0_reven-vmtest_20220103",
 				"R97-14324.0.0_reven-vmtest_20220103",
 				"R98-14388.0.0_reven-vmtest_20220105",
+				"R99-14469.4.0_reven-vmtest_20220322",
+				"R100-14526.0.0_reven-vmtest_20220322",
+				"R101-14588.0.0_reven-vmtest_20220322",
 			},
 			ExtraData: []string{
 				"cross_version_login/R96-14268.0.0_reven-vmtest_20220103_config.json",
@@ -78,6 +91,12 @@ func init() {
 				"cross_version_login/R97-14324.0.0_reven-vmtest_20220103_data.tar.gz",
 				"cross_version_login/R98-14388.0.0_reven-vmtest_20220105_config.json",
 				"cross_version_login/R98-14388.0.0_reven-vmtest_20220105_data.tar.gz",
+				"cross_version_login/R99-14469.4.0_reven-vmtest_20220322_data.tar.gz",
+				"cross_version_login/R99-14469.4.0_reven-vmtest_20220322_config.json",
+				"cross_version_login/R100-14526.0.0_reven-vmtest_20220322_data.tar.gz",
+				"cross_version_login/R100-14526.0.0_reven-vmtest_20220322_config.json",
+				"cross_version_login/R101-14588.0.0_reven-vmtest_20220322_data.tar.gz",
+				"cross_version_login/R101-14588.0.0_reven-vmtest_20220322_config.json",
 			},
 		}},
 	})
