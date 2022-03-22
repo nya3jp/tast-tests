@@ -514,6 +514,15 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		return errors.New("the overview mode animation is canceled")
 	}
 
+	// We want to remove all but one desk in case a test created some but did not
+	// close them. chrome.autotestPrivate.removeActiveDesk returns true when there
+	// is more than one desk. So we call it repeatedly until it returns false.
+	for success := true; success; {
+		if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeActiveDesk)()", &success); err != nil {
+			return errors.Wrap(err, "failed to remove active desk")
+		}
+	}
+
 	// Clear all notifications in case a test generated some but did not close them.
 	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.removeAllNotifications)()", nil); err != nil {
 		return errors.Wrap(err, "failed to clear notifications")
