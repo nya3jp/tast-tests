@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bc5b23_d5dcdfe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T20:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df1adda_ca2c73e3",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "cc6f0bcba8fc44368035027b33165b5483deeeb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83398006_a4c133d4",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a241dd_40de9b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T20:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83398006_a4c133d4",
+      "revId": "cc6f0bcba8fc44368035027b33165b5483deeeb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e77fdc3e_290f7d09",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-03-22T18:23:26Z",
       "side": 1,
       "message": "Is there a way to sanity test that slides are scrolled?",
+      "revId": "cc6f0bcba8fc44368035027b33165b5483deeeb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "297a3e9c_309398af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T20:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e77fdc3e_290f7d09",
       "revId": "cc6f0bcba8fc44368035027b33165b5483deeeb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
