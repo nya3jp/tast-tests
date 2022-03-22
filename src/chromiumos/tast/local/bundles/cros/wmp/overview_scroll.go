@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -24,6 +26,11 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
+
+type testParam struct {
+	portrait bool
+	bt       browser.Type
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -35,13 +42,22 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Params: []testing.Param{{
 			Name: "portrait",
-			Val:  true,
+			Val:  testParam{true, browser.TypeAsh},
 		}, {
 			Name: "landscape",
-			Val:  false,
+			Val:  testParam{false, browser.TypeAsh},
+		}, {
+			Name:              "portrait_lacros",
+			Val:               testParam{true, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:              "landscape_lacros",
+			Val:               testParam{false, browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
+		Vars:    []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
@@ -51,7 +67,8 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx,
+	bt := s.Param().(testParam).bt
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, browserfixt.DefaultLacrosConfig.WithVar(s),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
@@ -59,6 +76,7 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -76,7 +94,7 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	ac := uiauto.New(tconn)
 
 	// Rotate the screen if it is a portrait test.
-	portrait := s.Param().(bool)
+	portrait := s.Param().(testParam).portrait
 	if portrait {
 		info, err := display.GetInternalInfo(ctx, tconn)
 		if err != nil {
@@ -127,8 +145,12 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	}
 
 	// Create enough chrome windows so that we have 16 total windows.
+	// However, as browserfixt.SetUp already opens an extra blank window for lacros-chrome, create one less new windows for lacros than ash-chrome.
 	numChromeWindows := numWindows - len(appsList)
-	if err := ash.CreateWindows(ctx, tconn, cr, "", numChromeWindows); err != nil {
+	if bt == browser.TypeLacros {
+		numChromeWindows--
+	}
+	if err := ash.CreateWindows(ctx, tconn, br, "", numChromeWindows); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
 	}
 
