@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07726dd4_24cd4a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-22T07:09:07Z",
+      "side": 1,
+      "message": "Ah, does it show an unclickable icon in that case? What about for rootfs?\n\nIf it does I\u0027ll add a utility function to launch via shelf by repeatedly clicking (testing.Poll), or something like that.\n\nDo we need to do this for the apps.Launch case as well?",
+      "parentUuid": "7e322111_8bcddd30",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d478c86f_28d2b122",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
         "patchSetId": 5
