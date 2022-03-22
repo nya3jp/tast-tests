@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4594f36d_0f3fd30b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-22T17:28:02Z",
+      "side": 1,
+      "message": "Chatted with Curt offline and agreed we should separate this into 2 tests: 1) enable/disable the top-level Smart Lock feature; and 2) enable/disable Signin with Smart Lock sub-feature. We expect (1) will be very stable and (2) will exhibit the flakiness that we can address in a subsequent CL.\n\nWill +1 again once that change is made.",
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "750e287a_91191254",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
         "patchSetId": 2
