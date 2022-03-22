@@ -22,6 +22,30 @@
       },
       "revId": "df4d361874eca79d98c1042db1947ccd7c8614a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c70a0c_19a3278c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/thermal_tcc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-03-22T04:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec286807_7a3c48bf",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "df4d361874eca79d98c1042db1947ccd7c8614a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
