@@ -189,6 +189,30 @@
       },
       "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee2ab413_f953bdb9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-22T00:50:16Z",
+      "side": 1,
+      "message": "Also failed on eve device (pixelbook that is convertible)",
+      "parentUuid": "5f13a0d2_9e24c332",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
