@@ -16,6 +16,29 @@
       "message": "LGTM. Thanks!",
       "revId": "5a79fae0c22d52d89e68163da0fb03877ce60807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184c5095_8ee49619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_one_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2022-03-22T03:19:32Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t really understand what this comment is trying to say. Is it that Dgapi2OneTIme checks installing via the play store and performs a purchase once?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 61
+      },
+      "revId": "5a79fae0c22d52d89e68163da0fb03877ce60807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
