@@ -29,32 +29,56 @@ const testImage = "files_app_test.png"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RecentFilesAppear,
-		Desc: "Check the edited files are shown in Recent tab",
+		Func:         RecentFilesAppear,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check the edited files are shown in Recent tab",
 		Contacts: []string{
 			"tim.chang@cienet.com",
 			"ting.chen@cienet.com",
+			"wenbojie@chromium.org",
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
 		},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{testImage},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Val: false, // #files-filters-in-recents flag is off.
+		}, {
+			Name: "filters_in_recents_on",
+			Val:  true, // #files-filter-in-recents flag is on.
+		}},
 	})
 }
 
 // RecentFilesAppear checks the edited files are shown in Recent tab.
 func RecentFilesAppear(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
+	filtersInRecentsEnabled := s.Param().(bool)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	// Enable or disable the flag #files-filters-in-recents
+	var chromeOpts []chrome.Option
+	if filtersInRecentsEnabled {
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures("FiltersInRecents"))
+	} else {
+		chromeOpts = append(chromeOpts, chrome.DisableFeatures("FiltersInRecents"))
+	}
+
+	// Start Chrome.
+	cr, err := chrome.New(ctx, chromeOpts...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
+	// Get Test API connection.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
 
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
@@ -104,6 +128,14 @@ func RecentFilesAppear(ctx context.Context, s *testing.State) {
 				files.FileExists(testImage),
 			)(ctx); err != nil {
 				s.Fatal("Failed to find file in recent: ", err)
+			}
+
+			testing.ContextLog(ctx, "Refresh until file exists in Recent Images")
+			if err := ui.RetryUntil(
+				goToRecentImages(files, filtersInRecentsEnabled),
+				files.FileExists(testImage),
+			)(ctx); err != nil {
+				s.Fatal("Failed to find file in recent images: ", err)
 			}
 		}
 
@@ -169,4 +201,17 @@ func refreshRecent(files *filesapp.FilesApp) uiauto.Action {
 		files.OpenDownloads(),
 		files.OpenDir(filesapp.Recent, filesapp.FilesTitlePrefix+filesapp.Recent),
 	)
+}
+
+// goToRecentImages navigate to the recent image view by:
+//  * opening the Images menu when flag is off.
+//  * opening the Recent menu and clicking the Images filter button when flag is on.
+func goToRecentImages(files *filesapp.FilesApp, isFlagOn bool) uiauto.Action {
+	if isFlagOn {
+		return uiauto.Combine("go to recent images by filter button",
+			files.OpenDir(filesapp.Recent, filesapp.FilesTitlePrefix+filesapp.Recent),
+			files.LeftClick(nodewith.Name("Images").Role(role.ToggleButton)),
+		)
+	}
+	return files.OpenDir(filesapp.Images, filesapp.FilesTitlePrefix+filesapp.Images)
 }
