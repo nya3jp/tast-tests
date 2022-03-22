@@ -43,6 +43,8 @@ func init() {
 			Name: "switch_to_password",
 			Val:  testParams{true, true},
 		}},
+		Timeout:      2*chrome.LoginTimeout + time.Minute,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
 
