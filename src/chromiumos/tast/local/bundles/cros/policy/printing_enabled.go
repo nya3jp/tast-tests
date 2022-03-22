@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
@@ -147,6 +148,11 @@ func PrintingEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create an empty page: ", err)
 			}
 			defer conn.Close()
+
+			// Wait for browser window.
+			if _, err := wmputils.EnsureOnlyBrowserWindowOpen(ctx, tconn, data.browserType); err != nil {
+				s.Fatal("Unexpected window state: ", err)
+			}
 
 			// Make a call to the test case body.
 			printingPossible, err := data.testFunc(ctx, tconn)
