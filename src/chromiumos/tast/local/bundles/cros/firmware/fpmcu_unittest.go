@@ -99,6 +99,10 @@ func init() {
 			Val:       testMetadata{name: "bloonchipper/test-fpsensor.bin", testArgs: []string{"uart"}},
 		}, {
 			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
+			Name:      "bloonchipper_fpsensor_hw",
+			Val:       testMetadata{name: "bloonchipper/test-fpsensor_hw.bin"},
+		}, {
+			ExtraAttr: []string{"fingerprint-mcu_dragonclaw"},
 			Name:      "bloonchipper_mpu_ro",
 			Val:       testMetadata{name: "bloonchipper/test-mpu.bin", image: imageTypeRO, finishRegexes: []*regexp.Regexp{dataAccessViolation20000000Regex}},
 		}, {
