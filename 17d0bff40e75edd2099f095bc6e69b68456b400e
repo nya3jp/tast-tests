@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c482be1b_770ccdc4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-22T16:16:35Z",
+      "side": 1,
+      "message": "supernit: newline is unrelated to the CL? Also, my understanding is that simple_connect.go is actually a generated file from the template in simple_connect_test.go IIRC?",
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1af6ce_bc06c57d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-22T16:16:35Z",
+      "side": 1,
+      "message": "nit: rather than describing what the next line of code does (the code will do that already), it\u0027s better if the comment explains *why* the line of code exists. For example, I think it would be nice if the comment said something like \"bind the ping command to the WiFi interface. Otherwise if the WiFi interface is not up yet they will be routed through the Ethernet interface. See b/xxx for more details.\"\n\nSame for the other identical comments.",
+      "range": {
+        "startLine": 813,
+        "startChar": 4,
+        "endLine": 814,
+        "endChar": 51
+      },
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151ef90e_0776f1f5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-22T16:16:35Z",
+      "side": 1,
+      "message": "supernit: why the newline?",
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
