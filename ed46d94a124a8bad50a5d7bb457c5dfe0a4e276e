@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e99fee4b_fa2d3981",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-22T07:18:50Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit",
+      "revId": "ed46d94a124a8bad50a5d7bb457c5dfe0a4e276e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2415653_bdd700bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-22T07:18:50Z",
+      "side": 1,
+      "message": "nit: With so many arguments, it is unclear what parameter maps to what field. Many arguments are also the default values of the respective field types.\n\nPrefer to simplify to:\n```\n\u0026Connections{\n   Cleanup: func(ctx context.Context) error { return nil },\n   CloseAboutBlank: func(ctx context.Context) error { return nil },\n}\n```",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "ed46d94a124a8bad50a5d7bb457c5dfe0a4e276e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
