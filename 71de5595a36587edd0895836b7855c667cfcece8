@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd0a9f43_82436472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-22T12:14:20Z",
+      "side": 1,
+      "message": "If you move chromiumos/tast/local/bundles/cros/ui/cuj to chromiumos/tast/local/cuj, you will be able to reuse cuj package inside audio tests.\n\nI\u0027ll ask this question on our Tast meeting. For now let\u0027s keep this test here.",
+      "parentUuid": "da6ea48e_030ea965",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b114a1f_f89b34ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "No. We are planning to run them in Intel and ODM/OEM labs only.",
       "parentUuid": "9b114a1f_f89b34ff",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ee6a42_dcc91ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-22T12:14:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d113aba_81c50b01",
       "range": {
         "startLine": 29,
         "startChar": 18,
@@ -413,6 +461,30 @@
       "side": 1,
       "message": "ytbWeb.Close() will close the YouTube tab.\n\nHere we are closing the audio player which is playing the recorded the audio file.",
       "parentUuid": "dd823d45_b7926e29",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "71de5595a36587edd0895836b7855c667cfcece8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e252240_fcfe5963",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/dmic_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-22T12:14:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b933481c_3972d315",
       "range": {
         "startLine": 123,
         "startChar": 0,
