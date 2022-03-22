@@ -39,6 +39,30 @@
       },
       "revId": "c9c79e5eabbc74d8f02775c3004dca80863f8f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f227f6d2_0c7cc871",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1524580
+      },
+      "writtenOn": "2022-03-22T04:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b7bd992_252042e2",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 71
+      },
+      "revId": "c9c79e5eabbc74d8f02775c3004dca80863f8f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
