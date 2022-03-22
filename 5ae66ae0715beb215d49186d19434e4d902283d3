@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d5bda6_38f6faac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "Thanks a lot. I will modify it in a follow up CL.",
+      "parentUuid": "0a29106a_19759250",
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb435fc4_5f78023f",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-03-19T01:08:38Z",
       "side": 1,
       "message": "this part is pretty much the same as in the OS test:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go;l\u003d45-64\n\nif you want, you could move this into a support package that both tests could share. something like a package named `variations` in src/platform/tast-tests/src/chromiumos/tast/local/chrome/",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 1
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e289eb2_f78a801d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "Yeah, thanks. I create a package under chromiumos/tast/common. I saw some const.go files under this directory.",
+      "parentUuid": "bb435fc4_5f78023f",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f84fbacc_b4909880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "Thanks. I will update it in a follow up CL.",
+      "parentUuid": "727ca53d_3df89b82",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 2
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19cc6730_70f1dc5b",
@@ -112,6 +178,30 @@
       "writtenOn": "2022-03-19T01:08:38Z",
       "side": 1,
       "message": "this won\u0027t actually close lacros here, since defers run when the surrounding function returns. you\u0027d want to wrap L160-L203 in another anonymous func like before, in order to use a defer to control the browser closing here.",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 20
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c86689_6a4896ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "Wrapped L160 to the end to an anonymous func. I found if the browser closed too early. The new seed is not downloaded.",
+      "parentUuid": "19cc6730_70f1dc5b",
       "range": {
         "startLine": 203,
         "startChar": 1,
@@ -139,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "461a712e_97422650",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "Thanks I will modify in a follow up cl.",
+      "parentUuid": "425f9faf_c6d927a8",
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6de70dc_cf1ebdb3",
@@ -162,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb40671_c5bdf0ac",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6de70dc_cf1ebdb3",
+      "range": {
+        "startLine": 103,
+        "startChar": 53,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17d37252_b6804cef",
@@ -175,6 +307,30 @@
       "writtenOn": "2022-03-19T01:08:38Z",
       "side": 1,
       "message": "no need for this assignment, I believe `var userDataDir string` will initialize it with an empty value by default",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "5ae66ae0715beb215d49186d19434e4d902283d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "423a323d_b03a9c22",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d37252_b6804cef",
       "range": {
         "startLine": 117,
         "startChar": 24,

@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef07514d_c9ad4d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-22T06:02:19Z",
+      "side": 1,
+      "message": "TBH, I am still investiagting if an OS finch experiment seed could break Lacros while not affecting the OS session.",
+      "parentUuid": "14af8e73_699c8f50",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04123771_24d4a61a",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
         "patchSetId": 4
