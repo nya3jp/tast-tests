@@ -162,34 +162,6 @@ func getFpmcuBoardName(testName string) string {
 	return strings.Split(testName, "/")[0]
 }
 
-// setupServo sets up a servo host connected to FPMCU.
-func setupServo(ctx context.Context, testName string) (*testexec.Cmd, error) {
-	cmdServod := testexec.CommandContext(ctx, "servod", "--board="+getFpmcuBoardName(testName))
-	stdout, err := cmdServod.StdoutPipe()
-	if err != nil {
-		return nil, errors.Wrapf(err, "cannot watch stdout for %q", shutil.EscapeSlice(cmdServod.Args))
-	}
-	testing.ContextLogf(ctx, "Running command: %q", shutil.EscapeSlice(cmdServod.Args))
-	if err := cmdServod.Start(); err != nil {
-		return nil, errors.Wrapf(err, "%q failed", shutil.EscapeSlice(cmdServod.Args))
-	}
-	// Wait for servod to initialize.
-	sc := bufio.NewScanner(stdout)
-	for {
-		if !sc.Scan() {
-			if err := sc.Err(); err != nil {
-				return nil, errors.Wrap(err, "error while scanning servo output")
-			}
-			continue
-		}
-		t := sc.Text()
-		if strings.Contains(t, "INFO - Listening on localhost port") {
-			break
-		}
-	}
-	return cmdServod, nil
-}
-
 // extractBinaryToFlash extracts the chosen binary to flash to the FPMCU.
 func extractBinaryToFlash(ctx context.Context, binaryToFlash, tempDir, tarballPath string) error {
 	// The specific binary is the first string in "Val" in the test params.
