@@ -39,31 +39,22 @@ func WaitForNPresenceOps(hctx *HpsContext, numOps int, feature string) ([]int, e
 	if feature == "1" {
 		reg = "9"
 	}
-
 	testing.ContextLog(ctx, "waitForNPresenceOps ", numOps)
-	start, err := GetNumberOfPresenceOps(hctx)
-	if err != nil {
-		return result, errors.Wrap(err, "waitForNewPresence: Failed to get initial number of operations")
-	}
-	last := start
+	counter := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		current, err := GetNumberOfPresenceOps(hctx)
-		if err != nil {
-			return err
-		}
-		if int(current) > int(start)+numOps {
+		if counter >= numOps {
 			return nil
 		}
-		if current > last {
-			last = current
-			presence, err := GetPresenceResult(hctx, reg)
-			if err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to get presence result"))
-			}
-			testing.ContextLog(ctx, "Got presence result: ", presence)
-			result = append(result, presence)
+
+		presence, err := GetPresenceResult(hctx, reg)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get presence result"))
 		}
-		return errors.Errorf("started with %q, haven't finished with %q", start, current)
+		testing.ContextLog(ctx, "Got presence result: ", presence)
+		result = append(result, presence)
+		counter++
+		return errors.Errorf("Stoped at %q", counter)
+
 	}, &testing.PollOptions{
 		Interval: 50 * time.Millisecond,
 		Timeout:  1 * time.Duration(numOps) * time.Minute,
