@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6211fa_35d0e13f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-03-22T06:56:59Z",
+      "side": 1,
+      "message": "There is a lot similarity with basic_n_to_m.go. Would it make sense to create common functions for both?",
+      "revId": "817907dae37d91d94e1216b670ae3cf8328aa743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ab58742_b59452fd",
