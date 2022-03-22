@@ -39,6 +39,30 @@
       },
       "revId": "2240307b7cf9ab49cc45a3eb654bb5bea05f7394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de93f5a_daaea0fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/end_process.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-22T10:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38de6512_7b789fd6",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "2240307b7cf9ab49cc45a3eb654bb5bea05f7394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
