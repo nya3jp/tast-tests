@@ -188,12 +188,12 @@ func OpenBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
 	)
 }
 
-// CloseBubbleLauncher closes launcher by mouse clicking in screen corner.
+// CloseBubbleLauncher closes launcher by mouse clicking at the home button.
 func CloseBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
 	bubbleLauncher := nodewith.ClassName(BubbleAppsGridViewClass)
 	ui := uiauto.New(tconn)
 	return uiauto.Combine("Wait for bubble launcher to be closed",
-		mouse.Click(tconn, coords.Point{X: 0, Y: 0}, mouse.LeftButton),
+		ui.LeftClick(nodewith.ClassName("ash/HomeButton")),
 		ui.WaitUntilGone(bubbleLauncher),
 	)
 }
