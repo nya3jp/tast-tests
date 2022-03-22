@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ab7eed_4b9eb41c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T08:52:05Z",
+      "side": 1,
+      "message": "oh no i forgot our own suite....thanks!!",
+      "parentUuid": "59a18894_0d093d82",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1978ad6d_2b46c0f9",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-21T19:34:15Z",
       "side": 1,
       "message": "This `if` seems to be a duplicate of L107-121 above. Copy-paste error ?",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7ff428_75f832d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T08:52:05Z",
+      "side": 1,
+      "message": "yes 😂 brain dead copypasted..",
+      "parentUuid": "1978ad6d_2b46c0f9",
       "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef2d0b19_c13a9fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T08:52:05Z",
+      "side": 1,
+      "message": "It didn\u0027t get specified to be in split mode in https://docs.google.com/spreadsheets/d/1fI8hTO5JmS8JFniGsxvI88Unm-8V8t9mHRsaV1egT5Y/edit#gid\u003d0 so I assumed it is just switching to other windows. Maybe @artkulaga can confirm about this?",
+      "parentUuid": "25ab68d7_d2dd2eb9",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3aa93268_e9b5d89b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
         "patchSetId": 6
@@ -65,6 +119,24 @@
       "writtenOn": "2022-03-21T19:34:15Z",
       "side": 1,
       "message": "Should we sanity check to ensure the doc is scrolled for real? And is it feasible?",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac080de_87e9a8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T08:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa93268_e9b5d89b",
       "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +154,24 @@
       "writtenOn": "2022-03-21T19:34:15Z",
       "side": 1,
       "message": "This seems to be a similar 2-finger scroll like what we did for the doc window. Is there a way to share the code?\n\ne.g.\n```\n  openAnd2FingerScroll :\u003d function(ctx Context, url string) {\n    ...\n  }\n  \n  openAnd2FingerScroll(ctx, docsURL)\n  \n  ...\n  \n  openAnd2FingerScroll(ctx, gmailURL)\n```",
+      "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be9f0f0_5d217c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-22T08:52:05Z",
+      "side": 1,
+      "message": "added twoFingerScrollDown() and maximizeAllWindows. i would like to keep \"opening a new browser window\" out of inside function because I want them to close together at the end of this test.",
+      "parentUuid": "df801a4f_38c52374",
       "revId": "166ed1156abd47144f4cf29d03f22afb66717ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
