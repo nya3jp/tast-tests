@@ -141,6 +141,30 @@
       },
       "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1b5757_ecdf5f2c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/tablet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-22T00:14:22Z",
+      "side": 1,
+      "message": "Can you confirm if you were able to manually convert Clamshell to Tablet mode in that device?",
+      "parentUuid": "c42ea45c_75427f69",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "419f2366bd41170fa57fcbaaba441df035c6763e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
