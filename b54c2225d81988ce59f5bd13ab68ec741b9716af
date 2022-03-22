@@ -33,6 +33,24 @@
       "message": "nit: please update Lacros status.",
       "revId": "b54c2225d81988ce59f5bd13ab68ec741b9716af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9af4b91_1eccd9f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_chromeos_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-03-22T06:42:07Z",
+      "side": 1,
+      "message": "Ah, it should be `LacrosVariantNeeded`, since we\u0027re measuring memory.",
+      "parentUuid": "e80185ec_afe0f6b4",
+      "revId": "b54c2225d81988ce59f5bd13ab68ec741b9716af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
