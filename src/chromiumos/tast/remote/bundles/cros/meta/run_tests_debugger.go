@@ -30,7 +30,7 @@ func init() {
 		Func:     RunTestsDebugger,
 		Desc:     "Verifies that Tast can run with a debugger attached",
 		Contacts: []string{"msta@google.com", "tast-owners@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		// Though the debugger should work on all x86 boards, testing it with a VM
 		// and a single board should be sufficient, since it's not a hardware
 		// dependent feature.
@@ -84,7 +84,7 @@ func RunTestsDebugger(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			flags := []string{"-build=true", fmt.Sprintf("-attachdebugger=%s:%d", tc.kind, debuggerPort)}
+			flags := []string{fmt.Sprintf("-attachdebugger=%s:%d", tc.kind, debuggerPort)}
 			cmd, err := tastrun.NewCommand(ctx, s, "run", flags, []string{tc.test})
 			if err != nil {
 				s.Fatal("Failed to generate tast command: ", err)

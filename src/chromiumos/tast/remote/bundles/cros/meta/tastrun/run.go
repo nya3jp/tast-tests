@@ -31,6 +31,7 @@ func NewCommand(ctx context.Context, s *testing.State, subcmd string, flags, pat
 
 	args := append([]string{subcmd}, flags...)
 	args = append(args, meta.RunFlags...)
+	args = append(args, "-build=true")
 	args = append(args, meta.Target)
 	args = append(args, patterns...)
 	cmd := exec.CommandContext(ctx, meta.TastPath, args...)
