@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4517637_61df6e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-03-22T00:50:58Z",
+      "side": 1,
+      "message": "I saw the focused node after starting app and it was `new_document_scan_toast`.\nIt is better not to focus on the toast.",
+      "parentUuid": "ee41a93c_b62360a9",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "1c56ee4bc5ccffb3a6e039f7d5ae1ce091bcc05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e00ad03e_507ccc28",
