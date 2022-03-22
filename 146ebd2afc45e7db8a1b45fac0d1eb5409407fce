@@ -327,6 +327,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72a64281_875a75e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-03-22T15:22:25Z",
+      "side": 1,
+      "message": "I would move NonEduCoexistenceInsession and EducoexistenceArc to Lacros.\n\nPlenty of bugs come from unexpected or hidden interactions and tests are supposed to catch that (Let\u0027s imagine Lacros messes up with Chrome Sync and cases wallpaper regression). That being said, I will update other tests as needed.",
+      "parentUuid": "a5d9c771_108b98d6",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "146ebd2afc45e7db8a1b45fac0d1eb5409407fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcbc0fe0_ec4718c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
         "patchSetId": 2
