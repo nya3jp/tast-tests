@@ -36,10 +36,20 @@ import (
 // 6) Upload the tbz2 file into gs://chromiumos-test-assets-public/tast/cros/arc/ and update
 //    the .external file (See tast/local/bundles/cros/arc/data/data_migration_pi_x86_64.external).
 const (
-	homeDataNameNycX86 = "data_migration_nyc_x86_64"
-	homeDataNamePiX86  = "data_migration_pi_x86_64"
-	homeDataNamePiArm  = "data_migration_pi_arm64"
+	homeDataNameNycX86       = "data_migration_nyc_x86_64"
+	homeDataNamePiX86        = "data_migration_pi_x86_64"
+	homeDataNamePiArm        = "data_migration_pi_arm64"
+	homeDataNameManagedPiX86 = "data_migration_managed_pi_x86_64"
+	unmanagedUsernameVar     = "arc.DataMigration.username"
+	unmanagedPasswordVar     = "arc.DataMigration.password"
+	managedUsernameVar       = "arc.DataMigration.managed_username"
+	managedPasswordVar       = "arc.DataMigration.managed_password"
 )
+
+type dataMigrationTestParams struct {
+	managed      bool
+	dataFileName string
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -52,25 +62,43 @@ func init() {
 		// TODO(b/179636279): Remove "no_qemu" after making the test pass on betty.
 		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Timeout:      10 * time.Minute,
-		VarDeps:      []string{"arc.DataMigration.username", "arc.DataMigration.password"},
+		VarDeps:      []string{unmanagedUsernameVar, unmanagedPasswordVar, managedUsernameVar, managedPasswordVar},
 		Params: []testing.Param{{
 			// Launch ARC P with /data created on ARC N (for x86).
-			Name:              "n_to_p_x86",
-			Val:               homeDataNameNycX86,
+			Name: "n_to_p_x86",
+			Val: dataMigrationTestParams{
+				managed:      false,
+				dataFileName: homeDataNameNycX86,
+			},
 			ExtraData:         []string{homeDataNameNycX86},
 			ExtraSoftwareDeps: []string{"android_p", "amd64"},
 		}, {
 			// Launch ARC R with /data created on ARC P (for x86).
-			Name:              "p_to_r_x86",
-			Val:               homeDataNamePiX86,
+			Name: "p_to_r_x86",
+			Val: dataMigrationTestParams{
+				managed:      false,
+				dataFileName: homeDataNamePiX86,
+			},
 			ExtraData:         []string{homeDataNamePiX86},
 			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
 		}, {
 			// Launch ARC R with /data created on ARC P (for arm).
-			Name:              "p_to_r_arm",
-			Val:               homeDataNamePiArm,
+			Name: "p_to_r_arm",
+			Val: dataMigrationTestParams{
+				managed:      false,
+				dataFileName: homeDataNamePiArm,
+			},
 			ExtraData:         []string{homeDataNamePiArm},
 			ExtraSoftwareDeps: []string{"android_vm", "arm"},
+		}, {
+			// Launch ARC R with /data created on ARC P for managed user(for x86).
+			Name: "managed_p_to_r_x86",
+			Val: dataMigrationTestParams{
+				managed:      true,
+				dataFileName: homeDataNameManagedPiX86,
+			},
+			ExtraData:         []string{homeDataNameManagedPiX86},
+			ExtraSoftwareDeps: []string{"android_vm", "amd64"},
 		}},
 	})
 }
@@ -87,9 +115,16 @@ func DataMigration(ctx context.Context, s *testing.State) {
 		appToInstall = "com.roblox.client"
 	)
 
-	username := s.RequiredVar("arc.DataMigration.username")
-	password := s.RequiredVar("arc.DataMigration.password")
-	homeDataPath := s.DataPath(s.Param().(string))
+	params := s.Param().(dataMigrationTestParams)
+	var username, password string
+	if params.managed {
+		username = s.RequiredVar(managedUsernameVar)
+		password = s.RequiredVar(managedPasswordVar)
+	} else {
+		username = s.RequiredVar(unmanagedUsernameVar)
+		password = s.RequiredVar(unmanagedPasswordVar)
+	}
+	homeDataPath := s.DataPath(params.dataFileName)
 
 	// Ensure to sign out before executing mountVaultWithArchivedHomeData().
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
