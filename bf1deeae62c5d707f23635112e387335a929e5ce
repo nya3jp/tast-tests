@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0346c8f5_48572f90",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-22T22:05:18Z",
+      "side": 1,
+      "message": "Yes, because a failure to find this file indicates we\u0027re not looking at the right platform. It\u0027s not necessarily a problem, it just means we need to probe for a different way of getting the data. I\u0027ve added a comment.",
+      "parentUuid": "7ce5189f_cb4d8429",
+      "revId": "bf1deeae62c5d707f23635112e387335a929e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f19c6f2a_19a825ee",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-22T19:26:23Z",
       "side": 1,
       "message": "would it be beneficial to include the sample number this, and the error below failed on? I.e. `error running mali_stats on sample X/X`?",
+      "revId": "bf1deeae62c5d707f23635112e387335a929e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7211bb77_17e492a9",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-03-22T22:05:18Z",
+      "side": 1,
+      "message": "I can add that information, but I don\u0027t think it would be particularly helpful. mali_stats is stateless, so if it doesn\u0027t crash the first time, it shouldn\u0027t crash subsequent times. If it did, that would more like be a race condition in the driver than the number of invocations I think.",
+      "parentUuid": "f19c6f2a_19a825ee",
       "revId": "bf1deeae62c5d707f23635112e387335a929e5ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
