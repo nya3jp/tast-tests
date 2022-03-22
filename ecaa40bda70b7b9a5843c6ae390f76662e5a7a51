@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537b478c_f5b06519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-22T14:41:00Z",
+      "side": 1,
+      "message": "this is public interface. Could you document?\n\nBTW, negative flag (like no-enable) is not recommended in general.\nCan we fix this? (incl. the possibility of the fix of the tool itself).",
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5540bf0_2dc5fcaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-22T14:41:00Z",
+      "side": 1,
+      "message": "we prefer not to depend on external command if unneeded.\nCould you use archive/zip?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 117
+      },
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ac3103_144e3e12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-22T14:41:00Z",
+      "side": 1,
+      "message": "could you use os.Remove?",
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f71cd88_2bfd4362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-22T14:41:00Z",
+      "side": 1,
+      "message": "nit: should we return nil on error for consistency?",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
