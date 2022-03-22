@@ -513,6 +513,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1a68651_fe682684",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "Ok. Usually individual test output dir is a preferred location for operations per test, but if it\u0027s intentional decision, it should be OK. Could you document it on the outDir field in profilerFixture?",
+      "parentUuid": "b1a04839_3ec867a2",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 37
+      },
+      "revId": "af9b8409359616dc1eed0b5dd6f920e8509a0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d47230b4_ca0cf38d",
         "filename": "src/chromiumos/tast/local/profiler/fixture.go",
         "patchSetId": 5

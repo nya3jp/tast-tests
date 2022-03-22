@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b209c9a_6720f30a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "Sorry for delay.",
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fcfc092_9f9792e3",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "modeState mode \u003d \"stat\"\n\nsame for others.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94011b4d_5809ec4c",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "Are we going to use it from other packages? Otherwise, can we unexport it?\nnewProfilerFixture",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2342c5c6_dd1d519d",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "Can we unexport it? newProfilers",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a718d8_ebe59f53",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "nit: You can use errors.Errorf(\"... %s ...\", string(arg))",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ed76d2_5217e1da",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "Can we unexport it? filesExist",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6227cc8_9d31c3db",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "TODO(jacobraz): \nis more common.",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c82294_982bb903",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-22T06:52:29Z",
+      "side": 1,
+      "message": "Why do you have to handle len \u003d\u003d 0 separately?\nIf it\u0027s a bug to specify f.modes \u003d nil, can we handle it in set up instead of PreTest which runs per test?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
