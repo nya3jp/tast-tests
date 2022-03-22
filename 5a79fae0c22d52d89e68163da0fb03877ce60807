@@ -39,6 +39,30 @@
       },
       "revId": "5a79fae0c22d52d89e68163da0fb03877ce60807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1095690_6fcdcea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/dgapi2_one_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-22T06:22:35Z",
+      "side": 1,
+      "message": "Thanks. I overlooked it. Changed to \"Checks DGAPI2 test app allows to purchase a onetime sku.\"",
+      "parentUuid": "184c5095_8ee49619",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 61
+      },
+      "revId": "5a79fae0c22d52d89e68163da0fb03877ce60807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
