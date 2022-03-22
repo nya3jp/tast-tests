@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df1adda_ca2c73e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T18:23:26Z",
+      "side": 1,
+      "message": "nit: `docsTimeout` -\u003e `docsScrollTime`, same goes for `slidesTimeout` and `gmailTimeout`, to better reflect what they are used for.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "cc6f0bcba8fc44368035027b33165b5483deeeb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83398006_a4c133d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T18:23:26Z",
+      "side": 1,
+      "message": "Do we need to make sure mouse cursor is on doc window? E.g. move it to the left part of screen. AFAIK, 2-finger scroll generates ET_SCROLL and it is dispatched at the current mouse cursor location [1]. So if mouse is not on top of doc window, it would not get scrolled.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:ui/events/ozone/evdev/libgestures_glue/gesture_interpreter_libevdev_cros.cc;drc\u003df992054abbd4ba71f31a064a61a1d590f154c791;l\u003d344",
+      "revId": "cc6f0bcba8fc44368035027b33165b5483deeeb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77fdc3e_290f7d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-22T18:23:26Z",
+      "side": 1,
+      "message": "Is there a way to sanity test that slides are scrolled?",
+      "revId": "cc6f0bcba8fc44368035027b33165b5483deeeb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
