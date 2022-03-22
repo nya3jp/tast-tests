@@ -39,6 +39,30 @@
       },
       "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d268e889_3406a82a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1524580
+      },
+      "writtenOn": "2022-03-22T01:55:19Z",
+      "side": 1,
+      "message": "WaitUntilExists returns once the node is found, while WaitForLocation waits until the node exists and the location is not changing for two iterations of polling.\nWe use WaitForLocation for the nodes that take time to stabilize after showing up.\n\nIn this case, the node will show the previous result first, then hide and reappear with the new result, so we use WaitForLocation.",
+      "parentUuid": "4a5009f8_540e344f",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 19
+      },
+      "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
