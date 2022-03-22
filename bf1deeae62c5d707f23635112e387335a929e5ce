@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce5189f_cb4d8429",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-22T19:26:23Z",
+      "side": 1,
+      "message": "Is this purposefully not returning an error? If so a comment about why might be beneficial here or in the function comment i.e. \"// Optionally collect Mali performance metrics when the file exists\"",
+      "revId": "bf1deeae62c5d707f23635112e387335a929e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19c6f2a_19a825ee",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-22T19:26:23Z",
+      "side": 1,
+      "message": "would it be beneficial to include the sample number this, and the error below failed on? I.e. `error running mali_stats on sample X/X`?",
+      "revId": "bf1deeae62c5d707f23635112e387335a929e5ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
