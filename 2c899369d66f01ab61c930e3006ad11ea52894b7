@@ -52,6 +52,24 @@
       "parentUuid": "cc5372a7_e952ff66",
       "revId": "2c899369d66f01ab61c930e3006ad11ea52894b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b99629e_9854fff0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-23T16:26:24Z",
+      "side": 1,
+      "message": "Re-login adds a few minutes (and more if we want to wait for cpu stabilization, ARC boot etc). It also adds more flakiness. I would avoid that if we could.\n\nIf we could identity which tests are not properly clean up, let\u0027s fix them.",
+      "parentUuid": "5642c05a_0518a708",
+      "revId": "2c899369d66f01ab61c930e3006ad11ea52894b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
