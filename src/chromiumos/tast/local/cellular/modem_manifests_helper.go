@@ -14,6 +14,7 @@ import (
 	mfwd "chromiumos/modemfwd"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -78,4 +79,15 @@ func GetModemHelperPath() string {
 // GetModemHelperManifestPath Get the path of the modem helper manifest.
 func GetModemHelperManifestPath() string {
 	return filepath.Join(GetModemHelperPath(), "helper_manifest.prototxt")
+}
+
+// GetDeviceVariant gets the variant of the device using cros config.
+func GetDeviceVariant(ctx context.Context) (string, error) {
+	dutVariant, err := crosconfig.Get(ctx, "/modem", "firmware-variant")
+	if crosconfig.IsNotFound(err) {
+		return "", errors.Wrap(err, "firmware-variant doesn't exist")
+	} else if err != nil {
+		return "", errors.Wrap(err, "failed to execute cros_config")
+	}
+	return dutVariant, nil
 }
