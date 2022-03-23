@@ -8,9 +8,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -40,20 +42,6 @@ func init() {
 	})
 }
 
-func confirmLauncherOpened(ctx context.Context, tconn *chrome.TestConn) bool {
-	// If onboarding is enabled, we expect it's ash.Half state.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Half); err == nil {
-		return true
-	}
-
-	// If onboarding is NOT enabled, we expect it's ash.Peeking state.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Peeking); err == nil {
-		return true
-	}
-
-	return false
-}
-
 func Hotkey(ctx context.Context, s *testing.State) {
 	accel := s.Param().(assistant.Accelerator)
 	cr := s.PreValue().(*chrome.Chrome)
@@ -71,23 +59,12 @@ func Hotkey(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Failed to confirm that launcher is closed before a test: ", err)
-	}
-
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
-		s.Fatal("Failed to toggle Assistant UI with hotkey: ", err)
-	}
-
-	if !confirmLauncherOpened(ctx, tconn) {
-		s.Fatal("Failed to confirm that launcher got opened with hotkey: ", err)
-	}
-
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
-		s.Fatal("Failed to toggle Assistant UI with hotkey: ", err)
-	}
-
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Failed to confirm that launcher got closed with hotkey: ", err)
-	}
+	assistantUI := nodewith.HasClass("AssistantPageView")
+	action.Combine("Press hotkey and confirm that it toggles Assistant UI visibility",
+		uiauto.New(tconn).WaitUntilGone(assistantUI),
+		func(ctx context.Context) error { return assistant.ToggleUIWithHotkey(ctx, tconn, accel) },
+		uiauto.New(tconn).WaitUntilExists(assistantUI),
+		func(ctx context.Context) error { return assistant.ToggleUIWithHotkey(ctx, tconn, accel) },
+		uiauto.New(tconn).WaitUntilGone(assistantUI),
+	)
 }
