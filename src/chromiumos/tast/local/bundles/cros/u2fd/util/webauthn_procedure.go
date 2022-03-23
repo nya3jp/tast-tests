@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -28,12 +27,6 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, authCallback f
 	if err != nil {
 		return errors.Wrap(err, "failed to get test API connection")
 	}
-
-	logReader, err := syslog.NewChromeReader(ctx, syslog.ChromeLogFile)
-	if err != nil {
-		return errors.Wrap(err, "could not get Chrome log reader")
-	}
-	defer logReader.Close()
 
 	conn, err := cr.NewConn(ctx, "https://webauthn.io/")
 	if err != nil {
@@ -72,15 +65,15 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, authCallback f
 	// Wait for ChromeOS WebAuthn dialog.
 	dialog := nodewith.ClassName("AuthDialogWidget")
 	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
-		return errors.Wrap(err, "ChromeOS dialog did not show up")
+		return errors.Wrap(err, "failed to wait for the ChromeOS dialog")
 	}
 
 	if err := authCallback(ctx, ui); err != nil {
 		return errors.Wrap(err, "failed to call authCallback")
 	}
 
-	if err := AssertMakeCredentialSuccess(ctx, logReader); err != nil {
-		return errors.Wrap(err, "MakeCredential did not succeed")
+	if err := CheckMakeCredentialSuccessInWebAuthnIo(ctx, conn); err != nil {
+		return errors.Wrap(err, "failed to perform MakeCredential")
 	}
 
 	// Perform GetAssertion on the test website.
@@ -93,15 +86,15 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, authCallback f
 
 	// Wait for ChromeOS WebAuthn dialog.
 	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
-		return errors.Wrap(err, "ChromeOS dialog did not show up")
+		return errors.Wrap(err, "failed to wait for the ChromeOS dialog")
 	}
 
 	if err := authCallback(ctx, ui); err != nil {
 		return errors.Wrap(err, "failed to call authCallback")
 	}
 
-	if err := AssertGetAssertionSuccess(ctx, logReader); err != nil {
-		return errors.Wrap(err, "GetAssertion did not succeed")
+	if err := CheckGetAssertionSuccessInWebAuthnIo(ctx, conn); err != nil {
+		return errors.Wrap(err, "failed to perform GetAssertion")
 	}
 	return nil
 }
@@ -116,4 +109,41 @@ func randomUsername() string {
 	}
 
 	return string(ret)
+}
+
+// CheckMakeCredentialSuccessInWebAuthnIo checks Make Credential succeeded by polling js attributes on webauthn.io.
+func CheckMakeCredentialSuccessInWebAuthnIo(ctx context.Context, conn *chrome.Conn) error {
+	return testing.Poll(ctx, func(context.Context) error {
+		result := true
+		// There's no good way of querying the popup dialog itself as there's no explicitly set className or id. The only good
+		// way is to monitor the added attribute `aria-describedby` on the login button after the popup showed up.
+		err := conn.Eval(ctx, `document.getElementById('login-button').getAttribute('aria-describedby') !== null`, &result)
+		if err != nil {
+			return err
+		}
+		if !result {
+			return errors.New("failed to wait for js attribute that should appear after Make Credential")
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
+}
+
+// CheckGetAssertionSuccessInWebAuthnIo checks Get Assertion succeeded by polling whether webauthn.io has
+// redirected to the /dashboard path.
+func CheckGetAssertionSuccessInWebAuthnIo(ctx context.Context, conn *chrome.Conn) error {
+	return testing.Poll(ctx, func(context.Context) error {
+		result := true
+		// The easiest way to check that Get Assertion is successful is to see if webauthn.io redirected to the dashboard path.
+		// No component with meaningful className or id appears that can be queried instead.
+		err := conn.Eval(ctx, `location.pathname === '/dashboard'`, &result)
+		if err != nil {
+			return err
+		}
+		if !result {
+			return errors.New("failed to wait for website to redirect to dashboard after Get Assertion")
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }

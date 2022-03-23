@@ -202,7 +202,7 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Em
 }
 
 func (c *WebauthnService) CheckMakeCredential(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if err := util.AssertMakeCredentialSuccess(ctx, c.logReader); err != nil {
+	if err := util.CheckMakeCredentialSuccessInWebAuthnIo(ctx, c.conn); err != nil {
 		return nil, errors.Wrap(err, "failed to perform MakeCredential")
 	}
 	return &empty.Empty{}, nil
@@ -241,7 +241,7 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empt
 }
 
 func (c *WebauthnService) CheckGetAssertion(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if err := util.AssertGetAssertionSuccess(ctx, c.logReader); err != nil {
+	if err := util.CheckGetAssertionSuccessInWebAuthnIo(ctx, c.conn); err != nil {
 		return nil, errors.Wrap(err, "failed to perform GetAssertion")
 	}
 	return &empty.Empty{}, nil
