@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b90fdd_4c1d480d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "I split out the two tests, and in the process made some changes that (inadvertently) solved the flakiness issues.",
+      "parentUuid": "4594f36d_0f3fd30b",
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "750e287a_91191254",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-22T17:16:16Z",
       "side": 1,
       "message": "Lock",
+      "range": {
+        "startLine": 36,
+        "startChar": 55,
+        "endLine": 36,
+        "endChar": 59
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec0054e_955a46d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "750e287a_91191254",
       "range": {
         "startLine": 36,
         "startChar": 55,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ced85a_842442b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfff40d2_cea8ec4e",
+      "range": {
+        "startLine": 87,
+        "startChar": 17,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89541d90_3e5ba922",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-03-22T17:16:16Z",
       "side": 1,
       "message": "Also verify that Smart Lock is still visible at the lock screen?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 62
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8430f5fd_7801fab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89541d90_3e5ba922",
       "range": {
         "startLine": 113,
         "startChar": 2,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d861eef_9b276c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "I decreased this sleep to 3s. Having no sleep here makes it very difficult to understand whether the the toggle actually got flipped, since the screen locks very quickly afterward.",
+      "parentUuid": "133237cf_cb331a38",
+      "range": {
+        "startLine": 125,
+        "startChar": 32,
+        "endLine": 125,
+        "endChar": 46
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b93e8ce4_68c86259",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-03-22T17:16:16Z",
       "side": 1,
       "message": "nit: Chrome OS",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ac4f61f_49233cba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93e8ce4_68c86259",
       "range": {
         "startLine": 128,
         "startChar": 20,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8cd41fc_060c8334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c95db3c5_2a953781",
+      "range": {
+        "startLine": 130,
+        "startChar": 40,
+        "endLine": 130,
+        "endChar": 48
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cae0fdd_e1037512",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-03-22T17:16:16Z",
       "side": 1,
       "message": "same nit",
+      "range": {
+        "startLine": 151,
+        "startChar": 40,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd38fcfc_a36d708d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cae0fdd_e1037512",
       "range": {
         "startLine": 151,
         "startChar": 40,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37521a7_0c039264",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4216d53a_7dc999ce",
+      "range": {
+        "startLine": 56,
+        "startChar": 37,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ee6bc7a_93d53966",
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f4d9ba_c7020909",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ee6bc7a_93d53966",
+      "range": {
+        "startLine": 94,
+        "startChar": 44,
+        "endLine": 94,
+        "endChar": 54
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67654a14_3e7219a5",
@@ -238,6 +472,30 @@
       "writtenOn": "2022-03-22T17:16:16Z",
       "side": 1,
       "message": "This string literal is repeated twice -- should it be a constant?",
+      "range": {
+        "startLine": 204,
+        "startChar": 52,
+        "endLine": 204,
+        "endChar": 66
+      },
+      "revId": "13f7e90030edb5808a586a8334dd5768b6bbd893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a969dfe_08b82032",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-23T23:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67654a14_3e7219a5",
       "range": {
         "startLine": 204,
         "startChar": 52,
