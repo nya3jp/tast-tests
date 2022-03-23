@@ -43,7 +43,7 @@ func init() {
 		Vars: []string{"servo",
 			"firmware.mode", // Optional. Expecting "tablet". By default firmware.mode will be "clamshell".
 		},
-		Attr:    []string{"group:firmware", "firmware_experimental"},
+		Attr:    []string{"group:firmware", "firmware_unstable"},
 		Fixture: fixture.NormalMode,
 		Params: []testing.Param{{
 			Name: "coldreset",

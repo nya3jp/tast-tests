@@ -21,7 +21,7 @@ func init() {
 		Func:         ECSharedMemory,
 		Desc:         "Checks that there is still EC shared memory available",
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_bringup"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Fixture:      fixture.NormalMode,
 	})

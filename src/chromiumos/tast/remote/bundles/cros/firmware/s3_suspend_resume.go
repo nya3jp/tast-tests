@@ -37,7 +37,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService"},
 		Vars:         []string{"servo"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{{
 			Name:    "stability_test_clamshell_mode",
