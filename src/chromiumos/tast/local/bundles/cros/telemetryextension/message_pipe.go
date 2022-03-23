@@ -53,22 +53,30 @@ func init() {
 func MessagePipe(ctx context.Context, s *testing.State) {
 	v := s.FixtValue().(*fixture.Value)
 
-	const messageID = 100
-
-	type message struct {
-		ID int `json:"id"`
+	type telemetryRequest struct {
+		InfoType string `json:"infoType"`
 	}
 
-	var resp message
+	type request struct {
+		Type      string           `json:"type"`
+		Telemetry telemetryRequest `json:"telemetry"`
+	}
+
+	type response struct {
+		Success   bool        `json:"success"`
+		Telemetry interface{} `json:"telemetry"`
+	}
+
+	var resp response
 	if err := v.PwaConn.Call(ctx, &resp,
 		"tast.promisify(chrome.runtime.sendMessage)",
 		v.ExtID,
-		message{ID: messageID},
+		request{Type: "telemetry", Telemetry: telemetryRequest{InfoType: "vpd"}},
 	); err != nil {
 		s.Fatal("Failed to get response from Telemetry extenion service worker: ", err)
 	}
 
-	if want := messageID + 1; resp.ID != want {
-		s.Errorf("Unexpected response ID: got %d; want %d", resp.ID, want)
+	if want := true; resp.Success != want {
+		s.Errorf("Unexpected response success: got %t; want %t. Response telemetry: %v", resp.Success, want, resp.Telemetry)
 	}
 }
