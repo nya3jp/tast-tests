@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cb27a3_f376e396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1525413
+      },
+      "writtenOn": "2022-03-23T03:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee6d10b_940662d3",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e37adb26_75451093",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-03-23T00:10:55Z",
       "side": 1,
       "message": "I wonder if it\u0027s a good idea to explicitly disable the flag to avoid the \"enabled by default\" case rolling out and breaking the test. You\u0027ll be in control of updating the test once enabled by default. WDYT?",
+      "range": {
+        "startLine": 63,
+        "startChar": 14,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f344abcd_256795bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1525413
+      },
+      "writtenOn": "2022-03-23T03:24:55Z",
+      "side": 1,
+      "message": "That\u0027s a good point, it\u0027s more stable to explicitly disable this. Done.",
+      "parentUuid": "e37adb26_75451093",
       "range": {
         "startLine": 63,
         "startChar": 14,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c37ac8_105bb6fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525413
+      },
+      "writtenOn": "2022-03-23T03:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b832f9ec_71d7118e",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c69d35ab_e758fca3",
@@ -133,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faeaa59b_d7b4729d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1525413
+      },
+      "writtenOn": "2022-03-23T03:24:55Z",
+      "side": 1,
+      "message": "Done. I used the `ctx` for debugging purpose previously, forgot to remove, both `ctx` and `tconn` are not needed here.",
+      "parentUuid": "c69d35ab_e758fca3",
+      "range": {
+        "startLine": 208,
+        "startChar": 22,
+        "endLine": 208,
+        "endChar": 41
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f805e3b0_a14aaf0c",
@@ -146,6 +242,30 @@
       "writtenOn": "2022-03-23T00:10:55Z",
       "side": 1,
       "message": "filesapp.FilesApp actually exposes this API, you can just use `files.LeftClick` below. Added benefit is the selector is scoped to the Files app window",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 25
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff726e0_6a40368f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1525413
+      },
+      "writtenOn": "2022-03-23T03:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f805e3b0_a14aaf0c",
       "range": {
         "startLine": 210,
         "startChar": 2,
