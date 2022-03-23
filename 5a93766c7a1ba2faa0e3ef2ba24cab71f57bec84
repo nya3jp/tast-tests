@@ -16,6 +16,40 @@
       "message": "PTAL. Thank you!",
       "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a18b0d_fd2e161c",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-03-23T23:24:12Z",
+      "side": 1,
+      "message": "My understanding was that these should be refactored into uiauto actions, ie return a (ctx) \u003d\u003e error function",
+      "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d8331d_664c71ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-03-23T23:24:12Z",
+      "side": 1,
+      "message": "Could these be chained together if they were all uiauto actions?",
+      "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
