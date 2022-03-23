@@ -70,6 +70,24 @@
       "parentUuid": "1162f7f9_f9ae282a",
       "revId": "fdfacea25c4cefbec6ba8b1e50aa89216e9764ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "492b7ed5_38a38a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-23T01:10:36Z",
+      "side": 1,
+      "message": "https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4627988 moved credentials to ui.yaml",
+      "parentUuid": "ddb90b71_3e716d2f",
+      "revId": "fdfacea25c4cefbec6ba8b1e50aa89216e9764ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
