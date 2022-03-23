@@ -33,6 +33,148 @@
       "message": "Carrying my +1 over with a few open comments",
       "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62415bcb_81475568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "Discussed offline, so we should be aligned in terms of implementation direction.\nJust more code review comments.",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34abbd9_cba796d1",
+        "filename": "src/chromiumos/tast/common/variations/const.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "these looks needed only in local tests. Could you move?",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5957e107_3d985241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "nit: no empty line is needed.",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec87472b_33af6ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "could you use chromiumos/tast/local/chrome/localstate ?",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5f3e43_ddfd437b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "could you update localstate package to have writing feature?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3553b3d_96d63d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "nit: no empty line is needed.",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc72752b_58a3a0da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "nit: no empty line is needed.",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff793595_dd631d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:00:21Z",
+      "side": 1,
+      "message": "this should be placed at L159",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
