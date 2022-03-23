@@ -3,10 +3,18 @@
 // found in the LICENSE file.
 
 chrome.runtime.onMessageExternal.addListener(
-    async function(request, sender, sendResponse) {
+    async function (request, sender, sendResponse) {
         console.log("Request: ", request);
-        sendResponse({
-            'id': request.id + 1
-        });
+        if (request.type === "telemetry" &&
+            request.telemetry.infoType === "vpd") {
+            sendResponse({
+                "success": true
+            });
+        } else {
+            sendResponse({
+                "success": false,
+                "telemetry": "invalid request"
+            });
+        }
     }
 );
