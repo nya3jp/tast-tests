@@ -213,8 +213,7 @@ func init() {
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
-				chrome.ExtraArgs("--disable-lacros-keep-alive",
-					"--disable-login-lacros-opening")}, nil
+				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,

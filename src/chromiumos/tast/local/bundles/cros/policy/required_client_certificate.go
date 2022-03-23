@@ -184,7 +184,7 @@ func lacrosOptsForAsh() ([]chrome.Option, error) {
 	extList := strings.Join(extDirs, ",")
 	return []chrome.Option{
 		chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "ForceProfileMigrationCompletion"),
-		chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive", "--disable-login-lacros-opening"),
+		chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive"),
 		chrome.LacrosExtraArgs("--remote-debugging-port=0"),
 		chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...)}, nil
 }
