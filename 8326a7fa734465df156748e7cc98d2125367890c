@@ -70,6 +70,30 @@
       },
       "revId": "8326a7fa734465df156748e7cc98d2125367890c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cfeffaa_518d3f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-03-23T15:09:28Z",
+      "side": 1,
+      "message": "You\u0027re right, go style doesn\u0027t specify line lengths, at least not in comments.",
+      "parentUuid": "f2dd609b_f68aaf40",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "8326a7fa734465df156748e7cc98d2125367890c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
