@@ -96,7 +96,15 @@ func WaitforAppsToBeVisible(ctx context.Context, tconn *chrome.TestConn, ac *uia
 	for _, app := range appsList {
 		// Wait for the launched app window to become visible.
 		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			return w.IsVisible && strings.Contains(w.Title, app.Name)
+			if !w.IsVisible {
+				return false
+			}
+			// TODO(crbug.com/1328851): Remove this hack when all tests using this func switch to using LacrosOnly.
+			// The title of Lacros is prefixed with "Chrome", not "Lacros".
+			if w.WindowType == ash.WindowTypeLacros {
+				return strings.Contains(w.Title, "Chrome")
+			}
+			return strings.Contains(w.Title, app.Name)
 		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 			return errors.Wrapf(err, "%s app window not visible after launching", app.Name)
 		}
