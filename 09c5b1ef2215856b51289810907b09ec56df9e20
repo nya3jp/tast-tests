@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee5260a_9ec47c33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-03-23T07:51:10Z",
+      "side": 1,
+      "message": "Do we have a golang API for this that\u0027s nicer?",
+      "revId": "09c5b1ef2215856b51289810907b09ec56df9e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf6f5b0_4c99ebe5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-03-23T07:51:10Z",
+      "side": 1,
+      "message": "Could you write a comment with a rationale why the timeout is 130 seconds?",
+      "revId": "09c5b1ef2215856b51289810907b09ec56df9e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
