@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 )
 
@@ -82,13 +81,6 @@ func parseUpdateFirmwareCompletedSignal(sig *dbus.Signal) (UpdateFirmwareComplet
 // StartAndWaitForQuiescence starts the modemfwd job and waits for the initial sequence to complete
 // or until an error is logged.
 func StartAndWaitForQuiescence(ctx context.Context) error {
-	reader, err := syslog.NewReader(ctx, syslog.Program(JobName))
-	if err != nil {
-		return errors.Wrap(err, "failed to create log reader")
-	}
-	// Ensure the Reader is closed.
-	defer reader.Close()
-
 	watcher, err := WatchUpdateFirmwareCompleted(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to watch for UpdateFirmwareCompleted")
