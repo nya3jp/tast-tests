@@ -26,7 +26,8 @@ const (
 	minBatteryPercent      = 50
 	defaultCycles          = 100
 	defaultAllowS2idle     = true
-	reconnectionAttempts   = 20
+	reconnectionTimeout    = 20 * time.Second
+	reconnectionInterval   = time.Second
 	tmpPowerManagerPath    = "/tmp/power_manager"
 	suspendDelaySeconds    = 3
 	chargeCheckInterval    = time.Minute
@@ -34,9 +35,9 @@ const (
 	servoCommTimeout       = 5 * time.Second
 	servoCommInterval      = time.Second
 
-	varCycles      = "cycles"
-	varAllowS2Idle = "allow_s2idle"
-	varAllowS3     = "allow_s3"
+	varCycles    = "cycles"
+	varAllowS0ix = "allow_s0ix"
+	varAllowS3   = "allow_s3"
 )
 
 func init() {
@@ -51,7 +52,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Fixture:      fixture.NormalMode,
 		Timeout:      3 * time.Hour, // Allow time for the battery to potentially charge up
-		Vars:         []string{varCycles, varAllowS2Idle, varAllowS3},
+		Vars:         []string{varCycles, varAllowS0ix, varAllowS3},
 	})
 }
 
@@ -79,14 +80,14 @@ func SuspendBattery(ctx context.Context, s *testing.State) {
 		suspendCycles = newCycles
 	}
 
-	allowS2idle := true
-	if v, ok := s.Var(varAllowS2Idle); ok {
-		newAllowS2idle, err := strconv.ParseBool(v)
+	allowS0ix := true
+	if v, ok := s.Var(varAllowS0ix); ok {
+		newAllowS0ix, err := strconv.ParseBool(v)
 		if err != nil {
-			s.Fatalf("Failed to parse %s from string %s", varAllowS2Idle, v)
+			s.Fatalf("Failed to parse %s from string %s", varAllowS0ix, v)
 		}
 
-		allowS2idle = newAllowS2idle
+		allowS0ix = newAllowS0ix
 	}
 
 	allowS3 := true
@@ -99,43 +100,8 @@ func SuspendBattery(ctx context.Context, s *testing.State) {
 		allowS3 = newAllowS3
 	}
 
-	type suspendType struct {
-		name          string
-		suspendToIdle bool
-	}
-
-	var suspendTests = []suspendType{}
-
-	// Determine if S0ix is supported
-	ret, err := runWithExitStatus(ctx, h, "grep", "-q", "freeze", "/sys/power/state")
-	if err != nil {
-		s.Fatal("Failed to determine S0ix support: ", err)
-	}
-	if ret == 0 {
-		if allowS2idle {
-			s.Log("Testing S0ix")
-			suspendTests = append(suspendTests, suspendType{"S0ix", true})
-		} else {
-			s.Logf("S0ix testing disabled through %s", varAllowS2Idle)
-		}
-	}
-
-	// Determine if S3 is supported
-	ret, err = runWithExitStatus(ctx, h, "grep", "-q", "deep", "/sys/power/mem_sleep")
-	if err != nil {
-		s.Fatal("Failed to determine S3 support: ", err)
-	}
-	if ret == 0 {
-		if allowS3 {
-			s.Log("Testing S3")
-			suspendTests = append(suspendTests, suspendType{"S3", false})
-		} else {
-			s.Logf("S3 testing disabled through %s", varAllowS3)
-		}
-	}
-
 	// Setup powerd settings
-	err = h.DUT.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("mkdir -p %s && "+
+	err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("mkdir -p %s && "+
 		"echo 0 > %s/suspend_to_idle && "+
 		"mount --bind %s /var/lib/power_manager && "+
 		"restart powerd",
@@ -152,6 +118,53 @@ func SuspendBattery(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
+	type suspendType struct {
+		name          string
+		suspendToIdle bool
+	}
+
+	var suspendTests = []suspendType{}
+
+	// Determine if S0ix is supported
+	ret, err := runWithExitStatus(ctx, h, "grep", "-q", "freeze", "/sys/power/state")
+	if err != nil {
+		s.Fatal("Failed to determine S0ix support: ", err)
+	}
+	if ret == 0 {
+		if allowS0ix {
+			// The most reliable way to check if a sleep state is supported is to attempt to enter that state
+			setSuspendToIdle(ctx, h, true)
+			if err := suspendCycleDut(ctx, h, "S0ix"); err != nil {
+				s.Fatalf("S0ix is supported, but failed to enter state: %s", err)
+			}
+
+			s.Log("Testing S0ix")
+			suspendTests = append(suspendTests, suspendType{"S0ix", true})
+		} else {
+			s.Logf("S0ix testing disabled through %s", varAllowS0ix)
+		}
+	}
+
+	// Determine if S3 is supported
+	ret, err = runWithExitStatus(ctx, h, "grep", "-q", "deep", "/sys/power/mem_sleep")
+	if err != nil {
+		s.Fatal("Failed to determine S3 support: ", err)
+	}
+	if ret == 0 {
+		if allowS3 {
+			// The most reliable way to check if a sleep state is supported is to attempt to enter that state
+			setSuspendToIdle(ctx, h, false)
+			if err := suspendCycleDut(ctx, h, "S3"); err != nil {
+				s.Fatalf("S3 is supported, but failed to enter state: %s", err)
+			}
+
+			s.Log("Testing S3")
+			suspendTests = append(suspendTests, suspendType{"S3", false})
+		} else {
+			s.Logf("S3 testing disabled through %s", varAllowS3)
+		}
+	}
+
 	for _, test := range suspendTests {
 		// Change the suspend type
 		if err := setSuspendToIdle(ctx, h, test.suspendToIdle); err != nil {
@@ -167,36 +180,8 @@ func SuspendBattery(ctx context.Context, s *testing.State) {
 			}
 
 			s.Log("Suspending DUT")
-			cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", fmt.Sprintf("--delay=%d", suspendDelaySeconds))
-			if err := cmd.Start(); err != nil {
-				s.Fatal("Failed to suspend DUT: ", err)
-			}
-
-			testing.Sleep(ctx, suspendDelaySeconds*time.Second)
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, test.name); err != nil {
-				s.Fatal("Failed to suspend DUT: ", err)
-			}
-
-			s.Logf("DUT Suspended to %s", test.name)
-			s.Log("Power on DUT with power key")
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-				s.Fatal("Failed to press power key on DUT: ", err)
-			}
-
-			s.Log("Waiting for DUT to reach S0")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
-				s.Fatal("DUT failed to reach S0 after power button pressed: ", err)
-			}
-			s.Log("DUT reached S0")
-
-			s.Log("Waiting for DUT to reconnect")
-			for i := 0; i < reconnectionAttempts && !h.DUT.Connected(ctx); i++ {
-				// Take some time for the connection to recover
-				testing.Sleep(ctx, time.Second)
-			}
-
-			if !h.DUT.Connected(ctx) {
-				s.Fatal("Failed to reconnect to DUT after entering S0")
+			if err := suspendCycleDut(ctx, h, test.name); err != nil {
+				s.Fatal("Failed to suspend cycle DUT: ", err)
 			}
 
 			// Check that the kernel registered one suspension
@@ -330,4 +315,39 @@ func getBatteryPercent(ctx context.Context, h *firmware.Helper) (int, error) {
 	}
 
 	return int(100 * float32(currentMAH) / float32(maxMAH)), nil
+}
+
+func suspendCycleDut(ctx context.Context, h *firmware.Helper, targetState string) error {
+	cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", fmt.Sprintf("--delay=%d", suspendDelaySeconds))
+	if err := cmd.Start(); err != nil {
+		return errors.Errorf("failed to invoke powerd_dbus_suspend: %s", err)
+	}
+
+	testing.Sleep(ctx, suspendDelaySeconds*time.Second)
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, targetState); err != nil {
+		return errors.Errorf("failed to get power state %s: %s", targetState, err)
+	}
+
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+		return errors.Errorf("failed to press power key on DUT: %s", err)
+	}
+
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+		return errors.Errorf("DUT failed to reach S0 after power button pressed: %s", err)
+	}
+
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if !h.DUT.Connected(ctx) {
+			return errors.New("waiting for DUT to reconnect")
+		}
+
+		return nil
+
+	}, &testing.PollOptions{Timeout: reconnectionTimeout, Interval: reconnectionInterval})
+
+	if err != nil {
+		return errors.New("failed to reconnect to DUT after entering S0")
+	}
+
+	return nil
 }
