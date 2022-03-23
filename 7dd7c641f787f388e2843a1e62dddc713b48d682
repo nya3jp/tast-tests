@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba82c9e2_249813a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "It is not necessary to create this structure. \nSimply given the value in Val. \n\ne.g. Val: 10",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fddfcd25_e7b8a80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "It is highly recommended to revert the change to cleanup environment post test. \n\ndefer adapter.SetPowered(cleanupCtx, false)",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6738c3e_6b93ec80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "This should be inside the if condition block. Btw, please create a cleanup ctx to revert DUT environment.\n\nif !isConnected {\n    ..\n    defer btDevice.Disconnect(cleanupCtx)\n}",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb8a78f_03411ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "This is not a good way to close the audio player. After player window opened, something can happen to defocus the window, such as system alert, crash window, etc..\n\nYou can find the audio player and even close it via a few functions provided in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 3
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c91ab03_1ad37db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "action ui can be created outside the loop.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7af069f_eeb799ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "This is not a combination of actions, you can used NamedAction if you want to print along the action.",
+      "range": {
+        "startLine": 167,
+        "startChar": 19,
+        "endLine": 167,
+        "endChar": 26
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ce3be0_228d6d23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "Actually, this confirmation step can be grouped into above combined action. You can fix either one.",
+      "range": {
+        "startLine": 174,
+        "startChar": 11,
+        "endLine": 174,
+        "endChar": 38
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee46ef39_06fc2801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 191,
+        "startChar": 11,
+        "endLine": 191,
+        "endChar": 37
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28878839_84d267a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "All these steps can be grouped to connecting step.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4e8a8b_7464be5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "Are you intended to remove this file in the end of audioPlayback function? The file is still used by audio player.",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 25
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73c05fd_d01fa341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-23T00:17:03Z",
+      "side": 1,
+      "message": "The final returned err is not wrapped. Thus, you can simply return the polling function result as below:\n\nreturn testing.Poll(){\n}",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 310,
+        "endChar": 11
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
