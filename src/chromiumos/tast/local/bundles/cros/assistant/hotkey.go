@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -40,20 +39,6 @@ func init() {
 	})
 }
 
-func confirmLauncherOpened(ctx context.Context, tconn *chrome.TestConn) bool {
-	// If onboarding is enabled, we expect it's ash.Half state.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Half); err == nil {
-		return true
-	}
-
-	// If onboarding is NOT enabled, we expect it's ash.Peeking state.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Peeking); err == nil {
-		return true
-	}
-
-	return false
-}
-
 func Hotkey(ctx context.Context, s *testing.State) {
 	accel := s.Param().(assistant.Accelerator)
 	cr := s.PreValue().(*chrome.Chrome)
@@ -71,7 +56,7 @@ func Hotkey(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+	if err := assistant.WaitUntilAssistantUIGone(ctx, tconn); err != nil {
 		s.Fatal("Failed to confirm that launcher is closed before a test: ", err)
 	}
 
@@ -79,7 +64,7 @@ func Hotkey(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to toggle Assistant UI with hotkey: ", err)
 	}
 
-	if !confirmLauncherOpened(ctx, tconn) {
+	if err := assistant.WaitUntilAssistantUIExists(ctx, tconn); err != nil {
 		s.Fatal("Failed to confirm that launcher got opened with hotkey: ", err)
 	}
 
@@ -87,7 +72,7 @@ func Hotkey(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to toggle Assistant UI with hotkey: ", err)
 	}
 
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+	if err := assistant.WaitUntilAssistantUIGone(ctx, tconn); err != nil {
 		s.Fatal("Failed to confirm that launcher got closed with hotkey: ", err)
 	}
 }

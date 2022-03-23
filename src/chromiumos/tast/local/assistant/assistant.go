@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -136,6 +138,16 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn, accel Accel
 	}
 
 	return nil
+}
+
+// WaitUntilAssistantUIExists waits until Assistant UI becomes visible.
+func WaitUntilAssistantUIExists(ctx context.Context, tconn *chrome.TestConn) error {
+	return uiauto.New(tconn).WaitUntilExists(nodewith.HasClass("AssistantPageView"))(ctx)
+}
+
+// WaitUntilAssistantUIGone waits until Assistant UI becomes hidden.
+func WaitUntilAssistantUIGone(ctx context.Context, tconn *chrome.TestConn) error {
+	return uiauto.New(tconn).WaitUntilGone(nodewith.HasClass("AssistantPageView"))(ctx)
 }
 
 // VerboseLogging is a helper function passed into chrome.New which will:
