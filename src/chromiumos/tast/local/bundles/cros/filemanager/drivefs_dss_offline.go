@@ -43,7 +43,7 @@ func init() {
 			"group:mainline",
 			"informational",
 		},
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 		Fixture: "driveFsStartedWithNativeMessaging",
 	})
 }
