@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd4efff_7997a38e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-23T18:43:04Z",
+      "side": 1,
+      "message": "Submitting again as https://crrev.com/c/3546416 would fix the build error in CQ that is unrelated to this change",
+      "revId": "e2db0013f7511af3e2983effe80a18ae1975aad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
