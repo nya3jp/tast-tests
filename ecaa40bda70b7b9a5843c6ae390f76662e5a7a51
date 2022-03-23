@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d55c19ab_3e1cc0f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-23T04:25:27Z",
+      "side": 1,
+      "message": "Hi Hidehiko, the factory side has a coding style for this: https://chromium.googlesource.com/chromiumos/platform/factory/+/HEAD/CODING_STYLE.md#additional-requirements\n\nIt is because the default action for installing the factory toolkit is to have the test enabled, and I think it is better to align the flag with the installer, how do you think?",
+      "parentUuid": "537b478c_f5b06519",
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5540bf0_2dc5fcaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
         "patchSetId": 10
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-22T14:41:00Z",
       "side": 1,
       "message": "we prefer not to depend on external command if unneeded.\nCould you use archive/zip?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 117
+      },
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14a19e0_4128c684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-23T04:25:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5540bf0_2dc5fcaa",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "253a627a_48e37ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-23T04:25:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87ac3103_144e3e12",
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f71cd88_2bfd4362",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-03-22T14:41:00Z",
       "side": 1,
       "message": "nit: should we return nil on error for consistency?",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "164f4542_0abcb6ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-23T04:25:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f71cd88_2bfd4362",
       "range": {
         "startLine": 59,
         "startChar": 8,
