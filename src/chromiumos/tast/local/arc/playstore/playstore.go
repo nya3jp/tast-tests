@@ -98,6 +98,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		termsOfServiceText        = "Terms of Service"
 		linkPaypalAccountText     = "Want to link your PayPal account.*"
 		installAppsFromDeviceText = "Install apps from your devices"
+		serverBusyText            = "Server busy, please try again later."
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
@@ -182,6 +183,8 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			// Somehow, playstore shows a ToS dialog upon opening even after playsore
 			// optin finishes. Click "accept" button to accept and dismiss.
 			{termsOfServiceText, acceptButtonText},
+			// Press "Try again" if "Server busy, please try again later." screen is shown.
+			{serverBusyText, tryAgainButtonText},
 		} {
 			if err := FindAndDismissDialog(ctx, d, val.dialogText, val.buttonText, defaultUITimeout); err != nil {
 				return testing.PollBreak(err)
@@ -288,10 +291,14 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			}
 		}
 
-		// Installation is complete once the open button or the play button is enabled.
-		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText)), ui.Enabled(true)).Exists(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait for enabled open button or play button")
+		installed, err := a.PackageInstalled(ctx, pkgName)
+		if err != nil {
+			return errors.Wrap(err, "failed to check app installation status")
 		}
+		if !installed {
+			return errors.New("app not yet installed")
+		}
+
 		return nil
 	}, &testing.PollOptions{Interval: time.Second})
 }
