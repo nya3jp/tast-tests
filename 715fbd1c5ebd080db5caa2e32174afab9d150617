@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a24e9bd_867f6566",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-23T00:13:06Z",
+      "side": 1,
+      "message": "\u003e \"limted\" is a possible misspelling of \"limited\".\n\nPlease fix.",
+      "parentUuid": "6386df62_d061a996",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "715fbd1c5ebd080db5caa2e32174afab9d150617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
