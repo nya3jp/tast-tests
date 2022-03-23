@@ -6,7 +6,6 @@ package util
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -14,8 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/testing"
 )
 
 // SetUpUserPIN sets up a test user with a specific PIN.
@@ -72,48 +69,6 @@ func verifyPINUnlock(ctx context.Context, tconn *chrome.TestConn, PIN string, au
 
 	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
 		return errors.Wrapf(err, "waiting for screen to be unlocked failed (last status %+v)", st)
-	}
-	return nil
-}
-
-// AssertMakeCredentialSuccess asserts MakeCredential succeeded by looking at Chrome log.
-func AssertMakeCredentialSuccess(ctx context.Context, logReader *syslog.ChromeReader) error {
-	const makeCredentialSuccessLine = "Make credential status: 1"
-
-	// TODO(b/210418148): After we used internal site for testing, don't read log messages to determine
-	// whether operation is successful.
-	if pollErr := testing.Poll(ctx, func(ctx context.Context) error {
-		entry, err := logReader.Read()
-		if err != nil {
-			return err
-		}
-		if strings.HasSuffix(entry.Content, makeCredentialSuccessLine) {
-			return nil
-		}
-		return errors.New("result not found yet")
-	}, &testing.PollOptions{Timeout: 60 * time.Second}); pollErr != nil {
-		return errors.Wrap(pollErr, "MakeCredential did not succeed")
-	}
-	return nil
-}
-
-// AssertGetAssertionSuccess asserts GetAssertion succeeded by looking at Chrome log.
-func AssertGetAssertionSuccess(ctx context.Context, logReader *syslog.ChromeReader) error {
-	const getAssertionSuccessLine = "GetAssertion status: 1"
-
-	// TODO(b/210418148): After we used internal site for testing, don't read log messages to determine
-	// whether operation is successful.
-	if pollErr := testing.Poll(ctx, func(ctx context.Context) error {
-		entry, err := logReader.Read()
-		if err != nil {
-			return err
-		}
-		if strings.HasSuffix(entry.Content, getAssertionSuccessLine) {
-			return nil
-		}
-		return errors.New("result not found yet")
-	}, &testing.PollOptions{Timeout: 60 * time.Second}); pollErr != nil {
-		return pollErr
 	}
 	return nil
 }
