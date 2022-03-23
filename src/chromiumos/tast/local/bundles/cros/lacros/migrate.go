@@ -60,13 +60,12 @@ func Migrate(ctx context.Context, s *testing.State) {
 }
 
 const (
-	bookmarkName       = "MyBookmark12345" // Arbitrary.
-	shortcutName       = "MyShortcut12345" // Arbitrary.
-	titleOfVersionPage = "About Version"   // chrome://version page title.
+	bookmarkName         = "MyBookmark12345" // Arbitrary.
+	shortcutName         = "MyShortcut12345" // Arbitrary.
+	titleOfDownloadsPage = "Downloads"       // chrome://downloads page title.
 )
 
-// prepareAshProfile resets profile migration and creates two tabs, a bookmark, and a shortcut.
-// TODO(neis): Also populate Downloads.
+// prepareAshProfile resets profile migration and creates two tabs, a bookmark, a download, and a shortcut.
 func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter) {
 	// First restart Chrome with Lacros disabled in order to reset profile migration.
 	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"))
@@ -84,10 +83,16 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		s.Fatal("'First Run' file exists or cannot be read: ", err)
 	}
 
-	// Bookmark the chrome://version page.
-	conn, err := cr.NewConn(ctx, "chrome://version")
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to open version page: ", err)
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	ui := uiauto.New(tconn)
+
+	// Bookmark the chrome://downloads page.
+	conn, err := cr.NewConn(ctx, "chrome://downloads")
+	if err != nil {
+		s.Fatal("Failed to open downloads page: ", err)
 	}
 	defer conn.Close()
 	if err := kb.Accel(ctx, "Ctrl+d"); err != nil {
@@ -96,13 +101,24 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	if err := kb.Type(ctx, bookmarkName); err != nil {
 		s.Fatal("Failed to type bookmark name: ", err)
 	}
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
+	doneButton := nodewith.Name("Done").Role(role.Button).First()
+	if err := uiauto.Combine("Click 'Done' button",
+		ui.LeftClick(doneButton),
+		ui.WaitUntilGone(doneButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click: ", err)
 	}
-	ui := uiauto.New(tconn)
-	if err := ui.LeftClick(nodewith.Name("Done").Role(role.Button).First())(ctx); err != nil {
-		s.Fatal("Failed to click button: ", err)
+
+	// Also download that page.
+	if err := kb.Accel(ctx, "Ctrl+s"); err != nil {
+		s.Fatal("Failed to open download popup: ", err)
+	}
+	saveButton := nodewith.Name("Save").Role(role.Button).First()
+	if err := uiauto.Combine("Click 'Save' button",
+		ui.LeftClick(saveButton),
+		ui.WaitUntilGone(saveButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click: ", err)
 	}
 
 	// Create a shortcut on the newtab page.
@@ -110,17 +126,20 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		s.Fatal("Failed to open new tab: ", err)
 	}
 	addShortcutButton := nodewith.Name("Add shortcut").Role(role.Button).First()
-	if err := uiauto.Combine("Wait for button and click it",
-		ui.WaitUntilExists(addShortcutButton),
+	if err := uiauto.Combine("Click 'Add shortcut' button",
 		ui.LeftClick(addShortcutButton),
+		ui.WaitUntilGone(addShortcutButton),
 	)(ctx); err != nil {
-		s.Error("Failed: ", err)
+		s.Fatal("Failed to click: ", err)
 	}
 	if err := kb.Type(ctx, shortcutName+"\tfoobar"); err != nil {
 		s.Fatal("Failed to type shortcut data: ", err)
 	}
-	if err := ui.LeftClick(nodewith.Name("Done").Role(role.Button).First())(ctx); err != nil {
-		s.Fatal("Failed to click button: ", err)
+	if err := uiauto.Combine("Click 'Done' button",
+		ui.LeftClick(doneButton),
+		ui.WaitUntilGone(doneButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click: ", err)
 	}
 }
 
@@ -153,12 +172,18 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Error("Failed to find shortcut: ", err)
 	}
 
-	// Check that there is another tab showing the version page.
+	// Check that there is another tab showing the downloads page.
 	if err := kb.Accel(ctx, "Ctrl+w"); err != nil {
 		s.Fatal("Failed to close tab: ", err)
 	}
-	if err := lacros.WaitForLacrosWindow(ctx, tconn, titleOfVersionPage); err != nil {
+	if err := lacros.WaitForLacrosWindow(ctx, tconn, titleOfDownloadsPage); err != nil {
 		s.Fatal("Failed to find appropriate window: ", err)
+	}
+
+	// Check that the download page shows the previous download (of itself).
+	downloadedFile := nodewith.Name(titleOfDownloadsPage + ".mhtml").Role(role.Link).First()
+	if err = ui.WaitUntilExists(downloadedFile)(ctx); err != nil {
+		s.Error("Failed to find download: ", err)
 	}
 }
 
