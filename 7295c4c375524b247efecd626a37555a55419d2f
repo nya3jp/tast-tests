@@ -16,6 +16,23 @@
       "message": "cc\u0027ing test owner +nya@ who is on leave.",
       "revId": "7295c4c375524b247efecd626a37555a55419d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69278bdc_5907433c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/force_region.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T23:54:20Z",
+      "side": 1,
+      "message": "could you update this line, too?",
+      "revId": "7295c4c375524b247efecd626a37555a55419d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
