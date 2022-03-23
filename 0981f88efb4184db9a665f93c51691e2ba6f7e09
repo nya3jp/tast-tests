@@ -135,6 +135,30 @@
       },
       "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b275b02d_f3a41300",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1524580
+      },
+      "writtenOn": "2022-03-23T08:21:45Z",
+      "side": 1,
+      "message": "The comment is modified. Thanks.",
+      "parentUuid": "b84238a2_cbf5a4f9",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 19
+      },
+      "revId": "0981f88efb4184db9a665f93c51691e2ba6f7e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
