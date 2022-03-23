@@ -35,10 +35,19 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "x86",
-				ExtraHardwareDeps: hwdep.D(hwdep.X86()),
+				ExtraHardwareDeps: hwdep.D(hwdep.X86(), hwdep.SkipOnModel("berknip", "dirinboz", "ezkinil", "morphius", "vilboz", "vilboz14", "vilboz360", "woomax")),
 				Val: testParameters{
 					apBootRegexp: `HC 0x|Port 80|ACPI query|Executing host reboot command`,
 					apBootMax:    1500 * time.Millisecond,
+				},
+			},
+			{
+				// Zork machines have a waiver for the boot-to-kernel time. go/zork-waiver-b2k
+				Name:              "zork",
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("berknip", "dirinboz", "ezkinil", "morphius", "vilboz", "vilboz14", "vilboz360", "woomax")),
+				Val: testParameters{
+					apBootRegexp: `HC 0x|Port 80|ACPI query|Executing host reboot command`,
+					apBootMax:    2500 * time.Millisecond,
 				},
 			},
 			{
@@ -61,6 +70,7 @@ const (
 // BootTime measures the time from EC boot to the first signal that the AP is booting.
 // This test is not a hard rule, what really matters is the platform.BootPerfServerCrosPerf test.
 // See go/chromeos-boottime for a proposal to revisit this.
+// It appears that this test is not measuring the same thing as "Boot-to-Kernel" or "Boot to chromeball", but should catch a regression in that time.
 func BootTime(ctx context.Context, s *testing.State) {
 	param := s.Param().(testParameters)
 	rebootingStarted := regexp.MustCompile(`Rebooting!`)
