@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0030588_08dce117",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-23T18:58:25Z",
+      "side": 1,
+      "message": "+rsorokin for test author\u0027s review\n+hidehiko for lacros tast owner\u0027s review",
+      "revId": "6846d0fc11362f8145908a093c38d2621b83dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b9fcbb_a222d414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-23T18:58:25Z",
+      "side": 1,
+      "message": "rsorokin@ is it okay to use this URL (or suggest) that exist in both lacros-chrome and ash-chrome? Looks like the \"chrome://os-credits\" exists only in ash-chrome and can\u0027t be open in lacros.\nSee go/lacros-url-redirect-links for the target browser of each chrome:// os:// URLs.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "6846d0fc11362f8145908a093c38d2621b83dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
