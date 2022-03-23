@@ -50,6 +50,24 @@
       "message": "Could these be chained together if they were all uiauto actions?",
       "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f310a8_d08b491c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-23T23:43:43Z",
+      "side": 1,
+      "message": "+1. uiauto.WaitUntilGone(assistantUI) would be much easier to understand for people unfamiliar with this code",
+      "parentUuid": "75d8331d_664c71ff",
+      "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
