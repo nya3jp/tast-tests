@@ -34,6 +34,24 @@
       "parentUuid": "68399020_5c2414a0",
       "revId": "2c899369d66f01ab61c930e3006ad11ea52894b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5642c05a_0518a708",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-23T05:02:07Z",
+      "side": 1,
+      "message": "I mean for CUJs. We don\u0027t want to add a bunch of cleanup code to chrome.go to handle every situation",
+      "parentUuid": "cc5372a7_e952ff66",
+      "revId": "2c899369d66f01ab61c930e3006ad11ea52894b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
