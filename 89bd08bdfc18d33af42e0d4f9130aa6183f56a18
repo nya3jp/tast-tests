@@ -16,6 +16,75 @@
       "message": "Please take a look!",
       "revId": "89bd08bdfc18d33af42e0d4f9130aa6183f56a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d4fdaf_0601fe80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-03-23T04:26:40Z",
+      "side": 1,
+      "message": "ui.Location already do polling inside it to wait until the location is the same for a two iterations of polling.\nIs this needed?",
+      "range": {
+        "startLine": 104,
+        "startChar": 20,
+        "endLine": 104,
+        "endChar": 37
+      },
+      "revId": "89bd08bdfc18d33af42e0d4f9130aa6183f56a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9d24693_1a0594b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-03-23T04:26:40Z",
+      "side": 1,
+      "message": "What is the purpose of this call? WaitForIdle is mainly for stabilizing performance tests. It\u0027s recommended to avoid using it for functional tests.",
+      "range": {
+        "startLine": 178,
+        "startChar": 12,
+        "endLine": 178,
+        "endChar": 24
+      },
+      "revId": "89bd08bdfc18d33af42e0d4f9130aa6183f56a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9d16fe_826fb67b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-03-23T04:26:40Z",
+      "side": 1,
+      "message": "How about wrapping each subtest into s.Run(...)?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/state.go;l\u003d615",
+      "range": {
+        "startLine": 274,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 8
+      },
+      "revId": "89bd08bdfc18d33af42e0d4f9130aa6183f56a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
