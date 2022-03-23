@@ -100,6 +100,9 @@ func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
 	// from ash-chrome to lacros.
 	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+MojoSocketPath))
 
+	// Disable launching lacros on login.
+	opts = append(opts, chrome.ExtraArgs("--disable-login-lacros-opening"))
+
 	// Suppress experimental Lacros infobar and possible others as well.
 	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
 
@@ -139,9 +142,7 @@ func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
 	// Set required options based on LacrosMode.
 	switch cfg.LacrosMode {
 	case LacrosPrimary:
-		opts = append(opts,
-			chrome.EnableFeatures("LacrosPrimary"),
-			chrome.ExtraArgs("--disable-lacros-keep-alive", "--disable-login-lacros-opening"))
+		opts = append(opts, chrome.EnableFeatures("LacrosPrimary"), chrome.ExtraArgs("--disable-lacros-keep-alive"))
 	case LacrosOnly:
 		return nil, errors.New("options for LacrosOnly not implemented")
 	case NotSpecified:

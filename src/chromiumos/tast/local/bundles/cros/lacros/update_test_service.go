@@ -283,8 +283,6 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string,
 	// Common options.
 	// Disable keep-alive for testing. See crbug.com/1268743.
 	opts = append(opts, chrome.ExtraArgs("--disable-lacros-keep-alive"))
-	// Suppress a startup window for testing. See crbug.com/1268252.
-	opts = append(opts, chrome.ExtraArgs("--disable-login-lacros-opening"))
 	// Suppress experimental Lacros infobar and possible others as well.
 	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
 	// Disable whats-new page. See crbug.com/1271436.
