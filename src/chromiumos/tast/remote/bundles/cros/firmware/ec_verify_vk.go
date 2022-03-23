@@ -21,6 +21,7 @@ import (
 
 type testParamsTablet struct {
 	canDoTabletSwitch bool
+	formFactor        string
 	tabletModeOn      string
 	tabletModeOff     string
 }
@@ -40,6 +41,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
 			Val: &testParamsTablet{
 				canDoTabletSwitch: true,
+				formFactor:        "convertible",
 				tabletModeOn:      "tabletmode on",
 				tabletModeOff:     "tabletmode off",
 			},
@@ -48,6 +50,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
 			Val: &testParamsTablet{
 				canDoTabletSwitch: true,
+				formFactor:        "detachable",
 				tabletModeOn:      "basestate detach",
 				tabletModeOff:     "basestate attach",
 			},
@@ -56,6 +59,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
 			Val: &testParamsTablet{
 				canDoTabletSwitch: false,
+				formFactor:        "chromeslate",
 			},
 		}},
 	})
@@ -94,7 +98,7 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 	// we could skip switching to tablet mode, and just verify that
 	// virtual keyboard is present after a click on the address bar.
 	if args.canDoTabletSwitch == false {
-		if err := verifyVKIsPresent(ctx, h, cvkc, s, true, ""); err != nil {
+		if err := verifyVKIsPresent(ctx, h, cvkc, s, true, "", args.formFactor); err != nil {
 			s.Fatal("Failed to verify virtual keyboard status: ", err)
 		}
 	} else {
@@ -106,7 +110,7 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 			{false, args.tabletModeOff},
 		} {
 			s.Logf("Run test with tablet mode on: %t", dut.tabletMode)
-			if err := verifyVKIsPresent(ctx, h, cvkc, s, dut.tabletMode, dut.tabletState); err != nil {
+			if err := verifyVKIsPresent(ctx, h, cvkc, s, dut.tabletMode, dut.tabletState, args.formFactor); err != nil {
 				s.Fatal("Failed to verify virtual keyboard status: ", err)
 			}
 		}
@@ -120,7 +124,8 @@ func checkAndSetTabletMode(ctx context.Context, h *firmware.Helper, s *testing.S
 		tabletmodeStatus   = `\[\S+ tablet mode (enabled|disabled)\]`
 		basestateNotFound  = `Command 'basestate' not found or ambiguous`
 		basestateStatus    = `\[\S+ base state: (attached|detached)\]`
-		checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `)`
+		bdStatus           = `\[\S+ BD forced (connected|disconnected)\]`
+		checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `|` + bdStatus + `)`
 	)
 	// Run EC command to turn on/off tablet mode.
 	s.Logf("Check command %q exists", action)
@@ -138,11 +143,39 @@ func checkAndSetTabletMode(ctx context.Context, h *firmware.Helper, s *testing.S
 	return nil
 }
 
-func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, s *testing.State, tabletMode bool, command string) error {
+func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, s *testing.State, tabletMode bool, command, dutFormFactor string) error {
 	// Run EC command to put DUT in clamshell/tablet mode.
 	if command != "" {
 		if err := checkAndSetTabletMode(ctx, h, s, command); err != nil {
-			return errors.Wrap(err, "failed to set DUT tablet mode state")
+			if dutFormFactor == "convertible" {
+				s.Logf("Failed to set DUT tablet mode state, and got: %v. Attempting to set tablet_mode_angle with ectool instead", err)
+				cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+				// Save initial tablet mode angle settings to restore at the end of verifyVKIsPresent.
+				tabletModeAngleInit, hysInit, err := cmd.SaveTabletModeAngles(ctx)
+				if err != nil {
+					return errors.Wrap(err, "failed to save initial tablet mode angles")
+				}
+				defer func() error {
+					s.Logf("Restoring DUT's tablet mode angles to the original settings: lid_angle=%s, hys=%s", tabletModeAngleInit, hysInit)
+					if err := cmd.ForceTabletModeAngle(ctx, tabletModeAngleInit, hysInit); err != nil {
+						return errors.Wrap(err, "failed to restore tablet mode angle to the initial angles")
+					}
+					return nil
+				}()
+				if tabletMode {
+					// Setting tabletModeAngle to 0s will force DUT into tablet mode.
+					if err := cmd.ForceTabletModeAngle(ctx, "0", "0"); err != nil {
+						return errors.Wrap(err, "failed to force DUT into tablet mode")
+					}
+				} else {
+					// Setting tabletModeAngle to 360 will force DUT into clamshell mode.
+					if err := cmd.ForceTabletModeAngle(ctx, "360", "0"); err != nil {
+						return errors.Wrap(err, "failed to force DUT into clamshell mode")
+					}
+				}
+			} else {
+				return errors.Wrap(err, "failed to set DUT tablet mode state")
+			}
 		}
 	}
 	// Wait for the command on switching to tablet mode to fully propagate,
@@ -161,6 +194,10 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 		s.Log("Clicking on the address bar of the Chrome page")
 		if _, err := cvkc.ClickChromeAddressBar(ctx, &empty.Empty{}); err != nil {
 			return errors.Wrap(err, "failed to click chrome address bar")
+		}
+
+		if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep after clicking on the Chrome address bar")
 		}
 
 		res, err := cvkc.CheckVirtualKeyboardIsPresent(ctx, &req)
