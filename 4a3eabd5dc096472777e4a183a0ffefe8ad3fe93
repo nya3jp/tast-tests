@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e7bd8b_9ce6277a",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-23T22:53:22Z",
+      "side": 1,
+      "message": "Any guidance about how much this var should be?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "4a3eabd5dc096472777e4a183a0ffefe8ad3fe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e13cc7_d2064cfd",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-23T22:53:22Z",
+      "side": 1,
+      "message": "Why the default is 1?",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "4a3eabd5dc096472777e4a183a0ffefe8ad3fe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2050d35_262e888e",
+        "filename": "src/chromiumos/tast/local/uidetection/params/text_params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-23T22:53:22Z",
+      "side": 1,
+      "message": "Is there a list of these similar characters?",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "4a3eabd5dc096472777e4a183a0ffefe8ad3fe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde029b2_ee04eb75",
+        "filename": "src/chromiumos/tast/local/uidetection/params/text_params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-23T22:53:22Z",
+      "side": 1,
+      "message": "Any guidance to set the number of this var?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "4a3eabd5dc096472777e4a183a0ffefe8ad3fe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
