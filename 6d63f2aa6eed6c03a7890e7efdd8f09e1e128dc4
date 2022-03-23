@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1fd145a_8c7ae7f9",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-23T23:48:53Z",
+      "side": 1,
+      "message": "I would recommend this just go into your existing uidetection package. That way, instead of a user writing params.CustomIconParams, which is a little meaningless, they can then write uidetection.CustomIconParams, which is far more clear (same for the rest of this package)",
+      "revId": "6d63f2aa6eed6c03a7890e7efdd8f09e1e128dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
