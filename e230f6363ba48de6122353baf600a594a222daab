@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73cedc4_3ac8cdf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Thanks all for the initial review.\n\nI\u0027ve finally had the time to come back to this, sorry for the delay. The new Tast test dlp.DataLeakPreventionRulesListClipboardMixedTypeBrowsers was based on the existing dlp.DataLeakPreventionRulesListClipboard test. Hence, I have amended the dlp.DataLeakPreventionRulesListClipboard and existing Clipboard tests with comments brought up from the initial review of this CL.",
+      "revId": "e230f6363ba48de6122353baf600a594a222daab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

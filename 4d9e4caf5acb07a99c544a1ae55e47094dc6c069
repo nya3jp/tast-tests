@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "406be127_3005c296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done. Added a word count constraint.",
+      "parentUuid": "2ec97299_f95925e5",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "935f6145_f7f9e2e1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-06T08:48:55Z",
       "side": 1,
       "message": "If it is matching the first words, suggest to use NameStartingWith.",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9738e0b7_5c6b7feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "935f6145_f7f9e2e1",
       "range": {
         "startLine": 69,
         "startChar": 25,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7300bea_c9fe4073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5cc2f03_eb724599",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80805483_a47680d6",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-04T16:32:11Z",
       "side": 1,
       "message": "Should it be set to something else? I feel that there is no \"this test is for mixed browsers\", but LacrosVariantUnneeded probably makes more sense.",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "017632f4_e775d6ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80805483_a47680d6",
       "range": {
         "startLine": 32,
         "startChar": 24,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "784c6282_f016a239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Agreed, it was confusing. The url defined here on line 49 was only used in the policy generation as the source that DLP should restrict data from. The url test param was the url which data was attempted to be copied from. \n\nI\u0027ve removed the former and just added it to the PopulateDLPPolicyForClipboard() call and renamed the test param to srcURL.",
+      "parentUuid": "5aa41a63_47675cbc",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42c3aee2_85754920",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-02-06T08:48:55Z",
       "side": 1,
       "message": "Recommend to specify the source and destination browser in the sub test name to make debugging easier in case of error.",
+      "range": {
+        "startLine": 65,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d95677e_85fe53e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c3aee2_85754920",
       "range": {
         "startLine": 65,
         "startChar": 20,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80873431_cc41bf54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7336ff_2652b49e",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ca72624_2356f79f",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-02-06T08:48:55Z",
       "side": 1,
       "message": "This error msg is inconsistent with the comment above but it aligns with the func name. It could cause confusion. Maybe just delete the comment.",
+      "range": {
+        "startLine": 103,
+        "startChar": 23,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3eb4de4_77dab288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca72624_2356f79f",
       "range": {
         "startLine": 103,
         "startChar": 23,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8db6a32_83608f0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b031c8b8_944a1918",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bfb349d_4229d958",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-02-06T08:48:55Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e561eb_a509da9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bfb349d_4229d958",
       "range": {
         "startLine": 112,
         "startChar": 3,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e1289d_8804bb5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b6359a_399eb516",
+      "range": {
+        "startLine": 120,
+        "startChar": 13,
+        "endLine": 120,
+        "endChar": 45
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a5c07ac_870fe9ba",
@@ -267,6 +531,30 @@
       "writtenOn": "2022-02-06T08:48:55Z",
       "side": 1,
       "message": "Please use AccelAction and uiauto.Combine",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 4
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb07d5a_31b4b95e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a5c07ac_870fe9ba",
       "range": {
         "startLine": 136,
         "startChar": 3,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d452185d_bc7c2da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23409f8f_f3753222",
+      "range": {
+        "startLine": 166,
+        "startChar": 46,
+        "endLine": 166,
+        "endChar": 61
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68021b98_362cca48",
@@ -313,6 +625,30 @@
       "writtenOn": "2022-02-04T16:32:11Z",
       "side": 1,
       "message": "I may miss something, but doesn\u0027t this check mean \"if copy is not allowed and notification is shown then fail\"? Or what means notification !\u003d nil?\n\nAlso, I think we anyway need to also check that notification is not shown if copy was allowed.",
+      "range": {
+        "startLine": 181,
+        "startChar": 6,
+        "endLine": 181,
+        "endChar": 47
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e19d84_b97093b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68021b98_362cca48",
       "range": {
         "startLine": 181,
         "startChar": 6,
@@ -346,6 +682,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21219694_7057fb51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3ed5334_6b39ef65",
+      "range": {
+        "startLine": 182,
+        "startChar": 6,
+        "endLine": 182,
+        "endChar": 11
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "790b95ae_978d1c03",
@@ -369,6 +729,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be35edb4_ed34fc24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "790b95ae_978d1c03",
+      "range": {
+        "startLine": 189,
+        "startChar": 6,
+        "endLine": 189,
+        "endChar": 63
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aec2525_7da5908e",
@@ -382,6 +766,30 @@
       "writtenOn": "2022-02-04T16:32:11Z",
       "side": 1,
       "message": "Please combine it with the previous checks and do it more logically separated if possible.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 4
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23f5903_0c82a3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-23T14:33:18Z",
+      "side": 1,
+      "message": "Split into more logically separated block. Having four blocks makes it easier to debug in cases e.g. when the paste is meant to be blocked but a notification appears and the paste still is allowed. WDYT?",
+      "parentUuid": "2aec2525_7da5908e",
       "range": {
         "startLine": 191,
         "startChar": 0,
