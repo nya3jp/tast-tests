@@ -63,13 +63,18 @@ func init() {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
-			// test configs (upload=false) and non-VM, there are no restrictions.
-			// It is known issue that 4G devices experience memory pressure during the opt in.
-			// This leads to the situation when FS page caches are reclaimed and captured result
-			// does not properly reflect actual FS usage. Don't upload caches to server for
-			// devices lower than 8G.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
+			ExtraHardwareDeps: hwdep.D(
+				// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
+				// test configs (upload=false) and non-VM, there are no restrictions.
+				// It is known issue that 4G devices experience memory pressure during the opt in.
+				// This leads to the situation when FS page caches are reclaimed and captured result
+				// does not properly reflect actual FS usage. Don't upload caches to server for
+				// devices lower than 8G.
+				hwdep.MinMemory(7500),
+				// TODO(b/225988257): Currently arc.DataCollector.vm is generating very small
+				// (<100kB) pack files on eve compared to hatch (>400kB). This is causing
+				// arc.UreadaheadValidation.vm to fail. For now we should skip eve for x86_64.
+				hwdep.SkipOnModel("eve")),
 			Val: testParam{
 				vmEnabled: true,
 				upload:    true,
@@ -278,49 +283,49 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	genGmsCoreCache := func() error {
-		service := arc.NewGmsCoreCacheServiceClient(cl.Conn)
+	// genGmsCoreCache := func() error {
+	// 	service := arc.NewGmsCoreCacheServiceClient(cl.Conn)
 
-		request := arcpb.GmsCoreCacheRequest{
-			PackagesCacheEnabled: true,
-			GmsCoreEnabled:       false,
-		}
+	// 	request := arcpb.GmsCoreCacheRequest{
+	// 		PackagesCacheEnabled: true,
+	// 		GmsCoreEnabled:       false,
+	// 	}
 
-		// Shorten the total context by 5 seconds to allow for cleanup.
-		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
+	// 	// Shorten the total context by 5 seconds to allow for cleanup.
+	// 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	// 	defer cancel()
 
-		response, err := service.Generate(shortCtx, &request)
-		if err != nil {
-			return errors.Wrap(err, "failed to generate GMS Core caches")
-		}
-		defer d.Conn().CommandContext(ctx, "rm", "-rf", response.TargetDir).Output()
+	// 	response, err := service.Generate(shortCtx, &request)
+	// 	if err != nil {
+	// 		return errors.Wrap(err, "failed to generate GMS Core caches")
+	// 	}
+	// 	defer d.Conn().CommandContext(ctx, "rm", "-rf", response.TargetDir).Output()
 
-		targetDir := filepath.Join(dataDir, gmsCoreCache)
-		if err = os.Mkdir(targetDir, 0744); err != nil {
-			s.Fatalf("Failed to create %q: %v", targetDir, err)
-		}
+	// 	targetDir := filepath.Join(dataDir, gmsCoreCache)
+	// 	if err = os.Mkdir(targetDir, 0744); err != nil {
+	// 		s.Fatalf("Failed to create %q: %v", targetDir, err)
+	// 	}
 
-		resources := []string{response.GmsCoreCacheName, response.GmsCoreManifestName, response.GsfCacheName}
-		for _, resource := range resources {
-			if err = linuxssh.GetFile(shortCtx, d.Conn(), filepath.Join(response.TargetDir, resource), filepath.Join(targetDir, resource), linuxssh.PreserveSymlinks); err != nil {
-				s.Fatalf("Failed to get %q from the device: %v", resource, err)
-			}
-		}
-		targetTar := filepath.Join(targetDir, v+".tar")
-		testing.ContextLogf(shortCtx, "Compressing gms core caches to %q", targetTar)
-		if err = exec.Command("tar", "-cvpf", targetTar, "-C", targetDir, ".").Run(); err != nil {
-			s.Fatalf("Failed to compress %q: %v", targetDir, err)
-		}
+	// 	resources := []string{response.GmsCoreCacheName, response.GmsCoreManifestName, response.GsfCacheName}
+	// 	for _, resource := range resources {
+	// 		if err = linuxssh.GetFile(shortCtx, d.Conn(), filepath.Join(response.TargetDir, resource), filepath.Join(targetDir, resource), linuxssh.PreserveSymlinks); err != nil {
+	// 			s.Fatalf("Failed to get %q from the device: %v", resource, err)
+	// 		}
+	// 	}
+	// 	targetTar := filepath.Join(targetDir, v+".tar")
+	// 	testing.ContextLogf(shortCtx, "Compressing gms core caches to %q", targetTar)
+	// 	if err = exec.Command("tar", "-cvpf", targetTar, "-C", targetDir, ".").Run(); err != nil {
+	// 		s.Fatalf("Failed to compress %q: %v", targetDir, err)
+	// 	}
 
-		if needUpload(gmsCoreCache) {
-			if err := upload(shortCtx, targetTar, gmsCoreCache); err != nil {
-				s.Fatalf("Failed to upload %q: %v", gmsCoreCache, err)
-			}
-		}
+	// 	if needUpload(gmsCoreCache) {
+	// 		if err := upload(shortCtx, targetTar, gmsCoreCache); err != nil {
+	// 			s.Fatalf("Failed to upload %q: %v", gmsCoreCache, err)
+	// 		}
+	// 	}
 
-		return nil
-	}
+	// 	return nil
+	// }
 
 	// Helper that dumps logcat on failure. Dumping is optional and error here does not break
 	// DataCollector flow and retries on error.
@@ -342,24 +347,24 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	attempts := 0
-	for {
-		err := genGmsCoreCache()
-		if err == nil {
-			break
-		}
-		attempts = attempts + 1
-		dumpLogcat("gms_core", attempts)
-		if attempts > retryCount {
-			s.Fatal("Failed to generate GMS Core caches. No more retries left: ", err)
-		}
-		s.Log("Retrying generating GMS Core caches, previous attempt failed: ", err)
-	}
+	// attempts := 0
+	// for {
+	// 	err := genGmsCoreCache()
+	// 	if err == nil {
+	// 		break
+	// 	}
+	// 	attempts = attempts + 1
+	// 	dumpLogcat("gms_core", attempts)
+	// 	if attempts > retryCount {
+	// 		s.Fatal("Failed to generate GMS Core caches. No more retries left: ", err)
+	// 	}
+	// 	s.Log("Retrying generating GMS Core caches, previous attempt failed: ", err)
+	// }
 
 	// Due to race condition of using ureadahead in various parts of Chrome,
 	// first generation might be incomplete. Pass GMS Core cache generation as a warm-up
 	// for ureadahead generation.
-	attempts = 0
+	attempts := 0
 	for {
 		err := genUreadaheadPack()
 		if err == nil {

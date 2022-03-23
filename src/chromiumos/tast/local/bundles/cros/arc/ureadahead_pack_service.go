@@ -362,10 +362,14 @@ func getGuestPack(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to verify ureadahead to exited")
 	}
 
-	// Check for existence of newly generated pack file on guest side.
+	// Check for existence of newly generated pack file on guest side and get size.
+	var sizeKB int64
 	srcPath := filepath.Join(ureadaheadDataDir, "pack")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := a.FileSize(ctx, srcPath)
+		sizeBytes, err := a.FileSize(ctx, srcPath)
+		if err == nil {
+			sizeKB = int64(sizeBytes / 1024)
+		}
 		return err
 	}, &testing.PollOptions{
 		Timeout:  ureadaheadFileStatTimeout,
@@ -373,6 +377,7 @@ func getGuestPack(ctx context.Context) (string, error) {
 	}); err != nil {
 		return "", errors.Wrap(err, "failed to ensure pack file exists")
 	}
+	testing.ContextLogf(ctx, "Found ureadahead pack file with size %vkB in ARCVM", sizeKB)
 
 	if err := a.PullFile(ctx, srcPath, packPath); err != nil {
 		return "", errors.Wrapf(err, "failed to pull %s from ARCVM", srcPath)
