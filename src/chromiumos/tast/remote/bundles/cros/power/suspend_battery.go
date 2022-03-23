@@ -31,6 +31,7 @@ const (
 	suspendDelaySeconds    = 3
 	chargeCheckInterval    = time.Minute
 	chargeCheckTimeout     = time.Hour
+	servoCommAttempts      = 3
 
 	varCycles      = "cycles"
 	varAllowS2Idle = "allow_s2idle"
@@ -301,12 +302,31 @@ func waitForCharge(ctx context.Context, h *firmware.Helper, target int) error {
 }
 
 func getBatteryPercent(ctx context.Context, h *firmware.Helper) (int, error) {
-	currentMAH, err := h.Servo.GetBatteryChargeMAH(ctx)
+	// Attempt to determine the battery percentage
+	// Each servo communication attempt is retried to account for any transient
+	// communication problems
+	var err error = nil
+	currentMAH := 0
+	maxMAH := 0
+
+	for i := 0; i < servoCommAttempts; i++ {
+		currentMAH, err = h.Servo.GetBatteryChargeMAH(ctx)
+		if err == nil {
+			break
+		}
+	}
+
 	if err != nil {
 		return -1, err
 	}
 
-	maxMAH, err := h.Servo.GetBatteryFullChargeMAH(ctx)
+	for i := 0; i < servoCommAttempts; i++ {
+		maxMAH, err = h.Servo.GetBatteryFullChargeMAH(ctx)
+		if err == nil {
+			break
+		}
+	}
+
 	if err != nil {
 		return -1, err
 	}
