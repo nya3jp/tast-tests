@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "966c694b_45516a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-23T00:10:55Z",
+      "side": 1,
+      "message": "Good pickup! Thanks for adding, this should add it to the CI.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 60
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3576b706_046e45fd",
@@ -14,6 +37,121 @@
       "writtenOn": "2022-03-22T23:06:23Z",
       "side": 1,
       "message": "Since I only have 2 tests here, is it still beneficial to make one test based on `Fixture: ChromeLoggedIn`?",
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee6d10b_940662d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-23T00:10:55Z",
+      "side": 1,
+      "message": "nit: you can remove the name and it omits the suffix from the test name, this will mean there will be 2 tests:\n```\nfilemanager.RecentFilesAppear\nfilemanager.RecentFilesAppear.filters_in_recents_on\n```\nThen when the flag enabled by default, you can remove the `filters_in_recents_on` variant and the test history will continue and you won\u0027t be left with a single test that says `filemanager.RecentFilesAppear.filter_in_recents_on`",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37adb26_75451093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-23T00:10:55Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s a good idea to explicitly disable the flag to avoid the \"enabled by default\" case rolling out and breaking the test. You\u0027ll be in control of updating the test once enabled by default. WDYT?",
+      "range": {
+        "startLine": 63,
+        "startChar": 14,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b832f9ec_71d7118e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-23T00:10:55Z",
+      "side": 1,
+      "message": "nit: start all failure messages the same, i.e. \"Failed to start Chrome: \"",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c69d35ab_e758fca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-23T00:10:55Z",
+      "side": 1,
+      "message": "Generally for the `uiauto.Action` return types, we don\u0027t take a context in the higher order function but the `uiauto.Action` will be a function which takes a `ctx. Should be safe to remove this and not supply it in the recent_files_appear.go file.",
+      "range": {
+        "startLine": 208,
+        "startChar": 22,
+        "endLine": 208,
+        "endChar": 41
+      },
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f805e3b0_a14aaf0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-23T00:10:55Z",
+      "side": 1,
+      "message": "filesapp.FilesApp actually exposes this API, you can just use `files.LeftClick` below. Added benefit is the selector is scoped to the Files app window",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 25
+      },
       "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
