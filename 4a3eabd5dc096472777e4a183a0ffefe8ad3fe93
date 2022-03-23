@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dee64ae7_6b97f690",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-23T23:23:51Z",
+      "side": 1,
+      "message": "Added the general guidance on the params (see comments for CustomIconParams and TextParams).\n\nMore detailed guidance will be added in http://go/tast-uidetection",
+      "parentUuid": "3ca3fd42_0e752989",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "4a3eabd5dc096472777e4a183a0ffefe8ad3fe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9e13cc7_d2064cfd",
         "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
         "patchSetId": 3
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Ditto",
       "parentUuid": "f57594cd_9292730b",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "4a3eabd5dc096472777e4a183a0ffefe8ad3fe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f6c84e_93674541",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-23T23:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a1197d_25d54fb2",
       "range": {
         "startLine": 21,
         "startChar": 2,
@@ -204,6 +252,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "1f259576_c719040c",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "4a3eabd5dc096472777e4a183a0ffefe8ad3fe93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ecb656_34cdeb7d",
+        "filename": "src/chromiumos/tast/local/uidetection/params/text_params.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-23T23:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8116e486_a48e0cf8",
       "range": {
         "startLine": 14,
         "startChar": 17,
