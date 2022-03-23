@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3aa96b_b3897fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-23T03:33:08Z",
+      "side": 1,
+      "message": "Comment probably outdated now we\u0027re explicitly enabling / disabling the flag.",
+      "parentUuid": "3576b706_046e45fd",
+      "revId": "f9ed63e46080919a7e7eed135e319301c4123d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ee6d10b_940662d3",
