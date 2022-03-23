@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c21a3848_427dd781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:30:37Z",
+      "side": 1,
+      "message": "the style guide recommends to use \"store_false\" if it is --no-* flag, and not recommending to have \"--no-*\" flag?\n\nIf I wrote the code, I\u0027d avoid, but I\u0027m ok as long as it is consistent and explicitly documented that comes from the flag name of the external tool.",
+      "parentUuid": "d55c19ab_3e1cc0f7",
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5540bf0_2dc5fcaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
         "patchSetId": 10

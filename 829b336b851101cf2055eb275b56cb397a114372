@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a1d2f4c_6a96d1b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:30:37Z",
+      "side": 1,
+      "message": "LGTM with comment",
+      "revId": "829b336b851101cf2055eb275b56cb397a114372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb09595c_e29255c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T14:30:37Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "829b336b851101cf2055eb275b56cb397a114372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
