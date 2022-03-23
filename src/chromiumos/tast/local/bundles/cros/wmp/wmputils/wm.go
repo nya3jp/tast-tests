@@ -42,7 +42,7 @@ func EnsureOnlyBrowserWindowOpen(ctx context.Context, tconn *chrome.TestConn, bt
 
 		// Check if that is the browser window and visible (!IsAnimating also used as heuristic criteria for readiness to accept inputs).
 		w = ws[0]
-		if !w.IsVisible || w.IsAnimating || !IsBrowserWindow(w, bt) {
+		if !w.IsVisible || w.IsAnimating || !ash.BrowserTypeMatch(bt)(w) {
 			return errors.Errorf("expected %v browser window to become visible, State: %v", bt, w.State)
 		}
 		return nil
@@ -50,12 +50,6 @@ func EnsureOnlyBrowserWindowOpen(ctx context.Context, tconn *chrome.TestConn, bt
 		return nil, errors.Wrap(err, "expected 1 visible browser window")
 	}
 	return w, nil
-}
-
-// IsBrowserWindow returns true if it's a browser window either ash-chrome or lacros-chrome.
-func IsBrowserWindow(w *ash.Window, bt browser.Type) bool {
-	return (bt == browser.TypeAsh && w.WindowType == ash.WindowTypeBrowser) ||
-		(bt == browser.TypeLacros && w.WindowType == ash.WindowTypeLacros)
 }
 
 // VerifyWindowCount verifies that there are `windowCount` app windows.
@@ -96,7 +90,14 @@ func WaitforAppsToBeVisible(ctx context.Context, tconn *chrome.TestConn, ac *uia
 	for _, app := range appsList {
 		// Wait for the launched app window to become visible.
 		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			return w.IsVisible && strings.Contains(w.Title, app.Name)
+			if !w.IsVisible {
+				return false
+			}
+			// The window title of Lacros is suffixed with "Chrome", not "Lacros".
+			if w.WindowType == ash.WindowTypeLacros {
+				return strings.Contains(w.Title, "Chrome")
+			}
+			return strings.Contains(w.Title, app.Name)
 		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 			return errors.Wrapf(err, "%s app window not visible after launching", app.Name)
 		}
