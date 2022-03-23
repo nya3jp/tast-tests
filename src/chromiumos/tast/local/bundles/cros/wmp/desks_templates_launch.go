@@ -15,6 +15,9 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -24,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DesksTemplatesLaunch,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks desks templates can be launched",
 		Contacts: []string{
 			"yzd@chromium.org",
@@ -34,22 +37,39 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		VarDeps: []string{"ui.gaiaPoolDefault"},
+		Vars:    []string{browserfixt.LacrosDeployedBinary},
 	})
 }
 
 func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
-	// Reserve five seconds for various cleanup.
+	// Reserve time for various cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx,
+	var opts []chrome.Option
+	if s.Param().(browser.Type) == browser.TypeLacros {
+		var err error
+		opts, err = lacrosfixt.DefaultOpts(browserfixt.DefaultLacrosConfig.WithVar(s))
+		if err != nil {
+			s.Fatal("Failed to get default options for lacros: ", err)
+		}
+	}
+	opts = append(opts,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksTemplates"),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -86,8 +106,12 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Opens PlayStore, Chrome and Files.
-	appsList := []apps.App{apps.PlayStore, apps.Chrome, apps.Files}
+	// Opens PlayStore, Browser and Files.
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find the primary browser app info: ", err)
+	}
+	appsList := []apps.App{apps.PlayStore, browserApp, apps.Files}
 	for _, app := range appsList {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
