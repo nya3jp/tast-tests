@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2887b7fb_7dd16cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-23T05:06:08Z",
+      "side": 1,
+      "message": "asdf",
+      "parentUuid": "d478c86f_28d2b122",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42970107_bc6e87a7",
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "893c692f_2242ac7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-23T05:06:08Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "42970107_bc6e87a7",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dfea555_23487089",
@@ -155,6 +203,30 @@
       "writtenOn": "2022-03-18T15:34:18Z",
       "side": 1,
       "message": "nit: if",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 12
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d7b18a_115a05bc",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-23T05:06:08Z",
+      "side": 1,
+      "message": "this means \"if and only if\"",
+      "parentUuid": "7dfea555_23487089",
       "range": {
         "startLine": 96,
         "startChar": 9,
