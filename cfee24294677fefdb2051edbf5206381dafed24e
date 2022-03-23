@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba49517_b40dcdc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-03-23T01:44:08Z",
+      "side": 1,
+      "message": "The new battery option for the PowerTestOptions is not always initialised (see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosperf/perftest.go;l\u003d50 for example).\n\nThis CL make it optional.\n\nPlease review.",
+      "revId": "cfee24294677fefdb2051edbf5206381dafed24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
