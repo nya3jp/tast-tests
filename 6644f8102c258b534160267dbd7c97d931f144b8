@@ -51,6 +51,24 @@
       "parentUuid": "0d9cf7f2_cd032ec9",
       "revId": "6644f8102c258b534160267dbd7c97d931f144b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69be6fe0_5c317489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-03-23T19:36:19Z",
+      "side": 1,
+      "message": "Hi Yury,  I tested on eve vs. hatch.helios (from crosfleet) using vm_local and confirm eve is generating small packs (see below).  I added a TODO to investigate further and this is only short-term mitigation to unblock http://tastboard/test/arc.UreadaheadValidation.vm.\n\nWDYT?\n\n```\n2022-03-23T18:05:57.943115Z [18:05:57.942] Found ureadahead pack file with size 39kB in ARCVM\n```",
+      "parentUuid": "e7692d2c_7b937e04",
+      "revId": "6644f8102c258b534160267dbd7c97d931f144b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
