@@ -197,7 +197,9 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 		if options.Wifi == DisableWifiInterfaces {
 			s.Add(DisableWiFiInterfaces(ctx))
 		}
-		options.Battery.fulfill(ctx, s)
+		if options.Battery != nil {
+			options.Battery.fulfill(ctx, s)
+		}
 		s.Add(DisableBluetooth(ctx))
 		if options.NightLight == DisableNightLight {
 			s.Add(TurnOffNightLight(ctx, c))
