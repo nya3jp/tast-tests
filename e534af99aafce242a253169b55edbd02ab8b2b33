@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456be22c_2303392c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-23T05:03:47Z",
+      "side": 1,
+      "message": "Let\u0027s not do this in chrome.go. I think it makes more sense for individual tests to clean themselves up as much as possible.",
+      "revId": "e534af99aafce242a253169b55edbd02ab8b2b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
