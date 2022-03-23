@@ -231,6 +231,15 @@ func OverrideFeatureFlags(ctx context.Context, adbDevice *adb.Device, feature Fe
 			return errors.Wrap(err, "failed to override required flag for Phone Hub")
 		}
 		return nil
+	case SmartLock:
+		// These flags need to be overridden to ensure Nearby Share doesn't tear down Smart Lock's GATT connection when the phone's screen is unlocked (b/219981726).
+		if err := adbDevice.OverridePhenotypeFlag(ctx, "com.google.android.gms.nearby", "connections_allow_control_ble_gatt_connection_in_advertising_option", "true", "boolean"); err != nil {
+			return errors.Wrap(err, "failed to override required flag for SmartLock")
+		}
+		if err := adbDevice.OverridePhenotypeFlag(ctx, "com.google.android.gms.nearby", "sharing_enable_self_share_background_advertising", "true", "boolean"); err != nil {
+			return errors.Wrap(err, "failed to override required flag for SmartLock")
+		}
+		return nil
 	default:
 		return nil
 	}
