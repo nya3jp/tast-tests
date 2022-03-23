@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "626b1492_f8e5b79f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-23T01:29:04Z",
+      "side": 1,
+      "message": "Discussed offline: The launch command will be queued and executed eventually, so we only need to launch once. So we don\u0027t need the wait. If the test wants to check the paths directly it can.",
+      "parentUuid": "a8b4e001_99396055",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "5eed58f63c3ac0046b2017baca385031deb95cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d478c86f_28d2b122",
