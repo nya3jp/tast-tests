@@ -53,7 +53,7 @@ func WaitForNPresenceOps(hctx *HpsContext, numOps int, feature string) ([]int, e
 		testing.ContextLog(ctx, "Got presence result: ", presence)
 		result = append(result, presence)
 		counter++
-		return errors.Errorf("Stoped at %q", counter)
+		return errors.Errorf("Stoped at %d", counter)
 
 	}, &testing.PollOptions{
 		Interval: 50 * time.Millisecond,
