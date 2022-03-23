@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
-	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/modemfwd"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -46,12 +45,9 @@ func ModemFWManifestInstallation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse the firmware manifest: ", err)
 	}
 
-	// Get the device variant.
-	dutVariant, err := crosconfig.Get(ctx, "/modem", "firmware-variant")
-	if crosconfig.IsNotFound(err) {
-		s.Log("Variant doesn't exist. Testing all variants in the DUT")
-	} else if err != nil {
-		s.Fatalf("Failed to execute cros_config: %s", err)
+	dutVariant, err := cellular.GetDeviceVariant(ctx)
+	if err != nil {
+		s.Fatalf("Failed to get device variant: %s", err)
 	}
 
 	// Find the USB device ID of the modem in this variant.
