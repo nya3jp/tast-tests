@@ -22,7 +22,7 @@ func init() {
 		Attr:         []string{"group:cellular", "cellular_sim_active", "cellular_unstable"},
 		Fixture:      "cellular",
 		SoftwareDeps: []string{"modemfwd"},
-		Timeout:      2 * time.Minute,
+		Timeout:      7 * time.Minute,
 	})
 }
 
