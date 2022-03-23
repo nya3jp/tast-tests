@@ -60,6 +60,7 @@ func SharedFontFiles(ctx context.Context, s *testing.State) {
 	cont := pre.Cont
 
 	const sharedFonts = "/mnt/chromeos/fonts"
+	const sharedFontsAlt = "/usr/share/fonts/chromeos"
 	s.Log("1. Verifying mounted fonts dir exists")
 
 	cmd := cont.Command(ctx, "ls", sharedFonts)
@@ -73,7 +74,13 @@ func SharedFontFiles(ctx context.Context, s *testing.State) {
 	cmd = cont.Command(ctx, "fc-list")
 	if outBytes, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to call fc-list : ", err)
-	} else if !strings.Contains(string(outBytes), sharedFonts) {
-		s.Fatal("Host fonts not part of font-config path")
+	} else {
+		outString := string(outBytes)
+		// TODO(jamesye): Due to b/206887557 fonts will be bind-mounted at
+		// /usr/share/fonts/chromeos. The /mnt/chromeos/fonts path will not
+		// appear after a container uprev including crrev.com/c/3539407.
+		if !(strings.Contains(outString, sharedFonts) || strings.Contains(outString, sharedFontsAlt)) {
+			s.Fatal("Host fonts not part of font-config path")
+		}
 	}
 }
