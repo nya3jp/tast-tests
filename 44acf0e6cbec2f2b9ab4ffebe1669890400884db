@@ -56,6 +56,30 @@
       },
       "revId": "44acf0e6cbec2f2b9ab4ffebe1669890400884db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ddf01e_f1297c14",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-23T02:04:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understood - I tried creating such a context,\n\n  timeoutCtx, cancel :\u003d context.WithTimeout(ctx, roughnessTimeout)\n  defer cancel()\n  \nand then removing the channel, the go-func() and the select code,\nleaving just the testing.Poll(), and I didn\u0027t get timeouts when \nartificially reducing the timeout (to e.g. 10 seconds, that\u0027s how\nI made sure the channel version does work). Please instruct : )",
+      "parentUuid": "d93cadfc_f2f4fa9b",
+      "range": {
+        "startLine": 142,
+        "startChar": 26,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "44acf0e6cbec2f2b9ab4ffebe1669890400884db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
