@@ -53,7 +53,7 @@ func init() {
 		Func:         FwFlashErasers,
 		Desc:         "Test erase functions by calling flashrom to erase and write blocks of different sizes",
 		Contacts:     []string{"aklm@chromium.org"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"flashrom"},
 	})
 }

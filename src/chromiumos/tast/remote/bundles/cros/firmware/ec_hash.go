@@ -24,7 +24,7 @@ func init() {
 		Func:         ECHash,
 		Desc:         "Basic check for EC hash validation",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      20 * time.Minute,

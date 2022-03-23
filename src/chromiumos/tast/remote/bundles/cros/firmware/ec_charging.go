@@ -22,7 +22,7 @@ func init() {
 		Func:         ECCharging,
 		Desc:         "Servo based EC charging control test",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      "bootModeNormal",
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.PowerMenuService"},
