@@ -46,6 +46,30 @@
       },
       "revId": "e9e689e9e712ea4d13b4acca661343c5b63c7326",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ffd9918_dda29b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2022-03-23T22:07:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11b33e61_32b7251c",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "e9e689e9e712ea4d13b4acca661343c5b63c7326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
