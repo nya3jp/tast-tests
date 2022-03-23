@@ -35,9 +35,7 @@ const (
 	servoCommTimeout       = 5 * time.Second
 	servoCommInterval      = time.Second
 
-	varCycles    = "cycles"
-	varAllowS0ix = "allow_s0ix"
-	varAllowS3   = "allow_s3"
+	varCycles = "cycles"
 )
 
 func init() {
@@ -52,7 +50,14 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Fixture:      fixture.NormalMode,
 		Timeout:      3 * time.Hour, // Allow time for the battery to potentially charge up
-		Vars:         []string{varCycles, varAllowS0ix, varAllowS3},
+		Vars:         []string{varCycles},
+		Params: []testing.Param{{
+			Name: "s0ix",
+			Val:  "S0ix",
+		}, {
+			Name: "s3",
+			Val:  "S3",
+		}},
 	})
 }
 
@@ -80,26 +85,6 @@ func SuspendBattery(ctx context.Context, s *testing.State) {
 		suspendCycles = newCycles
 	}
 
-	allowS0ix := true
-	if v, ok := s.Var(varAllowS0ix); ok {
-		newAllowS0ix, err := strconv.ParseBool(v)
-		if err != nil {
-			s.Fatalf("Failed to parse %s from string %s", varAllowS0ix, v)
-		}
-
-		allowS0ix = newAllowS0ix
-	}
-
-	allowS3 := true
-	if v, ok := s.Var(varAllowS3); ok {
-		newAllowS3, err := strconv.ParseBool(v)
-		if err != nil {
-			s.Fatalf("Failed to parse %s from string %s", varAllowS3, v)
-		}
-
-		allowS3 = newAllowS3
-	}
-
 	// Setup powerd settings
 	err := h.DUT.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf("mkdir -p %s && "+
 		"echo 0 > %s/suspend_to_idle && "+
@@ -118,91 +103,73 @@ func SuspendBattery(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
-	type suspendType struct {
-		name          string
-		suspendToIdle bool
-	}
+	targetState := s.Param().(string)
+	toIdle := targetState == "S0ix"
 
-	var suspendTests = []suspendType{}
-
-	// Determine if S0ix is supported
-	ret, err := runWithExitStatus(ctx, h, "grep", "-q", "freeze", "/sys/power/state")
-	if err != nil {
-		s.Fatal("Failed to determine S0ix support: ", err)
-	}
-	if ret == 0 {
-		if allowS0ix {
+	if targetState == "S0ix" {
+		// Determine if S0ix is supported
+		ret, err := runWithExitStatus(ctx, h, "grep", "-q", "freeze", "/sys/power/state")
+		if err != nil {
+			s.Fatal("Failed to determine S0ix support: ", err)
+		}
+		if ret == 0 {
 			// The most reliable way to check if a sleep state is supported is to attempt to enter that state
 			setSuspendToIdle(ctx, h, true)
 			if err := suspendCycleDut(ctx, h, "S0ix"); err != nil {
 				s.Fatalf("S0ix is supported, but failed to enter state: %s", err)
 			}
-
-			s.Log("Testing S0ix")
-			suspendTests = append(suspendTests, suspendType{"S0ix", true})
-		} else {
-			s.Logf("S0ix testing disabled through %s", varAllowS0ix)
 		}
-	}
-
-	// Determine if S3 is supported
-	ret, err = runWithExitStatus(ctx, h, "grep", "-q", "deep", "/sys/power/mem_sleep")
-	if err != nil {
-		s.Fatal("Failed to determine S3 support: ", err)
-	}
-	if ret == 0 {
-		if allowS3 {
+	} else if targetState == "S3" {
+		// Determine if S3 is supported
+		ret, err := runWithExitStatus(ctx, h, "grep", "-q", "deep", "/sys/power/mem_sleep")
+		if err != nil {
+			s.Fatal("Failed to determine S3 support: ", err)
+		}
+		if ret == 0 {
 			// The most reliable way to check if a sleep state is supported is to attempt to enter that state
 			setSuspendToIdle(ctx, h, false)
 			if err := suspendCycleDut(ctx, h, "S3"); err != nil {
 				s.Fatalf("S3 is supported, but failed to enter state: %s", err)
 			}
-
-			s.Log("Testing S3")
-			suspendTests = append(suspendTests, suspendType{"S3", false})
-		} else {
-			s.Logf("S3 testing disabled through %s", varAllowS3)
 		}
 	}
 
-	for _, test := range suspendTests {
-		// Change the suspend type
-		if err := setSuspendToIdle(ctx, h, test.suspendToIdle); err != nil {
-			s.Fatalf("Failed to change suspend_to_idle value for %s: %s", test.name, err)
+	// Change the suspend type
+	if err := setSuspendToIdle(ctx, h, toIdle); err != nil {
+		s.Fatalf("Failed to change suspend_to_idle value for %s: %s", targetState, err)
+	}
+
+	// Run our cycles
+	for i := 0; i < suspendCycles; i++ {
+		s.Logf("Suspend cycling %s: %d/%d", targetState, i+1, suspendCycles)
+		previousCount, err := getKernelSuspendCount(ctx, h)
+		if err != nil {
+			s.Fatal("Failed to get kernel suspend count: ", err)
 		}
 
-		// Run our cycles
-		for i := 0; i < suspendCycles; i++ {
-			s.Logf("Suspend cycling %s: %d/%d", test.name, i+1, suspendCycles)
-			previousCount, err := getKernelSuspendCount(ctx, h)
-			if err != nil {
-				s.Fatal("Failed to get kernel suspend count: ", err)
-			}
+		s.Log("Suspending DUT")
+		if err := suspendCycleDut(ctx, h, targetState); err != nil {
+			s.Fatal("Failed to suspend cycle DUT: ", err)
+		}
 
-			s.Log("Suspending DUT")
-			if err := suspendCycleDut(ctx, h, test.name); err != nil {
-				s.Fatal("Failed to suspend cycle DUT: ", err)
-			}
+		// Check that the kernel registered one suspension
+		suspendCount, err := getKernelSuspendCount(ctx, h)
+		if err != nil {
+			s.Fatal("Failed to get kernel suspend count: ", err)
+		}
+		if suspendCount != previousCount+1 {
+			s.Fatalf("Mismatch in kernel suspend counts, previous: %d, current: %d", previousCount, suspendCount)
+		}
 
-			// Check that the kernel registered one suspension
-			suspendCount, err := getKernelSuspendCount(ctx, h)
-			if err != nil {
-				s.Fatal("Failed to get kernel suspend count: ", err)
-			}
-			if suspendCount != previousCount+1 {
-				s.Fatalf("Mismatch in kernel suspend counts, previous: %d, current: %d", previousCount, suspendCount)
-			}
+		//Charge up if we've dipped below our minimum battery level
+		pct, err := getBatteryPercent(ctx, h)
+		if err != nil {
+			s.Fatal("Failed to get battery level")
+		}
 
-			//Charge up if we've dipped below our minimum battery level
-			pct, err := getBatteryPercent(ctx, h)
-			if err != nil {
-				s.Fatal("Failed to get battery level")
-			}
-
-			if pct < minBatteryPercent {
-				s.Logf("Waiting for battery to reach %d%%", requiredBatteryPercent)
-				waitForCharge(ctx, h, requiredBatteryPercent)
-			}
+		if pct < minBatteryPercent {
+			s.Logf("Waiting for battery to reach %d%%", requiredBatteryPercent)
+			waitForCharge(ctx, h, requiredBatteryPercent)
 		}
 	}
 }
