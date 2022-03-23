@@ -46,6 +46,30 @@
       },
       "revId": "8326a7fa734465df156748e7cc98d2125367890c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2dd609b_f68aaf40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/show_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-03-23T15:00:29Z",
+      "side": 1,
+      "message": "Sorry for being unclear. I meant to remove the newline. I believe we don\u0027t enforce line length in go",
+      "parentUuid": "78209049_af4b21d3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "8326a7fa734465df156748e7cc98d2125367890c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
