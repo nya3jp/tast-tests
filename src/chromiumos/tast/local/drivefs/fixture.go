@@ -6,16 +6,23 @@ package drivefs
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
-const driveFsSetupTimeout = time.Minute
+const (
+	driveFsSetupTimeout            = time.Minute
+	driveFsCommandLineArgsFilePath = "/home/chronos/user/GCache/v2/%s/command_line_args"
+)
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -39,6 +46,9 @@ func init() {
 		Contacts: []string{"austinct@chromium.org", "chromeos-files-syd@chromium.org"},
 		Impl: &fixture{chromeOptions: []chrome.Option{
 			chrome.EnableFeatures("DriveFsBidirectionalNativeMessaging"),
+		}, drivefsOptions: map[string]string{
+			"switchblade":     "true",
+			"switchblade_dss": "true",
 		}},
 		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
 		ResetTimeout:    driveFsSetupTimeout,
@@ -68,11 +78,12 @@ type FixtureData struct {
 }
 
 type fixture struct {
-	mountPath     string // The path where Drivefs is mounted
-	cr            *chrome.Chrome
-	tconn         *chrome.TestConn
-	APIClient     *APIClient
-	chromeOptions []chrome.Option
+	mountPath      string // The path where Drivefs is mounted
+	cr             *chrome.Chrome
+	tconn          *chrome.TestConn
+	APIClient      *APIClient
+	chromeOptions  []chrome.Option
+	drivefsOptions map[string]string
 }
 
 func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -124,6 +135,38 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	s.Log("drivefs fully started")
 	f.mountPath = mountPath
 
+	if len(f.drivefsOptions) > 0 {
+		var options []string
+		for flag, value := range f.drivefsOptions {
+			options = append(options, fmt.Sprintf("%s:%s", flag, value))
+		}
+		cliArgs := fmt.Sprintf("--features=%s", strings.Join(options, ","))
+
+		// The command_line_args file must be placed at ~/GCache/v2/[persistableToken].
+		persistableToken := getPersistableToken(f.mountPath)
+		if len(persistableToken) == 0 {
+			s.Fatal("Failed to obtain the drive persistable token: ", f.mountPath)
+		}
+
+		if err := ioutil.WriteFile(fmt.Sprintf(driveFsCommandLineArgsFilePath, persistableToken), []byte(cliArgs), 0644); err != nil {
+			s.Fatal("Failed to write command line args: ", err)
+		}
+
+		// Kill DriveFS, cros-disks will ensure another starts up.
+		if err := testexec.CommandContext(ctx, "pkill", "-HUP", "drivefs").Run(); err != nil {
+			// pkill exits with code 1 if it could find no matching process (see: man 1 pkill).
+			// As it has not started, this is an acceptable as the next start will
+			// use the new command line arguments.
+			if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Exited() || ws.ExitStatus() != 1 {
+				return errors.Wrap(err, "failed to kill crash_sender processes")
+			}
+		}
+
+		if _, err := WaitForDriveFs(ctx, f.cr.NormalizedUser()); err != nil {
+			s.Fatal("Failed waiting for DriveFS to restart: ", err)
+		}
+	}
+
 	tconn, err := f.cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed creating test API connection: ", err)
@@ -174,6 +217,17 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 	f.tconn = nil
 	f.APIClient = nil
+
+	if len(f.drivefsOptions) > 0 {
+		persistableToken := getPersistableToken(f.mountPath)
+		if len(persistableToken) == 0 {
+			s.Fatal("Failed to obtain the drive persistable token from mount path: ", f.mountPath)
+		}
+
+		if err := os.Remove(fmt.Sprintf(driveFsCommandLineArgsFilePath, persistableToken)); err != nil {
+			s.Fatal("Failed to remove command line args file: ", err)
+		}
+	}
 	f.mountPath = ""
 
 	if f.cr != nil {
@@ -202,4 +256,10 @@ func getRefreshTokenForAccount(account, refreshTokens string) (string, error) {
 		}
 	}
 	return "", errors.Errorf("failed to retrieve account token for %q", account)
+}
+
+// getPersistableToken derives the token from the mount path. This is used
+// to identify the user account directory under ~/GCache/v2.
+func getPersistableToken(mountPath string) string {
+	return strings.TrimPrefix(mountPath, "/media/fuse/drivefs-")
 }
