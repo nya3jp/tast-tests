@@ -138,7 +138,11 @@ func DataMigration(ctx context.Context, s *testing.State) {
 
 	// Regression check for b/173835269.
 	s.Log("Installing app " + appToInstall)
-	if err := playstore.InstallApp(ctx, a, d, appToInstall, &playstore.Options{TryLimit: -1}); err != nil {
+	var playOpt playstore.Options
+	playOpt.TryLimit = -1
+	playOpt.DefaultUITimeout = 5 * time.Second
+	playOpt.ShortUITimeout = 5 * time.Second
+	if err := playstore.InstallApp(ctx, a, d, appToInstall, &playOpt); err != nil {
 		s.Error("Failed to install app: ", err)
 
 		s.Log("Taking a screenshot as install-failed.png")
