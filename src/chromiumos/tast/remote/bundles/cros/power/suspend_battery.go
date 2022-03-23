@@ -245,12 +245,26 @@ func runWithExitStatus(ctx context.Context, h *firmware.Helper, name string, arg
 }
 
 func getKernelSuspendCount(ctx context.Context, h *firmware.Helper) (int, error) {
-	resultBytes, err := h.DUT.Conn().CommandContext(ctx, "cat", "/sys/power/suspend_stats/success").Output()
+	resultBytes, err := h.DUT.Conn().CommandContext(ctx, "cat", "/sys/kernel/debug/suspend_stats").Output()
 	if err != nil {
 		return -1, err
 	}
 
-	return strconv.Atoi(strings.TrimSpace(string(resultBytes)))
+	lines := strings.Split(string(resultBytes), "\n")
+	for _, line := range lines {
+		if !strings.HasPrefix(line, "success") {
+			continue
+		}
+
+		split := strings.Split(line, ":")
+		if len(split) != 2 {
+			return -1, errors.New("Improperly formatted success line")
+		}
+
+		return strconv.Atoi(strings.TrimSpace(split[1]))
+	}
+
+	return -1, errors.New("failed to find succes line")
 }
 
 func waitForCharge(ctx context.Context, h *firmware.Helper, target int) error {
