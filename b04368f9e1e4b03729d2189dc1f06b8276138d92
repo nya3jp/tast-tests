@@ -16,6 +16,24 @@
       "message": "do we also need to do this for the fw dump test?",
       "revId": "b04368f9e1e4b03729d2189dc1f06b8276138d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4df4020_3ae246e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-03-23T18:55:54Z",
+      "side": 1,
+      "message": "I have this CL for the checkIntelFWDump:\n3546191: wifi: Move CheckIntelFWDump to informational | https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3546191",
+      "parentUuid": "f47f71b2_67b5967e",
+      "revId": "b04368f9e1e4b03729d2189dc1f06b8276138d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
