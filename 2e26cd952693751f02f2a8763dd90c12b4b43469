@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b889bce2_ff12f719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1524580
+      },
+      "writtenOn": "2022-03-23T08:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee3c40da_75dd702f",
+      "revId": "2e26cd952693751f02f2a8763dd90c12b4b43469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b1d4f81_dfaadaab",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f275b8b9_79b69b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1524580
+      },
+      "writtenOn": "2022-03-23T08:18:48Z",
+      "side": 1,
+      "message": "Done. We named it targetPage for consistency.",
+      "parentUuid": "0b1d4f81_dfaadaab",
+      "revId": "2e26cd952693751f02f2a8763dd90c12b4b43469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5441136e_4683012d",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-22T15:49:24Z",
       "side": 1,
       "message": "wrap this error to provide context",
+      "revId": "2e26cd952693751f02f2a8763dd90c12b4b43469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32601982_833efb63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1524580
+      },
+      "writtenOn": "2022-03-23T08:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5441136e_4683012d",
       "revId": "2e26cd952693751f02f2a8763dd90c12b4b43469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
