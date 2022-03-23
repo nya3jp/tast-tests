@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3bd3a904_3d456d40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-03-23T22:23:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22f01b9c_ee163382",
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1229ada3_f7949f14",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "ACK, changing all occurrences now with more comments.",
       "parentUuid": "2e1af6ce_bc06c57d",
+      "range": {
+        "startLine": 813,
+        "startChar": 4,
+        "endLine": 814,
+        "endChar": 51
+      },
+      "revId": "17d0bff40e75edd2099f095bc6e69b68456b400e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68fd78da_2bcdf4c6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-03-23T22:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acaf7b64_5cab51df",
       "range": {
         "startLine": 813,
         "startChar": 4,
