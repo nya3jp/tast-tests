@@ -63,13 +63,18 @@ func init() {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
-			// test configs (upload=false) and non-VM, there are no restrictions.
-			// It is known issue that 4G devices experience memory pressure during the opt in.
-			// This leads to the situation when FS page caches are reclaimed and captured result
-			// does not properly reflect actual FS usage. Don't upload caches to server for
-			// devices lower than 8G.
-			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
+			ExtraHardwareDeps: hwdep.D(
+				// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
+				// test configs (upload=false) and non-VM, there are no restrictions.
+				// It is known issue that 4G devices experience memory pressure during the opt in.
+				// This leads to the situation when FS page caches are reclaimed and captured result
+				// does not properly reflect actual FS usage. Don't upload caches to server for
+				// devices lower than 8G.
+				hwdep.MinMemory(7500),
+				// TODO(b/225988257): Currently arc.DataCollector.vm is generating very small
+				// (<100kB) pack files on eve compared to hatch (>400kB). This is causing
+				// arc.UreadaheadValidation.vm to fail. For now we should skip eve for x86_64.
+				hwdep.SkipOnModel("eve")),
 			Val: testParam{
 				vmEnabled: true,
 				upload:    true,
