@@ -292,6 +292,20 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(fmt.Sprintf("(?i)(%s|%s)", openButtonText, playButtonText)), ui.Enabled(true)).Exists(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for enabled open button or play button")
 		}
+
+		// The found "Play" button might be one for another app in "Play while you wait" section that is shown below "Try again" button.
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+tryAgainButtonText)).Exists(ctx); err == nil {
+			if tryLimit == -1 || tries < tryLimit {
+				tries++
+				testing.ContextLogf(ctx, "Try again button is shown. Trying to reopen the Play Store. Total attempts so far: %d", tries)
+				if err := a.SendIntentCommand(ctx, intentActionView, playStoreAppPageURI).Run(testexec.DumpLogOnError); err != nil {
+					return errors.Wrap(err, "failed to send intent to reopen the Play Store")
+				}
+			} else {
+				return testing.PollBreak(errors.Errorf("reopen Play Store attempt limit of %d times", tryLimit))
+			}
+		}
+
 		return nil
 	}, &testing.PollOptions{Interval: time.Second})
 }
