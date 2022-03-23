@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648fee30_430bfd1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T05:28:47Z",
+      "side": 1,
+      "message": "LGTM\n",
+      "revId": "0e3172b0dbe1937a0fdbccb9749bfb4e55cfe31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16318f27_20e361c3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-23T05:28:47Z",
+      "side": 1,
+      "message": "nit: \"if\" ?",
+      "range": {
+        "startLine": 124,
+        "startChar": 43,
+        "endLine": 124,
+        "endChar": 45
+      },
+      "revId": "0e3172b0dbe1937a0fdbccb9749bfb4e55cfe31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
