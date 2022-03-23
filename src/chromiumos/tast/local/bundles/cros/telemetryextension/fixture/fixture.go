@@ -66,7 +66,7 @@ func init() {
 		Parent:          fixture.FakeDMSEnrolled,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
-		Vars:            []string{"telemetryextension.Fixture.username", "telemetryextension.Fixture.password"},
+		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
 }
 
@@ -146,10 +146,12 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 			s.Fatal("Parent is not a FakeDMS fixture")
 		}
 
-		username := s.RequiredVar("telemetryextension.Fixture.username")
-		password := s.RequiredVar("telemetryextension.Fixture.password")
+		gaiaCreds, err := chrome.PickRandomCreds(s.RequiredVar("policy.ManagedUser.accountPool"))
+		if err != nil {
+			s.Fatal("Failed to parse managed user creds: ", err)
+		}
 
-		if err := f.setupChromeForManagedUsers(ctx, fdms, username, password); err != nil {
+		if err := f.setupChromeForManagedUsers(ctx, fdms, gaiaCreds.User, gaiaCreds.Pass); err != nil {
 			s.Fatal("Failed to setup Chrome for managed users: ", err)
 		}
 	} else {
