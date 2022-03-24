@@ -16,6 +16,23 @@
       "message": "Tast LGTM. Defer to Yuta.",
       "revId": "aac94effd22e086a4e91c3d9cf3adb667ec0b418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba04cbd_bc91f75a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-24T02:15:06Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "aac94effd22e086a4e91c3d9cf3adb667ec0b418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
