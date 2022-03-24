@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e8b2ae7_44197df2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521413
+      },
+      "writtenOn": "2022-03-24T02:00:04Z",
+      "side": 1,
+      "message": "volteer failure due to \"Driver/firmware mismatch for iwlwifi-QuZ\"\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8818892863112213697/+/u/build_images/test_images/call_chromite.api.ImageService_Test/call_build_API_script/stdout",
+      "revId": "8b9dfd66c95785442d745144606e0710241c5f80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
