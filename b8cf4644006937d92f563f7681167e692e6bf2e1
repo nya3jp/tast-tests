@@ -52,6 +52,24 @@
       "parentUuid": "0ccd80c8_cb3c386a",
       "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e651ec3_6e9e0ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/thunderbolt/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-24T01:56:48Z",
+      "side": 1,
+      "message": "Yes, do not duplicate the file, please move shared code to\nsrc/platform/tast-tests/src/chromiumos/tast/local/typec or similiar.",
+      "parentUuid": "7e5f46a0_121b99b5",
+      "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
