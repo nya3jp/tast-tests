@@ -124,6 +124,24 @@
       "parentUuid": "590cd54b_cda0882e",
       "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452d2bdf_9bce1bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/thunderbolt/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-24T06:01:02Z",
+      "side": 1,
+      "message": "Hi Kerker,\nFYI \nModifying the import file path in below scripts.\nmode_hotplug.go\nmode_suspend.go\nmode_switch.go\nservice.go\ntbt_data_transfer_after_hotplug.go\ntbt_hotplug_unplug.go\nmode_crash.go",
+      "parentUuid": "f82487a2_804e6b9e",
+      "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
