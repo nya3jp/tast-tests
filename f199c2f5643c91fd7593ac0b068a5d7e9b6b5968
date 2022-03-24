@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb680f3_2e7525a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-03-24T02:00:30Z",
+      "side": 1,
+      "message": "Hi all,\n\nSince the cherry-pick to R100 last time has been verified and fixed, it is necessary to do another cherry-pick to the R101 to prevent the partners from encountering this problem again. Thanks.",
+      "revId": "f199c2f5643c91fd7593ac0b068a5d7e9b6b5968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
