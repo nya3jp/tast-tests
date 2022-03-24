@@ -22,6 +22,30 @@
       },
       "revId": "92a06c9ec361687c0edc08e71df4d0146ba99b8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e48e370_e7fa95c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-24T00:39:48Z",
+      "side": 1,
+      "message": "nit: please write a comment explaining why it\u0027s unneeded in this case",
+      "parentUuid": "78de1509_c4d52300",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "92a06c9ec361687c0edc08e71df4d0146ba99b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
