@@ -16,6 +16,23 @@
       "message": "tast-wise: +2\n\nplease wait for +2 from your teammate. ty.",
       "revId": "e7ca25a8a46221e89d62f8cf7b4bec2df6419af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2457e0fe_56912f16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-03-24T20:34:10Z",
+      "side": 1,
+      "message": "There was a Chrome uprev and the test case passes on the the latest dev image with Trogdor.\n\nThanks for the review! CQ+2-ing.",
+      "revId": "e7ca25a8a46221e89d62f8cf7b4bec2df6419af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
