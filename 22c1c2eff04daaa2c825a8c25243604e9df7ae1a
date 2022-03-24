@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d5321c_b3584f04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-24T09:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7446261a_592d10e7",
+      "range": {
+        "startLine": 84,
+        "startChar": 48,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "22c1c2eff04daaa2c825a8c25243604e9df7ae1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "316006ca_b086ddc8",
@@ -60,6 +84,48 @@
       "writtenOn": "2022-03-24T08:30:01Z",
       "side": 1,
       "message": "nit: \"conn\" should be just fine? Ditto for below.",
+      "revId": "22c1c2eff04daaa2c825a8c25243604e9df7ae1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2069e3c_9c326f8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-24T09:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab29315d_585a0ca1",
+      "revId": "22c1c2eff04daaa2c825a8c25243604e9df7ae1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e7f5a5_1791e2b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-24T09:02:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "316006ca_b086ddc8",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 31
+      },
       "revId": "22c1c2eff04daaa2c825a8c25243604e9df7ae1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
