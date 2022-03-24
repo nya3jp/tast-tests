@@ -22,6 +22,23 @@
       },
       "revId": "f6e4ff2c2fc73842588c01755c2f029dccb1c75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40cfdf41_a24ee013",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-24T04:42:16Z",
+      "side": 1,
+      "message": "remote this empty line",
+      "revId": "f6e4ff2c2fc73842588c01755c2f029dccb1c75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
