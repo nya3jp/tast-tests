@@ -102,6 +102,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Opens PlayStore, Chrome and Files.

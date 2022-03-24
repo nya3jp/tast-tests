@@ -28,8 +28,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SplitViewTabletMode,
-		Desc: "In tablet mode, checks split view works properly",
+		Func:         SplitViewTabletMode,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "In tablet mode, checks split view works properly",
 		Contacts: []string{
 			"cattalyya@chromium.org",
 			"chromeos-wmp@google.com",
@@ -199,6 +200,7 @@ func SplitViewTabletMode(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enter overview: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// 1. Test dragging a window to snap to primary-snapped position.
 	window1, err := ash.FindFirstWindowInOverview(ctx, tconn)

@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: VirtualDesksShortcuts,
-		Desc: "Checks that virtual desks shortcuts works correctly",
+		Func:         VirtualDesksShortcuts,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that virtual desks shortcuts works correctly",
 		Contacts: []string{
 			"dandersson@chromium.org",
 			"chromeos-wmp@google.com",
@@ -170,6 +171,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enter overview mode: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	if err := uiauto.Combine(
 		"reorder desk mini views",

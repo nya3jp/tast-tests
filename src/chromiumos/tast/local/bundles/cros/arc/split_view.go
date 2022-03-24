@@ -264,6 +264,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enter overview: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// Snap activity to left.
 	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, 0); err != nil {

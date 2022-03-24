@@ -262,6 +262,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		"Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToHiddenHotseat",
 	), perfutil.StoreAllWithHeuristics(""))
 
+	defer ash.SetOverviewModeAndWait(closeCtx, tconn, false)
 	// This part works as:
 	// - enter into the overview mode
 	// - drag a window to the left to cause the split-view

@@ -308,6 +308,7 @@ func CompatSnap(ctx context.Context, s *testing.State) {
 	}
 	stableWidth := window.BoundsInRoot.Width
 
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	for _, primary := range []bool{false, true} {
 		// Case A. Snap the resize-locked window from overview mode.
 		if err := testSnapFromOverview(ctx, tconn, a, cr, pc, displayInfo, d, act, primary, stableWidth); err != nil {
