@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c81200_725f5b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-24T09:48:08Z",
+      "side": 1,
+      "message": "do we need to launch it from shelf? Can it be an API call to avoid flakiness-risk in UI?",
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d10b20c_ba6f7103",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-24T09:48:08Z",
+      "side": 1,
+      "message": "could you document the format of this map?",
+      "range": {
+        "startLine": 68,
+        "startChar": 30,
+        "endLine": 68,
+        "endChar": 66
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2e3cc2_f278ee88",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-24T09:48:08Z",
+      "side": 1,
+      "message": "style: could you use :\u003d, and \"path\" should be enough.\n\npath :\u003d localStatePathAsh\nif ... {\n  path \u003d localStatePathLacros\n}",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7877b2c6_0e3d0252",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-24T09:48:08Z",
+      "side": 1,
+      "message": "preferring shorter name, \"s\" is enough.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e091b9c_dac331f8",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-24T09:48:08Z",
+      "side": 1,
+      "message": "could you add the document about the format of perfMap?",
+      "range": {
+        "startLine": 84,
+        "startChar": 34,
+        "endLine": 84,
+        "endChar": 64
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf53ce1_474a5ad2",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-24T09:48:08Z",
+      "side": 1,
+      "message": "could you run error check?",
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
