@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
@@ -37,6 +38,11 @@ func init() {
 }
 
 func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
+	// Reserve five seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
@@ -53,11 +59,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 	if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 		s.Fatal("Failed to create a new desk: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err = ash.RemoveActiveDesk(ctx, tconn); err != nil {
-			s.Error("Failed to remove the active desk: ", err)
-		}
-	}(ctx)
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
 
 	// Create a virtual trackpad.
 	tpw, err := input.Trackpad(ctx)
