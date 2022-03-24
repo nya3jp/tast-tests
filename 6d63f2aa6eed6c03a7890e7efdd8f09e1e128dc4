@@ -52,6 +52,24 @@
       "parentUuid": "12cbb785_7ca33173",
       "revId": "6d63f2aa6eed6c03a7890e7efdd8f09e1e128dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81315e2_e99b045f",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-24T03:24:20Z",
+      "side": 1,
+      "message": "I agree that the package name params is not a good choice. Put it back to uidetection.",
+      "parentUuid": "c9c0fdb3_a408d579",
+      "revId": "6d63f2aa6eed6c03a7890e7efdd8f09e1e128dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
