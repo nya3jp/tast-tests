@@ -33,6 +33,24 @@
       "message": "nit: const",
       "revId": "829b336b851101cf2055eb275b56cb397a114372",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7ccd79_cee0650a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-24T02:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb09595c_e29255c2",
+      "revId": "829b336b851101cf2055eb275b56cb397a114372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

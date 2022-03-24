@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "430028cd_711c7c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/factory/toolkit/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-03-24T02:26:40Z",
+      "side": 1,
+      "message": "Thank you for the suggestion! Added into the comment.",
+      "parentUuid": "c21a3848_427dd781",
+      "revId": "ecaa40bda70b7b9a5843c6ae390f76662e5a7a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5540bf0_2dc5fcaa",
