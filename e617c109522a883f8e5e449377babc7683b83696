@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caaab860_566014f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T04:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be4a213_6b3c529b",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "e617c109522a883f8e5e449377babc7683b83696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e7247d3_1748ed28",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-24T03:30:38Z",
       "side": 1,
       "message": "You may want to create a const for this in the begining.",
+      "range": {
+        "startLine": 114,
+        "startChar": 36,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "e617c109522a883f8e5e449377babc7683b83696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19c0fac_8644978e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T04:36:51Z",
+      "side": 1,
+      "message": "Once I create a util package/common package, this will all be moved to a common package. But I\u0027ll move it for now.",
+      "parentUuid": "4e7247d3_1748ed28",
       "range": {
         "startLine": 114,
         "startChar": 36,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f7818e_865df08c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T04:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2722209_8a55133c",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 45
+      },
+      "revId": "e617c109522a883f8e5e449377babc7683b83696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71269c1c_0174610f",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-24T03:30:38Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 117,
+        "startChar": 26,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "e617c109522a883f8e5e449377babc7683b83696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "868fc475_3c3c151b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T04:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71269c1c_0174610f",
       "range": {
         "startLine": 117,
         "startChar": 26,
