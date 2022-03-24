@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a905bbf8_c570c267",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-24T23:25:32Z",
+      "side": 1,
+      "message": "it would be good to at least run the unittests with fast_build.sh -C",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "8ef92bf690280c0c91bfc8d546bb76a3eb547758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5750a32_fb6ec756",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
         "patchSetId": 1
