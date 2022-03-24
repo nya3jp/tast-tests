@@ -245,6 +245,15 @@ func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
 	return phys, nil
 }
 
+func (r *Runner) DumpPhys(ctx context.Context) (string, error) {
+	out, err := r.cmd.Output(ctx, "iw", "list")
+	if err != nil {
+		return nil, errors.Wrap(err, "iw list failed")
+	}
+
+	return string(out), nil
+}
+
 // PhyByName returns a Phy struct for the given name.
 func (r *Runner) PhyByName(ctx context.Context, name string) (*Phy, error) {
 	out, err := r.cmd.Output(ctx, "iw", "phy", name, "info")
