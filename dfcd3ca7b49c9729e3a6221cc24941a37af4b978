@@ -22,6 +22,30 @@
       },
       "revId": "dfcd3ca7b49c9729e3a6221cc24941a37af4b978",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556ed991_7f80f2e3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-24T15:32:31Z",
+      "side": 1,
+      "message": "*line 89 in the same file in the first patch set\n`cfg.deployedPath \u003d s.DataPath(dataArtifact)`",
+      "parentUuid": "e4f3c712_da8ba67e",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "dfcd3ca7b49c9729e3a6221cc24941a37af4b978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
