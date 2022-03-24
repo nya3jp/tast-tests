@@ -88,6 +88,24 @@
       "parentUuid": "8e651ec3_6e9e0ca3",
       "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590cd54b_cda0882e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/thunderbolt/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-03-24T03:13:59Z",
+      "side": 1,
+      "message": "Hi Kerker,\n\nThanks for right direction.\n\nDo you want me to remove this folder \"typec / typecutils / utils.go\" and make related edits in typec scripts as well? So that we can avoid duplication",
+      "parentUuid": "2a8684ba_dd752eb9",
+      "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
