@@ -395,7 +395,7 @@ func NotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, err
 	}
 
 	// Also check that no notifications are shown in the UI.
-	exists, err := ui.IsNodeFound(ctx, nodewith.Name("Notification Center").ClassName("Widget"))
+	exists, err := ui.IsNodeFound(ctx, nodewith.ClassName("AshNotificationView"))
 	if err != nil {
 		return false, errors.Wrap(err, "failed checking if notification node exists")
 	}
