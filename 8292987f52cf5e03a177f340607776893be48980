@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d89afaf0_92ef6f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T23:32:36Z",
+      "side": 1,
+      "message": "Eliot suggests me to use this method instead of lacros.launchWithUrl. because I need to modify launchWithUrl to use local state file, it will have conflicts with crrev.com/c/3524047. Could we keep it for now?",
+      "parentUuid": "68c81200_725f5b98",
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d10b20c_ba6f7103",
         "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
         "patchSetId": 15
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-24T09:48:08Z",
       "side": 1,
       "message": "could you document the format of this map?",
+      "range": {
+        "startLine": 68,
+        "startChar": 30,
+        "endLine": 68,
+        "endChar": 66
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c09f0b_5c212439",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T23:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d10b20c_ba6f7103",
       "range": {
         "startLine": 68,
         "startChar": 30,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1d42d2_c0643e39",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T23:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e2e3cc2_f278ee88",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7877b2c6_0e3d0252",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-03-24T09:48:08Z",
       "side": 1,
       "message": "preferring shorter name, \"s\" is enough.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d467169_400fa1c3",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T23:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7877b2c6_0e3d0252",
       "range": {
         "startLine": 73,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7aaca0_5158f47c",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T23:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e091b9c_dac331f8",
+      "range": {
+        "startLine": 84,
+        "startChar": 34,
+        "endLine": 84,
+        "endChar": 64
+      },
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf53ce1_474a5ad2",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-03-24T09:48:08Z",
       "side": 1,
       "message": "could you run error check?",
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3dfccd0_0e0891d6",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T23:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf53ce1_474a5ad2",
       "revId": "8292987f52cf5e03a177f340607776893be48980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
