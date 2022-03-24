@@ -38,6 +38,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19d8a100_06f42518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-03-24T20:04:59Z",
+      "side": 1,
+      "message": "I don\u0027t have strong opposition but I don\u0027 think we should include this step at every test. Basic password test including persistent vault test would be just enough.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1854e79b_a2658639",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_pin.go",
         "patchSetId": 1
