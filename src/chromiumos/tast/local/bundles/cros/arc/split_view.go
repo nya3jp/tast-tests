@@ -207,7 +207,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
-		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
+		defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 		rotation += 90
 	}
 	tew.SetRotation(rotation)
