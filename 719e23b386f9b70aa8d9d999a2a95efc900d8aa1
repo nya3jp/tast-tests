@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe8a2f7_fb7227b0",
+        "filename": "src/chromiumos/tast/common/variations/const.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "moved",
+      "parentUuid": "b34abbd9_cba796d1",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5957e107_3d985241",
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ef0221_6e419d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5957e107_3d985241",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec87472b_33af6ef1",
@@ -99,6 +135,24 @@
       "writtenOn": "2022-03-23T14:00:21Z",
       "side": 1,
       "message": "could you use chromiumos/tast/local/chrome/localstate ?",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79244ae_fc198d0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec87472b_33af6ef1",
       "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +180,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a31f1f18_99c2be53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "thanks fixed",
+      "parentUuid": "6c5f3e43_ddfd437b",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3553b3d_96d63d41",
@@ -139,6 +217,24 @@
       "writtenOn": "2022-03-23T14:00:21Z",
       "side": 1,
       "message": "nit: no empty line is needed.",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eda0ae4_1760f34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3553b3d_96d63d41",
       "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -160,6 +256,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6b3429_c5578ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc72752b_58a3a0da",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff793595_dd631d32",
@@ -173,6 +287,24 @@
       "writtenOn": "2022-03-23T14:00:21Z",
       "side": 1,
       "message": "this should be placed at L159",
+      "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b26bdd2_d93a5cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff793595_dd631d32",
       "revId": "719e23b386f9b70aa8d9d999a2a95efc900d8aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

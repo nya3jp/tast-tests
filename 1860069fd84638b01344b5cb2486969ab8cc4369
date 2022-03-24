@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42c631f_49528a49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acbb3273_ee10c3d9",
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26baffaa_a2b67640",
@@ -532,6 +550,30 @@
       "side": 1,
       "message": "Discussed offline, but: We shouldn\u0027t add a boolean here. Instead, we can use LaunchFromShelf, and it will use the common user data dir and this should work.",
       "parentUuid": "d35d68bd_9bb813e5",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "1860069fd84638b01344b5cb2486969ab8cc4369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca290d5f_d3414d17",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-24T01:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b90a9dd_233d471a",
       "range": {
         "startLine": 132,
         "startChar": 0,
