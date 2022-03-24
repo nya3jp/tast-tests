@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a1bd4a_807ff701",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-24T04:41:17Z",
+      "side": 1,
+      "message": "the go-style code would be:\n```\nconst (\n    picFile \u003d \"IMG_7451.jpg\"\n    onePersonFile \u003d \"person-present.html\"\n    noPersonFile \u003d \"no-person-present.html\"\n)\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "f6e4ff2c2fc73842588c01755c2f029dccb1c75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
