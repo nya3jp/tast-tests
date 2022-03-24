@@ -54,9 +54,73 @@ func init() {
 		Params: []testing.Param{{
 			Name: "s0ix",
 			Val:  "S0ix",
+			// These are skipped because they either don't support S0ix
+			// Or they incorrectly report that they do
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
+				// coral
+				"babymega",
+
+				// eve
+				"eve",
+
+				// grunt
+				"careena",
+				"barla",
+				"liara",
+				"kasumi",
+
+				// jacuzzi
+				"fennel",
+				"kappa",
+
+				// kukui
+				"kodama",
+
+				// trogdor
+				"lazor",
+
+				// zork
+				"dirinboz",
+			)),
 		}, {
 			Name: "s3",
 			Val:  "S3",
+			// These are skipped because they either don't support S3
+			// Or they incorrectly report that they do
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
+				// coral
+				"astronaut",
+				"blacktiplte",
+				"nasher",
+
+				// dedede
+				"drawcia",
+				"drawman",
+				"lantis",
+				"madoo",
+				"maglia",
+				"maglith",
+				"magolor",
+				"magpie",
+				"sasuke",
+				"storo",
+
+				// guybrush
+				"nipperkin",
+
+				// nami
+				"bard",
+				"ekko",
+				"syndra",
+
+				// nautilus
+				"nautilus",
+				"nautiluslte",
+
+				// volteer
+				"delbin",
+				"eldrid",
+			)),
 		}},
 	})
 }
