@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f237ee8e_6afd9b61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9b1fd0dd_96c53618",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdd8a37c_0896c9a7",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd512733_be2b4975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Thank you for the information, we have applied the `driveFsStarted` for this test.",
+      "parentUuid": "bdd8a37c_0896c9a7",
+      "range": {
+        "startLine": 50,
+        "startChar": 43,
+        "endLine": 50,
+        "endChar": 55
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afbc861b_32f96622",
@@ -88,6 +130,30 @@
       "writtenOn": "2022-02-25T11:35:37Z",
       "side": 1,
       "message": "If you\u0027re going to be interacting with `drivefs` via Files app, you\u0027ll need `chrome_internal` and `drivefs` as `SoftwareDeps`",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07898d3d_99423342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "afbc861b_32f96622",
       "range": {
         "startLine": 57,
         "startChar": 25,
@@ -135,6 +201,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a80fc7e_e99c2b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "We made the name unique enough and it will be removed at the end.\n\nBut we kept the step to remove the file in advance, just to make sure that there will be up to one file with a specific name to reduce the possibility of occupying the cloud space.\nShould we remove this step anyway?",
+      "parentUuid": "2bccc885_515aa6c1",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f7e9b98_c14919a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
         "patchSetId": 2
@@ -146,6 +230,30 @@
       "writtenOn": "2022-02-25T11:35:37Z",
       "side": 1,
       "message": "nit: prefer s.Log instead of testing.ContextLog when you have access to testing.State. Same applies for the remainder of testing.ContextLog in this function",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 19
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66f882a_c9b0de1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "9f7e9b98_c14919a4",
       "range": {
         "startLine": 88,
         "startChar": 1,
@@ -173,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a6493f_d55c1b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "`drive_api` is in use now. The corresponding cleanup function should be more reasonable.",
+      "parentUuid": "f1400278_2d79542d",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a24ee8d7_dd3a38d0",
@@ -186,6 +312,30 @@
       "writtenOn": "2022-02-24T06:27:19Z",
       "side": 1,
       "message": "shouldn\u0027t searching for SearchResultView class be enough?",
+      "range": {
+        "startLine": 107,
+        "startChar": 42,
+        "endLine": 107,
+        "endChar": 66
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43fb7098_98def0dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a24ee8d7_dd3a38d0",
       "range": {
         "startLine": 107,
         "startChar": 42,
@@ -219,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc094b54_0e068c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "This part has been refactored.",
+      "parentUuid": "10be568c_768764f5",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd2158cf_2a9f78ff",
@@ -232,6 +406,24 @@
       "writtenOn": "2022-02-24T06:27:19Z",
       "side": 1,
       "message": "shouldn\u0027t tast framework already close all windows? It may be a good idea to separate this into 3 separate tests",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e527e3_949979d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "It is possible that an incorrect search result is being opened, so we use it as a cleanup function during polling on `searchAndVerify`.",
+      "parentUuid": "cd2158cf_2a9f78ff",
       "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -276,6 +468,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b286d4f_849263fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "98145842_ea1aa9e4",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6192b253_15613f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "if `LauncherState` is `Closed`, the `ash.TriggerLauncherStateChange` might cause the opposite outcome. Should we use `ash.TriggerLauncherStateChange` anyway?\n\nWe have refactored this part as an independent function, hopefully it can make more sense.",
+      "parentUuid": "50183130_9e65651f",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "750ea0ac_1adc9b90",
@@ -289,6 +523,30 @@
       "writtenOn": "2022-02-25T11:35:37Z",
       "side": 1,
       "message": "Can you pull this out to a general timeout? This is reused a lot, something like:\n```\nconst launcherSearchTimeout \u003d 5 * time.Second\n```\nSame for the remainder usages of this.",
+      "range": {
+        "startLine": 174,
+        "startChar": 19,
+        "endLine": 174,
+        "endChar": 32
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8211a0ea_e9f61ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "750ea0ac_1adc9b90",
       "range": {
         "startLine": 174,
         "startChar": 19,
@@ -322,6 +580,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d886071f_eacbc5d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "This function has been removed.",
+      "parentUuid": "2607d318_17710fb4",
+      "range": {
+        "startLine": 192,
+        "startChar": 37,
+        "endLine": 192,
+        "endChar": 42
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81ff48e3_938bc4f7",
@@ -335,6 +617,30 @@
       "writtenOn": "2022-02-25T11:35:37Z",
       "side": 1,
       "message": "You should be able to use the files object and not have to start a new uiauto instance, it has the benefit of scoping to the Files window as well.",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 24
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "984a7081_9b4c400c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "This function has been removed.",
+      "parentUuid": "81ff48e3_938bc4f7",
       "range": {
         "startLine": 215,
         "startChar": 1,
@@ -368,6 +674,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0498437c_f1c82863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "This function has been removed.",
+      "parentUuid": "438759a3_c3806975",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2be28d6_f07b72ba",
@@ -381,6 +711,30 @@
       "writtenOn": "2022-02-25T11:35:37Z",
       "side": 1,
       "message": "what is this?",
+      "range": {
+        "startLine": 247,
+        "startChar": 42,
+        "endLine": 247,
+        "endChar": 55
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d4a798_cfba4238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "This function has been removed.",
+      "parentUuid": "c2be28d6_f07b72ba",
       "range": {
         "startLine": 247,
         "startChar": 42,
@@ -422,6 +776,24 @@
       "side": 1,
       "message": "Thank you for the information, \nwe seems have some refresh-token issues,\nmight take some time to submit another PS.\n\nWill set this CL as WIP for now.",
       "parentUuid": "21e1f0a9_f8cf8f52",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f7f285_09c642ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "0ce3a9f5_b71bd5d6",
       "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

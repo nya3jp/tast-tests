@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb95ec19_58f9c116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:01:26Z",
+      "side": 1,
+      "message": "Hello reviewers, \n\nSorry for the delay, the major change of latest PS is applying fixture: `driveFsStarted`, and therefore, some unnecessary UI operations were replaced with drive_api.\n\nPlease review, thanks.",
+      "revId": "456700ff0aeda7e6001c746887c1b08d0f6f57fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
