@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5669c1_2d081f0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-03-24T11:30:59Z",
+      "side": 1,
+      "message": "I am not sure I understand this. Why does the real Telemetry Extension hosted on CWS cause the test to fail?",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "7e831e0dcb1217d519e05ed63b9ce32689f81999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd82795b_62ce373c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-03-24T11:30:59Z",
+      "side": 1,
+      "message": "Hi Oleh,\n\nI am not sure if we need this CL. Is this a refactoring CL to match the behavior of the real CWS Extension?",
+      "revId": "7e831e0dcb1217d519e05ed63b9ce32689f81999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
