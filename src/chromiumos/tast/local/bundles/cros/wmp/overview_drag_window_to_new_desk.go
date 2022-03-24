@@ -76,6 +76,7 @@ func OverviewDragWindowToNewDesk(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// 1. Tests that desks bar will be transformed to expanded state when dragging a window
 	// towards and close enough to the new desk button. And then dropping the window outside

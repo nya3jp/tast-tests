@@ -85,6 +85,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	url := server.URL + "/animation.html"
 
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	runner := perfutil.NewRunner(cr.Browser())
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.

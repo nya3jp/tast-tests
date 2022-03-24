@@ -105,6 +105,7 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	if err := ac.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		s.Fatal("Failed to wait for overview animation to be completed: ", err)

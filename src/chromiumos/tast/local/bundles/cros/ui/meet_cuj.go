@@ -538,6 +538,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			s.Fatal("Failed to set overview mode: ", err)
 		}
+		defer ash.SetOverviewModeAndWait(closeCtx, tconn, false)
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to get the window list: ", err)

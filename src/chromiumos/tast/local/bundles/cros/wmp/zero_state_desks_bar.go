@@ -68,6 +68,7 @@ func ZeroStateDesksBar(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// Zero state desks bar is shown when there is only one desk. Tab to
 	// default desk button inside and press "Enter" should expand the desks

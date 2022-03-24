@@ -93,6 +93,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 	if err := swipeToEnterOverview(ctx, tconn, tpw); err != nil {
 		s.Fatal("Failed to swipe up to enter Overview: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	// ---------------------------------------------------------
 	// Wait for an interval for the next swipe gesture.
 	if err := testing.Sleep(ctx, swipeInterval); err != nil {
