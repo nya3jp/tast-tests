@@ -323,6 +323,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 	runner := perfutil.NewRunner(cr.Browser())
 	drag := s.Param().(dragTest)
 
+	defer ash.SetOverviewModeAndWait(ctx, tconn, false)
 	currentWindows := 0
 	// Run the test cases with different number of browser windows.
 	for _, windows := range []int{2, 8} {

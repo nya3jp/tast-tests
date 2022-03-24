@@ -30,6 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CompatSnap,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests compatible snapping works properly for resize-locked ARC apps",
 		Contacts:     []string{"toshikikikuchi@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -307,6 +308,7 @@ func CompatSnap(ctx context.Context, s *testing.State) {
 	}
 	stableWidth := window.BoundsInRoot.Width
 
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	for _, primary := range []bool{false, true} {
 		// Case A. Snap the resize-locked window from overview mode.
 		if err := testSnapFromOverview(ctx, tconn, a, cr, pc, displayInfo, d, act, primary, stableWidth); err != nil {
