@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29592e19_4e107b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-24T17:25:43Z",
+      "side": 1,
+      "message": "had to make some changes to reflect that the default fixtures we use are for Android modulefood. I\u0027ve also changed the other CLs so that the new groups we are adding are for prod+dev Android NS.",
+      "revId": "fa393bee13b713d7d9cd10143d76679627c599f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
