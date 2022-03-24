@@ -16,6 +16,24 @@
       "message": "LGTM from a tast perspective but you always need to get a review from a team member first as tast reviewers will most likely not have the required domain knowledge to do a review of the functionality.",
       "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99245217_dfb71311",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-03-24T15:24:08Z",
+      "side": 1,
+      "message": "Thanks Alex! Just moved a couple people on my team from cc to reviewer",
+      "parentUuid": "9795ecf6_a0706c29",
+      "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
