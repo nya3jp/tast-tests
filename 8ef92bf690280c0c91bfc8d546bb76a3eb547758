@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda4d157_748727bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-24T23:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c055ed45_d22f825c",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "8ef92bf690280c0c91bfc8d546bb76a3eb547758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a905bbf8_c570c267",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a3dbd6_73c15b7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-24T23:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a905bbf8_c570c267",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "8ef92bf690280c0c91bfc8d546bb76a3eb547758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5750a32_fb6ec756",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-24T23:23:57Z",
       "side": 1,
       "message": "nit: Un\u0027n\u0027eeded (lower case)",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "8ef92bf690280c0c91bfc8d546bb76a3eb547758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "104a6b25_8cd59a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-24T23:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5750a32_fb6ec756",
       "range": {
         "startLine": 29,
         "startChar": 24,
