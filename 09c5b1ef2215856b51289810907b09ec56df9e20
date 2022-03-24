@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49533736_0fa118f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Did some research, nothing that can be done in a one-liner at least, https://cs.opensource.google/go/x/build/+/1182a1fa:internal/untar/untar.go;drc\u003d6ea17ddc88ca435004b2b12185c446455fa11a8f;bpv\u003d0;bpt\u003d0;l\u003d84 seems like the only way. But not sure if we can use it. And it doesn\u0027t provide the same functionalities as we need.",
+      "parentUuid": "6ee5260a_9ec47c33",
+      "revId": "09c5b1ef2215856b51289810907b09ec56df9e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bf6f5b0_4c99ebe5",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-23T07:51:10Z",
       "side": 1,
       "message": "Could you write a comment with a rationale why the timeout is 130 seconds?",
+      "revId": "09c5b1ef2215856b51289810907b09ec56df9e20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d4e2b2_90309f8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "it\u0027s at line 125-127 ish, should I move it down here somewhere?",
+      "parentUuid": "6bf6f5b0_4c99ebe5",
       "revId": "09c5b1ef2215856b51289810907b09ec56df9e20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

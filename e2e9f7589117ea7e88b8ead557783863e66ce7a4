@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a9739a_394cc896",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe789c3c_c6c059e4",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "e2e9f7589117ea7e88b8ead557783863e66ce7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efaeac3d_0ec3fe3f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-23T05:17:47Z",
       "side": 1,
       "message": "add the `Timeout` field with a reasonable value.",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "e2e9f7589117ea7e88b8ead557783863e66ce7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27825af1_fcee1a32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efaeac3d_0ec3fe3f",
       "range": {
         "startLine": 34,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32faee96_a08d297d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff45668_8d714cef",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "e2e9f7589117ea7e88b8ead557783863e66ce7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b9af2a2_9814066c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-23T05:17:47Z",
       "side": 1,
       "message": "comments should end with a full stop.\n\nplease check all other comments as well.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 80
+      },
+      "revId": "e2e9f7589117ea7e88b8ead557783863e66ce7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01982b6_03f9c93b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b9af2a2_9814066c",
       "range": {
         "startLine": 67,
         "startChar": 2,
@@ -139,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1346c0cf_91f29e56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fce0d701_eba0164a",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 86,
+        "endChar": 9
+      },
+      "revId": "e2e9f7589117ea7e88b8ead557783863e66ce7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70fc8ba9_1ec78897",
@@ -156,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70646791_b1751a76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70fc8ba9_1ec78897",
+      "revId": "e2e9f7589117ea7e88b8ead557783863e66ce7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0090a777_10395567",
@@ -169,6 +307,30 @@
       "writtenOn": "2022-03-23T05:17:47Z",
       "side": 1,
       "message": "delete this",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 43
+      },
+      "revId": "e2e9f7589117ea7e88b8ead557783863e66ce7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7584fee8_345e8fe1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hps/camerabox_autodim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-03-24T02:17:17Z",
+      "side": 1,
+      "message": "Not there in patch3",
+      "parentUuid": "0090a777_10395567",
       "range": {
         "startLine": 167,
         "startChar": 1,
