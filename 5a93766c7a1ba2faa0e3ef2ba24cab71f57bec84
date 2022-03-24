@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb037de_6c4a0d06",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-03-24T00:12:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51a18b0d_fd2e161c",
+      "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75d8331d_664c71ff",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "+1. uiauto.WaitUntilGone(assistantUI) would be much easier to understand for people unfamiliar with this code",
       "parentUuid": "75d8331d_664c71ff",
+      "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792ac611_a1150f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-03-24T00:12:05Z",
+      "side": 1,
+      "message": "Refactored with action.Combine. The code gets simpler. Thank you!",
+      "parentUuid": "a3f310a8_d08b491c",
       "revId": "5a93766c7a1ba2faa0e3ef2ba24cab71f57bec84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
