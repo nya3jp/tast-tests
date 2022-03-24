@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61f84c43_e12b2434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/vlc/vlc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-24T22:42:12Z",
+      "side": 1,
+      "message": "I think so. There is an example: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/data/Sunflower.apk.external;l\u003d2?q\u003dSunflower_20190924.apk\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch.",
+      "parentUuid": "8fdf6967_2f1ab48b",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "8455c0d391b0e05ac96c7d6c06a2de0af1576099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3174c090_503b449f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
         "patchSetId": 4
