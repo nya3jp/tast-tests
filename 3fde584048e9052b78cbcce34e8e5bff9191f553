@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf62b48_fbffd965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/audio_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-24T08:58:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93aded99_4ad42222",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 65
+      },
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39c1a475_5c64a388",
@@ -355,6 +379,24 @@
       "side": 1,
       "message": "Waiting for 6-10 mins just for display turn-off sounds like a bit waist of the time. Is it possible to configure the display config to shorten the duration, like 5-10 secs or so during this test?",
       "parentUuid": "f0036cb2_8d9d5651",
+      "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b872b4_6a916d69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-24T08:58:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac393a7d_d18778d5",
       "revId": "3fde584048e9052b78cbcce34e8e5bff9191f553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
