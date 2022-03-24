@@ -33,6 +33,23 @@
       "message": "octopus passes all wifi_matfunc tests.",
       "revId": "3288d70d1e8f6246a07cf13b2cd4071739ae5f5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5da1828_a3845016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-24T08:57:44Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3288d70d1e8f6246a07cf13b2cd4071739ae5f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
