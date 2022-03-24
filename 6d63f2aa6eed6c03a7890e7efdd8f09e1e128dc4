@@ -34,6 +34,24 @@
       "parentUuid": "a1fd145a_8c7ae7f9",
       "revId": "6d63f2aa6eed6c03a7890e7efdd8f09e1e128dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c0fdb3_a408d579",
+        "filename": "src/chromiumos/tast/local/uidetection/params/custom_icon_params.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-03-24T01:14:47Z",
+      "side": 1,
+      "message": "I see no issue with uidetection.MinConfidence - it\u0027s much more clear than params.MinConfidence. Calling any package params is generally a bad idea, because you can have params for many different packages. For example, if using both uiauto and acuiti in a test, does params.MatchCount refer to the number of nodes returned by a nodewith finder, or uidetection\u0027s MatchCount?",
+      "parentUuid": "12cbb785_7ca33173",
+      "revId": "6d63f2aa6eed6c03a7890e7efdd8f09e1e128dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
