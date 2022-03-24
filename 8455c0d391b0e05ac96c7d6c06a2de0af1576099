@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fdf6967_2f1ab48b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/vlc/vlc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-24T11:04:04Z",
+      "side": 1,
+      "message": "We download the apk from a public website to avoid the possible licensing issue.\nIs it doable to upload a certain apk of a third party APP to gs-bucket, and use it for tast-tests?",
+      "parentUuid": "2854f1a7_5687f2f9",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "8455c0d391b0e05ac96c7d6c06a2de0af1576099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3174c090_503b449f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
         "patchSetId": 4
