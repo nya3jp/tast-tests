@@ -91,3 +91,24 @@ func GetDeviceVariant(ctx context.Context) (string, error) {
 	}
 	return dutVariant, nil
 }
+
+// GetDlcIDForVariant gets the dlc id of the variant, otherwise return error.
+// By default, the go proto helper will return an empty string if there is no DlcId value.
+func GetDlcIDForVariant(ctx context.Context) (string, error) {
+	dutVariant, err := GetDeviceVariant(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get device variant")
+	}
+
+	manifest, err := ParseModemFirmwareManifest(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to parse the firmware manifest")
+	}
+	for _, device := range manifest.Device {
+		if dutVariant == device.Variant {
+			return device.GetDlcId(), nil
+		}
+	}
+	return "", errors.Errorf("variant %q does not contain a DldId", dutVariant)
+
+}
