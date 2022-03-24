@@ -68,8 +68,9 @@ func init() {
 
 // Value allows tests to obtain a ti50 devboard.
 type Value struct {
-	grpcConn *grpc.ClientConn
-	devboard *remoteTi50.DUTControlAndreiboard
+	grpcConn  *grpc.ClientConn
+	devboard  *remoteTi50.DUTControlAndreiboard
+	ImagePath string
 }
 
 // DevBoard connects to devboardsvc server and returns the DevBoard instance.
@@ -104,6 +105,8 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if err := i.flashImage(ctx); err != nil {
 		s.Fatal("flash image: ", err)
 	}
+
+	i.v.ImagePath = i.imageValue.ImagePath()
 
 	return i.v
 }
