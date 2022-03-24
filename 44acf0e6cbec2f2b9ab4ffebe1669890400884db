@@ -80,6 +80,30 @@
       },
       "revId": "44acf0e6cbec2f2b9ab4ffebe1669890400884db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8bb993b_65986938",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-24T21:16:06Z",
+      "side": 1,
+      "message": "Oh. Sorry. I meant to use WithTimeout to get the minimum of ctx timeout vs 2 minute timeout. \n\nIn some cases where ctx timeout is less than 2 minutes, your code would still wait for 2 minutes in l146 to return.\nWhat I am suggesting is that creating a new context and waiting for the context in l146.",
+      "parentUuid": "50ddf01e_f1297c14",
+      "range": {
+        "startLine": 142,
+        "startChar": 26,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "44acf0e6cbec2f2b9ab4ffebe1669890400884db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
