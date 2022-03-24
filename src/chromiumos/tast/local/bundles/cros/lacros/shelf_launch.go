@@ -25,35 +25,30 @@ func init() {
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Params: []testing.Param{
-			{
-				Fixture:           "lacrosUI",
-				ExtraSoftwareDeps: []string{"lacros_stable"},
-			},
-			{
-				Name:              "unstable",
-				Fixture:           "lacrosUI",
-				ExtraSoftwareDeps: []string{"lacros_unstable"},
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "primary",
-				Fixture:           "lacrosPrimary",
-				ExtraSoftwareDeps: []string{"lacros_stable"},
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "primary_unstable",
-				Fixture:           "lacrosPrimary",
-				ExtraSoftwareDeps: []string{"lacros_unstable"},
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "omaha",
-				Fixture:           "lacrosOmaha",
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
-				ExtraAttr:         []string{"informational"},
-			}},
+		Params: []testing.Param{{
+			Fixture:           "lacrosUI",
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+		}, {
+			Name:              "unstable",
+			Fixture:           "lacrosUI",
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "primary",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "primary_unstable",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "omaha",
+			Fixture:           "lacrosOmaha",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
