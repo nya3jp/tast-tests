@@ -16,6 +16,29 @@
       "message": "had to make some changes to reflect that the default fixtures we use are for Android modulefood. I\u0027ve also changed the other CLs so that the new groups we are adding are for prod+dev Android NS.",
       "revId": "fa393bee13b713d7d9cd10143d76679627c599f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0904af7_e1c06ef0",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbyfixture/basic_android_modulefood.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-03-24T21:17:15Z",
+      "side": 1,
+      "message": "All of the other types of functions that declare fixtures have a name that explains them. I don\u0027t think one of the eng team that touches this code in a while will know that basic \u003d modeulefood.\n\nMaybe just call this addModulefoodAndroidFixtures?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "fa393bee13b713d7d9cd10143d76679627c599f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
