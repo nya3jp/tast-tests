@@ -50,11 +50,15 @@ func CheckSkuPurchase(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the buy button on the billing dialog: ", err)
 	}
 
-	if err := testApp.RequiredAuthConfirm(ctx); err != nil {
-		s.Fatal("Failed to confirm required auth: ", err)
-	}
-
+	// Successful payment and required auth(if rendered) screens are rendered together.
+	// Successful payment will disappear soon after being rendered.
+	// Need to check for successful payment presence first, because if required auth is not rendered,
+	// we wait for it. In this case by the time we check for successful payment, the screen will disappear.
 	if err := testApp.CheckPaymentSuccessful(ctx); err != nil {
 		s.Fatal("Failed to find Payment successful: ", err)
+	}
+
+	if err := testApp.RequiredAuthConfirm(ctx); err != nil {
+		s.Fatal("Failed to confirm required auth: ", err)
 	}
 }
