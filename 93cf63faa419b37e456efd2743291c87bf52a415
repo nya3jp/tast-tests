@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f64b5bc1_432b0a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb32da4e_a7f76967",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 50
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64cf688c_74f4388b",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "defer l.Close(closeCtx)",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 19
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62b8808_ca6db6be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64cf688c_74f4388b",
       "range": {
         "startLine": 117,
         "startChar": 16,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b67c01_d073ca9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39c94706_ce3d31cf",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d919aed_4eb0006d",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "if err :\u003d screenRecorder.Start(ctx, tconn); err !\u003d nil {\n    screenRecorder.Release(closeCtx)\n    s.Fatal(\"Failed to start ScreenRecorder: \", err)\n  }\n  defer uiauto.ScreenRecorderStopSaveRelease(closeCtx, screenRecorder, filepath.Join(dir, \"screen_record.webm\"))",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321420ad_148173bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d919aed_4eb0006d",
       "range": {
         "startLine": 137,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60b8573_dd8d228d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1540f3_08fce85b",
+      "range": {
+        "startLine": 173,
+        "startChar": 40,
+        "endLine": 173,
+        "endChar": 43
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "230329e3_f817a049",
@@ -163,6 +283,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "If you just want to limit the scope of sctx, you do not need to use an anonymous function; you can simply enclose the code block in {}, like so:\nhttps://go.dev/play/p/9VedZ5NQt1o",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 4
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6c2c17_a61053c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "230329e3_f817a049",
       "range": {
         "startLine": 198,
         "startChar": 0,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "412dd4d2_ce08444d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be05eba_1eaaef11",
+      "range": {
+        "startLine": 214,
+        "startChar": 33,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1602a29_a5e68d9a",
@@ -219,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a72e68_1cfd049e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1602a29_a5e68d9a",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 3
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5599d7e1_56f8694b",
@@ -232,6 +424,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "I would just write\n  if uiLongWait.WaitUntilExists(bubble)(ctx) !\u003d nil",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 63
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d585f1e5_75307263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "What is the reason for this one? I thought ```if err :\u003d func(); err !\u003d nil {}``` is a standard in tast-tests",
+      "parentUuid": "5599d7e1_56f8694b",
       "range": {
         "startLine": 260,
         "startChar": 2,
@@ -313,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cfdb63c_c79e9370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "It needs to make several clicks (e.g. mic permission and camera permission)",
+      "parentUuid": "3b67229a_2f017e75",
+      "range": {
+        "startLine": 264,
+        "startChar": 10,
+        "endLine": 264,
+        "endChar": 62
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b59e5fb_361b91d7",
@@ -326,6 +566,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "Check this error.",
+      "range": {
+        "startLine": 304,
+        "startChar": 11,
+        "endLine": 304,
+        "endChar": 14
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19aca8c9_46e9428d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b59e5fb_361b91d7",
       "range": {
         "startLine": 304,
         "startChar": 11,
@@ -382,6 +646,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb92572e_9127b87c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7aa9882_8d10e66b",
+      "range": {
+        "startLine": 329,
+        "startChar": 67,
+        "endLine": 329,
+        "endChar": 76
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da2a33f2_59359230",
@@ -395,6 +683,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "Use a different error message here, because this is for leftSnapNonRightSnappedWindows.",
+      "range": {
+        "startLine": 363,
+        "startChar": 29,
+        "endLine": 363,
+        "endChar": 80
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4725f9_1e1dc2cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2a33f2_59359230",
       "range": {
         "startLine": 363,
         "startChar": 29,
@@ -428,6 +740,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35e8b71_54f0bd8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e0c1cd_83876935",
+      "range": {
+        "startLine": 372,
+        "startChar": 3,
+        "endLine": 372,
+        "endChar": 108
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52cddc98_eada6626",
@@ -441,6 +777,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "time.Now().Before(end)",
+      "range": {
+        "startLine": 373,
+        "startChar": 7,
+        "endLine": 373,
+        "endChar": 40
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c0a5b4b_ec9ec3cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52cddc98_eada6626",
       "range": {
         "startLine": 373,
         "startChar": 7,
@@ -474,6 +834,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7c5c18_c8e0315b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3385455_432db0d1",
+      "range": {
+        "startLine": 421,
+        "startChar": 2,
+        "endLine": 421,
+        "endChar": 96
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "479fb48b_07260c43",
@@ -487,6 +871,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "s.Logf(\"Going through the Google Slides file for %s\", slidesScrollTimeout)",
+      "range": {
+        "startLine": 455,
+        "startChar": 2,
+        "endLine": 455,
+        "endChar": 99
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d0ac9e_e2da9c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "479fb48b_07260c43",
       "range": {
         "startLine": 455,
         "startChar": 2,
@@ -520,6 +928,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3519c73_7a7668b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "340d151f_45128164",
+      "range": {
+        "startLine": 457,
+        "startChar": 6,
+        "endLine": 457,
+        "endChar": 39
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a63509ea_6c98c984",
@@ -533,6 +965,30 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "s.Logf(\"Scrolling down the Gmail inbox for %s\", gmailScrollTimeout)",
+      "range": {
+        "startLine": 495,
+        "startChar": 2,
+        "endLine": 495,
+        "endChar": 92
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3a1008_ff5034b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63509ea_6c98c984",
       "range": {
         "startLine": 495,
         "startChar": 2,
@@ -566,6 +1022,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76021e76_815a1dda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8699025d_aabc7b8f",
+      "range": {
+        "startLine": 513,
+        "startChar": 1,
+        "endLine": 513,
+        "endChar": 35
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a39a1322_f516c540",
@@ -579,6 +1059,24 @@
       "writtenOn": "2022-03-23T22:24:27Z",
       "side": 1,
       "message": "nit: I do not like this blank line.",
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c263f0_6967551e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-24T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39a1322_f516c540",
       "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
