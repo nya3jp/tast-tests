@@ -28,10 +28,12 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VTSwitch,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Switch between VT-2 shell and GUI multiple times",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		//TODO(198837833): Remove hwdep.InternalKeyboard() and use argument to frecon to do vt switching instead of typing keys.
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.InternalKeyboard()),
 		Fixture:      "chromeGraphics",
 		Params: []testing.Param{{
 			Name:      "smoke",
