@@ -96,7 +96,7 @@ func init() {
 		Params: []testing.Param{{
 			// Base case. Note this runs a 30 min meet call.
 			Name:    "4p",
-			Timeout: 40 * time.Minute,
+			Timeout: defaultTestTimeout + 30*time.Minute,
 			Val: meetTest{
 				num:      4,
 				layout:   meetLayoutTiled,
@@ -140,7 +140,7 @@ func init() {
 		}, {
 			// Big meeting with tracing.
 			Name:    "16p_trace",
-			Timeout: 20 * time.Minute,
+			Timeout: defaultTestTimeout + 10*time.Minute,
 			Val: meetTest{
 				num:     16,
 				layout:  meetLayoutTiled,
@@ -151,7 +151,7 @@ func init() {
 		}, {
 			// Validation test for big meeting.
 			Name:    "16p_validation",
-			Timeout: 20 * time.Minute,
+			Timeout: defaultTestTimeout + 10*time.Minute,
 			Val: meetTest{
 				num:        16,
 				layout:     meetLayoutTiled,
@@ -616,10 +616,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		sctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
-		// Add 6 minutes to the bot duration, to ensure that the bots stay long enough
+		// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
 		// for the test to detect the video codecs used for encoding and decoding.
 		if !codeOk {
-			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+6*time.Minute, meet.botsOptions...); err != nil {
+			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+15*time.Minute, meet.botsOptions...); err != nil {
 				return errors.Wrap(err, "failed to create bots")
 			}
 		}
@@ -778,7 +778,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Logf("%s and %s will not be reported", decodingCodecMetricName, encodingCodecMetricName)
 	} else {
 		defer webrtcInternals.Close()
-		if err := ui.WithTimeout(5 * time.Minute).WaitUntilExists(nodewith.NameContaining("VideoStream").First())(ctx); err != nil {
+		if err := ui.WithTimeout(10 * time.Minute).WaitUntilExists(nodewith.NameContaining("VideoStream").First())(ctx); err != nil {
 			s.Error("Failed to wait for video stream info to appear: ", err)
 		}
 		if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
