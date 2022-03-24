@@ -149,18 +149,49 @@ func smapsRollups(ctx context.Context, processes []*process.Process, sharedInfoM
 // sharedSwapPssRE matches smaps entries that are mapped shared, with the
 // following match groups:
 // [1] The name of the mapping.
-// [2] The PSS for that mapping within this process, in kIB
-// [3] The size of swapped out pages in the mapping, in kiB.
+// [2] The RSS for that mapping within this process, in kIB
+// [3] The PSS for that mapping within this process, in kIB
+// [4] The size of swapped out pages in the mapping, in kiB.
 var sharedSwapPssRE = regexp.MustCompile(`(?m)^[[:xdigit:]]+-[[:xdigit:]]+ [-r][-w][-x]s [[:xdigit:]]+ [[:xdigit:]]+:[[:xdigit:]]+ [\d]+ +(\S[^\n]*)$
+(?:^\w+: +[^\n]+$
+)*^Rss: +(\d+) kB$
 (?:^\w+: +[^\n]+$
 )*^Pss: +(\d+) kB$
 (?:^\w+: +[^\n]+$
 )*^Swap: +(\d+) kB$`)
 
-type sharedMapping struct {
+// SharedMapping contains information parsed from a smaps entry. Numbers are KiB.
+type SharedMapping struct {
 	name string
 	swap uint64
 	pss  uint64
+	rss  uint64
+}
+
+// ParseSmapsData parses the given smaps data.
+func ParseSmapsData(data []byte) ([]SharedMapping, error) {
+	var swaps []SharedMapping
+	matches := sharedSwapPssRE.FindAllSubmatch(data, -1)
+	for _, match := range matches {
+		name := string(match[1])
+		rssKiB, err := strconv.ParseUint(string(match[2]), 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse rss value %q", match[2])
+		}
+		pssKiB, err := strconv.ParseUint(string(match[3]), 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse pss value %q", match[3])
+		}
+		swapKiB, err := strconv.ParseUint(string(match[4]), 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse swap value %q", match[4])
+		}
+		rss := rssKiB
+		pss := pssKiB
+		swap := swapKiB
+		swaps = append(swaps, SharedMapping{name, swap, pss, rss})
+	}
+	return swaps, nil
 }
 
 // makeSharedInfoMap creates a map from Pid to the amount of SwapPss used by shared
@@ -170,7 +201,7 @@ type sharedMapping struct {
 // divide their "Swap" value by the number of times the shared memory is mapped.
 func makeSharedInfoMap(ctx context.Context, processes []*process.Process) (SharedInfoMap, error) {
 	g, ctx := errgroup.WithContext(ctx)
-	procSwaps := make([][]sharedMapping, len(processes))
+	procSwaps := make([][]SharedMapping, len(processes))
 	for index, process := range processes {
 		i := index
 		pid := process.Pid
@@ -181,21 +212,11 @@ func makeSharedInfoMap(ctx context.Context, processes []*process.Process) (Share
 				// exited.
 				return nil
 			}
-			matches := sharedSwapPssRE.FindAllSubmatch(smapsData, -1)
-			for _, match := range matches {
-				name := string(match[1])
-				pssKiB, err := strconv.ParseUint(string(match[2]), 10, 64)
-				if err != nil {
-					return errors.Wrapf(err, "failed to parse pss value %q", match[2])
-				}
-				swapKiB, err := strconv.ParseUint(string(match[3]), 10, 64)
-				if err != nil {
-					return errors.Wrapf(err, "failed to parse swap value %q", match[3])
-				}
-				pss := pssKiB
-				swap := swapKiB
-				procSwaps[i] = append(procSwaps[i], sharedMapping{name, swap, pss})
+			smaps, err := ParseSmapsData(smapsData)
+			if err != nil {
+				return err
 			}
+			procSwaps[i] = smaps
 			return nil
 		})
 	}
