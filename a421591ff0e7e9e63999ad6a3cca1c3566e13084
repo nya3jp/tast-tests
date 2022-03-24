@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf350a0_9e3c281e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-03-24T20:43:47Z",
+      "side": 1,
+      "message": "once we mount, its good to check if a file exists for the user.",
+      "parentUuid": "19d8a100_06f42518",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1854e79b_a2658639",
@@ -72,6 +96,24 @@
       "writtenOn": "2022-03-24T16:10:43Z",
       "side": 1,
       "message": "Since a critical part of the USS is to have only one, can we add some kind of canary that would indicate somehow the PIN and Password weren\u0027t able to access the same underlying secrets?",
+      "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf152f6e_cf30f484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-03-24T20:43:47Z",
+      "side": 1,
+      "message": "What do you mean?",
+      "parentUuid": "1854e79b_a2658639",
       "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
