@@ -857,6 +857,12 @@ func (u *CryptohomeClient) AuthenticateAuthFactor(ctx context.Context, authSessi
 	return err
 }
 
+// AuthenticatePinAuthFactor authenticates an AuthSession with a given authSessionID via pin.
+func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
+	_, err := u.binary.authenticatePinAuthFactor(ctx, authSessionID, label, pin)
+	return err
+}
+
 // AddCredentialsWithAuthSession creates the credentials for the user with given password.
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
@@ -867,6 +873,12 @@ func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, us
 // AddAuthFactor creates an auth factor for the user with given password.
 func (u *CryptohomeClient) AddAuthFactor(ctx context.Context, authSessionID, label, password string) error {
 	_, err := u.binary.addAuthFactor(ctx, authSessionID, label, password)
+	return err
+}
+
+// AddPinAuthFactor creates an auth factor for the user with given password.
+func (u *CryptohomeClient) AddPinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
+	_, err := u.binary.addPinAuthFactor(ctx, authSessionID, label, pin)
 	return err
 }
 
