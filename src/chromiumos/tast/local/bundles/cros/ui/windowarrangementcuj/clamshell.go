@@ -233,6 +233,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to create a new desk")
 	}
+	defer ash.CleanUpDesks(closeCtx, tconn)
 	// Wait for location-change events to be completed.
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")

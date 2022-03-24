@@ -92,6 +92,7 @@ func RenameDesk(ctx context.Context, s *testing.State) {
 	}
 
 	// Test 2: Add a new desk. The corresponding desk name view should be focused and can be edited.
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
 	zeroAddDeskButton := nodewith.ClassName("ZeroStateIconButton")
 	desk2NameView := nodewith.ClassName("DeskNameView").Name("Desk 2")
 	desk2Name := "Dog"

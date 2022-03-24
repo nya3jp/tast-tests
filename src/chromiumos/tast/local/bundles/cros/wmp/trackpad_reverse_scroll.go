@@ -128,6 +128,7 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
 		s.Fatal("Failed to create a new desk: ", err)
 	}
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
 
 	// ------------ On The Leftmost Desk ----------------------
 	// 1. If reverse scroll is off, consecutively swiping left twice with 4
