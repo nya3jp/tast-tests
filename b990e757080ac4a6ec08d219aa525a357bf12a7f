@@ -16,6 +16,52 @@
       "message": "Sorry I am OOO now. Re-assigned to tast-owners for choosing another reviewer.",
       "revId": "b990e757080ac4a6ec08d219aa525a357bf12a7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f72dbe1_e86298f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/util/webauthn_procedure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-03-24T06:56:11Z",
+      "side": 1,
+      "message": "nit: Do we need the ui variable here?",
+      "range": {
+        "startLine": 115,
+        "startChar": 82,
+        "endLine": 115,
+        "endChar": 102
+      },
+      "revId": "b990e757080ac4a6ec08d219aa525a357bf12a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "481c199f_69b96c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/util/webauthn_procedure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-03-24T06:56:11Z",
+      "side": 1,
+      "message": "nit: ditto here.",
+      "range": {
+        "startLine": 134,
+        "startChar": 80,
+        "endLine": 134,
+        "endChar": 100
+      },
+      "revId": "b990e757080ac4a6ec08d219aa525a357bf12a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
