@@ -298,6 +298,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		modeName = "ClamshellMode"
 	}
 
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	currentWindows := 0
 	runner := perfutil.NewRunner(cr.Browser())
 	var id0 int

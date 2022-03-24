@@ -157,6 +157,7 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// There should be max 8 onscreen windows at any time; the rest should be offscreen.
 	const maxNumOnscreenWindows = 8

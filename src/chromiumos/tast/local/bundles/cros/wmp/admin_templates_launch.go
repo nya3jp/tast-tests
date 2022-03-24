@@ -74,6 +74,7 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 
 	iurl, ihash := eds.ServePolicyData(templateJSON)
 
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	policiesToServe := []policy.Policy{
 		&policy.PreconfiguredDeskTemplates{Val: &policy.PreconfiguredDeskTemplatesValue{Url: iurl, Hash: ihash}},
 		&policy.DeskTemplatesEnabled{Val: true},

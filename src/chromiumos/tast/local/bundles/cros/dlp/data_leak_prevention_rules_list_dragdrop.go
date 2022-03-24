@@ -61,6 +61,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 	}
 	defer keyboard.Close()
 
+	defer ash.SetOverviewModeAndWait(ctx, tconn, false)
 	for _, param := range []struct {
 		name        string
 		wantAllowed bool
