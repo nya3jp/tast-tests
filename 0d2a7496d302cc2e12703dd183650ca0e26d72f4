@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7b77ad_8e50725b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-03-24T11:16:37Z",
+      "side": 1,
+      "message": "LGTM % comment. Thanks, Oleh!",
+      "revId": "0d2a7496d302cc2e12703dd183650ca0e26d72f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a289c1d_44e4a5b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-03-24T11:16:37Z",
+      "side": 1,
+      "message": "I see that the list contains only 10 accounts, would that be enough to mitigate the access quota?",
+      "range": {
+        "startLine": 149,
+        "startChar": 27,
+        "endLine": 149,
+        "endChar": 42
+      },
+      "revId": "0d2a7496d302cc2e12703dd183650ca0e26d72f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
