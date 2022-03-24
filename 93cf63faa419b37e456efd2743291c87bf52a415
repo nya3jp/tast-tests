@@ -460,6 +460,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "296cb59a_7cdddd04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "Usually, err is used inside the code block, to report the error. Here, the code block just says\n  return nil\n\nso it does not use err and there is no need for any such variable.",
+      "parentUuid": "d585f1e5_75307263",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 63
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b67229a_2f017e75",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
         "patchSetId": 12

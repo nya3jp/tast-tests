@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4f07533_da57ce06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "nit: This is inconsistent coding style. The first if could be written\n  if cr, l, cs, err \u003d lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err !\u003d nil {\n    ...\n  }\n\nand that would make it consistent with the second if. Alternatively, the second if could be written\n  bTconn, err \u003d l.TestAPIConn(ctx)\n  if err !\u003d nil {\n    ...\n  }\n\nand that would make it consistent with the first if. I suggest being consistent one way or the other. If you prefer the second option, remember to also update the similar if in the browser.TypeAsh case.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecb2c242_0fea99cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "nit: This } is indented a little too much.",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 5
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e99e45_782db23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "for end :\u003d time.Now().Add(duration); time.Now().Before(end);\n\nand get rid of the above definition of end",
+      "range": {
+        "startLine": 359,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 29
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b604d62d_6cf5cd23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "bottom",
+      "range": {
+        "startLine": 360,
+        "startChar": 36,
+        "endLine": 360,
+        "endChar": 42
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93664999_a26c8ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "optional nit: I see the use of a blank line to convey that a comment describes a large amount of code after it. Perhaps that would be better conveyed with a horizontal reference consisting of dashes, underscores, or equal signs. For example:\n  // 1. Multi-tasking with Google Docs by opening a large Docs file and scrolling through the file.\n  // \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 99
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afd1e63_b978492a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "In Google Slides, a quick two-finger swipe gesture can be used to advance from one slide to the next, and so I think you can just use twoFingerScrollDown again.",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 3
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa35dd6b_d302d09f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-24T17:50:03Z",
+      "side": 1,
+      "message": "This is mostly the same as code after scrolling the Google Docs file, and I guess it would also be appropriate to check that the Gmail inbox is scrolled. Can you put this inside twoFingerScrollDown, adding a parameter to distinguish navigation-widget-content versus punch-filmstrip-scroll versus whatever will work for Gmail, and use an error message that simply says \"File is not getting scrolled\"?",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 3
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
