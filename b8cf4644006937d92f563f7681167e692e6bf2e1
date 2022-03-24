@@ -106,6 +106,24 @@
       "parentUuid": "2a8684ba_dd752eb9",
       "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82487a2_804e6b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/thunderbolt/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-24T05:14:01Z",
+      "side": 1,
+      "message": "Sure, you have to move it, instead of copying it~",
+      "parentUuid": "590cd54b_cda0882e",
+      "revId": "b8cf4644006937d92f563f7681167e692e6bf2e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
