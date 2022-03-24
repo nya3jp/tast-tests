@@ -100,6 +100,10 @@ func DefaultOpts(cfg LacrosConfig) ([]chrome.Option, error) {
 	// from ash-chrome to lacros.
 	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+MojoSocketPath))
 
+	// Don't show the restore pages popup if lacros crashed in an earlier test.
+	// This can interfere with tests.
+	opts = append(opts, chrome.LacrosExtraArgs("--hide-crash-restore-bubble"))
+
 	// Suppress experimental Lacros infobar and possible others as well.
 	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
 
