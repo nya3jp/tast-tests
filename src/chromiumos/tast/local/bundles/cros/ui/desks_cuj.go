@@ -95,6 +95,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
 		s.Fatal("Failed to create second desk: ", err)
 	}
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
 
 	if err := ash.ActivateDeskAtIndex(ctx, tconn, 1); err != nil {
 		s.Fatal("Failed to switch to second desk: ", err)

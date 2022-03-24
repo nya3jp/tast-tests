@@ -6,7 +6,9 @@ package ui
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
@@ -30,6 +32,11 @@ func init() {
 }
 
 func DesksAnimationPerf(ctx context.Context, s *testing.State) {
+	// Reserve five seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
@@ -42,6 +49,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	defer ash.CleanUpDesks(cleanupCtx, tconn)
 	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Create a new desk other than the default desk, activate it, then remove it.
 		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
