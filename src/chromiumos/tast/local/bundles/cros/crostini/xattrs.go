@@ -20,7 +20,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Xattrs,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnNeeded,
 		Desc:         "Test that the container image has extended attributes set",
 		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},

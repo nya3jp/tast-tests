@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DebianUpgradeAlert,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnNeeded,
 		Desc:         "UI prompts when crostini OS needs to be upgraded",
 		Contacts:     []string{"zubinpratap@google.com", "jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
