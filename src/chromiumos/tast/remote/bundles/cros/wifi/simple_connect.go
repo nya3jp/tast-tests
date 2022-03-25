@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/dynamicwep"
 	"chromiumos/tast/common/wifi/security/tunneled1x"
@@ -29,9 +30,10 @@ import (
 type simpleConnectTestcase struct {
 	apOpts []ap.Option
 	// If unassigned, use default security config: open network.
-	secConfFac      security.ConfigFactory
-	pingOps         []ping.Option
-	expectedFailure bool
+	secConfFac       security.ConfigFactory
+	pingOps          []ping.Option
+	expectedFailure  bool
+	expectedSecurity string
 }
 
 // EAP certs/keys for EAP tests.
@@ -174,75 +176,95 @@ func init() {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 40-bit pre-shared keys.
 				Name: "wep40",
 				Val: []simpleConnectTestcase{{
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}},
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 104-bit pre-shared keys.
 				Name: "wep104",
 				Val: []simpleConnectTestcase{{
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:       wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}},
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
 				Name: "wephidden",
 				Val: []simpleConnectTestcase{{
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:       wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:       wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:       wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					apOpts:           []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:       wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					expectedSecurity: shillconst.SecurityWEP,
 				}},
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
@@ -254,6 +276,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with AES based CCMP.
@@ -264,6 +287,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with both AES based CCMP and TKIP.
@@ -275,6 +299,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
@@ -285,6 +310,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherTKIP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to an AP broadcasting a WPA2 network using AES based CCMP.
@@ -297,6 +323,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to an AP broadcasting a WPA2 network using AES based CCMP.
@@ -327,6 +354,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) and encrypted under AES.
@@ -337,6 +365,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
@@ -347,6 +376,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModeMixed),
 						wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP), wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPAWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to an AP in WPA2/WPA3 mixed mode. WiFi alliance suggests PMF in this mode.
@@ -361,6 +391,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModeMixedWPA3),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2WPA3,
 				}},
 			}, {
 				// Verifies that DUT can connect to an AP in WPA3-SAE ("pure") mode. WiFi alliance requires PMF in this mode.
@@ -378,6 +409,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA3),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA3,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected 802.11ac network supporting for WPA.
@@ -391,6 +423,7 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
@@ -401,36 +434,42 @@ func init() {
 						"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpa.NewConfigFactory(
 						"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpa.NewConfigFactory(
 						"abcdef\xc2\xa2", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpa.NewConfigFactory(
 						"abcdef\xc2\xa2", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpa.NewConfigFactory(
 						" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wpa.NewConfigFactory(
 						" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to a hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
@@ -441,24 +480,28 @@ func init() {
 						"chromeos", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
 					secConfFac: wpa.NewConfigFactory(
 						"chromeos", wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
 					secConfFac: wpa.NewConfigFactory(
 						"chromeos", wpa.Mode(wpa.ModePureWPA2),
 						wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
 					secConfFac: wpa.NewConfigFactory(
 						"chromeos", wpa.Mode(wpa.ModeMixed),
 						wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP), wpa.Ciphers2(wpa.CipherCCMP),
 					),
+					expectedSecurity: shillconst.SecurityWPAWPA2,
 				}},
 			}, {
 				// Verifies that DUT can connect to a WPA network using a raw PMK value instead of an ASCII passphrase.
@@ -470,6 +513,7 @@ func init() {
 						wpa.Mode(wpa.ModePureWPA),
 						wpa.Ciphers(wpa.CipherTKIP),
 					),
+					expectedSecurity: shillconst.SecurityWPA,
 				}},
 			}, {
 				// Verifies that DUT can connect to an open network on a DFS channel.
@@ -535,7 +579,8 @@ func init() {
 						dynamicwep.ClientCred(eapCert1.ClientCred),
 						dynamicwep.RekeyPeriod(10),
 					),
-					pingOps: []ping.Option{ping.Count(15), ping.Interval(1)},
+					pingOps:          []ping.Option{ping.Count(15), ping.Interval(1)},
+					expectedSecurity: shillconst.SecurityWEP,
 				}},
 				// Skip on Marvell because of 8021xwep test failure post security fixes b/187853331, no plans to fix.
 				// Skip on trogdor and strongbad board because of 8021xwep test regression post Qualcomm FW746 b/194644867,
@@ -552,6 +597,7 @@ func init() {
 						wpaeap.ClientCACert(eapCert1.CACred.Cert),
 						wpaeap.ClientCred(eapCert1.ClientCred),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Failure due to lack of CACert on client.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -577,6 +623,7 @@ func init() {
 						wpaeap.ClientCred(eapCert1.ClientCred),
 						wpaeap.NotUseSystemCAs(),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Failure due to wrong certificate chain on client.
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
@@ -609,6 +656,7 @@ func init() {
 						wpaeap.ClientCred(eapCert1.ClientCred),
 						wpaeap.Mode(wpa.ModeMixedWPA3),
 					),
+					expectedSecurity: shillconst.SecurityWPA2WPA3Enterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to an WPA3-Enterprise-only AP
@@ -621,6 +669,7 @@ func init() {
 						wpaeap.ClientCred(eapCert1.ClientCred),
 						wpaeap.Mode(wpa.ModePureWPA3),
 					),
+					expectedSecurity: shillconst.SecurityWPA3Enterprise,
 				}},
 			}, {
 				// Verifies that DUT CANNOT connect to a PEAP network with wrong settings.
@@ -687,6 +736,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -695,6 +745,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -703,6 +754,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -711,6 +763,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -722,6 +775,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -730,6 +784,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -741,6 +796,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled MD5.
@@ -753,6 +809,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -761,6 +818,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -769,6 +827,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -777,6 +836,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -788,6 +848,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -796,6 +857,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -807,6 +869,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for PEAP authentication with tunneled GTC.
@@ -819,6 +882,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -827,6 +891,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -835,6 +900,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -843,6 +909,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -854,6 +921,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -862,6 +930,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -873,6 +942,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT CANNOT connect to a TTLS network with wrong settings.
@@ -939,6 +1009,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -947,6 +1018,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -955,6 +1027,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -963,6 +1036,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -974,6 +1048,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -982,6 +1057,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -993,6 +1069,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled MD5.
@@ -1005,6 +1082,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1013,6 +1091,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1021,6 +1100,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1029,6 +1109,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -1040,6 +1121,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1048,6 +1130,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -1059,6 +1142,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMD5),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled GTC.
@@ -1071,6 +1155,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1079,6 +1164,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1087,6 +1173,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1095,6 +1182,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -1106,6 +1194,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1114,6 +1203,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -1125,6 +1215,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeGTC),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSMSCHAPV2.
@@ -1137,6 +1228,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1145,6 +1237,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1153,6 +1246,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1161,6 +1255,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -1172,6 +1267,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1180,6 +1276,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -1191,6 +1288,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAPV2),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSMSCHAP.
@@ -1203,6 +1301,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1211,6 +1310,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1219,6 +1319,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1227,6 +1328,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -1238,6 +1340,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1246,6 +1349,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -1257,6 +1361,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSMSCHAP),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for TTLS authentication with tunneled TTLSPAP.
@@ -1269,6 +1374,7 @@ func init() {
 						tunneled1x.OuterProtocol(tunneled1x.Layer1TypeTTLS),
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 					),
+					expectedSecurity: shillconst.SecurityWPA2Enterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1277,6 +1383,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1285,6 +1392,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[1]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1293,6 +1401,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[2]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should success since having multiple entries in 'altsubject_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses altsubject_match field:
@@ -1304,6 +1413,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.AltSubjectMatch([]string{`{"Type":"DNS","Value":"wrong_dns.com"}`, eapCert3AltSub[0]}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: tunneled1x.NewConfigFactory(
@@ -1312,6 +1422,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}, {
 					// Should succeed since having multiple entries in 'domain_suffix_match' is treated as OR, not AND.
 					// For more information about how wpa_supplicant uses domain_suffix_match field:
@@ -1323,6 +1434,7 @@ func init() {
 						tunneled1x.InnerProtocol(tunneled1x.Layer2TypeTTLSPAP),
 						tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 					),
+					expectedSecurity: shillconst.SecurityWPAEnterprise,
 				}},
 			},
 		},
@@ -1339,7 +1451,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
+	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool, expectedSecurity string) {
 		apIface, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
@@ -1421,6 +1533,13 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Wifi.HiddenSsid, apIface.Config().Hidden)
 		}
 
+		if expectedSecurity == "" {
+			expectedSecurity = shillconst.SecurityNone
+		}
+		if expectedSecurity != serInfo.Wifi.Security {
+			s.Fatalf("Wrong security of the service: got %s, want %s ", serInfo.Wifi.Security, expectedSecurity)
+		}
+
 		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.
 		// TODO(crbug.com/1034875): Maybe some more check on the WiFi capabilities to
 		// verify we really have the settings as expected. (ref: crrev.com/c/1995105)
@@ -1430,7 +1549,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 	testcases := s.Param().([]simpleConnectTestcase)
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps, tc.expectedFailure)
+			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps, tc.expectedFailure, tc.expectedSecurity)
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.

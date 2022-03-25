@@ -27,9 +27,10 @@ type simpleConnectParamsVal struct {
 	APOpts          string // apOpts: []ap.Option{ %s },
 	CommonAPOptions string // apOpts: wifiutil.CommonAPOptions( %s ),
 
-	SecConfFac      string
-	PingOps         string
-	ExpectedFailure bool
+	SecConfFac       string
+	PingOps          string
+	ExpectedFailure  bool
+	ExpectedSecurity string
 }
 
 type simpleConnectParams struct {
@@ -186,8 +187,9 @@ func simpleConnectWEP() []simpleConnectParams {
 		for _, algo := range []string{"Open", "Shared"} {
 			for key := 0; key < 4; key++ {
 				ret.Val = append(ret.Val, simpleConnectParamsVal{
-					APOpts:     simpleConnectCommonSecApOpts,
-					SecConfFac: fmt.Sprintf("wep.NewConfigFactory(wep%dKeys(), wep.DefaultKey(%d), wep.AuthAlgs(wep.AuthAlgo%s))", keyLen, key, algo),
+					APOpts:           simpleConnectCommonSecApOpts,
+					SecConfFac:       fmt.Sprintf("wep.NewConfigFactory(wep%dKeys(), wep.DefaultKey(%d), wep.AuthAlgs(wep.AuthAlgo%s))", keyLen, key, algo),
+					ExpectedSecurity: `shillconst.SecurityWEP`,
 				})
 			}
 		}
@@ -201,8 +203,9 @@ func simpleConnectWEPHidden() simpleConnectParams {
 	for _, keyLen := range []int{40, 104} {
 		for _, algo := range []string{"Open", "Shared"} {
 			p = append(p, simpleConnectParamsVal{
-				APOpts:     simpleConnectCommonSecApOpts + ", ap.Hidden()",
-				SecConfFac: fmt.Sprintf("wep.NewConfigFactory(wep%dKeysHidden(), wep.AuthAlgs(wep.AuthAlgo%s))", keyLen, algo),
+				APOpts:           simpleConnectCommonSecApOpts + ", ap.Hidden()",
+				SecConfFac:       fmt.Sprintf("wep.NewConfigFactory(wep%dKeysHidden(), wep.AuthAlgs(wep.AuthAlgo%s))", keyLen, algo),
+				ExpectedSecurity: `shillconst.SecurityWEP`,
 			})
 		}
 	}
@@ -212,6 +215,26 @@ func simpleConnectWEPHidden() simpleConnectParams {
 		Val:               p,
 		ExtraHardwareDeps: `hwdep.D(hwdep.WifiWEP())`,
 	}
+}
+
+func wpaModeToShillSecurity(mode string) string {
+	switch mode {
+	case `PureWPA`:
+		return `shillconst.SecurityWPA`
+	case `PureWPA2`:
+		return `shillconst.SecurityWPA2`
+	case `PureWPA3`:
+		return `shillconst.SecurityWPA3`
+	case `Mixed`:
+		return `shillconst.SecurityWPAWPA2`
+	case `MixedWPA3`:
+		return `shillconst.SecurityWPA2WPA3`
+	}
+	return ``
+}
+
+func wpaModeToShillEntSecurity(mode string) string {
+	return wpaModeToShillSecurity(mode) + `Enterprise`
 }
 
 func simpleConnectWPA() []simpleConnectParams {
@@ -243,6 +266,7 @@ func simpleConnectWPA() []simpleConnectParams {
 				"chromeos", wpa.Mode(wpa.Mode%s),
 				%s,
 			)`, mode, strings.Join(cipher, ", ")),
+			ExpectedSecurity: wpaModeToShillSecurity(mode),
 		}}
 	}
 	return []simpleConnectParams{{
@@ -312,15 +336,16 @@ func simpleConnectWPA3() []simpleConnectParams {
 				ap.PMF(ap.PMF%s),
 			`, pmf),
 			SecConfFac: fmt.Sprintf(`wpa.NewConfigFactory(
-				"chromeos", wpa.Mode(wpa.Mode%sWPA3),
+				"chromeos", wpa.Mode(wpa.Mode%s),
 				wpa.Ciphers2(wpa.CipherCCMP),
 			)`, mode),
+			ExpectedSecurity: wpaModeToShillSecurity(mode),
 		}}
 	}
 	return []simpleConnectParams{{
 		Name: "wpa3mixed",
 		Doc:  simpleConnectDocPref("an AP in WPA2/WPA3 mixed mode. WiFi alliance suggests PMF in this mode."),
-		Val:  mkOps("Optional", "Mixed"),
+		Val:  mkOps("Optional", "MixedWPA3"),
 	}, {
 		Name:              "wpa3",
 		ExtraSoftwareDeps: []string{"wpa3_sae"},
@@ -329,7 +354,7 @@ func simpleConnectWPA3() []simpleConnectParams {
 			"this will require a hardware dependency (crbug.com/1070299).",
 		},
 		Doc: simpleConnectDocPref(`an AP in WPA3-SAE ("pure") mode. WiFi alliance requires PMF in this mode.`),
-		Val: mkOps("Required", "Pure"),
+		Val: mkOps("Required", "PureWPA3"),
 	}}
 }
 
@@ -346,6 +371,7 @@ func simpleConnectWPAVHT80() simpleConnectParams {
 				"chromeos", wpa.Mode(wpa.ModePureWPA),
 				wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 			)`,
+			ExpectedSecurity: wpaModeToShillSecurity(`PureWPA`),
 		}},
 	}
 }
@@ -354,15 +380,17 @@ func simpleConnectWPAOddPassphrase() simpleConnectParams {
 	var p []simpleConnectParamsVal
 	for _, pw := range []string{`"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"`, `"abcdef\xc2\xa2"`, `" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"`} {
 		temp := `wpa.NewConfigFactory(
-			%s, wpa.Mode(wpa.ModePure%s),
+			%s, wpa.Mode(wpa.Mode%s),
 			%s,
 		)`
 		p = append(p, simpleConnectParamsVal{
-			APOpts:     simpleConnectCommonSecApOpts,
-			SecConfFac: fmt.Sprintf(temp, pw, "WPA", "wpa.Ciphers(wpa.CipherTKIP)"),
+			APOpts:           simpleConnectCommonSecApOpts,
+			SecConfFac:       fmt.Sprintf(temp, pw, "PureWPA", "wpa.Ciphers(wpa.CipherTKIP)"),
+			ExpectedSecurity: wpaModeToShillSecurity("PureWPA"),
 		}, simpleConnectParamsVal{
-			APOpts:     simpleConnectCommonSecApOpts,
-			SecConfFac: fmt.Sprintf(temp, pw, "WPA2", "wpa.Ciphers2(wpa.CipherCCMP)"),
+			APOpts:           simpleConnectCommonSecApOpts,
+			SecConfFac:       fmt.Sprintf(temp, pw, "PureWPA2", "wpa.Ciphers2(wpa.CipherCCMP)"),
+			ExpectedSecurity: wpaModeToShillSecurity("PureWPA2"),
 		})
 	}
 	return simpleConnectParams{
@@ -386,6 +414,7 @@ func simpleConnectWPAHidden() simpleConnectParams {
 				"chromeos", wpa.Mode(wpa.Mode%s),
 				%s,
 			)`, c.mode, c.cipher),
+			ExpectedSecurity: wpaModeToShillSecurity(c.mode),
 		})
 	}
 	return simpleConnectParams{
@@ -406,6 +435,7 @@ func simpleConnectRawPMK() simpleConnectParams {
 				wpa.Mode(wpa.ModePureWPA),
 				wpa.Ciphers(wpa.CipherTKIP),
 			)`,
+			ExpectedSecurity: wpaModeToShillSecurity(`PureWPA`),
 		}},
 	}
 }
@@ -490,7 +520,8 @@ func simpleConnect8021xWEP() simpleConnectParams {
 				dynamicwep.ClientCred(eapCert1.ClientCred),
 				dynamicwep.RekeyPeriod(10),
 			)`,
-			PingOps: "ping.Count(15), ping.Interval(1)",
+			PingOps:          "ping.Count(15), ping.Interval(1)",
+			ExpectedSecurity: `shillconst.SecurityWEP`,
 		}},
 	}
 }
@@ -508,6 +539,7 @@ func simpleConnect8021xWPA() simpleConnectParams {
 				wpaeap.ClientCACert(eapCert1.CACred.Cert),
 				wpaeap.ClientCred(eapCert1.ClientCred),
 			)`,
+			ExpectedSecurity: `shillconst.SecurityWPAEnterprise`,
 		}, {
 			Doc:    []string{"Failure due to lack of CACert on client."},
 			APOpts: simpleConnectCommonSecApOpts,
@@ -533,6 +565,7 @@ func simpleConnect8021xWPA() simpleConnectParams {
 				wpaeap.ClientCred(eapCert1.ClientCred),
 				wpaeap.NotUseSystemCAs(),
 			)`,
+			ExpectedSecurity: `shillconst.SecurityWPAEnterprise`,
 		}, {
 			Doc:    []string{"Failure due to wrong certificate chain on client."},
 			APOpts: simpleConnectCommonSecApOpts,
@@ -563,20 +596,21 @@ func simpleConnect8021xWPA3() []simpleConnectParams {
 				eapCert1.CACred.Cert, eapCert1.ServerCred,
 				wpaeap.ClientCACert(eapCert1.CACred.Cert),
 				wpaeap.ClientCred(eapCert1.ClientCred),
-				wpaeap.Mode(wpa.Mode%sWPA3),
+				wpaeap.Mode(wpa.Mode%s),
 			)`, mode),
+			ExpectedSecurity: wpaModeToShillEntSecurity(mode),
 		}}
 	}
 	return []simpleConnectParams{
 		{
 			Name: "8021xwpa3mixed",
 			Doc:  simpleConnectDocPref("an WPA3-Enterprise-transition AP"),
-			Val:  mkOps("Optional", "Mixed"),
+			Val:  mkOps("Optional", "MixedWPA3"),
 		},
 		{
 			Name: "8021xwpa3",
 			Doc:  simpleConnectDocPref("an WPA3-Enterprise-only AP"),
-			Val:  mkOps("Required", "Pure"),
+			Val:  mkOps("Required", "PureWPA3"),
 		},
 	}
 
@@ -597,6 +631,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 				tunneled1x.OuterProtocol(tunneled1x.Layer1Type%s),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 			)`, outer, inner),
+			ExpectedSecurity: wpaModeToShillEntSecurity("PureWPA2"),
 		})
 		for i := 0; i < 3; i++ {
 			ret.Val = append(ret.Val, simpleConnectParamsVal{
@@ -607,6 +642,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 					tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 					tunneled1x.AltSubjectMatch([]string{eapCert3AltSub[%d]}),
 				)`, outer, inner, i),
+				ExpectedSecurity: wpaModeToShillEntSecurity("PureWPA"),
 			})
 		}
 		ret.Val = append(ret.Val, simpleConnectParamsVal{
@@ -622,6 +658,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 				tunneled1x.AltSubjectMatch([]string{`+"`"+`{"Type":"DNS","Value":"wrong_dns.com"}`+"`"+`, eapCert3AltSub[0]}),
 			)`, outer, inner),
+			ExpectedSecurity: wpaModeToShillEntSecurity("PureWPA"),
 		})
 		ret.Val = append(ret.Val, simpleConnectParamsVal{
 			APOpts: simpleConnectCommonSecApOpts,
@@ -631,6 +668,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 				tunneled1x.DomainSuffixMatch(eapCert3DomainSuffix),
 			)`, outer, inner),
+			ExpectedSecurity: wpaModeToShillEntSecurity("PureWPA"),
 		})
 		ret.Val = append(ret.Val, simpleConnectParamsVal{
 			Doc: []string{
@@ -645,6 +683,7 @@ func simpleConnectTunneled1x() []simpleConnectParams {
 				tunneled1x.InnerProtocol(tunneled1x.Layer2Type%s),
 				tunneled1x.DomainSuffixMatch([]string{"wrongdomain1.com", eapCert3DomainSuffix[0], "wrongdomain1.com"}),
 			)`, outer, inner),
+			ExpectedSecurity: wpaModeToShillEntSecurity("PureWPA"),
 		})
 		return ret
 	}
@@ -770,6 +809,9 @@ func TestSimpleConnect(t *testing.T) {
 		{{ end }}
 		{{ if .ExpectedFailure }}
 		expectedFailure: true,
+		{{ end }}
+		{{ if .ExpectedSecurity }}
+		expectedSecurity: {{ .ExpectedSecurity }},
 		{{ end }}
 	}, {{ end }} },
 	{{ if .ExtraHardwareDeps }}
