@@ -22,6 +22,30 @@
       },
       "revId": "9dd94db432a0546e7d74b9c712855f25ad695172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cacc61e_aeb111e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-25T21:46:22Z",
+      "side": 1,
+      "message": "I ran it locally and got \"got 13 participants, expected 17\" so this issue does happen. I think we should just add a log here and pass it to bond API team to figure out the reason, we don\u0027t want to just suddenly make bunch of Meet tests fail. @achuith wdyt?",
+      "parentUuid": "7813f0c4_9636d5a8",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 60
+      },
+      "revId": "9dd94db432a0546e7d74b9c712855f25ad695172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
