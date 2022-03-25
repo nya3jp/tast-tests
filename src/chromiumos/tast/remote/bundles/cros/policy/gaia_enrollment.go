@@ -78,7 +78,7 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
+	if _, err := pc.GAIAEnrollAndLoginUsingChrome(ctx, &ps.GAIAEnrollAndLoginUsingChromeRequest{
 		Username:    username,
 		Password:    password,
 		DmserverURL: dmServerURL,
