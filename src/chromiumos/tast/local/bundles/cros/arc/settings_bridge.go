@@ -46,7 +46,7 @@ var unstableSettingsBridgeParam = settingsBridgeParam{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SettingsBridge,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Chrome settings are persisted in ARC",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},
