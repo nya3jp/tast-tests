@@ -58,6 +58,11 @@ func PersistenceBluetoothSansWifi(ctx context.Context, s *testing.State) {
 		if _, err := wifiClient.SetWifiEnabled(ctx, &wifi.SetWifiEnabledRequest{Enabled: true}); err != nil {
 			s.Error("Could not enable Wifi through shill: ", err)
 		}
+		// Reboot the DUT.
+		// TODO(b/227582293): Remove this reboot once the proper fix is found.
+		if err := d.Reboot(ctx); err != nil {
+			s.Fatal("Failed to reboot DUT: ", err)
+		}
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
