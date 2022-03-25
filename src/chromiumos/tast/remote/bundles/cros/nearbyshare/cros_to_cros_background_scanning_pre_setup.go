@@ -34,9 +34,10 @@ func init() {
 				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
-				// The intention here is to skip Coral platform as receiver. It is only possible to skip the primary DUT (sender), so as a workaround we skip
-				// Sarien as sender which is paired with Coral, and Hatch which is paired with Octopus.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("sarien", "hatch")),
+				// TODO(b/225966067): Replace with companion DUT HWDep for background scanning.
+				// The intention here is to skip on the companion (receiver) device. However it currently is only possible to skip on the primary DUT (sender),
+				// so as a workaround we skip on sender that is paired with the receiver we want to skip on.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("sarien", "hatch", "grunt", "soraka", "scarlet")),
 			},
 		},
 	})
