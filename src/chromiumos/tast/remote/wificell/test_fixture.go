@@ -929,10 +929,10 @@ func (tf *TestFixture) ConnectWifiFromDUT(ctx context.Context, dutIdx DutIdx, ss
 		return nil, err
 	}
 	request := &wifi.ConnectRequest{
-		Ssid:       []byte(c.Ssid),
-		Hidden:     c.Hidden,
-		Security:   c.SecConf.Class(),
-		Shillprops: propsEnc,
+		Ssid:          []byte(c.Ssid),
+		Hidden:        c.Hidden,
+		SecurityClass: c.SecConf.Class(),
+		Shillprops:    propsEnc,
 	}
 	response, err := tf.duts[dutIdx].wifiClient.Connect(ctx, request)
 	if err != nil {
@@ -1921,17 +1921,17 @@ func (tf *TestFixture) StartTethering(ctx context.Context, dutIdx DutIdx, ops []
 		Band:              c.Band.String(),
 	}
 
-	if c.SecConf.Class() == shillconst.SecurityPSK {
+	if c.SecConf.Class() == shillconst.SecurityClassPSK {
 		request.Psk = c.PSK
 		if c.SecMode == wpa.ModePureWPA2 {
-			request.Security = shillconst.SoftAPSecurityWPA2
+			request.Security = shillconst.SecurityWPA2
 		} else if c.SecMode == wpa.ModePureWPA3 {
-			request.Security = shillconst.SoftAPSecurityWPA3
+			request.Security = shillconst.SecurityWPA3
 		} else if c.SecMode == wpa.ModeMixedWPA3 {
-			request.Security = shillconst.SoftAPSecurityWPA2WPA3
+			request.Security = shillconst.SecurityWPA2WPA3
 		}
 	} else if c.SecConf.Class() == shillconst.SecurityNone {
-		request.Security = shillconst.SoftAPSecurityNone
+		request.Security = shillconst.SecurityNone
 	}
 
 	resp, err := tf.duts[dutIdx].wifiClient.StartTethering(ctx, request)

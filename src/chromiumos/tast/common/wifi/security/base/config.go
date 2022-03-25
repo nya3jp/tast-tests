@@ -38,7 +38,7 @@ var _ security.ConfigFactory = (*ConfigFactory)(nil)
 
 // Class returns the security class of open network.
 func (*Config) Class() string {
-	return shillconst.SecurityNone
+	return shillconst.SecurityClassNone
 }
 
 // HostapdConfig returns hostapd config of open network.
