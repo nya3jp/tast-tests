@@ -112,11 +112,8 @@ func Run(ctx context.Context, cr *chrome.Chrome, lFixtVal lacrosfixt.FixtValue, 
 		if appSpotify, err = NewSpotify(ctx, kb, a, tconn, params.account); err != nil {
 			return errors.Wrap(err, "failed to create Spotify instance")
 		}
-		defer func(ctx context.Context) {
-			appSpotify.Close(ctx, cr, retErr != nil, filepath.Join(params.outDir, "arc"))
-		}(cleanupCtx)
+		defer appSpotify.Close(cleanupCtx, cr, retErr != nil, filepath.Join(params.outDir, "arc"))
 
-		testing.ContextLog(ctx, "Check and install ", spotifyPackageName)
 		if err := appSpotify.Install(ctx); err != nil {
 			return errors.Wrap(err, "failed to install Spotify")
 		}
