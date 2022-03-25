@@ -672,12 +672,15 @@ func (s *ShillService) QueryService(ctx context.Context, req *wifi.QueryServiceR
 	if err != nil {
 		return nil, err
 	}
+	guid, err := props.GetString(shillconst.ServicePropertyGUID)
+	if err != nil {
+		return nil, err
+	}
 
 	bssid, err := props.GetString(shillconst.ServicePropertyWiFiBSSID)
 	if err != nil {
 		return nil, err
 	}
-
 	frequency, err := props.GetUint16(shillconst.ServicePropertyWiFiFrequency)
 	if err != nil {
 		return nil, err
@@ -698,7 +701,7 @@ func (s *ShillService) QueryService(ctx context.Context, req *wifi.QueryServiceR
 	if err != nil {
 		return nil, err
 	}
-	guid, err := props.GetString(shillconst.ServicePropertyGUID)
+	security, err := props.GetString(shillconst.ServicePropertySecurity)
 	if err != nil {
 		return nil, err
 	}
@@ -719,6 +722,7 @@ func (s *ShillService) QueryService(ctx context.Context, req *wifi.QueryServiceR
 			HexSsid:       hexSSID,
 			HiddenSsid:    hiddenSSID,
 			PhyMode:       uint32(phyMode),
+			Security:      security,
 		},
 	}, nil
 }
