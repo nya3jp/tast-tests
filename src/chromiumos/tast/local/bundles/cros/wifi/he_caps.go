@@ -6,6 +6,8 @@ package wifi
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/testing"
@@ -29,13 +31,16 @@ func HeCaps(ctx context.Context, s *testing.State) {
 	iwr := iw.NewLocalRunner()
 
 	// Get the information of the WLAN device.
-	res, err := iwr.ListPhys(ctx)
+	res, out, err := iwr.ListPhys(ctx)
 	if err != nil {
 		s.Fatal("ListPhys failed: ", err)
 	}
 	if len(res) == 0 {
 		s.Fatal("Expect at least one wireless phy; found nothing")
 	}
+	// Save `iw list` text to log file.
+	ioutil.WriteFile(filepath.Join(s.OutDir(), "iw_list"), out, 0644)
+
 	if !res[0].SupportHESTA {
 		s.Error("Device doesn't support HE-MAC capabilities")
 	}

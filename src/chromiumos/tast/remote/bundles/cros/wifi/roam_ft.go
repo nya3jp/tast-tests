@@ -373,7 +373,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 	}
 	hasFTSupport := func(ctx context.Context) bool {
-		phys, err := iw.NewRemoteRunner(s.DUT().Conn()).ListPhys(ctx)
+		phys, _, err := iw.NewRemoteRunner(s.DUT().Conn()).ListPhys(ctx)
 		if err != nil {
 			s.Fatal("Failed to check SME capability: ", err)
 		}
