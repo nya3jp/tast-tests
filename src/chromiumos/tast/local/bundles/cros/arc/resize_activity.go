@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ResizeActivity,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that resizing ARC applications works without generating black background",
 		Contacts:     []string{"ruanc@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(http://b/166827552): Test is disabled until it can be fixed
