@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ede7ad_4a82ae63",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fcfc092_9f9792e3",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94011b4d_5809ec4c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-22T06:52:29Z",
       "side": 1,
       "message": "Are we going to use it from other packages? Otherwise, can we unexport it?\nnewProfilerFixture",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94a82ef_7ec96342",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94011b4d_5809ec4c",
       "range": {
         "startLine": 48,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ea1b45_25434007",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2342c5c6_dd1d519d",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25a718d8_ebe59f53",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-22T06:52:29Z",
       "side": 1,
       "message": "nit: You can use errors.Errorf(\"... %s ...\", string(arg))",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0cfb3e1_cbba872a",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a718d8_ebe59f53",
       "range": {
         "startLine": 74,
         "startChar": 15,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36820648_f6718c95",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ed76d2_5217e1da",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6227cc8_9d31c3db",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe210549_61558d75",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6227cc8_9d31c3db",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7c82294_982bb903",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-03-22T06:52:29Z",
       "side": 1,
       "message": "Why do you have to handle len \u003d\u003d 0 separately?\nIf it\u0027s a bug to specify f.modes \u003d nil, can we handle it in set up instead of PreTest which runs per test?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "931c1a977b15f176a6fefae287f4f476fd98b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b9aeec_5aff0fda",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:20Z",
+      "side": 1,
+      "message": "The point of this check is just to be able to return before starting the profilers if none were specified, I changed this a bit to check if profs is nil instead, let me know if you still think this should be done differently.",
+      "parentUuid": "b7c82294_982bb903",
       "range": {
         "startLine": 134,
         "startChar": 0,
