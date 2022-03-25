@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fe6bdf_6694a6c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-25T02:19:47Z",
+      "side": 1,
+      "message": "oh, good to",
+      "revId": "4ee747a1e6f2ae3e746f26622cf11bd791ed7f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fc4cac_75d9fd01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-25T02:19:47Z",
+      "side": 1,
+      "message": "good to know it is the only cause. Do you want to increase this even a bit more. It would not be harmful if it passes.",
+      "revId": "4ee747a1e6f2ae3e746f26622cf11bd791ed7f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
