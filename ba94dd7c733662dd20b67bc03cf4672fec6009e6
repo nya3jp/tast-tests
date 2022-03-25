@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedb5dfe_ae40431b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2022-03-25T02:53:51Z",
+      "side": 1,
+      "message": "Please break up the paragraphs in a commit messages so that lines are 80 chars long (might be 72, not sure).",
+      "range": {
+        "startLine": 9,
+        "startChar": 71,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "ba94dd7c733662dd20b67bc03cf4672fec6009e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4dc6ac_87576cd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2022-03-25T02:53:51Z",
+      "side": 1,
+      "message": "It would be better to replace this with crrev.com/c/3536812.",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "ba94dd7c733662dd20b67bc03cf4672fec6009e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fee339b_1432c260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/check_sku_purchase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2022-03-25T02:53:51Z",
+      "side": 1,
+      "message": "Please reduce the line size.",
+      "range": {
+        "startLine": 55,
+        "startChar": 89,
+        "endLine": 55,
+        "endChar": 97
+      },
+      "revId": "ba94dd7c733662dd20b67bc03cf4672fec6009e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
