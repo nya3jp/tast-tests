@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c160c6_a8f476f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-25T15:40:53Z",
+      "side": 1,
+      "message": "These are on both lists. Does that mean they don\u0027t suspend at all?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "4104c233623aef5619d90fa6f5c98e4371135fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
