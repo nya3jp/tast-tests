@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a660741_f139cc9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-25T01:52:15Z",
+      "side": 1,
+      "message": "Soon this call will be replaced by an API call in crrev.com/c/3524047",
+      "parentUuid": "d89afaf0_92ef6f44",
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d10b20c_ba6f7103",
         "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
         "patchSetId": 15
