@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d0b45b6_e90f96c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-25T14:52:44Z",
+      "side": 1,
+      "message": "Just want to make sure - we\u0027ll have a lacros and non-lacros setup here, right?",
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb32da4e_a7f76967",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
         "patchSetId": 12
