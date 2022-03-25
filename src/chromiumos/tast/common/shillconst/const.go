@@ -151,6 +151,7 @@ const (
 
 	// WiFi service property names.
 	ServicePropertyPassphrase          = "Passphrase"
+	ServicePropertySecurity            = "Security"
 	ServicePropertySecurityClass       = "SecurityClass"
 	ServicePropertySSID                = "SSID"
 	ServicePropertyWiFiBSSID           = "WiFi.BSSID"
@@ -226,12 +227,18 @@ const (
 
 // Security options defined in dbus-constants.h
 const (
-	SecurityWPA   = "wpa"
-	SecurityWEP   = "wep"
-	SecurityRSN   = "rsn"
-	Security8021x = "802_1x"
-	SecurityPSK   = "psk"
-	SecurityNone  = "none"
+	SecurityNone       = "none"
+	SecurityWEP        = "wep"
+	SecurityWPA        = "wpa"
+	SecurityWPAWPA2    = "wpa+wpa2"
+	SecurityWPAAll     = "wpa-all"
+	SecurityWPA2       = "wpa2"
+	SecurityWPA2WPA3   = "wpa2+wpa3"
+	SecurityWPA3       = "wpa3"
+	SecurityClassNone  = "none"
+	SecurityClassWEP   = "wep"
+	SecurityClassPSK   = "psk"
+	SecurityClass8021x = "802_1x"
 )
 
 // MAC randomization policy constants defined in dbus-constants.h
@@ -317,14 +324,6 @@ const (
 	WakeOnWiFiReasonPattern    = "WiFi.Pattern"
 	WakeOnWiFiReasonSSID       = "WiFi.SSID"
 	WakeOnWiFiReasonUnknown    = "Unknown"
-)
-
-// Tethering Soft AP security options defined in dbus-constants.h
-const (
-	SoftAPSecurityWPA2     = "wpa2"
-	SoftAPSecurityWPA3     = "wpa3"
-	SoftAPSecurityWPA2WPA3 = "wpa2+wpa3"
-	SoftAPSecurityNone     = "none"
 )
 
 // DBus Errors
