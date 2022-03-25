@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353a6f00_a4f8a363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/util/webauthn_procedure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T01:12:33Z",
+      "side": 1,
+      "message": "These timeouts are significantly shorter than the timeouts of the old functions. Are the new timeouts sufficient to avoid flaky timeouts?",
+      "range": {
+        "startLine": 129,
+        "startChar": 34,
+        "endLine": 129,
+        "endChar": 49
+      },
+      "revId": "b8c397e2d5241989547592e2491d56f9e15a2f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
