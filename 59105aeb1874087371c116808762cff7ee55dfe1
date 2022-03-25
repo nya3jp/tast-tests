@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5599c271_62469dbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T02:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8914ce90_bdf6c5ee",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02d4e636_5a8d1496",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-25T01:42:54Z",
       "side": 1,
       "message": "do we want to log anything here since I can imagine us wondering if this worked or not in the future.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81715f55_8af2335e",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T02:21:17Z",
+      "side": 1,
+      "message": "Whether or not the manatee_ metrics show up in results-chart.json should be a good enough indicator. A log statement here wouldn\u0027t be useful for general purpose debugging, so it would just end up being debug logspam.",
+      "parentUuid": "02d4e636_5a8d1496",
       "range": {
         "startLine": 33,
         "startChar": 0,

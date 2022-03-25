@@ -134,6 +134,30 @@
       },
       "revId": "9969d967e7e9ed24b56601cf73150f7b8903494c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3976b0_161a91ce",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T02:21:17Z",
+      "side": 1,
+      "message": "It\u0027s not really clear what functionalities will be exposed to the guest in the long term. I don\u0027t feel confident adding layers of abstraction when it\u0027s not even clear what they would look like. IMO, the only abstraction that might make sense here is a \"manateeProcCat\" function. But even then, perhaps things will eventually be locked down such that /proc isn\u0027t generally accessible to the guest.\n\nFor what it\u0027s worth, you can also say exactly the same thing about \"psgrep crosvm\" - the point isn\u0027t to run psgrep, the point is to determine the pids of the crosvm processes running in the hypervisor.",
+      "parentUuid": "1b598d13_9930ad09",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "9969d967e7e9ed24b56601cf73150f7b8903494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
