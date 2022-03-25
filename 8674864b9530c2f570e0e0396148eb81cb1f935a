@@ -52,6 +52,24 @@
       "parentUuid": "a6424e3c_5c6441be",
       "revId": "8674864b9530c2f570e0e0396148eb81cb1f935a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2160b865_a93d6b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-25T08:47:32Z",
+      "side": 1,
+      "message": "So, maybe introducing ash.BrowserTypeMatch?\n\nDo you need to wait for window animation get stabilized?",
+      "parentUuid": "2342a530_a1ffb7c1",
+      "revId": "8674864b9530c2f570e0e0396148eb81cb1f935a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
