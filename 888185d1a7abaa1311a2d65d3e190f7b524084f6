@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd139eb_b56bff65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab5dc9f_a737be14",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e88cf4f_53044d75",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-24T23:25:04Z",
       "side": 1,
       "message": "Move to package level.",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce0d5ce_021cbdf3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e88cf4f_53044d75",
       "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7e2e6c_06d3cc10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ec120f_7cf517ec",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f27ae19_895506bc",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-03-24T23:25:04Z",
       "side": 1,
       "message": "Use MatchString to skip need for m.",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a59c108d_0140d2a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f27ae19_895506bc",
       "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a13693f8_bf379949",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2984a5_38b02cb5",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38d0d333_e49f5ea2",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-03-24T23:25:04Z",
       "side": 1,
       "message": "Use Match to skip need for m and outStr.",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bbb0f07_29f6444f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d0d333_e49f5ea2",
       "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4fd606e_8de7354a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70df9c19_ae3f1d3b",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b6f7fe6_4fd72998",
@@ -150,6 +276,24 @@
       "writtenOn": "2022-03-24T23:25:04Z",
       "side": 1,
       "message": "Use _ for err since it\u0027s not used.",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083c717e_571994d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b6f7fe6_4fd72998",
       "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -171,6 +315,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaed019a_d01f0cdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e1240b0_f3094838",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "540d3868_74254abc",
@@ -184,6 +346,24 @@
       "writtenOn": "2022-03-24T23:25:04Z",
       "side": 1,
       "message": "Can use Match to skip need for outStr and m.",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a620d73_92432a12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "540d3868_74254abc",
       "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -205,6 +385,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce7b6c1_d50f21ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cd206f8_832efafc",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b2a6da_4bf6d50d",
@@ -218,6 +416,24 @@
       "writtenOn": "2022-03-24T23:25:04Z",
       "side": 1,
       "message": "Can use Match to skip need for m.",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ebb94e_d667629b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b2a6da_4bf6d50d",
       "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -239,6 +455,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bebaeb_3b97c7c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daa08865_35bbd682",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c2f6b76_b629bbcc",
@@ -256,6 +490,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda25e57_22a169e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2f6b76_b629bbcc",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e9de9fb_7178d46c",
@@ -269,6 +521,24 @@
       "writtenOn": "2022-03-24T23:25:04Z",
       "side": 1,
       "message": "Better to set i.v.ImagePath here.",
+      "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7dee18d_93005b28",
+        "filename": "src/chromiumos/tast/remote/firmware/ti50/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-03-25T17:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9de9fb_7178d46c",
       "revId": "888185d1a7abaa1311a2d65d3e190f7b524084f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
