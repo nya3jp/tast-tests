@@ -33,6 +33,24 @@
       "message": "nit: We might want to check error here too.\ne.g.\n\n```\n\tdefer func(ctx Context) {\n\t\tif err :\u003d cujRecorder.Close(ctx); err !\u003d nil {\n\t\t\ts.Error(\"Failed to stop recorder: \", err)\n\t\t}\n\t}(closeCtx)\n```",
       "revId": "729c927cb255edb69e523ec944325d81c35ee3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc7ec96_3a7e4eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/docs_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-03-25T00:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e50244f_c2785a53",
+      "revId": "729c927cb255edb69e523ec944325d81c35ee3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
