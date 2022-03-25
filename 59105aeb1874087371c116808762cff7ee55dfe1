@@ -146,6 +146,24 @@
       "parentUuid": "0e03867a_9e5612f4",
       "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f14a268_9924cc08",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T05:54:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to test pgrep with respect to sandboxed devices on manatee. But it\u0027s probably better to assume that busybox pgrep behaves the same as regular pgrep, rather than to assume it\u0027s different. If that assumption is wrong, it should be very obvious whenever we re-enable sandboxing.",
+      "parentUuid": "cd40edf7_46ad5302",
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
