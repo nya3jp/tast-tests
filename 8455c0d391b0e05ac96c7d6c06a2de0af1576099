@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fffc414_600a41c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/vlc/vlc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-25T02:52:56Z",
+      "side": 1,
+      "message": "Sure. Let\u0027s see whether it is stable.",
+      "parentUuid": "97e64d28_4bfeb5ea",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "8455c0d391b0e05ac96c7d6c06a2de0af1576099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3174c090_503b449f",
