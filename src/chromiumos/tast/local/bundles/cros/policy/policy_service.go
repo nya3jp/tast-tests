@@ -76,6 +76,7 @@ func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIA
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: req.Username, Pass: req.Password}),
+		chrome.NoLogin(),
 		chrome.DMSPolicy(req.DmserverURL),
 	)
 	if err != nil {
