@@ -55,7 +55,7 @@ func Dgapi2OneTime(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testApp.PurchaseOneTime(ctx); err != nil {
-		s.Fatal("Failed to sign into test app: ", err)
+		s.Fatal("Failed to purchase a onetime sku: ", err)
 	}
 
 	if err := testApp.VerifyLogsContain(ctx, "Sku onetime was purchased"); err != nil {
