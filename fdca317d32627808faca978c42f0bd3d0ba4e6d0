@@ -22,6 +22,29 @@
       },
       "revId": "fdca317d32627808faca978c42f0bd3d0ba4e6d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d22a45c_58c88cd5",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2022-03-25T02:41:02Z",
+      "side": 1,
+      "message": "Is this an issue in terms of resource usage? I feel like 10 mins for 1 test may be considered excessive. Is there any guidance from the tast team?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 108
+      },
+      "revId": "fdca317d32627808faca978c42f0bd3d0ba4e6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
