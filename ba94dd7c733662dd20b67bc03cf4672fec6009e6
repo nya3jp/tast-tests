@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84efbbf6_607315ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-25T03:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aedb5dfe_ae40431b",
+      "range": {
+        "startLine": 9,
+        "startChar": 71,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "ba94dd7c733662dd20b67bc03cf4672fec6009e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a6e0a8_8174c836",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-25T03:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4dc6ac_87576cd1",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "ba94dd7c733662dd20b67bc03cf4672fec6009e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fee339b_1432c260",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-25T02:53:51Z",
       "side": 1,
       "message": "Please reduce the line size.",
+      "range": {
+        "startLine": 55,
+        "startChar": 89,
+        "endLine": 55,
+        "endChar": 97
+      },
+      "revId": "ba94dd7c733662dd20b67bc03cf4672fec6009e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e93aee9_2b1e4ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/appsplatform/check_sku_purchase.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-25T03:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fee339b_1432c260",
       "range": {
         "startLine": 55,
         "startChar": 89,
