@@ -1,17 +1,17 @@
 {
-  "name": "CrossOriginForbidden",
-  "short_name": "CrossOriginForbidden",
+  "name": "IsolatedAppsCrossOriginLinks",
+  "short_name": "IsolatedAppsCrossOriginLinks",
   "description": "Isolated web app that tries to follow a cross origin link.",
   "icons": [{
-      "src": "/cross_origin_forbidden_icon-192x192.png",
+      "src": "/isolated_apps_cross_origin_links_icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },{
-      "src": "/cross_origin_forbidden_icon-512x512.png",
+      "src": "/isolated_apps_cross_origin_links_icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "start_url": "/cross_origin_forbidden_index.html",
+  "start_url": "/isolated_apps_cross_origin_links_index.html",
   "scope": "/",
   "display": "fullscreen",
   "theme_color": "white",

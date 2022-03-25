@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package apps
+package appsplatform
 
 import (
 	"context"
@@ -28,17 +28,18 @@ import (
 )
 
 const (
-	mainAppFile              = "cross_origin_forbidden_index.html"
-	serverKeyFile            = "cross_origin_forbidden_key.pem"
-	serverCertificateFile    = "cross_origin_forbidden_certificate.pem"
-	certificateAuthorityFile = "cross_origin_forbidden_ca_cert.pem"
+	mainAppFile              = "isolated_apps_cross_origin_links_index.html"
+	serverKeyFile            = "isolated_apps_cross_origin_links_key.pem"
+	serverCertificateFile    = "isolated_apps_cross_origin_links_certificate.pem"
+	certificateAuthorityFile = "isolated_apps_cross_origin_links_ca_cert.pem"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrossOriginForbidden,
-		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Checks whether chrome refuses to follow cross origin links in isolated web apps",
+		Func:         IsolatedAppsCrossOriginLinks,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		// TODO(crbug.com/1292633): Update test to check that cross origin links are opened in a separate browser window
+		Desc: "Checks whether Chrome refuses to follow cross origin links in isolated web apps",
 		Contacts: []string{
 			"simonha@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
@@ -52,14 +53,14 @@ func init() {
 			serverKeyFile,
 			serverCertificateFile,
 			certificateAuthorityFile,
-			"cross_origin_forbidden.webmanifest",
-			"cross_origin_forbidden_icon-192x192.png",
-			"cross_origin_forbidden_icon-512x512.png",
+			"isolated_apps_cross_origin_links.webmanifest",
+			"isolated_apps_cross_origin_links_icon-192x192.png",
+			"isolated_apps_cross_origin_links_icon-512x512.png",
 		},
 	})
 }
 
-func CrossOriginForbidden(ctx context.Context, s *testing.State) {
+func IsolatedAppsCrossOriginLinks(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
@@ -124,7 +125,7 @@ func CrossOriginForbidden(ctx context.Context, s *testing.State) {
 
 	// Wait until the PWA is installed.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		const name = "CrossOriginForbidden"
+		const name = "IsolatedAppsCrossOriginLinks"
 		if err := launcher.SearchAndLaunch(tconn, kb, name)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to launch %s", name)
 		}
