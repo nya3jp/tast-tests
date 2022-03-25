@@ -182,6 +182,24 @@
       "parentUuid": "1f14a268_9924cc08",
       "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb781a2_fb6d0638",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T07:51:25Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t realize busybox was on regular CrOS images. I\u0027ve updated the code to filter out crosvm child processes. I think it\u0027s preferable to use rss rather than pss because rss requires processing significantly less smaps once sandboxing is re-enabled.",
+      "parentUuid": "502b157f_2670fc24",
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
