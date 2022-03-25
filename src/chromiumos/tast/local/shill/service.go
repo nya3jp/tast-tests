@@ -114,6 +114,11 @@ func (s *Service) GetIccid(ctx context.Context) (string, error) {
 	return s.getStringProperty(ctx, shillconst.ServicePropertyCellularICCID)
 }
 
+// GetSecurity returns the current service Security (WiFi only).
+func (s *Service) GetSecurity(ctx context.Context) (string, error) {
+	return s.getStringProperty(ctx, shillconst.ServicePropertySecurity)
+}
+
 // IsConnected returns true if the the service is connected.
 func (s *Service) IsConnected(ctx context.Context) (bool, error) {
 	props, err := s.GetProperties(ctx)

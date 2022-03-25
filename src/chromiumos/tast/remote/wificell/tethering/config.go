@@ -130,7 +130,7 @@ func (c *Config) validate() error {
 	if c.SecConf == nil {
 		return errors.New("no SecurityConfig set")
 	}
-	if c.SecConf.Class() != shillconst.SecurityPSK && c.SecConf.Class() != shillconst.SecurityNone {
+	if c.SecConf.Class() != shillconst.SecurityClassPSK && c.SecConf.Class() != shillconst.SecurityNone {
 		return errors.Errorf("invalid security class used for tethering: %s", c.SecConf.Class())
 	}
 

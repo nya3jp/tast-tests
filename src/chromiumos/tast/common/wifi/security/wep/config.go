@@ -37,7 +37,7 @@ type Config struct {
 
 // Class returns security class of WEP network.
 func (c *Config) Class() string {
-	return shillconst.SecurityWEP
+	return shillconst.SecurityClassWEP
 }
 
 // HostapdConfig returns hostapd config of WEP network.

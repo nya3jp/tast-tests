@@ -53,7 +53,7 @@ type Config struct {
 
 // Class returns the security class of EAP network.
 func (c *Config) Class() string {
-	return shillconst.Security8021x
+	return shillconst.SecurityClass8021x
 }
 
 // HostapdConfig returns hostapd config of EAP network.

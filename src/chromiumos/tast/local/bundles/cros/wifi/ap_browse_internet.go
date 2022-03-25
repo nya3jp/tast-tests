@@ -44,7 +44,7 @@ func APBrowseInternet(ctx context.Context, s *testing.State) {
 	expectProps := map[string]interface{}{
 		shillconst.ServicePropertyType:          shillconst.TypeWifi,
 		shillconst.ServicePropertyName:          ssid,
-		shillconst.ServicePropertySecurityClass: shillconst.SecurityPSK,
+		shillconst.ServicePropertySecurityClass: shillconst.SecurityClassPSK,
 	}
 
 	cleanupCtx := ctx

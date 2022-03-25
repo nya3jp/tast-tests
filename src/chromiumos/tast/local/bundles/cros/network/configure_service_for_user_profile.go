@@ -63,14 +63,14 @@ func ConfigureServiceForUserProfile(ctx context.Context, s *testing.State) {
 	)
 	props := map[string]interface{}{
 		shillconst.ServicePropertyType:          shillconst.TypeWifi,
-		shillconst.ServicePropertySecurityClass: shillconst.SecurityPSK,
+		shillconst.ServicePropertySecurityClass: shillconst.SecurityClassPSK,
 		shillconst.ServicePropertySSID:          ssid,
 		shillconst.ServicePropertyPassphrase:    "notarealpassword",
 	}
 	expectProps := map[string]interface{}{
 		shillconst.ServicePropertyType:          shillconst.TypeWifi,
 		shillconst.ServicePropertyName:          ssid,
-		shillconst.ServicePropertySecurityClass: shillconst.SecurityPSK,
+		shillconst.ServicePropertySecurityClass: shillconst.SecurityClassPSK,
 	}
 
 	m, err := shill.NewManager(ctx)

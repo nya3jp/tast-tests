@@ -67,10 +67,10 @@ func ProfileBasic(ctx context.Context, s *testing.State) {
 
 	genRequestConfig := func(ap *wificell.APIface) *wifi.ProfileBasicTestRequest_Config {
 		return &wifi.ProfileBasicTestRequest_Config{
-			Ssid:       []byte(ap.Config().SSID),
-			Security:   ap.Config().SecurityConfig.Class(),
-			Ip:         ap.ServerIP().String(),
-			ShillProps: genShillProps(ap),
+			Ssid:          []byte(ap.Config().SSID),
+			SecurityClass: ap.Config().SecurityConfig.Class(),
+			Ip:            ap.ServerIP().String(),
+			ShillProps:    genShillProps(ap),
 		}
 	}
 
