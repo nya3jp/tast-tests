@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97e64d28_4bfeb5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/vlc/vlc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-03-25T02:27:14Z",
+      "side": 1,
+      "message": "Hi Judy, thanks for your example. There once had some discussion on the weekly MTBF meeting for if we can store the third party apks directly in the bucket. There was no conclusion at that time because of the unclear license issue. Then we got the directly link to VLC apk and install it directly without storing it. Since this works, probably we can stick to this method?",
+      "parentUuid": "61f84c43_e12b2434",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "8455c0d391b0e05ac96c7d6c06a2de0af1576099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3174c090_503b449f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
         "patchSetId": 4
