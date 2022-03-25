@@ -33,6 +33,24 @@
       "message": "Should this say \"app not yet installed\" instead? since we\u0027re looping and checking?",
       "revId": "9524176e5f3dd983566e7443d719a9497eee55f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f35249d_b022d455",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-25T16:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03cc0d8f_b8c80f69",
+      "revId": "9524176e5f3dd983566e7443d719a9497eee55f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
