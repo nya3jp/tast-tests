@@ -16,6 +16,63 @@
       "message": "Abe-san, please take another look. Thanks!",
       "revId": "7074629d2c5dfdf4531ab4edeb0e4a233fca4187",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7c74a8_50d1a0e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-25T09:24:03Z",
+      "side": 1,
+      "message": "LGTM with requests.",
+      "revId": "7074629d2c5dfdf4531ab4edeb0e4a233fca4187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97eea6fc_e72df649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-25T09:24:03Z",
+      "side": 1,
+      "message": "could you prefix the type name to avoid conflict?\n\ncloseMethodSwipeOut, closeMethodClickEvent and so on.",
+      "revId": "7074629d2c5dfdf4531ab4edeb0e4a233fca4187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1506d245_43529d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-25T09:24:03Z",
+      "side": 1,
+      "message": "style: (sorry I overlooked in the prev iteration).\n\nmousePC, touchPC (all capitals for acronyms).\n\nDitto for all below.",
+      "range": {
+        "startLine": 70,
+        "startChar": 88,
+        "endLine": 70,
+        "endChar": 104
+      },
+      "revId": "7074629d2c5dfdf4531ab4edeb0e4a233fca4187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
