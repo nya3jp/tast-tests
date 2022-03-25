@@ -457,7 +457,7 @@ func (s *ShillService) Connect(ctx context.Context, request *wifi.ConnectRequest
 			shillconst.ServicePropertyType:           shillconst.TypeWifi,
 			shillconst.ServicePropertyWiFiHexSSID:    hexSSID,
 			shillconst.ServicePropertyWiFiHiddenSSID: request.Hidden,
-			shillconst.ServicePropertySecurityClass:  request.Security,
+			shillconst.ServicePropertySecurityClass:  request.SecurityClass,
 		}
 		if _, err := m.ConfigureService(ctx, props); err != nil {
 			return nil, errors.Wrap(err, "failed to configure a hidden SSID")
@@ -466,7 +466,7 @@ func (s *ShillService) Connect(ctx context.Context, request *wifi.ConnectRequest
 	props := map[string]interface{}{
 		shillconst.ServicePropertyType:          shillconst.TypeWifi,
 		shillconst.ServicePropertyWiFiHexSSID:   hexSSID,
-		shillconst.ServicePropertySecurityClass: request.Security,
+		shillconst.ServicePropertySecurityClass: request.SecurityClass,
 	}
 
 	service, err := s.discoverService(ctx, m, props)
@@ -684,12 +684,14 @@ func (s *ShillService) QueryService(ctx context.Context, req *wifi.QueryServiceR
 	if err != nil {
 		return nil, err
 	}
-
+	guid, err := props.GetString(shillconst.ServicePropertyGUID)
+	if err != nil {
+		return nil, err
+	}
 	bssid, err := props.GetString(shillconst.ServicePropertyWiFiBSSID)
 	if err != nil {
 		return nil, err
 	}
-
 	frequency, err := props.GetUint16(shillconst.ServicePropertyWiFiFrequency)
 	if err != nil {
 		return nil, err
@@ -710,7 +712,7 @@ func (s *ShillService) QueryService(ctx context.Context, req *wifi.QueryServiceR
 	if err != nil {
 		return nil, err
 	}
-	guid, err := props.GetString(shillconst.ServicePropertyGUID)
+	security, err := props.GetString(shillconst.ServicePropertySecurity)
 	if err != nil {
 		return nil, err
 	}
@@ -731,6 +733,7 @@ func (s *ShillService) QueryService(ctx context.Context, req *wifi.QueryServiceR
 			HexSsid:       hexSSID,
 			HiddenSsid:    hiddenSSID,
 			PhyMode:       uint32(phyMode),
+			Security:      security,
 		},
 	}, nil
 }
@@ -1716,7 +1719,7 @@ func (s *ShillService) ProfileBasicTest(ctx context.Context, req *wifi.ProfileBa
 	service0, err := s.discoverService(ctx, m, map[string]interface{}{
 		shillconst.ServicePropertyType:          shillconst.TypeWifi,
 		shillconst.ServicePropertyWiFiHexSSID:   s.hexSSID(req.Ap0.Ssid),
-		shillconst.ServicePropertySecurityClass: req.Ap0.Security,
+		shillconst.ServicePropertySecurityClass: req.Ap0.SecurityClass,
 	})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to discover AP0")
@@ -1724,7 +1727,7 @@ func (s *ShillService) ProfileBasicTest(ctx context.Context, req *wifi.ProfileBa
 	service1, err := s.discoverService(ctx, m, map[string]interface{}{
 		shillconst.ServicePropertyType:          shillconst.TypeWifi,
 		shillconst.ServicePropertyWiFiHexSSID:   s.hexSSID(req.Ap1.Ssid),
-		shillconst.ServicePropertySecurityClass: req.Ap1.Security,
+		shillconst.ServicePropertySecurityClass: req.Ap1.SecurityClass,
 	})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to discover AP1")
@@ -2957,11 +2960,11 @@ func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringR
 	}
 
 	keyMgmt := "NONE"
-	if request.Security == shillconst.SoftAPSecurityWPA2 {
+	if request.Security == shillconst.SecurityWPA2 {
 		keyMgmt = "WPA-PSK"
-	} else if request.Security == shillconst.SoftAPSecurityWPA3 {
+	} else if request.Security == shillconst.SecurityWPA3 {
 		keyMgmt = "SAE"
-	} else if request.Security == shillconst.SoftAPSecurityWPA2WPA3 {
+	} else if request.Security == shillconst.SecurityWPA2WPA3 {
 		keyMgmt = "WPA-PSK SAE"
 	}
 
