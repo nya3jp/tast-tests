@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad8426f6_502429c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2022-03-25T04:51:36Z",
+      "side": 1,
+      "message": "LGTM, let\u0027s merge it and see if it fixes.",
+      "revId": "e7c6429d6c689572872e8b324c40d6af8e7570c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
