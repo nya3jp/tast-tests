@@ -62,7 +62,7 @@ func NewTestAppDgapi2(ctx context.Context, cr *chrome.Chrome, d *ui.Device, tcon
 
 // InstallApp installs DGAPI2 test app.
 func (ta *TestAppDgapi2) InstallApp(ctx context.Context) error {
-	if err := playstore.InstallApp(ctx, ta.arc, ta.uiAutomator, pkgName, &playstore.Options{TryLimit: -1}); err != nil {
+	if err := playstore.InstallApp(ctx, ta.arc, ta.uiAutomator, pkgName, &playstore.Options{TryLimit: tryLimit}); err != nil {
 		return errors.Wrapf(err, "failed to install app %q", pkgName)
 	}
 
@@ -159,9 +159,12 @@ func (ta *TestAppDgapi2) signIn(ctx context.Context, appConn *chrome.Conn, cr *c
 			signInConn, err = cr.NewConnForTarget(ctxWithTimeout, chrome.MatchTargetURLPrefix(accountURL))
 			return err
 		},
-		webutil.WaitForQuiescenceAction(signInConn, uiTimeout),
 		func(context.Context) error {
 			return signInConn.WaitForExprWithTimeout(ctx, userEntryJS, uiTimeout)
+		},
+		func(context.Context) error {
+			// Sleep briefly because login button may not be clickable yet.
+			return testing.Sleep(ctx, 1*time.Second)
 		},
 		func(context.Context) error {
 			return signInConn.Eval(ctx, fmt.Sprintf("%s.click()", userEntryJS), nil)
@@ -219,7 +222,7 @@ func (ta *TestAppDgapi2) VerifyDetailsLogs(ctx context.Context) error {
 		}
 
 		if foundEntry == "" {
-			return errors.New(`failed to find a log entry starting with "getDetails returned "`)
+			return errors.Errorf(`failed to find a log entry starting with "getDetails returned ", received: %q`, logs)
 		}
 
 		var detailsResult []skuDetails
