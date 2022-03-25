@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0624524_47ab4192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-25T06:10:03Z",
+      "side": 1,
+      "message": "Due to some Proxy related issues, we are not able to successfully do the fast_build",
+      "parentUuid": "e429608c_c5eedb27",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f865d332_1dd210cd",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-22T17:36:27Z",
       "side": 1,
       "message": "Do you have a Google contact?",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f240ad_acea5076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-25T06:10:03Z",
+      "side": 1,
+      "message": "No, we don\u0027t have a Google contact for this test.",
+      "parentUuid": "f865d332_1dd210cd",
       "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e3b60d_ca2bdaa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-25T06:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbf3520_2cad0bec",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dce1302_6f929c25",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-03-22T17:36:27Z",
       "side": 1,
       "message": "Is this check necessary? What happen if the adapter is powered and you call SetPowered(ctx, true)?",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd1862f_998ce35a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-25T06:10:03Z",
+      "side": 1,
+      "message": "Even when the adapter is powered on, this SetPowered() is trying to power it on again. To avoid this, we are doing the check if the adapter is already powered or not.",
+      "parentUuid": "5dce1302_6f929c25",
       "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
