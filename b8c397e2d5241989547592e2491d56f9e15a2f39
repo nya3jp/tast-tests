@@ -22,6 +22,30 @@
       },
       "revId": "b8c397e2d5241989547592e2491d56f9e15a2f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1c1bf5_1c937e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/util/webauthn_procedure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-03-25T02:13:49Z",
+      "side": 1,
+      "message": "Yes imo and these timeouts are good when I\u0027m local testing on my devices. I know some boards are slower but I think this should be ok. If there\u0027s flakiness on slower boards observed on tastboard I\u0027ll increase the timeout.\n\nIt should be significantly shorter than the original timeout because the original function parse chrome logs. The original timeout is not even enough in some cases.",
+      "parentUuid": "353a6f00_a4f8a363",
+      "range": {
+        "startLine": 129,
+        "startChar": 34,
+        "endLine": 129,
+        "endChar": 49
+      },
+      "revId": "b8c397e2d5241989547592e2491d56f9e15a2f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
