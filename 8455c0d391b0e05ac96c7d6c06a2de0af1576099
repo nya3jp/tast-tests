@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b03fc4_d9609905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/vlc/vlc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-25T10:15:22Z",
+      "side": 1,
+      "message": "Sorry, it\u0027s in another CL, we have corrected the doc string here.",
+      "parentUuid": "933fb89c_f4915324",
+      "range": {
+        "startLine": 67,
+        "startChar": 42,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "8455c0d391b0e05ac96c7d6c06a2de0af1576099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2854f1a7_5687f2f9",
@@ -156,6 +180,30 @@
       "writtenOn": "2022-03-23T23:02:55Z",
       "side": 1,
       "message": "Do we need to replay after pause?",
+      "range": {
+        "startLine": 115,
+        "startChar": 22,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "8455c0d391b0e05ac96c7d6c06a2de0af1576099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5862a720_ab5827a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-25T10:15:22Z",
+      "side": 1,
+      "message": "Replay is not necessary, neither for the `Pause`, we have removed this step and related function.",
+      "parentUuid": "3174c090_503b449f",
       "range": {
         "startLine": 115,
         "startChar": 22,
