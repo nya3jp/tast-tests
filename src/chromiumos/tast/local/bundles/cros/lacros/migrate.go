@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
@@ -60,9 +61,11 @@ func Migrate(ctx context.Context, s *testing.State) {
 }
 
 const (
-	bookmarkName         = "MyBookmark12345" // Arbitrary.
-	shortcutName         = "MyShortcut12345" // Arbitrary.
-	titleOfDownloadsPage = "Downloads"       // chrome://downloads page title.
+	bookmarkName         = "MyBookmark12345"                  // Arbitrary.
+	extensionName        = "User-Agent Switcher for Chrome"   // Arbitrary extension from Chrome Store.
+	extensionID          = "djflhoibgkdhkhhcedjiklpkjnoahfmg" // ID of the above extension.
+	shortcutName         = "MyShortcut12345"                  // Arbitrary.
+	titleOfDownloadsPage = "Downloads"                        // chrome://downloads page title.
 )
 
 // prepareAshProfile resets profile migration and creates two tabs, a bookmark, a download, and a shortcut.
@@ -89,19 +92,39 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	}
 	ui := uiauto.New(tconn)
 
-	// Bookmark the chrome://downloads page.
-	conn, err := cr.NewConn(ctx, "chrome://downloads")
+	// Install an extension.
+	if err := policyutil.EnsureGoogleCookiesAccepted(ctx, cr.Browser()); err != nil {
+		s.Fatal("Failed to accept cookies: ", err)
+	}
+	extensionURL := "https://chrome.google.com/webstore/detail/" + extensionID + "?hl=en"
+	conn, err := cr.NewConn(ctx, extensionURL)
 	if err != nil {
-		s.Fatal("Failed to open downloads page: ", err)
+		s.Fatal("Failed to open extension page: ", err)
 	}
 	defer conn.Close()
+	addButton1 := nodewith.Name("Add to Chrome").Role(role.Button).First()
+	addButton2 := nodewith.Name("Add extension").Role(role.Button)
+	removeButton := nodewith.Name("Remove from Chrome").Role(role.Button).First()
+	if err := uiauto.Combine("Install extension",
+		ui.LeftClick(addButton1),
+		// The "Add extension" button may not immediately be clickable.
+		ui.LeftClickUntil(addButton2, ui.Gone(addButton2)),
+		ui.WaitUntilExists(removeButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to install: ", err)
+	}
+
+	// Bookmark the chrome://downloads page.
+	if err := conn.Navigate(ctx, "chrome://downloads"); err != nil {
+		s.Fatal("Failed to open downloads page: ", err)
+	}
 	if err := kb.Accel(ctx, "Ctrl+d"); err != nil {
 		s.Fatal("Failed to open bookmark creation popup: ", err)
 	}
 	if err := kb.Type(ctx, bookmarkName); err != nil {
 		s.Fatal("Failed to type bookmark name: ", err)
 	}
-	doneButton := nodewith.Name("Done").Role(role.Button).First()
+	doneButton := nodewith.Name("Done").Role(role.Button)
 	if err := uiauto.Combine("Click 'Done' button",
 		ui.LeftClick(doneButton),
 		ui.WaitUntilGone(doneButton),
@@ -113,7 +136,7 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	if err := kb.Accel(ctx, "Ctrl+s"); err != nil {
 		s.Fatal("Failed to open download popup: ", err)
 	}
-	saveButton := nodewith.Name("Save").Role(role.Button).First()
+	saveButton := nodewith.Name("Save").Role(role.Button)
 	if err := uiauto.Combine("Click 'Save' button",
 		ui.LeftClick(saveButton),
 		ui.WaitUntilGone(saveButton),
@@ -125,7 +148,7 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	if err := kb.Accel(ctx, "Ctrl+t"); err != nil {
 		s.Fatal("Failed to open new tab: ", err)
 	}
-	addShortcutButton := nodewith.Name("Add shortcut").Role(role.Button).First()
+	addShortcutButton := nodewith.Name("Add shortcut").Role(role.Button)
 	if err := uiauto.Combine("Click 'Add shortcut' button",
 		ui.LeftClick(addShortcutButton),
 		ui.WaitUntilGone(addShortcutButton),
@@ -155,19 +178,20 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	}
 
 	// TODO(neis): Support -var lacrosDeployedBinary.
-	if _, err := lacros.Launch(ctx, tconn, "/run/lacros"); err != nil {
+	l, err := lacros.Launch(ctx, tconn, "/run/lacros")
+	if err != nil {
 		s.Fatal("Failed to launch lacros: ", err)
 	}
 
 	// Check that the bookmark is present.
 	ui := uiauto.New(tconn)
-	bookmarkedButton := nodewith.Name(bookmarkName).Role(role.Button).First()
+	bookmarkedButton := nodewith.Name(bookmarkName).Role(role.Button)
 	if err = ui.WaitUntilExists(bookmarkedButton)(ctx); err != nil {
 		s.Error("Failed to find bookmark: ", err)
 	}
 
 	// Check that the shortcut is present.
-	shortcutLink := nodewith.Name(shortcutName).Role(role.Link).First()
+	shortcutLink := nodewith.Name(shortcutName).Role(role.Link)
 	if err := ui.WaitUntilExists(shortcutLink)(ctx); err != nil {
 		s.Error("Failed to find shortcut: ", err)
 	}
@@ -181,9 +205,24 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	}
 
 	// Check that the download page shows the previous download (of itself).
-	downloadedFile := nodewith.Name(titleOfDownloadsPage + ".mhtml").Role(role.Link).First()
+	downloadedFile := nodewith.Name(titleOfDownloadsPage + ".mhtml").Role(role.Link)
 	if err = ui.WaitUntilExists(downloadedFile)(ctx); err != nil {
 		s.Error("Failed to find download: ", err)
+	}
+
+	// Check that the extension is installed and enabled.
+	conn, err := l.NewConn(ctx, "chrome://extensions/?id="+extensionID)
+	if err != nil {
+		s.Fatal("Failed to open extension page: ", err)
+	}
+	defer conn.Close()
+	extensionText := nodewith.Name(extensionName).Role(role.StaticText)
+	onText := nodewith.Name("On").Role(role.StaticText)
+	if err := uiauto.Combine("Verify extension status",
+		ui.WaitUntilExists(extensionText),
+		ui.Exists(onText),
+	)(ctx); err != nil {
+		s.Error("Failed: ", err)
 	}
 }
 

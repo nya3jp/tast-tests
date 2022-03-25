@@ -74,12 +74,13 @@ func EnsureCookiesAccepted(ctx context.Context, br *browser.Browser, url, accept
 		return errors.Wrapf(err, "failed to find cookies element by locator %q", acceptBtnLocator)
 	}
 	if acceptButtonFound {
-		testing.ContextLog(ctx, "cookies page is found")
+		testing.ContextLog(ctx, "Found cookies page")
 		clickAccept := fmt.Sprintf("%v.click()", acceptBtnLocator)
 		if err := conn.Eval(ctx, clickAccept, nil); err != nil {
 			return errors.Wrap(err, "failed to click on accept button")
 		}
 	}
+	conn.CloseTarget(ctx)
 	return nil
 }
 
