@@ -189,7 +189,7 @@ func (r *Router) setupWifiPhys(ctx context.Context) error {
 	if err := r.im.RemoveAll(ctx); err != nil {
 		return err
 	}
-	phys, err := r.iwr.ListPhys(ctx)
+	phys, _, err := r.iwr.ListPhys(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to list phys")
 	}

@@ -224,25 +224,25 @@ func parseInterfaces(iwOut string) ([]*NetDev, error) {
 // ListPhys returns a list of Phy struct for each phy on the DUT.
 // Note that it returns an empty list without error when "iw list" command returns nothing.
 // Client must check []*Phy's length before accessing it.
-func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
+func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, []byte, error) {
 	out, err := r.cmd.Output(ctx, "iw", "list")
 	if err != nil {
-		return nil, errors.Wrap(err, "iw list failed")
+		return nil, nil, errors.Wrap(err, "iw list failed")
 	}
 
 	sections, err := parseSection(`Wiphy (.*)`, string(out))
 	if err != nil {
-		return nil, errors.Wrap(err, "could not parse phys")
+		return nil, nil, errors.Wrap(err, "could not parse phys")
 	}
 	var phys []*Phy
 	for _, sec := range sections {
 		phy, err := newPhy(sec.header, sec.body)
 		if err != nil {
-			return nil, errors.Wrap(err, "could not extract phy attributes")
+			return nil, nil, errors.Wrap(err, "could not extract phy attributes")
 		}
 		phys = append(phys, phy)
 	}
-	return phys, nil
+	return phys, out, nil
 }
 
 // PhyByName returns a Phy struct for the given name.
