@@ -199,7 +199,7 @@ func (r *legacyRouterStruct) setupWifiPhys(ctx context.Context) error {
 	if err := r.removeWifiIfaces(ctx); err != nil {
 		return err
 	}
-	wiphys, err := r.iwr.ListPhys(ctx)
+	wiphys, _, err := r.iwr.ListPhys(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to list phys")
 	}
