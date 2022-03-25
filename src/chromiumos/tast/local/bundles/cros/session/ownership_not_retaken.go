@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OwnershipNotRetaken,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Subsequent logins after the owner must not clobber the owner's key",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner

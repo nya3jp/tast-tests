@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LogoutCleanup,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies all processes owned by chronos are destroyed on logout",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner

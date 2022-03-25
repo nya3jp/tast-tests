@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RetrieveActiveSessions,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Ensures that the session_manager correctly tracks active sessions",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
