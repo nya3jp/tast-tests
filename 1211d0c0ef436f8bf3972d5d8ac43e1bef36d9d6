@@ -352,6 +352,30 @@
       },
       "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c1ccce_e12a0b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-25T15:59:02Z",
+      "side": 1,
+      "message": "Not only that we would need to figure out a way to populate all 21 test accounts gmail inboxes, it is also tricky to test whether the inbox is scrolled. Gmail\u0027s document is obfuscated so well that it is difficult to get a reliable way to get the container of the inbox threads and gmail changes its layout occasionally (there is one happening right now). That is why I did not ask for gmail scrolling check. Maybe just document why we did not do the check?",
+      "parentUuid": "d7dcab3c_0b499f7a",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 3
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
