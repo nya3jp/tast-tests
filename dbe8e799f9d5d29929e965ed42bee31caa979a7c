@@ -16,6 +16,24 @@
       "message": "Please also run test unit test \"fast_build.sh -T\" and update the TEST\u003d session to something like\n\nTEST\u003dtast run -var\u003dprofiler.profilerMode\u003dstat,sched,record,statrecord\nTEST\u003dfast_build.sh -T\n\nThanks.",
       "revId": "dbe8e799f9d5d29929e965ed42bee31caa979a7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2b02fd_4b8a3ef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364849
+      },
+      "writtenOn": "2022-03-25T16:52:11Z",
+      "side": 1,
+      "message": "When I tried just running ./fast_build.sh -T I would get many cannot find package errors ie:\n\n../tast-tests/src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go:27:2: cannot find package \"chromiumos/hardware_verifier\" in any of:\n        /usr/lib/google-golang/src/chromiumos/hardware_verifier (from $GOROOT)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast/src/chromiumos/hardware_verifier (from $GOPATH)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests/src/chromiumos/hardware_verifier\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests-private/src/chromiumos/hardware_verifier\n        /usr/lib/gopath/src/chromiumos/hardware_verifier\n../tast-tests/src/chromiumos/tast/remote/wificell/pcap/parse.go:13:2: cannot find package \"github.com/google/gopacket\" in any of:\n        /usr/lib/google-golang/src/github.com/google/gopacket (from $GOROOT)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast/src/github.com/google/gopacket (from $GOPATH)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests/src/github.com/google/gopacket\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests-private/src/github.com/google/gopacket\n        /usr/lib/gopath/src/github.com/google/gopacket\n../tast-tests/src/chromiumos/tast/remote/wificell/hostapd/server.go:22:2: cannot find package \"github.com/google/gopacket/layers\" in any of:\n        /usr/lib/google-golang/src/github.com/google/gopacket/layers (from $GOROOT)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast/src/github.com/google/gopacket/layers (from $GOPATH)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests/src/github.com/google/gopacket/layers\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests-private/src/github.com/google/gopacket/layers\n        /usr/lib/gopath/src/github.com/google/gopacket/layers\n../tast-tests/src/chromiumos/tast/remote/wificell/pcap/parse.go:15:2: cannot find package \"github.com/google/gopacket/pcapgo\" in any of:\n        /usr/lib/google-golang/src/github.com/google/gopacket/pcapgo (from $GOROOT)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast/src/github.com/google/gopacket/pcapgo (from $GOPATH)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests/src/github.com/google/gopacket/pcapgo\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests-private/src/github.com/google/gopacket/pcapgo\n        /usr/lib/gopath/src/github.com/google/gopacket/pcapgo\n../tast-tests-private/src/chromiumos/tast/local/pita/install.go:21:2: cannot find package \"chromiumos/system_api/vm_plugin_dispatcher_proto\" in any of:\n        /usr/lib/google-golang/src/chromiumos/system_api/vm_plugin_dispatcher_proto (from $GOROOT)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast/src/chromiumos/system_api/vm_plugin_dispatcher_proto (from $GOPATH)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests/src/chromiumos/system_api/vm_plugin_dispatcher_proto\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests-private/src/chromiumos/system_api/vm_plugin_dispatcher_proto\n        /usr/lib/gopath/src/chromiumos/system_api/vm_plugin_dispatcher_proto\n../tast-tests-private/src/chromiumos/tast/local/bundles/crosint/hps/builtin_presence.go:11:2: cannot find package \"chromiumos/tast/common/hps/hpsutil\" in any of:\n        /usr/lib/google-golang/src/chromiumos/tast/common/hps/hpsutil (from $GOROOT)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast/src/chromiumos/tast/common/hps/hpsutil (from $GOPATH)\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests/src/chromiumos/tast/common/hps/hpsutil\n        /usr/local/google/home/jacobraz/chromiumos/src/platform/tast-tests-private/src/chromiumos/tast/common/hps/hpsutil\n        /usr/lib/gopath/src/chromiumos/tast/common/hps/hpsutil",
+      "parentUuid": "78a0014f_52a6043c",
+      "revId": "dbe8e799f9d5d29929e965ed42bee31caa979a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
