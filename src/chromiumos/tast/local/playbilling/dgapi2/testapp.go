@@ -159,7 +159,6 @@ func (ta *TestAppDgapi2) signIn(ctx context.Context, appConn *chrome.Conn, cr *c
 			signInConn, err = cr.NewConnForTarget(ctxWithTimeout, chrome.MatchTargetURLPrefix(accountURL))
 			return err
 		},
-		webutil.WaitForQuiescenceAction(signInConn, uiTimeout),
 		func(context.Context) error {
 			return signInConn.WaitForExprWithTimeout(ctx, userEntryJS, uiTimeout)
 		},
@@ -219,7 +218,7 @@ func (ta *TestAppDgapi2) VerifyDetailsLogs(ctx context.Context) error {
 		}
 
 		if foundEntry == "" {
-			return errors.New(`failed to find a log entry starting with "getDetails returned "`)
+			return errors.Errorf(`failed to find a log entry starting with "getDetails returned ", received: %q`, logs)
 		}
 
 		var detailsResult []skuDetails
