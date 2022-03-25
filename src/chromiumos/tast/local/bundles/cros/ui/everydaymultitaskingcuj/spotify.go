@@ -26,9 +26,12 @@ import (
 const (
 	spotifyPackageName = "com.spotify.music"
 	spotifyIDPrefix    = "com.spotify.music:id/"
+	searchTabID        = spotifyIDPrefix + "search_tab"
 
-	defaultUITimeout = 30 * time.Second // Used for situations where UI response might be slow.
-	shortUITimeout   = 15 * time.Second // Used for situations where UI response are faster.
+	adTimeout        = 2 * time.Minute  // Used to wait for advertisements.
+	mediumUITimeout  = 30 * time.Second // Used for situations where UI response are slower.
+	defaultUITimeout = 15 * time.Second // Used for situations where UI response might be slow.
+	shortUITimeout   = 5 * time.Second  // Used for situations where UI response are faster.
 )
 
 // Spotify holds the information used to do Spotify APP testing.
@@ -64,7 +67,8 @@ func (s *Spotify) Install(ctx context.Context) error {
 	installCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := playstore.InstallOrUpdateApp(installCtx, s.a, s.d, spotifyPackageName, &playstore.Options{TryLimit: -1}); err != nil {
+	testing.ContextLog(ctx, "Installing app ", spotifyPackageName)
+	if err := playstore.InstallApp(installCtx, s.a, s.d, spotifyPackageName, &playstore.Options{TryLimit: -1}); err != nil {
 		return errors.Wrapf(err, "failed to install %s", spotifyPackageName)
 	}
 	if err := apps.Close(ctx, s.tconn, apps.PlayStore.ID); err != nil {
@@ -125,40 +129,35 @@ func (s *Spotify) Close(ctx context.Context, cr *chrome.Chrome, dump bool, dumpD
 
 // Play plays a song.
 func (s *Spotify) Play(ctx context.Context) error {
-	// Because of the loggedInAndKeepState fixture, we do not need to log in to Spotify everytime.
-	if err := s.loginIfRequired(ctx); err != nil {
-		return errors.Wrap(err, "failed to login into Spotify")
-	}
-
-	if err := s.clearPrompts(ctx); err != nil {
-		return err
-	}
-
-	if err := s.waitUntilHomePageShows(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait until home page shows")
-	}
-
-	testing.ContextLog(ctx, "Try to play a song")
 	const playPauseButtonID = spotifyIDPrefix + "play_pause_button"
 	playButton := s.d.Object(ui.ID(playPauseButtonID), ui.Enabled(true), ui.Description("Play"))
 
-	if err := playButton.WaitForExists(ctx, shortUITimeout); err != nil {
-		// If Spotify is installed very first time, there will be no last listened songs.
-		// Search a song to play.
+	// If it has been played, it can play the song directly.
+	if err := cuj.FindAndClick(playButton, shortUITimeout)(ctx); err == nil {
+		testing.ContextLog(ctx, "Play Spotify directly")
+	} else {
+		searchTab := s.d.Object(ui.ID(searchTabID))
+		if err := searchTab.Exists(ctx); err != nil {
+			if err := s.loginIfRequired(ctx); err != nil {
+				return errors.Wrap(err, "failed to login into Spotify")
+			}
+			if err := s.clearPrompts(ctx); err != nil {
+				return err
+			}
+			if err := s.waitUntilHomePageShows(ctx); err != nil {
+				return errors.Wrap(err, "failed to wait until home page shows")
+			}
+		}
 		if err := s.searchSongAndPlay(ctx); err != nil {
 			return errors.Wrap(err, "failed to search song and play")
 		}
-	} else {
-		// Otherwise, can play a song directly by clicking the play button,
-		// which will play the last listened song.
-		if err := s.playLastListenedSong(ctx, playButton); err != nil {
-			return errors.Wrap(err, "failed to play last listened song")
-		}
 	}
 
-	// Verify Soptify is playing.
+	testing.ContextLog(ctx, "Verify that Spotify is playing")
 	pauseButton := s.d.Object(ui.ID(playPauseButtonID), ui.Enabled(true), ui.Description("Pause"))
-	if err := pauseButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+	// Sometimes there will be advertisements that need to be verified at a later time,
+	// so use adTimeout here.
+	if err := pauseButton.WaitForExists(ctx, adTimeout); err != nil {
 		return errors.Wrap(err, "failed to wait for pause button to exist, Spotify is not playing")
 	}
 
@@ -166,6 +165,7 @@ func (s *Spotify) Play(ctx context.Context) error {
 	return nil
 }
 
+// loginIfRequired logins to Spotify if it is not logged in.
 func (s *Spotify) loginIfRequired(ctx context.Context) error {
 	// The "This app is designed for mobile" prompt needs to be dismissed to get to the log in page.
 	if err := cuj.DismissMobilePrompt(ctx, s.tconn); err != nil {
@@ -262,30 +262,19 @@ func (s *Spotify) clearPrompts(ctx context.Context) error {
 }
 
 func (s *Spotify) waitUntilHomePageShows(ctx context.Context) error {
-	searchTabID := spotifyIDPrefix + "search_tab"
 	searchTab := s.d.Object(ui.ID(searchTabID))
-
-	if err := searchTab.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return errors.Wrapf(err, `failed to wait for search tab to exist in %v`, defaultUITimeout)
+	if err := searchTab.WaitForExists(ctx, mediumUITimeout); err != nil {
+		return errors.Wrapf(err, `failed to wait for search tab to exist in %v`, mediumUITimeout)
 	}
 
 	return nil
 }
 
-func (s *Spotify) playLastListenedSong(ctx context.Context, playButton *ui.Object) error {
-	testing.ContextLog(ctx, "Try to play last listened song")
-
-	if err := cuj.FindAndClick(playButton, shortUITimeout)(ctx); err != nil {
-		testing.ContextLog(ctx, `Failed to play last listened song, try to search a song and play`)
-		return s.searchSongAndPlay(ctx)
-	}
-
-	return nil
-}
-
+// searchSongAndPlay searches a song and play.
+// If Spotify is installed for the first time, there will be no last listened song.
+// Search for a song to play.
 func (s *Spotify) searchSongAndPlay(ctx context.Context) error {
 	const (
-		searchTabID   = spotifyIDPrefix + "search_tab"
 		searchFieldID = spotifyIDPrefix + "find_search_field_text"
 		queryID       = spotifyIDPrefix + "query"
 		childrenID    = spotifyIDPrefix + "children"
