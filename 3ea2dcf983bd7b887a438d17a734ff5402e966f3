@@ -16,6 +16,24 @@
       "message": "I see that this is 1+ hr test and not part of informational suite. When and where is this planned to be run?.",
       "revId": "3ea2dcf983bd7b887a438d17a734ff5402e966f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8fc95c6_730633a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-03-25T06:11:52Z",
+      "side": 1,
+      "message": "yes, that\u0027s right. We are planning to execute this test in Intel labs and in ODM/OEM labs.",
+      "parentUuid": "8c13ef73_d4e4c4ff",
+      "revId": "3ea2dcf983bd7b887a438d17a734ff5402e966f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
