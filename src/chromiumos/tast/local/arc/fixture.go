@@ -272,7 +272,7 @@ func init() {
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
-				chrome.EnableFeatures("ArcRightClickLongPress", "ArcMouseWheelSmoothScroll"),
+				chrome.EnableFeatures("ArcRightClickLongPress"),
 				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
 			}, nil
 		}),
