@@ -25,7 +25,7 @@ func init() {
 		},
 		Parent:          "arcBootedForPlayBilling",
 		SetUpTimeout:    30 * time.Second,
-		PreTestTimeout:  5 * time.Minute,
+		PreTestTimeout:  tryLimit * 2 * time.Minute, // 2 minutes per app installation attempt
 		PostTestTimeout: 30 * time.Second,
 	})
 }
