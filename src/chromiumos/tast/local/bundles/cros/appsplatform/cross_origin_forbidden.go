@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package apps
+package appsplatform
 
 import (
 	"context"
@@ -37,7 +37,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrossOriginForbidden,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks whether chrome refuses to follow cross origin links in isolated web apps",
 		Contacts: []string{
 			"simonha@google.com", // Test author
