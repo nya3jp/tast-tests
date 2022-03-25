@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea5178b_165f4668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "style nit: you can use the shorthand for variable assignment, instead of declaring them separately\n```\nt, err :\u003d smatlock.GetSettingsTestData(...)\nif err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 116
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89dfb862_a6f71848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "anything we can wait for here instead of sleeping?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b6de4e_f360538f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_signin_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "same thing here for combining the assignments",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 116
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51db9170_9ca6c66f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_signin_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "an explicit TODO would be nice to come back and clean this up",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e22f1e_07cf0e87",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "a general style guideline is that context.Context shouldn\u0027t be stored in structs (go/go-style/decisions#contexts), instead functions that need it should just have it as its first parameter",
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e4ec47_56a5b2a5",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "I like to include an `enable bool` parameter in these kinds of toggle functions to make it more explicit, and just have the function be no-op if the setting is already in the desired state. It helps avoid some weirdness like in L89 where both error and non-error states are valid, and more importantly makes it clear at the call site what the setting state will be.",
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c78472f_d8920cde",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "handling the error is still good practice just in case something unexpected happens. you could log it the error just in case, like:\n```\ntesting.ContextLog(ctx, \"failed to click cancel button: \", err)\n```\nbut in this case I think slightly modifying the function to be explicit about enabling/disabling is the way to go, see above",
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4bd520_5e3ed897",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "another little Go style thing is to omit \"Get\" from the function name in these cases\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 8
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382859d0_e6c61f92",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "It\u0027s pretty unusual to see cr and tconn stored in a struct like this. It does make the function signatures more tidy, but I think it would be more consistent with other Tast code to have them be parameters",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9843f7c3_632b4aab",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T01:35:32Z",
+      "side": 1,
+      "message": "Instead of sleeping, I\u0027d suggest using uiauto\u0027s Wait functions below that have polling built in:\n\n```\nui :\u003d uiauto.New(tconn)\nauthIcon :\u003d nodewith.ClassName(authIconViewClassName)\nif expectVisible {\n  if err :\u003d ui.WaitUntilExists(authIcon)(ctx); err !\u003d nil {...}\n} else {\n  if err :\u003d ui.EnsureGoneFor(authIcon, 5*time.Second)(ctx); err !\u003d nil {...}\n}\n```\nit\u0027s a bit more explicit and should be more reliable than sleeping in the `expectVisible` case.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
