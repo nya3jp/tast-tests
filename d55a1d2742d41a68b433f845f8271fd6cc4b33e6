@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a93a9b3_c106facb",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-03-25T15:06:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7654d9eb_619f0d1a",
+      "revId": "d55a1d2742d41a68b433f845f8271fd6cc4b33e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1aa2113_c38ed54c",
