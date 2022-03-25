@@ -217,9 +217,8 @@ message ConnectRequest {
   bytes ssid = 1;
   // hidden denotes that if the SSID is hidden.
   bool hidden = 2;
-  // security is the SecurityClass (defined in shill/service.go) of the WiFi
-  // service to Connect.
-  string security = 3;
+  // SecurityClass (defined in shill/service.go) of the WiFi service to Connect.
+  string security_class = 3;
   // shillprops is the shill properties the DUT should set to Connect to the
   // WiFi service.
   map<string, ShillVal> shillprops = 4;
@@ -286,6 +285,7 @@ message QueryServiceResponse {
     string hex_ssid = 4;
     bool hidden_ssid = 5;
     uint32 phy_mode = 6;
+    string security = 7;
   }
   string name = 1;
   string device = 2;
@@ -423,7 +423,7 @@ message ProfileBasicTestRequest {
   // The configuration for connecting to a certain AP, as like ConnectRequest.
   message Config {
     bytes ssid = 1;
-    string security = 2;
+    string security_class = 2;
     string ip = 3;
     map<string, ShillVal> shill_props = 4;
   }

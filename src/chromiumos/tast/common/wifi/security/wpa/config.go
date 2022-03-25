@@ -72,7 +72,7 @@ type Config struct {
 
 // Class returns security class of WPA network.
 func (c *Config) Class() string {
-	return shillconst.SecurityPSK
+	return shillconst.SecurityClassPSK
 }
 
 // PSK returns the passphrase for WPA network.
