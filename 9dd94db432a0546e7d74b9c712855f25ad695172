@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7813f0c4_9636d5a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-25T18:04:23Z",
+      "side": 1,
+      "message": "if expectedParticipantCount :\u003d meet.num+1; participantCount !\u003d expectedParticipantCount {\n    return errors.Errorf(\"got %d participants, expected %d\", participantCount, expectedParticipantCount)\n  }\n  s.Logf(\"%d participants in the meeting\", participantCount)",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 60
+      },
+      "revId": "9dd94db432a0546e7d74b9c712855f25ad695172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
