@@ -33,6 +33,24 @@
       "message": "Let me make sure I\u0027m understanding correctly. The problem here is that the PersistenceBluetoothSansWifi leaves the DUT in a state with the wrong MAR settings, which is causing a different test to fail, correct? Have we documented any investigation as to why the MAR settings are being set incorrectly? I\u0027m hesitant to push through a workaround like this if we\u0027re papering over an actual platform issue.",
       "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a6cb9c_f46921db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-03-25T17:43:12Z",
+      "side": 1,
+      "message": "To clarify, I read through the bug and see that there does not appear to be conclusion on why the settings are being reset. Do we at least have some inclination as to whether it is a platform issue or a test issue?",
+      "parentUuid": "f9fdd563_7985a00c",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
