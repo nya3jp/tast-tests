@@ -22,6 +22,30 @@
       },
       "revId": "4104c233623aef5619d90fa6f5c98e4371135fbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f16700b_4d08fc79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-03-25T18:04:24Z",
+      "side": 1,
+      "message": "I checked with crosfleet and they both should support S0ix. I\u0027ve updated the list and I\u0027ll keep an eye out on stainless to see if they do end up passing the S0ix test.",
+      "parentUuid": "b7c160c6_a8f476f4",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "4104c233623aef5619d90fa6f5c98e4371135fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
