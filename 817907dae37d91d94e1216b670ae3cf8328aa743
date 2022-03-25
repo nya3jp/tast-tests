@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4da85ee_490e7f68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/compat/n_to_m_vault_compat_impl.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-25T06:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab58742_b59452fd",
+      "revId": "817907dae37d91d94e1216b670ae3cf8328aa743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "079ed1c3_9f501ec8",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-03-22T06:43:46Z",
       "side": 1,
       "message": "Would you like to consider using testing.Param to make these three similiar files into one.\n\nSomething like this:\n```\n    Params: []testing.Param{{\n      Val: compat.DefaultVaultType,\n    }, {\n      Name: \"ecryptfs\",\n      Val: compat.EcryptfsVaultType,\n    }, {\n      Name: \"fscrypt_v1\",\n      ExtraSoftwareDeps: []string{\"use_fscrypt_v2\"},\n      Val: compat.FscryptV1VaultType,\n    }},\n```",
+      "revId": "817907dae37d91d94e1216b670ae3cf8328aa743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c4358a_79e718e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat_default.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-25T06:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "079ed1c3_9f501ec8",
       "revId": "817907dae37d91d94e1216b670ae3cf8328aa743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
