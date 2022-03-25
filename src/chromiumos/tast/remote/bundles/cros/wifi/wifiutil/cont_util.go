@@ -81,7 +81,7 @@ func uniqueAPName() string {
 }
 
 func hasFTSupport(ctx context.Context, s *testing.State) bool {
-	phys, err := iw.NewRemoteRunner(s.DUT().Conn()).ListPhys(ctx)
+	phys, _, err := iw.NewRemoteRunner(s.DUT().Conn()).ListPhys(ctx)
 	if err != nil {
 		s.Fatal("Failed to check SME capability: ", err)
 	}
