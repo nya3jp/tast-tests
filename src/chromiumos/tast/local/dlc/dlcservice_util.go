@@ -19,12 +19,13 @@ import (
 
 // Dlcservice related constants.
 const (
-	CacheDir    = "/var/cache/dlc"
-	JobName     = "dlcservice"
-	LibDir      = "/var/lib/dlcservice/dlc"
-	PreloadDir  = "/var/cache/dlc-images"
-	ServiceName = "org.chromium.DlcService"
-	User        = "dlcservice"
+	CacheDir          = "/var/cache/dlc"
+	JobName           = "dlcservice"
+	LibDir            = "/var/lib/dlcservice/dlc"
+	PreloadDir        = "/var/cache/dlc-images"
+	FactoryInstallDir = "/mnt/stateful_partition/unencrypted/dlc-factory-images"
+	ServiceName       = "org.chromium.DlcService"
+	User              = "dlcservice"
 )
 
 // Info holds the fields related to a DLC.

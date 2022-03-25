@@ -10,6 +10,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"github.com/godbus/dbus"
 
@@ -26,6 +27,8 @@ const (
 	JobName = "modemfwd"
 	// DisableAutoUpdatePref disables auto update on modemfwd
 	DisableAutoUpdatePref = "/var/lib/modemfwd/disable_auto_update"
+	// PurgeDlcsDelay is the time modemfwd waits until it starts cleaning up the DLCs
+	PurgeDlcsDelay = 2 * time.Minute
 )
 
 // Modemfwd is used to interact with the modemfwd process over D-Bus.
