@@ -6,6 +6,8 @@ package wifi
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/wifi/wlan"
@@ -46,13 +48,16 @@ func Caps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed reading the WLAN device information: ", err)
 	}
 
-	res, err := iwr.ListPhys(ctx)
+	res, out, err := iwr.ListPhys(ctx)
 	if err != nil {
 		s.Fatal("ListPhys failed: ", err)
 	}
 	if len(res) == 0 {
 		s.Fatal("Expect at least one wireless phy; found nothing")
 	}
+
+	// Save `iw list` text to log file.
+	ioutil.WriteFile(filepath.Join(s.OutDir(), "iw_list"), out, 0644)
 
 	staSupported := false
 	for _, mode := range res[0].Modes {
