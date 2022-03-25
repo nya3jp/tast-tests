@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7654d9eb_619f0d1a",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-25T11:02:01Z",
+      "side": 1,
+      "message": "Replaced with a.PackageInstalled() because a.WaitForPackages() waits for 10 minutes. This gets called after waiting for the progress bar to be gone, so if PackageInstalled returns false here, the test should just go back to the beginning of the loop.",
+      "parentUuid": "010a48e6_9c13dbd1",
+      "revId": "d55a1d2742d41a68b433f845f8271fd6cc4b33e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1aa2113_c38ed54c",
         "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-23T12:53:40Z",
       "side": 1,
       "message": "can we move tryagain detection to the FindAndDismissDialog loop above?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/playstore/playstore.go;l\u003d186;drc\u003dda966a2657d7eb8d3021e87339ee0322fdae44bc",
+      "revId": "d55a1d2742d41a68b433f845f8271fd6cc4b33e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4117d5_990ddc05",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-03-25T11:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1aa2113_c38ed54c",
       "revId": "d55a1d2742d41a68b433f845f8271fd6cc4b33e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
