@@ -286,6 +286,7 @@ message QueryServiceResponse {
     string hex_ssid = 4;
     bool hidden_ssid = 5;
     uint32 phy_mode = 6;
+    string security = 7;
   }
   string name = 1;
   string device = 2;
