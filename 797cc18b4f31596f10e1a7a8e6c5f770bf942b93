@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e7d992_136f26b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-03-25T10:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07a36c6_61ffe263",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "797cc18b4f31596f10e1a7a8e6c5f770bf942b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdbcb0ed_a428a916",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-10T16:08:28Z",
       "side": 1,
       "message": "Same as above - need to check that the notification is shown only when it was blocked.",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 217
+      },
+      "revId": "797cc18b4f31596f10e1a7a8e6c5f770bf942b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f065eb_a433e82c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-03-25T10:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdbcb0ed_a428a916",
       "range": {
         "startLine": 279,
         "startChar": 4,
