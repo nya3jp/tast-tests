@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "534e07d2_7ef79cd5",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T01:36:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95e6ec5_f01d869b",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 103
+      },
+      "revId": "9969d967e7e9ed24b56601cf73150f7b8903494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42104cca_9ef861f0",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-24T12:25:52Z",
       "side": 1,
       "message": "probably want to have a helper for downloading a file, the implementation is manatee shell with cat, but that is an implementation detail.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "9969d967e7e9ed24b56601cf73150f7b8903494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b8c335_86b269c2",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T01:36:22Z",
+      "side": 1,
+      "message": "I think this needs to actually be cat. Files in /proc aren\u0027t normal files, so you can\u0027t necessarily download them normally. For example, trying to scp /proc/meminfo from a DUT doesn\u0027t work, and neither does adb pull /proc/meminfo from ARCVM.",
+      "parentUuid": "42104cca_9ef861f0",
       "range": {
         "startLine": 48,
         "startChar": 0,
