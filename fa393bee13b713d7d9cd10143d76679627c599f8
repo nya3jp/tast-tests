@@ -39,6 +39,30 @@
       },
       "revId": "fa393bee13b713d7d9cd10143d76679627c599f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46791c84_087afddf",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbyfixture/basic_android_modulefood.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-25T00:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0904af7_e1c06ef0",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "fa393bee13b713d7d9cd10143d76679627c599f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
