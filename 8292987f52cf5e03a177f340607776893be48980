@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f316cef_4b057861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-25T23:36:52Z",
+      "side": 1,
+      "message": "sync up offline, update the launch approach later after crrev.com/c/3524047 merged. tracked in crrev.com/c/1310417",
+      "parentUuid": "1a660741_f139cc9d",
+      "revId": "8292987f52cf5e03a177f340607776893be48980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d10b20c_ba6f7103",

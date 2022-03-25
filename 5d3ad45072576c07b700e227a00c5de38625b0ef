@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd6bf6a_62ada8fe",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-25T23:36:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f912671f_89b59272",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "5d3ad45072576c07b700e227a00c5de38625b0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60441e97_39c0201d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-25T09:44:18Z",
       "side": 1,
       "message": "could you make this consistent with UnmarshalPref? (\u0027.\u0027 support status)",
+      "range": {
+        "startLine": 85,
+        "startChar": 24,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "5d3ad45072576c07b700e227a00c5de38625b0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1993971_28761757",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-25T23:36:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60441e97_39c0201d",
       "range": {
         "startLine": 85,
         "startChar": 24,
