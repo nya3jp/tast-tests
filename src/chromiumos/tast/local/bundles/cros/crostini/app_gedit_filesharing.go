@@ -74,8 +74,8 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 		if err := os.Remove(tmpFileCrosDownloadsPath); err != nil {
 			s.Logf("Cleanup: failed to remove file %s on cleanup: %v", tmpFileCrosDownloadsPath, err)
 		}
-	}(cleanupCtx)
 
+	}(cleanupCtx)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Create a temp text file in the /Downloads folder to use in this test.
@@ -97,7 +97,9 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open tmp file in the Downloads folder: ", err)
 	}
 
-	// Launch terminal so we can run commands in the container.
+	// Launch terminal now so we can run commands in the container later.
+	// Note that moving this step to later in the test cause the container file
+	// verification step to fail. It must be run at this stage.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to open Crostini Terminal: ", err)
@@ -114,13 +116,26 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	s.Log("Waiting for default Text App to complete installation")
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.DefaultTextEditor.ID, 2*time.Minute); err != nil {
+		s.Fatal("Failed to wait for installed app: ", err)
+	}
+
+	s.Log("Iterating over installed chrome apps")
+	installedApps, err := ash.ChromeApps(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get all installed Apps: ", err)
+	}
+	for _, app := range installedApps {
+		s.Log("Here is the app:", app.Name, app.AppID)
+	}
+
 	geditWindow := nodewith.NameContaining(tmpFilename).Role(role.Window).First()
-	filesAppShelfButton := nodewith.Name(apps.Files.Name).ClassName("ash/ShelfAppButton")
 	ui := uiauto.New(tconn)
 	ud := uidetection.NewDefault(tconn)
 
 	err = checkFilesharingBeforeRestart(
-		ctx, cont, tconn, ui, ud, filesApp, keyboard, geditWindow, filesAppShelfButton)
+		ctx, cont, tconn, ui, ud, filesApp, keyboard, geditWindow)
 	if err != nil {
 		s.Fatal("Failed test cases before restart of Crostini: ", err)
 	}
@@ -130,7 +145,6 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(ctx); err != nil {
 		s.Log("Failed to restart Crostini: ", err)
 	}
-
 	err = checkFilesharingWorksAfterRestart(
 		ctx, cont, tconn, filesApp, keyboard, ui, ud, geditWindow)
 	if err != nil {
@@ -148,8 +162,7 @@ func checkFilesharingBeforeRestart(
 	ud *uidetection.Context,
 	filesApp *filesapp.FilesApp,
 	keyboard *input.KeyboardEventWriter,
-	geditWindow,
-	filesAppShelfButton *nodewith.Finder) error {
+	geditWindow *nodewith.Finder) error {
 
 	// Check that file is mounted in the container.
 	if err := crostini.VerifyFileInContainer(ctx, cont, tmpFileCrostiniMountPath); err != nil {
@@ -172,7 +185,7 @@ func checkFilesharingBeforeRestart(
 
 	err := uiauto.Combine("validate contents of text file opened with default non-linux app",
 		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, defaultTextEditorContextMenuItem),
-		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))), // Read file contents.
 	)(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to right click on text file in Downloads folder and open with default Text app")
