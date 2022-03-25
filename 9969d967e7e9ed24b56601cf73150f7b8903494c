@@ -110,6 +110,30 @@
       },
       "revId": "9969d967e7e9ed24b56601cf73150f7b8903494c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b598d13_9930ad09",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-03-25T01:42:54Z",
+      "side": 1,
+      "message": "well yes but the point of this function isn\u0027t really in running the cat command but obtaining the /proc/%d/smaps. \nThat we use `cat` shell command is an implementation detail that may change in the future.",
+      "parentUuid": "17b8c335_86b269c2",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "9969d967e7e9ed24b56601cf73150f7b8903494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
