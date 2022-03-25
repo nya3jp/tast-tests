@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f6eadf_09d771bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-03-25T11:21:12Z",
+      "side": 1,
+      "message": "takise@: Please check the changes in AshWindowState, PIP, ResizeActivity, SurfaceOrientation, WindowManagerCUJ and WindowState.\nhirokisato@: Please check SettingsBridge change.\nsstan@: Please check GhostWindow change.\n\nThanks!",
+      "revId": "6f073d6acdec069ec556ce6850398ad6c9679014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
