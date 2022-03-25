@@ -116,6 +116,24 @@
       "parentUuid": "1854e79b_a2658639",
       "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b58c4a_067c3092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash_add_pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2022-03-25T20:42:39Z",
+      "side": 1,
+      "message": "Nevermind, out of scope for this test.",
+      "parentUuid": "cf152f6e_cf30f484",
+      "revId": "a421591ff0e7e9e63999ad6a3cca1c3566e13084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
