@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RejectDuplicate,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Ensures that the session_manager won't start the same session twice",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
