@@ -80,14 +80,13 @@ type screenWakeTabletModeArgs struct {
 // detected by evtest when DUT was in tablet mode.
 var convertibleKeyboardScanned = []string{
 	"akemi",
-	"blooguard",
 	"boten",
 	"delbin",
 	"dragonair",
+	"eldrid",
 	"storo360",
 	"jinlon",
 	"garg360",
-	"vortininja",
 	"helios",
 	"kled",
 	"kasumi360",
@@ -433,9 +432,9 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "failed to set tablet mode angle")
 				}
 			}
-
-			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
-				return errors.Wrap(err, "error in sleeping for 1 second")
+			// Allow some delay to ensure that DUT has completely transitioned out of tablet mode.
+			if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
 			}
 		case screenWakeByCloseOpenLid:
 			if !testArgs.hasLid {
@@ -478,6 +477,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			// Emulate DUT lid opening.
 			if err := h.Servo.OpenLid(ctx); err != nil {
 				return errors.Wrap(err, "error in opening DUT's lid")
+			}
+
+			s.Log("Wait for S0 powerstate")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+				return errors.Wrap(err, "failed to get S0 powerstate")
 			}
 		}
 
@@ -536,6 +540,12 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to set tablet mode angle: ", err)
 			}
 		}
+
+		// Allow some delay to ensure that DUT has completely transitioned into tablet mode.
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+
 		if err := verifyScreenState(ctx, expectOn); err != nil {
 			s.Fatal("After turning on tablemode: ", err)
 		}
