@@ -50,14 +50,32 @@ type PolicyService struct { // NOLINT
 	eds *externaldata.Server
 }
 
-// GAIAEnrollUsingChrome enrolls the device using dmserver. Specified user is logged in after this function completes.
-func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIAEnrollUsingChromeRequest) (*empty.Empty, error) {
+// GAIAEnrollAndLoginUsingChrome enrolls the device using dmserver. Specified user is logged in after this function completes.
+func (c *PolicyService) GAIAEnrollAndLoginUsingChrome(ctx context.Context, req *ppb.GAIAEnrollAndLoginUsingChromeRequest) (*empty.Empty, error) {
 	testing.ContextLogf(ctx, "Enrolling using Chrome with username: %s, dmserver: %s", string(req.Username), string(req.DmserverURL))
 
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: req.Username, Pass: req.Password}),
 		chrome.GAIALogin(chrome.Creds{User: req.Username, Pass: req.Password}),
+		chrome.DMSPolicy(req.DmserverURL),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+
+	c.chrome = cr
+
+	return &empty.Empty{}, nil
+}
+
+// GAIAEnrollUsingChrome enrolls the device using dmserver.
+func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIAEnrollUsingChromeRequest) (*empty.Empty, error) {
+	testing.ContextLogf(ctx, "Enrolling using Chrome with username: %s, dmserver: %s", string(req.Username), string(req.DmserverURL))
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: req.Username, Pass: req.Password}),
 		chrome.DMSPolicy(req.DmserverURL),
 	)
 	if err != nil {
