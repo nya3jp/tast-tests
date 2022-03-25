@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ddbc4c3_f985f4a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-25T16:03:39Z",
+      "side": 1,
+      "message": "testing.Poll might be better here.",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 27
+      },
+      "revId": "bd38bc4dec441b5837fb16ee59acc918f9cf3cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
