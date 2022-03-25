@@ -110,6 +110,24 @@
       "message": "Won\u0027t this over count by the number of crosvm processes per VM?\n\nI think we can just use Pss? In ChromeOS we had to do lots of extra work because smaps doesn\u0027t compute Pss for swapped out parts of a shmem region properly, but that is not a problem in the hypervisor.",
       "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e03867a_9e5612f4",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-03-25T05:24:18Z",
+      "side": 1,
+      "message": "I thought I would need to do that at first. But at least on my non-manatee kled, pgrep only returns the root crosvm process (manatee still uses --disable-sandbox, so I can\u0027t test on manatee). Are there some kernels/devices where that is not the case?",
+      "parentUuid": "aa6b3d32_8f721145",
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
