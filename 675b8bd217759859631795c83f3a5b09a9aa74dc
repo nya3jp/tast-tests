@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d5013e_817f57de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-03-26T00:44:44Z",
+      "side": 1,
+      "message": "Seems risky to base these tests on third party resources. Can we use local resources instead? In addition to being less flaky and more performant, it will probably reduce a lot of this CL\u0027s complexity",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 117
+      },
+      "revId": "675b8bd217759859631795c83f3a5b09a9aa74dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ef35db_f7b4dc7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-03-26T00:44:44Z",
+      "side": 1,
+      "message": "Seems like an extremely long timeout?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "675b8bd217759859631795c83f3a5b09a9aa74dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfec330_0a387dbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-03-26T00:44:44Z",
+      "side": 1,
+      "message": "If this LOC is reached, how will `page_ui_dump` screenshot and `notification_ui_dump` screenshot differ on error?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 113
+      },
+      "revId": "675b8bd217759859631795c83f3a5b09a9aa74dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d99056_c4e57f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-03-26T00:44:44Z",
+      "side": 1,
+      "message": "Why use subtests instead of breaking things out into separate tests? Is it possible to run one subtest w/o running all of them?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 3
+      },
+      "revId": "675b8bd217759859631795c83f3a5b09a9aa74dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c4fb50_58ebe287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-03-26T00:44:44Z",
+      "side": 1,
+      "message": "Is this exercising buttons on the downloads page? Should this test be exercising notification button instead?",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 8
+      },
+      "revId": "675b8bd217759859631795c83f3a5b09a9aa74dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
