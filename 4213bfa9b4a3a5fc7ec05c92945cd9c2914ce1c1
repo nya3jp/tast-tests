@@ -69,6 +69,30 @@
       },
       "revId": "4213bfa9b4a3a5fc7ec05c92945cd9c2914ce1c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199cf400_c32c1058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-26T06:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a58371a0_08238d59",
+      "range": {
+        "startLine": 467,
+        "startChar": 58,
+        "endLine": 467,
+        "endChar": 66
+      },
+      "revId": "4213bfa9b4a3a5fc7ec05c92945cd9c2914ce1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
