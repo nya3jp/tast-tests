@@ -58,7 +58,7 @@ var renameMenu = nodewith.Name("Rename Profile").Role(role.MenuItem)
 
 func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 	// Remove any existing profile on test euicc
-	euicc, slot, err := hermes.GetTestEUICC(ctx)
+	euicc, slot, err := hermes.GetEUICC(ctx, true)
 	if err != nil {
 		s.Fatal("Failed to get test euicc: ", err)
 	}

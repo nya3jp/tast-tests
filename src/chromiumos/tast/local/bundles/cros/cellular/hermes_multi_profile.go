@@ -29,8 +29,7 @@ func init() {
 
 func HermesMultiProfile(ctx context.Context, s *testing.State) {
 
-	const prodSimSlotNum = 0
-	euicc, err := hermes.NewEUICC(ctx, prodSimSlotNum)
+	euicc, _, err := hermes.GetEUICC(ctx, false)
 	if err != nil {
 		s.Fatal("Unable to get Hermes euicc: ", err)
 	}
