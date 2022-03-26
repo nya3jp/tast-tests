@@ -48,7 +48,7 @@ func HermesMultiProfile(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	profiles, err := euicc.InstalledProfiles(ctx)
+	profiles, err := euicc.InstalledProfiles(ctx, true)
 	if err != nil {
 		s.Fatal("Failed to get installed profiles: ", err)
 	}
