@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbb86c40_2e828273",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-26T04:59:19Z",
+      "side": 1,
+      "message": "Yes, it causes a failure, because `signInConn` that we pass into the function is `nil` when we execute it (see https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/playbilling/dgapi2/testapp.go;l\u003d162).\nIt\u0027s not an issue with the function itself, but rather with the way it is used.\nRemoving it solves the issue.\nWe can remove it, because we are waiting for a UI-related condition straight after it before we continue the test.",
+      "parentUuid": "e9cbdb67_9cdb53cb",
+      "range": {
+        "startLine": 11,
+        "startChar": 76,
+        "endLine": 11,
+        "endChar": 124
+      },
+      "revId": "fdca317d32627808faca978c42f0bd3d0ba4e6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d22a45c_58c88cd5",
         "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-25T02:41:02Z",
       "side": 1,
       "message": "Is this an issue in terms of resource usage? I feel like 10 mins for 1 test may be considered excessive. Is there any guidance from the tast team?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 108
+      },
+      "revId": "fdca317d32627808faca978c42f0bd3d0ba4e6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9cd98d_23fc3b3e",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-26T04:59:19Z",
+      "side": 1,
+      "message": "This is an upper limit. If underlying functionality is stable, pretest should complete in under 2 minutes. Retries are there to avoid failing the test for the reasons unrelated to the tested functionality. I reduced the timeout to 6 minutes and the number of retries to 3.\nI\u0027ll check with tast team. We are trading resources for a better signal/noise ration. It sounds like a reasonable deal to take.",
+      "parentUuid": "8d22a45c_58c88cd5",
       "range": {
         "startLine": 28,
         "startChar": 0,
