@@ -14,6 +14,7 @@ import (
 	"time"
 
 	cpb "chromiumos/system_api/cryptohome_proto"
+	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -193,7 +194,7 @@ func (u *CryptohomeClient) UnmountAll(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get the status of ui")
 	}
-	if goal == startGoal {
+	if goal == upstart.StartGoal {
 		// Restart the UI to make sure nothing is still using cryptohome and unmount the mount point.
 		if err := u.daemonController.Restart(ctx, UIDaemon); err != nil {
 			return errors.Wrap(err, "failed to restart the UI")

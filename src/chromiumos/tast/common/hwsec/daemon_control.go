@@ -21,73 +21,36 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
-)
-
-// DaemonGoal describes a job's goal. See Section 10.1.6.19, "initctl status", in the Upstart Cookbook.
-type DaemonGoal string
-
-// DaemonState describes a job's current state. See Section 4.1.2, "Job States", in the Upstart Cookbook.
-type DaemonState string
-
-const (
-	// unknownGoal indicates that a task job doesn't exist.
-	unknownGoal DaemonGoal = "unknown"
-	// startGoal indicates that a task or service job has been started.
-	startGoal DaemonGoal = "start"
-	// stopGoal indicates that a task job has completed or that a service job has been manually stopped or has
-	// a "stop on" condition that has been satisfied.
-	stopGoal DaemonGoal = "stop"
-
-	// waitingState is the initial state for a job.
-	waitingState DaemonState = "waiting"
-	// startingState indicates that a job is about to start.
-	startingState DaemonState = "starting"
-	// securityState indicates that a job is having its AppArmor security policy loaded.
-	securityState DaemonState = "security"
-	// preStartState indicates that a job's pre-start section is running.
-	preStartState DaemonState = "pre-start"
-	// spawnedState indicates that a job's script or exec section is about to run.
-	spawnedState DaemonState = "spawned"
-	// postStartState indicates that a job's post-start section is running.
-	postStartState DaemonState = "post-start"
-	// runningState indicates that a job is running (i.e. its post-start section has completed). It may not have a PID yet.
-	runningState DaemonState = "running"
-	// preStopState indicates that a job's pre-stop section is running.
-	preStopState DaemonState = "pre-stop"
-	// stoppingState indicates that a job's pre-stop section has completed.
-	stoppingState DaemonState = "stopping"
-	// killedState indicates that a job is about to be stopped.
-	killedState DaemonState = "killed"
-	// postStopState indicates that a job's post-stop section is running.
-	postStopState DaemonState = "post-stop"
 )
 
 var (
 	// Matches a leading line of e.g. "ui start/running, process 3182" or "boot-splash stop/waiting".
-	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ ([-a-z]+)/([-a-z]+)(?:, process (\d+))?$`)
+	// Supports job instances, e.g. "ml-service (mojo_service) start/running, process 712".
+	// Supports tmpfiles state, e.g. "ui start/tmpfiles, (tmpfiles) process 19419"
 
-	// A set of all daemon goals
-	allGoals = map[DaemonGoal]struct{}{
-		unknownGoal: {},
-		startGoal:   {},
-		stopGoal:    {},
+	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ (?:\([^ ]+\) )?([-a-z]+)/([-a-z]+)(?:, (?:\(tmpfiles\) )?process (\d+))?$`)
+
+	allGoals = map[upstart.Goal]struct{}{upstart.StartGoal: {}, upstart.StopGoal: {}}
+
+	allStates = map[upstart.State]struct{}{
+		upstart.WaitingState:   {},
+		upstart.StartingState:  {},
+		upstart.SecurityState:  {},
+		upstart.TmpfilesState:  {},
+		upstart.PreStartState:  {},
+		upstart.SpawnedState:   {},
+		upstart.PostStartState: {},
+		upstart.RunningState:   {},
+		upstart.PreStopState:   {},
+		upstart.StoppingState:  {},
+		upstart.KilledState:    {},
+		upstart.PostStopState:  {},
 	}
 
-	// A set of all daemon states
-	allStates = map[DaemonState]struct{}{
-		waitingState:   {},
-		startingState:  {},
-		securityState:  {},
-		preStartState:  {},
-		spawnedState:   {},
-		postStartState: {},
-		runningState:   {},
-		preStopState:   {},
-		stoppingState:  {},
-		killedState:    {},
-		postStopState:  {},
-	}
+	// unknownGoal indicates that a task job doesn't exist.
+	unknownGoal upstart.Goal = "unknown"
 )
 
 // DaemonInfo represents the information for a daemon.
@@ -261,25 +224,28 @@ func (dc *DaemonController) Stop(ctx context.Context, info *DaemonInfo) error {
 }
 
 // Restart restarts a daemon and waits until the D-Bus interface is responsive if it has D-Bus interface.
+// Note that the job is reloaded if it is already running; this differs from the
+// "initctl restart" behavior as described in Section 10.1.2, "restart", in the Upstart Cookbook.
+// args is passed to the job as extra parameters, e.g. multiple-instance jobs can use it to specify an instance.
 func (dc *DaemonController) Restart(ctx context.Context, info *DaemonInfo) error {
-	if _, err := dc.r.Run(ctx, "restart", info.DaemonName); err != nil {
-		return errors.Wrapf(err, "failed to restart %s", info.Name)
+	if err := dc.Stop(ctx, info); err != nil {
+		return errors.Wrapf(err, "failed to stop %s in restart", info.Name)
 	}
-	if info.HasDBus {
-		return dc.waitForDBusService(ctx, info)
+	if err := dc.Start(ctx, info); err != nil {
+		return errors.Wrapf(err, "failed to start %s in restart", info.Name)
 	}
 	return nil
 }
 
 // Status returns the status of daemon.
-func (dc *DaemonController) Status(ctx context.Context, info *DaemonInfo) (goal DaemonGoal, state DaemonState, pid int, err error) {
+func (dc *DaemonController) Status(ctx context.Context, info *DaemonInfo) (goal upstart.Goal, state upstart.State, pid int, err error) {
 	out, err := dc.r.Run(ctx, "status", info.DaemonName)
 	if err != nil {
 		if info.Optional {
 			// Don't return error if this is an optional daemon.
-			return unknownGoal, waitingState, -1, nil
+			return unknownGoal, upstart.WaitingState, pid, nil
 		}
-		return unknownGoal, waitingState, -1, errors.Wrap(err, "failed to execute status command")
+		return unknownGoal, upstart.WaitingState, pid, errors.Wrap(err, "failed to execute status command")
 	}
 	return parseStatus(info.DaemonName, string(out))
 }
@@ -290,7 +256,7 @@ func (dc *DaemonController) TryStop(ctx context.Context, info *DaemonInfo) error
 	if err != nil {
 		return errors.Wrapf(err, "failed to get the status of %s", info.Name)
 	}
-	if goal == startGoal {
+	if goal == upstart.StartGoal {
 		if _, err := dc.r.Run(ctx, "stop", info.DaemonName); err != nil {
 			return errors.Wrapf(err, "failed to stop %s", info.Name)
 		}
@@ -304,7 +270,7 @@ func (dc *DaemonController) Ensure(ctx context.Context, info *DaemonInfo) error 
 	if err != nil {
 		return errors.Wrapf(err, "failed to get the status of %s", info.Name)
 	}
-	if goal == stopGoal {
+	if goal == upstart.StopGoal {
 		if _, err := dc.r.Run(ctx, "start", info.DaemonName); err != nil {
 			return errors.Wrapf(err, "failed to start %s", info.Name)
 		}
@@ -356,7 +322,7 @@ func (dc *DaemonController) RestartTPMDaemons(ctx context.Context) error {
 // parseStatus parses the output from "initctl status <job>", e.g. "ui start/running, process 28515".
 // The output may be multiple lines; see the example in Section 10.1.6.19.3,
 // "Single Job Instance Running with Multiple PIDs", in the Upstart Cookbook.
-func parseStatus(job, out string) (goal DaemonGoal, state DaemonState, pid int, err error) {
+func parseStatus(job, out string) (goal upstart.Goal, state upstart.State, pid int, err error) {
 	if !strings.HasPrefix(out, job+" ") {
 		return goal, state, pid, errors.Errorf("missing job prefix %q in %q", job, out)
 	}
@@ -365,12 +331,12 @@ func parseStatus(job, out string) (goal DaemonGoal, state DaemonState, pid int, 
 		return goal, state, pid, errors.Errorf("unexpected format in %q", out)
 	}
 
-	goal = DaemonGoal(m[1])
+	goal = upstart.Goal(m[1])
 	if _, ok := allGoals[goal]; !ok {
 		return goal, state, pid, errors.Errorf("invalid goal %q", m[1])
 	}
 
-	state = DaemonState(m[2])
+	state = upstart.State(m[2])
 	if _, ok := allStates[state]; !ok {
 		return goal, state, pid, errors.Errorf("invalid state %q", m[2])
 	}
