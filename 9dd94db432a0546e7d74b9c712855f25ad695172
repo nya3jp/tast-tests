@@ -70,6 +70,30 @@
       },
       "revId": "9dd94db432a0546e7d74b9c712855f25ad695172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449085f1_ae520a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-26T06:04:15Z",
+      "side": 1,
+      "message": "This block of code is inside a func(ctx context.Context) error {} and s is not available, right?",
+      "parentUuid": "4fe04368_2edc75c7",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 60
+      },
+      "revId": "9dd94db432a0546e7d74b9c712855f25ad695172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
