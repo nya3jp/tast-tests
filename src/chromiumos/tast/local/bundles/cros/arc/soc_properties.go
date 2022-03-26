@@ -84,5 +84,9 @@ func SocProperties(ctx context.Context, s *testing.State) {
 		dest := filepath.Join(s.OutDir(), "cpuinfo")
 		err := fsutil.CopyFile("/proc/cpuinfo", dest)
 		s.Logf("saved <test_output_dir>/cpuinfo (err=%v)", err)
+
+		dest = filepath.Join(s.OutDir(), "soc-compatible")
+		err = fsutil.CopyFile("/proc/device-tree/compatible", dest)
+		s.Logf("saved <test_output_dir>/soc-compatible (ARM only, err=%v)", err)
 	}
 }
