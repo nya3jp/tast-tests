@@ -91,8 +91,8 @@ func (e *EUICC) EnabledProfile(ctx context.Context) (*Profile, error) {
 	return nil, nil
 }
 
-// GetTestEUICC will return the test EUICC and its slot number if found.
-func GetTestEUICC(ctx context.Context) (*EUICC, int, error) {
+// GetEUICC will return a EUICC dbus object and its slot number. If findTestEuicc is set, a test eUICC will be returned, else a prod eUICC will be returned.
+func GetEUICC(ctx context.Context, findTestEuicc bool) (*EUICC, int, error) {
 	h, err := GetHermesManager(ctx)
 	if err != nil {
 		return nil, -1, errors.Wrap(err, "could not get Hermes Manager DBus object")
@@ -106,6 +106,12 @@ func GetTestEUICC(ctx context.Context) (*EUICC, int, error) {
 	if err != nil {
 		return nil, -1, errors.Wrap(err, "unable to get available euiccs")
 	}
+
+	euiccType := "prod"
+	if findTestEuicc {
+		euiccType = "test"
+	}
+
 	for _, euiccPath := range euiccPaths {
 		obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesEuiccInterface, euiccPath)
 		if err != nil {
@@ -115,17 +121,17 @@ func GetTestEUICC(ctx context.Context) (*EUICC, int, error) {
 		if response.Err != nil || len(response.Body) != 1 {
 			continue
 		}
-		if isTestEuicc, ok := response.Body[0].(bool); !ok || !isTestEuicc {
+		if isTestEuicc, ok := response.Body[0].(bool); !ok || isTestEuicc != findTestEuicc {
 			continue
 		}
 
-		testing.ContextLogf(ctx, "Find Test EUICC on path: %s", euiccPath)
+		testing.ContextLogf(ctx, "Found %s EUICC on path: %s", euiccType, euiccPath)
 		slot, err := strconv.Atoi(string(euiccPath)[len(string(euiccPath))-1:])
 		if err != nil {
-			return nil, -1, errors.Wrap(err, "couldn't get test euicc slot number")
+			return nil, -1, errors.Wrap(err, "couldn't get euicc slot number")
 		}
 		return &EUICC{obj}, slot, nil
 	}
 
-	return nil, -1, errors.Wrap(err, "no test euicc found")
+	return nil, -1, errors.Wrapf(err, "no %s euicc found", euiccType)
 }
