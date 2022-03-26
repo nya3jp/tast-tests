@@ -23,6 +23,7 @@ import (
 
 	"chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 var (
@@ -159,6 +160,14 @@ var TPM2SimulatorDaemon = &DaemonInfo{
 	HasDBus:    false,
 }
 
+// VMConciergeDaemon represents the DaemonsInfo for vm_concierge.
+var VMConciergeDaemon = &DaemonInfo{
+	Name:       "vm_concierge",
+	DaemonName: "vm_concierge",
+	HasDBus:    false,
+	Optional:   true,
+}
+
 // LowLevelTPMDaemons represents the low level TPM daemons.
 var LowLevelTPMDaemons = []*DaemonInfo{
 	TcsdDaemon,
@@ -217,6 +226,12 @@ func (dc *DaemonController) Start(ctx context.Context, info *DaemonInfo) error {
 
 // Stop stops a daemon.
 func (dc *DaemonController) Stop(ctx context.Context, info *DaemonInfo) error {
+	if info == UIDaemon {
+		// TODO(b/193806814): Remove this workaround once the bug is fixed.
+		if err := dc.stopVMConcierge(ctx); err != nil {
+			return errors.Wrap(err, "failed to stop vm_concierge for ui")
+		}
+	}
 	if _, err := dc.r.Run(ctx, "stop", info.DaemonName); err != nil {
 		return errors.Wrapf(err, "failed to stop %s", info.Name)
 	}
@@ -350,4 +365,48 @@ func parseStatus(job, out string) (goal upstart.Goal, state upstart.State, pid i
 	}
 
 	return goal, state, pid, nil
+}
+
+// stopVMConcierge stops vm_concierge if it exist and started.
+// TODO(b/193806814): Remove this workaround once the bug is fixed.
+func (dc *DaemonController) stopVMConcierge(ctx context.Context) error {
+	const (
+		timeout  = 10 * time.Second
+		interval = 1 * time.Second
+	)
+
+	info := VMConciergeDaemon
+	goal, _, _, err := dc.Status(ctx, info)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the status of %s", info.Name)
+	}
+	if goal == upstart.StartGoal {
+		if _, err := dc.r.Run(ctx, "stop", "--no-wait", info.DaemonName); err != nil {
+			return errors.Wrapf(err, "failed to stop %s", info.Name)
+		}
+	}
+
+	return testing.Poll(ctx, func(context.Context) error {
+		goal, state, pid, err := dc.Status(ctx, info)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get the status of %s", info.Name)
+		}
+
+		if goal == upstart.StopGoal && state == upstart.WaitingState {
+			return nil
+		}
+
+		if goal == upstart.StopGoal && state == upstart.KilledState {
+			if _, err := dc.r.Run(ctx, "kill", strconv.Itoa(pid)); err != nil {
+				return errors.Wrapf(err, "failed to kill %d", pid)
+			}
+		}
+
+		return errors.Errorf("haven't confirmed %s stopped", info.Name)
+	}, &testing.PollOptions{
+		Timeout:  timeout,
+		Interval: interval,
+	})
+
+	return nil
 }
