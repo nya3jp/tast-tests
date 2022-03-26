@@ -376,6 +376,30 @@
       },
       "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee5c1c7_e542c34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-26T06:00:38Z",
+      "side": 1,
+      "message": "Yes there is no stable way to find the scrollable node in gmail (e.g. the scrollable element only has \":3\" as id and highly possible to be changed).",
+      "parentUuid": "64c1ccce_e12a0b4e",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 3
+      },
+      "revId": "1211d0c0ef436f8bf3972d5d8ac43e1bef36d9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

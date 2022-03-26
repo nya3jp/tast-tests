@@ -730,6 +730,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfd9e0b_c2cba64c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-26T06:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "107eea78_076a8dec",
+      "range": {
+        "startLine": 311,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 94
+      },
+      "revId": "93cf63faa419b37e456efd2743291c87bf52a415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7aa9882_8d10e66b",
