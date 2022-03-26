@@ -45,8 +45,8 @@ func NewEUICC(ctx context.Context, euiccNum int) (*EUICC, error) {
 }
 
 // InstalledProfiles reads the eSIM, and returns the installed profiles in the eSIM.
-func (e *EUICC) InstalledProfiles(ctx context.Context) ([]Profile, error) {
-	if err := e.DBusObject.Call(ctx, "RequestInstalledProfiles").Err; err != nil {
+func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool) ([]Profile, error) {
+	if err := e.Call(ctx, "RefreshInstalledProfiles", shouldNotSwitchSlot).Err; err != nil {
 		return nil, errors.Wrap(err, "unable to request installed profiles")
 	}
 	props, err := dbusutil.NewDBusProperties(ctx, e.DBusObject)
@@ -70,7 +70,7 @@ func (e *EUICC) InstalledProfiles(ctx context.Context) ([]Profile, error) {
 
 // EnabledProfile reads the eSIM, and returns the enabled Profile of the eSIM if found.
 func (e *EUICC) EnabledProfile(ctx context.Context) (*Profile, error) {
-	profiles, err := e.InstalledProfiles(ctx)
+	profiles, err := e.InstalledProfiles(ctx, false)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get installed profiles")
 	}
