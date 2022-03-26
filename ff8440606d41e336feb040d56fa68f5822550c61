@@ -51,6 +51,41 @@
       "parentUuid": "f9fdd563_7985a00c",
       "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "087ede46_014ba231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-26T00:03:04Z",
+      "side": 1,
+      "message": "+Billy who\u0027s familiar with PersistenceBluetoothSansWifi",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80239f7a_4a093c1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-03-26T00:03:04Z",
+      "side": 1,
+      "message": "+1 to Kevin\u0027s point that it would be good to understand how/why PersistenceBluetoothSansWifi disables MAR, since it may reveal a real edge case where MAR gets disabled. If it\u0027s really an unexpected condition where MAR gets disabled, we want to fix the underlying condition rather than workaround it",
+      "parentUuid": "76a6cb9c_f46921db",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
