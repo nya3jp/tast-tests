@@ -271,7 +271,7 @@ func enableManagedProfileBeforeTest(ctx context.Context) (managedIccid string, e
 	}
 
 	testing.ContextLog(ctx, "Looking for installed profile")
-	profiles, err := euicc.InstalledProfiles(ctx)
+	profiles, err := euicc.InstalledProfiles(ctx, false)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get installed profiles")
 	}
