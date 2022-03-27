@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e718d5db_b69a2fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-27T23:41:47Z",
+      "side": 1,
+      "message": "Why do not add this in cws package?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "b0efddad572a04ccf7bdcfe463afa255c7f4ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c08b6d_02213f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-27T23:41:47Z",
+      "side": 1,
+      "message": "do not understand why create a new struct extensionTab. Is anything special from ChromeTab.",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 17
+      },
+      "revId": "b0efddad572a04ccf7bdcfe463afa255c7f4ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "357093fd_f2577c2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-27T23:41:47Z",
+      "side": 1,
+      "message": "This should not be part of the struct. I do not see the ui is customised on each tab.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "b0efddad572a04ccf7bdcfe463afa255c7f4ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
