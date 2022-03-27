@@ -22,8 +22,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test that installs an app and tests standard keyboard typing functionality. Test are performed in clamshell and touchview mode. This does not test the virtual, on-screen keyboard",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		Timeout:      10 * time.Minute,
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
