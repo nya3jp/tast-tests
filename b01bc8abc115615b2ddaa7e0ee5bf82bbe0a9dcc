@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8059f62_924d3026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-27T19:47:39Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b01bc8abc115615b2ddaa7e0ee5bf82bbe0a9dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02d320b_47d3c7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-27T19:47:39Z",
+      "side": 1,
+      "message": "nit: These helper functions (leftSnap, rightSnap, twoFinger, ensureElementGetsScrolled) could be defined outside of this .Run call which would make the inner test loop easier to follow",
+      "revId": "b01bc8abc115615b2ddaa7e0ee5bf82bbe0a9dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
