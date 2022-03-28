@@ -103,6 +103,24 @@
       "message": "We written in go/tast-writing, it is recommended to set up the test running environment by the tests that depend on the feature, rather than depending on the tear downs of other tests.\n\nActually, it is possible that this test may be timed out and this reboot may not be triggered.\nOr, for some reasons, the test may be crashed at some random reasons.\n\nBased on it, a few requests from me:\n- Could you explicitly comment this is for the short term work around?\n- Could you add TODO with the tracking issue to fix the root cause, and possibly remove this reboot (reboot can take time)?\n- Could you work on to find the root cause, and add proper \"set up\" for each test that can be affected by this stuff?",
       "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea80ca7a_0c9950ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-28T22:09:18Z",
+      "side": 1,
+      "message": "Would it be possible to reserve more time for this reboot subroutine in the defer (ctxutil.Shorten) if the no reboot failure case is an issue?",
+      "parentUuid": "5d967d80_71053e56",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
