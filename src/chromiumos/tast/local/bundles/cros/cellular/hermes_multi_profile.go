@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/hermesconst"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/testing"
 )
@@ -61,12 +60,16 @@ func HermesMultiProfile(ctx context.Context, s *testing.State) {
 		if err := profile.Call(ctx, hermesconst.ProfileMethodEnable).Err; err != nil {
 			s.Fatalf("Failed to enable %s: %s", profile.String(), err)
 		}
-		checkProfileState(ctx, s, &profile, hermesconst.ProfileStateEnabled)
+		if err := hermes.CheckProperty(ctx, profile.DBusObject, hermesconst.ProfilePropertyState, int32(hermesconst.ProfileStateEnabled)); err != nil {
+			s.Fatal("Failed to check profile state: ", err)
+		}
 		s.Logf("Disabling profile %s", profile.String())
 		if err := profile.Call(ctx, hermesconst.ProfileMethodDisable).Err; err != nil {
 			s.Fatalf("Failed to disable %s: %s", profile.String(), err)
 		}
-		checkProfileState(ctx, s, &profile, hermesconst.ProfileStateDisabled)
+		if err := hermes.CheckProperty(ctx, profile.DBusObject, hermesconst.ProfilePropertyState, hermesconst.ProfileStateDisabled); err != nil {
+			s.Fatal("Failed to check profile state: ", err)
+		}
 	}
 
 	s.Log("Enabling profiles back to back without disabling them")
@@ -86,21 +89,8 @@ func HermesMultiProfile(ctx context.Context, s *testing.State) {
 		if err := profile.Call(ctx, hermesconst.ProfileMethodEnable).Err; err != nil {
 			s.Fatalf("Failed to enable %s: %s", profile.String(), err)
 		}
-		checkProfileState(ctx, s, &profile, hermesconst.ProfileStateEnabled)
-	}
-}
-
-// checkProfileState checks if a profile is in the expected state
-func checkProfileState(ctx context.Context, s *testing.State, p *hermes.Profile, expected int32) {
-	props, err := dbusutil.NewDBusProperties(ctx, p.DBusObject)
-	if err != nil {
-		s.Fatal("Failed to read profile properties: ", err)
-	}
-	actual, err := props.GetInt32(hermesconst.ProfilePropertyState)
-	if err != nil {
-		s.Fatal("Failed to read profile state: ", err)
-	}
-	if actual != expected {
-		s.Fatalf("Unexpected profile state, got: %d, want: %d", actual, expected)
+		if err := hermes.CheckProperty(ctx, profile.DBusObject, hermesconst.ProfilePropertyState, int32(hermesconst.ProfileStateEnabled)); err != nil {
+			s.Fatal("Failed to check profile state: ", err)
+		}
 	}
 }

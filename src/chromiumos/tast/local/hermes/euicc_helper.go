@@ -37,7 +37,7 @@ func NewEUICC(ctx context.Context, euiccNum int) (*EUICC, error) {
 	if euiccNum >= len(euiccPaths) {
 		return nil, errors.Errorf("only %d eSIM's available, cannot find eSIM number %d", len(euiccPaths), euiccNum)
 	}
-	obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesEuiccInterface, euiccPaths[euiccNum])
+	obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesEuiccInterface, euiccPaths[euiccNum])
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get EUICC object")
 	}
@@ -59,7 +59,7 @@ func (e *EUICC) InstalledProfiles(ctx context.Context, shouldNotSwitchSlot bool)
 	}
 	profiles := make([]Profile, len(profilePaths))
 	for i, profilePath := range profilePaths {
-		obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesProfileInterface, profilePath)
+		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesProfileInterface, profilePath)
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to get dbus object for profile")
 		}
@@ -113,7 +113,7 @@ func GetEUICC(ctx context.Context, findTestEuicc bool) (*EUICC, int, error) {
 	}
 
 	for _, euiccPath := range euiccPaths {
-		obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesEuiccInterface, euiccPath)
+		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesEuiccInterface, euiccPath)
 		if err != nil {
 			return nil, -1, errors.Wrap(err, "unable to get EUICC object")
 		}
