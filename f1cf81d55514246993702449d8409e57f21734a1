@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa35ec00_104c691f",
+        "filename": "src/chromiumos/tast/local/profiler/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-28T05:46:45Z",
+      "side": 1,
+      "message": "I think this part should go to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3481903",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "f1cf81d55514246993702449d8409e57f21734a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
