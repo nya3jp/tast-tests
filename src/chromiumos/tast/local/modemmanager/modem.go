@@ -69,6 +69,39 @@ func (m *Modem) GetSimpleModem(ctx context.Context) (*Modem, error) {
 	return &Modem{ph}, nil
 }
 
+// EnableSar - enable/disable MM Sar
+func (m *Modem) EnableSar(ctx context.Context, enable bool) error {
+	err := m.Call(ctx, mmconst.ModemSarEnable, enable).Err
+	if err != nil {
+		return errors.Wrap(err, "failed to enable/disable Sar")
+	}
+	return nil
+}
+
+// GetSarInterface creates a PropertyHolder for the Sar object.
+func (m *Modem) GetSarInterface(ctx context.Context) (*Modem, error) {
+	modemPath := dbus.ObjectPath(m.String())
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSarInterface, modemPath)
+	if err != nil {
+		return nil, err
+	}
+	return &Modem{ph}, nil
+}
+
+// IsSarEnabled - checks if Sar is enabled
+func (m *Modem) IsSarEnabled(ctx context.Context) (bool, error) {
+	sarProps, err := m.GetProperties(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to read Sar properties")
+	}
+
+	sarState, err := sarProps.GetBool(mmconst.SarState)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to read SarState")
+	}
+	return sarState, nil
+}
+
 // GetSimProperties creates a PropertyHolder for the Sim object and returns the associated Properties.
 func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (*dbusutil.Properties, error) {
 	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimInterface, simPath)
