@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68371525_1a2e60a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-28T07:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb86c40_2e828273",
+      "range": {
+        "startLine": 11,
+        "startChar": 76,
+        "endLine": 11,
+        "endChar": 124
+      },
+      "revId": "fdca317d32627808faca978c42f0bd3d0ba4e6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d22a45c_58c88cd5",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "This is an upper limit. If underlying functionality is stable, pretest should complete in under 2 minutes. Retries are there to avoid failing the test for the reasons unrelated to the tested functionality. I reduced the timeout to 6 minutes and the number of retries to 3.\nI\u0027ll check with tast team. We are trading resources for a better signal/noise ration. It sounds like a reasonable deal to take.",
       "parentUuid": "8d22a45c_58c88cd5",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 108
+      },
+      "revId": "fdca317d32627808faca978c42f0bd3d0ba4e6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f122ec9d_c4ebe7b6",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-03-28T07:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f9cd98d_23fc3b3e",
       "range": {
         "startLine": 28,
         "startChar": 0,
