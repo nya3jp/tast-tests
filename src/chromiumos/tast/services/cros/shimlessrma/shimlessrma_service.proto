@@ -1,0 +1,27 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.shimlessrma;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/shimlessrma";
+
+// Service provide operations to ShimlessRMA on the DUT.
+service Service {
+  // New ShimlessRMA
+  rpc NewShimlessRMA (NewShimlessRMARequest) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc CloseShimlessRMA (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc TestWelcomeAndCancel (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message NewShimlessRMARequest {
+  string manifestKey = 1;
+}
