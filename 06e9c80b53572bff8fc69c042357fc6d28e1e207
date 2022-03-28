@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65693a1_3cd3c3c6",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-28T20:30:39Z",
+      "side": 1,
+      "message": "How about \"A comma seperated string of a combination of the keywords stat, record, sched, or statrecord. Example: --var\u003dprofiler.profilerMode\u003drecord,stat\"?",
+      "revId": "06e9c80b53572bff8fc69c042357fc6d28e1e207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
