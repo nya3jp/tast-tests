@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8fa9d1e1_af9bbcbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-28T15:02:38Z",
+      "side": 1,
+      "message": "The current logic of the test is that we send some message from PWA to Chrome extension and wait for reply.\n\nI didn\u0027t want to modify deployed test Telemetry Extension code, so I modified Tast test to mimic PWA behavior and comply with PWA\u003c--\u003eextension message format.\n\nI updated commit message. PTAL.",
+      "parentUuid": "7b5669c1_2d081f0a",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "7e831e0dcb1217d519e05ed63b9ce32689f81999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fd82795b_62ce373c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
