@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8049b5d2_c92635d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-03-28T01:19:16Z",
+      "side": 1,
+      "message": "We need a Lacros variant for this.",
+      "revId": "6f073d6acdec069ec556ce6850398ad6c9679014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ade9af_1b99a2c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 1
