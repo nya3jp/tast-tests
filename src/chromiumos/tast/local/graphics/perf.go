@@ -187,7 +187,7 @@ func collectMaliPerformanceCounters(ctx context.Context, interval time.Duration)
 	const samplePeriod = time.Second
 	numSamples := int(interval / samplePeriod)
 	for i := 0; i < numSamples; i++ {
-		maliStatsCmd := exec.Command("/usr/local/libexec/chrome-binary-tests/mali_stats", "-u", "10000")
+		maliStatsCmd := exec.Command("mali_stats", "-u", "10000")
 		var out bytes.Buffer
 		maliStatsCmd.Stdout = &out
 
