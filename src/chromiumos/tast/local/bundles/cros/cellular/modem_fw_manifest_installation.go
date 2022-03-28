@@ -23,7 +23,7 @@ func init() {
 		Func:         ModemFWManifestInstallation,
 		Desc:         "Verifies that all modem FWs compatible with a device can be installed",
 		Contacts:     []string{"andrewlassalle@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular", "cellular_sim_active", "cellular_weekly"},
+		Attr:         []string{"group:cellular", "cellular_modem_fw"},
 		Fixture:      "cellular",
 		SoftwareDeps: []string{"modemfwd"},
 		Timeout:      20 * time.Minute,
