@@ -319,7 +319,7 @@ func (a *AndroidNearbyDevice) Sync(ctx context.Context) error {
 
 // InitUI initializes a UI automator connection to the Android device. Callers should defer CloseUI to free the associated resources.
 func (a *AndroidNearbyDevice) InitUI(ctx context.Context) error {
-	d, err := ui.NewDevice(ctx, a.device)
+	d, err := ui.NewDeviceWithRetry(ctx, a.device)
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI automator")
 	}

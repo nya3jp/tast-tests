@@ -256,7 +256,7 @@ func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 		return "", err
 	}
 
-	uiDevice, err := ui.NewDevice(ctx, c.device)
+	uiDevice, err := ui.NewDeviceWithRetry(ctx, c.device)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to connect to the UI Automator server")
 	}
@@ -369,7 +369,7 @@ func (c *AndroidDevice) EnableChromeSync(ctx context.Context) error {
 	}
 
 	// Set up uiautomator for UI controls.
-	d, err := ui.NewDevice(ctx, c.device)
+	d, err := ui.NewDeviceWithRetry(ctx, c.device)
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI automator")
 	}
