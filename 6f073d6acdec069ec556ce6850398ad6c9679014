@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500c58ea_6ac557d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-03-28T01:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8049b5d2_c92635d7",
+      "revId": "6f073d6acdec069ec556ce6850398ad6c9679014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71ade9af_1b99a2c1",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-03-28T01:11:47Z",
       "side": 1,
       "message": "I think we don\u0027t need Lacros variant as long as test extension is in ash.",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "6f073d6acdec069ec556ce6850398ad6c9679014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "816650bc_5c63fb40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-03-28T01:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71ade9af_1b99a2c1",
       "range": {
         "startLine": 49,
         "startChar": 24,
