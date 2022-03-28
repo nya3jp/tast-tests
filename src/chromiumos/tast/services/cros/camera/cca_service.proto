@@ -1,0 +1,77 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camera;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/camera";
+
+// CCAService provides RPC methods to be used by CCA remote test.
+service CCAService {
+  // NewChrome logs into a Chrome session as a user. CloseChrome must be called later
+  // to clean up the associated resources.
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CloseChrome releases the resources obtained by NewChrome.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ReuseChrome passes an Option to New to make Chrome reuse the existing login session.
+  rpc ReuseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // OpenCamera launches the specific camera with photo or video mode.
+  // CloseCamera must be called later to clean up the associated resources.
+  rpc OpenCamera(CameraTestRequest) returns (CameraTestResponse) {}
+
+  // CloseCamera releases the resources obtained by OpenCamera.
+  rpc CloseCamera(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // TakePicture captures a photo using the camera.
+  rpc TakePicture(google.protobuf.Empty) returns (CameraTestResponse) {}
+
+  // RecordVideo records a video using the camera.
+  rpc RecordVideo(google.protobuf.Empty) returns (CameraTestResponse) {}
+
+  // CheckCameraExists checks if the camera instance exists.
+  rpc CheckCameraExists(google.protobuf.Empty) returns (CameraTestResponse) {}
+
+}
+
+enum CameraMode {
+  PHOTO = 0;
+  VIDEO = 1;
+}
+
+enum Facing {
+  FACING_UNSET = 0;
+  // DUT's environment facing camera.
+  FACING_BACK = 1;
+  // DUT's user facing camera.
+  FACING_FRONT = 2;
+}
+
+enum TestResult {
+  TEST_RESULT_UNSET = 0;
+  // Test is passed.
+  TEST_RESULT_PASSED = 1;
+  // Test is failed.
+  TEST_RESULT_FAILED = 2;
+}
+
+message CameraTestRequest {
+  // Mode of camera to be run.
+  CameraMode mode = 1;
+  // Facing of camera to be tested.
+  Facing facing = 2;
+  // Script contents which should be loaded when initializing CCA instance.
+  repeated bytes script_contents = 3;
+}
+
+message CameraTestResponse {
+  TestResult result = 1;
+  // Error message from running test.
+  string error = 2;
+}
