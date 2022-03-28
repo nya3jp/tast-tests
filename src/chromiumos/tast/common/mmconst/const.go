@@ -96,6 +96,13 @@ const (
 	ModemDisconnect = "Disconnect"
 )
 
+// Modem Sar DBus methods
+const (
+	ModemSAREnable = "Enable"
+	SARState       = "State"
+	SARPowerLevel  = "PowerLevel"
+)
+
 // Default SIM pin
 const (
 	DefaultSimPin = "1234"
