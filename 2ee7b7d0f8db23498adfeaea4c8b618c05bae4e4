@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3121e7_7ed6c6c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-28T18:03:17Z",
+      "side": 1,
+      "message": "Then, please do a CQ+1 and see if it can go through CQs without issue.",
+      "parentUuid": "d0624524_47ab4192",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f865d332_1dd210cd",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "No, we don\u0027t have a Google contact for this test.",
       "parentUuid": "f865d332_1dd210cd",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ee340c_c1f6022a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-28T18:03:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a7f240ad_acea5076",
       "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "Even when the adapter is powered on, this SetPowered() is trying to power it on again. To avoid this, we are doing the check if the adapter is already powered or not.",
       "parentUuid": "5dce1302_6f929c25",
+      "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb26e453_e9722951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_playback_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-28T18:03:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bd1862f_998ce35a",
       "revId": "2ee7b7d0f8db23498adfeaea4c8b618c05bae4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
