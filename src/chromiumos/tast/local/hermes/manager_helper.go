@@ -7,6 +7,7 @@ package hermes
 import (
 	"context"
 
+	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 )
@@ -18,7 +19,7 @@ type Manager struct {
 
 // GetHermesManager returns a Hermes manager object that can be used to list available eSIMs.
 func GetHermesManager(ctx context.Context) (*Manager, error) {
-	obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesManagerInterface, DBusHermesManagerPath)
+	obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesManagerInterface, hermesconst.DBusHermesManagerPath)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to connect to Hermes")
 	}

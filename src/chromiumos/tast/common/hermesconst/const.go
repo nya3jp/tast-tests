@@ -8,9 +8,19 @@
 // local and remote tests.
 package hermesconst
 
-// Path to gsma test certs used to communicate with stork
+// Choose test type
 const (
-	GsmaTestCertPath = "/usr/share/hermes-ca-certificates/test/gsma-ci.pem"
+	HermesOnly  = "hermes_only"
+	HermesAndMM = "hermes_and_mm"
+)
+
+// Hermes D-Bus constants.
+const (
+	DBusHermesManagerPath      = "/org/chromium/Hermes/Manager"
+	DBusHermesService          = "org.chromium.Hermes"
+	DBusHermesManagerInterface = "org.chromium.Hermes.Manager"
+	DBusHermesEuiccInterface   = "org.chromium.Hermes.Euicc"
+	DBusHermesProfileInterface = "org.chromium.Hermes.Profile"
 )
 
 // Hermes.Euicc properties
@@ -20,7 +30,9 @@ const (
 
 // Hermes.Euicc methods
 const (
+	EuiccMethodRefreshInstalledProfiles         = "RefreshInstalledProfiles"
 	EuiccMethodInstallProfileFromActivationCode = "InstallProfileFromActivationCode"
+	EuiccMethodUninstallProfile                 = "UninstallProfile"
 	EuiccMethodResetMemory                      = "ResetMemory"
 )
 
@@ -28,6 +40,7 @@ const (
 const (
 	ProfileMethodEnable  = "Enable"
 	ProfileMethodDisable = "Disable"
+	ProfileMethodRename  = "Rename"
 )
 
 // Hermes.Profile properties
