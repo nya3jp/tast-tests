@@ -67,7 +67,6 @@ func (di *devInfo) isKeyboard() bool {
 	// the Mute Key.
 	// https://chromeos.google.com/partner/dlm/docs/hardware-specs/keyboardspec.html
 
-	fmt.Println(di.hasBit(evGroup, uint16(EV_KEY)))
 	return di.path != "" && ((di.hasBit(evGroup, uint16(EV_KEY)) &&
 		di.hasBit(keyGroup, uint16(KEY_ESC)) && di.hasBit(keyGroup, uint16(KEY_BACK)) &&
 		di.hasBit(keyGroup, uint16(KEY_VOLUMEUP)) && di.hasBit(keyGroup, uint16(KEY_MUTE))) ||
