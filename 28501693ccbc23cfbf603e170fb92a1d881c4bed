@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf55a5e_d5b1e988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-28T18:31:06Z",
+      "side": 1,
+      "message": "I think it will be better to run those modified tests manually once. Thanks.",
+      "revId": "28501693ccbc23cfbf603e170fb92a1d881c4bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c021756d_fe820eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15008,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-28T18:31:06Z",
+      "side": 1,
+      "message": "Do you have a buganizer to track whether it can be removed? If so, please add a \"TODO\" with build bug number. Thanks.",
+      "revId": "28501693ccbc23cfbf603e170fb92a1d881c4bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
