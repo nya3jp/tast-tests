@@ -46,6 +46,30 @@
       },
       "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3847df1_d91e01ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-28T17:51:55Z",
+      "side": 1,
+      "message": "CTS will have to update its test soon since CLOSE_SYSTEM_DIALOGS will crash or do-nothing or S.\n\nMy suggestion, assuming that there is no an alternative way to do it now, is to file a bug saying that Tast Test Global Action Menu should be updated on Android S...\n\nand now just add a `// TODO(b/xxx): Replace CLOSE_SYSTEM_DIALOGS ...`",
+      "parentUuid": "edb3aa21_590726a8",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
