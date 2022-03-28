@@ -16,6 +16,23 @@
       "message": "tast-wise: +2 \n\nplease add a member of your team as a reviewer as well.\n\nAnd don\u0027t add Tast reviewers by name directly. Use tast-owners@ instead\ngo/tast-reviews\n",
       "revId": "5608a7616d4c3bed8bf3308e98d817f0bb52a800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e82e9b_e1a305cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-03-28T16:18:11Z",
+      "side": 1,
+      "message": "Chumping with approval from sheriff. CQ failing due to http://b/226937341 and http://b/226936034",
+      "revId": "5608a7616d4c3bed8bf3308e98d817f0bb52a800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
