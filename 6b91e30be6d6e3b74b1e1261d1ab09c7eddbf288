@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad93f0f0_52ec656d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-28T17:10:59Z",
+      "side": 1,
+      "message": "is there another way to close the dialog?\n\nIf not, please file a bug, and add a `// TODO(b/sss): replace ACTION_CLOSE_SYSTEM_DIALOGS with alternative`\n\n\nPlease see: https://developer.android.com/reference/android/content/Intent#ACTION_CLOSE_SYSTEM_DIALOGS",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
