@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707c99ea_a9811fc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-28T18:43:55Z",
+      "side": 1,
+      "message": "Thanks for this cleanup, Hyung. I rebased my work and indeed it became much easier and clean now to use the SetUpWithNewChrome semantics.\n\nOne issue I\u0027ve noticed though is that I can\u0027t use Rootfs and LacrosPrimary configuration now without explicitly passing \"var\u003dlacrosDeployedBinary\u003d/usr/local/lacros-chrome\". It hangs in lacros.LaunchFromShelf -\u003e ash.LaunchAppFromShelf. Can you check if you\u0027re seeing this problem as well?",
+      "revId": "19e9e8fde2d28b97facb13dd12a4b827864ce5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
