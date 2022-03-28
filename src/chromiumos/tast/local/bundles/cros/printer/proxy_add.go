@@ -25,6 +25,7 @@ func init() {
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
+			"informational",
 		},
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "plugin_vm"},
 		Pre:          chrome.LoggedIn(),
