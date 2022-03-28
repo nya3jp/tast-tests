@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58025b6d_5faa16c5",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-03-28T17:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4a53f1_20af3883",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42601a59_51c12284",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-28T05:55:37Z",
       "side": 1,
       "message": "nit: Add period.",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2cfca1_d86b4dba",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-03-28T17:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42601a59_51c12284",
       "range": {
         "startLine": 132,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f1c6dc_2cb027c3",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-03-28T17:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "743cf545_b3341c2d",
+      "range": {
+        "startLine": 140,
+        "startChar": 48,
+        "endLine": 140,
+        "endChar": 58
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdff3060_4702131a",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-28T05:55:37Z",
       "side": 1,
       "message": "nit: one space",
+      "range": {
+        "startLine": 177,
+        "startChar": 46,
+        "endLine": 177,
+        "endChar": 48
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2bc147_971cd3c2",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-03-28T17:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdff3060_4702131a",
       "range": {
         "startLine": 177,
         "startChar": 46,
