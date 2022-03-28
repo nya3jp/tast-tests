@@ -46,7 +46,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      4 * time.Minute,
+		Timeout:      45 * time.Minute,
 		Vars: []string{
 			"mute",
 		},
@@ -521,7 +521,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, time.Minute); err != nil {
+	}, 30*time.Minute); err != nil {
 		s.Fatal("Failed: ", err)
 	}
 
