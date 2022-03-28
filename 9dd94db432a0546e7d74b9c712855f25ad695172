@@ -94,6 +94,30 @@
       },
       "revId": "9dd94db432a0546e7d74b9c712855f25ad695172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709f1c65_a7b0932d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-28T15:51:31Z",
+      "side": 1,
+      "message": "s is totally available. Like this:\nhttps://go.dev/play/p/eD8s6uTAgFG",
+      "parentUuid": "449085f1_ae520a3c",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 60
+      },
+      "revId": "9dd94db432a0546e7d74b9c712855f25ad695172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
