@@ -50,6 +50,24 @@
       "message": "nit/style: could you keep one line for each entry?",
       "revId": "b33d500d738d98eac72c19c63d05466865f2912b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af0cd4b_9f2772f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-03-28T10:14:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a49e9fc3_bffbfac7",
+      "revId": "b33d500d738d98eac72c19c63d05466865f2912b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
