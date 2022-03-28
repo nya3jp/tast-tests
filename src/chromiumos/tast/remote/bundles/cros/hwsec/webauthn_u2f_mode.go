@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebauthnU2fMode,
-		Desc: "Checks that WebAuthn under u2f mode succeeds in different configurations",
+		Func:         WebauthnU2fMode,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		Desc:         "Checks that WebAuthn under u2f mode succeeds in different configurations",
 		Contacts: []string{
 			"hcyang@google.com",
 			"cros-hwsec@chromium.org",
@@ -192,7 +193,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			authCallback:      pinAuthCallback,
 		},
 	} {
-		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+		result := s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			if _, err := cr.StartWebauthn(ctx, &webauthnpb.StartWebauthnRequest{
 				UserVerification:  tc.userVerification,
 				AuthenticatorType: tc.authenticatorType,
@@ -221,6 +222,11 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to complete GetAssertion: ", err)
 			}
 		})
+		// The failed state of the website dialog / u2fd causes the results in upcoming subtests
+		// not meaningful. The chrome screenshot also becomes not useful.
+		if !result {
+			break
+		}
 	}
 
 }
