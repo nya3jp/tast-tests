@@ -25,7 +25,10 @@ type Event struct {
 func (r *Reporter) EventlogList(ctx context.Context) ([]Event, error) {
 	output, err := r.CommandOutputLines(ctx, "elogtool", "list")
 	if err != nil {
-		return []Event{}, err
+		output, err = r.CommandOutputLines(ctx, "mosys", "eventlog", "list")
+		if err != nil {
+			return []Event{}, err
+		}
 	}
 	const timeFmt = "2006-01-02 15:04:05"
 	var events []Event
