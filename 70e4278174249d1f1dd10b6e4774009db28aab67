@@ -22,6 +22,30 @@
       },
       "revId": "70e4278174249d1f1dd10b6e4774009db28aab67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62a5ba3_647ef0a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/inline_reply.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2022-03-28T21:18:07Z",
+      "side": 1,
+      "message": "Good idea. Filed https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1311030",
+      "parentUuid": "0ee7d9e9_5d5ad6af",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "70e4278174249d1f1dd10b6e4774009db28aab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
