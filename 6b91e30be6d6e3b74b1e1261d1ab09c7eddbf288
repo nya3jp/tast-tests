@@ -22,6 +22,30 @@
       },
       "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb3aa21_590726a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-03-28T17:45:52Z",
+      "side": 1,
+      "message": "The reason I used this intent was to follow how CTS test work for global actions\n\nhttp://cs/android/cts/tests/accessibilityservice/src/android/accessibilityservice/cts/utils/ActivityLaunchUtils.java;l\u003d148;rcl\u003d1932b2c8c613069abfb9d8944356ebfd3694ccbd\n\nOn cleanup, CTS will broadcast this intent to close any opened dialogs.\n\nWhat do you think?",
+      "parentUuid": "ad93f0f0_52ec656d",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
