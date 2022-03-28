@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fb18dd_5b41156a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-28T14:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "891bc56d_255f980f",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "e230f6363ba48de6122353baf600a594a222daab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ef8aba_6e76d334",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-03-28T05:24:51Z",
       "side": 1,
       "message": "find",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "e230f6363ba48de6122353baf600a594a222daab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b218b5ff_5d38e8b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-28T14:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ef8aba_6e76d334",
       "range": {
         "startLine": 49,
         "startChar": 27,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1925cc_44568673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-28T14:15:51Z",
+      "side": 1,
+      "message": "Done. Thanks for sharing, I didn\u0027t know this. It actually helped to solve an issue with getting the correct UI tree dumps in something else I was working on. Thanks!",
+      "parentUuid": "dc1448c2_fec59713",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 8
+      },
+      "revId": "e230f6363ba48de6122353baf600a594a222daab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ba1b943_7e9e88e9",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d9861a_0d8e2b97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-28T14:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba1b943_7e9e88e9",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 124,
+        "endChar": 11
+      },
+      "revId": "e230f6363ba48de6122353baf600a594a222daab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc5b1062_367d2f24",
@@ -157,6 +253,30 @@
       "writtenOn": "2022-03-28T05:24:51Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 148,
+        "startChar": 6,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "e230f6363ba48de6122353baf600a594a222daab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f62035_b1b50700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-28T14:15:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc5b1062_367d2f24",
       "range": {
         "startLine": 148,
         "startChar": 6,
