@@ -33,6 +33,23 @@
       "message": "Is there anything to check about the extension\u0027s status in Ash after migration?",
       "revId": "d505705d29b438819ad5e97b572a636f7f5c7bdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "455f32ca_b4056afd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-03-28T10:25:52Z",
+      "side": 1,
+      "message": "LGTM from profile migration point of view.",
+      "revId": "d505705d29b438819ad5e97b572a636f7f5c7bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
