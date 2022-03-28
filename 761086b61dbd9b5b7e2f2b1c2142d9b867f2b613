@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d13ff52_e04f8a8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-03-28T20:01:00Z",
+      "side": 1,
+      "message": "nit: modify\n\nFix indicates broken.",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "761086b61dbd9b5b7e2f2b1c2142d9b867f2b613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1bdac1_50f6ac7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-03-28T20:01:00Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "761086b61dbd9b5b7e2f2b1c2142d9b867f2b613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
