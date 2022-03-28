@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ae1b05d_931ff03b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-28T18:45:34Z",
+      "side": 1,
+      "message": "I think the syntax should be\n\nTEST\u003d./fast_build.sh -T\nTEST\u003dtast run ${dut-volteer} graphics.OpenclCts.*\n\nPlease fix the commit message.\n\nThen, have a domain expert to review and give you a CR+2.\n\nThanks.\n",
+      "revId": "f6a7497d2bb431d911cd644d26a4aec685a425ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
