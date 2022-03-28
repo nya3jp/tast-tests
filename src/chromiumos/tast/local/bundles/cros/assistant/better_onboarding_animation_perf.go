@@ -79,11 +79,17 @@ func BetterOnboardingAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	const IsTabletMode = false
+	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, IsTabletMode)
 	if err != nil {
-		s.Fatal("Failed to enable tablet mode: ", err)
+		s.Fatal("Failed to put into Clamshell mode: ", err)
 	}
 	defer cleanupTabletMode(ctx)
+
+	// If a DUT switches from Tablet mode to Clamshell mode, it can take a while until launcher gets settled down.
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+		s.Fatal("Failed to wait the launcher state Closed: ", err)
+	}
 
 	pv := perf.NewValues()
 
