@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf19082_3075c1ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-28T09:28:30Z",
+      "side": 1,
+      "message": "drive-by (as I was assigned once).",
+      "revId": "4f497cb96e91dfa1a3ab7e6e938c99a60226b4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d2d12a_4ef9917e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-28T09:28:30Z",
+      "side": 1,
+      "message": "drive-by: could you remove this? This consumes lab infra resources unnecessarily.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "4f497cb96e91dfa1a3ab7e6e938c99a60226b4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
