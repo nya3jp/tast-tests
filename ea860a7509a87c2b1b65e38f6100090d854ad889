@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4a53f1_20af3883",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-28T05:55:37Z",
+      "side": 1,
+      "message": "nit: Combine",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42601a59_51c12284",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-28T05:55:37Z",
+      "side": 1,
+      "message": "nit: Add period.",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "743cf545_b3341c2d",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-28T05:55:37Z",
+      "side": 1,
+      "message": "nit: ContextLog",
+      "range": {
+        "startLine": 140,
+        "startChar": 48,
+        "endLine": 140,
+        "endChar": 58
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdff3060_4702131a",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-28T05:55:37Z",
+      "side": 1,
+      "message": "nit: one space",
+      "range": {
+        "startLine": 177,
+        "startChar": 46,
+        "endLine": 177,
+        "endChar": 48
+      },
+      "revId": "ea860a7509a87c2b1b65e38f6100090d854ad889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
