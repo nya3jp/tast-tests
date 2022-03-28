@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d68772_c0a22b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-28T22:15:37Z",
+      "side": 1,
+      "message": "Curious, is there a reason why this parameterized test needs to be added separately for the deployed lacros binary? I think it\u0027s the same as `tast run -var\u003dlacrosDeployedBinary\u003d\u003cpath\u003e lacros.LoginPerf.primary` since the deployed binary specified with the var will take precedence over the one set by DefaultLacrosConfig.\n\nIIUC the Chromium CI is supposed to provision the lacros build and pass the var in order to run all available lacros Tast tests against the specified build, while the ChromeOS CQ/CI run the same tests against the rootfs-lacros in the OS image without having to pass the var.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "e6e0f14eb9580d942b53c526b725e5869f95eb38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
