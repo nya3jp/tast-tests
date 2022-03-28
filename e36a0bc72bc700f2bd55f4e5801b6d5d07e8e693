@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1510d0b_c511fb07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T18:21:26Z",
+      "side": 1,
+      "message": "Mostly looking good. Thanks!",
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa2c2c7_e36b14b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T18:21:26Z",
+      "side": 1,
+      "message": "nit: Style in Go is to use the same capitalization throughout an acronym, so this would be `ModemmanagerSARInterfaceVerification` and we should also capitalize SAR below where it appears in a name (but not first).\n\nSee go/go-style/decisions#initialisms",
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afdc4f58_18359b20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T18:21:26Z",
+      "side": 1,
+      "message": "nit: SAR",
+      "range": {
+        "startLine": 21,
+        "startChar": 40,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26012496_55700b27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T18:21:26Z",
+      "side": 1,
+      "message": "nit: enable",
+      "range": {
+        "startLine": 21,
+        "startChar": 54,
+        "endLine": 21,
+        "endChar": 61
+      },
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48edfb3f_54f0d596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T18:21:26Z",
+      "side": 1,
+      "message": "i.e. `mmSAREnabled`",
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
