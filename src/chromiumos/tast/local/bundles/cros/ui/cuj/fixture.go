@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -114,6 +115,23 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars:            []string{"ui.cujAccountPool"},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "enrolledLoggedInToCUJUser",
+		Desc: "Logged in with gaia user on an enrolled device",
+		Contacts: []string{
+			"alston.huang@cienet.com",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl:            &loggedInToCUJUserFixture{webUITabStrip: true},
+		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.Enrolled,
+		Vars: []string{
+			"ui.cujAccountPool",
+		},
 	})
 }
 
