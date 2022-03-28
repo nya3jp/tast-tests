@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -140,19 +141,23 @@ func OpenExpandedView(tconn *chrome.TestConn) uiauto.Action {
 			return errors.Wrap(err, "failed to switch to fullscreen")
 		}
 
-		// If bubble launcher exists (in clamshell mode with productivity launcher enabled), wait for its location to stabilize.
-		// Otherwise, wait for the launcher to transition to fullscreen state.
-		bubbleLauncher := nodewith.ClassName("AppListBubbleView")
-		if err := ui.WithTimeout(2 * time.Second).WaitUntilExists(bubbleLauncher)(ctx); err == nil {
-			if err := ui.WaitForLocation(bubbleLauncher)(ctx); err != nil {
-				return errors.Wrap(err, "failed waiting for bubble launcher")
-			}
-			return nil
-		}
-
 		if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
+			// WaitForLauncherState is expected to fail for bubble launcher - use uiauto API to wait for
+			// the bubble launcher location to stabilize.
+			if strings.Contains(err.Error(), "Not supported for bubble launcher") {
+				bubbleLauncher := nodewith.ClassName("AppListBubbleView")
+				if err := ui.WaitUntilExists(bubbleLauncher)(ctx); err != nil {
+					return errors.Wrap(err, "failed waiting for bubble launcher")
+				}
+				if err := ui.WaitForLocation(bubbleLauncher)(ctx); err != nil {
+					return errors.Wrap(err, "failed waiting for bubble launcher location to stabilize")
+				}
+				return nil
+			}
+
 			return errors.Wrap(err, "failed to switch the state to 'FullscreenAllApps'")
 		}
+
 		return nil
 	}
 }
@@ -358,7 +363,7 @@ func IndexOfFirstVisibleItem(ctx context.Context, tconn *chrome.TestConn, minInd
 		item := nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex)
 		onPage, err := IsItemOnCurrentPage(ctx, tconn, item)
 		if err != nil {
-			return -1, errors.Wrapf(err, "failed to query whether item is on page %d: %v", itemIndex, err)
+			return -1, errors.Wrapf(err, "failed to query whether item is on page %d", itemIndex)
 		}
 
 		if onPage {
