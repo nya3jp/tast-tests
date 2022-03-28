@@ -173,6 +173,16 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Em
 
 	ui := uiauto.New(tconn)
 
+	popupMessageNode := nodewith.ClassName("MessagePopupView")
+
+	if !c.cfg.hasDialog {
+		// If we will check the popup alert dialog later, wait for existing popup dialog
+		// to disappear first.
+		if err := ui.WaitUntilGone(popupMessageNode)(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for power button press prompt gone")
+		}
+	}
+
 	// If authenticator type is "Platform", there's only platform option so we don't have to manually click "This device".
 	if c.cfg.authenticatorType != hwsec.AuthenticatorType_PLATFORM {
 		// Choose platform authenticator.
@@ -193,8 +203,7 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *empty.Em
 		}
 	} else {
 		// Wait for popup alert dialog prompting for power button press.
-		dialog := nodewith.ClassName("MessagePopupView")
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(popupMessageNode)(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to wait for power button press prompt")
 		}
 	}
@@ -218,6 +227,16 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empt
 
 	ui := uiauto.New(tconn)
 
+	popupMessageNode := nodewith.ClassName("MessagePopupView")
+
+	if !c.cfg.hasDialog {
+		// If we will check the popup alert dialog later, wait for existing popup dialog
+		// to disappear first.
+		if err := ui.WaitUntilGone(popupMessageNode)(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for power button press prompt gone")
+		}
+	}
+
 	// Press "Login" button.
 	err = c.conn.Eval(ctx, `document.getElementById('login-button').click()`, nil)
 	if err != nil {
@@ -232,8 +251,7 @@ func (c *WebauthnService) StartGetAssertion(ctx context.Context, req *empty.Empt
 		}
 	} else {
 		// Wait for popup alert dialog prompting for power button press.
-		dialog := nodewith.ClassName("MessagePopupView")
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(popupMessageNode)(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to wait for power button press prompt")
 		}
 	}
