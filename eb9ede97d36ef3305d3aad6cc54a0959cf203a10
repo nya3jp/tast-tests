@@ -16,6 +16,40 @@
       "message": "Hi reviewers, please help me review this change, thanks.",
       "revId": "eb9ede97d36ef3305d3aad6cc54a0959cf203a10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c7febc_7e823eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-28T09:25:38Z",
+      "side": 1,
+      "message": "Tast LGTM with comment.",
+      "revId": "eb9ede97d36ef3305d3aad6cc54a0959cf203a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac36a591_fbae4d41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-28T09:25:38Z",
+      "side": 1,
+      "message": "style: could you keep one line for each field?",
+      "revId": "eb9ede97d36ef3305d3aad6cc54a0959cf203a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
