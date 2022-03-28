@@ -20,7 +20,9 @@ const (
 
 // Hermes.Euicc methods
 const (
+	EuiccMethodRefreshInstalledProfiles         = "RefreshInstalledProfiles"
 	EuiccMethodInstallProfileFromActivationCode = "InstallProfileFromActivationCode"
+	EuiccMethodUninstallProfile                 = "UninstallProfile"
 	EuiccMethodResetMemory                      = "ResetMemory"
 )
 
@@ -28,6 +30,7 @@ const (
 const (
 	ProfileMethodEnable  = "Enable"
 	ProfileMethodDisable = "Disable"
+	ProfileMethodRename  = "Rename"
 )
 
 // Hermes.Profile properties
