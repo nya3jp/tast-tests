@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb27c64c_b5f4ba4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-03-28T18:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fa2c2c7_e36b14b5",
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afdc4f58_18359b20",
@@ -81,6 +99,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00ae7fa_9fb5530b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-03-28T18:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26012496_55700b27",
+      "range": {
+        "startLine": 21,
+        "startChar": 54,
+        "endLine": 21,
+        "endChar": 61
+      },
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f091da_8dd9693e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-03-28T18:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afdc4f58_18359b20",
+      "range": {
+        "startLine": 21,
+        "startChar": 40,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48edfb3f_54f0d596",
@@ -94,6 +160,24 @@
       "writtenOn": "2022-03-28T18:21:26Z",
       "side": 1,
       "message": "i.e. `mmSAREnabled`",
+      "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad1d8dd_21773e4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_sar_interface_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-03-28T18:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48edfb3f_54f0d596",
       "revId": "e36a0bc72bc700f2bd55f4e5801b6d5d07e8e693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
