@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebauthnU2fMode,
-		Desc: "Checks that WebAuthn under u2f mode succeeds in different configurations",
+		Func:         WebauthnU2fMode,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		Desc:         "Checks that WebAuthn under u2f mode succeeds in different configurations",
 		Contacts: []string{
 			"hcyang@google.com",
 			"cros-hwsec@chromium.org",
@@ -144,48 +145,42 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			authCallback:      powerButtonAuthCallback,
 		},
 		{
-			name: "discouraged_platform",
-
+			name:              "discouraged_platform",
 			userVerification:  webauthnpb.UserVerification_DISCOURAGED,
 			authenticatorType: webauthnpb.AuthenticatorType_PLATFORM,
 			hasDialog:         false,
 			authCallback:      powerButtonAuthCallback,
 		},
 		{
-			name: "preferred_unspecified",
-
+			name:              "preferred_unspecified",
 			userVerification:  webauthnpb.UserVerification_PREFERRED,
 			authenticatorType: webauthnpb.AuthenticatorType_UNSPECIFIED,
 			hasDialog:         true,
 			authCallback:      pinAuthCallback,
 		},
 		{
-			name: "preferred_cross_plaform",
-
+			name:              "preferred_cross_plaform",
 			userVerification:  webauthnpb.UserVerification_PREFERRED,
 			authenticatorType: webauthnpb.AuthenticatorType_CROSS_PLATFORM,
 			hasDialog:         false,
 			authCallback:      powerButtonAuthCallback,
 		},
 		{
-			name: "preferred_platform",
-
+			name:              "preferred_platform",
 			userVerification:  webauthnpb.UserVerification_PREFERRED,
 			authenticatorType: webauthnpb.AuthenticatorType_PLATFORM,
 			hasDialog:         true,
 			authCallback:      pinAuthCallback,
 		},
 		{
-			name: "required_unspecified",
-
+			name:              "required_unspecified",
 			userVerification:  webauthnpb.UserVerification_REQUIRED,
 			authenticatorType: webauthnpb.AuthenticatorType_UNSPECIFIED,
 			hasDialog:         true,
 			authCallback:      pinAuthCallback,
 		},
 		{
-			name: "required_platform",
-
+			name:              "required_platform",
 			userVerification:  webauthnpb.UserVerification_REQUIRED,
 			authenticatorType: webauthnpb.AuthenticatorType_PLATFORM,
 			hasDialog:         true,
