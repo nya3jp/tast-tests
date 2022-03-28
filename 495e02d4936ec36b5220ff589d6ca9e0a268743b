@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f4f93b_264729fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T20:46:40Z",
+      "side": 1,
+      "message": "nice!",
+      "revId": "495e02d4936ec36b5220ff589d6ca9e0a268743b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a342024_e8bba72b",
+        "filename": "src/chromiumos/tast/local/hermes/hermes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T20:46:40Z",
+      "side": 1,
+      "message": "Should this go in hermesconst? Or is that just for D-Bus constants?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "495e02d4936ec36b5220ff589d6ca9e0a268743b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858a4dd0_9cdc1d5c",
+        "filename": "src/chromiumos/tast/local/hermes/hermes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-28T20:46:40Z",
+      "side": 1,
+      "message": "might want to say \"unexpected type for %s\" to differentiate this error from the next one",
+      "revId": "495e02d4936ec36b5220ff589d6ca9e0a268743b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
