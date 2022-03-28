@@ -120,6 +120,9 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 
 	// Define glide typing user action including validating the result.
 	glideTypingUserAction := func(testScenario string, inputField testserver.InputField, isGlideTypingEnabled bool) uiauto.Action {
+		// Wait for the glide typing engine to be ready.
+		// The wait is required for the betty boards.
+		testing.Sleep(ctx, 2*time.Second)
 		// Define result validation function.
 		// Should submit the last key if glide typing disabled.
 		validateResultFunc := its.ValidateResult(inputField, keySeq[len(keySeq)-1])
@@ -128,7 +131,7 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 			// Select candidate from suggestion bar is also acceptable.
 			validateResultFunc = func(ctx context.Context) error {
 				if err := util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), glideTypingWord.ExpectedText)(ctx); err != nil {
-					s.Log("Input field text does not match glide typing gesture")
+					s.Log("Input field text does not match glide typing gesture: ", err)
 					s.Log("Check if it is in suggestion bar")
 					return uiauto.Combine("selecting candidate from suggestion bar",
 						vkbCtx.SelectFromSuggestionIgnoringCase(glideTypingWord.ExpectedText),
