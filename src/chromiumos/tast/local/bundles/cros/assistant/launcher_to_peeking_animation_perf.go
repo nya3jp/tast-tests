@@ -75,11 +75,17 @@ func LauncherToPeekingAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	const IsTabletMode = false
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, IsTabletMode)
 	if err != nil {
-		s.Fatal("Failed to put into tablet mode: ", err)
+		s.Fatal("Failed to put into Clamshell mode: ", err)
 	}
 	defer cleanup(ctx)
+
+	// If a DUT switches from Tablet mode to Clamshell mode, it takes a while until launcher gets settled down.
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+		s.Fatal("Failed to wait the launcher state Closed: ", err)
+	}
 
 	pv := perf.NewValues()
 	for nWindows := 0; nWindows < 3; nWindows++ {
