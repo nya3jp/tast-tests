@@ -6,6 +6,7 @@ package appsplatform
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/playbilling"
 	"chromiumos/tast/testing"
@@ -31,6 +32,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
+		Timeout: 4 * time.Minute,
 	})
 }
 

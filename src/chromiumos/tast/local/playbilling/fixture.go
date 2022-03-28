@@ -60,7 +60,7 @@ func init() {
 		ResetTimeout: chrome.ResetTimeout,
 		// Provide a longer enough PostTestTimeout value to fixture when ARC will try to dump ARCVM message.
 		// Or there might be error of "context deadline exceeded".
-		PostTestTimeout: 5 * time.Second,
+		PostTestTimeout: arc.PostTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{accountPool},
 	})
