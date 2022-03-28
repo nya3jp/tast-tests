@@ -70,6 +70,30 @@
       },
       "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dba28e6_e2fd9a2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-03-28T18:06:58Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s no direct alternative to that for now since that\u0027s the only intent we handle on Android side (though it might be doable on Chrome side).\n\nAdded TODO for now.",
+      "parentUuid": "a3847df1_d91e01ad",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
