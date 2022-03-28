@@ -87,12 +87,17 @@ func EmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) 
 		}
 	}()
 
-	// Ensures the test only run under the clamshell mode.
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	const IsTabletMode = false
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, IsTabletMode)
 	if err != nil {
-		s.Fatal("Failed to ensure in clamshell mode: ", err)
+		s.Fatal("Failed to put into Clamshell mode: ", err)
 	}
 	defer cleanup(ctx)
+
+	// If a DUT switches from Tablet mode to Clamshell mode, it can take a while until launcher gets settled down.
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+		s.Fatal("Failed to wait the launcher state Closed: ", err)
+	}
 
 	// Enables the "Related Info" setting for Assistant.
 	// We explicitly enable this setting here because it controlled the root cause
