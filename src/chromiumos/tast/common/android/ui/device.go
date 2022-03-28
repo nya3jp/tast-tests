@@ -18,6 +18,7 @@ import (
 	"net/url"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -112,6 +113,22 @@ func NewDevice(ctx context.Context, d *adb.Device) (*Device, error) {
 	}
 
 	return s, nil
+}
+
+// NewDeviceWithRetry creates a Device object by starting and connecting to UI Automator server.
+// Retries, in case of an error.
+// Close must be called to clean up resources when a test is over.
+func NewDeviceWithRetry(ctx context.Context, d *adb.Device) (*Device, error) {
+	var device *Device
+	var err error
+	maxAttempts := 2
+
+	err = action.Retry(maxAttempts, func(ctx context.Context) error {
+		device, err = NewDevice(ctx, d)
+		return err
+	}, 0)(ctx)
+
+	return device, err
 }
 
 // installServer installs UI Automator server to Android system.

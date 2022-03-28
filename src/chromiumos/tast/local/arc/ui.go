@@ -23,7 +23,7 @@ import (
 // NewUIDevice creates a Device object by starting and connecting to UI Automator server.
 // Close must be called to clean up resources when a test is over.
 func (a *ARC) NewUIDevice(ctx context.Context) (*ui.Device, error) {
-	return ui.NewDevice(ctx, a.device)
+	return ui.NewDeviceWithRetry(ctx, a.device)
 }
 
 // DumpUIHierarchyOnError dumps arc UI hierarchy to 'arc_uidump.xml', when the test fails.
