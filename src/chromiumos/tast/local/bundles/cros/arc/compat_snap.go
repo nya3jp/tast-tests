@@ -30,6 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CompatSnap,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests compatible snapping works properly for resize-locked ARC apps",
 		Contacts:     []string{"toshikikikuchi@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
