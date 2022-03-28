@@ -55,8 +55,14 @@ var (
 
 // WaitForLauncherState waits until the launcher state becomes state. It waits
 // up to 10 seconds and fail if the launcher doesn't have the desired state.
-// NOTE: for a tablet launcher, if state is "Closed", this method ensures to
-// wait until the launcher becomes hidden.
+// Expected to fail with "Not supported for bubble launcher" error when waiting
+// for state different from "Closed" if called for clamshell productivity (bubble)
+// launcher. Note that the autotest API is expected to return immediately, but still
+// asynchronously, in this case.
+// NOTE: Waiting for "Closed" state will always wait for the fullscreen launcher to
+// hide, even if one would otherwise expect bubble launcher to be used for the current
+// session state - this supports waiting for launcher UI hide animation to complete
+// after transitioning from tablet mode to clamshell.
 func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state LauncherState) error {
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
