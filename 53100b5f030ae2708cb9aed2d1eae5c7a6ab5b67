@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62032d1f_eadaccd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-29T04:47:17Z",
+      "side": 1,
+      "message": "Could you add tracking issue and TODO here?",
+      "revId": "53100b5f030ae2708cb9aed2d1eae5c7a6ab5b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab75073f_ad55749f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/running.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-29T04:47:17Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "53100b5f030ae2708cb9aed2d1eae5c7a6ab5b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
