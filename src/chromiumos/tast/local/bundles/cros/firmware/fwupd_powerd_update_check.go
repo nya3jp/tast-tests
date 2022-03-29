@@ -50,6 +50,9 @@ func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 	if err := fwupd.SetFwupdChargingState(ctx, charge); err != nil {
 		s.Fatal("Failed to set charging state: ", err)
 	}
+	if !charge {
+		defer fwupd.SetFwupdChargingState(ctx, !charge)
+	}
 
 	// This command runs an update on a fake device to see how fwupd behaves.
 	upd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", fwupd.ReleaseURI)
