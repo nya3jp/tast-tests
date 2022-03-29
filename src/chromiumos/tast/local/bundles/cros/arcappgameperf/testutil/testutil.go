@@ -64,6 +64,90 @@ type PerformTestFunc func(params TestParams) (err error)
 // cleanupOnErrorTime reserves time for cleanup in case of an error.
 const cleanupOnErrorTime = time.Second * 30
 
+// PerformGameLoopTest tests the game loop.
+func PerformGameLoopTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupOnErrorTime)
+	defer cancel()
+
+	cr := s.PreValue().(arc.PreData).Chrome
+	a := s.PreValue().(arc.PreData).ARC
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Could not open Test API connection: ", err)
+	}
+
+	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
+	}
+
+	// Wait for the CPU to idle before performing the test.
+	if _, err := cpu.WaitUntilCoolDown(ctx, coolDownConfig()); err != nil {
+		s.Fatal("Failed to wait until CPU is cooled down: ", err)
+	}
+
+	// Take screenshot on failure.
+	defer func(ctx context.Context) {
+		if s.HasError() {
+			captureScreenshot(ctx, s, cr, "failed-launch-test.png")
+		}
+	}(cleanupCtx)
+
+	// Set up the activity.
+	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	if err != nil {
+		s.Fatal("Failed to create new app activity: ", err)
+	}
+	defer act.Close()
+
+	params := TestParams{
+		TestConn:          tconn,
+		Arc:               a,
+		Device:            d,
+		AppPkgName:        appPkgName,
+		AppActivityName:   appActivity,
+		Activity:          act,
+		ActivityStartTime: time.Now(),
+	}
+
+	if err := act.Start(ctx, tconn, arc.WithWaitForLaunch(), arc.WithDisplayID(act.DisplayID()), arc.WithIntentAction("com.google.intent.action.TEST_LOOP")); err != nil {
+		s.Fatal("Failed to start app: ", err)
+	}
+	defer act.Stop(ctx, tconn)
+
+	// Leave the mini-game running for while recording metrics.
+	if err := StartBenchmarking(ctx, params); err != nil {
+		s.Fatal("Failed to start benchmarking: ", err)
+	}
+
+	// Wait for the activity to finish, indicating the game loop is done.
+	if err := act.WaitForFinished(ctx, time.Minute*15); err != nil {
+		s.Fatal("Failed to wait for the application to finish")
+	}
+
+	r, err := StopBenchmarking(ctx, params)
+	if err != nil {
+		s.Fatal("Failed to stop benchmarking: ", err)
+	}
+
+	// Save the test results.
+	fullTestTime := time.Now().Sub(params.ActivityStartTime)
+
+	perfValues := perf.NewValues()
+	perfValues.Set(TestTimePerfMetric(), fullTestTime.Seconds())
+	perfValues.Set(FpsPerfMetric(), r.FPS)
+	perfValues.Set(CommitDeviationPerfMetric(), r.CommitDeviation)
+	perfValues.Set(RenderQualityPerfMetric(), r.RenderQuality*100.0)
+	if err := perfValues.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed saving perf data: ", err)
+	}
+}
+
 // PerformTest installs a game from the play store, starts the activity, and defers to the caller to perform a test.
 func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity string, testFunc PerformTestFunc) {
 	// Shorten the test context so that even if the test times out

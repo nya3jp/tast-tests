@@ -420,6 +420,11 @@ func (ac *Activity) StartWithDefaultOptions(ctx context.Context, tconn *chrome.T
 	return ac.startHelper(ctx, tconn, defaultOpts...)
 }
 
+// DisplayID returns the id associated with the activities display.
+func (ac *Activity) DisplayID() int {
+	return ac.disp.DisplayID
+}
+
 // startHelper starts the activity by building the am start command from the options passed and invoking "am start".
 func (ac *Activity) startHelper(ctx context.Context, tconn *chrome.TestConn, opts ...ActivityStartOption) error {
 	builder := makeActivityStartCmdBuilder()
