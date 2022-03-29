@@ -30,9 +30,7 @@ func init() {
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 			"cros-telemetry@google.com",
 		},
-		// TODO(b/201671511): tast.wifi.CheckIntelFWDump failing due to missing firmware
-		// dump in /var/spool/crash. Remove "informational" when the issue is fixed.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		// TODO(b:169152720), Remove "no_kernel_upstream" to enable the test to run on
 		// boards with upstream kernel when upstream iwlwifi is able to produce valid
 		// fw dumps.
