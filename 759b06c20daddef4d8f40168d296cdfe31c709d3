@@ -79,6 +79,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8298001e_82573e73",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-29T23:27:37Z",
+      "side": 1,
+      "message": "I wanted to do that, but when I tried to do that, it needs lots of modifications including:\n1. Define two separate nodes for developers and turn on button\n2. Replace the current Turn on button with developers button\n3. change the code of openning settings. \n\n\nTherefore, I\u0027d prefer to leave it as it is for now and just add code to remove Crostini it is preinstalled.\n\nWDYT?",
+      "parentUuid": "883d7a3c_cfe6b598",
+      "range": {
+        "startLine": 162,
+        "startChar": 11,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "759b06c20daddef4d8f40168d296cdfe31c709d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d9ae494_9dd567ae",
         "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
         "patchSetId": 1
@@ -90,6 +114,24 @@
       "writtenOn": "2022-03-29T05:37:03Z",
       "side": 1,
       "message": "Do we need to wait for uninstall to finish?",
+      "revId": "759b06c20daddef4d8f40168d296cdfe31c709d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d81c64cf_dbecbb86",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-29T23:27:37Z",
+      "side": 1,
+      "message": "s.Remove waits: https://osscs.corp.google.com/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/16d17c449cd9e6eefaddc2287bc5e522767121c3:src/chromiumos/tast/local/crostini/ui/settings/settings.go;l\u003d275",
+      "parentUuid": "5d9ae494_9dd567ae",
       "revId": "759b06c20daddef4d8f40168d296cdfe31c709d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
