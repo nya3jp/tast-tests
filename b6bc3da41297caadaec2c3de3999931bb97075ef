@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86ac9d3_92f9b9a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-29T22:57:01Z",
+      "side": 1,
+      "message": "Please run tast unit test: ./fast_build.sh -T\n\nThen, add following line to commit message.\n\nTEST\u003dtast unit tests passed.\n",
+      "revId": "b6bc3da41297caadaec2c3de3999931bb97075ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ebcdbd7_f9ece715",
@@ -44,6 +61,23 @@
         "endLine": 207,
         "endChar": 30
       },
+      "revId": "b6bc3da41297caadaec2c3de3999931bb97075ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd64ca91_757c1e27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-29T22:57:01Z",
+      "side": 1,
+      "message": "if !ok || router \u003d\u003d \"\" {",
       "revId": "b6bc3da41297caadaec2c3de3999931bb97075ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
