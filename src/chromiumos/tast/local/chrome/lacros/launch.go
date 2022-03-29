@@ -195,7 +195,7 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 		return nil, errors.Errorf("failed to find a matching URL: %v", url)
 	}
 
-	// Move cmd ownership to l, thus after this line terminating cmd wond't run.
+	// Move cmd ownership to l, thus after this line terminating cmd won't run.
 	l.cmd = cmd
 	cmd = nil
 
