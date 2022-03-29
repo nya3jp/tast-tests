@@ -10,7 +10,6 @@ import (
 	"sync"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
@@ -24,9 +23,10 @@ func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *Fi
 	}
 	// Running write stress continuously, until timeout.
 	for {
-		if err := RunFioStress(ctx, testConfig); errors.Is(err, context.DeadlineExceeded) {
-			return // Timeout exceeded.
+		if ctx.Err() != nil {
+			return
 		}
+		RunFioStress(ctx, testConfig)
 	}
 }
 
@@ -35,15 +35,13 @@ func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *Fi
 func runPeriodicPowerSuspend(ctx context.Context, SkipS0iXResidencyCheck bool) {
 	// Indefinite loop of randomized sleeps and power suspends.
 	for {
-		sleepDuration := time.Duration(rand.Intn(30)+30) * time.Second
-		testing.ContextLog(ctx, "Sleeping for ", sleepDuration)
-		if err := testing.Sleep(ctx, sleepDuration); errors.Is(err, context.DeadlineExceeded) {
+		if ctx.Err() != nil {
 			return
 		}
+		sleepDuration := time.Duration(rand.Intn(30)+30) * time.Second
+		testing.ContextLog(ctx, "Sleeping for ", sleepDuration)
+		testing.Sleep(ctx, sleepDuration)
 		if err := Suspend(ctx, SkipS0iXResidencyCheck); err != nil {
-			if errors.As(err, &context.DeadlineExceeded) {
-				return
-			}
 			testing.ContextLog(ctx, "Error suspending system: ", err)
 		}
 	}
