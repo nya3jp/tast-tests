@@ -16,6 +16,24 @@
       "message": "Promoting the network tests LGTM.  The PrintExtension tests still show failures as recently as yesterday and last week.  Have these been addressed already?",
       "revId": "4e4af852bebd3885230df88ba56982bcde5bf706",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e9842aa_bfeefa33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-03-29T14:54:47Z",
+      "side": 1,
+      "message": "That\u0027s interesting.. looks like most of the errors are from the test timing out before lacros can be deployed to /run/lacros/chrome, but there are a couple other failures too. I\u0027ll hold off on promoting the test.",
+      "parentUuid": "262c5a8f_72df6fc4",
+      "revId": "4e4af852bebd3885230df88ba56982bcde5bf706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
