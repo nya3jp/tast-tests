@@ -55,7 +55,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		username   = fixtures.Username
 		password   = fixtures.Password
 		PIN        = "123456"
-		autosubmit = true
+		autosubmit = false
 	)
 
 	fdms, err := fakedms.New(ctx, s.OutDir())
@@ -81,7 +81,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 
 	pinPolicies := []policy.Policy{
 		&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
-		&policy.PinUnlockAutosubmitEnabled{Val: true}}
+		&policy.PinUnlockAutosubmitEnabled{Val: autosubmit}}
 
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, pinPolicies); err != nil {
 		s.Fatal("Failed to update policies: ", err)
@@ -107,13 +107,17 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		if autosubmit {
 			node = nodewith.Name("Enter your PIN")
 		} else {
-			node = nodewith.ClassName("LoginPinInputView")
+			node = nodewith.ClassName("LoginPasswordView")
 		}
 		if err := ui.Exists(node)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find the pin input field")
 		}
-		// Type PIN into ChromeOS WebAuthn dialog. Autosubmitted.
-		if err := keyboard.Type(ctx, PIN); err != nil {
+		// Type PIN into ChromeOS WebAuthn dialog. Optionally autosubmitted.
+		pinString := PIN
+		if !autosubmit {
+			pinString += "\n"
+		}
+		if err := keyboard.Type(ctx, pinString); err != nil {
 			return errors.Wrap(err, "failed to type PIN into ChromeOS auth dialog")
 		}
 		return nil
