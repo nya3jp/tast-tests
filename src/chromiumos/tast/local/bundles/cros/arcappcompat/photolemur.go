@@ -81,7 +81,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForPhotolemur,
 		}},
-		Timeout: 10 * time.Minute,
+		Timeout: 30 * time.Minute,
 		VarDeps: []string{"arcappcompat.Photolemur.username", "arcappcompat.Photolemur.password"},
 	})
 }

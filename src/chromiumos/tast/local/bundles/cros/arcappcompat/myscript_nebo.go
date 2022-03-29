@@ -82,7 +82,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
 		}},
-		Timeout: 10 * time.Minute,
+		Timeout: 30 * time.Minute,
 		VarDeps: []string{"arcappcompat.MyscriptNebo.username", "arcappcompat.MyscriptNebo.password"},
 	})
 }
