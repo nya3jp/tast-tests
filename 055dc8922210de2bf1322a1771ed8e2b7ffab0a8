@@ -16,6 +16,29 @@
       "message": "+tast-owners@",
       "revId": "055dc8922210de2bf1322a1771ed8e2b7ffab0a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce481c5d_8609ead2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-29T22:20:57Z",
+      "side": 1,
+      "message": "reserve time for the clean-up task, see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "055dc8922210de2bf1322a1771ed8e2b7ffab0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
