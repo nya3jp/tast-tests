@@ -30,7 +30,7 @@ func init() {
 			"billyzhao@google.com",
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:        []string{"group:wificell", "wificell_func_ax"},
+		Attr:        []string{"group:wificell", "wificell_func_ax", "wificell_unstable"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Vars:        []string{"router", "pcap", "routertype"},
 		Params: []testing.Param{
