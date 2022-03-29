@@ -34,6 +34,24 @@
       "parentUuid": "3a0b0503_6e417aaf",
       "revId": "8769428a7307eb850e0de0245a26edfa6a2a4029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6026fc68_fa2e424f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-03-29T21:08:34Z",
+      "side": 1,
+      "message": "I changed s.Logf to s.Fatalf so that we can send the test logs to bond team when we see the failures.",
+      "parentUuid": "ae820f99_570b8e88",
+      "revId": "8769428a7307eb850e0de0245a26edfa6a2a4029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
