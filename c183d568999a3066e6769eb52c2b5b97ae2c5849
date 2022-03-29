@@ -33,6 +33,24 @@
       "message": "I\u0027d like to see the results of https://chromium-review.googlesource.com/c/chromiumos/platform/crosvm/+/3556933\nbut if that didn\u0027t work out it probably will take longer and we can\u0027t keep on blocking CQ.\n",
       "revId": "c183d568999a3066e6769eb52c2b5b97ae2c5849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8fa622_6d7f66f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-03-29T11:55:24Z",
+      "side": 1,
+      "message": "I didn\u0027t notice that Manatee is a critical board which will block CQ. If so, then agree to disable this .",
+      "parentUuid": "45ef15db_a2a38329",
+      "revId": "c183d568999a3066e6769eb52c2b5b97ae2c5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
