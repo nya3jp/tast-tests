@@ -30,6 +30,7 @@ func init() {
 		Desc:         "Check the enterprise rollback data restore mechanism while faking a rollback on one image",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
+			"crisguerrero@chromium.org",
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:enrollment"},
@@ -70,7 +71,7 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	if err := enroll(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to enroll before rollback: ", err)
 	}
-	guid, err := configureNetwork(ctx, s.DUT(), s.RPCHint())
+	networksInfo, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to configure network: ", err)
 	}
@@ -93,7 +94,7 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed while checking that sensitive data is not logged: ", err)
 	}
 
-	if err := verifyRollback(ctx, guid, s.DUT(), s.RPCHint()); err != nil {
+	if err := verifyRollback(ctx, networksInfo, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to verify rollback: ", err)
 	}
 }
@@ -125,19 +126,19 @@ func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
 	return nil
 }
 
-func configureNetwork(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) (string, error) {
+func configureNetworks(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) ([]*aupb.NetworkInformation, error) {
 	client, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
 	defer client.Close(ctx)
 
 	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
-	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
+	response, err := rollbackService.SetUpNetworks(ctx, &aupb.SetUpNetworksRequest{})
 	if err != nil {
-		return "", errors.Wrap(err, "failed to configure psk network on client")
+		return nil, errors.Wrap(err, "failed to configure networks on client")
 	}
-	return response.Guid, nil
+	return response.Networks, nil
 }
 
 func saveRollbackData(ctx context.Context, dut *dut.DUT) error {
@@ -180,7 +181,7 @@ func ensureSensitiveDataIsNotLogged(ctx context.Context, dut *dut.DUT, sensitive
 	return nil
 }
 
-func verifyRollback(ctx context.Context, guid string, dut *dut.DUT, rpcHint *testing.RPCHint) error {
+func verifyRollback(ctx context.Context, networks []*aupb.NetworkInformation, dut *dut.DUT, rpcHint *testing.RPCHint) error {
 	client, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
@@ -188,12 +189,12 @@ func verifyRollback(ctx context.Context, guid string, dut *dut.DUT, rpcHint *tes
 	defer client.Close(ctx)
 
 	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
-	response, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Guid: guid})
+	response, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Networks: networks})
 	if err != nil {
 		return errors.Wrap(err, "failed to verify rollback on client")
 	}
 	if !response.Successful {
-		return errors.Wrapf(err, "rollback was not successful: %s", response.VerificationDetails)
+		return errors.Errorf("rollback was not successful: %s", response.VerificationDetails)
 	}
 
 	return nil
