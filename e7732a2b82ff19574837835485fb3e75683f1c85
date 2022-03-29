@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1387235a_a0d78b30",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-29T06:51:54Z",
+      "side": 1,
+      "message": "note to self: need to change this to kill only pages, because this will kill the test extension target and depending on the order can break everything\n\nalso if any tests ever want to test restoring they can\u0027t use close() with this method.",
+      "revId": "e7732a2b82ff19574837835485fb3e75683f1c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
