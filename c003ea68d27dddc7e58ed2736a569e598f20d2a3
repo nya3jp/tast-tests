@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35569a22_95b9314e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-29T21:15:04Z",
+      "side": 1,
+      "message": "Two things:\n1. avoid writing `meet.num+1` twice\n2. more importantly, return an `error` instead of invoking `s.Fatalf` directly\n  if expectedParticipantCount :\u003d meet.num+1; participantCount !\u003d expectedParticipantCount {\n    return errors.Errorf(\"Got %d participants, expected %d\", participantCount, expectedParticipantCount)\n  }",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 647,
+        "endChar": 3
+      },
+      "revId": "c003ea68d27dddc7e58ed2736a569e598f20d2a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
