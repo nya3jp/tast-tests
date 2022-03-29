@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebcdbd7_f9ece715",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-29T21:32:49Z",
+      "side": 1,
+      "message": "this section is used to do router type inference, since we already in fixture.go, perhaps we can eliminate this whole section?",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "b6bc3da41297caadaec2c3de3999931bb97075ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
