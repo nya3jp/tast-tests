@@ -72,8 +72,9 @@ func init() {
 				},
 			},
 			{
-				Name:    "allowlist",
-				Fixture: fixture.ChromePolicyLoggedIn,
+				Name:      "allowlist",
+				ExtraAttr: []string{"informational"},
+				Fixture:   fixture.ChromePolicyLoggedIn,
 				Val: []imagesSettingTestTable{
 					{
 						name:        "blocklist_unset_default_block",
