@@ -118,6 +118,30 @@
       },
       "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "848a0bea_22185105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-03-29T01:18:52Z",
+      "side": 1,
+      "message": "Removing TODO bug based on the exceptions mentioned here (instrumentation tests) https://developer.android.com/about/versions/12/behavior-changes-all#close-system-dialogs-exceptions",
+      "parentUuid": "94f8cf9d_27317e94",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
