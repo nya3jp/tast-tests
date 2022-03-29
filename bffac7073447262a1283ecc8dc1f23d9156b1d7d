@@ -16,6 +16,57 @@
       "message": "This makes tests look nicer by not depending on fakedms 😊",
       "revId": "bffac7073447262a1283ecc8dc1f23d9156b1d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a03418d_eeebfe40",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-29T10:56:06Z",
+      "side": 1,
+      "message": "Why do we need this? Would be cool to hihglight the need in the code by comment.",
+      "revId": "bffac7073447262a1283ecc8dc1f23d9156b1d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d966a7_dc333a86",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-29T10:56:06Z",
+      "side": 1,
+      "message": "Please remove.",
+      "revId": "bffac7073447262a1283ecc8dc1f23d9156b1d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fba7fe_27afddd2",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-03-29T10:56:06Z",
+      "side": 1,
+      "message": "Why it it left commented out?",
+      "revId": "bffac7073447262a1283ecc8dc1f23d9156b1d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
