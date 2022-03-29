@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60257baf_07547f17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-03-29T17:31:15Z",
+      "side": 1,
+      "message": "Yes, I will need to modify the query script to source from the new location as well as the old.",
+      "parentUuid": "8750e0ac_f76d79ea",
+      "revId": "f33f67dc1a54e9e99bea10a991668b53df978c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cc0bca0_d8d40117",
