@@ -24,9 +24,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		// TODO(b/226270043): tast.wifi.WPAValidity failing due to failure to ping
-		// wpa_supplicant. Remove "informational" when the issue is fixed.
-		Attr:         []string{"group:mainline", "informational", "group:wificell", "wificell_func"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})
 }
