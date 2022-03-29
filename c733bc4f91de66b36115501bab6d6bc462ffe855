@@ -16,6 +16,23 @@
       "message": "Have talked with @rainhard offline who agreed with this change",
       "revId": "c733bc4f91de66b36115501bab6d6bc462ffe855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30646677_d91a3475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-03-29T16:43:33Z",
+      "side": 1,
+      "message": "Attach the uprev CL that the affected tast test is blocking: https://crrev.com/c/3555998",
+      "revId": "c733bc4f91de66b36115501bab6d6bc462ffe855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
