@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/firmware/fwupd"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,6 +26,10 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
+		HardwareDeps: hwdep.D(
+			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a battery.
+			hwdep.ChromeEC(), // Test requires Chrome EC to set battery to charge via ectool.
+		),
 	})
 }
 
