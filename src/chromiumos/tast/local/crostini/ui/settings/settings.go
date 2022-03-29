@@ -164,6 +164,19 @@ func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to open linux subpage on Settings app")
 	}
 	defer s.Close(ctx)
+
+	if err := s.ui.WaitUntilExists(removeLinuxButton); err == nil {
+		// Linux has been installed already, uninstall it.
+		if errRemove := s.Remove()(ctx); errRemove != nil {
+			return errors.Wrap(errRemove, "failed to uninstall Linux before installation")
+		}
+
+		// Click Turn on button to open the installer.
+		if err := s.ui.LeftClick(TurnOnButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Turn on button")
+		}
+	}
+
 	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "crostini_installer", retErr) }()
 	installButton := nodewith.Name("Install").Role(role.Button)
 	if err := s.ui.WithInterval(500*time.Millisecond).LeftClickUntil(nextButton, s.ui.WaitUntilExists(installButton))(ctx); err != nil {
