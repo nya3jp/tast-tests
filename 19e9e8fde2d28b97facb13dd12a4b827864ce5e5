@@ -34,6 +34,24 @@
       "parentUuid": "707c99ea_a9811fc0",
       "revId": "19e9e8fde2d28b97facb13dd12a4b827864ce5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1759e4f5_b3830949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-29T14:44:24Z",
+      "side": 1,
+      "message": "I was actually referring to the new example.BrowserWithNewChrome test. Sorry to not be specific before.\n\nI\u0027ve just synced now the repos and I\u0027m using an up to date chroot. Then I\u0027ve double checked that `--lacros-chrome-path` is not present in `/etc/chrome_dev.conf` file. I\u0027m still catching the following when running using `tast run device example.BrowserWithNewChrome`:\n\n```\n2022-03-29T14:37:00.600193Z [14:37:00.458] Error at browser_with_new_chrome.go:54: BrowserWithNewChrome browser: lacros, cfg: \u0026{SetupMode:Rootfs LacrosMode:LacrosPrimary deployed:false deployedPath:}: Failed to connect to lacros browser: failed to launch lacros-chrome: failed to launch lacros via shelf: failed to wait for the app to be launched: context deadline exceeded; last error follows: app is not shown yet\n2022-03-29T14:37:00.600246Z [14:37:00.458] Stack trace:\nBrowserWithNewChrome browser: lacros, cfg: \u0026{SetupMode:Rootfs LacrosMode:LacrosPrimary deployed:false deployedPath:}: Failed to connect to lacros browser\n\tat chromiumos/tast/local/bundles/cros/example.BrowserWithNewChrome.func1 (browser_with_new_chrome.go:54)\n\tat chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:640)\n\tat runtime.goexit (asm_amd64.s:1581)\nfailed to launch lacros-chrome\n\tat chromiumos/tast/local/chrome/browser/browserfixt.SetUpWithNewChrome (browserfixt.go:139)\n\tat chromiumos/tast/local/bundles/cros/example.BrowserWithNewChrome.func1 (browser_with_new_chrome.go:52)\n\tat chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:640)\n\tat runtime.goexit (asm_amd64.s:1581)\nfailed to launch lacros via shelf\n\tat chromiumos/tast/local/chrome/lacros.LaunchFromShelf (launch.go:88)\n\tat chromiumos/tast/local/chrome/browser/browserfixt.SetUpWithNewChrome (browserfixt.go:136)\n\tat chromiumos/tast/local/bundles/cros/example.BrowserWithNewChrome.func1 (browser_with_new_chrome.go:52)\n\tat chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:640)\n\tat runtime.goexit (asm_amd64.s:1581)\nfailed to wait for the app to be launched\n\tat chromiumos/tast/local/chrome/ash.LaunchAppFromShelf (shelf.go:782)\n\tat chromiumos/tast/local/chrome/lacros.LaunchFromShelf (launch.go:87)\n\tat chromiumos/tast/local/chrome/browser/browserfixt.SetUpWithNewChrome (browserfixt.go:136)\n\tat chromiumos/tast/local/bundles/cros/example.BrowserWithNewChrome.func1 (browser_with_new_chrome.go:52)\n\tat chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:640)\n\tat runtime.goexit (asm_amd64.s:1581)\ncontext deadline exceeded; last error follows\n\tat chromiumos/tast/internal/testingutil.Poll (poll.go:87)\n\tat chromiumos/tast/testing.Poll (util.go:43)\n\tat chromiumos/tast/local/chrome/ash.WaitForAppCondition (shelf.go:546)\n\tat chromiumos/tast/local/chrome/ash.WaitForApp (shelf.go:531)\n\tat chromiumos/tast/local/chrome/ash.LaunchAppFromShelf (shelf.go:781)\n\tat chromiumos/tast/local/chrome/lacros.LaunchFromShelf (launch.go:87)\n\tat chromiumos/tast/local/chrome/browser/browserfixt.SetUpWithNewChrome (browserfixt.go:136)\n\tat chromiumos/tast/local/bundles/cros/example.BrowserWithNewChrome.func1 (browser_with_new_chrome.go:52)\n\t...\napp is not shown yet\n\tat chromiumos/tast/local/chrome/ash.WaitForAppCondition.func1 (shelf.go:550)\n\tat chromiumos/tast/internal/testingutil.Poll (poll.go:64)\n\tat chromiumos/tast/testing.Poll (util.go:43)\n\tat chromiumos/tast/local/chrome/ash.WaitForAppCondition (shelf.go:546)\n\tat chromiumos/tast/local/chrome/ash.WaitForApp (shelf.go:531)\n\tat chromiumos/tast/local/chrome/ash.LaunchAppFromShelf (shelf.go:781)\n\tat chromiumos/tast/local/chrome/lacros.LaunchFromShelf (launch.go:87)\n\tat chromiumos/tast/local/chrome/browser/browserfixt.SetUpWithNewChrome (browserfixt.go:136)\n\t...\n```",
+      "parentUuid": "9efbc81c_cc5b09f6",
+      "revId": "19e9e8fde2d28b97facb13dd12a4b827864ce5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
