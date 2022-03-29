@@ -35,7 +35,7 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "group:input-tools-upstream", "group:input-tools"},
+		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(3 * time.Minute),
 		Params: []testing.Param{
