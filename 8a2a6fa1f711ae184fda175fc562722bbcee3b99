@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7392f123_cfc72b05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "Please assign a technical reviewer as well, Tast owners are only to review for tast integration.",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0638834_8eec20eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "This function is very long, it would be good if you could break out some helper functions so that the high level flow of exactly what is under test is more clear.",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa85d4ca_e2ffbafb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "This comment does not match the code, please remove.",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70a9199_835d66eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "Can we have a deferred \"stop playing audio\" so that it doesn\u0027t affect any subsequent tests?",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc72049_299ecaec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "Is this the only way to play the audio?  It seems like it is not the functionality under test, and this kind of UI manipulation is known to increase the flakiness of the test.",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7033cef3_bff388de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "Sleeping can be a source of flakiness, can you do a polling loop on checking that the audio device is playing (based on the code below lines 134-140)",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56261b79_1a74c291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "can we have a deferred screen unlock?",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657edf9a_05dfbea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "nit: The code would read better with mutedButton/unmutedButton",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 12
+      },
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f88acae_6ffe024a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "please move this to a top level function rather than as an inner function of the test.",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb8c698_c501f835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "This seems quite dependant on the output format of cras_test_client, would it be better just to search for \"Muted\" in the output?",
+      "range": {
+        "startLine": 122,
+        "startChar": 29,
+        "endLine": 122,
+        "endChar": 82
+      },
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0efefea0_8e5a0c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "check it is unmuted here?  You already have the helper function.",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f87b6d8_cd99a000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "shouldn\u0027t this check be done before the mute/unmute?\n\nAlso, can you extract it to a helper function with a descriptive name, like isPlayingOnDevice?",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73a9bf6_82ff7bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-03-29T19:58:25Z",
+      "side": 1,
+      "message": "Any way to check that these are having the desired effect?",
+      "revId": "8a2a6fa1f711ae184fda175fc562722bbcee3b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
