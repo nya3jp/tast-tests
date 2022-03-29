@@ -38,7 +38,7 @@ func CombineCleanup(ctx context.Context, existing, new func(context.Context) err
 // SetupPerfTest sets up a stable environment for a lacros performance test.
 // The returned CleanupCallback should be deferred to be executed upon test completion.
 func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (retCleanup CleanupCallback, retErr error) {
-	// Set-up environment to be more consistent:
+	// Set-up environment to be more consistent.
 	sup, supCleanup := setup.New(name)
 	cleanup := CombineCleanup(ctx, noCleanup, supCleanup, "failed to clean up perf test")
 	defer func() {
@@ -50,7 +50,7 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 	sup.Add(setup.PowerTest(ctx, tconn, setup.PowerTestOptions{Wifi: setup.DoNotChangeWifiInterfaces, NightLight: setup.DisableNightLight}))
 
 	if err := sup.Check(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to setup GpuCUJ power test environment")
+		return nil, errors.Wrap(err, "failed to setup power test environment")
 	}
 
 	if err := quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, true); err != nil {

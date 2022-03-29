@@ -51,7 +51,7 @@ func NewLacrosConfig(setupMode SetupMode, lacrosMode LacrosMode) *LacrosConfig {
 }
 
 // WithVar is a method to configure from the runtime var lacrosDeployedBinary and external data artifact.
-// It is useful when Lacros should be deployed with the runtime var primariliy in Chromium. This will precede over any existing config.
+// It is useful when Lacros should be deployed with the runtime var primarily in Chromium. This will precede over any existing config.
 // TestingState allows both testing.FixtState and testing.State to be passed in.
 func (cfg *LacrosConfig) WithVar(s TestingState) *LacrosConfig {
 	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
