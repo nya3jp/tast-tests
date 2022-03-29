@@ -27,6 +27,9 @@ service UtilsService {
   // CloseChrome closes an existing instance of Chrome
   rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  // ReuseChrome passes an Option to New to make Chrome reuse an exisiting Chrome session.
+  rpc ReuseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // EvalTabletMode evaluates if DUT is in tablet mode.
   rpc EvalTabletMode (google.protobuf.Empty) returns (EvalTabletModeResponse) {}
 }
