@@ -22,6 +22,30 @@
       },
       "revId": "e6e0f14eb9580d942b53c526b725e5869f95eb38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e4b0cbb_2439fc26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-03-29T18:28:01Z",
+      "side": 1,
+      "message": "This is a good question actually! \n\nYou\u0027re correct when you say that both parameterized tests run the exact the same code depending whether `lacrosDeployedBinary` var is present or not. And I didn\u0027t know either about the different bots behavior you mentioned above - can you link a documentation (for non-Googlers please) about that?\n\nAnyhow, what I\u0027ve thought when coding this was a series of parameterized tests that, with a single command e.g. `tast run $device lacros.PerfLogin*`, they would run through all the Lacros setups (rootfs, omaha or user deployed) and their mode (primary or sidebyside) to collect the performance metrics.\n\nIn Patchset 20 now I\u0027ve uploaded what I consider does what I just described. CL description was updated as well to something that I believe is way more descriptive. Could you PTAL? Thanks again for the review, Hyung.",
+      "parentUuid": "67d68772_c0a22b94",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "e6e0f14eb9580d942b53c526b725e5869f95eb38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
