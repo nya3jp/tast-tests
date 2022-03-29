@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32fc7ac_05378230",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-03-29T16:07:20Z",
+      "side": 1,
+      "message": "LGTM.\nTake into account that the test only passed the previous 18 builds. And it should pass the previous 20 ones.\n\nNext time wait for 20 builds.\n\nhttps://tastboard.corp.google.com/test/network.ResolveLocalHostname\nhttps://tastboard.corp.google.com/test/network.ResolveLocalHostnameInvalidAddress",
+      "revId": "73abb1e0d443e478cd67dec6efda7cb45df2f73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
