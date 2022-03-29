@@ -37,6 +37,7 @@ func init() {
 		Desc:         "Tests the enterprise rollback feature by rolling back to a previous release",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
+			"crisguerrero@chromium.org",
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{"group:autoupdate"},
@@ -187,13 +188,13 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Error("Failed to stop Chrome and Fake DMS: ", err)
 	}
 
-	// Configure PSK network to check preservation across rollback.
+	// Configure networks to check preservation across rollback.
 	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
-	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
+	response, err := rollbackService.SetUpNetworks(ctx, &aupb.SetUpNetworksRequest{})
 	if err != nil {
-		s.Fatal("Failed to configure PSK network on client: ", err)
+		s.Fatal("Failed to configure networks on client: ", err)
 	}
-	guid := response.Guid
+	networksInfo := response.Networks
 
 	// The .save_rollback_data flag would have been left by the update_engine on
 	// an end-to-end rollback. We don't use update_engine. Place it manually.
@@ -268,7 +269,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	defer client.Close(ctx)
 
 	rollbackService = aupb.NewRollbackServiceClient(client.Conn)
-	verifyResponse, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Guid: guid})
+	verifyResponse, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Networks: networksInfo})
 	if err != nil {
 		s.Fatal("Failed to verify rollback on client: ", err)
 	}

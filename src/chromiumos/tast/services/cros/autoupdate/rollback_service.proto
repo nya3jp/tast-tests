@@ -12,18 +12,38 @@ option go_package = "chromiumos/tast/services/cros/autoupdate";
 
 // RollbackService provides functions to set up and verify enterprise rollback.
 service RollbackService {
-  rpc SetUpPskNetwork (google.protobuf.Empty) returns (SetUpPskResponse);
-  // Verifies that oobe ends up on the enrollment screen after rollback and
-  // that the previously set up psk network with the given guid still exists.
+  // SetUpPskNetwork is deprecated and replaced by SetUpNetworks.
+  rpc SetUpPskNetwork (google.protobuf.Empty) returns (SetUpPskResponse) {
+    option deprecated = true;
+  }
+  // SetUpNetworks sets various networks supported by rollback automatically.
+  rpc SetUpNetworks (SetUpNetworksRequest) returns (SetUpNetworksResponse);
+  // VerifyRollback verifies that oobe ends up on the enrollment screen after
+  // rollback and that the networks provided still exists.
   rpc VerifyRollback (VerifyRollbackRequest) returns (VerifyRollbackResponse);
 }
 
 message SetUpPskResponse {
+  option deprecated = true;
   string guid = 1;
 }
 
-message VerifyRollbackRequest {
+message NetworkInformation {
   string guid = 1;
+  string reference = 2;
+}
+
+message SetUpNetworksRequest {
+  // Empty but created in case it is needed in the future.
+}
+
+message SetUpNetworksResponse {
+  repeated NetworkInformation networks = 1;
+}
+
+message VerifyRollbackRequest {
+  reserved 1; // deprecated guid
+  repeated NetworkInformation networks = 2;
 }
 
 message VerifyRollbackResponse {
