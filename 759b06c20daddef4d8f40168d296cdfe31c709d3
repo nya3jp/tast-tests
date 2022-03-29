@@ -34,6 +34,64 @@
       "parentUuid": "69fe92e3_79d51fc7",
       "revId": "759b06c20daddef4d8f40168d296cdfe31c709d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec77535f_57aba932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-29T05:37:03Z",
+      "side": 1,
+      "message": "Ok, so uninstall failures cause the remaining tests in the set to fail. Good catch, we should fix that :).",
+      "parentUuid": "840738e1_10d624cd",
+      "revId": "759b06c20daddef4d8f40168d296cdfe31c709d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883d7a3c_cfe6b598",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-29T05:37:03Z",
+      "side": 1,
+      "message": "Nit: I personally find it confusing that OpenLinuxSubpage also opens the installer. \n\nI think this\u0027d be easier to read if clicking the TurnOnButton happened in this function for both the normal and delete-needed case intead of splitting the location.",
+      "range": {
+        "startLine": 162,
+        "startChar": 11,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "759b06c20daddef4d8f40168d296cdfe31c709d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d9ae494_9dd567ae",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-03-29T05:37:03Z",
+      "side": 1,
+      "message": "Do we need to wait for uninstall to finish?",
+      "revId": "759b06c20daddef4d8f40168d296cdfe31c709d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
