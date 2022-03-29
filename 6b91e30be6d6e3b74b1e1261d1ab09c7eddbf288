@@ -94,6 +94,30 @@
       },
       "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f8cf9d_27317e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/global_actions_menu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-03-29T00:34:23Z",
+      "side": 1,
+      "message": "It seems that apps cann\u0027t use ACTION_CLOSE_SYSTEM_DIALOGS if it targets S+ but adb shell is still able to use it because it\u0027s important for tests. (https://developer.android.com/about/versions/12/behavior-changes-all#close-system-dialogs-exceptions)\nAnd it seems that CTS will keep using it.\n\nUsing this intent here even for S+ makes sense to me.",
+      "parentUuid": "6dba28e6_e2fd9a2a",
+      "range": {
+        "startLine": 51,
+        "startChar": 52,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "6b91e30be6d6e3b74b1e1261d1ab09c7eddbf288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
