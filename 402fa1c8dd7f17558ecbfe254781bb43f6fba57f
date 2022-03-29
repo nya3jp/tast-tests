@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a142bc5a_57f0bd9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-03-29T10:18:23Z",
+      "side": 1,
+      "message": "Hi reviewers, please help me review this change, thanks.\n\nYich, this is related to the bug we discussed days ago. If in the future all test images have DCHECK on by default (I thought you said it already happened, but seems not because this test isn\u0027t broken on tastboard?), the original version of this test with autosubmit enabled will crash and fail before the linked bug is fixed.",
+      "revId": "402fa1c8dd7f17558ecbfe254781bb43f6fba57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
