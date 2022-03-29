@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/router/ax"
@@ -203,7 +204,15 @@ type axSimpleConnectTestcase struct {
 
 func AxSimpleConnect(ctx context.Context, s *testing.State) {
 	var tfOps []wificell.TFOption
-	router := s.RequiredVar("router")
+	router, ok := s.Var("router")
+	if !ok || router == "" {
+		var err error
+		router, err = s.DUT().CompanionDeviceHostname(dut.CompanionSuffixRouter)
+		if err != nil {
+			s.Fatal("Failed to synthesize default router name: ", err)
+		}
+		testing.ContextLogf(ctx, "Using default router name %q for %s router", router, support.AxT.String())
+	}
 	tfOps = append(tfOps, wificell.TFRouter(router))
 	tfOps = append(tfOps, wificell.TFHostUsers(map[string]string{
 		router: "admin",
