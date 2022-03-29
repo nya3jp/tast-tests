@@ -219,6 +219,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96b78487_91326eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-29T21:03:34Z",
+      "side": 1,
+      "message": "unless we can guarantee that no two tests may use the file at the same time (or that drive fs changes don\u0027t get synced during the test), that still seems unsafe.\n\nThough, Ben here has more experience with how drive fs behaves in tast.",
+      "parentUuid": "9a80fc7e_e99c2b82",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f7e9b98_c14919a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
         "patchSetId": 2
@@ -430,6 +448,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e76a9777_bcc6b8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-29T21:03:34Z",
+      "side": 1,
+      "message": "can we split these test cases in separate tests (so we don\u0027t need this intermediary closeAllWindow call)\n\nalso, web search does not need driveFsStarted fixture afaik, so avoiding that setup in that case would be a good idea",
+      "parentUuid": "66e527e3_949979d5",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50183130_9e65651f",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
         "patchSetId": 2
@@ -500,6 +536,30 @@
       "side": 1,
       "message": "if `LauncherState` is `Closed`, the `ash.TriggerLauncherStateChange` might cause the opposite outcome. Should we use `ash.TriggerLauncherStateChange` anyway?\n\nWe have refactored this part as an independent function, hopefully it can make more sense.",
       "parentUuid": "50183130_9e65651f",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd83bbcd_4738cc17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-29T21:03:34Z",
+      "side": 1,
+      "message": "hm, what you have could may be better",
+      "parentUuid": "6192b253_15613f47",
       "range": {
         "startLine": 161,
         "startChar": 0,
