@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0b0503_6e417aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-03-29T02:38:16Z",
+      "side": 1,
+      "message": "Not for this CL, but we should consider making this a metric we collect from the test; that way we can query to make sure the number of participants is what we expect. I don\u0027t think anyone is going to look through logs for these messages, and I think we\u0027d need to manually inspect a lot of test runs to find discrepancies.",
+      "revId": "8769428a7307eb850e0de0245a26edfa6a2a4029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
