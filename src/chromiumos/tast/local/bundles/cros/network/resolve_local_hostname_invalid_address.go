@@ -23,7 +23,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 		},
 	})
 }

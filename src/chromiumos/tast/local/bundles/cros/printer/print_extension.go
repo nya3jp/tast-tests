@@ -29,7 +29,6 @@ func init() {
 		Contacts:     []string{"batrapranav@google.com", "cros-printing-dev@chromium.org"},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_printing",
 		},
