@@ -339,7 +339,8 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			tabletmodeStatus   = `\[\S+ tablet mode (enabled|disabled)\]`
 			basestateNotFound  = `Command 'basestate' not found or ambiguous`
 			basestateStatus    = `\[\S+ base state: (attached|detached)\]`
-			checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `)`
+			lidAccel           = `\[\S+ Lid Accel ODR:(?i)[^\n\r]*(?i)(1|0)\S+]`
+			checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `|` + lidAccel + `)`
 		)
 		// Run EC command to turn on/off tablet mode.
 		s.Logf("Check command %q exists", action)
