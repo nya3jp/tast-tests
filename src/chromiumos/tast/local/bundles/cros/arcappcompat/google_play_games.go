@@ -83,7 +83,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
-		Timeout: 10 * time.Minute,
+		Timeout: 30 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 	})
 }
