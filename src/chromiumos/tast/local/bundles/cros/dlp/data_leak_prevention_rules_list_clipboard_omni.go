@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -113,6 +114,10 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 			}
 			defer conn.Close()
 
+			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+				s.Fatal(err, "failed to wait for %q to be loaded and achieve quiescence", param.url)
+			}
+
 			if err := uiauto.Combine("copy all text from source website",
 				keyboard.AccelAction("Ctrl+A"),
 				keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
@@ -169,13 +174,11 @@ func rightClickOmnibox(ctx context.Context, tconn *chrome.TestConn, url string, 
 func pasteOmnibox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	// Select the omni box.
-	if err := keyboard.Accel(ctx, "Ctrl+L"); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl+L to select omni box")
-	}
-
-	if err := keyboard.Accel(ctx, "Ctrl+V"); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl+V to paste content")
+	// Select the Omnibox & paste in it.
+	if err := uiauto.Combine("Paste content in Omnibox",
+		keyboard.AccelAction("Ctrl+L"),
+		keyboard.AccelAction("Ctrl+V"))(ctx); err != nil {
+		return errors.Wrap(err, "failed to paste content in Omnibox")
 	}
 
 	err := clipboard.CheckClipboardBubble(ctx, ui, url)
