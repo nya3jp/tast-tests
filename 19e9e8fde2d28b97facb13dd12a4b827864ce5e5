@@ -52,6 +52,24 @@
       "parentUuid": "9efbc81c_cc5b09f6",
       "revId": "19e9e8fde2d28b97facb13dd12a4b827864ce5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff94bbd_ac1fc4b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-29T23:57:24Z",
+      "side": 1,
+      "message": "AFAICT this is still not reproducible locally on my end and in continuous testing now that it is enabled to be run on every build on ToT.\nI was wondering if this could be related to this open issue (https://crbug.com/1277898). Alternatively, Eliot is planning to update the way of launching lacros with https://crrev.com/c/3524047. It would be worth trying this CL to see if it could help mitigate your issue.",
+      "parentUuid": "1759e4f5_b3830949",
+      "revId": "19e9e8fde2d28b97facb13dd12a4b827864ce5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
