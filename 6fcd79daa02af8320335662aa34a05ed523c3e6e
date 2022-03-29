@@ -22,6 +22,30 @@
       },
       "revId": "6fcd79daa02af8320335662aa34a05ed523c3e6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075fc28f_17265eac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-03-29T05:28:04Z",
+      "side": 1,
+      "message": "For what I see from the stainless, the test status is GOOD because it is expected to fail, and the test is actually timeouting.\nIncreasing the timeout and changing the status is what I want.",
+      "parentUuid": "52f0492a_41f14614",
+      "range": {
+        "startLine": 1400,
+        "startChar": 25,
+        "endLine": 1400,
+        "endChar": 52
+      },
+      "revId": "6fcd79daa02af8320335662aa34a05ed523c3e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
