@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e380c4ea_02baaa67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-03-29T12:00:45Z",
+      "side": 1,
+      "message": "constructing a regex like this seems more fragile.\n\nWhat about we change the logic slightly:\n\n1. Wait for the password dialog.\n2. Grab the current currently displayed file name \n\nOption #1: Return the file name found in the dialog and the caller site can make the assertion if the returned name is valid.\n\nOption #2: This function gets the file name and check if it\u0027s present in the zipFiles array.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 11
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfaef1b5_fec3c46f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-03-29T12:00:45Z",
+      "side": 1,
+      "message": "For the same file?\n\nI think we should change the test to verify that this is still the same file.\n\nI think we would need to re-jiggle this test a little more:\n\nPseudo code:\n  // Starts with all files.\n  lockedZipFiles :\u003d zipFiles\n  //\n  for {\n    // 1. Unlock one file waitUntilPasswordDialogExists() should tell which file.\n    //   1.1. typing the invalid passwd\n    //   1.2. then the valid passwd.\n    //\n    // 2. Remove the file from lockedZipFiles array.\n    if len(lockedZipFiles) \u003d\u003d 0 {\n      // We have checked all the zipFiles.\n      break;\n    }\n   }\n   \nWDYT?",
+      "range": {
+        "startLine": 311,
+        "startChar": 44,
+        "endLine": 311,
+        "endChar": 50
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
