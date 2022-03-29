@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02eb353c_3b88f987",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-03-29T14:37:34Z",
+      "side": 1,
+      "message": "After the following comment I received in a similar issue:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1311242#c2\nI decided to only disable the flaky tasts on the chromium side:\nhttps://source.chromium.org/chromium/chromium/src/+/main:chromeos/tast_control.gni",
+      "revId": "7197151009070967c6ea2d1d2d147b6f118281ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
