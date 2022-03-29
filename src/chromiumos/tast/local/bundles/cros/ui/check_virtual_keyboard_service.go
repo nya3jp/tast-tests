@@ -67,8 +67,8 @@ func (cvk *CheckVirtualKeyboardService) OpenChromePage(ctx context.Context, req 
 	return &empty.Empty{}, nil
 }
 
-// ClickChromeAddressBar clicks on the address bar.
-func (cvk *CheckVirtualKeyboardService) ClickChromeAddressBar(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+// TouchChromeAddressBar uses touch screen to send a tap on the address bar.
+func (cvk *CheckVirtualKeyboardService) TouchChromeAddressBar(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 
 	tconn, err := cvk.cr.TestAPIConn(ctx)
 	if err != nil {
@@ -85,6 +85,25 @@ func (cvk *CheckVirtualKeyboardService) ClickChromeAddressBar(ctx context.Contex
 		return nil, errors.Wrap(err, "unable to detect Chrome OS virtual keyboard")
 	}
 
+	return &empty.Empty{}, nil
+}
+
+// ClickChromeAddressBar sends a left click on the address bar.
+func (cvk *CheckVirtualKeyboardService) ClickChromeAddressBar(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	tconn, err := cvk.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+	cvk.tconn = tconn
+
+	uiauto := uiauto.New(tconn)
+	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
+	if err := uiauto.LeftClickUntil(
+		addressBarNode,
+		uiauto.WaitUntilExists(addressBarNode.Focused()),
+	)(ctx); err != nil {
+		return nil, errors.Wrap(err, "could not find the address bar")
+	}
 	return &empty.Empty{}, nil
 }
 
@@ -110,4 +129,14 @@ func (cvk *CheckVirtualKeyboardService) CheckVirtualKeyboardIsPresent(ctx contex
 
 	exists = true
 	return &pb.CheckVirtualKeyboardResponse{IsVirtualKeyboardPresent: exists}, nil
+}
+
+// CloseChrome closes a Chrome session and cleans up the resources obtained by NewChrome.
+func (cvk *CheckVirtualKeyboardService) CloseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if cvk.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	err := cvk.cr.Close(ctx)
+	cvk.cr = nil
+	return &empty.Empty{}, err
 }

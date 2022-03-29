@@ -156,6 +156,7 @@ func (us *UtilsService) FindPhysicalKeyboard(ctx context.Context, req *empty.Emp
 	}
 }
 
+// NewChrome starts a new Chrome session and logs in as a test user.
 func (us *UtilsService) NewChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if us.cr != nil {
 		return nil, errors.New("Chrome already available")
@@ -169,6 +170,7 @@ func (us *UtilsService) NewChrome(ctx context.Context, req *empty.Empty) (*empty
 	return &empty.Empty{}, nil
 }
 
+// CloseChrome closes a Chrome session and cleans up the resources obtained by NewChrome.
 func (us *UtilsService) CloseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if us.cr == nil {
 		return nil, errors.New("Chrome not available")
@@ -178,6 +180,21 @@ func (us *UtilsService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 	return &empty.Empty{}, err
 }
 
+// ReuseChrome reuses the existing Chrome session if there's already one.
+func (us *UtilsService) ReuseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if us.cr != nil {
+		return nil, errors.New("Chrome already available")
+	}
+
+	cr, err := chrome.New(ctx, chrome.TryReuseSession())
+	if err != nil {
+		return nil, err
+	}
+	us.cr = cr
+	return &empty.Empty{}, nil
+}
+
+// EvalTabletMode evaluates tablet mode status.
 func (us *UtilsService) EvalTabletMode(ctx context.Context, req *empty.Empty) (*fwpb.EvalTabletModeResponse, error) {
 	if us.cr == nil {
 		return nil, errors.New("Chrome not available")
