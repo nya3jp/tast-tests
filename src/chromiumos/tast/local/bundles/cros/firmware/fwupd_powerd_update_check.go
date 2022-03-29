@@ -28,7 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
 		HardwareDeps: hwdep.D(
-			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a batttery.
+			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a battery.
 			hwdep.ChromeEC(), // Test requires Chrome EC to set battery to discharge via ectool.
 		),
 		Params: []testing.Param{
@@ -49,6 +49,9 @@ func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 
 	if err := fwupd.SetFwupdChargingState(ctx, charge); err != nil {
 		s.Fatal("Failed to set charging state: ", err)
+	}
+	if !charge {
+		defer fwupd.SetFwupdChargingState(ctx, !charge)
 	}
 
 	// This command runs an update on a fake device to see how fwupd behaves.

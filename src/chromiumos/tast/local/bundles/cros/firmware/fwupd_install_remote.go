@@ -25,6 +25,10 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
+		HardwareDeps: hwdep.D(
+			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a battery.
+			hwdep.ChromeEC(), // Test requires Chrome EC to set battery to charge via ectool.
+		),
 	})
 }
 

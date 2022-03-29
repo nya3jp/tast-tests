@@ -57,12 +57,8 @@ func SetFwupdChargingState(ctx context.Context, charge bool) error {
 			return errors.New("powerd has not registered a battery state change")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 120 * time.Second}); err != nil {
 		return errors.Wrap(err, "battery polling was unsuccessful")
-	}
-
-	if !charge {
-		defer setBatteryNormal(ctx)
 	}
 
 	return nil
