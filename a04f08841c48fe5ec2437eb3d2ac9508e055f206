@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dc8a3c4c_9a7e651b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-29T19:08:19Z",
+      "side": 1,
+      "message": "I checked the user account and indeed our current tests are all run against modulefood Nearby. Clarified the combinations in go/cros-android-nearby-version-skew-testing and updated this CL accordingly.",
+      "parentUuid": "e2555f1c_3533ff97",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "a04f08841c48fe5ec2437eb3d2ac9508e055f206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8080ab41_1a295c7d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb10affb_7439840e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-29T19:08:19Z",
+      "side": 1,
+      "message": "they seem mostly the same, I\u0027ll take a look at making these constants in another CL (tracking at b/227357443)",
+      "parentUuid": "6d4c5647_dca2f995",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "a04f08841c48fe5ec2437eb3d2ac9508e055f206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec7e65f4_c4da8cd9",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-03-18T16:13:24Z",
       "side": 1,
       "message": "should we write android nearby channel to device_attributes?",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 10
+      },
+      "revId": "a04f08841c48fe5ec2437eb3d2ac9508e055f206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d8b4e3_a52ebf42",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbyfixture/android_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-29T19:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec7e65f4_c4da8cd9",
       "range": {
         "startLine": 167,
         "startChar": 6,

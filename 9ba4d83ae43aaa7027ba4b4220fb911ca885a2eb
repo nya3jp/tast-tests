@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2542ec65_91bd4506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-03-29T19:08:19Z",
+      "side": 1,
+      "message": "Updated based on go/cros-android-nearby-version-skew-testing, approvals got reset",
+      "revId": "9ba4d83ae43aaa7027ba4b4220fb911ca885a2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
