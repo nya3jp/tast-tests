@@ -26,6 +26,7 @@ func init() {
 		Contacts:     []string{"hyungtaekim@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
+		Timeout:      4 * time.Minute,
 		Vars:         []string{browserfixt.LacrosDeployedBinary},
 	})
 }
