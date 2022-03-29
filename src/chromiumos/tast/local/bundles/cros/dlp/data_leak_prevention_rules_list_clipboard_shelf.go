@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -32,7 +31,7 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
 }
@@ -119,7 +118,7 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	searchNode := nodewith.ClassName("SearchBoxView").Role(role.Group)
+	searchNode := nodewith.ClassName("SearchBoxView").First()
 
 	if err := ui.LeftClick(searchNode)(ctx); err != nil {
 		return errors.Wrap(err, "failed finding shelf and clicking it")
@@ -149,7 +148,7 @@ func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string,
 func pasteShelfbox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	searchNode := nodewith.ClassName("SearchBoxView").Role(role.Group)
+	searchNode := nodewith.ClassName("SearchBoxView").First()
 	if err := uiauto.Combine("Paste content in shelf box",
 		ui.LeftClick(searchNode),
 		keyboard.AccelAction("ctrl+V"))(ctx); err != nil {
