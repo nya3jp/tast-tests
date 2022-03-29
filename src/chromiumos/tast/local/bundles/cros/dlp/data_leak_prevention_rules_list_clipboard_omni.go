@@ -35,12 +35,13 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
@@ -171,13 +172,10 @@ func rightClickOmnibox(ctx context.Context, tconn *chrome.TestConn, url string, 
 func pasteOmnibox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	// Select the omni box.
-	if err := keyboard.Accel(ctx, "Ctrl+L"); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl+L to select omni box")
-	}
-
-	if err := keyboard.Accel(ctx, "Ctrl+V"); err != nil {
-		return errors.Wrap(err, "failed to press Ctrl+V to paste content")
+	if err := uiauto.Combine("Paste content in Omnibox",
+		keyboard.Accel("Ctrl+L"),
+		keyboard.Accel("Ctrl+V"))(ctx); err != nil {
+		return errors.Wrap(err, "failed to paste content in Omnibox")
 	}
 
 	err := clipboard.CheckClipboardBubble(ctx, ui, url)
