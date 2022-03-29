@@ -16,6 +16,24 @@
       "message": "I have a concern about no testing has been done.\nTEST\u003dNone\n\nI think two testings can be done.\n1. Tast unit test to make sure nothing break.\n2. Manual run the corresponding control file with test_that to make sure the test is skipped.\n ",
       "revId": "05e3008ea3682d999a495d631e6d4acc368492f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaba4253_2485a2f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-29T19:26:22Z",
+      "side": 1,
+      "message": "I have validated the test itself to make sure that the suite still functions.\n\nI have ran tast list with the expected suite attributes to ensure that it should not show up in wificell_stable and does show up in wificell_unstable.\n\nI have updated the TEST\u003d message to reflect this. Thanks for the feedback.",
+      "parentUuid": "a0545124_ccd16cef",
+      "revId": "05e3008ea3682d999a495d631e6d4acc368492f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
