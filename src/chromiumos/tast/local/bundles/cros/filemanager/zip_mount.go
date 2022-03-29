@@ -8,9 +8,9 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -125,43 +125,33 @@ func ZipMount(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot open Downloads folder: ", err)
 	}
 
-	// Find and click the 'Name' button to order the file entries alphabetically.
-	orderByNameButton := nodewith.Name("Name").Role(role.Button)
-	if err := files.LeftClick(orderByNameButton)(ctx); err != nil {
-		s.Fatal("Cannot find and click 'Name' button: ", err)
-	}
-
-	// Wait until the ZIP files are correctly ordered in the list box.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		listBox := nodewith.Role(role.ListBox).Focusable().Multiselectable().Vertical()
-		listBoxOption := nodewith.Role(role.ListBoxOption).Ancestor(listBox)
-		nodes, err := files.NodesInfo(ctx, listBoxOption)
-		if err != nil {
-			return testing.PollBreak(err)
+	// Wait for the ZIP files to load in the file list.
+	for _, zipFile := range zipFiles {
+		if err := files.WaitForFile(zipFile)(ctx); err != nil {
+			s.Fatalf("Cannot find %s: %s", zipFile, err)
 		}
-
-		// The names of the descendant nodes should be ordered alphabetically.
-		for i, node := range nodes {
-			if node.Name != zipFiles[i] {
-				return errors.New("the files are still not ordered properly")
-			}
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		s.Fatal("Cannot sort ZIP files properly in the Files app list box: ", err)
 	}
 
 	testParams.TestCase(ctx, s, files, zipFiles)
 }
 
-// waitUntilPasswordDialogExists waits for the password dialog to display for a specific encrypted ZIP file.
-func waitUntilPasswordDialogExists(ctx context.Context, files *filesapp.FilesApp, fileName string) error {
+// waitUntilPasswordDialogExists waits for the password dialog to display.
+func waitUntilPasswordDialogExists(ctx context.Context, files *filesapp.FilesApp, zipFiles []string) error {
+	// Construct regex string that matches any file name in |zipFiles|.
+	archiveNameRE := "("
+	for i, fileName := range zipFiles {
+		archiveNameRE += fileName
+		if i < len(zipFiles)-1 {
+			archiveNameRE += "|"
+		} else {
+			archiveNameRE += ")"
+		}
+	}
+
 	// Look for expected file name label within the current dialog.
 	passwordDialog := nodewith.Role(role.Dialog)
-	node := nodewith.Name(fileName).Role(role.StaticText).Ancestor(passwordDialog)
-	return files.WithTimeout(15 * time.Second).WaitUntilExists(node)(ctx)
-
+	fileNameNode := nodewith.NameRegex(regexp.MustCompile(archiveNameRE)).Role(role.StaticText).Ancestor(passwordDialog)
+	return files.WithTimeout(15 * time.Second).WaitUntilExists(fileNameNode)(ctx)
 }
 
 // checkAndUnmountZipFile checks that a given ZIP file is correctly mounted and click the 'eject' button to unmount it.
@@ -249,9 +239,9 @@ func testCancelingMultiplePasswordDialogs(ctx context.Context, s *testing.State,
 		s.Fatal("Cannot press 'Enter': ", err)
 	}
 
-	// Wait until the password dialog is active for the first encrypted ZIP archive.
-	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[0]); err != nil {
-		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[0], err)
+	// Wait until the password dialog is active for one of the encrypted ZIP archives.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles); err != nil {
+		s.Fatal("Cannot find password dialog: ", err)
 	}
 
 	// Press Esc.
@@ -260,8 +250,8 @@ func testCancelingMultiplePasswordDialogs(ctx context.Context, s *testing.State,
 	}
 
 	// Wait until the password dialog is active for the second encrypted ZIP archive.
-	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[1]); err != nil {
-		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[1], err)
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles); err != nil {
+		s.Fatal("Cannot find password dialog: ", err)
 	}
 
 	// Click the 'Cancel' button.
@@ -298,9 +288,9 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 		s.Fatal("Cannot press 'Enter': ", err)
 	}
 
-	// Wait until the password dialog is active for the first encrypted ZIP archive.
-	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[0]); err != nil {
-		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[0], err)
+	// Wait until the password dialog is active for on of the encrypted ZIP archives.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles); err != nil {
+		s.Fatal("Cannot find password dialog: ", err)
 	}
 
 	// Enter wrong password.
@@ -318,9 +308,9 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 		s.Fatal("Cannot validate password by pressing 'Enter': ", err)
 	}
 
-	// Check that the password dialog is still active for the first encrypted ZIP archive.
-	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[0]); err != nil {
-		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[0], err)
+	// Check that the password dialog is still active.
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles); err != nil {
+		s.Fatal("Cannot find password dialog: ", err)
 	}
 
 	// Check that "Invalid password" displays on the UI.
@@ -340,8 +330,8 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 	}
 
 	// Check that the password dialog is active for the second encrypted ZIP archive.
-	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles[1]); err != nil {
-		s.Fatalf("Cannot find password dialog for %s : %v", zipFiles[1], err)
+	if err := waitUntilPasswordDialogExists(ctx, files, zipFiles); err != nil {
+		s.Fatal("Cannot find password dialog: ", err)
 	}
 
 	// Enter right password.
