@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c681bf76_1f5798fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-03-29T08:51:06Z",
+      "side": 1,
+      "message": "Hi Luciano,\n\nCan you have a first look?\n\nThanks",
+      "revId": "a20b8a738f17a44f7ebdf592f61b1ccd2ee90e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
