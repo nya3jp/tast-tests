@@ -142,6 +142,30 @@
       },
       "revId": "6ee04bc1a5cdc40409c1cedbeaab17445121daf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8185c9_33cdf866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/mojo_ethernet_preferred_over_cellular.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-03-29T15:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1a5f83_8493fba7",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "6ee04bc1a5cdc40409c1cedbeaab17445121daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
