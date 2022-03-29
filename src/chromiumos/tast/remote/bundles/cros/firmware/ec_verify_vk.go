@@ -11,9 +11,11 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	fwpb "chromiumos/tast/services/cros/firmware"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -34,7 +36,7 @@ func init() {
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.ui.CheckVirtualKeyboardService"},
+		ServiceDeps:  []string{"tast.cros.ui.CheckVirtualKeyboardService", "tast.cros.firmware.UtilsService"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.TouchScreen()),
 		Params: []testing.Param{{
@@ -66,7 +68,6 @@ func init() {
 }
 
 func ECVerifyVK(ctx context.Context, s *testing.State) {
-
 	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireServo(ctx); err != nil {
@@ -76,29 +77,51 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get config: ", err)
 	}
 
+	// Perform a hard reset on DUT to ensure removal of any
+	// old settings that might potentially have an impact on
+	// this test.
+	if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+		s.Fatal("Failed to cold reset DUT at the beginning of test: ", err)
+	}
+
+	// Wait for DUT to reconnect.
+	waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+	defer cancelWaitConnect()
+
+	if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
+		s.Fatal("Failed to reconnect to DUT: ", err)
+	}
+
 	if err := h.RequireRPCClient(ctx); err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 
 	cvkc := pb.NewCheckVirtualKeyboardServiceClient(h.RPCClient.Conn)
-
 	s.Log("Starting a new Chrome session and logging in as test user")
 	if _, err := cvkc.NewChromeLoggedIn(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to login: ", err)
 	}
+	defer cvkc.CloseChrome(ctx, &empty.Empty{})
 
 	s.Log("Opening a Chrome page")
 	if _, err := cvkc.OpenChromePage(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to open chrome: ", err)
 	}
 
-	args := s.Param().(*testParamsTablet)
+	// Create a Chrome instance for the utilsService by reusing one that's
+	// already been created above under cvkc. The utilsService is required
+	// by EvalTabletMode in checking tablet mode status.
+	utilsService := fwpb.NewUtilsServiceClient(h.RPCClient.Conn)
+	if _, err := utilsService.ReuseChrome(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to reuse Chrome session for the utils service: ", err)
+	}
 
+	args := s.Param().(*testParamsTablet)
 	// Chromeslates are already in tablet mode, and for this reason,
 	// we could skip switching to tablet mode, and just verify that
 	// virtual keyboard is present after a click on the address bar.
 	if args.canDoTabletSwitch == false {
-		if err := verifyVKIsPresent(ctx, h, cvkc, s, true, "", args.formFactor); err != nil {
+		if err := verifyVKIsPresent(ctx, h, cvkc, utilsService, s, true, "", args.formFactor); err != nil {
 			s.Fatal("Failed to verify virtual keyboard status: ", err)
 		}
 	} else {
@@ -110,7 +133,7 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 			{false, args.tabletModeOff},
 		} {
 			s.Logf("Run test with tablet mode on: %t", dut.tabletMode)
-			if err := verifyVKIsPresent(ctx, h, cvkc, s, dut.tabletMode, dut.tabletState, args.formFactor); err != nil {
+			if err := verifyVKIsPresent(ctx, h, cvkc, utilsService, s, dut.tabletMode, dut.tabletState, args.formFactor); err != nil {
 				s.Fatal("Failed to verify virtual keyboard status: ", err)
 			}
 		}
@@ -143,7 +166,7 @@ func checkAndSetTabletMode(ctx context.Context, h *firmware.Helper, s *testing.S
 	return nil
 }
 
-func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, s *testing.State, tabletMode bool, command, dutFormFactor string) error {
+func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, utilsService fwpb.UtilsServiceClient, s *testing.State, tabletMode bool, command, dutFormFactor string) error {
 	// Run EC command to put DUT in clamshell/tablet mode.
 	if command != "" {
 		if err := checkAndSetTabletMode(ctx, h, s, command); err != nil {
@@ -184,19 +207,30 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 		return errors.Wrap(err, "failed in sleeping for one second before clicking on the address bar")
 	}
 
+	// Log tablet mode status from the ChromeOS perspective.
+	res, err := utilsService.EvalTabletMode(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "unable to evaluate whether ChromeOS is in tablet mode")
+	}
+	s.Logf("ChromeOS in tabletmode: %t", res.TabletModeEnabled)
+
 	req := pb.CheckVirtualKeyboardRequest{
 		IsDutTabletMode: tabletMode,
 	}
 	// Use polling here to wait till the UI tree has fully updated,
 	// and check if virtual keyboard is present.
 	s.Logf("Expecting virtual keyboard present: %t", tabletMode)
-	return testing.Poll(ctx, func(c context.Context) error {
-		s.Log("Clicking on the address bar of the Chrome page")
-		if _, err := cvkc.ClickChromeAddressBar(ctx, &empty.Empty{}); err != nil {
-			return errors.Wrap(err, "failed to click chrome address bar")
+	checkVKPollOptions := testing.PollOptions{
+		Timeout:  1 * time.Minute,
+		Interval: 3 * time.Second,
+	}
+	if err := testing.Poll(ctx, func(c context.Context) error {
+		s.Log("Sending a touch on the address bar of a Chrome page")
+		if _, err := cvkc.TouchChromeAddressBar(ctx, &empty.Empty{}); err != nil {
+			return errors.Wrap(err, "failed to touch on chrome address bar")
 		}
 
-		if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		if err := testing.Sleep(ctx, 1*time.Second); err != nil {
 			return errors.Wrap(err, "failed to sleep after clicking on the Chrome address bar")
 		}
 
@@ -210,5 +244,25 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 				tabletMode, res.IsVirtualKeyboardPresent)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second})
+	}, &checkVKPollOptions); err != nil {
+		s.Logf("Checking virtual keyboard in tablet mode failed with a tap on the touch screen: %v. Attempting a left click instead", err)
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			s.Log("Clicking on the address bar of a Chrome page")
+			if _, err := cvkc.ClickChromeAddressBar(ctx, &empty.Empty{}); err != nil {
+				return errors.Wrap(err, "failed to click on chrome address bar")
+			}
+			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep after clicking on the Chrome address bar")
+			}
+			if res, err := cvkc.CheckVirtualKeyboardIsPresent(ctx, &req); err != nil {
+				return errors.Wrap(err, "failed to check whether virtual keyboard is present")
+			} else if tabletMode != res.IsVirtualKeyboardPresent {
+				return errors.Errorf(
+					"found unexpected behavior, and got tabletmode: %t, VirtualKeyboardPresent: %t",
+					tabletMode, res.IsVirtualKeyboardPresent)
+			}
+			return nil
+		}, &checkVKPollOptions)
+	}
+	return nil
 }
