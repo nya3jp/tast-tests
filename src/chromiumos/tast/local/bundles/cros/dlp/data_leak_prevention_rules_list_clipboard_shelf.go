@@ -6,6 +6,7 @@ package dlp
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -16,7 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -32,7 +33,7 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
 }
@@ -86,14 +87,20 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 				s.Fatal("Failed to reset the Chrome: ", err)
 			}
 
-			if _, err = cr.NewConn(ctx, "https://"+param.url); err != nil {
+			conn, err := cr.NewConn(ctx, "https://"+param.url)
+			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
+			defer conn.Close()
 
-			if err := uiauto.Combine("copy all text from source website",
+			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+				s.Fatal(err, "failed to wait for %q to be loaded and achieve quiescence", param.url)
+			}
+
+			if err := uiauto.Combine("Select all and Copy",
 				keyboard.AccelAction("Ctrl+A"),
 				keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
-				s.Fatal("Failed to copy text from source browser: ", err)
+				s.Fatal(err, "failed to press Ctrl+A and Ctrl+C to select all and copy")
 			}
 
 			// Open the launcher.
@@ -117,13 +124,10 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	searchNode := nodewith.ClassName("SearchBoxView").Role(role.Group)
-
-	if err := ui.LeftClick(searchNode)(ctx); err != nil {
-		return errors.Wrap(err, "failed finding shelf and clicking it")
-	}
-
-	if err := ui.RightClick(searchNode)(ctx); err != nil {
+	searchNode := nodewith.ClassName("SearchBoxView").First()
+	if err := uiauto.Combine("Right clickshelf box",
+		ui.LeftClick(searchNode),
+		ui.RightClick(searchNode))(ctx); err != nil {
 		return errors.Wrap(err, "failed to right click shelf box")
 	}
 
@@ -147,10 +151,10 @@ func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string,
 func pasteShelfbox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	searchNode := nodewith.ClassName("SearchBoxView").Role(role.Group)
+	searchNode := nodewith.ClassName("SearchBoxView").First()
 	if err := uiauto.Combine("Paste content in shelf box",
 		ui.LeftClick(searchNode),
-		keyboard.AccelAction("ctrl+V"))(ctx); err != nil {
+		keyboard.AccelAction("Ctrl+V"))(ctx); err != nil {
 		return errors.Wrap(err, "failed to paste content in shelf box")
 	}
 
