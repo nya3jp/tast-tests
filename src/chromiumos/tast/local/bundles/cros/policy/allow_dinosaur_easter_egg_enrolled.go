@@ -6,7 +6,6 @@ package policy
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
@@ -81,7 +80,6 @@ func AllowDinosaurEasterEggEnrolled(ctx context.Context, s *testing.State) {
 
 			if isBlocked != expectedBlocked {
 				s.Errorf("Unexpected blocked behavior: got %t; want %t", isBlocked, expectedBlocked)
-				testing.Sleep(ctx, 1*time.Minute)
 			}
 		})
 	}
