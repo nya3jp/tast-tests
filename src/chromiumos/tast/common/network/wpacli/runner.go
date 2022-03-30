@@ -92,3 +92,20 @@ func (r *Runner) Set(ctx context.Context, prop Property, val string) error {
 	}
 	return nil
 }
+
+// run runs a specific command and checks for expected response.
+func (r *Runner) run(ctx context.Context, expected string, opts ...string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI(opts...)...)
+	if err != nil {
+		return errors.Wrapf(err, "failed running wpa_cli %s", strings.Join(opts, " "))
+	}
+	if !strings.Contains(string(cmdOut), expected) {
+		return errors.Errorf("failed to get %q in wpa_cli %s output: %s", expected, strings.Join(opts, " "), string(cmdOut))
+	}
+	return nil
+}
+
+// TDLSDiscover runs tdls_discover command.
+func (r *Runner) TDLSDiscover(ctx context.Context, mac string) error {
+	return r.run(ctx, "OK", "tdls_discover", mac)
+}

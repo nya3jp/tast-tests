@@ -287,6 +287,13 @@ func RRMBeaconReport() Option {
 	}
 }
 
+// APSD returns an Option which enables U-APSD advertisement in hostapd config.
+func APSD() Option {
+	return func(c *Config) {
+		c.APSD = true
+	}
+}
+
 // AdditionalBSSs returns an Option which sets AdditionalBSSs in hostapd config.
 // Each AdditionalBSS should have a unique interface name, SSID, and BSSID. The
 // number of AdditionalBSSs is limited by the phy. See the 'valid interface
@@ -374,6 +381,7 @@ type Config struct {
 	R1KHs              []string
 	MBO                bool
 	RRMBeaconReport    bool
+	APSD               bool
 	AdditionalBSSs     []AdditionalBSS
 	SupportedRates     []float32
 	BasicRates         []float32
@@ -497,6 +505,10 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	if c.RRMBeaconReport {
 		configure("rrm_beacon_report", "1")
+	}
+
+	if c.APSD {
+		configure("uapsd_advertisement_enabled", "1")
 	}
 
 	for _, bssid := range c.AdditionalBSSs {
