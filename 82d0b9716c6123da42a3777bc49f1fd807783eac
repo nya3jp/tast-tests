@@ -16,6 +16,24 @@
       "message": "IIUC, setting seed everytime before using the random value is a pattern to be avoided.\nDo you really need this? Can this be just dropped?",
       "revId": "82d0b9716c6123da42a3777bc49f1fd807783eac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77913f2b_2264d823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/add_and_remove_language.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-30T08:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "581dd0a4_f117c1e6",
+      "revId": "82d0b9716c6123da42a3777bc49f1fd807783eac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
