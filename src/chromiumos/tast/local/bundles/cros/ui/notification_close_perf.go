@@ -107,18 +107,6 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
 	collapseButton := nodewith.ClassName("CollapseButton")
 
-	// Open the status area, then collapse the uber tray which results in an
-	// expanded MessageCenter.
-	if err := uiauto.Combine(
-		"open the uber tray, expand it, then close some notifications",
-		automationController.LeftClick(statusArea),
-		automationController.WaitUntilExists(collapseButton),
-		automationController.LeftClick(collapseButton),
-		automationController.WaitForLocation(collapseButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to collapse the uber tray: ", err)
-	}
-
 	// Ensure no notifications currently exist.
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to clear all notifications prior to adding notifications")
@@ -173,6 +161,17 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 					s.Fatalf("Failed to create %d-th ARC notification: %v", i, err)
 				}
 			}
+		}
+
+		// Open the uber tray, then collapse quick settings which results in an expanded MessageCenter.
+		if err := uiauto.Combine(
+			"open the uber tray, then collapse quick settings",
+			automationController.LeftClick(statusArea),
+			automationController.WaitUntilExists(collapseButton),
+			automationController.LeftClick(collapseButton),
+			automationController.WaitForLocation(collapseButton),
+		)(ctx); err != nil {
+			s.Fatal("Failed to open the uber tray and expand quick settings: ", err)
 		}
 
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -233,6 +232,17 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 				if err := testing.Sleep(ctx, 3*time.Second); err != nil {
 					return errors.Wrap(err, "failed to wait")
 				}
+			}
+
+			// Expand quick settings back to original state, then close uber tray.
+			if err := uiauto.Combine(
+				"expand quick settings, then close the uber tray",
+				automationController.LeftClick(collapseButton),
+				automationController.WaitForLocation(collapseButton),
+				automationController.LeftClick(statusArea),
+				automationController.WaitUntilGone(collapseButton),
+			)(ctx); err != nil {
+				s.Fatal("Failed to expand quick settings and close the uber tray: ", err)
 			}
 
 			return nil
