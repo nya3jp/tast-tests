@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e10818c_286e8b03",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T07:45:11Z",
+      "side": 1,
+      "message": "nit: reflow comment",
+      "revId": "1bd5dcb3cfa49c31d72cbe99652139b1052e6190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53696239_c7d66e35",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T07:45:11Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that this is the right way to do it.\n\nWe are now waiting 10 seconds (which should be explicit here as well).\n\nA much better solution is to wait for both at the same time and immediately continue when one of them is available.\n\nUnfortunately the code will become more complex due to goroutines, but it would certainly become faster.",
+      "revId": "1bd5dcb3cfa49c31d72cbe99652139b1052e6190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
