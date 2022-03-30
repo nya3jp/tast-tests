@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:    Ti50SystemTestImage,
 		Desc:    "Ti50 system test",
-		Timeout: 10 * time.Minute,
+		Timeout: 20 * time.Minute,
 		Contacts: []string{
 			"ecgh@chromium.org",
 			"ti50-core@google.com",
@@ -113,7 +113,7 @@ func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, tes
 			return result
 		}
 		if slowCryptoRe.MatchString(line) {
-			timeLimit += 5 * time.Minute
+			timeLimit += 10 * time.Minute
 			s.Log("(Waiting for slow crypto.)")
 		}
 	}
