@@ -22,6 +22,30 @@
       },
       "revId": "9551049595a31f64182a49f2a049e7e1f4f8261c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79674146_7b208e56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-03-30T22:11:44Z",
+      "side": 1,
+      "message": "What\u0027s wrong with this change? it\u0027s very simple and it won\u0027t break anything :)",
+      "parentUuid": "fc64e7c8_142f1577",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "9551049595a31f64182a49f2a049e7e1f4f8261c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
