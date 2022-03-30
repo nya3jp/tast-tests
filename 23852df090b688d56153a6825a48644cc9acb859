@@ -495,6 +495,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e599ac7_c4cd9202",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-03-30T07:59:20Z",
+      "side": 1,
+      "message": "I guess you named it \"ShimlessrmaService\" which uses the package name as the prefix, in which case you may receive that warning. \n\nAlso, the file name `shimlessrma/shimlessrma_service.go` or `shimlessrma/shimlessrma_service.proto` is probably not a good one. You way want to avoid the duplicated part. It is better to rename it to `shimlessrma/XXX_service` (operation_service or something more meaningful).\n\nA good example is this https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/automation_service.go?q\u003df:tast-tests%20AND%20automationService and https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/services/cros/ui/automation_service.proto?q\u003df:tast-tests%20AND%20automationService.",
+      "parentUuid": "8875c7d7_6e9a93d7",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7300d61e_bc19263f",
         "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
         "patchSetId": 1
