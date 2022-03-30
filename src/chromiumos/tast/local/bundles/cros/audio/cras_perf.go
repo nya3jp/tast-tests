@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -197,9 +196,8 @@ func CrasPerf(ctx context.Context, s *testing.State) {
 
 		// Stop CRAS to make sure the audio device won't be occupied.
 		s.Log("Restarting CRAS")
-
-		if err := upstart.RestartJob(ctx, "cras"); err != nil {
-			s.Fatal("Failed to stop CRAS: ", err)
+		if err := audio.RestartCras(ctx); err != nil {
+			s.Fatal("Failed to restart CRAS: ", err)
 		}
 
 		// Any device being available means CRAS is ready.
