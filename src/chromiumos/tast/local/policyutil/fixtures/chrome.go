@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -189,6 +190,8 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
+
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	if p.waitForARC {
 		if arcType, ok := arc.Type(); ok && arcType == arc.Container {
