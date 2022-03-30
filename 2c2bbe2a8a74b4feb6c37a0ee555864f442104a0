@@ -33,6 +33,24 @@
       "message": "I\u0027ve talked to mojahsu@ who is sheriff this week and we are going to chump this change. I\u0027ve done my best to make sure this won\u0027t break but if it does it\u0027s likely to be a change that got in adding a new usage of LaunchFromShelf. In that case, changing LaunchFromShelf to just Launch should fix it. Or, please consider reverting the new usage of LaunchFromShelf rather than this change.",
       "revId": "2c2bbe2a8a74b4feb6c37a0ee555864f442104a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b08f68_9b421746",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-30T03:26:33Z",
+      "side": 1,
+      "message": "The reason for bypassing the CQ is: all the failures happen in volteer-manatee-cq.hw.bvt-tast-cq and it\u0027s because of http://b/226937341 . This change is blocking several people\u0027s work as it\u0027s part of an ongoing urgent refactor.",
+      "parentUuid": "ebb36954_7f5a31a8",
+      "revId": "2c2bbe2a8a74b4feb6c37a0ee555864f442104a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
