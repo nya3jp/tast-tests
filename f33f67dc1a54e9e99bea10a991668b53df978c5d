@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5841d6_e27c973e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-30T13:27:41Z",
+      "side": 1,
+      "message": "LGTM to avoid another cross timezone iteration, but with a request.",
+      "revId": "f33f67dc1a54e9e99bea10a991668b53df978c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cc0bca0_d8d40117",
@@ -67,6 +84,24 @@
       "side": 1,
       "message": "There is DEPS issue:\n\nWwe have all the other TPS-reporting tests in \n```\nchromiumos/tast/local/bundles/cros/ui\n```\nso the `cuj.recorder` is located in the ui/ subdir:\n```\nchromiumos/tast/local/bundles/cros/ui/cuj/recorder.go\n```\n\nBut lacros.DocsCUJ is in the adjacent lacros/ subdir:\n```\nchromiumos/tast/local/bundles/cros/lacros\n```\n\nTast include rules prohibit referencing to the library on the same level:\n```\n[FAILED] chromiumos/platform/tast-tests: tast_lint                           \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go:16:2: import of chromiumos/tast/local/bundles/cros/ui/cuj is only allowed from chromiumos/tast/local/bundles/*/ui or its descendant\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n```\n\nSo we have two options:\n1) Rename and move lacros.DocsCUJ into the ui.DocsCUJ\n2) Move cuj.recorder outside of the ui/ .\n3) If I am reading the erorr message correctly, we might be able to create `lacros/ui` and move the test there, but I feel that it may be fragile.\n\nDiscussing this with the TPS dashboard team, it seems that we agree that it\u0027s simpler to move the test.\n\nWDYT?",
       "parentUuid": "4cc0bca0_d8d40117",
+      "revId": "f33f67dc1a54e9e99bea10a991668b53df978c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a400d3_9c0ae4bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/docs_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-30T13:27:41Z",
+      "side": 1,
+      "message": "Per Luke\u0027s comment, I\u0027m ok to move/rename.\nThough, could you keep \"lacros\" in somewhere of the name still?\nWe can clean it up later once lacros is fully launched and becomes the only way to use Docs. But, I\u0027d like to keep it until it\u0027s completed.",
+      "parentUuid": "33735c8a_f710e5ab",
       "revId": "f33f67dc1a54e9e99bea10a991668b53df978c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
