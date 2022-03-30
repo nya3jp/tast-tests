@@ -80,8 +80,7 @@ func availableTCPPorts(count int) ([]int, error) {
 
 // waitForServerSocket tries to connect to a TCP address, which is a string in
 // the form "host:port", e.g. "localhost:8080", served by server, which is an
-// already-started server process. If connecting to the address fails,
-// server.DumpLog is called to log more information.
+// already-started server process.
 func waitForServerSocket(ctx context.Context, addr string, server *testexec.Cmd) error {
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		d := &net.Dialer{Timeout: time.Second}
@@ -133,7 +132,7 @@ func New(ctx context.Context, mode Mode, archive string) (*WPR, error) {
 			if err := proc.Kill(); err != nil {
 				testing.ContextLog(ctx, "Cannot kill WPR: ", err)
 			}
-			if err := proc.Wait(); err != nil {
+			if err := proc.Wait(testexec.DumpLogOnError); err != nil {
 				testing.ContextLog(ctx, "Failed to release WPR resources: ", err)
 			}
 		}
