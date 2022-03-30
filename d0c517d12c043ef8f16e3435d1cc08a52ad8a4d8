@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bcc7cf7_9117eeaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-30T10:06:46Z",
+      "side": 1,
+      "message": "Some nits/small changes for the comments.",
+      "revId": "d0c517d12c043ef8f16e3435d1cc08a52ad8a4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2842cbbf_a1cb2fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15004,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-30T10:06:46Z",
+      "side": 1,
+      "message": "Please use fully formatted sentence:\n\"Allow to see the CLVK error and warn messages directly in the test logFile.\"",
+      "range": {
+        "startLine": 15004,
+        "startChar": 3,
+        "endLine": 15004,
+        "endChar": 70
+      },
+      "revId": "d0c517d12c043ef8f16e3435d1cc08a52ad8a4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d69aeec_eaf7075e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15006,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-30T10:06:46Z",
+      "side": 1,
+      "message": "TODO(b/227211191): remove this when CL3.0 is the default in clvk.\n\nAlso consistency between clvk/CLVK capitalization?",
+      "range": {
+        "startLine": 15006,
+        "startChar": 4,
+        "endLine": 15006,
+        "endChar": 68
+      },
+      "revId": "d0c517d12c043ef8f16e3435d1cc08a52ad8a4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
