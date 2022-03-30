@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6759f0_9a3ed6fc",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-30T16:18:47Z",
+      "side": 1,
+      "message": "Can this happen? this probably an error if that happened",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 61
+      },
+      "revId": "ce20778f4282dc498bfea229cecf54cc55496417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d423c2bd_6160a18b",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-30T16:18:47Z",
+      "side": 1,
+      "message": "nit: maybe let\u0027s handle `!\u003d nil` first?",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 14
+      },
+      "revId": "ce20778f4282dc498bfea229cecf54cc55496417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4836f612_c21ddeef",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-03-30T16:18:47Z",
+      "side": 1,
+      "message": "same: we probably should not continue after this point. This statement might fail and nobody will notice for a long time",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 7
+      },
+      "revId": "ce20778f4282dc498bfea229cecf54cc55496417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
