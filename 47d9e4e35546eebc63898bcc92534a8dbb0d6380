@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d53a009_cc41844e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Also not that the updatelib is being introduced and why.",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3f3b664e_220671f6",
@@ -38,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac80ddc9_46ca3f1a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Maybe: \"is the maximum time an update test is expected to take\" ?\n\nminor nit: Either move the exported symbol to a separate const group or add a newline before (if gofmt allows it)",
+      "range": {
+        "startLine": 24,
+        "startChar": 18,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf15dca8_ce57a3a2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
         "patchSetId": 8
@@ -55,6 +95,223 @@
         "endLine": 28,
         "endChar": 72
       },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e96866_f3113a82",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Please document that each step has a timeout and how much it is.",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0c0282_b791fe13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "nit: Operations (it\u0027s not too long)",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae343bd_f2852f4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Since this is a helper package, don\u0027t pass state as a parameter.",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cfe2c4d_642250c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Not sure if this is helpful when monitoring log output.",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6871894_5fda4311",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "nit: document, it\u0027s not obvious from the name.",
+      "range": {
+        "startLine": 42,
+        "startChar": 63,
+        "endLine": 42,
+        "endChar": 69
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0753ef22_26fbf87c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Maybe 30 seconds here? Since this is generic I\u0027d be more generous.",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d834ef_201840b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Since tests are not expected to use all functions, maybe consider nil as a valid value and treat it as a NoOp.",
+      "range": {
+        "startLine": 33,
+        "startChar": 33,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50181c07_46273616",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "nit: move this to a separate CL",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e588aa_2c261bb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Related to making the package not accept state: I\u0027m fine with callbacks getting a reference to state here, but it would be ideal for them to return errors as well.",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e581d5_a5fa0beb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "Do you want to test multiple milestone migrations?\nYou could have subtests for each (at the cost of longer runtime).",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a0ef06_c5759f5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-30T11:36:37Z",
+      "side": 1,
+      "message": "This should remove user vaults.",
       "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
