@@ -7,6 +7,7 @@ package health
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"strconv"
 	"strings"
 	"time"
@@ -142,7 +143,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 
 	if isvProSupports {
 		if isThunderboltSupport {
-			if err := validateThundeboltDevices(tbtDevs, isDeviceConnected); err != nil {
+			if err := validateThundeboltDevices(ctx, tbtDevs, isDeviceConnected); err != nil {
 				s.Fatal("Failed to validate Thunderbolt devices: ", err)
 			}
 		} else {
@@ -228,8 +229,16 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 	return nil
 }
 
-func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
+func validateThundeboltDevices(ctx context.Context, devs []busDevice, isDeviceConnected bool) error {
 	checkInterfacesDetected := false
+	productName, err := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/device_name")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to read thunderbolt device name")
+	}
+	vendorName, err := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/vendor_name")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to read thunderbolt vendor name")
+	}
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
@@ -258,27 +267,29 @@ func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 				if interfaces.TxSpeedGbs == "" {
 					return errors.New("failed to get TxSpeedGbs")
 				}
-				if interfaces.VendorName == "" {
-					return errors.New("failed to get VendorName")
-				}
 			}
 		}
 
 		if (devices.DeviceClass) == "" {
 			return errors.New("failed to get Thunderbolt DeviceClass")
 		}
-		if (devices.ProductName) == "" {
-			return errors.New("failed to get Thunderbolt ProductName")
+
+		productName := strings.TrimSpace(string(productName))
+		if devices.ProductName != productName {
+			return errors.Errorf("failed to get correct Thunderbolt ProductName: got %q; want %q", productName, devices.ProductName)
 		}
-		if (devices.VendorName) == "" {
-			return errors.New("failed to get Thunderbolt VendorName")
+
+		vendorName := strings.TrimSpace(string(vendorName))
+		if devices.VendorName != vendorName {
+			return errors.Errorf("failed to get correct Thunderbolt VendorName: got %q; want %q", vendorName, devices.VendorName)
 		}
+
 	}
 
 	if isDeviceConnected && !checkInterfacesDetected {
 		return errors.New("failed to get Thunderbolt device data when the device is connected")
-
 	}
+
 	return nil
 }
 
