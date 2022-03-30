@@ -7,6 +7,7 @@ package health
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"strconv"
 	"strings"
 	"time"
@@ -267,18 +268,34 @@ func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 		if (devices.DeviceClass) == "" {
 			return errors.New("failed to get Thunderbolt DeviceClass")
 		}
-		if (devices.ProductName) == "" {
-			return errors.New("failed to get Thunderbolt ProductName")
+
+		want, err := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/device_name")
+		if err != nil {
+			if devices.ProductName != "" {
+				return errors.New("failed to get empty Thunderbolt ProductName")
+			}
+		} else {
+			if devices.ProductName != strings.TrimSpace(string(want)) {
+				return errors.New("failed to get Thunderbolt ProductName")
+			}
 		}
-		if (devices.VendorName) == "" {
-			return errors.New("failed to get Thunderbolt VendorName")
+
+		want, err = ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/vendor_name")
+		if err != nil {
+			if devices.VendorName != "" {
+				return errors.New("failed to get empty Thunderbolt VendorName")
+			}
+		} else {
+			if devices.VendorName != strings.TrimSpace(string(want)) {
+				return errors.New("failed to get Thunderbolt VendorName")
+			}
 		}
 	}
 
 	if isDeviceConnected && !checkInterfacesDetected {
 		return errors.New("failed to get Thunderbolt device data when the device is connected")
-
 	}
+
 	return nil
 }
 
