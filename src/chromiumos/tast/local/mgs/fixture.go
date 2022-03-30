@@ -110,6 +110,7 @@ func (g *guestSessionFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		}),
 		ExtraChromeOptions(
 			chrome.KeepState(),
+			chrome.EnableFeatures("WebUITabStrip"),
 			chrome.ExtraArgs("--force-devtools-available"),
 		),
 	)

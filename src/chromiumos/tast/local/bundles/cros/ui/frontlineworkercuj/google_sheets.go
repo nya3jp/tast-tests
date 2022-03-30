@@ -76,6 +76,10 @@ func (g *GoogleSheets) CopySpreadSheet(ctx context.Context, sampleSheetURL strin
 		return "", errors.Wrap(err, "failed to open the copied data spreadsheet")
 	}
 
+	if err := g.validateEditMode()(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to enter edit mode")
+	}
+
 	timestamp := time.Now().Local().Format("2006-01-02")
 	sheetName = fmt.Sprintf("%s-%s", sheetNamePrefix, timestamp)
 	if err := g.renameFile(sheetName)(ctx); err != nil {
@@ -141,9 +145,16 @@ func (g *GoogleSheets) EditPivotTable() uiauto.Action {
 func (g *GoogleSheets) editPivotTableEditor(buttonName, itemName string) uiauto.Action {
 	pivotTableEditor := nodewith.Name("Pivot table editor").Role(role.Complementary)
 	button := nodewith.Name(buttonName).Role(role.PopUpButton).Ancestor(pivotTableEditor)
+	buttonOffscreen := button.Offscreen()
 	buttonExpanded := button.Expanded()
 	menuItem := nodewith.Name(itemName).Role(role.MenuItem)
 	return uiauto.Combine("edit the values",
+		// Sometimes, the display size is not large enough that when adding "Rows" and "Columns".
+		// The "Value Add" button might drop outside of the display.
+		uiauto.IfSuccessThen(
+			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonOffscreen),
+			g.ui.EnsureFocused(button),
+		),
 		g.uiHdl.ClickUntil(button, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(buttonExpanded)),
 		g.uiHdl.Click(menuItem),
 	)
@@ -248,10 +259,12 @@ func (g *GoogleSheets) login() uiauto.Action {
 		}
 		changeLanguage := nodewith.Role(role.ListBox).Collapsed().Vertical()
 		englishOption := nodewith.NameContaining("English (United States)").Role(role.ListBoxOption)
-		return uiauto.Combine("change the language",
+		return uiauto.NamedAction("change the language", uiauto.Combine("change the language",
 			g.uiHdl.Click(changeLanguage),
 			g.uiHdl.Click(englishOption),
-		)(ctx)
+			// The page might take longer to change the display to "English (United States)" language in low-end DUTs.
+			g.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(account),
+		))(ctx)
 	}
 
 	warning := nodewith.Name("Protect your account").Role(role.StaticText)
@@ -267,7 +280,7 @@ func (g *GoogleSheets) login() uiauto.Action {
 		g.ui.LeftClick(password),
 		confirmInput(password, g.password),
 		g.kb.AccelAction("Enter"),
-		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(warning), g.uiHdl.Click(confirm)),
+		uiauto.IfSuccessThen(g.ui.WaitUntilExists(warning), uiauto.NamedAction(`click the "CONFIRM" button`, g.uiHdl.Click(confirm))),
 	)
 }
 
@@ -305,15 +318,18 @@ func (g *GoogleSheets) renameFile(sheetName string) uiauto.Action {
 	fileMenu := nodewith.Role(role.Menu)
 	renameItem := nodewith.Name("Rename r").Role(role.MenuItem).Ancestor(fileMenu)
 	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
-	return uiauto.Combine("rename the file",
+	closeButton := nodewith.Name("Close sidebar").Role(role.Button)
+	return uiauto.Retry(3, uiauto.Combine("rename the file",
 		g.ui.WaitUntilExists(menuBar),
 		g.uiHdl.ClickUntil(fileItem, g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileMenu)),
 		g.uiHdl.Click(renameItem),
+		// If the Approval sidebar appears, it means that the UI is still unstable, causing the error to click "Rename" to "Approvals".
+		uiauto.IfSuccessThen(g.ui.WaitUntilExists(closeButton), g.uiHdl.Click(closeButton)),
 		g.ui.WaitUntilExists(renameField),
 		g.kb.TypeAction(sheetName),
 		g.kb.AccelAction("Enter"),
 		uiauto.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
-	)
+	))
 }
 
 // selectCell selects the specified cell using the name box.
