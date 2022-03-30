@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb099c7_fdf86231",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-03-30T22:30:44Z",
+      "side": 1,
+      "message": "IIUC, this was a leftover comment from this refactoring, where the logging was dropped?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2020539",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "4a18f7e08f7628f26cc5b0b0761a104ed6ccd4e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
