@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "407e96e6_182dd325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-30T04:12:51Z",
+      "side": 1,
+      "message": "This is addressed in the same bug ticket.",
+      "parentUuid": "7e1b79b8_c17b45c8",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 8
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5e7cfb3_f2530402",
         "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
         "patchSetId": 1
@@ -152,6 +176,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "Could you create bugs to track the TODOs?\nlike TODO(b/12345678): do something.",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff80910_8d231bc1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-30T04:12:51Z",
+      "side": 1,
+      "message": "it will addressed in the same buganizer ticket but with separate CL.",
+      "parentUuid": "ec63dbbb_cb564787",
       "range": {
         "startLine": 30,
         "startChar": 5,
@@ -267,6 +315,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "Do not just use the name `Service`, normally this should be called `XXXService`",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a0d507_79d493ca",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-30T04:12:51Z",
+      "side": 1,
+      "message": "commit hooks asks me to use a simpler class name since my package name is shimlessrma already.\n\nSee doc: https://github.com/golang/go/wiki/CodeReviewComments#package-names",
+      "parentUuid": "b097a6d5_228dcf13",
       "range": {
         "startLine": 14,
         "startChar": 8,
