@@ -16,6 +16,24 @@
       "message": "we only add this when it\u0027s *not* autosubmitted?",
       "revId": "6cdd52b4b1bb50fb18854bf48ee634085489c849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48adfc4f_f119c1ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-03-30T01:58:30Z",
+      "side": 1,
+      "message": "Yes, since if it\u0027s autosubmitted we don\u0027t have to press enter.",
+      "parentUuid": "2e2ec286_a68de7f1",
+      "revId": "6cdd52b4b1bb50fb18854bf48ee634085489c849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
