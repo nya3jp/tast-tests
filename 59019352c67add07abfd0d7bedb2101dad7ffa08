@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e1c16a_af361d32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-30T15:56:37Z",
+      "side": 1,
+      "message": "`TEST\u003dtast run \u003cDUT\u003e arc.DataMigration.managed_p_to_r_x86`",
+      "revId": "59019352c67add07abfd0d7bedb2101dad7ffa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e51a84_04d12c5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-30T15:56:37Z",
+      "side": 1,
+      "message": "LGTM with correction to TEST line in commit message",
+      "revId": "59019352c67add07abfd0d7bedb2101dad7ffa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
