@@ -10,8 +10,9 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/browser"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -36,7 +37,11 @@ func init() {
 
 func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 	func() {
-		cr, err := chrome.New(ctx, chrome.EnableFeatures("FullRestore"))
+		bt := browser.TypeAsh
+		cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx,
+			bt,
+			nil,
+			chrome.EnableFeatures("FullRestore"))
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -49,9 +54,11 @@ func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 
 		// Open browser.
 		// The opened browser is not closed before reboot so that it could be restored after reboot.
-		if _, err = browser.Launch(ctx, tconn, cr, "https://abc.xyz"); err != nil {
-			s.Fatal("Failed to launch browser: ", err)
+		conn, err := br.NewConn(ctx, "https://abc.xyz")
+		if err != nil {
+			s.Fatalf("Failed to connect to the restore URL: %v ", err)
 		}
+		defer conn.Close()
 
 		// Open OS settings to set the 'Always restore' setting.
 		if _, err = ossettings.LaunchAtPage(ctx, tconn, nodewith.Name("Apps").Role(role.Link)); err != nil {
