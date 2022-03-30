@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "79762ee2_8284c959",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-03-30T23:04:14Z",
+      "side": 1,
+      "message": "Done. And Contacts updates are in the next CL.",
+      "parentUuid": "154bdaec_b190e658",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "4a18f7e08f7628f26cc5b0b0761a104ed6ccd4e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8cb099c7_fdf86231",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
