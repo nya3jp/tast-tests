@@ -32,9 +32,9 @@ func init() {
 		Desc: "Ensures creates, authenticate and mount with an AuthSession",
 		Contacts: []string{
 			"hardikgoyal@chromium.org",
-			"chromeos-security@google.com",
+			"cryptohome-core@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "regular_mount",
 			Val: authSessionMountParam{
