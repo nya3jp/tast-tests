@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af12cb36_02a356d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-03-30T23:30:15Z",
+      "side": 1,
+      "message": "I think the failures are from https://buganizer.corp.google.com/issues/227285020 and not manatee specific.\n\nThis only disables manatee.\n\n",
+      "revId": "7e2a9f37f9b1627b16eb6dd937b5e0a3f0e5f6a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
