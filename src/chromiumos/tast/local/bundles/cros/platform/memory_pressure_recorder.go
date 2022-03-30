@@ -19,7 +19,7 @@ func init() {
 		Func:         MemoryPressureRecorder,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Record a WPR archive for platform.MemoryPressure",
-		Contacts:     []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
+		Contacts:     []string{"bgeffon@chromium.org", "vovoy@chromium.org", "chromeos-memory@google.com"},
 		Timeout:      60 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Pre:          wpr.RecordMode("/tmp/archive.wprgo"),

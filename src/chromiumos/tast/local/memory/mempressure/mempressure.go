@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/memory/kernelmeter"
 	"chromiumos/tast/local/memory/metrics"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -813,6 +814,15 @@ func NewTestEnv(ctx context.Context, outDir string, enableARC, useHugePages bool
 
 	var opts []chrome.Option
 	var err error
+
+	// Stop Chrome now, to clean up old state.
+	testing.ContextLog(ctx, "Stopping ui job")
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		return nil, errors.Wrap(err, "failed to stop UI job")
+	}
+	defer func() {
+		upstart.EnsureJobRunning(ctx, "ui")
+	}()
 
 	te.wpr, err = wpr.New(ctx, wpr.Replay, archive)
 	if err != nil {
