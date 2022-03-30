@@ -49,17 +49,13 @@ func init() {
 			Val:               newRoutineParams(croshealthd.RoutineSmartctlCheck),
 			ExtraSoftwareDeps: []string{"smartctl"},
 		}, {
-			Name: "cpu_cache",
-			Val:  newRoutineParams(croshealthd.RoutineCPUCache),
-			// TODO(226936034): Fix manatee crash loop.
-			ExtraSoftwareDeps: []string{"no_manatee"},
-			Timeout:           5 * time.Minute,
+			Name:    "cpu_cache",
+			Val:     newRoutineParams(croshealthd.RoutineCPUCache),
+			Timeout: 5 * time.Minute,
 		}, {
-			Name: "cpu_stress",
-			Val:  newRoutineParams(croshealthd.RoutineCPUStress),
-			// TODO(226936034): Fix manatee crash loop.
-			ExtraSoftwareDeps: []string{"no_manatee"},
-			Timeout:           5 * time.Minute,
+			Name:    "cpu_stress",
+			Val:     newRoutineParams(croshealthd.RoutineCPUStress),
+			Timeout: 5 * time.Minute,
 		}, {
 			Name: "floating_point_accuracy",
 			Val:  newRoutineParams(croshealthd.RoutineFloatingPointAccurary),
