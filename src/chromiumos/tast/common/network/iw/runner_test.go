@@ -151,7 +151,10 @@ func TestNewPhy(t *testing.T) {
 			* 2412 MHz [1] (22.0 dBm)
 	Supported commands:
 		 * connect
-		 * disconnect`,
+		 * disconnect
+	valid interface combinations:
+		 * #{ managed } <= 2, #{ AP, P2P-client, P2P-GO } <= 2, #{ P2P-device } <= 1,
+		   total <= 4, #channels <= 1`,
 			expect: &Phy{
 				Name: "3",
 				Bands: []Band{
@@ -188,6 +191,34 @@ func TestNewPhy(t *testing.T) {
 				SupportHT40SGI:  true,
 				SupportVHT80SGI: false,
 				SupportMUMIMO:   false,
+				IfaceCombinations: []IfaceCombination{
+					{
+						IfaceLimits: []IfaceLimit{
+							{
+								IfaceTypes: []string{
+									"managed",
+								},
+								MaxCount: 2,
+							},
+							{
+								IfaceTypes: []string{
+									"AP",
+									"P2P-client",
+									"P2P-GO",
+								},
+								MaxCount: 2,
+							},
+							{
+								IfaceTypes: []string{
+									"P2P-device",
+								},
+								MaxCount: 1,
+							},
+						},
+						MaxTotal:    4,
+						MaxChannels: 1,
+					},
+				},
 			},
 		},
 		{
@@ -305,15 +336,16 @@ func TestNewPhy(t *testing.T) {
 					"RSN-IBSS",
 					"AP-side u-APSD",
 				},
-				RxAntenna:       3,
-				TxAntenna:       3,
-				MaxScanSSIDs:    16,
-				SupportVHT:      true,
-				SupportHT2040:   true,
-				SupportHT20SGI:  true,
-				SupportHT40SGI:  true,
-				SupportVHT80SGI: true,
-				SupportMUMIMO:   true,
+				RxAntenna:         3,
+				TxAntenna:         3,
+				MaxScanSSIDs:      16,
+				SupportVHT:        true,
+				SupportHT2040:     true,
+				SupportHT20SGI:    true,
+				SupportHT40SGI:    true,
+				SupportVHT80SGI:   true,
+				SupportMUMIMO:     true,
+				IfaceCombinations: []IfaceCombination(nil),
 			},
 		},
 	}
@@ -649,7 +681,7 @@ country 00: DFS-UNSET
 phy#0 (self-managed)
 country US: DFS-UNSET
 	(2402 - 2437 @ 40), (6, 22), (N/A), AUTO-BW, NO-HT40MINUS, NO-80MHZ, NO-160MHZ
-	(2422 - 2462 @ 40), (6, 22), (N/A), AUTO-BW, NO-80MHZ, NO-160MHZ
+	(2422 - 2462 @ 40), (6, 22), (N/A), AUTO-BWchromeos2-row1-rack7-host17, NO-80MHZ, NO-160MHZ
 	(2447 - 2482 @ 40), (6, 22), (N/A), AUTO-BW, NO-HT40PLUS, NO-80MHZ, NO-160MHZ
 	(5170 - 5190 @ 80), (6, 22), (N/A), NO-OUTDOOR, AUTO-BW, IR-CONCURRENT, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
 	(5190 - 5210 @ 80), (6, 22), (N/A), NO-OUTDOOR, AUTO-BW, IR-CONCURRENT, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
