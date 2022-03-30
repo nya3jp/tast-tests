@@ -92,3 +92,31 @@ func (r *Runner) Set(ctx context.Context, prop Property, val string) error {
 	}
 	return nil
 }
+
+// TDLSCmd runs a specific TDLS command.
+func (r *Runner) TDLSCmd(ctx context.Context, opts ...string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI(opts...)...)
+	if err != nil {
+		return errors.Wrapf(err, "failed running wpa_cli %s", opts[0])
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to get 'OK' in wpa_cli set output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// Scan runs scan and returns scan result
+func (r *Runner) Scan(ctx context.Context) (string, error) {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("scan")...)
+	if err != nil {
+		return "", errors.Wrap(err, "failed running wpa_cli bssid_ignore clear")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return "", errors.Errorf("failed to expect 'OK' in wpa_cli bssid_ignore clear output: %s", string(cmdOut))
+	}
+	cmdOut, err = r.cmd.Output(ctx, "sudo", sudoWPACLI("scan_results")...)
+	if err != nil {
+		return "", errors.Wrap(err, "failed running wpa_cli bssid_ignore clear")
+	}
+	return string(cmdOut), nil
+}
