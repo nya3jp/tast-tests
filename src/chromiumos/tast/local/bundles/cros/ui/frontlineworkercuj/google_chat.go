@@ -117,7 +117,7 @@ func (g *GoogleChat) StartChat(ctx context.Context) error {
 	chatGroup := nodewith.NameContaining("Chat").Role(role.Group)
 	startChatButton := nodewith.Name("Start a chat").Role(role.Button).Ancestor(chatGroup).Focusable()
 	findContainer := nodewith.Name("Find or start conversations").Role(role.GenericContainer).Focusable()
-	textBox := nodewith.Name("Person, space, or bot").Role(role.InlineTextBox).Ancestor(findContainer)
+	textBox := nodewith.NameContaining("Type person, space, or app name.").Role(role.TextField).Ancestor(findContainer)
 	personOption := nodewith.NameContaining(personName).Role(role.ListBoxOption).Focusable()
 	messageFieldName := fmt.Sprintf("Message %s. History is on.", personName)
 	messageField := nodewith.Name(messageFieldName).Role(role.TextField).Editable()

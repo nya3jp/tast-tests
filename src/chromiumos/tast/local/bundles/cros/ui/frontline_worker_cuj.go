@@ -21,8 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/mgs"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -287,20 +286,14 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 }
 
 func openGoogleTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, uiHdl cuj.UIActionHandler, numberOfTabs int) error {
-	ui := uiauto.New(tconn)
-	link := nodewith.Name("English").Role(role.Link)
 	for i := 0; i < numberOfTabs; i++ {
-		_, err := cr.NewConn(ctx, cuj.GoogleURL)
+		testing.ContextLog(ctx, "Opening tab ", i+1)
+		conn, err := cr.NewConn(ctx, cuj.GoogleURL+"/?hl=en")
 		if err != nil {
 			return errors.Wrapf(err, "the current tab index: %d, failed to open URL: %s", i, cuj.GoogleURL)
 		}
-		// Since visitors come from different countries, the default language of Google's website is different.
-		// Change language to "English" if the English language link exists.
-		if err := uiauto.IfSuccessThen(
-			ui.WithTimeout(5*time.Second).WaitUntilExists(link),
-			uiHdl.Click(link),
-		)(ctx); err != nil {
-			return err
+		if err := webutil.WaitForRender(ctx, conn, 2*time.Minute); err != nil {
+			return errors.Wrap(err, "failed to wait for render to finish")
 		}
 	}
 	return nil
