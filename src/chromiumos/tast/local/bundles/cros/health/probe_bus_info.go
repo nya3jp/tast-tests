@@ -7,6 +7,7 @@ package health
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"strconv"
 	"strings"
 	"time"
@@ -230,6 +231,8 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 
 func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 	checkInterfacesDetected := false
+	productName, errProduct := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/device_name")
+	vendorName, errVendor := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/vendor_name")
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
@@ -258,27 +261,40 @@ func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 				if interfaces.TxSpeedGbs == "" {
 					return errors.New("failed to get TxSpeedGbs")
 				}
-				if interfaces.VendorName == "" {
-					return errors.New("failed to get VendorName")
-				}
 			}
 		}
 
 		if (devices.DeviceClass) == "" {
 			return errors.New("failed to get Thunderbolt DeviceClass")
 		}
-		if (devices.ProductName) == "" {
-			return errors.New("failed to get Thunderbolt ProductName")
+
+		if errProduct != nil {
+			if devices.ProductName != "" {
+				return errors.New("failed to get empty Thunderbolt ProductName")
+			}
+		} else {
+			productName := strings.TrimSpace(string(productName))
+			if devices.ProductName != productName {
+				errors.Errorf("failed to get correct Thunderbolt ProductName: got %q; want %q", productName, devices.ProductName)
+			}
 		}
-		if (devices.VendorName) == "" {
-			return errors.New("failed to get Thunderbolt VendorName")
+
+		if errVendor != nil {
+			if devices.VendorName != "" {
+				return errors.New("failed to get empty Thunderbolt VendorName")
+			}
+		} else {
+			vendorName := strings.TrimSpace(string(vendorName))
+			if devices.VendorName != vendorName {
+				errors.Errorf("failed to get correct Thunderbolt VendorName: got %q; want %q", vendorName, devices.VendorName)
+			}
 		}
 	}
 
 	if isDeviceConnected && !checkInterfacesDetected {
 		return errors.New("failed to get Thunderbolt device data when the device is connected")
-
 	}
+
 	return nil
 }
 
