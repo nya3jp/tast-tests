@@ -16,6 +16,46 @@
       "message": "LGTM. Please have a domain expert to review and give a CR+2. Thanks.",
       "revId": "983eda8c34d19dab5ea5c4127a4a719335021bf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e824036_bda45275",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-30T02:42:57Z",
+      "side": 1,
+      "message": "I would also add a log explicitly specifying that a default router name was not provided and that we are going to infer it from the hostname. In the failure case, it may not be clear why the router connection failed.",
+      "revId": "983eda8c34d19dab5ea5c4127a4a719335021bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95640498_03ce69e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-03-30T02:42:57Z",
+      "side": 1,
+      "message": "I would print the router hostname here if it isn\u0027t already.",
+      "range": {
+        "startLine": 212,
+        "startChar": 12,
+        "endLine": 212,
+        "endChar": 53
+      },
+      "revId": "983eda8c34d19dab5ea5c4127a4a719335021bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
