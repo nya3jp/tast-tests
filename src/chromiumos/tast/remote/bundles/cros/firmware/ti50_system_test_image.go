@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/ti50/fixture"
 	"chromiumos/tast/testing"
 )
@@ -51,18 +50,13 @@ func Ti50SystemTestImage(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Kernel tests:")
-	failCount := checkTestResults(ctx, s, board, "KERNEL")
+	checkTestResults(ctx, s, board, "KERNEL")
 
 	s.Log("App tests:")
-	failCount += checkTestResults(ctx, s, board, "APP")
-
-	if failCount > 0 {
-		s.Fatalf("%d test failures", failCount)
-	}
+	checkTestResults(ctx, s, board, "APP")
 }
 
-func checkTestResults(ctx context.Context, s *testing.State, board ti50.DevBoard, sectionName string) int {
-	failCount := 0
+func checkTestResults(ctx context.Context, s *testing.State, board ti50.DevBoard, sectionName string) {
 	_, err := board.ReadSerialSubmatch(ctx, regexp.MustCompile("##"+regexp.QuoteMeta(sectionName)+" TESTS START"))
 	if err != nil {
 		s.Fatal("Failed to read section start: ", err)
@@ -76,24 +70,21 @@ func checkTestResults(ctx context.Context, s *testing.State, board ti50.DevBoard
 		}
 		match := string(m[0])
 		if match == endMarker {
-			return failCount
+			return
 		}
 		start := string(m[2])
 		testName := string(m[3])
 		result := "Skip"
 		if start != "SKIP" {
-			result, err = waitForTest(ctx, s, board, testName)
-			if err != nil {
-				s.Fatal("Failed to read test result: ", err)
-			}
+			result = waitForTest(ctx, s, board, testName)
 		}
 		if result == "Fail" {
-			failCount++
+			s.Errorf("%s test failed", testName)
 		}
 	}
 }
 
-func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, testName string) (result string, err error) {
+func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, testName string) string {
 	lineRe := regexp.MustCompile(`.*[\r\n]+`)
 	slowCryptoRe := regexp.MustCompile("Long running SW crypto operation")
 	resultRe := regexp.MustCompile("##TEST RESULT " + regexp.QuoteMeta(testName) + `: (\S+)`)
@@ -119,7 +110,7 @@ func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, tes
 		if m := resultRe.FindStringSubmatch(line); m != nil {
 			result := m[1]
 			s.Logf("%s: %s (%v)", testName, result, elapsedTime.Round(time.Second))
-			return result, nil
+			return result
 		}
 		if slowCryptoRe.MatchString(line) {
 			timeLimit += 5 * time.Minute
@@ -129,5 +120,6 @@ func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, tes
 	s.Logf("Still waiting for test %s after %v, giving up", testName, elapsedTime.Round(time.Second))
 	delay := time.Since(lineTime)
 	s.Logf("Waited %v at %q", delay.Round(time.Second), line)
-	return "", errors.New("test failed to finish in time")
+	s.Fatalf("%s test failed to finish in time", testName)
+	return ""
 }
