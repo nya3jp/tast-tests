@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc64e7c8_142f1577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-03-30T03:56:08Z",
+      "side": 1,
+      "message": "Why is the change added? Could you promote the test without modifying the test?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "9551049595a31f64182a49f2a049e7e1f4f8261c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
