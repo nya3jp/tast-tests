@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome/ash"
@@ -100,6 +101,24 @@ func stringVar(s *testing.State, name, defaultValue string) string {
 		return defaultValue
 	}
 	return str
+}
+
+// switchToRearCamera checks if the current camera is Rear camera or not. If user facing camera is open, it will switch to rear camera.
+func switchToRearCamera(ctx context.Context, app cca.App) error {
+	facing, err := app.GetFacing(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get camera facing")
+	}
+	if facing == cca.FacingBack {
+		return nil
+	}
+	if err := app.SwitchCamera(ctx); err != nil {
+		return errors.Wrap(err, "failed to switch camera")
+	}
+	if err := app.CheckFacing(ctx, cca.FacingBack); err != nil {
+		return errors.Wrap(err, "failed to verify camera facing back")
+	}
+	return nil
 }
 
 func CCAUIStress(ctx context.Context, s *testing.State) {
@@ -207,12 +226,33 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get number of cameras: ", err)
 	}
 	if numCameras > 1 {
-		allActions = append(allActions, stressAction{
-			name: "switch-camera",
-			perform: func(ctx context.Context) error {
-				return app.SwitchCamera(ctx)
+		allActions = append(allActions,
+			stressAction{
+				name: "switch-camera",
+				perform: func(ctx context.Context) error {
+					return app.SwitchCamera(ctx)
+				},
 			},
-		})
+			stressAction{
+				name: "switch-photo-rear",
+				perform: func(ctx context.Context) error {
+					if err := switchToRearCamera(ctx, *app); err != nil {
+						return errors.Wrap(err, "failed to switch to rear camera")
+					}
+					return app.SwitchMode(ctx, cca.Photo)
+
+				},
+			},
+			stressAction{
+				name: "switch-video-rear",
+				perform: func(ctx context.Context) error {
+					if err := switchToRearCamera(ctx, *app); err != nil {
+						return errors.Wrap(err, "failed to switch to rear camera")
+					}
+					return app.SwitchMode(ctx, cca.Video)
+				},
+			},
+		)
 	}
 
 	var actions []stressAction
