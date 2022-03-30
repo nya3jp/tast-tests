@@ -27,7 +27,7 @@ func init() {
 			"hardikgoyal@chromium.org",
 			"cryptohome-core@chromium.org",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
