@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09e6b799_d9436c26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-03-30T04:29:30Z",
+      "side": 1,
+      "message": "Why is the regex more fragile though?\n\nI did this to wait for the expected password dialog in one step, instead of doing it in 2 steps, first getting the passwor dialog, and then checking whether the name is right or not.\nCan there be some race conditions related the fact that we check the password dialog in 2 separate steps? If the name is wrong, do we query the password dialog again?",
+      "parentUuid": "e380c4ea_02baaa67",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 11
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfaef1b5_fec3c46f",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-29T12:00:45Z",
       "side": 1,
       "message": "For the same file?\n\nI think we should change the test to verify that this is still the same file.\n\nI think we would need to re-jiggle this test a little more:\n\nPseudo code:\n  // Starts with all files.\n  lockedZipFiles :\u003d zipFiles\n  //\n  for {\n    // 1. Unlock one file waitUntilPasswordDialogExists() should tell which file.\n    //   1.1. typing the invalid passwd\n    //   1.2. then the valid passwd.\n    //\n    // 2. Remove the file from lockedZipFiles array.\n    if len(lockedZipFiles) \u003d\u003d 0 {\n      // We have checked all the zipFiles.\n      break;\n    }\n   }\n   \nWDYT?",
+      "range": {
+        "startLine": 311,
+        "startChar": 44,
+        "endLine": 311,
+        "endChar": 50
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1094d7_964bf895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-03-30T04:29:30Z",
+      "side": 1,
+      "message": "That\u0027s what I tried to do first, but I was thinking with this simpler approach we don\u0027t really lose coverage 😊\n\nHere\u0027s the accessibility tree with work with for the password dialog:\nhttps://paste.googleplex.com/4996104916566016\n\nThe archive name is just plain text within the password dialog. What I tried to do was to query all the text within the password dialog and extract whichiver first string finished with \".zip\", and return it. But this already seemed fragile compared to the regex approach.\n\nThe idea was then to have an array to keep track of the \"remaining zip files names\" for which we expect a password dialog.\nBut then working with arrays is pretty hard in go... we have to manually implement the \"contains\" function, the \"remove element\" etc...",
+      "parentUuid": "dfaef1b5_fec3c46f",
       "range": {
         "startLine": 311,
         "startChar": 44,
