@@ -33,6 +33,24 @@
       "message": "Can we just inline this or something? It seems silly to keep the wlan_device_info file around for one function that\u0027s used only here.",
       "revId": "ee804677a28a682c026c29ed0bd33fbdf7b2e96e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53099cf6_8df738bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-03-30T20:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e8fe8aa_ecdc91c9",
+      "revId": "ee804677a28a682c026c29ed0bd33fbdf7b2e96e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
