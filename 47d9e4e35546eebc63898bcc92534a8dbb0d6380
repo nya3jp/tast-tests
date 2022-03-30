@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3b664e_220671f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-03-30T10:58:32Z",
+      "side": 1,
+      "message": "LGTM % nits\n@Victos, can you check this CL in depth please?\nI had a glance at it, and I am fine with the approach.",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf15dca8_ce57a3a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-03-30T10:58:32Z",
+      "side": 1,
+      "message": "nit: `sequnce.`",
+      "range": {
+        "startLine": 28,
+        "startChar": 65,
+        "endLine": 28,
+        "endChar": 72
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8fb0982_7fa904e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-03-30T10:58:32Z",
+      "side": 1,
+      "message": "nit: `type.`",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
