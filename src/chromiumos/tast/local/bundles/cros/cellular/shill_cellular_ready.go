@@ -22,7 +22,7 @@ func init() {
 			"cros-network-health@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr:    []string{"group:cellular", "cellular_sim_active", "cellular_cq"},
+		Attr:    []string{"group:cellular", "cellular_sim_active", "cellular_cq", "cellular_ota_avl"},
 		Fixture: "cellular",
 	})
 }
