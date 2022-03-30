@@ -16,6 +16,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -55,6 +56,7 @@ func init() {
 		Contacts:     []string{"aklm@chromium.org"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"flashrom"},
+		Fixture:      fixture.NormalMode,
 	})
 }
 
