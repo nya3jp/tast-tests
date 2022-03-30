@@ -80,6 +80,24 @@
       "message": "if !ok || router \u003d\u003d \"\" {",
       "revId": "b6bc3da41297caadaec2c3de3999931bb97075ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "357836f5_4c5353d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-03-30T00:18:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd64ca91_757c1e27",
+      "revId": "b6bc3da41297caadaec2c3de3999931bb97075ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
