@@ -34,7 +34,7 @@ func init() {
 			"hardikgoyal@chromium.org",
 			"chromeos-security@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "regular_mount",
 			Val: authSessionMountParam{
