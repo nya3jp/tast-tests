@@ -197,7 +197,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, conns.Chrome, nil, configs...)
+	recorder, err := cuj.NewRecorder(ctx, conns.Chrome, conns.ARC, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

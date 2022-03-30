@@ -64,6 +64,9 @@ type Connections struct {
 	// PipVideoTestURL is the URL of the PIP video test page.
 	PipVideoTestURL string
 
+	// ARC holds resources related to the ARC session.
+	ARC *arc.ARC
+
 	// ArcVideoActivity is an ARC activity that plays a video, looped.
 	// If you minimize it, it plays the video in PIP.
 	ArcVideoActivity *arc.Activity
@@ -85,7 +88,6 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		CloseAboutBlank: func(ctx context.Context) error { return nil },
 	}
 	var l *lacros.Lacros
-	var a *arc.ARC
 
 	ok := false
 	defer func() {
@@ -103,12 +105,12 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 				return nil, errors.Wrap(err, "failed to init chrome")
 			}
 			connection.Cleanup = connection.Chrome.Close
-			if a, err = arc.New(ctx, s.OutDir()); err != nil {
+			if connection.ARC, err = arc.New(ctx, s.OutDir()); err != nil {
 				return nil, errors.Wrap(err, "failed to init ARC")
 			}
 		} else {
 			connection.Chrome = s.FixtValue().(*arc.PreData).Chrome
-			a = s.FixtValue().(*arc.PreData).ARC
+			connection.ARC = s.FixtValue().(*arc.PreData).ARC
 		}
 		connection.Source = connection.Chrome
 
@@ -132,14 +134,14 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 			return nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
 
-		a = s.FixtValue().(*arc.PreData).ARC
+		connection.ARC = s.FixtValue().(*arc.PreData).ARC
 	}
 
-	if err := a.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
+	if err := connection.ARC.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
 		return nil, errors.Wrap(err, "failed to install ARC app")
 	}
 	var err error
-	connection.ArcVideoActivity, err = arc.NewActivity(a, pkgName, ".VideoActivity")
+	connection.ArcVideoActivity, err = arc.NewActivity(connection.ARC, pkgName, ".VideoActivity")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ARC activity")
 	}
@@ -165,14 +167,14 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to parse test server port")
 	}
-	androidPort, err := a.ReverseTCP(ctx, hostPort)
+	androidPort, err := connection.ARC.ReverseTCP(ctx, hostPort)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start reverse port forwarding")
 	}
 	oldCleanup3 := connection.Cleanup
 	connection.Cleanup = func(ctx context.Context) error {
 		var firstErr error
-		if err := a.RemoveReverseTCP(ctx, androidPort); firstErr == nil && err != nil {
+		if err := connection.ARC.RemoveReverseTCP(ctx, androidPort); firstErr == nil && err != nil {
 			firstErr = errors.Wrap(err, "failed to stop reverse port forwarding")
 		}
 		if err := oldCleanup3(ctx); firstErr == nil && err != nil {
