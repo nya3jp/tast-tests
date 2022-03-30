@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/ssh"
 )
 
 // RouterType is an enum indicating what type of router style a router is.
@@ -100,6 +101,12 @@ type IfaceManipulation interface {
 	SetAPIfaceDown(ctx context.Context, iface string) error
 	// MAC returns the MAC address of iface on this router.
 	MAC(ctx context.Context, iface string) (net.HardwareAddr, error)
+}
+
+// Bridge shall be implemented if the router supports network bridges.
+type SSHConn interface {
+	Router
+	Conn() *ssh.Conn
 }
 
 // Bridge shall be implemented if the router supports network bridges.
