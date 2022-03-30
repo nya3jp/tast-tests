@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "127c485b_5f8934fc",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-30T19:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e10818c_286e8b03",
+      "revId": "1bd5dcb3cfa49c31d72cbe99652139b1052e6190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53696239_c7d66e35",
