@@ -34,6 +34,24 @@
       "parentUuid": "2e2ec286_a68de7f1",
       "revId": "6cdd52b4b1bb50fb18854bf48ee634085489c849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f86f12_2277f3ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_using_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-30T12:56:37Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "48adfc4f_f119c1ec",
+      "revId": "6cdd52b4b1bb50fb18854bf48ee634085489c849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
