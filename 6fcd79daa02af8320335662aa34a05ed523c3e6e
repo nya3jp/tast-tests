@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f34fe26_ec4e745b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-30T09:09:33Z",
+      "side": 1,
+      "message": "Please increase timeouts even more.",
+      "revId": "6fcd79daa02af8320335662aa34a05ed523c3e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4663b9_44892fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-30T09:09:33Z",
+      "side": 1,
+      "message": "I think the timeout increases are too small. If 1 minute is not enough increase to at least 5 minutes. Do not bother just doubling. After the timeout increase the test should ideally use less than half of the allocated timeout.\n\nWe have devices that show 10x difference in speed. Even within same generation/different SKU we probably have at least 5x. So timeouts really should say: it was way too much (likely hang/infinite loop).",
+      "range": {
+        "startLine": 265,
+        "startChar": 40,
+        "endLine": 265,
+        "endChar": 49
+      },
+      "revId": "6fcd79daa02af8320335662aa34a05ed523c3e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52f0492a_41f14614",
