@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/dbusutil"
@@ -24,8 +26,9 @@ const (
 	oomAnomalyEventServiceName              = "org.chromium.AnomalyEventService"
 	oomAnomalyEventServicePath              = dbus.ObjectPath("/org/chromium/AnomalyEventService")
 	oomAnomalyEventServiceInterface         = "org.chromium.AnomalyEventServiceInterface"
-	oomAnomalyGuestFileCorruptionSignalName = "OOMEvent"
-	oomEventHistogram                       = "Crostini.OOMEvent"
+	oomAnomalyGuestFileCorruptionSignalName = "GuestOomEvent"
+	crosEventHistogram                      = "Platform.CrOSEvent"
+	oomEventHistogram                       = "Crostini.OomEvent"
 
 	killCode = 9
 )
@@ -69,6 +72,7 @@ func init() {
 func OOMEvent(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	cont := pre.Cont
+	tconn := pre.Tconn
 
 	// Use a shortened context for the test to reserver time for cleanup.
 	cleanupCtx := ctx
@@ -85,9 +89,42 @@ func OOMEvent(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	// histogramCount, err := checkOomHistogram(ctx, tconn, -1, s)
+	histogramCount, hist, err := checkOomHistogram(ctx, tconn, -1, s)
+	if err != nil {
+		s.Fatal("Failed to get baseline for histogram: ", err)
+	}
+
 	if err := checkDbusSignal(ctx, cont, s); err != nil {
 		s.Fatal("Didn't get an error signal for OOM process: ", err)
 	}
+
+	newhist, err := metrics.WaitForHistogramUpdate(ctx, tconn, crosEventHistogram, hist, 10*time.Second)
+	if err != nil {
+		s.Fatal("Couldn't get update: ", err)
+	}
+	if newhist.Sum <= histogramCount {
+		s.Fatalf("Expected total of more than %v histogram values, got %v", histogramCount, newhist.Sum)
+	}
+
+	// histogramCount, err = checkOomHistogram(ctx, tconn, histogramCount, s)
+	// if err != nil {
+	// 	s.Fatal("Failed to check histogram: ", err)
+	// }
+}
+
+func checkOomHistogram(ctx context.Context, tconn *chrome.TestConn, baseline int64, s *testing.State) (int64, *metrics.Histogram, error) {
+	hist, err := metrics.GetHistogram(ctx, tconn, crosEventHistogram)
+	s.Log("++++++++++++")
+	s.Log(hist.String())
+	s.Log("++++++++++++")
+	if err != nil {
+		return 0, hist, err
+	}
+	if hist.Sum <= baseline {
+		return hist.Sum, hist, errors.Errorf("expected total of more than %v histogram values, got %v", baseline, hist.Sum)
+	}
+	return hist.Sum, hist, nil
 }
 
 func checkDbusSignal(ctx context.Context, container *vm.Container, s *testing.State) (resultError error) {
