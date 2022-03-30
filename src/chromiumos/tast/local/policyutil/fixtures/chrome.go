@@ -191,6 +191,15 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		s.Fatal("Chrome startup failed: ", err)
 	}
 
+	chromeOK := false
+	defer func() {
+		if !chromeOK {
+			if err := cr.Close(); err != nil {
+				s.Error("Failed to close Chrome: ", err)
+			}
+		}
+	}()
+
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	if p.waitForARC {
@@ -213,6 +222,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	}
 
 	p.cr = cr
+	chromeOK = true
 
 	chrome.Lock()
 
