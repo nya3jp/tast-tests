@@ -217,7 +217,7 @@ func init() {
 			},
 			{
 				Name:      "screen_magnifier",
-				ExtraAttr: []string{"group:mainline"},
+				ExtraAttr: []string{"group:mainline", "informational"},
 				Val: []accessibilityTestCase{
 					{
 						name:      "enabled-full-screen",
