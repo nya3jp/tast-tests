@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3d6042_54fff395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-30T09:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e718d5db_b69a2fb7",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "b0efddad572a04ccf7bdcfe463afa255c7f4ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1c08b6d_02213f86",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3081dfb4_04ae8a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-30T09:40:58Z",
+      "side": 1,
+      "message": "This new struct represents the tab where the extension is opened.\n\nIt has a few different behaviors than a ChromeTab, how to open it and its name in the TaskManager for instance.\n\nWe have renamed the struct and added a few extra comments to make it more clear.",
+      "parentUuid": "b1c08b6d_02213f86",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 17
+      },
+      "revId": "b0efddad572a04ccf7bdcfe463afa255c7f4ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "357093fd_f2577c2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-27T23:41:47Z",
       "side": 1,
       "message": "This should not be part of the struct. I do not see the ui is customised on each tab.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "b0efddad572a04ccf7bdcfe463afa255c7f4ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980586e9_d5a9845b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-03-30T09:40:58Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "357093fd_f2577c2d",
       "range": {
         "startLine": 148,
         "startChar": 1,
