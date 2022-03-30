@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "ca561a9219ae48a909c0ede0dac204c6da692cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "066d5683_db1494bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-30T13:42:39Z",
+      "side": 1,
+      "message": "Almost LG, but one comment.",
+      "revId": "ca561a9219ae48a909c0ede0dac204c6da692cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394ba3d9_2ac1951a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-30T13:42:39Z",
+      "side": 1,
+      "message": "could you clarify why...?",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "ca561a9219ae48a909c0ede0dac204c6da692cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
