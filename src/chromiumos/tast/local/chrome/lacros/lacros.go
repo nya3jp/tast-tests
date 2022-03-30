@@ -64,8 +64,27 @@ func (l *Lacros) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 	return l.sess.StopTracing(ctx)
 }
 
-// Close kills a launched instance of lacros-chrome.
+// Close closes all lacros chrome targets and the dev session.
 func (l *Lacros) Close(ctx context.Context) error {
+	// Get all pages. Note that we can't get all targets, because one of them
+	// will be the test extension or devtools and we don't want to kill that.
+	// Further note that this will mean pages are not restored, compared to killing
+	// lacros directly.
+	// TODO(crbug.com/1311504): There is similar functionality in chrome.ResetState. Integrate these?
+	// For some reason, including t.Type == "other" breaks this.
+	ts, err := l.sess.FindTargets(ctx, func(t *target.Info) bool {
+		return t.Type == "page" || t.Type == "app"
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to query for all targets")
+	}
+
+	for _, info := range ts {
+		if err := l.sess.CloseTarget(ctx, info.TargetID); err != nil {
+			return err
+		}
+	}
+
 	if err := l.sess.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close connection to lacros-chrome: ", err)
 	}
@@ -79,10 +98,6 @@ func (l *Lacros) Close(ctx context.Context) error {
 		}
 		l.cmd.Wait()
 		l.cmd = nil
-	}
-
-	if err := killLacros(ctx, l.lacrosPath); err != nil {
-		return errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 	return nil
 }
