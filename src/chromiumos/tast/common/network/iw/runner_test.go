@@ -151,7 +151,14 @@ func TestNewPhy(t *testing.T) {
 			* 2412 MHz [1] (22.0 dBm)
 	Supported commands:
 		 * connect
-		 * disconnect`,
+		 * disconnect
+	valid interface combinations:
+		 * #{ managed } <= 2, #{ AP, P2P-client, P2P-GO } <= 2, #{ P2P-device } <= 1,
+		   total <= 4, #channels <= 1
+		 * #{ managed } <= 2, #{ P2P-client } <= 2, #{ AP, P2P-GO } <= 1, #{ P2P-device } <= 1,
+		   total <= 4, #channels <= 2
+		 * #{ managed } <= 1, #{ outside context of a BSS, mesh point, IBSS } <= 1,
+		   total <= 2, #channels <= 1`,
 			expect: &Phy{
 				Name: "3",
 				Bands: []Band{
@@ -188,6 +195,85 @@ func TestNewPhy(t *testing.T) {
 				SupportHT40SGI:  true,
 				SupportVHT80SGI: false,
 				SupportMUMIMO:   false,
+				IfaceCombinations: []IfaceCombination{
+					{
+						IfaceLimits: []IfaceLimit{
+							{
+								IfaceTypes: []IfType{
+									IfTypeManaged,
+								},
+								MaxCount: 2,
+							},
+							{
+								IfaceTypes: []IfType{
+									IfTypeAP,
+									IfTypeP2PClient,
+									IfTypeP2PGO,
+								},
+								MaxCount: 2,
+							},
+							{
+								IfaceTypes: []IfType{
+									IfTypeP2PDevice,
+								},
+								MaxCount: 1,
+							},
+						},
+						MaxTotal:    4,
+						MaxChannels: 1,
+					},
+					{
+						IfaceLimits: []IfaceLimit{
+							{
+								IfaceTypes: []IfType{
+									IfTypeManaged,
+								},
+								MaxCount: 2,
+							},
+							{
+								IfaceTypes: []IfType{
+									IfTypeP2PClient,
+								},
+								MaxCount: 2,
+							},
+							{
+								IfaceTypes: []IfType{
+									IfTypeAP,
+									IfTypeP2PGO,
+								},
+								MaxCount: 1,
+							},
+							{
+								IfaceTypes: []IfType{
+									IfTypeP2PDevice,
+								},
+								MaxCount: 1,
+							},
+						},
+						MaxTotal:    4,
+						MaxChannels: 2,
+					},
+					{
+						IfaceLimits: []IfaceLimit{
+							{
+								IfaceTypes: []IfType{
+									IfTypeManaged,
+								},
+								MaxCount: 1,
+							},
+							{
+								IfaceTypes: []IfType{
+									IfTypeOutsideContextOfBSS,
+									IfTypeMeshPoint,
+									IfTypeIBSS,
+								},
+								MaxCount: 1,
+							},
+						},
+						MaxTotal:    2,
+						MaxChannels: 1,
+					},
+				},
 			},
 		},
 		{
@@ -305,15 +391,16 @@ func TestNewPhy(t *testing.T) {
 					"RSN-IBSS",
 					"AP-side u-APSD",
 				},
-				RxAntenna:       3,
-				TxAntenna:       3,
-				MaxScanSSIDs:    16,
-				SupportVHT:      true,
-				SupportHT2040:   true,
-				SupportHT20SGI:  true,
-				SupportHT40SGI:  true,
-				SupportVHT80SGI: true,
-				SupportMUMIMO:   true,
+				RxAntenna:         3,
+				TxAntenna:         3,
+				MaxScanSSIDs:      16,
+				SupportVHT:        true,
+				SupportHT2040:     true,
+				SupportHT20SGI:    true,
+				SupportHT40SGI:    true,
+				SupportVHT80SGI:   true,
+				SupportMUMIMO:     true,
+				IfaceCombinations: []IfaceCombination(nil),
 			},
 		},
 	}
