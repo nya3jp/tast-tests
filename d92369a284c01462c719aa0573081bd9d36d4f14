@@ -16,6 +16,80 @@
       "message": "Please review.",
       "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd0636a_6c936839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-30T16:40:35Z",
+      "side": 1,
+      "message": "Think we would need to take the returned cancel func and defer call it.",
+      "range": {
+        "startLine": 205,
+        "startChar": 29,
+        "endLine": 205,
+        "endChar": 30
+      },
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc15d80_274d8685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-30T16:40:35Z",
+      "side": 1,
+      "message": "Would `LoginPerf` know which TestConn to use? If so, let\u0027s create a `NewRecorderWithTestConn` to take it as an arg.\n\nThe existing `NewRecorder` could call the new `NewRecorderWithTestConn` with `cr.TestAPIConn` to minimize the change.",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1887e1f1_16784574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-30T16:40:35Z",
+      "side": 1,
+      "message": "We could potentially drop `metrics.RunAndWaitAll` and just use `cujRecorder.Run`.  Recorder\u0027s `mr` member does the histogram diff and collection. \n\nThe missing piece is `WaitAll` since `cujRecorder.Run` does not wait. We could probably add a `WaitAll` method to `Recorder` to call `WaitAll` for all its `mr`.",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcef6e01_038da8db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-30T16:40:35Z",
+      "side": 1,
+      "message": "Why having this `if` to only do `cujRecorder.Record` and `cujRunPerfValues.MergeWithSuffix` once? Should we do that for every `cujRecorder.Run` ?",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
