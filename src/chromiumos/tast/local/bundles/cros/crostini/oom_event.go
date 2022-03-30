@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/dbusutil"
@@ -21,11 +23,12 @@ import (
 )
 
 const (
-	oomAnomalyEventServiceName              = "org.chromium.AnomalyEventService"
-	oomAnomalyEventServicePath              = dbus.ObjectPath("/org/chromium/AnomalyEventService")
-	oomAnomalyEventServiceInterface         = "org.chromium.AnomalyEventServiceInterface"
-	oomAnomalyGuestFileCorruptionSignalName = "OOMEvent"
-	oomEventHistogram                       = "Crostini.OOMEvent"
+	oomAnomalyEventServiceName        = "org.chromium.AnomalyEventService"
+	oomAnomalyEventServicePath        = dbus.ObjectPath("/org/chromium/AnomalyEventService")
+	oomAnomalyEventServiceInterface   = "org.chromium.AnomalyEventServiceInterface"
+	oomAnomalyGuestOomEventSignalName = "GuestOomEvent"
+	crosEventHistogram                = "Platform.CrOSEvent"
+	oomEventHistogramEnum             = 34
 
 	killCode = 9
 )
@@ -69,6 +72,7 @@ func init() {
 func OOMEvent(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	cont := pre.Cont
+	tconn := pre.Tconn
 
 	// Use a shortened context for the test to reserver time for cleanup.
 	cleanupCtx := ctx
@@ -85,9 +89,56 @@ func OOMEvent(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	s.Log("Getting baseline metrics histogram")
+	histogram, err := metrics.GetHistogram(ctx, tconn, crosEventHistogram)
+	if err != nil {
+		s.Fatal("Failed to get baseline for histogram: ", err)
+	}
+	for _, bucket := range histogram.Buckets {
+		if bucket.Min == oomEventHistogramEnum {
+			s.Fatal("Histogram should not contain any OOM events yet")
+		}
+	}
+
 	if err := checkDbusSignal(ctx, cont, s); err != nil {
 		s.Fatal("Didn't get an error signal for OOM process: ", err)
 	}
+
+	err = checkOomHistogram(ctx, tconn, histogram, s)
+	if err != nil {
+		s.Fatal("Could not get updated histogram: ", err)
+	}
+}
+
+func checkOomHistogram(ctx context.Context, tconn *chrome.TestConn, histogram *metrics.Histogram, s *testing.State) error {
+	s.Log("Waiting for histogram update with OOM enum")
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		newHistogram, err := metrics.GetHistogram(ctx, tconn, crosEventHistogram)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get new value of histogram"))
+		}
+
+		diff, err := newHistogram.Diff(histogram)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to diff histograms"))
+		}
+
+		for _, bucket := range diff.Buckets {
+			if bucket.Min == oomEventHistogramEnum {
+				// got an oom event, returning nil signals testing.Poll to finish
+				return nil
+			}
+		}
+
+		return errors.New("did not find Crostini.OomEvent in " + diff.String())
+	}, nil)
+
+	if err != nil {
+		return errors.Wrap(err, "failed polling on metrics.GetHistogram")
+	}
+
+	s.Log("Found expected Platform.CrOSEvent enum Crostini.OomEvent")
+	return nil
 }
 
 func checkDbusSignal(ctx context.Context, container *vm.Container, s *testing.State) (resultError error) {
@@ -95,7 +146,7 @@ func checkDbusSignal(ctx context.Context, container *vm.Container, s *testing.St
 		Type:      "signal",
 		Path:      oomAnomalyEventServicePath,
 		Interface: oomAnomalyEventServiceInterface,
-		Member:    oomAnomalyGuestFileCorruptionSignalName,
+		Member:    oomAnomalyGuestOomEventSignalName,
 	}
 	signalWatcher, err := dbusutil.NewSignalWatcherForSystemBus(ctx, match)
 	if err != nil {
