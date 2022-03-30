@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb742fc2_43ae121a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-30T20:05:31Z",
+      "side": 1,
+      "message": "The updated resize pref test with lacros variation. PTAL. Thanks.",
+      "revId": "f13aa6667a8d21095c8287644b16ce4b53d13c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27787eee_184c0f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-30T20:05:31Z",
+      "side": 1,
+      "message": "Increased mouse move time from 0.5s to 1s here and L182 because I saw chrome log complaining mouse move handler takes more time than expected [1]. I suspect it is related to the occasional failure that the resize histogram is missing for both ash-chrome resize and lacros-chrome resize. \n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d1207",
+      "revId": "f13aa6667a8d21095c8287644b16ce4b53d13c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
