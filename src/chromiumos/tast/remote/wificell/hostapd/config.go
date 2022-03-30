@@ -280,6 +280,13 @@ func MBO() Option {
 	}
 }
 
+// APSD returns an Option which enables U-APSD advertisement in hostapd config.
+func APSD() Option {
+	return func(c *Config) {
+		c.APSD = true
+	}
+}
+
 // RRMBeaconReport returns an Option which enables RRM Beacon Report in hostapd config.
 func RRMBeaconReport() Option {
 	return func(c *Config) {
@@ -374,6 +381,7 @@ type Config struct {
 	R1KHs              []string
 	MBO                bool
 	RRMBeaconReport    bool
+	APSD               bool
 	AdditionalBSSs     []AdditionalBSS
 	SupportedRates     []float32
 	BasicRates         []float32
@@ -493,6 +501,10 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	if c.MBO {
 		configure("mbo", "1")
+	}
+
+	if c.APSD {
+		configure("uapsd_advertisement_enabled", "1")
 	}
 
 	if c.RRMBeaconReport {

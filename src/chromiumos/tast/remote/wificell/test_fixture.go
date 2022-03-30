@@ -594,9 +594,9 @@ func (tf *TestFixture) Reinit(ctx context.Context) error {
 	return nil
 }
 
-// getUniqueAPName returns an unique ID string for each AP as their name, so that related
+// UniqueAPName returns an unique ID string for each AP as their name, so that related
 // logs/pcap can be identified easily.
-func (tf *TestFixture) getUniqueAPName() string {
+func (tf *TestFixture) UniqueAPName() string {
 	id := strconv.Itoa(tf.apID)
 	tf.apID++
 	return id
@@ -608,7 +608,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
 	r := tf.routers[idx].object
-	name := tf.getUniqueAPName()
+	name := tf.UniqueAPName()
 
 	if fac != nil {
 		// Defer the securityConfig generation from test's init() to here because the step may emit error and that's not allowed in test init().
