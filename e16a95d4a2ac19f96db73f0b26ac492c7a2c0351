@@ -237,6 +237,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79f43318_2a113f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-30T03:55:13Z",
+      "side": 1,
+      "message": "Yeah please don\u0027t do this. There are currently 3 other tests which are running using this fixture, if you remove all the files this could have them failing.\n\nThe best thing to do is to ensure you defer the removal of your file, make it unique and ensure you have enough cleanup time for removal. Which I think you are already doing.",
+      "parentUuid": "96b78487_91326eaa",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f7e9b98_c14919a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
         "patchSetId": 2
@@ -460,6 +478,24 @@
       "side": 1,
       "message": "can we split these test cases in separate tests (so we don\u0027t need this intermediary closeAllWindow call)\n\nalso, web search does not need driveFsStarted fixture afaik, so avoiding that setup in that case would be a good idea",
       "parentUuid": "66e527e3_949979d5",
+      "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a2f5d0_462072b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-03-30T03:55:13Z",
+      "side": 1,
+      "message": "Might be a good idea to use parameterized tests in this case. You can specify fixtures for individual params. The driveFsStarted fixture uses a real user login to whenever we can avoid doing this, saves additional bandwidth for the other tests.",
+      "parentUuid": "e76a9777_bcc6b8d6",
       "revId": "e16a95d4a2ac19f96db73f0b26ac492c7a2c0351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
