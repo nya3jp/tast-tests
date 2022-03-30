@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "870f8930_44b49519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-03-30T00:27:28Z",
+      "side": 1,
+      "message": "Alternatively we also should be able to limit the tests to only run on Taeko.",
+      "revId": "53100b5f030ae2708cb9aed2d1eae5c7a6ab5b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab75073f_ad55749f",
         "filename": "src/chromiumos/tast/local/bundles/cros/hps/running.go",
         "patchSetId": 2
