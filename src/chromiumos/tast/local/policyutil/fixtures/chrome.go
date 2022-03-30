@@ -195,6 +195,11 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		s.Fatal("Chrome startup failed: ", err)
 	}
 
+	logMarker, err := logsaver.NewMarker(cr.LogFilename())
+	if err != nil {
+		s.Log("Failed to start the log saver: ", err)
+	}
+
 	chromeOK := false
 	defer func() {
 		if !chromeOK {
@@ -229,6 +234,12 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 	chromeOK = true
 
 	chrome.Lock()
+
+	if logMarker != nil {
+		if err := logMarker.Save(filepath.Join(s.OutDir(), "chrome.fixture.log")); err != nil {
+			s.Log("Failed to store per-test log data: ", err)
+		}
+	}
 
 	return &FixtData{p.fdms, p.cr}
 }
