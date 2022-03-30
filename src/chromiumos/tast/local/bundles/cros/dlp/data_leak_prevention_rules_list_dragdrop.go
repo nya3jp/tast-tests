@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -81,7 +80,6 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := cr.ResetState(ctx); err != nil {
 				s.Fatal("Failed to reset the Chrome: ", err)
@@ -99,12 +97,18 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 				s.Fatal("Failed to enter into the overview mode: ", err)
 			}
 
-			// Snap the param.url window to the right
 			w1, err := ash.FindFirstWindowInOverview(ctx, tconn)
 			if err != nil {
 				s.Fatalf("Failed to find the %s window in the overview mode: %s", param.url, err)
 			}
 
+			// Attempt to snap a window and check if the app supports split screen, since this is a prereq for this test.
+			if err := testIfSplitScreenAvaliable(ctx, tconn, w1.ID); err != nil {
+				s.Log("Skipping test: ", err)
+				return
+			}
+
+			// Snap the param.url window to the right
 			if err := ash.SetWindowStateAndWait(ctx, tconn, w1.ID, ash.WindowStateRightSnapped); err != nil {
 				s.Fatalf("Failed to snap the %s window to the right: %s", param.url, err)
 			}
@@ -146,6 +150,21 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 		})
 	}
+}
+
+func testIfSplitScreenAvaliable(ctx context.Context, tconn *chrome.TestConn, id int) error {
+	ash.SetWindowState(ctx, tconn, id, ash.WMEventSnapRight, false)
+
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine(
+		"see if split-screen unsupported toast appears",
+		ui.WaitUntilExists(nodewith.NameStartingWith("App does not support split-screen.")),
+		ui.WaitUntilGone(nodewith.NameStartingWith("App does not support split-screen.")),
+	)(ctx); err == nil {
+		return errors.Wrap(err, "chrome app does not support split-screen")
+	}
+
+	return nil
 }
 
 func dragDrop(ctx context.Context, tconn *chrome.TestConn, content string) error {
