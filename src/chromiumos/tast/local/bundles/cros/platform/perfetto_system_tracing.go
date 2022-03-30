@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PerfettoSystemTracing,
 		Desc:     "Verifies functions of Perfetto traced and traced_probes",
-		Contacts: []string{"chinglinyu@chromium.org", "chromeos-performance-eng@google.com"},
+		Contacts: []string{"chinglinyu@chromium.org", "baseos-perf@google.com"},
 		Data:     []string{tracing.TraceConfigFile},
 		Attr:     []string{"group:mainline"},
 	})
