@@ -52,6 +52,24 @@
       "parentUuid": "2b74b661_6c031ac3",
       "revId": "d4f16795e60338760f8deca20129f6a6f06e3791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88ea874_de091972",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-03-30T23:17:46Z",
+      "side": 1,
+      "message": "SkipOnPlatform is being removed from tast.",
+      "parentUuid": "67138154_61112f77",
+      "revId": "d4f16795e60338760f8deca20129f6a6f06e3791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
