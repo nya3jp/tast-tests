@@ -7,6 +7,7 @@ package health
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"strconv"
 	"strings"
 	"time"
@@ -230,6 +231,8 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 
 func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 	checkInterfacesDetected := false
+	productName, _ := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/device_name")
+	vendorName, _ := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/vendor_name")
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
@@ -258,27 +261,38 @@ func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 				if interfaces.TxSpeedGbs == "" {
 					return errors.New("failed to get TxSpeedGbs")
 				}
-				if interfaces.VendorName == "" {
-					return errors.New("failed to get VendorName")
-				}
 			}
 		}
 
 		if (devices.DeviceClass) == "" {
 			return errors.New("failed to get Thunderbolt DeviceClass")
 		}
-		if (devices.ProductName) == "" {
-			return errors.New("failed to get Thunderbolt ProductName")
+
+		if (string(productName)) != "" {
+			if devices.ProductName != strings.TrimSpace(string(productName)) {
+				return errors.New("failed to get Thunderbolt ProductName")
+			}
+		} else {
+			if devices.ProductName != "" {
+				return errors.New("failed to get empty Thunderbolt ProductName")
+			}
 		}
-		if (devices.VendorName) == "" {
-			return errors.New("failed to get Thunderbolt VendorName")
+
+		if (string(vendorName)) != "" {
+			if devices.VendorName != strings.TrimSpace(string(vendorName)) {
+				return errors.New("failed to get Thunderbolt VendorName")
+			}
+		} else {
+			if devices.VendorName != "" {
+				return errors.New("failed to get empty Thunderbolt VendorName")
+			}
 		}
 	}
 
 	if isDeviceConnected && !checkInterfacesDetected {
 		return errors.New("failed to get Thunderbolt device data when the device is connected")
-
 	}
+
 	return nil
 }
 
