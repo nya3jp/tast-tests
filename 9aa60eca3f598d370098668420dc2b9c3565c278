@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b6e1b3_a57dca94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-30T22:54:22Z",
+      "side": 1,
+      "message": "Overall a nicely written test. A few small comments.\n\n+2 for Tast Review % nits",
+      "revId": "9aa60eca3f598d370098668420dc2b9c3565c278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3abd0ff8_4078c996",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/boot_with_only_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-30T22:54:22Z",
+      "side": 1,
+      "message": "Please put got before want:\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 149,
+        "startChar": 60,
+        "endLine": 149,
+        "endChar": 74
+      },
+      "revId": "9aa60eca3f598d370098668420dc2b9c3565c278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04fb381_b329582b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/boot_with_only_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-30T22:54:22Z",
+      "side": 1,
+      "message": "nit: verifyECPowerInfo ?",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 22
+      },
+      "revId": "9aa60eca3f598d370098668420dc2b9c3565c278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3544c90b_fbaa9270",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/boot_with_only_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-30T22:54:22Z",
+      "side": 1,
+      "message": "Please put got before want:\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 161,
+        "startChar": 50,
+        "endLine": 161,
+        "endChar": 66
+      },
+      "revId": "9aa60eca3f598d370098668420dc2b9c3565c278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864b7dfb_14097329",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/boot_with_only_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-30T22:54:22Z",
+      "side": 1,
+      "message": "Maybe you should check that your slices are at least of length 1 before accessing them. I could not easily verify this would always exist:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/ec.go;l\u003d178?q\u003dRunECCommandGetOutput\u0026type\u003dcs\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go?q\u003dConvertToStringArrayArray",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 23
+      },
+      "revId": "9aa60eca3f598d370098668420dc2b9c3565c278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32bda7ab_8125e2af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/boot_with_only_battery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-03-30T22:54:22Z",
+      "side": 1,
+      "message": "Please put got before want:\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 175,
+        "startChar": 52,
+        "endLine": 175,
+        "endChar": 67
+      },
+      "revId": "9aa60eca3f598d370098668420dc2b9c3565c278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
