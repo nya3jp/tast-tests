@@ -83,6 +83,21 @@ type NetDev struct {
 	IfType IfType
 }
 
+// IfaceLimit represents a set of interface types and an upper bound on the
+// total number of interfaces of those types may be run concurrently.
+type IfaceLimit struct {
+	IfaceTypes []string
+	MaxCount   int
+}
+
+// IfaceCombination represents a valid combination of interfaces on a device, as
+// provided in `iw list`.
+type IfaceCombination struct {
+	IfaceLimits []IfaceLimit
+	MaxTotal    int
+	MaxChannels int
+}
+
 // String implements the Stringer interface for NetDev.
 func (n NetDev) String() string {
 	return fmt.Sprintf("{phy=%d, name=%s, type=%s}", n.PhyNum, n.IfName, n.IfType)
@@ -108,6 +123,7 @@ type Phy struct {
 	SupportVHT                bool
 	SupportVHT80SGI           bool
 	SupportMUMIMO             bool
+	IfaceCombinations         []IfaceCombination
 }
 
 // SupportSetAntennaMask tells if we can set the antenna bitmap on the Phy.
@@ -134,19 +150,19 @@ type section struct {
 type sectionAttributes struct {
 	bands                 []Band
 	phyModes, phyCommands []string
-
-	supportHESTA       bool
-	supportHE40HE80STA bool
-	supportHE160STA    bool
-	supportHEAP        bool
-	supportHE40HE80AP  bool
-	supportHE160AP     bool
-	supportVHT         bool
-	supportHT2040      bool
-	supportHT20SGI     bool
-	supportHT40SGI     bool
-	supportVHT80SGI    bool
-	supportMUMIMO      bool
+	supportHESTA          bool
+	supportHE40HE80STA    bool
+	supportHE160STA       bool
+	supportHEAP           bool
+	supportHE40HE80AP     bool
+	supportHE160AP        bool
+	supportVHT            bool
+	supportHT2040         bool
+	supportHT20SGI        bool
+	supportHT40SGI        bool
+	supportVHT80SGI       bool
+	supportMUMIMO         bool
+	ifaceCombinations     []IfaceCombination
 }
 
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
@@ -957,6 +973,7 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 		SupportVHT:         attrs.supportVHT,
 		SupportVHT80SGI:    attrs.supportVHT80SGI,
 		SupportMUMIMO:      attrs.supportMUMIMO,
+		IfaceCombinations:  attrs.ifaceCombinations,
 	}, nil
 }
 
@@ -1196,6 +1213,44 @@ func parsePhyCommands(attrs *sectionAttributes, sectionName, contents string) er
 	return nil
 }
 
+func parseIfaceCombinations(attrs *sectionAttributes, sectionName, contents string) error {
+	// This parser checks the Phy's supported commands.
+	combinationMatches := regexp.MustCompile(`\* [^*]*`).FindAllString(contents, -1)
+	for _, c := range combinationMatches {
+		var combination IfaceCombination
+		ifaceLimitMatches := regexp.MustCompile(`\#{ ([\w\-,\s]+) } <= ([\d]+)`).FindAllStringSubmatch(c, -1)
+		var limits []IfaceLimit
+		var err error
+		for _, i := range ifaceLimitMatches {
+			var ifaceTypes []string
+			var ifaceLimit IfaceLimit
+			ifaceMatches := regexp.MustCompile(`[\w\-]+`).FindAllString(i[1], -1)
+			for _, iface := range ifaceMatches {
+				ifaceTypes = append(ifaceTypes, iface)
+			}
+			ifaceLimit.IfaceTypes = ifaceTypes
+			ifaceLimit.MaxCount, err = strconv.Atoi(i[2])
+			if err != nil {
+				return errors.Wrap(err, "could not parse interface count limit")
+			}
+			limits = append(limits, ifaceLimit)
+		}
+		combination.IfaceLimits = limits
+		total := regexp.MustCompile(`total <= (\d)`).FindStringSubmatch(c)
+		combination.MaxTotal, err = strconv.Atoi(total[1])
+		if err != nil {
+			return errors.Wrap(err, "could not parse maximum total interaces")
+		}
+		channels := regexp.MustCompile(`channels <= (\d)`).FindStringSubmatch(c)
+		combination.MaxChannels, err = strconv.Atoi(channels[1])
+		if err != nil {
+			return errors.Wrap(err, "could not parse maximum channels limit")
+		}
+		attrs.ifaceCombinations = append(attrs.ifaceCombinations, combination)
+	}
+	return nil
+}
+
 var parsers = []struct {
 	prefix string
 	parse  func(attrs *sectionAttributes, sectionName, contents string) error
@@ -1215,6 +1270,10 @@ var parsers = []struct {
 	{
 		prefix: "Supported commands",
 		parse:  parsePhyCommands,
+	},
+	{
+		prefix: "valid interface combinations",
+		parse:  parseIfaceCombinations,
 	},
 }
 
