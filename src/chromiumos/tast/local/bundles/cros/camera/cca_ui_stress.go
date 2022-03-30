@@ -102,6 +102,23 @@ func stringVar(s *testing.State, name, defaultValue string) string {
 	return str
 }
 
+// switchToRearCamera checks if the current camera is Rear camera or not. If user facing camera is open, it will switch to rear camera.
+func switchToRearCamera(ctx context.Context, app cca.App) error {
+	facing, err := app.GetFacing(ctx)
+	if err != nil {
+		return err
+	}
+	if facing != cca.FacingBack {
+		if err := app.SwitchCamera(ctx); err != nil {
+			return err
+		}
+		if err := app.CheckFacing(ctx, cca.FacingBack); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func CCAUIStress(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cca.FixtureData).Chrome
 	app := s.FixtValue().(cca.FixtureData).App()
@@ -207,12 +224,32 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get number of cameras: ", err)
 	}
 	if numCameras > 1 {
-		allActions = append(allActions, stressAction{
-			name: "switch-camera",
-			perform: func(ctx context.Context) error {
-				return app.SwitchCamera(ctx)
+		allActions = append(allActions,
+			stressAction{
+				name: "switch-camera",
+				perform: func(ctx context.Context) error {
+					return app.SwitchCamera(ctx)
+				},
 			},
-		})
+			stressAction{
+				name: "switch-photo-rear",
+				perform: func(ctx context.Context) error {
+					if err := switchToRearCamera(ctx, *app); err != nil {
+						return err
+					}
+					return app.SwitchMode(ctx, cca.Photo)
+
+				},
+			},
+			stressAction{
+				name: "switch-video-rear",
+				perform: func(ctx context.Context) error {
+					if err := switchToRearCamera(ctx, *app); err != nil {
+						return err
+					}
+					return app.SwitchMode(ctx, cca.Video)
+				},
+			})
 	}
 
 	var actions []stressAction
