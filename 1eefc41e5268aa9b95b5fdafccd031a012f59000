@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b7b1bac_08feae43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb690cef_d52f3ba7",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea5178b_165f4668",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-25T01:35:32Z",
       "side": 1,
       "message": "style nit: you can use the shorthand for variable assignment, instead of declaring them separately\n```\nt, err :\u003d smatlock.GetSettingsTestData(...)\nif err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 116
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83eacf58_3aa5fb5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea5178b_165f4668",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88a5685_dc6684a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "I added a wait inside ToggleSmartLockEnabled instead.",
+      "parentUuid": "89dfb862_a6f71848",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08dd8e70_1f2abcf9",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-25T16:28:00Z",
       "side": 1,
       "message": "Can you make these more human readable?",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 91
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3f884b_9af1d236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08dd8e70_1f2abcf9",
       "range": {
         "startLine": 74,
         "startChar": 11,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa8d559_aa6be0a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_signin_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90b6de4e_f360538f",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 116
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d268a53_5fef847b",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-03-25T16:28:00Z",
       "side": 1,
       "message": "What does logging out with OOBE mean?",
+      "range": {
+        "startLine": 78,
+        "startChar": 56,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67a3606_362a5163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_signin_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "I meant logging in with chrome.New(loginOpts...). I mentioned OOBE because visually, it looks like it\u0027s using the OOBE flow to sign in.",
+      "parentUuid": "5d268a53_5fef847b",
       "range": {
         "startLine": 78,
         "startChar": 56,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b81acb3_1832f95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_signin_enable_disable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "There are now plans to remove this signin subfeature altogether, so this test fixture will be removed. I added a TODO at the top of the file instead.",
+      "parentUuid": "51db9170_9ca6c66f",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e22f1e_07cf0e87",
@@ -175,6 +343,24 @@
       "writtenOn": "2022-03-25T01:35:32Z",
       "side": 1,
       "message": "a general style guideline is that context.Context shouldn\u0027t be stored in structs (go/go-style/decisions#contexts), instead functions that need it should just have it as its first parameter",
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980e8e58_a65a5c49",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e22f1e_07cf0e87",
       "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -196,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f300ab0_e93a8f35",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e4ec47_56a5b2a5",
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c78472f_d8920cde",
@@ -209,6 +413,24 @@
       "writtenOn": "2022-03-25T01:35:32Z",
       "side": 1,
       "message": "handling the error is still good practice just in case something unexpected happens. you could log it the error just in case, like:\n```\ntesting.ContextLog(ctx, \"failed to click cancel button: \", err)\n```\nbut in this case I think slightly modifying the function to be explicit about enabling/disabling is the way to go, see above",
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df50885_dda11dca",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c78472f_d8920cde",
       "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -236,6 +458,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48aa6ab2_7c0c6dac",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Good thought. There are several functions that need the keyboard under CheckSmartLockVisibility, so I set the keyboard up there.",
+      "parentUuid": "3a31ac41_30b87e97",
+      "range": {
+        "startLine": 149,
+        "startChar": 53,
+        "endLine": 149,
+        "endChar": 82
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa4bd520_5e3ed897",
@@ -249,6 +495,30 @@
       "writtenOn": "2022-03-25T01:35:32Z",
       "side": 1,
       "message": "another little Go style thing is to omit \"Get\" from the function name in these cases\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 8
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd0bb4d_8214889a",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "I removed the struct.",
+      "parentUuid": "aa4bd520_5e3ed897",
       "range": {
         "startLine": 161,
         "startChar": 5,
@@ -306,6 +576,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbeaa259_ca02a738",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Removed the struct.",
+      "parentUuid": "724aee64_897b14ab",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd7420ec_a39cba35",
@@ -319,6 +613,30 @@
       "writtenOn": "2022-03-25T16:28:00Z",
       "side": 1,
       "message": "This seems to be doing too many things",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 85
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a17455a_609f8d4d",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd7420ec_a39cba35",
       "range": {
         "startLine": 187,
         "startChar": 0,
@@ -352,6 +670,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc0266b_910c6323",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9843f7c3_632b4aab",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028a9cc1_48580e42",
@@ -365,6 +707,30 @@
       "writtenOn": "2022-03-25T16:28:00Z",
       "side": 1,
       "message": "Should we keep it consistent and use Lock everywhere instead of Unlock?",
+      "range": {
+        "startLine": 194,
+        "startChar": 17,
+        "endLine": 194,
+        "endChar": 19
+      },
+      "revId": "1eefc41e5268aa9b95b5fdafccd031a012f59000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42be7d4c_617b90db",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2022-03-30T19:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028a9cc1_48580e42",
       "range": {
         "startLine": 194,
         "startChar": 17,
