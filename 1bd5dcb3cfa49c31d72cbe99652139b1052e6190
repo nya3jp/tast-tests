@@ -33,6 +33,24 @@
       "message": "I\u0027m not convinced that this is the right way to do it.\n\nWe are now waiting 10 seconds (which should be explicit here as well).\n\nA much better solution is to wait for both at the same time and immediately continue when one of them is available.\n\nUnfortunately the code will become more complex due to goroutines, but it would certainly become faster.",
       "revId": "1bd5dcb3cfa49c31d72cbe99652139b1052e6190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a65e3e_61657b12",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-03-30T19:13:24Z",
+      "side": 1,
+      "message": "I think waiting in parallel does not buy us much here (at least not enough to justify extra complexity).\n\nautotestPrivate.waitForLauncherState will return immediately if we call it when we expect new \"bubble\" launcher to be used (in clamshell when \"ProductivityLauncher\" feature is enabled), so we won\u0027t actually wait for 10 seconds here (the timeout may come in play when we expect old, fullscreen launcher - i.e. hitting this timeout would actually be an error).\n\nBig difference compared to old code is that we\u0027re don\u0027t have a 2 second wait time in cases where this method succeeds. The method may still take multiple seconds, but only in error cases, when UI that we expect to see does not show up.",
+      "parentUuid": "53696239_c7d66e35",
+      "revId": "1bd5dcb3cfa49c31d72cbe99652139b1052e6190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
