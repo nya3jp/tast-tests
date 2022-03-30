@@ -141,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "791b7613_1b0012da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-30T05:58:37Z",
+      "side": 1,
+      "message": "As discussed offline, I will leave todo comment as it is since I will work on it right after this CL.",
+      "parentUuid": "68cc1de3_86fe0c79",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 8
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5e7cfb3_f2530402",
@@ -248,6 +272,30 @@
       "side": 1,
       "message": "ditto",
       "parentUuid": "eff80910_8d231bc1",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c7787c3_38cf9eca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-30T05:58:37Z",
+      "side": 1,
+      "message": "As discussed offline, I will leave todo comment as it is since I will work on it right after this CL.",
+      "parentUuid": "1cc9e8c7_d366752f",
       "range": {
         "startLine": 30,
         "startChar": 5,
@@ -411,6 +459,30 @@
       "side": 1,
       "message": "This is not a go file, it is a proto file.",
       "parentUuid": "09a0d507_79d493ca",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8875c7d7_6e9a93d7",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-30T05:58:37Z",
+      "side": 1,
+      "message": "The corresponding go file requires the same name as it. If I change the name here, I will need to change the name in go file as well.",
+      "parentUuid": "bc8ff815_68696843",
       "range": {
         "startLine": 14,
         "startChar": 8,
