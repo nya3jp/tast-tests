@@ -34,6 +34,24 @@
       "parentUuid": "2f078cdf_149adfb8",
       "revId": "d4f16795e60338760f8deca20129f6a6f06e3791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67138154_61112f77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2022-03-30T22:51:54Z",
+      "side": 1,
+      "message": "Sorry I checked this late, but Zork also has gumboz, jelboz and jelboz360. Maybe it\u0027d better to use SkipOnPlatform rather than SkipOnModel since waiver applies to all Zork models.",
+      "parentUuid": "2b74b661_6c031ac3",
+      "revId": "d4f16795e60338760f8deca20129f6a6f06e3791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
