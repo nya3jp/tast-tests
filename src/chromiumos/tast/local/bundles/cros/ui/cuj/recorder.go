@@ -201,9 +201,15 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 	r := &Recorder{cr: cr}
 
 	var err error
-	r.tconn, err = cr.TestAPIConn(ctx)
+	// Set short timeout for creating test connection.
+	signinTestAPIConnectionCtx, _ := context.WithTimeout(ctx, 5*time.Second)
+	r.tconn, err = cr.SigninProfileTestAPIConn(signinTestAPIConnectionCtx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to test API")
+		testing.ContextLog(ctx, "WARNING: Failed to connect to TestAPI (fallback to login TestAPI): ", err)
+		r.tconn, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "creating login test API connection failed")
+		}
 	}
 
 	var batteryDischargeErr error

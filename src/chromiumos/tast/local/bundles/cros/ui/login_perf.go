@@ -15,9 +15,11 @@ import (
 	"github.com/mafredri/cdp/rpcc"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -298,6 +300,8 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 		arcmodes = append(arcmodes, arcenabled, arcsupported)
 	}
 
+	cujPerfValues := perf.NewValues()
+
 	currentWindows := 0
 	// Run the login flow for various situations.
 	// - change the number of browser windows, 2 or 8
@@ -350,7 +354,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 					suffix = ".ClamshellMode"
 				}
 
-				// cr is shared between multiple runs, because Chrome connection must to be closed only after histiograms are stored.
+				// cr is shared between multiple runs, because Chrome connection must to be closed only after histograms are stored.
 				var cr *chrome.Chrome
 
 				heuristicsHistograms := []string{
@@ -366,6 +370,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 				allHistograms := []string{ensureWorkVisibleHistogram, ensureWorkVisibleLowResHistogram}
 				allHistograms = append(allHistograms, heuristicsHistograms...)
 
+				var cujRunPerfValues *perf.Values
 				r.RunMultiple(ctx, s,
 					fmt.Sprintf("%dwindows%s", currentWindows, suffix),
 					func(ctx context.Context) ([]*metrics.Histogram, error) {
@@ -378,6 +383,32 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						if err != nil {
 							return nil, errors.Wrap(err, "creating login test api connection failed")
 						}
+						// Shorten context a bit to allow for cleanup.
+						closeCtx := ctx
+						ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+						defer cancel()
+						// Initialize CUJ recording.
+						cujConfigs := []cuj.MetricConfig{
+							cuj.NewCustomMetricConfig(
+								"Ash.LoginAnimation.Smoothness"+suffix,
+								"percent",
+								perf.BiggerIsBetter, []int64{10, 60}),
+							cuj.NewCustomMetricConfig(
+								"Ash.LoginAnimation.Jank"+suffix,
+								"percent",
+								perf.SmallerIsBetter, []int64{10, 60}),
+							cuj.NewCustomMetricConfig(
+								"Ash.LoginAnimation.Duration"+suffix,
+								"ms",
+								perf.SmallerIsBetter, []int64{100, 10000}),
+						}
+						cujRecorder, err := cuj.NewRecorder(ctx, cr, nil, cujConfigs...)
+						if err != nil {
+							s.Fatal("Failed to create a CUJ recorder: ", err)
+						}
+						defer cujRecorder.Close(closeCtx)
+
+						// The actual test function
 						testFunc := func(ctx context.Context) error {
 							err := loginPerfDoLogin(ctx, cr, creds)
 							if err != nil {
@@ -394,22 +425,40 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 							}
 							return nil
 						}
-						histograms, err := metrics.RunAndWaitAll(
-							ctx,
-							tLoginConn,
-							time.Minute,
-							testFunc,
-							allHistograms...,
-						)
-						if err != nil {
-							return histograms, err
+
+						var histograms []*metrics.Histogram
+						// CUJ TPS metrics recording wrapper
+						cujFunc := func(ctx context.Context) error {
+							var err error
+							histograms, err = metrics.RunAndWaitAll(
+								ctx,
+								tLoginConn,
+								time.Minute,
+								testFunc,
+								allHistograms...,
+							)
+							if err != nil {
+								return err
+							}
+							visible := 0
+							if visible, err = countVisibleWindows(ctx, cr); err != nil {
+								return err
+							}
+							if visible != currentWindows && visible != currentWindows+1 {
+								err = errors.Errorf("unexpected number of visible windows: expected %d, found %d", currentWindows, visible)
+							}
+							return err
 						}
-						visible := 0
-						if visible, err = countVisibleWindows(ctx, cr); err != nil {
-							return histograms, err
+						if err := cujRecorder.Run(ctx, cujFunc); err != nil {
+							return nil, errors.Wrap(err, "failed to run the test scenario")
 						}
-						if visible != currentWindows && visible != currentWindows+1 {
-							err = errors.Errorf("unexpected number of visible windows: expected %d, found %d", currentWindows, visible)
+						if cujRunPerfValues == nil {
+							pv := perf.NewValues()
+							if err := cujRecorder.Record(ctx, pv); err != nil {
+								return nil, errors.Wrap(err, "failed to collect the data from the recorder")
+							}
+							cujRunPerfValues = perf.NewValues()
+							cujRunPerfValues.MergeWithSuffix(fmt.Sprintf("%s.%s.%dwindows", suffix, arcMode, currentWindows), pv)
 						}
 						return histograms, err
 					},
@@ -439,11 +488,14 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						return logout(ctx, cr, s)
 					},
 				)
-
+				cujPerfValues.Merge(cujRunPerfValues)
 			}
 		}
 	}
 	if err := r.Values().Save(ctx, s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
+	}
+	if err := cujPerfValues.Save(s.OutDir()); err != nil {
+		s.Error("Cannot save TPS perf data: ", err)
 	}
 }
