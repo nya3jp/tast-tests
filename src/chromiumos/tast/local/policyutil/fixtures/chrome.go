@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -121,6 +122,9 @@ type policyChromeFixture struct {
 	// waitForARC indicates the fixture needs to wait for ARC before login.
 	// Only needs to be set if ARC is enabled.
 	waitForARC bool
+
+	// Marker for per-test log.
+	logMarker *logsaver.Marker
 }
 
 // FixtData is returned by the fixtures and used in tests
@@ -262,8 +266,25 @@ func (p *policyChromeFixture) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (p *policyChromeFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (p *policyChromeFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if p.logMarker != nil {
+		s.Log("A log marker is already created but not cleaned up")
+	}
+	logMarker, err := logsaver.NewMarker(p.cr.LogFilename())
+	if err == nil {
+		p.logMarker = logMarker
+	} else {
+		s.Log("Failed to start the log saver: ", err)
+	}
+}
 func (p *policyChromeFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if p.logMarker != nil {
+		if err := p.logMarker.Save(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+			s.Log("Failed to store per-test log data: ", err)
+		}
+		p.logMarker = nil
+	}
+
 	tconn, err := p.cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create TestAPI connection: ", err)
