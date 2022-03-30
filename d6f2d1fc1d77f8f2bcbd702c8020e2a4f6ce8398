@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c15e0f_3553e324",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-03-30T17:01:44Z",
+      "side": 1,
+      "message": "Retrying as the failed builder https://ci.chromium.org/ui/p/chromeos/builders/test_runner/test_runner/b8818249586962481345/overview says to do so since it rans on a canary version of LUCI.",
+      "revId": "d6f2d1fc1d77f8f2bcbd702c8020e2a4f6ce8398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
