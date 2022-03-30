@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8131f137_08cad3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/usb_attach_to_arcvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1146976
+      },
+      "writtenOn": "2022-03-30T19:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db4b58cb_c6cadd7c",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "94a0bb8c9bc50b7b05da984d4afe1d70984d5e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75b0f52c_710d71f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-30T06:08:07Z",
       "side": 1,
       "message": "Same as above.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "94a0bb8c9bc50b7b05da984d4afe1d70984d5e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c220985_2df21f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/usb_attach_to_arcvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1146976
+      },
+      "writtenOn": "2022-03-30T19:59:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b0f52c_710d71f8",
       "range": {
         "startLine": 104,
         "startChar": 0,
