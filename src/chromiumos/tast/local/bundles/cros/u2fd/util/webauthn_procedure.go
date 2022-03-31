@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -19,7 +20,7 @@ import (
 )
 
 // WebAuthnInWebAuthnIo performs the WebAuthn procedure in the external site webauthn.io.
-func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, authCallback func(context.Context, *uiauto.Context) error) error {
+func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, authCallback func(context.Context, *uiauto.Context) error) error {
 	// We need truly random values for username strings so that different test runs don't affect each other.
 	rand.Seed(time.Now().UnixNano())
 
@@ -28,7 +29,7 @@ func WebAuthnInWebAuthnIo(ctx context.Context, cr *chrome.Chrome, authCallback f
 		return errors.Wrap(err, "failed to get test API connection")
 	}
 
-	conn, err := cr.NewConn(ctx, "https://webauthn.io/")
+	conn, err := br.NewConn(ctx, "https://webauthn.io/")
 	if err != nil {
 		return errors.Wrap(err, "failed to navigate to test website")
 	}
