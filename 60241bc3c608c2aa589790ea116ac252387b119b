@@ -250,6 +250,24 @@
       "parentUuid": "42c4ce05_9c10fbb1",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0302d90c_b3f2643a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2022-03-31T18:47:14Z",
+      "side": 1,
+      "message": "I think one way to ensure the test starts after the log-in screen is by using the `chromeLoggedIn` fixture. We have a few graphics tests that use it, for example:\nhttps://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/extended_display_composition_check.go;l\u003d62\n\nHowever, I don\u0027t know if it has the same guarantee as a \"login screen visible\". The difference being that one ensures login whereas the other ensure a display was configured via modeset. In other words, I don\u0027t know if by being logged in we verify the login screen was visible on some display.\n\nAn alternative can be combining the `chromeLoggedIn` fixture with a hardware dependency on an internal display, as in:\nhttps://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/extended_display_composition_check.go;l\u003d39-42\n\nBut I am not sure whether or not this test is designed to tests cases in which no info/CRTCs are available. If it doesn\u0027t, using this hardware dependency will make things simpler. Otherwise, perhaps the test can be split and test the two cases separately.",
+      "parentUuid": "c039cf5e_edb1ea79",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
