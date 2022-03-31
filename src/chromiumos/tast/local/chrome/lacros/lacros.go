@@ -130,16 +130,16 @@ func (l *Lacros) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
 	return l.sess.TestAPIConn(ctx)
 }
 
-// CloseAboutBlank finds all targets that are about:blank, closes them, then waits until they are gone.
+// CloseWithURL finds all targets with the given url, closes them, then waits until they are gone.
 // windowsExpectedClosed indicates how many windows that we expect to be closed from doing this operation.
 // This takes *ash-chrome*'s TestConn as tconn, not the one provided by Lacros.TestAPIConn.
-func (l *Lacros) CloseAboutBlank(ctx context.Context, tconn *chrome.TestConn, windowsExpectedClosed int) error {
+func (l *Lacros) CloseWithURL(ctx context.Context, tconn *chrome.TestConn, url string, windowsExpectedClosed int) error {
 	prevWindows, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		return err
 	}
 
-	targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(chrome.BlankURL))
+	targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(url))
 	if err != nil {
 		return errors.Wrap(err, "failed to query for about:blank pages")
 	}
@@ -158,7 +158,7 @@ func (l *Lacros) CloseAboutBlank(ctx context.Context, tconn *chrome.TestConn, wi
 		// communicate with it, so skip checking the targets. Since closing all lacros targets will close all
 		// lacros windows, the window check below is necessary and sufficient.
 		if len(targets) != len(allPages) {
-			targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(chrome.BlankURL))
+			targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(url))
 			if err != nil {
 				return testing.PollBreak(err)
 			}

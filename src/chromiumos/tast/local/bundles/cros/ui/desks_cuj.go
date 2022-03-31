@@ -63,8 +63,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		cs = cr
 	case browser.TypeLacros:
 		var err error
-		// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-		cr, l, cs, err = lacros.SetupDeprecated(ctx, s.FixtValue(), browser.TypeLacros)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
@@ -87,8 +86,8 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	if bt == browser.TypeLacros {
-		if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
-			s.Fatal("Failed to close about:blank: ", err)
+		if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+			s.Fatal("Failed to close blank tab: ", err)
 		}
 	}
 
