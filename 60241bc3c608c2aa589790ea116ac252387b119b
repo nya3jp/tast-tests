@@ -106,6 +106,24 @@
       "parentUuid": "f269c478_897b7992",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d46c2a1_4e31287c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-31T08:02:49Z",
+      "side": 1,
+      "message": "Yerp, so we can try to detect #1, or just poll for #2 and not fail because #1 can happen. If #1 is the minority case, it\u0027s better to do the poll on #2 than to sleep unconditionally.",
+      "parentUuid": "e65b6381_1881bb13",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
