@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c229d120_e9369ed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_blocks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:57:15Z",
+      "side": 1,
+      "message": "why removing this one? usefull log msg I reckon",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "24b5b65f43420f14a55f577adcf88b92b02340dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
