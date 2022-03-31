@@ -6,12 +6,14 @@ package apps
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,16 +34,25 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
+			ExtraAttr:         []string{"informational"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 	func() {
-		bt := browser.TypeAsh
+		bt := s.Param().(browser.Type)
+		opts := chrome.EnableFeatures("FullRestore")
 		cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx,
 			bt,
-			nil,
-			chrome.EnableFeatures("FullRestore"))
+			browserfixt.NewLacrosConfig(lacrosfixt.Rootfs, lacrosfixt.LacrosSideBySide),
+			opts)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -100,8 +111,31 @@ func FullRestoreAlwaysRestore(ctx context.Context, s *testing.State) {
 		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 		// Confirm that the browser is restored.
-		if _, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == ash.WindowTypeBrowser }); err != nil {
-			s.Fatal("Failed to restore browser: ", err)
+		bt := s.Param().(browser.Type)
+		var topWindowName string
+		switch bt {
+		case browser.TypeAsh:
+			topWindowName = "BrowserFrame"
+		case browser.TypeLacros:
+			topWindowName = "ExoShellSurface"
+		default:
+			s.Fatalf("Unrecognized browser type %s: %v", string(bt), err)
+		}
+		const title string = "Alphabet"
+
+		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+			if !w.IsVisible {
+				return false
+			}
+			if !strings.HasPrefix(w.Name, topWindowName) {
+				return false
+			}
+			if len(title) > 0 {
+				return strings.Contains(w.Title, title)
+			}
+			return true
+		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+			s.Fatalf("Failed to restore %v browser, waiting for window to be visible (title: %v): %v", bt, title, err)
 		}
 
 		// Confirm that the Settings app is restored.
