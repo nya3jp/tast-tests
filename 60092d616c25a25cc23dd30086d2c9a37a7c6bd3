@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8c9e4f_c3e71cfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-03-31T17:40:30Z",
+      "side": 1,
+      "message": "added Miguel and Ilja in the CC list. in progress for now.\n\nWill start this review later once I finalize list of devices for RockChip\nand also get to test it with local device. (can\u0027t at NY office locally due to network issue)",
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
