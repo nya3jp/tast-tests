@@ -69,7 +69,7 @@ func GAIAReporting(ctx context.Context, s *testing.State) {
 	debugServiceAPIKey := s.RequiredVar(param.debugservicekey)
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(ctx)
@@ -77,7 +77,7 @@ func GAIAReporting(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 

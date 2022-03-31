@@ -68,7 +68,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 	func(ctx context.Context) {
 		defer func(ctx context.Context) {
 			if !successfulUpdate {
-				if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+				if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 					s.Error("Failed to reset TPM after test: ", err)
 				}
 			}
@@ -79,7 +79,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		// Reset TPM.
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 			s.Fatal("Failed to reset TPM: ", err)
 		}
 
