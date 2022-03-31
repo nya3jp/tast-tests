@@ -10,6 +10,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
@@ -63,12 +64,13 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		dbusName            = "org.chromium.MlDecisionService"
 		dbusPath            = dbus.ObjectPath("/org/chromium/MlDecisionService")
 		dbusInterfaceMethod = "org.chromium.MlDecisionService.ShouldDeferScreenDim"
-
-		eventHistogramName  = "MachineLearningService.SmartDimModel.ExecuteResult.Event"
-		sourceHistogramName = "PowerML.SmartDimFeature.WebPageInfoSource"
-		workerHistogramName = "PowerML.SmartDimComponent.WorkerType"
 		timeout             = 60 * time.Second
 	)
+
+	histogramNames := []string{
+		"MachineLearningService.SmartDimModel.ExecuteResult.Event",
+		"PowerML.SmartDimComponent.WorkerType",
+		"PowerML.SmartDimFeature.WebPageInfoSource"}
 
 	param := s.Param().(*smartDimParam)
 
@@ -83,36 +85,19 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
 	}
 
-	call := func() {
+	call := func(ctx context.Context) error {
 		s.Log("Asking /org/chromium/MlDecisionService for Smart Dim decision")
 		var state bool
 		if err := obj.CallWithContext(ctx, dbusInterfaceMethod, 0).Store(&state); err != nil {
-			s.Error("Failed to get Smart Dim decision: ", err)
-		} else {
-			s.Log("Smart Dim decision is ", state)
+			return errors.Wrap(err, "failed to get Smart Dim decision")
 		}
+		s.Log("Smart Dim decision is ", state)
+		return nil
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
-	}
-
-	waitForHistogram := func(name string, base *metrics.Histogram) *metrics.Histogram {
-		s.Logf("Waiting for %v histogram", name)
-		var histogram *metrics.Histogram
-		var err error
-		if base == nil {
-			histogram, err = metrics.WaitForHistogram(ctx, tconn, name, timeout)
-		} else {
-			histogram, err = metrics.WaitForHistogramUpdate(ctx, tconn, name, base, timeout)
-		}
-
-		if err != nil {
-			s.Fatalf("Failed to get histogram %q: %v", name, err)
-		}
-		s.Logf("Got histogram %q: %v", name, histogram)
-		return histogram
 	}
 
 	if param.useFlatbufferModel {
@@ -123,20 +108,33 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	call()
-	eventHistogramBase := waitForHistogram(eventHistogramName, nil)
-	sourceHistogramBase := waitForHistogram(sourceHistogramName, nil)
-	workerHistogramBase := waitForHistogram(workerHistogramName, nil)
+	// Wait until all pending updates for these three histograms are completed.
+	// This is because event histogram is CrOS metrics and Chromium has a delayed collection cycle for them.
+	// Its pending updates may be merged to diffs after the dbus call, leading to unexpected result.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		recorder, err := metrics.StartRecorder(ctx, tconn, histogramNames...)
+		if err != nil {
+			return errors.Wrap(err, "failed to start recorder")
+		}
+		diffs, err := recorder.WaitAny(ctx, tconn, 3*time.Second)
+		if diffs != nil {
+			s.Log("Got pending updates, try again")
+			return errors.New("got pending updates")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for completion of all pending updates : ", err)
+	}
 
-	call()
-	eventHistogramUpdate := waitForHistogram(eventHistogramName, eventHistogramBase)
-	sourceHistogramUpdate := waitForHistogram(sourceHistogramName, sourceHistogramBase)
-	workerHistogramUpdate := waitForHistogram(workerHistogramName, workerHistogramBase)
+	histograms, err := metrics.RunAndWaitAll(ctx, tconn, 3*time.Second, call, histogramNames...)
+	if err != nil {
+		s.Fatal("Failed to run and wait all histograms")
+	}
 
 	// SmartDimModel.ExecuteResult.Event=0 means model is invoked successfully.
 	expectedEventBucket := metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
-	if len(eventHistogramUpdate.Buckets) != 1 || eventHistogramUpdate.Buckets[0] != expectedEventBucket {
-		s.Errorf("Unexpected event histogram update: want %+v, got %+v", expectedEventBucket, eventHistogramUpdate)
+	if len(histograms[0].Buckets) != 1 || histograms[0].Buckets[0] != expectedEventBucket {
+		s.Errorf("Unexpected event histogram update: want %+v, got %+v", expectedEventBucket, histograms[0])
 	}
 
 	// WorkerType 0 means builtin model, 1 means flatbuffer model.
@@ -147,8 +145,8 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		expectedWorkerBucket = metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
 	}
 
-	if len(workerHistogramUpdate.Buckets) != 1 || workerHistogramUpdate.Buckets[0] != expectedWorkerBucket {
-		s.Errorf("Unexpected worker histogram update: want %+v, got %+v", expectedWorkerBucket, workerHistogramUpdate)
+	if len(histograms[1].Buckets) != 1 || histograms[1].Buckets[0] != expectedWorkerBucket {
+		s.Errorf("Unexpected worker histogram update: want %+v, got %+v", expectedWorkerBucket, histograms[1])
 	}
 
 	// WebPageInfoSource 0 means Ash , 1 means Lacros.
@@ -158,7 +156,7 @@ func SmartDim(ctx context.Context, s *testing.State) {
 	} else {
 		expectedSourceBucket = metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}
 	}
-	if len(sourceHistogramUpdate.Buckets) != 1 || sourceHistogramUpdate.Buckets[0] != expectedSourceBucket {
-		s.Fatalf("Unexpected source histogram update: want %+v, got %+v", expectedSourceBucket, sourceHistogramUpdate)
+	if len(histograms[2].Buckets) != 1 || histograms[2].Buckets[0] != expectedSourceBucket {
+		s.Fatalf("Unexpected source histogram update: want %+v, got %+v", expectedSourceBucket, histograms[2])
 	}
 }
