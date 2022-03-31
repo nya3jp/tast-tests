@@ -9,6 +9,7 @@ import (
 	"math"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -30,6 +31,13 @@ func init() {
 }
 
 func ProbeDisplayInfo(ctx context.Context, s *testing.State) {
+	// b:225766968. When testing, cros_healthd restarts ui. Display needs
+	// some time for the initialization. If cros_healthd reads the data
+	// before initialization and modetest reads after the initialization,
+	// their data can't match. Currentlt it only happens to bob and scarlet.
+	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+		s.Fatal("Failed to sleep: ", err)
+	}
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryDisplay}
 	var display displayInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &display); err != nil {
