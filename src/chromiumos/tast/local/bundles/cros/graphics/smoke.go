@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
@@ -50,20 +49,11 @@ func init() {
 			ExtraData: []string{"screenshot1_reference.png", "screenshot2_reference.png"},
 			Val:       smokePlatform,
 		}},
+		Timeout: 5 * time.Minute,
 	})
 }
 
 func Smoke(ctx context.Context, s *testing.State) {
-	number, err := graphics.NumberOfOutputsConnected(ctx)
-	if err != nil {
-		s.Fatal("Failed to get current connected monitors: ", err)
-	}
-
-	// TODO(pwang): Switch to use hardware dependency once it is ready.
-	if number <= 0 {
-		s.Fatal("Skipped as no monitor is detected")
-	}
-
 	// Explicitly switching to GUI. If the display is sleeping, this turns on it.
 	if err := switchToGUI(ctx); err != nil {
 		s.Fatal("Failed to switch to GUI: ", err)
@@ -109,7 +99,7 @@ func testSomethingOnScreen(ctx context.Context, s *testing.State) {
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second, Interval: time.Second}); err != nil {
 		s.Error("Screen didn't get ready: ", err)
 		return
 	}
