@@ -90,6 +90,30 @@
       },
       "revId": "70499db818b798ab090ab53dffd5aa2601f60dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cd94c7_6b3eeff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-31T11:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ab3fb4_6aceb76d",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "70499db818b798ab090ab53dffd5aa2601f60dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
