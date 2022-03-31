@@ -16,6 +16,29 @@
       "message": "Fixed the issue. PTAL!",
       "revId": "cc0d5a89dc9967f42742300246a41702fb583a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89edbbd6_7178325d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-03-31T12:23:41Z",
+      "side": 1,
+      "message": "nit: twice",
+      "range": {
+        "startLine": 131,
+        "startChar": 40,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "cc0d5a89dc9967f42742300246a41702fb583a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
