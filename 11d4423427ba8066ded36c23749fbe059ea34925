@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "11d4423427ba8066ded36c23749fbe059ea34925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b44cc9_df1f9d93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-31T05:36:09Z",
+      "side": 1,
+      "message": "could you clarify how to specify the window? Also, what tconn (ash/lacros) should be used?",
+      "revId": "11d4423427ba8066ded36c23749fbe059ea34925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b282554_b76a46c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-31T05:36:09Z",
+      "side": 1,
+      "message": "nit/style: I think we often one-level unindented.",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 19
+      },
+      "revId": "11d4423427ba8066ded36c23749fbe059ea34925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
