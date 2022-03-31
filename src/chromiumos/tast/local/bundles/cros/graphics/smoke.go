@@ -44,6 +44,8 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "chrome",
 			ExtraSoftwareDeps: []string{"chrome"},
+			// TODO(b/227473970): reenable once screenshot works on these models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("collis", "copano")),
 			Val:               smokeChrome,
 		}, {
 			Name:      "platform",
