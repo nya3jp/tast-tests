@@ -63,7 +63,7 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 		if err := dututils.EnsureDUTIsOn(ctx, d, pxy.Servo()); err != nil {
 			s.Error("Failed to ensure DUT is powered on: ", err)
 		}
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, d); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d); err != nil {
 			s.Error("Failed to reset TPM: ", err)
 		}
 	}(cleanupCtx)
@@ -113,7 +113,7 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
 			defer cancel()
 
-			if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, d); err != nil {
+			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d); err != nil {
 				s.Error("Failed to clear TPM: ", err)
 			}
 

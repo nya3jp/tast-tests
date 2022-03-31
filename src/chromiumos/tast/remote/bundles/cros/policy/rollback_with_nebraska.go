@@ -93,13 +93,13 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 	s.Log("The test is starting from image version ", originalVersion)
 
 	// Reset TPM.
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 	resetTPM := false
 	defer func(ctx context.Context) {
 		if resetTPM {
-			if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 				s.Error("Failed to reset TPM after test: ", err)
 			}
 		}

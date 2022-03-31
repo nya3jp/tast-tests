@@ -41,7 +41,7 @@ func init() {
 // TODO(b/189457904): remove once policy.DeviceWilcoDtcAllowedEnrolled will be stable enough.
 func DeviceWilcoDtcAllowed(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
 		}
 	}(ctx)
@@ -67,7 +67,7 @@ func DeviceWilcoDtcAllowed(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 				s.Fatal("Failed to reset TPM: ", err)
 			}
 
