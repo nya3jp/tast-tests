@@ -196,6 +196,24 @@
       "parentUuid": "580325d9_f5cd40ad",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d17e51_8c08bf16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-31T08:54:41Z",
+      "side": 1,
+      "message": "I think it is better, I upload patchset#2 and modify the commit msg.",
+      "parentUuid": "7651d6d3_40ab6862",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
