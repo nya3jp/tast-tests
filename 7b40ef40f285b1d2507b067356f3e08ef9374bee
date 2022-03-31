@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da0a326e_fb05a0d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-03-31T20:50:16Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d1307?q\u003dhwdep.Keyboard",
+      "revId": "7b40ef40f285b1d2507b067356f3e08ef9374bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2522172b_7798164b",
