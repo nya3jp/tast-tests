@@ -783,6 +783,19 @@ func TestPlatformDecodingParams(t *testing.T) {
 
 				hardwareDeps := []string{"hwdep.SupportsV4L2StatelessVideoDecoding()"}
 
+				switch levelGroup {
+				case "level5_0":
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
+				case "level5_1":
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
+					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(7169)")
+				default:
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
+				}
+
+				// TODO(b/227480076): re-enable on RockChip devices (bob, gru, kevin) if needed in the future.
+				hardwareDeps = append(hardwareDeps, "hwdep.SkipOnPlatform(\"bob\", \"gru\", \"kevin\")")
+
 				param.HardwareDeps = strings.Join(hardwareDeps, ", ")
 				params = append(params, param)
 			}
