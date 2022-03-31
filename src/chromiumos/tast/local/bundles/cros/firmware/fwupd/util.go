@@ -20,7 +20,7 @@ const ReleaseURI = "https://storage.googleapis.com/chromeos-localmirror/lvfs/tes
 
 const (
 	// This is a string that appears when the computer is discharging.
-	dischargeString = `uint32 [0-9]\s+uint32 2`
+	dischargeString = `uint32 [0-9]\s+uint32 2\s+double [0-9][0-9](\.[1-9])?\s`
 )
 
 func setBatteryNormal(ctx context.Context) error {
@@ -57,7 +57,7 @@ func SetFwupdChargingState(ctx context.Context, charge bool) error {
 			return errors.New("powerd has not registered a battery state change")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 120 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 5 * time.Minute}); err != nil {
 		return errors.Wrap(err, "battery polling was unsuccessful")
 	}
 
