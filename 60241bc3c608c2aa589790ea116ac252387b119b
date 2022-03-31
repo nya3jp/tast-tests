@@ -34,6 +34,24 @@
       "parentUuid": "f32beffe_94fbd3b8",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474cbbdc_b35b43f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-31T07:07:56Z",
+      "side": 1,
+      "message": "Does the case where no CRTC exists happen in this test? I guess this test runs on headless chromebooks so it would (?).\n\nIn any case, polling on CRTC info for 10 seconds (and not counting it as an error if nothing appears) or so is strictly better than an unconditional sleep. Or, you can try to detect if there is no internal display (there is code that does this in Tast iirc).",
+      "parentUuid": "3295e839_e05cb106",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
