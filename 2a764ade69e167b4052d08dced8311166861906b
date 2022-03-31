@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68aa130b_0a3c4d52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-31T17:00:05Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "2a764ade69e167b4052d08dced8311166861906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "421240f1_b9c5c0ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-31T17:00:05Z",
+      "side": 1,
+      "message": "Should check if there are errors reading files.",
+      "revId": "2a764ade69e167b4052d08dced8311166861906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2789d4dd_e22bd7ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-31T17:00:05Z",
+      "side": 1,
+      "message": "How about?\nproductName \u003d strings.TrimSpace(string(productName)\nif productName !\u003d devices.ProductName {\n    return return errors.Errorf(\"failed to get correct Thunderbolt ProductName: got %q; want %q\", productName, devices.ProductName)\n}",
+      "revId": "2a764ade69e167b4052d08dced8311166861906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be4fa895_46f06629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-31T17:00:05Z",
+      "side": 1,
+      "message": "Similar comment as above.",
+      "revId": "2a764ade69e167b4052d08dced8311166861906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
