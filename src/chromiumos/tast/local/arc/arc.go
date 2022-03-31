@@ -40,9 +40,6 @@ const (
 
 	intentHelperTimeout = 20 * time.Second
 
-	// Time waiting for packages to install, for example enterprise auto install.
-	waitPackagesTimeout = 10 * time.Minute
-
 	logcatName = "logcat.txt"
 
 	pstoreCommandPath                 = "/usr/bin/vm_pstore_dump"
@@ -596,9 +593,6 @@ func makeList(packages map[string]bool) []string {
 func (a *ARC) WaitForPackages(ctx context.Context, packages []string) error {
 	ctx, st := timing.Start(ctx, "wait_packages")
 	defer st.End()
-
-	ctx, cancel := context.WithTimeout(ctx, waitPackagesTimeout)
-	defer cancel()
 
 	notInstalledPackages := make(map[string]bool)
 	for _, p := range packages {
