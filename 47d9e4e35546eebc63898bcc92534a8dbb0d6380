@@ -542,6 +542,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6d3158c_e6b1071b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-31T07:04:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what you mean by custom parameters.\n\ncreateVault/verifyVault can still use testing.State. autoupdatelib should not, but you will only need to pass the DUT as an extra parameter.",
+      "parentUuid": "fe2b60c1_551ee380",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1e581d5_a5fa0beb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
         "patchSetId": 8
@@ -571,6 +589,24 @@
       "side": 1,
       "message": "I would need to figure out filtering options, for now it seems I can stably query only N-3 release. My plan was to have 1",
       "parentUuid": "d1e581d5_a5fa0beb",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30994806_10d17a1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-03-31T07:04:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9db11164_c9321e14",
       "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
