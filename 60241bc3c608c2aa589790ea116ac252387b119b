@@ -52,6 +52,24 @@
       "parentUuid": "3295e839_e05cb106",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b428fee6_46408c82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-31T07:14:01Z",
+      "side": 1,
+      "message": "No, this is not the case. I leased a bob device and I think it really has an internal display. I also did a small experiment (http://b/225766968#comment10), it just needs a few seconds for initialization. After that, everything is fine.\n\nBTW, this tast test will check if there is an internal display or not. If there is no eDP, the test should pass without any error.",
+      "parentUuid": "474cbbdc_b35b43f8",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
