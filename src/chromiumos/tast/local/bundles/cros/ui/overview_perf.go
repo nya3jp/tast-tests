@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -62,8 +63,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-	cr, l, cs, err := lacros.SetupDeprecated(ctx, s.FixtValue(), s.Param().(browser.Type))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -212,7 +212,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
 		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
-			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
+			if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}
 		}

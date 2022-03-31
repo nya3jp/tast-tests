@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -59,8 +60,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-	cr, l, cs, err := lacros.SetupDeprecated(ctx, s.FixtValue(), s.Param().(browser.Type))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -86,7 +86,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 	numExistingWindows := 0
 
 	runner := perfutil.NewRunner(cr.Browser())
-	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
+	// If these window number values are changed, make sure to check lacros blank pages are closed correctly.
 	for i, numWindows := range []int{2, 8} {
 		if err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, numWindows-numExistingWindows); err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
@@ -94,8 +94,8 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
 		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
-			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
-				s.Fatal("Failed to close about:blank: ", err)
+			if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+				s.Fatal("Failed to close blank tab: ", err)
 			}
 		}
 

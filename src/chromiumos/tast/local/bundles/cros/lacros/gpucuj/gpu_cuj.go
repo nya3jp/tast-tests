@@ -157,7 +157,7 @@ type testInvocation struct {
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
 func runTest(ctx context.Context, tconn *chrome.TestConn, f lacrosfixt.FixtValue, tracer traceable, invoc *testInvocation) error {
-	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
+	w, err := lacros.FindFirstWindowWithoutTitle(ctx, f.TestAPIConn(), "about:blank")
 	if err != nil {
 		return err
 	}
@@ -195,7 +195,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f lacrosfixt.FixtValue
 			return nil
 		}
 	} else if invoc.scenario == TestTypeMoveOcclusion || invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
-		wb, err := lacros.FindFirstBlankWindow(ctx, f.TestAPIConn())
+		wb, err := lacros.FindFirstWindowWithTitle(ctx, f.TestAPIConn(), "about:blank")
 		if err != nil {
 			return err
 		}

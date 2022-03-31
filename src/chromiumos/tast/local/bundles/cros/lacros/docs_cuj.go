@@ -145,7 +145,7 @@ func runDocsPageLoad(
 	}
 	defer cleanup(ctx)
 
-	w, err := lacros.FindFirstBlankWindow(ctx, tconn)
+	w, err := lacros.FindFirstWindowWithTitle(ctx, tconn, "about:blank")
 	if err != nil {
 		return 0.0, 0.0, err
 	}
