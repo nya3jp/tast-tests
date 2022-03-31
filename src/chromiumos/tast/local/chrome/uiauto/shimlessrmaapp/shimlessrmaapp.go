@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// TODO: Refactor the file name. b:228780486
+
 // Package shimlessrmaapp contains drivers for controlling the ui of Shimless RMA SWA.
 package shimlessrmaapp
 
@@ -78,8 +80,8 @@ func CreateStateFile(state string) error {
 }
 
 // RemoveStateFile deletes the state file, if it exists.
-func RemoveStateFile() {
-	os.Remove(stateFile)
+func RemoveStateFile() error {
+	return os.Remove(stateFile)
 }
 
 // Launch launches the Shimless RMA App and returns it.
