@@ -23,6 +23,7 @@ type QualParam struct {
 	TestDevice             string
 	RetentionBlockTimeout  time.Duration
 	SuspendBlockTimeout    time.Duration
+	StressBlockTimeout     time.Duration
 	SkipS0iXResidencyCheck bool
 }
 
