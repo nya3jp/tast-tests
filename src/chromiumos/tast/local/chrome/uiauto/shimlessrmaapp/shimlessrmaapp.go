@@ -78,8 +78,8 @@ func CreateStateFile(state string) error {
 }
 
 // RemoveStateFile deletes the state file, if it exists.
-func RemoveStateFile() {
-	os.Remove(stateFile)
+func RemoveStateFile() error {
+	return os.Remove(stateFile)
 }
 
 // Launch launches the Shimless RMA App and returns it.
