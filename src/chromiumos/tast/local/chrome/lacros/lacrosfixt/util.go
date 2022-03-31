@@ -142,7 +142,10 @@ func EnsureLacrosReadyForLaunch(ctx context.Context, cfg *LacrosConfig) (string,
 			for _, line := range strings.Split(string(config), "\n") {
 				line = strings.TrimSpace(line)
 				if strings.HasPrefix(line, "--lacros-chrome-path") {
-					return "", errors.New("found --lacros-chrome-path in /etc/chrome_dev.conf, but lacrosDeployedBinary is not specified")
+					return "", errors.New(
+						"found --lacros-chrome-path in /etc/chrome_dev.conf, but lacrosDeployedBinary is not specified. " +
+							"You may need to pass `-var lacrosDeployedBinary=/usr/local/lacros-chrome` to `tast run` " +
+							"if you've deployed your own Lacros binary to the DUT.")
 				}
 			}
 		}
