@@ -9,6 +9,7 @@ import (
 	"math"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -30,6 +31,21 @@ func init() {
 }
 
 func ProbeDisplayInfo(ctx context.Context, s *testing.State) {
+	// b:225766968. When testing, cros_healthd restarts ui. Display needs
+	// some time for the initialization. If cros_healthd reads the data
+	// before initialization and modetest reads after the initialization,
+	// their data can't match. Currently it only happens to bob and scarlet.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if encoderID, err := getModetestConnectorInfo(ctx, connectorEncoder); err != nil {
+			return err
+		} else if encoderID == "0" {
+			return errors.New("there is no encoder id for the connector")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Log("there is no encoder id after 10 seconds")
+	}
+
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryDisplay}
 	var display displayInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &display); err != nil {
