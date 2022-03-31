@@ -33,6 +33,11 @@ service WebauthnService {
   rpc EnterPassword (EnterPasswordRequest) returns (google.protobuf.Empty) {}
 }
 
+enum BrowserType {
+  ASH = 0;
+  LACROS = 1;
+}
+
 enum UserVerification {
   DISCOURAGED = 0;
   PREFERRED = 1;
@@ -46,8 +51,8 @@ enum AuthenticatorType {
 }
 
 message NewRequest {
-  string username = 2;
-  string password = 3;
+  BrowserType browser_type = 1;
+  string lacros_deployed_path = 2;
 }
 
 message EnterPasswordRequest {
@@ -55,7 +60,7 @@ message EnterPasswordRequest {
 }
 
 message StartWebauthnRequest {
-  UserVerification user_verification = 1;
-  AuthenticatorType authenticator_type = 2;
-  bool has_dialog = 3;
+  UserVerification user_verification = 2;
+  AuthenticatorType authenticator_type = 3;
+  bool has_dialog = 4;
 }
