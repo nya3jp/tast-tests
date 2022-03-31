@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,6 +25,8 @@ func init() {
 			"chromeos-hps-swe@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
+		// TODO(b/227525135): re-enable when we have some brya DUTs with HPS
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("brya")),
 		SoftwareDeps: []string{"hps"},
 	})
 }
