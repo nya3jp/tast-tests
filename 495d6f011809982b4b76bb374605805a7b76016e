@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b1baa1_e094dc4a",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-31T22:56:23Z",
+      "side": 1,
+      "message": "I added more comments.",
+      "parentUuid": "af74a973_7431f307",
+      "range": {
+        "startLine": 69,
+        "startChar": 44,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "495d6f011809982b4b76bb374605805a7b76016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c70aa6c_18b82120",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-31T05:46:09Z",
       "side": 1,
       "message": "ditto. Also, great to mention what happens if values (incl. intermediate maps) are missing.",
+      "revId": "495d6f011809982b4b76bb374605805a7b76016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38255fc9_f32d1dd8",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-03-31T22:56:23Z",
+      "side": 1,
+      "message": "I add more comments.",
+      "parentUuid": "6c70aa6c_18b82120",
       "revId": "495d6f011809982b4b76bb374605805a7b76016e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
