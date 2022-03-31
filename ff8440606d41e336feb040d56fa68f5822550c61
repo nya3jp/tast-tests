@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e2a86f_e54e3097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-31T14:16:41Z",
+      "side": 1,
+      "message": "Agree.  Maybe it is a bit of \"creative accounting\" but b:227582293 will track this, and I\u0027ll close current since randomization tests seem to have no problem.",
+      "parentUuid": "80239f7a_4a093c1a",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d967d80_71053e56",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Would it be possible to reserve more time for this reboot subroutine in the defer (ctxutil.Shorten) if the no reboot failure case is an issue?",
       "parentUuid": "5d967d80_71053e56",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce5836a_5f99a9d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/persistence_bluetooth_sans_wifi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-03-31T14:16:41Z",
+      "side": 1,
+      "message": "The only known way (so far) to recover from that scenario is to restart shill, so I don\u0027t know a way to setup randomization tests that would prepare DUT properly after that happens.\n\nSo instead I\u0027ve spawn a new bug tracking this (with the intent of closing b/219083050, since randomization tests are WAI) and marked CL/code as you requested.",
+      "parentUuid": "ea80ca7a_0c9950ed",
       "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
