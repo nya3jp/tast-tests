@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "166d039a_b27ef796",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-03-31T17:58:14Z",
+      "side": 1,
+      "message": "Sorry for the delay as I had some issue with my DUT, PTAL.",
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4969f17_b5c73f1e",
@@ -48,6 +65,30 @@
       "writtenOn": "2022-03-19T00:36:19Z",
       "side": 1,
       "message": "is this arg always part of the command? if so, maybe this could be simpler by omitting \"--duration\" and \"\" from `quipperArgs`, and then then using append() to build the final thing here without a loop",
+      "range": {
+        "startLine": 75,
+        "startChar": 13,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63eff30e_6a6f8505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-03-31T17:58:14Z",
+      "side": 1,
+      "message": "Right, I guess I forgot this was Go.",
+      "parentUuid": "f4969f17_b5c73f1e",
       "range": {
         "startLine": 75,
         "startChar": 13,
@@ -81,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25952a3d_812618ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-03-31T17:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161cf9c7_75b4cebe",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6051a4b_359d9616",
@@ -98,6 +163,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ffd665_864d94e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-03-31T17:58:14Z",
+      "side": 1,
+      "message": "Yes, it did feel awkward. I\u0027ve changed `getPerfOutput`to accept a duration and move the `durationSec` out of `testCase` and let each test decide what duration to use.",
+      "parentUuid": "e6051a4b_359d9616",
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "860d8478_82386e46",
@@ -111,6 +194,30 @@
       "writtenOn": "2022-03-19T00:36:19Z",
       "side": 1,
       "message": "maybe return (bool, error) to properly surface errors to help with debugging?",
+      "range": {
+        "startLine": 247,
+        "startChar": 59,
+        "endLine": 247,
+        "endChar": 63
+      },
+      "revId": "72117ff46b1f1f0813bbfc1bf7ac8d1972e2344b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58457b3b_44a297f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-03-31T17:58:14Z",
+      "side": 1,
+      "message": "Done. I thought the error here is not important since it is a copy of implementation of the same function in perf_tool.cc. But it seems some of the error is not propagated so I now surface the error to the caller.",
+      "parentUuid": "860d8478_82386e46",
       "range": {
         "startLine": 247,
         "startChar": 59,
