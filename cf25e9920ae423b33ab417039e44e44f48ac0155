@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae86e5f_80d4e010",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-31T22:38:49Z",
+      "side": 1,
+      "message": "Is it not possible to wait until the arrow button is ready, before clicking? Repeatedly clicking feels as janky as Sleep-ing.\n\nPlease loop in David and/or Kyle for their input and sign-off, I defer to them on what is appropriate.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
