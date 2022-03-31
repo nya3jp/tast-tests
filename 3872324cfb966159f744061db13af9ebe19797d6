@@ -50,6 +50,24 @@
       "message": "nit: can you add a comment the this here it shows the clipboard history menu",
       "revId": "3872324cfb966159f744061db13af9ebe19797d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7129310b_ba83b281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_history.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-03-31T08:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5840b2b_3c016fd8",
+      "revId": "3872324cfb966159f744061db13af9ebe19797d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
