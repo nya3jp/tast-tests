@@ -16,6 +16,29 @@
       "message": "Hi Tast-owners, \ncould y\u0027all PTAL. \nThanks\n- Hardik",
       "revId": "d47017d0ca1c040b44e29c4231a360c32ba3a153",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b786253e_3c9c8f49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-03-31T20:21:53Z",
+      "side": 1,
+      "message": "Looks like the kiosk_mount is a little bit flaky.\nDoes the root cause of it have been resolved?\nhttps://tastboard.corp.google.com/test/cryptohome.AuthSessionMount.kiosk_mount\nhttps://b.corp.google.com/issues/227649844",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "d47017d0ca1c040b44e29c4231a360c32ba3a153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
