@@ -214,6 +214,24 @@
       "parentUuid": "7651d6d3_40ab6862",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c4ce05_9c10fbb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-03-31T16:21:14Z",
+      "side": 1,
+      "message": "Is there a way in tast to query \"login screen visible\"? I think that any CRTC information would be available by then.",
+      "parentUuid": "c0d17e51_8c08bf16",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
