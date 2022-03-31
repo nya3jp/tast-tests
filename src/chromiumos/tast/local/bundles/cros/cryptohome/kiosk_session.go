@@ -17,9 +17,9 @@ func init() {
 		Desc: "Ensures that cryptohome correctly mounts kiosk sessions",
 		Contacts: []string{
 			"hardikgoyal@chromium.org",
-			"chromeos-security@google.com",
+			"cryptohome-core@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
