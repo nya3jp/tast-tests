@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fd5fba_269f0abd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-31T17:10:57Z",
+      "side": 1,
+      "message": "nit: `\u003cDUT\u003e`",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "bbed1ee12ac9e8df7094f567d5058f999f49b3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "08a6af8e_fa418706",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-03-31T15:44:45Z",
       "side": 1,
       "message": "Oops, my bad ... overlooked tast shadow review.\nThough, this looks very straightforward, so I hope it wouldn\u0027t affect too much...",
+      "revId": "bbed1ee12ac9e8df7094f567d5058f999f49b3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb06cab_66ad964e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-31T17:10:57Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with a nit",
       "revId": "bbed1ee12ac9e8df7094f567d5058f999f49b3c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
