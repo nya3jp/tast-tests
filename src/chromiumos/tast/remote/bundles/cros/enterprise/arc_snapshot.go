@@ -42,12 +42,12 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 	enrollPass := s.RequiredVar("enterprise.ArcSnapshot.pass")
 	packages := strings.Split(s.RequiredVar("enterprise.ArcSnapshot.packages"), ",")
 
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
 		}
 	}(ctx)
