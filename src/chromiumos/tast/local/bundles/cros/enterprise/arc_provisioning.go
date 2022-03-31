@@ -121,7 +121,11 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return retry("failed to launch Play Store", err)
 		}
 
-		if err := ensurePackagesUninstallable(ctx, cr, a, s.OutDir(), s.HasError, packages); err != nil {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+		defer cancel()
+		defer dumpBugReportOnError(cleanupCtx, a, s.HasError, filepath.Join(s.OutDir(), "bugreport.zip"))
+		if err := ensurePackagesUninstallable(ctx, cr, a, packages); err != nil {
 			return fatal("verify packages", err)
 		}
 
@@ -129,8 +133,8 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return fatal("launch asset browser", err)
 		}
 
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+		cleanupCtx = ctx
+		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 		defer cancel()
 		defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
@@ -153,12 +157,7 @@ func dumpBugReportOnError(ctx context.Context, a *arc.ARC, hasError func() bool,
 }
 
 // ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
-func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, outDir string, hasError func() bool, packages []string) error {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-	defer cancel()
-	defer dumpBugReportOnError(cleanupCtx, a, hasError, filepath.Join(outDir, "bugreport.zip"))
-
+func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
 	// Ensure that Android packages are force-installed by ARC policy.
 	// Note: if the user policy for the user is changed, the packages listed in
 	// credentials files must be updated.
