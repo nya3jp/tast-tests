@@ -147,6 +147,19 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	return pmf + pmf1, pss + pss1
 }
 
+// setWindowSize sets the window to 800x600 in size.
+func setWindowSize(ctx context.Context, tconn *chrome.TestConn) error {
+	// Set the window to 800x600 in size.
+	if err := tconn.Call(ctx, nil, `async () => {
+			const win = await tast.promisify(chrome.windows.getLastFocused)();
+			await tast.promisify(chrome.windows.update)(win.id, {width: 800, height:600, state:"normal"});
+		}`); err != nil {
+		return errors.Wrap(err, "setting window size failed")
+	}
+
+	return nil
+}
+
 // Memory is a basic test for lacros memory usage. It measures the PMF and PSS
 // overhead for lacros-chrome with a single about:blank tab. It also makes the
 // same measurements for ash-chrome. This estimate is not perfect. For
@@ -162,12 +175,18 @@ func Memory(ctx context.Context, s *testing.State) {
 		// Measure memory before launching lacros-chrome.
 		pmf1, pss1 := measureBothChrome(ctx, s)
 
-		// We currently rely on the assumption that the launcher
-		// creates a windows that is 800x600 in size.
-		// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-		l, err := lacros.LaunchDeprecated(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn(), s.FixtValue().(lacrosfixt.FixtValue).LacrosPath())
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
+		}
+
+		ltconn, err := l.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get lacros-chrome TestConn: ", err)
+		}
+
+		if err := setWindowSize(ctx, ltconn); err != nil {
+			s.Fatal("Failed to set lacros-chrome window size: ", err)
 		}
 
 		if params.mode == openTabMode {
@@ -208,12 +227,8 @@ func Memory(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 		}
 
-		// Set the window to 800x600 in size.
-		if err := s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn().Call(ctx, nil, `async () => {
-			const win = await tast.promisify(chrome.windows.getLastFocused)();
-			await tast.promisify(chrome.windows.update)(win.id, {width: 800, height:600, state:"normal"});
-		}`); err != nil {
-			s.Fatal("Setting window size failed: ", err)
+		if err := setWindowSize(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn()); err != nil {
+			s.Fatal("Failed to set lacros-chrome window size: ", err)
 		}
 
 		// Measure memory after launching ash-chrome.
