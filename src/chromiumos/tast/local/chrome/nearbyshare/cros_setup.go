@@ -32,9 +32,9 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 
 	var nearbySettings chrome.JSObject
 	if err := nearbyConn.Call(ctx, &nearbySettings, `async function() {
-		return await import('./shared/nearby_share_settings.m.js').then(m => m.getNearbyShareSettings());
+		return await import('./shared/nearby_share_settings.js').then(m => m.getNearbyShareSettings());
 	}`); err != nil {
-		return errors.Wrap(err, "failed to import nearby_share_settings.m.js")
+		return errors.Wrap(err, "failed to import nearby_share_settings.js")
 	}
 
 	if err := nearbySettings.Call(ctx, nil, `function() {this.setIsOnboardingComplete(true)}`); err != nil {
