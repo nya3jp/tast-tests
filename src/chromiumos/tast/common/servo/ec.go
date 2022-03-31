@@ -267,10 +267,14 @@ func (s *Servo) GetKeyRowCol(key string) (int, int, error) {
 func (s *Servo) ECPressKey(ctx context.Context, key string) error {
 	row, col, err := s.GetKeyRowCol(key)
 	if err != nil {
-		return err
+		return errors.Wrapf(err, "failed to get key %q in key matrix", key)
 	}
-	s.RunECCommand(ctx, fmt.Sprintf("kbpress %d %d 1", col, row))
-	s.RunECCommand(ctx, fmt.Sprintf("kbpress %d %d 0", col, row))
+	if err := s.RunECCommand(ctx, fmt.Sprintf("kbpress %d %d 1", col, row)); err != nil {
+		return errors.Wrapf(err, "failed to press key %q", key)
+	}
+	if err := s.RunECCommand(ctx, fmt.Sprintf("kbpress %d %d 0", col, row)); err != nil {
+		return errors.Wrapf(err, "failed to release key %q", key)
+	}
 	return nil
 }
 
