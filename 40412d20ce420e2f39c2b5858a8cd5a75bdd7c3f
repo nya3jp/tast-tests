@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "40412d20ce420e2f39c2b5858a8cd5a75bdd7c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5a5bb5_024b1a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2022-03-31T03:31:52Z",
+      "side": 1,
+      "message": "This means it tries about 6 times to find a chance to proceed?",
+      "range": {
+        "startLine": 125,
+        "startChar": 34,
+        "endLine": 125,
+        "endChar": 77
+      },
+      "revId": "40412d20ce420e2f39c2b5858a8cd5a75bdd7c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
