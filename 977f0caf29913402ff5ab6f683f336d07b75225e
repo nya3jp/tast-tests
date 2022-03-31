@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491fa26d_2fff62d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-03-31T16:50:20Z",
+      "side": 1,
+      "message": "LGTM. Please have a domain expert to review and give you have CR+2. Thanks.",
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
