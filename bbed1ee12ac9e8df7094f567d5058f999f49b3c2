@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a6af8e_fa418706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-31T15:44:45Z",
+      "side": 1,
+      "message": "Oops, my bad ... overlooked tast shadow review.\nThough, this looks very straightforward, so I hope it wouldn\u0027t affect too much...",
+      "revId": "bbed1ee12ac9e8df7094f567d5058f999f49b3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
