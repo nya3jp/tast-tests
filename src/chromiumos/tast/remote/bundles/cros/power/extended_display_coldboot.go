@@ -8,31 +8,27 @@ import (
 	"context"
 	"regexp"
 	"strconv"
-	"strings"
 	"time"
-
-	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/chameleon"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/security"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 type extendedDisplayTestParams struct {
-	displayInfoRe     map[string]*regexp.Regexp
-	checkTypeCAdapter bool
-	ecStateToCheck    string
+	displayInfoRe  map[string]*regexp.Regexp
+	ecStateToCheck string
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ExtendedDisplayColdboot,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies extended display functionality before and after performing cold boot",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome", "reboot"},
@@ -43,6 +39,7 @@ func init() {
 			"power.chameleon_addr",
 			"power.chameleon_display_port",
 		},
+		VarDeps: []string{"power.iteration"},
 		Params: []testing.Param{{
 			Name: "typec_dp",
 			Val: extendedDisplayTestParams{
@@ -50,9 +47,9 @@ func init() {
 					"connectorInfoPtrns": regexp.MustCompile(`.*: connectors:\n.\s+\[CONNECTOR:\d+:[DP]+.*`),
 					"connectedPtrns":     regexp.MustCompile(`\[CONNECTOR:\d+:DP.*status: connected`),
 					"modesPtrns":         regexp.MustCompile(`modes:\n.*"1920x1080":.60`),
+					"typecDisplayPtrns":  regexp.MustCompile(`.*DP branch device present.*no`),
 				},
-				checkTypeCAdapter: true,
-				ecStateToCheck:    "S5",
+				ecStateToCheck: "S5",
 			},
 			Timeout: 10 * time.Minute,
 		}, {
@@ -62,6 +59,7 @@ func init() {
 					"connectorInfoPtrns": regexp.MustCompile(`.*: connectors:\n.\s+\[CONNECTOR:\d+:[DP]+.*`),
 					"connectedPtrns":     regexp.MustCompile(`\[CONNECTOR:\d+:DP.*status: connected`),
 					"modesPtrns":         regexp.MustCompile(`modes:\n.*"1920x1080":.60`),
+					"typecDisplayPtrns":  regexp.MustCompile(""),
 				},
 				ecStateToCheck: "S5",
 			},
@@ -70,12 +68,12 @@ func init() {
 			Name: "typec_hdmi",
 			Val: extendedDisplayTestParams{
 				displayInfoRe: map[string]*regexp.Regexp{
-					"connectorInfoPtrns": regexp.MustCompile(`.*: connectors:\n.\s+\[CONNECTOR:\d+:[HDMI]+.*`),
-					"connectedPtrns":     regexp.MustCompile(`\[CONNECTOR:\d+:HDMI.*status: connected`),
+					"connectorInfoPtrns": regexp.MustCompile(`.*: connectors:\n.\s+\[CONNECTOR:\d+:[DP]+.*`),
+					"connectedPtrns":     regexp.MustCompile(`\[CONNECTOR:\d+:DP.*status: connected`),
 					"modesPtrns":         regexp.MustCompile(`modes:\n.*"1920x1080":.60`),
+					"typecDisplayPtrns":  regexp.MustCompile(`.*DP branch device present.*yes\n.*Type.*HDMI`),
 				},
-				checkTypeCAdapter: true,
-				ecStateToCheck:    "G3",
+				ecStateToCheck: "G3",
 			},
 			Timeout: 10 * time.Minute,
 		}, {
@@ -85,6 +83,7 @@ func init() {
 					"connectorInfoPtrns": regexp.MustCompile(`.*: connectors:\n.\s+\[CONNECTOR:\d+:[HDMI]+.*`),
 					"connectedPtrns":     regexp.MustCompile(`\[CONNECTOR:\d+:HDMI.*status: connected`),
 					"modesPtrns":         regexp.MustCompile(`modes:\n.*"1920x1080":.60`),
+					"typecDisplayPtrns":  regexp.MustCompile(""),
 				},
 				ecStateToCheck: "S5",
 			},
@@ -110,7 +109,7 @@ func ExtendedDisplayColdboot(ctx context.Context, s *testing.State) {
 
 	defer func(ctx context.Context) {
 		if !dut.Connected(ctx) {
-			if err := turnOnDut(ctx, pxy, dut); err != nil {
+			if err := powercontrol.PowerOntoDUT(ctx, pxy, dut); err != nil {
 				s.Fatal("Failed to power on DUT at cleanup: ", err)
 			}
 		}
@@ -119,20 +118,8 @@ func ExtendedDisplayColdboot(ctx context.Context, s *testing.State) {
 	// Login to chrome and check for connected external display
 	loginChrome := func(ctx context.Context) {
 		// Perform a Chrome login.
-		cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
-		if err != nil {
-			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-		}
-
-		client := security.NewBootLockboxServiceClient(cl.Conn)
-		if _, err := client.NewChromeLogin(ctx, &empty.Empty{}); err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
-		}
-
-		if testOpt.checkTypeCAdapter {
-			if err := checkTypeCAdapterDetection(ctx, dut); err != nil {
-				s.Fatal("Failed to detect typec adapter for connected extended display: ", err)
-			}
+		if err := powercontrol.ChromeOSLogin(ctx, dut, s.RPCHint()); err != nil {
+			s.Fatal("Failed to login to Chrome: ", err)
 		}
 
 		chameleonAddr := s.RequiredVar("power.chameleon_addr")
@@ -172,6 +159,7 @@ func ExtendedDisplayColdboot(ctx context.Context, s *testing.State) {
 			testOpt.displayInfoRe["connectorInfoPtrns"],
 			testOpt.displayInfoRe["connectedPtrns"],
 			testOpt.displayInfoRe["modesPtrns"],
+			testOpt.displayInfoRe["typecDisplayPtrns"],
 		}
 
 		if err := externalDisplayDetection(ctx, dut, 1, displayInfoPatterns); err != nil {
@@ -180,42 +168,27 @@ func ExtendedDisplayColdboot(ctx context.Context, s *testing.State) {
 	}
 
 	loginChrome(ctx)
-	iter := 10
+	iter, err := strconv.Atoi(s.RequiredVar("power.iteration"))
+	if err != nil {
+		s.Fatal("Failed to convert string to integer: ", err)
+	}
 	for i := 1; i <= iter; i++ {
 		s.Logf("Iteration: %d/%d ", i, iter)
-		if err := performShutdown(ctx, dut); err != nil {
-			s.Fatal("Failed to perform shutdown: ", err)
+		if err := powercontrol.ShutdownAndWaitForPowerState(ctx, pxy, dut, testOpt.ecStateToCheck); err != nil {
+			s.Fatalf("Failed to shutdown and wait for %q powerstate: %v", testOpt.ecStateToCheck, err)
 		}
 
-		if err := verifyECState(ctx, pxy, testOpt.ecStateToCheck); err != nil {
-			s.Fatalf("Failed to enter %s state: %v", testOpt.ecStateToCheck, err)
-		}
-
-		if err := turnOnDut(ctx, pxy, dut); err != nil {
-			s.Fatal("Failed to power on dut after shutdown: ", err)
+		if err := powercontrol.PowerOntoDUT(ctx, pxy, dut); err != nil {
+			s.Fatal("Failed to power on DUT: ", err)
 		}
 
 		// Login chrome after waking from coldboot.
 		loginChrome(ctx)
 
 		// Perfoming prev_sleep_state check.
-		const (
-			prevSleepStateCmd      = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-			expectedPrevSleepState = 5
-		)
-
-		out, err := dut.Conn().CommandContext(ctx, "sh", "-c", prevSleepStateCmd).Output()
-		if err != nil {
-			s.Fatal("Failed to execute cbmem command: ", err)
-		}
-
-		actualPrevSleepState, err := strconv.Atoi(strings.Split(strings.Replace(string(out), "\n", "", -1), " ")[1])
-		if err != nil {
-			s.Fatal("String conversion failed: ", err)
-		}
-
-		if actualPrevSleepState != expectedPrevSleepState {
-			s.Fatalf("Unexpected previous sleep state, want %q but got %q", expectedPrevSleepState, actualPrevSleepState)
+		const expectedPrevSleepState = 5
+		if err := powercontrol.ValidatePrevSleepState(ctx, dut, expectedPrevSleepState); err != nil {
+			s.Fatal("Failed to validate previous sleep state: ", err)
 		}
 	}
 }
@@ -246,70 +219,6 @@ func externalDisplayDetection(ctx context.Context, dut *dut.DUT, numberOfDisplay
 		Timeout: 15 * time.Second,
 	}); err != nil {
 		return errors.Wrap(err, "please connect external display as required")
-	}
-	return nil
-}
-
-// performShutdown performs cold boot with shutdown command.
-func performShutdown(ctx context.Context, dut *dut.DUT) error {
-	testing.ContextLog(ctx, "Performing coldboot")
-	if err := dut.Conn().CommandContext(ctx, "shutdown", "-h", "now").Run(); err != nil {
-		return errors.Wrap(err, "failed to execute shutdown command")
-	}
-	sdCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
-	defer cancel()
-	if err := dut.WaitUnreachable(sdCtx); err != nil {
-		return errors.Wrap(err, "failed to wait for unreachable")
-	}
-	return nil
-}
-
-// turnOnDut performs power button normal press to wake up DUT.
-func turnOnDut(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
-		defer cancel()
-		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-			return errors.Wrap(err, "failed to power normal press")
-		}
-		if err := dut.WaitConnect(waitCtx); err != nil {
-			return errors.Wrap(err, "failed to wait connect DUT")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Minute}); err != nil {
-		return err
-	}
-	return nil
-}
-
-// verifyECState performs validation of ecState check.
-func verifyECState(ctx context.Context, pxy *servo.Proxy, ecState string) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		pwrState, err := pxy.Servo().GetECSystemPowerState(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get power state")
-		}
-
-		if pwrState != ecState {
-			return errors.Errorf("unexpected EC power state, want %q state; got %q state", ecState, pwrState)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return err
-	}
-	return nil
-}
-
-// checkTypeCAdapterDetection checks whether connected typec adapter is detected or not.
-func checkTypeCAdapterDetection(ctx context.Context, dut *dut.DUT) error {
-	usbDetectionRe := regexp.MustCompile(`Class=.*(480M|5000M|10G|20G)`)
-	out, err := dut.Conn().CommandContext(ctx, "lsusb", "-t").Output()
-	if err != nil {
-		return errors.Wrap(err, "failed to execute lsusb command")
-	}
-
-	if !usbDetectionRe.MatchString(string(out)) {
-		return errors.New("external display is not connected to DUT using typec adapter")
 	}
 	return nil
 }
