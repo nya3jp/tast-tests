@@ -33,6 +33,24 @@
       "message": "BTW, I am not tast owner. So you still need a tast-owner to bless the CL.",
       "revId": "787933a62147e930bd3d222e577bb83f656d8a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ced4ae_d6e9d746",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-03-31T00:08:39Z",
+      "side": 1,
+      "message": "ack; it\u0027s usual practice to get a domain owner to look first though.\n\nThanks!",
+      "parentUuid": "ca0d28c3_695111a2",
+      "revId": "787933a62147e930bd3d222e577bb83f656d8a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
