@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb39c2b8_4a90bdd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-31T22:35:30Z",
+      "side": 1,
+      "message": "LGTM % nits -- please add Kyle and/or David as final reviewers. ",
+      "revId": "97a54af5303913e426d42b200755050a8915dd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d42866b_03174722",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-31T22:35:30Z",
+      "side": 1,
+      "message": "Smart Lock",
+      "range": {
+        "startLine": 235,
+        "startChar": 101,
+        "endLine": 235,
+        "endChar": 110
+      },
+      "revId": "97a54af5303913e426d42b200755050a8915dd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3025d537_d7c7053d",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-31T22:35:30Z",
+      "side": 1,
+      "message": "nit:\n\n \"to ensure Nearby Share doesn\u0027t tear down Smart Lock\u0027s GATT connection when the phone\u0027s screen is unlocked (b/219981726).\"",
+      "range": {
+        "startLine": 235,
+        "startChar": 55,
+        "endLine": 235,
+        "endChar": 93
+      },
+      "revId": "97a54af5303913e426d42b200755050a8915dd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98845d4_7d39d548",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-03-31T22:35:30Z",
+      "side": 1,
+      "message": "Please link to the bug this comes from, b/219981726, to provide readers context.",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 111
+      },
+      "revId": "97a54af5303913e426d42b200755050a8915dd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
