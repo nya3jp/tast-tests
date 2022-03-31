@@ -315,16 +315,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Created a room with the code ", meetingCode)
 	}
 
-	sctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
-	// for the test to detect the video codecs used for encoding and decoding.
-	if !codeOk {
-		if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+15*time.Minute, meet.botsOptions...); err != nil {
-			s.Fatal("Failed to create bots: ", err)
-		}
-	}
-
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
@@ -426,6 +416,29 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer meetConn.Close()
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	sctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
+	// for the test to detect the video codecs used for encoding and decoding.
+	if !codeOk {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var participantCount int
+			if err := meetConn.Eval(ctx, "hrTelemetryApi.getParticipantCount()", &participantCount); err != nil {
+				return errors.Wrap(err, "failed to get participant count")
+			}
+			if expectedParticipantCount := meet.num; participantCount != expectedParticipantCount {
+				addBotsCount := expectedParticipantCount - participantCount
+				if _, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...); err != nil {
+					return errors.Errorf("failed to create %d bots", addBotsCount)
+				}
+				return errors.Errorf("got %d participants, expected %d", participantCount, expectedParticipantCount)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+			s.Fatal("Failed to ensure enough bots in the meet call: ", err)
+		}
+	}
 
 	// Lacros specific setup.
 	if meet.useLacros {
