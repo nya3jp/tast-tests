@@ -34,8 +34,8 @@ func EnsureTPMAndSystemStateAreResetLocal(ctx context.Context, dut *dut.DUT, hin
 	return nil
 }
 
-// EnsureTPMAndSystemStateAreReset initialises the required helpers and calls EnsureTPMAndSystemStateAreReset remotely.
-func EnsureTPMAndSystemStateAreReset(ctx context.Context, d *dut.DUT) error {
+// EnsureTPMAndSystemStateAreResetRemote initialises the required helpers and calls EnsureTPMAndSystemStateAreReset remotely.
+func EnsureTPMAndSystemStateAreResetRemote(ctx context.Context, d *dut.DUT) error {
 	r := hwsec.NewCmdRunner(d)
 
 	helper, err := hwsec.NewHelper(r, d)
@@ -45,6 +45,18 @@ func EnsureTPMAndSystemStateAreReset(ctx context.Context, d *dut.DUT) error {
 
 	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset system")
+	}
+
+	return nil
+}
+
+// EnsureTPMAndSystemStateAreReset calls ensureTPMAndSystemStateAreResetLocal and if that fails, ensureTPMAndSystemStateAreReset.
+// This avoids reboots as much as possible.
+func EnsureTPMAndSystemStateAreReset(ctx context.Context, d *dut.DUT, hint *testing.RPCHint) error {
+	if err := EnsureTPMAndSystemStateAreResetLocal(ctx, d, hint); err != nil {
+		testing.ContextLog(ctx, "Local reset failed: ", err)
+
+		return EnsureTPMAndSystemStateAreResetRemote(ctx, d)
 	}
 
 	return nil

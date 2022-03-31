@@ -59,7 +59,7 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 			s.Error("Failed to remove rollback data: ", err)
 		}
 
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(cleanupCtx)
@@ -99,7 +99,7 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 }
 
 func resetTPM(ctx context.Context, dut *dut.DUT) error {
-	return policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut)
+	return policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, dut)
 }
 
 func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
