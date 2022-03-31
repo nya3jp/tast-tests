@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "463b6e19_e2413dab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-03-31T21:12:08Z",
+      "side": 1,
+      "message": "As it affects CQ, could you split the CL to multiple so it is easier to revert it if something goes wrong with CQ?",
+      "revId": "d47017d0ca1c040b44e29c4231a360c32ba3a153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b786253e_3c9c8f49",
