@@ -51,6 +51,24 @@
       "parentUuid": "27787eee_184c0f6b",
       "revId": "f13aa6667a8d21095c8287644b16ce4b53d13c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4afb0546_3f329c2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-03-31T20:32:40Z",
+      "side": 1,
+      "message": "I have not figured out why. It happens randomly in one of the 10 runs sometime. When it happens, the test fails complaining not able to find the histogram (like the resize did not happen).",
+      "parentUuid": "ca2662a8_62ab65a7",
+      "revId": "f13aa6667a8d21095c8287644b16ce4b53d13c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
