@@ -61,6 +61,21 @@ func (cfg *LacrosConfig) WithVar(s TestingState) *LacrosConfig {
 	}
 }
 
+// WithDeployedPath is a method to configure the deployed path.
+// It is useful when configuring Lacros's deployed path in services used in remote tests where
+// testing states are not accessible. The deployed path has to be passed in the request and the
+// service will have to create a LacrosConfig with a specified deployed path.
+func (cfg *LacrosConfig) WithDeployedPath(path string) *LacrosConfig {
+	// The main motivation of this var is to allow Chromium CI to build and deploy a fresh
+	// lacros-chrome instead of always downloading from a gcs location.
+	return &LacrosConfig{
+		SetupMode:    cfg.SetupMode,
+		LacrosMode:   cfg.LacrosMode,
+		deployed:     true,
+		deployedPath: path,
+	}
+}
+
 // DefaultOpts returns common chrome options for Lacros given the cfg and setup mode passed in.
 func DefaultOpts(cfg *LacrosConfig) ([]chrome.Option, error) {
 	var opts []chrome.Option

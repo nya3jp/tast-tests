@@ -16,11 +16,12 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/u2fd/util"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/services/cros/hwsec"
 	"chromiumos/tast/testing"
@@ -44,8 +45,9 @@ type webauthnConfig struct {
 type WebauthnService struct {
 	s *testing.ServiceState
 
-	cr        *chrome.Chrome
-	logReader *syslog.ChromeReader
+	cr           *chrome.Chrome
+	br           *browser.Browser
+	closeBrowser func(ctx context.Context)
 	// Keeping keyboard in state instead of creating it each time because it takes about 5 seconds to create a keyboard.
 	keyboard *input.KeyboardEventWriter
 	conn     *chrome.Conn
@@ -62,24 +64,26 @@ func (c *WebauthnService) New(ctx context.Context, req *hwsec.NewRequest) (*empt
 		return nil, errors.Wrap(err, "failed to restart ui job")
 	}
 
-	opts := []chrome.Option{
-		chrome.FakeLogin(chrome.Creds{User: req.GetUsername(), Pass: req.GetPassword()}),
-		// Enable device event log in Chrome logs for validation.
-		chrome.ExtraArgs("--vmodule=device_event_log*=1"),
+	lacrosCfg := browserfixt.DefaultLacrosConfig
+	deployedPath := req.GetLacrosDeployedPath()
+	if deployedPath != "" {
+		lacrosCfg = lacrosCfg.WithDeployedPath(deployedPath)
 	}
 
-	cr, err := chrome.New(ctx, opts...)
+	var bt browser.Type
+	if req.GetBrowserType() == hwsec.BrowserType_ASH {
+		bt = browser.TypeAsh
+	} else {
+		bt = browser.TypeLacros
+	}
+
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosCfg)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to log in by Chrome")
+		return nil, errors.Wrapf(err, "failed to log in by Chrome with %v browser", bt)
 	}
 	c.cr = cr
-	c.password = req.GetPassword()
-
-	logReader, err := syslog.NewChromeReader(ctx, syslog.ChromeLogFile)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Chrome log reader")
-	}
-	c.logReader = logReader
+	c.br = br
+	c.closeBrowser = closeBrowser
 
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
@@ -91,24 +95,24 @@ func (c *WebauthnService) New(ctx context.Context, req *hwsec.NewRequest) (*empt
 }
 
 func (c *WebauthnService) Close(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if c.cr != nil {
-		c.cr.Close(ctx)
-		c.cr = nil
-	}
-	if c.logReader != nil {
-		c.logReader.Close()
-		c.logReader = nil
+	if c.closeBrowser != nil {
+		c.closeBrowser(ctx)
+		c.br = nil
 	}
 	if c.keyboard != nil {
 		c.keyboard.Close()
 		c.keyboard = nil
+	}
+	if c.cr != nil {
+		c.cr.Close(ctx)
+		c.cr = nil
 	}
 	return &empty.Empty{}, nil
 }
 
 func (c *WebauthnService) StartWebauthn(ctx context.Context, req *hwsec.StartWebauthnRequest) (*empty.Empty, error) {
 	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
-	conn, err := c.cr.NewConn(ctx, "https://webauthn.io/")
+	conn, err := c.br.NewConn(ctx, "https://webauthn.io/")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to navigate to test website")
 	}

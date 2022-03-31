@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebauthnU2fMode,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that WebAuthn under u2f mode succeeds in different configurations",
 		Contacts: []string{
 			"hcyang@google.com",
@@ -35,14 +35,21 @@ func init() {
 			"tast.cros.hwsec.WebauthnService",
 			"tast.cros.hwsec.AttestationDBusService",
 		},
+		Params: []testing.Param{{
+			Val: webauthnpb.BrowserType_ASH,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               webauthnpb.BrowserType_LACROS,
+		}},
 		VarDeps: []string{"servo"},
+		Vars:    []string{"lacrosDeployedBinary"},
 	})
 }
 
 func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 	const (
-		username = "tast-user@managedchrome.com"
-		password = "test0000"
+		password = chrome.DefaultPass
 	)
 
 	// Create hwsec helper.
@@ -64,11 +71,15 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
+	bt := s.Param().(webauthnpb.BrowserType)
+
+	deployedPath, _ := s.Var("lacrosDeployedBinary")
+
 	// u2fd reads files from the user's home dir, so we need to log in.
 	cr := webauthnpb.NewWebauthnServiceClient(cl.Conn)
 	if _, err := cr.New(ctx, &webauthnpb.NewRequest{
-		Username: username,
-		Password: password,
+		BrowserType:        bt,
+		LacrosDeployedPath: deployedPath,
 	}); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
