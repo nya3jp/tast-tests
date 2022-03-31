@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f329e6c0_fac8ab72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adc92e56_dfb25343",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63d6dde7_b7493cb0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6b8bff_a2f30ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63d6dde7_b7493cb0",
+      "range": {
+        "startLine": 35,
+        "startChar": 28,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f405ad2_8fafc756",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "do you need to handle the results? what if it fails?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d21455a_bb178609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f405ad2_8fafc756",
       "range": {
         "startLine": 37,
         "startChar": 1,
@@ -188,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4edba40_9d38726e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e7cfb3_f2530402",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 48
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a2658cc_25cf4123",
@@ -201,6 +297,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "please add the `Timeout` field with a reasonable value. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dTests%20should%20always%20set%20the%20Timeout%20field%20to",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc947e48_5b622103",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a2658cc_25cf4123",
       "range": {
         "startLine": 22,
         "startChar": 26,
@@ -329,6 +449,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c613dbdd_e090b45b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d939857_e8963612",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c36a322e_ed44c231",
@@ -342,6 +486,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "reserve time for clean-up tasks. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c825c2a0_5f09e71d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c36a322e_ed44c231",
       "range": {
         "startLine": 62,
         "startChar": 16,
@@ -375,6 +543,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70bfb756_a5dcfb29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "735dbc55_2aa6cca0",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daf21959_110a6eb0",
@@ -388,6 +580,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "ditto (a cleanup context should be used)",
+      "range": {
+        "startLine": 73,
+        "startChar": 31,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797707f1_9354b196",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daf21959_110a6eb0",
       "range": {
         "startLine": 73,
         "startChar": 31,
@@ -519,6 +735,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b2b3d87_482cb796",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Since people use ShimlessRMAApp a lot. I will rename Service to AppService. Then file name will be `shimlessrma/app_service.go`.\n\nPlease let me know if you have different ideas.",
+      "parentUuid": "0e599ac7_c4cd9202",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7300d61e_bc19263f",
         "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
         "patchSetId": 1
@@ -530,6 +770,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "see https://google.aip.dev/192#:~:text\u003dHowever%2C%20the%20first%20sentence%20of%20each%20comment%20should%20omit%20the%20subject%20and%20be%20in%20the%20third%2Dperson%20present%20tense for the comment style",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feca4dd8_dd0876d3",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7300d61e_bc19263f",
       "range": {
         "startLine": 15,
         "startChar": 6,
@@ -553,6 +817,30 @@
       "writtenOn": "2022-03-30T03:43:12Z",
       "side": 1,
       "message": "rewrite this?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "23852df090b688d56153a6825a48644cc9acb859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33e1d72_5e8995b5",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-03-31T03:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f996612a_162fdcf5",
       "range": {
         "startLine": 21,
         "startChar": 5,
