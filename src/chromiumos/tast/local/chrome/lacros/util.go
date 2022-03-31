@@ -26,15 +26,15 @@ func waitForWindowWithPredicate(ctx context.Context, ctconn *chrome.TestConn, p 
 	return ash.FindWindow(ctx, ctconn, p)
 }
 
-// FindFirstBlankWindow finds the first window whose title is 'about:blank'.
-func FindFirstBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
+// FindFirstWindowWithTitle finds the first window whose title is title.
+func FindFirstWindowWithTitle(ctx context.Context, ctconn *chrome.TestConn, title string) (*ash.Window, error) {
 	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return strings.Contains(w.Title, "about:blank")
 	})
 }
 
-// FindFirstNonBlankWindow finds the first window whose title is not 'about:blank'.
-func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
+// FindFirstWindowWithoutTitle finds the first window whose title is not title.
+func FindFirstWindowWithoutTitle(ctx context.Context, ctconn *chrome.TestConn, title string) (*ash.Window, error) {
 	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return !strings.Contains(w.Title, "about:blank")
 	})

@@ -62,7 +62,7 @@ const (
 )
 
 func runSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, t testType, conn *chrome.Conn) (float64, error) {
-	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
+	w, err := lacros.FindFirstWindowWithoutTitle(ctx, f.TestAPIConn(), "about:blank")
 	if err != nil {
 		return 0.0, err
 	}
