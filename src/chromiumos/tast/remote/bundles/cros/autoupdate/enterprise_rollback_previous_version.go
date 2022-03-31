@@ -124,7 +124,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Error("Failed to remove rollback data: ", err)
 		}
 
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 
@@ -158,7 +158,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
@@ -243,7 +243,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	// Reboot the DUT and reset TPM.
 	// Ineffective reset is expected because rollback initiates TPM ownership.
 	s.Log("Rebooting the DUT and resetting TPM to fake rollback")
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
+	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
 		s.Fatal("Failed to reset TPM and reboot into rollback image: ", err)
 	}
 
