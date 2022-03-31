@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e0bc2b81_d113bcdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d53a009_cc41844e",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3f3b664e_220671f6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -76,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebcebdc4_ca00390a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac80ddc9_46ca3f1a",
+      "range": {
+        "startLine": 24,
+        "startChar": 18,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf15dca8_ce57a3a2",
@@ -116,6 +158,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20199f65_aef7e374",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf15dca8_ce57a3a2",
+      "range": {
+        "startLine": 28,
+        "startChar": 65,
+        "endLine": 28,
+        "endChar": 72
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2671e9c_fadfb7ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2e96866_f3113a82",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea0c0282_b791fe13",
@@ -129,6 +213,30 @@
       "writtenOn": "2022-03-30T11:36:37Z",
       "side": 1,
       "message": "nit: Operations (it\u0027s not too long)",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77782f16_f37400e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea0c0282_b791fe13",
       "range": {
         "startLine": 29,
         "startChar": 5,
@@ -162,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "371d53d9_30be007c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae343bd_f2852f4b",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cfe2c4d_642250c4",
@@ -179,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8d13e6_c116ddbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cfe2c4d_642250c4",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6871894_5fda4311",
@@ -192,6 +342,30 @@
       "writtenOn": "2022-03-30T11:36:37Z",
       "side": 1,
       "message": "nit: document, it\u0027s not obvious from the name.",
+      "range": {
+        "startLine": 42,
+        "startChar": 63,
+        "endLine": 42,
+        "endChar": 69
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e561c44_2f569fe4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6871894_5fda4311",
       "range": {
         "startLine": 42,
         "startChar": 63,
@@ -225,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c3b5e7_cbc0b40c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0753ef22_26fbf87c",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d834ef_201840b4",
@@ -238,6 +436,30 @@
       "writtenOn": "2022-03-30T11:36:37Z",
       "side": 1,
       "message": "Since tests are not expected to use all functions, maybe consider nil as a valid value and treat it as a NoOp.",
+      "range": {
+        "startLine": 33,
+        "startChar": 33,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea9f4d5_e51675f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d834ef_201840b4",
       "range": {
         "startLine": 33,
         "startChar": 33,
@@ -265,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca14168_08b9ffca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50181c07_46273616",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00e588aa_2c261bb2",
@@ -278,6 +518,24 @@
       "writtenOn": "2022-03-30T11:36:37Z",
       "side": 1,
       "message": "Related to making the package not accept state: I\u0027m fine with callbacks getting a reference to state here, but it would be ideal for them to return errors as well.",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2b60c1_551ee380",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "I tried to do that, but I could not figure a clean way to detach custom parameters the functions would need, plus argument wise things were getting quite bulky.",
+      "parentUuid": "00e588aa_2c261bb2",
       "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -299,6 +557,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db11164_c9321e14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "I would need to figure out filtering options, for now it seems I can stably query only N-3 release. My plan was to have 1",
+      "parentUuid": "d1e581d5_a5fa0beb",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8a0ef06_c5759f5d",
@@ -316,6 +592,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e0f376_13b7a36f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a0ef06_c5759f5d",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8fb0982_7fa904e8",
@@ -329,6 +623,24 @@
       "writtenOn": "2022-03-30T10:58:32Z",
       "side": 1,
       "message": "nit: `type.`",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bb37bb_ff94b8c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-03-31T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8fb0982_7fa904e8",
       "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
