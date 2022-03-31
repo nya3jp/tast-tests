@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298aa477_406a1dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-31T15:57:40Z",
+      "side": 1,
+      "message": "Title is often for human readable stuff, but the intention looks like by URL?\nAlso, can we make a condition to match the window, so that ash.FindWindow() can be just used?",
+      "range": {
+        "startLine": 148,
+        "startChar": 33,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "7a7efaee5b24093c070a09610d6f3111c818744d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
