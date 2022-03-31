@@ -88,6 +88,24 @@
       "parentUuid": "b428fee6_46408c82",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e65b6381_1881bb13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-31T07:32:03Z",
+      "side": 1,
+      "message": "Sorry, let me make it more clear.\n\nTwo cases:\n1. There is really no CRTC info. It happens when it\u0027s hibernate/suspend.\n2. Short time period of no CRTC info after ui restart. This CL is trying to deal with this case.\n\nCase 1 is the reason that I think we can\u0027t check modetest until it\u0027s initialized.\n\nI hoped my understanding is correct, I\u0027m also not the expert of the whole graphics stack.",
+      "parentUuid": "f269c478_897b7992",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
