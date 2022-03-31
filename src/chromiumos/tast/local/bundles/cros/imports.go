@@ -90,6 +90,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/session"
 	_ "chromiumos/tast/local/bundles/cros/settings"
 	_ "chromiumos/tast/local/bundles/cros/shelf"
+	_ "chromiumos/tast/local/bundles/cros/shimlessrma"
 	_ "chromiumos/tast/local/bundles/cros/smartlock"
 	_ "chromiumos/tast/local/bundles/cros/storage"
 	_ "chromiumos/tast/local/bundles/cros/system"
