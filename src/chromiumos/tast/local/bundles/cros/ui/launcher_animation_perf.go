@@ -160,14 +160,13 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 
 			if numWindows != 0 {
-				// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-				_, l, cs, err := lacros.SetupDeprecated(ctx, f, s.Param().(browser.Type))
+				_, l, cs, err := lacros.Setup(ctx, f, s.Param().(browser.Type))
 				if err != nil {
 					s.Fatal("Failed to setup lacrostest: ", err)
 				}
 				defer lacros.CloseLacros(ctx, l)
 
-				// To stabilize, if lacros is the test target, wait for the about:blank
+				// To stabilize, if lacros is the test target, wait for the blank tab
 				// window opens.
 				if s.Param().(browser.Type) == browser.TypeLacros {
 					if err := lacros.WaitForLacrosWindow(ctx, tconn, chrome.BlankURL); err != nil {
@@ -182,8 +181,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				if s.Param().(browser.Type) == browser.TypeLacros {
 					// Close the empty tab after a tab with url is opened.
 					// Otherwise, this may trigger to terminate lacros.
-					if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
-						s.Fatal("Failed to close about:blank: ", err)
+					if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+						s.Fatal("Failed to close blank tab: ", err)
 					}
 				}
 

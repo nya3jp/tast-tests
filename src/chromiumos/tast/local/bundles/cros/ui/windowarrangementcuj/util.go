@@ -53,9 +53,9 @@ type Connections struct {
 	// called if SetupChrome succeeds.
 	Cleanup func(ctx context.Context) error
 
-	// CloseAboutBlank closes the blank tab that is created when lacros
+	// CloseBlankTab closes the blank tab that is created when lacros
 	// is started.
-	CloseAboutBlank func(ctx context.Context) error
+	CloseBlankTab func(ctx context.Context) error
 
 	// BrowserTestConn is a connection to ash chrome or lacros chrome,
 	// depending on the browser in use.
@@ -81,8 +81,8 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	testParam := s.Param().(TestParam)
 
 	connection := &Connections{
-		Cleanup:         func(ctx context.Context) error { return nil },
-		CloseAboutBlank: func(ctx context.Context) error { return nil },
+		Cleanup:       func(ctx context.Context) error { return nil },
+		CloseBlankTab: func(ctx context.Context) error { return nil },
 	}
 	var l *lacros.Lacros
 	var a *arc.ARC
@@ -188,8 +188,8 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	}
 
 	if testParam.BrowserType == browser.TypeLacros {
-		connection.CloseAboutBlank = func(ctx context.Context) error {
-			return l.CloseAboutBlank(ctx, connection.TestConn, 0)
+		connection.CloseBlankTab = func(ctx context.Context) error {
+			return l.CloseWithURL(ctx, connection.TestConn, chrome.NewTabURL, 0)
 		}
 	}
 
