@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/bloonchipper_v2.0.4277-9f652bb3_20210401.bin",
+  "url": "gs://chromeos-test-assets-private/tast/cros/firmware/bloonchipper_v2.0.4277-9f652bb3_20210401.bin",
   "size": 1048576,
   "sha256sum": "7d9b788a908bee5c83e27450258b2bbf110d7253d49faa4804562ae27e42cb3b"
 }
