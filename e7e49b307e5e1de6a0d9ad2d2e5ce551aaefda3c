@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4819686f_3a93c21a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-03-31T22:12:40Z",
+      "side": 1,
+      "message": "Meenakshi, Let us not increase timeout for all tests. Lets do only for smoke and release. Next step once you have top apps suite for those.",
+      "revId": "e7e49b307e5e1de6a0d9ad2d2e5ce551aaefda3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
