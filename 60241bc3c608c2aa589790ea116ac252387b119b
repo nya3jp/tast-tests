@@ -178,6 +178,24 @@
       "parentUuid": "5f09cc11_e5fa4762",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7651d6d3_40ab6862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-31T08:28:41Z",
+      "side": 1,
+      "message": "Case 1: no crtc info and encoder id.\nCase 2: no crtc info and encoder id for short time period.\n\nQuerying crtc info is harder, but querying encoder id is easier. Maybe we can query encoder id for 10 seconds. No matter it succeed or not, we still run the rest of the test. Then for case 1, the current test has handled it correctly. For case 2, it means that there is crtc info at after the polling. It\u0027s still like a barrier, but it may finish earlier for case 2.\n\nWDYT?",
+      "parentUuid": "580325d9_f5cd40ad",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
