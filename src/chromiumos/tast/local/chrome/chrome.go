@@ -76,6 +76,9 @@ const (
 	// BlankURL is the URL corresponding to the about:blank page.
 	BlankURL = "about:blank"
 
+	// NewTabURL is the URL corresponding to the chrome://newtab/ page.
+	NewTabURL = "chrome://newtab/"
+
 	// persistentDir is a directory to save files that should persist even
 	// after Tast finishes. For instance, we save test extensions here so
 	// that Chrome does not malfunction on post-test manual inspection.

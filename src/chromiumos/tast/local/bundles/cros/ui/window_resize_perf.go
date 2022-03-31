@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
@@ -107,8 +108,8 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 
 		// This must be done after opening a new window to avoid terminating lacros-chrome.
 		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
-			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
-				s.Fatal("Failed to close about:blank: ", err)
+			if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+				s.Fatal("Failed to close blank tab: ", err)
 			}
 		}
 

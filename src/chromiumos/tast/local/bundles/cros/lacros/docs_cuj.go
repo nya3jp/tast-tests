@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/testing"
@@ -108,7 +107,7 @@ func runDocsPageLoad(
 	}
 	defer cleanup(ctx)
 
-	w, err := lacros.FindFirstBlankWindow(ctx, tconn)
+	w, err := ash.WaitForAnyWindowWithTitle(ctx, tconn, "about:blank")
 	if err != nil {
 		return 0.0, 0.0, err
 	}
