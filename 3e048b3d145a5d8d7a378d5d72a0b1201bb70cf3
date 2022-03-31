@@ -16,6 +16,23 @@
       "message": "There are a minimal number of failures, and mostly on kernelnext boards as seen here: https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003darc.StandardizedKeyboardTyp*\u0026dep\u003d .\n\nNote: I added no dchecks to prevent the issues we\u0027ve been running into with the other critical tests.",
       "revId": "3e048b3d145a5d8d7a378d5d72a0b1201bb70cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11811df8_da3ade6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-03-31T17:49:46Z",
+      "side": 1,
+      "message": "@Hanada-san, friendly ping. Any concerns with this moving to critical with the dcheck boards disabled?",
+      "revId": "3e048b3d145a5d8d7a378d5d72a0b1201bb70cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
