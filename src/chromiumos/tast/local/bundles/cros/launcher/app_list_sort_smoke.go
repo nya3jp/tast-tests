@@ -193,6 +193,15 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to trigger %v: %v", testParam.sortMethod, err)
 	}
 
+	// App items not on the first launcher page get hidden temporarily during sort animation. Wait
+	// for them to reappear before proceeding.
+	for _, name := range fakeAppNamesInOrder {
+		if err := ui.WaitUntilExists(nodewith.ClassName(launcher.ExpandedItemsClass).Name(name).Ancestor(appsGrid))(ctx); err != nil {
+			s.Fatalf("Failed to find app %q: %v", name, err)
+		}
+
+	}
+
 	fakeAppIndices, err := launcher.FetchItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
 	if err != nil {
 		s.Fatal("Failed to get view indices of fake apps: ", err)
@@ -209,6 +218,15 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		ui.WaitForLocation(lastFakeApp),
 	)(ctx); err != nil {
 		s.Fatal("Failed to undo alphabetical sorting: ", err)
+	}
+
+	// App items not on the first launcher page get hidden temporarily during sort revert animation.
+	// Wait for them to reappear before proceeding.
+	for _, name := range fakeAppNamesInOrder {
+		if err := ui.WaitUntilExists(nodewith.ClassName(launcher.ExpandedItemsClass).Name(name).Ancestor(appsGrid))(ctx); err != nil {
+			s.Fatalf("Failed to find app %q: %v", name, err)
+		}
+
 	}
 
 	recoveredIndices, err := launcher.FetchItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
