@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -67,8 +68,7 @@ func UnlockPerf(ctx context.Context, s *testing.State) {
 
 	defer kb.Close()
 
-	// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-	cr, l, cs, err := lacros.SetupDeprecated(ctx, s.FixtValue(), s.Param().(browser.Type))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -95,7 +95,7 @@ func UnlockPerf(ctx context.Context, s *testing.State) {
 	// Run the unlock flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode or tablet mode.
-	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
+	// If these window number values are changed, make sure to check lacros new tab pages are closed correctly.
 	for i, windows := range []int{2, 8} {
 		if err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows); err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
@@ -103,8 +103,8 @@ func UnlockPerf(ctx context.Context, s *testing.State) {
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
 		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
-			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
-				s.Fatal("Failed to close about:blank: ", err)
+			if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+				s.Fatal("Failed to close blank tab: ", err)
 			}
 		}
 

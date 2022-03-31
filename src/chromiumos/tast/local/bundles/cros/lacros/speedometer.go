@@ -16,7 +16,6 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/lacros/fixtures" // Include the speedometer specific lacros WPR fixture.
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/local/faillog"
@@ -62,7 +61,7 @@ const (
 )
 
 func runSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, t testType, conn *chrome.Conn) (float64, error) {
-	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
+	w, err := ash.WaitForAnyWindowWithoutTitle(ctx, f.TestAPIConn(), "about:blank")
 	if err != nil {
 		return 0.0, err
 	}

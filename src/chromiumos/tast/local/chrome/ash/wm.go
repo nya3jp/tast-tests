@@ -852,3 +852,25 @@ func BrowserTitleMatch(bt browser.Type, title string) func(w *Window) bool {
 	}
 	return f
 }
+
+// WaitForAnyWindow waits for a window to satisfy the given predicate and returns it.
+func WaitForAnyWindow(ctx context.Context, tconn *chrome.TestConn, p func(*Window) bool) (*Window, error) {
+	if err := WaitForCondition(ctx, tconn, p, defaultPollOptions); err != nil {
+		return nil, err
+	}
+	return FindWindow(ctx, tconn, p)
+}
+
+// WaitForAnyWindowWithTitle finds the first window whose title is title.
+func WaitForAnyWindowWithTitle(ctx context.Context, tconn *chrome.TestConn, title string) (*Window, error) {
+	return WaitForAnyWindow(ctx, tconn, func(w *Window) bool {
+		return strings.Contains(w.Title, "about:blank")
+	})
+}
+
+// WaitForAnyWindowWithoutTitle finds the first window whose title is not title.
+func WaitForAnyWindowWithoutTitle(ctx context.Context, tconn *chrome.TestConn, title string) (*Window, error) {
+	return WaitForAnyWindow(ctx, tconn, func(w *Window) bool {
+		return !strings.Contains(w.Title, "about:blank")
+	})
+}

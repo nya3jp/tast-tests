@@ -261,9 +261,9 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	// Lacros specific setup.
 	if testParam.BrowserType == browser.TypeLacros {
-		// Close about:blank created at startup after creating other tabs.
-		if err := conns.CloseAboutBlank(ctx); err != nil {
-			s.Fatal("Failed to close about:blank: ", err)
+		// Close blank tab created at startup after creating other tabs.
+		if err := conns.CloseBlankTab(ctx); err != nil {
+			s.Fatal("Failed to close blank tab: ", err)
 		}
 	}
 
