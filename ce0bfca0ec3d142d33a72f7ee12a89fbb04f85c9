@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e2f864_6e555b7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-03-31T16:22:58Z",
+      "side": 1,
+      "message": "I don\u0027t think we like having tests give a TestNA result like in autotest -- getting away from this and simplifying the set of test results was one of the design considerations of Tast.\n\nIs there any way we can use hwdeps or something similar to restrict this test to only run on DUTs that have a USB device supporting SMART plugged in?",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
