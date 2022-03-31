@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f99ea952_1df22812",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-03-31T17:15:07Z",
+      "side": 1,
+      "message": "just using DUT is pretty common and understood. Saving extra two chars in the limited commit line length.\n\nACK",
+      "parentUuid": "a0fd5fba_269f0abd",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "bbed1ee12ac9e8df7094f567d5058f999f49b3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "08a6af8e_fa418706",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
