@@ -22,6 +22,30 @@
       },
       "revId": "375f7a6b119b153b0a0deba2f0cc89c1324e8e9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f0c65e_a2def7e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-31T04:48:28Z",
+      "side": 1,
+      "message": "Performance tests should explicitly use about:blank IMO. AFAIK no way to get ash to launch with about:blank by default. If it\u0027s possible I guess it would be an ash flag, but I don\u0027t think we should make it the default.",
+      "parentUuid": "918acf29_3d57fb1b",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "375f7a6b119b153b0a0deba2f0cc89c1324e8e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
