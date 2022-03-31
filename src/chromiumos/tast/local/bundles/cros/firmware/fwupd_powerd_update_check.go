@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/firmware/fwupd"
@@ -31,6 +32,7 @@ func init() {
 			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a battery.
 			hwdep.ChromeEC(), // Test requires Chrome EC to set battery to discharge via ectool.
 		),
+		Timeout: 10 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "ac_powerpresent",
@@ -47,11 +49,11 @@ func init() {
 func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 	charge := s.Param().(bool)
 
-	if err := fwupd.SetFwupdChargingState(ctx, charge); err != nil {
-		s.Fatal("Failed to set charging state: ", err)
-	}
 	if !charge {
 		defer fwupd.SetFwupdChargingState(ctx, !charge)
+	}
+	if err := fwupd.SetFwupdChargingState(ctx, charge); err != nil {
+		s.Fatal("Failed to set charging state: ", err)
 	}
 
 	// This command runs an update on a fake device to see how fwupd behaves.
