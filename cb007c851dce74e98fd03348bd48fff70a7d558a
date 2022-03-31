@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac15e8d_2c447e41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-03-31T04:15:40Z",
+      "side": 1,
+      "message": "Left out `/var/cache/dlc-images` as it is only on test images.",
+      "revId": "cb007c851dce74e98fd03348bd48fff70a7d558a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
