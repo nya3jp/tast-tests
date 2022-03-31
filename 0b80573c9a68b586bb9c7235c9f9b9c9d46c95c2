@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71740b7f_26c775df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2022-03-31T23:53:26Z",
+      "side": 1,
+      "message": "LGTM\n\nThanks Tiago for the change. I just query what\u0027s the result with these 2 tast tests CLs? I mean will full restore run on both Ash Chrome and Lacros? Or on Lacros only? Or on Ash Chrome only?",
+      "revId": "0b80573c9a68b586bb9c7235c9f9b9c9d46c95c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad227838_0b16e93e",
