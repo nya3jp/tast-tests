@@ -160,6 +160,24 @@
       "parentUuid": "1dcb5c69_dc27533f",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580325d9_f5cd40ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-31T08:12:40Z",
+      "side": 1,
+      "message": "It just reports nothing, so I won\u0027t say we can detect it. We only make sure the output of cros_healthd are consistent with modetest in this case.",
+      "parentUuid": "5f09cc11_e5fa4762",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
