@@ -56,6 +56,30 @@
       },
       "revId": "ca561a9219ae48a909c0ede0dac204c6da692cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f52eec_426d7cc2",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-31T00:46:10Z",
+      "side": 1,
+      "message": "I can investigate why, but it might take a while, since it just silently breaks when you kill the \"What\u0027s New In Chrome\" page, which is classified as \"other\" for some reason, even when we turned it off in the flags. It doesn\u0027t make any sense to me. WDYT?",
+      "parentUuid": "394ba3d9_2ac1951a",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "ca561a9219ae48a909c0ede0dac204c6da692cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
