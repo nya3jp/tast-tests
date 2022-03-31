@@ -94,6 +94,30 @@
       },
       "revId": "24976ed0c2f0974ac1f5310208c197079904977a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f9225e_6d1bdfd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-31T05:17:57Z",
+      "side": 1,
+      "message": "Okay, I\u0027m not sure if it\u0027s true for all devices, but you are the expert (Intel). We can move on for Tast owner review first, but if we got failure in the future, you may need to fix it.",
+      "parentUuid": "a7c8df9b_ded3dfba",
+      "range": {
+        "startLine": 272,
+        "startChar": 31,
+        "endLine": 272,
+        "endChar": 77
+      },
+      "revId": "24976ed0c2f0974ac1f5310208c197079904977a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
