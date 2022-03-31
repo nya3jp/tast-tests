@@ -16,6 +16,24 @@
       "message": "Make sure we test this on tablet and clamshell only devices on ARC\u003dP too before submitting.",
       "revId": "30fca74c30c1d75ac2c690b0910058cffeb3e631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "215fe171_880e8748",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-03-31T21:38:31Z",
+      "side": 1,
+      "message": "Tested CL, crrev.com/c/3553852 on ARC-P devices (kevin, careena). It is working fine as intended.",
+      "parentUuid": "eb048766_0b33e5cc",
+      "revId": "30fca74c30c1d75ac2c690b0910058cffeb3e631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
