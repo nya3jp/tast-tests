@@ -22,6 +22,30 @@
       },
       "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43349851_d3225b0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-03-31T23:03:25Z",
+      "side": 1,
+      "message": "So I tried to look for a solution that would wait for the animation, however ran into a roadblock when I realized that it is the LoginAuthFactorView that is translating instead of the arrow button, which is a child of LoginAuthFactorsView. When I attempted to use Finder to find a ClassName(\"LoginAuthFactorsView\") node, it  couldn\u0027t find one. I saw that we use repeated clicks within a time duration for other tests, so I thought it made sense to use here. I am interested to know if there is a way we can find and wait for the LoginAuthFactorsView translation",
+      "parentUuid": "7ae86e5f_80d4e010",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
