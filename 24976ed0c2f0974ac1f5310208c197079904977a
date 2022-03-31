@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df95795_37b275c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-03-31T02:38:12Z",
+      "side": 1,
+      "message": "This is within a loop for several devices. I think we can\u0027t read this file for all devices.",
+      "range": {
+        "startLine": 272,
+        "startChar": 31,
+        "endLine": 272,
+        "endChar": 77
+      },
+      "revId": "24976ed0c2f0974ac1f5310208c197079904977a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
