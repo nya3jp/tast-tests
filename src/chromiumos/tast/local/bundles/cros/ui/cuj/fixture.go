@@ -116,6 +116,45 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "loggedInAndKeepStateLacros",
+		Desc: "Fixture keeping login status and used for lacros variation of CUJ tests",
+		Contacts: []string{
+			"xliu@cienet.com",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				loginOption(s),
+				chrome.ARCSupported(),
+				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.EnableFeatures("LacrosPrimary"),
+				chrome.KeepState(),
+				chrome.EnableFeatures("WebUITabStrip"), // Enable TabStrip UI for tablet.
+			}, nil
+		}),
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars: []string{
+			"ui.cujAccountPool",
+			lacrosfixt.LacrosDeployedBinary,
+		},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "loggedInAndKeepStateLacrosWithARC",
+		Desc: "Fixture keeping login status and used for lacros variation of UI CUJ tests that also need ARC",
+		Contacts: []string{
+			"xliu@cienet.com",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl:            &loggedInToCUJUserFixture{keepState: true},
+		Parent:          "loggedInAndKeepStateLacros",
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
 }
 
 func loginOption(s *testing.FixtState) chrome.Option {
