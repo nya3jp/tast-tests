@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         util.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_suspend_block_timeout", "tast_skip_setup_check", "tast_skip_s0ix_check"},
+		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_stress_block_timeout", "tast_suspend_block_timeout", "tast_skip_setup_check", "tast_skip_s0ix_check"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     util.SetupBenchmarks,
@@ -72,6 +72,7 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	testParam.StressBlockTimeout = util.DefaultStressBlockTimeout
 	testParam.RetentionBlockTimeout = util.DefaultRetentionBlockTimeout
 	testParam.SuspendBlockTimeout = util.DefaultSuspendBlockTimeout
 	testParam.SkipS0iXResidencyCheck = false
@@ -83,6 +84,13 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 	if val, ok := s.Var("tast_suspend_block_timeout"); ok {
 		if testParam.SuspendBlockTimeout, err = time.ParseDuration(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_suspend_block_timeout' of type Duration: ", err)
+		}
+	}
+
+	if val, ok := s.Var("tast_stress_block_timeout"); ok {
+		var err error
+		if testParam.StressBlockTimeout, err = time.ParseDuration(val); err != nil {
+			s.Fatal("Cannot parse argument 'tast_stress_block_timeout' of type Duration: ", err)
 		}
 	}
 
