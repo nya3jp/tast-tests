@@ -315,13 +315,27 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Created a room with the code ", meetingCode)
 	}
 
-	sctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	sctx, cancel := context.WithTimeout(ctx, time.Minute)
 	defer cancel()
 	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
 	// for the test to detect the video codecs used for encoding and decoding.
 	if !codeOk {
-		if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+15*time.Minute, meet.botsOptions...); err != nil {
-			s.Fatal("Failed to create bots: ", err)
+		addBotsCount := meet.num
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			botList, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...)
+			if err != nil {
+				return testing.PollBreak(errors.Errorf("failed to create %d bots: %v", addBotsCount, err))
+			}
+			s.Logf("%d bots started", len(botList))
+			// If there are fewer bots created than requested, send another request for more bots.
+			if len(botList) < addBotsCount {
+				err := errors.Errorf("failed to create bots; wanted %d bots, got %d", addBotsCount, len(botList))
+				addBotsCount -= len(botList)
+				return err
+			}
+			return nil
+		}, nil); err != nil {
+			s.Fatalf("Failed to ensure %d bots in the meet call: %v", meet.num, err)
 		}
 	}
 
