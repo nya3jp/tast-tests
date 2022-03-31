@@ -13,6 +13,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -26,11 +27,12 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Keyboard()),
 		Fixture:      fixture.NormalMode,
+		Timeout:      2 * time.Minute,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 	})
 }
 
-const typeTimeout = 10 * time.Millisecond
+const typeTimeout = 250 * time.Millisecond
 
 var testKeyMap = map[string]string{
 	"0":        "KEY_0",
@@ -66,34 +68,61 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 	scanner := bufio.NewScanner(stdout)
 	cmd.Start()
 
-	for key, keyCode := range testKeyMap {
-		if err := h.Servo.ECPressKey(ctx, key); err != nil {
-			s.Fatal("Failed to type key: ", err)
+	// Read and discard initial info text.
+	func() {
+		text := make(chan string)
+		go func() {
+			defer close(text)
+			for scanner.Scan() {
+				text <- scanner.Text()
+			}
+		}()
+		for {
+			select {
+			case <-time.After(1 * time.Second):
+				// Time out after 1 second so it doesn't get stuck here.
+				s.Log("Finshed reading preamble")
+				return
+			case _ = <-text:
+				continue
+			}
 		}
-		if err = readKeyPress(scanner, keyCode, s); err != nil {
+	}()
+
+	for key, keyCode := range testKeyMap {
+		s.Logf("Pressing key %q, expecting to read keycode %q", key, keyCode)
+		if err = readKeyPress(ctx, h, scanner, key, keyCode); err != nil {
 			s.Fatal("Failed to read key: ", err)
+		}
+		// Wait for reading to complete before entering next key to prevent failing previous read.
+		if err = testing.Sleep(ctx, typeTimeout); err != nil {
+			s.Fatalf("Failed to sleep for %s waiting to type next key", typeTimeout)
 		}
 	}
 }
 
-func readKeyPress(scanner *bufio.Scanner, keyCode string, s *testing.State) error {
+func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanner, key, keyCode string) error {
 	regex := `Event.*time.*code\s(\d*)\s\(` + keyCode + `\)`
 	expMatch := regexp.MustCompile(regex)
 
 	text := make(chan string)
 	go func() {
+		defer close(text)
 		for scanner.Scan() {
 			text <- scanner.Text()
 		}
-		close(text)
 	}()
+	if err := h.Servo.ECPressKey(ctx, key); err != nil {
+		return errors.Wrap(err, "failed to type key")
+	}
+
 	for {
 		select {
 		case <-time.After(typeTimeout):
 			return errors.New("did not detect keycode within expected time")
 		case out := <-text:
 			if match := expMatch.FindStringSubmatch(out); match != nil {
-				s.Log("key pressed: ", match)
+				testing.ContextLog(ctx, "key pressed: ", match)
 				return nil
 			}
 		}
