@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6617b8a3_550b993c",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-31T22:27:22Z",
+      "side": 1,
+      "message": "Return nil?",
+      "range": {
+        "startLine": 218,
+        "startChar": 9,
+        "endLine": 218,
+        "endChar": 23
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f41917_76dc109b",
+        "filename": "src/chromiumos/tast/local/audio/volume_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-31T22:27:22Z",
+      "side": 1,
+      "message": "Will volstate be nil if err is not nil?",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5836396e_d3c078b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-31T22:27:22Z",
+      "side": 1,
+      "message": "return nothing?",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 8
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa86361_1effb0be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-03-31T22:27:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 7
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
