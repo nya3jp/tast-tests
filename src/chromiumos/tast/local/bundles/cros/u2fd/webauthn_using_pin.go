@@ -8,11 +8,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/u2fd/util"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -26,7 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebauthnUsingPIN,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that WebAuthn using PIN succeeds",
 		Contacts: []string{
 			"hcyang@google.com",
@@ -36,19 +39,25 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "gsc"},
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	bt := s.Param().(browser.Type)
+
 	if err := upstart.CheckJob(ctx, "u2fd"); err != nil {
 		s.Fatal("u2fd isn't started: ", err)
-	}
-
-	// Try to get the system into a consistent state, since it seems like having
-	// an already-mounted user dir can cause problems: https://crbug.com/963084
-	s.Log("Restarting ui job")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to restart ui job: ", err)
 	}
 
 	const (
@@ -58,34 +67,23 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		autosubmit = false
 	)
 
-	fdms, err := fakedms.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start FakeDMS: ", err)
-	}
-	defer fdms.Stop(ctx)
-
-	if err := fdms.WritePolicyBlob(policy.NewBlob()); err != nil {
-		s.Fatal("Failed to write policies to FakeDMS: ", err)
-	}
-
-	opts := []chrome.Option{
-		chrome.FakeLogin(chrome.Creds{User: username, Pass: password}),
-		// Enable device event log in Chrome logs for validation.
-		chrome.ExtraArgs("--vmodule=device_event_log*=1"),
-		chrome.DMSPolicy(fdms.URL)}
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		s.Fatal("Failed to log in by Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
 	pinPolicies := []policy.Policy{
 		&policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
 		&policy.PinUnlockAutosubmitEnabled{Val: autosubmit}}
 
+	if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+		s.Fatal("Failed to clean up: ", err)
+	}
+
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, pinPolicies); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err != nil {
+		s.Fatalf("Failed to open the %v browser: %v", bt, err)
+	}
+	defer closeBrowser(ctx)
 
 	tconn, err := util.SetUpUserPIN(ctx, cr, PIN, password, autosubmit)
 	if err != nil {
@@ -124,7 +122,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 
 	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
-	if err := util.WebAuthnInWebAuthnIo(ctx, cr, authCallback); err != nil {
+	if err := util.WebAuthnInWebAuthnIo(ctx, cr, br, authCallback); err != nil {
 		s.Fatal("Failed to perform WebAuthn: ", err)
 	}
 }
