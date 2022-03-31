@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ab365c_2f33c325",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-03-31T00:36:12Z",
+      "side": 1,
+      "message": "This will also fail on Taeko until we have some HPS-equipped Taekos in the lab. They will be a few months behind the rest of the Taekos due to the production schedule differences. I\u0027ve filed b/227525135 to track the lab deployment (we won\u0027t be able to do it ourselves from Sydney, but we can follow up on it once the devices have been built). I\u0027ve added a TODO against that bug.\n\nThe tast.health.DiagnosticsRun failures look like b/227285020 which is now supposed to be fixed by a revert, so I\u0027ll try CQ again.",
+      "revId": "701660aea3a0db605645eac9232f0b97775b6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
