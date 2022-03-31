@@ -33,6 +33,24 @@
       "message": "I am pretty sure we want all browser windows to be snappable. https://crbug.com/1306399 has ongoing discussion about how to fix the unsnappable browser windows. It is a P1 bug just like yours. Please just mark your bug as a duplicate of https://crbug.com/1306399.",
       "revId": "116bbba4c020843ba4b81912b38e2569f6f5040f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc80e76_ef60ab9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-03-31T16:36:59Z",
+      "side": 1,
+      "message": "Marking as unresolved",
+      "parentUuid": "8026e870_8cfbf6ac",
+      "revId": "116bbba4c020843ba4b81912b38e2569f6f5040f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
