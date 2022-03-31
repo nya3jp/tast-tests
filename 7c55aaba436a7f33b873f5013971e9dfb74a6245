@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "7c55aaba436a7f33b873f5013971e9dfb74a6245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da828120_56cd5d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-31T05:47:39Z",
+      "side": 1,
+      "message": "LGTM % optional nits",
+      "revId": "7c55aaba436a7f33b873f5013971e9dfb74a6245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "056f83ab_d1b1a1f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-31T05:47:39Z",
+      "side": 1,
+      "message": "optional: you can directly return perfValues.Save(s.OutDir()) since the wrap message does not seem to be important.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "7c55aaba436a7f33b873f5013971e9dfb74a6245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
