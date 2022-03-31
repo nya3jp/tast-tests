@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4b7174_b56f54bc",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-03-31T16:13:14Z",
+      "side": 1,
+      "message": "cf) https://gist.github.com/adamveld12/c0d9f0d5f0e1fba1e551#error-strings\n\ncould you follow the guideline? Using one sentence, without trailing period?\n\nAlso, another recommendation is to comment the flag in chrome_dev.conf?",
+      "range": {
+        "startLine": 146,
+        "startChar": 100,
+        "endLine": 148,
+        "endChar": 63
+      },
+      "revId": "ad2843b111305a2a0a330fa0ddb491497597f09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
