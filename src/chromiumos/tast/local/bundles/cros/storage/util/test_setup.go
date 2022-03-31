@@ -22,6 +22,7 @@ type QualParam struct {
 	SlcDevice              string
 	RetentionBlockTimeout  time.Duration
 	SuspendBlockTimeout    time.Duration
+	StressBlockTimeout     time.Duration
 	SkipS0iXResidencyCheck bool
 }
 

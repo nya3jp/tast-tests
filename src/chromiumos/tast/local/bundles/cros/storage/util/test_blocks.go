@@ -20,6 +20,10 @@ const (
 	// Max number of retries for a sub-test of a universal test block.
 	maxSubtestRetry = 3
 
+	// DefaultStressBlockTimeout is the duration of the stress sub-test.
+	DefaultStressBlockTimeout = 240 * time.Minute
+	// DefaultSlcStressBlockTimeout is the duration of the slc-stress sub-test.
+	DefaultSlcStressBlockTimeout = 240 * time.Minute
 	// DefaultRetentionBlockTimeout is the duration of the retention sub-test.
 	DefaultRetentionBlockTimeout = 20 * time.Minute
 	// DefaultSuspendBlockTimeout is the total duration of the suspend sub-test.
@@ -50,11 +54,6 @@ func SetupBenchmarks(ctx context.Context, s *testing.State, rw *FioResultWriter,
 
 // soakTestBlock runs long, write-intensive storage stresses.
 func soakTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
-	const (
-		slcTestDuration    = 120 * time.Minute
-		stressTestDuration = 240 * time.Minute
-	)
-
 	testConfigNoVerify := &TestConfig{}
 	testConfigVerify := &TestConfig{
 		VerifyOnly:   true,
@@ -63,7 +62,7 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, t
 
 	stressTasks := []func(context.Context){
 		func(ctx context.Context) {
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(BootDeviceFioPath).WithJob("64k_stress").WithDuration(stressTestDuration))
+			runFioStress(ctx, s, testConfigNoVerify.WithPath(BootDeviceFioPath).WithJob("64k_stress").WithDuration(testParam.StressBlockTimeout))
 			// NoVerify surf block to exercise device. Run once. Duration can be found in data/recovery
 			runFioStress(ctx, s, testConfigNoVerify.WithPath(BootDeviceFioPath).WithJob("recovery"))
 			// Verify surfing block for performance evaluation. Run once. Duration can be found in data/surfing
@@ -74,8 +73,8 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, t
 	if testParam.IsSlcEnabled {
 		stressTasks = append(stressTasks,
 			func(ctx context.Context) {
-				runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.SlcDevice).WithJob("4k_write").WithDuration(slcTestDuration))
-				runFioStress(ctx, s, testConfigVerify.WithPath(testParam.SlcDevice).WithJob("4k_write").WithDuration(slcTestDuration))
+				runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.SlcDevice).WithJob("4k_write").WithDuration(DefaultSlcStressBlockTimeout/2))
+				runFioStress(ctx, s, testConfigVerify.WithPath(testParam.SlcDevice).WithJob("4k_write").WithDuration(DefaultSlcStressBlockTimeout/2))
 			})
 	}
 
