@@ -8,7 +8,10 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -36,9 +39,13 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{"variations_seed_beta_chromeos.json"},
-		Vars:         []string{"fakeVariationsChannel", "useSeedOnDisk"},
-		Timeout:      5 * time.Minute,
+		Data: []string{
+			"variations_seed_beta_chromeos.json",
+			"variations_test_index.html",
+			"logo_chrome_color_1x_web_32dp.png",
+		},
+		Vars:    []string{"fakeVariationsChannel", "useSeedOnDisk"},
+		Timeout: 5 * time.Minute,
 	})
 }
 
@@ -174,6 +181,7 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	// Chrome is currently running with the test seed, but it will fetch a new seed for the next run.
 	// Verify that Chrome has downloaded and updated the variations seed. Poll to allow some time for downloading the seed.
 	if err := testing.Poll(ctx, func(context.Context) error {
 		currentSeed, err := readVariationsSeed(ctx)
@@ -189,6 +197,9 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 	}
 
 	// Navigate to some pages in Chrome and verify that web elements are rendered correctly.
+	// Use a local http server to reduce dependencies on the network and external webpage contents.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
 	type tc struct {
 		url    string
 		text   string
@@ -202,8 +213,7 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 			finder: nodewith.Name("Success").Role(role.Heading),
 		},
 		{
-			// TODO(crbug.com/1234165): Make tests hermetic by using a test http server.
-			url:    "https://chromium.org/",
+			url:    filepath.Join(server.URL, "variations_test_index.html"),
 			text:   "The Chromium Projects",
 			finder: nodewith.Name("The Chromium Projects").Role(role.Heading),
 		},
