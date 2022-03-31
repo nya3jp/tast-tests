@@ -44,6 +44,14 @@ func EnableWebAppInstall() Option {
 	}
 }
 
+// DeployedPath returns an Option which sets lacros deployed and deployedPath to the desired value.
+func DeployedPath(path string) Option {
+	return func(c *Config) {
+		c.deployed = true
+		c.deployedPath = path
+	}
+}
+
 // Config holds runtime vars or other variables needed to set up Lacros.
 type Config struct {
 	selection     lacros.Selection
@@ -58,6 +66,23 @@ type Config struct {
 // testing.State to be passed into NewConfigFromState.
 type TestingState interface {
 	Var(string) (string, bool)
+}
+
+// NewConfig creates a new LacrosConfig instance.
+func NewConfig(ops ...Option) *Config {
+	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
+	cfg := &Config{
+		selection:     lacros.Rootfs,
+		mode:          lacros.NotSpecified,
+		keepAlive:     false,
+		installWebApp: false,
+	}
+
+	for _, op := range ops {
+		op(cfg)
+	}
+
+	return cfg
 }
 
 // NewConfigFromState creates a new LacrosConfig instance.
