@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29599f91_3a28bcff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2022-03-31T04:07:23Z",
+      "side": 1,
+      "message": "Hi Judy,\nPTAL",
+      "revId": "40412d20ce420e2f39c2b5858a8cd5a75bdd7c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af5a5bb5_024b1a2b",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-03-31T03:31:52Z",
       "side": 1,
       "message": "This means it tries about 6 times to find a chance to proceed?",
+      "range": {
+        "startLine": 125,
+        "startChar": 34,
+        "endLine": 125,
+        "endChar": 77
+      },
+      "revId": "40412d20ce420e2f39c2b5858a8cd5a75bdd7c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c46878d_90239d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2022-03-31T04:07:23Z",
+      "side": 1,
+      "message": "Correct.\nIn the [fixture](http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/power/fixture.go?l\u003d17) we set `--external-metrics-collection-interval\u003d1` so that chromium collects cros metrics every second (instead of the default 30s).",
+      "parentUuid": "af5a5bb5_024b1a2b",
       "range": {
         "startLine": 125,
         "startChar": 34,
