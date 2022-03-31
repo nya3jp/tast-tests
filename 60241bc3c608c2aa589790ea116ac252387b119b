@@ -70,6 +70,24 @@
       "parentUuid": "474cbbdc_b35b43f8",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f269c478_897b7992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-03-31T07:18:27Z",
+      "side": 1,
+      "message": "Not sure now if you need to handle the case where no CRTC will exist. You said here you do \u003e Besides, there is really a case that no CRTC info exist; but here that you don\u0027t \u003e No, this is not the case.\n\nIf you need to handle this case, polling on CRTC info for k seconds is better than an unconditional sleep. If you don\u0027t, then it\u0027s a complete solution I think. If there is no eDP and that should be a pass without error, you could just check that condition before this wait.\n\nAnyway, there might be a better solution than polling CRTC info so let\u0027s hear from others hey",
+      "parentUuid": "b428fee6_46408c82",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
