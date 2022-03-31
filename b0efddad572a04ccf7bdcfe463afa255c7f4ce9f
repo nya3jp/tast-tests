@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61e24d7_f47f8482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/display_all_tabs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-03-31T05:49:36Z",
+      "side": 1,
+      "message": "Ack. Thanks.",
+      "parentUuid": "3081dfb4_04ae8a76",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 17
+      },
+      "revId": "b0efddad572a04ccf7bdcfe463afa255c7f4ce9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "357093fd_f2577c2d",
