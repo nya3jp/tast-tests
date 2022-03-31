@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "15393e20_f0146133",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-31T20:13:04Z",
+      "side": 1,
+      "message": "nit: not needed, since the repo itself is tast-tests",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3408f26b_87138284",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-31T20:13:04Z",
+      "side": 1,
+      "message": "nit: Reflow to 80 columns or less.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 73
+      },
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fe8c9e4f_c3e71cfa",
@@ -14,6 +60,46 @@
       "writtenOn": "2022-03-31T17:40:30Z",
       "side": 1,
       "message": "added Miguel and Ilja in the CC list. in progress for now.\n\nWill start this review later once I finalize list of devices for RockChip\nand also get to test it with local device. (can\u0027t at NY office locally due to network issue)",
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44967985_5885a08a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-31T20:13:04Z",
+      "side": 1,
+      "message": "LGTM. Feel free to review and send it.",
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0cd029_976eb2da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-03-31T20:13:04Z",
+      "side": 1,
+      "message": "\"scarlet\" is a model, since we use SkipOnPlatform(), we don\u0027t need\nit.",
+      "range": {
+        "startLine": 797,
+        "startChar": 93,
+        "endLine": 797,
+        "endChar": 100
+      },
       "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
