@@ -7,18 +7,13 @@ package arcappgameperf
 import (
 	"context"
 	"regexp"
-	"strings"
 	"time"
 
-	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
-	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -64,39 +59,8 @@ func RobloxLogin(ctx context.Context, s *testing.State) {
 		username := s.RequiredVar("arcappgameperf.roblox_username")
 		password := s.RequiredVar("arcappgameperf.roblox_password")
 
-		// Start up keyboard and ACUITI.
-		kb, err := input.Keyboard(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to open keyboard")
-		}
-		defer kb.Close()
-
-		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
-
-		// Make sure Roblox is launched.
-		// onAppReady: Landing will appear in logcat after the game is fully loaded.
-		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
-			return errors.Wrap(err, "onAppReady was not found in LogCat")
-		}
-
-		if err := uiauto.Combine("Enter login information",
-			// Click login button.
-			uda.Tap(uidetection.TextBlock([]string{"Log", "In"})),
-
-			// Click username field and enter username.
-			uda.Tap(uidetection.Word("Username/Email/Phone")),
-			action.Sleep(waitForActiveInputTime),
-			kb.TypeAction(username),
-
-			// Click password field and enter password.
-			uda.Tap(uidetection.Word("Password").First()),
-			action.Sleep(waitForActiveInputTime),
-			kb.TypeAction(password),
-
-			// Click the log in button.
-			uda.Tap(uidetection.TextBlock(strings.Split("Log In", " ")).First()),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to finish test")
+		if _, err := testutil.RobloxLogin(ctx, params, username, password); err != nil {
+			s.Fatal("Failed to login to Roblox: ", err)
 		}
 
 		// Start timer for metrics.
