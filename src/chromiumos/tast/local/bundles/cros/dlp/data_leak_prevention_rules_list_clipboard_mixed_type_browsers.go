@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -129,6 +130,10 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 			}
 			defer conn.Close()
 
+			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.srcURL, err)
+			}
+
 			if err := uiauto.Combine("copy all text from source website",
 				keyboard.AccelAction("Ctrl+A"),
 				keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
@@ -152,6 +157,10 @@ func DataLeakPreventionRulesListClipboardMixedTypeBrowsers(ctx context.Context, 
 				s.Fatal("Failed to open page: ", err)
 			}
 			defer dstConn.Close()
+
+			if err := webutil.WaitForQuiescence(ctx, dstConn, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", dstURL, err)
+			}
 
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 

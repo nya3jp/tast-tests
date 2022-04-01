@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -88,12 +89,22 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 				s.Fatal("Failed to reset the Chrome: ", err)
 			}
 
-			if _, err = cr.NewConn(ctx, "https://www.google.com/"); err != nil {
+			conn1, err := cr.NewConn(ctx, "https://www.google.com/")
+			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
 
-			if _, err = cr.NewConn(ctx, "https://"+param.url, browser.WithNewWindow()); err != nil {
+			if err := webutil.WaitForQuiescence(ctx, conn1, 10*time.Second); err != nil {
+				s.Fatal("Failed to wait for google.com to achieve quiescence: ", err)
+			}
+
+			conn2, err := cr.NewConn(ctx, "https://"+param.url, browser.WithNewWindow())
+			if err != nil {
 				s.Fatal("Failed to open page: ", err)
+			}
+
+			if err := webutil.WaitForQuiescence(ctx, conn2, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.url, err)
 			}
 
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
