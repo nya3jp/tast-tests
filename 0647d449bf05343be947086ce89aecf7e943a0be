@@ -70,6 +70,30 @@
       },
       "revId": "0647d449bf05343be947086ce89aecf7e943a0be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e97a7e_8616dd26",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-01T11:55:43Z",
+      "side": 1,
+      "message": "Thanks. Please chuck it around here: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacrosfixt/util.go;l\u003d91;rcl\u003d13da73bb1cf13b93a2e141d00bd2df839be306d2",
+      "parentUuid": "1bdd3554_08dd4f39",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 98
+      },
+      "revId": "0647d449bf05343be947086ce89aecf7e943a0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
