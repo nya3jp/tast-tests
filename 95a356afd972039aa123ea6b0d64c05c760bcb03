@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1324094c_d687fa2a",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-01T07:46:40Z",
+      "side": 1,
+      "message": "one more thing. Could you take an interface, instead of map for consistency with Unmarshal? (Sorry, I overlooked this in prev cycle).",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "95a356afd972039aa123ea6b0d64c05c760bcb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b70d6e_cff353dc",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-01T07:46:40Z",
+      "side": 1,
+      "message": "ditto. Could you fix the implementation?\n\nMaybe\n\nMarshalPref(bt browser.Type, pref string, val interface{})\n\nto be consistent with UnmarshalPref.\nOr, if you need to update several values as you do so,\n\nMarshalPrefWithMap(bt browser.Type, prefMap map[string]interface{})\n\nwhere keys of prefMap supports dotted syntax.",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "95a356afd972039aa123ea6b0d64c05c760bcb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

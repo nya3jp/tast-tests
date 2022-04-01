@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89e8f3db_aa1f1936",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-01T07:46:40Z",
+      "side": 1,
+      "message": "For consistency, instead of just adding a comment, could you fix the implementation to support dot styles?\n\nOr, instead, could you add document \"not\" to recommend dot style string as a key, which would not work as we often expect, and recommend to construct nested maps?",
+      "parentUuid": "76b1baa1_e094dc4a",
+      "range": {
+        "startLine": 69,
+        "startChar": 44,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "495d6f011809982b4b76bb374605805a7b76016e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c70aa6c_18b82120",
         "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
         "patchSetId": 19
