@@ -43,6 +43,7 @@ type ScreenshotStrategy int
 const (
 	StableScreenshot ScreenshotStrategy = iota
 	ImmediateScreenshot
+	ImmediateScreenshotStableFind
 )
 
 // Context provides functionalities for image-based UI automation.

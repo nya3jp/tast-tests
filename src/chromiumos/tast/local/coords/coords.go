@@ -92,6 +92,12 @@ func (r Rect) Equals(r2 Rect) bool {
 	return r.Left == r2.Left && r.Top == r2.Top && r.Width == r2.Width && r.Height == r2.Height
 }
 
+// ApproximateEquals returns trye if the Rect's Top, Left, Bottom, and Right
+// sides are within distance of eachother.
+func (r Rect) ApproximateEquals(r2 Rect, distance int) bool {
+	return abs(r.Left-r2.Left) <= distance && abs(r.Top-r2.Top) <= distance && abs(r.Right()-r2.Right()) <= distance && abs(r.Bottom()-r2.Bottom()) <= distance
+}
+
 // Right returns the x-value of the right edge of the rectangle.
 func (r Rect) Right() int {
 	return r.Left + r.Width
@@ -166,6 +172,14 @@ func (r Rect) Size() Size {
 // A rectangle is considered to contain itself.
 func (r Rect) Contains(other Rect) bool {
 	return r.Left <= other.Left && r.Top <= other.Top && r.Bottom() >= other.Bottom() && r.Right() >= other.Right()
+}
+
+func abs(x int) int {
+	if x < 0 {
+		// TODO: overflow?
+		return -x
+	}
+	return x
 }
 
 func min(x, y int) int {

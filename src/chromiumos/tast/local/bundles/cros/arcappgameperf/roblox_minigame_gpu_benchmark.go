@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/memory/metrics"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -32,7 +33,7 @@ func init() {
 		// TODO(b/219524888): Disabled while CAPTCHA prevents test from completing.
 		//Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
+		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-royale-high-game-icon.png", "roblox-launch-game.png"},
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
 		Params: []testing.Param{
 			{
@@ -72,7 +73,6 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to create keyboard")
 		}
-
 		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
 		if err := uiauto.Combine("Load GPU Benchmark Minigame",
 			// Click the button to start the log in process.
@@ -100,20 +100,31 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 			// Click the search dialog, type the game name, and hit 'ENTER' to send the query.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-home-screen-search-input.png"))),
 			action.Sleep(waitForActiveInputTime),
-			kbd.TypeAction("GPU Benchmark"),
+			kbd.TypeAction("Royale High"),
 			kbd.TypeKeyAction(input.KEY_ENTER),
 
 			// Click the game icon to open the modal.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-search-benchmark-game-icon.png"))),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-search-royale-high-game-icon.png"))),
 
 			// Click the 'launch' button in the game modal.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-launch-game.png"))),
-
-			// Wait for the "FPS" text which appears in the bottom left when the game is loaded.
-			// At this point the screen will be updating frequently so don't wait for stable screenshots.
-			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(uidetection.TextBlock([]string{"FPS"})),
+			// WE need a strategy that waits for the found element to be stable, but not the whole screen...
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshotStableFind).Tap(uidetection.TextBlock([]string{"Explore", "the", "World"})),
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshotStableFind).Tap(uidetection.TextBlock([]string{"Divinia", "Park"})),
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshotStableFind).Tap(uidetection.TextBlock([]string{"Visit!"})),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to finish test")
+		}
+		s.Log("Waiting for Divinia Park to load")
+		// The string "refreshing zones" appears in logcat once the Royale High level has loaded.
+		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`refreshing zones`))); err != nil {
+			return errors.Wrap(err, "\"refreshing zones\" was not found in LogCat")
+		}
+		s.Log("Divinia Park loaded")
+
+		basemem, err := metrics.NewBaseMemoryStats(ctx, params.Arc)
+		if err != nil {
+			s.Fatal("Failed to retrieve base memory stats: ", err)
 		}
 
 		// Leave the mini-game running for while recording metrics.
@@ -138,10 +149,20 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 		perfValues.Set(testutil.FpsPerfMetric(), r.FPS)
 		perfValues.Set(testutil.CommitDeviationPerfMetric(), r.CommitDeviation)
 		perfValues.Set(testutil.RenderQualityPerfMetric(), r.RenderQuality*100.0)
+
+		if err := metrics.LogMemoryStats(ctx, basemem, params.Arc, perfValues, s.OutDir(), "_bench"); err != nil {
+			s.Error("Failed to collect memory metrics: ", err)
+		}
+
+		// TODO: optionally, wait for a long time, checking if Roblox is still alive, hitting space every minute.
+		// Detect app death by making sure an arc window with packagename is fullscreen.
+
+		// Collect memory metrics each time. (with _quiesce) will they overwrite/update existing ones?
+		// Have metric for time stayed alive.
+
 		if err := perfValues.Save(s.OutDir()); err != nil {
 			s.Fatal("Failed saving perf data: ", err)
 		}
-
 		return nil
 	})
 }

@@ -6,7 +6,9 @@ package uidetection
 
 import (
 	"context"
+	"fmt"
 	"strings"
+	"time"
 
 	pb "google.golang.org/genproto/googleapis/chromeos/uidetection/v1"
 
@@ -282,6 +284,49 @@ func (f *Finder) RightOfA11yNode(other *nodewith.Finder) *Finder {
 
 // locationPx resolves the UI detection request and stores the bounding boxes of the matching element in pixels.
 func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float64) (*Location, error) {
+	start := time.Now()
+	var lastLocation *Location
+	currentLocation, err := f.locationPxOnce(ctx, uda, scaleFactor)
+	if err != nil {
+		return nil, err
+	}
+	testing.ContextLogf(ctx, "locationPx %q %s", currentLocation.Text, currentLocation.String())
+	if uda.screenshotStrategy != ImmediateScreenshotStableFind {
+		return currentLocation, nil
+	}
+	stableDistance := 0
+	if !f.exactMatch {
+		stableDistance = 4
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		if currentLocation != nil {
+			lastLocation = currentLocation
+		}
+		currentLocation, err = f.locationPxOnce(ctx, uda, scaleFactor)
+		if err != nil {
+			return err
+		}
+		testing.ContextLogf(ctx, "locationPx %q %s", currentLocation.Text, currentLocation.String())
+		if !currentLocation.ApproximateEquals(lastLocation.Rect, stableDistance) {
+			return errors.Wrapf(err, "location has not stopped changing after %s, perhaps increase timeout or use immediate-screenshot strategy", time.Since(start))
+		}
+		return nil
+	}, &uda.pollOpts); err != nil {
+		var lastStr = "nil"
+		var currentStr = "nil"
+		if lastLocation != nil {
+			lastStr = fmt.Sprintf("%q %s", lastLocation.Text, lastLocation.String())
+		}
+		if currentLocation != nil {
+			currentStr = fmt.Sprintf("%q %s", currentLocation.Text, currentLocation.String())
+		}
+		return nil, errors.Wrapf(err, "failed to find stable location, last two locations were %s and %s", lastStr, currentStr)
+	}
+	return currentLocation, nil
+}
+
+func (f *Finder) locationPxOnce(ctx context.Context, uda *Context, scaleFactor float64) (*Location, error) {
 	// Take the screenshot depending on the provided strategy.
 	var imagePng []byte
 	var err error
@@ -302,6 +347,7 @@ func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float
 			return nil, errors.Wrap(err, "failed to take stable screenshot")
 		}
 	case ImmediateScreenshot:
+	case ImmediateScreenshotStableFind:
 		imagePng, err = takeScreenshot(ctx, uda.tconn, boundingBox)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to take screenshot")
