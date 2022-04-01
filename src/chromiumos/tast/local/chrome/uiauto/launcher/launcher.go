@@ -75,6 +75,22 @@ type FakeAppInfoForSort struct {
 	// IconFileNames indicates the icon files used by fake apps. NOTE: IconFileNames is associated with ColorOrderNames, i.e. the app that uses
 	// the i-th element of ColorOrderNames as the app name utilizes the i-th element of IconFileNames as the icon file.
 	IconFileNames []string
+
+	// AlphabeticalNamesAfterAppInstall defines the app names in alphabetical order after the extra app installation. The tests that verify app installation
+	// with app list sorted use it.
+	AlphabeticalNamesAfterAppInstall []string
+
+	// ColorOrderNamesAfterAppInstall defines the app names in color order after the extra app installation. The tests that verify app installation
+	// with app list sorted use it.
+	ColorOrderNamesAfterAppInstall []string
+}
+
+// SortTestType specifies the test parameters for sort-related tests.
+type SortTestType struct {
+	TabletMode                  bool     // Whether the test runs in tablet mode
+	SortMethod                  SortType // Indicates the sort method used in tests
+	OrderedAppNames             []string // Specifies the fake app names arranged in the expected sort order
+	OrderedAppNamesAfterInstall []string // Indicates the fake app names in order after fake app installation. Used by the tests that verify app installation after sort
 }
 
 // CreateAppSearchFinder creates a finder for an app search result in the current launcher search UI.
