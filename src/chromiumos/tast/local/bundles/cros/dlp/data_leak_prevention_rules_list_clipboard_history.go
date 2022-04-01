@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -109,6 +110,10 @@ func DataLeakPreventionRulesListClipboardHistory(ctx context.Context, s *testing
 				s.Fatal("Failed to open page: ", err)
 			}
 			defer sourceCon.Close()
+
+			if err := webutil.WaitForQuiescence(ctx, sourceCon, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.url, err)
+			}
 
 			if err := uiauto.Combine("copy all text from source website",
 				keyboard.AccelAction("Ctrl+A"),
