@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/remote/policyutil"
@@ -144,7 +145,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 
 		s.Log("Rebooting the DUT after the rollback")
 		if err := s.DUT().Reboot(ctx); err != nil {
-			s.Fatal("Failed to reboot the DUT after rollback: ", err)
+			s.Error("Failed to reboot the DUT after rollback: ", err)
 		}
 
 		// Verify (non-enterprise) rollback.
@@ -162,38 +163,14 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
-	// Enroll the device.
-	client, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+	if err := enrollDevice(ctx, s.DUT(), s.RPCHint()); err != nil {
+		s.Fatal("Failed to enroll the device before rollback: ", err)
+	}
+
+	guid, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+		s.Fatal("Failed to configure networks: ", err)
 	}
-	// RPC client will be closed before reboot to rollback.
-
-	policyJSON, err := json.Marshal(policy.NewBlob())
-	if err != nil {
-		s.Fatal("Failed to serialize policies: ", err)
-	}
-
-	policyClient := ps.NewPolicyServiceClient(client.Conn)
-	// Policy client will be closed after enrollment.
-
-	if _, err := policyClient.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
-		PolicyJson: policyJSON,
-	}); err != nil {
-		s.Fatal("Failed to enroll: ", err)
-	}
-
-	if _, err := policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
-		s.Error("Failed to stop Chrome and Fake DMS: ", err)
-	}
-
-	// Configure PSK network to check preservation across rollback.
-	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
-	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
-	if err != nil {
-		s.Fatal("Failed to configure PSK network on client: ", err)
-	}
-	guid := response.Guid
 
 	// The .save_rollback_data flag would have been left by the update_engine on
 	// an end-to-end rollback. We don't use update_engine. Place it manually.
@@ -218,20 +195,10 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add newline after rollback key: ", err)
 	}
 
-	// Clean up the RPC client.
-	if err := client.Close(ctx); err != nil {
-		s.Error("Failed to close RPC client: ", err)
-	}
-
 	// Stopping ui early to prevent accidental reboots in the middle of TPM clear.
 	// If you stop the ui while an update is pending, the device restarts.
 	if err := s.DUT().Conn().CommandContext(ctx, "stop", "ui").Run(); err != nil {
 		s.Fatal("Failed to stop ui: ", err)
-	}
-
-	client, err = rpc.Dial(ctx, s.DUT(), s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 
 	s.Logf("Starting update from %s to %s", originalVersion, rollbackVersion)
@@ -255,19 +222,19 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	s.Logf("The DUT image version after the update is %s", version)
 	if version != rollbackVersion {
 		if version == originalVersion {
-			s.Fatal("The image version did not change after the update")
+			s.Error("The image version did not change after the update")
 		}
 		s.Errorf("Unexpected image version after the update; got %s, want %s", version, rollbackVersion)
 	}
 
 	// Check rollback data preservation.
-	client, err = rpc.Dial(ctx, s.DUT(), s.RPCHint())
+	client, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	defer client.Close(ctx)
 
-	rollbackService = aupb.NewRollbackServiceClient(client.Conn)
+	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
 	verifyResponse, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Guid: guid})
 	if err != nil {
 		s.Fatal("Failed to verify rollback on client: ", err)
@@ -283,4 +250,46 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Log(verifyResponse.VerificationDetails)
 		}
 	}
+}
+
+// enrollDevice follows the step required to enroll the device.
+func enrollDevice(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
+	client, err := rpc.Dial(ctx, dut, rpcHint)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer client.Close(ctx)
+
+	policyJSON, err := json.Marshal(policy.NewBlob())
+	if err != nil {
+		return errors.Wrap(err, "failed to serialize policies")
+	}
+
+	policyClient := ps.NewPolicyServiceClient(client.Conn)
+	defer policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{})
+
+	if _, err := policyClient.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+		PolicyJson: policyJSON,
+	}); err != nil {
+		return errors.Wrap(err, "failed to enroll")
+	}
+
+	return nil
+}
+
+// configureNetworks set up the networks supported by rollback.
+func configureNetworks(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) (string, error) {
+	client, err := rpc.Dial(ctx, dut, rpcHint)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer client.Close(ctx)
+
+	// Configure PSK network to check preservation across rollback.
+	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
+	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
+	if err != nil {
+		return "", errors.Wrap(err, "failed to configure PSK network on client")
+	}
+	return response.Guid, nil
 }
