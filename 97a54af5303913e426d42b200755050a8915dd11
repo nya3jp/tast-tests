@@ -85,6 +85,78 @@
       },
       "revId": "97a54af5303913e426d42b200755050a8915dd11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f90802_e8bfce5c",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-04-01T19:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3025d537_d7c7053d",
+      "range": {
+        "startLine": 235,
+        "startChar": 55,
+        "endLine": 235,
+        "endChar": 93
+      },
+      "revId": "97a54af5303913e426d42b200755050a8915dd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b157e5_6352fbd3",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-04-01T19:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d98845d4_7d39d548",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 111
+      },
+      "revId": "97a54af5303913e426d42b200755050a8915dd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de47ab26_8a8abe1f",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-04-01T19:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d42866b_03174722",
+      "range": {
+        "startLine": 235,
+        "startChar": 101,
+        "endLine": 235,
+        "endChar": 110
+      },
+      "revId": "97a54af5303913e426d42b200755050a8915dd11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
