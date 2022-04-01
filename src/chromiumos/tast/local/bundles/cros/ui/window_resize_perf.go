@@ -108,7 +108,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 
 		// This must be done after opening a new window to avoid terminating lacros-chrome.
 		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
-			if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+			if err := l.Browser().CloseWithURL(ctx, chrome.NewTabURL); err != nil {
 				s.Fatal("Failed to close blank tab: ", err)
 			}
 		}

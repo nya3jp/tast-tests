@@ -191,7 +191,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 
 	if testParam.BrowserType == browser.TypeLacros {
 		connection.CloseBlankTab = func(ctx context.Context) error {
-			return l.CloseWithURL(ctx, connection.TestConn, chrome.NewTabURL, 0)
+			return l.Browser().CloseWithURL(ctx, chrome.NewTabURL)
 		}
 	}
 

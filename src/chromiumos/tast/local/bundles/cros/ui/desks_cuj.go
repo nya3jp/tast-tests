@@ -86,7 +86,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	if bt == browser.TypeLacros {
-		if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+		if err := l.Browser().CloseWithURL(ctx, chrome.NewTabURL); err != nil {
 			s.Fatal("Failed to close blank tab: ", err)
 		}
 	}
