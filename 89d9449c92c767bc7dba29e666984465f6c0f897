@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75fa2f5_54f9cfb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-01T16:20:31Z",
+      "side": 1,
+      "message": "Oh yes, sorry, I should have mentioned. It was in: `src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go`\n\nHowever, I just figured out why. It is because the name of the const and the local function starts with a capital letter, which makes them \"exportable\". To avoid the lint error (and avoid being exported when they do not need to be) they should start with lowcase instead.",
+      "parentUuid": "b680a3c7_9279a3f0",
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05753f9b_33e10dd4",
@@ -83,6 +101,30 @@
       "writtenOn": "2022-04-01T13:06:42Z",
       "side": 1,
       "message": "Looks to me like the pattern here is an array of network configurations that we want to configure and then verify (possibly with slight modifications because of passwords etc).\n\nCan we make this explicit? E.g. have a type (with improved the naming)\n\n```\ntype struct NetworkToVerify {\n  nc.NetworkTypeConfigProperties configure\n  nc.(Managed)NetworkTypeConfigProperties verify\n}\n\nvar psk \u003d ...\n\nvar networks \u003d [] NetworkToVerify {\n  NetworkToVerify {psk, pskWithEmptyPassword},\n  NetworkToVerify {peapWifi, peapWifiWithModificationsRequired}\n}\n```\n\nyou can just use index in the array instead of the reference strings then to know which network is which. And it can be easily extended by adding more configurations.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6877286_98f691db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-01T16:20:31Z",
+      "side": 1,
+      "message": "This is a good idea. I was not entirely happy with the use of the refs as it makes everything quite convoluted, so I will iterate over the code and try to include something like this. As I do that, I may also move the supported network definition and verification to its own file as the service can start growing too much and it does not really need to be there.",
+      "parentUuid": "05753f9b_33e10dd4",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -140,6 +182,30 @@
       "writtenOn": "2022-04-01T13:06:42Z",
       "side": 1,
       "message": "I am wondering whether if, at this point, it makes sense to write a conversion function from ManagedEapProperties to EapConfigProperties and then do a simple check such as `peapWifiExp !\u003d peapWifiSet` here?\n\nEspecially in the light that we want to add a few more EAP configurations in the future.",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 62
+      },
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806bc168_173d0a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-01T16:20:31Z",
+      "side": 1,
+      "message": "It is a good point, but maybe we can do that when we extend the test and add a new EAP configuration (which is probably the next CL related to this service). It may be easier to see then what/how that function should look like as we will have another configuration as reference.",
+      "parentUuid": "5a57f641_e7e77d7b",
       "range": {
         "startLine": 212,
         "startChar": 4,
