@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f5961d60_adbef6b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T19:22:56Z",
+      "side": 1,
+      "message": "The main concern we\u0027re addressing here is that the test is waiting longer than needed for package install (which shouldn\u0027t take more than 4 minutes for 2 apps). \n\nThe screen being locked doesn\u0027t affect test stability but a minor annoyance. Adding any code to avoid that would make the test more complex and increase the instability.\n\nWe want to touch the min no. of parts to verify the intended flow of the test.",
+      "parentUuid": "cb409a85_d51fbd54",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "47e4257b_021e1e06",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7d3eaddb_fa88d126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T19:22:56Z",
+      "side": 1,
+      "message": "IMO the timeout is best calculated by the consumer of the method based on the size of the app they are installing. 2 minutes specified here may not be sufficient for all the apps being installed.\n\nIf the method were to accept a timeout param then it isn\u0027t going to be doing anything useful other than calling context.WithTimeout which the caller can do it as well.",
+      "parentUuid": "47e4257b_021e1e06",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "16f4cf8f_df141695",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-01T18:58:41Z",
       "side": 1,
       "message": "If/When this package installation timeout is longer than the timeout of the entire test, the entire test will still be killed when it hits the test timeout?",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76a0437_f1b6a88e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T19:22:56Z",
+      "side": 1,
+      "message": "Yes, the test will timeout if the calculation turns out to be longer than that however in the context of this specific test with two apps, we know that it won\u0027t happen.",
+      "parentUuid": "16f4cf8f_df141695",
       "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
