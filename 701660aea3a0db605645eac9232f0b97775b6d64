@@ -16,6 +16,23 @@
       "message": "This will also fail on Taeko until we have some HPS-equipped Taekos in the lab. They will be a few months behind the rest of the Taekos due to the production schedule differences. I\u0027ve filed b/227525135 to track the lab deployment (we won\u0027t be able to do it ourselves from Sydney, but we can follow up on it once the devices have been built). I\u0027ve added a TODO against that bug.\n\nThe tast.health.DiagnosticsRun failures look like b/227285020 which is now supposed to be fixed by a revert, so I\u0027ll try CQ again.",
       "revId": "701660aea3a0db605645eac9232f0b97775b6d64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f148b52_86d59ea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-04-01T05:12:34Z",
+      "side": 1,
+      "message": "chromeos-ec unit test failure is a low frequency flake that I have reported before: b/212505995\n\nnetwork.DiagPassing test failure is probably a flake, I see in buganizer that flakes in that family of tests have been reported (and closed) many times before, most recent open one I can see is: b/220176542\n\nLet\u0027s retry.",
+      "revId": "701660aea3a0db605645eac9232f0b97775b6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
