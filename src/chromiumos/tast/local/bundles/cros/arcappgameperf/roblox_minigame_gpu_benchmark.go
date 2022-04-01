@@ -18,6 +18,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/memory/metrics"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -32,7 +34,7 @@ func init() {
 		// TODO(b/219524888): Disabled while CAPTCHA prevents test from completing.
 		//Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
+		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-royale-high-game-icon.png", "roblox-launch-game.png", "roblox-royale-high-hud.png"},
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
 		Params: []testing.Param{
 			{
@@ -43,7 +45,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Pre:               pre.ArcAppGamePerfBooted,
 			}},
-		Timeout: 15 * time.Minute,
+		Timeout: 60 * time.Minute,
 		VarDeps: []string{"arcappgameperf.username", "arcappgameperf.password", "arcappgameperf.roblox_username", "arcappgameperf.roblox_password"},
 	})
 }
@@ -62,6 +64,12 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar("arcappgameperf.roblox_username")
 	password := s.RequiredVar("arcappgameperf.roblox_password")
 
+	if cleanup, err := setup.MuteAudio(ctx); err != nil {
+		s.Error("Failed to mute audio: ", err)
+	} else {
+		defer cleanup(ctx)
+	}
+
 	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) error {
 		// onAppReady: Landing will appear in logcat after the game is fully loaded.
 		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
@@ -72,7 +80,6 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return errors.Wrap(err, "failed to create keyboard")
 		}
-
 		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
 		if err := uiauto.Combine("Load GPU Benchmark Minigame",
 			// Click the button to start the log in process.
@@ -100,20 +107,31 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 			// Click the search dialog, type the game name, and hit 'ENTER' to send the query.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-home-screen-search-input.png"))),
 			action.Sleep(waitForActiveInputTime),
-			kbd.TypeAction("GPU Benchmark"),
+			kbd.TypeAction("Royale High"),
 			kbd.TypeKeyAction(input.KEY_ENTER),
 
 			// Click the game icon to open the modal.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-search-benchmark-game-icon.png"))),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-search-royale-high-game-icon.png"))),
 
 			// Click the 'launch' button in the game modal.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-launch-game.png"))),
 
-			// Wait for the "FPS" text which appears in the bottom left when the game is loaded.
-			// At this point the screen will be updating frequently so don't wait for stable screenshots.
-			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(uidetection.TextBlock([]string{"FPS"})),
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(uidetection.TextBlock([]string{"Explore", "the", "World"})),
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).Tap(uidetection.TextBlock([]string{"Explore", "the", "World"})),
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(uidetection.TextBlock([]string{"Divinia", "Park"})),
+			action.Sleep(waitForActiveInputTime), // Map animates in, so wait for that to end.
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).Tap(uidetection.TextBlock([]string{"Divinia", "Park"})),
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(uidetection.TextBlock([]string{"Visit!"})),
+			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).Tap(uidetection.TextBlock([]string{"Visit!"})),
+			uda.WithTimeout(time.Minute*5).WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(uidetection.CustomIcon(s.DataPath("roblox-royale-high-hud.png"))),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to finish test")
+		}
+		s.Log("Divinia Park loaded")
+
+		basemem, err := metrics.NewBaseMemoryStats(ctx, params.Arc)
+		if err != nil {
+			s.Fatal("Failed to retrieve base memory stats: ", err)
 		}
 
 		// Leave the mini-game running for while recording metrics.
@@ -138,10 +156,61 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 		perfValues.Set(testutil.FpsPerfMetric(), r.FPS)
 		perfValues.Set(testutil.CommitDeviationPerfMetric(), r.CommitDeviation)
 		perfValues.Set(testutil.RenderQualityPerfMetric(), r.RenderQuality*100.0)
+
+		if err := metrics.LogMemoryStats(ctx, basemem, params.Arc, perfValues, s.OutDir(), "_bench"); err != nil {
+			s.Error("Failed to collect memory metrics: ", err)
+		}
+		if err := basemem.Reset(); err != nil {
+			s.Fatal("Failed to reset base memory metrics: ", err)
+		}
+
+		// TODO: optionally, wait for a long time, checking if Roblox is still alive, hitting space every minute.
+		// Detect app death by making sure an arc window with packagename is fullscreen.
+
+		minute := 0
+		for ; minute < 40; minute++ {
+			if err := testing.Sleep(ctx, time.Minute); err != nil {
+				s.Fatal("Failed to sleep between memory mesurements: ", err)
+			}
+			var robloxAlive bool
+			if err := params.TestConn.Call(ctx, &robloxAlive, `async () => {
+				const getWindows = tast.promisify(chrome.autotestPrivate.getAppWindowList);
+				for (const w of await getWindows()) {
+					if (w.arcPackageName === "com.roblox.client") {
+						return true;
+					}
+				}
+				return false;
+			}`); err != nil {
+				s.Fatal("Failed to see if Roblox's window is still open: ", err)
+			}
+			if !robloxAlive {
+				s.Log("Roblox window disappeared early")
+				break
+			}
+			if err := metrics.LogMemoryStats(ctx, basemem, params.Arc, perfValues, s.OutDir(), "_pulse"); err != nil {
+				s.Error("Failed to collect memory metrics: ", err)
+			}
+			// NB: We do not reset basemem here because each "pulse" collection
+			// overwrites the previous. We want pulse to help diagnose LMKD
+			// kills, but also include the whole runtime of the mini-game.
+			s.Log("Heartbeat, jumping to avoid idle timeout")
+			if err := kbd.TypeKey(ctx, input.KEY_SPACE); err != nil {
+				s.Fatal("Failed to press space to not be idle: ", err)
+			}
+		}
+		perfValues.Set(perf.Metric{
+			Name:      "alive_time",
+			Unit:      "minutes",
+			Direction: perf.BiggerIsBetter,
+		}, float64(minute))
+
+		// Collect memory metrics each time. (with _quiesce) will they overwrite/update existing ones?
+		// Have metric for time stayed alive.
+
 		if err := perfValues.Save(s.OutDir()); err != nil {
 			s.Fatal("Failed saving perf data: ", err)
 		}
-
 		return nil
 	})
 }
