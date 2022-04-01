@@ -6,9 +6,14 @@
 package launcher
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"image"
+	"image/png"
+	"os"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 
@@ -58,6 +63,19 @@ const (
 	// ColorSort indicates the items are sorted with the app icon color order.
 	ColorSort SortType = "color sort"
 )
+
+// FakeAppInfoForSort defines the fake apps' info used to verify app list sort.
+type FakeAppInfoForSort struct {
+	// AlphabeticalNames refers to an array of strings sorted in alphabetical order. These strings are used as app names when installing fake apps.
+	AlphabeticalNames []string
+
+	// ColorOrderNames refers to the app names whose corresponding icons follow the color order.
+	ColorOrderNames []string
+
+	// IconFileNames indicates the icon files used by fake apps. NOTE: IconFileNames is associated with ColorOrderNames, i.e. the app that uses
+	// the i-th element of ColorOrderNames as the app name utilizes the i-th element of IconFileNames as the icon file.
+	IconFileNames []string
+}
 
 // CreateAppSearchFinder creates a finder for an app search result in the current launcher search UI.
 // It expects the launcher search page to be open - search containers within which apps are searched depend on
@@ -969,4 +987,72 @@ func IsFolderItem(ctx context.Context, tconn *chrome.TestConn, item *nodewith.Fi
 		return false, errors.Wrap(err, "failed to match name with regexp")
 	}
 	return match, nil
+}
+
+type indexNamePair struct {
+	viewIndex int
+	appName   string
+}
+
+type byViewIndex []indexNamePair
+
+func (data byViewIndex) Len() int           { return len(data) }
+func (data byViewIndex) Swap(i, j int)      { data[i], data[j] = data[j], data[i] }
+func (data byViewIndex) Less(i, j int) bool { return data[i].viewIndex < data[j].viewIndex }
+func (data byViewIndex) NameList() []string {
+	names := make([]string, data.Len())
+	for index, pair := range data {
+		names[index] = pair.appName
+	}
+	return names
+}
+
+// VerifyFakeAppsOrdered checks that the visual order of the app list items specified by app names is consistent with namesInOrder.
+// appsGrid specifies the apps grid on which item order is verified.
+func VerifyFakeAppsOrdered(ctx context.Context, ui *uiauto.Context, appsGrid *nodewith.Finder, namesInOrder []string) error {
+	viewIndices, err := FetchItemIndicesByName(ctx, ui, namesInOrder, appsGrid)
+	if err != nil {
+		return errors.Wrap(err, "failed to get view indices of fake apps")
+	}
+
+	if len(viewIndices) != len(namesInOrder) {
+		return errors.Errorf("unexpected view indices count: got %d, expecting %d", len(namesInOrder), len(viewIndices))
+	}
+
+	for index := 1; index < len(viewIndices); index++ {
+		if viewIndices[index] > viewIndices[index-1] {
+			// viewIndices still keep increasing order. It is expected.
+			continue
+		}
+
+		// The actual view order is unexpected. The code below calculates item names under the actual order to provide more informative error message.
+		actualNames := make([]indexNamePair, len(viewIndices))
+		for indexInArray, viewIndex := range viewIndices {
+			actualNames[indexInArray] = indexNamePair{viewIndex: viewIndex, appName: namesInOrder[indexInArray]}
+		}
+
+		data := byViewIndex(actualNames)
+		sort.Sort(data)
+		return errors.Errorf("unexpected fake app order: got %v, expecting %v", data.NameList(), namesInOrder)
+	}
+
+	return nil
+}
+
+// ReadImageBytesFromFilePath reads a PNG image from the specified file path.
+func ReadImageBytesFromFilePath(filePath string) ([]byte, error) {
+	f, err := os.Open(filePath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	image, _, err := image.Decode(f)
+	if err != nil {
+		return nil, err
+	}
+	buf := &bytes.Buffer{}
+	if err := png.Encode(buf, image); err != nil {
+		return nil, err
+	}
+	return buf.Bytes(), nil
 }
