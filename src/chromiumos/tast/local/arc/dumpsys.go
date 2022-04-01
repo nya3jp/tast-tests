@@ -406,3 +406,93 @@ func parseBounds(s []string) (bounds coords.Rect, err error) {
 	bounds.Height = bottom - bounds.Top
 	return bounds, nil
 }
+
+// MeminfoAppSummary holds the summary metrics for a single app from dumpsys
+// meminfo.
+type MeminfoAppSummary struct {
+	// PSS metrics. PSS is the size of all the pages mapped into a process
+	// divided by each page's reference count. When adding values from
+	JavaHeapPssKb     int32
+	NativeHeapPssKb   int32
+	CodePssKb         int32
+	StackPssKb        int32
+	GraphicsPssKb     int32
+	PrivateOtherPssKb int32
+	SystemPssKb       int32
+
+	// RSS metrics. RSS is the size of all the pages mapped into a process.
+	JavaHeapRssKb   int32
+	NativeHeapRssKb int32
+	CodeRssKb       int32
+	StackRssKb      int32
+	GraphicsRssKb   int32
+	UnknownRssKb    int32
+}
+
+// DumpsysMeminfoPackage returns summary metrics for a specific app package.
+func (a *ARC) DumpsysMeminfoPackage(ctx context.Context, pkg string) (*MeminfoAppSummary, error) {
+	n, err := SDKVersion()
+	if err != nil {
+		return nil, err
+	}
+	switch n {
+	case SDKP, SDKR, SDKS:
+		return a.dumpsysMeminfoPackageR(ctx, pkg)
+	default:
+		return nil, errors.Errorf("unsupported Android version %d", n)
+	}
+}
+
+func (a *ARC) dumpsysMeminfoPackageR(ctx context.Context, pkg string) (*MeminfoAppSummary, error) {
+	output, err := a.Command(ctx, "dumpsys", "meminfo", "--proto", pkg).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not get 'dumpsys meminfo --proto %s' output", pkg)
+	}
+
+	mi := &server.MemInfoDumpProto{}
+	if err := proto.Unmarshal(output, mi); err != nil {
+		if dir, ok := testing.ContextOutDir(ctx); !ok {
+			testing.ContextLog(ctx, "Failed to save protobuf message. Could not get ContextOutDir()")
+		} else if f, err := ioutil.TempFile(dir, "meminfo-protobuf-message-*.bin"); err != nil {
+			testing.ContextLog(ctx, "Failed to save protobuf message. Could not create temp file: ", err)
+		} else {
+			defer f.Close()
+			if _, err := f.Write(output); err != nil {
+				testing.ContextLog(ctx, "Failed to save protobuf message. Could not write to file: ", err)
+			} else {
+				testing.ContextLogf(ctx, "Protobuf message saved in test out directory. Filename: %q", path.Base(f.Name()))
+			}
+		}
+		return nil, errors.Wrap(err, "failed to parse activity manager protobuf")
+	}
+	if len(mi.AppProcesses) != 1 {
+		return nil, errors.Errorf("failed to parse meminfo, expected 1 AppProcess, got %d", len(mi.AppProcesses))
+	}
+	app := mi.AppProcesses[0]
+	if app == nil {
+		return nil, errors.New("failed to parse meminfo, missing AppProcesses[0]")
+	}
+	process := app.ProcessMemory
+	if process == nil {
+		return nil, errors.New("failed to parse meminfo, missing AppProcesses[0].ProcessMemory")
+	}
+	summary := process.AppSummary
+	if summary == nil {
+		return nil, errors.New("failed to parse meminfo, missing AppProcesses[0].ProcessMemory.AppSummary")
+	}
+	return &MeminfoAppSummary{
+		JavaHeapPssKb:     summary.GetJavaHeapPssKb(),
+		NativeHeapPssKb:   summary.GetNativeHeapPssKb(),
+		CodePssKb:         summary.GetCodePssKb(),
+		StackPssKb:        summary.GetStackPssKb(),
+		GraphicsPssKb:     summary.GetGraphicsPssKb(),
+		PrivateOtherPssKb: summary.GetPrivateOtherPssKb(),
+		SystemPssKb:       summary.GetSystemPssKb(),
+		JavaHeapRssKb:     summary.GetJavaHeapRssKb(),
+		NativeHeapRssKb:   summary.GetNativeHeapRssKb(),
+		CodeRssKb:         summary.GetCodeRssKb(),
+		StackRssKb:        summary.GetStackRssKb(),
+		GraphicsRssKb:     summary.GetGraphicsRssKb(),
+		UnknownRssKb:      summary.GetUnknownRssKb(),
+	}, nil
+}
