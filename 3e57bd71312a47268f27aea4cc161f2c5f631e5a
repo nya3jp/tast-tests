@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "3e57bd71312a47268f27aea4cc161f2c5f631e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b167e8_ca1bd604",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-01T11:28:59Z",
+      "side": 1,
+      "message": "can we name CloseBrowserWindowWithURL to be more explicit?",
+      "revId": "3e57bd71312a47268f27aea4cc161f2c5f631e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
