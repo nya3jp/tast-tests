@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9534b4f4_743189dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-01T06:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "421240f1_b9c5c0ad",
+      "revId": "2a764ade69e167b4052d08dced8311166861906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2789d4dd_e22bd7ea",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e6bb79_80164adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-01T06:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2789d4dd_e22bd7ea",
+      "revId": "2a764ade69e167b4052d08dced8311166861906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be4fa895_46f06629",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-03-31T17:00:05Z",
       "side": 1,
       "message": "Similar comment as above.",
+      "revId": "2a764ade69e167b4052d08dced8311166861906b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0782e73_1d1c47a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-01T06:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be4fa895_46f06629",
       "revId": "2a764ade69e167b4052d08dced8311166861906b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
