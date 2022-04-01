@@ -22,6 +22,30 @@
       },
       "revId": "66b5809a44d5263849e53ced42d123e59bc33eea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec429d0_12d50bce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/autoupdatelib/updatelib.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-04-01T05:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "064a3444_aca651e8",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "66b5809a44d5263849e53ced42d123e59bc33eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

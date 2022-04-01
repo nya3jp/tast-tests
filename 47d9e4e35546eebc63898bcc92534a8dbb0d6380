@@ -560,6 +560,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f591df4d_3e50a61e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-04-01T05:53:36Z",
+      "side": 1,
+      "message": "I see what you mean. Let me explain why I think passing state to autoupdatelib is an ok option.\nI understand what we do not usually pass state to helpers, but autoupdatelib contains the actual driver of the test - it is the whole test block, however parametrized, to avoid duplication. So, this is not a \"helper\" but a parametrized body of the test, extracted for clarity.\nDo you think my reasoning is acceptable?\n\nRegarding arguments: maybe it is not too many, indeed, you are right, I was recalling an old state where hwsec code was in. Nevertheless, I think replacing s.Fatal with return err achieves very little in this cases since that \"helper\" is actual body of the test. I could replace it all, but that would lose clarity in my opionion, given that actual test body doesn\u0027t do anything but some test specific setup of callbacks and then calling into the \"helper\"",
+      "parentUuid": "f6d3158c_e6b1071b",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1e581d5_a5fa0beb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
         "patchSetId": 8
