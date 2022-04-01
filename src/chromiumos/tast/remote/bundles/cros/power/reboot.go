@@ -15,7 +15,7 @@ func init() {
 		Func:         Reboot,
 		Desc:         "Verifies that system comes back after rebooting",
 		Contacts:     []string{"tast-owners@google.com"},
-		SoftwareDeps: []string{"reboot"},
+		SoftwareDeps: []string{"reboot", "no_qemu"},
 		Attr:         []string{"group:mainline", "group:labqual"},
 	})
 }
