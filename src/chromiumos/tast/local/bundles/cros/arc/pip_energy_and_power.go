@@ -111,8 +111,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	case browser.TypeLacros:
 		var l *lacros.Lacros
 		var err error
-		// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-		cr, l, cs, err = lacros.SetupDeprecated(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
