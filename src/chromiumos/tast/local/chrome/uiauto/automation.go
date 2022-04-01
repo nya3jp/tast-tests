@@ -718,6 +718,13 @@ func (ac *Context) MouseMoveTo(finder *nodewith.Finder, duration time.Duration) 
 }
 
 // Sleep returns a function sleeping given time duration.
+func Sleep(d time.Duration) Action {
+	return func(ctx context.Context) error {
+		return testing.Sleep(ctx, d)
+	}
+}
+
+// Sleep on *Context is deprecated. Use the above Sleep function.
 func (ac *Context) Sleep(d time.Duration) Action {
 	return func(ctx context.Context) error {
 		return testing.Sleep(ctx, d)
@@ -752,9 +759,14 @@ func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
 //   dialog := nodewith.Name("Dialog").Role(role.Dialog)
 //   button := nodewith.Name("Ok").Role(role.Button).Ancestor(dialog)
 //   ui := uiauto.New(tconn)
-//   if err := ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
+//   if err := uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
 //	    ...
 //   }
+func IfSuccessThen(preFunc, fn Action) Action {
+	return action.IfSuccessThen(preFunc, fn)
+}
+
+// IfSuccessThen on *Context is deprecated. Use the above IfSuccessThen function.
 func (ac *Context) IfSuccessThen(preFunc, fn Action) Action {
 	return action.IfSuccessThen(preFunc, fn)
 }

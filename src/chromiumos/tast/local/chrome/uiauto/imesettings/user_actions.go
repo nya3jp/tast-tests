@@ -194,7 +194,7 @@ func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK boo
 			setting.setAutoCorrection(uc.Chrome(), isVK, string(acLevel)),
 			// TODO(b/157686038) A better solution to identify decoder status.
 			// Decoder works async in returning status to frontend IME and self loading.
-			setting.Sleep(5*time.Second),
+			uiauto.Sleep(5*time.Second),
 			setting.Close,
 		)(ctx)
 	}
@@ -229,7 +229,7 @@ func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, is
 			setting.ToggleAutoCap(uc.Chrome(), isEnabled),
 			// TODO(b/157686038) A better solution to identify decoder status.
 			// Decoder works async in returning status to frontend IME and self loading.
-			setting.Sleep(5*time.Second),
+			uiauto.Sleep(5*time.Second),
 			setting.Close,
 		)(ctx)
 	}

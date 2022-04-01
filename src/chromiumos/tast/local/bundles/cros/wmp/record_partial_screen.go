@@ -120,7 +120,7 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 		mouse.Drag(tconn, dragStartPt, dragEndPt, time.Second),
 		kb.AccelAction("enter"),
 		// Record partial screen for about 30 seconds.
-		ac.Sleep(30*time.Second),
+		uiauto.Sleep(30*time.Second),
 		ac.LeftClick(stopRecordButton),
 		// Check if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),

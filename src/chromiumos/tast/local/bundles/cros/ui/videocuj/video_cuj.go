@@ -193,7 +193,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		// YouTube sometimes pops up a prompt to notice users how to operate YouTube
 		// if there're new features. Dismiss prompt if it exist.
 		gotItPrompt := nodewith.Name("Got it").Role(role.Button)
-		ui.IfSuccessThen(
+		uiauto.IfSuccessThen(
 			ui.WaitUntilExists(gotItPrompt),
 			uiHandler.ClickUntil(
 				gotItPrompt,

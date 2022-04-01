@@ -144,7 +144,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 			},
 			// No available method to check that settings being loaded. On a low-end device, it might take a second.
 			// So added sleep to wait for loading.
-			ui.Sleep(loadNewSettingDuration),
+			uiauto.Sleep(loadNewSettingDuration),
 		)
 
 		if err := uiauto.UserAction("Switch Japanese input mode",

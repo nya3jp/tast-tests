@@ -121,13 +121,13 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("drag and move a tab",
 			// Drag the first tab in the tab strip around work area, then snap back to the tab strip.
 			pc.Drag(firstTabLocation.CenterPoint(),
-				ac.Sleep(time.Second),
+				uiauto.Sleep(time.Second),
 				pc.DragTo(snapRightPoint, 3*time.Second),
 				pc.DragTo(snapLeftPoint, 3*time.Second),
 				pc.DragTo(workAreaCenterPoint, 3*time.Second),
 				pc.DragTo(tabListLocation.CenterPoint(), 3*time.Second)),
 			// Sleep to ensure that the next run performs correctly.
-			ac.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to drag the tab")
 		}

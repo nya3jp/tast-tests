@@ -325,7 +325,7 @@ func (hwCtx *HandwritingContext) ClearHandwritingCanvas() uiauto.Action {
 	waitForBackspaceAction := hwCtx.ui.WithTimeout(500 * time.Millisecond).WaitUntilExists(KeyFinder.Name("backspace"))
 
 	// Undo key remains on the keyboard if the canvas is not clear in longform canvas.
-	return hwCtx.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		hwCtx.ui.WithTimeout(time.Second).WaitUntilExists(undoKey),
 		hwCtx.ui.LeftClickUntil(undoKey, waitForBackspaceAction))
 

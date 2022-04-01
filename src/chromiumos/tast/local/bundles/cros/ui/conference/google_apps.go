@@ -104,7 +104,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	// slideCleanup switches to the slide page and deletes it.
 	slideCleanup := func(ctx context.Context) error {
 		return uiauto.Combine("switch to the slide page and delete it",
-			ui.IfSuccessThen(func(ctx context.Context) error { return renameSlideErr }, switchToTab(string(googleSlides))),
+			uiauto.IfSuccessThen(func(ctx context.Context) error { return renameSlideErr }, switchToTab(string(googleSlides))),
 			googleapps.DeleteSlide(tconn),
 		)(ctx)
 	}
@@ -113,7 +113,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	// docCleanup switches to the document page and deletes it.
 	docCleanup := func(ctx context.Context) error {
 		return uiauto.Combine("switch to the document page and delete it",
-			ui.IfSuccessThen(func(ctx context.Context) error { return renameDocErr }, switchToTab(string(googleDocs))),
+			uiauto.IfSuccessThen(func(ctx context.Context) error { return renameDocErr }, switchToTab(string(googleDocs))),
 			googleapps.DeleteDoc(tconn),
 		)(ctx)
 	}

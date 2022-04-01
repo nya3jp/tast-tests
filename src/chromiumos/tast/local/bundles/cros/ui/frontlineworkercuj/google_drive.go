@@ -66,7 +66,7 @@ func (g *GoogleDrive) OpenSpreadSheet(ctx context.Context, sheetName string) err
 	sheetOption := nodewith.NameContaining(sheetName).Role(role.ListBoxOption).First()
 	googleSheets := nodewith.NameContaining(sheetName).Role(role.RootWebArea)
 	return uiauto.Combine("open the spreadsheet with pivot table",
-		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotIt), g.ui.LeftClick(gotIt)),
+		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotIt), g.ui.LeftClick(gotIt)),
 		g.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(myDrive),
 		g.ui.DoubleClick(sheetOption),
 		g.ui.WaitUntilExists(googleSheets),

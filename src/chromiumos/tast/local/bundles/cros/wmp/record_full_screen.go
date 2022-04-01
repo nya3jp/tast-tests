@@ -91,7 +91,7 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 		ac.LeftClick(recordFullscreenToggleButton),
 		kb.AccelAction("Enter"),
 		// Records full screen for about 30 seconds.
-		ac.Sleep(30*time.Second),
+		uiauto.Sleep(30*time.Second),
 		ac.LeftClick(stopRecordButton),
 		// Checks if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),

@@ -520,7 +520,7 @@ func playYoutubeMusic(ctx context.Context, resources *runResources) error {
 	pauseButton := nodewith.Name("Pause").Role(role.Button)
 	reviewIconUpdateWindow := nodewith.Name("Review icon update").Role(role.Window)
 	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(reviewIconUpdateWindow)
-	dismissReviewIconUpdateIfPresent := ui.IfSuccessThen(
+	dismissReviewIconUpdateIfPresent := uiauto.IfSuccessThen(
 		ui.WithTimeout(3*time.Second).WaitUntilExists(reviewIconUpdateWindow),
 		uiauto.NamedAction("close 'Review icon update' dialog", uiHdl.Click(okButton)))
 

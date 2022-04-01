@@ -210,7 +210,7 @@ func checkPanels(ctx context.Context, res *basicLayoutTestResources) error {
 
 		// Click on page one button if it exists.
 		pageBtn := res.btn.NameRegex(regexp.MustCompile(`Page 1 of \d+`)).HasClass("PageIndicatorView")
-		if err := res.ui.IfSuccessThen(
+		if err := uiauto.IfSuccessThen(
 			res.ui.WithTimeout(3*time.Second).WaitUntilExists(pageBtn),
 			res.pc.Click(pageBtn),
 		)(ctx); err != nil {

@@ -44,7 +44,6 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
-	ui := uiauto.New(tconn)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -82,11 +81,11 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 		manualShift,
 		vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateShifted),
 		// Sleep 1s to avoid double shift.
-		ui.Sleep(time.Second),
+		uiauto.Sleep(time.Second),
 
 		manualShift,
 		vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),
-		ui.Sleep(time.Second),
+		uiauto.Sleep(time.Second),
 
 		shiftLock,
 		vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateLocked),

@@ -101,7 +101,7 @@ func LaunchAtPage(ctx context.Context, tconn *chrome.TestConn, subpage *nodewith
 	// Focus the subpage to ensure it is on-screen.
 	// Then click the subpage that we want in the sidebar.
 	if err := uiauto.Combine("click subpage",
-		s.ui.IfSuccessThen(s.ui.Gone(subPageInApp), s.ui.LeftClick(menuButton)),
+		uiauto.IfSuccessThen(s.ui.Gone(subPageInApp), s.ui.LeftClick(menuButton)),
 		s.ui.FocusAndWait(subPageInApp),
 		s.ui.LeftClick(subPageInApp),
 	)(ctx); err != nil {
@@ -276,7 +276,7 @@ func (s *OSSettings) SetDropDownOption(cr *chrome.Chrome, optionName, expected s
 	return uiauto.Combine("set drop down option",
 		s.LeftClick(optionFinder),
 		s.LeftClick(settingFinder),
-		s.ui.Sleep(time.Second),
+		uiauto.Sleep(time.Second),
 	)
 }
 
@@ -360,7 +360,7 @@ func (s *OSSettings) SearchWithKeyword(ctx context.Context, kb *input.KeyboardEv
 func (s *OSSettings) ClearSearch() uiauto.Action {
 	clearSearchBtn := nodewith.NameContaining("Clear search").Role(role.Button)
 	return uiauto.Combine("clear text in search box",
-		s.ui.IfSuccessThen(s.ui.WaitUntilExists(clearSearchBtn), s.LeftClick(clearSearchBtn)),
+		uiauto.IfSuccessThen(s.ui.WaitUntilExists(clearSearchBtn), s.LeftClick(clearSearchBtn)),
 		s.WaitUntilGone(clearSearchBtn),
 		s.WaitUntilGone(searchResultFinder),
 	)

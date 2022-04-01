@@ -140,7 +140,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 				ui.LeftClick(closeButton), // Close "Background" panel.
 				// Some DUT performance is too poor, clicking the turn off button will trigger "Upload a background image".
 				// If the dialog "select a file to open" is opened, close it.
-				ui.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(selectAFileDialog), ui.LeftClick(closeDialog)),
+				uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(selectAFileDialog), ui.LeftClick(closeDialog)),
 			))(ctx)
 	}
 
@@ -358,7 +358,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		allowPerm,
 		switchWindow,
 		// Check if the login account is the one for google meet. If not, switch to google meet account.
-		ui.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
+		uiauto.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
 		changeBackgroundToBlur,
 		joinConf,
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
@@ -412,10 +412,10 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 
 	return uiauto.Combine("toggle video and audio",
 		// Remain in the state for 5 seconds after each action.
-		toggleVideo, ui.Sleep(viewingTime),
-		toggleVideo, ui.Sleep(viewingTime),
-		toggleAudio, ui.Sleep(viewingTime),
-		toggleAudio, ui.Sleep(viewingTime),
+		toggleVideo, uiauto.Sleep(viewingTime),
+		toggleVideo, uiauto.Sleep(viewingTime),
+		toggleAudio, uiauto.Sleep(viewingTime),
+		toggleAudio, uiauto.Sleep(viewingTime),
 	)(ctx)
 }
 
@@ -471,9 +471,9 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 
 	return uiauto.Combine("change layout",
 		changeLayout("Tiled"),
-		ui.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
+		uiauto.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
 		changeLayout("Spotlight"),
-		ui.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
+		uiauto.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
 	)(ctx)
 }
 
@@ -506,7 +506,7 @@ func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 				// Double click to enter full screen.
 				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", true),
 				// After applying new background, give it 5 seconds for viewing before applying next one.
-				ui.Sleep(viewingTime),
+				uiauto.Sleep(viewingTime),
 				// Double click to exit full screen.
 				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", false),
 			))

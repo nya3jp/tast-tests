@@ -106,12 +106,12 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 
 		verifyAudioInputAction := uiauto.Combine(scenario,
 			its.Clear(inputField),
-			ui.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			its.ClickFieldAndWaitForActive(inputField),
 			ui.LeftClick(imeMenuTrayButtonFinder),
 			ui.LeftClick(voiceInputItem),
 			ui.LeftClick(voicePrivacyConfirmButton),
-			ui.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			func(ctx context.Context) error {
 				return voice.AudioFromFile(ctx, s.DataPath(voiceInputData.VoiceFile))
 			},
@@ -142,12 +142,12 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 		hwFilePath := s.DataPath(hwInputData.HandwritingFile)
 		verifyHandWritingInputAction := uiauto.Combine(scenario,
 			its.Clear(inputField),
-			ui.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			its.ClickFieldAndWaitForActive(inputField),
 			ui.LeftClick(imeMenuTrayButtonFinder),
 			ui.LeftClick(handwritingInputItem),
 			// The privacy dialog does not appear on all devices.
-			ui.IfSuccessThen(
+			uiauto.IfSuccessThen(
 				ui.WithTimeout(2*time.Second).WaitUntilExists(handwritingPrivacyConfirmButton),
 				ui.LeftClick(handwritingPrivacyConfirmButton),
 			),
@@ -191,7 +191,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 
 		verifyEmojiInputAction := uiauto.Combine(scenario,
 			its.Clear(inputField),
-			uiauto.New(tconn).Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			its.ClickFieldAndWaitForActive(inputField),
 			ui.LeftClick(imeMenuTrayButtonFinder),
 			ui.LeftClick(emojiInputMenuItem),

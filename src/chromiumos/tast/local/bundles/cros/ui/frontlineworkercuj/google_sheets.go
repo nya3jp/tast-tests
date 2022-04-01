@@ -133,7 +133,7 @@ func (g *GoogleSheets) EditPivotTable() uiauto.Action {
 			g.editPivotTableEditor(rowsAddButtonName, rowName),
 			g.editPivotTableEditor(columnsAddButtonName, columnName),
 			g.editPivotTableEditor(valuesAddButtonName, valueName),
-			g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableEditor), g.uiHdl.Click(close)),
+			uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(pivotTableEditor), g.uiHdl.Click(close)),
 		),
 	)
 }
@@ -267,7 +267,7 @@ func (g *GoogleSheets) login() uiauto.Action {
 		g.ui.LeftClick(password),
 		confirmInput(password, g.password),
 		g.kb.AccelAction("Enter"),
-		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(warning), g.uiHdl.Click(confirm)),
+		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(warning), g.uiHdl.Click(confirm)),
 	)
 }
 
@@ -275,7 +275,7 @@ func (g *GoogleSheets) login() uiauto.Action {
 func (g *GoogleSheets) maybeCloseWelcomeDialog() uiauto.Action {
 	welcomeDialog := nodewith.Name("Welcome to Google Sheets").Role(role.Dialog)
 	closeButton := nodewith.Name("Close").Ancestor(welcomeDialog)
-	return g.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeDialog),
 		g.uiHdl.Click(closeButton),
 	)
@@ -312,7 +312,7 @@ func (g *GoogleSheets) renameFile(sheetName string) uiauto.Action {
 		g.ui.WaitUntilExists(renameField),
 		g.kb.TypeAction(sheetName),
 		g.kb.AccelAction("Enter"),
-		g.ui.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
+		uiauto.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
 	)
 }
 
@@ -328,7 +328,7 @@ func (g *GoogleSheets) selectCell(cell string) uiauto.Action {
 			g.kb.AccelAction("Enter"),
 			// Given time to jump to the specific cell and select it.
 			// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
-			g.ui.Sleep(500*time.Millisecond),
+			uiauto.Sleep(500*time.Millisecond),
 		),
 	)
 }
