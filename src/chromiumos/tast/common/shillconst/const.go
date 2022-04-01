@@ -18,6 +18,9 @@ const (
 	DefaultTimeout = 30 * time.Second
 )
 
+// ServiceProviderOverridePath isth path of the modb file to override serviceproviders.pbf
+const ServiceProviderOverridePath = "/usr/share/shill/serviceproviders-exclusive-override.pbf"
+
 // Type values defined in dbus-constants.h
 // The values are used both for Service type and Technology type.
 const (
@@ -127,9 +130,17 @@ const (
 	ServicePropertyProvider       = "Provider"
 
 	// Cellular service property names.
-	ServicePropertyCellularICCID        = "Cellular.ICCID"
-	ServicePropertyCellularAllowRoaming = "Cellular.AllowRoaming"
-	ServicePropertyCellularRoamingState = "Cellular.RoamingState"
+	ServicePropertyCellularICCID         = "Cellular.ICCID"
+	ServicePropertyCellularAllowRoaming  = "Cellular.AllowRoaming"
+	ServicePropertyCellularLastGoodAPN   = "Cellular.LastGoodAPN"
+	ServicePropertyCellularLastAttachAPN = "Cellular.LastAttachAPN"
+	ServicePropertyCellularRoamingState  = "Cellular.RoamingState"
+
+	// Keys into the dictionaries exposed as properties for LastAttachAPN and LastGoodAPN
+	DevicePropertyCellularAPNInfoApnName   = "apn"
+	DevicePropertyCellularAPNInfoApnSource = "apn_source"
+	DevicePropertyCellularAPNInfoApnAttach = "attach"
+	DevicePropertyCellularAPNInfoApnIPType = "ip_type"
 
 	// WiFi service property names.
 	ServicePropertyPassphrase          = "Passphrase"
