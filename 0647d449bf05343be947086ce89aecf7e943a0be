@@ -22,6 +22,30 @@
       },
       "revId": "0647d449bf05343be947086ce89aecf7e943a0be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7273a0c_5d94bd05",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-01T08:06:09Z",
+      "side": 1,
+      "message": "Should we add this to lacros command line flags as well?",
+      "parentUuid": "653c176f_9fc9b170",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 98
+      },
+      "revId": "0647d449bf05343be947086ce89aecf7e943a0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
