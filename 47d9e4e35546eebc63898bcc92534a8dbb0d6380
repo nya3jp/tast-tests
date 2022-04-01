@@ -576,6 +576,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3036b03_f7515954",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_m_vault_compat.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-01T07:07:08Z",
+      "side": 1,
+      "message": "Ack, keep as is.",
+      "parentUuid": "f591df4d_3e50a61e",
+      "revId": "47d9e4e35546eebc63898bcc92534a8dbb0d6380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1e581d5_a5fa0beb",
