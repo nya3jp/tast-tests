@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b5d1ec_63993b3e",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-01T22:39:36Z",
+      "side": 1,
+      "message": "Make sense, updated.",
+      "parentUuid": "1324094c_d687fa2a",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "95a356afd972039aa123ea6b0d64c05c760bcb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99b70d6e_cff353dc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-01T07:46:40Z",
       "side": 1,
       "message": "ditto. Could you fix the implementation?\n\nMaybe\n\nMarshalPref(bt browser.Type, pref string, val interface{})\n\nto be consistent with UnmarshalPref.\nOr, if you need to update several values as you do so,\n\nMarshalPrefWithMap(bt browser.Type, prefMap map[string]interface{})\n\nwhere keys of prefMap supports dotted syntax.",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "95a356afd972039aa123ea6b0d64c05c760bcb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ec1dae_ec2e8558",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-01T22:39:36Z",
+      "side": 1,
+      "message": "I rewrote MarshalPref(bt browser.Type, pref string, val interface{}). This method will support dot format of pref.",
+      "parentUuid": "99b70d6e_cff353dc",
       "range": {
         "startLine": 88,
         "startChar": 3,
