@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eda5a01_8af2791e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-01T06:52:25Z",
+      "side": 1,
+      "message": "nit: use PollBreak here instead of fatal or s.Fatal (same for the others)",
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aefe065_875e0490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-01T06:52:25Z",
+      "side": 1,
+      "message": "I\u0027m not convinced a helper is required for retry. The call to errors.Wrap is equally short.",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 15
+      },
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec39912d_84a0bade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-01T06:52:25Z",
+      "side": 1,
+      "message": "You don\u0027t need to use s.HasError here, maybe providing your own function will make the test as a whole more readable.",
+      "range": {
+        "startLine": 127,
+        "startChar": 44,
+        "endLine": 127,
+        "endChar": 54
+      },
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
