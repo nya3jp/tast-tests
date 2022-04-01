@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb409a85_d51fbd54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-04-01T18:58:41Z",
+      "side": 1,
+      "message": "Whether the test result can include the right screenshot (before lock screen) depends on the relationship between screen lock timeout and package install timeout (i.e. number of packages and timeout per package) plus time spent on other parts of the test (likely very short).\n\nWhen someone unknowingly changes one or more of those factors, the test may no longer get the right screenshot (before lock screen). If we care about this, it\u0027s best to use a test (or part of this test) to ensure that.\n\n",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e4257b_021e1e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-04-01T18:58:41Z",
+      "side": 1,
+      "message": "How about making this available in the `arc` package? I feel the behavior is relatively generic. The new method can sit next to the existing one, but will apply a timeout on the wait.",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f4cf8f_df141695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-04-01T18:58:41Z",
+      "side": 1,
+      "message": "If/When this package installation timeout is longer than the timeout of the entire test, the entire test will still be killed when it hits the test timeout?",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
