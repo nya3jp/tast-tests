@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8ad5f4_c6e2f8cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:29:22Z",
+      "side": 1,
+      "message": "I have a few comments for the latest changes. Please take a look. Thanks.",
+      "revId": "a6dbf6e79a28aa7cbc0ca06dfc0c181ed56bd04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827f9f0d_ea2dd7f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:29:22Z",
+      "side": 1,
+      "message": "Should it be?\n\n```\nproductName, err :\u003d ioutil.ReadFile(\"/sys/bus/thunderbolt/devices/0-0/device_name\")\nif err !\u003d nil {\n    return errors.Wrap(err, \"failed to read thunderbolt device name\")\n}\nvendorName, err :\u003d ioutil.ReadFile(\"/sys/bus/thunderbolt/devices/0-0/vendor_name\")\nif err !\u003d nil {\n    return errors.Wrap(err, \"failed to read thunderbolt vendor name\")\n}\n```\n\nIf the errors are not fatal to your test, you should simply log it.",
+      "revId": "a6dbf6e79a28aa7cbc0ca06dfc0c181ed56bd04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a10e17f_861fb9a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:29:22Z",
+      "side": 1,
+      "message": "I don\u0027t think the error checking should be here.",
+      "revId": "a6dbf6e79a28aa7cbc0ca06dfc0c181ed56bd04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b2b346_de450ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:29:22Z",
+      "side": 1,
+      "message": "I don\u0027t think the check for error should be here.",
+      "revId": "a6dbf6e79a28aa7cbc0ca06dfc0c181ed56bd04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
