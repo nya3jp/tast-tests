@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d670c027_8b7d4e75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-01T11:24:25Z",
+      "side": 1,
+      "message": "LGTM with a request.",
+      "revId": "ca561a9219ae48a909c0ede0dac204c6da692cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394ba3d9_2ac1951a",
@@ -96,6 +113,30 @@
       "side": 1,
       "message": "Filed a bug here https://crbug.com/1312306",
       "parentUuid": "91f52eec_426d7cc2",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "ca561a9219ae48a909c0ede0dac204c6da692cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec03d322_c67e361d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-01T11:24:25Z",
+      "side": 1,
+      "message": "Could you add TODO to refernce the bug here?",
+      "parentUuid": "bf0734c6_9413b4fc",
       "range": {
         "startLine": 74,
         "startChar": 8,
