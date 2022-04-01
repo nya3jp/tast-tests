@@ -19,7 +19,7 @@ import (
 )
 
 // Insets holds onscreen insets.
-// See https://developer.chrome.com/apps/system.display#type-Insets.
+// See https://developer.chrome.com/docs/extensions/reference/system_display/#type-Insets.
 type Insets struct {
 	Left   int `json:"left"`
 	Top    int `json:"top"`
@@ -28,7 +28,7 @@ type Insets struct {
 }
 
 // DisplayMode holds a mode supported by the display.
-// See https://developer.chrome.com/apps/system.display#type-DisplayMode.
+// See https://developer.chrome.com/docs/extensions/reference/system_display/#type-DisplayMode.
 type DisplayMode struct { // NOLINT
 	Width                int     `json:"width"`
 	Height               int     `json:"height"`
@@ -43,7 +43,7 @@ type DisplayMode struct { // NOLINT
 }
 
 // Info holds information about a display and is returned by GetInfo.
-// See https://developer.chrome.com/apps/system_display#method-getInfo.
+// See https://developer.chrome.com/docs/extensions/reference/system_display/#type-DisplayUnitInfo.
 type Info struct {
 	ID                          string         `json:"id"`
 	Name                        string         `json:"name"`
@@ -94,7 +94,7 @@ func (info *Info) GetEffectiveDeviceScaleFactor() (float64, error) {
 }
 
 // GetInfo calls chrome.system.display.getInfo to get information about connected displays.
-// See https://developer.chrome.com/apps/system_display#method-getInfo.
+// See https://developer.chrome.com/docs/extensions/reference/system_display/#method-getInfo.
 func GetInfo(ctx context.Context, tconn *chrome.TestConn) ([]Info, error) {
 	var infos []Info
 	if err := tconn.Call(ctx, &infos, `tast.promisify(chrome.system.display.getInfo)`); err != nil {
@@ -138,7 +138,7 @@ func GetPrimaryInfo(ctx context.Context, tconn *chrome.TestConn) (*Info, error) 
 }
 
 // DisplayProperties holds properties to change and is passed to SetDisplayProperties.
-// nil fields are ignored. See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
+// nil fields are ignored. See https://developer.chrome.com/docs/extensions/reference/system_display/#type-DisplayProperties.
 type DisplayProperties struct { // NOLINT
 	IsUnified         *bool        `json:"isUnified,omitempty"`
 	MirroringSourceID *string      `json:"mirroringSourceId,omitempty"`
@@ -152,7 +152,7 @@ type DisplayProperties struct { // NOLINT
 }
 
 // SetDisplayProperties updates the properties for the display specified by id.
-// See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
+// See https://developer.chrome.com/docs/extensions/reference/system_display/#method-setDisplayProperties.
 // Some properties, like rotation, will be performed in an async way. For rotation in particular,
 // you should call display.WaitForDisplayRotation() to know when the rotation animation finishes.
 func SetDisplayProperties(ctx context.Context, tconn *chrome.TestConn, id string, dp DisplayProperties) error {
