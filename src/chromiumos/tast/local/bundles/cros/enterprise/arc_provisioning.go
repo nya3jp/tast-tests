@@ -137,8 +137,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 		defer cancel()
 		if err := ensurePlayStoreNotEmpty(ctx, a); err != nil {
-			hasError := func() bool { return true }
-			faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), hasError, tconn)
+			faillog.DumpUITree(cleanupCtx, s.OutDir(), tconn)
 			return exit("verify Play Store is not empty", err)
 		}
 
@@ -154,12 +153,24 @@ func dumpBugReport(ctx context.Context, a *arc.ARC, filePath string) {
 	}
 }
 
+func waitForPackages(ctx context.Context, a *arc.ARC, packages []string) error {
+	// waitForPackages waits indefinitely and we're installing only 2 packages
+	// so it is not necessary to wait more than 4 minutes.
+	const installTimePerPackageMins = 2
+	totalInstallTimeMins := len(packages) * installTimePerPackageMins
+	timeout := time.Duration(totalInstallTimeMins) * time.Minute
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
+	return a.WaitForPackages(ctx, packages)
+}
+
 // ensurePackagesUninstallable verifies that force-installed packages can't be uninstalled
 func ensurePackagesUninstallable(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packages []string) error {
 	// Ensure that Android packages are force-installed by ARC policy.
 	// Note: if the user policy for the user is changed, the packages listed in
 	// credentials files must be updated.
-	if err := a.WaitForPackages(ctx, packages); err != nil {
+	if err := waitForPackages(ctx, a, packages); err != nil {
 		return errors.Wrap(err, "failed to force install packages")
 	}
 
