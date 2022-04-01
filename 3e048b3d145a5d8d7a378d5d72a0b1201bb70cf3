@@ -33,6 +33,46 @@
       "message": "@Hanada-san, friendly ping. Any concerns with this moving to critical with the dcheck boards disabled?",
       "revId": "3e048b3d145a5d8d7a378d5d72a0b1201bb70cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a306bac5_f1c70508",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-01T00:52:32Z",
+      "side": 1,
+      "message": "+2. Sorry for the delay!",
+      "revId": "3e048b3d145a5d8d7a378d5d72a0b1201bb70cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279b1ef1_97379149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-01T00:52:32Z",
+      "side": 1,
+      "message": "Do we have a bug to track this? We may want to fix the DCHECK crash eventually.",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "3e048b3d145a5d8d7a378d5d72a0b1201bb70cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
