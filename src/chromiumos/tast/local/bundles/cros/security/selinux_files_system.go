@@ -167,6 +167,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/usr/sbin/tcsd", Context: "cros_tcsd_exec", IgnoreErrors: true},
 		{Path: "/usr/sbin/update_engine", Context: "cros_update_engine_exec"},
 		{Path: "/usr/sbin/usbguard-daemon", Context: "cros_usbguard_exec", IgnoreErrors: true},
+		{Path: "/usr/sbin/vtpmd", Context: "cros_vtpmd_exec", IgnoreErrors: true},
 		{Path: "/usr/sbin/wpa_supplicant", Context: "cros_wpa_supplicant_exec"},
 		{Path: "/usr/share/cros/init", Context: "cros_init_shell_scripts", Recursive: true, Filter: selinux.IgnorePathsButNotContents([]string{
 			"/usr/share/cros/init/activate_date.sh",
