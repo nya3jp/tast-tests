@@ -33,6 +33,24 @@
       "message": "can we name CloseBrowserWindowWithURL to be more explicit?",
       "revId": "3e57bd71312a47268f27aea4cc161f2c5f631e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa192fa6_76d0e236",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-01T11:58:47Z",
+      "side": 1,
+      "message": "I think this makes it more confusing. If the browser window has tabs with urls that are not |url| then it won\u0027t be closed. This function is useful to verify the case that calling CloseWithURL worked if it closed all lacros tabs (since lacros will die at that point, we can\u0027t verify it via the dev tools) - that is, the point of this function isn\u0027t to close windows, it\u0027s to close pages. It /might/ be useful to encode a basic expectation that some windows were closed as well, but it\u0027s not the main point.",
+      "parentUuid": "a9b167e8_ca1bd604",
+      "revId": "3e57bd71312a47268f27aea4cc161f2c5f631e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
