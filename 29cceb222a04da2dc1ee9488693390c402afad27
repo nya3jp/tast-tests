@@ -16,6 +16,23 @@
       "message": "PTAL Nancy. Thank you!",
       "revId": "29cceb222a04da2dc1ee9488693390c402afad27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05c3a0e_6244b416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2022-04-01T00:03:11Z",
+      "side": 1,
+      "message": "Thanks Tiago for the change. I have a few questions:\n1. We haven\u0027t enable the full restore support for Lacros yet, so can the test pass for Lacros?\n2. When we enable the full restore for Lacros, only when the Lacros is primary, the full restore function is valid. In the test, is Lacros primary checked?\n3. Will the test still verify the ash browser? As we haven\u0027t launch Lacros for the stable release yet, right?",
+      "revId": "29cceb222a04da2dc1ee9488693390c402afad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
