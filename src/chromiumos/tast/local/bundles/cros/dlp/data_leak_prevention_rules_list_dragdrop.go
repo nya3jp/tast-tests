@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -95,7 +96,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 
 			if err := webutil.WaitForQuiescence(ctx, conn1, 10*time.Second); err != nil {
-				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.url, err)
+				s.Fatal("Failed to wait for google.com to achieve quiescence: ", err)
 			}
 
 			conn2, err := cr.NewConn(ctx, "https://"+param.url, browser.WithNewWindow())
@@ -147,14 +148,27 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 
 			s.Log("Checking notification")
 			ui := uiauto.New(tconn)
-			err = clipboard.CheckClipboardBubble(ctx, ui, param.url)
 
-			if !param.wantAllowed && err != nil {
-				s.Error("Couldn't check for notification: ", err)
+			// Verify notification bubble.
+			notifError := clipboard.CheckClipboardBubble(ctx, ui, param.url)
+
+			if !param.wantAllowed && notifError != nil {
+				s.Error("Expected notification but found an error: ", notifError)
 			}
 
-			if param.wantAllowed && err == nil {
-				s.Error("Content pasted, expected restriction")
+			if param.wantAllowed && notifError == nil {
+				s.Error("Didn't expect notification but one was found: ")
+			}
+
+			// Check dropped content.
+			dropError := checkDraggedContent(ctx, ui, param.content)
+
+			if param.wantAllowed && dropError != nil {
+				s.Error("Checked pasted content but found an error: ", dropError)
+			}
+
+			if !param.wantAllowed && dropError == nil {
+				s.Error("Content was pasted but should have been blocked")
 			}
 		})
 	}
@@ -169,8 +183,7 @@ func dragDrop(ctx context.Context, tconn *chrome.TestConn, content string) error
 		return errors.Wrap(err, "failed to get locaton for content")
 	}
 
-	search := "Google Search"
-	searchTab := nodewith.Name(search).Role(role.InlineTextBox).First()
+	searchTab := nodewith.Name("Search").Role(role.TextFieldWithComboBox).State(state.Editable, true).First()
 	endLocation, err := ui.Location(ctx, searchTab)
 	if err != nil {
 		return errors.Wrap(err, "failed to get locaton for google search")
@@ -180,5 +193,16 @@ func dragDrop(ctx context.Context, tconn *chrome.TestConn, content string) error
 		mouse.Drag(tconn, start.CenterPoint(), endLocation.CenterPoint(), time.Second*2))(ctx); err != nil {
 		return errors.Wrap(err, "failed to verify content preview for")
 	}
+	return nil
+}
+
+// checkDraggedContent checks if a certain |content| appears in the search box.
+func checkDraggedContent(ctx context.Context, ui *uiauto.Context, content string) error {
+	contentNode := nodewith.NameContaining(content).Role(role.InlineTextBox).State(state.Editable, true).First()
+
+	if err := ui.WaitUntilExists(contentNode)(ctx); err != nil {
+		return errors.Wrap(err, "failed to check for dragged content")
+	}
+
 	return nil
 }
