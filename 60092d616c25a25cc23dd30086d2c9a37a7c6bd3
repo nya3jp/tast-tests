@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8abe93a7_9adfa436",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-04-01T18:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15393e20_f0146133",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3408f26b_87138284",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-31T20:13:04Z",
       "side": 1,
       "message": "nit: Reflow to 80 columns or less.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 73
+      },
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9696a13e_c9e5a1d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-04-01T18:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3408f26b_87138284",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "writtenOn": "2022-03-31T20:13:04Z",
       "side": 1,
       "message": "\"scarlet\" is a model, since we use SkipOnPlatform(), we don\u0027t need\nit.",
+      "range": {
+        "startLine": 797,
+        "startChar": 93,
+        "endLine": 797,
+        "endChar": 100
+      },
+      "revId": "60092d616c25a25cc23dd30086d2c9a37a7c6bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b19beacd_bf204c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-04-01T18:10:11Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "6c0cd029_976eb2da",
       "range": {
         "startLine": 797,
         "startChar": 93,
