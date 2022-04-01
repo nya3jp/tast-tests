@@ -78,7 +78,7 @@ func SystemTrayItemsPerf(ctx context.Context, s *testing.State) {
 			ac.LeftClick(recordFullscreenToggleButton),
 			kb.AccelAction("Enter"),
 			// Records full screen for 2 seconds.
-			ac.Sleep(2*time.Second),
+			uiauto.Sleep(2*time.Second),
 			ac.LeftClick(stopRecordButton),
 			// Checks if the screen record is taken.
 			ac.WaitUntilExists(recordTakenLabel),

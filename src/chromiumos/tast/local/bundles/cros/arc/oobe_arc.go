@@ -65,12 +65,12 @@ func OobeArc(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("go through the oobe flow ui",
 		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
 			"Accept and continue|Got it")).Role(role.Button)),
-		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
+		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
 		ui.LeftClick(nodewith.Name("More").Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Review Google Play options following setup").Role(role.CheckBox)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
-		ui.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
-		ui.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(assistantPage), ui.LeftClick(noThanks)),
+		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(assistantPage), ui.LeftClick(noThanks)),
 		ui.LeftClick(getStarted),
 	)(ctx); err != nil {
 		s.Fatal("Failed to test oobe Arc: ", err)
@@ -78,10 +78,10 @@ func OobeArc(ctx context.Context, s *testing.State) {
 
 	next := nodewith.Name("Next").Role(role.Button)
 	if err := uiauto.Combine("go through the tablet specific flow",
-		ui.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		ui.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		ui.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		ui.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
+		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
+		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
+		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
+		uiauto.IfSuccessThen(ui.WithTimeout(30*time.Second).WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to test oobe Arc tablet flow: ", err)
 	}

@@ -253,14 +253,14 @@ func (s *Settings) UnshareFolder(ctx context.Context, folder string) error {
 		s.ui.LeftClick(tryAgainButton),
 		s.ui.WaitUntilGone(unshareFailDlg),
 		s.ui.EnsureGoneFor(unshareFailDlg, 5*time.Second))
-	retryIfFailed := s.ui.IfSuccessThen(
+	retryIfFailed := uiauto.IfSuccessThen(
 		s.ui.WithTimeout(5*time.Second).WaitUntilExists(unshareFailDlg),
 		s.ui.WithPollOpts(testing.PollOptions{Interval: 5 * time.Second}).Retry(4, retryUnshare))
 
 	return uiauto.Combine("unshare folder "+folder,
 		s.ui.LeftClick(folderButton),
 		retryIfFailed,
-		s.ui.IfSuccessThen(s.ui.Exists(sharedFoldersList), s.ui.WaitUntilGone(folderButton)),
+		uiauto.IfSuccessThen(s.ui.Exists(sharedFoldersList), s.ui.WaitUntilGone(folderButton)),
 	)(ctx)
 }
 

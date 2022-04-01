@@ -146,7 +146,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 
 		// Pop-up content regarding view history privacy might show up.
 		privacyButton := nodewith.Name("I understand").Role(role.Button)
-		if err := ui.IfSuccessThen(ui.WaitUntilExists(privacyButton), ui.LeftClick(privacyButton))(ctx); err != nil {
+		if err := uiauto.IfSuccessThen(ui.WaitUntilExists(privacyButton), ui.LeftClick(privacyButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the spreadsheet privacy button")
 		}
 

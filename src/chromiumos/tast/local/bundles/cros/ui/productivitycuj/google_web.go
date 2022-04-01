@@ -230,7 +230,7 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			if err := uiauto.Combine("copy the content of the document to the clipboard",
 				app.kb.AccelAction("Ctrl+A"),
-				app.ui.Sleep(500*time.Millisecond), // Wait for all text to be selected.
+				uiauto.Sleep(500*time.Millisecond), // Wait for all text to be selected.
 				app.kb.AccelAction("Ctrl+C"),
 			)(ctx); err != nil {
 				return err
@@ -314,7 +314,7 @@ func (app *GoogleDocs) Cleanup(ctx context.Context, sheetName string) error {
 func (app *GoogleDocs) maybeCloseWelcomeDialog(ctx context.Context) error {
 	welcomeDialog := nodewith.NameRegex(regexp.MustCompile("^Welcome to Google (Docs|Slides|Sheets)$")).Role(role.Dialog)
 	closeButton := nodewith.Name("Close").Ancestor(welcomeDialog)
-	return app.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeDialog),
 		app.uiHdl.Click(closeButton),
 	)(ctx)
@@ -349,7 +349,7 @@ func (app *GoogleDocs) selectCell(cell string) action.Action {
 			app.kb.AccelAction("Enter"),
 			// Given time to jump to the specific cell and select it.
 			// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
-			app.ui.Sleep(500*time.Millisecond),
+			uiauto.Sleep(500*time.Millisecond),
 		),
 	)
 }
@@ -424,14 +424,14 @@ func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
 	return uiauto.Combine("rename the file",
 		app.validateEditMode,
 		app.ui.Retry(retryTimes, uiauto.Combine(`select "Rename" from the "File" menu`,
-			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileItem),
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileItem),
 				app.uiHdl.ClickUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileExpanded))),
-			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameItem),
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameItem),
 				app.uiHdl.ClickUntil(renameItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameField))),
 		)),
 		uiauto.NamedAction("input the file name", inputFileName),
 		app.kb.AccelAction("Enter"),
-		app.ui.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
+		uiauto.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
 	)
 }
 
@@ -439,7 +439,7 @@ func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
 func (app *GoogleDocs) maybeCloseEditHistoryDialog(ctx context.Context) error {
 	dialog := nodewith.Name("See edit history of a cell").Role(role.Dialog)
 	button := nodewith.Name("GOT IT").Role(role.Button).Ancestor(dialog)
-	return app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dialog), app.uiHdl.Click(button))(ctx)
+	return uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dialog), app.uiHdl.Click(button))(ctx)
 }
 
 // closeDialogs closes dialogs if the display is different from what we expected.

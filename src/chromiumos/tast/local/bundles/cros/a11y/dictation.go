@@ -93,7 +93,7 @@ func Dictation(ctx context.Context, s *testing.State) {
 			return voice.AudioFromFile(ctx, s.DataPath("voice_en_hello.wav"))
 		},
 		// Give Dictation time to process the audio input.
-		ui.Sleep(10*time.Second),
+		uiauto.Sleep(10*time.Second),
 	)(ctx); err != nil {
 		s.Fatal("Failed to play audio file: ", err)
 	}

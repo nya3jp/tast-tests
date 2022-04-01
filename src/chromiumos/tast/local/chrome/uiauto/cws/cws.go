@@ -68,7 +68,7 @@ func InstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 		}
 
 		// Click on the confirm button, if it exists.
-		if err := ui.IfSuccessThen(ui.Exists(confirm), ui.LeftClick(confirm))(ctx); err != nil {
+		if err := uiauto.IfSuccessThen(ui.Exists(confirm), ui.LeftClick(confirm))(ctx); err != nil {
 			return testing.PollBreak(err)
 		}
 		return errors.Errorf("%s still installing", app.Name)

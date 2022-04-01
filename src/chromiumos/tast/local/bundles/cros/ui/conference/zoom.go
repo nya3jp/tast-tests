@@ -84,7 +84,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 			// If the DUT has only one account, it would login to profile page directly.
 			// Otherwise, it would show list of accounts.
 			if err := uiauto.Combine("sign in",
-				ui.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(account),
+				uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(account),
 					ui.LeftClickUntil(account, ui.Gone(account))),
 				ui.WaitUntilExists(profilePicture),
 			)(ctx); err != nil {
@@ -110,7 +110,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 			if err := ui.WaitUntilExists(avPerm)(ctx); err == nil {
 				if err := uiauto.Combine("allow microphone and camera",
 					// Immediately clicking the allow button sometimes doesn't work. Sleep 2 seconds.
-					ui.Sleep(2*time.Second),
+					uiauto.Sleep(2*time.Second),
 					ui.LeftClick(allowButton),
 					ui.WaitUntilGone(avPerm),
 				)(ctx); err != nil {
@@ -174,7 +174,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 			uiauto.NamedAction("to detect camera button within 15 seconds", ui.WaitUntilExists(cameraButton)),
 			// Some DUTs start playing video for the first time.
 			// If there is a stop video button, do nothing.
-			ui.IfSuccessThen(ui.Exists(startVideoButton),
+			uiauto.IfSuccessThen(ui.Exists(startVideoButton),
 				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(startVideoButton))),
 			ui.WaitUntilExists(stopVideoButton),
 		))(ctx)
@@ -198,7 +198,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
 		ui.WaitUntilExists(joinFromYourBrowser),
-		ui.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(acceptCookiesButton),
+		uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(acceptCookiesButton),
 			ui.LeftClickUntil(acceptCookiesButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(acceptCookiesButton))),
 		ui.LeftClick(joinFromYourBrowser),
 		ui.WithTimeout(longUITimeout).WaitUntilExists(joinButton),
@@ -259,10 +259,10 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 
 	return uiauto.Combine("toggle video and audio",
 		// Remain in the state for 5 seconds after each action.
-		toggleVideo, ui.Sleep(viewingTime),
-		toggleVideo, ui.Sleep(viewingTime),
-		toggleAudio, ui.Sleep(viewingTime),
-		toggleAudio, ui.Sleep(viewingTime),
+		toggleVideo, uiauto.Sleep(viewingTime),
+		toggleVideo, uiauto.Sleep(viewingTime),
+		toggleAudio, uiauto.Sleep(viewingTime),
+		toggleAudio, uiauto.Sleep(viewingTime),
 	)(ctx)
 }
 
@@ -316,14 +316,14 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 		selectMode := func(ctx context.Context) error {
 			return uiauto.Combine("select layout mode",
 				conf.showInterface,
-				ui.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
+				uiauto.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
 				ui.LeftClick(modeNode),
 			)(ctx)
 		}
 		testing.ContextLogf(ctx, "Change layout to %q", mode)
 		if err := uiauto.Combine("change layout to '"+mode+"'",
 			ui.Retry(3, selectMode),
-			ui.Sleep(viewingTime), //After applying new layout, give it 5 seconds for viewing before applying next one.
+			uiauto.Sleep(viewingTime), //After applying new layout, give it 5 seconds for viewing before applying next one.
 		)(ctx); err != nil {
 			return err
 		}
@@ -377,7 +377,7 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 			// Double click to enter full screen.
 			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", true),
 			// After applying new background, give it 5 seconds for viewing before applying next one.
-			ui.Sleep(viewingTime),
+			uiauto.Sleep(viewingTime),
 			// Double click to exit full screen.
 			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", false),
 		)(ctx)

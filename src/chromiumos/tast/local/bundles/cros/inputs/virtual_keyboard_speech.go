@@ -114,7 +114,7 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 
 			verifyAudioInputAction := uiauto.Combine("verify audio input",
 				its.Clear(inputField),
-				uiauto.New(tconn).Sleep(time.Second),
+				uiauto.Sleep(time.Second),
 				its.ClickFieldUntilVKShown(inputField),
 				vkbCtx.SwitchToVoiceInput(),
 				func(ctx context.Context) error {

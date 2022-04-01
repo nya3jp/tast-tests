@@ -213,7 +213,7 @@ func (t *TabletActionHandler) ClickUntil(finder *nodewith.Finder, condition func
 	return func(ctx context.Context) error {
 		if err := uiauto.Combine("initially click the node",
 			t.tc.Tap(finder),
-			t.ui.Sleep(defaultPollOpts.Interval),
+			uiauto.Sleep(defaultPollOpts.Interval),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to initially click the node")
 		}
@@ -278,7 +278,7 @@ func (t *TabletActionHandler) NewChromeTab(ctx context.Context, cr *chrome.Chrom
 		return nil, errors.Wrap(err, "failed to find new tab")
 	}
 	if err = c.Navigate(ctx, url); err != nil {
-		return c, errors.Wrapf(err, "failed to navigate to %s, error: %v", url, err)
+		return c, errors.Wrapf(err, "failed to navigate to %s, error", url)
 	}
 
 	return c, nil
@@ -757,7 +757,7 @@ func (cl *ClamshellActionHandler) NewChromeTab(ctx context.Context, cr *chrome.C
 		if err := c.Close(); err != nil {
 			testing.ContextLog(ctx, "Failed to close the connection: ", err)
 		}
-		return nil, errors.Wrapf(err, "failed to navigate to %s, error: %v", url, err)
+		return nil, errors.Wrapf(err, "failed to navigate to %s, error", url)
 	}
 
 	return c, nil
@@ -865,9 +865,9 @@ func (cl *ClamshellActionHandler) switchToLRUWindowThroughKeyEvent(ctx context.C
 	actions := []action.Action{cl.kb.AccelPressAction("Alt")}
 	for i := 1; i < numWindows; i++ {
 		actions = append(actions,
-			cl.ui.Sleep(200*time.Millisecond),
+			uiauto.Sleep(200*time.Millisecond),
 			cl.kb.AccelPressAction("Tab"),
-			cl.ui.Sleep(200*time.Millisecond),
+			uiauto.Sleep(200*time.Millisecond),
 			cl.kb.AccelReleaseAction("Tab"),
 		)
 	}

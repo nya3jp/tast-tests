@@ -95,7 +95,7 @@ func DeleteDoc(tconn *chrome.TestConn) action.Action {
 			ui.LeftClick(goToDocsHome),
 			// When leaving the edit document, sometimes the "Leave Site?" dialog box will pop up.
 			// If it appears, click the leave button.
-			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
+			uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
 			ui.WithTimeout(longerUIWaitTime).WaitUntilExists(docHomeWebArea),
 		),
 	)

@@ -160,8 +160,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	moveEndLocation := info.IconsBoundsInScreen[0].CenterPoint()
 
 	// Verify that app rearrangement works for a pinned shelf app.
-	ac := uiauto.New(tconn)
-	if err := getDragAndDropAction(ac, tconn, "move the target app from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
+	if err := getDragAndDropAction(tconn, "move the target app from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
 		s.Fatal("Failed to move the target app from the third slot to the first slot: ", err)
 	}
 
@@ -169,7 +168,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
-	if err := getDragAndDropAction(ac, tconn, "move the target app from the first slot to the third slot", moveEndLocation, moveStartLocation)(ctx); err != nil {
+	if err := getDragAndDropAction(tconn, "move the target app from the first slot to the third slot", moveEndLocation, moveStartLocation)(ctx); err != nil {
 		s.Fatal("Failed to move the target app from the first slot to the third slot")
 	}
 
@@ -191,7 +190,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	moveEndLocation = info.IconsBoundsInScreen[0].CenterPoint()
 
 	// Verify that app rearrangement works for a pinned shelf app with the activated window.
-	if err := getDragAndDropAction(ac, tconn, "move the target app with the activated window from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
+	if err := getDragAndDropAction(tconn, "move the target app with the activated window from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
 		s.Fatal("Failed to move the target app with the activated window from the third slot to the first slot: ", err)
 	}
 
@@ -199,7 +198,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify shelf icon indices: ", err)
 	}
 
-	if err := getDragAndDropAction(ac, tconn, "move the target app with the activated window from the first slot to the third slot", moveEndLocation, moveStartLocation)(ctx); err != nil {
+	if err := getDragAndDropAction(tconn, "move the target app with the activated window from the first slot to the third slot", moveEndLocation, moveStartLocation)(ctx); err != nil {
 		s.Fatal("Failed to move the target app with the activated window from the first slot to the third slot")
 	}
 
@@ -212,7 +211,7 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that an unpinned app with the activated window should not be able to be placed in front of the pinned apps.
-	if err := getDragAndDropAction(ac, tconn, "move the unpinned app with the activated window from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
+	if err := getDragAndDropAction(tconn, "move the unpinned app with the activated window from the third slot to the first slot", moveStartLocation, moveEndLocation)(ctx); err != nil {
 		s.Fatal("Failed to move the unpinned app from the third slot to the first slot: ", err)
 	}
 
@@ -230,14 +229,14 @@ func AppRearrangement(ctx context.Context, s *testing.State) {
 	}
 }
 
-func getDragAndDropAction(ac *uiauto.Context, tconn *chrome.TestConn, actionName string, startLocation, endLocation coords.Point) uiauto.Action {
+func getDragAndDropAction(tconn *chrome.TestConn, actionName string, startLocation, endLocation coords.Point) uiauto.Action {
 	return uiauto.Combine(actionName,
 		mouse.Move(tconn, startLocation, 0),
 		// Drag in tablet mode starts with a long press.
 		mouse.Press(tconn, mouse.LeftButton),
-		ac.Sleep(time.Second),
+		uiauto.Sleep(time.Second),
 
 		mouse.Move(tconn, endLocation, 2*time.Second),
 		mouse.Release(tconn, mouse.LeftButton),
-		ac.Sleep(time.Second))
+		uiauto.Sleep(time.Second))
 }
