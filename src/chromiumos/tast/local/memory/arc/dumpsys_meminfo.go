@@ -358,3 +358,31 @@ func ReportDumpsysMeminfoMetrics(vmSummary *VMSummary, p *perf.Values, suffix st
 		)
 	}
 }
+
+func reportDumpsysMeminfoAppMetric(p *perf.Values, pkg, name, suffix string, value int32) {
+	p.Set(
+		perf.Metric{
+			Name:      fmt.Sprintf("%s_%s_pss%s", pkg, name, suffix),
+			Unit:      "KiB",
+			Direction: perf.SmallerIsBetter,
+		},
+		float64(value),
+	)
+}
+
+// LogDumpsysMeminfoAppMetrics logs performance metrics for all the PSS summary
+// values returned by dumpsys meminfo for a given App package.
+func LogDumpsysMeminfoAppMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, pkg, suffix string) error {
+	summary, err := a.DumpsysMeminfoPackage(ctx, pkg)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get dumpsys meminfo metrics for %s", pkg)
+	}
+	// NB: Don't report graphics, as it's 0 within ARCVM.
+	reportDumpsysMeminfoAppMetric(p, pkg, "java_heap", suffix, summary.JavaHeapPssKb)
+	reportDumpsysMeminfoAppMetric(p, pkg, "native_heap", suffix, summary.NativeHeapPssKb)
+	reportDumpsysMeminfoAppMetric(p, pkg, "code", suffix, summary.CodePssKb)
+	reportDumpsysMeminfoAppMetric(p, pkg, "stack", suffix, summary.StackPssKb)
+	reportDumpsysMeminfoAppMetric(p, pkg, "private_other", suffix, summary.PrivateOtherPssKb)
+	reportDumpsysMeminfoAppMetric(p, pkg, "system", suffix, summary.SystemPssKb)
+	return nil
+}
