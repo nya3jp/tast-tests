@@ -7,6 +7,7 @@ package modemmanager
 import (
 	"context"
 	"math"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -464,6 +465,26 @@ func EnsureRegistered(ctx context.Context, modem, simpleModem *Modem) error {
 		return errors.Wrap(err, "failed to verify modem registration state")
 	}
 	return nil
+}
+
+// Connect polls on simple modem D-Bus connect call with given apn.
+func Connect(ctx context.Context, modem *Modem, props map[string]interface{}, timeout time.Duration) error {
+	// Connect and poll for modem state.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		errConn := modem.Call(ctx, mmconst.ModemConnect, props).Err
+		if (errConn != nil) && (strings.Contains(errConn.Error(), "no-service")) {
+			return errors.Wrap(errConn, "failed to connect can be network issue")
+		}
+		if isConnected, err := modem.IsConnected(ctx); err != nil {
+			return errors.Wrap(err, "failed to fetch connected state")
+		} else if !isConnected {
+			return errors.Wrap(err, "modem not connected")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  timeout,
+		Interval: 2 * time.Second,
+	})
 }
 
 // InhibitModem inhibits the first available modem on DBus. Use the returned callback to uninhibit.
