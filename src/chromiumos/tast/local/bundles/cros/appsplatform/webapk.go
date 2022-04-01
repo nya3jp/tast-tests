@@ -13,11 +13,10 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/appsplatform/webapks"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/webapk"
 	"chromiumos/tast/testing"
 )
 
@@ -29,11 +28,6 @@ type shareResult struct {
 }
 
 const (
-	// A pre-generated WebAPK which points to a PWA installed from localhost:8000.
-	generatedWebAPK = "WebShareTargetTestWebApk_20210707.apk"
-
-	localServerAddr = "localhost:8000"
-
 	testPackage        = "org.chromium.arc.testapp.chromewebapk"
 	testClass          = "org.chromium.arc.testapp.chromewebapk.MainActivity"
 	shareTextButtonID  = testPackage + ":id/share_text_button"
@@ -54,10 +48,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data: []string{
 			"webshare_icon.png",
-			"webshare_index.html",
 			"webshare_manifest.json",
 			"webshare_service.js",
-			generatedWebAPK,
+			webapks.WebShareTargetWebApk.ApkDataPath,
+			webapks.WebShareTargetWebApk.IndexPageDataPath,
 		},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -98,13 +92,13 @@ func WebAPK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	const (
-		appName = "Web Share Target Test App"
-		appID   = "elcejdjmpnnkghnpldcjkafeoaadlkba"
-	)
+	wm, err := webapk.NewManager(ctx, cr, a, s, webapks.WebShareTargetWebApk)
+	if err != nil {
+		s.Fatal("Failed to create WebAPK Manager: ", err)
+	}
 
 	defer func(ctx context.Context) {
-		if err := ossettings.UninstallApp(ctx, tconn, cr, appName, appID); err != nil {
+		if err := wm.UninstallPwa(ctx); err != nil {
 			s.Log("Failed to uninstall the test app, it might cause failure in the future run: ", err)
 		}
 	}(cleanupCtx)
@@ -115,14 +109,14 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	// the server will also be sent through the channel and will be handled
 	// in shareTextAndVerify, after we have triggered an HTTP request to the
 	// server.
-	server, shareChan := startTestPWAServer(ctx, s.DataFileSystem())
-	defer server.Shutdown(cleanupCtx)
+	shareChan := startTestPWAServer(ctx, wm, s.DataFileSystem())
+	defer wm.ShutdownServer(cleanupCtx)
 	defer close(shareChan)
 
-	if err = installTestApps(ctx, cr, a, tconn, appName, appID, s.DataPath(generatedWebAPK)); err != nil {
+	if err = installTestApps(ctx, wm, a); err != nil {
 		s.Fatal("Failed to install test apps: ", err)
 	}
-	defer apps.Close(cleanupCtx, tconn, appID)
+	defer wm.CloseApp(cleanupCtx)
 
 	activity, err := arc.NewActivity(a, testPackage, testClass)
 	if err != nil {
@@ -151,7 +145,7 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	}
 }
 
-func startTestPWAServer(ctx context.Context, filesystem http.FileSystem) (*http.Server, chan shareResult) {
+func startTestPWAServer(ctx context.Context, wm *webapk.Manager, filesystem http.FileSystem) chan shareResult {
 	shareChan := make(chan shareResult)
 	mux := http.NewServeMux()
 	fs := http.FileServer(filesystem)
@@ -190,43 +184,29 @@ func startTestPWAServer(ctx context.Context, filesystem http.FileSystem) (*http.
 		shareChan <- result
 	})
 
-	server := &http.Server{Addr: localServerAddr, Handler: mux}
-	go func() {
-		if err := server.ListenAndServe(); err != http.ErrServerClosed {
-			shareChan <- shareResult{err: errors.Wrap(err, "failed to start local server")}
-		}
-	}()
+	wm.StartServer(ctx, mux, func(err error) {
+		shareChan <- shareResult{err: errors.Wrap(err, "failed to start local server")}
+	})
 
-	return server, shareChan
+	return shareChan
 }
 
-func installTestApps(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, tconn *chrome.TestConn, appName, appID, webAPKPath string) error {
-	const (
-		localServerIndex = "http://" + localServerAddr + "/webshare_index.html"
-		installTimeout   = 15 * time.Second
-		testAPK          = "ArcChromeWebApkTest.apk"
-	)
-
-	if _, err := apps.InstallPWAForURL(ctx, cr, localServerIndex, installTimeout); err != nil {
-		if errUninstall := ossettings.UninstallApp(ctx, tconn, cr, appName, appID); errUninstall != nil {
-			return errors.Wrap(errUninstall, "failed to uninstall the pre-exist PWA")
-		}
-		if _, err := apps.InstallPWAForURL(ctx, cr, localServerIndex, installTimeout); err != nil {
-			return errors.Wrap(err, "failed to install PWA for URL")
-		}
+func installTestApps(ctx context.Context, wm *webapk.Manager, a *arc.ARC) error {
+	if err := wm.InstallPwa(ctx); err != nil {
+		return errors.Wrap(err, "failed to install PWA")
 	}
-
-	if err := ash.WaitForChromeAppInstalled(ctx, tconn, appID, installTimeout); err != nil {
-		return errors.Wrap(err, "failed to wait for PWA to be installed")
-	}
-	if err := a.Install(ctx, webAPKPath); err != nil {
+	if err := wm.InstallApk(ctx); err != nil {
 		return errors.Wrap(err, "failed to install WebAPK")
 	}
+
+	const (
+		testAPK = "ArcChromeWebApkTest.apk"
+	)
 	if err := a.Install(ctx, arc.APKPath(testAPK)); err != nil {
 		return errors.Wrap(err, "failed to install test app")
 	}
-	return nil
 
+	return nil
 }
 
 func clickShareButton(ctx context.Context, a *arc.ARC, buttonID string) error {
