@@ -16,6 +16,57 @@
       "message": "thanks for the reveiw!",
       "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c19388_9cdf43cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-04-01T01:12:56Z",
+      "side": 1,
+      "message": "Are a and d conventions for variables names in arc?\nIf not, I\u0027d recommend more self-explanatory",
+      "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8544c97e_40f686f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-04-01T01:12:56Z",
+      "side": 1,
+      "message": "nit:\nimeID, err :\u003d ime.CurrentInputMethod(ctx, tconn)\nif err !\u003d nil {",
+      "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b7ab1f2_d1275d27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-04-01T01:12:56Z",
+      "side": 1,
+      "message": "Nit: same as above",
+      "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
