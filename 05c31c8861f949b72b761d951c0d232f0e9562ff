@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t seem like the right tag for this UI action?",
       "revId": "05c31c8861f949b72b761d951c0d232f0e9562ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8a9ab3_1f44b0a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_ext.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-01T13:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125099d6_31c8e1f4",
+      "revId": "05c31c8861f949b72b761d951c0d232f0e9562ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
