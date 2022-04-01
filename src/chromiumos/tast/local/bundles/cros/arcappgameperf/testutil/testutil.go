@@ -8,8 +8,11 @@ package testutil
 import (
 	"context"
 	"path/filepath"
+	"regexp"
+	"strings"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
@@ -19,9 +22,12 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
@@ -34,6 +40,13 @@ type TestParams struct {
 	AppActivityName   string
 	Activity          *arc.Activity
 	ActivityStartTime time.Time
+}
+
+// RobloxTestParams stores data common to Roblox tests.
+type RobloxTestParams struct {
+	TestParams
+	Uda *uidetection.Context
+	Kbd *input.KeyboardEventWriter
 }
 
 // coolDownConfig returns the config to wait for the machine to cooldown for game performance tests.
@@ -60,6 +73,9 @@ type BenchmarkResults struct {
 
 // PerformTestFunc allows callers to run their desired test after a provided activity has been launched.
 type PerformTestFunc func(params TestParams) (err error)
+
+// PerformRobloxTestFunc allows callers to run their desired test after a provided Roblox minigame has be launched.
+type PerformRobloxTestFunc func(params RobloxTestParams) (err error)
 
 // cleanupOnErrorTime reserves time for cleanup in case of an error.
 const cleanupOnErrorTime = time.Second * 30
@@ -142,6 +158,67 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 }
 
+// PerformRobloxTest installs Roblox from the play store, starts the activity, searches for a minigame, runs it, and defers to the caller to perform a test.
+func PerformRobloxTest(ctx context.Context, s *testing.State, username, password, minigame, icon string, testFunc PerformRobloxTestFunc) {
+	const (
+		appPkgName  = "com.roblox.client"
+		appActivity = ".startup.ActivitySplash"
+		// The inputs rendered by Roblox are not immediately active after being clicked
+		// so wait a moment for the engine to make the input active before interacting with it.
+		waitForActiveInputTime = time.Second * 5
+	)
+	PerformTest(ctx, s, appPkgName, appActivity, func(params TestParams) error {
+		// onAppReady: Landing will appear in logcat after the game is fully loaded.
+		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
+			return errors.Wrap(err, "onAppReady was not found in LogCat")
+		}
+
+		kbd, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create keyboard")
+		}
+		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
+		if err := uiauto.Combine("Load Roblox Minigame",
+			// Click the button to start the log in process.
+			uda.Tap(uidetection.TextBlock([]string{"Log", "In"})),
+
+			// Click the Username/Email/Phone field and type the username.
+			uda.Tap(uidetection.Word("Username/Email/Phone")),
+			action.Sleep(waitForActiveInputTime),
+			kbd.TypeAction(username),
+
+			// Click the password field and type the password.
+			uda.Tap(uidetection.Word("Password").First()),
+			action.Sleep(waitForActiveInputTime),
+			kbd.TypeAction(password),
+
+			// Click the log in button.
+			uda.Tap(uidetection.TextBlock(strings.Split("Log In", " ")).First()),
+
+			// A 'verify your account' prompt occasionally shows up. Wait for that and click through if necessary.
+			action.IfSuccessThen(
+				uda.WithTimeout(time.Second*30).WaitUntilExists(uidetection.TextBlock([]string{"Verify"})),
+				uda.Tap(uidetection.TextBlock([]string{"Verify"})),
+			),
+
+			// Click the search dialog, type the game name, and hit 'ENTER' to send the query.
+			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-home-screen-search-input.png"))),
+			action.Sleep(waitForActiveInputTime),
+			kbd.TypeAction(minigame),
+			kbd.TypeKeyAction(input.KEY_ENTER),
+
+			// Click the game icon to open the modal.
+			uda.Tap(uidetection.CustomIcon(s.DataPath(icon))),
+
+			// Click the 'launch' button in the game modal.
+			uda.Tap(uidetection.CustomIcon(s.DataPath("roblox-launch-game.png"))),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to navigate to Roblox minigame")
+		}
+		return testFunc(RobloxTestParams{TestParams: params, Uda: uda, Kbd: kbd})
+	})
+}
+
 // displayScaleFactor returns the scale factor for the current display.
 func displayScaleFactor(ctx context.Context, tconn *chrome.TestConn) (float64, error) {
 	// Find the ratio to convert coordinates in the screenshot to those in the screen.
@@ -190,6 +267,26 @@ func StopBenchmarking(ctx context.Context, params TestParams) (results Benchmark
 	}
 
 	return r, nil
+}
+
+// Benchmark starts ARC App tracing, waits for duration, and then stops tracing and updates the provided perf.Values with the BenchmarkResults.
+func Benchmark(ctx context.Context, params TestParams, duration time.Duration, perfValues *perf.Values) error {
+	if err := StartBenchmarking(ctx, params); err != nil {
+		return errors.Wrap(err, "failed to start benchmarking")
+	}
+
+	if err := testing.Sleep(ctx, duration); err != nil {
+		return errors.Wrap(err, "failed sleep for sample")
+	}
+
+	r, err := StopBenchmarking(ctx, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to stop benchmarking")
+	}
+	perfValues.Set(FpsPerfMetric(), r.FPS)
+	perfValues.Set(CommitDeviationPerfMetric(), r.CommitDeviation)
+	perfValues.Set(RenderQualityPerfMetric(), r.RenderQuality*100.0)
+	return nil
 }
 
 // LaunchTimePerfMetric returns a standard metric that launch time can be saved in.
