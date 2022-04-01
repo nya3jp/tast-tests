@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6f281f9_08d211f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T07:09:54Z",
+      "side": 1,
+      "message": "fatal is used for the same reason as retry below\n\nAck",
+      "parentUuid": "8eda5a01_8af2791e",
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0aefe065_875e0490",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
         "patchSetId": 2
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a3a3d2b_fa549af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T07:09:54Z",
+      "side": 1,
+      "message": "The helper formats the message the same way for all retries so we don\u0027t have to repeat that part. It adds consistency to message formatting.\n\nAck",
+      "parentUuid": "0aefe065_875e0490",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 15
+      },
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec39912d_84a0bade",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
         "patchSetId": 2
@@ -54,6 +96,30 @@
       "writtenOn": "2022-04-01T06:52:25Z",
       "side": 1,
       "message": "You don\u0027t need to use s.HasError here, maybe providing your own function will make the test as a whole more readable.",
+      "range": {
+        "startLine": 127,
+        "startChar": 44,
+        "endLine": 127,
+        "endChar": 54
+      },
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d181aefa_0e4cc0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T07:09:54Z",
+      "side": 1,
+      "message": "Good point, let me clean it up",
+      "parentUuid": "ec39912d_84a0bade",
       "range": {
         "startLine": 127,
         "startChar": 44,
