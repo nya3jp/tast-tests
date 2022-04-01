@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227f68f6_1ffa4f61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-04-01T08:40:40Z",
+      "side": 1,
+      "message": "This solves the other bug, maybe we can submit this (temporary?) fix as part of this CL?\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1308378",
+      "range": {
+        "startLine": 360,
+        "startChar": 1,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "73da0ef393042b81d12b6b05f6c77d0ed4aa7282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
