@@ -181,7 +181,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				if s.Param().(browser.Type) == browser.TypeLacros {
 					// Close the empty tab after a tab with url is opened.
 					// Otherwise, this may trigger to terminate lacros.
-					if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+					if err := ash.CloseWithURL(ctx, tconn, l.Browser(), chrome.NewTabURL, 1); err != nil {
 						s.Fatal("Failed to close blank tab: ", err)
 					}
 				}

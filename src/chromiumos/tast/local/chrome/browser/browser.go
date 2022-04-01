@@ -8,12 +8,15 @@ package browser
 
 import (
 	"context"
+	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
+	"chromiumos/tast/testing"
 )
 
 // Type indicates the type of Chrome browser to be used.
@@ -132,4 +135,41 @@ func (b *Browser) ReloadActiveTab(ctx context.Context) error {
 		return errors.Wrap(err, "failed to wait for the ready state")
 	}
 	return nil
+}
+
+// CloseWithURL finds all targets with the given url, closes them, and waits
+// until they are closed. Note that if this closes all lacros pages, lacros will
+// exit, and we won't be able to verify closing was done successfully.
+// For a version of this function that does that with help from the window
+// manager, see ash.CloseWithURL.
+func (b *Browser) CloseWithURL(ctx context.Context, url string) error {
+	targets, err := b.sess.FindTargets(ctx, driver.MatchTargetURL(url))
+	if err != nil {
+		return errors.Wrap(err, "failed to query for about:blank pages")
+	}
+
+	allPages, err := b.sess.FindTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
+	if err != nil {
+		return errors.Wrap(err, "failed to query for all pages")
+	}
+
+	for _, info := range targets {
+		if err := b.sess.CloseTarget(ctx, info.TargetID); err != nil {
+			return err
+		}
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if len(targets) != len(allPages) {
+			targets, err := b.sess.FindTargets(ctx, driver.MatchTargetURL(url))
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if len(targets) != 0 {
+				return errors.New("not all about:blank targets were closed")
+			}
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
 }

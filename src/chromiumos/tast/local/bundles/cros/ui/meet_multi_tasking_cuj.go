@@ -209,7 +209,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 	// Lacros specific setup.
 	if bt == browser.TypeLacros {
-		if err := l.CloseWithURL(ctx, tconn, chrome.NewTabURL, 1); err != nil {
+		if err := ash.CloseWithURL(ctx, tconn, l.Browser(), chrome.NewTabURL, 1); err != nil {
 			s.Fatal("Failed to close blank tab: ", err)
 		}
 	}

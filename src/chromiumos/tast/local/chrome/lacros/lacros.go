@@ -6,7 +6,6 @@ package lacros
 
 import (
 	"context"
-	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/mafredri/cdp/protocol/target"
@@ -14,7 +13,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
@@ -128,54 +126,4 @@ func (l *Lacros) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // This must not be called after Close().
 func (l *Lacros) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
 	return l.sess.TestAPIConn(ctx)
-}
-
-// CloseWithURL finds all targets with the given url, closes them, then waits until they are gone.
-// windowsExpectedClosed indicates how many windows that we expect to be closed from doing this operation.
-// This takes *ash-chrome*'s TestConn as tconn, not the one provided by Lacros.TestAPIConn.
-func (l *Lacros) CloseWithURL(ctx context.Context, tconn *chrome.TestConn, url string, windowsExpectedClosed int) error {
-	prevWindows, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		return err
-	}
-
-	targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(url))
-	if err != nil {
-		return errors.Wrap(err, "failed to query for about:blank pages")
-	}
-	allPages, err := l.sess.FindTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
-	if err != nil {
-		return errors.Wrap(err, "failed to query for all pages")
-	}
-
-	for _, info := range targets {
-		if err := l.sess.CloseTarget(ctx, info.TargetID); err != nil {
-			return err
-		}
-	}
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		// If we are closing all lacros targets, then lacros Chrome will exit. In that case, we won't be able to
-		// communicate with it, so skip checking the targets. Since closing all lacros targets will close all
-		// lacros windows, the window check below is necessary and sufficient.
-		if len(targets) != len(allPages) {
-			targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(url))
-			if err != nil {
-				return testing.PollBreak(err)
-			}
-			if len(targets) != 0 {
-				return errors.New("not all about:blank targets were closed")
-			}
-		}
-
-		windows, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-		if len(prevWindows)-len(windows) != windowsExpectedClosed {
-			return errors.Errorf("expected %d windows to be closed, got %d closed",
-				windowsExpectedClosed, len(prevWindows)-len(windows))
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: time.Minute})
 }

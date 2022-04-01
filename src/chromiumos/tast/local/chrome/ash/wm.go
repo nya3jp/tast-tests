@@ -852,3 +852,32 @@ func BrowserTitleMatch(bt browser.Type, title string) func(w *Window) bool {
 	}
 	return f
 }
+
+// CloseWithURL finds all targets with the given url, closes them, then waits until they are gone.
+// windowsExpectedClosed indicates how many windows that we expect to be closed from doing this operation.
+// This takes *ash-chrome*'s TestConn as tconn, not the one provided by Lacros.TestAPIConn.
+func CloseWithURL(ctx context.Context, tconn *chrome.TestConn, b *browser.Browser, url string, windowsExpectedClosed int) error {
+	prevWindows, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	b.CloseWithURL(ctx, url)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// If we are closing all lacros targets, then lacros Chrome will exit. In
+		// that case, we won't be able to communicate with lacros. Since closing all
+		// lacros targets will close all lacros windows, the window check below is
+		// necessary and sufficient to verify closing worked.
+		windows, err := GetAllWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(prevWindows)-len(windows) != windowsExpectedClosed {
+			return errors.Errorf("expected %d windows to be closed, got %d closed",
+				windowsExpectedClosed, len(prevWindows)-len(windows))
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
+}

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/a11y/chromevox"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -133,8 +134,7 @@ func Chromevox(ctx context.Context, s *testing.State) {
 	defer crastestclient.Unmute(ctxCleanup)
 
 	// Setup a browser.
-	// TODO(crbug.com/1310159): Get this test to work with the new launch method.
-	br, closeBrowser, err := browserfixt.SetUpDeprecated(ctx, s.FixtValue(), s.Param().(testParam).browserType)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(testParam).browserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
@@ -145,6 +145,11 @@ func Chromevox(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}
 	defer c.Close()
+
+	// Close any existing blank tabs:
+	if err := ash.CloseWithURL(ctx, tconn, br, chrome.NewTabURL, 1); err != nil {
+		s.Fatal("Failed to close blank tab: ", err)
+	}
 
 	if err := a11y.SetFeatureEnabled(ctx, tconn, a11y.SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable ChromeVox: ", err)
