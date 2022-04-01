@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c39539e_69034400",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-01T12:38:01Z",
+      "side": 1,
+      "message": "It should not.\n\nThe code is mostly stolen from chromeLoggedIn. If something goes wrong they should notice it as well. Same for the comments below.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/fixture.go",
+      "parentUuid": "7c6759f0_9a3ed6fc",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 61
+      },
+      "revId": "ce20778f4282dc498bfea229cecf54cc55496417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d423c2bd_6160a18b",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
         "patchSetId": 1
