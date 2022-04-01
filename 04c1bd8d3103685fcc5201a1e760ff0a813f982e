@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5b36f8_e7dd4a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T07:52:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6f281f9_08d211f4",
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aefe065_875e0490",
@@ -83,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d935d5d1_0076c9df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T07:52:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a3a3d2b_fa549af7",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 15
+      },
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec39912d_84a0bade",
@@ -120,6 +162,30 @@
       "side": 1,
       "message": "Good point, let me clean it up",
       "parentUuid": "ec39912d_84a0bade",
+      "range": {
+        "startLine": 127,
+        "startChar": 44,
+        "endLine": 127,
+        "endChar": 54
+      },
+      "revId": "04c1bd8d3103685fcc5201a1e760ff0a813f982e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5e630b_fc223fe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-01T07:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d181aefa_0e4cc0d9",
       "range": {
         "startLine": 127,
         "startChar": 44,
