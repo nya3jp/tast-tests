@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80d10dda_81fa1b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-04-01T08:39:15Z",
+      "side": 1,
+      "message": "Oh a join function is handy there,indeed.\nLet\u0027s put this aside for now, I uploaded a new patchset without regex.",
+      "parentUuid": "f771e4d7_bcd5c6c7",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 11
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dfaef1b5_fec3c46f",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 2
@@ -145,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b8aaa78_1a8df39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-04-01T08:39:15Z",
+      "side": 1,
+      "message": "So yes that\u0027s my issue, for now I have to query and search all the strings.\n\nIn the new patchset thats what I\u0027m doing, the test is more robust now.",
+      "parentUuid": "5010547d_cd8f4841",
+      "range": {
+        "startLine": 311,
+        "startChar": 44,
+        "endLine": 311,
+        "endChar": 50
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7b1fc04_5e3e72f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 2
@@ -156,6 +204,30 @@
       "writtenOn": "2022-03-30T23:02:54Z",
       "side": 1,
       "message": "nit: Is this the 2nd file or the 3rd?\n\nMaybe that\u0027s what\u0027s confusing me.",
+      "range": {
+        "startLine": 332,
+        "startChar": 53,
+        "endLine": 332,
+        "endChar": 59
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49d1663_e6b5e8a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-04-01T08:39:15Z",
+      "side": 1,
+      "message": "That\u0027s the second one.\n\nThe comment \"select the 3 encrypted ZIP files\" is wrong :/\nThis is probably why it\u0027s so confusing, only 2 of the 3 zip files are encrypted.\nThe test first fails to decrypt the first one, then succeeds, and then decrypts the second file.\nIt then checks that the 3 files have been mounted properly.",
+      "parentUuid": "c7b1fc04_5e3e72f9",
       "range": {
         "startLine": 332,
         "startChar": 53,
