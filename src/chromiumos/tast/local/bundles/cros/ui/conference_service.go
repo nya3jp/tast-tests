@@ -124,6 +124,12 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if err != nil {
 			return errors.Wrap(err, "failed to restart Chrome")
 		}
+
+		// Add 5 minutes starting delay for every CUJ test.
+		if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
+			return errors.Wrap(err, "failed to sleep 5 minutes")
+		}
+
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to test API")
@@ -326,6 +332,11 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
 	cr, err := chrome.New(ctx, opts...)
 	account := cr.Creds().User
+
+	// Add 5 minutes starting delay for every CUJ test.
+	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
+		return nil, errors.Wrap(err, "failed to sleep 5 minutes")
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

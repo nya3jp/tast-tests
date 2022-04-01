@@ -72,7 +72,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true},
-		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute + 5*time.Minute, // Add 5 minutes starting delay for every CUJ test.
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
@@ -318,6 +318,10 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 	f.cr = cr
 	f.arc = a
 	cr = nil
+	// Add 5 minutes starting delay for every CUJ test.
+	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
+		s.Fatal("Failed to sleep 5 minutes: ", err)
+	}
 	return FixtureData{chrome: f.cr, ARC: f.arc, LacrosFixt: lacrosFixt}
 }
 

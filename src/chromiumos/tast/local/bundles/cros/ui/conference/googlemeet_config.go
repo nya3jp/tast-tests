@@ -31,7 +31,7 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 		return GoogleMeetConfig{}, nil
 	}
 	const (
-		defaultMeetRetryTimeout  = 40 * time.Minute
+		defaultMeetRetryTimeout  = 40*time.Minute + 5*time.Minute // Add 5 minutes starting delay for every CUJ test.
 		defaultMeetRetryInterval = 2 * time.Minute
 	)
 	meetAccount, ok := s.Var("ui.meet_account")
