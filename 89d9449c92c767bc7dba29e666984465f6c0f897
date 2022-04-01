@@ -16,6 +16,69 @@
       "message": "Hi, I had some weird lint error saying ` Tast requires exactly one symbol (test function or service type) to be exported in an entry file;` in lines 22, 33, 64, and 114, but I do not understand as everything seems ok to me. \n\nIf you have some idea about why this lint error is caused or why, please let me know. Thanks!",
       "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6083053f_095058ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-01T13:06:42Z",
+      "side": 1,
+      "message": "Thank you for writing this Cris!",
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05753f9b_33e10dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-01T13:06:42Z",
+      "side": 1,
+      "message": "Looks to me like the pattern here is an array of network configurations that we want to configure and then verify (possibly with slight modifications because of passwords etc).\n\nCan we make this explicit? E.g. have a type (with improved the naming)\n\n```\ntype struct NetworkToVerify {\n  nc.NetworkTypeConfigProperties configure\n  nc.(Managed)NetworkTypeConfigProperties verify\n}\n\nvar psk \u003d ...\n\nvar networks \u003d [] NetworkToVerify {\n  NetworkToVerify {psk, pskWithEmptyPassword},\n  NetworkToVerify {peapWifi, peapWifiWithModificationsRequired}\n}\n```\n\nyou can just use index in the array instead of the reference strings then to know which network is which. And it can be easily extended by adding more configurations.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a57f641_e7e77d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-01T13:06:42Z",
+      "side": 1,
+      "message": "I am wondering whether if, at this point, it makes sense to write a conversion function from ManagedEapProperties to EapConfigProperties and then do a simple check such as `peapWifiExp !\u003d peapWifiSet` here?\n\nEspecially in the light that we want to add a few more EAP configurations in the future.",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 62
+      },
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
