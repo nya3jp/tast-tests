@@ -188,6 +188,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/trunksd", matchRegexp, "cros_trunksd", zeroProcs, ""},
 				{exe, "/usr/sbin/update_engine", matchRegexp, "cros_update_engine", zeroProcs, ""},
 				{exe, "/usr/sbin/usbguard-daemon", matchRegexp, "cros_usbguard", zeroProcs, ""},
+				{exe, "/usr/sbin/vtpmd", matchRegexp, "cros_vtpmd", zeroProcs, ""},
 				{exe, "/usr/sbin/wpa_supplicant", matchRegexp, "wpa_supplicant", zeroProcs, ""},
 				// moblab, autotest, devserver, rotatelogs, apache2, envoy, containerd are all required for
 				// normal operation of moblab devices.
