@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712b3a23_925effb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-01T06:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b44cc9_df1f9d93",
+      "revId": "11d4423427ba8066ded36c23749fbe059ea34925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b282554_b76a46c1",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-03-31T05:36:09Z",
       "side": 1,
       "message": "nit/style: I think we often one-level unindented.",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 19
+      },
+      "revId": "11d4423427ba8066ded36c23749fbe059ea34925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1710e22_132ab616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-01T06:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b282554_b76a46c1",
       "range": {
         "startLine": 154,
         "startChar": 2,
