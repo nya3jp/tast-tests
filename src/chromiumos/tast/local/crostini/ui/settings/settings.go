@@ -57,7 +57,9 @@ var (
 	DebianUpgradeText = nodewith.NameStartingWith("An upgrade to Debian").First()
 	PageLinux         = nodewith.NameStartingWith(PageNameLinux).First()
 	// We may need to update this if more 'Turn on' buttons are added to Settings, but there isn't a good way to make this more specific yet.
-	TurnOnButton          = nodewith.NameRegex(regexp.MustCompile("Developers|Turn on")).Role(role.Button).Ancestor(ossettings.WindowFinder)
+	TurnOnButton          = nodewith.NameRegex(regexp.MustCompile("Turn on")).Role(role.Button).Ancestor(ossettings.WindowFinder)
+	DevelopersButton      = nodewith.NameRegex(regexp.MustCompile("Developers")).Role(role.Button).Ancestor(ossettings.WindowFinder)
+	LinuxText             = nodewith.Name("Linux development environment").Role(role.StaticText).Ancestor(ossettings.WindowFinder)
 	nextButton            = nodewith.Name("Next").Role(role.Button)
 	settingsHead          = nodewith.Name("Settings").Role(role.Heading)
 	emptySharedFoldersMsg = nodewith.Name("Shared folders will appear here").Role(role.StaticText)
@@ -94,10 +96,10 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 	}
 
 	ui := uiauto.New(tconn)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(TurnOnButton)); err != nil {
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(DevelopersButton)); err != nil {
 		return nil, errors.Wrap(err, "failed to launch settings app")
 	}
-	if err := ui.LeftClick(TurnOnButton)(ctx); err != nil {
+	if err := ui.LeftClick(DevelopersButton)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to go to linux subpage")
 	}
 
@@ -159,27 +161,35 @@ func FindSettingsPage(ctx context.Context, tconn *chrome.TestConn, windowName st
 // It also clicks next to skip the information screen.  An ui.Installer
 // page object can be constructed after calling OpenInstaller to adjust the settings and to complete the installation.
 func OpenInstaller(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (retErr error) {
-	s, err := OpenLinuxSubpage(ctx, tconn, cr)
-	if err != nil {
-		return errors.Wrap(err, "failed to open linux subpage on Settings app")
+	// Open Settings app.
+	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close all notifications in OpenLinuxSubpage()")
 	}
+
+	ui := uiauto.New(tconn).WithInterval(500 * time.Millisecond)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(LinuxText)); err != nil {
+		return errors.Wrap(err, "failed to launch settings app")
+	}
+
+	s := &Settings{tconn: tconn, ui: ui}
 	defer s.Close(ctx)
 
-	if err := s.ui.WaitUntilExists(removeLinuxButton); err == nil {
+	if err := ui.WaitUntilExists(DevelopersButton); err == nil {
 		// Linux has been installed already, uninstall it.
-		if errRemove := s.Remove()(ctx); errRemove != nil {
-			return errors.Wrap(errRemove, "failed to uninstall Linux before installation")
+		if err := ui.LeftClick(DevelopersButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to go to linux subpage")
 		}
 
-		// Click Turn on button to open the installer.
-		if err := s.ui.LeftClick(TurnOnButton)(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Turn on button")
+		if errRemove := s.Remove()(ctx); errRemove != nil {
+			return errors.Wrap(errRemove, "failed to uninstall Linux before installation")
 		}
 	}
 
 	defer func() { faillog.DumpUITreeAndScreenshot(ctx, tconn, "crostini_installer", retErr) }()
 	installButton := nodewith.Name("Install").Role(role.Button)
-	if err := s.ui.WithInterval(500*time.Millisecond).LeftClickUntil(nextButton, s.ui.WaitUntilExists(installButton))(ctx); err != nil {
+	if err := uiauto.Combine("open Install and click button Next",
+		ui.LeftClickUntil(TurnOnButton, ui.WaitUntilExists(nextButton)),
+		ui.LeftClickUntil(nextButton, ui.WaitUntilExists(installButton)))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click button Next on the installer")
 	}
 	return nil
