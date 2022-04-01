@@ -46,6 +46,30 @@
       },
       "revId": "0647d449bf05343be947086ce89aecf7e943a0be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bdd3554_08dd4f39",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-04-01T11:45:40Z",
+      "side": 1,
+      "message": "Hmm, interesting question. I think in theory setting it in ash-chrome should affect lacros too automatically since lacros is rendering stuff *for* ash-chrome. But it might be better to add the flags there too just to be safe.\n\nWhere are those flags set?",
+      "parentUuid": "b7273a0c_5d94bd05",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 98
+      },
+      "revId": "0647d449bf05343be947086ce89aecf7e943a0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
