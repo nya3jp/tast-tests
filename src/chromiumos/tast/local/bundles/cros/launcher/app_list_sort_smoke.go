@@ -18,12 +18,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type testType struct {
-	tabletMode      bool
-	sortMethod      launcher.SortType
-	orderedAppNames []string
-}
-
 var fakeAppInfoForSortSmokeTest = launcher.FakeAppInfoForSort{
 	AlphabeticalNames: []string{"a", "B", "c", "d", "E"},
 	ColorOrderNames:   []string{"white", "red", "yellow", "cyan", "blue", "purple", "black"},
@@ -46,19 +40,19 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "clamshell_alphabetical",
-				Val:  testType{tabletMode: false, sortMethod: launcher.AlphabeticalSort, orderedAppNames: fakeAppInfoForSortSmokeTest.AlphabeticalNames},
+				Val:  launcher.SortTestType{TabletMode: false, SortMethod: launcher.AlphabeticalSort, OrderedAppNames: fakeAppInfoForSortSmokeTest.AlphabeticalNames},
 			},
 			{
 				Name: "tablet_alphabetical",
-				Val:  testType{tabletMode: true, sortMethod: launcher.AlphabeticalSort, orderedAppNames: fakeAppInfoForSortSmokeTest.AlphabeticalNames},
+				Val:  launcher.SortTestType{TabletMode: true, SortMethod: launcher.AlphabeticalSort, OrderedAppNames: fakeAppInfoForSortSmokeTest.AlphabeticalNames},
 			},
 			{
 				Name: "clamshell_color",
-				Val:  testType{tabletMode: false, sortMethod: launcher.ColorSort, orderedAppNames: fakeAppInfoForSortSmokeTest.ColorOrderNames},
+				Val:  launcher.SortTestType{TabletMode: false, SortMethod: launcher.ColorSort, OrderedAppNames: fakeAppInfoForSortSmokeTest.ColorOrderNames},
 			},
 			{
 				Name: "tablet_color",
-				Val:  testType{tabletMode: true, sortMethod: launcher.ColorSort, orderedAppNames: fakeAppInfoForSortSmokeTest.ColorOrderNames},
+				Val:  launcher.SortTestType{TabletMode: true, SortMethod: launcher.ColorSort, OrderedAppNames: fakeAppInfoForSortSmokeTest.ColorOrderNames},
 			},
 		},
 	})
@@ -67,8 +61,8 @@ func init() {
 func AppListSortSmoke(ctx context.Context, s *testing.State) {
 	var opts []chrome.Option
 
-	testParam := s.Param().(testType)
-	fakeAppNamesInOrder := testParam.orderedAppNames
+	testParam := s.Param().(launcher.SortTestType)
+	fakeAppNamesInOrder := testParam.OrderedAppNames
 
 	extDirBase, err := ioutil.TempDir("", "")
 	if err != nil {
@@ -77,7 +71,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 	defer os.RemoveAll(extDirBase)
 
 	// Prepare fake apps based on the sort method to be verified.
-	switch testParam.sortMethod {
+	switch testParam.SortMethod {
 	case launcher.AlphabeticalSort:
 		opts, err = ash.GeneratePrepareFakeAppsWithNamesOptions(extDirBase, fakeAppNamesInOrder)
 	case launcher.ColorSort:
@@ -94,7 +88,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 	}
 
 	if err != nil {
-		s.Fatalf("Failed to create the fake apps for verifying %v: %v", testParam.sortMethod, err)
+		s.Fatalf("Failed to create the fake apps for verifying %v: %v", testParam.SortMethod, err)
 	}
 
 	// Enable the app list sort.
@@ -113,7 +107,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	tabletMode := testParam.tabletMode
+	tabletMode := testParam.TabletMode
 	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to check if DUT is in tablet mode: ", err)
@@ -181,8 +175,8 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the indices of the fake apps: ", err)
 	}
 
-	if err := launcher.TriggerAppListSortAndWaitForUndoButtonExist(ctx, ui, testParam.sortMethod, lastFakeApp); err != nil {
-		s.Fatalf("Failed to trigger %v: %v", testParam.sortMethod, err)
+	if err := launcher.TriggerAppListSortAndWaitForUndoButtonExist(ctx, ui, testParam.SortMethod, lastFakeApp); err != nil {
+		s.Fatalf("Failed to trigger %v: %v", testParam.SortMethod, err)
 	}
 
 	// App items not on the first launcher page get hidden temporarily during sort animation. Wait
@@ -223,8 +217,8 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := launcher.TriggerAppListSortAndWaitForUndoButtonExist(ctx, ui, testParam.sortMethod, lastFakeApp); err != nil {
-		s.Fatalf("Failed to trigger %v after reverting: %v", testParam.sortMethod, err)
+	if err := launcher.TriggerAppListSortAndWaitForUndoButtonExist(ctx, ui, testParam.SortMethod, lastFakeApp); err != nil {
+		s.Fatalf("Failed to trigger %v after reverting: %v", testParam.SortMethod, err)
 	}
 
 	if tabletMode {
