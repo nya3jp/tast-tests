@@ -168,9 +168,11 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	// RPC client will be closed before reboot to rollback.
+	// Needs to be closed if a fatal error is encountered before.
 
 	policyJSON, err := json.Marshal(policy.NewBlob())
 	if err != nil {
+		client.Close(ctx)
 		s.Fatal("Failed to serialize policies: ", err)
 	}
 
@@ -180,17 +182,20 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	if _, err := policyClient.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
 		PolicyJson: policyJSON,
 	}); err != nil {
+		client.Close(ctx)
 		s.Fatal("Failed to enroll: ", err)
 	}
 
 	if _, err := policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
-		s.Error("Failed to stop Chrome and Fake DMS: ", err)
+		client.Close(ctx)
+		s.Fatal("Failed to stop Chrome and Fake DMS: ", err)
 	}
 
 	// Configure PSK network to check preservation across rollback.
 	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
 	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
 	if err != nil {
+		client.Close(ctx)
 		s.Fatal("Failed to configure PSK network on client: ", err)
 	}
 	guid := response.Guid
@@ -199,22 +204,26 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	// an end-to-end rollback. We don't use update_engine. Place it manually.
 	if err := s.DUT().Conn().CommandContext(ctx, "touch",
 		"/mnt/stateful_partition/.save_rollback_data").Run(); err != nil {
+		client.Close(ctx)
 		s.Fatal("Failed to write rollback data save file: ", err)
 	}
 
 	// oobe_config_save would be started on shutdown but we need to fake
 	// powerwash and call it now.
 	if err := s.DUT().Conn().CommandContext(ctx, "start", "oobe_config_save").Run(); err != nil {
+		client.Close(ctx)
 		s.Fatal("Failed to run oobe_config_save: ", err)
 	}
 
 	// The following two commands would be done by clobber_state during powerwash.
 	if err := s.DUT().Conn().CommandContext(ctx, "sh", "-c",
 		`cat /var/lib/oobe_config_save/data_for_pstore > /dev/pmsg0`).Run(); err != nil {
+		client.Close(ctx)
 		s.Fatal("Failed to read rollback key: ", err)
 	}
 	// Adds a newline to pstore.
 	if err := s.DUT().Conn().CommandContext(ctx, "sh", "-c", `echo >> /dev/pmsg0`).Run(); err != nil {
+		client.Close(ctx)
 		s.Fatal("Failed to add newline after rollback key: ", err)
 	}
 
@@ -227,11 +236,6 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	// If you stop the ui while an update is pending, the device restarts.
 	if err := s.DUT().Conn().CommandContext(ctx, "stop", "ui").Run(); err != nil {
 		s.Fatal("Failed to stop ui: ", err)
-	}
-
-	client, err = rpc.Dial(ctx, s.DUT(), s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 
 	s.Logf("Starting update from %s to %s", originalVersion, rollbackVersion)
@@ -255,7 +259,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	s.Logf("The DUT image version after the update is %s", version)
 	if version != rollbackVersion {
 		if version == originalVersion {
-			s.Fatal("The image version did not change after the update")
+			s.Error("The image version did not change after the update")
 		}
 		s.Errorf("Unexpected image version after the update; got %s, want %s", version, rollbackVersion)
 	}
