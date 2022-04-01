@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "335fb505_559f3b27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-01T07:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454686a2_81e321fc",
+      "range": {
+        "startLine": 159,
+        "startChar": 19,
+        "endLine": 159,
+        "endChar": 23
+      },
+      "revId": "34c83be3f0e6609772838a7adfb96b3e03162cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dc412aa_3c5dae92",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-24T11:40:55Z",
       "side": 1,
       "message": "just in case, could you double check backlight_tool returns *after* the backlight brightness is set actually? (Rather than jsut setting up a task to set the brightness which will run later (maybe soon, but may not immediately)).",
+      "revId": "34c83be3f0e6609772838a7adfb96b3e03162cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5947ee_55e339a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/play_audio_with_display_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-01T07:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dc412aa_3c5dae92",
       "revId": "34c83be3f0e6609772838a7adfb96b3e03162cd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
