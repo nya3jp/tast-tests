@@ -6,9 +6,7 @@ package playbilling
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
-	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -18,19 +16,18 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/webapk"
 	"chromiumos/tast/testing"
 )
 
 const (
-	accountPool     = "ui.gaiaPoolDefault"
-	assetLinksVar   = "arc.PlayBillingAssetLinks"
-	apk             = "ArcPlayBillingTestPWA_20220210.apk"
-	icon            = "play_billing_icon.png"
-	index           = "play_billing_index.html"
-	manifest        = "play_billing_manifest.json"
-	payments        = "play_billing_payments.js"
-	service         = "play_billing_service.js"
-	localServerPort = 8080
+	accountPool   = "ui.gaiaPoolDefault"
+	assetLinksVar = "arc.PlayBillingAssetLinks"
+	icon          = "play_billing_icon.png"
+	index         = "play_billing_index.html"
+	manifest      = "play_billing_manifest.json"
+	payments      = "play_billing_payments.js"
+	service       = "play_billing_service.js"
 )
 
 // pwaFiles are data files required to serve the Play Billing PWA.
@@ -42,8 +39,17 @@ var pwaFiles = []string{
 	service,
 }
 
+// playBillingWebApk app helps test play billing.
+var playBillingWebApk = webapk.WebAPK{
+	Name:              "Play Billing Test PWA",
+	ID:                "obcppbejhdfcplncjdlmagmpfjhmipii",
+	Port:              8080,
+	ApkDataPath:       "ArcPlayBillingTestPWA_20220210.apk",
+	IndexPageDataPath: index,
+}
+
 // DataFiles are the files required for each Play Billing tests.
-var DataFiles = append(pwaFiles, apk)
+var DataFiles = append(pwaFiles, playBillingWebApk.ApkDataPath)
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -72,14 +78,14 @@ func init() {
 		Contacts:     []string{"benreich@chromium", "jshikaram@chromium.org"},
 		Parent:       "arcBootedForPlayBilling",
 		Vars:         []string{assetLinksVar},
-		Data:         []string{apk, icon, index, manifest, payments, service},
+		Data:         DataFiles,
 		SetUpTimeout: 2 * time.Minute,
 	})
 }
 
 type playBillingFixture struct {
-	pwaServer *http.Server
-	pwaDir    string
+	wm     *webapk.Manager
+	pwaDir string
 }
 
 // The FixtData object is made available to users of this fixture via:
@@ -97,8 +103,14 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	cr := s.ParentValue().(*arc.PreData).Chrome
 	uiDevice := s.ParentValue().(*arc.PreData).UIDevice
 
+	wm, err := webapk.NewManager(ctx, cr, arcDevice, s, playBillingWebApk)
+	if err != nil {
+		s.Fatal("Failed to create WebAPK Manager: ", err)
+	}
+	f.wm = wm
+
 	// Install the test APK.
-	if err := arcDevice.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := wm.InstallApk(ctx); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
@@ -129,18 +141,11 @@ func (f *playBillingFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatalf("Failed creating %q: %s", testFileLocation, err)
 	}
 
-	fs := http.FileServer(http.Dir(f.pwaDir))
-	f.pwaServer = &http.Server{Addr: fmt.Sprintf(":%v", localServerPort), Handler: fs}
-	go func() {
-		if err := f.pwaServer.ListenAndServe(); err != http.ErrServerClosed {
-			testing.ContextLog(ctx, "Failed to create local server: ", err)
-		}
-	}()
+	wm.StartServerFromDir(ctx, f.pwaDir, func(err error) {
+		s.Fatal("Failed to start PWA server: ", err)
+	})
 
-	testApp, err := NewTestApp(ctx, cr, arcDevice, uiDevice)
-	if err != nil {
-		s.Fatal("Failed trying to setup test app: ", err)
-	}
+	testApp := NewTestApp(ctx, arcDevice, uiDevice, wm)
 
 	return &FixtData{testApp}
 }
@@ -155,7 +160,7 @@ func (f *playBillingFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 func (f *playBillingFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func (f *playBillingFixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	if err := f.pwaServer.Shutdown(ctx); err != nil {
+	if err := f.wm.ShutdownServer(ctx); err != nil {
 		s.Log("Failed to shutdown PWA server: ", err)
 	}
 
