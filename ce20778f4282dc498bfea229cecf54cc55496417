@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93d561cb_56d32616",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-01T12:54:16Z",
+      "side": 1,
+      "message": "so can we raise error then?",
+      "parentUuid": "2c39539e_69034400",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 61
+      },
+      "revId": "ce20778f4282dc498bfea229cecf54cc55496417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d423c2bd_6160a18b",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
         "patchSetId": 1
