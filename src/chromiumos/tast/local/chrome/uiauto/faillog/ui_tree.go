@@ -48,6 +48,16 @@ func DumpUITreeOnErrorToFile(ctx context.Context, outDir string, hasError func()
 		return
 	}
 
+	DumpUITreeToFile(ctx, outDir, tconn, fileName)
+}
+
+// DumpUITree Dumps the whole UI tree data to 'ui_tree.txt'.
+func DumpUITree(ctx context.Context, outDir string, tconn *chrome.TestConn) {
+	DumpUITreeToFile(ctx, outDir, tconn, uiTreeFileName)
+}
+
+// DumpUITreeToFile Dumps the whole UI tree data into a file 'fileName'.
+func DumpUITreeToFile(ctx context.Context, outDir string, tconn *chrome.TestConn, fileName string) {
 	dir := filepath.Join(outDir, faillogDir)
 	if err := os.MkdirAll(dir, 0777); err != nil {
 		testing.ContextLogf(ctx, "Failed to create directory %s: %v", dir, err)
