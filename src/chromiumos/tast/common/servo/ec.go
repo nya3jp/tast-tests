@@ -42,8 +42,14 @@ const (
 
 // Pattern expression for RunCommandGetOutput.
 const (
-	reKBBacklight  string = `Keyboard backlight: (\d+)\%`
-	reCheckKBLight string = `Keyboard backlight: \d+\%|Command 'kblight' not found or ambiguous.`
+	reKBBacklight        string = `Keyboard backlight: (\d+)\%`
+	reCheckKBLight       string = `Keyboard backlight: \d+\%|Command 'kblight' not found or ambiguous.`
+	reTabletmodeNotFound string = `Command 'tabletmode' not found or ambiguous`
+	reBasestateNotFound  string = `Command 'basestate' not found or ambiguous`
+	reTabletmodeStatus   string = `\[\S+ tablet mode (enabled|disabled)\]`
+	reBasestateStatus    string = `\[\S+ base state: (attached|detached)\]`
+	reBdStatus           string = `\[\S+ BD forced (connected|disconnected)\]`
+	reLidAccel           string = `\[\S+ Lid Accel ODR:(?i)[^\n\r]*(?i)(1|0)\S+]`
 )
 
 // USBCDataRole is a USB-C data role.
@@ -319,4 +325,26 @@ func (s *Servo) CheckUnresponsiveEC(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second})
+}
+
+// CheckAndRunTabletModeCommand checks if relevant EC commands exist and use them for setting tablet mode.
+// For example, detachables use 'basestate (attach|detach)', and convertibles use 'tabletmode (on|off)'.
+func (s *Servo) CheckAndRunTabletModeCommand(ctx context.Context, command string) (string, error) {
+	// regular expressions.
+	reStr := strings.Join([]string{reTabletmodeNotFound, reTabletmodeStatus,
+		reBasestateNotFound, reBasestateStatus, reBdStatus, reLidAccel}, "|")
+	checkTabletMode := fmt.Sprintf("%s%s%s", "(", reStr, ")")
+	// Run EC command to check tablet mode setting.
+	out, err := s.RunECCommandGetOutput(ctx, command, []string{checkTabletMode})
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to run command %q", command)
+	}
+	tabletModeUnavailable := []*regexp.Regexp{regexp.MustCompile(reTabletmodeNotFound),
+		regexp.MustCompile(reBasestateNotFound)}
+	for _, v := range tabletModeUnavailable {
+		if match := v.FindStringSubmatch(out[0][0]); match != nil {
+			return "", errors.Errorf("device does not support tablet mode: %q", match)
+		}
+	}
+	return string(out[0][1]), nil
 }
