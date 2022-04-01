@@ -16,6 +16,23 @@
       "message": "had no syntax error during tast run. \n\nmoving to ilja to Reviewers now. PTAL. ",
       "revId": "a16688336c413e40dd084f5617e035e681aeb07f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c901ba9d_89561f44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-04-01T21:33:42Z",
+      "side": 1,
+      "message": "in fact, ilja is not a tast-owners, so I left him in the cc list instead.\n\nTast-owners, PTAL.",
+      "revId": "a16688336c413e40dd084f5617e035e681aeb07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
