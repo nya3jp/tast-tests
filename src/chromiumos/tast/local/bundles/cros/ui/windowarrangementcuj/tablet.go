@@ -114,7 +114,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 
 	// Drag the first tab in the tab strip and snap it to the right.
 	if err := pc.Drag(firstTabRect.CenterPoint(),
-		ui.Sleep(time.Second),
+		uiauto.Sleep(time.Second),
 		pc.DragTo(snapRightPoint, 3*time.Second),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag a tab to snap to the right")
@@ -177,7 +177,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	// Swap the windows so that enterOverview will put the browser
 	// window in overview and leave the ARC window snapped.
 	tapDivider := pc.ClickAt(splitViewDragPoints[0])
-	if err := action.Combine("double tap the divider", tapDivider, ui.Sleep(doubleTapInterval), tapDivider)(ctx); err != nil {
+	if err := action.Combine("double tap the divider", tapDivider, uiauto.Sleep(doubleTapInterval), tapDivider)(ctx); err != nil {
 		return errors.Wrap(err, "failed to swap snapped windows")
 	}
 

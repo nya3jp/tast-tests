@@ -293,7 +293,7 @@ func openGoogleTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCo
 		}
 		// Since visitors come from different countries, the default language of Google's website is different.
 		// Change language to "English" if the English language link exists.
-		if err := ui.IfSuccessThen(
+		if err := uiauto.IfSuccessThen(
 			ui.WithTimeout(5*time.Second).WaitUntilExists(link),
 			uiHdl.Click(link),
 		)(ctx); err != nil {
