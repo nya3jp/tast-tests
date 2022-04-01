@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14098fe4_c2cffcec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_enable_disable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-01T18:30:11Z",
+      "side": 1,
+      "message": "I was think something more like\n\"Smart lock was visible on Lock screen after disabling it\"",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 76
+      },
+      "revId": "6cdbea6bdcc9f0195f1b72a2e49276907f591538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aecd9e2_5d95831b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_enable_disable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-01T18:30:11Z",
+      "side": 1,
+      "message": "on",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "6cdbea6bdcc9f0195f1b72a2e49276907f591538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1273ef_2285cbfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/settings_signin_enable_disable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-01T18:30:11Z",
+      "side": 1,
+      "message": "Is this related to why smartlock.Login was failing for so long?",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 60
+      },
+      "revId": "6cdbea6bdcc9f0195f1b72a2e49276907f591538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b15452_83927c1c",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-01T18:30:11Z",
+      "side": 1,
+      "message": "check for error",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 11
+      },
+      "revId": "6cdbea6bdcc9f0195f1b72a2e49276907f591538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9972b2_07c17387",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-01T18:30:11Z",
+      "side": 1,
+      "message": "check for error?",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 11
+      },
+      "revId": "6cdbea6bdcc9f0195f1b72a2e49276907f591538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fd5791_eeeffefc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-01T18:30:11Z",
+      "side": 1,
+      "message": "WaitForSmartLockVisible?",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 194,
+        "endChar": 11
+      },
+      "revId": "6cdbea6bdcc9f0195f1b72a2e49276907f591538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
