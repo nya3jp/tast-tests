@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	policyBlob "chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
@@ -20,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -138,6 +140,10 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 			}
 			defer conn.Close()
 
+			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to be loaded and achieve quiescence: %s", param.url, err)
+			}
+
 			ui := uiauto.New(tconn)
 			if err := uiauto.Combine("copy all text from source website",
 				keyboard.AccelAction("Ctrl+A"),
@@ -151,18 +157,19 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 			}
 			defer googleConn.Close()
 
-			// Select the tab for extension.
-			if err := ui.MouseClickAtLocation(0, coords.Point{X: displayWidth / 2, Y: displayHeight / 2})(ctx); err != nil {
-				s.Fatal("Failed to select tab: ", err)
+			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
+				s.Fatal("Failed to wait for google.com to be loaded and achieve quiescence: ", err)
 			}
 
-			// A Custom command in extension 'DLP extension to get clipboard data' which doesn't affect clipboard content.
-			if err := keyboard.Accel(ctx, "Ctrl+Z"); err != nil {
-				s.Fatal("Failed to press Ctrl+Z to execute extension custom command: ", err)
+			if err := uiauto.Combine("copy all text from source website",
+				// Select tab for the extension.
+				ui.MouseClickAtLocation(0, coords.Point{X: displayWidth / 2, Y: displayHeight / 2}),
+				// A custom command to which DLP extension listens and then reads clipboard data.
+				keyboard.AccelAction("Ctrl+Z"))(ctx); err != nil {
+				s.Fatal("Failed to select and press Ctrl+Z: ", err)
 			}
 
 			var actualTitle string
-
 			if err := googleConn.Eval(ctx, "document.title", &actualTitle); err != nil {
 				s.Error("Failed to get the tab title: ", err)
 			}
