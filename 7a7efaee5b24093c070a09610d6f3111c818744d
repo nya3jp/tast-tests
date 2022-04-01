@@ -22,6 +22,30 @@
       },
       "revId": "7a7efaee5b24093c070a09610d6f3111c818744d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b26d99_46e8592f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-01T06:35:11Z",
+      "side": 1,
+      "message": "Discussed offline, done.",
+      "parentUuid": "298aa477_406a1dd5",
+      "range": {
+        "startLine": 148,
+        "startChar": 33,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "7a7efaee5b24093c070a09610d6f3111c818744d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
