@@ -16,6 +16,74 @@
       "message": "PTAL!",
       "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3eee533_005450b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:20:46Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f3bd28_49e978c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:20:46Z",
+      "side": 1,
+      "message": "I am not an ui expert. It is just a question. Do you need to wait for the field is in focus first before SetText?",
+      "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b93d0f_44728840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:20:46Z",
+      "side": 1,
+      "message": "https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#indent-error-flow\n\nI think it will be better to\n\n```\nver, err :\u003d arc.SDKVersion()\nif err !\u003d nil {\n    return coords.Rect{}, errors.Wrap(err, \"failed to get Android SDK version\")\n}\nif ver \u003d\u003d arc.SDKP {\n...\n``",
+      "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f747eb_3e5dff6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-01T18:20:46Z",
+      "side": 1,
+      "message": "https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#indent-error-flow\n\nI think it will be better to\n\n```\ninfo, err :\u003d ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName()\nif err !\u003d nil {\n    return coords.Rect{}, errors.Wrap(err, \"failed to get window info\")\n}\nif info.State \u003d\u003d ash.WindowStateMaximized {\n\tboundsInDP \u003d boundsInDP.WithOffset(0, info.CaptionHeight)\n}\n...\n```",
+      "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
