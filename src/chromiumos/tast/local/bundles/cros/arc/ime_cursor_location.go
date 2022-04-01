@@ -10,7 +10,9 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ime"
@@ -44,8 +46,6 @@ func IMECursorLocation(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcKeyboardTest.apk"
 		pkg = "org.chromium.arc.testapp.keyboard"
-
-		fieldID = "org.chromium.arc.testapp.keyboard:id/text"
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -74,22 +74,6 @@ func IMECursorLocation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start app: ", err)
 	}
 
-	s.Log("Setting up app's initial state")
-	field := d.Object(ui.ID(fieldID))
-	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Failed to find field: ", err)
-	}
-	if err := field.Click(ctx); err != nil {
-		s.Fatal("Failed to click field: ", err)
-	}
-	if err := field.SetText(ctx, ""); err != nil {
-		s.Fatal("Failed to empty field: ", err)
-	}
-
-	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Failed to focus a text field: ", err)
-	}
-
 	imeID, err := ime.CurrentInputMethod(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get current ime: ", err)
@@ -107,10 +91,10 @@ func IMECursorLocation(ctx context.Context, s *testing.State) {
 
 	defer func(ctx context.Context) {
 		if err := ime.SetCurrentInputMethod(ctx, tconn, imeID); err != nil {
-			s.Log("Failed to activate US keyboard: ", err)
+			s.Error("Failed to activate US keyboard: ", err)
 		}
 		if err := ime.RemoveInputMethod(ctx, tconn, jpIMEID); err != nil {
-			s.Log("Failed to disable Japanese keyboard: ", err)
+			s.Error("Failed to disable Japanese keyboard: ", err)
 		}
 	}(cleanupCtx)
 
@@ -122,11 +106,78 @@ func IMECursorLocation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to switch to the Japanese IME: ", err)
 	}
 
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get primary display info: ", err)
+	}
+
+	initialZoomFactor := dispInfo.DisplayZoomFactor
+	zoomFactors := dispInfo.AvailableDisplayZoomFactors
+	defer func(ctx context.Context) {
+		if err := display.SetDisplayProperties(ctx, tconn, dispInfo.ID, display.DisplayProperties{DisplayZoomFactor: &initialZoomFactor}); err != nil {
+			s.Error("Failed to reset display property: ", err)
+		}
+	}(cleanupCtx)
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
+
+	for _, tc := range []struct {
+		name      string
+		setupFunc func() error
+	}{
+		{
+			"Default",
+			func() error {
+				return nil
+			},
+		}, {
+			"Largest zoom factor",
+			func() error {
+				return display.SetDisplayProperties(ctx, tconn, dispInfo.ID, display.DisplayProperties{
+					DisplayZoomFactor: &zoomFactors[len(zoomFactors)-1],
+				})
+			},
+		}, {
+			"Smallest zoom factor",
+			func() error {
+				return display.SetDisplayProperties(ctx, tconn, dispInfo.ID, display.DisplayProperties{
+					DisplayZoomFactor: &zoomFactors[0],
+				})
+			},
+		},
+	} {
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			if err := tc.setupFunc(); err != nil {
+				s.Fatal("Failed to run setupFunc: ", err)
+			}
+			testIMECursorLocation(ctx, s, tconn, d, act, kb)
+		})
+	}
+}
+
+func testIMECursorLocation(ctx context.Context, s *testing.State, tconn *chrome.TestConn, d *ui.Device, act *arc.Activity, kb *input.KeyboardEventWriter) {
+	const (
+		fieldID = "org.chromium.arc.testapp.keyboard:id/text"
+	)
+
+	field := d.Object(ui.ID(fieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := field.SetText(ctx, ""); err != nil {
+		s.Fatal("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
 
 	// type "a" and "i", and press a space twice to make sure that candidate window is opened.
 	if err := kb.TypeSequence(ctx, []string{"a", "i", "space", "space"}); err != nil {
@@ -137,31 +188,12 @@ func IMECursorLocation(ctx context.Context, s *testing.State) {
 	candidateWindowFinder := nodewith.HasClass("CandidateWindowView").Role(role.Window)
 	candidateWindowBoundsDp, err := uia.Location(ctx, candidateWindowFinder)
 	if err != nil {
-		s.Fatal("Failed to get location: ", err)
+		s.Fatal("Failed to get the location of the candidate window: ", err)
 	}
 
-	editTextBoundsPx, err := field.GetBounds(ctx)
+	editTextBoundsDp, err := getBoundsInDP(ctx, field, tconn, act)
 	if err != nil {
-		s.Fatal("Failed to get location: ", err)
-	}
-
-	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get primary display info: ", err)
-	}
-
-	dsf, err := dispInfo.GetEffectiveDeviceScaleFactor()
-	if err != nil {
-		s.Fatal("Failed to get the effective device scale factor: ", err)
-	}
-
-	editTextBoundsDp := coords.ConvertBoundsFromPXToDP(editTextBoundsPx, dsf)
-
-	// Adjust Android bounds by the caption height when the window is in maximized.
-	if info, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName()); err != nil {
-		s.Fatal("Failed to get window info: ", err)
-	} else if info.State == ash.WindowStateMaximized {
-		editTextBoundsDp = editTextBoundsDp.WithOffset(0, info.CaptionHeight)
+		s.Fatal("Failed to get the location of edit text field: ", err)
 	}
 
 	if !validateBoundsRelationship(editTextBoundsDp, *candidateWindowBoundsDp) {
@@ -178,4 +210,45 @@ func validateBoundsRelationship(editTextBounds, candidateWindowBounds coords.Rec
 
 	return !candidateWindowBounds.Intersection(expanded).Empty() &&
 		candidateWindowBounds.Intersection(shrinked).Empty()
+}
+
+// getBoundsInDP returns the bounds of the given object in Chrome DP.
+// Note that this only works in the primary display.
+func getBoundsInDP(ctx context.Context, o *ui.Object, tconn *chrome.TestConn, act *arc.Activity) (coords.Rect, error) {
+	boundsInPx, err := o.GetBounds(ctx)
+	if err != nil {
+		return coords.Rect{}, errors.Wrap(err, "failed to get bounds in Android")
+	}
+
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return coords.Rect{}, errors.Wrap(err, "failed to get display info")
+	}
+
+	var dsf float64
+	if ver, err := arc.SDKVersion(); err != nil {
+		return coords.Rect{}, errors.Wrap(err, "failed to get Android SDK version")
+	} else if ver == arc.SDKP {
+		mode, err := dispInfo.GetSelectedMode()
+		if err != nil {
+			return coords.Rect{}, errors.Wrap(err, "failed to get display mode")
+		}
+		dsf = mode.DeviceScaleFactor
+	} else {
+		dsf, err = dispInfo.GetEffectiveDeviceScaleFactor()
+		if err != nil {
+			return coords.Rect{}, errors.Wrap(err, "failed to get bounds dsf")
+		}
+	}
+
+	boundsInDP := coords.ConvertBoundsFromPXToDP(boundsInPx, dsf)
+
+	// Adjust Android bounds by the caption height when the window is in maximized.
+	if info, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName()); err != nil {
+		return coords.Rect{}, errors.Wrap(err, "failed to get window info")
+	} else if info.State == ash.WindowStateMaximized {
+		boundsInDP = boundsInDP.WithOffset(0, info.CaptionHeight)
+	}
+
+	return boundsInDP, nil
 }
