@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d4965d_3cd74113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-04-01T18:29:53Z",
+      "side": 1,
+      "message": "This is the e2e Kiosk enrollment test.",
+      "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
