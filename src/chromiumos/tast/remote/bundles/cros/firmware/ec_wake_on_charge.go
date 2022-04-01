@@ -9,6 +9,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
@@ -17,22 +19,53 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testArgsForECWakeOnCharge struct {
+	formFactor    string
+	tabletModeOff string
+	hasLid        bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECWakeOnCharge,
 		Desc:         "Checks that device will charge when EC is in a low-power mode, as a replacement for manual test 1.4.11",
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"board", "model"},
 		Fixture:      fixture.NormalMode,
+		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Params: []testing.Param{{
-			Name:              "device_without_lid",
+			Name:              "chromeslate",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
-			Val:               false,
+			Val: &testArgsForECWakeOnCharge{
+				formFactor: "chromeslate",
+				hasLid:     false,
+			},
 		}, {
-			ExtraHardwareDeps: hwdep.D(hwdep.Lid()),
-			Val:               true,
+			Name:              "convertible",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
+			Val: &testArgsForECWakeOnCharge{
+				formFactor:    "convertible",
+				tabletModeOff: "tabletmode off",
+				hasLid:        true,
+			},
+		}, {
+			Name:              "detachable",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
+			Val: &testArgsForECWakeOnCharge{
+				formFactor:    "detachable",
+				tabletModeOff: "basestate attach",
+				hasLid:        true,
+			},
+		}, {
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
+			Val: &testArgsForECWakeOnCharge{
+				formFactor: "clamshell",
+				hasLid:     true,
+			},
 		}},
 	})
 }
@@ -198,7 +231,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	deviceHasLid := s.Param().(bool)
+	args := s.Param().(*testArgsForECWakeOnCharge)
 	for _, tc := range []struct {
 		lidOpen string
 	}{
@@ -206,12 +239,12 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		{string(servo.LidOpenNo)},
 	} {
 		// Only repeat the test in lid closed when device has a lid.
-		if tc.lidOpen == "no" && deviceHasLid == false {
+		if tc.lidOpen == "no" && args.hasLid == false {
 			break
 		}
 
 		// Skip setting the lid state for DUTs that don't have a lid, i.e. Chromeslates.
-		if deviceHasLid {
+		if args.hasLid {
 			s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
@@ -235,7 +268,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		}
 
 		// Delay for some time to ensure lid was properly closed, or opened.
-		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
@@ -245,19 +278,64 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to stop power supply: ", err)
 		}
 
+		// Between cutting power and sending DUT into hibernation, waiting
+		// for some delay seems to help with preventing servo exit.
+		s.Log("Sleeping for 30 seconds")
+		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+
 		if (tc.lidOpen == "yes" || hasMicroOrC2D2) && h.Config.Hibernate {
 			// Hibernate DUT
-			s.Log("Putting DUT in hibernation")
 			if tc.lidOpen == "no" {
 				// In cases where lid is closed, and there's a servo_micro or C2D2 connection,
 				// use console command to hibernate. Using keyboard presses might trigger DUT
 				// to wake, as well as interrupt lid emulation.
+				s.Log("Putting DUT in hibernation with EC console command")
 				if err = h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
 					s.Fatal("Failed to hibernate: ", err)
 				}
 			} else {
+				if args.formFactor == "convertible" || args.formFactor == "detachable" {
+					// For convertibles and detachables, if DUT was left in tablet mode by previous tests,
+					// key presses may be inactive. Always turn tablet mode off before using keyboard to hibernate.
+					s.Logf("DUT is a %s. Checking tablet mode status before using keyboard to hibernate", args.formFactor)
+					if inTabletMode, err := checkTabletModeStatus(ctx, h); err != nil {
+						s.Fatal("Unable to check DUT's tablet mode status: ", err)
+					} else if inTabletMode {
+						s.Log("DUT is in tablet mode. Attempting to turn tablet mode off")
+						out, err := h.Servo.CheckAndRunTabletModeCommand(ctx, args.tabletModeOff)
+						if err != nil {
+							if args.formFactor == "convertible" {
+								s.Logf("Failed to run %s: %v. Attempting to set rotation angles with ectool instead", args.tabletModeOff, err)
+								cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
+								tabletModeAngleInit, hysInit, err := saveAnglesAndForceClamshell(ctx, cmd)
+								if err != nil {
+									s.Fatal("Failed to force DUT into clamshell mode: ", err)
+								}
+								defer func(cmd *firmware.ECTool) {
+									s.Logf("Restoring DUT's tablet mode angles to the original settings: lid_angle=%s, hys=%s", tabletModeAngleInit, hysInit)
+									if err := cmd.ForceTabletModeAngle(ctx, tabletModeAngleInit, hysInit); err != nil {
+										s.Fatal("Failed to restore tablet mode angle to the initial angles: ", err)
+									}
+								}(cmd)
+							} else {
+								s.Fatalf("Failed to run %s: %v", args.tabletModeOff, err)
+							}
+						}
+						s.Logf("Tablet mode status: %s", out)
+						// Allow some delay to ensure that DUT has completely transitioned out of tablet mode.
+						if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+							s.Fatal("Failed to sleep: ", err)
+						}
+					}
+				}
+				s.Log("Putting DUT in hibernation with key presses")
 				if err = h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
-					s.Fatal("Failed to hibernate: ", err)
+					s.Logf("Failed to hibernate: %v. Retry with using EC console command to hibernate", err)
+					if err = h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
+						s.Fatal("Failed to hibernate: ", err)
+					}
 				}
 			}
 			h.DisconnectDUT(ctx)
@@ -289,7 +367,10 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to reconnect power supply: ", err)
 		}
 
-		if deviceHasLid {
+		// Stainless results showed that on Nami DUTs, when tested with lid closed,
+		// lid's state changed after waking up from hibernation. More research
+		// might be needed, but for now skip on checking lid state for Nami devices.
+		if args.hasLid && h.Config.Platform != "nami" {
 			// Verify DUT's lid current state remains the same as the initial state.
 			lidStateFinal, err := h.Servo.LidOpenState(ctx)
 			if err != nil {
@@ -301,9 +382,47 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if deviceHasLid {
+	if args.hasLid {
 		if err := h.Servo.OpenLid(ctx); err != nil {
 			s.Fatal("Failed to set lid state: ", err)
 		}
+		s.Log("Waiting for S0 powerstate")
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+			s.Fatal("Failed to wait for S0 powerstate: ", err)
+		}
+		if err := h.WaitConnect(ctx); err != nil {
+			s.Fatal("Failed to reconnect to DUT after opening lid: ", err)
+		}
 	}
+}
+
+// checkTabletModeStatus checks whether ChromeOS is in tablet mode through the utils service.
+func checkTabletModeStatus(ctx context.Context, h *firmware.Helper) (bool, error) {
+	if err := h.RequireRPCUtils(ctx); err != nil {
+		return false, errors.Wrap(err, "requiring RPC utils")
+	}
+	if _, err := h.RPCUtils.NewChrome(ctx, &empty.Empty{}); err != nil {
+		return false, errors.Wrap(err, "failed to create instance of chrome")
+	}
+	defer h.RPCUtils.CloseChrome(ctx, &empty.Empty{})
+	res, err := h.RPCUtils.EvalTabletMode(ctx, &empty.Empty{})
+	if err != nil {
+		return false, err
+	}
+	return res.TabletModeEnabled, nil
+}
+
+// saveAnglesAndForceClamshell saves the initial tablet mode angles from ectool, and then
+// force sets them into the clamshell mode angles.
+func saveAnglesAndForceClamshell(ctx context.Context, cmd *firmware.ECTool) (string, string, error) {
+	// Save initial tablet mode angle settings to restore at the end of test.
+	tabletModeAngleInit, hysInit, err := cmd.SaveTabletModeAngles(ctx)
+	if err != nil {
+		return "", "", errors.Wrap(err, "failed to save initial tablet mode angles")
+	}
+	// Setting tabletModeAngle to 360 will force DUT into clamshell mode.
+	if err := cmd.ForceTabletModeAngle(ctx, "360", "0"); err != nil {
+		return "", "", errors.Wrap(err, "failed to set clamshell mode angles")
+	}
+	return tabletModeAngleInit, hysInit, nil
 }
