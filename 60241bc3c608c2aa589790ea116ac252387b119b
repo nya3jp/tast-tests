@@ -268,6 +268,24 @@
       "parentUuid": "c039cf5e_edb1ea79",
       "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba94a091_1ae8c847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-01T01:47:44Z",
+      "side": 1,
+      "message": "Thanks Gil.\n\nThis Tast test is design to test all situation to make sure our service is robust enough. So the following scenario should all be tested and passed:\n- Normal case\n- No internal display\n- Can\u0027t get CRTC info and use preferred mode\n- Can\u0027t get CRTC info and no preferred mode\nWhen it\u0027s not normal case, we have to verify the healthd output to make sure the behavior is expected.\n\nSo I think current approach should work. If after 10 seconds, we still can\u0027t get an encoder ID, then it should be the last two possible cases.",
+      "parentUuid": "0302d90c_b3f2643a",
+      "revId": "60241bc3c608c2aa589790ea116ac252387b119b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
