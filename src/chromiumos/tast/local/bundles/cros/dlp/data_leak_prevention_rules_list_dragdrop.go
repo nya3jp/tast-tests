@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -54,6 +55,20 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+
+	// Sets the display zoom factor to minimum, to ensure that the work area
+	// length is at least twice the minimum length of a browser window, so that
+	// browser windows can be snapped in split view.
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+	zoomMin := info.AvailableDisplayZoomFactors[0]
+	zoomMax := info.AvailableDisplayZoomFactors[len(info.AvailableDisplayZoomFactors)-1]
+	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
+		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
+	}
+	defer display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMax})
 
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
