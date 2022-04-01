@@ -20,28 +20,49 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Specifies whether the UserSecretStash is going to be used in the test
+type keysetSelection struct {
+	enableUSSExperiment bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UserSecretStash,
+		Func: PasswordAuthFactor,
 		Desc: "Test user secret stash basic password flow",
 		Contacts: []string{
 			"emaxx@chromium.org",
+			"betuls@google.com",
 			"cryptohome-core@chromium.org",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name: "uss",
+			Val: keysetSelection{
+				enableUSSExperiment: true,
+			},
+		}, {
+			Name: "vk",
+			Val: keysetSelection{
+				enableUSSExperiment: false,
+			},
+		}},
 	})
 }
 
-func UserSecretStash(ctx context.Context, s *testing.State) {
+func PasswordAuthFactor(ctx context.Context, s *testing.State) {
 	const (
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
-		passwordLabel   = "online-password"
+		passwordLabel   = "fake_label"
 		testFile        = "file"
 		testFileContent = "content"
 		ussFlagFile     = "/var/lib/cryptohome/uss_enabled"
+		shadow          = "/home/.shadow"
+		keysetFile      = "master.0"
+		ussFile         = "user_secret_stash/uss";
 	)
-
+	keysetSelectionParam :=  s.Param().(keysetSelection)
+	enableUSS := keysetSelectionParam.enableUSSExperiment
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -67,15 +88,17 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	// Enable the UserSecretStash experiment for the duration of the test by
-	// creating a flag file that's checked by cryptohomed.
-	if err := os.MkdirAll(path.Dir(ussFlagFile), 0755); err != nil {
-		s.Fatal("Failed to create the UserSecretStash flag file directory: ", err)
+	if (enableUSS) {
+		// Enable the UserSecretStash experiment for the duration of the test by
+		// creating a flag file that's checked by cryptohomed.
+		if err := os.MkdirAll(path.Dir(ussFlagFile), 0755); err != nil {
+			s.Fatal("Failed to create the UserSecretStash flag file directory: ", err)
+		}
+		if err := ioutil.WriteFile(ussFlagFile, []byte{}, 0644); err != nil {
+			s.Fatal("Failed to write the UserSecretStash flag file: ", err)
+		}
+		defer os.Remove(ussFlagFile)
 	}
-	if err := ioutil.WriteFile(ussFlagFile, []byte{}, 0644); err != nil {
-		s.Fatal("Failed to write the UserSecretStash flag file: ", err)
-	}
-	defer os.Remove(ussFlagFile)
 
 	// Create and mount the persistent user.
 	authSessionID, err := client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
@@ -85,8 +108,8 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 	if err := client.CreatePersistentUser(ctx, authSessionID); err != nil {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
-	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
+	defer client.RemoveVault(ctxForCleanUp, userName)
+	if err := client.PreparePersistentVault(ctx, authSessionID,/*ecryptfs=*/ false); err != nil {
 		s.Fatal("Failed to prepare new persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
@@ -102,9 +125,35 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 	}
 
 	// Add a password auth factor to the user.
-	if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
-		s.Fatal("Failed to create persistent user: ", err)
+	//
+	// AddAuthFactor API is ready to be used by USS, yet for VK we need to use
+	// AddCredentials API untill AddAuthFactor supports VaultKeysets.
+	if(enableUSS) {
+		if err := client.AddAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+			s.Fatal("Failed to create persistent user: ", err)
+		}
+	} else {
+		if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, authSessionID, false); err != nil {
+			s.Fatal("Failed to add credentials with AuthSession: ", err)
+		}
 	}
+
+	// Check the correct file exists
+	hash, err := cryptohome.UserHash(ctx, userName)
+	if err != nil {
+		s.Fatal("Failed to get user hash: ", err)
+	}
+	if(enableUSS) {
+		_, err := os.Stat(filepath.Join(shadow, hash, ussFile))
+		if err != nil {
+			s.Fatal("USS file not found: ", err)
+		}
+	} else {
+		_, err := os.Stat(filepath.Join(shadow, hash, keysetFile))
+		if err != nil {
+			s.Fatal("Keyset file not found: ", err)
+		}
+  }
 
 	// Unmount the user.
 	if err := client.UnmountAll(ctx); err != nil {
@@ -128,5 +177,10 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read back test file: ", err)
 	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
 		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	}
+
+	// Unmount the user.
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 }
