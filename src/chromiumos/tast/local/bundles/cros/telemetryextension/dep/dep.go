@@ -100,12 +100,6 @@ var allAllowlistedOEMModels = []string{
 	"stormcutter",
 	"stormfly",
 
-	// "jacuzzi" board:
-	"burnet",
-	"esche",
-	"giygas",
-	"kappa",
-
 	// "keeby" board:
 	"habokay",
 	"haboki",
