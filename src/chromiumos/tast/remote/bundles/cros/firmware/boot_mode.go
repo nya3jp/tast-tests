@@ -95,7 +95,7 @@ func init() {
 				checkBootFromMain: true,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
-			Timeout:   15 * time.Minute,
+			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "dev_cold",
 			Fixture: fixture.DevMode,
@@ -105,7 +105,7 @@ func init() {
 				checkBootFromMain: true,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
-			Timeout:   15 * time.Minute,
+			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "dev_to_rec",
 			Fixture: fixture.DevMode,
