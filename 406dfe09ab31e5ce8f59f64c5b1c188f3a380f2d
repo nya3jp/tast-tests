@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd9800ee_6e1bd168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-01T01:28:32Z",
+      "side": 1,
+      "message": "Yes, this is conventions in arc tests.\ne.g. https://source.corp.google.com/search?q\u003d%22a%20:%3D%22%20%22d%20:%3D%22\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Farc%2F",
+      "parentUuid": "75c19388_9cdf43cb",
+      "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8544c97e_40f686f2",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d190df69_66bc334e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-01T01:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8544c97e_40f686f2",
+      "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b7ab1f2_d1275d27",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-04-01T01:12:56Z",
       "side": 1,
       "message": "Nit: same as above",
+      "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d587ab_71224f12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-01T01:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b7ab1f2_d1275d27",
       "revId": "406dfe09ab31e5ce8f59f64c5b1c188f3a380f2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
