@@ -73,6 +73,30 @@
       },
       "revId": "3e048b3d145a5d8d7a378d5d72a0b1201bb70cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467a8c04_a3db5488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-01T03:19:37Z",
+      "side": 1,
+      "message": "Great point, I put in b/227495408 to track the DCHECK crashes. It\u0027s still not 100% clear to me what that looks like but I do think it has been providing value, just not in these input tests which should be focused on the input piece. Feel free to add any details you think would be beneficial!",
+      "parentUuid": "279b1ef1_97379149",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "3e048b3d145a5d8d7a378d5d72a0b1201bb70cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
