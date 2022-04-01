@@ -73,5 +73,5 @@ func allowPagePermissions(tconn *chrome.TestConn) action.Action {
 			ui.LeftClick(reloadButton),
 			ui.WaitUntilExists(accessButton),
 		))
-	return ui.IfSuccessThen(ui.WithTimeout(3*time.Second).WaitUntilExists(blockedButton), allowPermission)
+	return uiauto.IfSuccessThen(ui.WithTimeout(3*time.Second).WaitUntilExists(blockedButton), allowPermission)
 }

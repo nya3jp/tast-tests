@@ -75,7 +75,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 	// If prompted to open in YouTube app, instruct device to stay in Chrome.
 	stayInChrome := nodewith.Name("Stay in Chrome").Role(role.Button)
-	if err := y.ui.IfSuccessThen(
+	if err := uiauto.IfSuccessThen(
 		y.ui.WithTimeout(shortUITimeout).WaitUntilExists(stayInChrome),
 		func(ctx context.Context) error {
 			testing.ContextLog(ctx, "dialog popped up and asked whether to switch to YouTube app")
@@ -161,7 +161,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// We've clicked the center of video player to show setting panel,
 		// that might pause the video (mouse-click will, but touch-tap won't),
 		// here let the video keep playing anyway when switch the quality is finished.
-		if err := y.ui.IfSuccessThen(
+		if err := uiauto.IfSuccessThen(
 			y.ui.WithTimeout(3*time.Second).WaitUntilExists(video),
 			y.uiHdl.Click(video),
 		)(ctx); err != nil {
@@ -449,7 +449,7 @@ func (y *YtWeb) getCurrentTime(ctx context.Context) (int, error) {
 func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context, uiHdl cuj.UIActionHandler, prompts ...string) {
 	for _, name := range prompts {
 		tartgetPrompt := nodewith.Name(name).Role(role.Button)
-		if err := ui.IfSuccessThen(
+		if err := uiauto.IfSuccessThen(
 			ui.WithTimeout(shortUITimeout).WaitUntilExists(tartgetPrompt),
 			uiHdl.ClickUntil(tartgetPrompt, ui.WithTimeout(2*time.Second).WaitUntilGone(tartgetPrompt)),
 		)(ctx); err != nil {

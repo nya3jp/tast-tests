@@ -144,8 +144,7 @@ func ResizeBackupRestore(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to see Backup File dialog: ", err)
 	}
 	// Wait for backup complete.
-	ui := uiauto.New(tconn)
-	ui.Sleep(time.Second)(ctx) // Pause needed so keyboard events are received.
+	uiauto.Sleep(time.Second)(ctx) // Pause needed so keyboard events are received.
 
 	if err = keyboard.TypeAction(backupFileBaseName)(ctx); err != nil {
 		s.Fatalf("Failed to enter backup name %s: %v", backupFileBaseName, err)
@@ -154,6 +153,7 @@ func ResizeBackupRestore(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to left click backup Save button: ", err)
 	}
 
+	ui := uiauto.New(tconn)
 	if err = ui.WithTimeout(5 * time.Minute).WaitUntilExists(settings.BackupNotification)(ctx); err != nil {
 		s.Fatal("Backup complete notification not found: ", err)
 	}

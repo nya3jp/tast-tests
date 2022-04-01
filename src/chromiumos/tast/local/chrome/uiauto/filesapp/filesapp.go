@@ -349,7 +349,7 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 func (f *FilesApp) ClearSearch() uiauto.Action {
 	clear := nodewith.Role(role.Button).ClassName("clear").Name("Clear")
 	return uiauto.Combine("clear search box",
-		f.ui.IfSuccessThen(
+		uiauto.IfSuccessThen(
 			f.WithTimeout(5*time.Second).WaitUntilExists(clear),
 			f.LeftClick(clear),
 		),
@@ -368,7 +368,7 @@ func (f *FilesApp) ToggleAvailableOfflineForFile(fileName string) uiauto.Action 
 			f.LeftClick(nodewith.Name("Available offline").Role(role.ToggleButton)),
 		),
 		// If the error appears, dismiss it and return an error so we will retry.
-		f.ui.IfSuccessThen(f.WithTimeout(time.Second).WaitUntilExists(toggleOfflineErrorOkButton),
+		uiauto.IfSuccessThen(f.WithTimeout(time.Second).WaitUntilExists(toggleOfflineErrorOkButton),
 			func(ctx context.Context) error {
 				if err := f.LeftClick(toggleOfflineErrorOkButton)(ctx); err != nil {
 					return errors.Wrap(err, "failed to dismiss the error dialog")

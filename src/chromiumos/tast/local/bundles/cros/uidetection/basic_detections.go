@@ -92,7 +92,7 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 			// Maximize chrome to ensure that the left and the right of the chrome
 			// are empty bounding boxes later on. Do this early so that we don't
 			// have a race condition later.
-			ui.IfSuccessThen(ui.Exists(maximizeButton), ui.LeftClick(maximizeButton))),
+			uiauto.IfSuccessThen(ui.Exists(maximizeButton), ui.LeftClick(maximizeButton))),
 
 		uiauto.Combine("verify that within successfully matches",
 			uiauto.Combine("for px",

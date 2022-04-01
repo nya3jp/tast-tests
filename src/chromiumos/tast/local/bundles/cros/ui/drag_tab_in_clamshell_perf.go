@@ -111,10 +111,10 @@ func DragTabInClamshellPerf(ctx context.Context, s *testing.State) {
 		return uiauto.Combine("drag and move a tab",
 			mouse.Drag(tconn, start, end, time.Second),
 			ac.Retry(10, checkWindowsNum(ctx, tconn, 2)),
-			ac.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			mouse.Drag(tconn, end, start, time.Second),
 			ac.Retry(10, checkWindowsNum(ctx, tconn, 1)),
-			ac.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 		)(ctx)
 	},
 		"Ash.TabDrag.PresentationTime.ClamshellMode",

@@ -431,8 +431,8 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 				cancel := nodewith.Name("Cancel").Role(role.Button)
 				close := nodewith.Name("Close").Role(role.Button).ClassName("action-button")
 				if err := uiauto.Combine("find and click cancel button",
-					coreui.IfSuccessThen(coreui.WithTimeout(5*time.Second).WaitUntilExists(cancel), coreui.LeftClick(cancel)),
-					coreui.IfSuccessThen(coreui.WithTimeout(5*time.Second).WaitUntilExists(close), coreui.LeftClick(close)),
+					uiauto.IfSuccessThen(coreui.WithTimeout(5*time.Second).WaitUntilExists(cancel), coreui.LeftClick(cancel)),
+					uiauto.IfSuccessThen(coreui.WithTimeout(5*time.Second).WaitUntilExists(close), coreui.LeftClick(close)),
 				)(ctx); err != nil {
 					s.Error("Failed to click the 'Cancel' button: ", err)
 				}

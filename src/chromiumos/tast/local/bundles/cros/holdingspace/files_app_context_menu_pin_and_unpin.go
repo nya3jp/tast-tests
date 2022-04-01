@@ -96,7 +96,7 @@ func FilesAppContextMenuPinAndUnpin(ctx context.Context, s *testing.State) {
 	uia := uiauto.New(tconn)
 	maximizeButton := nodewith.Name("Maximize").Role(role.Button).Ancestor(filesapp.WindowFinder(apps.Files.ID))
 	// To prevent the "Pin to shelf" option from being hidden, maximize the Files app.
-	if err := uia.IfSuccessThen(
+	if err := uiauto.IfSuccessThen(
 		uia.WaitUntilExists(maximizeButton),
 		uia.LeftClick(maximizeButton),
 	)(ctx); err != nil {

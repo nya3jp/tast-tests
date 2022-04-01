@@ -54,8 +54,8 @@ func (g *GoogleChat) maybeCloseWelcomeDialog(ctx context.Context) error {
 	welcomeDialog := nodewith.NameContaining("Find and start chats").Role(role.AlertDialog)
 	close := nodewith.Name("Close").Role(role.Button).Ancestor(welcomeDialog)
 	return uiauto.Combine("close the welcome dialogs",
-		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeImage), g.uiHdl.Click(button)),
-		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeDialog), g.uiHdl.Click(close)),
+		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeImage), g.uiHdl.Click(button)),
+		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeDialog), g.uiHdl.Click(close)),
 	)(ctx)
 }
 
@@ -72,7 +72,7 @@ func (g *GoogleChat) Launch(ctx context.Context) (err error) {
 
 	installGoogleChat := func(ctx context.Context) error {
 		return uiauto.Combine("install Google Chat app",
-			g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(installGoogleChatButton), g.uiHdl.Click(installGoogleChatButton)),
+			uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(installGoogleChatButton), g.uiHdl.Click(installGoogleChatButton)),
 			g.uiHdl.Click(installButton),
 		)(ctx)
 	}
@@ -98,14 +98,14 @@ func (g *GoogleChat) Launch(ctx context.Context) (err error) {
 				return err
 			}
 		}
-		return g.ui.IfSuccessThen(
+		return uiauto.IfSuccessThen(
 			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(tryDesktopApp),
 			g.uiHdl.Click(notNowButton),
 		)(ctx)
 	}
 
 	return uiauto.Combine("install the Google Chat and open the app",
-		g.ui.IfSuccessThen(g.ui.WaitUntilExists(installGoogleChatButton), installGoogleChat),
+		uiauto.IfSuccessThen(g.ui.WaitUntilExists(installGoogleChatButton), installGoogleChat),
 		g.maybeCloseWelcomeDialog,
 		openGoogleChat,
 	)(ctx)
@@ -122,7 +122,7 @@ func (g *GoogleChat) StartChat(ctx context.Context) error {
 	messageFieldName := fmt.Sprintf("Message %s. History is on.", personName)
 	messageField := nodewith.Name(messageFieldName).Role(role.TextField).Editable()
 	return uiauto.Combine("start a conversation",
-		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(navigationHovered), g.uiHdl.Click(navigationHovered)),
+		uiauto.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(navigationHovered), g.uiHdl.Click(navigationHovered)),
 		g.uiHdl.Click(startChatButton),
 		g.uiHdl.Click(textBox),
 		g.kb.TypeAction(personName),

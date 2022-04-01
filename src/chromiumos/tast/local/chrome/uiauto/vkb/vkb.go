@@ -203,7 +203,7 @@ func (vkbCtx *VirtualKeyboardContext) TapNode(finder *nodewith.Finder) uiauto.Ac
 	return uiauto.Combine("move mouse to node center point and click",
 		vkbCtx.ui.MouseMoveTo(finder, 10*time.Millisecond),
 		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
-		vkbCtx.ui.Sleep(50*time.Millisecond),
+		uiauto.Sleep(50*time.Millisecond),
 		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
 	)
 }
@@ -216,11 +216,11 @@ func (vkbCtx *VirtualKeyboardContext) DoubleTapNode(finder *nodewith.Finder) uia
 	return uiauto.Combine("move mouse to node center point and click",
 		vkbCtx.ui.MouseMoveTo(finder, 10*time.Millisecond),
 		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
-		vkbCtx.ui.Sleep(50*time.Millisecond),
+		uiauto.Sleep(50*time.Millisecond),
 		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
-		vkbCtx.ui.Sleep(50*time.Millisecond),
+		uiauto.Sleep(50*time.Millisecond),
 		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
-		vkbCtx.ui.Sleep(50*time.Millisecond),
+		uiauto.Sleep(50*time.Millisecond),
 		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
 	)
 }
@@ -324,7 +324,7 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 	if enabled {
 		actionName = "Switch VK to floating mode"
 		flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
-		switchMode = vkbCtx.ui.IfSuccessThen(
+		switchMode = uiauto.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
 			// Switching to float VK is lagging (b/223081262).
 			// Using long interval to check VK locationed.
@@ -335,7 +335,7 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContex
 	} else {
 		actionName = "Switch VK to dock mode"
 		flipButtonFinder := KeyFinder.Name("dock virtual keyboard")
-		switchMode = vkbCtx.ui.IfSuccessThen(
+		switchMode = uiauto.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilGone(DragPointFinder)),
 		)
@@ -433,7 +433,7 @@ func (vkbCtx *VirtualKeyboardContext) WaitForDecoderEnabled(enabled bool) uiauto
 func (vkbCtx *VirtualKeyboardContext) closeInfoDialogue(buttonName string) uiauto.Action {
 	dialogueCloseButton := KeyFinder.Name(buttonName)
 	// Close the information dialogue if it shows.
-	return vkbCtx.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		vkbCtx.ui.WithTimeout(time.Second).WaitUntilExists(dialogueCloseButton),
 		vkbCtx.ui.LeftClickUntil(dialogueCloseButton, vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilGone(dialogueCloseButton)))
 }
@@ -451,7 +451,7 @@ func (vkbCtx *VirtualKeyboardContext) ClickUntilVKShown(nodeFinder *nodewith.Fin
 func (vkbCtx *VirtualKeyboardContext) SwitchToKeyboard() uiauto.Action {
 	showAccessPointsBtn := KeyFinder.Name("Show access points")
 	return uiauto.Combine("switch back to keyboard",
-		vkbCtx.ui.IfSuccessThen(
+		uiauto.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilExists(showAccessPointsBtn),
 			vkbCtx.ui.LeftClick(showAccessPointsBtn),
 		),
@@ -571,7 +571,7 @@ func (vkbCtx *VirtualKeyboardContext) selectFromSuggestionFunc(candidateText str
 // leftClickIfExist returns an action that checks the existence of a node within a short timeout,
 // then clicks it if it exists and does nothing if not.
 func (vkbCtx *VirtualKeyboardContext) leftClickIfExist(finder *nodewith.Finder) uiauto.Action {
-	return vkbCtx.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		vkbCtx.ui.WithTimeout(500*time.Millisecond).WaitUntilExists(finder),
 		vkbCtx.ui.LeftClick(finder))
 }
@@ -669,7 +669,7 @@ func (vkbCtx *VirtualKeyboardContext) GlideTyping(keys []string, validateResultF
 		var gestures []uiauto.Action
 		for i := 1; i < len(keys); i++ {
 			// Perform a swipe in 50ms and stop 200ms on each key.
-			gestures = append(gestures, ui.Sleep(200*time.Millisecond))
+			gestures = append(gestures, uiauto.Sleep(200*time.Millisecond))
 			if keys[i] == keys[i-1] {
 				keyLoc, err := ui.Location(ctx, KeyByNameIgnoringCase(keys[i]))
 				if err != nil {

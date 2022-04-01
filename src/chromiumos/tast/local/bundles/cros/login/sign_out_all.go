@@ -134,7 +134,7 @@ func signInAll(ctx context.Context, tconn *chrome.TestConn, aboutToSignIn []chro
 			ui.LeftClick(userIcon),
 			ui.LeftClick(signInAnother),
 			// A prompt of "Sign in another user" will show when signing in the first non-owner user and won't pop-up again after dismissing it.
-			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(multiSignIn), kb.AccelAction("Enter")),
+			uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(multiSignIn), kb.AccelAction("Enter")),
 		)(ctx); err != nil {
 			return err
 		}

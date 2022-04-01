@@ -52,7 +52,7 @@ func NewGoogleSlides(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) 
 			return nil
 		},
 		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(filmstripView),
-		ui.IfSuccessThen(ui.Exists(gotIt), ui.LeftClick(gotIt)),
+		uiauto.IfSuccessThen(ui.Exists(gotIt), ui.LeftClick(gotIt)),
 	)
 }
 
@@ -69,11 +69,11 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 			ui.WithTimeout(longerUIWaitTime).LeftClickUntil(newSlide, ui.WithTimeout(25*time.Second).WaitUntilExists(pageNumberNode)),
 			ui.WaitUntilExists(titleNode),
 			ui.DoubleClick(titleNode),
-			ui.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			kb.TypeAction(title),
 			ui.WaitUntilExists(textNode),
 			ui.DoubleClick(textNode),
-			ui.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			kb.TypeAction(content),
 			waitForSlideSaved(tconn),
 		),
@@ -116,8 +116,8 @@ func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCo
 				testing.ContextLog(ctx, "Switch slides")
 				for i := 0; i < slideCount; i++ {
 					if err := uiauto.Combine("present Slide",
-						kb.AccelAction("Enter"), // Press enter to switch slide.
-						ui.Sleep(time.Second),   // Sleep to wait for slide switching.
+						kb.AccelAction("Enter"),   // Press enter to switch slide.
+						uiauto.Sleep(time.Second), // Sleep to wait for slide switching.
 					)(ctx); err != nil {
 						return errors.Wrap(err, "failed to switch slide")
 					}
@@ -140,11 +140,11 @@ func EditSlideTitle(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title
 		uiauto.Combine("edit slide and subtitle",
 			ui.WaitUntilExists(titleNode),
 			ui.DoubleClick(titleNode),
-			ui.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			kb.TypeAction(title),
 			ui.WaitUntilExists(subtitleNode),
 			ui.DoubleClick(subtitleNode),
-			ui.Sleep(time.Second),
+			uiauto.Sleep(time.Second),
 			kb.TypeAction(subtitle),
 			waitForSlideSaved(tconn),
 		),
@@ -190,7 +190,7 @@ func DeleteSlide(tconn *chrome.TestConn) action.Action {
 			ui.LeftClick(goToSlidesHome),
 			// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
 			// If it appears, click the leave button.
-			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
+			uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
 			ui.WithTimeout(longerUIWaitTime).WaitUntilExists(slideHomeWebArea),
 		),
 	)

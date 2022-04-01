@@ -397,7 +397,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 		// Pop-up content regarding paperless mode might show up.
 		gotItButton := nodewith.Name("Got it!").Role(role.Button)
-		if err := ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(gotItButton), ui.LeftClick(gotItButton))(ctx); err != nil {
+		if err := uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(gotItButton), ui.LeftClick(gotItButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the Got it button")
 		}
 

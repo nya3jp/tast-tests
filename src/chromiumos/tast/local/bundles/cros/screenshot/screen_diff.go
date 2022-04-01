@@ -79,7 +79,7 @@ func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
 	ejectButton := nodewith.Name("Eject device").Role(role.Button).First()
 	if err := uiauto.Combine("take screenshots of files app",
 		// Device ejection is reset upon chrome start. The next test will still have the device.
-		ui.IfSuccessThen(ui.Exists(ejectButton),
+		uiauto.IfSuccessThen(ui.Exists(ejectButton),
 			uiauto.Combine("Eject device", ui.LeftClick(ejectButton), ui.WaitUntilGone(ejectButton))),
 		d.Diff(ctx, "minMaxClose",
 			nodewith.ClassName("FrameCaptionButtonContainerView")),

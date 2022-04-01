@@ -112,8 +112,3 @@ func (s *OSSettings) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]
 func (s *OSSettings) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bool, error) {
 	return s.ui.IsNodeFound(ctx, finder.FinalAncestor(WindowFinder))
 }
-
-// Sleep returns an action to sleep for a certain time.
-func (s *OSSettings) Sleep(duration time.Duration) uiauto.Action {
-	return s.ui.Sleep(duration)
-}

@@ -166,9 +166,9 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleShee
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
 		app.selectBox("A1"),
 		app.kb.AccelAction("Ctrl+A"),
-		app.ui.Sleep(dataWaitTime), // Given time to select all data.
+		uiauto.Sleep(dataWaitTime), // Given time to select all data.
 		app.kb.AccelAction("Ctrl+C"),
-		app.ui.Sleep(dataWaitTime), // Given time to copy data.
+		uiauto.Sleep(dataWaitTime), // Given time to copy data.
 	)
 
 	pasteIntoNewSheet := uiauto.Combine("paste into newly created spreadsheet",
@@ -176,7 +176,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleShee
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
 		app.selectBox("A1"),
 		app.kb.AccelAction("Ctrl+V"),
-		app.ui.Sleep(dataWaitTime), // Given time to paste data.
+		uiauto.Sleep(dataWaitTime), // Given time to paste data.
 		app.selectBox("H1"),
 		app.kb.TypeAction(sheetText),
 	)
@@ -255,7 +255,7 @@ func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error
 		app.uiHdl.Click(paragraph),
 		app.kb.AccelAction("Ctrl+A"),
 		app.kb.AccelAction("Ctrl+C"),
-		app.ui.Sleep(dataWaitTime), // Given time to select all data.
+		uiauto.Sleep(dataWaitTime), // Given time to select all data.
 	)(ctx); err != nil {
 		return err
 	}
@@ -354,7 +354,7 @@ func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedT
 				app.closeHelpPanel,
 				app.uiHdl.Click(paragraph),
 				app.kb.AccelAction("Ctrl+A"),
-				app.ui.Sleep(dataWaitTime), // Wait for all text to be selected.
+				uiauto.Sleep(dataWaitTime), // Wait for all text to be selected.
 				app.kb.AccelAction("Ctrl+C"),
 			)(ctx); err != nil {
 				return err
@@ -390,7 +390,7 @@ func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedT
 			app.uiHdl.SwitchToChromeTabByIndex(0), // Switch to Microsoft Word.
 			app.ui.WaitUntilExists(wordWebArea),
 			app.ui.Retry(retryTimes, dictate),
-			app.ui.IfSuccessThen(app.ui.Exists(stopDictationButton), app.uiHdl.Click(stopDictationButton)),
+			uiauto.IfSuccessThen(app.ui.Exists(stopDictationButton), app.uiHdl.Click(stopDictationButton)),
 		),
 	)(ctx)
 }
@@ -483,7 +483,7 @@ func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
 
 		msWebArea := nodewith.NameContaining("Microsoft Office").Role(role.RootWebArea)
 		signInLink := nodewith.NameContaining("Sign in").Role(role.Link).Ancestor(msWebArea).First()
-		if err := app.ui.IfSuccessThen(
+		if err := uiauto.IfSuccessThen(
 			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(signInLink),
 			app.uiHdl.Click(signInLink),
 		)(ctx); err != nil {
@@ -554,15 +554,15 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 			app.ui.DoubleClick(passwordField),
 			app.kb.TypeAction(app.password),
 			app.uiHdl.Click(signInButton),
-			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(staySignInHeading), app.uiHdl.Click(yesButton)),
-			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeButton), app.uiHdl.Click(closeButton)),
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(staySignInHeading), app.uiHdl.Click(yesButton)),
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeButton), app.uiHdl.Click(closeButton)),
 		)(ctx)
 	}
 
 	accountList := nodewith.Name("Pick an account").Role(role.List)
 	accountButton := nodewith.NameContaining(app.username).Role(role.Button).Ancestor(accountList)
 	// If we have logged in before, sometimes it will show a "Pick an account" list.
-	if err := app.ui.IfSuccessThen(
+	if err := uiauto.IfSuccessThen(
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(accountButton),
 		app.uiHdl.Click(accountButton),
 	)(ctx); err != nil {
@@ -571,7 +571,7 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 
 	accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
 	// If we select the account option in the "Pick an account" list, there is no need to fill in the account field.
-	if err := app.ui.IfSuccessThen(
+	if err := uiauto.IfSuccessThen(
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(accountField),
 		enterAccount,
 	)(ctx); err != nil {
@@ -579,7 +579,7 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 	}
 
 	// Sometimes it will login directly without entering password.
-	return app.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(passwordField),
 		enterPassword,
 	)(ctx)
@@ -652,7 +652,7 @@ func (app *MicrosoftWebOffice) reload(finder *nodewith.Finder, action action.Act
 		if err := app.ui.WaitUntilExists(finder)(ctx); err != nil {
 			return uiauto.Combine("reload and reoperate the action",
 				app.reloadPage,
-				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(oneDriveWebArea), action),
+				uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(oneDriveWebArea), action),
 				app.maybeCloseOneDriveTab(myFilesTab),
 			)(ctx)
 		}
@@ -688,12 +688,12 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 
 	alertDialog := nodewith.Role(role.AlertDialog).First()
 	closeDialog := nodewith.Name("Close dialog").Role(role.Button).Ancestor(alertDialog)
-	if err := app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeDialog), app.uiHdl.Click(closeDialog))(ctx); err != nil {
+	if err := uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeDialog), app.uiHdl.Click(closeDialog))(ctx); err != nil {
 		return nil, errors.Wrap(err, `failed to close the "Let's get you started" dialog`)
 	}
 
 	gotItButton := nodewith.Name("Got it").Role(role.Button)
-	if err := app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotItButton), app.uiHdl.Click(gotItButton))(ctx); err != nil {
+	if err := uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(gotItButton), app.uiHdl.Click(gotItButton))(ctx); err != nil {
 		return nil, err
 	}
 
@@ -721,7 +721,7 @@ func (app *MicrosoftWebOffice) openBlankDocument(service string) action.Action {
 	return func(ctx context.Context) error {
 		// Skip an alert dialog "Get the most out of your OneDrive" when it pops up.
 		noThanksButton := nodewith.Name("No thanks").Role(role.Button).Focusable()
-		if err := app.ui.IfSuccessThen(
+		if err := uiauto.IfSuccessThen(
 			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(noThanksButton),
 			app.uiHdl.Click(noThanksButton),
 		)(ctx); err != nil {
@@ -754,7 +754,7 @@ func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Actio
 		window := nodewith.NameContaining(myFilesTab).Role(role.Window).First()
 		maximizeButton := nodewith.Name("Maximize").Role(role.Button).HasClass("FrameCaptionButton").Ancestor(window)
 		// Maximize the browser window so that the navigation bar appears on the screen.
-		if err := app.ui.IfSuccessThen(app.ui.Exists(maximizeButton), app.uiHdl.Click(maximizeButton))(ctx); err != nil {
+		if err := uiauto.IfSuccessThen(app.ui.Exists(maximizeButton), app.uiHdl.Click(maximizeButton))(ctx); err != nil {
 			return err
 		}
 
@@ -853,7 +853,7 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 		link := nodewith.NameContaining(sheetName).Role(role.Link).Ancestor(row)
 		return uiauto.NamedAction(`search from "Recent"`,
 			uiauto.Combine("search file from recently opened",
-				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goToOneDrive), app.uiHdl.Click(goToOneDrive)),
+				uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goToOneDrive), app.uiHdl.Click(goToOneDrive)),
 				app.clickNavigationItem(recent),
 				app.ui.WaitUntilExists(recentWebArea),
 				app.switchToListView,
@@ -923,7 +923,7 @@ func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
 		if err := uiauto.Combine(`open "Go To" with panel`,
 			app.uiHdl.ClickUntil(home, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(homeTabPanel)),
 			app.openFindAndSelect,
-			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goTo), app.uiHdl.Click(goTo)),
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goTo), app.uiHdl.Click(goTo)),
 		)(ctx); err != nil {
 			return err
 		}
@@ -941,7 +941,7 @@ func (app *MicrosoftWebOffice) selectBox(box string) action.Action {
 			app.kb.AccelAction("Ctrl+A"), // Make sure to clear the content and re-input.
 			app.kb.TypeAction(box),
 			app.kb.AccelAction("Enter"),
-			app.ui.IfSuccessThen(app.ui.Exists(ok), app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(ok)),
+			uiauto.IfSuccessThen(app.ui.Exists(ok), app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(ok)),
 		),
 	)
 }
@@ -1011,7 +1011,7 @@ func (app *MicrosoftWebOffice) checkFormula(ctx context.Context, box, value stri
 func (app *MicrosoftWebOffice) closeHelpPanel(ctx context.Context) error {
 	helpPanel := nodewith.Name("Help").Role(role.TabPanel)
 	close := nodewith.Name("Close").Role(role.Button).Ancestor(helpPanel)
-	return app.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(helpPanel),
 		app.uiHdl.Click(close),
 	)(ctx)
@@ -1026,7 +1026,7 @@ func (app *MicrosoftWebOffice) checkDictation(ctx context.Context) error {
 		return err
 	}
 
-	return app.ui.IfSuccessThen(
+	return uiauto.IfSuccessThen(
 		app.ui.WaitUntilExists(startDictationButton),
 		app.uiHdl.Click(startDictationButton),
 	)(ctx)
@@ -1044,7 +1044,7 @@ func (app *MicrosoftWebOffice) turnOnDictationFromMoreOptions(ctx context.Contex
 	return uiauto.Combine(`turn on the dictation through "More Options"`,
 		app.uiHdl.ClickUntil(moreOptions, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationButton)),
 		app.uiHdl.ClickUntil(dictationButton, app.ui.Gone(dictationButton)),
-		app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
+		uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationToolbar),
 	)(ctx)
 }
@@ -1059,7 +1059,7 @@ func (app *MicrosoftWebOffice) turnOnDictationFromPanel(ctx context.Context) err
 	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
 	return uiauto.Combine("turn on the dictation through the panel",
 		app.uiHdl.ClickUntil(dictationToggleButton, uiauto.Combine("check if the dictation works",
-			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
 			app.ui.WaitUntilExists(dictationToolbar)),
 		),
 	)(ctx)
@@ -1137,7 +1137,7 @@ func (app *MicrosoftWebOffice) turnOnDictation(ctx context.Context) error {
 	featureBrokenContainer := nodewith.Name("We couldn't connect to the catalog server for this feature.").Role(role.GenericContainer)
 	retryButton := nodewith.Name("RETRY").Role(role.Button).Ancestor(featureBrokenContainer)
 	return uiauto.Combine("turn on the dictation",
-		app.ui.IfSuccessThen(app.ui.Exists(featureBrokenContainer), app.uiHdl.Click(retryButton)),
+		uiauto.IfSuccessThen(app.ui.Exists(featureBrokenContainer), app.uiHdl.Click(retryButton)),
 		app.checkDictation,
 	)(ctx)
 }
@@ -1187,7 +1187,7 @@ func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 		return app.ui.Retry(retryTimes, uiauto.Combine("rename the document: "+fileName,
 			app.uiHdl.Click(fileNameTextField),
 			app.kb.AccelAction("Ctrl+A"),
-			app.ui.Sleep(dataWaitTime), // Given time to select all data.
+			uiauto.Sleep(dataWaitTime), // Given time to select all data.
 			app.kb.TypeAction(sheetName),
 			app.kb.AccelAction("Enter"),
 			checkFileName,

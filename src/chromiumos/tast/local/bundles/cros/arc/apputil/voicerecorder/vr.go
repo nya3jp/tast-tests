@@ -161,15 +161,13 @@ func (vr *VoiceRecorder) UpdateOutDir(ctx context.Context) error {
 
 // RecordAudio clicks on record button to record audio and returns the name of recorded file.
 func (vr *VoiceRecorder) RecordAudio(ctx context.Context) (string, error) {
-	chromeui := uiauto.New(vr.app.Tconn)
-
 	// Button for starting recording and button for stoping recording are identical object.
 	// The share the same id. And there is no text or description to identify them.
 	startOrStopRecordBtn := vr.app.D.Object(ui.ID(startOrStopRecordBtnID))
 	testing.ContextLog(ctx, "Start to record sound")
 	if err := uiauto.Combine("record sound",
 		apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // First click is for starting recording sound.
-		chromeui.Sleep(10*time.Second),                               // For recording sound, sleep for some time after clicking recording button.
+		uiauto.Sleep(10*time.Second),                                 // For recording sound, sleep for some time after clicking recording button.
 		apputil.FindAndClick(startOrStopRecordBtn, defaultUITimeout), // Second click is for stopping recording sound.
 	)(ctx); err != nil {
 		return "", err
