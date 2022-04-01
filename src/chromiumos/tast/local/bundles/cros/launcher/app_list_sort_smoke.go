@@ -5,15 +5,10 @@
 package launcher
 
 import (
-	"bytes"
 	"context"
-	"image"
-	"image/png"
 	"io/ioutil"
 	"os"
-	"sort"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -92,7 +87,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 	case launcher.ColorSort:
 		iconData := make([][]byte, len(fakeAppColorOrderIconFileNames))
 		for index, imageName := range fakeAppColorOrderIconFileNames {
-			imageBytes, err := readImageBytesFromFilePath(s.DataPath(imageName))
+			imageBytes, err := launcher.ReadImageBytesFromFilePath(s.DataPath(imageName))
 			if err != nil {
 				s.Fatalf("Failed to read image byte data from %q: %v", imageName, err)
 			}
@@ -193,12 +188,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to trigger %v: %v", testParam.sortMethod, err)
 	}
 
-	fakeAppIndices, err := launcher.FetchItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
-	if err != nil {
-		s.Fatal("Failed to get view indices of fake apps: ", err)
-	}
-
-	if err := verifyFakeAppsOrdered(fakeAppIndices, fakeAppNamesInOrder); err != nil {
+	if err := launcher.VerifyFakeAppsOrdered(ctx, ui, appsGrid, fakeAppNamesInOrder); err != nil {
 		s.Fatal("Failed to verify fake apps order: ", err)
 	}
 
@@ -253,69 +243,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Didn't expect to find undo button: ", err)
 	}
 
-	fakeAppIndices, err = launcher.FetchItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
-	if err != nil {
-		s.Fatal("Failed to get view indices of fake apps: ", err)
-	}
-
-	if err := verifyFakeAppsOrdered(fakeAppIndices, fakeAppNamesInOrder); err != nil {
+	if err := launcher.VerifyFakeAppsOrdered(ctx, ui, appsGrid, fakeAppNamesInOrder); err != nil {
 		s.Fatal("Failed to verify fake apps order: ", err)
 	}
-}
-
-type indexNamePair struct {
-	viewIndex int
-	appName   string
-}
-
-type byViewIndex []indexNamePair
-
-func (data byViewIndex) Len() int           { return len(data) }
-func (data byViewIndex) Swap(i, j int)      { data[i], data[j] = data[j], data[i] }
-func (data byViewIndex) Less(i, j int) bool { return data[i].viewIndex < data[j].viewIndex }
-func (data byViewIndex) NameList() []string {
-	names := make([]string, data.Len())
-	for index, pair := range data {
-		names[index] = pair.appName
-	}
-	return names
-}
-
-func verifyFakeAppsOrdered(viewIndices []int, namesInOrder []string) error {
-	if len(viewIndices) != len(namesInOrder) {
-		return errors.Errorf("unexpected view indices count: got %d, expecting %d", len(namesInOrder), len(viewIndices))
-	}
-
-	for index := 1; index < len(viewIndices); index++ {
-		if viewIndices[index] <= viewIndices[index-1] {
-			// The code below calculates names in the view index order.
-			actualNames := make([]indexNamePair, len(viewIndices))
-			for indexInArray, viewIndex := range viewIndices {
-				actualNames[indexInArray] = indexNamePair{viewIndex: viewIndex, appName: namesInOrder[indexInArray]}
-			}
-
-			data := byViewIndex(actualNames)
-			sort.Sort(data)
-			return errors.Errorf("unexpected fake app order: got %v, expecting %v", data.NameList(), namesInOrder)
-		}
-	}
-
-	return nil
-}
-
-func readImageBytesFromFilePath(filePath string) ([]byte, error) {
-	f, err := os.Open(filePath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	image, _, err := image.Decode(f)
-	if err != nil {
-		return nil, err
-	}
-	buf := &bytes.Buffer{}
-	if err := png.Encode(buf, image); err != nil {
-		return nil, err
-	}
-	return buf.Bytes(), nil
 }

@@ -6,9 +6,14 @@
 package launcher
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"image"
+	"image/png"
+	"os"
 	"regexp"
+	"sort"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -358,7 +363,7 @@ func IndexOfFirstVisibleItem(ctx context.Context, tconn *chrome.TestConn, minInd
 		item := nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex)
 		onPage, err := IsItemOnCurrentPage(ctx, tconn, item)
 		if err != nil {
-			return -1, errors.Wrapf(err, "failed to query whether item is on page %d: %v", itemIndex, err)
+			return -1, errors.Wrapf(err, "failed to query whether item is on page %d", itemIndex)
 		}
 
 		if onPage {
@@ -964,4 +969,68 @@ func IsFolderItem(ctx context.Context, tconn *chrome.TestConn, item *nodewith.Fi
 		return false, errors.Wrap(err, "failed to match name with regexp")
 	}
 	return match, nil
+}
+
+type indexNamePair struct {
+	viewIndex int
+	appName   string
+}
+
+type byViewIndex []indexNamePair
+
+func (data byViewIndex) Len() int           { return len(data) }
+func (data byViewIndex) Swap(i, j int)      { data[i], data[j] = data[j], data[i] }
+func (data byViewIndex) Less(i, j int) bool { return data[i].viewIndex < data[j].viewIndex }
+func (data byViewIndex) NameList() []string {
+	names := make([]string, data.Len())
+	for index, pair := range data {
+		names[index] = pair.appName
+	}
+	return names
+}
+
+// VerifyFakeAppsOrdered checks that the visual order of the app list items specified by app names is consistent with namesInOrder.
+func VerifyFakeAppsOrdered(ctx context.Context, ui *uiauto.Context, appsGrid *nodewith.Finder, namesInOrder []string) error {
+	viewIndices, err := FetchItemIndicesByName(ctx, ui, namesInOrder, appsGrid)
+	if err != nil {
+		return errors.Wrap(err, "failed to get view indices of fake apps")
+	}
+
+	if len(viewIndices) != len(namesInOrder) {
+		return errors.Errorf("unexpected view indices count: got %d, expecting %d", len(namesInOrder), len(viewIndices))
+	}
+
+	for index := 1; index < len(viewIndices); index++ {
+		if viewIndices[index] <= viewIndices[index-1] {
+			// The code below calculates names in the view index order.
+			actualNames := make([]indexNamePair, len(viewIndices))
+			for indexInArray, viewIndex := range viewIndices {
+				actualNames[indexInArray] = indexNamePair{viewIndex: viewIndex, appName: namesInOrder[indexInArray]}
+			}
+
+			data := byViewIndex(actualNames)
+			sort.Sort(data)
+			return errors.Errorf("unexpected fake app order: got %v, expecting %v", data.NameList(), namesInOrder)
+		}
+	}
+
+	return nil
+}
+
+// ReadImageBytesFromFilePath reads a PNG image from the specified file path.
+func ReadImageBytesFromFilePath(filePath string) ([]byte, error) {
+	f, err := os.Open(filePath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	image, _, err := image.Decode(f)
+	if err != nil {
+		return nil, err
+	}
+	buf := &bytes.Buffer{}
+	if err := png.Encode(buf, image); err != nil {
+		return nil, err
+	}
+	return buf.Bytes(), nil
 }
