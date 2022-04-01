@@ -31,7 +31,8 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -49,6 +50,7 @@ func init() {
 			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.ExtraArgs("--autoplay-policy=no-user-gesture-required"), // Allow media autoplay.
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run"),
 				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.LacrosExtraArgs("--autoplay-policy=no-user-gesture-required")}, nil
 		}),
@@ -66,6 +68,7 @@ func init() {
 		Contacts: []string{"hidehiko@chromium.org", "tvignatti@igalia.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run"),
 				chrome.LacrosExtraArgs(lacrosWaylandDecreasedPriorityArgs...)}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -84,6 +87,7 @@ func init() {
 		Contacts: []string{"hidehiko@chromium.org", "tvignatti@igalia.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run"),
 				chrome.LacrosExtraArgs(lacrosAshLikeThreadsPriorityArgs...)}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -101,6 +105,7 @@ func init() {
 		Contacts: []string{"hidehiko@chromium.org", "tvignatti@igalia.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run"),
 				chrome.LacrosExtraArgs(lacrosWaylandDecreasedPriorityArgs...),
 				chrome.LacrosExtraArgs(lacrosAshLikeThreadsPriorityArgs...)}, nil
 		}),
@@ -117,7 +122,8 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -134,7 +140,8 @@ func init() {
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
-				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -150,6 +157,7 @@ func init() {
 		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
+				chrome.LacrosExtraArgs("--no-first-run"),
 				chrome.LacrosExtraArgs("--enable-features=DelegatedCompositing")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -166,7 +174,8 @@ func init() {
 		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled(),
-				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -182,7 +191,8 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image using the UI",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -198,7 +208,8 @@ func init() {
 		Desc:     "Lacros Chrome from omaha",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Omaha, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -213,7 +224,8 @@ func init() {
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
-				chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -230,7 +242,8 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image using the UI and the Lacros chrome will stay alive even when the browser terminated",
 		Contacts: []string{"mxcai@chromium.org", "hidehiko@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary")}, nil
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
+				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
