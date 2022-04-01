@@ -9,12 +9,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -41,6 +43,11 @@ func init() {
 }
 
 func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) {
+	// Reserve five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
@@ -55,13 +62,27 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	// Sets the display zoom factor to minimum, to ensure that the work area
+	// length is at least twice the minimum length of a browser window, so that
+	// browser windows can be snapped in split view.
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+	zoomInitial := info.DisplayZoomFactor
+	zoomMin := info.AvailableDisplayZoomFactors[0]
+	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
+		s.Fatalf("Failed to set display zoom factor to minimum %f: %v", zoomMin, err)
+	}
+	defer display.SetDisplayProperties(cleanupCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
+
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
 	}
 	defer keyboard.Close()
 
-	defer ash.SetOverviewModeAndWait(ctx, tconn, false)
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	for _, param := range []struct {
 		name        string
 		wantAllowed bool
@@ -82,7 +103,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := cr.ResetState(ctx); err != nil {
 				s.Fatal("Failed to reset the Chrome: ", err)
