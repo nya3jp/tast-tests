@@ -35,7 +35,7 @@ type testParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewScroll,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that scrolling in tablet mode overview works properly",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
