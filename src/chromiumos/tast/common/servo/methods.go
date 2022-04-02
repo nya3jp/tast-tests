@@ -32,6 +32,7 @@ const (
 	ImageUSBKeyDev        StringControl = "image_usbkey_dev"
 	LidOpen               StringControl = "lid_open"
 	PowerState            StringControl = "power_state"
+	TabletMode	      StringControl = "tabletmode"
 	Type                  StringControl = "servo_type"
 	UARTCmd               StringControl = "servo_v4_uart_cmd"
 	UARTCmdV4p1           StringControl = "servo_v4p1_uart_cmd"
@@ -151,6 +152,16 @@ type LidOpenValue string
 const (
 	LidOpenYes LidOpenValue = "yes"
 	LidOpenNo  LidOpenValue = "no"
+)
+
+// A TabletModeValue is a string accepted by the TabletMode control.
+type TabletModeValue string
+
+
+// These are the string values that can be passed to the TabletMode control.
+const (
+        TabletModeOn  TabletModeValue = "on"
+        TabletModeOff TabletModeValue = "off"
 )
 
 // A PowerStateValue is a string accepted by the PowerState control.
@@ -377,6 +388,12 @@ func (s *Servo) GetChargerAttached(ctx context.Context) (bool, error) {
 func (s *Servo) LidOpenState(ctx context.Context) (string, error) {
 	return s.GetString(ctx, LidOpen)
 }
+
+// TabletModeState checks whether DUT is on tablet mode or not, and returns on/off.
+func (s *Servo) TabletModeState(ctx context.Context) (string, error) {
+        return s.GetString(ctx, TabletMode)
+}
+
 
 // parseUint extracts a hex number from `value` at `*index+1` that is exactly `bits` in length.
 // `bits` must be power of 2.
@@ -1005,3 +1022,16 @@ func (s *Servo) CloseLid(ctx context.Context) error {
 	testing.ContextLog(ctx, "Closing DUT lid")
 	return s.SetStringAndCheck(ctx, LidOpen, string(LidOpenNo))
 }
+
+// TabletMode sends the ec command to simulate DUT on tablet mode
+func (s *Servo) TabletMode(ctx context.Context) error {
+        testing.ContextLog(ctx, "Switching DUT to tablet mode")
+        return s.SetStringAndCheck(ctx, TabletMode, string(TabletModeOn))
+}
+
+// NoTabletMode sends the ec command to simulate DUT lid closing
+func (s *Servo) NoTabletMode(ctx context.Context) error {
+        testing.ContextLog(ctx, "Switching DUT to no tablet mode")
+        return s.SetStringAndCheck(ctx, TabletMode, string(TabletModeOff))
+}
+
