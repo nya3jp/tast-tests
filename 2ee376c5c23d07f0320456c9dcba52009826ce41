@@ -16,6 +16,23 @@
       "message": "Even with https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3565807/1 CQ didn\u0027t run firmware.FpUpdater test. Removed \"informational\" from test attributes and tried again.",
       "revId": "2ee376c5c23d07f0320456c9dcba52009826ce41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76821e7d_c4f36b42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-04-02T08:47:37Z",
+      "side": 1,
+      "message": "Turned out that removing \"informational\" from test attributes helped.\nfirmware.FpUpdater downloaded binaries from private bucket successfully\n```\n04/01 22:04:17.117 INFO |   logging_manager:0184| [stdout] Started test firmware.FpUpdater\n04/01 22:04:17.117 INFO |   logging_manager:0184| [stdout] [05:04:17.117] Found 4 external linked data file(s), need to download 4\n04/01 22:04:17.118 INFO |   logging_manager:0184| [stdout] [05:04:17.118] Staging gs://chromeos-test-assets-private/tast/cros/firmware/dartmonkey_v2.0.2887-311310808_20201214.bin to http://127.0.0.1:46175\n04/01 22:04:17.119 INFO |   logging_manager:0184| [stdout] [05:04:17.118] Staging gs://chromeos-test-assets-private/tast/cros/firmware/bloonchipper_v2.0.4277-9f652bb3_20210401.bin to http://127.0.0.1:46175\n04/01 22:04:17.119 INFO |   logging_manager:0184| [stdout] [05:04:17.118] Staging gs://chromeos-test-assets-private/tast/cros/firmware/nami_fp_v2.0.3266-99b5e2c98_20201214.bin to http://127.0.0.1:46175\n04/01 22:04:17.119 INFO |   logging_manager:0184| [stdout] [05:04:17.119] Staging gs://chromeos-test-assets-private/tast/cros/firmware/nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin to http://127.0.0.1:46175\n04/01 22:04:19.605 INFO |   logging_manager:0184| [stdout] [05:04:19.605] Downloading gs://chromeos-test-assets-private/tast/cros/firmware/nami_fp_v2.0.3266-99b5e2c98_20201214.bin via http://127.0.0.1:46175 (newly staged)\n04/01 22:04:19.642 INFO |   logging_manager:0184| [stdout] [05:04:19.641] Downloading gs://chromeos-test-assets-private/tast/cros/firmware/bloonchipper_v2.0.4277-9f652bb3_20210401.bin via http://127.0.0.1:46175 (newly staged)\n04/01 22:04:19.647 INFO |   logging_manager:0184| [stdout] [05:04:19.646] Finished downloading gs://chromeos-test-assets-private/tast/cros/firmware/nami_fp_v2.0.3266-99b5e2c98_20201214.bin (2097152 bytes, 2.529s, 0.8MB/s)\n04/01 22:04:19.654 INFO |   logging_manager:0184| [stdout] [05:04:19.654] Finished downloading gs://chromeos-test-assets-private/tast/cros/firmware/bloonchipper_v2.0.4277-9f652bb3_20210401.bin (1048576 bytes, 2.537s, 0.4MB/s)\n04/01 22:04:19.669 INFO |   logging_manager:0184| [stdout] [05:04:19.669] Downloading gs://chromeos-test-assets-private/tast/cros/firmware/nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin via http://127.0.0.1:46175 (newly staged)\n04/01 22:04:19.682 INFO |   logging_manager:0184| [stdout] [05:04:19.682] Finished downloading gs://chromeos-test-assets-private/tast/cros/firmware/nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin (2097152 bytes, 2.565s, 0.8MB/s)\n04/01 22:04:19.715 INFO |   logging_manager:0184| [stdout] [05:04:19.714] Downloading gs://chromeos-test-assets-private/tast/cros/firmware/dartmonkey_v2.0.2887-311310808_20201214.bin via http://127.0.0.1:46175 (newly staged)\n04/01 22:04:19.733 INFO |   logging_manager:0184| [stdout] [05:04:19.732] Finished downloading gs://chromeos-test-assets-private/tast/cros/firmware/dartmonkey_v2.0.2887-311310808_20201214.bin (2097152 bytes, 2.615s, 0.8MB/s)\n```",
+      "revId": "2ee376c5c23d07f0320456c9dcba52009826ce41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
