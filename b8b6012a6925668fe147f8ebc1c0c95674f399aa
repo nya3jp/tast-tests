@@ -22,6 +22,30 @@
       },
       "revId": "b8b6012a6925668fe147f8ebc1c0c95674f399aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8c9ff6_4a12ee85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_omni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-03T09:14:16Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t want to promote Omni Lacros tests. I want to promote only Omni ash tests.",
+      "parentUuid": "129f8fe3_8b212adf",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "b8b6012a6925668fe147f8ebc1c0c95674f399aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
