@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ea13b3_f1b3a13a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-03T12:19:55Z",
+      "side": 1,
+      "message": "If the USB device has \"SSD Life left\", the device may actually be a SATA SSD with a sandforce controller with a USB bridge. These will be hard to get. Does hdparm work on them? What\u0027s the output?",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11dfac4c_53072da8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-03T12:19:55Z",
+      "side": 1,
+      "message": "Consider adding a unit test with different output of smartctl. You can alter them to be sure errors are detected.",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "04e2f864_6e555b7a",
@@ -14,6 +48,23 @@
       "writtenOn": "2022-03-31T16:22:58Z",
       "side": 1,
       "message": "I don\u0027t think we like having tests give a TestNA result like in autotest -- getting away from this and simplifying the set of test results was one of the design considerations of Tast.\n\nIs there any way we can use hwdeps or something similar to restrict this test to only run on DUTs that have a USB device supporting SMART plugged in?",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd386fc8_0c348301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/usb_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-03T12:19:55Z",
+      "side": 1,
+      "message": "Are you parsing the raw info? It may be wrong:\nhttps://www.smartmontools.org/wiki/FAQ#TheSSD_Life_LeftAttributeofmynewSandForcebasedSSDreportszero",
       "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
