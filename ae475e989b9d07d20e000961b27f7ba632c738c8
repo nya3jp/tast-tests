@@ -16,6 +16,74 @@
       "message": "This was rebased after landing https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3531246, can everyone take another look?",
       "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586454da_bbc1190f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-03T12:02:31Z",
+      "side": 1,
+      "message": "sda is wrong, it should be sd[a-z]",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e724c9_c08de36a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-03T12:02:31Z",
+      "side": 1,
+      "message": "The function is broken if the removable storage is bigger than the internal device.",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21876201_a919751d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-03T12:02:31Z",
+      "side": 1,
+      "message": "This is fragile if in the future the internal device is presented as several block devices. Isn\u0027t the case already with SLC partition?\nOne way to be sure is if the hardware path of a device in d does not match DEFAULT_ROOTDEV, then it is removable.",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da97a265_d27a3dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-03T12:02:31Z",
+      "side": 1,
+      "message": "nit: You could have break here if there is only 2 devices.",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
