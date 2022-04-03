@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06db837_b3120050",
+        "filename": "src/chromiumos/tast/local/webapk/webapk_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-03T23:55:08Z",
+      "side": 1,
+      "message": "I guess it could not return the error as it is async?",
+      "range": {
+        "startLine": 72,
+        "startChar": 32,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "2f26ecbf45c50b5d80d322247a3e7c9424e4aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b7587f_9dbce8d2",
+        "filename": "src/chromiumos/tast/local/webapk/webapk_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-03T23:55:08Z",
+      "side": 1,
+      "message": "In appsplatform.webapk it is localhost:8080, in playbilling, it is :8080. So it is ok to make both of them :8080?",
+      "range": {
+        "startLine": 78,
+        "startChar": 42,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "2f26ecbf45c50b5d80d322247a3e7c9424e4aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46ae594_debbca67",
+        "filename": "src/chromiumos/tast/local/webapk/webapk_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-03T23:55:08Z",
+      "side": 1,
+      "message": "Please add comment to indicate that it also uninstall the PWA if it is preinstalled.",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "2f26ecbf45c50b5d80d322247a3e7c9424e4aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
