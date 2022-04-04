@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7dd8a154_026b1260",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-04-04T17:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f620604b_94ac9506",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59d4965d_3cd74113",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f99d326_0aa08c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/kiosk_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-04-04T17:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9697ca30_6ce9041e",
+      "range": {
+        "startLine": 35,
+        "startChar": 53,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1763182_9e9cacb2",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-04-04T06:23:20Z",
       "side": 1,
       "message": "This is racy, if Chrome starts fast enough you might miss the message. \n\nEither call ConfirmKioskStarted in a goroutine before GAIAEnrollUsingChrome in the tests or add a StartReader method in the service that you can call before GAIAEnrollUsingChrome.",
+      "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958be684_0271e87b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-04-04T17:48:35Z",
+      "side": 1,
+      "message": "Done. Used the goroutine.",
+      "parentUuid": "b1763182_9e9cacb2",
       "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
