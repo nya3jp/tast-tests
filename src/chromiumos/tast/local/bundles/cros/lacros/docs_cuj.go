@@ -27,18 +27,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      6 * time.Minute,
-		Params: []testing.Param{{
-			Fixture: "lacros",
-		}, {
-			Name:    "waylanddecreasedpriority",
-			Fixture: "lacrosWaylandDecreasedPriority",
-		}, {
-			Name:    "ashlikethreadspriority",
-			Fixture: "lacrosAshLikeThreadsPriority",
-		}, {
-			Name:    "waylanddecreased_and_ashlikethreadspriority",
-			Fixture: "lacrosWaylandDecreasedAndAshLikeThreadsPriority",
-		}},
+		Fixture:      "lacros",
 	})
 }
 

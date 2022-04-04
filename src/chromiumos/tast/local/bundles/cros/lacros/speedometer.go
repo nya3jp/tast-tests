@@ -49,10 +49,6 @@ func init() {
 			Name:    "displaynone",
 			Fixture: "speedometerWPRLacros",
 			Val:     testTypeDisplayNone,
-		}, {
-			Name:    "waylanddecreasedpriority",
-			Fixture: "lacrosWaylandDecreasedPriority",
-			Val:     testTypeNormal,
 		}},
 	})
 }

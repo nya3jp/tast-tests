@@ -55,13 +55,6 @@ func init() {
 			},
 			Fixture: "lacrosForceDelegated",
 		}, {
-			Name: "maximized_waylanddecreasedpriority",
-			Val: gpucuj.TestParams{
-				TestType: gpucuj.TestTypeMaximized,
-				Rot90:    false,
-			},
-			Fixture: "lacrosWaylandDecreasedPriority",
-		}, {
 			Name: "threedot",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeThreeDot,
