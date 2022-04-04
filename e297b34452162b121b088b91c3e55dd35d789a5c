@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822579f3_01258d91",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-04T18:17:08Z",
+      "side": 1,
+      "message": "nit: just initialize with `var toggleChecked bool`, the initial value doesn\u0027t seem important since it gets set immediately with the Eval below",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "e297b34452162b121b088b91c3e55dd35d789a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6956d47_16479121",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-04T18:17:08Z",
+      "side": 1,
+      "message": "nit: delete this part of the comment (since we\u0027re not in a test and the kb isn\u0027t really being reused)",
+      "range": {
+        "startLine": 175,
+        "startChar": 41,
+        "endLine": 175,
+        "endChar": 83
+      },
+      "revId": "e297b34452162b121b088b91c3e55dd35d789a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4dadb5_fdad6b6a",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-04T18:17:08Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 202,
+        "startChar": 41,
+        "endLine": 202,
+        "endChar": 82
+      },
+      "revId": "e297b34452162b121b088b91c3e55dd35d789a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
