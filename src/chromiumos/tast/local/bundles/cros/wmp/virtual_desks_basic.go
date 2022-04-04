@@ -148,8 +148,8 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify the desk of the app: ", err)
 	}
 
-	// Delete the new desk.
-	closeDeskButton := nodewith.ClassName("CloseButton")
+	// Delete the new desk, which is the desk associated with index 1.
+	closeDeskButton := nodewith.ClassName("CloseButton").Nth(1)
 	if err := ac.LeftClick(closeDeskButton)(ctx); err != nil {
 		s.Fatal("Failed to delete the new desk: ", err)
 	}
