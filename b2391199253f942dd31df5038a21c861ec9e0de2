@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2321e62d_40aca63c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-04T23:39:23Z",
+      "side": 1,
+      "message": "The tests themselves are:\nshill_cellular_apn.go \nshill_cellular_connect_to_unknown_mno.go  \n\nEverything in data/ is to configure the APNs for each parameterized test \n\nharpreet, what tags should I use to make these tests run with the Amari callbox DUTs?",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
