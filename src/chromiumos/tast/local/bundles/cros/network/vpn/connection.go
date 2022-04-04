@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
+	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
@@ -534,4 +535,17 @@ func (c *Connection) connectService(ctx context.Context) (bool, error) {
 	}
 
 	return state != shillconst.ServiceStateFailure, nil
+}
+
+// ExpectPingSuccess pings 'addr' and expects the ping to succeed. Returns an error otherwise.
+func ExpectPingSuccess(ctx context.Context, pr *ping.Runner, addr string) error {
+	testing.ContextLog(ctx, "Start to ping ", addr)
+	res, err := pr.Ping(ctx, addr, ping.Count(3), ping.User("chronos"))
+	if err != nil {
+		return err
+	}
+	if res.Received == 0 {
+		return errors.New("no response received")
+	}
+	return nil
 }

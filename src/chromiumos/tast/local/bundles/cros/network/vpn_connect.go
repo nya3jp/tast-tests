@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/testing"
@@ -309,12 +308,12 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	}
 
 	pr := localping.NewLocalRunner()
-	if err := expectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
+	if err := vpn.ExpectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
 		s.Fatalf("Failed to ping %s: %v", conn.Server.OverlayIP, err)
 	}
 
 	if conn.SecondServer != nil {
-		if err := expectPingSuccess(ctx, pr, conn.SecondServer.OverlayIP); err != nil {
+		if err := vpn.ExpectPingSuccess(ctx, pr, conn.SecondServer.OverlayIP); err != nil {
 			s.Fatalf("Failed to ping %s: %v", conn.SecondServer.OverlayIP, err)
 		}
 	}
@@ -323,16 +322,4 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 	if res, err := pr.Ping(ctx, "2001:db8::1", ping.Count(1), ping.User("chronos")); err == nil && res.Received != 0 {
 		s.Fatal("IPv6 ping should fail: ", err)
 	}
-}
-
-func expectPingSuccess(ctx context.Context, pr *ping.Runner, addr string) error {
-	testing.ContextLog(ctx, "Start to ping ", addr)
-	res, err := pr.Ping(ctx, addr, ping.Count(3), ping.User("chronos"))
-	if err != nil {
-		return err
-	}
-	if res.Received == 0 {
-		return errors.New("no response received")
-	}
-	return nil
 }
