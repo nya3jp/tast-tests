@@ -154,9 +154,8 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	// TODO(neis): Support -var lacrosDeployedBinary.
-	if _, err := lacros.Launch(ctx, tconn, "/run/lacros"); err != nil {
-		s.Fatal("Failed to launch lacros: ", err)
+	if err := lacros.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
+		s.Fatal("Failed to find Lacros window: ", err)
 	}
 
 	// Check that the bookmark is present.
@@ -202,6 +201,7 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 		chrome.KeepState(),
 		chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "LacrosProfileMigrationForAnyUser"),
 		chrome.ExtraArgs("--lacros-selection=rootfs"),
+		chrome.ExtraArgs("--disable-lacros-keep-alive"),
 		chrome.LacrosExtraArgs("--remote-debugging-port=0"),
 		chrome.RemoveNotification(false),
 	}
