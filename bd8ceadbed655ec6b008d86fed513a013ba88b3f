@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598c1a54_b5866370",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "nit: if we don\u0027t use this up here it might be a little more readable to move this down to ~L91",
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf691a2_b76a9e27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "any reason we can\u0027t just do this synchronously instead of inside a goroutine? Then we probably don\u0027t need this 10 second sleep on L99 either, right?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea5e1cae_9b0abfed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "do we need to pass this as `[]string{\"arg1\", \"arg2\"}...` or can we just pass each string as an argument directly? It doesn\u0027t look like we\u0027re doing any appending or such here.",
+      "range": {
+        "startLine": 101,
+        "startChar": 52,
+        "endLine": 101,
+        "endChar": 61
+      },
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c17b5d3_9d665afa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "nit: looks like these lines have spaces, did `go fmt` let this through? If not usually I just add an extra tab for indentation on lines like this (here and below)",
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac97346_310a923b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "might be better if we can find shill Services where the device is the modem, and connect to one of those? Then it will work regardless of whether the device is set up for eSIM tests, too.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0d9036_8b55d773",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "empty comment",
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9950c5e2_29c30e9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "We\u0027ll need to make sure we use the right interface name here. It can be looked up as the Interface property of the shill Device object.\n\nOtherwise this won\u0027t run on non-trogdor based systems, as written.",
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0efdeba8_7b2711f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-04T19:16:38Z",
+      "side": 1,
+      "message": "For polling, we should just be able to curl the page over the cellular interface in the body of the poll, and return `nil` if the result is equal to the ethernet one. If it isn\u0027t, we can return an `error` object to signal that we need to keep polling.",
+      "revId": "bd8ceadbed655ec6b008d86fed513a013ba88b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
