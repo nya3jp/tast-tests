@@ -16,6 +16,40 @@
       "message": "PTAL again. thanks!",
       "revId": "96a4c6212e1c2998874320427687e0a10d810e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c86e20_32c7ff9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-04T16:17:44Z",
+      "side": 1,
+      "message": "Sorry, I forgot to mention to run tast unit test, fast_build.sh -T\n\nPlease run it and add following line to the commit message.\n\nTEST\u003dtast unit tests passed",
+      "revId": "96a4c6212e1c2998874320427687e0a10d810e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb55d193_5a23ef45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-04T16:17:44Z",
+      "side": 1,
+      "message": "nit: Do not need \"else\" here? The if block has already return.",
+      "revId": "96a4c6212e1c2998874320427687e0a10d810e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
