@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c2e82c4_379bb876",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-04T18:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e824036_bda45275",
+      "revId": "983eda8c34d19dab5ea5c4127a4a719335021bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95640498_03ce69e1",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-03-30T02:42:57Z",
       "side": 1,
       "message": "I would print the router hostname here if it isn\u0027t already.",
+      "range": {
+        "startLine": 212,
+        "startChar": 12,
+        "endLine": 212,
+        "endChar": 53
+      },
+      "revId": "983eda8c34d19dab5ea5c4127a4a719335021bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c717ea1c_c0331528",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-04-04T18:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95640498_03ce69e1",
       "range": {
         "startLine": 212,
         "startChar": 12,
