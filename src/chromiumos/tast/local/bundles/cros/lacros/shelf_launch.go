@@ -23,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests launching and interacting with lacros launched from the Shelf",
 		Contacts:     []string{"lacros-team@google.com", "chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{{
 			Fixture:           "lacrosUI",
