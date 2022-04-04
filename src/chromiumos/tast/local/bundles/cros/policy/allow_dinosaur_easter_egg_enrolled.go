@@ -24,7 +24,7 @@ func init() {
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vpd"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,
 	})
