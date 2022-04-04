@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5e678b_da063312",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T17:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d1d3ef0_04c80ce9",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "f12675a6c1bb23a268ca537dae9dd47cc1d3affe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50050b26_0a8bf415",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-04T16:41:05Z",
       "side": 1,
       "message": "`botList` will be `nil` in this case (see [1]). If anything, this should be `addBotsCount`.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/bond/bond.go;drc\u003d0ca8b18d2322b9b8533f28b69973c2e95d673980;l\u003d245",
+      "range": {
+        "startLine": 327,
+        "startChar": 53,
+        "endLine": 327,
+        "endChar": 65
+      },
+      "revId": "f12675a6c1bb23a268ca537dae9dd47cc1d3affe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937a67c1_d3d66ff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T17:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50050b26_0a8bf415",
       "range": {
         "startLine": 327,
         "startChar": 53,
@@ -88,6 +136,54 @@
         "startChar": 5,
         "endLine": 332,
         "endChar": 23
+      },
+      "revId": "f12675a6c1bb23a268ca537dae9dd47cc1d3affe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5da2ad6_129793b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T17:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffb759f3_b07f027a",
+      "range": {
+        "startLine": 332,
+        "startChar": 5,
+        "endLine": 332,
+        "endChar": 23
+      },
+      "revId": "f12675a6c1bb23a268ca537dae9dd47cc1d3affe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eabb9a69_08f5aa9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T17:43:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d519e58_d5269731",
+      "range": {
+        "startLine": 332,
+        "startChar": 26,
+        "endLine": 332,
+        "endChar": 55
       },
       "revId": "f12675a6c1bb23a268ca537dae9dd47cc1d3affe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
