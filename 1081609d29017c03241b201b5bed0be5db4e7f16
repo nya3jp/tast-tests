@@ -16,6 +16,24 @@
       "message": "LGTM. You mentioned offline that you wanted to have a list of ports and WebAPKs in one place so that there are no collisions - is that coming in a future CL?",
       "revId": "1081609d29017c03241b201b5bed0be5db4e7f16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0fd8755_32b14188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-04-04T02:23:34Z",
+      "side": 1,
+      "message": "WebAPK-related data includes a path to the files in the nearby data directory. So, it makes sense to keep this data definition close by. \nI originally planned to have a separate list of webAPK details (that\u0027s what we discussed). However, later I realised, that the two WebAPKs we have currently are located in different packages. So, there is no single package, where we can put these definitions together.\nOn the other hand, we can have a separate list of WebAPKs in the directory, where we plan to add more of them. I assume, that\u0027ll be `appsplatform`. I\u0027ll extract existing webAPK definition in a separate file in this directory.",
+      "parentUuid": "911c2350_005f3164",
+      "revId": "1081609d29017c03241b201b5bed0be5db4e7f16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
