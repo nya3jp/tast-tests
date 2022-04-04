@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea7d15c_b99aed54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-04-04T20:28:52Z",
+      "side": 1,
+      "message": "In the champs meeting we discussed whether it\u0027s worth landing the workaround. Since the affected MAR tests aren\u0027t critical and PersistenceBluetoothSansWifi doesn\u0027t seem to be affecting other tests, we should probably only land a root cause fix.\n\nThis was originally filed from the champs view since it affected green stainless dashboards but that was due to the fact that the tests weren\u0027t marked as in development initially. This has been rectified and the tests aren\u0027t showing up in the dashboards.\n\nThat being said, we currently don\u0027t have a good lead on how to resolve this issue outside the workaround and this issue is definitely blocking these tests from being promoted. I think that we shouldn\u0027t plan on landing this change, but if we can\u0027t find a root cause, we should land the workaround change so we get better signal in the lab. WDYT?",
+      "parentUuid": "e071337b_00579b18",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d967d80_71053e56",
