@@ -240,7 +240,8 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 	opts := []chrome.Option{
 		chrome.KeepState(),
 		chrome.EnableFeatures("LacrosSupport", "LacrosPrimary", "LacrosProfileMigrationForAnyUser"),
-		chrome.ExtraArgs("--lacros-selection=rootfs"),
+		// Disable keep-alive and login-lacros-opening to work around chromium:1316237.
+		chrome.ExtraArgs("--lacros-selection=rootfs", "--disable-lacros-keep-alive", "--disable-login-lacros-opening"),
 		chrome.LacrosExtraArgs("--remote-debugging-port=0"),
 		chrome.RemoveNotification(false),
 	}
