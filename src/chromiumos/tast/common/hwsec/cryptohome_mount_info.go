@@ -284,7 +284,7 @@ func (c *CryptohomeMountInfo) readMountsInfo(ctx context.Context, path string) (
 			Device:     fields[0],
 			Mountpoint: fields[1],
 			Fstype:     fields[2],
-			Opts:       fields[3],
+			Opts:       []string{fields[3]},
 		}
 		res = append(res, d)
 	}

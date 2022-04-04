@@ -80,7 +80,7 @@ func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
 		if name, err := p.NameWithContext(ctx); err != nil || name != "ippusb_bridge" {
 			continue
 		}
-		if status, err := p.StatusWithContext(ctx); err != nil || status == "Z" {
+		if status, err := p.StatusWithContext(ctx); err != nil || status[0] == "Z" {
 			// Skip child processes that have already been killed from earlier test iterations.
 			continue
 		}
@@ -100,7 +100,7 @@ func Kill(ctx context.Context, devInfo usbprinter.DevInfo) error {
 				return nil
 			}
 			status, err := p.StatusWithContext(ctx)
-			if err != nil || status == "Z" {
+			if err != nil || status[0] == "Z" {
 				// Process has exited but not been reaped.
 				return nil
 			}
