@@ -33,7 +33,7 @@ func init() {
 			"mblsha@google.com",
 			"chromeos-hps-swe@google.com",
 		},
-		Attr:         []string{"group:camerabox", "group:hps", "hps_perbuild"},
+		Attr:         []string{"group:camerabox", "group:hps"},
 		Timeout:      20 * time.Minute,
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		Vars:         []string{"tablet"},
