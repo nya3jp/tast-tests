@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e01936_3dffeaf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T19:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5be593b_9195c1eb",
+      "range": {
+        "startLine": 331,
+        "startChar": 15,
+        "endLine": 331,
+        "endChar": 22
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61011b7a_42fdcf1c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-04T19:06:15Z",
       "side": 1,
       "message": "The error message will report the wrong number of bots wanted, because it is about the call to `AddBots` that just happened whereas `addBotsCount` has now been updated for the next call to `AddBots`. You could do this:\n  if len(botList) \u003c addBotsCount {\n    err :\u003d errors.Errorf(\"failed to create bots; wanted %d bots, got %d\", addBotsCount, len(botList))\n    // Send another request for more bots.\n    addBotsCount -\u003d len(botList)\n    return err\n  }",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 4
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88af4740_63aad0e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T19:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61011b7a_42fdcf1c",
       "range": {
         "startLine": 330,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a54ab949_f38b0133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T19:50:11Z",
+      "side": 1,
+      "message": "If we get rid of \u0026testing.PollOptions{Timeout: time.Minute}, the test won\u0027t stop right away even the one minute sctx exceeded, right?",
+      "parentUuid": "7d428233_f2d24a42",
+      "range": {
+        "startLine": 336,
+        "startChar": 5,
+        "endLine": 336,
+        "endChar": 47
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0920852f_5a5ec1f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 16
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-04T19:06:15Z",
       "side": 1,
       "message": "nit: This usage of the word `enough` suggests that a larger number of bots would be okay. How about:\n  s.Fatalf(\"Failed to ensure %d bots in the meet call: %v\", meet.num, err)",
+      "range": {
+        "startLine": 337,
+        "startChar": 3,
+        "endLine": 337,
+        "endChar": 66
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03604654_d333c79b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-04T19:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0920852f_5a5ec1f8",
       "range": {
         "startLine": 337,
         "startChar": 3,
