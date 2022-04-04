@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda1626d_fcf729b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-04T17:28:51Z",
+      "side": 1,
+      "message": "I have a few questions. Please take a look. Thanks.",
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a99ee37e_f8fada60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-04T17:28:51Z",
+      "side": 1,
+      "message": "I just want to confirm. Do you want the test to continue if there is a failure in reading the file.",
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c619f446_deb28520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-04T17:28:51Z",
+      "side": 1,
+      "message": "I just want to confirm. Do you want the test to continue if there is a failure in reading the file.",
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41debed5_e80b526d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-04T17:28:51Z",
+      "side": 1,
+      "message": "I think the following code is sufficient. Why do you need such a complicate if/else block?\n\n``` \nif devices.ProductName !\u003d productName {\n\terrors.Errorf(\"failed to get correct Thunderbolt ProductName: got %q; want %q\", productName, devices.ProductName)\n}\n```",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48fe5d51_cb253fe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-04T17:28:51Z",
+      "side": 1,
+      "message": "I think the following code is sufficient. Why do you need such a complicate if/else block?\n\n``` \nif devices.VendorName !\u003d \"\" {\n\treturn errors.New(\"failed to get empty Thunderbolt VendorName\")\n}\n```",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 0
+      },
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
