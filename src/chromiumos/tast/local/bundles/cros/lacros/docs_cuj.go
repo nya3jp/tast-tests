@@ -6,20 +6,15 @@ package lacros
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -33,24 +28,15 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      6 * time.Minute,
 		Params: []testing.Param{{
-			Name:    "cmdlinelaunch",
-			Val:     false,
-			Fixture: "lacros",
-		}, {
-			Name:    "",
-			Val:     true,
 			Fixture: "lacros",
 		}, {
 			Name:    "waylanddecreasedpriority",
-			Val:     true,
 			Fixture: "lacrosWaylandDecreasedPriority",
 		}, {
 			Name:    "ashlikethreadspriority",
-			Val:     true,
 			Fixture: "lacrosAshLikeThreadsPriority",
 		}, {
 			Name:    "waylanddecreased_and_ashlikethreadspriority",
-			Val:     true,
 			Fixture: "lacrosWaylandDecreasedAndAshLikeThreadsPriority",
 		}},
 	})
@@ -93,11 +79,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Run against lacros.
-	lacrosLaunchedFromShelf := s.Param().(bool)
 	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		if lacrosLaunchedFromShelf {
-			return setupLacrosShelfTestWithPage(ctx, f, url)
-		}
 		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
@@ -114,14 +96,6 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, visibleLoadTime.Seconds())
-	}
-
-	// TODO(crbug.com/1263337): We should use faillog to assist debugging here, but it's broken
-	// currently for Shelf launches. In the meantime, grab the log manually before exiting.
-	if lacrosLaunchedFromShelf {
-		if errCopy := fsutil.CopyFile(filepath.Join(lacros.UserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
-			s.Log("Failed to copy lacros.log from UserDataDir to the OutDir ", errCopy)
-		}
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
@@ -177,52 +151,4 @@ func runDocsPageLoad(
 	visibleLoadTime := time.Since(start)
 
 	return time.Duration(loadTime), time.Duration(visibleLoadTime), nil
-}
-
-// TODO(tvignatti): move cooldownConfig, CleanupCallback and setupLacrosShelfTestWithPage to perftest.go
-// cooldownConfig is the configuration used to wait for the stabilization of CPU
-// shared between ash-chrome test setup and lacros-chrome test setup.
-var cooldownConfig = cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
-
-// setupLacrosShelfTestWithPage opens a lacros-chrome page from the Shelf after waiting for a stable environment (CPU temperature, etc).
-func setupLacrosShelfTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url string) (
-	retConn *chrome.Conn, retCleanup lacrosperf.CleanupCallback, retErr error) {
-	cr := f.Chrome()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to connect to the test API connection")
-	}
-
-	l, err := lacros.Launch(ctx, tconn, f.LacrosPath())
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to launch lacros")
-	}
-
-	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to find new tab")
-	}
-
-	if err := conn.Navigate(ctx, url); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to navigate to the URL")
-	}
-
-	// Move the cursor away from the Shelf to make sure the tooltip won't interfere with the performance.
-	if err := mouse.Move(tconn, coords.NewPoint(0, 0), 0)(ctx); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to move the mouse to the top-left corner of the screen")
-	}
-
-	cleanup := func(ctx context.Context) error {
-		conn.CloseTarget(ctx)
-		conn.Close()
-		l.Close(ctx)
-		return nil
-	}
-
-	if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
-		return nil, nil, err
-	}
-
-	return conn, cleanup, nil
 }
