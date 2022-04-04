@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e1d47b_88d3fb5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-04-04T03:19:55Z",
+      "side": 1,
+      "message": "No regex, resolved.",
+      "parentUuid": "80d10dda_81fa1b79",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 11
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfaef1b5_fec3c46f",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "So yes that\u0027s my issue, for now I have to query and search all the strings.\n\nIn the new patchset thats what I\u0027m doing, the test is more robust now.",
       "parentUuid": "5010547d_cd8f4841",
+      "range": {
+        "startLine": 311,
+        "startChar": 44,
+        "endLine": 311,
+        "endChar": 50
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65dfa48_6867b703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-04-04T03:19:55Z",
+      "side": 1,
+      "message": "Thanks for the map recommendation, the new patchset would have been way too complicated without it 👍",
+      "parentUuid": "7b8aaa78_1a8df39f",
       "range": {
         "startLine": 311,
         "startChar": 44,
