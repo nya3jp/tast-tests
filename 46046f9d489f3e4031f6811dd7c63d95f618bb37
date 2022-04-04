@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46b86f7_34582bde",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e82fce7_d8830fb8",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8945df42_cbe0fd83",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85eccc1_f6518af9",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8945df42_cbe0fd83",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 59
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adf71ddc_37b94e26",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-04-04T13:02:22Z",
       "side": 1,
       "message": "Could you document empty pref? Also ditto for trailing period.\n\npref name could have format \"foo.bar.baz\". Each component separated by \u0027.\u0027 will be used as key of the dict. pref must not be an empty string.",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb14dd3_0f847748",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf71ddc_37b94e26",
       "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +181,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7031cf3e_4249d94c",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba43fb3_2e99f2a1",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa2420c_e3ce2e2f",
@@ -134,6 +218,30 @@
       "writtenOn": "2022-04-04T13:02:22Z",
       "side": 1,
       "message": "Looks redundant, as this is what L98 does. Please drop.",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9643d2c6_a525d76f",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa2420c_e3ce2e2f",
       "range": {
         "startLine": 99,
         "startChar": 2,
@@ -167,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d507990_1de8736e",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23250ff6_36904f28",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 63
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88ec45c6_c76e5014",
@@ -180,6 +312,24 @@
       "writtenOn": "2022-04-04T13:02:22Z",
       "side": 1,
       "message": "This was my comment to explain the code to you. Pls remove.",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af79b6a_d61ef087",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88ec45c6_c76e5014",
       "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +351,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b251067_bf2fc87e",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13be0bee_c3dd0445",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be556e07_06332ea2",
@@ -214,6 +382,30 @@
       "writtenOn": "2022-04-04T13:02:22Z",
       "side": 1,
       "message": "nit: errors.Errorf()",
+      "range": {
+        "startLine": 125,
+        "startChar": 17,
+        "endLine": 125,
+        "endChar": 22
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e19563_1fe1a963",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T21:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be556e07_06332ea2",
       "range": {
         "startLine": 125,
         "startChar": 17,
