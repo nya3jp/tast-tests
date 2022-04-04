@@ -15,6 +15,8 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -240,4 +242,29 @@ func CreateUsageTimeLimitPolicy() *policy.UsageTimeLimit {
 			},
 		},
 	}
+}
+
+// VerifyUserSignedIntoBrowser creates and opens the browser, then checks that the provided username is signed in.
+func VerifyUserSignedIntoBrowser(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, bt browser.Type, username string) error {
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up browser")
+	}
+	defer closeBrowser(ctx)
+
+	// Open a new window.
+	const url = "chrome://newtab"
+	conn, err := br.NewConn(ctx, url, browser.WithNewWindow())
+	if err != nil {
+		return errors.Wrap(err, "failed to open new window")
+	}
+	defer conn.Close()
+
+	// Logged in username will appear in browser window name in new tab
+	testing.ContextLog(ctx, "Verifying that account is present in new chrome window")
+	ui := uiauto.New(tconn).WithTimeout(time.Minute)
+	if err := ui.WaitUntilExists(nodewith.NameContaining(strings.ToLower(username)).Role(role.Window).First())(ctx); err != nil {
+		return errors.Wrap(err, "failed to check that account is present in new chrome window")
+	}
+	return nil
 }
