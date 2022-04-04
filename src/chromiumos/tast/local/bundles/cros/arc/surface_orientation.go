@@ -34,7 +34,7 @@ func init() {
 		Func:         SurfaceOrientation,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test the various orientations of an ARC activity window surface",
-		Contacts:     []string{"srok@google.com", "arc-framework+tast@google.com"},
+		Contacts:     []string{"lpique@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBooted",
@@ -210,7 +210,7 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 				return nil
 			}, &testing.PollOptions{Timeout: pollingTimeout}); err != nil {
 				colorsDidNotMatch = true
-				colorsDidNotMatchErr = errors.Wrapf(colorsDidNotMatchErr, "test case with transformation %s %v", tc.name, err)
+				colorsDidNotMatchErr = errors.Wrapf(err, "test case with transformation %s", tc.name)
 			}
 			if err := act.Stop(ctx, tconn); err != nil {
 				s.Fatal("Failed to stop activity: ", err)
