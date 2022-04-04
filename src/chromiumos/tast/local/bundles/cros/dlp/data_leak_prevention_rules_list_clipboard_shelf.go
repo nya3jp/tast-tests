@@ -33,7 +33,7 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
 }
@@ -106,6 +106,10 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 			// Open the launcher.
 			if err := launcher.Open(tconn)(ctx); err != nil {
 				s.Fatal("Failed to open the launcher: ", err)
+			}
+
+			if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
+				s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 			}
 
 			s.Log("Right clicking shelf box")
