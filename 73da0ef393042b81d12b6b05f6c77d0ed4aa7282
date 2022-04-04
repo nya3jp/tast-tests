@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "890c0564_9ba0c2c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-04-04T00:23:17Z",
+      "side": 1,
+      "message": "Nice, good check! 👍",
+      "range": {
+        "startLine": 350,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 20
+      },
+      "revId": "73da0ef393042b81d12b6b05f6c77d0ed4aa7282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "227f68f6_1ffa4f61",
@@ -14,6 +37,30 @@
       "writtenOn": "2022-04-01T08:40:40Z",
       "side": 1,
       "message": "This solves the other bug, maybe we can submit this (temporary?) fix as part of this CL?\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1308378",
+      "range": {
+        "startLine": 360,
+        "startChar": 1,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "73da0ef393042b81d12b6b05f6c77d0ed4aa7282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecfae2a3_3e760159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-04-04T00:23:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "227f68f6_1ffa4f61",
       "range": {
         "startLine": 360,
         "startChar": 1,

@@ -236,6 +236,30 @@
       },
       "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c85d5e_f989c545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-04-04T00:23:17Z",
+      "side": 1,
+      "message": "Oh yes, that was a bit confusing, thanks for fixing the comment to mention 3 files but only 2 are encrypted. 👍",
+      "parentUuid": "f49d1663_e6b5e8a7",
+      "range": {
+        "startLine": 332,
+        "startChar": 53,
+        "endLine": 332,
+        "endChar": 59
+      },
+      "revId": "2a9b23583ca389c7ea09dab3faf5c4500af024f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
