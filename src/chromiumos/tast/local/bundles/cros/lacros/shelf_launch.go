@@ -28,6 +28,7 @@ func init() {
 		Params: []testing.Param{{
 			Fixture:           "lacrosUI",
 			ExtraSoftwareDeps: []string{"lacros_stable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "unstable",
 			Fixture:           "lacrosUI",
