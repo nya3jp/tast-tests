@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbd6f0f_c96110da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-04T23:13:55Z",
+      "side": 1,
+      "message": "Different from the last patch: move the code block that checks app list item visibility into `launcher.VerifyFakeAppsOrdered()`. Add an extra boolean argument to `launcher.VerifyFakeAppsOrdered()` to indicate whether to wait for the specified items to show.",
+      "revId": "3bf8b01b1d4bc1e35208658c86cdec6767266857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
