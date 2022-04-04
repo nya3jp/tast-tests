@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f8f960_add8393c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-04T00:15:44Z",
+      "side": 1,
+      "message": "lgtm assuming this can\u0027t be solved using InternalDisplay hwdep or display.GetInfo - https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/display/display.go;l\u003d98;drc\u003da5bf53e6927d3f62ddc46011f60a3ee488270bda",
+      "revId": "b5fa29e81d68b1639902877d4e32db068517bb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9876251d_11f4a194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-04T00:15:44Z",
+      "side": 1,
+      "message": "nit: TODO(b/225766968)",
+      "revId": "b5fa29e81d68b1639902877d4e32db068517bb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
