@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b39c0ef_d3f9e5dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-04T13:51:00Z",
+      "side": 1,
+      "message": "Looks ok, but please get a team member to approve for technical content (This should be done before adding tast reviewer)",
+      "revId": "98e223f084a374ef4b672fb911cc49df182c4a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddbe416c_a26691cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/hotplug_usb_headset_audio_playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-04T13:51:00Z",
+      "side": 1,
+      "message": "If called before the window is open this might close something else?",
+      "revId": "98e223f084a374ef4b672fb911cc49df182c4a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c52a5c2_03790e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/hotplug_usb_headset_audio_playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-04T13:51:00Z",
+      "side": 1,
+      "message": "nit: remove commented code?",
+      "revId": "98e223f084a374ef4b672fb911cc49df182c4a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
