@@ -16,6 +16,46 @@
       "message": "Thanks in advance.",
       "revId": "6d67568646b43187fe27644e9e9c0e7612b8ee36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f98232a_b4925409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-04T22:23:48Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "6d67568646b43187fe27644e9e9c0e7612b8ee36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c75c34d_801328eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-04-04T22:23:48Z",
+      "side": 1,
+      "message": "Fatal",
+      "range": {
+        "startLine": 146,
+        "startChar": 6,
+        "endLine": 146,
+        "endChar": 11
+      },
+      "revId": "6d67568646b43187fe27644e9e9c0e7612b8ee36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
