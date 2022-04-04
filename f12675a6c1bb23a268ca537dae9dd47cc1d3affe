@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d519e58_d5269731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-04T16:07:42Z",
+      "side": 1,
+      "message": "nit: in Go lingo this would be something like:\n\n\n  \"failed to create bots; want %d bots, got %d\"",
+      "range": {
+        "startLine": 332,
+        "startChar": 26,
+        "endLine": 332,
+        "endChar": 55
+      },
+      "revId": "f12675a6c1bb23a268ca537dae9dd47cc1d3affe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb759f3_b07f027a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-04T16:07:42Z",
+      "side": 1,
+      "message": "You might want to do :\n\n  return testing.PollBreak(errors.Errorf(....))\n  \n  \notherwise you might be creating more bots than expected since the \"bc.AddBots()\" will be called again.\n\nIf that\u0027s not the case, then adding a comment would be good",
+      "range": {
+        "startLine": 332,
+        "startChar": 5,
+        "endLine": 332,
+        "endChar": 23
+      },
+      "revId": "f12675a6c1bb23a268ca537dae9dd47cc1d3affe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
