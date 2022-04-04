@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2033ae68_6bfe5ceb",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T05:24:09Z",
+      "side": 1,
+      "message": "could you:\n- check pref is not empty and returns error properly with document it? Or\n- make it work even with empty pref, which means to overriding root entry, for consistency?",
+      "revId": "c684ecc1926e4e4b115f3536165c2dee60016637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ef825c_6c932ba3",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T05:24:09Z",
+      "side": 1,
+      "message": "nit: could you move this to just before L95? (just before used)",
+      "revId": "c684ecc1926e4e4b115f3536165c2dee60016637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce84faf2_905c3e1f",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T05:24:09Z",
+      "side": 1,
+      "message": "pls do not copy-n-paste my comment directry :-).\nDitto for below.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "c684ecc1926e4e4b115f3536165c2dee60016637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
