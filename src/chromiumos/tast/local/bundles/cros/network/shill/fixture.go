@@ -35,6 +35,19 @@ func init() {
 		TearDownTimeout: resetShillTimeout + 5*time.Second,
 		Impl:            &shillFixture{},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "shillResetWithArcBooted",
+		Desc: "A fixture that ensures shill is in a default state when the test starts and will reset any shill modifications after the test (with 'arcBooted' fixture)",
+		Contacts: []string{
+			"cassiewang@chromium.org",         // fixture maintainer
+			"cros-networking-bugs@google.com", // platform networking team
+		},
+		PreTestTimeout:  resetShillTimeout + 5*time.Second,
+		PostTestTimeout: 5 * time.Second,
+		TearDownTimeout: resetShillTimeout + 5*time.Second,
+		Impl:            &shillFixture{},
+		Parent:          "arcBooted",
+	})
 }
 
 // resetShill does a best effort removing any modifications to the shill
@@ -77,7 +90,8 @@ type shillFixture struct {
 }
 
 func (f *shillFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	return nil
+	// Provides pass-through for the value yielded by the parent fixture.
+	return s.ParentValue()
 }
 
 func (f *shillFixture) Reset(ctx context.Context) error {
