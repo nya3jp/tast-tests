@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "520c7c55_7aaa9285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-04T03:16:07Z",
+      "side": 1,
+      "message": "No. Focus and text are independent here.\nI realized that the next WaitForExists would wait for the text as well. I\u0027ve updated it.",
+      "parentUuid": "e0f3bd28_49e978c7",
+      "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b93d0f_44728840",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb5c751_ec6265b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-04T03:16:07Z",
+      "side": 1,
+      "message": "Done. Thanks for sharing the pointer.",
+      "parentUuid": "72b93d0f_44728840",
+      "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62f747eb_3e5dff6b",
@@ -82,6 +118,24 @@
       "writtenOn": "2022-04-01T18:20:46Z",
       "side": 1,
       "message": "https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#indent-error-flow\n\nI think it will be better to\n\n```\ninfo, err :\u003d ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName()\nif err !\u003d nil {\n    return coords.Rect{}, errors.Wrap(err, \"failed to get window info\")\n}\nif info.State \u003d\u003d ash.WindowStateMaximized {\n\tboundsInDP \u003d boundsInDP.WithOffset(0, info.CaptionHeight)\n}\n...\n```",
+      "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84a9d94_3c226f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-04T03:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62f747eb_3e5dff6b",
       "revId": "0e70fefc00a8818488e418be1d899a99a85680b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
