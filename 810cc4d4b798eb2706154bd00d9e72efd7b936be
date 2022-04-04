@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6f6737_1f87a48b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-04T19:38:30Z",
+      "side": 1,
+      "message": "I made a separate bug for that to decuple Tast.\nhttps://crbug.com/1313098",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "810cc4d4b798eb2706154bd00d9e72efd7b936be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b7b284_51f1644c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-04T19:38:30Z",
+      "side": 1,
+      "message": "As I mentioned offline, I do have 2 feature requests for this cl:\n* Adding check if the user is recognized a child in the browser\n* Adding the same checks to Geller login",
+      "revId": "810cc4d4b798eb2706154bd00d9e72efd7b936be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63e7fdd_55d9b395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-04T19:38:30Z",
+      "side": 1,
+      "message": "Let\u0027s use the standard format (and a new bug to track that):\nTODO(https://crbug.com/1313067): Set browser type to be Ash or LaCrOS based on param.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "810cc4d4b798eb2706154bd00d9e72efd7b936be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3450be_30f7b9cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-04T19:38:30Z",
+      "side": 1,
+      "message": "Let\u0027s add this check to GellerLogin test as well:\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/geller_login.go",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "810cc4d4b798eb2706154bd00d9e72efd7b936be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50efebd9_5f5cd999",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-04T19:38:30Z",
+      "side": 1,
+      "message": "That\u0027s nicely concise.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "810cc4d4b798eb2706154bd00d9e72efd7b936be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
