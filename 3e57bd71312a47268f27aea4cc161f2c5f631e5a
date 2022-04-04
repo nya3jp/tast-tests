@@ -51,6 +51,24 @@
       "parentUuid": "a9b167e8_ca1bd604",
       "revId": "3e57bd71312a47268f27aea4cc161f2c5f631e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4d0fb3_99ef0912",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T06:58:33Z",
+      "side": 1,
+      "message": "but this needs to take the num expected windows to be closed, so test authors need to understand the window closing, right?\n\nOr, if the only purpose of this function is to handle \"all windows closed\" case nicely, how about checking if lacros process kept alive, if all targets to be closed and connection lost. May look a bit dirtier approach, though, it *can* be encapsulated in browser package, too? WDYT?",
+      "parentUuid": "aa192fa6_76d0e236",
+      "revId": "3e57bd71312a47268f27aea4cc161f2c5f631e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
