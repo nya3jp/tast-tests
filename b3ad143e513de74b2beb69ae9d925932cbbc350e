@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "badb7f63_a64b0aed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-04T16:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a96fb31a_ff48fb57",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "b3ad143e513de74b2beb69ae9d925932cbbc350e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "379c1c85_f4fbf2a3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-04T00:49:05Z",
       "side": 1,
       "message": "I have seen countless times API changes introduced build breakage, so I highly recommend splitting this change into at least two:\n\n1. Introduce uiauto.Sleep and uiauto.IfSuccessThen while keeping existing Context.Sleep and Context.IfSuccessThen, and rewrite existing callers to call new functions.\n2. Remove Context.Sleep and Context.IfSuccessThen.\n\nIf another CL introduces a usage of removed functions (which is not unlikely), the build will break, and your CL might be reverted. By splitting your change into two, you can prevent (1) from being reverted, which helps you a lot to reland changes.",
+      "range": {
+        "startLine": 721,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 36
+      },
+      "revId": "b3ad143e513de74b2beb69ae9d925932cbbc350e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0d1511_1e8e3794",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-04T16:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f063b5_445a3168",
       "range": {
         "startLine": 721,
         "startChar": 0,
