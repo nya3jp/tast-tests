@@ -16,6 +16,24 @@
       "message": "What does fails to click mean? Do we need to update every single place that uses the AX tree to retry clicking since that operation is flaky? Is the UI itself flaky and that\u0027s a bug users can hit?",
       "revId": "d52c0a2587eda0c839d2f73672a02749f7342b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41234a8e_b75b9938",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-04T02:48:53Z",
+      "side": 1,
+      "message": "I could be a code race between the ui and the tast code: the ui is not ready when tast starts to click. It does not happen that frequently.",
+      "parentUuid": "c27e23f8_ed98c62c",
+      "revId": "d52c0a2587eda0c839d2f73672a02749f7342b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
