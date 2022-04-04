@@ -33,7 +33,7 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "chromePolicyLoggedIn",
 	})
 }
@@ -126,6 +126,7 @@ func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string,
 
 	searchNode := nodewith.ClassName("SearchBoxView").First()
 	if err := uiauto.Combine("Right clickshelf box",
+		ui.WaitUWaitUntilExists(searchNode),
 		ui.LeftClick(searchNode),
 		ui.RightClick(searchNode))(ctx); err != nil {
 		return errors.Wrap(err, "failed to right click shelf box")
@@ -153,6 +154,7 @@ func pasteShelfbox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.
 
 	searchNode := nodewith.ClassName("SearchBoxView").First()
 	if err := uiauto.Combine("Paste content in shelf box",
+		ui.WaitUWaitUntilExists(searchNode),
 		ui.LeftClick(searchNode),
 		keyboard.AccelAction("Ctrl+V"))(ctx); err != nil {
 		return errors.Wrap(err, "failed to paste content in shelf box")
