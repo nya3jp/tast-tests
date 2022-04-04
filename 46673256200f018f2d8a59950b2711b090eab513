@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f317f1c_d2cdd15b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T06:15:36Z",
+      "side": 1,
+      "message": "Lacros uprev failed since 102.0.4979.0-.\n",
+      "revId": "46673256200f018f2d8a59950b2711b090eab513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
