@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6f2bf8_45f6d911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-04-04T14:43:33Z",
+      "side": 1,
+      "message": "should we check if the button was enabled before the option to restrict sign-in was selected? Maybe it\u0027s just always disabled :)",
+      "revId": "e655c47396d2f3410ef633b3ab7ca5e1c66cde72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac994024_cbf81eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-04-04T14:43:33Z",
+      "side": 1,
+      "message": "I\u0027m wondering if this file is the right place for this function, as it deals with UI settings. Personally I\u0027d probably put it in a separate util file, but I don\u0027t have a strong preference, it\u0027s just something to consider.",
+      "revId": "e655c47396d2f3410ef633b3ab7ca5e1c66cde72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
