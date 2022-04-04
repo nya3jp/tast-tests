@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5be593b_9195c1eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-04T19:06:15Z",
+      "side": 1,
+      "message": "nit: `are fewer`",
+      "range": {
+        "startLine": 331,
+        "startChar": 15,
+        "endLine": 331,
+        "endChar": 22
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61011b7a_42fdcf1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-04T19:06:15Z",
+      "side": 1,
+      "message": "The error message will report the wrong number of bots wanted, because it is about the call to `AddBots` that just happened whereas `addBotsCount` has now been updated for the next call to `AddBots`. You could do this:\n  if len(botList) \u003c addBotsCount {\n    err :\u003d errors.Errorf(\"failed to create bots; wanted %d bots, got %d\", addBotsCount, len(botList))\n    // Send another request for more bots.\n    addBotsCount -\u003d len(botList)\n    return err\n  }",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 4
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d428233_f2d24a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-04T19:06:15Z",
+      "side": 1,
+      "message": "I would leave this out. It is redundant because every call to `AddBots` uses `sctx` which will time out after a total of one minute anyway.",
+      "range": {
+        "startLine": 336,
+        "startChar": 5,
+        "endLine": 336,
+        "endChar": 47
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0920852f_5a5ec1f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-04T19:06:15Z",
+      "side": 1,
+      "message": "nit: This usage of the word `enough` suggests that a larger number of bots would be okay. How about:\n  s.Fatalf(\"Failed to ensure %d bots in the meet call: %v\", meet.num, err)",
+      "range": {
+        "startLine": 337,
+        "startChar": 3,
+        "endLine": 337,
+        "endChar": 66
+      },
+      "revId": "fe93aad72236322ae67b3247d6f72dc43018edfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
