@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f620604b_94ac9506",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-04T06:23:20Z",
+      "side": 1,
+      "message": "nit: policy",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59d4965d_3cd74113",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-04-01T18:29:53Z",
       "side": 1,
       "message": "This is the e2e Kiosk enrollment test.",
+      "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1763182_9e9cacb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-04T06:23:20Z",
+      "side": 1,
+      "message": "This is racy, if Chrome starts fast enough you might miss the message. \n\nEither call ConfirmKioskStarted in a goroutine before GAIAEnrollUsingChrome in the tests or add a StartReader method in the service that you can call before GAIAEnrollUsingChrome.",
       "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
