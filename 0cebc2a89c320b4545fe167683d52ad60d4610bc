@@ -72,6 +72,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b69905d2_ea92f87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-04T14:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519adf34_51a09e65",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "47e4257b_021e1e06",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
         "patchSetId": 1
@@ -135,6 +153,42 @@
       "writtenOn": "2022-04-04T07:46:26Z",
       "side": 1,
       "message": "could you add comment why this timeout tweaking is needed for this test as a special case?",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01a5030_155770b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-04T14:15:44Z",
+      "side": 1,
+      "message": "We can\u0027t multiple integer with a duration instance. Casting len(packages) to duration would make the code compile but it semantically is misleading since no. of packages is not a duration.",
+      "parentUuid": "aec1a65d_5ee91fe2",
+      "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e37f37b_6ccae56d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-04T14:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86eef166_be384c5e",
       "revId": "0cebc2a89c320b4545fe167683d52ad60d4610bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
