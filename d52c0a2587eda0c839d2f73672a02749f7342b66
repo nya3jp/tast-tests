@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27e23f8_ed98c62c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-04-04T02:30:18Z",
+      "side": 1,
+      "message": "What does fails to click mean? Do we need to update every single place that uses the AX tree to retry clicking since that operation is flaky? Is the UI itself flaky and that\u0027s a bug users can hit?",
+      "revId": "d52c0a2587eda0c839d2f73672a02749f7342b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
