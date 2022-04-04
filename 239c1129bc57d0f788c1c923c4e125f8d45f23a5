@@ -22,6 +22,30 @@
       },
       "revId": "239c1129bc57d0f788c1c923c4e125f8d45f23a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395ec071_fbb51b9b",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T05:08:57Z",
+      "side": 1,
+      "message": "It makes sense. I updated. Even it write with a root case, it works. Ptal",
+      "parentUuid": "83c8fcc6_2b490a3e",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "239c1129bc57d0f788c1c923c4e125f8d45f23a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
