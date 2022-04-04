@@ -46,6 +46,30 @@
       },
       "revId": "6a89404dcf657fe10e0199e6aa564f85f849b20e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad85b947_e14a7e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-04T21:39:39Z",
+      "side": 1,
+      "message": "`AddBots` tries 3 times anyway. See:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/bond/bond.go;drc\u003d0ca8b18d2322b9b8533f28b69973c2e95d673980;l\u003d108",
+      "parentUuid": "ee4b9ef0_b6382420",
+      "range": {
+        "startLine": 327,
+        "startChar": 11,
+        "endLine": 327,
+        "endChar": 75
+      },
+      "revId": "6a89404dcf657fe10e0199e6aa564f85f849b20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
