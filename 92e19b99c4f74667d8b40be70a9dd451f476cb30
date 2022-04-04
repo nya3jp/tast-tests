@@ -33,6 +33,24 @@
       "message": "sheriff: does \"fast_build.sh\" succeed? If so, ok to chump as it fixes CQ.",
       "revId": "92e19b99c4f74667d8b40be70a9dd451f476cb30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648a5a81_51c82f76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T16:08:53Z",
+      "side": 1,
+      "message": "I did, and it succeeded. Will chump soon, then. Thank you for ping.",
+      "parentUuid": "a3ffbea1_7ea7b6b0",
+      "revId": "92e19b99c4f74667d8b40be70a9dd451f476cb30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
