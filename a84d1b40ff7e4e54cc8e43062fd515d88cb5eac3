@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90992f5d_f8fa0224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-04T07:22:18Z",
+      "side": 1,
+      "message": "Thanks for fixing this! It\u0027s a bit unfortunate that we can\u0027t just use \"defer\" here as the code usually does. I recall checking whether a deferred called can be cancled and that\u0027s not possible, otherwise we could just \"defer client.Close()\" and then cancel and run the defered call before rebooting. Do you have an idea on how to make it a bit more clean?",
+      "revId": "a84d1b40ff7e4e54cc8e43062fd515d88cb5eac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed699b5_f05e341d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-04T07:22:18Z",
+      "side": 1,
+      "message": "Let\u0027s add policyClient.StopChromeAndFakeDMS here?",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "a84d1b40ff7e4e54cc8e43062fd515d88cb5eac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dffb04c2_664a2c30",
@@ -31,6 +71,30 @@
       "writtenOn": "2022-04-01T15:15:55Z",
       "side": 1,
       "message": "I am wondering if this should also be Fatal, but I am not sure, WDYT?",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 9
+      },
+      "revId": "a84d1b40ff7e4e54cc8e43062fd515d88cb5eac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2f2163_76bb41e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-04T07:22:18Z",
+      "side": 1,
+      "message": "Probably makes sense, yes.",
+      "parentUuid": "dffb04c2_664a2c30",
       "range": {
         "startLine": 232,
         "startChar": 4,
