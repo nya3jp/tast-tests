@@ -7,7 +7,6 @@ package login
 import (
 	"context"
 	"os"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -16,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
@@ -26,6 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RemoveUsersExceptOwner,
 		Desc:         "Checks if device owner can remove other users, but not self (on the Settings page)",
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Contacts:     []string{"jaflis@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
@@ -52,19 +51,29 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 
 	setupUsers(ctx, cleanUpCtx, s)
 
-	const restrictSignInOption = "Restrict sign-in to the following users:"
-
 	// Non-owner should not be able to remove users.
 	func() {
 		cr, err := userutil.Login(ctx, additionalUser2, commonPassword)
 		if err != nil {
 			s.Fatal("Failed to log in as non-owner user: ", err)
 		}
-		settings, _ := openSettingsInSession(ctx, cleanUpCtx, s, cr, restrictSignInOption)
-		defer cr.Close(cleanUpCtx)
-		defer settings.Close(cleanUpCtx)
 
-		isEnabled, err := settings.IsToggleOptionEnabled(ctx, cr, restrictSignInOption)
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Creating login test API connection failed: ", err)
+		}
+		defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tconn)
+
+		settings, err := userutil.OpenManageOtherPeople(ctx, cleanUpCtx, cr, tconn)
+		if err != nil {
+			s.Fatal("Failed to open Manage other people: ", err)
+		}
+		defer cr.Close(cleanUpCtx)
+		if settings != nil {
+			defer settings.Close(cleanUpCtx)
+		}
+
+		isEnabled, err := settings.IsToggleOptionEnabled(ctx, cr, userutil.RestrictSignInOption)
 		if err != nil {
 			s.Fatal("Could not check the status of the toggle: ", err)
 		}
@@ -89,16 +98,23 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 		}
 		defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tconn)
 
-		settings, ui := openSettingsInSession(ctx, cleanUpCtx, s, cr, restrictSignInOption)
+		settings, err := userutil.OpenManageOtherPeople(ctx, cleanUpCtx, cr, tconn)
+		if err != nil {
+			s.Fatal("Failed to open Manage other people: ", err)
+		}
 		defer cr.Close(cleanUpCtx)
-		defer settings.Close(cleanUpCtx)
+		if settings != nil {
+			defer settings.Close(cleanUpCtx)
+		}
 
-		if err := ui.LeftClick(nodewith.Name(restrictSignInOption).Role(role.ToggleButton))(ctx); err != nil {
+		ui := uiauto.New(tconn)
+
+		if err := ui.LeftClick(nodewith.Name(userutil.RestrictSignInOption).Role(role.ToggleButton))(ctx); err != nil {
 			s.Fatal("Failed to show the list of users: ", err)
 		}
 
 		// Remove a non-owner user.
-		removeButtonName := "Remove " + getUsernameFromEmail(additionalUser1)
+		removeButtonName := "Remove " + userutil.GetUsernameFromEmail(additionalUser1)
 
 		if err := uiauto.Combine("remove a non-owner user",
 			ui.WaitUntilExists(nodewith.Name(removeButtonName).Role(role.Button)),
@@ -109,7 +125,7 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 		}
 
 		// It shouldn't be possible to remove the owner.
-		if err := ui.Gone(nodewith.Name("Remove " + getUsernameFromEmail(deviceOwner)).Role(role.Button))(ctx); err != nil {
+		if err := ui.Gone(nodewith.Name("Remove " + userutil.GetUsernameFromEmail(deviceOwner)).Role(role.Button))(ctx); err != nil {
 			s.Fatal("Didn't expect to find remove button for device owner: ", err)
 		}
 
@@ -194,39 +210,6 @@ func setupUsers(ctx, cleanUpCtxs context.Context, s *testing.State) {
 	if err := userutil.CreateUser(ctx, additionalUser2, commonPassword, chrome.KeepState()); err != nil {
 		s.Fatal("Failed to create new user: ", err)
 	}
-}
-
-func getUsernameFromEmail(email string) string {
-	return email[:strings.IndexByte(email, '@')]
-}
-
-func openSettingsInSession(ctx, cleanUpCtx context.Context, s *testing.State, cr *chrome.Chrome, restrictSignInOption string) (*ossettings.OSSettings, *uiauto.Context) {
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating login test API connection failed: ", err)
-	}
-	defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tconn)
-
-	// Display the list of users.
-	ui := uiauto.New(tconn)
-
-	const subsettingsName = "Manage other people"
-
-	// Open settings, Manage Other People.
-	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "osPrivacy", ui.WaitUntilExists(nodewith.Name(subsettingsName)))
-	if err != nil {
-		s.Fatal("Failed to connect to the settings page: ", err)
-	}
-
-	if err := ui.LeftClick(nodewith.Name(subsettingsName))(ctx); err != nil {
-		s.Fatal("Failed to open Manage other people subsettings: ", err)
-	}
-
-	if err := ui.WaitUntilExists(nodewith.Name(restrictSignInOption).Role(role.ToggleButton))(ctx); err != nil {
-		s.Fatal("Failed to wait for the toggle to show the list of users: ", err)
-	}
-
-	return settings, ui
 }
 
 func getCryptohomeFileInfo(ctx context.Context, s *testing.State, user string) (os.FileInfo, error) {
