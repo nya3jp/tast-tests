@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "911c2350_005f3164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2022-04-04T01:45:32Z",
+      "side": 1,
+      "message": "LGTM. You mentioned offline that you wanted to have a list of ports and WebAPKs in one place so that there are no collisions - is that coming in a future CL?",
+      "revId": "1081609d29017c03241b201b5bed0be5db4e7f16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
