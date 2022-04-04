@@ -109,8 +109,8 @@ func testMemInfo(ctx context.Context, s *testing.State) {
 		s.Errorf("Unexpected MemTotal: got %d; want >= %d", m.Total, expectMinTotal)
 	}
 
-	if m.VMallocTotal < expectMinVTotal {
-		s.Errorf("Unexpected VmallocTotal: got %d; want >= %d", m.VMallocTotal, expectMinVTotal)
+	if m.VmallocTotal < expectMinVTotal {
+		s.Errorf("Unexpected VmallocTotal: got %d; want >= %d", m.VmallocTotal, expectMinVTotal)
 	}
 
 	minSwap := uint64(float64(expectSwap) * 0.9)

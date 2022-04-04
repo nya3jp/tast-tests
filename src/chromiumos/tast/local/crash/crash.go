@@ -526,7 +526,7 @@ func processRunning(procName string) (bool, error) {
 		if err != nil {
 			continue
 		}
-		if n == procName && status != zombieStatus {
+		if n == procName && status[0] != zombieStatus {
 			return true, nil
 		}
 	}

@@ -44,7 +44,7 @@ func isActiveChronosProcess(pid int32) bool {
 		return false
 	}
 
-	if status, err := p.Status(); err != nil || status == "Z" || status == "X" {
+	if status, err := p.Status(); err != nil || status[0] == "Z" || status[0] == "X" {
 		// The process exited already, or is a zombie that hasn't yet been reaped
 		// by its parent (https://crbug.com/963144), or is in the mysterious "dead" state
 		// that "should never be seen" but sometimes is (https://crrev.com/c/1303781).

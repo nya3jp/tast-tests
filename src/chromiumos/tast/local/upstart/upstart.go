@@ -151,7 +151,7 @@ func CheckJob(ctx context.Context, job string, args ...Arg) error {
 		return errors.Wrapf(err, "failed to check %v process %d", job, pid)
 	} else if status, err := proc.Status(); err != nil {
 		return errors.Wrapf(err, "failed to get %v process %d status", job, pid)
-	} else if status == "Z" {
+	} else if status[0] == "Z" {
 		return errors.Errorf("%v process %d is a zombie", job, pid)
 	}
 	return nil
