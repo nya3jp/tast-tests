@@ -50,12 +50,12 @@ func init() {
 			{
 				Name:    "clamshell_mode",
 				Val:     splitViewResizeClamshell,
-				Fixture: "chromeLoggedIn",
+				Fixture: chrome.ChromeLoggedIn,
 				Timeout: 4 * time.Minute,
 			},
 			{
 				Val:     splitViewResizeTablet,
-				Fixture: "chromeLoggedIn",
+				Fixture: chrome.ChromeLoggedIn,
 				Timeout: 5 * time.Minute,
 			},
 			{

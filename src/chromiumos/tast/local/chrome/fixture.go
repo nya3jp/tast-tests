@@ -13,8 +13,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func init() {
-	testing.AddFixture(&testing.Fixture{
+var (
+	ChromeLoggedIn = testing.Fixture{
 		Name:     "chromeLoggedIn",
 		Desc:     "Logged into a user session",
 		Contacts: []string{"nya@chromium.org", "oka@chromium.org"},
@@ -24,9 +24,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInForEA = testing.Fixture{
 		Name:     "chromeLoggedInForEA",
 		Desc:     "Logged into a user session for essential apps",
 		Contacts: []string{"shengjun@chromium.org"},
@@ -36,9 +36,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInForEAInJP = testing.Fixture{
 		Name:     "chromeLoggedInForEAInJP",
 		Desc:     "Logged into a user session for essential apps in Japanese language",
 		Contacts: []string{"shengjun@chromium.org"},
@@ -48,9 +48,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInForInputs = testing.Fixture{
 		Name:     "chromeLoggedInForInputs",
 		Desc:     "Logged into a user session for essential inputs",
 		Contacts: []string{"shengjun@chromium.org"},
@@ -60,9 +60,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInGuest = testing.Fixture{
 		Name:     "chromeLoggedInGuest",
 		Desc:     "Logged into a guest user session",
 		Contacts: []string{"benreich@chromium.org"},
@@ -72,9 +72,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInGuestForEA = testing.Fixture{
 		Name:     "chromeLoggedInGuestForEA",
 		Desc:     "Logged into a guest user session for essential apps",
 		Contacts: []string{"shengjun@chromium.org"},
@@ -84,9 +84,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInGuestForInputs = testing.Fixture{
 		Name:     "chromeLoggedInGuestForInputs",
 		Desc:     "Logged into a guest user session for essential inputs",
 		Contacts: []string{"shengjun@chromium.org"},
@@ -96,9 +96,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWith100FakeApps = testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeApps",
 		Desc:     "Logged into a user session with 100 fake apps",
 		Contacts: []string{"mukai@chromium.org"},
@@ -109,9 +109,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWith100FakeAppsSkiaRenderer = testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsSkiaRenderer",
 		Desc:     "Logged into a user session with 100 fake apps",
 		Contacts: []string{"mukai@chromium.org"},
@@ -122,9 +122,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWith100FakeAppsDoubleBuffering = testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsDoubleBuffering",
 		Desc:     "Logged into a user session with 100 fake apps with double buffer compositing",
 		Contacts: []string{"yjliu@chromium.org"},
@@ -135,9 +135,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWith100FakeAppsLegacyLauncher = testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		Desc:     "Logged into a user session with 100 fake apps and productivity launcher disabled",
 		Contacts: []string{"tbarzic@chromium.org"},
@@ -148,9 +148,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWith100FakeAppsProductivityLauncher = testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsProductivityLauncher",
 		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
 		Contacts: []string{"jamescook@chromium.org"},
@@ -161,9 +161,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWith100FakeAppsProductivityLauncherAppSort = testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsProductivityLauncherAppSort",
 		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
 		Contacts: []string{"andrewxu@chromium.org"},
@@ -174,9 +174,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWithLegacyLauncher = testing.Fixture{
 		Name:     "chromeLoggedInWithLegacyLauncher",
 		Desc:     "Logged into a user session with productivity launcher disabled",
 		Contacts: []string{"tbarzic@chromium.org"},
@@ -186,9 +186,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedWithGaia = testing.Fixture{
 		Name:     "chromeLoggedWithGaia",
 		Desc:     "Logged into a session with Gaia user",
 		Contacts: []string{"jinrongwu@google.com"},
@@ -199,9 +199,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWithGaiaLegacyLauncher = testing.Fixture{
 		Name:     "chromeLoggedInWithGaiaLegacyLauncher",
 		Desc:     "Logged into a session with Gaia user where productivity launcher is disabled",
 		Contacts: []string{"tbarzic@google.com"},
@@ -212,9 +212,9 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
+	}
 
-	testing.AddFixture(&testing.Fixture{
+	ChromeLoggedInWithGaiaProductivityLauncher = testing.Fixture{
 		Name:     "chromeLoggedInWithGaiaProductivityLauncher",
 		Desc:     "Logged into a session with Gaia user where productivity launcher is enabled",
 		Contacts: []string{"tbarzic@google.com"},
@@ -225,8 +225,8 @@ func init() {
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
-	})
-}
+	}
+)
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
 type OptionsCallback func(ctx context.Context, s *testing.FixtState) ([]Option, error)
