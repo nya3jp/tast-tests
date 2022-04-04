@@ -16,6 +16,24 @@
       "message": "nit: The default is nil, you can pass an empty struct.",
       "revId": "25020bde725f586b2953b80828731b2afaabc257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5360f2e5_09faea5c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-04-04T00:37:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e5d98c_04f511d8",
+      "revId": "25020bde725f586b2953b80828731b2afaabc257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
