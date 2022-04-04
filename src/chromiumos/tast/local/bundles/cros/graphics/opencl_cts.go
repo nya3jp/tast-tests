@@ -10893,7 +10893,7 @@ func init() {
 					logFileName:  "image_streams-1D_CL_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1d_cl_half_float",
@@ -10903,7 +10903,7 @@ func init() {
 					logFileName:  "image_streams-1D_CL_HALF_FLOAT.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1d_cl_signed_int16",
@@ -10943,7 +10943,7 @@ func init() {
 					logFileName:  "image_streams-1D_CL_SNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1d_cl_snorm_int8",
@@ -10953,7 +10953,7 @@ func init() {
 					logFileName:  "image_streams-1D_CL_SNORM_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1d_cl_unorm_int_101010",
@@ -10973,7 +10973,7 @@ func init() {
 					logFileName:  "image_streams-1D_CL_UNORM_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_1d_cl_unorm_int8",
@@ -11063,7 +11063,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_signed_int32",
@@ -11073,7 +11073,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_signed_int8",
@@ -11083,7 +11083,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_snorm_int16",
@@ -11163,7 +11163,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_unsigned_int32",
@@ -11173,7 +11173,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2darray_cl_unsigned_int8",
@@ -11183,7 +11183,7 @@ func init() {
 					logFileName:  "image_streams-2Darray_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_float",
@@ -11213,7 +11213,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_signed_int32",
@@ -11223,7 +11223,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_signed_int8",
@@ -11233,7 +11233,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_snorm_int16",
@@ -11313,7 +11313,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_unsigned_int32",
@@ -11323,7 +11323,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_2d_cl_unsigned_int8",
@@ -11333,7 +11333,7 @@ func init() {
 					logFileName:  "image_streams-2D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_float",
@@ -11363,7 +11363,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_SIGNED_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_signed_int32",
@@ -11373,7 +11373,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_SIGNED_INT32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_signed_int8",
@@ -11383,7 +11383,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_SIGNED_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_snorm_int16",
@@ -11463,7 +11463,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_UNSIGNED_INT16.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_unsigned_int32",
@@ -11473,7 +11473,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_UNSIGNED_INT32.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "image_streams_3d_cl_unsigned_int8",
@@ -11483,7 +11483,7 @@ func init() {
 					logFileName:  "image_streams-3D_CL_UNSIGNED_INT8.txt",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "integer_ops_char_compare",
