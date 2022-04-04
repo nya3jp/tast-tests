@@ -58,58 +58,6 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosWaylandDecreasedPriority is the same as lacros but using Wayland
-	// normal thread priority flag.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosWaylandDecreasedPriority",
-		Desc:     "Lacros Chrome from a pre-built image using normal thread priority for Wayland",
-		Contacts: []string{"hidehiko@chromium.org", "tvignatti@igalia.com"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs(lacrosWaylandDecreasedPriorityArgs...)}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
-	})
-
-	// lacrosAshLikeThreadsPriority is the same as lacros but using display
-	// thread priority for browser UI and IO threads; GPU main, viz compositor
-	// and IO threads; and renderer compositor and IO threads. These are finch
-	// flags enabled by default on ash-chrome.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosAshLikeThreadsPriority",
-		Desc:     "Lacros Chrome from a pre-built image using display thread priority similar to ash-chrome",
-		Contacts: []string{"hidehiko@chromium.org", "tvignatti@igalia.com"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs(lacrosAshLikeThreadsPriorityArgs...)}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
-	})
-
-	// lacrosWaylandDecreasedAndAshLikeThreadsPriority is the same as lacros
-	// but using Wayland normal thread priority and ash-chrome like threads
-	// flags (see lacrosAshLikeThreadsPriority above).
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosWaylandDecreasedAndAshLikeThreadsPriority",
-		Desc:     "Lacros Chrome from a pre-built image normal thread priority for Wayland and display thread priority similar to ash-chrome",
-		Contacts: []string{"hidehiko@chromium.org", "tvignatti@igalia.com"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
-				chrome.LacrosExtraArgs(lacrosWaylandDecreasedPriorityArgs...),
-				chrome.LacrosExtraArgs(lacrosAshLikeThreadsPriorityArgs...)}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{LacrosDeployedBinary},
-	})
-
 	// lacrosWith100FakeApps is the same as lacros but
 	// creates 100 fake apps that are shown in the ash-chrome launcher.
 	testing.AddFixture(&testing.Fixture{
@@ -237,20 +185,6 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{LacrosDeployedBinary},
 	})
-}
-
-// TODO(tvignatti): how do we make sure Lacros has this flag implemented? See crrev.com/c/3304121.
-var lacrosWaylandDecreasedPriorityArgs = []string{
-	// Use Wayland event watcher thread with normal priority.
-	"--use-wayland-normal-thread-priority",
-}
-var lacrosAshLikeThreadsPriorityArgs = []string{
-	// Enable display priority for browser UI and IO threads.
-	"--enable-features=BrowserUseDisplayThreadPriority",
-	// Enable display priority for GPU main, viz compositor and IO threads.
-	"--enable-features=GpuUseDisplayThreadPriority",
-	// Enable display priority for Renderer compositor and IO threads.
-	"--enable-features=BlinkCompositorUseDisplayThreadPriority",
 }
 
 const (
