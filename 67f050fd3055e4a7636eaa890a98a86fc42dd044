@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9697ca30_6ce9041e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/kiosk_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-04T13:13:36Z",
+      "side": 1,
+      "message": "nit: you could use here syslog.Chrome",
+      "range": {
+        "startLine": 35,
+        "startChar": 53,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "67f050fd3055e4a7636eaa890a98a86fc42dd044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1763182_9e9cacb2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
         "patchSetId": 4
