@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ec7191_93f7f304",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T11:46:06Z",
+      "side": 1,
+      "message": "If pref is empty, instead of calling MarshalPref, I think it should call Marshal. so returned err.",
+      "parentUuid": "2033ae68_6bfe5ceb",
+      "revId": "c684ecc1926e4e4b115f3536165c2dee60016637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ef825c_6c932ba3",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b58be41_1a6467ee",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ef825c_6c932ba3",
+      "revId": "c684ecc1926e4e4b115f3536165c2dee60016637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce84faf2_905c3e1f",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-04-04T05:24:09Z",
       "side": 1,
       "message": "pls do not copy-n-paste my comment directry :-).\nDitto for below.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "c684ecc1926e4e4b115f3536165c2dee60016637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa231b3b_d6f8dde7",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-04-04T11:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce84faf2_905c3e1f",
       "range": {
         "startLine": 102,
         "startChar": 4,
