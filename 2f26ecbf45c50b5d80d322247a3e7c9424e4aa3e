@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa8ed77_e82e0912",
+        "filename": "src/chromiumos/tast/local/webapk/webapk_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-04-04T00:51:40Z",
+      "side": 1,
+      "message": "Correct.",
+      "parentUuid": "a06db837_b3120050",
+      "range": {
+        "startLine": 72,
+        "startChar": 32,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "2f26ecbf45c50b5d80d322247a3e7c9424e4aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b7587f_9dbce8d2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c2f53d_a0bb06fa",
+        "filename": "src/chromiumos/tast/local/webapk/webapk_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-04-04T00:51:40Z",
+      "side": 1,
+      "message": "Yes. I have validated, it worked in both cases. `\":\u003cport\u003e\"` seems to be a slightly more popular (63%) way to spell it in the codebase, so I went with this option.",
+      "parentUuid": "62b7587f_9dbce8d2",
+      "range": {
+        "startLine": 78,
+        "startChar": 42,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "2f26ecbf45c50b5d80d322247a3e7c9424e4aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f46ae594_debbca67",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-03T23:55:08Z",
       "side": 1,
       "message": "Please add comment to indicate that it also uninstall the PWA if it is preinstalled.",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "2f26ecbf45c50b5d80d322247a3e7c9424e4aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "262c9cf8_d93adcc8",
+        "filename": "src/chromiumos/tast/local/webapk/webapk_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-04-04T00:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46ae594_debbca67",
       "range": {
         "startLine": 103,
         "startChar": 3,
