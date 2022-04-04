@@ -22,6 +22,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var phoneIP = testing.RegisterVarString(
+	"crossdevice.phoneIP",
+	"",
+	"IP address of an Android Phone that has enabled adb-over-tcp",
+)
+
 // AdbSetup configures adb and connects to the Android device with adb root if available.
 func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	// TODO(b/207520262): Remove when we have Android support in skylab for configuring phone.
@@ -40,22 +46,38 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	if !setupadb {
 		return nil, false, errors.Wrap(err, "failed to launch adb server after multiple attempts")
 	}
-
-	waitForDevices := false
 	var adbDevice *adb.Device
-	for i := 0; i < 3; i++ {
-		// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
-		adbDevice, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
-		if err == nil {
-			waitForDevices = true
-			break
-		} else {
-			testing.ContextLog(ctx, "Failed to list adb devices")
-			testing.Sleep(ctx, 3*time.Second)
+
+	if phoneIP.Value() != "" {
+		testing.ContextLogf(ctx, "Android phone IP is: %s", phoneIP.Value())
+
+		// Connect to the adb-over-tcp Phone that was setup previously (e.g manually or via autotest control file).
+		adbDevice, err = adb.Connect(ctx, phoneIP.Value(), 30*time.Second)
+		if err != nil {
+			return nil, false, errors.Wrap(err, "failed to connect to adb over wifi")
 		}
-	}
-	if !waitForDevices {
-		return nil, false, errors.Wrap(err, "failed to list adb devices after multiple attempts")
+		testing.ContextLog(ctx, "Connected to remote Android device")
+
+		// Wait for the Android device to be ready for use.
+		if err := adbDevice.WaitForState(ctx, adb.StateDevice, 30*time.Second); err != nil {
+			return nil, false, errors.Wrap(err, "wait for state failed")
+		}
+	} else {
+		waitForDevices := false
+		for i := 0; i < 3; i++ {
+			// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
+			adbDevice, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
+			if err == nil {
+				waitForDevices = true
+				break
+			} else {
+				testing.ContextLog(ctx, "Failed to list adb devices")
+				testing.Sleep(ctx, 3*time.Second)
+			}
+		}
+		if !waitForDevices {
+			return nil, false, errors.Wrap(err, "failed to list adb devices after multiple attempts")
+		}
 	}
 	// Check if adb root is available.
 	rooted := true
