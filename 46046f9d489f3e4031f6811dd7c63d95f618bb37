@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a7e432_4f8c1817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "Ok, so the remaining ones are just misc/cosmetic comments only.\nMarking LGTM to avoid another cross timezone iteration, assuming you\u0027ll agree all my comments below and address all of them. If not, let\u0027s have another iteration.",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e82fce7_d8830fb8",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "nit: missing trailing periods.\n\n// Marshal will update Local State with localState.\n// localState includes pref names and pref values that will be written to local state.\n// pref name with dot format \"foo.bar.baz\" is not allowed in localState interface,\n// localState could include nested map type {\"foo\":{\"bar\":{\"baz\": 1234}}}.",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8945df42_cbe0fd83",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "ditto for trailing period.\n\n// MarshalPref will update the pref with val in local state.",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 59
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf71ddc_37b94e26",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "Could you document empty pref? Also ditto for trailing period.\n\npref name could have format \"foo.bar.baz\". Each component separated by \u0027.\u0027 will be used as key of the dict. pref must not be an empty string.",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db27e1ad_47c097f6",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "nit: \"perf name cannot be empty, use Marchal if you\u0027re overwriting the entire file content\"\n\nto give more navigate to test author?",
+      "range": {
+        "startLine": 91,
+        "startChar": 27,
+        "endLine": 91,
+        "endChar": 52
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba43fb3_2e99f2a1",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "nit: pls use errors.New() instead of errors.Wrap(nil, ...)",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa2420c_e3ce2e2f",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "Looks redundant, as this is what L98 does. Please drop.",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23250ff6_36904f28",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "L104 is redundat. L105 is my review comment to you so should not be here.\n\n// If local state does not exist, create it. Initialize localState by an empty map\n// as if it is read successfully.",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 63
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ec45c6_c76e5014",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "This was my comment to explain the code to you. Pls remove.",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13be0bee_c3dd0445",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "ditto. Pls remove.",
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be556e07_06332ea2",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T13:02:22Z",
+      "side": 1,
+      "message": "nit: errors.Errorf()",
+      "range": {
+        "startLine": 125,
+        "startChar": 17,
+        "endLine": 125,
+        "endChar": 22
+      },
+      "revId": "46046f9d489f3e4031f6811dd7c63d95f618bb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
