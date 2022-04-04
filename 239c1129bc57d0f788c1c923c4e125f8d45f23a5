@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c8fcc6_2b490a3e",
+        "filename": "src/chromiumos/tast/local/chrome/localstate/localstate.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-04T02:35:41Z",
+      "side": 1,
+      "message": "IIUC, this does not work in some case. E.g.:\n\nThe original local_state is {\"foo\": {\"bar\": 100}}\nThen, you\u0027re trying to add \"foo.baz\": 200. The expected result should be {\"foo\": {\"bar\": 100, \"baz\": 200}}.\nHowever, this overwrites \"foo\" directly so we\u0027ll get {\"foo\": {\"baz\": 200}} (i.e. \"foo.bar\": 100 is removed unintentionally).\n\nI think it is necessary to traverse the original dict from root to bottom.\n\nif pref \u003d\u003d \"\" {\n  // Writing a root entry case.\n  if err :\u003d Marshal(bt, newVal); err !\u003d nil {\n    ... // return an error\n  }\n  return nil\n}\nkeys :\u003d strings.Split(pref, \".\")\n\nvar ls interface{}\nif err :\u003d Unmarshal(bt, \u0026ls); err !\u003d nil {\n  if !os.IsNotExists(err) {\n    ... // return an error\n  }\n  // Note by reviewer: it is ok to create a file, if not exist.\n  ls \u003d make(map[string]interface{})\n}\ndict, ok :\u003d ls.(map[string]interface{})\nif !ok {\n  ... // return an error\n}\n\n// Note by reviewer: iterate the keys except the last one.\nfor k :\u003d range keys[:len(keys)-1] {\n  // Note by reviewer: look up the map to see if the corresponding entry exists.\n  e, ok :\u003d dict[k]\n  if !ok {\n    e \u003d make(map[string]interface{})\n    dict[k] \u003d e\n  }\n  // Note by reviewer: Making sure the entry is a dict.\n  dict, ok :\u003d e.(map[string]interface{})\n  if !ok {\n    ... // return an error\n  }\n}\n\n// Note by reviewer: overwrite the last entry.\ndict[keys[len(keys)-1]] \u003d newVal\nif err :\u003d Marshal(bt, dict); err !\u003d nil {\n  ... // return an error\n}\nreturn nil\n\nor something?\n\nWDYT?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "239c1129bc57d0f788c1c923c4e125f8d45f23a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
