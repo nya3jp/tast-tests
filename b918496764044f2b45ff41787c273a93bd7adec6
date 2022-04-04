@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41a578e_bcf963f5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-04T17:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f50380_8c6199dd",
+      "range": {
+        "startLine": 67,
+        "startChar": 55,
+        "endLine": 67,
+        "endChar": 57
+      },
+      "revId": "b918496764044f2b45ff41787c273a93bd7adec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b2a946b_b3f16553",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-04T16:56:19Z",
       "side": 1,
       "message": "document these",
+      "revId": "b918496764044f2b45ff41787c273a93bd7adec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e89186f_c782dd1c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-04T17:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b2a946b_b3f16553",
       "revId": "b918496764044f2b45ff41787c273a93bd7adec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
