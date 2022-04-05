@@ -57,30 +57,51 @@ func init() {
 			// These are skipped because they either don't support S0ix
 			// Or they incorrectly report that they do
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(
+				// atlas
+				"atlas",
+
 				// coral
 				"babymega",
 
 				// eve
 				"eve",
 
+				// dedede
+				"storo360",
+
 				// grunt
 				"careena",
 				"barla",
 				"liara",
 				"kasumi",
+				"kasumi360",
+				"treeya",
 
 				// jacuzzi
+				"damu",
+				"burnet",
 				"fennel",
+				"juniper",
 				"kappa",
+				"willow",
 
 				// kukui
 				"kodama",
 
+				// octopus
+				"laser14",
+
 				// trogdor
 				"lazor",
 
+				// volteer
+				"eldrid",
+				"elemi",
+
 				// zork
 				"dirinboz",
+				"ezkinil",
+				"vilboz",
 			)),
 		}, {
 			Name: "s3",
@@ -119,7 +140,6 @@ func init() {
 
 				// volteer
 				"delbin",
-				"eldrid",
 			)),
 		}},
 	})
