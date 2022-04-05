@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fe658c_b4a04d27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-05T05:14:45Z",
+      "side": 1,
+      "message": "nit/style: acronyms in the middle of the term should be all uppercase in Go. So, \"OOM\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 19
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa20f21b_b122b153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-05T05:14:45Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d checkOOMHistogram(...); err !\u003d nil {",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f662e4e7_e5d2fb99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-05T05:14:45Z",
+      "side": 1,
+      "message": "could you avoid taking testing.State only for logging purpose?\nInstead, could you use testing.ContextLog(ctx, ...) ?",
+      "range": {
+        "startLine": 113,
+        "startChar": 98,
+        "endLine": 113,
+        "endChar": 114
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26cf2a4e_8babd076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-05T05:14:45Z",
+      "side": 1,
+      "message": "ditto: \"OOM\"",
+      "range": {
+        "startLine": 113,
+        "startChar": 10,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
