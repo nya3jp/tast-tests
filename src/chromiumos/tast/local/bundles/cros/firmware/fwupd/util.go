@@ -20,7 +20,7 @@ const ReleaseURI = "https://storage.googleapis.com/chromeos-localmirror/lvfs/tes
 
 const (
 	// This is a string that appears when the computer is discharging.
-	dischargeString = `uint32 [0-9]\s+uint32 2\s+double [0-9][0-9](\.[1-9])?\s`
+	dischargeString = `uint32 [0-9]\s+uint32 2`
 )
 
 func setBatteryNormal(ctx context.Context) error {
