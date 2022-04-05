@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4668e791_cae7fc1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-05T21:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "586454da_bbc1190f",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5e724c9_c08de36a",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-03T12:02:31Z",
       "side": 1,
       "message": "The function is broken if the removable storage is bigger than the internal device.",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc80653c_a4b5b6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-05T21:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5e724c9_c08de36a",
       "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af3943f3_4e37e4c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-05T21:17:31Z",
+      "side": 1,
+      "message": "The rootdev call uses the flags -s and -d, so there are no partitions included. DEFAULT_ROOTDEV uses sd* and mmcblk*, so removable devices would still match that, so we can\u0027t use that as a check. For nvme, it uses nvme0n1 specifically, so in the case with SLC partition, it would be included here, which is not necessarily ideal, but we would need a special case here for nvme to exclude different namespaces of the root device.",
+      "parentUuid": "21876201_a919751d",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da97a265_d27a3dfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
         "patchSetId": 7
@@ -82,6 +136,24 @@
       "writtenOn": "2022-04-03T12:02:31Z",
       "side": 1,
       "message": "nit: You could have break here if there is only 2 devices.",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6243b77a_426d86d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-04-05T21:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da97a265_d27a3dfe",
       "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
