@@ -40,7 +40,6 @@ func New(sess *driver.Session) *Browser {
 type CreateTargetOption = cdputil.CreateTargetOption
 
 // WithNewWindow behaves like cpdutil.WithNewWindow.
-// TODO(neis): The other one, WithBackground, is unused. Can we get rid of the whole thing?
 func WithNewWindow() CreateTargetOption {
 	return cdputil.WithNewWindow()
 }
