@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f24e04d_6a21cede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-05T01:02:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2f614d2_8697313c",
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c619f446_deb28520",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Yes, Actually we are validating the  output of the cros-health-tool, here we are collecting the command line output as the reference data and comparing both are same or not,\n\nFYI:BUG\u003db:221145055",
       "parentUuid": "c619f446_deb28520",
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd944dbb_c2e65812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-05T01:02:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5cf58c9_b6781d33",
       "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -125,6 +161,30 @@
       "side": 1,
       "message": "We have to verify when command line output of ProductName is empty that time cros-health-tool output for ProductName  also should be empty.",
       "parentUuid": "41debed5_e80b526d",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d6f434_0dcc3027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-05T01:02:43Z",
+      "side": 1,
+      "message": "Not sure I understand what you meant.\n\n```\nif devices.ProductName !\u003d productName {\n\terrors.Errorf(\"failed to get correct Thunderbolt ProductName: got %q; want %q\", productName, devices.ProductName)\n}\n```\n\nIf command line output of ProductName is empty and cros-health-tool output for ProductName is not empty, this check will flag an error so it is perfectly fine without the complicate if/else block, right?",
+      "parentUuid": "e4b45080_357a4606",
       "range": {
         "startLine": 276,
         "startChar": 0,
