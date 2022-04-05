@@ -195,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d588aaa_5e4e22c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-05T07:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d6f434_0dcc3027",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48fe5d51_cb253fe6",
@@ -232,6 +256,30 @@
       "side": 1,
       "message": "We have to verify when command line output of VendorName  is empty that time cros-health-tool output for VendorName also should be empty.",
       "parentUuid": "48fe5d51_cb253fe6",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 0
+      },
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c47d07_98593157",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-05T07:49:17Z",
+      "side": 1,
+      "message": "removed else block.",
+      "parentUuid": "1e7eb23c_191d75b4",
       "range": {
         "startLine": 288,
         "startChar": 0,
