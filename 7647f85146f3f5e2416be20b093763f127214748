@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecc4d06_b5bf9c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-05T14:31:20Z",
+      "side": 1,
+      "message": "as we hit an issue, could you add comment about the background of these flags?\nAlso, I think we need to investigate further, specifically disable-login-lacros-opening. The flag is designed only for testing which does NOT check session start situation for convenience, but it is what we need to check.",
+      "revId": "7647f85146f3f5e2416be20b093763f127214748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
