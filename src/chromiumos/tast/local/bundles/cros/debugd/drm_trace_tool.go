@@ -31,8 +31,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DRMTraceTool,
-		Desc: "Tests D-Bus methods related to DRMTraceTool",
+		Func: DRMTraceTool, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests D-Bus methods related to DRMTraceTool",
 		Contacts: []string{
 			"ddavenport@chromium.org",
 		},
@@ -414,7 +413,8 @@ func readFileToString(path string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSpace(string(bytes)), nil
+	const replacementCharacter = '\uFFFD'
+	return strings.TrimSpace(strings.ToValidUTF8(string(bytes), string(replacementCharacter))), nil
 }
 
 // readFileToInt opens the file at |path|, reads its contents, and returns the contents as an int.
