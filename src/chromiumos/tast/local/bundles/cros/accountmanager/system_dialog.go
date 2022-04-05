@@ -20,6 +20,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type userParam struct {
+	username string
+	password string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SystemDialog,
@@ -28,14 +33,32 @@ func init() {
 		Contacts:     []string{"anastasiian@chromium.org", "team-dent@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          accountmanager.ChromePreWithFeaturesEnabled(),
-		VarDeps:      []string{"accountmanager.username1", "accountmanager.password1"},
+		Pre:          chrome.LoggedIn(),
+		VarDeps: []string{
+			"accountmanager.username1",
+			"accountmanager.password1",
+			"accountmanager.managedusername",
+			"accountmanager.managedpassword",
+		},
+		Params: []testing.Param{{
+			Val: userParam{
+				username: "accountmanager.username1",
+				password: "accountmanager.password1",
+			},
+		}, {
+			Name: "managedchrome",
+			Val: userParam{
+				username: "accountmanager.managedusername",
+				password: "accountmanager.managedpassword",
+			},
+		}},
 	})
 }
 
 func SystemDialog(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("accountmanager.username1")
-	password := s.RequiredVar("accountmanager.password1")
+	param := s.Param().(userParam)
+	username := s.RequiredVar(param.username)
+	password := s.RequiredVar(param.password)
 
 	cr := s.PreValue().(*chrome.Chrome)
 	// Connect to Test API to use it with the UI library.
