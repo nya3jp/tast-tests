@@ -31,13 +31,13 @@ func init() {
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
-			Timeout: 10 * time.Minute,
+			Timeout: 15 * time.Minute,
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "loggedInToCUJUserLacros",
-			Timeout:           15 * time.Minute,
+			Timeout:           20 * time.Minute,
 		}},
 	})
 }
@@ -120,7 +120,11 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wake display: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, append(
+		cuj.MetricConfigs(),
+		cuj.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter, []int64{500, 2000}),
+		cuj.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
+	)...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
