@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c91464_cc2447eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba82c9e2_249813a9",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fddfcd25_e7b8a80b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-23T00:17:03Z",
       "side": 1,
       "message": "It is highly recommended to revert the change to cleanup environment post test. \n\ndefer adapter.SetPowered(cleanupCtx, false)",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8b8811_ad0f44d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fddfcd25_e7b8a80b",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc6d4f3_8207dae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6738c3e_6b93ec80",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb8a78f_03411ad3",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-23T00:17:03Z",
       "side": 1,
       "message": "This is not a good way to close the audio player. After player window opened, something can happen to defocus the window, such as system alert, crash window, etc..\n\nYou can find the audio player and even close it via a few functions provided in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 3
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "738217f1_d9f445e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdb8a78f_03411ad3",
       "range": {
         "startLine": 139,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80381ddb_4065d465",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c91ab03_1ad37db1",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7af069f_eeb799ac",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-03-23T00:17:03Z",
       "side": 1,
       "message": "This is not a combination of actions, you can used NamedAction if you want to print along the action.",
+      "range": {
+        "startLine": 167,
+        "startChar": 19,
+        "endLine": 167,
+        "endChar": 26
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0f57a0_43f69532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7af069f_eeb799ac",
       "range": {
         "startLine": 167,
         "startChar": 19,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e9f321_74265bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ce3be0_228d6d23",
+      "range": {
+        "startLine": 174,
+        "startChar": 11,
+        "endLine": 174,
+        "endChar": 38
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee46ef39_06fc2801",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-03-23T00:17:03Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 191,
+        "startChar": 11,
+        "endLine": 191,
+        "endChar": 37
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00eb7d8_882af6d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee46ef39_06fc2801",
       "range": {
         "startLine": 191,
         "startChar": 11,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d9893d_6212d707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28878839_84d267a7",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb4e8a8b_7464be5c",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c14ef1_7806c48c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4e8a8b_7464be5c",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 25
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c73c05fd_d01fa341",
@@ -261,6 +501,30 @@
       "writtenOn": "2022-03-23T00:17:03Z",
       "side": 1,
       "message": "The final returned err is not wrapped. Thus, you can simply return the polling function result as below:\n\nreturn testing.Poll(){\n}",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 310,
+        "endChar": 11
+      },
+      "revId": "7dd7c641f787f388e2843a1e62dddc713b48d682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec9da66_587dab35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T11:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c73c05fd_d01fa341",
       "range": {
         "startLine": 298,
         "startChar": 1,
