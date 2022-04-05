@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a74b0d41_c67fb74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-05T09:56:34Z",
+      "side": 1,
+      "message": "I created an array of supported networks, which makes the set and verification much easier, and makes it possible to remove the \"reference\".\n\nI considered adding also the expected managed network to the SupportedConfiguration to use the managed instead of the config for the verification. However, I found there were various issues with it: 1) Repetitive data, as it is needed to be set manually with similar values encountered in the config, but the Managed have some extra complexity that made the initialisation very convoluted and prone to error. 2) Even in the case that the expected Managed is initialised, some specific validations need to be done in certain fields (e.g. EAP, Passphrase, Password, etc...), so a direct comparison of set \u003c-\u003e expected is not really possible. It still needs to be case by case and using the Id of the array. As a result, I decided to not include this expected configuration at all, so the validation uses the initial configuration as reference. I created methods that should make this verification easier and less repetitive. \n\nI think it should be quite easy to add new configurations and it won\u0027t require to update the service at all, as these just need to be added to supported_networks.\n\nPlease, let me know your thoughts. Thanks!",
+      "parentUuid": "b6877286_98f691db",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4f9aceb_2903e6cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
         "patchSetId": 1
@@ -148,6 +172,24 @@
       "writtenOn": "2022-04-01T13:14:12Z",
       "side": 1,
       "message": "nit: comments should end with . at the end.",
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e9b7da_85dd49a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-05T09:56:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4f9aceb_2903e6cd",
       "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -165,6 +207,24 @@
       "writtenOn": "2022-04-01T13:14:12Z",
       "side": 1,
       "message": "nit: comments should end with . at the end.",
+      "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bd2ffb_7d1b39cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-05T09:56:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240e7830_411ef735",
       "revId": "89d9449c92c767bc7dba29e666984465f6c0f897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
