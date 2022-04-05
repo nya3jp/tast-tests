@@ -33,6 +33,29 @@
       "message": "Please get +2 from a team member before assigning tast owners.",
       "revId": "3bf8b01b1d4bc1e35208658c86cdec6767266857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e5649e_040cf09e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-05T03:00:29Z",
+      "side": 1,
+      "message": "should we just always wait?",
+      "range": {
+        "startLine": 1015,
+        "startChar": 4,
+        "endLine": 1015,
+        "endChar": 8
+      },
+      "revId": "3bf8b01b1d4bc1e35208658c86cdec6767266857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
