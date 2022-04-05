@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf974c2_0663d14a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-05T14:29:08Z",
+      "side": 1,
+      "message": "optional: can this simply return a function?\n\nwt :\u003d WindowTypeLacros\nif bt \u003d\u003d browser.TypeAsh {\n  wt \u003d WindowTypeBrowser\n}\nreturn func(w *Window) bool {\n  return w.WindowType \u003d\u003d wt\n}",
+      "range": {
+        "startLine": 858,
+        "startChar": 8,
+        "endLine": 858,
+        "endChar": 33
+      },
+      "revId": "d337582e7e36fe62bcc396cf570c2c4bb2b4f608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
