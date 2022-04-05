@@ -724,13 +724,6 @@ func Sleep(d time.Duration) Action {
 	}
 }
 
-// Sleep on *Context is deprecated. Use the above Sleep function.
-func (ac *Context) Sleep(d time.Duration) Action {
-	return func(ctx context.Context) error {
-		return testing.Sleep(ctx, d)
-	}
-}
-
 // MakeVisible returns a function that calls makeVisible() JS method to make found node visible.
 func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
@@ -763,11 +756,6 @@ func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
 //	    ...
 //   }
 func IfSuccessThen(preFunc, fn Action) Action {
-	return action.IfSuccessThen(preFunc, fn)
-}
-
-// IfSuccessThen on *Context is deprecated. Use the above IfSuccessThen function.
-func (ac *Context) IfSuccessThen(preFunc, fn Action) Action {
 	return action.IfSuccessThen(preFunc, fn)
 }
 
