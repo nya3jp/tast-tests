@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12413e72_f015e063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-05T18:16:59Z",
+      "side": 1,
+      "message": "To get the plaform from hardware feature is not reliable, please use software dependency instead.\n\nAlso, please manually run it twice (one on kukui and one on jacuzzi) and add following line in the commit message\n\nTEST\u003dManual run result show the test was skipped on kukui and jacuzzi\n\nThanks.\n",
+      "revId": "3de724c03e571d0569ca5651e5a6b90d4dfac4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8721b97c_5d74b355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-05T18:16:59Z",
+      "side": 1,
+      "message": "SkipOnPlatform is not reliable any more because of newer board always return \"generic\" as its board. Please see https://b.corp.google.com/issues/216651709#comment2. Instead use SoftwareDeps.",
+      "revId": "3de724c03e571d0569ca5651e5a6b90d4dfac4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
