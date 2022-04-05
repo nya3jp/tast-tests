@@ -16,6 +16,247 @@
       "message": "The tests themselves are:\nshill_cellular_apn.go \nshill_cellular_connect_to_unknown_mno.go  \n\nEverything in data/ is to configure the APNs for each parameterized test \n\nharpreet, what tags should I use to make these tests run with the Amari callbox DUTs?",
       "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0207baa6_cc29aa72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "Test looks very good, just some nits",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0da5ec_e7d92a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "maybe `apnTestParam`?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925dd486_73f0806b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "Do we need to test this anymore if shill is supplying the auth type in every case, or are these tests of that functionality?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e140029_633a8fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "nit: might be better to assign s.Param().(testParam) to something first",
+      "range": {
+        "startLine": 90,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 43
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e206eb46_17dc6c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "nit: canonical format for this would be something like\n\n \"Last Attach APN doesn\u0027t match: got %q, want %q\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 150,
+        "endChar": 79
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ab5a24_ad62cf62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "ditto re: got..want format",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 75
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b39013bd_db70e167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "file a bug for this and stick it in the TODO, or remove it for now",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da37a654_12da3e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "maybe `unknownMNOTestParam`?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0c5564_762d1bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "ditto re: factoring out this type assertion",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "543445fd_a3b0b396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "ditto re: got...want format",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 80
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53049ac6_65d85663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:43:52Z",
+      "side": 1,
+      "message": "ditto re: got...want format",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 78
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
