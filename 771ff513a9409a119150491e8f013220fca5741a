@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb0250e_66af37b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-05T14:58:31Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0fe658c_b4a04d27",
@@ -89,6 +106,40 @@
         "endLine": 113,
         "endChar": 13
       },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b9fb1c_359d5540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-05T14:58:31Z",
+      "side": 1,
+      "message": "nit: start the comment with a capital letter and end with .",
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4781e24e_fea02116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-05T14:58:31Z",
+      "side": 1,
+      "message": "Is that log entry necessary?",
       "revId": "771ff513a9409a119150491e8f013220fca5741a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
