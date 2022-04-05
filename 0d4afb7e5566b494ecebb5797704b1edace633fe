@@ -16,6 +16,23 @@
       "message": "Thanks Jun, I think the same error are there for the other 3 gRPC services. \n\nI was under the impression that I somehow put them into mainline by mistake, and I was hoping to leave them as \"informational\". I also tried the configuration of removing \"group:mainline\" but leaving \"informational\" in place, however it resulted in an error:\n```\n/home/jonfan/chromiumos/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go:23: attribute \"informational\" is invalid in current groups\n```\n\nAfter confirming with a couple of team members, I believe the incumbent configuration is the correct configuration for setting tests as information. \nI think, instead of removing them, I will investigate on the 4 GRPC services and try to turn them green.",
       "revId": "0d4afb7e5566b494ecebb5797704b1edace633fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89355f9_88ad3232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-05T05:00:05Z",
+      "side": 1,
+      "message": "Thanks good to me. It would be nice to see them turn green. I will abandon this cl and leave the rest to you.",
+      "revId": "0d4afb7e5566b494ecebb5797704b1edace633fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
