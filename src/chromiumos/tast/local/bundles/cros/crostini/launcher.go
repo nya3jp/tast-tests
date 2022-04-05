@@ -320,6 +320,8 @@ func Launcher(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed transferring the .desktop: ", err)
 	}
 
+	defer crostini.RemoveContainerFile(ctx, cont, desktopPath)
+
 	// There's a delay with apps being installed in Crostini and them appearing
 	// in the launcher as well as having their icons loaded. The icons are only
 	// loaded after they appear in the launcher, so if we check that first we know
