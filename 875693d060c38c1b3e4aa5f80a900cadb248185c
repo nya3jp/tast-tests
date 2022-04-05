@@ -33,6 +33,29 @@
       "message": "Just saw Ben is OOO so removing them",
       "revId": "875693d060c38c1b3e4aa5f80a900cadb248185c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a835c8e0_f320cd19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_factor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-04-05T21:48:39Z",
+      "side": 1,
+      "message": "I know it was my comment but I searched in the code and found pointers to /var/lib/cryptohome. Lets not remove that. Sorry for the extra work.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 55
+      },
+      "revId": "875693d060c38c1b3e4aa5f80a900cadb248185c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
