@@ -45,7 +45,7 @@ var acvpIsFirmwareTest = false
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ACVP,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Contacts: []string{
 			"gurleengrewal@chromium.org", // Test author
 			"sukhomlinov@chromium.org",   // CR50 certification lead
