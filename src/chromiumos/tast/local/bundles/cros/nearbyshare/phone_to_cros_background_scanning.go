@@ -30,7 +30,7 @@ func init() {
 		Desc:         "Checks that \"Nearby Device is trying to share\" notification shows up, clicking the notification enables high-vis mode and the receive flow is successful",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
-			"cvandermerwe@google.com",
+			"hansenmichael@google.com",
 		},
 		Attr:         []string{"group:nearby-share"},
 		SoftwareDeps: []string{"chrome"},
@@ -46,7 +46,7 @@ func init() {
 				},
 				ExtraData:         []string{"small_jpg.zip"},
 				Timeout:           nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("coral", "octopus")),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("babymega", "barla", "blooglet", "dumo", "fennel", "soraka", "treeya", "treeya360")),
 			},
 		},
 	})
