@@ -21,9 +21,11 @@ type Button string
 // As defined in Button in
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl?l=90
 const (
-	LeftButton   Button = "Left"
-	RightButton         = "Right"
-	MiddleButton        = "Middle"
+	LeftButton    Button = "Left"
+	RightButton          = "Right"
+	MiddleButton         = "Middle"
+	BackButton           = "Back"
+	ForwardButton        = "Forward"
 )
 
 // Click returns an func which causes a mouse click event. The location is relative to the top-left of
