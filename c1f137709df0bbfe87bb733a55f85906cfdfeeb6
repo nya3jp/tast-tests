@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4beff447_7f8f06b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-05T20:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21aa9a3f_0b732179",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbdd284b_71420920",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57800803_87622b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-05T20:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbdd284b_71420920",
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f3890fe_cd6d7286",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-04-05T18:59:13Z",
       "side": 1,
       "message": "`\"microseconds\"`\nSee: https://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/event/histograms.xml;drc\u003db928e140919287abada255513799356226d35138;l\u003d267",
+      "range": {
+        "startLine": 96,
+        "startChar": 75,
+        "endLine": 96,
+        "endChar": 88
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b8a93b_ad958e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-05T20:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f3890fe_cd6d7286",
       "range": {
         "startLine": 96,
         "startChar": 75,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5188178_51273b3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-05T20:13:38Z",
+      "side": 1,
+      "message": "Under ui[1] there are tests CUJ created by another team (e.g. EverydayMultitaskingCUJ and TabSwitchCUJ2) and they made cuj.MetricConfigs() and use those metrics. We haven\u0027t decided to use those metrics yet.\n[1]https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/",
+      "parentUuid": "56d6bad6_19ed6b77",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4c092d2_c295ecd4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
         "patchSetId": 4
@@ -100,6 +190,30 @@
       "writtenOn": "2022-04-05T18:59:13Z",
       "side": 1,
       "message": "`if err :\u003d pv.Save(s.OutDir()); err !\u003d nil`\nIf the code without `err :\u003d` is something that you are copying and pasting from real code in the code base, then please fix that code. I think it is important to actually check the error returned by `pv.Save`, instead of checking the value of `err` left over from code far above.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcaec234_475bf3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-05T20:13:38Z",
+      "side": 1,
+      "message": "sorry brain-dead copypasted. Will make another CL to fix this issue in other tests.",
+      "parentUuid": "e4c092d2_c295ecd4",
       "range": {
         "startLine": 158,
         "startChar": 1,
