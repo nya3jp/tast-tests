@@ -572,6 +572,14 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 		return errors.Wrapf(err, "failed to verify resize lock state of %s", wm.ResizeLockMainActivityName)
 	}
 
+	// Verify can show and close the compat-mode menu by toggling the compat-mode button.
+	if err := wm.ToggleCompatModeMenu(ctx, tconn, method, keyboard, true /* isMenuVisible */); err != nil {
+		return errors.Wrapf(err, "failed to show the compat-mode dialog of %s via %s", activity.ActivityName(), method)
+	}
+	if err := wm.ToggleCompatModeMenu(ctx, tconn, method, keyboard, false /* isMenuVisible */); err != nil {
+		return errors.Wrapf(err, "failed to close the compat-mode dialog of %s via %s", activity.ActivityName(), method)
+	}
+
 	for _, test := range []struct {
 		currentMode wm.ResizeLockMode
 		nextMode    wm.ResizeLockMode
