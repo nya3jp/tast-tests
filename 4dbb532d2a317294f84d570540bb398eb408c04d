@@ -46,6 +46,30 @@
       },
       "revId": "4dbb532d2a317294f84d570540bb398eb408c04d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652f2267_9a3ee2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-05T07:54:24Z",
+      "side": 1,
+      "message": "If you manually add line breaks, does your gofmt re-merge the lines? It seems like gofmt accepts either 3 different lines or one large line when I run it myself.",
+      "parentUuid": "13fa478e_2d30f5aa",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 118
+      },
+      "revId": "4dbb532d2a317294f84d570540bb398eb408c04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
