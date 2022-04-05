@@ -31,7 +31,7 @@ type testParamsTablet struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECVerifyVK,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Verify whether virtual keyboard window is present during change in tablet mode",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
