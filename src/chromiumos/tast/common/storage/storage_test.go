@@ -10,6 +10,117 @@ import (
 	"testing"
 )
 
+func TestParseGetStorageInfoOutputSimpleHealthyUFS(t *testing.T) {
+	const out = `
+Device: /dev/sda
+Vendor: SOME_VENDOR
+Model: SOME_MODEL
+Firmware: SOME_FW
+
+$ ufs-utils desc -a -p /dev/bsg/ufs-bsg0
+...
+Device Health Descriptor: [Byte offset 0x0]: bLength = 0x25
+Device Health Descriptor: [Byte offset 0x1]: bDescriptorType = 0x9
+Device Health Descriptor: [Byte offset 0x2]: bPreEOLInfo = 0x1
+Device Health Descriptor: [Byte offset 0x3]: bDeviceLifeTimeEstA = 0x1
+Device Health Descriptor: [Byte offset 0x4]: bDeviceLifeTimeEstB = 0x1
+Device Health Descriptor: [Byte offset 0x5]: VendorPropInfo =
+
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+`
+
+	info, err := parseGetStorageInfoOutput(context.Background(), []byte(out))
+	if err != nil {
+		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
+	}
+
+	exp := &Info{
+		Name:           "SOME_MODEL",
+		Device:         UFS,
+		Status:         Healthy,
+		PercentageUsed: 5,
+	}
+
+	if !reflect.DeepEqual(info, exp) {
+		t.Errorf("parseGetStorageInfoOutput() = %+v; want %+v", info, exp)
+	}
+}
+
+func TestParseGetStorageInfoOutputSimpleHealthyUFSLifeUsed(t *testing.T) {
+	const out = `
+Device: /dev/sda
+Vendor: SOME_VENDOR
+Model: SOME_MODEL
+Firmware: SOME_FW
+
+$ ufs-utils desc -a -p /dev/bsg/ufs-bsg0
+...
+Device Health Descriptor: [Byte offset 0x0]: bLength = 0x25
+Device Health Descriptor: [Byte offset 0x1]: bDescriptorType = 0x9
+Device Health Descriptor: [Byte offset 0x2]: bPreEOLInfo = 0x1
+Device Health Descriptor: [Byte offset 0x3]: bDeviceLifeTimeEstA = 0xa
+Device Health Descriptor: [Byte offset 0x4]: bDeviceLifeTimeEstB = 0xb
+Device Health Descriptor: [Byte offset 0x5]: VendorPropInfo =
+
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+`
+
+	info, err := parseGetStorageInfoOutput(context.Background(), []byte(out))
+	if err != nil {
+		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
+	}
+
+	exp := &Info{
+		Name:           "SOME_MODEL",
+		Device:         UFS,
+		Status:         Healthy,
+		PercentageUsed: 105,
+	}
+
+	if !reflect.DeepEqual(info, exp) {
+		t.Errorf("parseGetStorageInfoOutput() = %+v; want %+v", info, exp)
+	}
+}
+
+func TestParseGetStorageInfoOutputSimpleFailingUFS(t *testing.T) {
+	const out = `
+Device: /dev/sda
+Vendor: SOME_VENDOR
+Model: SOME_MODEL
+Firmware: SOME_FW
+
+$ ufs-utils desc -a -p /dev/bsg/ufs-bsg0
+...
+Device Health Descriptor: [Byte offset 0x0]: bLength = 0x25
+Device Health Descriptor: [Byte offset 0x1]: bDescriptorType = 0x9
+Device Health Descriptor: [Byte offset 0x2]: bPreEOLInfo = 0x3
+Device Health Descriptor: [Byte offset 0x3]: bDeviceLifeTimeEstA = 0x4
+Device Health Descriptor: [Byte offset 0x4]: bDeviceLifeTimeEstB = 0x2
+Device Health Descriptor: [Byte offset 0x5]: VendorPropInfo =
+
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+`
+
+	info, err := parseGetStorageInfoOutput(context.Background(), []byte(out))
+	if err != nil {
+		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
+	}
+
+	exp := &Info{
+		Name:           "SOME_MODEL",
+		Device:         UFS,
+		Status:         Failing,
+		PercentageUsed: 35,
+	}
+
+	if !reflect.DeepEqual(info, exp) {
+		t.Errorf("parseGetStorageInfoOutput() = %+v; want %+v", info, exp)
+	}
+}
+
 func TestParseGetStorageInfoOutputSimpleHealthyEMMC(t *testing.T) {
 	const out = `
   Extended CSD rev 1.8 (MMC 5.1)
