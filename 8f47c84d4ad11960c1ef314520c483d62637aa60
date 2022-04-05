@@ -70,6 +70,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29efb63_2eddf397",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-05T19:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded8e697_953bffa9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "8f47c84d4ad11960c1ef314520c483d62637aa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6ee834_4a672c01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-05T19:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6910c4_bbb47f40",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "8f47c84d4ad11960c1ef314520c483d62637aa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e641d380_01a7b428",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-05T19:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "652f5d80_e3b9a0b6",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "8f47c84d4ad11960c1ef314520c483d62637aa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a298fbe0_6081b02c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-05T19:02:43Z",
       "side": 1,
       "message": "`cryptohome.UserSecretStashAddPin`",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "8f47c84d4ad11960c1ef314520c483d62637aa60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc45013_9f397fb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-05T19:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a298fbe0_6081b02c",
       "range": {
         "startLine": 10,
         "startChar": 23,
