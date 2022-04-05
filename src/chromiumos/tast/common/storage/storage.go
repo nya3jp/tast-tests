@@ -30,6 +30,8 @@ const (
 	NVMe
 	// SSD (Solid State Drive) devices connected through a SATA interface.
 	SSD
+	// UFS (Universal Flash Storage) device.
+	UFS
 )
 
 const (
@@ -85,6 +87,11 @@ func parseGetStorageInfoOutput(ctx context.Context, out []byte) (*Info, error) {
 	var percentageUsed, bytesWritten int64
 	var name string
 	switch deviceType {
+	case UFS:
+		lifeStatus = Healthy
+		percentageUsed = 0
+		bytesWritten = 0
+		name = "<FIX ME>"
 	case EMMC:
 		lifeStatus, err = parseDeviceHealtheMMC(lines)
 		if err != nil {
@@ -145,6 +152,8 @@ var (
 	// emmcDetect detects if storage device is eMMC using a regex.
 	// Example eMMC CSD text, "  Extended CSD rev 1.8 (MMC 5.1)"
 	emmcDetect = regexp.MustCompile(`\s*Extended CSD rev.*MMC`)
+	// ufsDetect detect if a storage device is a UFS module.
+	ufsDetect = regexp.MustCompile(`\s*ufs-utils\s*`)
 
 	// emmcVersion finds eMMC version of device using a regex.
 	// Example eMMC CSD text, "  Extended CSD rev 1.8 (MMC 5.1)".
@@ -202,6 +211,10 @@ var (
 // parseDeviceType searches outlines for storage device type.
 func parseDeviceType(outLines []string) (Type, error) {
 	for _, line := range outLines {
+		if ufsDetect.MatchString(line) {
+			return UFS, nil
+		}
+
 		if nvmeDetect.MatchString(line) {
 			return NVMe, nil
 		}
