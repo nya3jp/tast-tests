@@ -395,30 +395,30 @@ func CheckResizability(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, 
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
-// showCompatModeMenu shows the compat-mode menu via the given method.
-func showCompatModeMenu(ctx context.Context, tconn *chrome.TestConn, method InputMethodType, keyboard *input.KeyboardEventWriter) error {
+// ToggleCompatModeMenu toggles the compat-mode menu via the given method and verifies the expected visibility of the compat-mode menu.
+func ToggleCompatModeMenu(ctx context.Context, tconn *chrome.TestConn, method InputMethodType, keyboard *input.KeyboardEventWriter, isMenuVisible bool) error {
 	switch method {
 	case InputMethodClick:
-		return showCompatModeMenuViaButtonClick(ctx, tconn)
+		return toggleCompatModeMenuViaButtonClick(ctx, tconn, isMenuVisible)
 	case InputMethodKeyEvent:
-		return showCompatModeMenuViaKeyboard(ctx, tconn, keyboard)
+		return toggleCompatModeMenuViaKeyboard(ctx, tconn, keyboard, isMenuVisible)
 	}
 	return errors.Errorf("invalid InputMethodType is given: %s", method)
 }
 
-// showCompatModeMenuViaButtonClick clicks on the compat-mode button and shows the compat-mode menu.
-func showCompatModeMenuViaButtonClick(ctx context.Context, tconn *chrome.TestConn) error {
+// toggleCompatModeMenuViaButtonClick clicks on the compat-mode button and verifies the expected visibility of the compat-mode menu.
+func toggleCompatModeMenuViaButtonClick(ctx context.Context, tconn *chrome.TestConn, isMenuVisible bool) error {
 	ui := uiauto.New(tconn)
 	icon := nodewith.Role(role.Button).HasClass(CenterButtonClassName)
 	if err := ui.WithTimeout(10 * time.Second).LeftClick(icon)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on the compat-mode button")
 	}
 
-	return CheckVisibility(ctx, tconn, BubbleDialogClassName, true /* visible */)
+	return CheckVisibility(ctx, tconn, BubbleDialogClassName, isMenuVisible)
 }
 
-// showCompatModeMenuViaKeyboard injects the keyboard shortcut and shows the compat-mode menu.
-func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) error {
+// toggleCompatModeMenuViaKeyboard injects the keyboard shortcut and verifies the expected visibility of the compat-mode menu.
+func toggleCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, isMenuVisible bool) error {
 	ui := uiauto.New(tconn)
 	accel := func(ctx context.Context) error {
 		if err := keyboard.Accel(ctx, "Search+Alt+C"); err != nil {
@@ -427,7 +427,10 @@ func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, 
 		return nil
 	}
 	dialog := nodewith.Role(role.Window).HasClass(BubbleDialogClassName)
-	return ui.WithTimeout(10*time.Second).WithInterval(2*time.Second).RetryUntil(accel, ui.Exists(dialog))(ctx)
+	if isMenuVisible {
+		return ui.WithTimeout(10*time.Second).WithInterval(2*time.Second).RetryUntil(accel, ui.Exists(dialog))(ctx)
+	}
+	return nil
 }
 
 // waitForCompatModeMenuToDisappear waits for the compat-mode menu to disappear.
@@ -488,7 +491,7 @@ func ToggleResizeLockMode(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 	if err != nil {
 		return errors.Wrapf(err, "failed to get the pre-toggle orientation of %s", activity.PackageName())
 	}
-	if err := showCompatModeMenu(ctx, tconn, method, keyboard); err != nil {
+	if err := ToggleCompatModeMenu(ctx, tconn, method, keyboard, true /* isMenuVisible */); err != nil {
 		return errors.Wrapf(err, "failed to show the compat-mode dialog of %s via %s", activity.ActivityName(), method)
 	}
 
