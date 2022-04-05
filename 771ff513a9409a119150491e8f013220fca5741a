@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ecb84a_2d25f5c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-04-05T17:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fe658c_b4a04d27",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 19
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa20f21b_b122b153",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-05T05:14:45Z",
       "side": 1,
       "message": "nit/style:\n\nif err :\u003d checkOOMHistogram(...); err !\u003d nil {",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c761e82_28485a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-04-05T17:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa20f21b_b122b153",
       "range": {
         "startLine": 107,
         "startChar": 1,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "534e539b_23029672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-04-05T17:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cf2a4e_8babd076",
+      "range": {
+        "startLine": 113,
+        "startChar": 10,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b45caff_41a3e3a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-04-05T17:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f662e4e7_e5d2fb99",
+      "range": {
+        "startLine": 113,
+        "startChar": 98,
+        "endLine": 113,
+        "endChar": 114
+      },
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00b9fb1c_359d5540",
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0f6ab3_988b8a34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-04-05T17:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00b9fb1c_359d5540",
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4781e24e_fea02116",
@@ -140,6 +254,24 @@
       "writtenOn": "2022-04-05T14:58:31Z",
       "side": 1,
       "message": "Is that log entry necessary?",
+      "revId": "771ff513a9409a119150491e8f013220fca5741a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b6ca59_b2b9d8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-04-05T17:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4781e24e_fea02116",
       "revId": "771ff513a9409a119150491e8f013220fca5741a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
