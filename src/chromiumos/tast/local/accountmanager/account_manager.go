@@ -25,11 +25,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ChromePreWithFeaturesEnabled returns a precondition with flags enabled
-func ChromePreWithFeaturesEnabled() testing.Precondition {
-	return chrome.NewPrecondition("chrome_pre_with_arc_restrictions", chrome.EnableFeatures("ArcAccountRestrictions"))
-}
-
 // DefaultUITimeout is the default timeout for UI interactions.
 const DefaultUITimeout = 20 * time.Second
 
