@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/policyutil"
@@ -105,7 +106,7 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to set overview mode: ", err)
 			}
 
-			if err := ac.WaitForLocation(nodewith.Root())(ctx); err != nil {
+			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 				s.Fatal("Failed to wait for overview animation to be completed: ", err)
 			}
 			// Find the "Templates" button.

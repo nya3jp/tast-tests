@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -66,7 +67,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 	// are recorded for the entire drag. If the drag begins before the window has actually closed,
 	// the resulting data will be for Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview
 	// and not Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow.
-	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 
@@ -182,7 +183,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	}
 
 	// Wait for location-change events to be completed.
-	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 

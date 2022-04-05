@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
@@ -116,7 +117,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if err := ac.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 			return errors.Wrap(err, "error in waiting for app launch events to be completed")
 		}
 
@@ -125,7 +126,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "error in setting overview mode")
 		}
 
-		if err := ac.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 			return errors.Wrap(err, "error in waiting for overview animation to be completed")
 		}
 

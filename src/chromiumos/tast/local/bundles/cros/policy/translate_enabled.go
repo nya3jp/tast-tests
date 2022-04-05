@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -128,7 +129,7 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 
 			ui := uiauto.New(tconn)
-			if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+			if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 				s.Fatal("Failed to wait for location change: ", err)
 			}
 
