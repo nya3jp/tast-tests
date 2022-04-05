@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2f614d2_8697313c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-05T00:53:17Z",
+      "side": 1,
+      "message": "Yes, Actually we are validating the  output of the cros-health-tool, here we are collecting the command line output as the reference data and comparing both are same or not,\n\nFYI:BUG\u003db:221145055",
+      "parentUuid": "a99ee37e_f8fada60",
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c619f446_deb28520",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-04T17:28:51Z",
       "side": 1,
       "message": "I just want to confirm. Do you want the test to continue if there is a failure in reading the file.",
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cf58c9_b6781d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-05T00:53:17Z",
+      "side": 1,
+      "message": "Yes, Actually we are validating the  output of the cros-health-tool, here we are collecting the command line output as the reference data and comparing both are same or not,\n\nFYI:BUG\u003db:221145055",
+      "parentUuid": "c619f446_deb28520",
       "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4b45080_357a4606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-05T00:53:17Z",
+      "side": 1,
+      "message": "We have to verify when command line output of ProductName is empty that time cros-health-tool output for ProductName  also should be empty.",
+      "parentUuid": "41debed5_e80b526d",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48fe5d51_cb253fe6",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 4
@@ -88,6 +148,30 @@
       "writtenOn": "2022-04-04T17:28:51Z",
       "side": 1,
       "message": "I think the following code is sufficient. Why do you need such a complicate if/else block?\n\n``` \nif devices.VendorName !\u003d \"\" {\n\treturn errors.New(\"failed to get empty Thunderbolt VendorName\")\n}\n```",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 0
+      },
+      "revId": "bf0b079a572c4ef18c4594b27a50ded4b4d491e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e7eb23c_191d75b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-05T00:53:17Z",
+      "side": 1,
+      "message": "We have to verify when command line output of VendorName  is empty that time cros-health-tool output for VendorName also should be empty.",
+      "parentUuid": "48fe5d51_cb253fe6",
       "range": {
         "startLine": 288,
         "startChar": 0,
