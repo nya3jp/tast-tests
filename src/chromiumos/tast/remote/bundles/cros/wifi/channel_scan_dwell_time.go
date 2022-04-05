@@ -8,7 +8,7 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
-	"sort"
+	// 	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -36,6 +36,8 @@ type csdtTestcase struct {
 	maxDwellTime time.Duration
 }
 
+var probeIter int
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ChannelScanDwellTime,
@@ -54,7 +56,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		knownTestPrefix        = "wifi_CSDT"
 		suffixLetters          = "abcdefghijklmnopqrstuvwxyz0123456789"
 		captureName            = "channel_scan_dwell_time"
-		numBSS                 = 1024
+		numBSS                 = 1 // change this value to control the number of beacon frames
 		delayInterval          = 1 * time.Millisecond
 		scanStartDelay         = 500 * time.Millisecond
 		scanRetryTimeout       = 10 * time.Second
@@ -65,18 +67,6 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	testcases := []csdtTestcase{
 		{
 			apChannel:    1,
-			apOpts:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT40)},
-			minDwellTime: 5 * time.Millisecond,
-			maxDwellTime: 250 * time.Millisecond,
-		},
-		{
-			apChannel:    9,
-			apOpts:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT40)},
-			minDwellTime: 5 * time.Millisecond,
-			maxDwellTime: 250 * time.Millisecond,
-		},
-		{
-			apChannel:    36,
 			apOpts:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.HTCaps(hostapd.HTCapHT40)},
 			minDwellTime: 5 * time.Millisecond,
 			maxDwellTime: 250 * time.Millisecond,
@@ -123,7 +113,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
 		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
 
-		bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
+		_, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
 			s.Log("Configuring AP on router")
 			apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
 			ap, err := tf.ConfigureAP(ctx, apOpts, nil)
@@ -199,18 +189,6 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get packet capture: ", err)
 		}
 
-		s.Log("Calculating dwell time")
-		var ssids []string
-		for _, bss := range bssList {
-			if strings.HasPrefix(bss.SSID, ssidPrefix) {
-				ssids = append(ssids, bss.SSID)
-			}
-		}
-		sort.Strings(ssids)
-		if len(ssids) == 0 {
-			s.Fatal("No Beacons Found")
-		}
-
 		// Find the first probe request from the DUT.
 		// If there are no probe requests, fail.
 		probeReqFilter := []pcap.Filter{
@@ -222,108 +200,10 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to read probe requests from packet capture: ", err)
 		}
 		s.Logf("Received %d probe requests", len(probeReqPackets))
+		s.Logf("probeIter %d", probeIter)
 		if len(probeReqPackets) == 0 {
 			s.Fatal("No probe requests in packet capture")
 		}
-		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
-		s.Log("Probe Request Time: ", probeReqTimestamp)
-
-		// Find the first test beacon after the first probe request.
-		// Note that beacons arriving *before* the probe request should not be counted.
-		beaconFilter := pcap.TypeFilter(layers.LayerTypeDot11MgmtBeacon, nil)
-		beaconPackets, err := pcap.ReadPackets(pcapPath, beaconFilter)
-		if err != nil {
-			s.Fatal("Failed to read beacons from packet capture: ", err)
-		}
-		beaconFirst := ""
-		for _, packet := range beaconPackets {
-
-			// If we've already found the first beacon, we're done
-			if beaconFirst != "" {
-				break
-			}
-
-			// Check to see if the beacon is before the probe.
-			// If the beacon follows the probe and matches the prefix, we're done.
-			if packet.Metadata().Timestamp.Before(probeReqTimestamp) {
-				continue
-			}
-			for _, layer := range packet.Layers() {
-				if elem, ok := layer.(*layers.Dot11InformationElement); ok {
-					if elem.ID == layers.Dot11InformationElementIDSSID {
-						ssid := string(elem.Info)
-						if strings.HasPrefix(ssid, ssidPrefix) {
-							beaconFirst = ssid
-							s.Log("First beacon found: ", ssid)
-							break
-						}
-					}
-				}
-			}
-		}
-		if beaconFirst == "" {
-			s.Fatalf("Could not find beacon after probe request (ssid prefix %s)", ssidPrefix)
-		}
-
-		// Analyze scan results.
-		beaconCount := len(ssids)
-		beaconFinal := ssids[len(ssids)-1]
-		beaconFirstIdx, err := ssidIndex(beaconFirst)
-		if err != nil {
-			s.Fatal("Failed to parse beacon SSID: ", err)
-		}
-		beaconFinalIdx, err := ssidIndex(beaconFinal)
-		if err != nil {
-			s.Fatal("Failed to parse beacon SSID: ", err)
-		}
-		beaconRange := beaconFinalIdx - beaconFirstIdx + 1
-		s.Logf("Found %d test beacons (initial %q), considering %q through %q",
-			beaconCount, ssids[0], beaconFirst, beaconFinal)
-		if beaconRange-beaconCount > missingBeaconThreshold {
-			s.Fatalf("Missed %d beacons: %v", beaconRange-beaconCount, ssids)
-		}
-
-		// Construct a mapping from SSIDs to broadcast time
-		ssidTimestamps := make(map[string]time.Time)
-		for _, packet := range beaconPackets {
-			for _, layer := range packet.Layers() {
-				if elem, ok := layer.(*layers.Dot11InformationElement); ok {
-					if elem.ID == layers.Dot11InformationElementIDSSID {
-						ssid := string(elem.Info)
-						ts := packet.Metadata().Timestamp
-						if ssid != "" && !ts.IsZero() {
-							ssidTimestamps[ssid] = ts
-						}
-					}
-				}
-			}
-		}
-
-		// Use that mapping to figure out when the first and last scanned beacon were
-		// transmitted. The difference in timestamps was the dwell time of the scan.
-		timeFirst, ok := ssidTimestamps[beaconFirst]
-		if !ok {
-			s.Fatal("Failed to find timestamp of the first beacon ", beaconFirst)
-		}
-		timeFinal, ok := ssidTimestamps[beaconFinal]
-		if !ok {
-			s.Fatal("Failed to find the timestamp of the final beacon ", beaconFinal)
-		}
-
-		dwellTime := timeFinal.Sub(timeFirst)
-		s.Log("First Beacon Time: ", timeFirst)
-		s.Log("Final Beacon Time: ", timeFinal)
-		s.Log("Dwell Time: ", dwellTime)
-		if (dwellTime < tc.minDwellTime) || (dwellTime > tc.maxDwellTime) {
-			s.Fatalf("Dwell time %v is not within range [%v, %v]", dwellTime, tc.minDwellTime, tc.maxDwellTime)
-		}
-
-		s.Logf("dwell_time_ch%d = %.3f", tc.apChannel, dwellTime.Seconds())
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("dwell_time_ch%d", tc.apChannel),
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, dwellTime.Seconds())
 	}
 
 	for i, tc := range testcases {
@@ -350,16 +230,20 @@ func ssidIndex(ssid string) (int, error) {
 func pollScan(ctx context.Context, dut *dut.DUT, iface string, freqs []int, pollTimeout time.Duration) ([]*iw.BSSData, error) {
 	iwr := remoteiw.NewRemoteRunner(dut.Conn())
 	var scanResult *iw.TimedScanData
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		scanResult, err = iwr.TimedScan(ctx, iface, freqs, nil)
+	//   DUT sends probe requests 1000 times
+	for probeIter = 0; probeIter < 1000; probeIter++ {
+		err := testing.Poll(ctx, func(ctx context.Context) error {
+			var err error
+			scanResult, err = iwr.TimedScan(ctx, iface, freqs, nil)
+			if err != nil {
+				testing.ContextLogf(ctx, "Scan Failure (%v), Retrying", err)
+			}
+			return err
+		}, &testing.PollOptions{Timeout: pollTimeout, Interval: 100 * time.Millisecond})
 		if err != nil {
-			testing.ContextLogf(ctx, "Scan Failure (%v), Retrying", err)
+			return nil, err
 		}
-		return err
-	}, &testing.PollOptions{Timeout: pollTimeout, Interval: 500 * time.Millisecond})
-	if err != nil {
-		return nil, err
+		//     time.Sleep(2 * time.Millisecond)
 	}
 	return scanResult.BSSList, nil
 }
