@@ -19,7 +19,6 @@ import (
 	"google.golang.org/grpc/status"
 
 	"chromiumos/tast/common/servo"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
@@ -27,7 +26,6 @@ import (
 	"chromiumos/tast/remote/firmware/rpm"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -461,7 +459,7 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 				return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
 			}
 		} else if _, ok := err.(*gossh.ExitError); !ok {
-			return errors.Wrapf(err, "checking for existence of %s: %T", dutSrc, err)
+			return errors.Wrapf(err, "checking for existence of %s", dutSrc)
 		}
 	}
 	return nil
@@ -592,31 +590,10 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	}
 
 	testing.ContextLog(ctx, "Flashing test OS image to USB")
-	// Make sure the device is synced whether or not the command succeeds.
-	defer func(ctx context.Context) {
-		if err = h.ServoProxy.RunCommand(ctx, true, "sync"); err != nil {
-			if retErr == nil {
-				retErr = errors.Wrap(err, "sync failed")
-			} else {
-				testing.ContextLogf(ctx, "Sync failed: %s", err)
-			}
-		}
-		if err = h.ServoProxy.RunCommand(ctx, true, "blockdev", "--rereadpt", usbdev); err != nil && retErr == nil {
-			if retErr == nil {
-				retErr = errors.Wrap(err, "blockdev failed")
-			} else {
-				testing.ContextLogf(ctx, "blockdev failed: %s", err)
-			}
-		}
-	}(ctx)
-
-	// Reduce the context deadline to let the deferred calls succeed.
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-	defer cancel()
 	// If it did have tast files, it won't shortly.
 	h.dutUsbHasTastFiles = false
 	// On my computer with a servo v4, this takes 7 minutes.
-	if err = h.ServoProxy.RunCommand(ctx, true, "sh", "-c", fmt.Sprintf("wget -nv -O - %s | tar -JxOf - | dd of=%s bs=1M iflag=fullblock conv=nocreat,fsync", shutil.Escape(dataURL.String()), shutil.Escape(usbdev))); err != nil {
+	if err := h.Servo.SetStringTimeout(ctx, servo.DownloadImageToUSBDev, dataURL.String(), time.Hour); err != nil {
 		return errors.Wrapf(err, "failed to flash os image %q to USB %q", testImageURL, usbdev)
 	}
 	testing.ContextLogf(ctx, "Successfully flashed %q from %q", usbdev, testImageURL)
