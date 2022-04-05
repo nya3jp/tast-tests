@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e1cc74_8890e3b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-05T14:45:51Z",
+      "side": 1,
+      "message": "LGTM % question.",
+      "revId": "6c3ccae99bfbfa7c8c66748ef78c8811a657c9db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c43a2e6_588cf240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-05T14:45:51Z",
+      "side": 1,
+      "message": "Will removing the file allow enrollment to take place?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 69
+      },
+      "revId": "6c3ccae99bfbfa7c8c66748ef78c8811a657c9db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
