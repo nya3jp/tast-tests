@@ -1,0 +1,164 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package ui
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/common/action"
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         GoogleSlidesCUJ,
+		LacrosStatus: testing.LacrosVariantExists,
+		Desc:         "Measures the total performance of critical user journey for Google Slides",
+		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
+		SoftwareDeps: []string{"chrome", "arc"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Timeout:      12 * time.Minute,
+		Params: []testing.Param{{
+			Val:     browser.TypeAsh,
+			Fixture: "loggedInToCUJUser",
+		}, {
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
+			Fixture:           "loggedInToCUJUserLacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
+	})
+}
+
+func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
+	const (
+		timeout             = 10 * time.Second
+		slidesURL           = "https://docs.google.com/presentation/d/1lItrhkgBqXF_bsP-tOqbjcbBFa86--m3DT5cLxegR2k/edit?usp=sharing&resourcekey=0-FmuN4N-UehRS2q4CdQzRXA"
+		slidesScrollTimeout = 2 * time.Minute
+	)
+
+	// Shorten context a bit to allow for cleanup.
+	closeCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	bt := s.Param().(browser.Type)
+
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to the test API connection: ", err)
+	}
+
+	var l *lacros.Lacros
+	var cs ash.ConnSource
+	var bTconn *chrome.TestConn
+	switch bt {
+	case browser.TypeLacros:
+		var err error
+		if cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err != nil {
+			s.Fatal("Failed to initialize test: ", err)
+		}
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
+		defer lacros.CloseLacros(closeCtx, l)
+	case browser.TypeAsh:
+		cs = cr
+		var err error
+		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get TestAPIConn: ", err)
+		}
+	default:
+		s.Fatal("Unrecognized browser type: ", bt)
+	}
+
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
+
+	configs := []cuj.MetricConfig{
+		cuj.NewCustomMetricConfigWithTestConn("Event.Latency.EndToEnd.KeyPress", "microsecond",
+			perf.SmallerIsBetter, []int64{80000, 400000}, bTconn),
+		cuj.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
+			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn),
+		cuj.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
+			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn)}
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	if err != nil {
+		s.Fatal("Failed to create a CUJ recorder: ", err)
+	}
+	defer recorder.Close(closeCtx)
+
+	// Create a virtual keyboard.
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a keyboard: ", err)
+	}
+	defer kw.Close()
+
+	if err := recorder.Run(ctx, func(ctx context.Context) error {
+		slidesConn, err := cs.NewConn(ctx, slidesURL, browser.WithNewWindow())
+		if err != nil {
+			return errors.Wrap(err, "failed to open the google slides website")
+		}
+		defer slidesConn.Close()
+		defer slidesConn.CloseTarget(closeCtx)
+
+		// Go through the Slides deck.
+		s.Logf("Going through the Google Slides file for %s", slidesScrollTimeout)
+		for end := time.Now().Add(slidesScrollTimeout); time.Now().Before(end); {
+			if err := uiauto.Combine(
+				"sleep and press down",
+				action.Sleep(time.Second),
+				kw.AccelAction("Down"),
+			)(ctx); err != nil {
+				return err
+			}
+		}
+
+		// Ensure the slides deck gets scrolled.
+		var scrollTop int
+		if err := slidesConn.Eval(ctx, "document.getElementsByClassName('punch-filmstrip-scroll')[0].scrollTop", &scrollTop); err != nil {
+			return errors.Wrap(err, "failed to get the number of pixels that the scrollbar is scrolled vertically")
+		}
+		if scrollTop == 0 {
+			return errors.New("file is not getting scrolled")
+		}
+
+		// Navigate away to record PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
+		if err := slidesConn.Navigate(ctx, "chrome://version"); err != nil {
+			return errors.Wrap(err, "failed to navigate to chrome://version")
+		}
+
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to run the test scenario: ", err)
+	}
+
+	pv := perf.NewValues()
+	if err := recorder.Record(ctx, pv); err != nil {
+		s.Fatal("Failed to record the data: ", err)
+	}
+	if pv.Save(s.OutDir()); err != nil {
+		s.Error("Failed to save the perf data: ", err)
+	}
+	if err := recorder.SaveHistograms(s.OutDir()); err != nil {
+		s.Error("Failed to save histogram raw data: ", err)
+	}
+}
