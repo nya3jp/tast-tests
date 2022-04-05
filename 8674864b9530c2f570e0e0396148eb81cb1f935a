@@ -70,6 +70,24 @@
       "parentUuid": "2342a530_a1ffb7c1",
       "revId": "8674864b9530c2f570e0e0396148eb81cb1f935a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81aabb14_67dc79ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-05T12:21:09Z",
+      "side": 1,
+      "message": "Ok I\u0027ve added BrowserTypeMatch (defined using BrowserTitleMatch). PTAL",
+      "parentUuid": "2160b865_a93d6b94",
+      "revId": "8674864b9530c2f570e0e0396148eb81cb1f935a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
