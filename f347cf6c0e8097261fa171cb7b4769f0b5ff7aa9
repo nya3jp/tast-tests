@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d369e2_2ac29318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T15:41:33Z",
+      "side": 1,
+      "message": "nit: no `.`",
+      "range": {
+        "startLine": 7,
+        "startChar": 72,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "f347cf6c0e8097261fa171cb7b4769f0b5ff7aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1837c0da_1005fecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T15:41:33Z",
+      "side": 1,
+      "message": "nit: `Add`",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "f347cf6c0e8097261fa171cb7b4769f0b5ff7aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a680f8bf_e828d6fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T15:41:33Z",
+      "side": 1,
+      "message": "This matches 28 tests, and the CL affects only 5 of them. I think it should reflect how you actually verify your CL, hopefully without taking the time to run 23 irrelevant tests. Here is what I would write:\n  TEST\u003dtast run \u003cDUT\u003e dlp.DataLeakPreventionRulesListClipboard\n  TEST\u003dtast run \u003cDUT\u003e dlp.DataLeakPreventionRulesListClipboardHistory.*\n  TEST\u003dtast run \u003cDUT\u003e dlp.DataLeakPreventionRulesListClipboardMixedTypeBrowsers\n  TEST\u003dtast run \u003cDUT\u003e dlp.DataLeakPreventionRulesListDragdrop",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "f347cf6c0e8097261fa171cb7b4769f0b5ff7aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e663ee5_dcf64bf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T15:41:33Z",
+      "side": 1,
+      "message": "`tast run`",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "f347cf6c0e8097261fa171cb7b4769f0b5ff7aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ae47fe4b_37b80c16",
