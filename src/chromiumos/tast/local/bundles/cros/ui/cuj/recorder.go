@@ -54,8 +54,7 @@ type MetricConfig struct {
 	direction perf.Direction
 
 	// The criteria to be considered jank, used to aggregated rate of janky
-	// instances. This can be empty, in that case the defualt criteria will be
-	// used.
+	// instances.
 	jankCriteria []int64
 
 	// The group of the metrics. Metrics in the same group will be aggregated
