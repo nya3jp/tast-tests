@@ -11,7 +11,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/localstate"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -34,6 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
+		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Name: "copy",
 			Val:  []chrome.Option{chrome.DisableFeatures("LacrosMoveProfileMigration")},
@@ -177,10 +180,13 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	// TODO(neis): Support -var lacrosDeployedBinary.
-	l, err := lacros.Launch(ctx, tconn, "/run/lacros")
+	lacrosPath, err := lacrosfixt.EnsureLacrosReadyForLaunch(ctx, browserfixt.DefaultLacrosConfig.WithVar(s))
 	if err != nil {
-		s.Fatal("Failed to launch lacros: ", err)
+		s.Fatal("Failed to ensure that Lacros is ready for launch: ", err)
+	}
+	l, err := lacros.Launch(ctx, tconn, lacrosPath)
+	if err != nil {
+		s.Fatal("Failed to launch Lacros: ", err)
 	}
 
 	// Check that the bookmark is present.

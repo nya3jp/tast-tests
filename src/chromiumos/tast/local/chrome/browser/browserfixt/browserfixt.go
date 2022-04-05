@@ -102,7 +102,7 @@ var DefaultLacrosConfig = NewLacrosConfig(lacrosfixt.Rootfs, lacrosfixt.LacrosPr
 // It also returns a closure to be called in order to close the browser instance.
 // The caller is responsible for calling the closure first, then Close() on the chrome instance for deferred cleanup.
 // LacrosConfig is the configurations to be set to enable Lacros for use by tests.
-// For convenience, DefaultLacrosConfig(.WithVar(s)) could be passed in when rootfs-lacros is needed as a primary browser unless specified with the runtime var.
+// For convenience, DefaultLacrosConfig().WithVar(s) could be passed in when rootfs-lacros is needed as a primary browser unless specified with the runtime var.
 func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *LacrosConfig, opts ...chrome.Option) (*chrome.Chrome, *browser.Browser, func(ctx context.Context), error) {
 	switch bt {
 	case browser.TypeAsh:
