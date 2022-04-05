@@ -22,7 +22,7 @@ func init() {
 		Func:         CrosToCrosBackgroundScanning,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Nearby Device is trying to share notification shows up, clicking the notification enables high-vis mode and the receive flow is successful",
-		Contacts:     []string{"chromeos-sw-engprod@google.com, cvandermerwe@google.com"},
+		Contacts:     []string{"chromeos-sw-engprod@google.com, hansenmichael@google.com"},
 		Attr:         []string{"group:nearby-share-remote", "group:nearby-share-cq"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
@@ -37,7 +37,7 @@ func init() {
 				// TODO(b/225966067): Replace with companion DUT HWDep for background scanning.
 				// The intention here is to skip on the companion (receiver) device. However it currently is only possible to skip on the primary DUT (sender),
 				// so as a workaround we skip on sender that is paired with the receiver we want to skip on.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("sarien", "hatch", "grunt", "soraka", "scarlet")),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("arcada", "arcada_signed", "kindred", "treeya", "treeya360", "barla", "dumo", "soraka")),
 			},
 		},
 	})
