@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c0f33a_7eb1485e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c0da5ec_e7d92a03",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "925dd486_73f0806b",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-05T18:43:52Z",
       "side": 1,
       "message": "Do we need to test this anymore if shill is supplying the auth type in every case, or are these tests of that functionality?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9cc8a10_f97d08c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "these tests were added to verify that functionality. I\u0027ll fix the comment on \"attach_ip_default\" though. It should say \"ip\" instead of \"authentication\"",
+      "parentUuid": "925dd486_73f0806b",
       "range": {
         "startLine": 57,
         "startChar": 5,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "773e4d95_3965fb73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e140029_633a8fda",
+      "range": {
+        "startLine": 90,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 43
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e206eb46_17dc6c13",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-05T18:43:52Z",
       "side": 1,
       "message": "nit: canonical format for this would be something like\n\n \"Last Attach APN doesn\u0027t match: got %q, want %q\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 150,
+        "endChar": 79
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6edfcf2_263b65f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e206eb46_17dc6c13",
       "range": {
         "startLine": 150,
         "startChar": 12,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87038318_2df13a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48ab5a24_ad62cf62",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 75
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b39013bd_db70e167",
@@ -167,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f222c66d_978d85d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_apn.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b39013bd_db70e167",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da37a654_12da3e28",
@@ -180,6 +318,30 @@
       "writtenOn": "2022-04-05T18:43:52Z",
       "side": 1,
       "message": "maybe `unknownMNOTestParam`?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c738e7b5_35ce8fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da37a654_12da3e28",
       "range": {
         "startLine": 19,
         "startChar": 5,
@@ -213,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f719bb91_aa871eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd0c5564_762d1bb7",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "543445fd_a3b0b396",
@@ -226,6 +412,30 @@
       "writtenOn": "2022-04-05T18:43:52Z",
       "side": 1,
       "message": "ditto re: got...want format",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 80
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3149147_f442983a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "543445fd_a3b0b396",
       "range": {
         "startLine": 130,
         "startChar": 11,
@@ -259,6 +469,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94306eda_eae1eed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_connect_to_unknown_mno.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53049ac6_65d85663",
+      "range": {
+        "startLine": 135,
+        "startChar": 11,
+        "endLine": 135,
+        "endChar": 78
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77be89c6_c4f36853",
@@ -276,6 +510,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2e68d7_ce974fbc",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "the test was doing the cleaning. But it makes more sense to return a defer function, so the client is aware what has to happen",
+      "parentUuid": "77be89c6_c4f36853",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61e6b25c_b08b29e7",
@@ -289,6 +541,24 @@
       "writtenOn": "2022-04-05T18:48:30Z",
       "side": 1,
       "message": "What do we collide with such that we need the `e` and `g` prefixes on these?",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3254d19a_bdc5f5f4",
+        "filename": "src/chromiumos/tast/local/modemmanager/dbus_helpers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "I\u0027ve assumed that it would collide with dbus, but it doesn\u0027t",
+      "parentUuid": "61e6b25c_b08b29e7",
       "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -316,6 +586,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af621bc_5050f832",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950667b9_628f76f7",
+      "range": {
+        "startLine": 710,
+        "startChar": 8,
+        "endLine": 710,
+        "endChar": 50
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acda0eb2_670858bf",
@@ -329,6 +623,30 @@
       "writtenOn": "2022-04-05T18:46:40Z",
       "side": 1,
       "message": "ditto re: we should ensure this can\u0027t panic",
+      "range": {
+        "startLine": 740,
+        "startChar": 10,
+        "endLine": 740,
+        "endChar": 46
+      },
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b528b119_57b7cbcf",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-05T23:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acda0eb2_670858bf",
       "range": {
         "startLine": 740,
         "startChar": 10,
