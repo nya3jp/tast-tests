@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10383759_b56cd53b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-04-05T23:01:39Z",
+      "side": 1,
+      "message": "These are already running on the correct devices so I figured I wouldn\u0027t touch it. But should I change this to `SkipOnModel()` to set us up for future updates?",
+      "parentUuid": "aea26221_7c0ddd9c",
+      "revId": "d87b3376aa2af755d774b743c2ec61f6eccd1c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8abdcbc_a2c928bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning_disabled.go",
         "patchSetId": 2
