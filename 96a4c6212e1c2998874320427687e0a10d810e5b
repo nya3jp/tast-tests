@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f830d1_ffb92ed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-05T02:46:20Z",
+      "side": 1,
+      "message": "Because this change doesn\u0027t touch any code that are tested by unit tests, I was assuming that it\u0027s not needed. But anyway, I usually run them before uploading, and I\u0027ve added the line.",
+      "parentUuid": "83c86e20_32c7ff9c",
+      "revId": "96a4c6212e1c2998874320427687e0a10d810e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb55d193_5a23ef45",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-04T16:17:44Z",
       "side": 1,
       "message": "nit: Do not need \"else\" here? The if block has already return.",
+      "revId": "96a4c6212e1c2998874320427687e0a10d810e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f4ba96_78f7a122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_cursor_location.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-05T02:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb55d193_5a23ef45",
       "revId": "96a4c6212e1c2998874320427687e0a10d810e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
