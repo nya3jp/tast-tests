@@ -16,6 +16,47 @@
       "message": "I made considerable changes to the code, including moving all the configuration and validation of supported networks to their own file, so rollback_service does not need to be updated (or grow) when we add new configurations.\n\nThere are no lint errors now.",
       "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2155f04d_b735c11b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-04-05T11:15:34Z",
+      "side": 1,
+      "message": "LGTM % minor nit\nPlease get +2 from Miriam as well, thanks!",
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd03ba7_d522ec64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/supportednetworks/supported_networks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-04-05T11:15:34Z",
+      "side": 1,
+      "message": "\u003e \"appropiate\" is a possible misspelling of \"appropriate\".\n\nPlease fix.",
+      "parentUuid": "d09a3d21_c16e5eb8",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
