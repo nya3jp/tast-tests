@@ -13,12 +13,15 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // clvkTest is used to describe the config used to run each test.
 type clvkTest struct {
 	exe string // The test executable name.
 }
+
+var clvkGpuMtk = []string{"kukui", "jacuzzi"}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -43,8 +46,9 @@ func init() {
 			Val: clvkTest{
 				exe: "simple_test",
 			},
-			Timeout:   1 * time.Minute,
-			ExtraAttr: []string{"group:mainline"},
+			Timeout:           1 * time.Minute,
+			ExtraAttr:         []string{"group:mainline"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(clvkGpuMtk...)),
 		}},
 	})
 }
