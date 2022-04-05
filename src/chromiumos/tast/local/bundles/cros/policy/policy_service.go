@@ -92,6 +92,10 @@ func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIA
 func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUsingChromeRequest) (*empty.Empty, error) {
 	testing.ContextLogf(ctx, "Enrolling using Chrome with policy %s", string(req.PolicyJson))
 
+	if _, err := os.Stat("/run/lockbox/install_attributes.pb"); err == nil {
+		return nil, errors.New("install_attributes.pb should not be present")
+	}
+
 	var opts []chrome.Option
 
 	ok := false
