@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d1fa75_2f254b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/hotplug_usb_headset_audio_playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T07:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddbe416c_a26691cb",
+      "revId": "98e223f084a374ef4b672fb911cc49df182c4a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c52a5c2_03790e6b",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-04T13:51:00Z",
       "side": 1,
       "message": "nit: remove commented code?",
+      "revId": "98e223f084a374ef4b672fb911cc49df182c4a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81734a50_597ecd02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/hotplug_usb_headset_audio_playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-05T07:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c52a5c2_03790e6b",
       "revId": "98e223f084a374ef4b672fb911cc49df182c4a3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
