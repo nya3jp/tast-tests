@@ -6,10 +6,12 @@ package launcher
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
@@ -49,9 +51,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// When a DUT switches from tablet mode to clamshell mode, sometimes it takes a while to settle down.
-	// Added a delay here to let all events finishing up.
-	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		s.Fatal("Failed to wait for location changes: ", err)
 	}
 
