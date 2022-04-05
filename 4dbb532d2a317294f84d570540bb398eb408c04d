@@ -22,6 +22,30 @@
       },
       "revId": "4dbb532d2a317294f84d570540bb398eb408c04d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13fa478e_2d30f5aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-04-05T07:01:27Z",
+      "side": 1,
+      "message": "gofmt doesn\u0027t change this. I thought it looked a little strange too, but who am I to argue with the linter?\n\nI ran `gofmt -w src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go`, and presubmit didn\u0027t complain either.",
+      "parentUuid": "4b134dd8_d1da9700",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 118
+      },
+      "revId": "4dbb532d2a317294f84d570540bb398eb408c04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
