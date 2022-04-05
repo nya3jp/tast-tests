@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -40,6 +41,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		Timeout:      3 * time.Minute,
+		Vars:         []string{"lacrosDeployedBinary"},
 		Params: []testing.Param{{
 			Val: browser.TypeAsh,
 		}, {
@@ -142,10 +144,13 @@ func RequiredClientCertificate(ctx context.Context, s *testing.State) {
 			if browserType == browser.TypeLacros {
 				s.Log("Starting to check that certificate is visible in Lacros")
 				func() {
-					// TODO(neis): Support -var lacrosDeployedBinary.
-					l, err := lacros.Launch(ctx, tconn, "/run/lacros")
+					lacrosPath, err := lacrosfixt.EnsureLacrosReadyForLaunch(ctx, browserfixt.DefaultLacrosConfig.WithVar(s))
 					if err != nil {
-						s.Fatal("Failed to launch lacros: ", err)
+						s.Fatal("Failed to ensure that Lacros is ready for launch: ", err)
+					}
+					l, err := lacros.Launch(ctx, tconn, lacrosPath)
+					if err != nil {
+						s.Fatal("Failed to launch Lacros: ", err)
 					}
 					defer l.Close(ctx)
 					if err := checkCertificateVisibleInBrowserSettings(ctx, tconn, l.Browser()); err != nil {
