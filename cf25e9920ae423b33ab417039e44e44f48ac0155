@@ -46,6 +46,47 @@
       },
       "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d36c18f_f69e637c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-05T02:16:12Z",
+      "side": 1,
+      "message": "It\u0027s hard to visualize without seeing the tree.\n\nThe problem is that the element is not clickable until the animation completes? Could a user hit the same problem?",
+      "parentUuid": "43349851_d3225b0e",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f65cbe_24857a47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-05T02:16:12Z",
+      "side": 1,
+      "message": "Yeh I know we ",
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
