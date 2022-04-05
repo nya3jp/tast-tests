@@ -59,6 +59,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		scanStartDelay         = 500 * time.Millisecond
 		scanRetryTimeout       = 10 * time.Second
 		missingBeaconThreshold = 2
+		maxScanIter            = 2
 	)
 
 	// TODO(b/182308669): Tighten up min/max bounds on various channel dwell times
@@ -122,7 +123,8 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 
 	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
 		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
-
+		scanIter := 0
+	LOOP:
 		bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
 			s.Log("Configuring AP on router")
 			apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
@@ -223,7 +225,13 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 		s.Logf("Received %d probe requests", len(probeReqPackets))
 		if len(probeReqPackets) == 0 {
-			s.Fatal("No probe requests in packet capture")
+			scanIter++
+			if scanIter < maxScanIter {
+				s.Log("No probe requests in packet capture, trying again")
+				goto LOOP
+			} else {
+				s.Fatal("No probe requests in packet capture, aborting")
+			}
 		}
 		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
 		s.Log("Probe Request Time: ", probeReqTimestamp)
