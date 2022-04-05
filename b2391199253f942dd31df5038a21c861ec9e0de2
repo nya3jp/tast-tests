@@ -261,6 +261,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77be89c6_c4f36853",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:48:30Z",
+      "side": 1,
+      "message": "Should we return something that cleans this up? Or does the test fixture take care of this every time it starts?",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e6b25c_b08b29e7",
+        "filename": "src/chromiumos/tast/local/modemmanager/dbus_helpers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-05T18:48:30Z",
+      "side": 1,
+      "message": "What do we collide with such that we need the `e` and `g` prefixes on these?",
+      "revId": "b2391199253f942dd31df5038a21c861ec9e0de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "950667b9_628f76f7",
         "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
         "patchSetId": 12
