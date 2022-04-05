@@ -39,6 +39,30 @@
       },
       "revId": "055dc8922210de2bf1322a1771ed8e2b7ffab0a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c2b832_cb0170e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome_gaia_api.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-04-05T09:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce481c5d_8609ead2",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "055dc8922210de2bf1322a1771ed8e2b7ffab0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
