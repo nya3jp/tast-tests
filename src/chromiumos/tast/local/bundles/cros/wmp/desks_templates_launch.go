@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
@@ -97,7 +98,7 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := ac.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		s.Fatal("Failed to wait for app launch events to be completed: ", err)
 	}
 
@@ -107,7 +108,7 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
-	if err := ac.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		s.Fatal("Failed to wait for overview animation to be completed: ", err)
 	}
 

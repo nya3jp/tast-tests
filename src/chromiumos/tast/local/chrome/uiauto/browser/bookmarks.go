@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -61,7 +62,7 @@ func (b *Browser) ToggleBookmarksBar(ctx context.Context, keyboard *input.Keyboa
 		return errors.Wrap(err, "failed to write events ctrl+shift+b")
 	}
 
-	if err := b.ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := b.ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for animation to finish after toggling bookmark")
 	}
 

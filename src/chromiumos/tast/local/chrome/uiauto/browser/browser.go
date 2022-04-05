@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
@@ -91,7 +92,7 @@ func (b *Browser) BookmarkCurrentTab(ctx context.Context, keyboard *input.Keyboa
 		return errors.Wrapf(err, "failed to write events %s", "Enter")
 	}
 
-	if err := b.ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := b.ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for animation to finish after bookmarking current tab")
 	}
 
@@ -134,7 +135,7 @@ func (b *Browser) RenameBookmarkForCurrentTab(ctx context.Context, keyboard *inp
 		return errors.Wrap(err, "failed to write events")
 	}
 
-	if err := b.ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := b.ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for animation to finish after renaming bookmark")
 	}
 
@@ -157,7 +158,7 @@ func (b *Browser) CurrentTabBookmarkName(ctx context.Context, keyboard *input.Ke
 		return "", errors.Wrapf(err, "failed to write events %s", "Esc")
 	}
 
-	if err := b.ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+	if err := b.ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return "", errors.Wrap(err, "failed waiting for animation to finish after dismissing bookmark dialog")
 	}
 
