@@ -6,20 +6,16 @@ package dlp
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
+	"chromiumos/tast/local/bundles/cros/dlp/dragdrop"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -130,7 +126,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 
 			s.Log("Draging and dropping content")
-			if err := dragDrop(ctx, tconn, param.content); err != nil {
+			if err := dragdrop.DragDrop(ctx, tconn, param.content); err != nil {
 				s.Error("Failed to drag drop content: ", err)
 			}
 
@@ -147,27 +143,4 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 		})
 	}
-}
-
-func dragDrop(ctx context.Context, tconn *chrome.TestConn, content string) error {
-	ui := uiauto.New(tconn)
-
-	contentNode := nodewith.Name(content).First()
-	start, err := ui.Location(ctx, contentNode)
-	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for content")
-	}
-
-	search := "Google Search"
-	searchTab := nodewith.Name(search).Role(role.InlineTextBox).First()
-	endLocation, err := ui.Location(ctx, searchTab)
-	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for google search")
-	}
-
-	if err := uiauto.Combine("Drag and Drop",
-		mouse.Drag(tconn, start.CenterPoint(), endLocation.CenterPoint(), time.Second*2))(ctx); err != nil {
-		return errors.Wrap(err, "failed to verify content preview for")
-	}
-	return nil
 }
