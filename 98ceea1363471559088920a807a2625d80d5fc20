@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8532572e_8162eed0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-05T21:47:41Z",
+      "side": 1,
+      "message": "qq: Is this CL adding tests, or does it just converts existing subtests with parameters? If this CL do both 1. converting existing tests with parameters, and 2. adding parameters to add tests, then could you split the CL into these two, to prefer go/small-cls ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "98ceea1363471559088920a807a2625d80d5fc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
