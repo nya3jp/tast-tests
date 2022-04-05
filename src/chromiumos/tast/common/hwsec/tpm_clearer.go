@@ -27,7 +27,7 @@ var SystemStateFiles = []string{
 	"/home/chronos/Local State",
 	"/mnt/stateful_partition/.tpm_owned",
 	"/run/cryptohome",
-	"/run/lockbox/*",
+	"/run/lockbox/install_attributes.pb",
 	"/run/tpm_manager",
 	"/var/cache/app_pack",
 	"/var/cache/shill/default.profile",
@@ -39,5 +39,10 @@ var SystemStateFiles = []string{
 	"/var/lib/tpm_manager",
 	"/var/lib/tpm",
 	"/var/lib/u2f",
+}
+
+// SystemStateGlobs extends SystemStateFiles and contains globs to list more files to remove.
+// Entries must not contain spaces.
+var SystemStateGlobs = []string{
 	"/var/lib/devicesettings/*",
 }
