@@ -114,6 +114,16 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to show the list of users: ", err)
 		}
 
+		// Verify that there are three User accounts shown in the Users list.
+		// Verify that only the first user is designated as the "Owner".
+		if err := uiauto.Combine("verify users list",
+			ui.WaitUntilExists(nodewith.NameStartingWith(signinutil.GetUsernameFromEmail(deviceOwner)).NameContaining("owner").Role(role.StaticText)),
+			ui.WaitUntilExists(nodewith.Name(signinutil.GetUsernameFromEmail(additionalUser1)).Role(role.StaticText)),
+			ui.WaitUntilExists(nodewith.Name(signinutil.GetUsernameFromEmail(additionalUser2)).Role(role.StaticText)),
+		)(ctx); err != nil {
+			s.Fatal("Failed to verify users list: ", err)
+		}
+
 		// Remove a non-owner user.
 		removeButtonName := "Remove " + signinutil.GetUsernameFromEmail(additionalUser1)
 
