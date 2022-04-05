@@ -29,7 +29,7 @@ func init() {
 		Func:         ReportDiskUsage,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Reports available disk space in the root filesystem",
-		Contacts:     []string{"cros-telemetry@google.com"}, // or http://b/new?component=885467
+		Contacts:     []string{"cros-telemetry@google.com"}, // or http://b/new?component=1175318
 		// chromeos-assets is not available on devices without Chrome, require chrome
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
