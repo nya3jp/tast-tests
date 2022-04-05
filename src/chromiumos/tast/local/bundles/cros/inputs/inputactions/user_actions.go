@@ -21,6 +21,11 @@ type testingState interface {
 
 // NewInputsUserContext returns a new user context structure designed for Essential Inputs.
 func NewInputsUserContext(ctx context.Context, s testingState, cr *chrome.Chrome, tconn *chrome.TestConn, additionalAttributes map[string]string) (*useractions.UserContext, error) {
+	return NewInputsUserContextWithoutState(ctx, s.TestName(), s.OutDir(), cr, tconn, additionalAttributes)
+}
+
+// NewInputsUserContextWithoutState returns a new user context structure designed for Inputs fixtures.
+func NewInputsUserContextWithoutState(ctx context.Context, testName, outDir string, cr *chrome.Chrome, tconn *chrome.TestConn, additionalAttributes map[string]string) (*useractions.UserContext, error) {
 	attributes := make(map[string]string)
 	if additionalAttributes != nil {
 		attributes = additionalAttributes
@@ -60,5 +65,5 @@ func NewInputsUserContext(ctx context.Context, s testingState, cr *chrome.Chrome
 	}
 	attributes[useractions.AttributeInputMethod] = activeInputMethod.Name
 
-	return useractions.NewUserContext(s.TestName(), cr, tconn, s.OutDir(), attributes, []useractions.ActionTag{useractions.ActionTagEssentialInputs}), nil
+	return useractions.NewUserContext("", cr, tconn, outDir, attributes, []useractions.ActionTag{useractions.ActionTagEssentialInputs}), nil
 }
