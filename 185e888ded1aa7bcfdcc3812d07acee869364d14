@@ -16,6 +16,23 @@
       "message": "tast owner: Please take a look, thanks!",
       "revId": "185e888ded1aa7bcfdcc3812d07acee869364d14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0251b1_f501904f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-04-05T17:25:03Z",
+      "side": 1,
+      "message": "thanks for the review!",
+      "revId": "185e888ded1aa7bcfdcc3812d07acee869364d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
