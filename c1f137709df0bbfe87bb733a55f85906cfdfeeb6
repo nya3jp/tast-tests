@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21aa9a3f_0b732179",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T18:59:13Z",
+      "side": 1,
+      "message": "nit: `Add`",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbdd284b_71420920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T18:59:13Z",
+      "side": 1,
+      "message": "I do not see any usage of this constant. If it is not used, please get rid of it.",
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f3890fe_cd6d7286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T18:59:13Z",
+      "side": 1,
+      "message": "`\"microseconds\"`\nSee: https://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/event/histograms.xml;drc\u003db928e140919287abada255513799356226d35138;l\u003d267",
+      "range": {
+        "startLine": 96,
+        "startChar": 75,
+        "endLine": 96,
+        "endChar": 88
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d6bad6_19ed6b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T18:59:13Z",
+      "side": 1,
+      "message": "The code comment on `cuj.MetricConfigs()` describes it as returning \"metrics which are required to be collected by CUJ tests\" (see [1]), and yet it is not used here. There are already other CUJ tests that leave it out, including ui.WindowArrangementCUJ.*, but can you please explain that?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/common_metrics.go;drc\u003de50ed03fcce0e7519f28a8908de50a86f32ca1ea;l\u003d9",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c092d2_c295ecd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-05T18:59:13Z",
+      "side": 1,
+      "message": "`if err :\u003d pv.Save(s.OutDir()); err !\u003d nil`\nIf the code without `err :\u003d` is something that you are copying and pasting from real code in the code base, then please fix that code. I think it is important to actually check the error returned by `pv.Save`, instead of checking the value of `err` left over from code far above.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "c1f137709df0bbfe87bb733a55f85906cfdfeeb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
