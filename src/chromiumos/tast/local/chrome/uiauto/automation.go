@@ -287,38 +287,18 @@ func (ac *Context) WaitForLocation(finder *nodewith.Finder) Action {
 // it needs to clean up the allocated resources for the watcher afterwards.
 func (ac *Context) WaitForEvent(finder *nodewith.Finder, ev event.Event, act Action) Action {
 	return func(ctx context.Context) error {
-		q, err := finder.GenerateQuery()
+		watcher, err := ac.setupWatcher(ctx, finder, ev)
 		if err != nil {
 			return err
 		}
-		expr := fmt.Sprintf(`async function(eventType) {
-			%s
-			let watcher = {
-				"events": [],
-				"callback": (ev) => {
-					watcher.events.push(ev);
-				},
-				"release": () => {
-					node.removeEventListener(eventType, watcher.callback);
-				}
-			};
-			node.addEventListener(eventType, watcher.callback);
-			return watcher;
-		}`, q)
-
-		obj := &chrome.JSObject{}
-		if err := ac.tconn.Call(ctx, obj, expr, ev); err != nil {
-			return errors.Wrap(err, "failed to execute the registration")
-		}
-		defer obj.Release(ctx)
-		defer obj.Call(ctx, nil, `function() { this.release(); }`)
+		defer watcher.release(ctx)
 
 		if err := act(ctx); err != nil {
 			return errors.Wrap(err, "failed to run the main action")
 		}
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			var events []map[string]interface{}
-			if err := obj.Call(ctx, &events, `function() { return this.events; }`); err != nil {
+			if err := watcher.Call(ctx, &events, `function() { return this.events; }`); err != nil {
 				return testing.PollBreak(err)
 			}
 			if len(events) == 0 {
@@ -327,6 +307,78 @@ func (ac *Context) WaitForEvent(finder *nodewith.Finder, ev event.Event, act Act
 			return nil
 		}, &ac.pollOpts)
 	}
+}
+
+// WaitUntilNoEvent returns a function that waits until a specified event has stopped
+// to appear for the specified node.
+func (ac *Context) WaitUntilNoEvent(finder *nodewith.Finder, ev event.Event) Action {
+	return func(ctx context.Context) error {
+		watcher, err := ac.setupWatcher(ctx, finder, ev)
+		if err != nil {
+			return err
+		}
+		defer watcher.release(ctx)
+
+		previousEventCount := -1
+		var currentEventCount int
+
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			var events []map[string]interface{}
+			if err := watcher.Call(ctx, &events, `function() { return this.events; }`); err != nil {
+				return testing.PollBreak(err)
+			}
+
+			// When the event counts are the same between two subseqent polls, events are considered to
+			// have stopped appearing.
+			currentEventCount = len(events)
+			if previousEventCount == currentEventCount {
+				return nil
+			}
+			previousEventCount = currentEventCount
+			return errors.New("received new events between polls")
+		}, &ac.pollOpts)
+	}
+}
+
+// watcher is used for interfacing with the EventListener of chrome.AutomationNode to
+// listen for events.
+type watcher struct {
+	*chrome.JSObject
+}
+
+// setupWatcher sets up a watcher for the specified event type on the specified node.
+// watcher.release(ctx) is needed to clean up the allocated resources for the watcher afterwards.
+func (ac *Context) setupWatcher(ctx context.Context, finder *nodewith.Finder, ev event.Event) (*watcher, error) {
+	q, err := finder.GenerateQuery()
+	if err != nil {
+		return nil, err
+	}
+	expr := fmt.Sprintf(`async function(eventType) {
+		%s
+		let watcher = {
+			"events": [],
+			"callback": (ev) => {
+				watcher.events.push(ev);
+			},
+			"release": () => {
+				node.removeEventListener(eventType, watcher.callback);
+			}
+		};
+		node.addEventListener(eventType, watcher.callback);
+		return watcher;
+	}`, q)
+
+	obj := &chrome.JSObject{}
+	if err := ac.tconn.Call(ctx, obj, expr, ev); err != nil {
+		return nil, errors.Wrap(err, "failed to execute the registration")
+	}
+	return &watcher{obj}, nil
+}
+
+// release cleans up the allocated resources for the watcher.
+func (w *watcher) release(ctx context.Context) {
+	w.Release(ctx)
+	w.Call(ctx, nil, `function() { this.release(); }`)
 }
 
 // Select sets the document selection to include everything between the two nodes at the offsets.
