@@ -30,6 +30,8 @@ const (
 	NVMe
 	// SSD (Solid State Drive) devices connected through a SATA interface.
 	SSD
+	// UFS (Universal Flash Storage) device.
+	UFS
 )
 
 const (
@@ -85,13 +87,23 @@ func parseGetStorageInfoOutput(ctx context.Context, out []byte) (*Info, error) {
 	var percentageUsed, bytesWritten int64
 	var name string
 	switch deviceType {
+	case UFS:
+		lifeStatus, err = parseDeviceHealthUFS(lines)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parse UFS health")
+		}
+		percentageUsed, err = parsePercentageBucketUsed(lines, ufsUsedA, ufsUsedB)
+		if err != nil {
+			testing.ContextLog(ctx, "Error acquiring usage of UFS device: ", name, err)
+		}
+		name = parseDeviceNameUFS(lines)
 	case EMMC:
 		lifeStatus, err = parseDeviceHealtheMMC(lines)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parse eMMC health")
 		}
 		name = parseDeviceNameEMMC(lines)
-		percentageUsed, err = parsePercentageUsedEMMC(lines, emmcUsedA, emmcUsedB)
+		percentageUsed, err = parsePercentageBucketUsed(lines, emmcUsedA, emmcUsedB)
 		if err != nil {
 			testing.ContextLog(ctx, "Error acquiring usage of eMMC device: ", name, err)
 		}
@@ -132,6 +144,8 @@ func parseGetStorageInfoOutput(ctx context.Context, out []byte) (*Info, error) {
 }
 
 var (
+	// nameDetectUFS detects the name of a UFS-based device using a regex.
+	nameDetectUFS = regexp.MustCompile(`^Model: (?P<param>\S+)$`)
 	// nameDetectEMMC detects the name of a eMMC-based device using a regex.
 	nameDetectEMMC = regexp.MustCompile(`\s*name\s+\|\s(?P<param>\S+).*`)
 	// nameDetectNVMeSATA detects the name of a NVMe and SATA-based device using a regex.
@@ -145,6 +159,8 @@ var (
 	// emmcDetect detects if storage device is eMMC using a regex.
 	// Example eMMC CSD text, "  Extended CSD rev 1.8 (MMC 5.1)"
 	emmcDetect = regexp.MustCompile(`\s*Extended CSD rev.*MMC`)
+	// ufsDetect detect if a storage device is a UFS module.
+	ufsDetect = regexp.MustCompile(`\s*ufs-utils\s*`)
 
 	// emmcVersion finds eMMC version of device using a regex.
 	// Example eMMC CSD text, "  Extended CSD rev 1.8 (MMC 5.1)".
@@ -156,6 +172,13 @@ var (
 	// We want to detect 0x03 for the Urgent case.
 	// That indicates that the eMMC is near the end of life.
 	emmcFailing = regexp.MustCompile(`.*(?P<param>PRE_EOL_INFO]?: 0x03)`)
+	// ufsFailing detects if UFS device is failing using a regex.
+	// Example descriptor text containing Pre EOL information. 0x3 means Urgent.
+	//   "Device Health Descriptor: [Byte offset 0x2]: bPreEOLInfo = 0x3"
+	//     i.e. Urgent
+	// We want to detect 0x3 for the Urgent case.
+	// That indicates that the UFS is near the end of life.
+	ufsFailing = regexp.MustCompile(`.*(?P<param>bPreEOLInfo = 0x3)`)
 	// emmcUsedA detects the Lifetime Estimation type A value for the eMMC drive.
 	// Example eMMC usage text:
 	// "Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x01]"
@@ -164,6 +187,14 @@ var (
 	// Example eMMC usage text:
 	// "Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]"
 	emmcUsedB = regexp.MustCompile(`\s*.*DEVICE_LIFE_TIME_EST_TYP_B]?: 0x(?P<lifetime>0\S)`)
+	// ufsUsedA detects the Lifetime Estimation type A value for the UFS drive.
+	// Example UFS usage text:
+	// "Device Health Descriptor: [Byte offset 0x3]: bDeviceLifeTimeEstA = 0x1"
+	ufsUsedA = regexp.MustCompile(`.*bDeviceLifeTimeEstA = 0x(?P<lifetime>\S)`)
+	// ufsUsedB detects the Lifetime Estimation type B value for the UFS drive.
+	// Example UFS usage text:
+	// "Device Health Descriptor: [Byte offset 0x4]: bDeviceLifeTimeEstB = 0x1"
+	ufsUsedB = regexp.MustCompile(`.*bDeviceLifeTimeEstB = 0x(?P<lifetime>\S)`)
 	// nvmeUsed detects the usage (in percents) of the NVMe drive.
 	// Example NVMe usage text: "	Percentage Used:                        0%"
 	nvmeUsed = regexp.MustCompile(`\s*Percentage Used:\s*(?P<percentage>\d*)`)
@@ -202,6 +233,10 @@ var (
 // parseDeviceType searches outlines for storage device type.
 func parseDeviceType(outLines []string) (Type, error) {
 	for _, line := range outLines {
+		if ufsDetect.MatchString(line) {
+			return UFS, nil
+		}
+
 		if nvmeDetect.MatchString(line) {
 			return NVMe, nil
 		}
@@ -216,6 +251,17 @@ func parseDeviceType(outLines []string) (Type, error) {
 	}
 
 	return 0, errors.New("failed to detect a device type")
+}
+
+func parseDeviceNameUFS(outLines []string) string {
+	for _, line := range outLines {
+		match := nameDetectUFS.FindStringSubmatch(line)
+		if match != nil {
+			return match[1]
+		}
+	}
+
+	return "UFS"
 }
 
 // parseDeviceNameEMMC searches outlines for eMMC-based storage device name.
@@ -252,6 +298,18 @@ func parseDeviceNameSATA(outLines []string) string {
 	}
 
 	return "SATA"
+}
+
+// parseDeviceHealthUFS analyzes eMMC for indications of failure. For additional information,
+// refer to JEDEC's JESD220C, chapter 14.1.4.14, which describes Device Health Descriptor.
+func parseDeviceHealthUFS(outLines []string) (LifeStatus, error) {
+	for _, line := range outLines {
+		if ufsFailing.MatchString(line) {
+			return Failing, nil
+		}
+	}
+
+	return Healthy, nil
 }
 
 // parseDeviceHealtheMMC analyzes eMMC for indications of failure. For additional information,
@@ -353,8 +411,8 @@ func parsePercentageUsed(outLines []string, pattern *regexp.Regexp) (int64, erro
 	return -1, nil
 }
 
-// parsePercentageUsedEMMC is a helper function that analyzes the lifetime estimation
-// value for extracting disk usage. eMMC devices report two values for lifetime
+// parsePercentageBucketUsed is a helper function that analyzes the lifetime estimation
+// value for extracting disk usage. eMMC and UFS devices report two values for lifetime
 // estimates, type A and type B, these values are determined by the vendor. These values
 // also represent percentage ranges, for example, 0x01 indicates the device is
 // 0% - 10% device life time used. To simplify our charts, we will just use the larger
@@ -362,7 +420,7 @@ func parsePercentageUsed(outLines []string, pattern *regexp.Regexp) (int64, erro
 // falls in the middle of the bucket the value represents. Each bucket represents a 10% range
 // and we will take the median value of that range.
 // So, the value 0x01 will be converted to 5% and the value 0x03 will be converted to 25%.
-func parsePercentageUsedEMMC(outLines []string, patternA, patternB *regexp.Regexp) (int64, error) {
+func parsePercentageBucketUsed(outLines []string, patternA, patternB *regexp.Regexp) (int64, error) {
 	var typeA, typeB, bucket int64
 	var err error
 	for _, line := range outLines {
