@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b52390_b873c1ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-05T21:13:29Z",
+      "side": 1,
+      "message": "One suggestion is to try checking the UI node info for any indicator of state:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d152-181\n\nThe `State`, `Restriction`, `Value`, and `HTMLAttributes` fields may contain some information about whether or not the button is ready to click. It all depends on the individual UI element so I can\u0027t guarantee there will be something useful there, but I think it\u0027s worth a shot.\n\nIf there ends up being no good way to check though, I\u0027m personally fine with repeated clicking (I\u0027m the one who originally added `LeftClickUntil` lol, to deal with situations where I just couldn\u0027t find better options)",
+      "parentUuid": "5d36c18f_f69e637c",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f6f65cbe_24857a47",
@@ -85,6 +109,29 @@
       "writtenOn": "2022-04-05T02:16:12Z",
       "side": 1,
       "message": "Yeh I know we ",
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a104cb_27d80be1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-05T21:13:29Z",
+      "side": 1,
+      "message": "if we do end up going with LeftClickUntil, I\u0027d suggest setting the polling interval (`.WithInterval(...)`) to something like ~1 second, just to be a little more realistic and not hammer the button with clicks",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 33
+      },
       "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
