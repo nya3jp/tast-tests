@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a5dc139_265a82bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T08:35:31Z",
+      "side": 1,
+      "message": "Instead of renaming `cuj.Recorder` to `cujrecorder.Recorder` we could rename `ui/cuj` to `ui/cujutils` but I fee that `cujrecoder.Recorder` is a simpler solution to split the namespace.",
+      "range": {
+        "startLine": 369,
+        "startChar": 14,
+        "endLine": 369,
+        "endChar": 26
+      },
+      "revId": "a3f50d4cf0fc7747dd340a50f56310313ff5652d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76efc784_02ad45b2",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 1
