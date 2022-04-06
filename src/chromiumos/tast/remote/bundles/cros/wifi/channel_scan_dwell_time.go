@@ -59,6 +59,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		scanStartDelay         = 500 * time.Millisecond
 		scanRetryTimeout       = 10 * time.Second
 		missingBeaconThreshold = 2
+		maxScanIter            = 2
 	)
 
 	// TODO(b/182308669): Tighten up min/max bounds on various channel dwell times
@@ -121,209 +122,218 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	}
 
 	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
-		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
+		// repeat the test if no probe request is capured in the pcap file
+		for scanIter := 0; scanIter < maxScanIter; scanIter++ {
+			ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
 
-		bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
-			s.Log("Configuring AP on router")
-			apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
-			ap, err := tf.ConfigureAP(ctx, apOpts, nil)
-			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to configure ap")
-			}
-			defer func(ctx context.Context) {
-				if err := tf.DeconfigAP(ctx, ap); err != nil {
-					s.Error("Failed to deconfig ap: ", err)
+			bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
+				s.Log("Configuring AP on router")
+				apOpts := append([]hostapd.Option{hostapd.Channel(tc.apChannel)}, tc.apOpts...)
+				ap, err := tf.ConfigureAP(ctx, apOpts, nil)
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to configure ap")
 				}
+				defer func(ctx context.Context) {
+					if err := tf.DeconfigAP(ctx, ap); err != nil {
+						s.Error("Failed to deconfig ap: ", err)
+					}
+				}(ctx)
+				ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
+				defer cancel()
+				capturer, ok := tf.Capturer(ap)
+				if !ok {
+					return nil, nil, errors.New("failed to get capturer for AP")
+				}
+
+				s.Log("Starting frame sender on ", ap.Interface())
+				s.Log("SSID Prefix: ", ssidPrefix)
+				cleanupCtx := ctx
+				ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
+				defer cancel()
+				sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to create frame sender")
+				}
+				senderDone := make(chan error)
+				go func(ctx context.Context) {
+					senderDone <- sender.Send(ctx, framesender.TypeBeacon, tc.apChannel,
+						framesender.SSIDPrefix(ssidPrefix),
+						framesender.NumBSS(numBSS),
+						framesender.Count(numBSS),
+						framesender.Delay(int(delayInterval.Milliseconds())),
+					)
+				}(ctx)
+				defer func(ctx context.Context) {
+					if err := legacyRouter.CloseFrameSender(ctx, sender); err != nil {
+						s.Error("Failed to close frame sender: ", err)
+					}
+					select {
+					case err := <-senderDone:
+						if err != nil && !errors.Is(err, context.Canceled) {
+							s.Error("Failed to send beacon frames: ", err)
+						}
+					case <-ctx.Done():
+						s.Error("Timed out waiting for frame sender to finish")
+					}
+				}(cleanupCtx)
+				// Wait a little while for beacons to start actually being transmitted
+				if err := testing.Sleep(ctx, scanStartDelay); err != nil {
+					return nil, nil, errors.Wrap(err, "interrupted while sleeping for frame sender startup")
+				}
+
+				s.Log("Performing scan")
+				freq, err := hostapd.ChannelToFrequency(tc.apChannel)
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to select scan frequency")
+				}
+				bssList, err := pollScan(ctx, s.DUT(), clientIface, []int{freq}, scanRetryTimeout)
+				if err != nil {
+					return nil, nil, errors.Wrap(err, "failed to scan")
+				}
+				s.Logf("Scan found %d APs", len(bssList))
+				return bssList, capturer, nil
 			}(ctx)
-			ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap)
-			defer cancel()
-			capturer, ok := tf.Capturer(ap)
+			if err != nil {
+				s.Fatal("Failed to perform test: ", err)
+			}
+
+			pcapPath, err := capturer.PacketPath(ctx)
+			if err != nil {
+				s.Fatal("Failed to get packet capture: ", err)
+			}
+
+			s.Log("Calculating dwell time")
+			var ssids []string
+			for _, bss := range bssList {
+				if strings.HasPrefix(bss.SSID, ssidPrefix) {
+					ssids = append(ssids, bss.SSID)
+				}
+			}
+			sort.Strings(ssids)
+			if len(ssids) == 0 {
+				s.Fatal("No Beacons Found")
+			}
+
+			// Find the first probe request from the DUT.
+			// If there are no probe requests, fail.
+			probeReqFilter := []pcap.Filter{
+				pcap.TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
+				pcap.TransmitterAddress(dutMAC),
+			}
+			probeReqPackets, err := pcap.ReadPackets(pcapPath, probeReqFilter...)
+			if err != nil {
+				s.Fatal("Failed to read probe requests from packet capture: ", err)
+			}
+			s.Logf("Received %d probe requests", len(probeReqPackets))
+			if len(probeReqPackets) == 0 {
+				if scanIter < maxScanIter {
+					s.Log("No probe requests in packet capture, trying again")
+					continue
+				} else {
+					s.Fatal("No probe requests in packet capture and reach the max scan limit")
+				}
+			}
+			probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
+			s.Log("Probe Request Time: ", probeReqTimestamp)
+
+			// Find the first test beacon after the first probe request.
+			// Note that beacons arriving *before* the probe request should not be counted.
+			beaconFilter := pcap.TypeFilter(layers.LayerTypeDot11MgmtBeacon, nil)
+			beaconPackets, err := pcap.ReadPackets(pcapPath, beaconFilter)
+			if err != nil {
+				s.Fatal("Failed to read beacons from packet capture: ", err)
+			}
+			beaconFirst := ""
+			for _, packet := range beaconPackets {
+
+				// If we've already found the first beacon, we're done
+				if beaconFirst != "" {
+					break
+				}
+
+				// Check to see if the beacon is before the probe.
+				// If the beacon follows the probe and matches the prefix, we're done.
+				if packet.Metadata().Timestamp.Before(probeReqTimestamp) {
+					continue
+				}
+				for _, layer := range packet.Layers() {
+					if elem, ok := layer.(*layers.Dot11InformationElement); ok {
+						if elem.ID == layers.Dot11InformationElementIDSSID {
+							ssid := string(elem.Info)
+							if strings.HasPrefix(ssid, ssidPrefix) {
+								beaconFirst = ssid
+								s.Log("First beacon found: ", ssid)
+								break
+							}
+						}
+					}
+				}
+			}
+			if beaconFirst == "" {
+				s.Fatalf("Could not find beacon after probe request (ssid prefix %s)", ssidPrefix)
+			}
+
+			// Analyze scan results.
+			beaconCount := len(ssids)
+			beaconFinal := ssids[len(ssids)-1]
+			beaconFirstIdx, err := ssidIndex(beaconFirst)
+			if err != nil {
+				s.Fatal("Failed to parse beacon SSID: ", err)
+			}
+			beaconFinalIdx, err := ssidIndex(beaconFinal)
+			if err != nil {
+				s.Fatal("Failed to parse beacon SSID: ", err)
+			}
+			beaconRange := beaconFinalIdx - beaconFirstIdx + 1
+			s.Logf("Found %d test beacons (initial %q), considering %q through %q",
+				beaconCount, ssids[0], beaconFirst, beaconFinal)
+			if beaconRange-beaconCount > missingBeaconThreshold {
+				s.Fatalf("Missed %d beacons: %v", beaconRange-beaconCount, ssids)
+			}
+
+			// Construct a mapping from SSIDs to broadcast time
+			ssidTimestamps := make(map[string]time.Time)
+			for _, packet := range beaconPackets {
+				for _, layer := range packet.Layers() {
+					if elem, ok := layer.(*layers.Dot11InformationElement); ok {
+						if elem.ID == layers.Dot11InformationElementIDSSID {
+							ssid := string(elem.Info)
+							ts := packet.Metadata().Timestamp
+							if ssid != "" && !ts.IsZero() {
+								ssidTimestamps[ssid] = ts
+							}
+						}
+					}
+				}
+			}
+
+			// Use that mapping to figure out when the first and last scanned beacon were
+			// transmitted. The difference in timestamps was the dwell time of the scan.
+			timeFirst, ok := ssidTimestamps[beaconFirst]
 			if !ok {
-				return nil, nil, errors.New("failed to get capturer for AP")
+				s.Fatal("Failed to find timestamp of the first beacon ", beaconFirst)
+			}
+			timeFinal, ok := ssidTimestamps[beaconFinal]
+			if !ok {
+				s.Fatal("Failed to find the timestamp of the final beacon ", beaconFinal)
 			}
 
-			s.Log("Starting frame sender on ", ap.Interface())
-			s.Log("SSID Prefix: ", ssidPrefix)
-			cleanupCtx := ctx
-			ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
-			defer cancel()
-			sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
-			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to create frame sender")
-			}
-			senderDone := make(chan error)
-			go func(ctx context.Context) {
-				senderDone <- sender.Send(ctx, framesender.TypeBeacon, tc.apChannel,
-					framesender.SSIDPrefix(ssidPrefix),
-					framesender.NumBSS(numBSS),
-					framesender.Count(numBSS),
-					framesender.Delay(int(delayInterval.Milliseconds())),
-				)
-			}(ctx)
-			defer func(ctx context.Context) {
-				if err := legacyRouter.CloseFrameSender(ctx, sender); err != nil {
-					s.Error("Failed to close frame sender: ", err)
-				}
-				select {
-				case err := <-senderDone:
-					if err != nil && !errors.Is(err, context.Canceled) {
-						s.Error("Failed to send beacon frames: ", err)
-					}
-				case <-ctx.Done():
-					s.Error("Timed out waiting for frame sender to finish")
-				}
-			}(cleanupCtx)
-			// Wait a little while for beacons to start actually being transmitted
-			if err := testing.Sleep(ctx, scanStartDelay); err != nil {
-				return nil, nil, errors.Wrap(err, "interrupted while sleeping for frame sender startup")
+			dwellTime := timeFinal.Sub(timeFirst)
+			s.Log("First Beacon Time: ", timeFirst)
+			s.Log("Final Beacon Time: ", timeFinal)
+			s.Log("Dwell Time: ", dwellTime)
+			if (dwellTime < tc.minDwellTime) || (dwellTime > tc.maxDwellTime) {
+				s.Fatalf("Dwell time %v is not within range [%v, %v]", dwellTime, tc.minDwellTime, tc.maxDwellTime)
 			}
 
-			s.Log("Performing scan")
-			freq, err := hostapd.ChannelToFrequency(tc.apChannel)
-			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to select scan frequency")
-			}
-			bssList, err := pollScan(ctx, s.DUT(), clientIface, []int{freq}, scanRetryTimeout)
-			if err != nil {
-				return nil, nil, errors.Wrap(err, "failed to scan")
-			}
-			s.Logf("Scan found %d APs", len(bssList))
-			return bssList, capturer, nil
-		}(ctx)
-		if err != nil {
-			s.Fatal("Failed to perform test: ", err)
+			s.Logf("dwell_time_ch%d = %.3f", tc.apChannel, dwellTime.Seconds())
+			pv.Set(perf.Metric{
+				Name:      fmt.Sprintf("dwell_time_ch%d", tc.apChannel),
+				Unit:      "seconds",
+				Direction: perf.SmallerIsBetter,
+			}, dwellTime.Seconds())
+			break
 		}
-
-		pcapPath, err := capturer.PacketPath(ctx)
-		if err != nil {
-			s.Fatal("Failed to get packet capture: ", err)
-		}
-
-		s.Log("Calculating dwell time")
-		var ssids []string
-		for _, bss := range bssList {
-			if strings.HasPrefix(bss.SSID, ssidPrefix) {
-				ssids = append(ssids, bss.SSID)
-			}
-		}
-		sort.Strings(ssids)
-		if len(ssids) == 0 {
-			s.Fatal("No Beacons Found")
-		}
-
-		// Find the first probe request from the DUT.
-		// If there are no probe requests, fail.
-		probeReqFilter := []pcap.Filter{
-			pcap.TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
-			pcap.TransmitterAddress(dutMAC),
-		}
-		probeReqPackets, err := pcap.ReadPackets(pcapPath, probeReqFilter...)
-		if err != nil {
-			s.Fatal("Failed to read probe requests from packet capture: ", err)
-		}
-		s.Logf("Received %d probe requests", len(probeReqPackets))
-		if len(probeReqPackets) == 0 {
-			s.Fatal("No probe requests in packet capture")
-		}
-		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
-		s.Log("Probe Request Time: ", probeReqTimestamp)
-
-		// Find the first test beacon after the first probe request.
-		// Note that beacons arriving *before* the probe request should not be counted.
-		beaconFilter := pcap.TypeFilter(layers.LayerTypeDot11MgmtBeacon, nil)
-		beaconPackets, err := pcap.ReadPackets(pcapPath, beaconFilter)
-		if err != nil {
-			s.Fatal("Failed to read beacons from packet capture: ", err)
-		}
-		beaconFirst := ""
-		for _, packet := range beaconPackets {
-
-			// If we've already found the first beacon, we're done
-			if beaconFirst != "" {
-				break
-			}
-
-			// Check to see if the beacon is before the probe.
-			// If the beacon follows the probe and matches the prefix, we're done.
-			if packet.Metadata().Timestamp.Before(probeReqTimestamp) {
-				continue
-			}
-			for _, layer := range packet.Layers() {
-				if elem, ok := layer.(*layers.Dot11InformationElement); ok {
-					if elem.ID == layers.Dot11InformationElementIDSSID {
-						ssid := string(elem.Info)
-						if strings.HasPrefix(ssid, ssidPrefix) {
-							beaconFirst = ssid
-							s.Log("First beacon found: ", ssid)
-							break
-						}
-					}
-				}
-			}
-		}
-		if beaconFirst == "" {
-			s.Fatalf("Could not find beacon after probe request (ssid prefix %s)", ssidPrefix)
-		}
-
-		// Analyze scan results.
-		beaconCount := len(ssids)
-		beaconFinal := ssids[len(ssids)-1]
-		beaconFirstIdx, err := ssidIndex(beaconFirst)
-		if err != nil {
-			s.Fatal("Failed to parse beacon SSID: ", err)
-		}
-		beaconFinalIdx, err := ssidIndex(beaconFinal)
-		if err != nil {
-			s.Fatal("Failed to parse beacon SSID: ", err)
-		}
-		beaconRange := beaconFinalIdx - beaconFirstIdx + 1
-		s.Logf("Found %d test beacons (initial %q), considering %q through %q",
-			beaconCount, ssids[0], beaconFirst, beaconFinal)
-		if beaconRange-beaconCount > missingBeaconThreshold {
-			s.Fatalf("Missed %d beacons: %v", beaconRange-beaconCount, ssids)
-		}
-
-		// Construct a mapping from SSIDs to broadcast time
-		ssidTimestamps := make(map[string]time.Time)
-		for _, packet := range beaconPackets {
-			for _, layer := range packet.Layers() {
-				if elem, ok := layer.(*layers.Dot11InformationElement); ok {
-					if elem.ID == layers.Dot11InformationElementIDSSID {
-						ssid := string(elem.Info)
-						ts := packet.Metadata().Timestamp
-						if ssid != "" && !ts.IsZero() {
-							ssidTimestamps[ssid] = ts
-						}
-					}
-				}
-			}
-		}
-
-		// Use that mapping to figure out when the first and last scanned beacon were
-		// transmitted. The difference in timestamps was the dwell time of the scan.
-		timeFirst, ok := ssidTimestamps[beaconFirst]
-		if !ok {
-			s.Fatal("Failed to find timestamp of the first beacon ", beaconFirst)
-		}
-		timeFinal, ok := ssidTimestamps[beaconFinal]
-		if !ok {
-			s.Fatal("Failed to find the timestamp of the final beacon ", beaconFinal)
-		}
-
-		dwellTime := timeFinal.Sub(timeFirst)
-		s.Log("First Beacon Time: ", timeFirst)
-		s.Log("Final Beacon Time: ", timeFinal)
-		s.Log("Dwell Time: ", dwellTime)
-		if (dwellTime < tc.minDwellTime) || (dwellTime > tc.maxDwellTime) {
-			s.Fatalf("Dwell time %v is not within range [%v, %v]", dwellTime, tc.minDwellTime, tc.maxDwellTime)
-		}
-
-		s.Logf("dwell_time_ch%d = %.3f", tc.apChannel, dwellTime.Seconds())
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("dwell_time_ch%d", tc.apChannel),
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, dwellTime.Seconds())
 	}
 
 	for i, tc := range testcases {
