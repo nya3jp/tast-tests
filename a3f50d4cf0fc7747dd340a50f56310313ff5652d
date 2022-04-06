@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c451703_ac0b76c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T08:31:58Z",
+      "side": 1,
+      "message": "Please review.",
+      "revId": "a3f50d4cf0fc7747dd340a50f56310313ff5652d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76efc784_02ad45b2",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T08:31:58Z",
+      "side": 1,
+      "message": "This method is now private.",
+      "range": {
+        "startLine": 373,
+        "startChar": 19,
+        "endLine": 373,
+        "endChar": 33
+      },
+      "revId": "a3f50d4cf0fc7747dd340a50f56310313ff5652d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95adc5ab_57ba5c80",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T08:31:58Z",
+      "side": 1,
+      "message": "This method is now private.",
+      "range": {
+        "startLine": 458,
+        "startChar": 19,
+        "endLine": 458,
+        "endChar": 32
+      },
+      "revId": "a3f50d4cf0fc7747dd340a50f56310313ff5652d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
