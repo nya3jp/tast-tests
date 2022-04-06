@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f62ef7_646e2c73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-04-06T15:45:06Z",
+      "side": 1,
+      "message": "Harpreet/Dinesh,\nThese tests should only run on the DUTs connected to the Amari callbox. \nWhat should I add in the attributes?",
+      "revId": "df022f5060db935aa93cbe6e6f7ebed69867ac63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
