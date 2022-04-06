@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce60384_fd62ba2e",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-06T23:03:25Z",
+      "side": 1,
+      "message": "Is it still necessary to check the rest logs after the first match is found?",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 16
+      },
+      "revId": "d7979423533a7f5368955036bb201c917d478a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
