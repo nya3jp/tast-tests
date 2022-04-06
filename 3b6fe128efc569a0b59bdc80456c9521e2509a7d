@@ -35,6 +35,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c6f032_51236cf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:23:52Z",
+      "side": 1,
+      "message": "Looks good to me as well with minor changes.\n\nOne more thought before we merge this: How will it affect the previous version test? Is the new test going to run with the old service and try to call VerifyNetworks and fail because it\u0027s not supported? Is there anything we can do about that situation? Wouldn\u0027t put too much effort into it though, as it will start working again over time.",
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd89770b_6f1464b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:23:52Z",
+      "side": 1,
+      "message": "nit: since you\u0027re using it in a very specific way - let\u0027s call this \"Type\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 67,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21cf6cd_6179005b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:23:52Z",
+      "side": 1,
+      "message": "This is a precondition for calling the function, I think it should (also) go to the functions documentation (both in go and proto).\nSomething like \"VerifyRollbackRequest needs to contain the unchanged NetworkInformation from SetUpNetworksResponse.\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 77
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d221fec5_bcac3355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/supportednetworks/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:23:52Z",
+      "side": 1,
+      "message": "nit: Can we change the name to something that contains rollback? I\u0027d say the fact that those networks are only relevant for rollback is more important than the \"supported\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cd03ba7_d522ec64",
