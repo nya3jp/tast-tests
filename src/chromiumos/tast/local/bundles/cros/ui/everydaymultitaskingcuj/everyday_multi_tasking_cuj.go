@@ -29,6 +29,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -69,7 +70,7 @@ type runResources struct {
 	ui        *uiauto.Context
 	vh        *audio.Helper
 	uiHandler cuj.UIActionHandler
-	recorder  *cuj.Recorder
+	recorder  *cujrecorder.Recorder
 }
 
 // Run runs the EverydayMultitaskingCUJ test.
@@ -192,9 +193,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, lFixtVal lacrosfixt.FixtValue, 
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	options := cuj.NewPerformanceCUJOptions()
+	options := cujrecorder.NewPerformanceCUJOptions()
 	options.DoNotChangeBluetooth = params.enableBT
-	recorder, err := cuj.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs(tconns)...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, options, cuj.MetricConfigs(tconns)...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
