@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "643b103b_d580f14e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollbacknetworks/supported_networks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T11:30:27Z",
+      "side": 1,
+      "message": "\u003e \"appropiate\" is a possible misspelling of \"appropriate\".\n\nPlease fix.",
+      "parentUuid": "f9ef5d28_b6cf20f7",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "b4908f3fccc6ce74990e613a58eb4545d5452391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

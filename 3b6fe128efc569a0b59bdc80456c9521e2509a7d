@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb46695e_4f41a760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T11:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd89770b_6f1464b7",
+      "range": {
+        "startLine": 61,
+        "startChar": 67,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e21cf6cd_6179005b",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-04-06T07:23:52Z",
       "side": 1,
       "message": "This is a precondition for calling the function, I think it should (also) go to the functions documentation (both in go and proto).\nSomething like \"VerifyRollbackRequest needs to contain the unchanged NetworkInformation from SetUpNetworksResponse.\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 77
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a38243_a52af359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T11:30:27Z",
+      "side": 1,
+      "message": "Good point, I added a comment to the proto and the service.",
+      "parentUuid": "e21cf6cd_6179005b",
       "range": {
         "startLine": 150,
         "startChar": 5,
@@ -123,6 +171,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7a08ded_a0527903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/supportednetworks/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T11:30:27Z",
+      "side": 1,
+      "message": "I have changed the package name to `rollbacknetworks`. I left the file name as `supported_networks.go` as with the package name it should be implicit that they are the supported networks for rollback, in case we need to add further files related to rollback networks in there in the future.",
+      "parentUuid": "d221fec5_bcac3355",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cd03ba7_d522ec64",
         "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/supportednetworks/supported_networks.go",
         "patchSetId": 2
@@ -135,6 +207,30 @@
       "side": 1,
       "message": "\u003e \"appropiate\" is a possible misspelling of \"appropriate\".\n\nPlease fix.",
       "parentUuid": "d09a3d21_c16e5eb8",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "3b6fe128efc569a0b59bdc80456c9521e2509a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd79579b_4f675a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/supportednetworks/supported_networks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T11:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd03ba7_d522ec64",
       "range": {
         "startLine": 72,
         "startChar": 3,
