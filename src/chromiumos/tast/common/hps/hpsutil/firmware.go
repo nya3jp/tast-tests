@@ -8,11 +8,14 @@ package hpsutil
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -34,10 +37,10 @@ const (
 	firmwareVerificationDelay = time.Second * 2
 
 	// Paths to different firmware blobs.
-	stage0Path          = "/usr/lib/firmware/hps/mcu_stage0.bin"
-	stage1Path          = "/usr/lib/firmware/hps/mcu_stage1.bin"
-	fpgaBitstreamPath   = "/usr/lib/firmware/hps/fpga_bitstream.bin"
-	fpgaApplicationPath = "/usr/lib/firmware/hps/fpga_application.bin"
+	hpsFirmwarePath     = "/usr/lib/firmware/hps/"
+	stage1Name          = "mcu_stage1.bin"
+	fpgaBitstreamName   = "fpga_bitstream.bin"
+	fpgaApplicationName = "fpga_application.bin"
 )
 
 // DeviceType specifies which device to flash.
@@ -151,6 +154,16 @@ func EnsureLatestFirmware(hctx *HpsContext) error {
 	powerCycleFunc := func(hctx *HpsContext) error {
 		return hctx.PowerCycle()
 	}
+	binFilepaths, err := decompressBin(hctx.Ctx)
+	if err != nil {
+		return errors.Wrap(err, "Decompress bin files failed")
+	}
+	stage1Path := binFilepaths[stage1Name]
+	fpgaBitstreamPath := binFilepaths[fpgaBitstreamName]
+	fpgaApplicationPath := binFilepaths[fpgaApplicationName]
+	tmpDir := filepath.Dir(stage1Path)
+	defer os.RemoveAll(tmpDir)
+
 	if err := flashWithRetries(hctx, powerCycleFunc, []string{"dl", "0", stage1Path}); err != nil {
 		return errors.Wrap(err, "Need to update stage0 or replug the device?")
 	}
@@ -199,4 +212,38 @@ func EnsureLatestFirmware(hctx *HpsContext) error {
 
 	testing.ContextLog(hctx.Ctx, "Finished HPS firmware update")
 	return nil
+}
+
+func decompressBin(ctx context.Context) (map[string]string, error) {
+	tmpDir, err := ioutil.TempDir("", "hps_firmware")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test directory under /tmp")
+	}
+	testing.ContextLog(ctx, "tmp dir: ", tmpDir)
+
+	firmwareTmpPath := strings.TrimSpace(string(tmpDir))
+
+	files, err := ioutil.ReadDir(hpsFirmwarePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list files under firmware dir")
+	}
+
+	paths := make(map[string]string)
+	for _, file := range files {
+		if !strings.Contains(file.Name(), ".xz") {
+			continue
+		}
+
+		originPath := filepath.Join(hpsFirmwarePath, file.Name())
+		filePrefix := strings.Replace(file.Name(), ".xz", "", -1)
+
+		if _, err := testexec.CommandContext(ctx, "cp", originPath, firmwareTmpPath).Output(); err != nil {
+			return nil, errors.Wrap(err, "copying file failed")
+		}
+		if _, err := testexec.CommandContext(ctx, "unxz", filepath.Join(firmwareTmpPath, file.Name())).Output(); err != nil {
+			return nil, errors.Wrap(err, "failed to unzip the xz file")
+		}
+		paths[filePrefix] = filepath.Join(firmwareTmpPath, filePrefix)
+	}
+	return paths, nil
 }
