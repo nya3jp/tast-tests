@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda5240e_81a5a807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-06T05:04:17Z",
+      "side": 1,
+      "message": "Thanks for the knowledge! Done.",
+      "parentUuid": "04063a53_30051f79",
+      "revId": "d041a72518115cd4f1521ba72919668536438e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1be45ff5_1f909139",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-05T20:59:04Z",
       "side": 1,
       "message": "this is probably the right spot for deferring saving a UI tree dump. there\u0027s also the `DumpUITreeWithScreenshotOnError` variant that you might find useful. Tast automatically saves a screenshot on failure but it\u0027s usually after all of the test cleanup, explicitly saving one along with the UI tree can be pretty useful for debugging",
+      "revId": "d041a72518115cd4f1521ba72919668536438e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7625b8b4_91601459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-06T05:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1be45ff5_1f909139",
       "revId": "d041a72518115cd4f1521ba72919668536438e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
