@@ -334,13 +334,6 @@ func MeasureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 		}
 	}
 	if counters == nil {
-		// Give a chance to Mali-specific counters.
-		counters, megaPeriods, err = collectMaliPerformanceCounters(ctx, t)
-		if err != nil {
-			return errors.Wrap(err, "error collecting Mali performance counter")
-		}
-	}
-	if counters == nil {
 		return nil
 	}
 
