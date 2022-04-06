@@ -16,6 +16,23 @@
       "message": "Hey! This is ready for review",
       "revId": "3b33a633ae140c93d99d2159d2567b38daf79f90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7c07a6_a9daeb08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-04-06T23:43:23Z",
+      "side": 1,
+      "message": "Hmm I noticed that this is added as a new file. Let me try to upload again so that gerrit shows the differences only.",
+      "revId": "3b33a633ae140c93d99d2159d2567b38daf79f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
