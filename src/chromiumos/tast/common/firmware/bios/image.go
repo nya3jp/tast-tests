@@ -46,6 +46,12 @@ const (
 	// ECRWBImageSection is the named section for a secondary EC writable data for EFS.
 	ECRWBImageSection ImageSection = "EC_RW_B"
 
+	// ROVPDImageSection is the named section for readonly VPD data
+	ROVPDImageSection ImageSection = "RO_VPD"
+
+	// RWVPDImageSection is the named section for writable VPD data
+	RWVPDImageSection ImageSection = "RW_VPD"
+
 	// EmptyImageSection is the empty string which will result in the whole AP/EC fw backup.
 	EmptyImageSection ImageSection = ""
 
