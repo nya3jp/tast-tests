@@ -16,6 +16,24 @@
       "message": "Harpreet/Dinesh,\nThese tests should only run on the DUTs connected to the Amari callbox. \nWhat should I add in the attributes?",
       "revId": "df022f5060db935aa93cbe6e6f7ebed69867ac63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe88859_1dd67b92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123029
+      },
+      "writtenOn": "2022-04-06T18:29:26Z",
+      "side": 1,
+      "message": "Hi Andrew, \n\nWe might want to discuss further on this requirement. \n\nHowever, as we want to run this only on DUTs connect to Amari callbox, we might want to create a separate test suite for this.\n\nWe also have a test suite that runs specifically on callbox (cellular_callbox): https://chrome-internal.googlesource.com/chromeos/config-internal/+/refs/heads/main/test/suite_scheduler/configs/cros_cellular/cellular.star#280\n\nI assume we would need to do something similar for tests on Amari callbox as well.\n\nMy proposal:\n\n1. Add attribute to identify amari_call_box tests: cellular_amari_callbox.\n2. Add this attribute to all tests that we need to run on this callbox.\n3. Create a new test suite - with desired frequency and target builds to run the suite. (Need inputs on this)\n4. Create a new pool in HTL lab for DUTs deployed for this purpose. Pool name could be pool:cellular_amari_callbox\n\nI will work on creating the suite once points#1 and #2 are complete.\n\nIt might be good to have this discussion in b/ for the record. \n\nRegards,\nDinesh",
+      "parentUuid": "f9f62ef7_646e2c73",
+      "revId": "df022f5060db935aa93cbe6e6f7ebed69867ac63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
