@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f7da239_1a14b535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T23:39:26Z",
+      "side": 1,
+      "message": "Not done yet (I haven\u0027t uploaded the new change).",
+      "parentUuid": "a9e3b305_294f2b93",
+      "range": {
+        "startLine": 205,
+        "startChar": 29,
+        "endLine": 205,
+        "endChar": 30
+      },
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cc15d80_274d8685",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "9cc15d80_274d8685",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df35c6e4_d4b008f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T23:39:26Z",
+      "side": 1,
+      "message": "Not done yet (I haven\u0027t uploaded the new change).",
+      "parentUuid": "e2f2344e_59606380",
       "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
