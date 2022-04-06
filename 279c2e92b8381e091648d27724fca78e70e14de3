@@ -16,6 +16,115 @@
       "message": "As discussed offline, I have created two methods to contain the creation and closure of the client, so it is not needed to close it manually every time a fatal error is encountered.",
       "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afe1b49_02811de1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:34:20Z",
+      "side": 1,
+      "message": "Cool, this looks much cleaner! Thanks for working on it.\n\nNot sure why we need two of these to be non-fatal, but maybe there\u0027s something I missed.",
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39f316c_a67c54e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:34:20Z",
+      "side": 1,
+      "message": "I think this can stay fatal. If the device can\u0027t be rebooted to rollback to it\u0027s original version, there\u0027s no point in verifying this.",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600b67d0_d8938eb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:34:20Z",
+      "side": 1,
+      "message": "This can stay fatal, if the image didn\u0027t change then there\u0027s no point in verifying any data afterwards.",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 10
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38cee15_88a0f025",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:34:20Z",
+      "side": 1,
+      "message": "nit: steps?",
+      "range": {
+        "startLine": 255,
+        "startChar": 28,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617fd8a4_6bd47d08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-04-06T07:34:20Z",
+      "side": 1,
+      "message": "nit: sets",
+      "range": {
+        "startLine": 280,
+        "startChar": 21,
+        "endLine": 280,
+        "endChar": 24
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
