@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f04307f5_0e50e35d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-04-06T14:19:45Z",
+      "side": 1,
+      "message": "Done. This CL only covers converting to parameterized tests now.",
+      "parentUuid": "8532572e_8162eed0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "98ceea1363471559088920a807a2625d80d5fc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f1c27a8c_a0bf2aa7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-06T10:19:22Z",
       "side": 1,
       "message": "There is already https://crrev.com/c/3495584 - please update the original one and abandon this",
+      "revId": "98ceea1363471559088920a807a2625d80d5fc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d7849e_87d5d313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-04-06T14:19:45Z",
+      "side": 1,
+      "message": "I ran into a lot of issues with the first one due to the merge conflict and I don\u0027t know how to fix it, I\u0027ll have to be more careful in the future. When I tried to upload the new version, it created a new CL instead...\n\nSo, the idea is to abandon the other CL.\n\nAlso, I got a comment from the other reviewer asking me to split this CL up, so it should hopefully be a bit easier to review now.",
+      "parentUuid": "f1c27a8c_a0bf2aa7",
       "revId": "98ceea1363471559088920a807a2625d80d5fc20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
