@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -22,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -111,12 +111,12 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	// TODO(b/222729608): Add scroll metrics.
-	configs := []cuj.MetricConfig{
-		cuj.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
+	configs := []cujrecorder.MetricConfig{
+		cujrecorder.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000}),
-		cuj.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
+		cujrecorder.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000})}
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}

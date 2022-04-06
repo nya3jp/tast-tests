@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -183,26 +184,26 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	ac := uiauto.New(tconn)
 
-	configs := []cuj.MetricConfig{
-		cuj.NewCustomMetricConfig(
+	configs := []cujrecorder.MetricConfig{
+		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}),
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter, []int64{0, 3}),
 	}
 	if tabletMode {
 		configs = append(configs,
-			cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.TabletMode"),
-			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit.TabletMode"),
+			cujrecorder.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
+			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.TabletMode"),
+			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit.TabletMode"),
 		)
 	} else {
 		configs = append(configs,
-			cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
+			cujrecorder.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		)
 	}
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

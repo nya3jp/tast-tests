@@ -114,7 +114,7 @@ func (r *CUJRunner) Run(ctx context.Context, s *testing.State, conf string) erro
 	}
 
 	// TODO(crbug/1113053): Needs a way to input what metrics to measure and
-	// run inside cuj/Recorder.Run().
+	// run inside cujrecorder.Recorder.Run().
 
 	// Run tasks by start time.
 	st := time.Now()

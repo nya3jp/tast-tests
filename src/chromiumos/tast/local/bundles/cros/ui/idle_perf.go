@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -79,7 +80,7 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 
 	// Recorder with no additional config; it records and reports memory usage and
 	// CPU percents of browser/GPU processes.
-	recorder, err := cuj.NewRecorder(ctx, cr, a)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, a)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
