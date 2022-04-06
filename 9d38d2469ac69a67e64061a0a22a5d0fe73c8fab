@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4922a8c4_e873785b",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1515677
+      },
+      "writtenOn": "2022-04-06T23:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346dfe3b_b9ec5de6",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e483061_562cb1b8",
