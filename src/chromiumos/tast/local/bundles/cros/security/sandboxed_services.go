@@ -156,6 +156,11 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"vpd_get_value", "root", "root", 0},
 		{"vpd_icc", "root", "root", 0},
 		{"send-uptime-metrics", "root", "root", 0},
+		// b/228320883, we don't really care about these Cr50 update/log scripts.
+		// src/platform/cr50/extra/usb_updater/gsctool.c
+		{"gsctool", "root", "root", 0},
+		// src/third_party/chromiumos-overlay/chromeos-base/chromeos-cr50-scripts/files/cr50-flash-log.sh
+		{"cr50-flash-log.sh", "root", "root", 0},
 
 		// One-off processes that we see when this test runs together with other tests.
 		// src/overlays/overlay-kip/chromeos-base/modem-watchdog/files/chromeos-kip-modem-watchdog.sh
