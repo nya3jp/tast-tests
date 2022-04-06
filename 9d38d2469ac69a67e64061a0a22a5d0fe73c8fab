@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46678c51_d7df3283",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T04:51:22Z",
+      "side": 1,
+      "message": "I think we should keep the `.bin` as part of the file names (but omitting the path is good).",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e483061_562cb1b8",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T04:51:22Z",
+      "side": 1,
+      "message": "I think it\u0027d be better to use ioutil.TempDir\nhttp://source/search?q\u003dfile:go$%20tast%20ioutil.TempDir\u0026sq\u003d\n\nOr we cannot do this when we\u0027re executing at remote context? (Although we don\u0027t need to use remote testing with the devboard)",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d97dcab_e52ff076",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T04:51:22Z",
+      "side": 1,
+      "message": "You should remove the temp dir after the test finishes. `defer os.RemoveAll(dataDir)` seems to be usually used for this.",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecc20ee_6742d343",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T04:51:22Z",
+      "side": 1,
+      "message": "`files, err :\u003d ioutil.ReadDir(hpsFirmwarePath)`?",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643a92c3_ee42ab68",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T04:51:22Z",
+      "side": 1,
+      "message": "Alternatively you could use string replacement to replace \".xz\" with empty string, it might be simpler, and you\u0027ll keep the \".bin\" extension.",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "011cb73f_90daeb2d",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T04:51:22Z",
+      "side": 1,
+      "message": "s/sending/copying/ maybe?",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1d10f1_8fae666c",
+        "filename": "src/chromiumos/tast/common/hps/hpsutil/firmware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T04:51:22Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to `+\".bin\"` here.",
+      "revId": "9d38d2469ac69a67e64061a0a22a5d0fe73c8fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
