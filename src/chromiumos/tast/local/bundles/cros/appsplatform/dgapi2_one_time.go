@@ -48,7 +48,7 @@ func Dgapi2OneTime(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "Dgapi2OneTime")
 
-	// TODO(b/225738360): as the tested app is stateful, we might observe purchases from the previous test runs.
+	// As the tested app is stateful, we might observe purchases from the previously failed test runs.
 	// Need to consume them, if available, before we proceed with the test.
 	if err := testApp.TryConsumeOneTime(ctx); err != nil {
 		s.Fatal("Failed to consume a onetime sku: ", err)
@@ -58,7 +58,7 @@ func Dgapi2OneTime(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to purchase a onetime sku: ", err)
 	}
 
-	if err := testApp.VerifyLogsContain(ctx, "Sku onetime was purchased"); err != nil {
+	if err := testApp.VerifyLogsMatch(ctx, "Sku onetime.* was purchased"); err != nil {
 		s.Fatal("Failed to verify logs: ", err)
 	}
 
