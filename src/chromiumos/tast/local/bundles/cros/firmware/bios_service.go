@@ -37,12 +37,15 @@ var programmerEnumToProgrammer = map[pb.Programmer]bios.FlashromProgrammer{
 
 // sectionEnumToSection maps the enum from FWBackUpSection to a bios ImageSection.
 var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
-	pb.ImageSection_BOOTSTUBImageSection: bios.BOOTSTUBImageSection,
-	pb.ImageSection_COREBOOTImageSection: bios.COREBOOTImageSection,
-	pb.ImageSection_GBBImageSection:      bios.GBBImageSection,
-	pb.ImageSection_ECRWImageSection:     bios.ECRWImageSection,
-	pb.ImageSection_ECRWBImageSection:    bios.ECRWBImageSection,
-	pb.ImageSection_EmptyImageSection:    bios.EmptyImageSection,
+	pb.ImageSection_BOOTSTUBImageSection:         bios.BOOTSTUBImageSection,
+	pb.ImageSection_COREBOOTImageSection:         bios.COREBOOTImageSection,
+	pb.ImageSection_GBBImageSection:              bios.GBBImageSection,
+	pb.ImageSection_ECRWImageSection:             bios.ECRWImageSection,
+	pb.ImageSection_ECRWBImageSection:            bios.ECRWBImageSection,
+	pb.ImageSection_RWVPDImageSection:            bios.RWVPDImageSection,
+	pb.ImageSection_ROVPDImageSection:            bios.ROVPDImageSection,
+	pb.ImageSection_RECOVERYMRCCACHEImageSection: bios.RECOVERYMRCCACHEImageSection,
+	pb.ImageSection_EmptyImageSection:            bios.EmptyImageSection,
 }
 
 // BackupImageSection dumps the image region into temporary file locally and returns its path.
@@ -100,9 +103,10 @@ func (bs *BiosService) EnableAPSoftwareWriteProtect(ctx context.Context, req *em
 	return &empty.Empty{}, nil
 }
 
-// CorruptECSection writes garbage over part of the specified firmware section.
-func (bs *BiosService) CorruptECSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
-	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), bios.ECProgrammer)
+
+// CorruptFWSection writes garbage over part of the specified firmware section.
+func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
+	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware")
 	}
