@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be52dcb8_e6925421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T04:22:02Z",
+      "side": 1,
+      "message": "LGTM with a minor comment.",
+      "revId": "b8156b39175440854dfab95b06436d3802d814f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb2656f_4704cd0c",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T04:22:02Z",
+      "side": 1,
+      "message": "nit: could you move this out from polling?\n\nif len(targets) !\u003d len(allPages) {\n  if err :\u003d testing.Poll(... {\n    ... // waiting \n  }, ...); err !\u003d nil {\n     return ...\n  }\n}\n\nreturn nil;",
+      "revId": "b8156b39175440854dfab95b06436d3802d814f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
