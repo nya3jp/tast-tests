@@ -332,6 +332,19 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 			// We ignore unlisted non-root processes on the assumption that they've already done some sandboxing.
 			if info.Euid == 0 {
 				s.Errorf("Unexpected %q process %v (%v) running as root", info.Name, pid, info.Exe)
+				// These failures often correspond to short-lived root processes that are only present
+				// on specific boards. The failures can be hard to fix because we don't always have
+				// access to the failing boards.
+				// However, the failures are normally easy to diagnose by looking up the name of the
+				// process, and checking that it is indeed a short-lived script or tool.
+				// By printing the expected baseline/exclusion entry we make it easier for ourselves
+				// to fix some failures, especially considering that process names are truncated
+				// by the kernel.
+				s.Error("A baseline entry for this process would look like:")
+				// {"tpm_managerd", "root", "root", 0},
+				s.Errorf("{%q, \"root\", \"root\", 0}", info.Name)
+				s.Error("An exclusion list entry for this process would look like:")
+				s.Errorf("%q", info.Name)
 			}
 			continue
 		}
