@@ -87,6 +87,24 @@
       "parentUuid": "57ae6adb_52d4fb2f",
       "revId": "3de724c03e571d0569ca5651e5a6b90d4dfac4aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83454034_ec5348c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-06T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6409bfba_48bfec20",
+      "revId": "3de724c03e571d0569ca5651e5a6b90d4dfac4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
