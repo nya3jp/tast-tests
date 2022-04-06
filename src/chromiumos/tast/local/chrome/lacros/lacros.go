@@ -85,9 +85,9 @@ func (l *Lacros) Close(ctx context.Context) error {
 		}
 	}
 
-	if err := l.sess.Close(ctx); err != nil {
-		testing.ContextLog(ctx, "Failed to close connection to lacros-chrome: ", err)
-	}
+	// The browser may already be terminated by the time we try to close the
+	// dev session, so ignore any error.
+	l.sess.Close(ctx)
 	l.sess = nil
 	l.agg.Close()
 	l.agg = nil
