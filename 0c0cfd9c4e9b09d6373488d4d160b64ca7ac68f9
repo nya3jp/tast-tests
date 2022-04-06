@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3725585e_2cf04246",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-06T21:17:59Z",
+      "side": 1,
+      "message": "s/rading/reading",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c25ee424_7e28ea20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-06T21:17:59Z",
+      "side": 1,
+      "message": "Suspect it would be good to put logic for inspecting AP/EC versions into /src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go.  Perhaps leave a TODO here to centralize this logic.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d168501_ae86cd89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-06T21:17:59Z",
+      "side": 1,
+      "message": "s/conitnue/continue",
+      "range": {
+        "startLine": 75,
+        "startChar": 50,
+        "endLine": 75,
+        "endChar": 58
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcecbb92_2e944941",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-06T21:17:59Z",
+      "side": 1,
+      "message": "Clear enough already what is going on, probably best to drop this comment.",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 14
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
