@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -72,7 +73,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 	testing.ContextLog(ctx, "Start recording actions")
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.MetricConfigs([]*chrome.TestConn{tconn})...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}

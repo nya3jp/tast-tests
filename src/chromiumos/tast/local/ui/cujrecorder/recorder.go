@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package cuj has utilities for CUJ-style UI performance tests.
-package cuj
+// Package cujrecorder has utilities for CUJ-style UI performance tests.
+package cujrecorder
 
 import (
 	"context"
@@ -393,7 +393,7 @@ func (r *Recorder) Close(ctx context.Context) error {
 	return firstErr
 }
 
-// StartRecording starts to record CUJ data.
+// startRecording starts to record CUJ data.
 //
 // In:
 // * context to initialize data recording (and tracing if needed).
@@ -402,7 +402,7 @@ func (r *Recorder) Close(ctx context.Context) error {
 // * New context (with reduced timeout) that should be used to run the test
 //   function.
 // * Error
-func (r *Recorder) StartRecording(ctx context.Context) (runCtx context.Context, e error) {
+func (r *Recorder) startRecording(ctx context.Context) (runCtx context.Context, e error) {
 	if !r.startedAtTm.IsZero() {
 		return nil, errors.New("start requested on the started recorder")
 	}
@@ -417,13 +417,13 @@ func (r *Recorder) StartRecording(ctx context.Context) (runCtx context.Context, 
 		return nil
 	}
 	defer func(ctx context.Context) {
-		// If this function finishes without errors, cleanup will happen in StopRecording
+		// If this function finishes without errors, cleanup will happen in stopRecording
 		if e == nil {
 			return
 		}
 		if err := cancel(ctx); err != nil {
 			// We cannot overwrite e here.
-			testing.ContextLogf(ctx, "Failed to cleanup after StartRecording: %s", err)
+			testing.ContextLogf(ctx, "Failed to cleanup after startRecording: %s", err)
 		}
 		r.cleanup = nil
 		r.startedAtTm = time.Time{} // Reset to zero.
@@ -478,16 +478,16 @@ func (r *Recorder) StartRecording(ctx context.Context) (runCtx context.Context, 
 	return runCtx, nil
 }
 
-// StopRecording stops CUJ data recording.
+// stopRecording stops CUJ data recording.
 //
 // In:
 // * context used to initialise recording (the one that was passed to the
-//   StartRecording above).
-// * shorted context returned from the StartRecording()
+//   startRecording above).
+// * shorted context returned from the startRecording()
 //
 // Out:
 // * Error
-func (r *Recorder) StopRecording(ctx, runCtx context.Context) (e error) {
+func (r *Recorder) stopRecording(ctx, runCtx context.Context) (e error) {
 	if r.startedAtTm.IsZero() {
 		return errors.New("Stop requested on the stopped recorder")
 	}
@@ -501,7 +501,7 @@ func (r *Recorder) StopRecording(ctx, runCtx context.Context) (e error) {
 			testing.ContextLogf(ctx, "Failed to stop recording: %s", err)
 		}
 		if e == nil && err != nil {
-			e = errors.Wrap(err, "failed to cleanup after StopRecording")
+			e = errors.Wrap(err, "failed to cleanup after stopRecording")
 		}
 		r.cleanup = nil
 	}(ctx)
@@ -558,18 +558,18 @@ func (r *Recorder) StopRecording(ctx, runCtx context.Context) (e error) {
 // test scenario, and updates the internal data.
 //
 // This function should be kept to the bare minimum, all relevant changes
-// should go into StartRecording()/StopRecording() to allow tests with
+// should go into startRecording()/stopRecording() to allow tests with
 // different runners to accommodate them.
 //
 // This function also serves as an example for test developers on how to
 // incorporate CUJ data recording into other tests.
 func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (e error) {
-	runCtx, err := r.StartRecording(ctx)
+	runCtx, err := r.startRecording(ctx)
 	if err != nil {
 		return err
 	}
 	defer func(ctx, runCtx context.Context) {
-		err := r.StopRecording(ctx, runCtx)
+		err := r.stopRecording(ctx, runCtx)
 		if e == nil && err != nil {
 			e = err
 		} else if err != nil {

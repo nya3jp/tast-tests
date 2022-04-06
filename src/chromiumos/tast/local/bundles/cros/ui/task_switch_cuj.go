@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -396,40 +397,40 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
-	// Set up the cuj.Recorder: this test will measure the combinations of
+	// Set up the cujrecorder.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	configs := []cuj.MetricConfig{
-		cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
-		cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-		cuj.NewSmoothnessMetricConfig("Ash.Homescreen.AnimationSmoothness"),
-		cuj.NewLatencyMetricConfig("Ash.HotseatTransition.Drag.PresentationTime"),
-		cuj.NewCustomMetricConfig(
+	configs := []cujrecorder.MetricConfig{
+		cujrecorder.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
+		cujrecorder.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
+		cujrecorder.NewSmoothnessMetricConfig("Ash.Homescreen.AnimationSmoothness"),
+		cujrecorder.NewLatencyMetricConfig("Ash.HotseatTransition.Drag.PresentationTime"),
+		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}),
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter, []int64{0, 3}),
 	}
 	for _, suffix := range []string{"HideLauncherForWindow", "EnterFullscreenAllApps", "EnterFullscreenSearch", "FadeInOverview", "FadeOutOverview"} {
-		configs = append(configs, cuj.NewSmoothnessMetricConfig(
+		configs = append(configs, cujrecorder.NewSmoothnessMetricConfig(
 			"Apps.HomeLauncherTransition.AnimationSmoothness."+suffix))
 	}
 	for _, state := range []string{"Peeking", "Close", "Half"} {
-		configs = append(configs, cuj.NewSmoothnessMetricConfig(
+		configs = append(configs, cujrecorder.NewSmoothnessMetricConfig(
 			"Apps.StateTransition.AnimationSmoothness."+state+".ClamshellMode"))
 	}
 	for _, suffix := range []string{"SingleClamshellMode", "ClamshellMode", "TabletMode"} {
 		configs = append(configs,
-			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter."+suffix),
-			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit."+suffix),
+			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter."+suffix),
+			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit."+suffix),
 		)
 	}
 	for _, suffix := range []string{"TransitionToShownHotseat", "TransitionToExtendedHotseat", "TransitionToHiddenHotseat"} {
 		configs = append(configs,
-			cuj.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
+			cujrecorder.NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness."+suffix))
 	}
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

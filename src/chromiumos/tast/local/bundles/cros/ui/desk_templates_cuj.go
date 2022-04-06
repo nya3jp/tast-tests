@@ -15,13 +15,13 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -92,7 +92,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Set up metrics recorder for TPS calculation
-	recorder, err := cuj.NewRecorder(ctx, cr, nil)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
