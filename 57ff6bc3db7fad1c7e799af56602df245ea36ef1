@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f678e0_7341e1b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-06T08:42:44Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "57ff6bc3db7fad1c7e799af56602df245ea36ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1ce403_87c9393a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/enable_disable_bluetooth_with_audio_play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-06T08:42:44Z",
+      "side": 1,
+      "message": "This cleanup should be inside the if block.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 44
+      },
+      "revId": "57ff6bc3db7fad1c7e799af56602df245ea36ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
