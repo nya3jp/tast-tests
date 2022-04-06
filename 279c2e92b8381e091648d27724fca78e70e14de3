@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41d8c6d_8ffb8542",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T13:53:37Z",
+      "side": 1,
+      "message": "Good point, I changed it back.",
+      "parentUuid": "f39f316c_a67c54e2",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "600b67d0_d8938eb7",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-06T07:34:20Z",
       "side": 1,
       "message": "This can stay fatal, if the image didn\u0027t change then there\u0027s no point in verifying any data afterwards.",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 10
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61076f17_7fa934f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T13:53:37Z",
+      "side": 1,
+      "message": "Good point, I changed it back.",
+      "parentUuid": "600b67d0_d8938eb7",
       "range": {
         "startLine": 225,
         "startChar": 3,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b05e8e2_cf7a6c1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T13:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f38cee15_88a0f025",
+      "range": {
+        "startLine": 255,
+        "startChar": 28,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "617fd8a4_6bd47d08",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-06T07:34:20Z",
       "side": 1,
       "message": "nit: sets",
+      "range": {
+        "startLine": 280,
+        "startChar": 21,
+        "endLine": 280,
+        "endChar": 24
+      },
+      "revId": "279c2e92b8381e091648d27724fca78e70e14de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7fd1ec1_264f0e18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-04-06T13:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "617fd8a4_6bd47d08",
       "range": {
         "startLine": 280,
         "startChar": 21,
