@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -161,43 +162,43 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, conns.TestConn)
 	}
 
-	// Set up the cuj.Recorder: In clamshell mode, this test will measure the combinations of
+	// Set up the cujrecorder.Recorder: In clamshell mode, this test will measure the combinations of
 	// input latency of tab dragging and of window resizing and of split view resizing, and
 	// also the percent of dropped frames of video; In tablet mode, this test will measure
 	// the combinations of input latency of tab dragging and of input latency of split view
 	// resizing and the percent of dropped frames of video.
-	configs := []cuj.MetricConfig{
+	configs := []cujrecorder.MetricConfig{
 		// Ash metrics config, always collected from ash-chrome.
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}),
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter, []int64{0, 3}),
 	}
 	if !tabletMode {
-		configs = []cuj.MetricConfig{
-			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
-			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
-			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
-			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.WithOverview"),
-			cuj.NewCustomMetricConfigWithTestConn(
+		configs = []cujrecorder.MetricConfig{
+			cujrecorder.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
+			cujrecorder.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
+			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
+			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.WithOverview"),
+			cujrecorder.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
 		}
 	} else {
-		configs = []cuj.MetricConfig{
-			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.TabletMode"),
-			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow"),
-			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview"),
-			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
-			cuj.NewCustomMetricConfigWithTestConn(
+		configs = []cujrecorder.MetricConfig{
+			cujrecorder.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.TabletMode"),
+			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow"),
+			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview"),
+			cujrecorder.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
+			cujrecorder.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 				"percent", perf.SmallerIsBetter, []int64{50, 80}, conns.BrowserTestConn),
 		}
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, conns.Chrome, conns.ARC, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, conns.Chrome, conns.ARC, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -29,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -252,35 +252,35 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to grant permissions: ", err)
 	}
 
-	configs := []cuj.MetricConfig{
+	configs := []cujrecorder.MetricConfig{
 		// Ash metrics config, always collected from ash-chrome.
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}),
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter, []int64{0, 3}),
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
-		cuj.NewCustomMetricConfigWithTestConn(
+		cujrecorder.NewCustomMetricConfigWithTestConn(
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter, []int64{5, 10}, bTconn),
 	}
 	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
-		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
+		configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
 			[]int64{50, 80}, bTconn))
 	}
-	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
 		"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
 		[]int64{80000, 400000}, bTconn))
-	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
 		"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter,
 		[]int64{80000, 400000}, bTconn))
-	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
 		"PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
 		perf.SmallerIsBetter, []int64{4000, 5000}, bTconn))
-	configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
+	configs = append(configs, cujrecorder.NewCustomMetricConfigWithTestConn(
 		"PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 		perf.SmallerIsBetter, []int64{4000, 5000}, bTconn))
 
@@ -334,7 +334,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a new CUJ recorder: ", err)
 	}

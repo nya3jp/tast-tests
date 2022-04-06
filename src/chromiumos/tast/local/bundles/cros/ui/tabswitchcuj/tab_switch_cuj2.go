@@ -32,6 +32,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -529,7 +530,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs(tconns)...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.MetricConfigs(tconns)...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder, error: ", err)
 	}

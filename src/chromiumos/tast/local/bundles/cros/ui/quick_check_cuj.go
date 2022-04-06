@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -25,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -90,15 +90,15 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 
 	password := cr.Creds().Pass
 
-	configs := []cuj.MetricConfig{
-		cuj.NewCustomMetricConfig(
+	configs := []cujrecorder.MetricConfig{
+		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}),
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter, []int64{0, 3}),
 	}
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
