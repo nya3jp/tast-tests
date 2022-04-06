@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f359f01_768d4eeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-04-06T17:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af6aca21_347fc292",
+      "revId": "d87b3376aa2af755d774b743c2ec61f6eccd1c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8abdcbc_a2c928bd",
@@ -67,6 +85,24 @@
       "writtenOn": "2022-04-05T22:10:42Z",
       "side": 1,
       "message": "same here",
+      "revId": "d87b3376aa2af755d774b743c2ec61f6eccd1c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bbfa000_357f8d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-04-06T17:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8abdcbc_a2c928bd",
       "revId": "d87b3376aa2af755d774b743c2ec61f6eccd1c7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
