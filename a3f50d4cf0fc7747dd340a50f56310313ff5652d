@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38e6d25d_0292e33b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T13:01:52Z",
+      "side": 1,
+      "message": "FYI: In general, \"util\" is a common naming pattern that we should give it a try to avoid. util often becomes a place to store random utilities, so it becomes kitchen sink easily.\nIMO current cujrecoder sounds like more concrete so I\u0027d recommend.",
+      "parentUuid": "3a5dc139_265a82bb",
+      "range": {
+        "startLine": 369,
+        "startChar": 14,
+        "endLine": 369,
+        "endChar": 26
+      },
+      "revId": "a3f50d4cf0fc7747dd340a50f56310313ff5652d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76efc784_02ad45b2",
         "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
         "patchSetId": 1
