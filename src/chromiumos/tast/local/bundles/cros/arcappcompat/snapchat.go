@@ -110,6 +110,7 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 		continueText                = "Continue"
 		cameraID                    = "com.snapchat.android:id/ngs_camera_icon_container"
 		enterEmailAddressID         = "com.snapchat.android:id/username_or_email_field"
+		frameLayoutClassName        = "android.widget.FrameLayout"
 		textViewClassName           = "android.widget.TextView"
 		loginText                   = "Log In"
 		slideIconID                 = "com.snapchat.android:id/subscreen_top_left"
@@ -123,6 +124,13 @@ func launchAppForSnapchat(ctx context.Context, s *testing.State, tconn *chrome.T
 		homeID                      = "com.bydeluxe.d3.android.program.Snapchat:id/action_home"
 		whileUsingThisAppButtonText = "WHILE USING THE APP"
 	)
+	// Check for login page.
+	loginPage := d.Object(ui.ClassName(frameLayoutClassName), ui.PackageName(appPkgName))
+	if err := loginPage.WaitForExists(ctx, testutil.LongUITimeout); err == nil {
+		s.Log("Login page exist and skip the login to the app: ", err)
+		// TODO(b/217589581): Remove "skipping login to app" once the solution is found.
+		return
+	}
 
 	// Check for login button.
 	loginButton := d.Object(ui.ClassName(textViewClassName), ui.TextMatches("(?i)"+loginText))
