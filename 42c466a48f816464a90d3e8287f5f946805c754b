@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da562233_7c8269b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-04-06T20:48:33Z",
+      "side": 1,
+      "message": "Chris, could you show us how to run one of the tests? e.g.\n$ tast run \u003cDUT IP\u003e \u003ctest name\u003e \n",
+      "revId": "42c466a48f816464a90d3e8287f5f946805c754b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
