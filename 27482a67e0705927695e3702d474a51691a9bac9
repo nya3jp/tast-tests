@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49c1815_be21b9c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T13:10:26Z",
+      "side": 1,
+      "message": "clarification: isn\u0027t this test using web browser?",
+      "revId": "27482a67e0705927695e3702d474a51691a9bac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
