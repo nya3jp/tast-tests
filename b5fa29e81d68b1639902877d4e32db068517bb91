@@ -33,6 +33,24 @@
       "message": "nit: TODO(b/225766968)",
       "revId": "b5fa29e81d68b1639902877d4e32db068517bb91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bf4f040_7a669301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-06T01:21:39Z",
+      "side": 1,
+      "message": "I just removed it since other developers can find the issue through git log easily.",
+      "parentUuid": "9876251d_11f4a194",
+      "revId": "b5fa29e81d68b1639902877d4e32db068517bb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
