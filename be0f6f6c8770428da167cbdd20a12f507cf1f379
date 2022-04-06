@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "be0f6f6c8770428da167cbdd20a12f507cf1f379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7eb62d0_d371b6a2",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T01:33:11Z",
+      "side": 1,
+      "message": "for better clarification, how about \"terminated\" here?",
+      "range": {
+        "startLine": 88,
+        "startChar": 31,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "be0f6f6c8770428da167cbdd20a12f507cf1f379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
