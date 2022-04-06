@@ -84,6 +84,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3c07180c_b541f194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T22:55:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38e6d25d_0292e33b",
+      "range": {
+        "startLine": 369,
+        "startChar": 14,
+        "endLine": 369,
+        "endChar": 26
+      },
+      "revId": "a3f50d4cf0fc7747dd340a50f56310313ff5652d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1c02f069_f3ae8ae3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 1
@@ -95,6 +119,30 @@
       "writtenOn": "2022-04-06T17:40:19Z",
       "side": 1,
       "message": "Would `gofmt` change this? Think it strips spaces like this for me.",
+      "range": {
+        "startLine": 659,
+        "startChar": 41,
+        "endLine": 659,
+        "endChar": 44
+      },
+      "revId": "a3f50d4cf0fc7747dd340a50f56310313ff5652d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a1a5fb_a4b78e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T22:55:41Z",
+      "side": 1,
+      "message": "```\n$ gofmt -w meet_cuj.go\n$ git diff\n$\n```\n¯\\_(ツ)_/¯",
+      "parentUuid": "1c02f069_f3ae8ae3",
       "range": {
         "startLine": 659,
         "startChar": 41,
