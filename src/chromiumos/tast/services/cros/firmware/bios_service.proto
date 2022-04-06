@@ -55,9 +55,9 @@ enum ImageSection {
   GBBImageSection = 0;
   ECRWImageSection = 1;
   ECRWBImageSection = 2;
-  EmptyImageSection = 3;
-  ROVPDImageSection = 4;
-  RWVPDImageSection = 5;
+  ROVPDImageSection = 3;
+  RWVPDImageSection = 4;
+  EmptyImageSection = 5;
 }
 
 // GBBFlagsState represents the a known state of GBB flags.  Set flags have precedence over cleared ones.
