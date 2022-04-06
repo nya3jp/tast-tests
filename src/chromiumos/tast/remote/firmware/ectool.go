@@ -9,11 +9,14 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/testing"
 )
 
 // ECToolName specifies which of the many Chromium EC based MCUs ectool will
@@ -128,4 +131,35 @@ func (ec *ECTool) ForceTabletModeAngle(ctx context.Context, tabletModeAngle, hys
 		return errors.Wrap(err, "failed to set tablet_mode_angle to 0")
 	}
 	return nil
+}
+
+// FindBaseGpio iterates through a passed in list of gpios, relevant to control on a detachable base,
+// and checks if any one of them exists.
+func (ec *ECTool) FindBaseGpio(ctx context.Context, gpios []string) (map[string]string, error) {
+	// Create a local map to save the gpios found and their current values from the passed in list.
+	results := make(map[string]string)
+	for _, name := range gpios {
+		// Regular expressions
+		reFoundGpio := regexp.MustCompile(fmt.Sprintf(`GPIO\s+%s[^\n\r]*`, name))
+		reGpioVal := regexp.MustCompile(`\s+(0|1)`)
+		// Check whether the gpio exists, and if it does, also check its value.
+		out, err := ec.Command(ctx, "gpioget", name).CombinedOutput()
+		if err != nil {
+			msg := strings.Split(strings.TrimSpace(string(out)), "\n")
+			testing.ContextLogf(ctx, "running 'ectool gpioget %s' on DUT failed: %v, and received: %v", name, err, msg)
+		}
+		match := reFoundGpio.FindSubmatch(out)
+		if len(match) == 0 {
+			testing.ContextLogf(ctx, "Did not find gpio with name %s", name)
+		} else {
+			val := reGpioVal.FindSubmatch(out)
+			gpioVal := strings.TrimSpace(string(val[0]))
+			testing.ContextLogf(ctx, "Found gpio with name %s, and value: %s", name, gpioVal)
+			results[name] = gpioVal
+		}
+	}
+	if len(results) == 0 {
+		return nil, errors.New("Unable to find any of the gpios passed in. Consider expanding on the list")
+	}
+	return results, nil
 }
