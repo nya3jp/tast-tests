@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dc4efd1_107347f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-06T07:22:08Z",
+      "side": 1,
+      "message": "Before activating tab expecting some 3-5secs of time sleep, as tab activation is not happening immediately. So, either polling or time sleep is required for helper to work as expected.",
+      "parentUuid": "9972bd72_a5f6824a",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "deca8dd5ce096b67ca5630085bffb5cb3e246d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b695a8d1_72b2b35c",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
         "patchSetId": 5
