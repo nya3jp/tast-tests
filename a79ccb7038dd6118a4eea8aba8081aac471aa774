@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411e8e1e_b7a49705",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-06T18:04:47Z",
+      "side": 1,
+      "message": "This part of the commit message should use the imperative mood and begin with a capital letter. It could be:\n`Fix pv.Save(s.OutDir()) error checking`\nSee https://cbea.ms/git-commit/",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "a79ccb7038dd6118a4eea8aba8081aac471aa774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d6db9b_5704f9be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-06T18:04:47Z",
+      "side": 1,
+      "message": "lgtm with commit message edit",
+      "revId": "a79ccb7038dd6118a4eea8aba8081aac471aa774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
