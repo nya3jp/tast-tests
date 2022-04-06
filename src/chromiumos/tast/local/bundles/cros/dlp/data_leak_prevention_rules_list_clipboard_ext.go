@@ -169,18 +169,28 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 				s.Fatal("Failed to select tab and press Ctrl+Z: ", err)
 			}
 
-			var actualTitle string
-			if err := googleConn.Eval(ctx, "document.title", &actualTitle); err != nil {
-				s.Error("Failed to get the tab title: ", err)
-			}
-
 			expectedTitle := "Extension Restricted"
 			if param.accessAllowed {
 				expectedTitle = "Extension Access"
 			}
+			var actualTitle string
 
-			if expectedTitle != actualTitle {
-				s.Errorf("Failed to check page title: got %s, want %s", actualTitle, expectedTitle)
+			// This can be too fast, so poll till the extension updates the webpage title.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := googleConn.Eval(ctx, "document.title", &actualTitle); err != nil {
+					return errors.Wrap(err, "failed to get the webpage title")
+				}
+
+				if expectedTitle != actualTitle {
+					return errors.New("Page title not as expected")
+				}
+
+				return nil
+			}, &testing.PollOptions{
+				Timeout:  5 * time.Second,
+				Interval: 1 * time.Second,
+			}); err != nil {
+				s.Fatalf("Found page title %s, expected %s: %s", actualTitle, expectedTitle, err)
 			}
 
 			err = clipboard.CheckClipboardBubble(ctx, ui, param.url)
