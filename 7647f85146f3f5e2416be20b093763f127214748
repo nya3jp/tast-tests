@@ -34,6 +34,24 @@
       "parentUuid": "9ecc4d06_b5bf9c74",
       "revId": "7647f85146f3f5e2416be20b093763f127214748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ceb3f4c_60333a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T04:33:42Z",
+      "side": 1,
+      "message": "\"--disable-login-lacros-opening\" is the special flag designed for testing.\nOn chromeos-login, we\u0027re opening Lacros by default.\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/crosapi/browser_manager.cc;l\u003d1234\n\nThis flag is designed to skip it, because many tests expect the \"clean\" chromeos session, meaning no browser (or even no any) windows at the beginning of the test, so otherwise we must close it every time before each test.\n\nHowever, *this specific test* is a kind of exception, because what we\u0027re taking a look is the behavior on session beginning in production, that should be exercised without --disable-login-lacros-opening.\n\nPls feel free to ping me over IM/VC if needed, so we can chat more to share more background.\n\nAnd, so, yes, this is not keep-alive vs NewWindow (though it is somewhat overlapping).",
+      "parentUuid": "9ae986ea_f084e699",
+      "revId": "7647f85146f3f5e2416be20b093763f127214748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
