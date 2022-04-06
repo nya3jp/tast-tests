@@ -16,6 +16,23 @@
       "message": "Thanks.",
       "revId": "14f05c7c7d2d9d63ca262396da583aa71b3d8a49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6949589_fd413249",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-04-06T08:57:47Z",
+      "side": 1,
+      "message": "Thanks everyone.",
+      "revId": "14f05c7c7d2d9d63ca262396da583aa71b3d8a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
