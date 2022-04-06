@@ -29,7 +29,7 @@ const appVersiontimeoutUI = 30 * time.Second
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppVersion,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that app version is available from app info page",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},

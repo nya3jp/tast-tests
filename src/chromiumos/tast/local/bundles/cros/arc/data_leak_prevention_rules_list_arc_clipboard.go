@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataLeakPreventionRulesListArcClipboard,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction on ARC",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
