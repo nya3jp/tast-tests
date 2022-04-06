@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e3b305_294f2b93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T23:38:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1dd0636a_6c936839",
+      "range": {
+        "startLine": 205,
+        "startChar": 29,
+        "endLine": 205,
+        "endChar": 30
+      },
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cc15d80_274d8685",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f2344e_59606380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T23:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc15d80_274d8685",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1887e1f1_16784574",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-03-30T16:40:35Z",
       "side": 1,
       "message": "We could potentially drop `metrics.RunAndWaitAll` and just use `cujRecorder.Run`.  Recorder\u0027s `mr` member does the histogram diff and collection. \n\nThe missing piece is `WaitAll` since `cujRecorder.Run` does not wait. We could probably add a `WaitAll` method to `Recorder` to call `WaitAll` for all its `mr`.",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e800f32f_d8cbf98b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-06T23:38:25Z",
+      "side": 1,
+      "message": "The issue is that metrics.RunAndWaitAll() here waits for the different set of metrics than the cuj recorder.\n\nWe could potentially add another set of metrics to the potential `cujRecorder.RunAndWaitAll()` but looking at how `cujrecoder.Run` works: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go;l\u003d527-544 it seems that we would need to check the metrics before the `stopRecording()` call.\n\nWhich means that we could either expose `StopRecording` method and stop using `cujrecorder.Run()` here, or we could move the wrapper around `metrics.RunAndWaitAll()` inside the `stopRecording()`.\n\nThe relatively simple way be to implement \"wait for additional metrics\" while always waiting for all the `mr`. But this raises questions whether we should require all the tests to fail on missing metrics.\n\nWDYT?",
+      "parentUuid": "1887e1f1_16784574",
       "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
