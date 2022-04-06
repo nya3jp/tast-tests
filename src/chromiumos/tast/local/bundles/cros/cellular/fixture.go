@@ -23,7 +23,7 @@ func init() {
 			"stevenjb@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		SetUpTimeout:    5 * time.Second,
+		SetUpTimeout:    8 * time.Second,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
