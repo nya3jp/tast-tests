@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ff413f3_69ce1871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-06T04:35:13Z",
+      "side": 1,
+      "message": "We don\u0027t have Google contact, please suggest if any.",
+      "parentUuid": "a5d07f32_de72b698",
+      "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00bc57cf_7f177249",
         "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-22T17:32:04Z",
       "side": 1,
       "message": "Please put some comments on what this function do.",
+      "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6081edd4_d51f4728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-06T04:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00bc57cf_7f177249",
       "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2022-03-22T17:32:04Z",
       "side": 1,
       "message": "Should you check the len of adaptors first?",
+      "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b1e9a5e_8e25a241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-06T04:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7603ec5f_22e6bfad",
       "revId": "a98ba73a6b0693407cc39ee8378fe492f9d9cf49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
