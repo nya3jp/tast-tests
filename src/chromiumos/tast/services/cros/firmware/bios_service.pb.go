@@ -167,6 +167,8 @@ const (
 	ImageSection_ECRWImageSection  ImageSection = 1
 	ImageSection_ECRWBImageSection ImageSection = 2
 	ImageSection_EmptyImageSection ImageSection = 3
+	ImageSection_ROVPDImageSection ImageSection = 4
+	ImageSection_RWVPDimageSection ImageSection = 5
 )
 
 // Enum value maps for ImageSection.
@@ -176,12 +178,16 @@ var (
 		1: "ECRWImageSection",
 		2: "ECRWBImageSection",
 		3: "EmptyImageSection",
+		4: "ROVPDImageSection",
+		5: "RWVPDImageSection",
 	}
 	ImageSection_value = map[string]int32{
 		"GBBImageSection":   0,
 		"ECRWImageSection":  1,
 		"ECRWBImageSection": 2,
 		"EmptyImageSection": 3,
+		"ROVPDImageSection": 4,
+		"RWVPDImageSection": 5,
 	}
 )
 

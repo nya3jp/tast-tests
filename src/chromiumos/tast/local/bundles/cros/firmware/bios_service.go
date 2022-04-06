@@ -40,6 +40,8 @@ var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_GBBImageSection:   bios.GBBImageSection,
 	pb.ImageSection_ECRWImageSection:  bios.ECRWImageSection,
 	pb.ImageSection_ECRWBImageSection: bios.ECRWBImageSection,
+	pb.ImageSection_ROVPDImageSection: bios.ROVPDImageSection,
+	pb.ImageSection_RWVPDimageSection: bios.RWVPDImageSection,
 	pb.ImageSection_EmptyImageSection: bios.EmptyImageSection,
 }
 
