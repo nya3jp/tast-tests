@@ -22,6 +22,23 @@
       },
       "revId": "98ceea1363471559088920a807a2625d80d5fc20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c27a8c_a0bf2aa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-04-06T10:19:22Z",
+      "side": 1,
+      "message": "There is already https://crrev.com/c/3495584 - please update the original one and abandon this",
+      "revId": "98ceea1363471559088920a807a2625d80d5fc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
