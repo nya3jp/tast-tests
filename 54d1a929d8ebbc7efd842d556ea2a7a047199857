@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6251d736_80b00a2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T04:37:28Z",
+      "side": 1,
+      "message": "LGTM with comments",
+      "revId": "54d1a929d8ebbc7efd842d556ea2a7a047199857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b3e092_8ce4eb24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/system_dialog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-06T04:37:28Z",
+      "side": 1,
+      "message": "clarification: this will change the name of the original test from accountmanager.SystemDialog to accountmanager.SystemDialog.gmail.\n\nIf you\u0027re tracking the test result in a separate system (e.g. stainless / tastboard), this will cause \"adding the new one then removing the old one\".\nCould you double check if it is intentional? If not, you can just remove this Name field (while keeping Name: \"managedchrome\" below).\n\nAlso, if this is intentional, maybe naming \"unmanaged\" and \"managed\" are the terms we often use? I rarely see \"gmail\" to represent unmanaged, because it can be managed as well?",
+      "revId": "54d1a929d8ebbc7efd842d556ea2a7a047199857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
