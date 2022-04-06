@@ -10,8 +10,8 @@ import (
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
+	"chromiumos/tast/local/bundles/cros/dlp/dragdrop"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -19,10 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -133,7 +129,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 				s.Fatal("Failed to enter into the overview mode: ", err)
 			}
 
-			// Snap the param.url window to the right
+			// Snap the param.url window to the right.
 			w1, err := ash.FindFirstWindowInOverview(ctx, tconn)
 			if err != nil {
 				s.Fatalf("Failed to find the %s window in the overview mode: %s", param.url, err)
@@ -163,7 +159,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 
 			s.Log("Draging and dropping content")
-			if err := dragDrop(ctx, tconn, param.content); err != nil {
+			if err := dragdrop.DragDrop(ctx, tconn, param.content); err != nil {
 				s.Error("Failed to drag drop content: ", err)
 			}
 
@@ -182,7 +178,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 
 			// Check dropped content.
-			dropError := checkDraggedContent(ctx, ui, param.content)
+			dropError := dragdrop.CheckDraggedContent(ctx, ui, param.content)
 
 			if param.wantAllowed && dropError != nil {
 				s.Error("Checked pasted content but found an error: ", dropError)
@@ -193,37 +189,4 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 		})
 	}
-}
-
-func dragDrop(ctx context.Context, tconn *chrome.TestConn, content string) error {
-	ui := uiauto.New(tconn)
-
-	contentNode := nodewith.Name(content).First()
-	start, err := ui.Location(ctx, contentNode)
-	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for content")
-	}
-
-	searchTab := nodewith.Name("Search").Role(role.TextFieldWithComboBox).State(state.Editable, true).First()
-	endLocation, err := ui.Location(ctx, searchTab)
-	if err != nil {
-		return errors.Wrap(err, "failed to get locaton for google search")
-	}
-
-	if err := uiauto.Combine("Drag and Drop",
-		mouse.Drag(tconn, start.CenterPoint(), endLocation.CenterPoint(), time.Second*2))(ctx); err != nil {
-		return errors.Wrap(err, "failed to verify content preview for")
-	}
-	return nil
-}
-
-// checkDraggedContent checks if a certain |content| appears in the search box.
-func checkDraggedContent(ctx context.Context, ui *uiauto.Context, content string) error {
-	contentNode := nodewith.NameContaining(content).Role(role.InlineTextBox).State(state.Editable, true).First()
-
-	if err := ui.WaitUntilExists(contentNode)(ctx); err != nil {
-		return errors.Wrap(err, "failed to check for dragged content")
-	}
-
-	return nil
 }
