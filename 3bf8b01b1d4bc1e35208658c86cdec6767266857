@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f16e72_d8276663",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-06T00:04:18Z",
+      "side": 1,
+      "message": "No code change. Answer a question",
+      "revId": "3bf8b01b1d4bc1e35208658c86cdec6767266857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2e5649e_040cf09e",
@@ -95,6 +112,30 @@
       "writtenOn": "2022-04-05T23:48:56Z",
       "side": 1,
       "message": "Why does it always return error here?",
+      "range": {
+        "startLine": 1046,
+        "startChar": 2,
+        "endLine": 1046,
+        "endChar": 104
+      },
+      "revId": "3bf8b01b1d4bc1e35208658c86cdec6767266857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2518f64_8387e9e0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-06T00:04:18Z",
+      "side": 1,
+      "message": "See the line 1033. viewIndices[index] should be greater than viewIndices[index - 1]. Otherwise, `namesInOrder` does not follow the actual view order.\n\nThe line between 1038 and 1045 is to calculate the names in the actual view order.",
+      "parentUuid": "a11a52c5_c4b5372c",
       "range": {
         "startLine": 1046,
         "startChar": 2,
