@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -117,23 +118,23 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := []cuj.MetricConfig{
+	configs := []cujrecorder.MetricConfig{
 		// Ash metrics config, always collected from ash-chrome.
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}),
-		cuj.NewCustomMetricConfig(
+		cujrecorder.NewCustomMetricConfig(
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter, []int64{0, 3}),
 
 		// Browser metrics config, collected from ash-chrome or lacros-chrome
 		// depending on the browser being used.
-		cuj.NewCustomMetricConfigWithTestConn(
+		cujrecorder.NewCustomMetricConfigWithTestConn(
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter, []int64{50, 80}, bTconn),
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -99,7 +100,7 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.NewSmoothnessMetricConfig(
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.NewSmoothnessMetricConfig(
 		"Ash.WindowCycleView.AnimationSmoothness.Container"))
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)

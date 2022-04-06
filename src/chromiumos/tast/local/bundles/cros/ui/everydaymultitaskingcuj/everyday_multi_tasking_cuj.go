@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -66,7 +67,7 @@ type runResources struct {
 	ui        *uiauto.Context
 	vh        *audio.Helper
 	uiHandler cuj.UIActionHandler
-	recorder  *cuj.Recorder
+	recorder  *cujrecorder.Recorder
 }
 
 // Run runs the EverydayMultitaskingCUJ test.
@@ -144,10 +145,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 
-	// Set up the cuj.Recorder: this test will measure the combinations of
+	// Set up the cujrecorder.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs()...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, cujrecorder.MetricConfigs()...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}

@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -20,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -86,14 +86,14 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Unrecognized browser type: ", bt)
 	}
 
-	configs := []cuj.MetricConfig{
-		cuj.NewCustomMetricConfigWithTestConn("Event.Latency.EndToEnd.KeyPress", "microseconds",
+	configs := []cujrecorder.MetricConfig{
+		cujrecorder.NewCustomMetricConfigWithTestConn("Event.Latency.EndToEnd.KeyPress", "microseconds",
 			perf.SmallerIsBetter, []int64{80000, 400000}, bTconn),
-		cuj.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
+		cujrecorder.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn),
-		cuj.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
+		cujrecorder.NewCustomMetricConfigWithTestConn("PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
 			perf.SmallerIsBetter, []int64{4000, 5000}, bTconn)}
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}
