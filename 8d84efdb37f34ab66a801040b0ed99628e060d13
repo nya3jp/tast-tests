@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02535a02_872b9b7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T06:46:16Z",
+      "side": 1,
+      "message": "I wonder if we can use these Attrs. We can create a new group specifically for Shimless RMA testing. \n\nWe could have one subgroup for tests that don\u0027t require node-locked Cr50 firmware, and another that requires it.",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23d2ea6_7beda852",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T06:46:16Z",
+      "side": 1,
+      "message": "Who specifies the value for this Var?",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85eff546_b481c376",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-06T06:46:16Z",
+      "side": 1,
+      "message": "Devices in the lab aren\u0027t in the Dev mode, they have Dev mode disabled (but have the test images running).",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a98d0641_52dea52f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
         "patchSetId": 1
