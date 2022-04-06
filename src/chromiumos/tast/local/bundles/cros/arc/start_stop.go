@@ -24,7 +24,7 @@ type testArgs struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartStop,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies clean start and stop of CrOS Chrome and Android container",
 		Contacts: []string{
 			// Contacts for TestPID and TestMount failure.
