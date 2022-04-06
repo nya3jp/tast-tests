@@ -114,11 +114,11 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 		a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 		if err != nil {
-			return retry("failed to start ARC by policy", err)
+			return retry("start ARC by policy", err)
 		}
 		defer a.Close(ctx)
 		if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
-			return retry("failed to launch Play Store", err)
+			return retry("launch Play Store", err)
 		}
 
 		cleanupCtx := ctx
