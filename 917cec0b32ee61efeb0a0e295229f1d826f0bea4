@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936e119f_1d330fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_switch_onboard_speaker_to_bt_speaker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-06T17:20:11Z",
+      "side": 1,
+      "message": "It looks like you don\u0027t care about errors here. If so, I think we can make it inline.\n\n```\n\tif isPaired, _ :\u003d btDevice.Paired(ctx); !isPaired {\n```",
+      "revId": "917cec0b32ee61efeb0a0e295229f1d826f0bea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
