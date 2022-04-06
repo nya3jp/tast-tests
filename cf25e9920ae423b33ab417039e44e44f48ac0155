@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "759bd7fa_58c9c9b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-04-06T20:14:58Z",
+      "side": 1,
+      "message": "Thank you for your suggestion @Kyle! After digging a bit deeper and attempting to use ImmediateLocation of NodesInfo of LoginAuthFactorsView, it seems that the reported location is relative to its parent node which is a NonAccessibleNode that we cannot easily assign Metadata Header to.\n\nTherefore, I think the easiest solution at this time is to utilize multiple clicks.\n\n@David, this is not a problem for the user because the element is clickable at any time during the animation. The test flakes every once in a while when the attempt to click on the arrow button misses by a hair because either the animation started later or the ClickSmartLockArrowButton call happened a bit earlier.",
+      "parentUuid": "c5b52390_b873c1ad",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f6f65cbe_24857a47",
