@@ -11,12 +11,12 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -120,7 +120,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wake display: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs()...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
