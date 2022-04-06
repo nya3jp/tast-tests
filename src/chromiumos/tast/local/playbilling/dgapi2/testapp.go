@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -240,18 +241,22 @@ func (ta *TestAppDgapi2) VerifyDetailsLogs(ctx context.Context) error {
 	})
 }
 
-// VerifyLogsContain verifies logs contain a specific entry.
-func (ta *TestAppDgapi2) VerifyLogsContain(ctx context.Context, str string) error {
+// VerifyLogsMatch verifies logs contain an entry that matches the passed regex.
+func (ta *TestAppDgapi2) VerifyLogsMatch(ctx context.Context, pattern string) error {
 	return ta.verifyLogs(ctx, func(logs []string) error {
 		isEntryFound := false
 		for _, v := range logs {
-			if v == str {
+			isMatch, err := regexp.MatchString(pattern, v)
+			if err != nil {
+				return errors.Wrapf(err, "failed to match a log entry %q against a pattern %q", v, pattern)
+			}
+			if isMatch {
 				isEntryFound = true
 			}
 		}
 
 		if !isEntryFound {
-			return errors.Errorf("unable to find a log entry starting with %q", str)
+			return errors.Errorf("unable to find a log entry matching with %q", pattern)
 		}
 
 		return nil
@@ -260,10 +265,10 @@ func (ta *TestAppDgapi2) VerifyLogsContain(ctx context.Context, str string) erro
 
 // PurchaseOneTime purchases a onetime item.
 func (ta *TestAppDgapi2) PurchaseOneTime(ctx context.Context) error {
-	findItemJS := ta.skuSelectorByID(oneTimeID)
+	findItemJS := ta.skuSelectorByPurchaseType(oneTimePurchaseType)
 	purchaseItemButtonJS := fmt.Sprintf("%s.shadowRoot.querySelector('mwc-button')", findItemJS)
 
-	return uiauto.Combine(fmt.Sprintf("purchase item with ID %q", oneTimeID),
+	return uiauto.Combine("purchase onetime item",
 		func(ctx context.Context) error {
 			return ta.appconn.WaitForExprWithTimeout(ctx, findItemJS, uiTimeout)
 		},
@@ -277,10 +282,10 @@ func (ta *TestAppDgapi2) PurchaseOneTime(ctx context.Context) error {
 
 // TryPurchaseOneTimeItemSecondTime attempts to purchase a onetime item second time, fail and close the error window.
 func (ta *TestAppDgapi2) TryPurchaseOneTimeItemSecondTime(ctx context.Context) error {
-	findItemJS := ta.skuSelectorByID(oneTimeID)
+	findItemJS := ta.skuSelectorByPurchaseType(oneTimePurchaseType)
 	purchaseItemButtonJS := fmt.Sprintf("%s.shadowRoot.querySelector('mwc-button')", findItemJS)
 
-	return uiauto.Combine(fmt.Sprintf("purchase item with ID %q second time", oneTimeID),
+	return uiauto.Combine("purchase onetime item second time",
 		func(ctx context.Context) error {
 			return ta.appconn.WaitForExprWithTimeout(ctx, findItemJS, uiTimeout)
 		},
@@ -291,18 +296,18 @@ func (ta *TestAppDgapi2) TryPurchaseOneTimeItemSecondTime(ctx context.Context) e
 
 // TryConsumeOneTime consumes a onetime item.
 func (ta *TestAppDgapi2) TryConsumeOneTime(ctx context.Context) error {
-	findItemJS := ta.skuSelectorByID(oneTimeID)
+	findItemJS := ta.skuSelectorByPurchaseType(oneTimePurchaseType)
 	consumeItemJS := fmt.Sprintf("%s.consume()", findItemJS)
 
 	return action.IfSuccessThen(
 		func(ctx context.Context) error {
-			isPurchased, err := ta.isPurchased(ctx, oneTimeID)
+			isPurchased, err := ta.isPurchased(ctx, findItemJS)
 			if err != nil {
 				return errors.Wrapf(err, "failed to get purchased status of item %s", findItemJS)
 			}
 
 			if !isPurchased {
-				return errors.Wrapf(err, "item %s is not purchased - unable to consume it", oneTimeID)
+				return errors.Wrap(err, "onetime item is not purchased - unable to consume it")
 			}
 
 			return nil
@@ -312,39 +317,43 @@ func (ta *TestAppDgapi2) TryConsumeOneTime(ctx context.Context) error {
 				return ta.appconn.Eval(ctx, consumeItemJS, nil)
 			},
 			func(context.Context) error {
-				return ta.waitPurchasedState(ctx, oneTimeID, false)
+				return ta.waitPurchasedState(ctx, findItemJS, false)
 			},
 		),
 	)(ctx)
 }
 
 // isPurchased Checks if an item is purchased
-func (ta *TestAppDgapi2) isPurchased(ctx context.Context, itemID string) (bool, error) {
+func (ta *TestAppDgapi2) isPurchased(ctx context.Context, skuSelector string) (bool, error) {
 	isPurchased := false
-	if err := ta.appconn.Eval(ctx, ta.purchaseStatusByID(itemID), &isPurchased); err != nil {
-		return isPurchased, errors.Wrapf(err, "failed to get purchased status of item %s", itemID)
+	if err := ta.appconn.Eval(ctx, ta.purchaseStatusBySelector(skuSelector), &isPurchased); err != nil {
+		return isPurchased, errors.Wrapf(err, "failed to get purchased status of item %s", skuSelector)
 	}
 
 	return isPurchased, nil
 }
 
 // waitPurchasedState wait until an item purchased state changes to expect one.
-func (ta *TestAppDgapi2) waitPurchasedState(ctx context.Context, itemID string, expectedPurchasedState bool) error {
+func (ta *TestAppDgapi2) waitPurchasedState(ctx context.Context, skuSelector string, expectedPurchasedState bool) error {
 	jsExpr := ""
 	if expectedPurchasedState {
-		jsExpr = fmt.Sprintf("!!%s === true", ta.purchaseStatusByID(itemID))
+		jsExpr = fmt.Sprintf("!!%s === true", ta.purchaseStatusBySelector(skuSelector))
 	} else {
-		jsExpr = fmt.Sprintf("!%s === true", ta.purchaseStatusByID(itemID))
+		jsExpr = fmt.Sprintf("!%s === true", ta.purchaseStatusBySelector(skuSelector))
 	}
 
 	return ta.appconn.WaitForExprWithTimeout(ctx, jsExpr, uiTimeout)
 }
 
 func (ta *TestAppDgapi2) skuSelectorByID(itemID string) string {
-	return fmt.Sprintf(`[...%s].find(i => i.details.itemId === "%s")`, itemsJS, oneTimeID)
+	return fmt.Sprintf(`[...%s].find(i => i.details.itemId === "%s")`, itemsJS, itemID)
 }
 
-func (ta *TestAppDgapi2) purchaseStatusByID(itemID string) string {
+func (ta *TestAppDgapi2) skuSelectorByPurchaseType(purchaseType string) string {
+	return fmt.Sprintf(`[...%s].find(i => i.details.purchaseType === "%s")`, itemsJS, purchaseType)
+}
+
+func (ta *TestAppDgapi2) purchaseStatusBySelector(skuSelector string) string {
 	// for purchase status definition see https://github.com/chromeos/pwa-play-billing/blob/main/src/js/components/sku-list.js#L117
-	return fmt.Sprintf("!!%s.consume", ta.skuSelectorByID(itemID))
+	return fmt.Sprintf("!!%s.consume", skuSelector)
 }

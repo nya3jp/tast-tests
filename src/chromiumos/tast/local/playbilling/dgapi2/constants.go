@@ -23,5 +23,5 @@ const (
 	logBoxLogLinesJS      = logBoxJS + `.innerHTML.replace(/<br>\s*$/, '').split('    ')`
 	itemListJS            = "document.getElementById('items-to-buy')"
 	itemsJS               = itemListJS + ".shadowRoot.querySelectorAll('sku-holder')"
-	oneTimeID             = "onetime"
+	oneTimePurchaseType   = "onetime"
 )
