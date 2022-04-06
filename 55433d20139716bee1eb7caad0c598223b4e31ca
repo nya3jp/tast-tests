@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e39d5e_f8923927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123029
+      },
+      "writtenOn": "2022-04-06T00:47:57Z",
+      "side": 1,
+      "message": "Hi Harpreet,\nCan you please review the change?\n\nRegards,\nDinesh",
+      "revId": "55433d20139716bee1eb7caad0c598223b4e31ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
