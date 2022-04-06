@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
@@ -74,7 +75,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.RecorderOptions{}, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, cujrecorder.RecorderOptions{}, cujrecorder.MetricConfigs()...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
