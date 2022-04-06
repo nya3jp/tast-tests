@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e4c9c176_3a606072",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-04-06T22:43:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "759bd7fa_58c9c9b6",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f6f65cbe_24857a47",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -150,6 +174,30 @@
       "writtenOn": "2022-04-05T21:13:29Z",
       "side": 1,
       "message": "if we do end up going with LeftClickUntil, I\u0027d suggest setting the polling interval (`.WithInterval(...)`) to something like ~1 second, just to be a little more realistic and not hammer the button with clicks",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 33
+      },
+      "revId": "cf25e9920ae423b33ab417039e44e44f48ac0155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4edc22e5_9fd0e03d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1529147
+      },
+      "writtenOn": "2022-04-06T22:43:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a104cb_27d80be1",
       "range": {
         "startLine": 179,
         "startChar": 8,
