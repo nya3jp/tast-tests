@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d8975d_94320392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-07T23:51:15Z",
+      "side": 1,
+      "message": "Optional, but consider wrapping these errors with a message using `errors.Wrap` or its variants. I believe the usual advice in Go is to wrap errors that cross package boundaries.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 14
+      },
+      "revId": "c25d90faa27505c88d368b2192290a1162c58e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
