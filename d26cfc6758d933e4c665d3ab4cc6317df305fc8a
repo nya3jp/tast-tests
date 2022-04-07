@@ -16,6 +16,23 @@
       "message": "Please use patchset 3 as the base to see the differences.",
       "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a8fda9d_52320938",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2022-04-07T18:21:15Z",
+      "side": 1,
+      "message": "Was the file rename on purpose?",
+      "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
