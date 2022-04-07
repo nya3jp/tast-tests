@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de0fd2c_0f5fef18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-07T07:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c57959a_28c005f2",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 44
+      },
+      "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4af07ce0_e30bebfb",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f26b15_66945f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-07T07:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4af07ce0_e30bebfb",
+      "range": {
+        "startLine": 695,
+        "startChar": 5,
+        "endLine": 695,
+        "endChar": 10
+      },
+      "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b452d10c_d8966d56",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-04-07T06:53:02Z",
       "side": 1,
       "message": "nit: maybe not needed for this test?",
+      "range": {
+        "startLine": 729,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 2
+      },
+      "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2385d6b_8207ed5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-07T07:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b452d10c_d8966d56",
       "range": {
         "startLine": 729,
         "startChar": 1,
