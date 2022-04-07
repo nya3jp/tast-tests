@@ -105,6 +105,24 @@
       "parentUuid": "a5d0f872_8a4f88bf",
       "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92928b69_a9d1ca28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-07T05:39:13Z",
+      "side": 1,
+      "message": "Ok I see, I\u0027ll remove it.",
+      "parentUuid": "6301a117_60dbabed",
+      "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
