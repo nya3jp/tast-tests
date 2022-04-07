@@ -16,6 +16,24 @@
       "message": "Move to defer should be better since the test may exit due to other errors.",
       "revId": "f6cc2ae97080f7de57a40f4fc5d936f5906de52f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1126ced7_912b7ee9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-04-07T08:24:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b64a4f9_a903293c",
+      "revId": "f6cc2ae97080f7de57a40f4fc5d936f5906de52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
