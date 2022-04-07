@@ -16,6 +16,24 @@
       "message": "Could you change the file name to app_service.proto? Using the package name as the file prefix is not a good practice as you have noticed from a previous hook checker.\n\nSame applies to chromium:3562087",
       "revId": "e45a0a5720aa75655e9054cb3204375794e5c8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e73a94a_174301fd",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-07T01:08:28Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "38fbb866_f5f7e121",
+      "revId": "e45a0a5720aa75655e9054cb3204375794e5c8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
