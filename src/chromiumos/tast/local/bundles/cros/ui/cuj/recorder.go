@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	perfSrc "chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
@@ -131,8 +132,13 @@ type Recorder struct {
 	cr    *chrome.Chrome
 	tconn *chrome.TestConn
 
+	l      *lacros.Lacros
+	bTconn *chrome.TestConn
+
 	// Metrics names keyed by relevant chrome.TestConn pointer.
 	names map[*chrome.TestConn][]string
+	// All metrics names.
+	allNames []string
 
 	// Metric records keyed by metric name.
 	records map[string]*record
@@ -285,6 +291,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		}
 
 		r.names[bTconn] = append(r.names[bTconn], config.histogramName)
+		r.allNames = append(r.allNames, config.histogramName)
 		r.records[config.histogramName] = &record{config: config}
 	}
 	r.records[string(groupLatency)] = &record{config: MetricConfig{
@@ -345,6 +352,18 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 // EnableTracing enables tracing when the recorder running test scenario.
 func (r *Recorder) EnableTracing(traceDir string) {
 	r.traceDir = traceDir
+}
+
+// EnableLacros enables Lacros in the recorder.
+// This should be called if all metrics need to be collected from both ash-Chrome and lacros-Chrome.
+func (r *Recorder) EnableLacros(ctx context.Context, l *lacros.Lacros) error {
+	bTconn, err := l.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	r.l = l
+	r.bTconn = bTconn
+	return nil
 }
 
 // Close clears states for all trackers.
@@ -430,7 +449,17 @@ func (r *Recorder) StartRecording(ctx context.Context) (runCtx context.Context, 
 
 	// Starts metrics record per browser test connection.
 	r.mr = make(map[*chrome.TestConn]*metrics.Recorder)
-	for tconn, names := range r.names {
+
+	// By default, metrics are collected based on the connection provide by each metric.
+	namesOnTconn := r.names
+	// If Lacros is enabled, we collect all metrics from both Lacros and ash-Chrome.
+	if r.bTconn != nil {
+		namesOnTconn = make(map[*chrome.TestConn][]string)
+		namesOnTconn[r.bTconn] = r.allNames
+		namesOnTconn[r.tconn] = r.allNames
+	}
+
+	for tconn, names := range namesOnTconn {
 		var err error
 		r.mr[tconn], err = metrics.StartRecorder(ctx, tconn, names...)
 		if err != nil {
@@ -482,6 +511,11 @@ func (r *Recorder) StopRecording(ctx, runCtx context.Context) (e error) {
 		if err != nil {
 			return errors.Wrap(err, "failed to collect metrics")
 		}
+		connName := "lacros-Chrome"
+		if tconn == r.tconn {
+			connName = "ash-Chrome"
+		}
+		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", connName, histsWithSamples(h))
 		hists = append(hists, h...)
 	}
 	// Reset recorders and context.
@@ -686,4 +720,15 @@ func (r *Recorder) SaveHistograms(outDir string) error {
 		return err
 	}
 	return ioutil.WriteFile(filePath, j, 0644)
+}
+
+// histsWithSamples returns the names of the histograms that have at least one sample.
+func histsWithSamples(hists []*metrics.Histogram) []string {
+	var histNames []string
+	for _, hist := range hists {
+		if hist.TotalCount() > 0 {
+			histNames = append(histNames, hist.Name)
+		}
+	}
+	return histNames
 }
