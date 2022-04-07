@@ -39,6 +39,30 @@
       },
       "revId": "27003fbfeca849a1c6d42798842ca53f9dda3128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3915fac5_de871a04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-04-07T19:22:12Z",
+      "side": 1,
+      "message": "Updated to lowercase, just think it looks cleaner named.\nThanks Victor!",
+      "parentUuid": "d1794eb5_4a9858d3",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "27003fbfeca849a1c6d42798842ca53f9dda3128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
