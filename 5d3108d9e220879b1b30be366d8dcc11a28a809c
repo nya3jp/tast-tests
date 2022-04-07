@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27989dd9_b0ce427f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-04-07T14:36:15Z",
+      "side": 1,
+      "message": "Remove this line",
+      "revId": "5d3108d9e220879b1b30be366d8dcc11a28a809c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
