@@ -127,7 +127,9 @@ func CameraboxAutodim(ctx context.Context, s *testing.State) {
 	c, hostPaths, err := chart.New(ctx, d, chartAddr, s.OutDir(), filePaths)
 
 	cs := uipb.NewChromeServiceClient(cl.Conn)
-	loginReq := &uipb.NewRequest{}
+	loginReq := &uipb.NewRequest{
+		EnableFeatures: []string{"QuickDim"},
+	}
 	if _, err := cs.New(ctx, loginReq, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
