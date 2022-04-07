@@ -34,6 +34,23 @@
       "parentUuid": "55831d8e_7ee016ab",
       "revId": "3219c71a5b80ccdae93759e27e6abbaf4c048789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "440a0ce2_5deb9ee1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-07T15:45:23Z",
+      "side": 1,
+      "message": "LGTM. Please have a domain expert to give you CR+2.\n\nSorry, I was not clear. I meant you should have added this line to your commit log\n\nTEST\u003dManually tested and verified log file is generated. \n\nI have seen CLs that were not manually tested so I am a bit picky about it. Sorry about it.\n\nThanks.\n",
+      "revId": "3219c71a5b80ccdae93759e27e6abbaf4c048789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
