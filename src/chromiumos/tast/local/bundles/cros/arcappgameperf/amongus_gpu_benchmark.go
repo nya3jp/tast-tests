@@ -35,8 +35,21 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_p"},
 				Pre:               pre.ArcAppGamePerfBooted,
 			}, {
+				// The hardware dependency for the "vm" subtest and the entire "vm_zork" subtest
+				// are put in place to prevent this test from being run on 4GB zork devices with
+				// zork-arc-r, which have been shown to have memory issues with this test (b/224785022).
+
+				// TODO(b/224785022): Remove this hardware dependency as well as the "vm_zork" subtest once
+				// a fix for 4GB zork-arc-r devices for this test has been found and implemented, or the
+				// "MinMemoryForPlatforms" hardware dependency is merged.
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("zork")),
+				Pre:               pre.ArcAppGamePerfBooted,
+			}, {
+				Name:              "vm_zork",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("zork"), hwdep.MinMemory(5000)),
 				Pre:               pre.ArcAppGamePerfBooted,
 			}},
 		Timeout: 20 * time.Minute,
