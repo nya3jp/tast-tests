@@ -28,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProbeBusInfo,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that we can probe cros_healthd for bus info",
 		Contacts: []string{
 			"cros-tdm-tpe-eng@google.com",
