@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea9cc249_94932604",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "nit: 2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3725585e_2cf04246",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
         "patchSetId": 1
@@ -19,6 +42,29 @@
         "startChar": 7,
         "endLine": 48,
         "endChar": 13
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9244c8dc_6ba18233",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "Comments should end in a period. Please fix all in the file.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 60
       },
       "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -72,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f77a8f6b_89f40acb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "Some comments are redundant to the logging.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcecbb92_2e944941",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
         "patchSetId": 1
@@ -88,6 +157,121 @@
         "startChar": 1,
         "endLine": 179,
         "endChar": 14
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87bd2a2a_a7ee8c82",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "nit: Please use \"Failed to\" for consistency.",
+      "range": {
+        "startLine": 183,
+        "startChar": 11,
+        "endLine": 183,
+        "endChar": 31
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c8d5f0_9f193d7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 191,
+        "startChar": 11,
+        "endLine": 191,
+        "endChar": 25
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b56cbd_06f2b1ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures\n\nexpected x, got y",
+      "range": {
+        "startLine": 195,
+        "startChar": 36,
+        "endLine": 195,
+        "endChar": 51
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eeb106b_7282d84d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "nit: mismatch",
+      "range": {
+        "startLine": 195,
+        "startChar": 27,
+        "endLine": 195,
+        "endChar": 34
+      },
+      "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035003d1_e5f55f1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_sysfs_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-07T02:29:24Z",
+      "side": 1,
+      "message": "nit: mismatch",
+      "range": {
+        "startLine": 207,
+        "startChar": 27,
+        "endLine": 207,
+        "endChar": 34
       },
       "revId": "0c0cfd9c4e9b09d6373488d4d160b64ca7ac68f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
