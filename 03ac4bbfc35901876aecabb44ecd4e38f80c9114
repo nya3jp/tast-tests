@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb23213b_a0e82af6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-07T22:11:50Z",
+      "side": 1,
+      "message": "Nit: commit messages should be wrapped to 72 characters.",
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005fd5f7_a31f9281",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-07T22:11:50Z",
+      "side": 1,
+      "message": "This should be associated with crbug.com/1207678 (i.e. `chromium:1207678`)",
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e5fc65_8c25654e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-07T22:11:50Z",
+      "side": 1,
+      "message": "Looks good! Just a few small things.",
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f04874_2a4a3a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-07T22:11:50Z",
+      "side": 1,
+      "message": "Since I\u0027m transitioning off the team, it\u0027s probably best if I\u0027m not on the contacts.",
+      "range": {
+        "startLine": 24,
+        "startChar": 67,
+        "endLine": 24,
+        "endChar": 86
+      },
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8361d266_41431e18",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-07T22:11:50Z",
+      "side": 1,
+      "message": "Nit: typo of \"keyboard\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 64,
+        "endLine": 64,
+        "endChar": 72
+      },
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
