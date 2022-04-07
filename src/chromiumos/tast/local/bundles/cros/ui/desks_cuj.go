@@ -28,16 +28,15 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      2 * time.Hour,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
-			Timeout: 15 * time.Minute,
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "loggedInToCUJUserLacros",
-			Timeout:           20 * time.Minute,
 		}},
 	})
 }
@@ -139,7 +138,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, time.Minute); err != nil {
+	}, 10*time.Minute); err != nil {
 		s.Fatal("Failed to conduct the performance measurement: ", err)
 	}
 
