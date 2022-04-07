@@ -101,7 +101,7 @@ func init() {
 			{
 				Name:      "stress_80211n24ht40",
 				ExtraAttr: []string{"wificell_stress"},
-				Timeout:   time.Hour * 3,
+				Timeout:   time.Hour * 4,
 				Val: []suspendStressParam{
 					{
 						suspendCount: 690,
@@ -112,7 +112,7 @@ func init() {
 			{
 				Name:      "stress_wpa2",
 				ExtraAttr: []string{"wificell_stress"},
-				Timeout:   time.Hour * 3,
+				Timeout:   time.Hour * 4,
 				Val: []suspendStressParam{
 					{
 						suspendCount: 690,
