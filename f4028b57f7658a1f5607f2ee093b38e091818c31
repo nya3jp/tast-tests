@@ -33,6 +33,29 @@
       "message": "shadow reviewer lgtm",
       "revId": "f4028b57f7658a1f5607f2ee093b38e091818c31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75236414_5179d99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-07T09:57:38Z",
+      "side": 1,
+      "message": "When using a context in a deferred cleanup function, it\u0027s necessary to reserve time to ensure that the context won\u0027t already be expired when the cleanup happens.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 674,
+        "startChar": 36,
+        "endLine": 674,
+        "endChar": 39
+      },
+      "revId": "f4028b57f7658a1f5607f2ee093b38e091818c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
