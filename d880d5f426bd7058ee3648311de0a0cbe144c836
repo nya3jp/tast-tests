@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba60f9ee_cbdb1683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2022-04-07T15:48:18Z",
+      "side": 1,
+      "message": "This is needed to fix https://buganizer.corp.google.com/issues/228368362",
+      "revId": "d880d5f426bd7058ee3648311de0a0cbe144c836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
