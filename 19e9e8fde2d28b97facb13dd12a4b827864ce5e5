@@ -70,6 +70,24 @@
       "parentUuid": "1759e4f5_b3830949",
       "revId": "19e9e8fde2d28b97facb13dd12a4b827864ce5e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ec85f7_3931a06f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-07T19:53:17Z",
+      "side": 1,
+      "message": "Just for completeness: I could get a working environment that doesn\u0027t return the hang I was referring after all. All I needed to do is to re-flash my DUT :-) Super simple.\n\nThanks for the help here, Hyung (and sorry to steal this CL to address that!).",
+      "parentUuid": "1ff94bbd_ac1fc4b8",
+      "revId": "19e9e8fde2d28b97facb13dd12a4b827864ce5e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
