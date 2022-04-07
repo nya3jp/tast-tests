@@ -95,22 +95,7 @@ var stackAllowlist []string
 
 var loadwxAllowlist []string
 
-// FIXME(b/194115264): re-enable once all pre-built binaries are linked against compiler-rt/libunwind.
-// var libgccAllowlist = []string
-
 var libstdcAllowlist = []string{
-	// Flash player
-	"/opt/google/chrome/pepper/libpepflashplayer.so",
-
-	// Prebuilt hdcp driver binary from Intel.
-	"/usr/sbin/hdcpd",
-	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
-	"/usr/lib64/libSkyCamAIC.so",
-	"/usr/lib64/libSkyCamAICKBL.so",
-	// Part of prebuilt driver binary used in Tegra boards.
-	"/usr/lib/libnvmmlite_video.so",
-	// Allowed in b/73422412.
-	"/opt/google/rta/rtanalytics_main",
 }
 
 func loadDLCs(ctx context.Context) error {
