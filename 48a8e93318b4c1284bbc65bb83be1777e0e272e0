@@ -123,6 +123,24 @@
       "parentUuid": "6301a117_60dbabed",
       "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34f57b4_e4b98429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-07T07:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92928b69_a9d1ca28",
+      "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
