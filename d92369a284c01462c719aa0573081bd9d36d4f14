@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "219f59e0_23177ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-07T22:35:40Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think we could make  cujRecorder.Run()  to wait for all histogram\n\u003e since many CUJs are not expecting all of their histograms to have data, esp.\n\u003e the ones using  cuj/common_metrics.go . Adding a  cujRecorder.RunAndWaitAll()\n\u003e for tests that expect all histograms sounds good to me.\n\nBut I was just about to add  `common_metrics` reporting to this test 😊 . So it\u0027s again a question of waiting for separate set of metrics, regardless of whether we report them to the CUJ or not.\n\nOr maybe we can require that all the metrics that we wait should be reported and add a flag to the `MetricConfig` to wait for it. This way `cujRecorder.RunAndWaitAll()` will wait only for the `mr`s that have this flag and we do not need to wait for the extra metrics.\n\nWDYT?",
+      "parentUuid": "b390dd0b_7e618bc0",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcef6e01_038da8db",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 1
