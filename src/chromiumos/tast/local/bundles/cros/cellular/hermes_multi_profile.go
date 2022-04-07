@@ -67,7 +67,7 @@ func HermesMultiProfile(ctx context.Context, s *testing.State) {
 		if err := profile.Call(ctx, hermesconst.ProfileMethodDisable).Err; err != nil {
 			s.Fatalf("Failed to disable %s: %s", profile.String(), err)
 		}
-		if err := hermes.CheckProperty(ctx, profile.DBusObject, hermesconst.ProfilePropertyState, hermesconst.ProfileStateDisabled); err != nil {
+		if err := hermes.CheckProperty(ctx, profile.DBusObject, hermesconst.ProfilePropertyState, int32(hermesconst.ProfileStateDisabled)); err != nil {
 			s.Fatal("Failed to check profile state: ", err)
 		}
 	}
