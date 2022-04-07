@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -481,7 +482,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}, float64(browserStartTime.Milliseconds()))
 
 	// Open all windows and tabs.
-	if err := openAllWindowsAndTabs(ctx, cr, &windows, tsAction, caseLevel); err != nil {
+	if err := openAllWindowsAndTabs(ctx, cr.Browser(), &windows, tsAction, caseLevel); err != nil {
 		s.Fatal("Failed to open targets for tab switch: ", err)
 	}
 
@@ -519,14 +520,14 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}
 }
 
-func openAllWindowsAndTabs(ctx context.Context, cr *chrome.Chrome, targets *[]*chromeWindow, tsAction cuj.UIActionHandler, caseLevel Level) (err error) {
+func openAllWindowsAndTabs(ctx context.Context, br *browser.Browser, targets *[]*chromeWindow, tsAction cuj.UIActionHandler, caseLevel Level) (err error) {
 	windows := (*targets)
 	plTimeout := pageLoadingTimeout(caseLevel)
 	for idxWindow, window := range windows {
 		for idxTab, tab := range window.tabs {
 			testing.ContextLogf(ctx, "Opening window %d, tab %d", idxWindow+1, idxTab+1)
 
-			if tab.conn, err = tsAction.NewChromeTab(ctx, cr, tab.url, idxTab == 0); err != nil {
+			if tab.conn, err = tsAction.NewChromeTab(ctx, br, tab.url, idxTab == 0); err != nil {
 				return errors.Wrap(err, "failed to create new Chrome tab")
 			}
 
