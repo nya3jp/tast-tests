@@ -191,7 +191,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify fake apps order: ", err)
 	}
 
-	undoButton := nodewith.Name("Undo").ClassName("PillButton")
+	undoButton := nodewith.Name(launcher.GetUndoButtonNameForSortType(testParam.sortMethod)).ClassName("PillButton")
 	if err := uiauto.Combine("undo alphabetical sorting",
 		ui.LeftClick(undoButton),
 		ui.WaitUntilGone(undoButton),

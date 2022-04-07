@@ -250,6 +250,18 @@ func Search(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, query string)
 	}
 }
 
+// GetUndoButtonNameForSortType returns the undo button's name based on the sorting method.
+func GetUndoButtonNameForSortType(sortType SortType) string {
+	var undoButtonName string
+	switch sortType {
+	case AlphabeticalSort:
+		undoButtonName = "Undo sort order by name"
+	case ColorSort:
+		undoButtonName = "Undo sort order by color"
+	}
+	return undoButtonName
+}
+
 // TriggerAppListSortAndWaitForUndoButtonExist sorts app list items through the
 // item context menu with the specified sorting method. Waits until the undo
 // button exists.
@@ -264,7 +276,7 @@ func TriggerAppListSortAndWaitForUndoButtonExist(ctx context.Context, ui *uiauto
 
 	sortContextMenuItem := nodewith.Name(sortMenuName).ClassName("MenuItemView")
 	reorderContextMenuItem := nodewith.Name("Sort by").ClassName("MenuItemView")
-	undoButton := nodewith.Name("Undo").ClassName("PillButton")
+	undoButton := nodewith.Name(GetUndoButtonNameForSortType(sortType)).ClassName("PillButton")
 
 	if err := uiauto.Combine("sort app list items through the context menu",
 		ui.RightClick(item),
