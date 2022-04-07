@@ -63,7 +63,7 @@ type MetricConfig struct {
 
 	// TestConn to pull the histogram. If nil, the histogram is fetched using
 	// the TestConn in recorder.
-	tconn *chrome.TestConn
+	tconns []*chrome.TestConn
 }
 
 // NewSmoothnessMetricConfig creates a new MetricConfig instance for collecting
@@ -76,9 +76,19 @@ func NewSmoothnessMetricConfig(histogramName string) MetricConfig {
 
 // NewSmoothnessMetricConfigWithTestConn works like NewSmoothnessMetricConfig
 // but allows specifying a TestConn to pull histogram data.
+//
+// Deprecated: Use NewSmoothnessMetricConfigWithTestConns instead.
 func NewSmoothnessMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
 	conf := NewSmoothnessMetricConfig(histogramName)
-	conf.tconn = tconn
+	conf.tconns = []*chrome.TestConn{tconn}
+	return conf
+}
+
+// NewSmoothnessMetricConfigWithTestConns works like NewSmoothnessMetricConfig
+// but allows specifying one or multiple test API conns to pull histogram data.
+func NewSmoothnessMetricConfigWithTestConns(histogramName string, tconns []*chrome.TestConn) MetricConfig {
+	conf := NewSmoothnessMetricConfig(histogramName)
+	conf.tconns = tconns
 	return conf
 }
 
@@ -91,9 +101,19 @@ func NewLatencyMetricConfig(histogramName string) MetricConfig {
 
 // NewLatencyMetricConfigWithTestConn works like NewLatencyMetricConfig but
 // allows specifying a TestConn to pull histogram data.
+//
+// Deprecated: Use NewLatencyMetricConfigWithTestConns instead.
 func NewLatencyMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
 	conf := NewLatencyMetricConfig(histogramName)
-	conf.tconn = tconn
+	conf.tconns = []*chrome.TestConn{tconn}
+	return conf
+}
+
+// NewLatencyMetricConfigWithTestConns works like NewLatencyMetricConfig but
+// allows specifying one or multiple test API conns to pull histogram data.
+func NewLatencyMetricConfigWithTestConns(histogramName string, tconns []*chrome.TestConn) MetricConfig {
+	conf := NewLatencyMetricConfig(histogramName)
+	conf.tconns = tconns
 	return conf
 }
 
@@ -106,10 +126,21 @@ func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction,
 
 // NewCustomMetricConfigWithTestConn works like NewCustomMetricConfig but
 // allows specifying a TestConn to pull histogram data.
+//
+// Deprecated: Use NewCustomMetricConfigWithTestConns instead.
 func NewCustomMetricConfigWithTestConn(histogramName, unit string,
 	direction perf.Direction, jankCriteria []int64, tconn *chrome.TestConn) MetricConfig {
 	conf := NewCustomMetricConfig(histogramName, unit, direction, jankCriteria)
-	conf.tconn = tconn
+	conf.tconns = []*chrome.TestConn{tconn}
+	return conf
+}
+
+// NewCustomMetricConfigWithTestConns works like NewCustomMetricConfig but
+// allows specifying one or multiple test API connections to pull histogram data.
+func NewCustomMetricConfigWithTestConns(histogramName, unit string,
+	direction perf.Direction, jankCriteria []int64, tconns []*chrome.TestConn) MetricConfig {
+	conf := NewCustomMetricConfig(histogramName, unit, direction, jankCriteria)
+	conf.tconns = tconns
 	return conf
 }
 
@@ -279,13 +310,15 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 			return nil, errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
 
-		bTconn := r.tconn
-		if config.tconn != nil {
-			bTconn = config.tconn
+		tconns := []*chrome.TestConn{r.tconn}
+		if len(config.tconns) != 0 {
+			tconns = config.tconns
 		}
 
-		r.names[bTconn] = append(r.names[bTconn], config.histogramName)
-		r.records[config.histogramName] = &record{config: config}
+		for _, tconn := range tconns {
+			r.names[tconn] = append(r.names[tconn], config.histogramName)
+			r.records[config.histogramName] = &record{config: config}
+		}
 	}
 	r.records[string(groupLatency)] = &record{config: MetricConfig{
 		histogramName: string(groupLatency),
@@ -482,6 +515,13 @@ func (r *Recorder) StopRecording(ctx, runCtx context.Context) (e error) {
 		if err != nil {
 			return errors.Wrap(err, "failed to collect metrics")
 		}
+		connName := "lacros-Chrome"
+		// Check if the tconn uses the same underlying session connection with r.tconn.
+		// We compare the value of the two pointers.
+		if *tconn == *r.tconn {
+			connName = "ash-Chrome"
+		}
+		testing.ContextLogf(ctx, "The following metrics are collected from %q: %v", connName, histsWithSamples(h))
 		hists = append(hists, h...)
 	}
 	// Reset recorders and context.
@@ -688,4 +728,15 @@ func (r *Recorder) SaveHistograms(outDir string) error {
 		return err
 	}
 	return ioutil.WriteFile(filePath, j, 0644)
+}
+
+// histsWithSamples returns the names of the histograms that have at least one sample.
+func histsWithSamples(hists []*metrics.Histogram) []string {
+	var histNames []string
+	for _, hist := range hists {
+		if hist.TotalCount() > 0 {
+			histNames = append(histNames, hist.Name)
+		}
+	}
+	return histNames
 }
