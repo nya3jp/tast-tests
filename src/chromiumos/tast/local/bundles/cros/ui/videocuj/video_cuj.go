@@ -183,7 +183,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	}(cleanupDeviceCtx)
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
-		conn, err := uiHandler.NewChromeTab(ctx, cr, cuj.GmailURL, true)
+		conn, err := uiHandler.NewChromeTab(ctx, cr.Browser(), cuj.GmailURL, true)
 		if err != nil {
 			return conn, errors.Wrap(err, "failed to open gmail web page")
 		}
