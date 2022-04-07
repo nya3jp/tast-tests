@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34517de9_83d5ade8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-04-07T00:32:45Z",
+      "side": 1,
+      "message": "Please use patchset 3 as the base to see the differences.",
+      "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
