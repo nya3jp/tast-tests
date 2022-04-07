@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55831d8e_7ee016ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-07T15:03:36Z",
+      "side": 1,
+      "message": "Please manually run it once to make sure the log file is created.\n\nAlso, I have a few questions. I am not asking for any code change. \n\n1. Is it the Tast log for a different log file? I think it is separate log file. Just want to be sure.\n2. How big is the log file?\n\nThanks.\n",
+      "revId": "3219c71a5b80ccdae93759e27e6abbaf4c048789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
