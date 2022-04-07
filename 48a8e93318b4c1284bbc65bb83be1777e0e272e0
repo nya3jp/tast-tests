@@ -87,6 +87,24 @@
       "parentUuid": "112d7f1e_513a595d",
       "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6301a117_60dbabed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-07T05:34:03Z",
+      "side": 1,
+      "message": "Ah okay, so this doesn\u0027t serve any purpose except debugging? If it\u0027s not necessary to the functionality of the test I think we can remove it.\n\nIf it\u0027s very useful may be okay to keep it but put a big comment explaining why it\u0027s here. I don\u0027t recommend it though",
+      "parentUuid": "a5d0f872_8a4f88bf",
+      "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
