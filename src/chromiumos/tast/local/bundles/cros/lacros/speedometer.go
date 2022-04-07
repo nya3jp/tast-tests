@@ -16,6 +16,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/lacros/fixtures" // Include the speedometer specific lacros WPR fixture.
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/local/faillog"
@@ -31,6 +32,11 @@ const (
 	testTypeDisplayNone
 )
 
+type testParam struct {
+	runOrder []browser.Type
+	testType testType
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Speedometer,
@@ -43,11 +49,31 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "",
 			Fixture: "speedometerWPRLacros",
-			Val:     testTypeNormal,
+			Val: testParam{
+				runOrder: []browser.Type{browser.TypeLacros, browser.TypeAsh},
+				testType: testTypeNormal,
+			},
 		}, {
 			Name:    "displaynone",
 			Fixture: "speedometerWPRLacros",
-			Val:     testTypeDisplayNone,
+			Val: testParam{
+				runOrder: []browser.Type{browser.TypeLacros, browser.TypeAsh},
+				testType: testTypeDisplayNone,
+			},
+		}, {
+			Name:    "reverse",
+			Fixture: "speedometerWPRLacros2",
+			Val: testParam{
+				runOrder: []browser.Type{browser.TypeAsh, browser.TypeLacros},
+				testType: testTypeNormal,
+			},
+		}, {
+			Name:    "reverse_displaynone",
+			Fixture: "speedometerWPRLacros2",
+			Val: testParam{
+				runOrder: []browser.Type{browser.TypeAsh, browser.TypeLacros},
+				testType: testTypeDisplayNone,
+			},
 		}},
 	})
 }
@@ -141,27 +167,33 @@ func Speedometer(ctx context.Context, s *testing.State) {
 	}()
 
 	pv := perf.NewValues()
-	lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue), s.Param().(testType))
-	if err != nil {
-		s.Fatal("Failed to run lacros Speedometer test: ", err)
+	for _, bt := range s.Param().(testParam).runOrder {
+		switch bt {
+		case browser.TypeLacros:
+			lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue), s.Param().(testParam).testType)
+			if err != nil {
+				s.Fatal("Failed to run lacros Speedometer test: ", err)
+			}
+			testing.ContextLog(ctx, "Lacros Speedometer score: ", lscore)
+			pv.Set(perf.Metric{
+				Name:      "speedometer.lacros",
+				Unit:      "count",
+				Direction: perf.BiggerIsBetter,
+			}, lscore)
+			break
+		case browser.TypeAsh:
+			cscore, err := runCrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue), s.Param().(testParam).testType)
+			if err != nil {
+				s.Fatal("Failed to run cros Speedometer test: ", err)
+			}
+			testing.ContextLog(ctx, "Cros Speedometer score: ", cscore)
+			pv.Set(perf.Metric{
+				Name:      "speedometer.cros",
+				Unit:      "count",
+				Direction: perf.BiggerIsBetter,
+			}, cscore)
+		}
 	}
-	testing.ContextLog(ctx, "Lacros Speedometer score: ", lscore)
-	pv.Set(perf.Metric{
-		Name:      "speedometer.lacros",
-		Unit:      "count",
-		Direction: perf.BiggerIsBetter,
-	}, lscore)
-
-	cscore, err := runCrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue), s.Param().(testType))
-	if err != nil {
-		s.Fatal("Failed to run cros Speedometer test: ", err)
-	}
-	testing.ContextLog(ctx, "Cros Speedometer score: ", cscore)
-	pv.Set(perf.Metric{
-		Name:      "speedometer.cros",
-		Unit:      "count",
-		Direction: perf.BiggerIsBetter,
-	}, cscore)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)

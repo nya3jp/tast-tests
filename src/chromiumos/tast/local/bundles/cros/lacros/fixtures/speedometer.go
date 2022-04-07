@@ -42,4 +42,21 @@ func init() {
 		Parent:          "speedometerWPR",
 		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
+
+	// TODO(hidehiko): Remove this after checking the impact by running order of the tests.
+	// Exact same fixture, but different name, so that this will not be shared with speedometerWPRLacros.
+	// Not sharing is intentional and important to compare in apple-to-apple manner.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "speedometerWPRLacros2",
+		Desc:     "Composed fixture for speedometer with WPR",
+		Contacts: []string{"edcourtney@chromium.org", "hidehiko@chromium.org"},
+		Impl: wpr.NewLacrosFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Parent:          "speedometerWPR",
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
+	})
 }
