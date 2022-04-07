@@ -57,6 +57,9 @@ func init() {
 func Clvk(ctx context.Context, s *testing.State) {
 	test := s.Param().(clvkTest)
 
+	// Allow to see clvk error and warn messages directly in test logFile.
+	os.Setenv("CLVK_LOG", "2")
+
 	const testPath = "/usr/local/opencl"
 	testExec := filepath.Join(testPath, test.exe)
 	logFile := filepath.Join(s.OutDir(), filepath.Base(test.exe)+".txt")
