@@ -2373,6 +2373,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		iwlwifiFormat = "/sys/kernel/debug/iwlwifi/%s/iwlmvm/fw_restart"
 		mt76Format    = "/sys/kernel/debug/ieee80211/%s/mt76/chip_reset"
 		rtw88Format   = "/sys/kernel/debug/ieee80211/%s/rtw88/fw_crash"
+		rtw89Format   = "/sys/kernel/debug/ieee80211/%s/rtw89/fw_crash"
 
 		// The path is used to check for wcn399x device.
 		ath10kDeviceFormat = "/sys/class/net/%s/device/of_node/compatible"
@@ -2383,6 +2384,9 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 
 		rtw88Timeout  = time.Second * 20
 		rtw88Interval = time.Second
+
+		rtw89Timeout  = time.Second * 20
+		rtw89Interval = time.Second
 	)
 
 	fileExists := func(file string) bool {
@@ -2577,6 +2581,36 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 			Timeout:  rtw88Timeout,
 		})
 	}
+	rtw89ResetPath := func(ctx context.Context, iface string) (string, error) {
+		phy, err := network_iface.NewInterface(iface).PhyName(ctx)
+		if err != nil {
+			return "", errors.Wrapf(err, "failed to get the phy name of the WiFi interface (%s)", iface)
+		}
+		resetPath := fmt.Sprintf(rtw89Format, phy)
+		if !fileExists(resetPath) {
+			return "", errors.Errorf("rtw89 reset path %q does not exist", resetPath)
+		}
+		return resetPath, nil
+	}
+	rtw89Reset := func(ctx context.Context, resetPath string) error {
+		if err := writeStringToFile(resetPath, "1"); err != nil {
+			return errors.Wrapf(err, "failed to write to the reset path %q", resetPath)
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			raw, err := ioutil.ReadFile(resetPath)
+			if err != nil {
+				return errors.Wrap(err, "failed to read reset status")
+			}
+			resetting := strings.TrimSpace(string(raw))
+			if resetting != "0" {
+				return errors.New("reset not yet done")
+			}
+			return nil
+		}, &testing.PollOptions{
+			Interval: rtw89Interval,
+			Timeout:  rtw89Timeout,
+		})
+	}
 
 	ctx, cancel := reserveForReturn(ctx)
 	defer cancel()
@@ -2624,6 +2658,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		{iwlwifiReset, iwlwifiResetPath},
 		{mt76Reset, mt76ResetPath},
 		{rtw88Reset, rtw88ResetPath},
+		{rtw89Reset, rtw89ResetPath},
 	} {
 		rp, err := v.resetPath(ctx, iface)
 		if err == nil {
