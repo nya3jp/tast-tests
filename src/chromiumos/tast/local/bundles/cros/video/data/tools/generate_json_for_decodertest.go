@@ -59,6 +59,9 @@ const (
 	vp92
 	av1Main
 	hevcMain
+	hevcMainStillPicture
+	hevcMain10
+	hevcRext
 )
 
 // Codec represents a video codec.
@@ -92,6 +95,12 @@ func profileToString(p Profile) string {
 		return "AV1PROFILE_PROFILE_MAIN"
 	case hevcMain:
 		return "HEVCPROFILE_MAIN"
+	case hevcMainStillPicture:
+		return "HEVCPROFILE_MAIN_STILL_PICTURE"
+	case hevcMain10:
+		return "HEVCPROFILE_MAIN10"
+	case hevcRext:
+		return "HEVCPROFILE_RANGE_EXTENSION"
 	}
 	return ""
 }
@@ -106,7 +115,7 @@ func profileToCodec(p Profile) Codec {
 		return vp9
 	case av1Main:
 		return av1
-	case hevcMain:
+	case hevcMain, hevcMainStillPicture, hevcMain10, hevcRext:
 		return hevc
 	}
 	return -1
@@ -145,6 +154,12 @@ func ffprobeCodecToProfile(codec, profile string) (Profile, error) {
 		switch profile {
 		case "Main":
 			return hevcMain, nil
+		case "Main Still Picture":
+			return hevcMainStillPicture, nil
+		case "Main 10":
+			return hevcMain10, nil
+		case "Rext":
+			return hevcRext, nil
 		}
 	}
 
@@ -188,10 +203,12 @@ func parseStream(file string) (width, height, bitDepth, frameRate int, prof Prof
 	}
 
 	switch stream.PixFmt {
-	case "yuv420p":
+	case "yuv420p", "yuv444p", "gray":
 		bitDepth = 8
-	case "yuv420p10le":
+	case "yuv420p10le", "yuv422p10le", "yuv444p10le":
 		bitDepth = 10
+	case "gray12le", "yuv420p12le", "yuv422p12le", "yuv444p12le":
+		bitDepth = 12
 	default:
 		err = errors.Errorf("unknown pix_fmt=%s", stream.PixFmt)
 		return
@@ -220,7 +237,7 @@ func parseStream(file string) (width, height, bitDepth, frameRate int, prof Prof
 	return
 }
 
-func genMD5H264(file string) ([]string, error) {
+func genMD5FFMPEG(file string) ([]string, error) {
 	out, err := exec.Command("ffmpeg", "-f", "framemd5", "-", "-i", file).Output()
 	if err != nil {
 		return []string{}, errors.Wrap(err, "failed executing ffmpeg")
@@ -282,7 +299,7 @@ func genMD5VPX(file, bin string) ([]string, error) {
 func genMD5(file string, profile Profile) ([]string, error) {
 	switch profileToCodec(profile) {
 	case h264, hevc:
-		return genMD5H264(file)
+		return genMD5FFMPEG(file)
 	case vp8, vp9:
 		return genMD5VPX(file, "vpxdec")
 	case av1:
