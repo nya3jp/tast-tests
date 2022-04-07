@@ -495,3 +495,21 @@ func UpdateUserCredentialWithAuthSession(ctx context.Context, username, oldPassw
 
 	return authSessionID, nil
 }
+
+// PrepareEphemeralUserWithAuthSession creates an ephemeral user via auth session API.
+func PrepareEphemeralUserWithAuthSession(ctx context.Context, username string) (string, error) {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := cryptohome.StartAuthSession(ctx, username /*ephemeral=*/, true)
+	if err != nil {
+		return authSessionID, errors.Wrap(err, "failed to start Auth session")
+	}
+
+	if err := cryptohome.PrepareEphemeralVault(ctx, authSessionID); err != nil {
+		return authSessionID, errors.Wrap(err, "failed to prepare ephemeral vault")
+	}
+
+	return authSessionID, nil
+}
