@@ -69,6 +69,24 @@
       "parentUuid": "01876736_20d33bb5",
       "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d0f872_8a4f88bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-07T05:26:08Z",
+      "side": 1,
+      "message": "Purposely to slow down the test by adding sleep simulating real use case. Otherwise the UI element will disappear too soon and hardly for a tester to notice it. \nI\u0027m not sure is there any better way to do this, if you think this is unnecessary, I can romve the step.",
+      "parentUuid": "112d7f1e_513a595d",
+      "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
