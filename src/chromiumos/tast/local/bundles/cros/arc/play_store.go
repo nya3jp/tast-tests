@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
 	"time"
 
@@ -47,13 +48,21 @@ func init() {
 
 func PlayStore(ctx context.Context, s *testing.State) {
 	const (
-		pkgName = "com.google.android.calculator"
+		// pkgName = "com.google.android.calculator"
+		pkgName = "com.YoStarJP.MajSoul" // Mahjong Soul (671M)
+		useVirtioBlk = false
 	)
+
+	enableFeatures := ""
+	if useVirtioBlk {
+		enableFeatures = "ArcEnableVirtioBlkForData"
+	}
 
 	// Setup Chrome.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCSupported(),
+		chrome.EnableFeatures(enableFeatures),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -99,9 +108,17 @@ func PlayStore(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
+	var playOpt playstore.Options
+	playOpt.TryLimit = -1
+	playOpt.DefaultUITimeout = 3 * time.Second
+	playOpt.ShortUITimeout = 3 * time.Second
+
 	// Install app.
 	s.Log("Installing app")
-	if err := playstore.InstallApp(ctx, a, d, pkgName, &playstore.Options{TryLimit: -1}); err != nil {
+	timeBefore := time.Now()
+	if err := playstore.InstallApp(ctx, a, d, pkgName, &playOpt); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
+	duration := time.Now().Sub(timeBefore)
+	s.Logf("Installing %s took %s seconds (useVirtioBlk=%t)", pkgName, fmt.Sprintf("%.1f", duration.Seconds()), useVirtioBlk)
 }
