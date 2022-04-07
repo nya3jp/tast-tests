@@ -73,19 +73,15 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 	defer client.RemoveVault(ctxForCleanUp, ownerUser)
 
 	// Set up an ephemeral session.
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword /*ephemeral=*/, true /*kiosk=*/, false)
+	authSessionID, err := cryptohome.PrepareEphemeralUserWithAuthSession(ctx, userName)
 	if err != nil {
 		s.Fatal("Failed to authenticate ephemeral user: ", err)
 	}
+	defer client.UnmountAll(ctxForCleanUp)
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PrepareEphemeralVault(ctx, authSessionID); err != nil {
-		s.Fatal("Failed to prepare ephemeral vault: ", err)
-	}
-	defer client.UnmountAll(ctxForCleanUp)
-
-	if err := client.PrepareEphemeralVault(ctx, authSessionID); err == nil {
-		s.Fatal("Secondary prepare attempt for the same user should fail, but succeeded")
+	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, authSessionID /*kiosk=*/, false); err != nil {
+		s.Fatal("Failed to  add credentials with AuthSession: ", err)
 	}
 
 	// Write a test file to verify non-persistence.
@@ -99,23 +95,35 @@ func EphemeralAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write a file to the vault: ", err)
 	}
 
+	// Test credentials when the user's directory is mounted.
+	if _, err := client.CheckVault(ctx, "fake_label", hwsec.NewPassAuthConfig(userName, userPassword)); err != nil {
+		s.Fatal("Should access the vault with the valid credentials while mounted: ", err)
+	}
+
 	// Unmount and mount again.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, true, false)
+	// Set up another ephemeral session.
+	authSessionID, err = cryptohome.PrepareEphemeralUserWithAuthSession(ctx, userName)
 	if err != nil {
 		s.Fatal("Failed to authenticate ephemeral user: ", err)
 	}
+	defer client.UnmountAll(ctxForCleanUp)
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := client.PrepareEphemeralVault(ctx, authSessionID); err != nil {
-		s.Fatal("Failed to prepare ephemeral vault: ", err)
+	if err := client.AddCredentialsWithAuthSession(ctx, userName, userPassword, authSessionID /*kiosk=*/, false); err != nil {
+		s.Fatal("Failed to  add credentials with AuthSession: ", err)
 	}
 
-	// Verify non-persistentce.
+	// Verify non-persistence.
 	if _, err := ioutil.ReadFile(filePath); err == nil {
 		s.Fatal("File is persisted across ephemeral session boundary")
+	}
+
+	// Test credentials when the user's directory is mounted.
+	if _, err := client.CheckVault(ctx, "fake_label", hwsec.NewPassAuthConfig(userName, userPassword)); err != nil {
+		s.Fatal("Should access the vault with the valid credentials while mounted: ", err)
 	}
 }
