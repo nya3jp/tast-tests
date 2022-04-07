@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b390dd0b_7e618bc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-07T17:23:12Z",
+      "side": 1,
+      "message": "\u003e The issue is that metrics.RunAndWaitAll() here waits for the different set of metrics than the cuj recorder.\n\nCould we use one set of metrics? The difference seems quite small, only `ensureWorkVisibleHistogram*`, right?\n\nI don\u0027t think we could make `cujRecorder.Run()` to wait for all histogram since many CUJs are not expecting all of their histograms to have data, esp. the ones using `cuj/common_metrics.go`. Adding a `cujRecorder.RunAndWaitAll()` for tests that expect all histograms sounds good to me.\n\nMy intention is to make code simpler and easier to read. Having nested `metrics.RunAndWaitAll()` in `Run` is a bit difficult to follow IMHO. But if this comment requires a big refactoring, let\u0027s forget about it and keep what we have. It is out of scope of the CL and we could do it separately.",
+      "parentUuid": "e800f32f_d8cbf98b",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcef6e01_038da8db",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 1
