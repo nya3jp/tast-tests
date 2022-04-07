@@ -15,6 +15,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/coords"
@@ -41,6 +43,7 @@ var unstableVkTests = []vkTestParams{
 	{"Focus change", chromeVirtualKeyboardFocusChangeTest},
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
 	{"Rotation", chromeVirtualKeyboardRotationTest},
+	{"Hankaku/Zenkaku", chromeVirtualKeyboardHankakuZenkakuTest},
 }
 
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
@@ -657,6 +660,94 @@ func chromeVirtualKeyboardNumberInputTest(
 				s.Fatalf("Got %q from text field; want %q", actual, expected)
 			}
 		}
+	}
+}
+
+func chromeVirtualKeyboardHankakuZenkakuTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".MainActivity"
+		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
+	)
+
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(ctx)
+
+	vkbCtx.EnableA11yVirtualKeyboard(true)(ctx)
+	defer vkbCtx.EnableA11yVirtualKeyboard(false)(ctx)
+
+	// Enable JP IMEs
+	imeID, err := ime.CurrentInputMethod(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the current ime: ", err)
+	}
+	imePrefix, err := ime.Prefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the ime prefix: ", err)
+	}
+
+	alphanumericJpIMEID := imePrefix + ime.AlphanumericWithJapaneseKeyboard.ID
+	jpIMEID := imePrefix + ime.Japanese.ID
+
+	s.Log("Switching to JP IME")
+	defer func(ctx context.Context) {
+		if err := ime.SetCurrentInputMethod(ctx, tconn, imeID); err != nil {
+			s.Fatal("Failed to switch to the original IME: ", err)
+		}
+		if err := ime.RemoveInputMethod(ctx, tconn, jpIMEID); err != nil {
+			s.Fatal("Failed to remove JP IME: ", err)
+		}
+		if err := ime.RemoveInputMethod(ctx, tconn, alphanumericJpIMEID); err != nil {
+			s.Fatal("Failed to remove JP IME: ", err)
+		}
+	}(ctx)
+	if err := ime.AddAndSetInputMethod(ctx, tconn, jpIMEID); err != nil {
+		s.Fatal("Failed to switch to JP IME: ", err)
+	}
+	if err := ime.AddInputMethod(ctx, tconn, alphanumericJpIMEID); err != nil {
+		s.Fatal("Failed to add JP IME: ", err)
+	}
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Faled to create a new activity %q: %v", activityName, err)
+	}
+	defer act.Close()
+
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q: %v", activityName, err)
+	}
+	defer act.Stop(ctx, tconn)
+
+	field := d.Object(ui.ID(fieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := field.SetText(ctx, ""); err != nil {
+		s.Fatal("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for a11y keyboard to be ready")
+	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
+		s.Fatal("Failed to wait for the a11y keyboard to be ready: ", err)
+	}
+
+	keyboardBodyFinder := nodewith.HasClass("keyboard").Visible()
+	languageSwitchKeyFinder := nodewith.Ancestor(keyboardBodyFinder).HasClass("key_pos_1_0").Visible()
+	if err := vkbCtx.TapNode(languageSwitchKeyFinder)(ctx); err != nil {
+		s.Fatal("Failed to click the language switch key: ", err)
+	}
+
+	s.Log("Switch to Alphanumeric")
+	if err := ime.WaitForInputMethodMatches(ctx, tconn, alphanumericJpIMEID, 30*time.Second); err != nil {
+		s.Fatal("Failed to switch to Alphanumeric: ", err)
 	}
 }
 
