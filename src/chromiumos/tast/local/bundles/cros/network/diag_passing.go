@@ -61,9 +61,10 @@ func init() {
 			Name: "captive_portal",
 			Val:  newNetDiagParams(diagcommon.RoutineCaptivePortal),
 		}, {
-			Name:    "video_conferencing",
-			Val:     newNetDiagParams(diagcommon.RoutineVideoConferencing),
-			Timeout: 10 * time.Minute,
+			Name:      "video_conferencing",
+			Val:       newNetDiagParams(diagcommon.RoutineVideoConferencing),
+			Timeout:   10 * time.Minute,
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
