@@ -51,6 +51,24 @@
       "parentUuid": "2f08b94b_7be4c537",
       "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112d7f1e_513a595d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-07T05:11:43Z",
+      "side": 1,
+      "message": "We should not use sleeps to wait for UI. Is there a way you can wait on the actual condition you care about here?",
+      "parentUuid": "01876736_20d33bb5",
+      "revId": "48a8e93318b4c1284bbc65bb83be1777e0e272e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
