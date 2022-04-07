@@ -16,6 +16,23 @@
       "message": "Thank you!",
       "revId": "b926a6875b5da4da80a93a531f3503ab26edc5c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b719f5a_a5d3f5ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-04-07T21:39:43Z",
+      "side": 1,
+      "message": "This CL seems to be failing on CQ with the following error:\n\ntast-remote-tests-cros-0.0.2-r10165: # chromiumos/tast/remote/bundles/cros/policy\ntast-remote-tests-cros-0.0.2-r10165: src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go:63:55: not enough arguments in call to policyutil.EnsureTPMAndSystemStateAreReset\ntast-remote-tests-cros-0.0.2-r10165: \thave (context.Context, *dut.DUT)\ntast-remote-tests-cros-0.0.2-r10165: \twant (context.Context, *dut.DUT, *\"chromiumos/tast/internal/testing\".RPCHint)\ntast-remote-tests-cros-0.0.2-r10165: src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go:71:54: not enough arguments in call to policyutil.EnsureTPMAndSystemStateAreReset\ntast-remote-tests-cros-0.0.2-r10165: \thave (context.Context, *dut.DUT)\ntast-remote-tests-cros-0.0.2-r10165: \twant (context.Context, *dut.DUT, *\"chromiumos/tast/internal/testing\".RPCHint)\ntast-remote-tests-cros-0.0.2-r10165: chromiumos/tast/remote/firmware/fixture",
+      "revId": "b926a6875b5da4da80a93a531f3503ab26edc5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
