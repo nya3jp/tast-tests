@@ -37,6 +37,12 @@ func init() {
 			}, {
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("zork")),
+				Pre:               pre.ArcAppGamePerfBooted,
+			}, {
+				Name:              "vm_zork",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Platform("zork"), hwdep.MinMemory(5000)),
 				Pre:               pre.ArcAppGamePerfBooted,
 			}},
 		Timeout: 20 * time.Minute,
