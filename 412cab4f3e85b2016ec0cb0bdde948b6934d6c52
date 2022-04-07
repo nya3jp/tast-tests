@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f113b0c_3e53524b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_app_with_app_list_sorted.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-07T20:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "127963af_3cb3da7f",
+      "revId": "412cab4f3e85b2016ec0cb0bdde948b6934d6c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41e950c2_a5804b55",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7f4506_beef7334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_app_with_app_list_sorted.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-07T20:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e950c2_a5804b55",
+      "revId": "412cab4f3e85b2016ec0cb0bdde948b6934d6c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "171b9f89_15a769fc",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-07T18:58:52Z",
       "side": 1,
       "message": "nit: document?",
+      "revId": "412cab4f3e85b2016ec0cb0bdde948b6934d6c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae0d3df_95c910b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_app_with_app_list_sorted.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-07T20:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171b9f89_15a769fc",
       "revId": "412cab4f3e85b2016ec0cb0bdde948b6934d6c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba0be811_87dd7db8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_app_with_app_list_sorted.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-07T20:07:48Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t like this code style either. But a previous reviewer asked me to do in this way. Lol! I am going to change it back.",
+      "parentUuid": "c64d95ec_1a529c38",
+      "revId": "412cab4f3e85b2016ec0cb0bdde948b6934d6c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89b455ac_63890d99",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_app_with_app_list_sorted.go",
         "patchSetId": 5
@@ -82,6 +154,24 @@
       "writtenOn": "2022-04-07T18:58:52Z",
       "side": 1,
       "message": "do we actually care about this in this test - we can just sort the grid without moving the app around (we have another test covering this use case)",
+      "revId": "412cab4f3e85b2016ec0cb0bdde948b6934d6c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890c7a26_5071b34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_app_with_app_list_sorted.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-07T20:07:48Z",
+      "side": 1,
+      "message": "I wanna ensure that the apps are sorted and the undo toast shows so that the app list is under temporary sort. Then the app installation under temporary sort is verified. \n\nThe tast code that uninstalls the app then re-installs it again is to verify app installation under permanent sort. \n\nI am going to explain this with comments in the latest code patch.",
+      "parentUuid": "89b455ac_63890d99",
       "revId": "412cab4f3e85b2016ec0cb0bdde948b6934d6c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
