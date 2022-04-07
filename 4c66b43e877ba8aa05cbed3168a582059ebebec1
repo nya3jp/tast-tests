@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d16a350_3d732c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-07T22:13:24Z",
+      "side": 1,
+      "message": "Let\u0027s make it 10 min actually. I think we can standardize all tests to run for 10 min",
+      "revId": "4c66b43e877ba8aa05cbed3168a582059ebebec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
