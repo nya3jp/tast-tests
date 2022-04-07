@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53509c10_fa02cf0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-07T20:15:02Z",
+      "side": 1,
+      "message": "nit: This CL introduces a new test Android app with a set name and icon to ensure the app properties important to the test don\u0027t change unexpectedly.",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9bbf23_d2621f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-07T20:15:02Z",
+      "side": 1,
+      "message": "also, adding someone look at the new test android app may be a good idea",
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
