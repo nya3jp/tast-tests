@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/testing"
@@ -50,6 +51,16 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 
 	if phoneIP.Value() != "" {
 		testing.ContextLogf(ctx, "Android phone IP is: %s", phoneIP.Value())
+
+		// Ensure CrOS device is on the correct Wifi network
+		out, err := testexec.CommandContext(ctx, "/usr/local/autotest/cros/scripts/wifi", "connect", "nearbysharing_1", "password").CombinedOutput(testexec.DumpLogOnError)
+		if err != nil {
+			if strings.Contains(string(out), "already connected") {
+				testing.ContextLog(ctx, "Already connected to wifi network")
+			} else {
+				return nil, false, errors.Wrap(err, "failed to connect CrOS device to Wifi")
+			}
+		}
 
 		// Connect to the adb-over-tcp Phone that was setup previously (e.g manually or via autotest control file).
 		adbDevice, err = adb.Connect(ctx, phoneIP.Value(), 30*time.Second)
