@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c4b112_2eff6dec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-07T20:23:38Z",
+      "side": 1,
+      "message": "Will update in the next code patch.",
+      "parentUuid": "53509c10_fa02cf0d",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cf9bbf23_d2621f9c",
@@ -37,6 +61,23 @@
       "writtenOn": "2022-04-07T20:15:02Z",
       "side": 1,
       "message": "also, adding someone look at the new test android app may be a good idea",
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eea6069_7b08c528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-07T20:23:38Z",
+      "side": 1,
+      "message": "@ricardoq Could you review my code for the android app? The tast test I am working on is to verify the app location after installation. The app\u0027s name or icon will affect the location. It is why I create an app with the fixed name and icon for testing.",
       "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
