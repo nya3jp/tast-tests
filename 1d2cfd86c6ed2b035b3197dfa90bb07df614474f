@@ -34,6 +34,24 @@
       "parentUuid": "ef0846dd_cf332011",
       "revId": "1d2cfd86c6ed2b035b3197dfa90bb07df614474f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7039be5_534a0012",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-04-07T18:01:40Z",
+      "side": 1,
+      "message": "OK good to know being on the same network is what we want. This is for smartlock and phonehub for now. I\u0027ll add nearby share tests when I verify everything works. \n\nWe will need to discuss how it\u0027ll work with different networks if we want that down the road.",
+      "parentUuid": "8346bf75_827dfe5c",
+      "revId": "1d2cfd86c6ed2b035b3197dfa90bb07df614474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
