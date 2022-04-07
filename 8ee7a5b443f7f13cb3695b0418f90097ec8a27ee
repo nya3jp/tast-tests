@@ -22,6 +22,30 @@
       },
       "revId": "8ee7a5b443f7f13cb3695b0418f90097ec8a27ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e41aad6_90d6e8e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-04-07T08:00:46Z",
+      "side": 1,
+      "message": "ui.Info is waiting for evaluation of the expression. It would not be clear if the failure reason is the element not existing, or if it\u0027s something else. Using ui.WaitUntilExists will give us better error messages.\nWDYT?",
+      "parentUuid": "1129e899_487cd1fe",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "8ee7a5b443f7f13cb3695b0418f90097ec8a27ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
