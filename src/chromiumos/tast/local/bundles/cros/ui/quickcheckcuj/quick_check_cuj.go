@@ -244,7 +244,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 					}
 				}()
 
-				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr, tab.url, tabIdx == 0); err != nil {
+				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr.Browser(), tab.url, tabIdx == 0); err != nil {
 					return errors.Wrapf(err, "failed to open URL: %s", tab.url)
 				}
 			}

@@ -280,7 +280,7 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 
 	openBrowserWithTabs := func(urlList []string) error {
 		for idx, url := range urlList {
-			conn, err := resources.uiHandler.NewChromeTab(ctx, cr, url, idx == 0)
+			conn, err := resources.uiHandler.NewChromeTab(ctx, cr.Browser(), url, idx == 0)
 			if err != nil {
 				return errors.Wrapf(err, "failed to open %s", url)
 			}
