@@ -145,7 +145,7 @@ func runCroshCommandTest(ctx context.Context, croshCommand []string) ([]dbusutil
 		return nil, err
 	}
 
-	command := append([]string{"crosh", "--normal", "--"}, croshCommand...)
+	command := append([]string{"crosh", "--dev=false", "--"}, croshCommand...)
 	if err := testexec.CommandContext(ctx, command[0], command[1:]...).Run(); err != nil {
 		stop()
 		return nil, errors.Wrap(err, "failed to run `display_debug trace_start` command")
