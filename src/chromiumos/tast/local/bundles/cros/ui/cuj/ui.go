@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -15,6 +16,8 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -52,20 +55,25 @@ func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 // GetBrowserStartTime opens chrome browser and returns the browser start time.
-func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, closeBrowser, tabletMode bool) (time.Duration, error) {
-	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+// If lfixtVal is given, it will open the lacros-Chrome, and return the lacros instance.
+func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
+	lFixtVal lacrosfixt.FixtValue, closeTabs, tabletMode bool) (*lacros.Lacros, time.Duration, error) {
+	var l *lacros.Lacros
+	chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
-		return -1, errors.Wrap(err, "could not find the Chrome app")
+		return nil, -1, errors.Wrap(err, "could not find the Chrome app")
 	}
 
 	// Make sure the browser hasn't been opened.
 	shown, err := ash.AppShown(ctx, tconn, chromeApp.ID)
 	if err != nil {
-		return -1, errors.Wrap(err, "failed to check if the browser window is shown or not")
+		return nil, -1, errors.Wrap(err, "failed to check if the browser window is shown or not")
 	}
 	if shown {
-		return -1, errors.New("browser is already shown")
+		// Close the browser if it is aready opened.
+		if err := apps.Close(ctx, tconn, chromeApp.ID); err != nil {
+			return nil, -1, errors.Wrap(err, "failed to close the opened browser")
+		}
 	}
 
 	msg := "shelf"
@@ -74,11 +82,11 @@ func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 		msg = "hotseat"
 		launchFunc = LaunchAppFromHotseat
 	}
-	testing.ContextLog(ctx, "Launch Google Chrome (could be Chrome or Chromium) from "+msg)
+	testing.ContextLog(ctx, "Launch Google Chrome from "+msg)
 
 	var startTime time.Time
 	launchChromeApp := func(ctx context.Context) error {
-		startTime, err = launchFunc(ctx, tconn, "Chrome", "Chromium")
+		startTime, err = launchFunc(ctx, tconn, "Chrome", "Chromium", "Lacros")
 		if err != nil {
 			return errors.Wrap(err, "failed to open Chrome")
 		}
@@ -90,19 +98,38 @@ func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 	}
 	ui := uiauto.New(tconn)
 	if err := ui.Retry(3, launchChromeApp)(ctx); err != nil {
-		return -1, errors.Wrap(err, "failed to launch the Chrome app after 3 retries")
+		return nil, -1, errors.Wrap(err, "failed to launch the Chrome app after 3 retries")
 	}
 	browserStartTime := time.Since(startTime)
 
+	// If it's ash-Chrome, we will close all existing tabs so the test case will start with a
+	// clean Chrome.
+	closeTabsFunc := CloseBrowserTabs
+	bTconn := tconn
+	if lFixtVal != nil {
+		// Connect to lacros-Chrome started from UI.
+		l, err = lacros.Connect(ctx, tconn)
+		if err != nil {
+			return nil, -1, errors.Wrap(err, "failed to get lacros instance")
+		}
+		bTconn, err = l.TestAPIConn(ctx)
+		if err != nil {
+			return nil, -1, errors.Wrap(err, "failed to create test API conn")
+		}
+		// For lacros-Chrome, we will close all existing tabs but leave a new tab to keep the Chrome
+		// process alive.
+		closeTabsFunc = KeepNewTab
+	}
+
 	// Depending on the settings, Chrome might open all left-off pages automatically from last session.
 	// Close all existing tabs and test can open new pages in the browser.
-	if closeBrowser {
-		if err := CloseBrowserTabs(ctx, tconn); err != nil {
-			return -1, errors.Wrap(err, "failed to close all Chrome tabs")
+	if closeTabs {
+		if err := closeTabsFunc(ctx, bTconn); err != nil {
+			return nil, -1, errors.Wrap(err, "failed to close extra Chrome tabs")
 		}
 	}
 
-	return browserStartTime, nil
+	return l, browserStartTime, nil
 }
 
 // GetBrowserTabs gets all browser tabs through chrome.tabs API.
@@ -119,9 +146,17 @@ func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]Tab, error) 
 
 // CloseBrowserTabsByID closes browser tabs by ID through chrome.tabs API.
 func CloseBrowserTabsByID(ctx context.Context, tconn *chrome.TestConn, tabIDs []int) error {
+	str := "["
+	for i, id := range tabIDs {
+		str += strconv.Itoa(id)
+		if i != len(tabIDs)-1 {
+			str += ", "
+		}
+	}
+	str += "]"
 	return tconn.Eval(ctx, fmt.Sprintf(`(async () => {
-		await tast.promisify(chrome.tabs.remove)(%v);
-	})()`, tabIDs), nil)
+		await tast.promisify(chrome.tabs.remove)(%s);
+	})()`, str), nil)
 }
 
 // CloseBrowserTabs closes all browser tabs through chrome.tabs API.
@@ -132,12 +167,47 @@ func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
 	})()`, nil)
 }
 
+// KeepNewTab closes all other browser tabs and leave only one new tab.
+// Leaving a new tab is critical to keep lacros-Chrome process running.
+func KeepNewTab(ctx context.Context, tconn *chrome.TestConn) error {
+	tabs, err := GetBrowserTabs(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get browser tabs")
+	}
+	if len(tabs) == 0 {
+		return errors.New("browser has no tabs")
+	}
+	newTab := "chrome://newtab/"
+	if len(tabs) == 1 && tabs[0].URL == newTab {
+		return nil
+	}
+	// Just simply reate a new tab and close all other tabs.
+	if err := tconn.Eval(ctx, `(async () => {
+		await tast.promisify(chrome.tabs.create)({});
+	})()`, nil); err != nil {
+		return errors.Wrap(err, "failed to create new tab")
+	}
+	var tabsToClose []int
+	for _, t := range tabs {
+		tabsToClose = append(tabsToClose, t.ID)
+	}
+	if err := CloseBrowserTabsByID(ctx, tconn, tabsToClose); err != nil {
+		return errors.Wrap(err, "failed to close other browser tabs")
+	}
+	return nil
+}
+
 // CloseChrome closes Chrome browser application properly.
 // If there exist unsave changes on web page, e.g. media content is playing or online document is editing,
 // "leave site" prompt will prevent the tab from closing.
 // This function confirms the "leave site" prompts so browser can be closed.
 func CloseChrome(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := apps.Close(ctx, tconn, apps.Chrome.ID); err != nil {
+	chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "could not find the Chrome app")
+	}
+
+	if err := apps.Close(ctx, tconn, chromeApp.ID); err != nil {
 		return errors.Wrap(err, "failed to close Chrome")
 	}
 
