@@ -31,13 +31,13 @@ func init() {
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
-			Timeout: 15 * time.Minute,
+			Timeout: 25 * time.Minute,
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "loggedInToCUJUserLacros",
-			Timeout:           20 * time.Minute,
+			Timeout:           35 * time.Minute,
 		}},
 	})
 }
@@ -139,7 +139,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, time.Minute); err != nil {
+	}, 5*time.Minute); err != nil {
 		s.Fatal("Failed to conduct the performance measurement: ", err)
 	}
 
