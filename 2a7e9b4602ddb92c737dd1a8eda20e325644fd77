@@ -16,6 +16,92 @@
       "message": "PTAL. Thanks!",
       "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e63775a_7b75a83d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-07T06:53:02Z",
+      "side": 1,
+      "message": "LGTM % a few comments. Thanks!",
+      "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c57959a_28c005f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-07T06:53:02Z",
+      "side": 1,
+      "message": "please handle a returned error.",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 44
+      },
+      "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af07ce0_e30bebfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-07T06:53:02Z",
+      "side": 1,
+      "message": "IIUC, calling Fatal during a deferred function prevents other cleanup functions being called. I think they should be Error",
+      "range": {
+        "startLine": 695,
+        "startChar": 5,
+        "endLine": 695,
+        "endChar": 10
+      },
+      "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b452d10c_d8966d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-07T06:53:02Z",
+      "side": 1,
+      "message": "nit: maybe not needed for this test?",
+      "range": {
+        "startLine": 729,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 2
+      },
+      "revId": "2a7e9b4602ddb92c737dd1a8eda20e325644fd77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
