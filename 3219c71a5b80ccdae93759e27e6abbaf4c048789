@@ -16,6 +16,24 @@
       "message": "Please manually run it once to make sure the log file is created.\n\nAlso, I have a few questions. I am not asking for any code change. \n\n1. Is it the Tast log for a different log file? I think it is separate log file. Just want to be sure.\n2. How big is the log file?\n\nThanks.\n",
       "revId": "3219c71a5b80ccdae93759e27e6abbaf4c048789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81cb174_2708f125",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-04-07T15:10:17Z",
+      "side": 1,
+      "message": "The log file is created. Here is one example (named \"api_tests.txt\"): \nhttps://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2022-04-07/8ce5e27a-c3ff-4814-b25d-407e12123428/\n\nThis file corresponds to the output of the test. It is not the Tast log file.\nThis file is supposed to be around 4K today. With `CLVK_LOG\u003d2`, it will be the same when the test passes (it is only adding 1 or 2 lines). But when the test fails, it will add precious information. But as I did not move `CLVK_LOG\u003d4` it will not be very verbose. Depending on the issue, it will add 10-ish lines.",
+      "parentUuid": "55831d8e_7ee016ab",
+      "revId": "3219c71a5b80ccdae93759e27e6abbaf4c048789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
