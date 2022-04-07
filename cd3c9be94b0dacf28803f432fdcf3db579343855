@@ -80,6 +80,230 @@
       "message": "@ricardoq Could you review my code for the android app? The tast test I am working on is to verify the app location after installation. The app\u0027s name or icon will affect the location. It is why I create an app with the fixed name and icon for testing.",
       "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c23c07_f0b85f83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "+2 % nits\n\nplease, don\u0027t add Tast reviewers directly. Add \"tast-onwers@\" and a reviewers will be assigned... even for the Android code\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c4e55c_25c15f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "nit: what\u0027s the meaning of \"extDirBase\" ? is this just a temporal folder? if so, you can call it \"tmpDir\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 11
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d8f2f6_ee69a0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "nit: what do you mean by \"fake apps for verifying\" ?  perhaps removing \"for verifying\" ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c455355a_2d887ba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "nit: ... could be confusing the final \"app list sort and ARC\"... I rephrase it as: \"Turn on both the App List Sort and ARC options\"",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 144,
+        "endChar": 36
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9510a597_a718be43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "add a comment explaining why you choose \"m\" or \"black\" depending on the AlphabetialSort",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c8e30a_7c368f2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "huge nit, here and below: capitalize names... e.g: android -\u003e Android",
+      "range": {
+        "startLine": 238,
+        "startChar": 58,
+        "endLine": 238,
+        "endChar": 65
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a5c9bc_61cecbbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "huge nit, here and below: remove \u003d\n\nOriginally I thought it was a typo, but since it in 3 parts of the code, was it added on purpose? why?",
+      "range": {
+        "startLine": 243,
+        "startChar": 86,
+        "endLine": 243,
+        "endChar": 87
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d259b32d_33c0f67d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "nit: const apk \u003d ....",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 4
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab6b29d_e6c5e0a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 265,
+        "startChar": 111,
+        "endLine": 265,
+        "endChar": 112
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b45bfe9_6dcf397b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-07T22:58:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 286,
+        "startChar": 112,
+        "endLine": 286,
+        "endChar": 113
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
