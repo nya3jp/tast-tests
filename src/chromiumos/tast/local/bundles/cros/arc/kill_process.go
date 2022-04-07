@@ -42,16 +42,19 @@ func KillProcess(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	const packageName = "com.android.settings"
-	act, err := arc.NewActivity(a, packageName, ".Settings")
+	const (
+		packageName  = "com.google.android.deskclock"
+		activityName = "com.android.deskclock.DeskClock"
+	)
+	act, err := arc.NewActivity(a, packageName, activityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
 	defer act.Close()
 
-	s.Log("Starting Settings activity")
+	s.Log("Starting DeskClock activity")
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		s.Fatal("Failed start Settings activity: ", err)
+		s.Fatal("Failed start DeskClock activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
 
@@ -67,12 +70,12 @@ func KillProcess(ctx context.Context, s *testing.State) {
 		s.Fatalf("Process %s does not exist after activity was created", packageName)
 	}
 
-	s.Log("Closing Settings activity")
+	s.Log("Closing DeskClock activity")
 	if err := window.CloseWindow(ctx, tconn); err != nil {
 		s.Fatal("Failed to close window: ", err)
 	}
 
-	s.Log("Verifying Settings process has been killed")
+	s.Log("Verifying DeskClock process has been killed")
 	// After closing the activity, the process should have been killed.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		exist, err := processExist(ctx, a, packageName)
@@ -84,7 +87,7 @@ func KillProcess(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Settings process is still alive: ", err)
+		s.Fatal("DeskClock process is still alive: ", err)
 	}
 }
 
