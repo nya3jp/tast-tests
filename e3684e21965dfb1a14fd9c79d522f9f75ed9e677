@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37203271_4b7d11a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-07T14:50:22Z",
+      "side": 1,
+      "message": "Hi. I\u0027ve just uploaded the latest patchset.\n\n@hyung: I\u0027ve mentioned before about my intention to use a single command line that would run all variations on this test. So that idea is implemented now using `VarDeps`, where I\u0027m enforcing the test to always run with the `lacrosDeployedBinary` var, otherwise it fails. \n\nI\u0027m really curious how Chromium builders, specifically Crosbolt, will deal with this `VarDeps` idea. Probably some tweaks will be needed. I\u0027m looking at these now - is there anywhere else I should pay attention in terms of builders?\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/refs/heads/main/server/site_tests/tast/control.crosbolt-perbuild-shard-1\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/refs/heads/main/server/site_tests/tast/control.lacros\n\n@hidehiko: I\u0027m looking forward to analyzing the effects of the results developed here in Crosbolt next and follow-up with eventual changes if necessary. Tha said, I believe this CL is quite ready for your consideration now. Could you PTAL?\n\nThank you,",
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
