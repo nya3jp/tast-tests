@@ -64,7 +64,7 @@ func InlineReply(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 	permissionBubble := nodewith.Name("tests.peter.sh wants to").HasClass("PermissionPromptBubbleView").Role(role.Window)
-	if err := ui.IfSuccessThen(
+	if err := uiauto.IfSuccessThen(
 		ui.WaitUntilExists(permissionBubble),
 		ui.LeftClick(nodewith.Name("Allow").Ancestor(permissionBubble).Role(role.Button)),
 	)(ctx); err != nil {
