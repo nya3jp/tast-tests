@@ -35,8 +35,11 @@ func init() {
 const (
 	soundCardInitTimeout = time.Minute
 
-	// TODO(b/171217019): parse sound_card_init yaml to get ampCount.
-	ampCount = 2
+	// TODO(b/171217019): parse sound_card_init yaml or vpd to get the real ampCount.
+	// maxSupportedAmpCount specifies the maximum amps this test case can support.
+	// NumberOf(maxSupportedAmpCount) calibrationFiles will be created and cleaned up during
+	// the testing.
+	maxSupportedAmpCount = 4
 
 	// soundCardInitRunTimeFile is the file stores previous sound_card_init run time.
 	soundCardInitRunTimeFile = "/var/lib/sound_card_init/%s/run"
@@ -95,6 +98,18 @@ func createCalibrationFiles(ctx context.Context, d *rpcdut.RPCDUT, soundCardID s
 	return nil
 }
 
+// removeCalibrationFiles removes the calibration files on DUT.
+func removeCalibrationFiles(ctx context.Context, d *rpcdut.RPCDUT, soundCardID string, count uint) error {
+	fs := dutfs.NewClient(d.RPC().Conn)
+	for i := 0; i < int(count); i++ {
+		file := fmt.Sprintf(calibrationFiles, soundCardID, i)
+		if err := fs.Remove(ctx, file); err != nil && !os.IsNotExist(err) {
+			return errors.Wrapf(err, "failed to rm file: %s", file)
+		}
+	}
+	return nil
+}
+
 // verifySoundCardInitFinished polls for sound_card_init run time file being updated, which means sound_card_init completes running.
 func verifySoundCardInitFinished(ctx context.Context, d *rpcdut.RPCDUT, soundCardID string) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
@@ -143,7 +158,7 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove previous files: ", err)
 	}
 
-	if err := createCalibrationFiles(ctx, d, soundCardID, ampCount); err != nil {
+	if err := createCalibrationFiles(ctx, d, soundCardID, maxSupportedAmpCount); err != nil {
 		s.Fatal("Failed to create calibration files: ", err)
 	}
 
@@ -156,5 +171,10 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
 	if err := verifySoundCardInitFinished(ctx, d, soundCardID); err != nil {
 		s.Fatal("Failed to wait for sound_card_init completion: ", err)
+	}
+
+	// Clean up calibration files.
+	if err := removeCalibrationFiles(ctx, d, soundCardID, maxSupportedAmpCount); err != nil {
+		s.Fatal("Failed to clean up calibration files: ", err)
 	}
 }
