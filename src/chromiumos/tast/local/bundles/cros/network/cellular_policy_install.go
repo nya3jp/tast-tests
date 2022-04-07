@@ -28,8 +28,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CellularPolicyInstall,
-		Desc: "Test that managed eSIM profile can correctly be installed from device policy and the profile can not be removed or renamed",
+		Func:         CellularPolicyInstall,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Test that managed eSIM profile can correctly be installed from device policy and the profile can not be removed or renamed",
 		Contacts: []string{
 			"jiajunz@google.com",
 			"cros-connectivity@google.com@google.com",
@@ -77,8 +78,8 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		chrome.KeepEnrollment(),
 	}
 	if slot == 1 {
-		s.Log("Append CellularUseExternalEuicc feature flag")
-		chromeOpts = append(chromeOpts, chrome.EnableFeatures("CellularUseExternalEuicc"))
+		s.Log("Append CellularUseSecondEuicc feature flag")
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures("CellularUseSecondEuicc"))
 	}
 
 	cr, err := chrome.New(ctx, chromeOpts...)
