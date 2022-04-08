@@ -33,7 +33,7 @@ var (
 
 // YtWeb defines the struct related to youtube web.
 type YtWeb struct {
-	cr      *chrome.Chrome
+	cs      ash.ConnSource
 	tconn   *chrome.TestConn
 	kb      *input.KeyboardEventWriter
 	video   VideoSrc
@@ -46,10 +46,10 @@ type YtWeb struct {
 }
 
 // NewYtWeb creates an instance of YtWeb.
-func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video VideoSrc,
+func NewYtWeb(cs ash.ConnSource, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video VideoSrc,
 	extendedDisplay bool, ui *uiauto.Context, uiHdl cuj.UIActionHandler) *YtWeb {
 	return &YtWeb{
-		cr:    cr,
+		cs:    cs,
 		tconn: tconn,
 		kb:    kb,
 		video: video,
@@ -64,7 +64,7 @@ func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEvent
 func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	testing.ContextLog(ctx, "Open Youtube web")
 
-	y.ytConn, err = y.cr.NewConn(ctx, y.video.URL)
+	y.ytConn, err = y.cs.NewConn(ctx, y.video.URL)
 	if err != nil {
 		return errors.Wrap(err, "failed to open youtube")
 	}
