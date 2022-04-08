@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -397,7 +398,7 @@ func closeAllTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 // Run2 runs the TabSwitchCUJ test. It is invoked by TabSwitchCujRecorder2 to
 // record web contents via WPR and invoked by TabSwitchCUJ2 to execute the tests
 // from the recorded contents. Additional actions will be executed in each tab.
-func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Level, isTablet bool) {
+func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Level, isTablet bool, lFixtVal lacrosfixt.FixtValue) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API, error: ", err)
@@ -425,7 +426,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 
 	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to set initial settings")
+		s.Fatal("Failed to set initial settings: ", err)
 	}
 	defer cleanupSetting(cleanupSettingsCtx)
 
@@ -466,14 +467,20 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}()
 
 	pv := perf.NewValues()
-
 	timeTabsOpenStart := time.Now()
 	// Launch browser and track the elapsed time.
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, nil, true, isTablet)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, lFixtVal, true, isTablet)
 	if err != nil {
 		s.Fatal("Failed to launch Chrome: ", err)
 	}
 	s.Log("Browser start ms: ", browserStartTime)
+	br := cr.Browser()
+	if lFixtVal != nil {
+		br = l.Browser()
+		if err := recorder.EnableLacros(ctx, l); err != nil {
+			s.Fatal("Failed to enable lacros for recorder: ", err)
+		}
+	}
 
 	pv.Set(perf.Metric{
 		Name:      "Browser.StartTime",
@@ -482,7 +489,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}, float64(browserStartTime.Milliseconds()))
 
 	// Open all windows and tabs.
-	if err := openAllWindowsAndTabs(ctx, cr.Browser(), &windows, tsAction, caseLevel); err != nil {
+	if err := openAllWindowsAndTabs(ctx, br, &windows, tsAction, caseLevel); err != nil {
 		s.Fatal("Failed to open targets for tab switch: ", err)
 	}
 
@@ -554,9 +561,9 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 	scrollActions := tsAction.ScrollChromePage(ctx)
 	plTimeout := pageLoadingTimeout(caseLevel)
 
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to check installed chrome browser")
+		return errors.Wrap(err, "failed to find the Chrome app")
 	}
 
 	for idx, window := range windows {
