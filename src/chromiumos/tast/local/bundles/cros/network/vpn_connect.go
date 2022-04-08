@@ -293,7 +293,10 @@ func VPNConnect(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	connected, err := conn.Start(ctx)
+	if err := conn.SetUp(ctx); err != nil {
+		s.Fatal("Failed to setup VPN server: ", err)
+	}
+	connected, err := conn.Connect(ctx)
 	shouldFail := s.Param().(vpnTestParams).shouldFail
 	if err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
