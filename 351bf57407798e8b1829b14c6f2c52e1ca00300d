@@ -16,6 +16,24 @@
       "message": "Thank you! Now it\u0027s easy to review the CL :)",
       "revId": "351bf57407798e8b1829b14c6f2c52e1ca00300d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c8ce6a3_d1a26bf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-04-08T14:14:27Z",
+      "side": 1,
+      "message": "Thank you for the suggestion!",
+      "parentUuid": "429d8a51_83d021b1",
+      "revId": "351bf57407798e8b1829b14c6f2c52e1ca00300d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
