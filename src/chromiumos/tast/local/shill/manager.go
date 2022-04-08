@@ -47,6 +47,10 @@ const (
 	TechnologyWifi     Technology = shillconst.TypeWifi
 )
 
+// ErrProfileNotFound is the error returned by ProfileByName when the requested
+// profile does not exist in Shill.
+var ErrProfileNotFound = errors.New("profile not found")
+
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
 	ph, err := NewPropertyHolder(ctx, dbusService, dbusManagerInterface, dbusManagerPath)
@@ -216,6 +220,33 @@ func (m *Manager) RemoveProfile(ctx context.Context, name string) error {
 // PopProfile pops the profile with the given name if it is on top of the stack.
 func (m *Manager) PopProfile(ctx context.Context, name string) error {
 	return m.Call(ctx, "PopProfile", name).Err
+}
+
+// ProfileByName returns a profile matching |name| or an ErrProfileNotFound if
+// the profile does not exist.
+func (m *Manager) ProfileByName(ctx context.Context, name string) (*Profile,
+	error) {
+	profiles, err := m.Profiles(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, p := range profiles {
+		properties, err := p.GetProperties(ctx)
+		if err != nil {
+			return nil, err
+		}
+
+		n, err := properties.GetString(shillconst.ProfilePropertyName)
+		if err != nil {
+			return nil, err
+		}
+
+		if n == name {
+			return p, nil
+		}
+	}
+	return nil, ErrProfileNotFound
 }
 
 // PopAllUserProfiles removes all user profiles from the stack of managed profiles leaving only default profiles.
@@ -446,4 +477,12 @@ func (m *Manager) ClaimInterface(ctx context.Context, claimer, intf string) erro
 // to give it back to Shill.
 func (m *Manager) ReleaseInterface(ctx context.Context, claimer, intf string) error {
 	return m.Call(ctx, "ReleaseInterface", claimer, intf).Err
+}
+
+// AddPasspointCredentials adds a set of Passpoint credentials to "profile"
+// using the method AddPasspointCredentials() from Shill Manager. "props" is a
+// map of properties that describes the set of credentials, the keys are defined
+// in tast/common/shillconst.
+func (m *Manager) AddPasspointCredentials(ctx context.Context, profile dbus.ObjectPath, props map[string]interface{}) error {
+	return m.Call(ctx, "AddPasspointCredentials", profile, props).Err
 }
