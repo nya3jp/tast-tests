@@ -46,6 +46,30 @@
       },
       "revId": "8ee7a5b443f7f13cb3695b0418f90097ec8a27ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d937a1e1_03bb981c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-08T01:47:32Z",
+      "side": 1,
+      "message": "My understanding is that \"eveluation of the expression\" is polled until the promise is resolved (not rejected), which means the element was found. So I think it aligns with our purpose here.\n\nWhen there was no matching node found, both Info() and WaitUntilExists() returns an error like:\n\u003e context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {...\nwhich tells the reason of failure while attempting ui.Info().\n\nWDYT?",
+      "parentUuid": "1e41aad6_90d6e8e0",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "8ee7a5b443f7f13cb3695b0418f90097ec8a27ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
