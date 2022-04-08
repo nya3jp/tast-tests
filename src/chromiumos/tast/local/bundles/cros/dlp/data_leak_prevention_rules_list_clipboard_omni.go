@@ -32,7 +32,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction with omni box",
 		Contacts: []string{
-			"vishal38785@gmail.com", // Test author
+			"ayaelattar@google.com",
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
