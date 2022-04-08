@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction in the shelf textfield",
 		Contacts: []string{
-			"vishal38785@gmail.com", // Test author
+			"ayaelattar@google.com",
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
