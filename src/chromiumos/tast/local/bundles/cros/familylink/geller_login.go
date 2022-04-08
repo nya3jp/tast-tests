@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
@@ -23,6 +24,9 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
 		Fixture:      "familyLinkGellerLogin",
+		VarDeps: []string{
+			"geller.childUser",
+		},
 	})
 }
 
@@ -35,5 +39,9 @@ func GellerLogin(ctx context.Context, s *testing.State) {
 	}
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
+	}
+	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param.
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("geller.childUser")); err != nil {
+		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
