@@ -52,6 +52,24 @@
       "parentUuid": "5b154c40_e6d8b2b5",
       "revId": "6b4a1a209159aa516af1ed47af664559d34fe105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618985ea_df846dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2584,
+      "author": {
+        "id": 1468762
+      },
+      "writtenOn": "2022-04-08T15:17:54Z",
+      "side": 1,
+      "message": "Ack.\n\nI will upload v2.",
+      "parentUuid": "18a6dae5_eecbf4eb",
+      "revId": "6b4a1a209159aa516af1ed47af664559d34fe105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
