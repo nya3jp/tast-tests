@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea8c0a1_cc8bc529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-08T16:38:24Z",
+      "side": 1,
+      "message": "Missing the Timeout attribute?",
+      "revId": "0a8fc42fd6ab94be10fb9009cdcc78d9e8494dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea027b19_fb3f3603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-08T16:38:24Z",
+      "side": 1,
+      "message": "You may want to define a cleanup context, like is done in [1], and use that for all defers. That can help ensure that they run more consistently in the case of an error.\n\n[1] https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/data_migration.go;l\u003d135",
+      "revId": "0a8fc42fd6ab94be10fb9009cdcc78d9e8494dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
