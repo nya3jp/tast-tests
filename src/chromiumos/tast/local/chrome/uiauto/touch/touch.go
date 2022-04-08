@@ -54,12 +54,12 @@ func NewTouchscreenAndConverter(ctx context.Context, tconn *chrome.TestConn) (*i
 	}
 
 	// Creates the TouchCoordConverter for the touch screen.  Here assumes that
-	// the touch screen is the internal display.  This does not work if the
-	// device does not have the internal touch display but has an external touch
+	// the touch screen is the primary display.  This does not work if the
+	// device does not have the primary touch display but has an non-primary touch
 	// display.
-	info, err := display.GetInternalInfo(ctx, tconn)
+	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to get the internal display info")
+		return nil, nil, errors.Wrap(err, "failed to get the primary display info")
 	}
 	success = true
 	return tsw, tsw.NewTouchCoordConverter(info.Bounds.Size()), nil
