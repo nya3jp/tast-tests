@@ -22,6 +22,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/webutil"
@@ -55,7 +57,7 @@ const retryTimes = 3
 // Run runs the QuickCheckCUJ2 test. The lock is the function that suspends or locks
 // the DUT. The lockInRecorder flag indicates if the lock function should be executed
 // inside metrics recorder.
-func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool) *perf.Values {
+func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool, lFixtVal lacrosfixt.FixtValue) *perf.Values {
 	password := cr.Creds().Pass // Required to unlock screen.
 
 	// Ensure display on to record ui performance correctly.
@@ -213,15 +215,23 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			}
 			testing.ContextLog(ctx, "WiFi AP has been reconnected")
 		}
-
+		var l *lacros.Lacros
 		// Launch browser and track the elapsed time.
 		if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
-			_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, nil, true, tabletMode)
+			l, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, lFixtVal, true, tabletMode)
 			return err
 		})(ctx); err != nil {
 			return errors.Wrapf(err, "failed to launch Chrome with retryTimes %d", retryTimes)
 		}
 		testing.ContextLogf(ctx, "Browser start time %d ms", browserStartTime.Milliseconds())
+
+		br := cr.Browser()
+		if lFixtVal != nil {
+			br = l.Browser()
+			if err := recorder.EnableLacros(ctx, l); err != nil {
+				return errors.Wrap(err, "failed to enable lacros for recorder")
+			}
+		}
 
 		// Expecting 3 windows, first 2 windows with one tab and last window with 2 tabs.
 		tabsInfo := [][]*tabInfo{{
@@ -244,7 +254,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 					}
 				}()
 
-				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr.Browser(), tab.url, tabIdx == 0); err != nil {
+				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, br, tab.url, tabIdx == 0); err != nil {
 					return errors.Wrapf(err, "failed to open URL: %s", tab.url)
 				}
 			}
@@ -266,9 +276,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			}
 		}
 
-		chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+		chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to check installed chrome browser")
+			return errors.Wrap(err, "failed to find the Chrome app")
 		}
 
 		scrollActions := uiActionHandler.ScrollChromePage(ctx)
