@@ -102,7 +102,7 @@ const (
 	// WikipediaURL specifies the URL for Wikipedia's home page.
 	WikipediaURL = "https://www.wikipedia.org/"
 	// YoutubeMusicURL specifies the URL for a YouTube Music channel.
-	YoutubeMusicURL = "https://music.youtube.com/channel/UCPC0L1d253x-KuMNwa05TpA"
+	YoutubeMusicURL = "https://music.youtube.com/playlist?list=RDCLAK5uy_nZiG9ehz_MQoWQxY5yElsLHCcG0tv9PRg"
 
 	// URLs used by VideoCUJ2.
 

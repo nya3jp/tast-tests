@@ -26,12 +26,13 @@ type multiTaskingParam struct {
 	tier     cuj.Tier
 	appName  string
 	enableBT bool // enable the bluetooth or not
+	isLacros bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EverydayMultiTaskingCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of everyday multi-tasking CUJ",
 		Contacts:     []string{"xliu@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
@@ -41,11 +42,11 @@ func init() {
 			"ui.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
 			"ui.bt_devicename", // Required for Bluetooth subtests.
 		},
-		Fixture: "loggedInAndKeepState",
-		Data:    []string{"cca_ui.js"},
+		Data: []string{"cca_ui.js"},
 		Params: []testing.Param{
 			{
 				Name:    "basic_ytmusic",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 20 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
@@ -53,7 +54,19 @@ func init() {
 					enableBT: false,
 				},
 			}, {
+				Name:              "basic_lacros_ytmusic",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           20 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: false,
+					isLacros: true,
+				},
+			}, {
 				Name:              "basic_ytmusic_crosbolt",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           20 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
@@ -64,6 +77,7 @@ func init() {
 				},
 			}, {
 				Name:    "basic_ytmusic_bluetooth",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 20 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
@@ -71,7 +85,19 @@ func init() {
 					enableBT: true,
 				},
 			}, {
+				Name:              "basic_lacros_ytmusic_bluetooth",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           20 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: true,
+					isLacros: true,
+				},
+			}, {
 				Name:    "basic_spotify_bluetooth",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 20 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
@@ -79,7 +105,19 @@ func init() {
 					enableBT: true,
 				},
 			}, {
+				Name:              "basic_lacros_spotify_bluetooth",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           20 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.SpotifyAppName,
+					enableBT: true,
+					isLacros: true,
+				},
+			}, {
 				Name:              "plus_helloworld",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           15 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -90,6 +128,7 @@ func init() {
 				},
 			}, {
 				Name:              "plus_helloworld_vm",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           15 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraSoftwareDeps: []string{"android_vm"},
@@ -100,15 +139,27 @@ func init() {
 				},
 			}, {
 				Name:    "plus_ytmusic",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusicAppName,
 					enableBT: false,
 				},
-			},
-			{
+			}, {
+				Name:              "plus_lacros_ytmusic",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           30 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: false,
+					isLacros: true,
+				},
+			}, {
 				Name:              "plus_ytmusic_crosbolt",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           30 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
@@ -119,6 +170,7 @@ func init() {
 				},
 			}, {
 				Name:    "plus_ytmusic_bluetooth",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
@@ -126,7 +178,19 @@ func init() {
 					enableBT: true,
 				},
 			}, {
+				Name:              "plus_lacros_ytmusic_bluetooth",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           30 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: true,
+					isLacros: true,
+				},
+			}, {
 				Name:    "plus_spotify_bluetooth",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
@@ -134,7 +198,19 @@ func init() {
 					enableBT: true,
 				},
 			}, {
+				Name:              "plus_lacros_spotify_bluetooth",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           30 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.SpotifyAppName,
+					enableBT: true,
+					isLacros: true,
+				},
+			}, {
 				Name:    "plus_spotify_quickcheck",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 15 * time.Minute,
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
@@ -255,7 +331,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
-	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode)
+	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode, param.isLacros)
 	if err := et.Run(ctx, cr, a, testRunParams); err != nil {
 		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}

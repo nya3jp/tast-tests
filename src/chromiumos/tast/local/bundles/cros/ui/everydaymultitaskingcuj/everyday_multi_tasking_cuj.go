@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -53,11 +54,13 @@ type RunParams struct {
 	appName        string
 	account        string // account is the one used by Spotify APP to do login.
 	tabletMode     bool
+	isLacros       bool
 }
 
 // NewRunParams constructs a RunParams struct and returns the pointer to it.
-func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) *RunParams {
-	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode}
+func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode, isLacros bool) *RunParams {
+	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName,
+		account: account, tabletMode: tabletMode, isLacros: isLacros}
 }
 
 type runResources struct {
@@ -139,19 +142,23 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	defer uiHandler.Close()
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, params.tabletMode, false)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, params.tabletMode, params.isLacros)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
-
-	// Set up the cuj.Recorder: this test will measure the combinations of
-	// animation smoothness for window-cycles (alt-tab selection), launcher,
-	// and overview.
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
-	if err != nil {
-		return errors.Wrap(err, "failed to create a recorder")
+	if l != nil {
+		defer l.Close(ctx)
 	}
-	defer recorder.Close(cleanupCtx)
+	br := cr.Browser()
+	tconns := []*chrome.TestConn{tconn}
+	if params.isLacros {
+		br = l.Browser()
+		bTconn, err := l.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros test API conn")
+		}
+		tconns = append(tconns, bTconn)
+	}
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
@@ -176,6 +183,19 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		faillog.DumpUITreeOnError(ctx, params.outDir, func() bool { return retErr != nil }, tconn)
 		cuj.CloseChrome(ctx, tconn)
 	}(faillogCtx)
+
+	// Set up the cuj.Recorder: this test will measure the combinations of
+	// animation smoothness for window-cycles (alt-tab selection), launcher,
+	// and overview.
+	// Shorten the context to cleanup recorder.
+	cleanUpRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a recorder")
+	}
+	defer recorder.Close(cleanUpRecorderCtx)
 
 	var appStartTime int64
 	switch params.appName {
@@ -213,11 +233,11 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 
 	resources := &runResources{kb: kb, topRow: topRow, ui: ui, vh: vh, uiHandler: uiHandler, recorder: recorder}
 
-	if err := openAndSwitchTabs(ctx, cr, tconn, params, resources); err != nil {
+	if err := openAndSwitchTabs(ctx, br, tconn, params, resources); err != nil {
 		return errors.Wrap(err, "failed to open and switch chrome tabs")
 	}
 
-	if err := switchWindows(ctx, cr, tconn, params, resources); err != nil {
+	if err := switchWindows(ctx, tconn, params, resources); err != nil {
 		return errors.Wrap(err, "failed to switch windows")
 	}
 
@@ -258,7 +278,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	return nil
 }
 
-func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
+func openAndSwitchTabs(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
 	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
 	// 1. The first window URL list including Gmail, Calendar, YouTube Music, Hulu and Google News.
 	// 2. The second window URL list including Google News, CCN news, Wiki.
@@ -280,7 +300,7 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 
 	openBrowserWithTabs := func(urlList []string) error {
 		for idx, url := range urlList {
-			conn, err := resources.uiHandler.NewChromeTab(ctx, cr.Browser(), url, idx == 0)
+			conn, err := resources.uiHandler.NewChromeTab(ctx, br, url, idx == 0)
 			if err != nil {
 				return errors.Wrapf(err, "failed to open %s", url)
 			}
@@ -386,7 +406,7 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 	return nil
 }
 
-func switchWindows(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
+func switchWindows(ctx context.Context, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
 	// subtest defines the detail of the window switch test procedure. It could be different for clamshell and tablet mode.
 	type subtest struct {
 		name string
