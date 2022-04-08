@@ -6,14 +6,19 @@ package shill
 
 import (
 	"context"
+	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -21,6 +26,7 @@ import (
 const (
 	dbusManagerPath      = "/" // crosbug.com/20135
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
+	fakeProfilesDir      = "/run/shill/user_profiles"
 )
 
 // Exported constants
@@ -46,6 +52,10 @@ const (
 	TechnologyVPN      Technology = shillconst.TypeVPN
 	TechnologyWifi     Technology = shillconst.TypeWifi
 )
+
+// ErrProfileNotFound is the error returned by ProfileByName when the requested
+// profile does not exist in Shill.
+var ErrProfileNotFound = errors.New("profile not found")
 
 // NewManager connects to shill's Manager.
 func NewManager(ctx context.Context) (*Manager, error) {
@@ -216,6 +226,33 @@ func (m *Manager) RemoveProfile(ctx context.Context, name string) error {
 // PopProfile pops the profile with the given name if it is on top of the stack.
 func (m *Manager) PopProfile(ctx context.Context, name string) error {
 	return m.Call(ctx, "PopProfile", name).Err
+}
+
+// ProfileByName returns a profile matching |name| or an ErrProfileNotFound if
+// the profile does not exist.
+func (m *Manager) ProfileByName(ctx context.Context, name string) (*Profile,
+	error) {
+	profiles, err := m.Profiles(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, p := range profiles {
+		properties, err := p.GetProperties(ctx)
+		if err != nil {
+			return nil, err
+		}
+
+		n, err := properties.GetString(shillconst.ProfilePropertyName)
+		if err != nil {
+			return nil, err
+		}
+
+		if n == name {
+			return p, nil
+		}
+	}
+	return nil, ErrProfileNotFound
 }
 
 // PopAllUserProfiles removes all user profiles from the stack of managed profiles leaving only default profiles.
@@ -446,4 +483,118 @@ func (m *Manager) ClaimInterface(ctx context.Context, claimer, intf string) erro
 // to give it back to Shill.
 func (m *Manager) ReleaseInterface(ctx context.Context, claimer, intf string) error {
 	return m.Call(ctx, "ReleaseInterface", claimer, intf).Err
+}
+
+// AddPasspointCredentials adds a set of Passpoint credentials to "profile"
+// using the method AddPasspointCredentials() from Shill Manager. "props" is a
+// map of properties that describes the set of credentials, the keys are defined
+// in tast/common/shillconst.
+func (m *Manager) AddPasspointCredentials(ctx context.Context, profile dbus.ObjectPath, props map[string]interface{}) error {
+	return m.Call(ctx, "AddPasspointCredentials", profile, props).Err
+}
+
+// SetInterworkingSelectEnabled sets the "interworking enabled" property to
+// |enabled| for the Wi-Fi device |iface|.
+func (m *Manager) SetInterworkingSelectEnabled(ctx context.Context, iface string, enabled bool) error {
+	dev, err := m.DeviceByName(ctx, iface)
+	if err != nil {
+		return errors.Wrapf(err, "failed to obtain device for interface %s", iface)
+	}
+	err = dev.PropertyHolder.SetProperty(ctx, shillconst.DevicePropertyPasspointInterworkingSelectEnabled, enabled)
+	if err != nil {
+		return errors.Wrapf(err, "failed to set interworking selection on %s", iface)
+	}
+	return nil
+}
+
+// CreateFakeUserProfile creates a fake user profile in Shill on top of the
+// default profile for test purpose.
+func (m *Manager) CreateFakeUserProfile(ctx context.Context, name string) (path dbus.ObjectPath, err error) {
+	// Shorten deadline to leave time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// To be a Shill user profile, the profile name must match the format "~user/identifier".
+	profileName := fmt.Sprintf("~%s/shill", name)
+	profilePath := filepath.Join(fakeProfilesDir, name)
+
+	// Pop all user profiles to be sure there's no Passpoint configuration leftovers.
+	// Note: Passpoint credentials can't be pushed to default profiles.
+	if err := m.PopAllUserProfiles(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to pop user profiles")
+	}
+
+	// Remove the test profile if it still exists.
+	p, err := m.ProfileByName(ctx, profileName)
+	if !errors.Is(err, ErrProfileNotFound) {
+		return "", err
+	} else if p != nil {
+		if err := m.RemoveProfile(ctx, profileName); err != nil {
+			return "", errors.Wrapf(err, "failed to remove profile %s", profileName)
+		}
+	}
+
+	// Obtain Shill UID et GID
+	uid, err := sysutil.GetUID("shill")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to obtain Shill user id")
+	}
+	gid, err := sysutil.GetGID("shill")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to obtain Shill group id")
+	}
+
+	// Create a directory for the test user profile
+	if err := os.MkdirAll(profilePath, 0700); err != nil {
+		return "", errors.Wrap(err, "failed to create profile dir")
+	}
+	defer func(ctx context.Context) {
+		if err != nil {
+			if err := os.RemoveAll(profilePath); err != nil {
+				testing.ContextLogf(ctx, "Failed to remove %s: %v", profilePath, err)
+			}
+		}
+	}(cleanupCtx)
+	if err := os.Chown(fakeProfilesDir, int(uid), int(gid)); err != nil {
+		return "", errors.Wrap(err, "failed to chown")
+	}
+	if err := os.Chown(profilePath, int(uid), int(gid)); err != nil {
+		return "", errors.Wrap(err, "failed to chown")
+	}
+
+	// Create and push the profile
+	if _, err = m.CreateProfile(ctx, profileName); err != nil {
+		return "", errors.Wrap(err, "failed to create profile")
+	}
+	defer func(ctx context.Context) {
+		if err != nil {
+			if err := m.RemoveProfile(ctx, profileName); err != nil {
+				testing.ContextLogf(ctx, "Failed to remove profile %s: %v", profileName, err)
+			}
+		}
+	}(cleanupCtx)
+	path, err = m.PushProfile(ctx, profileName)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to push profile")
+	}
+
+	return path, nil
+}
+
+// RemoveFakeUserProfile removes the fake Shill user profile created for test purpose.
+func (m *Manager) RemoveFakeUserProfile(ctx context.Context, name string) error {
+	profileName := fmt.Sprintf("~%s/shill", name)
+	profilePath := filepath.Join(fakeProfilesDir, name)
+
+	if err := m.PopProfile(ctx, profileName); err != nil {
+		return errors.Wrapf(err, "failed to pop profile %s", profileName)
+	}
+	if err := m.RemoveProfile(ctx, profileName); err != nil {
+		return errors.Wrapf(err, "failed to remove profile %s", profileName)
+	}
+	if err := os.RemoveAll(profilePath); err != nil {
+		return errors.Wrapf(err, "failed to remove profile directory %s", profilePath)
+	}
+	return nil
 }
