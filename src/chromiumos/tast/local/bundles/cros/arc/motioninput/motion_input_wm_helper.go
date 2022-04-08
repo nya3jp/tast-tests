@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -70,6 +71,10 @@ type WMTestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 func RunTestWithWMParams(ctx context.Context, s *testing.State, tconn *chrome.TestConn, d *ui.Device, a *arc.ARC, params *WMTestParams, testFunc WMTestFunc) {
 	t := &WMTestState{}
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
+
 	deviceMode := "clamshell"
 	if params.TabletMode {
 		deviceMode = "tablet"
@@ -81,7 +86,7 @@ func RunTestWithWMParams(ctx context.Context, s *testing.State, tconn *chrome.Te
 	} else {
 		t.VerifiedTabletMode = params.TabletMode
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
@@ -115,7 +120,7 @@ func RunTestWithWMParams(ctx context.Context, s *testing.State, tconn *chrome.Te
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start an activity: ", err)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	if err := ash.WaitForVisible(ctx, tconn, Package); err != nil {
 		s.Fatal("Failed to wait for activity to be visible: ", err)
