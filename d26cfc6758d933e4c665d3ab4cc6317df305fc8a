@@ -86,6 +86,24 @@
       "parentUuid": "1a8fda9d_52320938",
       "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b0867b_82aa70d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2022-04-08T21:34:15Z",
+      "side": 1,
+      "message": "I appreciate the desire to merge things, but my concern is it\u0027s important to have tests that clearly cover the UserSecretStash path. Can you abstract out the common code into a utility and then have two separte tests? One for UserSecretStash and one for UserSecretStashWithVaultKeyset?",
+      "parentUuid": "e24f733d_6e0533fe",
+      "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
