@@ -52,6 +52,24 @@
       "parentUuid": "9ae986ea_f084e699",
       "revId": "7647f85146f3f5e2416be20b093763f127214748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9f1c63_b1c9f72c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-04-08T11:24:36Z",
+      "side": 1,
+      "message": "Without --disable-login-lacros-opening, Lacros starts automatically but it doesn\u0027t automatically restore the pages (only asks the user if they want to restore them). Is this WAI? I assume so.\n\nIf yes, then are you okay with me just adding a comment referencing bug chromium:1312414? I will also update that bug to make it clearer what the problem with keep-alive is.",
+      "parentUuid": "4ceb3f4c_60333a51",
+      "revId": "7647f85146f3f5e2416be20b093763f127214748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
