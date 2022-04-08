@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
@@ -36,10 +37,15 @@ func UnicornLogin(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
+	// Put test code here.
 	if cr == nil {
 		s.Fatal("Failed to start Chrome")
 	}
 	if tconn == nil {
 		s.Fatal("Failed to create test API connection")
+	}
+	// TODO(https://crbug.com/1313067) set browser type to be Ash or LaCrOS based on param
+	if err := familylink.VerifyUserSignedIntoBrowserAsChild(ctx, cr, tconn, browser.TypeAsh, s.RequiredVar("unicorn.childUser")); err != nil {
+		s.Fatal("Failed to verify user signed into browser: ", err)
 	}
 }
