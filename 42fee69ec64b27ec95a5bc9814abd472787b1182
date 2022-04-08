@@ -50,6 +50,24 @@
       "message": "Can you add a quick comment here about why we added this extra test, and what would have to happen for it to be removed?",
       "revId": "42fee69ec64b27ec95a5bc9814abd472787b1182",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751396f7_02b30810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-08T17:47:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3232cf73_da157132",
+      "revId": "42fee69ec64b27ec95a5bc9814abd472787b1182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
