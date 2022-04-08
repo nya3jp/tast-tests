@@ -60,5 +60,5 @@ func TabSwitchCUJRecorder2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to Chrome")
 	}
 	// is the dut tablet or not shouldn't affect to recording web content
-	tabswitchcuj.Run2(ctx, s, cr, tabswitchcuj.Record, false)
+	tabswitchcuj.Run2(ctx, s, cr, tabswitchcuj.Record, false, nil)
 }
