@@ -70,6 +70,24 @@
       "parentUuid": "4ceb3f4c_60333a51",
       "revId": "7647f85146f3f5e2416be20b093763f127214748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3569ed26_84eb6596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-08T15:16:17Z",
+      "side": 1,
+      "message": "\u003e  Is this WAI?\n\nI think no. Maybe it is because the shutdown is not done in a way UI expects?\nCould you give it a try to click restart in menu (or something to triger the restarting)?",
+      "parentUuid": "de9f1c63_b1c9f72c",
+      "revId": "7647f85146f3f5e2416be20b093763f127214748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
