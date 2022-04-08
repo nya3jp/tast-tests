@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/veth"
 	"chromiumos/tast/local/bundles/cros/network/wiredhostapd"
+	"chromiumos/tast/local/hostapd"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -291,15 +292,17 @@ func startServer(ctx context.Context, tc *testContext) error {
 
 	// Hostapd performs as the authentication server.
 	tc.server = &wiredhostapd.Server{
-		Iface: tc.veth.PeerIface.Name,
-		EAP: &wiredhostapd.EAPConf{
-			OuterAuth: tc.param.outerAuth,
-			InnerAuth: tc.param.innerAuth,
-			Identity:  identity,
-			Password:  password,
-			Cert:      tc.certs,
-		},
-		OutDir: tc.outdir,
+		Server: *hostapd.NewServer(
+			tc.veth.PeerIface.Name,
+			tc.outdir,
+			wiredhostapd.EAPConf{
+				OuterAuth: tc.param.outerAuth,
+				InnerAuth: tc.param.innerAuth,
+				Identity:  identity,
+				Password:  password,
+				Cert:      tc.certs,
+			},
+		),
 	}
 	if err := tc.server.Start(ctx); err != nil {
 		return errors.Wrap(err, "failed to start hostapd")
@@ -308,7 +311,7 @@ func startServer(ctx context.Context, tc *testContext) error {
 }
 
 func stopServer(ctx context.Context, tc *testContext) error {
-	if err := tc.server.Stop(ctx); err != nil {
+	if err := tc.server.Stop(); err != nil {
 		return errors.Wrap(err, "failed to stop hostapd")
 	}
 	return nil
