@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faaea578_cd9eea2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-04-08T08:22:22Z",
+      "side": 1,
+      "message": "you can\u0027t Cq-Depend on chromium change. Unfortunately, we have to wait for chromium uprev.",
+      "revId": "cdbbc16396dbe4c69c79c591229b131101f78cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
