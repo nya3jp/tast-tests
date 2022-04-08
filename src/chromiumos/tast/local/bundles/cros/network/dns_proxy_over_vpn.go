@@ -139,7 +139,10 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 			s.Error("Failed to clean up connection: ", err)
 		}
 	}()
-	if _, err = conn.Start(ctx); err != nil {
+	if err := conn.SetUp(ctx); err != nil {
+		s.Fatal("Failed to setup VPN server: ", err)
+	}
+	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
 	}
 	if err := conn.Server.SetupInternetAccess(ctx); err != nil {

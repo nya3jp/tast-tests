@@ -115,10 +115,9 @@ func NewConnection(ctx context.Context, config Config) (*Connection, error) {
 	}, nil
 }
 
-// Start starts the VPN server, configures the VPN service (client) in shill,
-// and lets shill connect to the VPN server. Returns whether the connection is
-// established successfully.
-func (c *Connection) Start(ctx context.Context) (bool, error) {
+// SetUp starts the VPN server and configures the VPN service (client) in shill.
+// Callers still need to call Connect() on the connection before it's ready for use.
+func (c *Connection) SetUp(ctx context.Context) error {
 	// Makes sure that the physical Ethernet service is online before we start,
 	// since the physical service change event may affect the VPN connection. We
 	// use 60 seconds here for DHCP negotiation since some DUTs will end up
@@ -129,21 +128,26 @@ func (c *Connection) Start(ctx context.Context) (bool, error) {
 		shillconst.ServicePropertyState: shillconst.ServiceStateOnline,
 	}
 	if _, err := c.manager.WaitForServiceProperties(ctx, props, 60*time.Second); err != nil {
-		return false, errors.Wrap(err, "failed to wait for Ethernet online")
+		return errors.Wrap(err, "failed to wait for Ethernet online")
 	}
 
 	if err := c.prepareCertStore(ctx); err != nil {
-		return false, err
+		return err
 	}
 
 	if err := c.startServer(ctx); err != nil {
-		return false, err
+		return err
 	}
 
 	if err := c.configureService(ctx); err != nil {
-		return false, err
+		return err
 	}
+	return nil
+}
 
+// Connect lets shill connect to the VPN server. Returns whether the connection is
+// established successfully.
+func (c *Connection) Connect(ctx context.Context) (bool, error) {
 	if connected, err := c.connectService(ctx); err != nil || !connected {
 		return false, err
 	}
@@ -159,8 +163,15 @@ func (c *Connection) Start(ctx context.Context) (bool, error) {
 	return true, nil
 }
 
+// Disconnect will disconnect the shill service. This does not clean up the VPN server
+// and callers should still call Cleanup().
+func (c *Connection) Disconnect(ctx context.Context) error {
+	testing.ContextLog(ctx, "Disconnecting service: ", c.service)
+	return c.service.Disconnect(ctx)
+}
+
 // Cleanup removes the service from shill, and releases other resources used for
-// the connection.
+// the connection. Callers don't necessarily need to call Disconnect() before this.
 func (c *Connection) Cleanup(ctx context.Context) error {
 	var lastErr error
 
