@@ -122,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39825a83_1cb9fda9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c4e55c_25c15f81",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 11
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5d8f2f6_ee69a0ed",
@@ -135,6 +159,30 @@
       "writtenOn": "2022-04-07T22:58:25Z",
       "side": 1,
       "message": "nit: what do you mean by \"fake apps for verifying\" ?  perhaps removing \"for verifying\" ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1793d0_66684d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "The whole sentence should be \"Failed to create fake apps for verifying ${sort method}\". I think specifying the sort method in the log message is useful.",
+      "parentUuid": "f5d8f2f6_ee69a0ed",
       "range": {
         "startLine": 141,
         "startChar": 43,
@@ -168,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa88d59_a3710ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c455355a_2d887ba4",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 144,
+        "endChar": 36
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9510a597_a718be43",
@@ -191,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9446111_5ee0fa13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9510a597_a718be43",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48c8e30a_7c368f2c",
@@ -204,6 +300,30 @@
       "writtenOn": "2022-04-07T22:58:25Z",
       "side": 1,
       "message": "huge nit, here and below: capitalize names... e.g: android -\u003e Android",
+      "range": {
+        "startLine": 238,
+        "startChar": 58,
+        "endLine": 238,
+        "endChar": 65
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ce70e22_94b0f332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c8e30a_7c368f2c",
       "range": {
         "startLine": 238,
         "startChar": 58,
@@ -239,6 +359,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "222593a1_138c5b3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "I confused Golang\u0027s coding style with C++\u0027s. Thanks for pointing it out",
+      "parentUuid": "b5a5c9bc_61cecbbf",
+      "range": {
+        "startLine": 243,
+        "startChar": 86,
+        "endLine": 243,
+        "endChar": 87
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d259b32d_33c0f67d",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
         "patchSetId": 7
@@ -250,6 +394,30 @@
       "writtenOn": "2022-04-07T22:58:25Z",
       "side": 1,
       "message": "nit: const apk \u003d ....",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 4
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04e21dc_d35a63d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d259b32d_33c0f67d",
       "range": {
         "startLine": 248,
         "startChar": 1,
@@ -283,6 +451,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3dccc7c_7335ef8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cab6b29d_e6c5e0a4",
+      "range": {
+        "startLine": 265,
+        "startChar": 111,
+        "endLine": 265,
+        "endChar": 112
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b45bfe9_6dcf397b",
@@ -296,6 +488,30 @@
       "writtenOn": "2022-04-07T22:58:25Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 286,
+        "startChar": 112,
+        "endLine": 286,
+        "endChar": 113
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00405af_a9c98804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-04-08T20:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b45bfe9_6dcf397b",
       "range": {
         "startLine": 286,
         "startChar": 112,
