@@ -290,6 +290,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b462b80_e8eeb104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-08T07:50:38Z",
+      "side": 1,
+      "message": "Yes, it is removed intentionally as same thing is achieved with suggested perceptualdiff.",
+      "parentUuid": "c78d69cd_81c15cf1",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58bf2818_69daa503",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
         "patchSetId": 2

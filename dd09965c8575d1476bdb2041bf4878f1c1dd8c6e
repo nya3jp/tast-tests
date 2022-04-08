@@ -145,6 +145,30 @@
       },
       "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43abd599_f15f8758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-08T07:50:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757fd8d8_93287826",
+      "range": {
+        "startLine": 151,
+        "startChar": 41,
+        "endLine": 151,
+        "endChar": 50
+      },
+      "revId": "dd09965c8575d1476bdb2041bf4878f1c1dd8c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
