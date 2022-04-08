@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -38,6 +39,7 @@ const (
 // TestResources holds the cuj test resources passed in from main test case.
 type TestResources struct {
 	Cr        *chrome.Chrome
+	LFixtVal  lacrosfixt.FixtValue
 	Tconn     *chrome.TestConn
 	A         *arc.ARC
 	Kb        *input.KeyboardEventWriter
@@ -130,23 +132,12 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 
 	ui := uiauto.New(tconn)
 
-	// Give 5 seconds to cleanup recorder.
-	cleanupRecorderCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
-	if err != nil {
-		return errors.Wrap(err, "failed to create a recorder")
-	}
-	defer recorder.Close(cleanupRecorderCtx)
-
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
 	// own cleanup context from other cleanup functions. This is to avoid
 	// other cleanup functions executed earlier to use up the context time.
 	cleanupSettingsCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)
@@ -156,9 +147,25 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	defer cleanupSetting(cleanupSettingsCtx)
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, nil, true, tabletMode)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, resources.LFixtVal, true, tabletMode)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
+	}
+	// If lacros exists, close lacros finally.
+	if l != nil {
+		defer l.Close(ctx)
+	}
+
+	br := cr.Browser()
+	tconns := []*chrome.TestConn{tconn}
+	var bTconn *chrome.TestConn
+	if resources.LFixtVal != nil {
+		br = l.Browser()
+		bTconn, err = l.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create test API conn")
+		}
+		tconns = append(tconns, bTconn)
 	}
 
 	videoSources := basicVideoSrc
@@ -183,7 +190,20 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	}(cleanupDeviceCtx)
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
-		conn, err := uiHandler.NewChromeTab(ctx, cr.Browser(), cuj.GmailURL, true)
+		// If there's a lacros browser, bring it to active.
+		lacrosWin, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return w.WindowType == ash.WindowTypeLacros
+		})
+		if err != nil && err != ash.ErrWindowNotFound {
+			return nil, errors.Wrap(err, "failed to find lacros window")
+		}
+		if err == nil {
+			if err := lacrosWin.ActivateWindow(ctx, tconn); err != nil {
+				return nil, errors.Wrap(err, "failed to activate lacros window")
+			}
+		}
+
+		conn, err := uiHandler.NewChromeTab(ctx, br, cuj.GmailURL, true)
 		if err != nil {
 			return conn, errors.Wrap(err, "failed to open gmail web page")
 		}
@@ -203,13 +223,24 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 		return conn, nil
 	}
 
+	// Give 5 seconds to cleanup recorder.
+	cleanupRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a recorder")
+	}
+	defer recorder.Close(cleanupRecorderCtx)
+
 	for _, videoSource := range videoSources {
 		// Repeat the run for different video source.
 		if err = recorder.Run(ctx, func(ctx context.Context) (retErr error) {
 			var videoApp VideoApp
 			switch appName {
 			case YoutubeWeb:
-				videoApp = NewYtWeb(cr, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+				videoApp = NewYtWeb(br, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 			case YoutubeApp:
 				videoApp = NewYtApp(tconn, kb, a, d, videoSource)
 			}
@@ -228,7 +259,14 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 					a.DumpUIHierarchyOnError(ctx, filepath.Join(outDir, "arc"), func() bool { return retErr != nil })
 				}
 				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
-				videoApp.Close(ctx)
+				if appName == YoutubeWeb && resources.LFixtVal != nil {
+					// For lacros, leave a new tab to keep the browser alive for further testing.
+					if err := cuj.KeepNewTab(ctx, bTconn); err != nil {
+						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
+					}
+				} else {
+					videoApp.Close(ctx)
+				}
 			}(cleanupResourceCtx)
 
 			if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
@@ -251,8 +289,19 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 			if err != nil {
 				return errors.Wrap(err, "failed to open Gmail website")
 			}
-			defer gConn.Close()
-			defer gConn.CloseTarget(cleanupResourceCtx)
+			if appName == YoutubeApp && resources.LFixtVal != nil {
+				// For Youtube App, the current lacros with Gmail is the only lacros window.
+				// Leave a new tab to keep the browser alive for further testing.
+				defer func() {
+					gConn.Close()
+					if err := cuj.KeepNewTab(ctx, bTconn); err != nil {
+						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
+					}
+				}()
+			} else {
+				defer gConn.Close()
+				defer gConn.CloseTarget(cleanupResourceCtx)
+			}
 
 			ytApp, ok := videoApp.(*YtApp)
 			// Only do PiP testing for YT APP and when logged in as premium user.

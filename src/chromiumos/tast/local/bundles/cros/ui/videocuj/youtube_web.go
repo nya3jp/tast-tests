@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -33,7 +34,7 @@ var (
 
 // YtWeb defines the struct related to youtube web.
 type YtWeb struct {
-	cr      *chrome.Chrome
+	br      *browser.Browser
 	tconn   *chrome.TestConn
 	kb      *input.KeyboardEventWriter
 	video   VideoSrc
@@ -46,10 +47,10 @@ type YtWeb struct {
 }
 
 // NewYtWeb creates an instance of YtWeb.
-func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video VideoSrc,
+func NewYtWeb(br *browser.Browser, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video VideoSrc,
 	extendedDisplay bool, ui *uiauto.Context, uiHdl cuj.UIActionHandler) *YtWeb {
 	return &YtWeb{
-		cr:    cr,
+		br:    br,
 		tconn: tconn,
 		kb:    kb,
 		video: video,
@@ -64,9 +65,9 @@ func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEvent
 func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	testing.ContextLog(ctx, "Open Youtube web")
 
-	y.ytConn, err = y.cr.NewConn(ctx, y.video.URL)
+	y.ytConn, err = y.uiHdl.NewChromeTab(ctx, y.br, y.video.URL, true)
 	if err != nil {
-		return errors.Wrap(err, "failed to open youtube")
+		return errors.Wrap(err, "failed to open youtube tab")
 	}
 
 	if err := webutil.WaitForYoutubeVideo(ctx, y.ytConn, 0); err != nil {

@@ -109,7 +109,7 @@ func YoutubeMultiTab(ctx context.Context, s *testing.State) {
 	extendedDisplay := false
 	var videoApps []*videocuj.YtWeb
 	for tabIdx := 0; tabIdx < 10; tabIdx++ {
-		videoApp := videocuj.NewYtWeb(cr, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+		videoApp := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 		defer videoApp.Close(cleanupCtx)
 
 		if err := videoApp.OpenAndPlayVideo(ctx); err != nil {

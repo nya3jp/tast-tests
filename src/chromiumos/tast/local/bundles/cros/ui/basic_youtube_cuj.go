@@ -107,7 +107,7 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 	defer recorder.Close(cleanupCtx)
 
 	extendedDisplay := false
-	videoApp := videocuj.NewYtWeb(cr, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+	videoApp := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 
 	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)
