@@ -67,7 +67,7 @@ func init() {
 			"phshah@chromium.org",
 			"arc-app-dev@google.com",
 		},
-		Attr:         []string{"group:nearby-share"},
+		Attr:         []string{"group:nearby-share-arc"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{apkName},
 		Params: []testing.Param{
