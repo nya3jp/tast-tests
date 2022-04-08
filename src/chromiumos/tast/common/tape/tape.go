@@ -43,6 +43,16 @@ type Account struct {
 	Timeout  int64  `json:"timeout"`
 }
 
+// GenericAccount stores information about a generic account in TAPE.
+type GenericAccount struct {
+	ID          int64   `json:"id"`
+	Username    string  `json:"username"`
+	Password    string  `json:"password"`
+	PoolID      string  `json:"pool_id"`
+	ReleaseTime float64 `json:"release_time"`
+	RequestID   string  `json:"request_id"`
+}
+
 // TokenString creates a json string from an oauth.Token generated for a serviceAccount
 // which can be used for http connections to the TAPE GCP.
 func TokenString(ctx context.Context, serviceAccountFile string) (string, error) {
@@ -98,20 +108,21 @@ func (ts tapeTokensource) Token() (*oauth2.Token, error) {
 // NewTapeClient creates a http client which provides the necessary token to connect to the TAPE
 // GCP from a token string. All functions in the tape package should be passed this http client.
 func NewTapeClient(ctx context.Context) (*http.Client, error) {
-	ts := tapeTokensource{AccessToken: nil}
-	token, err := ts.Token()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get access token")
-	}
-	return oauth2.NewClient(ctx, oauth2.ReuseTokenSource(token, ts)), nil
+	// TODO (b/222311973): This would need to use the access token that is generated from the service account.
+	return &http.Client{
+		Timeout: time.Second * 40,
+	}, nil
+
+	//ts := tapeTokensource{AccessToken: nil}
+	//token, err := ts.Token()
+	//if err != nil {
+	//	return nil, errors.Wrap(err, "failed to get access token")
+	//}
+	//return oauth2.NewClient(ctx, oauth2.ReuseTokenSource(token, ts)), nil
 }
 
 // sendRequestWithTimeout makes a call to the specified REST endpoint of TAPE with the given http method and payload.
 func sendRequestWithTimeout(ctx context.Context, method, endpoint string, timeout time.Duration, payload *bytes.Reader, client *http.Client) (*http.Response, error) {
-	// Shorten the context as the call should not take longer than timeout.
-	ctx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
-
 	// Create a request.
 	req, err := http.NewRequestWithContext(ctx, method, tapeURL+endpoint, payload)
 	if err != nil {
@@ -245,5 +256,80 @@ func (acc *Account) SetPolicy(ctx context.Context, policySchema PolicySchema, cl
 		return errors.Wrap(err, "failed to make REST call")
 	}
 	defer response.Body.Close()
+	return nil
+}
+
+// RequestGenericAccountParams holds the parameters for the GenericAccount request call.
+type RequestGenericAccountParams struct {
+	TimeoutInSeconds int32   `json:"timeout"`
+	PoolID           *string `json:"pool_id"`
+}
+
+const (
+	// MaxGenericAccountLease holds the maximum time a generic account can be leased (2 hours).
+	MaxGenericAccountLease = time.Second * 7200
+)
+
+// RequestGenericAccount sends a request for a generic account.
+func RequestGenericAccount(ctx context.Context, params RequestGenericAccountParams, client *http.Client) (*GenericAccount, error) {
+	// Validate the provided parameters.
+	if int64(params.TimeoutInSeconds) > int64(MaxGenericAccountLease) {
+		return nil, errors.Errorf("Timeout may not be larger than %v seconds", 7200)
+	}
+
+	if params.PoolID != nil && len(*params.PoolID) <= 0 {
+		return nil, errors.New("PoolID must not be empty when set")
+	}
+
+	// Make the request
+	payloadBytes, err := json.Marshal(params)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal data")
+	}
+	payload := bytes.NewReader(payloadBytes)
+	response, err := sendRequestWithTimeout(ctx, "POST", "GenericAccount/request", 30*time.Second, payload, client)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to make REST call")
+	}
+	defer response.Body.Close()
+
+	// Read the response.
+	respBody, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read response from TAPE")
+	}
+	var acc GenericAccount
+	if err := json.Unmarshal([]byte(respBody), &acc); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal response from TAPE")
+	}
+	return &acc, nil
+}
+
+func ReleaseGenericAccount(ctx context.Context, account *GenericAccount, client *http.Client) error {
+	if account == nil {
+		return errors.New("account is not set")
+	}
+
+	if client == nil {
+		return errors.New("client is not set")
+	}
+
+	// Make the request
+	payloadBytes, err := json.Marshal(account)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal data")
+	}
+	payload := bytes.NewReader(payloadBytes)
+	response, err := sendRequestWithTimeout(ctx, "POST", "GenericAccount/release", 30*time.Second, payload, client)
+	if err != nil {
+		return errors.Wrap(err, "failed to make REST call")
+	}
+	defer response.Body.Close()
+
+	// Make sure the request was successful.
+	if response.StatusCode != 200 {
+		return errors.Errorf("failed to release account, status code: %d", response.StatusCode)
+	}
+
 	return nil
 }

@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
+	"chromiumos/tast/local/bundles/cros/arcappgameperf/fixtures"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
@@ -29,27 +29,26 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Logs in to Roblox, loads a mini-game, and records performance metrics",
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
-		// TODO(b/219524888): Disabled while CAPTCHA prevents test from completing.
-		//Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
+		Fixture:      fixtures.RobloxFixtureAuthenticatedForAllTests,
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
-				Pre:               pre.ArcAppGamePerfBooted,
 			}, {
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Pre:               pre.ArcAppGamePerfBooted,
 			}},
 		Timeout: 15 * time.Minute,
-		VarDeps: []string{"arcappgameperf.username", "arcappgameperf.password", "arcappgameperf.roblox_username", "arcappgameperf.roblox_password"},
+		VarDeps: []string{"arcappgameperf.username", "arcappgameperf.password"},
 	})
 }
 
 func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 	const (
+		poolId      = "com.roblox.client"
 		appPkgName  = "com.roblox.client"
 		appActivity = ".startup.ActivitySplash"
 		// The inputs rendered by Roblox are not immediately active after being clicked
@@ -59,9 +58,10 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 		gameBenchmarkTime = time.Minute * 1
 	)
 
-	username := s.RequiredVar("arcappgameperf.roblox_username")
-	password := s.RequiredVar("arcappgameperf.roblox_password")
+	username := s.FixtValue().(*arc.PreData).ParentFixtureValue.(fixtures.LeasedAccountFixtureData).Username
+	password := s.FixtValue().(*arc.PreData).ParentFixtureValue.(fixtures.LeasedAccountFixtureData).Password
 
+	// Perform the test
 	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) error {
 		// onAppReady: Landing will appear in logcat after the game is fully loaded.
 		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
