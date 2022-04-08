@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "499e727e_e5042aa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-08T20:51:08Z",
+      "side": 1,
+      "message": "This won\u0027t be necessary anymore because I\u0027ve removed deployed variants now.\n\nDone.",
+      "parentUuid": "364d0bd3_381345c8",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "801382c290a71edb2c640ff35fd0a31ededa2378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a2602f9_5ac1e390",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-08T05:58:59Z",
       "side": 1,
       "message": "param.bt looks only argument so you can take browser.Type directly, instead.",
+      "range": {
+        "startLine": 188,
+        "startChar": 46,
+        "endLine": 188,
+        "endChar": 62
+      },
+      "revId": "801382c290a71edb2c640ff35fd0a31ededa2378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5a7452_03fa7c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-08T20:51:08Z",
+      "side": 1,
+      "message": "After I\u0027ve removed the deploy variants, the whole param struct is needed to be passed. So I\u0027ve changed to pass both fields independently.\n\nDone.",
+      "parentUuid": "9a2602f9_5ac1e390",
       "range": {
         "startLine": 188,
         "startChar": 46,

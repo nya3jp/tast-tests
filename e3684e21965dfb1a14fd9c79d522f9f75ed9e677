@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c50bd277_c93495bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-08T20:51:08Z",
+      "side": 1,
+      "message": "I\u0027ve changed now for that hw subset plus added \"phaser\" (another class we\u0027re focusing and is also the DUT I have atm). If you prefer, we can follow-up and change to some other subset.\n\nCongbin Guo, please let us know your considerations for the lab capacity mentioned here?",
+      "parentUuid": "b8c63f89_5e53091f",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c67bc35_70034310",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
@@ -191,6 +215,30 @@
       "side": 1,
       "message": "this runs on crosbolt (as a part of our infra).\nWe periodically build OS images, and crosbolt takes the result of builders, then run the test.\nSo, I do not expect the bots will use deployed-binary flow.\n\nIn Chromium infra, Lacros is injected onto the pre-built OS image, so they use deployed binary.\n\nMy recommendation is just drop deploy* pattern, and support lacrosDeployedBinary in rootfs (or omaha) cases for convinience of manual testing.",
       "parentUuid": "cfa3e5b5_a4ce1c7a",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 4
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ad4057_74e4118b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-08T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60b645b1_e6bae92f",
       "range": {
         "startLine": 81,
         "startChar": 5,
@@ -438,6 +486,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0388acc_c1c36bcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-08T20:51:08Z",
+      "side": 1,
+      "message": "Sorry, let me try to explain again:\n\nWhen I\u0027ve referred to `closeBrowser` in the comment, I actually meant the closure function, used for cleanup and close the Lacros browser (or Ash Chrome). This closure function is used normally in most of regular user flows, like: open UI -\u003e open browser -\u003e do something -\u003e close browser (closeBrowser) -\u003e close UI. But for this test we want to: open UI -\u003e open browser -\u003e do something -\u003e wait hw resources stabilize -\u003e start to collect performance metrics -\u003e open a new UI and expect it to automatically restore the browser from the previous session -\u003e stop collect metrics.\n\nSo if we use the closure to actually close the browser, then we won\u0027t have it restored and available when the second time the UI is up, ready to collect the metrics we want. I hope this is clear now a bit 😊",
+      "parentUuid": "5322bee2_517d7010",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e508caf_d2cdc5d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
@@ -556,6 +628,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61070f48_2d080119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-08T20:51:08Z",
+      "side": 1,
+      "message": "Alright. I\u0027ve started to code Gaia login now but I\u0027m running into \"Something went wrong\" screen right after the login \u0026 password get auto-filled. I\u0027d guess it\u0027s something wrong with my CrOS environment - I\u0027m using a non-official image (Chromium 98.0.4751.0), could that be an issue?\n\nNow, in the latest patchset, I left a big TODO comment with the idea discussed. I\u0027ll be taking a more careful look next and tackle that.",
+      "parentUuid": "6dd3ff0a_12b43505",
+      "range": {
+        "startLine": 256,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 36
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c252455_6c6f5854",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
@@ -662,6 +758,30 @@
       "side": 1,
       "message": "I\u0027m fine as long as you file a bug and add TODO here.",
       "parentUuid": "ac704696_a16b5973",
+      "range": {
+        "startLine": 320,
+        "startChar": 1,
+        "endLine": 323,
+        "endChar": 34
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4ee600_e99a9930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-08T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec5db99a_1c0b7a21",
       "range": {
         "startLine": 320,
         "startChar": 1,
