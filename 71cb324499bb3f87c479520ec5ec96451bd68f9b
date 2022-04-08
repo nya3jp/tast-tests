@@ -73,6 +73,30 @@
       },
       "revId": "71cb324499bb3f87c479520ec5ec96451bd68f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec63ced_f5e46d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/fixtures/speedometer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-08T06:28:40Z",
+      "side": 1,
+      "message": "ok, I\u0027ll make another CL.",
+      "parentUuid": "7bd74ebc_2674737b",
+      "range": {
+        "startLine": 50,
+        "startChar": 13,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "71cb324499bb3f87c479520ec5ec96451bd68f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
