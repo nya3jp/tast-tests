@@ -221,11 +221,14 @@ func (d *Debugd) PacketCaptureStop(ctx context.Context, handle string) (err erro
 	return nil
 }
 
-// SetCrashSenderTestMode sets debugd's CrashSenderTestMode property. If this is
+// SetCrashSenderTestMode calls debugd's SetCrashSenderTestMode. If this is
 // set to true, the crash_sender invoked from debugd will just touch the "test
 // successful" file instead of uploading crashes.
 func (d *Debugd) SetCrashSenderTestMode(ctx context.Context, testMode bool) (err error) {
-	return d.obj.CallWithContext(ctx, "org.freedesktop.DBus.Properties.Set", 0, dbusInterface, crashSenderTestMode, testMode).Err
+	if err := d.call(ctx, "SetCrashSenderTestMode", testMode).Err; err != nil {
+		return errors.Wrap(err, "failed to call SetCrashSenderTestMode")
+	}
+	return nil
 }
 
 // DRMTraceAnnotateLog calls debugd's DRMTraceAnnotateLog D-Bus method.
