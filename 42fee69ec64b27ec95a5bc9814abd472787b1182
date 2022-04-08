@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "42fee69ec64b27ec95a5bc9814abd472787b1182",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c410606c_77a67323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-08T16:45:02Z",
+      "side": 1,
+      "message": "LGTM % nit on missing comment",
+      "revId": "42fee69ec64b27ec95a5bc9814abd472787b1182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3232cf73_da157132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-08T16:45:02Z",
+      "side": 1,
+      "message": "Can you add a quick comment here about why we added this extra test, and what would have to happen for it to be removed?",
+      "revId": "42fee69ec64b27ec95a5bc9814abd472787b1182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
