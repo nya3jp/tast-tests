@@ -12,6 +12,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -55,6 +56,14 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 
 	if err := h.RequireRPCUtils(ctx); err != nil {
 		s.Fatal("Requiring RPC utils: ", err)
+	}
+
+	if hasKb, err := h.Servo.HasControl(ctx, string(servo.USBKeyboard)); err != nil {
+		s.Fatal("Failed to check for usb keyboard: ", err)
+	} else if hasKb {
+		if err := h.Servo.SetOnOff(ctx, servo.USBKeyboard, servo.Off); err != nil {
+			s.Fatal("Failed to disable usb keyboard: ", err)
+		}
 	}
 
 	res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
@@ -112,7 +121,7 @@ func readKeyPress(ctx context.Context, h *firmware.Helper, scanner *bufio.Scanne
 			text <- scanner.Text()
 		}
 	}()
-	if err := h.Servo.ECPressKey(ctx, key); err != nil {
+	if err := h.Servo.PressKey(ctx, key, servo.DurTab); err != nil {
 		return errors.Wrap(err, "failed to type key")
 	}
 
