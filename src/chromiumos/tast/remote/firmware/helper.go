@@ -606,11 +606,7 @@ func (h *Helper) WaitForPowerStates(ctx context.Context, interval, timeout time.
 	err := testing.Poll(ctx, func(c context.Context) error {
 		currPowerState, err := h.Servo.GetECSystemPowerState(ctx)
 		if err != nil {
-			// This error is temporary.
-			if strings.Contains(err.Error(), "No data was sent from the pty") {
-				return err
-			}
-			return testing.PollBreak(err)
+			return errors.Wrap(err, "failed to check powerstate")
 		}
 		if !comparePowerStates(currPowerState, powerStates...) {
 			return errors.Errorf("Power state = %s", currPowerState)
