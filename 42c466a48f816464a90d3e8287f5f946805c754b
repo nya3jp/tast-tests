@@ -16,6 +16,23 @@
       "message": "Chris, could you show us how to run one of the tests? e.g.\n$ tast run \u003cDUT IP\u003e \u003ctest name\u003e \n",
       "revId": "42c466a48f816464a90d3e8287f5f946805c754b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d806e582_2a8a6131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-04-08T01:24:23Z",
+      "side": 1,
+      "message": "Chris, for faster code review cycle, please just submit one dock test, e.g.\nsrc/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go \nand its related libraries?",
+      "revId": "42c466a48f816464a90d3e8287f5f946805c754b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
