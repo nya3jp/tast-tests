@@ -88,7 +88,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with printing restrictions",
 		Contacts: []string{
-			"vishal38785@gmail.com", // Test author
+			"ayaelattar@google.com",
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
