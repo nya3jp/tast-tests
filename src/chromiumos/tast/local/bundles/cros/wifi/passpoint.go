@@ -7,7 +7,10 @@ package wifi
 import (
 	"context"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/local/bundles/cros/wifi/hwsim"
+	"chromiumos/tast/local/bundles/cros/wifi/passpoint"
+	"chromiumos/tast/local/hostapd"
 	"chromiumos/tast/testing"
 )
 
@@ -28,6 +31,29 @@ func Passpoint(fullCtx context.Context, s *testing.State) {
 	if len(ifaces.AP) == 0 {
 		s.Fatal("No test interfaces")
 	}
+
+	// Create a Passpoint compatible access point on one of the test interfaces.
+	certs := certificate.TestCert1()
+	conf := passpoint.APConf{
+		SSID:              "passpoint",
+		Auth:              passpoint.AuthTTLS,
+		Identity:          "user",
+		Password:          "password",
+		Cert:              &certs,
+		Domain:            "passpoint.example.com",
+		Realms:            []string{"passpoint.example.com"},
+		RoamingConsortium: "2233445566",
+	}
+	ap := hostapd.Server{
+		Iface:  ifaces.AP[0],
+		OutDir: s.OutDir(),
+		Conf:   conf,
+	}
+	err := ap.Start(fullCtx)
+	if err != nil {
+		s.Fatal("Failed to create access point: ", err)
+	}
+	defer ap.Stop(fullCtx)
 
 	// TODO(b/162258594) implement Passpoint test.
 }
