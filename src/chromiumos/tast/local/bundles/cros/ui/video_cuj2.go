@@ -14,39 +14,53 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 type videoCUJParam struct {
-	tier cuj.Tier
-	app  string
+	tier        cuj.Tier
+	app         string
+	browserType browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoCUJ2,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the smoothess of switch between full screen YouTube video and another browser window",
 		Contacts:     []string{"tim.chang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
 			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
 		},
 		Params: []testing.Param{
 			{
 				Name:    "basic_youtube_web",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 12 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
+				Name:              "basic_lacros_youtube_web",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           12 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: videoCUJParam{
+					tier:        cuj.Basic,
+					app:         videocuj.YoutubeWeb,
+					browserType: browser.TypeLacros,
+				},
+			}, {
 				Name:              "basic_youtube_web_crosbolt",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
@@ -56,13 +70,25 @@ func init() {
 				},
 			}, {
 				Name:    "premium_youtube_web",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 12 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Premium,
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
+				Name:              "premium_lacros_youtube_web",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           12 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: videoCUJParam{
+					tier:        cuj.Premium,
+					app:         videocuj.YoutubeWeb,
+					browserType: browser.TypeLacros,
+				},
+			}, {
 				Name:              "plus_youtube_web_crosbolt",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
@@ -72,13 +98,25 @@ func init() {
 				},
 			}, {
 				Name:    "basic_youtube_app",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeApp,
 				},
 			}, {
+				Name:              "basic_lacros_youtube_app",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: videoCUJParam{
+					tier:        cuj.Basic,
+					app:         videocuj.YoutubeApp,
+					browserType: browser.TypeLacros,
+				},
+			}, {
 				Name:              "basic_youtube_app_crosbolt",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
@@ -88,13 +126,25 @@ func init() {
 				},
 			}, {
 				Name:    "premium_youtube_app",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Premium,
 					app:  videocuj.YoutubeApp,
 				},
 			}, {
+				Name:              "premium_lacros_youtube_app",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: videoCUJParam{
+					tier:        cuj.Premium,
+					app:         videocuj.YoutubeApp,
+					browserType: browser.TypeLacros,
+				},
+			}, {
 				Name:              "plus_youtube_app_crosbolt",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
@@ -109,9 +159,13 @@ func init() {
 
 // VideoCUJ2 performs the video cases including youtube web, and youtube app.
 func VideoCUJ2(ctx context.Context, s *testing.State) {
+	p := s.Param().(videoCUJParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
-
+	var lacrosFixtValue lacrosfixt.FixtValue
+	if p.browserType == browser.TypeLacros {
+		lacrosFixtValue = s.FixtValue().(cuj.FixtureData).LacrosFixt
+	}
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -162,6 +216,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 
 	testResources := videocuj.TestResources{
 		Cr:        cr,
+		LFixtVal:  lacrosFixtValue,
 		Tconn:     tconn,
 		A:         a,
 		Kb:        kb,
