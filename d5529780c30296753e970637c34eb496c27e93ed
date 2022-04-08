@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a5876b_6ef82fd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-08T23:25:54Z",
+      "side": 1,
+      "message": "I don\u0027t want to create another way to support the same functionality. It makes code more confusing to follow. \n\nWhat\u0027s the downside about adding a new helper? I would think that is easier for devs to work with. Just call the new helper when devs are unsure to which browser to pull the metric from.\n\nWe could implement logMetricSource based on MetricConfig.bConn, right? I don\u0027t think it has to be implement using this CL.",
+      "parentUuid": "6b8ddaa8_6d9006e4",
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba0364f_6e41b2f6",
