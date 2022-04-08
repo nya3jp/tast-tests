@@ -9,25 +9,29 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 type tabSwitchParam struct {
-	level    tabswitchcuj.Level
-	wprProxy bool
+	level       tabswitchcuj.Level
+	wprProxy    bool
+	browserType browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TabSwitchCUJ2,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of tab-switching CUJ, scrolling content with trackpad",
 		Contacts:     []string{"abergman@google.com", "tclaiborne@chromium.org", "xliu@cienet.com", "alfredyu@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -61,6 +65,12 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
 			}, {
+				Name:              "basic_lacros_noproxy",
+				Timeout:           35 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false, browserType: browser.TypeLacros},
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
+			}, {
 				Name:              "basic_noproxy_crosbolt",
 				Timeout:           35 * time.Minute,
 				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false},
@@ -74,6 +84,12 @@ func init() {
 				Val:               tabSwitchParam{level: tabswitchcuj.Plus, wprProxy: false},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:              "plus_lacros_noproxy",
+				Timeout:           40 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Plus, wprProxy: false, browserType: browser.TypeLacros},
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			}, {
 				Name:              "plus_noproxy_crosbolt",
 				Timeout:           40 * time.Minute,
@@ -89,6 +105,13 @@ func init() {
 
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:    "premium_lacros_noproxy",
+				Timeout: 45 * time.Minute,
+				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false, browserType: browser.TypeLacros},
+
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			}, {
 				Name:              "premium_noproxy_crosbolt",
 				Timeout:           45 * time.Minute,
@@ -114,6 +137,11 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	} else {
 		cr = s.PreValue().(*chrome.Chrome)
+	}
+
+	var lacrosFixtValue lacrosfixt.FixtValue
+	if p.browserType == browser.TypeLacros {
+		lacrosFixtValue = s.FixtValue().(cuj.FixtureData).LacrosFixt
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -152,5 +180,5 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel = ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	tabswitchcuj.Run2(ctx, s, cr, p.level, tabletMode)
+	tabswitchcuj.Run2(ctx, s, cr, p.level, tabletMode, lacrosFixtValue)
 }
