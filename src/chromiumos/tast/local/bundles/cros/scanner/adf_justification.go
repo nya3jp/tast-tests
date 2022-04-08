@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ADFJustification,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that scanners with specified ADF justification values have correct scan regions",
 		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
