@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "599bdc54_f9f7bf06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-08T13:14:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18c71dac_6372a569",
+      "range": {
+        "startLine": 37,
+        "startChar": 54,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "1250fa44eccd5e6269bd055e35986faa0ea0ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bceff66_898fe927",
@@ -290,6 +314,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2d18c2a0_b1bf90ab",
+      "revId": "1250fa44eccd5e6269bd055e35986faa0ea0ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d13bcd_bafc3acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-08T13:14:29Z",
+      "side": 1,
+      "message": "The test should know the file size. I\u0027m not sure it should depend on ContentLength.",
+      "parentUuid": "e193e490_f78d0f41",
       "revId": "1250fa44eccd5e6269bd055e35986faa0ea0ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

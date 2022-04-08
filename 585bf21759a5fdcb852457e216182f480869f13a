@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa224aa6_437ced2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-08T13:14:29Z",
+      "side": 1,
+      "message": "nit: add an empty Attr with a comment that this is not called automatically.",
+      "revId": "585bf21759a5fdcb852457e216182f480869f13a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
