@@ -34,6 +34,24 @@
       "parentUuid": "0e2460ca_3b96b0cc",
       "revId": "6b4a1a209159aa516af1ed47af664559d34fe105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a6dae5_eecbf4eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2584,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-08T15:07:07Z",
+      "side": 1,
+      "message": "I was thinking 1, but soemthing like\n\n  rtwReset :\u003d func(ctx context.Context, resetPath string, format string) (string, error) {\n    ...\n  }\n  rtw88Reset :\u003d func(ctx context.context, resetPath string) (string, error) {\n    return rtwReset(ctx, resetPath, rtw88Format)\n  }\n  rtw89Reset :\u003d func(ctx context.Context, resetPath string) (string, error) {\n    return rtwReset(ctx, resetPath, rtw89Format)\n  }",
+      "parentUuid": "5b154c40_e6d8b2b5",
+      "revId": "6b4a1a209159aa516af1ed47af664559d34fe105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
