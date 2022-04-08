@@ -71,7 +71,7 @@ var MicToggle = nodewith.Role(role.ToggleButton).Attribute("name", regexp.MustCo
 var ManagedInfoView = nodewith.Role(role.Button).ClassName("EnterpriseManagedView")
 
 // BatteryView is the finder for the Quick Settings date/time display.
-var BatteryView = nodewith.Role(role.LabelText).ClassName("BatteryView")
+var BatteryView = nodewith.Role(role.LabelText).ClassName("BatteryLabelView")
 
 // DateView is the finder for the Quick Settings date/time display.
 var DateView = nodewith.Role(role.Button).ClassName("DateView")
