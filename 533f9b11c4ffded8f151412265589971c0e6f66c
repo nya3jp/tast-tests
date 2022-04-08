@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6eeee30_904c40e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T11:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec18660_d969c173",
+      "range": {
+        "startLine": 109,
+        "startChar": 9,
+        "endLine": 109,
+        "endChar": 12
+      },
+      "revId": "533f9b11c4ffded8f151412265589971c0e6f66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae5f52cd_8d2de9fc",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-30T16:54:18Z",
       "side": 1,
       "message": "It is better to avoid nested code blocks. Please write:\n  if facing \u003d\u003d cca.FacingBack {\n    return nil\n  }",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "533f9b11c4ffded8f151412265589971c0e6f66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef82b64_3c2e1271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T11:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5f52cd_8d2de9fc",
       "range": {
         "startLine": 111,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2f6e133_aa78bfdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T11:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efec32b5_461b53a9",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 13
+      },
+      "revId": "533f9b11c4ffded8f151412265589971c0e6f66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df2156db_8dd70322",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-30T16:54:18Z",
       "side": 1,
       "message": "Please use `errors.Wrap` to put this error in context.",
+      "range": {
+        "startLine": 238,
+        "startChar": 13,
+        "endLine": 238,
+        "endChar": 16
+      },
+      "revId": "533f9b11c4ffded8f151412265589971c0e6f66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "888392a1_38c5bde0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T11:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2156db_8dd70322",
       "range": {
         "startLine": 238,
         "startChar": 13,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dfe299_122ac273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T11:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eaf01c3_ab59f2fe",
+      "range": {
+        "startLine": 248,
+        "startChar": 13,
+        "endLine": 248,
+        "endChar": 16
+      },
+      "revId": "533f9b11c4ffded8f151412265589971c0e6f66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "325e9660_70023a67",
@@ -146,6 +266,24 @@
       "writtenOn": "2022-03-30T16:54:18Z",
       "side": 1,
       "message": "nit:\n\t\t\t},\n\t\t)",
+      "revId": "533f9b11c4ffded8f151412265589971c0e6f66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f078732_129372c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T11:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325e9660_70023a67",
       "revId": "533f9b11c4ffded8f151412265589971c0e6f66c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
