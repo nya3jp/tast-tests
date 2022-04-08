@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebauthnU2fMode,
-		Desc: "Checks that WebAuthn under u2f mode succeeds in different configurations",
+		Func:         WebauthnU2fMode,
+		LacrosStatus: testing.LacrosVariantNeeded,
+		Desc:         "Checks that WebAuthn under u2f mode succeeds in different configurations",
 		Contacts: []string{
 			"hcyang@google.com",
 			"cros-hwsec@chromium.org",
@@ -42,7 +43,6 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 	const (
 		username = "tast-user@managedchrome.com"
 		password = "test0000"
-		PIN      = "123456"
 	)
 
 	// Create hwsec helper.
@@ -74,10 +74,6 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx, &empty.Empty{})
 
-	if _, err := cr.SetupPin(ctx, &webauthnpb.SetupPinRequest{Pin: PIN}); err != nil {
-		s.Fatal("Failed to setup PIN: ", err)
-	}
-
 	// Ensure TPM is prepared for enrollment.
 	if err := helper.EnsureIsPreparedForEnrollment(ctx, hwsec.DefaultPreparationForEnrolmentTimeout); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
@@ -107,10 +103,10 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 	// Clean up the flags in u2fd after the tests finished.
 	defer util.SetU2fdFlags(ctx, helper, false, false, false)
 
-	pinAuthCallback := func(ctx context.Context) error {
-		// Type PIN into ChromeOS WebAuthn dialog. Autosubmitted.
-		if _, err := cr.EnterPin(ctx, &webauthnpb.EnterPinRequest{Pin: PIN}); err != nil {
-			return errors.Wrap(err, "failed to type PIN into ChromeOS auth dialog")
+	passwordAuthCallback := func(ctx context.Context) error {
+		// Type password into ChromeOS WebAuthn dialog.
+		if _, err := cr.EnterPassword(ctx, &webauthnpb.EnterPasswordRequest{Password: password}); err != nil {
+			return errors.Wrap(err, "failed to type password into ChromeOS auth dialog")
 		}
 		return nil
 	}
@@ -157,7 +153,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			userVerification:  webauthnpb.UserVerification_PREFERRED,
 			authenticatorType: webauthnpb.AuthenticatorType_UNSPECIFIED,
 			hasDialog:         true,
-			authCallback:      pinAuthCallback,
+			authCallback:      passwordAuthCallback,
 		},
 		{
 			name: "preferred_cross_plaform",
@@ -173,7 +169,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			userVerification:  webauthnpb.UserVerification_PREFERRED,
 			authenticatorType: webauthnpb.AuthenticatorType_PLATFORM,
 			hasDialog:         true,
-			authCallback:      pinAuthCallback,
+			authCallback:      passwordAuthCallback,
 		},
 		{
 			name: "required_unspecified",
@@ -181,7 +177,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			userVerification:  webauthnpb.UserVerification_REQUIRED,
 			authenticatorType: webauthnpb.AuthenticatorType_UNSPECIFIED,
 			hasDialog:         true,
-			authCallback:      pinAuthCallback,
+			authCallback:      passwordAuthCallback,
 		},
 		{
 			name: "required_platform",
@@ -189,7 +185,7 @@ func WebauthnU2fMode(ctx context.Context, s *testing.State) {
 			userVerification:  webauthnpb.UserVerification_REQUIRED,
 			authenticatorType: webauthnpb.AuthenticatorType_PLATFORM,
 			hasDialog:         true,
-			authCallback:      pinAuthCallback,
+			authCallback:      passwordAuthCallback,
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
