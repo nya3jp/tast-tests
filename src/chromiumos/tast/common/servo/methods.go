@@ -24,12 +24,15 @@ type StringControl string
 const (
 	ActiveChgPort         StringControl = "active_chg_port"
 	ActiveDUTController   StringControl = "active_dut_controller"
-	DownloadImageToUSBDev StringControl = "download_image_to_usb_dev"
+	ArbKey                StringControl = "arb_key"
+	ArbKeyConfig          StringControl = "arb_key_config"
 	DUTVoltageMV          StringControl = "dut_voltage_mv"
+	DownloadImageToUSBDev StringControl = "download_image_to_usb_dev"
+	ECActiveCopy          StringControl = "ec_active_copy"
 	FWWPState             StringControl = "fw_wp_state"
+	ImageUSBKeyDev        StringControl = "image_usbkey_dev"
 	ImageUSBKeyDirection  StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr        StringControl = "image_usbkey_pwr"
-	ImageUSBKeyDev        StringControl = "image_usbkey_dev"
 	LidOpen               StringControl = "lid_open"
 	PowerState            StringControl = "power_state"
 	Type                  StringControl = "servo_type"
@@ -38,7 +41,6 @@ const (
 	Watchdog              StringControl = "watchdog"
 	WatchdogAdd           StringControl = "watchdog_add"
 	WatchdogRemove        StringControl = "watchdog_remove"
-	ECActiveCopy          StringControl = "ec_active_copy"
 
 	// DUTConnectionType was previously known as V4Type ("servo_v4_type")
 	DUTConnectionType StringControl = "root.dut_connection_type"
@@ -647,6 +649,26 @@ func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressContro
 	}
 	// Set timeout of keypress to make it doesn't timeout before keypress is complete.
 	return s.SetStringTimeout(ctx, StringControl(control), string(value), timeout)
+}
+
+// PressKey presses an arbitrary key for a KeypressDuration.
+// This either uses EC keyboard emulation or the servo's emulated USB keyboard depending on the setting of USBKeyboard.
+func (s *Servo) PressKey(ctx context.Context, key string, value KeypressDuration) error {
+	// The default duration with SetString is 10s.
+	timeout := 10 * time.Second
+	// If duration is string (e.g. press, tab, long_press) don't parse as duration string.
+	if match := regexp.MustCompile(`\d+(.|\.\d+)?`).FindStringSubmatch(string(value)); match != nil {
+		out, err := time.ParseDuration(fmt.Sprintf("%ss", string(value)))
+		if err != nil {
+			return errors.Wrap(err, "parsing duration")
+		}
+		timeout = out + 1*time.Second
+	}
+	if err := s.SetString(ctx, ArbKeyConfig, key); err != nil {
+		return errors.Wrapf(err, "failed to press key %q", key)
+	}
+	// Set timeout of keypress to make it doesn't timeout before keypress is complete.
+	return s.SetStringTimeout(ctx, ArbKey, string(value), timeout)
 }
 
 // GetUSBMuxState determines whether the servo USB mux is on, and if so, which direction it is pointed.
