@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4858d8_8a84479c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-08T01:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb23213b_a0e82af6",
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "005fd5f7_a31f9281",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-07T22:11:50Z",
       "side": 1,
       "message": "This should be associated with crbug.com/1207678 (i.e. `chromium:1207678`)",
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5323b02_7307974e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-08T01:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "005fd5f7_a31f9281",
       "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ed9b78_7ba6207d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-08T01:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f04874_2a4a3a71",
+      "range": {
+        "startLine": 24,
+        "startChar": 67,
+        "endLine": 24,
+        "endChar": 86
+      },
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8361d266_41431e18",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-04-07T22:11:50Z",
       "side": 1,
       "message": "Nit: typo of \"keyboard\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 64,
+        "endLine": 64,
+        "endChar": 72
+      },
+      "revId": "03ac4bbfc35901876aecabb44ecd4e38f80c9114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ba37fa_f8ff2982",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-08T01:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8361d266_41431e18",
       "range": {
         "startLine": 64,
         "startChar": 64,
