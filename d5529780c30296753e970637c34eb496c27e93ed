@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8ddaa8_6d9006e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-08T22:17:18Z",
+      "side": 1,
+      "message": "Hi Xiyuan, thanks for the comments. Yes I\u0027ve noticed the code you made to let the developer configure the tconn source for each metric with NewCustomMetricConfigWithTestConn. We feel it\u0027s not convenient for those who are not sure which metric will be reported by which Chrome.  We also noticed that some metric will be reported from both Chromes. To be compatible with existing CUJ implementation (which collects all metrics), we\u0027d like to have an easy way for developers to just specify the metrics name and the recorder will collect them all.\n\nWith the new implementation in this CL, it on one side can make the developer easy, and on the other side it can help us to identify which metric is generated from where with the logMetricSource function.\n\nHope this justifies.",
+      "parentUuid": "e55c32ce_5af86cd9",
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba0364f_6e41b2f6",
