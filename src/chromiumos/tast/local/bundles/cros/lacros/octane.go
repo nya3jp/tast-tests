@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/testing"
@@ -28,6 +29,12 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
 		Fixture:      "lacros",
+		Params: []testing.Param{{
+			Val: []browser.Type{browser.TypeLacros, browser.TypeAsh},
+		}, {
+			Name: "reverse",
+			Val:  []browser.Type{browser.TypeAsh, browser.TypeLacros},
+		}},
 	})
 }
 
@@ -99,27 +106,32 @@ func Octane(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	lscore, err := runLacrosOctaneTest(ctx, s.FixtValue().(lacrosfixt.FixtValue))
-	if err != nil {
-		s.Fatal("Failed to run lacros Octane test: ", err)
+	for _, bt := range s.Param().([]browser.Type) {
+		switch bt {
+		case browser.TypeLacros:
+			lscore, err := runLacrosOctaneTest(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+			if err != nil {
+				s.Fatal("Failed to run lacros Octane test: ", err)
+			}
+			testing.ContextLog(ctx, "Lacros Octane score: ", lscore)
+			pv.Set(perf.Metric{
+				Name:      "octane.lacros",
+				Unit:      "count",
+				Direction: perf.BiggerIsBetter,
+			}, lscore)
+		case browser.TypeAsh:
+			cscore, err := runCrosOctaneTest(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+			if err != nil {
+				s.Fatal("Failed to run cros Octane test: ", err)
+			}
+			testing.ContextLog(ctx, "Cros Octane score: ", cscore)
+			pv.Set(perf.Metric{
+				Name:      "octane.cros",
+				Unit:      "count",
+				Direction: perf.BiggerIsBetter,
+			}, cscore)
+		}
 	}
-	testing.ContextLog(ctx, "Lacros Octane score: ", lscore)
-	pv.Set(perf.Metric{
-		Name:      "octane.lacros",
-		Unit:      "count",
-		Direction: perf.BiggerIsBetter,
-	}, lscore)
-
-	cscore, err := runCrosOctaneTest(ctx, s.FixtValue().(lacrosfixt.FixtValue))
-	if err != nil {
-		s.Fatal("Failed to run cros Octane test: ", err)
-	}
-	testing.ContextLog(ctx, "Cros Octane score: ", cscore)
-	pv.Set(perf.Metric{
-		Name:      "octane.cros",
-		Unit:      "count",
-		Direction: perf.BiggerIsBetter,
-	}, cscore)
 
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
