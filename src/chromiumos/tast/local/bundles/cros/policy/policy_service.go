@@ -76,6 +76,7 @@ func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIA
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: req.Username, Pass: req.Password}),
+		chrome.NoLogin(),
 		chrome.DMSPolicy(req.DmserverURL),
 	)
 	if err != nil {
@@ -91,10 +92,6 @@ func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIA
 // enrolls the device. Specified user is logged in after this function completes.
 func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUsingChromeRequest) (*empty.Empty, error) {
 	testing.ContextLogf(ctx, "Enrolling using Chrome with policy %s", string(req.PolicyJson))
-
-	if _, err := os.Stat("/run/lockbox/install_attributes.pb"); err == nil {
-		return nil, errors.New("install_attributes.pb should not be present")
-	}
 
 	var opts []chrome.Option
 
