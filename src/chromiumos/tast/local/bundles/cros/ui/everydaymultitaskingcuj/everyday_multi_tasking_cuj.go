@@ -53,11 +53,12 @@ type RunParams struct {
 	appName        string
 	account        string // account is the one used by Spotify APP to do login.
 	tabletMode     bool
+	enableBT       bool
 }
 
 // NewRunParams constructs a RunParams struct and returns the pointer to it.
-func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) *RunParams {
-	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode}
+func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode, enableBT bool) *RunParams {
+	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode, enableBT: enableBT}
 }
 
 type runResources struct {
@@ -144,10 +145,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		return errors.Wrap(err, "failed to get browser start time")
 	}
 
+	options := cuj.RecorderOptions{AudioUnmuted: true, BlutoothEnabled: params.enableBT}
+
 	// Set up the cuj.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs()...)
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs()...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}

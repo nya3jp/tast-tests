@@ -135,7 +135,9 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	recorder, err := cuj.NewRecorder(ctx, cr, a, cuj.MetricConfigs()...)
+	options := cuj.RecorderOptions{AudioUnmuted: true}
+
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, cuj.MetricConfigs()...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a recorder")
 	}
