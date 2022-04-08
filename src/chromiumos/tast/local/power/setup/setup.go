@@ -178,9 +178,11 @@ const (
 
 // PowerTestOptions describes how to set up a power test.
 type PowerTestOptions struct {
-	Battery    BatteryDischargeMode
-	Wifi       WifiInterfacesMode
-	NightLight NightLightMode
+	Battery             BatteryDischargeMode
+	Wifi                WifiInterfacesMode
+	NightLight          NightLightMode
+	NotMuteAudio        bool
+	NotDisableBluetooth bool
 }
 
 // PowerTest configures a DUT to run a power test by disabling features that add
@@ -193,14 +195,18 @@ func PowerTest(ctx context.Context, c *chrome.TestConn, options PowerTestOptions
 		s.Add(DisableServiceIfExists(ctx, "dptf"))
 		s.Add(SetBacklightLux(ctx, 150))
 		s.Add(SetKeyboardBrightness(ctx, 24))
-		s.Add(MuteAudio(ctx))
 		if options.Wifi == DisableWifiInterfaces {
 			s.Add(DisableWiFiInterfaces(ctx))
 		}
 		if options.Battery != nil {
 			options.Battery.fulfill(ctx, s)
 		}
-		s.Add(DisableBluetooth(ctx))
+		if !options.NotMuteAudio {
+			s.Add(MuteAudio(ctx))
+		}
+		if !options.NotDisableBluetooth {
+			s.Add(DisableBluetooth(ctx))
+		}
 		if options.NightLight == DisableNightLight {
 			s.Add(TurnOffNightLight(ctx, c))
 		}
