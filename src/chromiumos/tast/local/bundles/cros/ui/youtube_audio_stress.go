@@ -133,7 +133,7 @@ func YoutubeAudioStress(ctx context.Context, s *testing.State) {
 		Quality: "1080p60",
 	}
 	// Create an instance of YtWeb to perform actions on youtube web.
-	ytbWeb := videocuj.NewYtWeb(cr, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+	ytbWeb := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 	defer ytbWeb.Close(cleanupCtx)
 
 	if err := ytbWeb.OpenAndPlayVideo(ctx); err != nil {

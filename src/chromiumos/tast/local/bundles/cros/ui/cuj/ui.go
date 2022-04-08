@@ -169,6 +169,7 @@ func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
 
 // KeepNewTab closes all other browser tabs and leave only one new tab.
 // Leaving a new tab is critical to keep lacros-Chrome process running.
+// See crbug.com/1268743 for the chrome arg --disable-lacros-keep-alive.
 func KeepNewTab(ctx context.Context, tconn *chrome.TestConn) error {
 	tabs, err := GetBrowserTabs(ctx, tconn)
 	if err != nil {
