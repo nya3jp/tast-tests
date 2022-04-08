@@ -22,7 +22,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
@@ -55,7 +57,7 @@ const retryTimes = 3
 // Run runs the QuickCheckCUJ2 test. The lock is the function that suspends or locks
 // the DUT. The lockInRecorder flag indicates if the lock function should be executed
 // inside metrics recorder.
-func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool) *perf.Values {
+func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool, lFixtVal lacrosfixt.FixtValue) *perf.Values {
 	password := cr.Creds().Pass // Required to unlock screen.
 
 	// Ensure display on to record ui performance correctly.
@@ -140,39 +142,6 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 		}
 	}
 
-	// Shorten the context to cleanup recorder.
-	cleanupRecorderCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
-	if err != nil {
-		s.Fatal("Failed to create a CUJ recorder: ", err)
-	}
-	defer recorder.Close(cleanupRecorderCtx)
-
-	if pauseMode == Lock {
-		// Lock the screen before recording the test.
-		if err := LockScreen(ctx, tconn); err != nil {
-			s.Fatal("Failed to lock screen: ", err)
-		}
-
-		defer func() {
-			// Ensure that screen is unlocked even if the test fails.
-			st, err := lockscreen.GetState(ctx, tconn)
-			if err != nil {
-				s.Error("Failed to get lockscreen state: ", err)
-				return
-			}
-			if !st.Locked {
-				return
-			}
-			if err := UnlockScreen(ctx, tconn, password); err != nil {
-				s.Error("Failed unlock screen: ", err)
-			}
-		}()
-	}
-
 	// Create uiActionHandler at this point to make sure new tconn after suspend/resume is used.
 	var uiActionHandler cuj.UIActionHandler
 	if tabletMode {
@@ -186,7 +155,60 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	}
 	defer uiActionHandler.Close()
 
-	var browserStartTime, totalElapsed time.Duration
+	// Launch browser and track the elapsed time.
+	// We have to do this out side of recorder because we need to get test API conns to set up metrics.
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, lFixtVal, true, tabletMode)
+	if err != nil {
+		s.Fatal("Failed to launch Chrome: ", err)
+	}
+	if l != nil {
+		defer l.Close(ctx)
+	}
+	br := cr.Browser()
+	tconns := []*chrome.TestConn{tconn}
+	if lFixtVal != nil {
+		br = l.Browser()
+		bTconn, err := l.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get lacros test API conn: ", err)
+		}
+		tconns = append(tconns, bTconn)
+	}
+
+	if pauseMode == Lock {
+		// Lock the screen before recording the test.
+		if err := LockScreen(ctx, tconn); err != nil {
+			s.Fatal("Failed to lock screen: ", err)
+		}
+
+		defer func(ctx context.Context) {
+			// Ensure that screen is unlocked even if the test fails.
+			st, err := lockscreen.GetState(ctx, tconn)
+			if err != nil {
+				s.Error("Failed to get lockscreen state: ", err)
+				return
+			}
+			if !st.Locked {
+				return
+			}
+			if err := UnlockScreen(ctx, tconn, password); err != nil {
+				s.Error("Failed unlock screen: ", err)
+			}
+		}(ctx)
+	}
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_dump")
+
+	// Shorten the context to cleanup recorder.
+	cleanupRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		s.Fatal("Failed to create a CUJ recorder: ", err)
+	}
+	defer recorder.Close(cleanupRecorderCtx)
+	var totalElapsed time.Duration
 	if err = recorder.Run(ctx, func(ctx context.Context) error {
 		startTime := time.Now()
 
@@ -214,15 +236,6 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			testing.ContextLog(ctx, "WiFi AP has been reconnected")
 		}
 
-		// Launch browser and track the elapsed time.
-		if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
-			_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, nil, true, tabletMode)
-			return err
-		})(ctx); err != nil {
-			return errors.Wrapf(err, "failed to launch Chrome with retryTimes %d", retryTimes)
-		}
-		testing.ContextLogf(ctx, "Browser start time %d ms", browserStartTime.Milliseconds())
-
 		// Expecting 3 windows, first 2 windows with one tab and last window with 2 tabs.
 		tabsInfo := [][]*tabInfo{{
 			{url: cuj.GmailURL},
@@ -244,7 +257,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 					}
 				}()
 
-				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, cr.Browser(), tab.url, tabIdx == 0); err != nil {
+				if tab.conn, err = uiActionHandler.NewChromeTab(ctx, br, tab.url, tabIdx == 0); err != nil {
 					return errors.Wrapf(err, "failed to open URL: %s", tab.url)
 				}
 			}
@@ -266,9 +279,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			}
 		}
 
-		chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+		chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to check installed chrome browser")
+			return errors.Wrap(err, "failed to find the Chrome app")
 		}
 
 		scrollActions := uiActionHandler.ScrollChromePage(ctx)
