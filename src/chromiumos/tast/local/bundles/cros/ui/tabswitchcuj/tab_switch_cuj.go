@@ -50,6 +50,8 @@ type TabSwitchParam struct {
 	Validation  bool         // Whether to add extra cpu loads before collecting metrics.
 }
 
+var options = cuj.RecorderOptions{AudioUnmuted: true}
+
 // findAnchorURLs returns the unique URLs of the anchors, which matches the pattern.
 // If it finds more than limit, returns the first limit elements.
 func findAnchorURLs(ctx context.Context, c *chrome.Conn, pattern string, limit int) ([]string, error) {
@@ -171,7 +173,7 @@ func Run(ctx context.Context, s *testing.State) {
 			[]int64{800, 1600}, bTconn),
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, options, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

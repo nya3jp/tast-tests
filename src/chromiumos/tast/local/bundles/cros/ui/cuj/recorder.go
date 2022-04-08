@@ -193,10 +193,16 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 	return count
 }
 
+// RecorderOptions indicates whether the services should be enabled.
+type RecorderOptions struct {
+	BlutoothEnabled bool
+	AudioUnmuted    bool
+}
+
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
+func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions, configs ...MetricConfig) (*Recorder, error) {
 	r := &Recorder{cr: cr}
 
 	var err error
@@ -207,9 +213,11 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 
 	var batteryDischargeErr error
 	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, setup.PowerTestOptions{
-		Wifi:       setup.DisableWifiInterfaces,
-		Battery:    setup.TryBatteryDischarge(&batteryDischargeErr),
-		NightLight: setup.DisableNightLight,
+		Wifi:            setup.DisableWifiInterfaces,
+		Battery:         setup.TryBatteryDischarge(&batteryDischargeErr),
+		NightLight:      setup.DisableNightLight,
+		EnableAudio:     options.AudioUnmuted,
+		EnableBluetooth: options.BlutoothEnabled,
 	})
 	if batteryDischargeErr != nil {
 		testing.ContextLog(ctx, "Failed to induce battery discharge: ", batteryDischargeErr)
