@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "798e4a62_37a2c7bd",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-08T06:45:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "6617b8a3_550b993c",
+      "range": {
+        "startLine": 218,
+        "startChar": 9,
+        "endLine": 218,
+        "endChar": 23
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f41917_76dc109b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-31T22:27:22Z",
       "side": 1,
       "message": "Will volstate be nil if err is not nil?",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5753982_1af4f9c3",
+        "filename": "src/chromiumos/tast/local/audio/volume_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-08T06:45:18Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "04f41917_76dc109b",
       "range": {
         "startLine": 75,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae33255_2db1560c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-08T06:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5836396e_d3c078b1",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 8
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa86361_1effb0be",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-31T22:27:22Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 7
+      },
+      "revId": "6a3c1998d2a40e4d4eed81305b0e47e34ea9e33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6084801c_ccc1675f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_files_playing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-08T06:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa86361_1effb0be",
       "range": {
         "startLine": 233,
         "startChar": 1,
