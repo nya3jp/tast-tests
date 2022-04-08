@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a75f9718_00d605cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-04-08T13:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bdaec5f_232e2650",
+      "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "34517de9_83d5ade8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-07T18:21:15Z",
       "side": 1,
       "message": "Was the file rename on purpose?",
+      "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24f733d_6e0533fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-04-08T13:46:20Z",
+      "side": 1,
+      "message": "Yes. I first wrote a separate tast test for the vault keyset part of the AuthenticateAuthFactor. But it was very much the same as UserSecretStash test, so I decided to combine the new test and the UserSecretStash test and make vk vs uss parameters of the test. In this case \"PasswordAuthFactor\" better defines the test",
+      "parentUuid": "1a8fda9d_52320938",
       "revId": "d26cfc6758d933e4c665d3ab4cc6317df305fc8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
