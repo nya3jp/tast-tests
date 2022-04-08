@@ -447,3 +447,10 @@ func (m *Manager) ClaimInterface(ctx context.Context, claimer, intf string) erro
 func (m *Manager) ReleaseInterface(ctx context.Context, claimer, intf string) error {
 	return m.Call(ctx, "ReleaseInterface", claimer, intf).Err
 }
+
+// AddPasspointCredentials adds a set of Passpoint credentials to |profile|.
+// The credentials will be used to match and connect to compatible Wi-Fi
+// networks.
+func (m *Manager) AddPasspointCredentials(ctx context.Context, profile dbus.ObjectPath, props map[string]interface{}) error {
+	return m.Call(ctx, "AddPasspointCredentials", profile, props).Err
+}
