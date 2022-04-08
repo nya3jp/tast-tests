@@ -68,16 +68,17 @@ const (
 	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
 
 	// WiFi device property names.
-	DevicePropertyWiFiBgscanMethod           = "BgscanMethod"
-	DevicePropertyWiFiScanInterval           = "ScanInterval"
-	DevicePropertyWiFiBgscanShortInterval    = "BgscanShortInterval"
-	DevicePropertyMACAddrRandomEnabled       = "MACAddressRandomizationEnabled"
-	DevicePropertyMACAddrRandomSupported     = "MACAddressRandomizationSupported"
-	DevicePropertyScanning                   = "Scanning" // Also for cellular.
-	DevicePropertyWakeOnWiFiAllowed          = "WakeOnWiFiAllowed"
-	DevicePropertyWakeOnWiFiFeaturesEnabled  = "WakeOnWiFiFeaturesEnabled"
-	DevicePropertyLastWakeReason             = "LastWakeReason"
-	DevicePropertyNetDetectScanPeriodSeconds = "NetDetectScanPeriodSeconds"
+	DevicePropertyLastWakeReason                     = "LastWakeReason"
+	DevicePropertyMACAddrRandomEnabled               = "MACAddressRandomizationEnabled"
+	DevicePropertyMACAddrRandomSupported             = "MACAddressRandomizationSupported"
+	DevicePropertyNetDetectScanPeriodSeconds         = "NetDetectScanPeriodSeconds"
+	DevicePropertyPasspointInterworkingSelectEnabled = "PasspointInterworkingSelectEnabled"
+	DevicePropertyScanning                           = "Scanning" // Also for cellular.
+	DevicePropertyWakeOnWiFiAllowed                  = "WakeOnWiFiAllowed"
+	DevicePropertyWakeOnWiFiFeaturesEnabled          = "WakeOnWiFiFeaturesEnabled"
+	DevicePropertyWiFiBgscanMethod                   = "BgscanMethod"
+	DevicePropertyWiFiBgscanShortInterval            = "BgscanShortInterval"
+	DevicePropertyWiFiScanInterval                   = "ScanInterval"
 )
 
 // IPConfig property names.
@@ -318,4 +319,15 @@ const (
 	// For error org.freedesktop.ModemManager1.Error.MobileEquipment.SimPuk.
 	ErrorPukRequired = "SIM PUK required"
 	ErrorPinBlocked  = "PinBlocked"
+)
+
+// Passpoint credentials property names.
+const (
+	PasspointCredentialsPropertyDomains            = "Domains"
+	PasspointCredentialsPropertyRealm              = "Realm"
+	PasspointCredentialsPropertyHomeOIs            = "HomeOIs"
+	PasspointCredentialsPropertyRequiredHomeOIs    = "RequiredHomeOIs"
+	PasspointCredentialsPropertyRoamingConsortia   = "RoamingConsortia"
+	PasspointCredentialsPropertyMeteredOverride    = "MeteredOverride"
+	PasspointCredentialsPropertyAndroidPackageName = "AndroidPackageName"
 )

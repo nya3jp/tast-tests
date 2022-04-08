@@ -2,19 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package passpoint implements a library that provides common tools for
-// Passpoint tests.
 package passpoint
 
 import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"net"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/hostapd"
+	"chromiumos/tast/testing"
 )
 
 // Auth is the authentication method the access point will expose.
@@ -27,7 +29,41 @@ const (
 	AuthTTLS
 )
 
-// APConf contains the parameters required to set up a Passpoint-
+// AccessPoint describes a Passpoint compatible access point with its match criteria.
+type AccessPoint struct {
+	// SSID is the name of the network.
+	SSID string
+	// Domain is the FQDN of the provider of this network.
+	Domain string
+	// Realms is the set of FQDN supported by this network.
+	Realms []string
+	// RoamingConsortium is the OI supported by this network.
+	// TODO(b/232747458): support multiple roaming consortium OIs.
+	RoamingConsortium uint64
+	// Auth is the EAP network authentication.
+	Auth
+}
+
+// ToServer transforms the Passpoint access point descriptions into a valid hostapd service instance.
+func (ap *AccessPoint) ToServer(iface, outDir string) *hostapd.Server {
+	certs := certificate.TestCert1()
+	return hostapd.NewServer(
+		iface,
+		filepath.Join(outDir, iface),
+		NewAPConf(
+			ap.SSID,
+			ap.Auth,
+			testUser,
+			testPassword,
+			&certs,
+			ap.Domain,
+			ap.Realms,
+			fmt.Sprintf("%x", ap.RoamingConsortium),
+		),
+	)
+}
+
+// APConf contains the parameters required to setup a Passpoint-
 // compatible access point.
 type APConf struct {
 	// ssid is the name of the access point.
@@ -161,4 +197,31 @@ func (c APConf) prepareRealms() string {
 	default:
 		return realms
 	}
+}
+
+// WaitForSTAAssociated polls an access point until a specific station is
+// associated or timeout is fired.
+func WaitForSTAAssociated(ctx context.Context, client string, ap *hostapd.Server, timeout time.Duration) error {
+	iface, err := net.InterfaceByName(client)
+	if err != nil {
+		return errors.Wrapf(err, "failed to obtain %s interface information: ", client)
+	}
+	addr := iface.HardwareAddr.String()
+
+	// TODO(b/234628848): use hostapd_cli to obtain the STA-CONNECTED event and avoid polling.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		stations, err := ap.ListStations(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to list connected stations")
+		}
+		for _, sta := range stations {
+			if sta == addr {
+				return nil
+			}
+		}
+		return errors.Errorf("Station %s not connected", addr)
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return err
+	}
+	return nil
 }
