@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "7d58f5df2866d00ece88dd6e44ad06318fdde9b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39773a4_d4a44d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-08T07:40:45Z",
+      "side": 1,
+      "message": "The test failed because VM didn\u0027t boot. The other run on the same bot is passing, so it\u0027s probably flakiness. Let me retry.",
+      "revId": "7d58f5df2866d00ece88dd6e44ad06318fdde9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
