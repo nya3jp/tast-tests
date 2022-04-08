@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55c32ce_5af86cd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-08T18:50:33Z",
+      "side": 1,
+      "message": "Can we use `MetricConfig.bConn` [1] to specific where to pull the metric? This is already supported in cuj recorder. \n\nIt looks like what the CL wants in addition is the ability to pull a metric from both ash-chrome and lacros-chrome. Maybe we add another helper, e.g.  `NewSmoothnessMetricConfigWithMultiTestConns` to take a list of browser tconns and create `MetricConfig` for each browser tconn ?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go;drc\u003dc83177c22a8a9541eb44a8694ec6ecb7dce171f2;l\u003d66",
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
