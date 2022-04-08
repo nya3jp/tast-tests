@@ -22,17 +22,17 @@ import (
 type quickCheckParam struct {
 	tier     cuj.Tier
 	scenario quickcheckcuj.PauseMode
+	isLacros bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickCheckCUJ2,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the system performance after login or wakeup by checking common apps",
 		Contacts:     []string{"xliu@cienet.com", "hc.tsai@cienet.com", "alfredyu@cienet.com"},
 		SoftwareDeps: []string{"chrome", "arc", "wifi"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
 			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
 			"ui.QuickCheckCUJ2_wifissid",
@@ -41,20 +41,43 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_unlock",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 5 * time.Minute,
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Lock,
 				},
 			}, {
+				Name:              "basic_lacros_unlock",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           5 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: quickCheckParam{
+					tier:     cuj.Basic,
+					scenario: quickcheckcuj.Lock,
+					isLacros: true,
+				},
+			}, {
 				Name:    "basic_wakeup",
+				Fixture: "loggedInAndKeepState",
 				Timeout: 5 * time.Minute,
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,
 				},
 			}, {
+				Name:              "basic_lacros_wakeup",
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				Timeout:           5 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: quickCheckParam{
+					tier:     cuj.Basic,
+					scenario: quickcheckcuj.Suspend,
+					isLacros: true,
+				},
+			}, {
 				Name:              "basic_wakeup_crosbolt",
+				Fixture:           "loggedInAndKeepState",
 				Timeout:           5 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
@@ -69,6 +92,7 @@ func init() {
 
 // QuickCheckCUJ2 measures the system performance after login or wakeup by checking common apps
 func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
+	p := s.Param().(quickCheckParam)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -107,7 +131,7 @@ func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
 	param := s.Param().(quickCheckParam)
 	scenario := param.scenario
 
-	pv := quickcheckcuj.Run(ctx, s, cr, scenario, tabletMode)
+	pv := quickcheckcuj.Run(ctx, s, cr, scenario, tabletMode, p.isLacros)
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to saving perf data: ", err)
 	}
