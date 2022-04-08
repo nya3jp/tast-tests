@@ -16,6 +16,75 @@
       "message": "Can we use `MetricConfig.bConn` [1] to specific where to pull the metric? This is already supported in cuj recorder. \n\nIt looks like what the CL wants in addition is the ability to pull a metric from both ash-chrome and lacros-chrome. Maybe we add another helper, e.g.  `NewSmoothnessMetricConfigWithMultiTestConns` to take a list of browser tconns and create `MetricConfig` for each browser tconn ?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go;drc\u003dc83177c22a8a9541eb44a8694ec6ecb7dce171f2;l\u003d66",
       "revId": "d5529780c30296753e970637c34eb496c27e93ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba0364f_6e41b2f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-08T20:52:08Z",
+      "side": 1,
+      "message": "nit: I suggest keeping these in the same order as in the struct, like so:\n\t\tr.names[bTconn] \u003d append(r.names[bTconn], config.histogramName)\n\t\tr.allNames \u003d append(r.allNames, config.histogramName)\n\t\tr.records[config.histogramName] \u003d \u0026record{config: config}",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 55
+      },
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83fea054_bc06d406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-08T20:52:08Z",
+      "side": 1,
+      "message": "nit: For code maintainability, I suggest putting this immediately before\n\tr.bTconn \u003d bTconn\n\nso that `r.l` is not set when `l.TestAPIConn(ctx)` returns an error.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 8
+      },
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bea0576_6ba49b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-08T20:52:08Z",
+      "side": 1,
+      "message": "I think this will be more readable if you just return `histNames` here, and call `testing.ContextLogf` directly on line 529. Then you can get rid of the `connName` parameter. Then I suggest moving this whole function outside of `StopRecording`, to emphasize that it uses nothing but `hists`.",
+      "range": {
+        "startLine": 515,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 98
+      },
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
