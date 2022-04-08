@@ -16,6 +16,24 @@
       "message": "Remove this line",
       "revId": "5d3108d9e220879b1b30be366d8dcc11a28a809c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9fb3953_610b0474",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-04-08T03:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27989dd9_b0ce427f",
+      "revId": "5d3108d9e220879b1b30be366d8dcc11a28a809c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
