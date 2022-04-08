@@ -81,6 +81,12 @@ func (c *WebauthnService) New(ctx context.Context, req *hwsec.NewRequest) (*empt
 	}
 	c.logReader = logReader
 
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get keyboard")
+	}
+	c.keyboard = keyboard
+
 	return &empty.Empty{}, nil
 }
 
@@ -97,20 +103,6 @@ func (c *WebauthnService) Close(ctx context.Context, req *empty.Empty) (*empty.E
 		c.keyboard.Close()
 		c.keyboard = nil
 	}
-	return &empty.Empty{}, nil
-}
-
-func (c *WebauthnService) SetupPin(ctx context.Context, req *hwsec.SetupPinRequest) (*empty.Empty, error) {
-	_, err := util.SetUpUserPIN(ctx, c.cr, req.GetPin(), c.password, false /*autosubmit*/)
-	if err != nil {
-		return nil, err
-	}
-	keyboard, err := input.VirtualKeyboard(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get keyboard")
-	}
-	c.keyboard = keyboard
-
 	return &empty.Empty{}, nil
 }
 
@@ -265,9 +257,9 @@ func (c *WebauthnService) CheckGetAssertion(ctx context.Context, req *empty.Empt
 	return &empty.Empty{}, nil
 }
 
-func (c *WebauthnService) EnterPin(ctx context.Context, req *hwsec.EnterPinRequest) (*empty.Empty, error) {
-	if err := c.keyboard.Type(ctx, req.GetPin()+"\n"); err != nil {
-		return nil, errors.Wrap(err, "failed to type PIN into ChromeOS auth dialog")
+func (c *WebauthnService) EnterPassword(ctx context.Context, req *hwsec.EnterPasswordRequest) (*empty.Empty, error) {
+	if err := c.keyboard.Type(ctx, req.GetPassword()+"\n"); err != nil {
+		return nil, errors.Wrap(err, "failed to type password into ChromeOS auth dialog")
 	}
 	return &empty.Empty{}, nil
 }
