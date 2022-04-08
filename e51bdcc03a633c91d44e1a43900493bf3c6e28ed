@@ -16,6 +16,29 @@
       "message": "Adding David to review since this test is changed as a UI test.",
       "revId": "e51bdcc03a633c91d44e1a43900493bf3c6e28ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e7e80b_a9ad5909",
+        "filename": "src/chromiumos/tast/local/video/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-04-08T22:00:11Z",
+      "side": 1,
+      "message": "Folders under tast/local are only created when several test .go\ntest files use a given functionality from different folders.\nIn this case, there\u0027s no need to have a local/video (note that\nthere isn\u0027t any, whereas there\u0027s loads of video tests) so, \nplease bring this e.g. local/bundles/ui/\u003csomething\u003e, with\n\u003csomething\u003e being e.g. video.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "e51bdcc03a633c91d44e1a43900493bf3c6e28ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
