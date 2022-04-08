@@ -16,6 +16,24 @@
       "message": "looks dup of rtw88, could you share the code?",
       "revId": "6b4a1a209159aa516af1ed47af664559d34fe105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b154c40_e6d8b2b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2584,
+      "author": {
+        "id": 1468762
+      },
+      "writtenOn": "2022-04-08T07:07:15Z",
+      "side": 1,
+      "message": "At first glance, two ways for me:\n\n1. extend your interface type from `resetPath func(context.Context, string) (string, error)` to `resetPath func(context.Context, string, string) (string, error)` for driver name, e.g. rtw88, rtw89\n\n2. iterate rtw88/rtw89 inside rtw88ResetPath()\n\n---\nWhich one do you prefer?\nOr, do you have a better one?",
+      "parentUuid": "0e2460ca_3b96b0cc",
+      "revId": "6b4a1a209159aa516af1ed47af664559d34fe105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
