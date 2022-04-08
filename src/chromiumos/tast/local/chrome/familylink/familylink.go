@@ -15,6 +15,8 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -240,4 +242,69 @@ func CreateUsageTimeLimitPolicy() *policy.UsageTimeLimit {
 			},
 		},
 	}
+}
+
+// VerifyUserSignedIntoBrowserAsChild creates and opens the browser, then checks that the provided username is signed in and recognized as a child user.
+func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, bt browser.Type, username string) error {
+	testing.ContextLog(ctx, "Verifying user is signed in and recognized as a child in browser")
+
+	// Set up browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up browser")
+	}
+	defer closeBrowser(ctx)
+
+	// Open a new window.
+	const url = "chrome://family-link-user-internals"
+	conn, err := br.NewConn(ctx, url, browser.WithNewWindow())
+	if err != nil {
+		return errors.Wrap(err, "failed to open family link user internals window")
+	}
+	defer conn.Close()
+
+	// Parse family link internals page.
+	ui := uiauto.New(tconn).WithTimeout(time.Minute)
+	rows := nodewith.Role(role.Row).Ancestor(nodewith.Role(role.WebView))
+	if err := ui.WaitUntilExists(rows.First())(ctx); err != nil {
+		return errors.Wrap(err, "could not load family link user internals table")
+	}
+	nodes, err := ui.NodesInfo(ctx, rows)
+	if err != nil {
+		return err
+	}
+	foundIsChild := false
+	foundEmail := false
+	// Family link user internals has a table with unnamed rows containing labels
+	// and values. To find the correct rows, we must iterate through all rows, check
+	// that it contains a cell with the label we are looking for, and check that the
+	// row also contains the correct value.
+	for i := range nodes {
+		row := rows.Nth(i)
+		// If this is the email row, check value matches username.
+		emailCell := nodewith.Role(role.Cell).NameContaining("Email").Ancestor(row)
+		usernameCell := nodewith.Role(role.Cell).NameContaining(strings.ToLower(username)).Ancestor(row)
+		if err := ui.Exists(emailCell)(ctx); err == nil {
+			foundEmail = true
+			if valueErr := ui.Exists(usernameCell)(ctx); valueErr != nil {
+				return errors.New("user is not logged into browser")
+			}
+		}
+		// If this is the "is child" row, check value is true.
+		isChildCell := nodewith.Role(role.Cell).NameContaining("Is child").Ancestor(row)
+		trueCell := nodewith.Role(role.Cell).NameContaining("True").Ancestor(row)
+		if err := ui.Exists(isChildCell)(ctx); err == nil {
+			foundIsChild = true
+			if valueErr := ui.Exists(trueCell)(ctx); valueErr != nil {
+				return errors.New("browser has incorrectly detected the user is not a child")
+			}
+		}
+	}
+	if !foundIsChild {
+		return errors.New("could not find 'Is child' row in family link user internals table")
+	}
+	if !foundEmail {
+		return errors.New("could not find email row in family link user internals table")
+	}
+	return nil
 }
