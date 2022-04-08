@@ -48,7 +48,7 @@ St Op         Max   Active         Idle   RL RT WL WT  Ent_Lat  Ex_Lat
 
 
 Supported LBA Sizes (NSID 0x1)
-Id Fmt  Data  Metadt  Rel_Perf
+ID Fmt  Data  Metadt  Rel_Perf
 	0 +         512           0             0
 	1 -        4096           0             0
 

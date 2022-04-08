@@ -33,6 +33,8 @@ type PreData struct {
 	UIDevice *ui.Device
 	// LacrosFixt is lacros fixture data when tests use lacros related fixtures.
 	LacrosFixt lacrosfixt.FixtValue
+	// Stores data from the parent fixture if available.
+	ParentFixtureValue interface{}
 }
 
 // Booted returns a precondition that ARC Container has already booted when a test is run.

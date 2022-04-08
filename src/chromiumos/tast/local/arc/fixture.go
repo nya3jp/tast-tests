@@ -504,10 +504,11 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	f.init = init
 	success = true
 	return &PreData{
-		Chrome:     cr,
-		ARC:        arc,
-		UIDevice:   d,
-		LacrosFixt: lacrosFixt,
+		Chrome:             cr,
+		ARC:                arc,
+		UIDevice:           d,
+		LacrosFixt:         lacrosFixt,
+		ParentFixtureValue: s.ParentValue(),
 	}
 }
 

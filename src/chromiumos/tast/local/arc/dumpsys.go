@@ -94,7 +94,7 @@ const (
 		`^\s+Task id #(\d+)` + // Grab task id (group 1).
 		`\s+mBounds=Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\)` + // Grab bounds (groups 2-5).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` + // Grab stack Id (group 6) and stack size (group 7).
+		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` + // Grab stack ID (group 6) and stack size (group 7).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
