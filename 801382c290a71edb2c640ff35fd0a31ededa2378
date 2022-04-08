@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "364d0bd3_381345c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-08T05:58:59Z",
+      "side": 1,
+      "message": "nit/style: can be simplified\n\n  cfg :\u003d param.cfg\n  if param.deployed {\n    cfg \u003d cfg.WithVar(s)\n  }",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "801382c290a71edb2c640ff35fd0a31ededa2378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2602f9_5ac1e390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-08T05:58:59Z",
+      "side": 1,
+      "message": "param.bt looks only argument so you can take browser.Type directly, instead.",
+      "range": {
+        "startLine": 188,
+        "startChar": 46,
+        "endLine": 188,
+        "endChar": 62
+      },
+      "revId": "801382c290a71edb2c640ff35fd0a31ededa2378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
