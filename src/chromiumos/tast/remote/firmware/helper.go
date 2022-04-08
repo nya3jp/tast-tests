@@ -461,7 +461,7 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 				return errors.Wrapf(err, "copying local Tast file %s from DUT", dutSrc)
 			}
 		} else if _, ok := err.(*gossh.ExitError); !ok {
-			return errors.Wrapf(err, "checking for existence of %s: %T", dutSrc, err)
+			return errors.Wrapf(err, "checking for existence of %s", dutSrc)
 		}
 	}
 	return nil
@@ -594,7 +594,7 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	testing.ContextLog(ctx, "Flashing test OS image to USB")
 	// Make sure the device is synced whether or not the command succeeds.
 	defer func(ctx context.Context) {
-		if err = h.ServoProxy.RunCommand(ctx, true, "sync"); err != nil {
+		if err = h.ServoProxy.RunCommand(ctx, true, "sync", usbdev); err != nil {
 			if retErr == nil {
 				retErr = errors.Wrap(err, "sync failed")
 			} else {
