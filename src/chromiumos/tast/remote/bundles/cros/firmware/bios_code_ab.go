@@ -55,6 +55,13 @@ func BIOSCodeAB(ctx context.Context, s *testing.State) {
 	if err := h.Servo.RunECCommand(ctx, "reboot"); err != nil {
 		s.Fatal("Failed to send reboot command: ", err)
 	}
+	// Wait a little at the end of the test to make sure the EC finishes booting before the next test runs.
+	defer func() {
+		s.Log("Waiting for boot to finish")
+		if err := testing.Sleep(ctx, 20*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+	}()
 	var leftoverLines string
 	sawPort80 := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
