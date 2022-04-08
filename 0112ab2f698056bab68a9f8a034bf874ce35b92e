@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43eedd08_a59a2451",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T09:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "816aaf09_049436e0",
+      "revId": "0112ab2f698056bab68a9f8a034bf874ce35b92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78d74b83_e1fcf646",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-31T13:55:52Z",
       "side": 1,
       "message": "Not 100% confident, but I think this required variable should be a VarDeps,  as it\u0027s read by RequiredVar() at line 175.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-runtime-variables\n\u003e VarDeps should be the default choice, and Vars should be used only when there\u0027s a fallback in case the variables are missing.",
+      "revId": "0112ab2f698056bab68a9f8a034bf874ce35b92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecce5e1e_6315acaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-08T09:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d74b83_e1fcf646",
       "revId": "0112ab2f698056bab68a9f8a034bf874ce35b92e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
