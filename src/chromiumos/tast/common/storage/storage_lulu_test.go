@@ -112,7 +112,7 @@ Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
 Model Family:     SanDisk based SSDs
 Device Model:     SanDisk SSD U110 16GB
 Serial Number:    145138402365
-LU WWN Device Id: 5 001b44 cd681403d
+LU WWN Device ID: 5 001b44 cd681403d
 Firmware Version: U221000
 User Capacity:    16,013,942,784 bytes [16.0 GB]
 Sector Size:      512 bytes logical/physical

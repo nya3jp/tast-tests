@@ -90,10 +90,10 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 	nodes := make([]CrasNode, len(call.Body))
 	for i, n := range call.Body {
 		mp := n.(map[string]dbus.Variant)
-		if id, ok := mp["Id"]; !ok {
-			return nil, errors.Errorf("'Id' not found: %v", mp)
+		if id, ok := mp["ID"]; !ok {
+			return nil, errors.Errorf("'ID' not found: %v", mp)
 		} else if nodes[i].ID, ok = id.Value().(uint64); !ok {
-			return nil, errors.Errorf("'Id' is not uint64: %v", mp)
+			return nil, errors.Errorf("'ID' is not uint64: %v", mp)
 		}
 		if nodeType, ok := mp["Type"]; !ok {
 			return nil, errors.Errorf("'Type' not found: %v", mp)

@@ -32,13 +32,13 @@ const (
 	apkName        = "ArcShareTestApp.apk"
 	apkPackageName = "org.chromium.arc.testapp.share"
 
-	// Id of the check box for using text.
+	// ID of the check box for using text.
 	checkBoxTextID = "checkBoxText"
-	// Id of the check box for using the small sized file.
+	// ID of the check box for using the small sized file.
 	checkBoxSmallFileID = "checkBoxSmallFile"
-	// Id of the check box for using the medium sized file.
+	// ID of the check box for using the medium sized file.
 	checkBoxMediumFileID = "checkBoxMediumFile"
-	// Id of the check box for using the large sized file.
+	// ID of the check box for using the large sized file.
 	checkBoxLargeFileID = "checkBoxLargeFile"
 
 	// Large file generation additional UI timeout.
@@ -278,7 +278,7 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		// Class name of button.
 		buttonClassName = "android.widget.Button"
 
-		// Id of the button for sharing text or file.
+		// ID of the button for sharing text or file.
 		shareButtonID = "share_button"
 
 		// Directory name under cryptohome for Web Share and ARC Nearby Share.

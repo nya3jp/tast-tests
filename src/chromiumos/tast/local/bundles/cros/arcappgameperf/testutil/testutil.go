@@ -73,8 +73,8 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	defer cancel()
 
 	// Pull out the common values.
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)

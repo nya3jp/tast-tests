@@ -41,6 +41,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/wifi"
 	_ "chromiumos/tast/remote/bundles/cros/wilco"
 
+	_ "chromiumos/tast/remote/bundles/cros/arcappgameperf"
 	_ "chromiumos/tast/remote/bundles/cros/factory/fixture"
 	_ "chromiumos/tast/remote/meta" // import fixture for meta tests
 )

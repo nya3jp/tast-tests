@@ -1,0 +1,29 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.tape;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/tape";
+
+// TapeService provides functions to store and retrieve accounts that were retrieved from TAPE.
+service TapeService {
+  rpc SaveGenericAccountInfoToFile(SaveGenericAccountInfoToFileRequest) returns (google.protobuf.Empty) {}
+  rpc RemoveGenericAccountInfo(RemoveGenericAccountInfoRequest) returns (google.protobuf.Empty) {}
+}
+
+// SaveGenericAccountInfoToFileRequest stores request parameters to save a generic account to a DUT.
+message SaveGenericAccountInfoToFileRequest {
+  string path = 1;
+  string username = 2;
+  string password = 3;
+}
+
+// RemoveGenericAccountInfoRequest stores request parameters required to remove generic account information from a DUT.
+message RemoveGenericAccountInfoRequest {
+  string path = 1;
+}
