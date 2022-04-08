@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -164,6 +166,12 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Opening the first email thread")
 		firstRow := nodewith.Role(role.Row).First()
 		ac := uiauto.New(tconn)
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for location-change events to be completed")
+		}
+		if err := uiauto.LogRootDebugInfo(ctx, tconn, filepath.Join(s.OutDir(), "ui_tree.txt")); err != nil {
+			return errors.Wrap(err, "failed to dump UI tree")
+		}
 		if err := ac.LeftClick(firstRow)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click to open the email thread row")
 		}
