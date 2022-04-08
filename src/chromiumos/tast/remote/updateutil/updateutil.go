@@ -237,7 +237,7 @@ func cacheForDUT(ctx context.Context, dut *dut.DUT, TLWAddress, gsPathPrefix str
 		DutName: host,
 	})
 	if err != nil {
-		return "", errors.Wrap(err, "failed to start CacheForDut request")
+		return "", errors.Wrap(err, "failed to start CacheForDut request; did you forget to start the TLW service?")
 	}
 
 	// Wait until the long running operation of caching is completed.
