@@ -1,0 +1,97 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8825915_77d81383",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-08T15:41:23Z",
+      "side": 1,
+      "message": "Start() is already starting the command in the background, why do you also need to make it a goroutine? The goroutine is ignoring all errors, so that is not as good as what was already there.",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 129
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fce5af_092512f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-08T15:41:23Z",
+      "side": 1,
+      "message": "It seems like this should be in an else case. It\u0027s not valid to read out if err !\u003d nil.",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 2
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a6c826f_0abe36ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-08T15:41:23Z",
+      "side": 1,
+      "message": "\u003e \"Wether\" is a possible misspelling of \"Weather\" or \"Whether\".\n\nPlease fix.",
+      "parentUuid": "402e6a5d_fdc8e2dc",
+      "range": {
+        "startLine": 296,
+        "startChar": 5,
+        "endLine": 296,
+        "endChar": 11
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46dfe192_42680410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-08T15:41:23Z",
+      "side": 1,
+      "message": "Same comment here",
+      "range": {
+        "startLine": 388,
+        "startChar": 1,
+        "endLine": 388,
+        "endChar": 3
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
