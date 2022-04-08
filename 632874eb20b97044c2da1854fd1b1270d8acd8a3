@@ -16,6 +16,24 @@
       "message": "is this change expected to be in this CL ?",
       "revId": "632874eb20b97044c2da1854fd1b1270d8acd8a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c619ae6_e35008df",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-08T19:57:40Z",
+      "side": 1,
+      "message": "The tast linter is really strict, and presubmit was complaining about this line, so I fixed it to make `repo upload` happy.",
+      "parentUuid": "c504a1cc_bca8b98e",
+      "revId": "632874eb20b97044c2da1854fd1b1270d8acd8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
