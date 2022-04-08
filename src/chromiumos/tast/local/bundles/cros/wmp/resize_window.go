@@ -7,6 +7,7 @@ package wmp
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -15,7 +16,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -59,7 +59,7 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	var opts []chrome.Option
+	opts := []chrome.Option{chrome.ExtraArgs("--force-tablet-mode=clamshell")}
 	if isArc {
 		opts = append(opts, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(),
 			chrome.FakeLogin(chrome.Creds{User: "testuser@gmail.com", Pass: "test1234"}))
@@ -125,7 +125,7 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 				// Thus, the ID isn't specified in this test.
 				ID:           "",
 				IsArcApp:     true,
-				WindowFinder: nodewith.HasClass("RootView").NameContaining("Google Play Store"),
+				WindowFinder: nodewith.HasClass("RootView").NameContaining(apps.PlayStore.Name),
 			},
 		}
 	}
@@ -148,32 +148,21 @@ func resizeSubTest(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCon
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// Wait until the app is ready to use.
+	if err := waitUntilAppReady(ctx, tconn, resizeApp); err != nil {
+		return errors.Wrapf(err, "failed to wait for %s is installed and ready to use", resizeApp.Name)
+	}
+
 	if err := launcher.LaunchApp(tconn, resizeApp.Name)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to launch %s", resizeApp.Name)
+		return errors.Wrapf(err, "failed to launch app %q", resizeApp.Name)
 	}
 	defer closeApp(cleanupSubTestCtx, tconn, resizeApp)
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupSubTestCtx, ourDir, func() bool { return retErr != nil }, cr, resizeApp.Name)
 
-	// Ensure only one window is shown.
-	// When running ARC subcase, Google Play Store will display two windows, which will cause the test to fail.
-	// We will wait until one window is disappeared automatically.
-	var window *ash.Window
-	if err := testing.Poll(ctx, func(ctx context.Context) (err error) {
-		if window, err = ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return w.IsActive }); err != nil {
-			return errors.Wrap(err, "failed to get active window")
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+	// Ensure there is only one window remain on the screen.
+	testing.ContextLogf(ctx, "Waiting for the window of App %q to be shown and stabilized", resizeApp.Name)
+	if err := waitUntilWindowStable(ctx, tconn, resizeApp); err != nil {
 		return errors.Wrap(err, "failed to wait for window to be shown")
-	}
-
-	if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateNormal); err != nil {
-		return errors.Wrap(err, "failed to set window state to normal")
-	}
-
-	if err := uiauto.New(tconn).WaitForLocation(resizeApp.WindowFinder)(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for window to stabilize")
 	}
 
 	// Minimize the window in advance to avoid its border being off-screen after the window has been dragged to the center of screen.
@@ -191,11 +180,77 @@ func resizeSubTest(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCon
 	// Perform resize operations.
 	for _, bound := range wmputils.AllBounds() {
 		if err := resizeApp.ResizeWindow(tconn, resizeApp.WindowFinder, bound)(ctx); err != nil {
-			return errors.Wrap(err, "failed to resize window")
+			return errors.Wrapf(err, "failed to resize window when resizing bound %q", bound)
 		}
 	}
 
 	return nil
+}
+
+// waitUntilAppReady waits until the app is installed and ready to use.
+func waitUntilAppReady(ctx context.Context, tconn *chrome.TestConn, resizeApp *wmputils.ResizeApp) error {
+	// PlayStore app might not appear instantly after switch back from tablet mode.
+	// Hence, retry for few times to ensure the app is ready.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		installedApps, err := ash.ChromeApps(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get installed apps"))
+		}
+
+		for _, app := range installedApps {
+			// If given app ID is empty (e.g., Play Store), we use app name to verify if app is installed and ready to use.
+			if resizeApp.ID != "" {
+				if app.AppID == resizeApp.ID {
+					return nil
+				}
+			} else {
+				if app.Name == resizeApp.Name {
+					return nil
+				}
+			}
+		}
+
+		return errors.Errorf("app %q is not installed", resizeApp.Name)
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
+}
+
+// waitUntilWindowStable ensures there is only one shown window.
+// When running ARC subcase, Google Play Store will display two windows, which will cause the test to fail.
+// We will wait until one window is disappeared automatically.
+func waitUntilWindowStable(ctx context.Context, tconn *chrome.TestConn, resizeApp *wmputils.ResizeApp) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Ensure there are only one visible window.
+		// Play Store app will pop up a delegate window for a few seconds, so we need to wait until it disappears automatically.
+		// Otherwise, it will reduce or impact UI performance(such as freezing window elements) on low-end DUTs.
+		if windows, err := ash.FindAllWindows(ctx, tconn, func(w *ash.Window) bool {
+			return w.IsVisible || w.IsFrameVisible
+		}); err != nil {
+			return errors.Wrap(err, "failed to get active window")
+		} else if len(windows) != 1 {
+			return errors.Errorf("expect 1 window but got: %d", len(windows))
+		}
+
+		// Find the window that has the correct name.
+		// One exception is Play Store (see comment on below).
+		window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			// For regular apps(i.e., apps with valid ID), we use app name to find the correct window.
+			if resizeApp.ID != "" {
+				return strings.Contains(w.Title, resizeApp.Name)
+			}
+			// For Play Store, we use exact string "Google Play Store" to find the window.
+			return w.Title == "Google Play Store"
+
+		})
+		if err != nil {
+			return errors.Wrapf(err, "failed to find window with app name %q", resizeApp.Name)
+		}
+
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			return errors.Wrap(err, "failed to wait window finish animating")
+		}
+
+		return ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateNormal)
+	}, &testing.PollOptions{Timeout: time.Minute})
 }
 
 type cwsAppText struct {

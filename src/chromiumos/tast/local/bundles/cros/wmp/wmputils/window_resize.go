@@ -23,25 +23,25 @@ import (
 const defaultMargin = 5
 
 // WindowBound use incremental integers to represent window boundaries.
-type WindowBound int
+type WindowBound string
 
 const (
 	// TopLeft represents app's TopLeft corner.
-	TopLeft WindowBound = iota
+	TopLeft WindowBound = "TopLeft"
 	// TopRight represents app's TopRight corner.
-	TopRight
+	TopRight WindowBound = "TopRight"
 	// BottomLeft represents app's BottomLeft corner.
-	BottomLeft
+	BottomLeft WindowBound = "BottomLeft"
 	// BottomRight represents app's BottomRight corner.
-	BottomRight
+	BottomRight WindowBound = "BottomRight"
 	// Left represents app's Left edge.
-	Left
+	Left WindowBound = "Left"
 	// Right represents app's Right edge.
-	Right
+	Right WindowBound = "Right"
 	// Top represents app's Top edge.
-	Top
+	Top WindowBound = "Top"
 	// Bottom represents app's Bottom edge.
-	Bottom
+	Bottom WindowBound = "Bottom"
 )
 
 // AllBounds returns all the bounds of the window.
@@ -145,7 +145,7 @@ func (ra *ResizeApp) ResizeWindow(tconn *chrome.TestConn, window *nodewith.Finde
 	ui := uiauto.New(tconn)
 
 	return func(ctx context.Context) error {
-		testing.ContextLogf(ctx, "Resizing window by dragging %d", dragBound)
+		testing.ContextLogf(ctx, "Resizing window by dragging %q", dragBound)
 		if err := ui.WaitForLocation(window)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for window to be stable")
 		}
@@ -169,7 +169,7 @@ func (ra *ResizeApp) ResizeWindow(tconn *chrome.TestConn, window *nodewith.Finde
 			return errors.Wrap(err, "failed to get window info after resize")
 		}
 		if !ra.verifyLocation(ctx, windowInfoAfter.Location, end, dragBound) {
-			return errors.New("failed to verify that the window has been resized")
+			return errors.Errorf("failed to verify that the window has been resized for bound %q: Before %q, after %q", dragBound, windowInfoBefore.Location, windowInfoAfter.Location)
 		}
 		testing.ContextLog(ctx, "Window has resized as expected")
 
