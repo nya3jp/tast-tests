@@ -391,13 +391,13 @@ func closeAllTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 		return nil
 	}
 	testing.ContextLogf(ctx, "Failed to close %d tab(s), which could have been detached; tring directly close Chrome window", failed)
-	return cuj.CloseAllWindows(ctx, tconn)
+	return cuj.CloseChrome(ctx, tconn)
 }
 
 // Run2 runs the TabSwitchCUJ test. It is invoked by TabSwitchCujRecorder2 to
 // record web contents via WPR and invoked by TabSwitchCUJ2 to execute the tests
 // from the recorded contents. Additional actions will be executed in each tab.
-func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Level, isTablet bool) {
+func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Level, isTablet, isLacros bool) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API, error: ", err)
@@ -425,20 +425,9 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 
 	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to set initial settings")
+		s.Fatal("Failed to set initial settings: ", err)
 	}
 	defer cleanupSetting(cleanupSettingsCtx)
-
-	// Shorten the context to cleanup recorder.
-	cleanUpRecorderCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
-	if err != nil {
-		s.Fatal("Failed to create a recorder, error: ", err)
-	}
-	defer recorder.Close(cleanUpRecorderCtx)
 
 	windows, err := generateTabSwitchTargets(caseLevel)
 	if err != nil {
@@ -456,25 +445,37 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		}
 	}
 	defer tsAction.Close()
-	defer func() {
+
+	timeTabsOpenStart := time.Now()
+	// Launch browser and track the elapsed time.
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, isTablet, isLacros)
+	if err != nil {
+		s.Fatal("Failed to launch Chrome: ", err)
+	}
+	if l != nil {
+		defer l.Close(ctx)
+	}
+	s.Log("Browser start ms: ", browserStartTime)
+	br := cr.Browser()
+	tconns := []*chrome.TestConn{tconn}
+	if isLacros {
+		br = l.Browser()
+		bTconn, err := l.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to get lacros test API Conn: ", err)
+		}
+		tconns = append(tconns, bTconn)
+	}
+	defer func(ctx context.Context) {
 		// To make debug easier, if something goes wrong, take screenshot before tabs are closed.
 		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 		faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
 		if err := closeAllTabs(ctx, cr, tconn, windows); err != nil {
 			s.Error("Failed to cleanup: ", err)
 		}
-	}()
+	}(ctx)
 
 	pv := perf.NewValues()
-
-	timeTabsOpenStart := time.Now()
-	// Launch browser and track the elapsed time.
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, isTablet, false)
-	if err != nil {
-		s.Fatal("Failed to launch Chrome: ", err)
-	}
-	s.Log("Browser start ms: ", browserStartTime)
-
 	pv.Set(perf.Metric{
 		Name:      "Browser.StartTime",
 		Unit:      "ms",
@@ -482,7 +483,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	}, float64(browserStartTime.Milliseconds()))
 
 	// Open all windows and tabs.
-	if err := openAllWindowsAndTabs(ctx, cr.Browser(), &windows, tsAction, caseLevel); err != nil {
+	if err := openAllWindowsAndTabs(ctx, br, &windows, tsAction, caseLevel); err != nil {
 		s.Fatal("Failed to open targets for tab switch: ", err)
 	}
 
@@ -495,6 +496,17 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 	}, float64(timeElapsed.Milliseconds()))
+
+	// Shorten the context to cleanup recorder.
+	cleanUpRecorderCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs(tconns)...)
+	if err != nil {
+		s.Fatal("Failed to create a recorder, error: ", err)
+	}
+	defer recorder.Close(cleanUpRecorderCtx)
 
 	// Shorten context a bit to allow for cleanup if Run fails.
 	shorterCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
@@ -554,9 +566,9 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 	scrollActions := tsAction.ScrollChromePage(ctx)
 	plTimeout := pageLoadingTimeout(caseLevel)
 
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to check installed chrome browser")
+		return errors.Wrap(err, "failed to find the Chrome app")
 	}
 
 	for idx, window := range windows {

@@ -22,12 +22,13 @@ import (
 type tabSwitchParam struct {
 	level    tabswitchcuj.Level
 	wprProxy bool
+	isLacros bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TabSwitchCUJ2,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of tab-switching CUJ, scrolling content with trackpad",
 		Contacts:     []string{"abergman@google.com", "tclaiborne@chromium.org", "xliu@cienet.com", "alfredyu@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -61,6 +62,12 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
 			}, {
+				Name:              "basic_lacros_noproxy",
+				Timeout:           35 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false, isLacros: true},
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
+			}, {
 				Name:              "basic_noproxy_crosbolt",
 				Timeout:           35 * time.Minute,
 				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false},
@@ -74,6 +81,12 @@ func init() {
 				Val:               tabSwitchParam{level: tabswitchcuj.Plus, wprProxy: false},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:              "plus_lacros_noproxy",
+				Timeout:           40 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Plus, wprProxy: false, isLacros: true},
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			}, {
 				Name:              "plus_noproxy_crosbolt",
 				Timeout:           40 * time.Minute,
@@ -89,6 +102,13 @@ func init() {
 
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:    "premium_lacros_noproxy",
+				Timeout: 45 * time.Minute,
+				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false, isLacros: true},
+
+				Fixture:           "loggedInAndKeepStateLacrosWithARC",
+				ExtraSoftwareDeps: []string{"lacros", "arc"},
 			}, {
 				Name:              "premium_noproxy_crosbolt",
 				Timeout:           45 * time.Minute,
@@ -152,5 +172,5 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel = ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	tabswitchcuj.Run2(ctx, s, cr, p.level, tabletMode)
+	tabswitchcuj.Run2(ctx, s, cr, p.level, tabletMode, p.isLacros)
 }
