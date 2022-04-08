@@ -129,6 +129,64 @@ func readHostClocks(ctx context.Context) (*arcpb.ClockValues, error) {
 	return parseReadClocksOutput(output)
 }
 
+func readHostDate(ctx context.Context) (*string, error) {
+	output, err := testexec.CommandContext(
+		ctx,
+		"date",
+	).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run date command on host")
+	}
+	ret := string(output)
+	return &ret, nil
+}
+
+func readARCDate(ctx context.Context) (*string, error) {
+	// This will take some time since it creates a connection to ARC again
+	td, err := ioutil.TempDir("", "")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a temp dir")
+	}
+	defer os.RemoveAll(td)
+
+	// Reestablish a connection to ARC since the service state will be lost
+	// when the RPC connection is renewed.
+	a, err := arc.New(ctx, td)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start ARC")
+	}
+	defer a.Close(ctx)
+
+	output, err := a.Command(
+		ctx,
+		"date",
+	).Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run date command on ARC")
+	}
+	ret := string(output)
+	return &ret, nil
+}
+
+// GetClockValues returns the current values of CLOCK_MONOTONINC and CLOCK_BOOTTIME in the guest and the host.
+func (c *SuspendService) GetDateOutputs(ctx context.Context, params *arcpb.SuspendServiceParams) (*arcpb.GetDateOutputsResponse, error) {
+	res := &arcpb.GetDateOutputsResponse{}
+
+	date, err := readHostDate(ctx)
+	if err != nil {
+		return nil, err
+	}
+	res.Host = *date
+
+	date, err = readARCDate(ctx)
+	if err != nil {
+		return nil, err
+	}
+	res.Arc = *date
+
+	return res, nil
+}
+
 // GetClockValues returns the current values of CLOCK_MONOTONINC and CLOCK_BOOTTIME in the guest and the host.
 func (c *SuspendService) GetClockValues(ctx context.Context, params *arcpb.SuspendServiceParams) (*arcpb.GetClockValuesResponse, error) {
 	res := &arcpb.GetClockValuesResponse{}

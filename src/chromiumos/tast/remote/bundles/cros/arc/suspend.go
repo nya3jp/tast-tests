@@ -8,6 +8,7 @@ import (
 	"context"
 	"math"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
@@ -46,6 +47,20 @@ func init() {
 		ServiceDeps: []string{"tast.cros.arc.SuspendService"},
 		Timeout:     60 * time.Minute,
 		Params: []testing.Param{{
+			Name: "s10c1",
+			Val: testArgsForSuspend{
+				suspendDurationSeconds:          10,
+				suspendDurationAllowanceSeconds: 0.1,
+				numTrials:                       1,
+			},
+		}, {
+			Name: "s10c10",
+			Val: testArgsForSuspend{
+				suspendDurationSeconds:          10,
+				suspendDurationAllowanceSeconds: 0.1,
+				numTrials:                       10,
+			},
+		}, {
 			Name: "s10c100",
 			Val: testArgsForSuspend{
 				suspendDurationSeconds:          10,
@@ -80,7 +95,7 @@ type dutClockDiffs struct {
 	arc  clockDiffs
 }
 
-func readClocks(ctx context.Context, s *testing.State, params *arcpb.SuspendServiceParams) *arcpb.GetClockValuesResponse {
+func readClocks(ctx context.Context, s *testing.State, params *arcpb.SuspendServiceParams) (*arcpb.GetClockValuesResponse, *arcpb.GetDateOutputsResponse) {
 	// Establish an rpc connection again since RPC connections can be disconnected
 	// when the DUT is suspended for a long time.
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
@@ -94,7 +109,31 @@ func readClocks(ctx context.Context, s *testing.State, params *arcpb.SuspendServ
 	if err != nil {
 		s.Fatal("SuspendService.GetClockValues returned an error: ", err)
 	}
-	return res
+	res_date, err := service.GetDateOutputs(ctx, params)
+	if err != nil {
+		s.Fatal("SuspendService.GetClockValues returned an error: ", err)
+	}
+	return res, res_date
+}
+
+type Dates struct {
+	host time.Time
+	arc  time.Time
+}
+
+func parseDates(s *testing.State, dateOutputs *arcpb.GetDateOutputsResponse) Dates {
+	host_date, err := time.Parse(time.UnixDate, strings.TrimSpace(dateOutputs.Host))
+	if err != nil {
+		s.Fatal("Failed to parse host_date: ", err)
+	}
+	arc_date, err := time.Parse(time.UnixDate, strings.TrimSpace(dateOutputs.Arc))
+	if err != nil {
+		s.Fatal("Failed to parse arc_date: ", err)
+	}
+	return Dates{
+		host: host_date,
+		arc:  arc_date,
+	}
 }
 
 func calcClockDiffs(t0, t1 *arcpb.ClockValues) (clockDiffs, error) {
@@ -149,6 +188,24 @@ func suspendDUT(ctx context.Context, s *testing.State, seconds int) {
 	s.Log("Resumed")
 }
 
+func verifyDateDiffs(s *testing.State, t0_date *arcpb.GetDateOutputsResponse, t1_date *arcpb.GetDateOutputsResponse) {
+	const DateDiffAllowanceSeconds = 10
+	s.Logf("before: %v", t0_date)
+	s.Logf("after : %v", t1_date)
+	t0 := parseDates(s, t0_date)
+	t1 := parseDates(s, t0_date)
+	diff_sec := math.Abs(t0.arc.Sub(t0.host).Seconds())
+	if diff_sec > DateDiffAllowanceSeconds {
+		s.Fatalf("Clock skew between host and guest before suspend/resume is too large, got %v, want %v", diff_sec, DateDiffAllowanceSeconds)
+	}
+	diff_sec = math.Abs(t1.arc.Sub(t1.host).Seconds())
+	if diff_sec > DateDiffAllowanceSeconds {
+		s.Fatalf("Clock skew between host and guest after suspend/resume is too large, got %v, want %v", diff_sec, DateDiffAllowanceSeconds)
+	}
+	s.Logf("Clock skew between host and guest after suspend/resume: %v", diff_sec)
+
+}
+
 func Suspend(ctx context.Context, s *testing.State) {
 	args := s.Param().(testArgsForSuspend)
 
@@ -167,9 +224,9 @@ func Suspend(ctx context.Context, s *testing.State) {
 	for i := 0; i < args.numTrials; i++ {
 		s.Logf("Trial %d/%d", i+1, args.numTrials)
 
-		t0 := readClocks(ctx, s, params)
+		t0, t0_date := readClocks(ctx, s, params)
 		suspendDUT(ctx, s, args.suspendDurationSeconds)
-		t1 := readClocks(ctx, s, params)
+		t1, t1_date := readClocks(ctx, s, params)
 
 		diff, err := calcDUTClockDiffs(t0, t1)
 		if err != nil {
@@ -178,6 +235,7 @@ func Suspend(ctx context.Context, s *testing.State) {
 		hostSuspendDuration := diff.host.bootDiff - diff.host.monoDiff
 		s.Log("Host suspended ", hostSuspendDuration)
 		arcSuspendDuration := diff.arc.bootDiff - diff.arc.monoDiff
+		verifyDateDiffs(s, t0_date, t1_date)
 		if math.Abs((arcSuspendDuration - hostSuspendDuration).Seconds()) > args.suspendDurationAllowanceSeconds {
 			s.Fatalf("Suspend time was not injected to ARC properly, got %v, want %v", arcSuspendDuration, hostSuspendDuration)
 		}

@@ -21,6 +21,11 @@ message GetClockValuesResponse {
   ClockValues arc = 2;
 }
 
+message GetDateOutputsResponse {
+  string host = 1;
+  string arc = 2;
+}
+
 message SuspendServiceParams {
   string read_clocks_path_in_arc = 1;
 }
@@ -32,4 +37,6 @@ service SuspendService {
 
   // GetPerfValues signs in to DUT and measures Android boot performance metrics.
   rpc GetClockValues (SuspendServiceParams) returns (GetClockValuesResponse) {}
+
+  rpc GetDateOutputs (SuspendServiceParams) returns (GetDateOutputsResponse) {}
 }
