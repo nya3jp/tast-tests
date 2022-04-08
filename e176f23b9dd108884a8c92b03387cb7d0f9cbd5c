@@ -16,6 +16,29 @@
       "message": "RSLGTM for an experiment on the suspicious order-dependent test cases.",
       "revId": "e176f23b9dd108884a8c92b03387cb7d0f9cbd5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62295105_109cf8fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/speedometer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-08T17:58:26Z",
+      "side": 1,
+      "message": "nit: curious, variable with the same name as type is okay?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "e176f23b9dd108884a8c92b03387cb7d0f9cbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
