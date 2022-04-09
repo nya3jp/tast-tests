@@ -193,6 +193,30 @@
       },
       "revId": "d5529780c30296753e970637c34eb496c27e93ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42eb9409_5a51d6e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-09T00:26:05Z",
+      "side": 1,
+      "message": "I suggest putting `histsWithSamples` outside of `StopRecording`, to emphasize that it does not use `r` or anything else that can be accessed from within `StopRecording`; it is just simply a function of `hists`.",
+      "parentUuid": "8d0c6749_69be7c88",
+      "range": {
+        "startLine": 515,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 98
+      },
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
