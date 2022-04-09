@@ -22,13 +22,14 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test that installs an app and tests standard mouse hover functionality. Tests are only performed in clamshell mode as tablets don't allow mice",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		Timeout:      10 * time.Minute,
 		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
 				Val:               standardizedtestutil.GetClamshellTest(runStandardizedMouseHoverTest),
+				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			}, {
