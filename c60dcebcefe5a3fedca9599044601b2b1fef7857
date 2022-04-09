@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2162a76e_90404222",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-09T06:01:22Z",
+      "side": 1,
+      "message": "Nit: duplicate title",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "c60dcebcefe5a3fedca9599044601b2b1fef7857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76503fa_05bf70e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/geller_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-09T06:01:22Z",
+      "side": 1,
+      "message": "Could you change this to LacrosVariantNeeded? Here and for UnicornLogin.",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "c60dcebcefe5a3fedca9599044601b2b1fef7857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c26c02c_e8fa55ec",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-09T06:01:22Z",
+      "side": 1,
+      "message": "This parameter is actually an email address.\n\nhttps://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/unicorn.yaml;l\u003d3?q\u003dunicorn.childuser%20f:yaml",
+      "range": {
+        "startLine": 248,
+        "startChar": 121,
+        "endLine": 248,
+        "endChar": 129
+      },
+      "revId": "c60dcebcefe5a3fedca9599044601b2b1fef7857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce762487_64b6bd6d",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-09T06:01:22Z",
+      "side": 1,
+      "message": "Nit: errors.Wrap(err, \"failed to retrieve nodes info for rows\")\n\nMakes it easier to trace the trail of errors.",
+      "range": {
+        "startLine": 274,
+        "startChar": 9,
+        "endLine": 274,
+        "endChar": 12
+      },
+      "revId": "c60dcebcefe5a3fedca9599044601b2b1fef7857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151edf23_921425e9",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-09T06:01:22Z",
+      "side": 1,
+      "message": "for i, _ :\u003d range nodes\n\nExplicitly indicate that we\u0027re only interested in the index and not the node values themselves.",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 21
+      },
+      "revId": "c60dcebcefe5a3fedca9599044601b2b1fef7857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b438724_b2cc99c7",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-09T06:01:22Z",
+      "side": 1,
+      "message": "errors.Wrap(valueErr, ...), here and below.",
+      "range": {
+        "startLine": 290,
+        "startChar": 11,
+        "endLine": 290,
+        "endChar": 22
+      },
+      "revId": "c60dcebcefe5a3fedca9599044601b2b1fef7857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5644a9_20b560b4",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-09T06:01:22Z",
+      "side": 1,
+      "message": "Could you print the email that the test failed to find?",
+      "range": {
+        "startLine": 290,
+        "startChar": 23,
+        "endLine": 290,
+        "endChar": 54
+      },
+      "revId": "c60dcebcefe5a3fedca9599044601b2b1fef7857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
