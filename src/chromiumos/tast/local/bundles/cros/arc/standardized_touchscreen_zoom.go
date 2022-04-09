@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Functional test that installs an app and tests that a standard touchscreen zoom in, and zoom out gestures work",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		Timeout:      10 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "arcBooted",
