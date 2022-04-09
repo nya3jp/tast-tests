@@ -39,6 +39,30 @@
       },
       "revId": "e176f23b9dd108884a8c92b03387cb7d0f9cbd5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e78e7c_31a31030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/speedometer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-09T14:06:03Z",
+      "side": 1,
+      "message": "yes, it works.",
+      "parentUuid": "62295105_109cf8fe",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "e176f23b9dd108884a8c92b03387cb7d0f9cbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
