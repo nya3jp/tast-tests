@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,6 +23,13 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks SOC model-related properties (ro.soc.*)",
 		Contacts:     []string{"matvore@chromium.org", "niwa@chromium.org", "arcvm-eng@google.com"},
+
+		// bob is not planning to support ARCVM so it is out-of-scope.
+		// (see http://go/arcvm-migration)
+		// It is also not trivial to populate ro.soc.* properties for
+		// it.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("bob")),
+
 		SoftwareDeps: []string{"arc", "chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      4 * time.Minute,
