@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0645e28_0c599662",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-09T01:31:10Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nit",
+      "revId": "cff919f16efa2af9ade573c0adb94b5a6b9b1487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f2e399_921efe4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-09T01:31:10Z",
+      "side": 1,
+      "message": "nit: because the samples belong to the histograms and not their names, this should be `the names of the histograms that have at least one sample`",
+      "range": {
+        "startLine": 725,
+        "startChar": 28,
+        "endLine": 725,
+        "endChar": 77
+      },
+      "revId": "cff919f16efa2af9ade573c0adb94b5a6b9b1487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
