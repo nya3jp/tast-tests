@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f490d0e_f973586a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-09T01:02:22Z",
+      "side": 1,
+      "message": "Hi Xiyuan, the proposed `NewSmoothnessMetricConfigWithMultiTestConns` is a flexible approach. But one small downside I see is the complexity of the test case code - it will have to set up metrics based on the browser type. I would imagine most probably we want to collect metrics from all browsers and this CL can make the test case simple and backward compatible. If this assumption holds, we should make it the default behavior. \n\nIf you strongly prefer the new helper, I suggest to deprecate the `NewCustomMetricConfigWithTestConn` and make `NewSmoothnessMetricConfigWithMultiTestConns` the only one.",
+      "parentUuid": "37a5876b_6ef82fd0",
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba0364f_6e41b2f6",
@@ -209,6 +227,30 @@
       "side": 1,
       "message": "I suggest putting `histsWithSamples` outside of `StopRecording`, to emphasize that it does not use `r` or anything else that can be accessed from within `StopRecording`; it is just simply a function of `hists`.",
       "parentUuid": "8d0c6749_69be7c88",
+      "range": {
+        "startLine": 515,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 98
+      },
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07585d2c_ae830b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-09T01:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42eb9409_5a51d6e4",
       "range": {
         "startLine": 515,
         "startChar": 2,
