@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0737fbc9_53dcfc90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-09T00:01:13Z",
+      "side": 1,
+      "message": "newcomer is better reviewer for quicksettings",
+      "revId": "a3d1d0b4b64e925c542d463cc184a31addacf57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
