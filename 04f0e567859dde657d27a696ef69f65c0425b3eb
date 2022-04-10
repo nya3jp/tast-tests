@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b9d4e5_d9912f96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-04-10T15:07:14Z",
+      "side": 1,
+      "message": "LGTM for network part. You will need an additional tast review from tast OWNERS.",
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7410b895_023a0622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-04-10T15:07:14Z",
+      "side": 1,
+      "message": "We should add somewhere that the flipping this flag up in its current implementation does not leave any state, so the next ARC instance will have the flag off. Therefore we don\u0027t need to do any cleanup in this test.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701d8f58_f350bbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-04-10T15:07:14Z",
+      "side": 1,
+      "message": "When we remove the flag and enable the feature completely we will need to make sure this function still returns successfully (even if this is a noop).",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 11
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff256921_91cd523b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-04-10T15:07:14Z",
+      "side": 1,
+      "message": "We should define this as a proper package constant and explain this needs to stay in sync with the App package name used in ARC.",
+      "range": {
+        "startLine": 165,
+        "startChar": 43,
+        "endLine": 165,
+        "endChar": 69
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de60903c_156895ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-04-10T15:07:14Z",
+      "side": 1,
+      "message": "If possible we should try to add \"vpn\" here to select the correct network (https://source.corp.google.com/android/vendor/google_arc/libs/arc-net-services/src/com/android/server/arc/net/ArcNetworkDebugTools.java;l\u003d578).\n\nDoes that work with the fake eth network when the facade VPN is disconnected ?\n\nIncidentally, we could also try to do a negative ping test to the overlay IP with the same command when specifying the underlying interface / transport technology.",
+      "range": {
+        "startLine": 219,
+        "startChar": 9,
+        "endLine": 219,
+        "endChar": 66
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e36250_1f116f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-04-10T15:07:14Z",
+      "side": 1,
+      "message": "If you list yourself as the maintainer, you should refer to cros-networking-bugs@ on this line, and platform networking team in the comment.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
