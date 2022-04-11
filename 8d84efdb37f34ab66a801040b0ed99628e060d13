@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e08b83_20db51c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-04-11T04:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca151004_f7fa6cff",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85eff546_b481c376",
