@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae25a910_5b48ac8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-04-11T22:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7410b895_023a0622",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 17
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "701d8f58_f350bbdd",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a19930_21d038dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-04-11T22:35:17Z",
+      "side": 1,
+      "message": "Ack, I think the test will need to change when/if we switch to a finch flag as well, and will need to adapt to the new default state of the flag (e.g. the test currently assumes the flag is off at the beginning, which won\u0027t always be true).",
+      "parentUuid": "701d8f58_f350bbdd",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 11
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff256921_91cd523b",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-10T15:07:14Z",
       "side": 1,
       "message": "We should define this as a proper package constant and explain this needs to stay in sync with the App package name used in ARC.",
+      "range": {
+        "startLine": 165,
+        "startChar": 43,
+        "endLine": 165,
+        "endChar": 69
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9971cf_2f84a756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-04-11T22:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff256921_91cd523b",
       "range": {
         "startLine": 165,
         "startChar": 43,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efe10616_056cfaa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-04-11T22:35:17Z",
+      "side": 1,
+      "message": "Done, added the option to specify the underlying network.\n\n\n\u003e Does that work with the fake eth network when the facade VPN is disconnected ?\nIf we specify the exact interface, we can choose the correct ethernet network\n\n\u003e Incidentally, we could also try to do a negative ping test to the overlay IP with the same command when specifying the underlying interface / transport technology.\nIf we do a negative test with \"vpn\" as the network, it actually shows up as an error because the \"reach\" cmd failed to execute (in Android, there\u0027s no vpn network anymore, so I guess it doesn\u0027t actually send a reach). I can hardcode \u0027eth1\u0027 as the negative test network under the assumption that all tast tests are executed on a device with an ethernet connection, but if anyone were to run it locally on a dut without an ethernet connection, it would fail for the same reasons as \"vpn\" appearing to fail. I left out the negative test to prevent potential flakiness/false failures, thoughts? \n\n(confirmed that I can\u0027t reach the vpn on another network manually though)",
+      "parentUuid": "de60903c_156895ad",
+      "range": {
+        "startLine": 219,
+        "startChar": 9,
+        "endLine": 219,
+        "endChar": 66
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38e36250_1f116f6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
         "patchSetId": 4
@@ -123,6 +219,30 @@
       "writtenOn": "2022-04-10T15:07:14Z",
       "side": 1,
       "message": "If you list yourself as the maintainer, you should refer to cros-networking-bugs@ on this line, and platform networking team in the comment.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb0b622_60bd0699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-04-11T22:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e36250_1f116f6b",
       "range": {
         "startLine": 43,
         "startChar": 4,
