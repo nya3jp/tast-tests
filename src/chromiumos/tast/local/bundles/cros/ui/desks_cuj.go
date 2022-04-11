@@ -119,7 +119,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	recorder, err := cuj.NewRecorder(ctx, cr, nil, append(
-		cuj.MetricConfigs(),
+		cuj.MetricConfigs([]*chrome.TestConn{tconn}),
 		cuj.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter, []int64{500, 2000}),
 		cuj.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
 	)...)
