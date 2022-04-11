@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
@@ -41,6 +42,10 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 	cr := p.Chrome
 	a := p.ARC
 	d := p.UIDevice
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -171,12 +176,12 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 	}
 
 	// Restore the initial rotation.
-	defer func() {
-		if err := display.SetDisplayProperties(ctx, tconn, info.ID,
+	defer func(ctx context.Context) {
+		if err := display.SetDisplayProperties(cleanupCtx, tconn, info.ID,
 			display.DisplayProperties{Rotation: &info.Rotation}); err != nil {
 			s.Fatal("Failed to restore the initial display rotation: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	for _, data := range []struct {
 		activityName string

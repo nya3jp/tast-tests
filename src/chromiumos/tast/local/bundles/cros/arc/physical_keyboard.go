@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -277,6 +278,10 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 }
 
 func physicalKeyboardBasicEditingOnFrenchTest(ctx context.Context, st pkTestState, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	imePrefix, err := ime.Prefix(ctx, st.tconn)
 	if err != nil {
 		s.Fatal("Failed to get the IME extension prefix: ", err)
@@ -293,8 +298,8 @@ func physicalKeyboardBasicEditingOnFrenchTest(ctx context.Context, st pkTestStat
 	if err := ime.WaitForInputMethodMatches(ctx, st.tconn, frImeID, 30*time.Second); err != nil {
 		s.Fatal("Failed to switch to the French IME: ", err)
 	}
-	defer ime.RemoveInputMethod(ctx, st.tconn, frImeID)
-	defer ime.SetCurrentInputMethod(ctx, st.tconn, currentImeID)
+	defer ime.RemoveInputMethod(cleanupCtx, st.tconn, frImeID)
+	defer ime.SetCurrentInputMethod(cleanupCtx, st.tconn, currentImeID)
 
 	if err := testTextField(ctx, st, s, ".MainActivity", "qwerty", "azerty"); err != nil {
 		s.Error("Failed to type in normal text field: ", err)
