@@ -16,6 +16,24 @@
       "message": "Keep list sorted.  (X11 is before truetype).\n\nWhat about other subdirs?\n\nOn my container right now I see that X11, opentype, truetype, and type1 are worth deleting:\n\njoelhockey@penguin:/usr/share/fonts$ du -h\n628K    ./X11/encodings/large\n768K    ./X11/encodings\n8.0M    ./X11/misc\n204K    ./X11/util\n9.0M    ./X11\n8.0K    ./cMap\n32K     ./cmap\n3.2M    ./opentype/urw-base35\n3.2M    ./opentype\n5.2M    ./truetype/croscore\n11M     ./truetype/dejavu\n3.9M    ./truetype/droid\n6.4M    ./truetype/freefont\n12M     ./truetype/lato\n2.1M    ./truetype/liberation\n1.1M    ./truetype/noto\n3.7M    ./truetype/roboto/unhinted/RobotoTTF\n6.2M    ./truetype/roboto/unhinted\n6.2M    ./truetype/roboto\n47M     ./truetype\n4.5M    ./type1/gsfonts\n7.8M    ./type1/urw-base35\n13M     ./type1\n71M     .",
       "revId": "fdaf0121fb1eaffccd66f9dd2be479d74be7a380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6164698_ee49fd85",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-04-11T05:27:33Z",
+      "side": 1,
+      "message": "nevermind about extra dirs.  I see that a new installed container has only X11 and truetype.  Just change order.",
+      "parentUuid": "bd4d9355_0603d3f8",
+      "revId": "fdaf0121fb1eaffccd66f9dd2be479d74be7a380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
