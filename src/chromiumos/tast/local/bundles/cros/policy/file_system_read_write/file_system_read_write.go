@@ -32,6 +32,10 @@ const (
 	SaveFilePicker = "showSaveFilePicker"
 	// SaveFileDialog is save file dialog's name.
 	SaveFileDialog = "Save file as"
+	// OpenFilePicker is a link's name which can open file.
+	OpenFilePicker = "showOpenFilePicker"
+	// OpenFileDialog is open file dialog's name.
+	OpenFileDialog = "Select a file to open"
 
 	shortTimeout = 5 * time.Second
 	longTimeout  = 20 * time.Second
@@ -43,6 +47,8 @@ type TestCase struct {
 	URL string
 	// WantFileSystemWrite is whether the test case have write access.
 	WantFileSystemWrite bool
+	// WantFileSystemRead is whether the test case have read access.
+	WantFileSystemRead bool
 	// Policy is the policy the test case sets.
 	Policy policy.Policy
 }
@@ -178,6 +184,21 @@ func RunTestCases(ctx context.Context, s *testing.State, param TestCase) {
 		} else {
 			if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(SaveFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
 				s.Error("Save file picker opened unexpectedly")
+			}
+		}
+	case *policy.FileSystemReadBlockedForUrls:
+		if err := triggerFilePicker(ctx, conn, ui, OpenFileDialog, OpenFilePicker); err != nil {
+			s.Fatal("Failed to trigger file picker: ", err)
+		}
+		// At this point, the file picker has either opened, or failed to open with an error.
+
+		if param.WantFileSystemRead {
+			if err := ui.WaitUntilExists(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"))(ctx); err != nil {
+				s.Fatal("Failed to wait until `select a file to open` dialog is opened: ", err)
+			}
+		} else {
+			if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
+				s.Error("Open file picker opened unexpectedly")
 			}
 		}
 	default:
