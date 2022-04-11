@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2373d2_1e309eb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-11T23:06:55Z",
+      "side": 1,
+      "message": "I actually like the simplicity of this solution, we just need to make it work ;)",
+      "revId": "aa165865a35aba83153f7cbfc65e511a0272ba28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48e05d09_57195b37",
