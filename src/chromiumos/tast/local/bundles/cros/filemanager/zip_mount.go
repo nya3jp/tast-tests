@@ -357,11 +357,6 @@ func testMountingMultipleZipFiles(ctx context.Context, s *testing.State, files *
 		s.Fatal("Cannot find 'Invalid password': ", err)
 	}
 
-	// Select the previous password.
-	if err := ew.Accel(ctx, "ctrl+A"); err != nil {
-		s.Fatal("Failed selecting files with Ctrl+A: ", err)
-	}
-
 	// Enter right password.
 	if err := ew.Type(ctx, "password"); err != nil {
 		s.Fatal("Cannot enter 'password': ", err)
