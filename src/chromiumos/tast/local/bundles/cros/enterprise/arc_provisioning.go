@@ -28,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -149,6 +150,12 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("increase logcat buffer size", err)
 		}
 
+		sysLogReader, err := openSysLog(ctx)
+		if err != nil {
+			return exit("initialize syslog reader", err)
+		}
+		defer sysLogReader.Close()
+
 		if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
 			if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
 				s.Logf("WARNING: Failed to dump logcat: %s", err)
@@ -159,6 +166,9 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		waitForPackagesCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 		defer cancel()
 		if err := waitForPackages(waitForPackagesCtx, a, packages); err != nil {
+			if chromeCrashed(ctx, sysLogReader) {
+				return retry("wait for packages", errors.Wrap(err, "Chrome process crashed"))
+			}
 			dumpBugReport(ctx, a, filepath.Join(s.OutDir(), "bugreport.zip"))
 			return exit("wait for packages", err)
 		}
@@ -182,6 +192,22 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		return nil
 	}, nil); err != nil {
 		s.Fatal("Provisioning flow failed: ", err)
+	}
+}
+
+func openSysLog(ctx context.Context) (*syslog.LineReader, error) {
+	return syslog.NewLineReader(ctx, syslog.MessageFile, false /*fromStart*/, nil /*opts*/)
+}
+
+func chromeCrashed(ctx context.Context, sysLogReader *syslog.LineReader) bool {
+	const chromeCrashMessage = "Received crash notification for chrome"
+	for {
+		line, err := sysLogReader.ReadLine()
+		if err != nil {
+			return false
+		} else if strings.Contains(line, chromeCrashMessage) {
+			return true
+		}
 	}
 }
 
