@@ -200,12 +200,14 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				// coreutils and ping are excluded for recover_duts scripts.
 				// logger is common to redirect output widely used from init conf scripts.
 				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger|/bin/ping|brcm_patchram_plus)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
+				{notExe, "(/bin/bash)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/minijail0", notString, "minijail", zeroProcs, domainIsolationErrorMessage},
 			}...)
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
 				{exe, "/sbin/minijail0", matchRegexp, "(minijail|.*_minijail0|cros_.*_minijail)", zeroProcs, ""},
 				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
+				{notExe, "(/bin/bash)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(ping|frecon|agetty|recover_duts).*", notString, "chromeos", zeroProcs, domainIsolationErrorMessage},
 				{cmdline, ".*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
