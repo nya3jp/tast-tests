@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f69752_8fe8d732",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/bloonchipper_v2.0.4277-9f652bb3_20210401.bin.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-11T15:59:44Z",
+      "side": 1,
+      "message": "I think that if you have copied the files into the private bucket, then you should change the creation dates at the ends of the file names. See:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files",
+      "range": {
+        "startLine": 2,
+        "startChar": 95,
+        "endLine": 2,
+        "endChar": 103
+      },
+      "revId": "e978dff9c2b2fd2b8f7e2ad3ecb4268e7036df05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
