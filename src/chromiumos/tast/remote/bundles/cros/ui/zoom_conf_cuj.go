@@ -38,11 +38,29 @@ func init() {
 					Size: conference.TwoRoomSize,
 				},
 			}, {
+				Name:              "basic_lacros_two",
+				Timeout:           time.Minute * 15,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.TwoRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "basic_small",
 				Timeout: time.Minute * 15,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.SmallRoomSize,
+				},
+			}, {
+				Name:              "basic_lacros_small",
+				Timeout:           time.Minute * 15,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.SmallRoomSize,
+					IsLacros: true,
 				},
 			}, {
 				Name:    "basic_large",
@@ -52,11 +70,29 @@ func init() {
 					Size: conference.LargeRoomSize,
 				},
 			}, {
+				Name:              "basic_lacros_large",
+				Timeout:           time.Minute * 20,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "basic_class",
 				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.ClassRoomSize,
+				},
+			}, {
+				Name:              "basic_lacros_class",
+				Timeout:           time.Minute * 20,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.ClassRoomSize,
+					IsLacros: true,
 				},
 			}, {
 				Name:    "plus_large",
@@ -66,6 +102,15 @@ func init() {
 					Size: conference.LargeRoomSize,
 				},
 			}, {
+				Name:              "plus_lacros_large",
+				Timeout:           time.Minute * 20,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "plus",
+					Size:     conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "plus_class",
 				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
@@ -73,11 +118,29 @@ func init() {
 					Size: conference.ClassRoomSize,
 				},
 			}, {
+				Name:              "plus_lacros_class",
+				Timeout:           time.Minute * 20,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "plus",
+					Size:     conference.ClassRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "premium_large",
 				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.LargeRoomSize,
+				},
+			}, {
+				Name:              "premium_lacros_large",
+				Timeout:           time.Minute * 20,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "premium",
+					Size:     conference.LargeRoomSize,
+					IsLacros: true,
 				},
 			},
 		},
@@ -121,6 +184,7 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 		RoomSize:        int64(param.Size),
 		ExtendedDisplay: false,
 		CameraVideoPath: remoteCameraVideoPath,
+		IsLacros:        param.IsLacros,
 	}); err != nil {
 		s.Fatal("Failed to run Zoom Scenario: ", err)
 	}
