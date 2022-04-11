@@ -17,8 +17,10 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -62,10 +64,32 @@ var screenshareBlockPolicy = []policy.Policy{&policy.DataLeakPreventionRulesList
 },
 }
 
+// DLP policy that warns when trying to share the screen.
+var screenshareWarnPolicy = []policy.Policy{&policy.DataLeakPreventionRulesList{
+	Val: []*policy.DataLeakPreventionRulesListValue{
+		{
+			Name:        "Warn before sharing the screen with confidential content visible",
+			Description: "User should be warned before sharing the screen with confidential content visible",
+			Sources: &policy.DataLeakPreventionRulesListValueSources{
+				Urls: []string{
+					"example.com",
+				},
+			},
+			Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+				{
+					Class: "SCREEN_SHARE",
+					Level: "WARN",
+				},
+			},
+		},
+	},
+},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataLeakPreventionRulesListScreenshare,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with screen sharing restrictions",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
@@ -93,6 +117,70 @@ func init() {
 				policyDLP:   screenshareBlockPolicy,
 				browserType: browser.TypeAsh,
 			},
+		}, {
+			Name:    "ash_warn_proceeded",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_proceded",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.WarnProceeded,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:    "ash_warn_cancelled",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_cancelled",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.WarnCancelled,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:              "lacros_blocked",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "blocked",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.Blocked,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_allowed",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "allowed",
+				url:         "https://www.chromium.org/",
+				restriction: restrictionlevel.Allowed,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_warn_proceeded",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_proceded",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.WarnProceeded,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_warn_cancelled",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_cancelled",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.WarnCancelled,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeLacros,
+			},
 		},
 		}})
 }
@@ -117,6 +205,18 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), params.browserType)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer keyboard.Close()
+
 	// Start screen recorder.
 	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
 	if err != nil {
@@ -130,11 +230,11 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "dlpScreenShare.mp4"))
 
 	const nonRestrictedSite = "https://www.chromium.org/"
-	wantAllowed := params.restriction == restrictionlevel.Allowed
+	wantAllowed := params.restriction == restrictionlevel.Allowed || params.restriction == restrictionlevel.WarnProceeded
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+params.name)
 
-	if _, err = cr.NewConn(ctx, nonRestrictedSite); err != nil {
+	if _, err = br.NewConn(ctx, nonRestrictedSite); err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
 
@@ -143,7 +243,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		s.Fatal("Failed to check frame status: ", err)
 	}
 
-	if _, err = cr.NewConn(ctx, params.url); err != nil {
+	if _, err = br.NewConn(ctx, params.url); err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
 
@@ -153,6 +253,23 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 			s.Errorf("Failed to wait for notification with title %q: %v", screensharePausedTitle, err)
 		} else {
 			s.Errorf("Notification with title %q appeared when it should not have", screensharePausedTitle)
+		}
+	}
+
+	if params.restriction == restrictionlevel.WarnProceeded {
+		// Hit Enter, which is equivalent to clicking on the "Share anyway" button.
+		if err := keyboard.Accel(ctx, "Enter"); err != nil {
+			s.Fatal("Failed to hit Enter: ", err)
+		}
+
+		// Continuing screen sharing should result in a "Screen share resumed" notification.
+		if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(screenshareResumedIDContains), ash.WaitTitle(screenshareResumedTitle)); err != nil {
+			s.Errorf("Failed to wait for notification with title %q: %v", screenshareResumedTitle, err)
+		}
+	} else if params.restriction == restrictionlevel.WarnCancelled {
+		// Hit Esc, which is equivalent to clicking on the "Cancel" button.
+		if err := keyboard.Accel(ctx, "Esc"); err != nil {
+			s.Fatal("Failed to hit Esc: ", err)
 		}
 	}
 
@@ -173,7 +290,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		s.Fatal("Polling the frame status timed out: ", err)
 	}
 
-	if _, err = cr.NewConn(ctx, nonRestrictedSite); err != nil {
+	if _, err = br.NewConn(ctx, nonRestrictedSite); err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
 
