@@ -83,14 +83,6 @@ func CCAUIAssistant(ctx context.Context, s *testing.State) {
 			},
 		},
 		{
-			name: "take_photo_square_mode",
-			Options: assistantOptions{
-				Query:              "take a square photo",
-				Mode:               cca.Square,
-				ShouldStartCapture: true,
-			},
-		},
-		{
 			name: "take_selfie",
 			Options: assistantOptions{
 				Query:              "take a selfie",
