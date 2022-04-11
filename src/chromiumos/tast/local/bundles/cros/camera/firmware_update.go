@@ -24,6 +24,7 @@ func init() {
 			"kamesan@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
+		Attr: []string{"group:camera-usb-qual"},
 		Vars: []string{"config"},
 	})
 }
