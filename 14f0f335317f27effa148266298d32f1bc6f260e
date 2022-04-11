@@ -16,6 +16,24 @@
       "message": "My suggestion would be to change to the internal method at this time.  I do not think the command listed will work on moblab/satlab as servod container does not have xz utils installed.\n\nAs discussed base servod from hwtools is just the basic servod with just the tools and functionality for servo,  labs are encouraged to make their own derived version of the image with the tools they need added ( like xz utils )",
       "revId": "14f0f335317f27effa148266298d32f1bc6f260e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73183467_3334011d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-11T17:00:18Z",
+      "side": 1,
+      "message": "The wget | tar | dd command is working in mainlab and satlab right now.  However centralizing the logic in one place seems like a good idea.",
+      "parentUuid": "5c6fe7b5_132d9c95",
+      "revId": "14f0f335317f27effa148266298d32f1bc6f260e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
