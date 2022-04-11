@@ -32,6 +32,10 @@ const (
 	SaveFilePicker = "showSaveFilePicker"
 	// SaveFileDialog is save file dialog's name.
 	SaveFileDialog = "Save file as"
+	// OpenFilePicker is a link's name which can open file.
+	OpenFilePicker = "showOpenFilePicker"
+	// OpenFileDialog is open file dialog's name.
+	OpenFileDialog = "Select a file to open"
 
 	shortTimeout = 5 * time.Second
 	longTimeout  = 20 * time.Second
@@ -49,6 +53,8 @@ type AccessMethod int
 const (
 	// Write is the write access to the file system.
 	Write AccessMethod = iota
+	// Read is the read access to the file system.
+	Read
 )
 
 // TestCase represents the name of test, the policy to use.
@@ -57,8 +63,8 @@ type TestCase struct {
 	Name string
 	// URL is the website's URL the test case will connect to.
 	URL string
-	// WantFileSystemWrite is whether the test case have write access.
-	WantFileSystemWrite bool
+	// WantFileSystemAccess is whether the test case have read/write access to file system.
+	WantFileSystemAccess bool
 	// Method defines the access method to file system.
 	Method AccessMethod
 	// Policies is the policies the test case sets.
@@ -151,7 +157,7 @@ func RunTestCases(ctx context.Context, s *testing.State, param TestCase) {
 	// Cleanup the file _after_ the browser has been closed, to be sure that
 	// the browser is not still in the process of writing the file.
 	filePath := path.Join(myFilesPath, "test-file")
-	if param.WantFileSystemWrite {
+	if param.WantFileSystemAccess && param.Method == Write {
 		defer os.Remove(filePath)
 	}
 
@@ -185,7 +191,7 @@ func RunTestCases(ctx context.Context, s *testing.State, param TestCase) {
 		}
 		// At this point, the file picker has either opened, or failed to open with an error.
 
-		if param.WantFileSystemWrite {
+		if param.WantFileSystemAccess {
 			if err := ui.LeftClick(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
 				s.Fatal("Failed to save file using save file picker: ", err)
 			}
@@ -196,6 +202,21 @@ func RunTestCases(ctx context.Context, s *testing.State, param TestCase) {
 		} else {
 			if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(SaveFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
 				s.Error("Save file picker opened unexpectedly")
+			}
+		}
+	case Read:
+		if err := triggerFilePicker(ctx, conn, ui, OpenFileDialog, OpenFilePicker); err != nil {
+			s.Fatal("Failed to trigger file picker: ", err)
+		}
+		// At this point, the file picker has either opened, or failed to open with an error.
+
+		if param.WantFileSystemAccess {
+			if err := ui.WaitUntilExists(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"))(ctx); err != nil {
+				s.Fatal("Failed to wait until `select a file to open` dialog is opened: ", err)
+			}
+		} else {
+			if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
+				s.Error("Open file picker opened unexpectedly")
 			}
 		}
 	default:
