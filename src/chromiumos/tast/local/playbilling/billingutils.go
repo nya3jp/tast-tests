@@ -73,6 +73,12 @@ func checkPresenceOfArcObject(uiAutomator *ui.Device, objectType, objectText str
 // which don't allow invoking billing actions via js interactions.
 func ClickElementByCDP(conn *chrome.Conn, jsExpr string) action.Action {
 	return func(ctx context.Context) error {
+		// Scroll the element into the view.
+		// Otherwise CDP event will fail to click it.
+		if err := conn.Eval(ctx, fmt.Sprintf("%s.scrollIntoViewIfNeeded()", jsExpr), nil); err != nil {
+			return errors.Wrapf(err, "failed to scroll %v into view", jsExpr)
+		}
+
 		currentLocation, err := waitForStableElementByJs(ctx, conn, jsExpr)
 		if err != nil {
 			return err
