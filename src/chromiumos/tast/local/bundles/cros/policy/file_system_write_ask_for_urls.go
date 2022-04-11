@@ -61,70 +61,70 @@ func FileSystemWriteAskForUrls(ctx context.Context, s *testing.State) {
 	for _, param := range []filesystemreadwrite.TestCase{
 		{
 			// Test of should ask for permission.
-			URL:                 url,
-			WantFileSystemWrite: true,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: true,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Val: []string{url}}},
 		}, {
 			// Test access granted for matching url in FileSystemWriteAskForUrls
 			// with DefaultFileSystemWriteGuardSetting block access.
-			URL:                 url,
-			WantFileSystemWrite: true,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: true,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Val: []string{url}},
 				&policy.DefaultFileSystemWriteGuardSetting{Val: filesystemreadwrite.DefaultGuardSettingBlock}},
 		}, {
 			// Test access granted for matching url in FileSystemWriteAskForUrls
 			// with DefaultFileSystemWriteGuardSetting allow access.
-			URL:                 url,
-			WantFileSystemWrite: true,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: true,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Val: []string{url}},
 				&policy.DefaultFileSystemWriteGuardSetting{Val: filesystemreadwrite.DefaultGuardSettingAsk}},
 		}, {
 			// Test access granted for matching url in FileSystemWriteAskForUrls
 			// with DefaultFileSystemWriteGuardSetting unset.
-			URL:                 url,
-			WantFileSystemWrite: true,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: true,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Val: []string{url}},
 				&policy.DefaultFileSystemWriteGuardSetting{Stat: policy.StatusUnset}},
 		}, {
 			// Test access denied for non-matching url in FileSystemWriteAskForUrls
 			// with DefaultFileSystemWriteGuardSetting block access.
-			URL:                 url,
-			WantFileSystemWrite: false,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: false,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Val: []string{""}},
 				&policy.DefaultFileSystemWriteGuardSetting{Val: filesystemreadwrite.DefaultGuardSettingBlock}},
 		}, {
 			// Test access granted for non-matching url in FileSystemWriteAskForUrls
 			// with DefaultFileSystemWriteGuardSetting allow access.
-			URL:                 url,
-			WantFileSystemWrite: true,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: true,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Val: []string{""}},
 				&policy.DefaultFileSystemWriteGuardSetting{Val: filesystemreadwrite.DefaultGuardSettingAsk}},
 		}, {
 			// Test access granted for non-matching url in FileSystemWriteAskForUrls
 			// with DefaultFileSystemWriteGuardSetting unset.
-			URL:                 url,
-			WantFileSystemWrite: true,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: true,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Val: []string{""}},
 				&policy.DefaultFileSystemWriteGuardSetting{Stat: policy.StatusUnset}},
 		}, {
 			// Test of policy unset.
-			URL:                 url,
-			WantFileSystemWrite: true,
-			Method:              filesystemreadwrite.Write,
+			URL:                  url,
+			WantFileSystemAccess: true,
+			Method:               filesystemreadwrite.Write,
 			Policies: []policy.Policy{
 				&policy.FileSystemWriteAskForUrls{Stat: policy.StatusUnset}},
 		},
