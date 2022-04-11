@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f08732_17a1527d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-11T16:29:39Z",
+      "side": 1,
+      "message": "Tests would need to setup differently for different browser type scenario so I think it is reasonable to ask tests to setup metric collection differently because of the browser type. We could add helpers to reduce the pain to write boilerplate code. \n\nI don\u0027t think make `NewSmoothnessMetricConfigWithMultiTestConns` the default is good because tests might want to be specific where they get the metrics data.\n\nDeprecate `NewCustomMetricConfigWithTestConn` or make it take a list of test conns sounds good.\n\nOne more question: when we collect the metric samples of the same name from different browsers, do we need to differentiate them (e.g. record them under different suffix)? One example metric is `JankyIntervalsPerThirtySeconds3`, we would get it from both ash-chrome and lacro-chrome and it does not make sense to record them under the same name.",
+      "parentUuid": "1f490d0e_f973586a",
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba0364f_6e41b2f6",
