@@ -9,6 +9,7 @@ package clipboard
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -79,7 +80,7 @@ func CheckPastedContent(ctx context.Context, ui *uiauto.Context, content string)
 
 	contentNode := nodewith.NameStartingWith(content).Role(role.InlineTextBox).State(state.Editable, true).First()
 
-	if err := ui.WaitUntilExists(contentNode)(ctx); err != nil {
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(contentNode)(ctx); err != nil {
 		return errors.Wrap(err, "failed to check for pasted content")
 	}
 
