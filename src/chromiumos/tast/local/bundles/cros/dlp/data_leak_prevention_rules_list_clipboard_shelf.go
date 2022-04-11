@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -62,6 +63,16 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 	s.Log("Waiting for chrome.clipboard API to become available")
 	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
 		s.Fatal("Failed to wait for chrome.clipboard API to become available: ", err)
+	}
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to set tablet mode enabled to false: ", err)
 	}
 
 	for _, param := range []struct {
