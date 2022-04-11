@@ -16,6 +16,24 @@
       "message": "Is the order of these two actions important here? Can leaving a dangling State File mess up next test runs if the test doesn\u0027t remove the State File before stopping work?",
       "revId": "0694e5fca07b62e384250dff4de05dcd366d01ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13855a4e_8130c360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shimlessrma/shimlessrma_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-04-11T03:43:56Z",
+      "side": 1,
+      "message": "I think we can do either order and it depends on the implementation of test setup. In general I feel it make sense to remove file first since I think cr will be closed anyway when the device restarts.",
+      "parentUuid": "dc8f727a_d16a59c7",
+      "revId": "0694e5fca07b62e384250dff4de05dcd366d01ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
