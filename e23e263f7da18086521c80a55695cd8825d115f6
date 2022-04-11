@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb6d40d_56780238",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-11T18:36:50Z",
+      "side": 1,
+      "message": "Nit: Unnecessary repeated line (?)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "e23e263f7da18086521c80a55695cd8825d115f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "58422b4b_8f8d13fe",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-04-11T14:32:45Z",
       "side": 1,
       "message": "Thanks for your review and help with this! ",
+      "revId": "e23e263f7da18086521c80a55695cd8825d115f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ad0fac_6d06855b",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-11T18:36:50Z",
+      "side": 1,
+      "message": "Does this logic work when there is a secondary account added (there will be 2 \u0027User information\u0027 sections and therefore 2 \u0027Email\u0027 and \u0027Is child\u0027 labels).\n\nSee screenshot: https://drive.google.com/file/d/1pZYv7pTvxzi-XM6XemNeX-3hQLEQU9DE/view?usp\u003dsharing\u0026resourcekey\u003d0-bEw_88s0d8Gd08BjYBelTg\n\nI would recommend checking \u0027Profile\u0027 section, labels \u0027Account\u0027 and \u0027Child\u0027 instead.\nWe are also rather more interested in profile-\u003eIsChild() than information from identity manager (though they should not be inconsistent).",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 61
+      },
       "revId": "e23e263f7da18086521c80a55695cd8825d115f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
