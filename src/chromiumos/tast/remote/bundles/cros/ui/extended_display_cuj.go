@@ -44,6 +44,19 @@ func init() {
 					Size: conference.LargeRoomSize,
 				},
 			},
+			{
+				Name:              "premium_lacros_meet_large",
+				Timeout:           50 * time.Minute,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					// This is a premium test case for extended display CUJ.
+					// But this case just calls Google Meet "plus" case, so the given tier
+					// is "plus" instead of "premium".
+					Tier:     "plus",
+					Size:     conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			},
 		},
 	})
 }
@@ -104,6 +117,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		RoomSize:        int64(param.Size),
 		ExtendedDisplay: true,
 		CameraVideoPath: remoteCameraVideoPath,
+		IsLacros:        param.IsLacros,
 	}); err != nil {
 		s.Fatal("Failed to run Meet Scenario: ", err)
 	}
