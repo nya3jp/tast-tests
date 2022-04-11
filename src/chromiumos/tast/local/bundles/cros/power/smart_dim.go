@@ -43,9 +43,7 @@ func init() {
 				browserType:        browser.TypeAsh,
 				useFlatbufferModel: true,
 			},
-			// TODO(alanlxl): this should be quite stable, change to critical after several successful builds.
-			Fixture:   "chromeFastHistograms",
-			ExtraAttr: []string{"informational"},
+			Fixture: "chromeFastHistograms",
 		}, {
 			Name: "lacros",
 			Val: &smartDimParam{
