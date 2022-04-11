@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -374,11 +375,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter, []int64{5, 10}, bTconn),
 	}
-	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
-		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
-			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
-			[]int64{50, 80}, bTconn))
-	}
 	// Jank criteria for input event latencies. The 1st number is the
 	// threshold to be marked as jank and the 2nd one is to be marked
 	// very jank.
@@ -433,6 +429,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
 	defer meetConn.Close()
+
+	closedMeet := false
+	defer func() {
+		if closedMeet {
+			return
+		}
+		// Close the Meet window to finish meeting.
+		if err := meetConn.CloseTarget(closeCtx); err != nil {
+			s.Error("Failed to close the meeting: ", err)
+		}
+	}()
+
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Lacros specific setup.
@@ -528,13 +536,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 2 * time.Minute}); err != nil {
 		s.Fatal("Failed to grant permissions: ", err)
 	}
-
-	defer func() {
-		// Close the Meet window to finish meeting.
-		if err := meetConn.CloseTarget(closeCtx); err != nil {
-			s.Error("Failed to close the meeting: ", err)
-		}
-	}()
 
 	if meet.docs {
 		docsURL := defaultDocsURL
@@ -816,6 +817,35 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
 			s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
+		}
+	}
+
+	// Report WebRTC metrics for the sent video stream.
+	if hists, err := metrics.RunAndWaitAll(ctx, bTconn, timeout, func(ctx context.Context) error {
+		// The histograms are recorded when the sent video stream is removed.
+		closedMeet = true
+		if err := meetConn.CloseTarget(closeCtx); err != nil {
+			return errors.Wrap(err, "failed to close the meeting")
+		}
+		return nil
+	},
+		"WebRTC.Video.DroppedFrames.Capturer",
+		"WebRTC.Video.DroppedFrames.Encoder",
+		"WebRTC.Video.DroppedFrames.EncoderQueue",
+		"WebRTC.Video.DroppedFrames.Ratelimiter",
+	); err != nil {
+		s.Error("Failed to gather WebRTC metrics for video streams: ", err)
+	} else {
+		for _, hist := range hists {
+			if count := hist.TotalCount(); count != 1 {
+				s.Errorf("Got %d samples of %s; expected 1", count, hist.Name)
+			} else {
+				pv.Set(perf.Metric{
+					Name:      hist.Name,
+					Unit:      "count",
+					Direction: perf.SmallerIsBetter,
+				}, float64(hist.Sum))
+			}
 		}
 	}
 
