@@ -129,6 +129,16 @@ func testGrid(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// TODO(b/215484798): Removed the logic for old UI once the new UI applied.
+	useOldUI, err := app.OptionExist(ctx, cca.GridOption)
+	if err != nil {
+		return errors.Wrap(err, "failed to check existence of the grid toggle")
+	}
+	if !useOldUI {
+		// The grid test for the new UI is moved to CCAUIPreviewOptions.
+		return nil
+	}
+
 	if err := cca.GridTypeMenu.Open(ctx, app); err != nil {
 		return err
 	}
@@ -148,6 +158,16 @@ func testTimer(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	// TODO(b/215484798): Removed the logic for old UI once the new UI applied.
+	useOldUI, err := app.OptionExist(ctx, cca.TimerOption)
+	if err != nil {
+		return errors.Wrap(err, "failed to check the existence of the timer toggle")
+	}
+	if !useOldUI {
+		// The timer test for the new UI is moved to CCAUIPreviewOptions.
+		return nil
+	}
 
 	if err := cca.TimerMenu.Open(ctx, app); err != nil {
 		return err
