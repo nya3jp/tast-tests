@@ -16,6 +16,115 @@
       "message": "lgtm\n\nThank you.",
       "revId": "1603e865983bba036428dc9166e01abfd5e2d69f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df20cee2_b04f9142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-11T23:11:43Z",
+      "side": 1,
+      "message": "nit: `tconns... *chrome.TestConn`",
+      "range": {
+        "startLine": 89,
+        "startChar": 66,
+        "endLine": 89,
+        "endChar": 91
+      },
+      "revId": "1603e865983bba036428dc9166e01abfd5e2d69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59da8b38_738f7c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-11T23:11:43Z",
+      "side": 1,
+      "message": "nit: `tconns... *chrome.TestConn`",
+      "range": {
+        "startLine": 114,
+        "startChar": 63,
+        "endLine": 114,
+        "endChar": 88
+      },
+      "revId": "1603e865983bba036428dc9166e01abfd5e2d69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7346a7a7_69718f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-11T23:11:43Z",
+      "side": 1,
+      "message": "`or`",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "1603e865983bba036428dc9166e01abfd5e2d69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3a1aaf_1f25550d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-11T23:11:43Z",
+      "side": 1,
+      "message": "nit: `tconns... *chrome.TestConn`",
+      "range": {
+        "startLine": 141,
+        "startChar": 49,
+        "endLine": 141,
+        "endChar": 74
+      },
+      "revId": "1603e865983bba036428dc9166e01abfd5e2d69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818a7292_b4686604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-11T23:11:43Z",
+      "side": 1,
+      "message": "I see no reason to add a blank line here.",
+      "revId": "1603e865983bba036428dc9166e01abfd5e2d69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
