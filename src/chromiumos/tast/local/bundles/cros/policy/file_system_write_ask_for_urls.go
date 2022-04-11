@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -18,15 +18,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const writeBlockTestHTML = "file_system_write_for_urls_index.html"
+const writeAskTestHTML = "file_system_write_for_urls_index.html"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         FileSystemWriteBlockedForUrls,
+		Func:         FileSystemWriteAskForUrls,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Checking if file system writes are blocked depending on the value of this policy",
+		Desc:         "Checking if file system writes are allowed depending on the value of this policy",
 		Contacts: []string{
-			"cmfcmf@google.com", // Test author
+			"vivian.tsai@cienet.com",
+			"cienet-development@googlegroups.com",
+			"chromeos-sw-engprod@google.com",
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
@@ -40,12 +42,12 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
-		Data: []string{writeBlockTestHTML},
+		Data: []string{writeAskTestHTML},
 	})
 }
 
-// FileSystemWriteBlockedForUrls tests the FileSystemWriteBlockedForUrls policy.
-func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
+// FileSystemWriteAskForUrls tests the FileSystemWriteAskForUrls policy.
+func FileSystemWriteAskForUrls(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
@@ -53,25 +55,20 @@ func FileSystemWriteBlockedForUrls(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to pharse url: ", err)
 	}
-	baseURL.Path = filepath.Join(baseURL.Path, writeBlockTestHTML)
+	baseURL.Path = filepath.Join(baseURL.Path, writeAskTestHTML)
 	url := baseURL.String()
 
 	for _, param := range []filesystemreadwrite.TestCase{
 		{
-			// Test of permission blocked.
-			URL:                 url,
-			WantFileSystemWrite: false,
-			Policy:              &policy.FileSystemWriteBlockedForUrls{Val: []string{url}},
-		}, {
-			// Test of permission not blocked.
+			// Test of should ask for permission.
 			URL:                 url,
 			WantFileSystemWrite: true,
-			Policy:              &policy.FileSystemWriteBlockedForUrls{Val: []string{""}},
+			Policy:              &policy.FileSystemWriteAskForUrls{Val: []string{url}},
 		}, {
 			// Test of policy unset.
 			URL:                 url,
 			WantFileSystemWrite: true,
-			Policy:              &policy.FileSystemWriteBlockedForUrls{Stat: policy.StatusUnset},
+			Policy:              &policy.FileSystemWriteAskForUrls{Stat: policy.StatusUnset},
 		},
 	} {
 		filesystemreadwrite.RunTestCases(ctx, s, param)
