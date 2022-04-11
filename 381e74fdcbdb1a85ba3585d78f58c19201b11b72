@@ -39,6 +39,30 @@
       },
       "revId": "381e74fdcbdb1a85ba3585d78f58c19201b11b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb42439f_6ed9ca60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-11T22:56:18Z",
+      "side": 1,
+      "message": "It will also add one extra set of metrics that will come from the outer Run().",
+      "parentUuid": "1a786f59_93c5dee2",
+      "range": {
+        "startLine": 551,
+        "startChar": 15,
+        "endLine": 551,
+        "endChar": 18
+      },
+      "revId": "381e74fdcbdb1a85ba3585d78f58c19201b11b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
