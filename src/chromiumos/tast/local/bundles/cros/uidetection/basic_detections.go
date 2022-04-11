@@ -87,7 +87,7 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 			ud.WaitUntilGone(uidetection.Word("Cancel")),
 			// Check the negative cases.
 			expectError(uidetection.Word("Google"), uidetection.ErrMultipleMatch),
-			expectError(uidetection.Word("Google").Nth(4), uidetection.ErrNthNotFound),
+			expectError(uidetection.Word("Google").Nth(10), uidetection.ErrNthNotFound),
 			expectError(uidetection.TextBlock([]string{"Add", "shortcut"}).Nth(2), uidetection.ErrNthNotFound),
 			// Maximize chrome to ensure that the left and the right of the chrome
 			// are empty bounding boxes later on. Do this early so that we don't
