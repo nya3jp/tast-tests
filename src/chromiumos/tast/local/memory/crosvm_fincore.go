@@ -9,8 +9,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/shirou/gopsutil/process"
@@ -110,6 +112,7 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 	// Look for crosvm processes with
 	processes, err := process.Processes()
 	const crosvmPath = "/usr/bin/crosvm"
+	const conciergePath = "/usr/bin/vm_concierge"
 	disks := make(map[string]bool)
 	for _, p := range processes {
 		if exe, err := p.Exe(); err != nil {
@@ -124,12 +127,31 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 		if err != nil {
 			return errors.Wrapf(err, "failed to get arguments for process %d", p.Pid)
 		}
+		parent, err := p.Parent()
+		if err != nil {
+			return errors.Wrapf(err, "failed to get parent for process %d", p.Pid)
+		}
+		if exe, err := parent.Exe(); err != nil {
+			// Some processes don't have a /proc/<pid>/exe, this process might
+			// have terminated.
+			continue
+		} else if exe != conciergePath {
+			// We only care about crosvm spawned by concierge
+			continue
+		}
 		for i, arg := range args {
 			if fincoreArcVMDiskArgRe.MatchString(arg) {
 				if i+1 >= len(args) {
 					return errors.Errorf("crosvm has --disk arg with no path, args=%v", args)
 				}
 				file := strings.Split(args[i+1], ",")[0]
+				if strings.HasPrefix(file, "/proc/self/fd") {
+					file = strings.ReplaceAll(file, "self", strconv.Itoa(int(p.Pid)))
+					file, err = os.Readlink(file)
+					if err != nil {
+						return errors.Wrapf(err, "failed to readlink %s", file)
+					}
+				}
 				disks[file] = true
 			}
 		}
@@ -141,6 +163,7 @@ func CrosvmFincoreMetrics(ctx context.Context, p *perf.Values, outdir, suffix st
 	for disk := range disks {
 		args = append(args, disk)
 	}
+	testing.ContextLogf(ctx, "Collected fincore arguments: %+q", args)
 	fincoreBytes, err := testexec.CommandContext(ctx, "fincore", args...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get fincore for %v", args)
