@@ -67,20 +67,28 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 	checkFacing()
 
 	if numCameras > 1 {
-		// Set grid option.
-		gridEnabled, err := app.ToggleOption(ctx, cca.GridOption)
+		// TODO(b/215484798): Removed the logic for old UI once the new UI applied.
+		useOldUI, err := app.OptionExist(ctx, cca.GridOption)
 		if err != nil {
-			s.Fatal("Toggle grid option failed: ", err)
+			s.Fatal("Failed to check existence of the grid toggle: ", err)
 		}
+		// The grid test for the new UI is moved to CCAUIPreviewOptions.
+		if useOldUI {
+			// Set grid option.
+			gridEnabled, err := app.ToggleOption(ctx, cca.GridOption)
+			if err != nil {
+				s.Fatal("Toggle grid option failed: ", err)
+			}
 
-		// Switch camera.
-		if err := app.SwitchCamera(ctx); err != nil {
-			s.Fatal("Switch camera failed: ", err)
-		}
+			// Switch camera.
+			if err := app.SwitchCamera(ctx); err != nil {
+				s.Fatal("Switch camera failed: ", err)
+			}
 
-		// Verify that grid option state is persistent.
-		if err := app.CheckGridOption(ctx, gridEnabled); err != nil {
-			s.Fatal("Check grid option failed: ", err)
+			// Verify that grid option state is persistent.
+			if err := app.CheckGridOption(ctx, gridEnabled); err != nil {
+				s.Fatal("Check grid option failed: ", err)
+			}
 		}
 	} else if numCameras == 1 {
 		if err := app.CheckVisible(ctx, cca.SwitchDeviceButton, false); err != nil {
