@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d26939_0a7aca91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-11T04:39:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether it\u0027s a good idea to disable DCHECK always on these tast tests. I agree that the current failure is not related to input, but in the future, DCHECK may reveal an error related to input in Chrome.",
+      "revId": "f6931b0dc6778b7790adf2e4cae194b829414a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
