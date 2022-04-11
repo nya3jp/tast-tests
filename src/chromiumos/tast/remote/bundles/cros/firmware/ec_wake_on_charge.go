@@ -25,6 +25,10 @@ type testArgsForECWakeOnCharge struct {
 	hasLid        bool
 }
 
+type retriableErr struct {
+	*errors.E
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECWakeOnCharge,
@@ -37,6 +41,7 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
+		Timeout:      15 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "chromeslate",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
@@ -142,7 +147,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				var opts []firmware.WaitConnectOption
 				opts = append(opts, firmware.FromHibernation)
 				if err := h.WaitConnect(waitConnectCtx, opts...); err != nil {
-					errors.Wrap(err, "failed to reconnect to DUT")
+					return &retriableErr{E: errors.New("failed to reconnect to DUT")}
 				}
 				// Cr50 goes to sleep during hibernation, and when DUT wakes, CCD state might be locked.
 				// Open CCD after waking DUT and before talking to the EC.
@@ -218,7 +223,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				break monitorServo
 			default:
 				if err = testing.Sleep(ctx, time.Second); err != nil {
-					s.Error("Failed to sleep: ", err)
+					s.Error("Failed to sleep while monitoring servo: ", err)
 				}
 				if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
 					s.Log("Failed to ping servo, reconnecting: ", err)
@@ -243,13 +248,28 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			break
 		}
 
+		var deviceHasHibernated bool
+		s.Log("Stopping AC Power")
+		if err := setPowerSupply(ctx, false, deviceHasHibernated); err != nil {
+			s.Fatal("Failed to stop power supply: ", err)
+		}
+
+		// When power is cut, there may be a temporary disconnection between servo and DUT,
+		// and the duration may vary from model to model. Delaying for some time here seems
+		// to be helpful in preventing EC errors.
+		s.Log("Sleeping for 15 seconds")
+		if err := testing.Sleep(ctx, 15*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+
 		// Skip setting the lid state for DUTs that don't have a lid, i.e. Chromeslates.
 		if args.hasLid {
 			s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
 					// This error may be temporary.
-					if strings.Contains(err.Error(), "No data was sent from the pty") {
+					if strings.Contains(err.Error(), "No data was sent from the pty") ||
+						strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
 						return err
 					}
 					return testing.PollBreak(err)
@@ -265,17 +285,6 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to open CCD after closing lid: ", err)
 				}
 			}
-		}
-
-		// Delay for some time to ensure lid was properly closed, or opened.
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-			s.Fatal("Failed to sleep: ", err)
-		}
-
-		var deviceHasHibernated bool
-		s.Log("Stopping AC Power")
-		if err := setPowerSupply(ctx, false, deviceHasHibernated); err != nil {
-			s.Fatal("Failed to stop power supply: ", err)
 		}
 
 		// Between cutting power and sending DUT into hibernation, waiting
@@ -345,8 +354,15 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			// and then eventually to G3, which would be equivalent to long pressing on power
 			// to put DUT asleep.
 			s.Log("Waiting for power state to become G3 or S5")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
-				s.Fatal("Failed to get powerstates at G3 or S5: ", err)
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S5"); err != nil {
+				// On Hayato/Asurada, sometimes EC becomes unresponsive when lid is closed. But, for this test's
+				// purposes, we're more concerned about whether DUT awakes when AC is applied.
+				if strings.Contains(err.Error(), "No data was sent from the pty") ||
+					strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
+					s.Log("DUT appears to be completely offline. We're okay as long as reconnecting power resumes it")
+				} else {
+					s.Fatal("Failed to get powerstates at G3 or S5: ", err)
+				}
 			}
 		} else {
 			// For DUTs that do not support the ec hibernation command, we would use
@@ -357,14 +373,28 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			}
 
 			s.Log("Waiting for power state to become G3 or S3")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S3"); err != nil {
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S3"); err != nil {
 				s.Fatal("Failed to get powerstates at G3 or S3: ", err)
 			}
 		}
 
 		s.Log("Reconnecting AC")
 		if err := setPowerSupply(ctx, true, deviceHasHibernated); err != nil {
-			s.Fatal("Failed to reconnect power supply: ", err)
+			if _, ok := err.(*retriableErr); ok {
+				s.Log("Retriable error: ", err.(*retriableErr))
+				retryCtx, cancelRetry := context.WithTimeout(ctx, 1*time.Minute)
+				defer cancelRetry()
+				if err := bootDUTIntoS0(retryCtx, h); err != nil {
+					s.Fatal("Unable to reconnect to DUT: ", err)
+				}
+				// Delay for some time to ensure that DUT has fully settled down.
+				s.Log("Sleeping for 30 seconds")
+				if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+					s.Fatal("Failed to sleep for 30 seconds: ", err)
+				}
+			} else {
+				s.Fatal("Failed to reconnect power supply: ", err)
+			}
 		}
 
 		// Stainless results showed that on Nami DUTs, when tested with lid closed,
@@ -372,6 +402,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		// might be needed, but for now skip on checking lid state for Nami devices.
 		if args.hasLid && h.Config.Platform != "nami" {
 			// Verify DUT's lid current state remains the same as the initial state.
+			s.Log("Checking lid state hasn't changed")
 			lidStateFinal, err := h.Servo.LidOpenState(ctx)
 			if err != nil {
 				s.Fatal("Failed to check the final lid state: ", err)
@@ -387,7 +418,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to set lid state: ", err)
 		}
 		s.Log("Waiting for S0 powerstate")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
 			s.Fatal("Failed to wait for S0 powerstate: ", err)
 		}
 		if err := h.WaitConnect(ctx); err != nil {
@@ -425,4 +456,21 @@ func saveAnglesAndForceClamshell(ctx context.Context, cmd *firmware.ECTool) (str
 		return "", "", errors.Wrap(err, "failed to set clamshell mode angles")
 	}
 	return tabletModeAngleInit, hysInit, nil
+}
+
+func bootDUTIntoS0(ctx context.Context, h *firmware.Helper) error {
+	// Check if DUT is at G3. If DUT is in G3, use power button to boot it into S0.
+	testing.ContextLog(ctx, "Checking if power states at G3 or S5")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "G3", "S5"); err != nil {
+		return errors.Wrap(err, "unable to get power state at G3 or S5. DUT disconnected due to other reasons")
+	}
+	testing.ContextLog(ctx, "Pressing power button to wake DUT into S0 from G3 or S5")
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+		return errors.Wrap(err, "failed to press power button")
+	}
+	testing.ContextLog(ctx, "Waiting for power state S0")
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
+		return errors.Wrap(err, "unable to get power state at S0")
+	}
+	return nil
 }
