@@ -542,15 +542,18 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (
 	return nil
 }
 
-// RunUntil calls Run repeatedly until the total duration of metrics collection (including
-// any that was already done before this call to RunUntil) meets or exceeds a given minimum.
-func (r *Recorder) RunUntil(ctx context.Context, f func(ctx context.Context) error, minimumTotalDuration time.Duration) (e error) {
-	for r.duration < minimumTotalDuration {
-		if err := r.Run(ctx, f); err != nil {
-			return err
+// RunUntil conducts the test scenario f repeatedly until the total
+// duration of metrics collection (including any that was already done
+// before this call to RunUntil) meets or exceeds a given minimum.
+func (r *Recorder) RunUntil(ctx context.Context, f func(ctx context.Context) error, minimumTotalDuration time.Duration) error {
+	return r.Run(ctx, func(ctx context.Context) error {
+		for r.duration < minimumTotalDuration {
+			if err := f(ctx); err != nil {
+				return err
+			}
 		}
-	}
-	return nil
+		return nil
+	})
 }
 
 // Record creates the reporting values from the currently stored data points and
