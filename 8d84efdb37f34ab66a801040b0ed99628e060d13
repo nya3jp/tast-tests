@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831d8e64_3453eaf0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-11T04:52:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f487938_18fc2572",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e23d2ea6_7beda852",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "ACK. I need to figure out how to reboot to normal mode. Previously rebooting failed, maybe it is because fleex doesn\u0027t support servo very well.",
       "parentUuid": "85eff546_b481c376",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05994264_025676f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-04-11T04:52:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a395d503_6f6edf07",
       "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
