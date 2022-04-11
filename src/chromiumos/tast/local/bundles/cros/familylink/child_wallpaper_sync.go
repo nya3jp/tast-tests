@@ -21,11 +21,12 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies Unicorn users can sync the wallpaper",
 		Contacts: []string{
+			"assistive-eng@google.com",
 			"tobyhuang@chromium.org",
 			"cros-families-eng+test@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		VarDeps:      []string{"unicorn.wallpaperName"},
