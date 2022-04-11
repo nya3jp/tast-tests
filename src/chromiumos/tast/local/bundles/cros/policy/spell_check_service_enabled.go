@@ -119,28 +119,6 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Inside Chrome OS settings, check that the button is restricted and set to the correct value.
-			if err := policyutil.OSSettingsPage(ctx, cr, "osLanguages/input").
-				SelectNode(ctx, nodewith.
-					Role(role.ToggleButton).
-					NameStartingWith("Enhanced spell check in Chrome browser")).
-				Restriction(param.wantRestriction).
-				Checked(param.wantSettingsCheck).
-				Verify(); err != nil {
-				s.Error("Unexpected OS settings state: ", err)
-			}
-
-			if param.wantRestriction == restriction.Disabled {
-				// Check that the enterprise icon is there.
-				if err := policyutil.OSSettingsPage(ctx, cr, "osLanguages/input").
-					SelectNode(ctx, nodewith.
-						Role(role.Image).
-						NameStartingWith("Enhanced spell check in Chrome browser")).
-					Verify(); err != nil {
-					s.Error("Unexpected OS settings state: ", err)
-				}
-			}
-
 			// Setup the browser for lacros tests after the policy was set.
 			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(),
 				s.Param().(browser.Type))
@@ -148,6 +126,32 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+
+			// Inside Chrome OS settings, check that the button is restricted and set to the correct value.
+			if err := policyutil.SettingsPage(ctx, cr, br, "languages").
+				SelectNode(ctx, nodewith.
+					Role(role.RadioButton).
+					NameStartingWith("Enhanced spell check")).
+				Restriction(param.wantRestriction).
+				Checked(param.wantSettingsCheck).
+				Verify(); err != nil {
+				s.Error("Unexpected OS settings state: ", err)
+			}
+
+			if param.wantRestriction == restriction.Disabled {
+				// Check for the enterprise icon. It is next to the RadioButton that is actually selected.
+				imageLabel := "Enhanced spell check"
+				if wantSettingsCheck == checked.False {
+					imageLabel = "Basic spell check"
+				}
+				if err := policyutil.SettingsPage(ctx, cr, br, "languages").
+					SelectNode(ctx, nodewith.
+						Role(role.Image).
+						NameStartingWith(imageLabel)).
+					Verify(); err != nil {
+					s.Error("Unexpected OS settings state: ", err)
+				}
+			}
 
 			// Open the browser and navigate to a page that contains an input field with the word "missspelled".
 			url := server.URL + "/spell_checking.html"
