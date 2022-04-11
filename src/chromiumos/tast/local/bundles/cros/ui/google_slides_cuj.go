@@ -81,10 +81,7 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 		defer lacros.CloseLacros(closeCtx, l)
 	case browser.TypeAsh:
 		cs = cr
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
+		bTconn = tconn
 	default:
 		s.Fatal("Unrecognized browser type: ", bt)
 	}

@@ -283,11 +283,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	} else {
 		cs = cr
-
-		var err error
-		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get TestAPIConn: ", err)
-		}
+		bTconn = tconn
 	}
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
