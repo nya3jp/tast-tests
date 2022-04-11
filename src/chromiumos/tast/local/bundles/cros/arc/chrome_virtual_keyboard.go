@@ -88,8 +88,12 @@ func chromeVirtualKeyboardBasicEditingTest(
 		fieldID = virtualKeyboardTestAppPkg + ":id/text"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	vkbCtx := vkb.NewContext(cr, tconn)
-	defer vkbCtx.HideVirtualKeyboard()(ctx)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -100,7 +104,7 @@ func chromeVirtualKeyboardBasicEditingTest(
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -162,8 +166,12 @@ func chromeVirtualKeyboardFocusChangeTest(
 		fieldID2  = virtualKeyboardTestAppPkg + ":id/text2"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	vkbCtx := vkb.NewContext(cr, tconn)
-	defer vkbCtx.HideVirtualKeyboard()(ctx)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -174,7 +182,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	// Make sure that the focus is on the first field.
 	// Clicking on the text field should show the virtual keyboard.
@@ -264,9 +272,12 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 		lastKeyUpLabelID   = virtualKeyboardTestAppPkg + ":id/last_key_up"
 	)
 
-	vkbCtx := vkb.NewContext(cr, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
 
-	defer vkbCtx.HideVirtualKeyboard()(ctx)
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -277,7 +288,7 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	editText := d.Object(ui.ID(editTextID))
 	if err := editText.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -337,6 +348,10 @@ func chromeVirtualKeyboardFloatingTest(
 		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	uc := useractions.NewUserContext(s.TestName(), cr, tconn, s.OutDir(), nil, []useractions.ActionTag{useractions.ActionTagARC})
 	uc.SetAttribute(useractions.AttributeTestScenario, "Switch float VK on ARC++ app")
 
@@ -351,7 +366,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	vkbCtx := vkb.NewContext(cr, tconn)
-	defer vkbCtx.HideVirtualKeyboard()(ctx)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -362,7 +377,7 @@ func chromeVirtualKeyboardFloatingTest(
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -441,9 +456,12 @@ func chromeVirtualKeyboardRotationTest(
 		fieldID = virtualKeyboardTestAppPkg + ":id/text"
 	)
 
-	vkbCtx := vkb.NewContext(cr, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
 
-	defer vkbCtx.HideVirtualKeyboard()(ctx)
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -454,7 +472,7 @@ func chromeVirtualKeyboardRotationTest(
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -532,8 +550,12 @@ func chromeVirtualKeyboardPasswordEditingTest(
 		passwordFieldID = virtualKeyboardTestAppPkg + ":id/password"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	vkbCtx := vkb.NewContext(cr, tconn)
-	defer vkbCtx.HideVirtualKeyboard()(ctx)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -544,7 +566,7 @@ func chromeVirtualKeyboardPasswordEditingTest(
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	field := d.Object(ui.ID(passwordFieldID))
 	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -602,8 +624,12 @@ func chromeVirtualKeyboardNumberInputTest(
 		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	vkbCtx := vkb.NewContext(cr, tconn)
-	defer vkbCtx.HideVirtualKeyboard()(ctx)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
@@ -614,7 +640,7 @@ func chromeVirtualKeyboardNumberInputTest(
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
