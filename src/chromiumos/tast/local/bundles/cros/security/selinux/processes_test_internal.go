@@ -196,7 +196,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				// mkdir is for crbug.com/1156295.
 				{notCmdline, ".*(frecon|agetty|ping|recover_dts|udevadm|update_rw_vpd|mosys|vpd|flashrom|moblab|autotest|devserver|rotatelogs|apache2|envoy|containerd|python3|mkdir).*", notString, "chromeos", zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
-				{notExe, "/sbin/init", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
+				{notExe, "(/sbin/init|/bin/bash)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
 				// logger is common to redirect output widely used from init conf scripts.
 				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger|/bin/ping|brcm_patchram_plus)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
@@ -206,7 +206,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 			testCases = append(testCases, []testCaseType{
 				{exe, "/sbin/minijail0", matchRegexp, "(minijail|.*_minijail0|cros_.*_minijail)", zeroProcs, ""},
 				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
-				{notExe, "/sbin/init", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
+				{notExe, "(/sbin/init|/bin/bash)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(ping|frecon|agetty|recover_duts).*", notString, "chromeos", zeroProcs, domainIsolationErrorMessage},
 				{cmdline, ".*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
 			}...)
