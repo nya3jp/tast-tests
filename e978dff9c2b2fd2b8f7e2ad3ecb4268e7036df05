@@ -22,6 +22,30 @@
       },
       "revId": "e978dff9c2b2fd2b8f7e2ad3ecb4268e7036df05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "420cdfd1_8aef95c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/data/bloonchipper_v2.0.4277-9f652bb3_20210401.bin.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-04-11T17:08:43Z",
+      "side": 1,
+      "message": "I\u0027m moving files from private bucket to private one, not copying. File contents remain the same. I don\u0027t see any profits from changing file name in this case.",
+      "parentUuid": "44f69752_8fe8d732",
+      "range": {
+        "startLine": 2,
+        "startChar": 95,
+        "endLine": 2,
+        "endChar": 103
+      },
+      "revId": "e978dff9c2b2fd2b8f7e2ad3ecb4268e7036df05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
