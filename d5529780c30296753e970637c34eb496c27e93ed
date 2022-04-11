@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6501973_72ca315b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-11T22:55:59Z",
+      "side": 1,
+      "message": "Done. Added ```NewCustomMetricConfigWithTestConns\" to allow multiple tconns to be given. Deprecated ```NewCustomMetricConfigWithTestConn```\n\n\u003eOne more question: when we collect the metric samples of the same name from different browsers, do we need to differentiate them\n\nI think we can cover that in another CL if it is needed by the test. But currently, in the CUJs we developed, we aggregate together in order to be comparable with previous implementation.",
+      "parentUuid": "c8f08732_17a1527d",
+      "revId": "d5529780c30296753e970637c34eb496c27e93ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba0364f_6e41b2f6",
