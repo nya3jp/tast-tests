@@ -1132,20 +1132,44 @@ func (a *App) DisableQRCodeDetection(ctx context.Context) error {
 
 // SetTimerOption sets the timer option to on/off.
 func (a *App) SetTimerOption(ctx context.Context, state TimerState) error {
-	active := state == TimerOn
-	if cur, err := a.State(ctx, "timer"); err != nil {
-		return err
-	} else if cur != active {
-		if _, err := a.ToggleOption(ctx, TimerOption); err != nil {
-			return err
-		}
+	// TODO(b/215484798): Removed the logic for old UI once the new UI applied.
+	useOldUI, err := a.OptionExist(ctx, TimerOption)
+	if err != nil {
+		return errors.Wrap(err, "failed to check the existence of the timer toggle")
 	}
-	// Fix timer to 3 seconds for saving test time.
-	if active {
-		if delay3, err := a.State(ctx, "timer-3s"); err != nil {
+
+	if useOldUI {
+		active := state == TimerOn
+		if cur, err := a.State(ctx, "timer"); err != nil {
 			return err
-		} else if !delay3 {
-			return errors.New("default timer is not set to 3 seconds")
+		} else if cur != active {
+			if _, err := a.ToggleOption(ctx, TimerOption); err != nil {
+				return err
+			}
+		}
+		// Fix timer to 3 seconds for saving test time.
+		if active {
+			if delay3, err := a.State(ctx, "timer-3s"); err != nil {
+				return err
+			} else if !delay3 {
+				return errors.New("default timer is not set to 3 seconds")
+			}
+		}
+		return nil
+	}
+
+	// New UI
+	if timerOn, err := a.State(ctx, "timer-3s"); err != nil {
+		return errors.Wrap(err, "failed to get state timer-3s")
+	} else if !timerOn {
+		if err := a.Click(ctx, OpenTimerPanelButton); err != nil {
+			return errors.Wrap(err, "failed to open timer option panel")
+		}
+		if err := a.ClickChildIfContain(ctx, OptionsContainer, "3 seconds"); err != nil {
+			return errors.Wrap(err, "failed to click the 3s timer button")
+		}
+		if err := a.WaitForState(ctx, "timer-3s", true); err != nil {
+			return errors.Wrap(err, "failed to wait for 3s-timer being active")
 		}
 	}
 	return nil

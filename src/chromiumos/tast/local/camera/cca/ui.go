@@ -82,6 +82,14 @@ var (
 	// BitrateMultiplierRangeInput is range input for selecting bitrate multiplier.
 	BitrateMultiplierRangeInput = UIComponent{"bitrate multiplier range input", []string{"#bitrate-slider input[type=range]"}}
 
+	// OptionsContainer is the container for all options for opening option panel.
+	OptionsContainer = UIComponent{"container of options", []string{"#options-container"}}
+	// OpenMirrorPanelButton is the button which is used for opening the mirror state settings panel.
+	OpenMirrorPanelButton = UIComponent{"mirror state option button", []string{"#open-mirror-panel"}}
+	// OpenGridPanelButton is the button which is used for opening the grid type settings panel.
+	OpenGridPanelButton = UIComponent{"grid type option button", []string{"#open-grid-panel"}}
+	// OpenTimerPanelButton is the button which is used for opening the timer type settings panel.
+	OpenTimerPanelButton = UIComponent{"timer type option button", []string{"#open-timer-panel"}}
 	// OpenPTZPanelButton is the button for opening PTZ panel.
 	OpenPTZPanelButton = UIComponent{"open ptz panel button", []string{"#open-ptz-panel"}}
 	// PanLeftButton is the button for panning left preview.
@@ -241,6 +249,23 @@ func (a *App) Style(ctx context.Context, ui UIComponent, attribute string) (stri
 	return style, nil
 }
 
+// Exist returns whether a UI component exists.
+func (a *App) Exist(ctx context.Context, ui UIComponent) (bool, error) {
+	_, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		if IsUINotExist(err) {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+}
+
+// OptionExist returns if the option exists.
+func (a *App) OptionExist(ctx context.Context, option Option) (bool, error) {
+	return a.Exist(ctx, option.ui)
+}
+
 // Visible returns whether a UI component is visible on the screen.
 func (a *App) Visible(ctx context.Context, ui UIComponent) (bool, error) {
 	wrapError := func(err error) error {
@@ -398,6 +423,25 @@ func (a *App) ClickWithIndex(ctx context.Context, ui UIComponent, index int) err
 	}
 	if err := a.conn.Call(ctx, nil, `(selector, index) => document.querySelectorAll(selector)[index].click()`, selector, index); err != nil {
 		return errors.Wrapf(err, "failed to click on %v(th) %v", index, ui.Name)
+	}
+	return nil
+}
+
+// ClickChildIfContain clicks the child which contains the given string in its text content.
+func (a *App) ClickChildIfContain(ctx context.Context, ui UIComponent, text string) error {
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return err
+	}
+	if err := a.conn.Call(ctx, nil, `(selector, text) => {
+		const element = document.querySelector(selector);
+		const children = element.childNodes;
+		const matches = [...children].filter((node) => node.textContent.includes(text));
+		for (const match of matches) {
+			match.click();
+		}
+	}`, selector, text); err != nil {
+		return errors.Wrapf(err, "failed to click children of %v containing text: %v", ui.Name, text)
 	}
 	return nil
 }
