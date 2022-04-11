@@ -24,11 +24,12 @@ func init() {
 		Desc:         "Checks SOC model-related properties (ro.soc.*)",
 		Contacts:     []string{"matvore@chromium.org", "niwa@chromium.org", "arcvm-eng@google.com"},
 
-		// bob is not planning to support ARCVM so it is out-of-scope.
-		// (see http://go/arcvm-migration)
-		// It is also not trivial to populate ro.soc.* properties for
-		// it.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("bob")),
+		// Exclude boards not planning to support ARCVM. They are
+		// out-of-scope. (see http://go/arcvm-migration)
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
+			"banon",
+			"bob",
+		)),
 
 		SoftwareDeps: []string{"arc", "chrome"},
 		Fixture:      "arcBooted",
