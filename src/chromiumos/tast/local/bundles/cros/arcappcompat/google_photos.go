@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForGooglePhotos launches GooglePhotos in clamshell mode.
 var clamshellLaunchForGooglePhotos = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForGooglePhotos},
+	{Name: "Launch app in Clamshell", Fn: launchAppForGooglePhotos, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForGooglePhotos launches GooglePhotos in tablet mode.
 var touchviewLaunchForGooglePhotos = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForGooglePhotos},
+	{Name: "Launch app in Touchview", Fn: launchAppForGooglePhotos, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 func init() {

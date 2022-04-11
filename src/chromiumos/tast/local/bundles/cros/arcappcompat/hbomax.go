@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForHbomax launches Hbomax in clamshell mode.
 var clamshellLaunchForHbomax = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForHbomax},
+	{Name: "Launch app in Clamshell", Fn: launchAppForHbomax, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForHbomax launches Hbomax in tablet mode.
 var touchviewLaunchForHbomax = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForHbomax},
+	{Name: "Launch app in Touchview", Fn: launchAppForHbomax, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // clamshellAppSpecificTestsForHbomax are placed here.

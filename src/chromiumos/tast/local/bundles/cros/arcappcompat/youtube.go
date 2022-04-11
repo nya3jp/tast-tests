@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForYoutube launches Youtube in clamshell mode.
 var clamshellLaunchForYoutube = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForYoutube},
+	{Name: "Launch app in Clamshell", Fn: launchAppForYoutube, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForYoutube launches Youtube in tablet mode.
 var touchviewLaunchForYoutube = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForYoutube},
+	{Name: "Launch app in Touchview", Fn: launchAppForYoutube, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // clamshellAppSpecificTestsForYoutube are placed here.
