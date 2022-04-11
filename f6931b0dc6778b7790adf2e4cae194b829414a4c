@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure whether it\u0027s a good idea to disable DCHECK always on these tast tests. I agree that the current failure is not related to input, but in the future, DCHECK may reveal an error related to input in Chrome.",
       "revId": "f6931b0dc6778b7790adf2e4cae194b829414a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b72046_0b4e4a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-11T04:46:38Z",
+      "side": 1,
+      "message": "That\u0027s a good point. WDYT about the following plan:\n\n1.Disable DCHECK on all standardized input tests (this CL)\n2.a Continue converting standardized input tests to \u0027critical\u0027 \n2.b Set up a test that handles the general DCHECK case and get it to \u0027critical\u0027\n3. After a few iterations of 2.b to clean up bugs, I go back and re-enable DCHECK on the standardized input tests\n\nMy goal is to continue converting input tests to critical while I iron out the DCHECK issue. With the plan above, we could continue doing both, and still converge to a spot where these checks are re-enabled.",
+      "parentUuid": "a3d26939_0a7aca91",
+      "revId": "f6931b0dc6778b7790adf2e4cae194b829414a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
