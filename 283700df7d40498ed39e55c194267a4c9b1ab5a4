@@ -33,6 +33,23 @@
       "message": "slgtm",
       "revId": "283700df7d40498ed39e55c194267a4c9b1ab5a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec4a6ba6_9fbd38ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-11T19:07:22Z",
+      "side": 1,
+      "message": "Hidehiko, friendly ping.",
+      "revId": "283700df7d40498ed39e55c194267a4c9b1ab5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
