@@ -33,13 +33,25 @@ func init() {
 			"henryhsu@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
-		SoftwareDeps: []string{caps.BuiltinUSBCamera},
-		Timeout:      10 * time.Minute,
+		Timeout: 10 * time.Minute,
+		Params: []testing.Param{
+			{
+				ExtraAttr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
+				ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera},
+				Val:               false,
+			},
+			{
+				Name:      "certification",
+				ExtraAttr: []string{"group:camera-usb-qual"},
+				Val:       true,
+			},
+		},
 	})
 }
 
 func V4L2(ctx context.Context, s *testing.State) {
+	isCertification := s.Param().(bool)
+
 	hasHWTimestamps, err := pathExist(hwTimestampsPath)
 	if err != nil {
 		s.Fatal("Failed to check hardware timestamps: ", err)
@@ -52,9 +64,11 @@ func V4L2(ctx context.Context, s *testing.State) {
 		defer setHWTimestamps(origVal)
 	}
 
-	testList, err := getTestList(ctx)
-	if err != nil {
-		s.Fatal("Failed to get test list: ", err)
+	testList := "certification"
+	if !isCertification {
+		if testList, err = getTestList(ctx); err != nil {
+			s.Fatal("Failed to get test list: ", err)
+		}
 	}
 
 	usbCams, err := testutil.USBCamerasFromV4L2Test(ctx)
