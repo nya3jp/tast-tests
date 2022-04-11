@@ -457,20 +457,62 @@ func (d *Device) SetScreenOffTimeout(ctx context.Context, t time.Duration) error
 	return d.ShellCommand(ctx, "settings", "put", "system", "screen_off_timeout", strconv.Itoa(int(t.Milliseconds()))).Run(testexec.DumpLogOnError)
 }
 
+// BluetoothStatus returns true if bluetooth is enabled, false if disabled.
+func (d *Device) BluetoothStatus(ctx context.Context) (bool, error) {
+	res, err := d.ShellCommand(ctx, "settings", "get", "global", "bluetooth_on").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get bluetooth status")
+	}
+	status := strings.TrimSpace(string(res))
+	if status == "1" {
+		return true, nil
+	} else if status == "0" {
+		return false, nil
+	}
+
+	return false, errors.Errorf("unrecognized bluetooth status (%v) in response", status)
+}
+
 // EnableBluetooth enables bluetooth on the Android device. This function requires adb root access.
+// Enabling bluetooth can be flaky, so retry until Bluetooth status returns true, ensuring it has been enabled.
 func (d *Device) EnableBluetooth(ctx context.Context) error {
 	if err := d.Root(ctx); err != nil {
 		return err
 	}
-	return d.ShellCommand(ctx, "svc", "bluetooth", "enable").Run(testexec.DumpLogOnError)
+	return testing.Poll(ctx, func(context.Context) error {
+		if err := d.ShellCommand(ctx, "svc", "bluetooth", "enable").Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to run command to enable bluetooth")
+		}
+		enabled, err := d.BluetoothStatus(ctx)
+		if err != nil {
+			return err
+		}
+		if !enabled {
+			return errors.New("bluetooth not yet enabled")
+		}
+		return nil
+	}, nil)
 }
 
 // DisableBluetooth disables bluetooth on the Android device. This function requires adb root access.
+// Disabling bluetooth can be flaky, so retry until Bluetooth status returns true, ensuring it has been enabled.
 func (d *Device) DisableBluetooth(ctx context.Context) error {
 	if err := d.Root(ctx); err != nil {
 		return err
 	}
-	return d.ShellCommand(ctx, "svc", "bluetooth", "disable").Run(testexec.DumpLogOnError)
+	return testing.Poll(ctx, func(context.Context) error {
+		if err := d.ShellCommand(ctx, "svc", "bluetooth", "disable").Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to run command to disable bluetooth")
+		}
+		enabled, err := d.BluetoothStatus(ctx)
+		if err != nil {
+			return err
+		}
+		if enabled {
+			return errors.New("bluetooth not yet disabled")
+		}
+		return nil
+	}, nil)
 }
 
 // EnableBluetoothHciLogging enables verbose bluetooth HCI logging. This function requires adb root access.
