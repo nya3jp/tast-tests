@@ -510,6 +510,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebf44f5c_779b03c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-11T16:53:58Z",
+      "side": 1,
+      "message": "ok, then we may need to split two things: releasing the resources to maintain the connection with Lacros, and actually terminating the Lacros.\n\nEliot, any thoughts?",
+      "parentUuid": "b0388acc_c1c36bcb",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e508caf_d2cdc5d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
