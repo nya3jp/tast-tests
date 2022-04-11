@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8b7814_cb04f06d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-04-11T05:41:09Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "626aec50_bba6ae63",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "ae5ac18cf9419d6e2f17edae6aac411b963a7236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
