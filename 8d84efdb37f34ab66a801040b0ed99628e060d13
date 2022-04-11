@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f487938_18fc2572",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-04-11T03:56:03Z",
+      "side": 1,
+      "message": "Let\u0027s use another CL to address it to make this CL simple. I have already added a TODO comment.",
+      "parentUuid": "02535a02_872b9b7d",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e23d2ea6_7beda852",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca151004_f7fa6cff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-04-11T03:56:03Z",
+      "side": 1,
+      "message": "I think it is defined here (not 100% sure, but definitely we can access this) https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/ui.yaml;l\u003d30?q\u003d%22ui.signinProfileTestExtensionManifestKey%22.",
+      "parentUuid": "e23d2ea6_7beda852",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85eff546_b481c376",
         "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
         "patchSetId": 1
@@ -65,6 +101,24 @@
       "writtenOn": "2022-04-06T06:46:16Z",
       "side": 1,
       "message": "Devices in the lab aren\u0027t in the Dev mode, they have Dev mode disabled (but have the test images running).",
+      "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a395d503_6f6edf07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp_with_battery_disconnection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-04-11T03:56:03Z",
+      "side": 1,
+      "message": "ACK. I need to figure out how to reboot to normal mode. Previously rebooting failed, maybe it is because fleex doesn\u0027t support servo very well.",
+      "parentUuid": "85eff546_b481c376",
       "revId": "8d84efdb37f34ab66a801040b0ed99628e060d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
