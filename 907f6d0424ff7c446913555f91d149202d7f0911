@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "907f6d0424ff7c446913555f91d149202d7f0911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe272cc8_bea040a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-04-11T22:06:59Z",
+      "side": 1,
+      "message": "LGTM from Tast side. Please get LGTM from team before submitting.",
+      "revId": "907f6d0424ff7c446913555f91d149202d7f0911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
