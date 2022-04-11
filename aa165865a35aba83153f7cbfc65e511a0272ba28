@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e05d09_57195b37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-11T23:04:14Z",
+      "side": 1,
+      "message": "Now the duration is not updated, because you need to Stop Recording to calculate it.",
+      "range": {
+        "startLine": 550,
+        "startChar": 8,
+        "endLine": 550,
+        "endChar": 16
+      },
+      "revId": "aa165865a35aba83153f7cbfc65e511a0272ba28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
