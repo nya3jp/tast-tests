@@ -22,24 +22,24 @@ import (
 
 // clamshellLaunchForAmazonPrimeVideo launches AmazonPrimeVideo in clamshell mode.
 var clamshellLaunchForAmazonPrimeVideo = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForAmazonPrimeVideo},
+	{Name: "Launch app in Clamshell", Fn: launchAppForAmazonPrimeVideo, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 // touchviewLaunchForAmazonPrimeVideo launches AmazonPrimeVideo in tablet mode.
 var touchviewLaunchForAmazonPrimeVideo = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForAmazonPrimeVideo},
+	{Name: "Launch app in Touchview", Fn: launchAppForAmazonPrimeVideo, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 // clamshellAppSpecificTestsForAmazonPrimeVideo are placed here.
 var clamshellAppSpecificTestsForAmazonPrimeVideo = []testutil.TestCase{
 	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Clamshell: Signout app", Fn: signOutAmazonPrimeVideo},
+	{Name: "Clamshell: Signout app", Fn: signOutAmazonPrimeVideo, Timeout: testutil.SignoutTestCaseTimeout, TType: testutil.Signout},
 }
 
 // touchviewAppSpecificTestsForAmazonPrimeVideo are placed here.
 var touchviewAppSpecificTestsForAmazonPrimeVideo = []testutil.TestCase{
 	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Touchview: Signout app", Fn: signOutAmazonPrimeVideo},
+	{Name: "Touchview: Signout app", Fn: signOutAmazonPrimeVideo, Timeout: testutil.SignoutTestCaseTimeout, TType: testutil.Signout},
 }
 
 func init() {

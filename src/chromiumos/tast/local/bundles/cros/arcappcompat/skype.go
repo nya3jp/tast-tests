@@ -24,22 +24,22 @@ import (
 
 // clamshellLaunchForSkype launches Skype in clamshell mode.
 var clamshellLaunchForSkype = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForSkype},
+	{Name: "Launch app in Clamshell", Fn: launchAppForSkype, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 // touchviewLaunchForSkype launches Skype in tablet mode.
 var touchviewLaunchForSkype = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForSkype},
+	{Name: "Launch app in Touchview", Fn: launchAppForSkype, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 // clamshellAppSpecificTestsForSkype are placed here.
 var clamshellAppSpecificTestsForSkype = []testutil.TestCase{
-	{Name: "Clamshell: Signout app", Fn: signOutOfSkype},
+	{Name: "Clamshell: Signout app", Fn: signOutOfSkype, Timeout: testutil.SignoutTestCaseTimeout, TType: testutil.Signout},
 }
 
 // touchviewAppSpecificTestsForSkype are placed here.
 var touchviewAppSpecificTestsForSkype = []testutil.TestCase{
-	{Name: "Touchview: Signout app", Fn: signOutOfSkype},
+	{Name: "Touchview: Signout app", Fn: signOutOfSkype, Timeout: testutil.SignoutTestCaseTimeout, TType: testutil.Signout},
 }
 
 func init() {

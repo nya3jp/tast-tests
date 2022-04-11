@@ -22,12 +22,12 @@ import (
 
 // clamshellLaunchForDiscord launches Discord in clamshell mode.
 var clamshellLaunchForDiscord = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForDiscord},
+	{Name: "Launch app in Clamshell", Fn: launchAppForDiscord, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 // touchviewLaunchForDiscord launches Discord in tablet mode.
 var touchviewLaunchForDiscord = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForDiscord},
+	{Name: "Launch app in Touchview", Fn: launchAppForDiscord, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 func init() {

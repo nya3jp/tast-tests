@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForAdobeAcrobatReader launches AdobeAcrobatReader in clamshell mode.
 var clamshellLaunchForAdobeAcrobatReader = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForAdobeAcrobatReader},
+	{Name: "Launch app in Clamshell", Fn: launchAppForAdobeAcrobatReader, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 // touchviewLaunchForAdobeAcrobatReader launches AdobeAcrobatReader in tablet mode.
 var touchviewLaunchForAdobeAcrobatReader = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForAdobeAcrobatReader},
+	{Name: "Launch app in Touchview", Fn: launchAppForAdobeAcrobatReader, Timeout: testutil.LaunchTestCaseTimeout, TType: testutil.Launch},
 }
 
 func init() {

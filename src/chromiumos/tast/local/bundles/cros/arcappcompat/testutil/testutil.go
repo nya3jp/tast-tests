@@ -40,19 +40,34 @@ const (
 	homescapesPkgName      = "com.playrix.homescapes"
 	skypePkgName           = "com.skype.raider"
 
-	DefaultUITimeout = 20 * time.Second
-	ShortUITimeout   = 30 * time.Second
-	LongUITimeout    = 90 * time.Second
+	defaultTestCaseTimeout = 2 * time.Minute
+	LaunchTestCaseTimeout  = 5 * time.Minute
+	SignoutTestCaseTimeout = 3 * time.Minute
+	DefaultUITimeout       = 20 * time.Second
+	ShortUITimeout         = 30 * time.Second
+	LongUITimeout          = 90 * time.Second
 )
 
 // TestFunc represents the "test" function.
 type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
+
+// TestType represents test	case in enum.
+type TestType int
+
+// Launch represents "Launch app in Clamshell" and "Launch app in Touchview" test cases.
+// Signout represents "Clamshell: Signout app" and "Touchview: Signout app" test cases.
+const (
+	OtherCases = iota
+	Launch
+	Signout
+)
 
 // TestCase represents the name of test, the function to call.
 type TestCase struct {
 	Name    string
 	Fn      TestFunc
 	Timeout time.Duration
+	TType   TestType
 }
 
 // TestParams represents the collection of tests to run in tablet mode or clamshell mode.
@@ -153,10 +168,28 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	for _, curTest := range testCases.AppSpecificTests {
 		AllTests = append(AllTests, curTest)
 	}
-
 	// Run the different test cases.
 	for idx, test := range AllTests {
-		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+		// Limit the launch test case, signout test case and other test cases to specified timeout.
+		// This makes sure that one test case doesn't use all of the time when it fails.
+		timeout := test.Timeout
+		switch test.TType {
+		case Launch:
+			timeout = test.Timeout
+			s.Log("Timeout for launch test case:  ", timeout)
+		case Signout:
+			timeout = test.Timeout
+			s.Log("Timeout for sign out test case: ", timeout)
+		default:
+			timeout := defaultTestCaseTimeout
+			s.Log("Timeout for other test cases: ", timeout)
+		}
+
+		testCaseCtx, cancel := ctxutil.Shorten(ctx, timeout)
+		defer cancel()
+
+		s.Run(testCaseCtx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+
 			// Save time for cleanup and screenshot.
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
@@ -248,6 +281,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, updatedAppActivity)
 		})
+		cancel()
 	}
 }
 
