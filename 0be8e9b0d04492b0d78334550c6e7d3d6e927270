@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c582d624_b0b51961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-11T13:00:14Z",
+      "side": 1,
+      "message": "nit: add prefix \"policy:\"",
+      "revId": "0be8e9b0d04492b0d78334550c6e7d3d6e927270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "336cf56c_f380fb1b",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-04-11T12:52:40Z",
       "side": 1,
       "message": "Hi, ptal",
+      "revId": "0be8e9b0d04492b0d78334550c6e7d3d6e927270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc33fc46_cc4c84ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-11T13:00:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "0be8e9b0d04492b0d78334550c6e7d3d6e927270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
