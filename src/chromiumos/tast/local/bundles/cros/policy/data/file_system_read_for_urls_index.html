@@ -1,0 +1,14 @@
+<a href="#">showOpenFilePicker</a>
+<script>
+    document.querySelector("a").addEventListener("click", async(e) => {
+        e.preventDefault();
+        window.errorMessage = "";
+
+        try {
+            await window.showOpenFilePicker();
+        } catch (err) {
+            window.errorMessage = err.message;
+            return;
+        }
+    });
+</script>
