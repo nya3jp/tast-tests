@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82bcf51d_0e5ec579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-11T00:07:23Z",
+      "side": 1,
+      "message": "Where is arc enabled?",
+      "range": {
+        "startLine": 147,
+        "startChar": 99,
+        "endLine": 147,
+        "endChar": 102
+      },
+      "revId": "98c36b1e3af987149ac2cfcc195ce5ed0c170379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
