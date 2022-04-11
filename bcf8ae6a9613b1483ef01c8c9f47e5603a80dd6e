@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b12e20_bc5a3a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-04-11T02:30:27Z",
+      "side": 1,
+      "message": "The comments look clearer, thanks!\n\n\u003e do you have suggestions on how to organize this test better?\nThe current structure LGTM, I think it\u0027s aligned with http://go/tast-writing#test-consolidation to have a single test since we definitely need some setup (restarting shill is time-consuming).",
+      "parentUuid": "53febabf_05ee3a0e",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "bcf8ae6a9613b1483ef01c8c9f47e5603a80dd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff2b798d_9f8bff06",
@@ -243,6 +267,30 @@
       "side": 1,
       "message": "Yup, although it\u0027s mitigated in practice.\n- ArcNetworkService manually sends a ping to try and get this populated before the ArcHostVpnService connects\n- Android usually sends a DNS request in parallel, which happens before our ping sometimes (not sure what\u0027s causing this so it\u0027s more of a nice side effect)\n- Observing on a local DUT, takes about 20-50ms to populate\n- The fake ethernet network is still up in Android so VPN traffic shouldn\u0027t be lost. It\u0027s just that Android traffic might go through eth0 instead of our fake tun0 for a brief time",
       "parentUuid": "ff2b798d_9f8bff06",
+      "range": {
+        "startLine": 217,
+        "startChar": 16,
+        "endLine": 217,
+        "endChar": 72
+      },
+      "revId": "bcf8ae6a9613b1483ef01c8c9f47e5603a80dd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53f2ae3_4b466a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-04-11T02:30:27Z",
+      "side": 1,
+      "message": "Ack. Thanks for the explanation!",
+      "parentUuid": "396b315f_6ae829cf",
       "range": {
         "startLine": 217,
         "startChar": 16,
