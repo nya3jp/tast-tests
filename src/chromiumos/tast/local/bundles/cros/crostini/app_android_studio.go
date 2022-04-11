@@ -80,7 +80,7 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 		// The initialization process may take longer than the default timeout 60s.
 		ud.WithTimeout(2*time.Minute).LeftClick(uidetection.TextBlock(strings.Split("Don't send", " "))),
 		ud.LeftClick(nextButton),
-		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Install Type", " "))),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Install Type", " "), uidetection.MaxEditDistance(2))),
 		ud.LeftClick(nextButton),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Select UI Theme", " "))),
 		ud.LeftClick(nextButton),
@@ -90,7 +90,7 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 		ud.WithTimeout(5*time.Minute).WaitUntilExists(uidetection.TextBlock(strings.Split("SDK is up to date", " "))),
 		ud.LeftClick(finishButton),
 		ud.LeftClick(uidetection.TextBlock(strings.Split("Start a new Android Studio project", " "))),
-		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Select a Project Template", " "))),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Project Template", " "))),
 		ud.LeftClick(nextButton.WithinA11yNode(nodewith.Name("Create New Project").HasClass("Widget"))),
 		ud.LeftClick(finishButton),
 		uiauto.New(tconn).WaitUntilExists(newProjectWindow),
