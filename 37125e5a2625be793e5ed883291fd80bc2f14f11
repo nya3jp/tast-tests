@@ -16,6 +16,23 @@
       "message": "tobyhuang@: FYI",
       "revId": "37125e5a2625be793e5ed883291fd80bc2f14f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6970652f_60323bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-11T18:53:25Z",
+      "side": 1,
+      "message": "The familylink.ChildWallpaperSync test still fails quite a lot [1]. This test has the lowest pass rate of all the familylink.* tests flagged to us in the weekly green stainless email report [2]. We should wait for at least 20 days in a row [3] of green runs on Tastboard before promoting this test to CQ-blocking.\n\n[1] https://screenshot.googleplex.com/QyWHAGni2DDCDaJ.png\n[2] https://screenshot.googleplex.com/BMahHesJp6DL3mz.png\n[3] https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
+      "revId": "37125e5a2625be793e5ed883291fd80bc2f14f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
