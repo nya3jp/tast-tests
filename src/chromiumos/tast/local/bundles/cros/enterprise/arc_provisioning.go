@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -152,6 +153,9 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		waitForPackagesCtx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 		defer cancel()
 		if err := waitForPackages(waitForPackagesCtx, a, packages); err != nil {
+			if chromeCrashed(ctx) {
+				return retry("wait for packages", errors.Wrap(err, "Chrome process crashed"))
+			}
 			dumpBugReport(ctx, a, filepath.Join(s.OutDir(), "bugreport.zip"))
 			return exit("wait for packages", err)
 		}
@@ -176,6 +180,12 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("Provisioning flow failed: ", err)
 	}
+}
+
+func chromeCrashed(ctx context.Context) bool {
+	const chromeCrashMessage = "Received crash notification for chrome"
+	logContent, err := ioutil.ReadFile(syslog.MessageFile)
+	return err == nil && strings.Contains(string(logContent), chromeCrashMessage)
 }
 
 func dumpBugReport(ctx context.Context, a *arc.ARC, filePath string) {
