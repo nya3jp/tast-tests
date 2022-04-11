@@ -22,6 +22,9 @@ service ChromeService {
   // Close releases the chrome session obtained by New.
   // When there is no chrome session, calling Close returns an error.
   rpc Close(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Eval evaluates a javascript expression via tconn.
+  rpc Eval(EvalRequest) returns (EvalResponse) {}
 }
 
 // NewRequest to login to Chrome with configurable features, arguments and GAIA
@@ -83,4 +86,16 @@ enum LoginMode {
   FAKE_LOGIN = 2;   // fake login with no authentication
   GAIA_LOGIN = 3;   // real network-based login using GAIA backend
   GUEST_LOGIN = 4;  // sign in as ephemeral guest user
+}
+
+// EvalRequest requests that a piece of javascript be executed and evaluated through tconn.
+message EvalRequest {
+  // Expr is the javascript code to be evaluated.
+  string expr = 1;
+}
+
+// EvalResponse is the return value of the javascript code executed.
+message EvalResponse {
+  // ResultJson is the return value of the javascript code, encoded as a json object.
+  string result_json = 1;
 }

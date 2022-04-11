@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -123,6 +124,34 @@ func toOptions(req *pb.NewRequest) ([]chrome.Option, error) {
 	}
 
 	return options, nil
+}
+
+func (svc *ChromeService) Eval(ctx context.Context, req *pb.EvalRequest) (*pb.EvalResponse, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	cr := svc.sharedObject.Chrome
+	if cr == nil {
+		return nil, errors.New("Chrome is not instantiated")
+	}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	var out interface{}
+	if err := tconn.Eval(ctx, req.Expr, &out); err != nil {
+		return nil, err
+	}
+
+	jsonBytes, err := json.Marshal(out)
+	if err != nil {
+		return nil, err
+	}
+
+	return &pb.EvalResponse{
+		ResultJson: string(jsonBytes),
+	}, nil
 }
 
 func toCreds(c *pb.NewRequest_Credentials) chrome.Creds {
