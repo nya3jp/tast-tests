@@ -34,6 +34,24 @@
       "parentUuid": "38fbb866_f5f7e121",
       "revId": "e45a0a5720aa75655e9054cb3204375794e5c8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db23afee_abac46ef",
+        "filename": "src/chromiumos/tast/services/cros/shimlessrma/shimlessrma_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-04-11T03:44:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e73a94a_174301fd",
+      "revId": "e45a0a5720aa75655e9054cb3204375794e5c8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
