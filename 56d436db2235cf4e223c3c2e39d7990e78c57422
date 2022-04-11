@@ -33,6 +33,23 @@
       "message": "LGTM!\n\nAdding Takise-san to CC as the original author of this test.",
       "revId": "56d436db2235cf4e223c3c2e39d7990e78c57422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8768c5eb_5e22e498",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1539138
+      },
+      "writtenOn": "2022-04-11T04:48:58Z",
+      "side": 1,
+      "message": "tast-owners@: Please take a look!",
+      "revId": "56d436db2235cf4e223c3c2e39d7990e78c57422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
