@@ -18,6 +18,9 @@ import (
 // ReleaseURI contains the release URI of the test webcam device in the system.
 const ReleaseURI = "https://storage.googleapis.com/chromeos-localmirror/lvfs/test/3fab34cfa1ef97238fb24c5e40a979bc544bb2b0967b863e43e7d58e0d9a923f-fakedevice124.cab"
 
+// ChargingStateTimeout has the time needed for polling battery charging state changes.
+const ChargingStateTimeout = 19 * time.Minute
+
 const (
 	// This is a string that appears when the computer is discharging.
 	dischargeString = `uint32 [0-9]\s+uint32 2`
@@ -45,12 +48,6 @@ func SetFwupdChargingState(ctx context.Context, charge bool) error {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if !charge {
-			cmd := testexec.CommandContext(ctx, "stressapptest", "-s", "30")
-			if err := cmd.Run(); err != nil {
-				return err
-			}
-		}
 		cmd := testexec.CommandContext(ctx, "dbus-send", "--print-reply", "--system", "--type=method_call",
 			"--dest=org.chromium.PowerManager", "/org/chromium/PowerManager",
 			"org.chromium.PowerManager.GetBatteryState")
@@ -59,11 +56,17 @@ func SetFwupdChargingState(ctx context.Context, charge bool) error {
 			return err
 		}
 		matched, err := regexp.Match(dischargeString, output)
+		if charge == matched {
+			cmd := testexec.CommandContext(ctx, "stressapptest", "-s", "30")
+			if err := cmd.Run(); err != nil {
+				return err
+			}
+		}
 		if charge == matched || err != nil {
 			return errors.New("powerd has not registered a battery state change")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 9 * time.Minute}); err != nil {
+	}, &testing.PollOptions{Timeout: ChargingStateTimeout}); err != nil {
 		return errors.Wrap(err, "battery polling was unsuccessful")
 	}
 
