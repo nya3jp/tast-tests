@@ -39,9 +39,12 @@ const (
 	asphaltPkgName         = "com.gameloft.android.ANMP.GloftA9HM"
 	homescapesPkgName      = "com.playrix.homescapes"
 
-	DefaultUITimeout = 20 * time.Second
-	ShortUITimeout   = 30 * time.Second
-	LongUITimeout    = 90 * time.Second
+	defaultTestCaseTimeout = 2 * time.Minute
+	LaunchTestCaseTimeout  = 5 * time.Minute
+	signoutTestCaseTimeout = 3 * time.Minute
+	DefaultUITimeout       = 20 * time.Second
+	ShortUITimeout         = 30 * time.Second
+	LongUITimeout          = 90 * time.Second
 )
 
 // TestFunc represents the "test" function.
@@ -148,7 +151,33 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 	// Run the different test cases.
 	for idx, test := range AllTests {
-		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+		// Limit the launch test case, signout test case and other test cases to specified timeout.
+		// This makes sure that one test case doesn't use all of the time when it fails.
+		timeout := defaultTestCaseTimeout
+		testNameInfo := test.Name
+		switch testNameInfo {
+		case "Launch app in Clamshell":
+			timeout = LaunchTestCaseTimeout
+			s.Log("Timeout for clamshell launch test case:  ", timeout)
+		case "Launch app in Touchview":
+			timeout = LaunchTestCaseTimeout
+			s.Log("Timeout for touchview launch test case:  ", timeout)
+		case "Clamshell: Signout app":
+			timeout = signoutTestCaseTimeout
+			s.Log("Timeout for clamshell sign out test case: ", timeout)
+		case "Touchview: Signout app":
+			timeout = signoutTestCaseTimeout
+			s.Log("Timeout for touchview signout test case: ", timeout)
+		default:
+			timeout = defaultTestCaseTimeout
+			s.Log("Timeout for other test cases: ", timeout)
+		}
+
+		testCaseCtx, cancel := ctxutil.Shorten(ctx, timeout)
+		defer cancel()
+
+		s.Run(testCaseCtx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+
 			// Save time for cleanup and screenshot.
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
@@ -240,6 +269,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
 		})
+		cancel()
 	}
 }
 
