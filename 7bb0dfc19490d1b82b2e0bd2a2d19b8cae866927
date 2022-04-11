@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2b542e_33a4f6de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-04-11T16:48:12Z",
+      "side": 1,
+      "message": "nit: can you also run with rtw88 just to be sure it still works.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "7bb0dfc19490d1b82b2e0bd2a2d19b8cae866927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
