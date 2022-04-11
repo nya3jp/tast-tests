@@ -16,6 +16,115 @@
       "message": "Great catch thank you Aga. ",
       "revId": "146343a1660a27c4f91e81ffa880d18ace318dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f35c6e0_45a55362",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-11T19:33:23Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "146343a1660a27c4f91e81ffa880d18ace318dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf1bc4a_15a3692e",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-11T19:33:23Z",
+      "side": 1,
+      "message": "Nit: Add info that it is expected for the labels of interest to only occur once in the table.",
+      "range": {
+        "startLine": 281,
+        "startChar": 39,
+        "endLine": 281,
+        "endChar": 40
+      },
+      "revId": "146343a1660a27c4f91e81ffa880d18ace318dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732c14c6_a6e193ef",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-11T19:33:23Z",
+      "side": 1,
+      "message": "Tiny nit: \u0027Account\u0027",
+      "range": {
+        "startLine": 284,
+        "startChar": 20,
+        "endLine": 284,
+        "endChar": 25
+      },
+      "revId": "146343a1660a27c4f91e81ffa880d18ace318dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3993f7b6_82dd3a5a",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-11T19:33:23Z",
+      "side": 1,
+      "message": "Tiny nit: \u0027Child\u0027",
+      "range": {
+        "startLine": 293,
+        "startChar": 20,
+        "endLine": 293,
+        "endChar": 30
+      },
+      "revId": "146343a1660a27c4f91e81ffa880d18ace318dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e972954_d93588f4",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-04-11T19:33:23Z",
+      "side": 1,
+      "message": "Nit:\nConsider:\n1) exiting the loop early if both labels has been found.\nor if you would like to check the whole table to make sure that the values are there only once \n2) assert that \u0027foundEmail\u0027 and \u0027foundIsChild\u0027 are false before setting them to true.",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 2
+      },
+      "revId": "146343a1660a27c4f91e81ffa880d18ace318dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
