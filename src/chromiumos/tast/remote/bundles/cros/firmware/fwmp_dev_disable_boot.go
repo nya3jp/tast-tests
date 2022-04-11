@@ -47,11 +47,11 @@ func FwmpDevDisableBoot(ctx context.Context, s *testing.State) {
 
 	// checkTPMNotOwned returns error if TPM is owned.
 	checkTPMNotOwned := func(ctx context.Context) error {
-		out, err := s.DUT().Conn().CommandContext(ctx, "cryptohome", "--action=status").Output(ssh.DumpLogOnError)
+		out, err := s.DUT().Conn().CommandContext(ctx, "tpm_manager_client", "status", "--nonsensitive").Output(ssh.DumpLogOnError)
 		if err != nil {
 			return errors.Wrap(err, "unable to read TPM status")
 		}
-		regex := `\"owned\":(\s+\w+\s?)`
+		regex := `is_owned:(\s+\w+\s?)`
 		expMatch := regexp.MustCompile(regex)
 		matches := expMatch.FindStringSubmatch(string(out))
 		if len(matches) < 2 {
@@ -66,15 +66,8 @@ func FwmpDevDisableBoot(ctx context.Context, s *testing.State) {
 
 	setFWMP := func(ctx context.Context, flags string) error {
 		s.Log("Taking ownership")
-		if err := s.DUT().Conn().CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(ssh.DumpLogOnError); err != nil {
+		if err := s.DUT().Conn().CommandContext(ctx, "tpm_manager_client", "take_ownership").Run(ssh.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "failed to take ownership")
-		}
-		s.Logf("Sleeping for %s before taking ownership", takeOwnershipDelay)
-		if err := testing.Sleep(ctx, takeOwnershipDelay); err != nil {
-			return errors.Wrap(err, "failed to sleep")
-		}
-		if err := s.DUT().Conn().CommandContext(ctx, "cryptohome", "--action=tpm_wait_ownership").Run(ssh.DumpLogOnError); err != nil {
-			return errors.Wrap(err, "failed to wait for ownership")
 		}
 		s.Log("Setting firmware management parameters")
 		if err := s.DUT().Conn().CommandContext(ctx, "cryptohome", "--action=set_firmware_management_parameters", "--flags=0x"+flags).Run(ssh.DumpLogOnError); err != nil {
