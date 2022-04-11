@@ -16,6 +16,23 @@
       "message": "Hi reviewers, please help me review this change, thanks.",
       "revId": "adfdc585c42fed1c2d9717b54f535fa414d8acc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4383bf_b5020ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-04-11T05:23:29Z",
+      "side": 1,
+      "message": "Please wait for Yi Chou review before submitting.",
+      "revId": "adfdc585c42fed1c2d9717b54f535fa414d8acc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
