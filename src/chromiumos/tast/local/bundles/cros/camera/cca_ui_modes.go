@@ -29,6 +29,18 @@ func init() {
 func CCAUIModes(ctx context.Context, s *testing.State) {
 	app := s.FixtValue().(cca.FixtureData).App()
 
+	exist, err := app.Exist(ctx, cca.SquareModeButton)
+	if err != nil {
+		s.Fatal("Failed to check existence of square mode button: ", err)
+	}
+	if !exist {
+		// Acceptable since there is no square mode in the new UI design.
+		return
+	}
+
+	// TODO(b/215484798): Remove the old logic and implement the aspect ratio
+	// settings check in CCAUIResolutions or CCAUISettings.
+
 	// Switch to square mode and take photo.
 	if err := app.SwitchMode(ctx, cca.Square); err != nil {
 		s.Fatal("Failed to switch to square mode: ", err)
