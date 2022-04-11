@@ -128,7 +128,7 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(cleanupCtx)
 
-	if err := recorder.RunUntil(ctx, func(ctx context.Context) error {
+	if err := recorder.RunFor(ctx, func(ctx context.Context) error {
 		if err := ash.ActivateDeskAtIndex(ctx, tconn, 0); err != nil {
 			return errors.Wrap(err, "failed to switch to first desk")
 		}
