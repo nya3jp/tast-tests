@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6fe7b5_132d9c95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2022-04-11T16:39:27Z",
+      "side": 1,
+      "message": "My suggestion would be to change to the internal method at this time.  I do not think the command listed will work on moblab/satlab as servod container does not have xz utils installed.\n\nAs discussed base servod from hwtools is just the basic servod with just the tools and functionality for servo,  labs are encouraged to make their own derived version of the image with the tools they need added ( like xz utils )",
+      "revId": "14f0f335317f27effa148266298d32f1bc6f260e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
