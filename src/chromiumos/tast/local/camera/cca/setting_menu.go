@@ -27,6 +27,12 @@ var (
 	TimerMenu = &SettingMenu{"view-timer-settings", &TimerSettingsButton}
 	// ResolutionMenu is the resolution settings menu.
 	ResolutionMenu = &SettingMenu{"view-resolution-settings", &ResolutionSettingButton}
+	// PhotoResolutionMenu is the photo resolution settings menu.
+	PhotoResolutionMenu = &SettingMenu{"view-photo-resolution-settings", &PhotoResolutionSettingButton}
+	// PhotoAspectRatioMenu is the photo aspect ratio settings menu.
+	PhotoAspectRatioMenu = &SettingMenu{"view-photo-aspect-ratio-settings", &PhotoAspectRatioSettingButton}
+	// VideoResolutionMenu is the video resolution settings menu.
+	VideoResolutionMenu = &SettingMenu{"view-video-resolution-settings", &VideoResolutionSettingButton}
 	// ExpertMenu is the expert settings menu.
 	ExpertMenu = &SettingMenu{"view-expert-settings", &ExpertModeButton}
 )
