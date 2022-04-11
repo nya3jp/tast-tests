@@ -40,9 +40,12 @@ const (
 	homescapesPkgName      = "com.playrix.homescapes"
 	skypePkgName           = "com.skype.raider"
 
-	DefaultUITimeout = 20 * time.Second
-	ShortUITimeout   = 30 * time.Second
-	LongUITimeout    = 90 * time.Second
+	defaultTestCaseTimeout = 2 * time.Minute
+	LaunchTestCaseTimeout  = 5 * time.Minute
+	SignoutTestCaseTimeout = 3 * time.Minute
+	DefaultUITimeout       = 20 * time.Second
+	ShortUITimeout         = 30 * time.Second
+	LongUITimeout          = 90 * time.Second
 )
 
 // TestFunc represents the "test" function.
@@ -153,10 +156,22 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	for _, curTest := range testCases.AppSpecificTests {
 		AllTests = append(AllTests, curTest)
 	}
-
 	// Run the different test cases.
 	for idx, test := range AllTests {
-		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+		// Limit the launch test case, signout test case to a specified timeout.
+		// This makes sure that one test case doesn't use all of the time when it fails.
+		timeout := test.Timeout
+		// Use the default if the timeout wasn't set.
+		if timeout == time.Duration(0) {
+			timeout = defaultTestCaseTimeout
+		}
+		s.Logf("Timeout for %s test case: %s", test.Name, timeout)
+
+		testCaseCtx, cancel := ctxutil.Shorten(ctx, timeout)
+		defer cancel()
+
+		s.Run(testCaseCtx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+
 			// Save time for cleanup and screenshot.
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
@@ -248,6 +263,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			}
 			test.Fn(ctx, s, tconn, a, d, appPkgName, updatedAppActivity)
 		})
+		cancel()
 	}
 }
 

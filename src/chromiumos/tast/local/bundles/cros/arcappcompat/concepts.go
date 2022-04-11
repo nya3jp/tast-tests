@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForConcepts launches Concepts in clamshell mode.
 var clamshellLaunchForConcepts = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForConcepts},
+	{Name: "Launch app in Clamshell", Fn: launchAppForConcepts, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForConcepts launches Concepts in tablet mode.
 var touchviewLaunchForConcepts = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForConcepts},
+	{Name: "Launch app in Touchview", Fn: launchAppForConcepts, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 func init() {
