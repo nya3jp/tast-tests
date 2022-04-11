@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForGoogleDuo launches GoogleDuo in clamshell mode.
 var clamshellLaunchForGoogleDuo = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForGoogleDuo},
+	{Name: "Launch app in Clamshell", Fn: launchAppForGoogleDuo, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForGoogleDuo launches GoogleDuo in tablet mode.
 var touchviewLaunchForGoogleDuo = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForGoogleDuo},
+	{Name: "Launch app in Touchview", Fn: launchAppForGoogleDuo, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 func init() {

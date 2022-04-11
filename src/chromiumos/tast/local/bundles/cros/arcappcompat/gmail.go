@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForGmail launches Gmail in clamshell mode.
 var clamshellLaunchForGmail = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForGmail},
+	{Name: "Launch app in Clamshell", Fn: launchAppForGmail, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForGmail launches Gmail in tablet mode.
 var touchviewLaunchForGmail = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForGmail},
+	{Name: "Launch app in Touchview", Fn: launchAppForGmail, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 func init() {

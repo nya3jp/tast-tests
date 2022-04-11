@@ -21,12 +21,12 @@ import (
 
 // clamshellLaunchForMinecraft launches Minecraft in clamshell mode.
 var clamshellLaunchForMinecraft = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForMinecraft},
+	{Name: "Launch app in Clamshell", Fn: launchAppForMinecraft, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForMinecraft launches Minecraft in tablet mode.
 var touchviewLaunchForMinecraft = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForMinecraft},
+	{Name: "Launch app in Touchview", Fn: launchAppForMinecraft, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 func init() {

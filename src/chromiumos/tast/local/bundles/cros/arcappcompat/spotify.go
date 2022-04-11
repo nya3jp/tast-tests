@@ -21,24 +21,24 @@ import (
 
 // clamshellLaunchForSpotify launches Spotify in clamshell mode.
 var clamshellLaunchForSpotify = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForSpotify},
+	{Name: "Launch app in Clamshell", Fn: launchAppForSpotify, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForSpotify launches Spotify in tablet mode.
 var touchviewLaunchForSpotify = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForSpotify},
+	{Name: "Launch app in Touchview", Fn: launchAppForSpotify, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // clamshellAppSpecificTestsForSpotify are placed here.
 var clamshellAppSpecificTestsForSpotify = []testutil.TestCase{
 	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Clamshell: Signout app", Fn: signOutOfSpotify},
+	{Name: "Clamshell: Signout app", Fn: signOutOfSpotify, Timeout: testutil.SignoutTestCaseTimeout},
 }
 
 // touchviewAppSpecificTestsForSpotify are placed here.
 var touchviewAppSpecificTestsForSpotify = []testutil.TestCase{
 	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
-	{Name: "Touchview: Signout app", Fn: signOutOfSpotify},
+	{Name: "Touchview: Signout app", Fn: signOutOfSpotify, Timeout: testutil.SignoutTestCaseTimeout},
 }
 
 func init() {

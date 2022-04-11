@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForRoblox launches Roblox in clamshell mode.
 var clamshellLaunchForRoblox = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForRoblox},
+	{Name: "Launch app in Clamshell", Fn: launchAppForRoblox, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForRoblox launches Roblox in tablet mode.
 var touchviewLaunchForRoblox = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForRoblox},
+	{Name: "Launch app in Touchview", Fn: launchAppForRoblox, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 func init() {

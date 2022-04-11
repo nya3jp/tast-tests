@@ -20,12 +20,12 @@ import (
 
 // clamshellLaunchForHomescapes launches Homescapes in clamshell mode.
 var clamshellLaunchForHomescapes = []testutil.TestCase{
-	{Name: "Launch app in Clamshell", Fn: launchAppForHomescapes},
+	{Name: "Launch app in Clamshell", Fn: launchAppForHomescapes, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 // touchviewLaunchForHomescapes launches Homescapes in tablet mode.
 var touchviewLaunchForHomescapes = []testutil.TestCase{
-	{Name: "Launch app in Touchview", Fn: launchAppForHomescapes},
+	{Name: "Launch app in Touchview", Fn: launchAppForHomescapes, Timeout: testutil.LaunchTestCaseTimeout},
 }
 
 func init() {
