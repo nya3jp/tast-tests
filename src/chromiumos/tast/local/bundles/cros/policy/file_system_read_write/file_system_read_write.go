@@ -186,7 +186,7 @@ func RunTestCases(ctx context.Context, s *testing.State, param TestCase) {
 				s.Error("Save file picker opened unexpectedly")
 			}
 		}
-	case *policy.FileSystemReadBlockedForUrls:
+	case *policy.FileSystemReadAskForUrls, *policy.FileSystemReadBlockedForUrls:
 		if err := triggerFilePicker(ctx, conn, ui, OpenFileDialog, OpenFilePicker); err != nil {
 			s.Fatal("Failed to trigger file picker: ", err)
 		}
