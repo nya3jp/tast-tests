@@ -123,7 +123,7 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 		cr, err := chrome.New(ctx, chrome.ExtraArgs(
 			"--fake-variations-channel="+channel,
 			"--variations-server-url=https://clients4.google.com/chrome-variations/seed",
-		))
+		), chrome.DisableFeatures("OobeConsolidatedConsent"))
 		if err != nil {
 			s.Fatal("Chrome login failed: ", err)
 		}
@@ -164,7 +164,7 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.KeepState(), chrome.ExtraArgs(
 		"--fake-variations-channel=beta",
 		"--variations-server-url=https://clients4.google.com/chrome-variations/seed",
-	))
+	), chrome.DisableFeatures("OobeConsolidatedConsent"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
