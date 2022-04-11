@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/testing"
 )
@@ -35,7 +36,7 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 		// Expert mode is not reset after each test for persistency
 		{"toggleExpertMode", toggleExpertMode, false},
 		{"toggleExpertModeOptions", toggleExpertModeOptions, true},
-		{"switchSquareMode", switchSquareMode, true},
+		{"switchModeAndBack", switchModeAndBack, true},
 		{"toggleExpertMode", toggleExpertMode, false},
 		{"toggleExpertMode", toggleExpertMode, true},
 		{"toggleExpertModeOptions", toggleExpertModeOptions, false},
@@ -90,8 +91,14 @@ func toggleExpertModeOptions(ctx context.Context, app *cca.App) error {
 	return nil
 }
 
-func switchSquareMode(ctx context.Context, app *cca.App) error {
-	return app.SwitchMode(ctx, cca.Square)
+func switchModeAndBack(ctx context.Context, app *cca.App) error {
+	if err := app.SwitchMode(ctx, cca.Video); err != nil {
+		return errors.Wrap(err, "failed to switch to video mode")
+	}
+	if err := app.SwitchMode(ctx, cca.Photo); err != nil {
+		return errors.Wrap(err, "failed to switch back to photo mode")
+	}
+	return nil
 }
 
 func disableExpertModeOnUI(ctx context.Context, app *cca.App) error {

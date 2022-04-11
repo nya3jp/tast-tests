@@ -43,6 +43,13 @@ var (
 	// GalleryButtonCover is cover photo of gallery button.
 	GalleryButtonCover = UIComponent{"gallery button cover", []string{"#gallery-enter>img"}}
 
+	// PhotoResolutionSettingButton is button for opening photo resolution setting menu.
+	PhotoResolutionSettingButton = UIComponent{"photo resolution setting button", []string{"#settings-photo-resolution"}}
+	// PhotoAspectRatioSettingButton is button for opening photo aspect ratio setting menu.
+	PhotoAspectRatioSettingButton = UIComponent{"photo aspect ratio setting button", []string{"#settings-photo-aspect-ratio"}}
+	// VideoResolutionSettingButton is button for opening video resolution setting menu.
+	VideoResolutionSettingButton = UIComponent{"video resolution setting button", []string{"#settings-video-resolution"}}
+
 	// ResolutionSettingButton is button for opening resolution setting menu.
 	ResolutionSettingButton = UIComponent{"resolution setting button", []string{"#settings-resolution"}}
 	// ExpertModeButton is button used for opening expert mode setting menu.
@@ -107,6 +114,8 @@ var (
 	// PTZResetAllButton is the button for reset PTZ to default value.
 	PTZResetAllButton = UIComponent{"ptz reset all button", []string{"#ptz-reset-all"}}
 
+	// SquareModeButton is the button to enter square mode.
+	SquareModeButton = UIComponent{"square mode button", []string{".mode-item>input[data-mode=\"square\"]"}}
 	// ScanModeButton is the button to enter scan mode.
 	ScanModeButton = UIComponent{"scan mode button", []string{".mode-item>input[data-mode=\"scan\"]"}}
 	// ScanBarcodeOption is the option button to switch to QR code detection mode in scan mode.
@@ -148,6 +157,19 @@ var (
 		"#view-review button[i18n-text=label_save]"}}
 	// GifReviewRetakeButton is the retake button in gif review page.
 	GifReviewRetakeButton = UIComponent{"retake gif button", []string{"#review-retake"}}
+
+	// FrontAspectRatioOptions are the buttons of aspect ratio options for the front camera.
+	FrontAspectRatioOptions = UIComponent{"front aspect ratio options", []string{"#view-photo-aspect-ratio-settings .menu-item>input[data-facing=\"user\"]"}}
+	// BackAspectRatioOptions are the buttons of aspect ratio options for the back camera.
+	BackAspectRatioOptions = UIComponent{"back aspect ratio options", []string{"#view-photo-aspect-ratio-settings .menu-item>input[data-facing=\"environment\"]"}}
+	// FrontPhotoResolutionOptions are the buttons of photo resolution options for the front camera.
+	FrontPhotoResolutionOptions = UIComponent{"front photo resolution options", []string{"#view-photo-resolution-settings .menu-item>input[data-facing=\"user\"]"}}
+	// BackPhotoResolutionOptions are the buttons of photo resolution options for the back camera.
+	BackPhotoResolutionOptions = UIComponent{"back photo resolution options", []string{"#view-photo-resolution-settings .menu-item>input[data-facing=\"environment\"]"}}
+	// FrontVideoResolutionOptions are the buttons of video resolution options for the front camera.
+	FrontVideoResolutionOptions = UIComponent{"front video resolution options", []string{"#view-video-resolution-settings .menu-item>input[data-facing=\"user\"]"}}
+	// BackVideoResolutionOptions are the buttons of video resolution options for the back camera.
+	BackVideoResolutionOptions = UIComponent{"back video resolution options", []string{"#view-video-resolution-settings .menu-item>input[data-facing=\"environment\"]"}}
 )
 
 // Option is the option for toggling state.

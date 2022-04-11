@@ -217,7 +217,7 @@ window.Tast = class Tast {
    * @param {string} selector
    * @return {{width: number, height: number}}
    */
-  static async getSize(selector) {
+  static getSize(selector) {
     if (!Tast.isVisible(selector)) {
       throw new Error('No visible element: ', selector);
     }
@@ -422,6 +422,15 @@ window.Tast = class Tast {
   static getPreviewResolution() {
     const video = Tast.previewVideo;
     return {width: video.videoWidth, height: video.videoHeight};
+  }
+
+  /**
+   * Gets resolution of the preview view port.
+   * @throws {LegacyVCDError}
+   * @return {!Resolution}
+   */
+   static getPreviewViewportSize() {
+    return Tast.getSize('#preview-viewport');
   }
 
   /**

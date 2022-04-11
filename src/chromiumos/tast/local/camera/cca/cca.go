@@ -59,6 +59,7 @@ const (
 	// Photo is the mode used to take photo.
 	Photo Mode = "photo"
 	// Square is the mode used to take square photo.
+	// TODO(b/215484798): Removed since there is no square mode in new UI.
 	Square = "square"
 	// Portrait is the mode used to take portrait photo.
 	Portrait = "portrait"
@@ -553,6 +554,15 @@ func (a *App) GetPreviewResolution(ctx context.Context) (Resolution, error) {
 	r := Resolution{-1, -1}
 	if err := a.conn.Eval(ctx, "Tast.getPreviewResolution()", &r); err != nil {
 		return r, errors.Wrap(err, "failed to get preview resolution")
+	}
+	return r, nil
+}
+
+// GetPreviewViewportSize returns resolution of the preview view port.
+func (a *App) GetPreviewViewportSize(ctx context.Context) (Resolution, error) {
+	r := Resolution{-1, -1}
+	if err := a.conn.Eval(ctx, "Tast.getPreviewViewportSize()", &r); err != nil {
+		return r, errors.Wrap(err, "failed to get the size of preview viewport")
 	}
 	return r, nil
 }
