@@ -13,9 +13,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
@@ -103,9 +103,26 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 				s.Fatal("Failed to copy text from source browser: ", err)
 			}
 
-			// Open the launcher.
-			if err := launcher.Open(tconn)(ctx); err != nil {
-				s.Fatal("Failed to open the launcher: ", err)
+			tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get tablet mode status: ", err)
+			}
+
+			// In desktop mode user needs to bring up the application grid.
+			// In tablet mode the application grid is already up.
+			if !tabletMode {
+				uia := uiauto.New(tconn)
+				// Open Launcher and go to Apps list view page.
+				// Tried to use launcher.Open(tconn) but it seems to be flaky.
+				if err := uiauto.Combine("Open Launcher and go to Expanded Apps list view",
+					uia.WithInterval(500*time.Millisecond).LeftClickUntil(
+						nodewith.Name("Launcher").ClassName("ash/HomeButton"),
+						uia.Exists(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView"))),
+					uia.LeftClick(nodewith.Name("Expand to all apps").ClassName("ExpandArrowView")),
+					uia.WaitUntilExists(nodewith.ClassName("AppsGridView")),
+				)(ctx); err != nil {
+					s.Fatal("Failed to open Expanded Apps list view: ", err)
+				}
 			}
 
 			s.Log("Right clicking shelf box")
