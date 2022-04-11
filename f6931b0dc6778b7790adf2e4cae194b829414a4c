@@ -34,6 +34,24 @@
       "parentUuid": "a3d26939_0a7aca91",
       "revId": "f6931b0dc6778b7790adf2e4cae194b829414a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a8373d_fa07689a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-04-11T04:48:53Z",
+      "side": 1,
+      "message": "Thanks for clarification. That sgtm. We may see some new failures at the step 3, but we should be able to fix them at that point.",
+      "parentUuid": "f8b72046_0b4e4a4e",
+      "revId": "f6931b0dc6778b7790adf2e4cae194b829414a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
