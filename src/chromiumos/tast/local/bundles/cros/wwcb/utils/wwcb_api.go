@@ -192,3 +192,12 @@ func UploadFile(ctx context.Context, filename string) (string, error) {
 	}
 	return m["path"].(string), nil
 }
+
+// DetectAudio  do audio comparison by using record audio file that upload to server
+func DetectAudio(ctx context.Context, filepath string) error {
+	api := fmt.Sprintf("api/detect_audio?file_path=%s", filepath)
+	if _, err := HTTPGet(ctx, api); err != nil {
+		return err
+	}
+	return nil
+}
