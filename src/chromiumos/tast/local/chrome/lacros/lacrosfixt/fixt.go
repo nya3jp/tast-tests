@@ -7,6 +7,7 @@ package lacrosfixt
 
 import (
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
 
@@ -27,20 +28,20 @@ type FixtValue interface {
 	TestAPIConn() *chrome.TestConn
 }
 
-// NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
+// NewFixture creates a new fixture that can launch Lacros chrome with the given selection and
 // Chrome options.
-func NewFixture(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
-	return NewComposedFixture(mode, func(v FixtValue, pv interface{}) interface{} {
+func NewFixture(selection lacros.Selection, fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return NewComposedFixture(selection, func(v FixtValue, pv interface{}) interface{} {
 		return v
 	}, fOpt)
 }
 
 // NewComposedFixture is similar to NewFixture but allows tests to customise the FixtValue
 // used. This lets tests compose fixtures via struct embedding.
-func NewComposedFixture(mode SetupMode, makeValue func(v FixtValue, pv interface{}) interface{},
+func NewComposedFixture(selection lacros.Selection, makeValue func(v FixtValue, pv interface{}) interface{},
 	fOpt chrome.OptionsCallback) testing.FixtureImpl {
 	return &fixtImpl{
-		mode:      mode,
+		selection: selection,
 		fOpt:      fOpt,
 		makeValue: makeValue,
 	}
