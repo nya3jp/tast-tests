@@ -37,8 +37,18 @@ func init() {
 		Contacts: []string{
 			"ddavenport@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "drm_trace"},
+		Params: []testing.Param{
+			{
+				Name:              "stable",
+				ExtraSoftwareDeps: []string{"no_kernel_upstream"},
+			},
+			{
+				Name:      "unstable",
+				ExtraAttr: []string{"informational"},
+			},
+		},
 	})
 }
 
