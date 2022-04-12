@@ -39,6 +39,30 @@
       },
       "revId": "eeff3893096fbd98ef909da5353f2c2d9b95354f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5a4b28_d1b5d3b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-12T08:01:39Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "008c70a5_1b11fece",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 51
+      },
+      "revId": "eeff3893096fbd98ef909da5353f2c2d9b95354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
