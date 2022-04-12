@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -35,7 +36,7 @@ func init() {
 		Name:     "chromeVideoLacros",
 		Desc:     "Logged into a user session with logging enabled (lacros)",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -55,7 +56,7 @@ func init() {
 		Name:     "chromeCameraPerfLacros",
 		Desc:     "Logged into a user session on Lacros without verbose logging that can affect the performance",
 		Contacts: []string{"chromeos-camera-eng@google.com"},
-		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
@@ -141,7 +142,7 @@ func init() {
 		Name:     "chromeAshCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in ash-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -160,7 +161,7 @@ func init() {
 		Name:     "chromeLacrosCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in lacros-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),

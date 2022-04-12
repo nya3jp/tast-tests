@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -28,7 +29,7 @@ func init() {
 		Name:     "lacros",
 		Desc:     "Lacros Chrome from a pre-built image",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
@@ -44,7 +45,7 @@ func init() {
 		Name:     "lacrosAudio",
 		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.ExtraArgs("--autoplay-policy=no-user-gesture-required"), // Allow media autoplay.
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
@@ -64,7 +65,7 @@ func init() {
 		Name:     "lacrosWith100FakeApps",
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
@@ -81,7 +82,7 @@ func init() {
 		Name:     "lacrosForceComposition",
 		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
@@ -98,7 +99,7 @@ func init() {
 		Name:     "lacrosForceDelegated",
 		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
 		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
 				chrome.LacrosExtraArgs("--no-first-run"),
 				chrome.LacrosEnableFeatures("DelegatedCompositing")}, nil
@@ -115,7 +116,7 @@ func init() {
 		Name:     "lacrosWithArcEnabled",
 		Desc:     "Lacros Chrome from a pre-built image with ARC enabled",
 		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled(),
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
@@ -133,7 +134,7 @@ func init() {
 		Name:     "lacrosUI",
 		Desc:     "Lacros Chrome from a pre-built image using the UI",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
@@ -150,7 +151,7 @@ func init() {
 		Name:     "lacrosOmaha",
 		Desc:     "Lacros Chrome from omaha",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(Omaha, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Omaha, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
@@ -165,7 +166,7 @@ func init() {
 		Name:     "lacrosPrimary",
 		Desc:     "Lacros Chrome from rootfs as a primary browser",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
@@ -184,7 +185,7 @@ func init() {
 		Name:     "lacrosUIKeepAlive",
 		Desc:     "Lacros Chrome from a pre-built image using the UI and the Lacros chrome will stay alive even when the browser terminated",
 		Contacts: []string{"mxcai@chromium.org", "hidehiko@chromium.org"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
 				chrome.LacrosExtraArgs("--no-first-run")}, nil
 		}),
@@ -200,7 +201,7 @@ func init() {
 		Name:     "lacrosVariationEnabled",
 		Desc:     "Lacros with variation service enabled",
 		Contacts: []string{"yjt@google.com", "lacros-team@google.com"},
-		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
 				chrome.ExtraArgs("--disable-lacros-keep-alive",
 					"--disable-login-lacros-opening"),
@@ -229,7 +230,7 @@ var _ FixtValue = (*fixtValueImpl)(nil)
 type fixtValueImpl struct {
 	chrome      *chrome.Chrome
 	testAPIConn *chrome.TestConn
-	mode        SetupMode
+	selection   lacros.Selection
 }
 
 // Chrome gets the CrOS-chrome instance.
@@ -244,7 +245,7 @@ func (f *fixtValueImpl) TestAPIConn() *chrome.TestConn {
 
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
 type fixtImpl struct {
-	mode      SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
+	selection lacros.Selection                              // How (pre exist/to be downloaded/) the container image is obtained.
 	cr        *chrome.Chrome                                // Connection to CrOS-chrome.
 	tconn     *chrome.TestConn                              // Test-connection for CrOS-chrome.
 	prepared  bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
@@ -259,7 +260,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	defer st.End()
 
 	if f.prepared {
-		s.Log("Fixture has already been prepared. Returning a cached one. mode: ", f.mode)
+		s.Log("Fixture has already been prepared. Returning a cached one. mode: ", f.selection)
 		return f.buildFixtData(ctx, s)
 	}
 
@@ -280,10 +281,10 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		opts = append(opts, extraOpts...)
 	}
-	// Set default opts for Lacros based on the setup mode and the runtime var.
+	// Set default opts for Lacros based on the selection and the runtime var.
 	cfg := NewLacrosConfig(
-		f.mode,
-		NotSpecified, // Let fixtures determine how to configure lacros to keep the compatibility with existing lacros fixtures.
+		f.selection,
+		lacros.NotSpecified, // Let fixtures determine how to configure lacros to keep the compatibility with existing lacros fixtures.
 	).WithVar(s)
 	defaultOpts, err := DefaultOpts(cfg)
 	if err != nil {
@@ -364,5 +365,5 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return &fixtValueImpl{f.cr, f.tconn, f.mode}
+	return &fixtValueImpl{f.cr, f.tconn, f.selection}
 }

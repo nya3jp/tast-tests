@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -39,7 +40,7 @@ func init() {
 		Contacts: []string{
 			"anastasiian@chromium.org", "team-dent@google.com",
 		},
-		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 				chrome.EnableFeatures("ArcAccountRestrictions"),

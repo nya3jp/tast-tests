@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -22,7 +23,7 @@ func init() {
 		Name:     fixture.LacrosPolicyLoggedIn,
 		Desc:     "Fixture for a running FakeDMS with lacros",
 		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Impl: lacrosfixt.NewComposedFixture(lacrosfixt.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
+		Impl: lacrosfixt.NewComposedFixture(lacros.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
 			return &struct {
 				fakedms.HasFakeDMS
 				lacrosfixt.FixtValue
@@ -52,7 +53,7 @@ func init() {
 		Name:     fixture.LacrosPolicyLoggedInFeatureJourneys,
 		Desc:     "Fixture for a running FakeDMS with lacros and enabling the feature flag Journeys",
 		Contacts: []string{"rodmartin@google.com", "chromeos-commercial-remote-management@google.com"},
-		Impl: lacrosfixt.NewComposedFixture(lacrosfixt.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
+		Impl: lacrosfixt.NewComposedFixture(lacros.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
 			return &struct {
 				fakedms.HasFakeDMS
 				lacrosfixt.FixtValue
@@ -82,7 +83,7 @@ func init() {
 		Name:     fixture.LacrosPolicyLoggedInRealUser,
 		Desc:     "Fixture for a running FakeDMS with lacros with a real managed user logged on",
 		Contacts: []string{"anastasiian@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Impl: lacrosfixt.NewComposedFixture(lacrosfixt.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
+		Impl: lacrosfixt.NewComposedFixture(lacros.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
 			return &struct {
 				fakedms.HasFakeDMS
 				lacrosfixt.FixtValue
