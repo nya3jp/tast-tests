@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -41,7 +42,7 @@ func ForceRegion(ctx context.Context, s *testing.State) {
 
 	// Connect to a fresh ash-chrome instance (cr) and get a browser instance (br) for browser functionality.
 	bt := s.Param().(browser.Type)
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, browserfixt.DefaultLacrosConfig.WithVar(s),
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfigFromState(s),
 		chrome.Region(region))
 	if err != nil {
 		s.Fatalf("Chrome login failed with %v browser: %v", bt, err)

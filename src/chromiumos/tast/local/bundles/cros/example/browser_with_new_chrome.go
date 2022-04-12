@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -39,13 +40,13 @@ func BrowserWithNewChrome(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		bt  browser.Type
-		cfg *browserfixt.LacrosConfig
+		cfg *lacrosfixt.Config
 	}{
 		{browser.TypeAsh, nil},
-		{browser.TypeAsh, browserfixt.DefaultLacrosConfig},                                        // LacrosConfig is a no-op for ash-chrome.
-		{browser.TypeLacros, browserfixt.DefaultLacrosConfig},                                     // default config
-		{browser.TypeLacros, browserfixt.DefaultLacrosConfig.WithVar(s)},                          // default config with the var --lacrosDeployedBinary specified
-		{browser.TypeLacros, browserfixt.NewLacrosConfig(lacros.Rootfs, lacros.LacrosSideBySide)}, // custom config
+		{browser.TypeAsh, lacrosfixt.NewConfigFromState(s)},    // LacrosConfig is a no-op for ash-chrome.
+		{browser.TypeLacros, lacrosfixt.NewConfigFromState(s)}, // default config with the var --lacrosDeployedBinary specified
+		{browser.TypeLacros, lacrosfixt.NewConfigFromState(
+			s, lacrosfixt.Selection(lacros.Rootfs), lacrosfixt.Mode(lacros.LacrosSideBySide))}, // custom config
 	} {
 		bt := param.bt
 		cfg := param.cfg
