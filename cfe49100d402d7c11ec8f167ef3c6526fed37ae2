@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc1e4dc0_250543c8",
+        "filename": "src/chromiumos/tast/local/apps/apps_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-04-12T23:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28d668b5_845a0946",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "cfe49100d402d7c11ec8f167ef3c6526fed37ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4467d277_58804c07",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-04-12T16:51:00Z",
       "side": 1,
       "message": "Helpful to have yourself on the contacts.",
+      "revId": "cfe49100d402d7c11ec8f167ef3c6526fed37ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a708488_9ff9b3fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/apps/app_service_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-04-12T23:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4467d277_58804c07",
       "revId": "cfe49100d402d7c11ec8f167ef3c6526fed37ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
