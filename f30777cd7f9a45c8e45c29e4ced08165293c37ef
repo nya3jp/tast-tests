@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e81956_a62ecddc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-04-12T06:18:23Z",
+      "side": 1,
+      "message": "Changed it back.",
+      "parentUuid": "b8825915_77d81383",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 129
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40fce5af_092512f3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-08T15:41:23Z",
       "side": 1,
       "message": "It seems like this should be in an else case. It\u0027s not valid to read out if err !\u003d nil.",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 2
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f90e12d_56bde193",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-04-12T06:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fce5af_092512f3",
       "range": {
         "startLine": 270,
         "startChar": 1,
@@ -71,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9959c2_eca7c17b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-04-12T06:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a6c826f_0abe36ec",
+      "range": {
+        "startLine": 296,
+        "startChar": 5,
+        "endLine": 296,
+        "endChar": 11
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46dfe192_42680410",
@@ -84,6 +156,30 @@
       "writtenOn": "2022-04-08T15:41:23Z",
       "side": 1,
       "message": "Same comment here",
+      "range": {
+        "startLine": 388,
+        "startChar": 1,
+        "endLine": 388,
+        "endChar": 3
+      },
+      "revId": "f30777cd7f9a45c8e45c29e4ced08165293c37ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80581ba7_8bc8b410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-04-12T06:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46dfe192_42680410",
       "range": {
         "startLine": 388,
         "startChar": 1,
