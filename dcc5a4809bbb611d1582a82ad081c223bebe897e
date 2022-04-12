@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9058aaa9_e2dc0d75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-12T09:03:57Z",
+      "side": 1,
+      "message": "this is confusing to me. Can you rephrase?",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "dcc5a4809bbb611d1582a82ad081c223bebe897e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27182e8d_d2874bcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-12T09:03:57Z",
+      "side": 1,
+      "message": "RunFor?",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "dcc5a4809bbb611d1582a82ad081c223bebe897e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be6b3a7_c749eef2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-12T09:03:57Z",
+      "side": 1,
+      "message": "can you run a test as well?",
+      "revId": "dcc5a4809bbb611d1582a82ad081c223bebe897e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c373cb0_e8971dd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-12T09:03:57Z",
+      "side": 1,
+      "message": "LGTM % nits in the CL description",
+      "revId": "dcc5a4809bbb611d1582a82ad081c223bebe897e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
