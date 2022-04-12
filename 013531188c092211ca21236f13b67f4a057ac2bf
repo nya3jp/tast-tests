@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd776ce_18aa23cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-12T04:45:01Z",
+      "side": 1,
+      "message": "Adding nya@. IIRC we had a conversation that public tests (i.e. not in tast-tests-private) should not use the private bucket.",
+      "revId": "013531188c092211ca21236f13b67f4a057ac2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
