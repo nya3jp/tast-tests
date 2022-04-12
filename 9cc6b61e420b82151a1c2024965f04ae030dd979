@@ -70,6 +70,30 @@
       },
       "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23c278c_14880cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-12T04:45:18Z",
+      "side": 1,
+      "message": "Each fixture will only run once, and all tests which rely on it will share the setup. Only the setup code at the start of this function would need to be run for each test case.",
+      "parentUuid": "bbfa7500_2bdb599b",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
