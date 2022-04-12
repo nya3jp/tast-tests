@@ -32,6 +32,12 @@ service UtilsService {
 
   // EvalTabletMode evaluates if DUT is in tablet mode.
   rpc EvalTabletMode (google.protobuf.Empty) returns (EvalTabletModeResponse) {}
+
+  // FindSingleNode finds the specific UI node based on the passed in element.
+  rpc FindSingleNode (NodeElement) returns (google.protobuf.Empty) {}
+
+  // GetDetachableBaseValue retrieves the values of relevant detachable-base properties.
+  rpc GetDetachableBaseValue (google.protobuf.Empty) returns (CrosConfigResponse) {}
 }
 
 // ReadServoKeyboardRequest listens the servo's keyboard emulator for a specified duration in seconds.
@@ -52,4 +58,14 @@ message FindPhysicalKeyboardResponse {
 // EvalTabletModeResponse provides the tablet mode enabled status.
 message EvalTabletModeResponse {
   bool tablet_mode_enabled = 1;
+}
+
+// NodeElement stores the element of UI node.
+message NodeElement {
+  string name = 1;
+}
+
+// CrosConfigResponse provides relevant crosconfig values.
+message CrosConfigResponse {
+  repeated string values = 1;
 }
