@@ -1,0 +1,38 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.apps;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/apps";
+
+// AppService provides functions for managing app lifecycle, like launching and closing apps.
+service AppsService {
+	// LaunchApp requests to launch an app.
+  rpc LaunchApp(LaunchAppRequest) returns (google.protobuf.Empty) {}
+
+	// GetPrimaryBrowser returns the app that is set to the primary browser.
+	// This can be used to tell whether Lacros is enabled.
+	rpc GetPrimaryBrowser(google.protobuf.Empty) returns (App) {}
+
+	// LaunchPrimaryBrowser launches the primary browser, and returns it.
+	rpc LaunchPrimaryBrowser(google.protobuf.Empty) returns (App) {}
+}
+
+// LaunchAppRequest requests starting an app.
+message LaunchAppRequest {
+	string app_name = 1;
+	// Defaults to 1 minute.
+  int32 timeout_secs = 2;
+}
+
+// App represents a chromeOS app.
+// More fields may be added as required.
+message App {
+	string id = 1;
+	string name = 2;
+}
