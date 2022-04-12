@@ -6,27 +6,16 @@ package launcher
 
 import (
 	"context"
-	"time"
 
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-)
-
-type bubbleSmokeTestType string
-
-const (
-	enableLauncherAppSort  bubbleSmokeTestType = "EnableLauncherAppSort"  // Enable "LauncherAppSort" feature in the test
-	disableLauncherAppSort bubbleSmokeTestType = "DisableLauncherAppSort" // Disable "LauncherAppSort" feature in the test
 )
 
 func init() {
@@ -42,18 +31,7 @@ func init() {
 		// TODO(https://crbug.com/1255265): Remove "informational" once stable.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{
-			{
-				Name:    "enable_launcher_app_sort",
-				Val:     enableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncherAppSort",
-			},
-			{
-				Name:    "disable_launcher_app_sort",
-				Val:     disableLauncherAppSort,
-				Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
-			},
-		},
+		Fixture:      "chromeLoggedInWith100FakeAppsProductivityLauncher",
 	})
 }
 
@@ -109,36 +87,11 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not reopen bubble by pressing Search key: ", err)
 	}
 
-	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(nodewith.ClassName(launcher.BubbleAppsGridViewClass))
-
-	if s.Param().(bubbleSmokeTestType) == enableLauncherAppSort {
-		// When the launcher app sort feature is enabled, fake apps are placed at the front. In this case, scroll the apps grid to the end to show the setting app button before launching the app.
-
-		// Wait until the bubble launcher bounds become stable.
-		if err := ui.WaitForLocation(bubble)(ctx); err != nil {
-			s.Fatal("Failed to wait for bubble location changes: ", err)
-		}
-
-		// Ensure that system apps show by scrolling to the end through focus traversal when the bubble launcher is in overflow.
-		if err := kb.TypeKey(ctx, input.KEY_UP); err != nil {
-			s.Fatalf("Failed to send %d: %v", input.KEY_UP, err)
-		}
-
-		// Wait until the setting app button's bounds become stable.
-		if err := ui.WaitForLocation(settingButton)(ctx); err != nil {
-			s.Fatal("Failed to wait for the setting app button location changes: ", err)
-		}
+	if err := kb.Accel(ctx, "Search"); err != nil {
+		s.Fatal("Failed to press Search again: ", err)
 	}
 
-	if err := uiauto.Combine("close bubble by launching Settings app",
-		ui.LeftClick(settingButton),
-		ui.WaitUntilGone(bubble),
-	)(ctx); err != nil {
-		s.Fatal("Could not close bubble by launching Settings app: ", err)
-	}
-
-	s.Log("Waiting for Settings app to launch")
-	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute); err != nil {
-		s.Fatal("Settings app did not start from bubble launcher: ", err)
+	if err := ui.WaitUntilGone(bubble)(ctx); err != nil {
+		s.Error("Could not close bubble by pressing Search key again: ", err)
 	}
 }
