@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -79,7 +80,7 @@ func Signout(ctx context.Context, s *testing.State) {
 
 	// Separate function for the first chrome run to isolate from the second run. For example so it does not generate UI tree two times on error.
 	func() {
-		cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, browserfixt.DefaultLacrosConfig.WithVar(s),
+		cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfigFromState(s),
 			chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 		if err != nil {
 			s.Fatalf("Chrome login failed with %v browser: %v", bt, err)
