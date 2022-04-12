@@ -29,10 +29,8 @@ func init() {
 		Desc:         "Check that we can probe cros_healthd for boot performance info",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "diagnostics",
-			// TODO(b/213993701): Reenable after mapping cbmem.
-			"no_manatee"},
-		Fixture: "crosHealthdRunning",
+		SoftwareDeps: []string{"chrome", "diagnostics"},
+		Fixture:      "crosHealthdRunning",
 	})
 }
 
