@@ -105,23 +105,10 @@ func GetPiColorResult(ctx context.Context) (string, error) {
 
 // VideoRecord return filepath that server let camera record video that store in tast result folder
 // durations means how long camera record video time length
-// filepath means video path stored on host system
 // cameraID means the ID of camera
-func VideoRecord(ctx context.Context, durations, filepath, cameraID string) (string, error) {
-	api := fmt.Sprintf("api/VideoRecord?Durations=%s&Output=%s&id=%s&Width=1280&Height=720", durations, filepath, cameraID)
+func VideoRecord(ctx context.Context, durations, cameraID string) (string, error) {
+	api := fmt.Sprintf("api/VideoRecord?durations=%s&id=%s&file_name=record&width=1280&height=720", durations, cameraID)
 	return HTTPGet(ctx, api)
-}
-
-// GoldenPredict compare video with godlen sample
-// videoPath means relative path in tast result folder, like /result/20220524-151453
-// cameraID means the id of camera
-// audio is boolean, true means predict audio only, false means video and audio
-func GoldenPredict(ctx context.Context, videoPath, cameraID string, audio bool) error {
-	api := fmt.Sprintf("api/goldenpredict?Input=%s&id=%s&Audio=%t", videoPath, cameraID, audio)
-	if _, err := HTTPGet(ctx, api); err != nil {
-		return err
-	}
-	return nil
 }
 
 // GetFile get file from WWCB server

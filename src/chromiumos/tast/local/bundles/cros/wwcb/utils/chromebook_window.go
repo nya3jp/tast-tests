@@ -249,10 +249,6 @@ func extendedDisplayWindowClassName(ctx context.Context, tconn *chrome.TestConn)
 
 // VerifyAllWindowsOnDisplay verify all windows on certain display
 func VerifyAllWindowsOnDisplay(ctx context.Context, tconn *chrome.TestConn, externalDisplay bool) error {
-	const (
-		timeout  = time.Second * 30
-		interval = time.Second * 1
-	)
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var displayInfo *display.Info
 		if externalDisplay {
@@ -273,13 +269,13 @@ func VerifyAllWindowsOnDisplay(ctx context.Context, tconn *chrome.TestConn, exte
 			return err
 		}
 		for _, w := range ws {
-			if w.DisplayID != displayInfo.ID {
+			if w.DisplayID != displayInfo.ID && w.IsVisible && w.IsFrameVisible {
 				return errors.Errorf("window is not shown on certain display, got %s, want %s", w.DisplayID, displayInfo.ID)
 			}
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  timeout,
-		Interval: interval,
+		Timeout:  WindowTimeout,
+		Interval: time.Second * 1,
 	})
 }
