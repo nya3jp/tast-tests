@@ -254,6 +254,24 @@
       "parentUuid": "4f8c23e3_36d5d74e",
       "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d330de_3ef90999",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T05:28:51Z",
+      "side": 1,
+      "message": "So the only difference would be memory from an IO that the guest hasn\u0027t touched yet? (And presumably would touch soon).\n\nSounds good to me.",
+      "parentUuid": "f7d78e70_36e9628b",
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
