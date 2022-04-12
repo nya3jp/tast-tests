@@ -24,6 +24,7 @@ import (
 type testCase struct {
 	quipperArgs    []string // quipper arguments without the duration
 	disableCPUIdle bool
+	repetition     int
 }
 
 func init() {
@@ -34,19 +35,34 @@ func init() {
 			"shantuo@google.com",
 			"cwp-team@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "cycles",
 			Val: testCase{
 				quipperArgs: []string{"--", "record", "-a", "-e", "cycles", "-c", "1000003"},
+				repetition:  1,
 			},
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name: "etm",
 			Val: testCase{
 				quipperArgs: []string{"--run_inject", "--inject_args", "inject;--itrace=i512il;--strip",
 					"--", "record", "-e", "cs_etm/autofdo/", "-a", "-N"},
 				disableCPUIdle: true,
+				repetition:     1,
 			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"arm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "herobrine")),
+		}, {
+			Name: "etm_stress",
+			Val: testCase{
+				quipperArgs: []string{"--run_inject", "--inject_args", "inject;--itrace=i512il;--strip",
+					"--", "record", "-e", "cs_etm/autofdo/", "-a", "-N"},
+				disableCPUIdle: true,
+				repetition:     100,
+			},
+			Timeout:           30 * time.Minute,
+			ExtraAttr:         []string{"group:stress"},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("trogdor", "herobrine")),
 		}},
@@ -62,10 +78,18 @@ func PerfTool(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to debugd D-Bus service: ", err)
 	}
 
-	testSingleCall(ctx, s, dbgd)
-	testConsecutiveCalls(ctx, s, dbgd)
-	testConcurrentCalls(ctx, s, dbgd)
-	testStopEarly(ctx, s, dbgd)
+	rep := s.Param().(testCase).repetition
+	if rep > 1 {
+		// Stress tests run for the single call only.
+		for i := 0; i < rep; i++ {
+			testSingleCall(ctx, s, dbgd)
+		}
+	} else {
+		testSingleCall(ctx, s, dbgd)
+		testConsecutiveCalls(ctx, s, dbgd)
+		testConcurrentCalls(ctx, s, dbgd)
+		testStopEarly(ctx, s, dbgd)
+	}
 }
 
 func getPerfOutput(ctx context.Context, s *testing.State, d *debugd.Debugd,
@@ -265,6 +289,7 @@ func checkCPUIdleDisabled(disabled bool) error {
 				}
 				return errors.Wrapf(err, "failed to open %s", cpuidlePath)
 			}
+			defer f.Close()
 			disable := make([]byte, 1)
 			if n, err := f.Read(disable); err != nil || n != 1 {
 				return errors.Wrapf(err, "failed to read %s", cpuidlePath)
