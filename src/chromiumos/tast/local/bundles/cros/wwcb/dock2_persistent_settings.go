@@ -76,6 +76,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dock2PersistentSettings,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test persistent settings of window bound placement across displays in one user session via a Dock",
 		Contacts:     []string{"flin@google.com", "newmanliu19020@allion.corp-partner.google.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -104,9 +105,12 @@ func Dock2PersistentSettings(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := utils.InitFixtures(ctx); err != nil {
+	cleanup, err := utils.InitFixtures(ctx)
+	if err != nil {
 		s.Fatal("Failed to initialize fixtures: ", err)
 	}
+	defer cleanup(ctx)
+	defer utils.DumpScreenshotOnError(ctx, s.HasError, []string{extDispID1, extDispID2})
 
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()

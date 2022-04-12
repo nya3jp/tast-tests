@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -25,7 +25,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// MoveWindowToDisplay uses the mouse to drag window to certain display.
+// MoveWindowToDisplay uses the mouse to drag the window to a certain display.
 func MoveWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, win *ash.Window, destDisp *display.Info) error {
 	if win.DisplayID == destDisp.ID {
 		return nil
@@ -40,7 +40,7 @@ func MoveWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, win *ash.W
 		return errors.Wrap(err, "failed to find source display index and tpye")
 	}
 
-	// Set up destination display.
+	// Set up a destination display.
 	destDispID := destDisp.ID
 	destDispIndex, destDispType, err := getDispIndexAndType(ctx, tconn, destDispID)
 	if err != nil {
@@ -72,12 +72,12 @@ func MoveWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, win *ash.W
 
 	cursor := cursorOnDisplay{arc.DefaultDisplayID, arc.InternalDisplay}
 
-	// Move cursor to source display.
+	// Move the cursor to the source display.
 	if err := cursor.moveTo(ctx, tconn, m, sourceDispIndex, sourceDispType, dispLayout); err != nil {
 		return errors.Wrap(err, "failed to move cursor to source display")
 	}
 
-	// Move cursor to window header bar.
+	// Move the cursor to the window header bar.
 	headerPoint := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
 	if err := mouse.Move(tconn, headerPoint, 5)(ctx); err != nil {
 		return errors.Wrap(err, "failed to move mouse to window header")
@@ -87,12 +87,12 @@ func MoveWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, win *ash.W
 		return errors.Wrap(err, "failed to press mouse on left button")
 	}
 
-	// Move cursor to destination display
+	// Move the cursor to the destination display.
 	if err := cursor.moveTo(ctx, tconn, m, destDispIndex, destDispType, dispLayout); err != nil {
 		return errors.Wrap(err, "failed to move cursor to destination display")
 	}
 
-	// Move cursor to center of destination display.
+	// Move the cursor to the center of the destination display.
 	destDispBounds := dispLayout.DisplayInfo(arc.InternalDisplay).Bounds
 	destPt := coords.NewPoint(destDispBounds.Width/2, destDispBounds.Height/2)
 	if err := mouse.Move(tconn, destPt, time.Second)(ctx); err != nil {
@@ -247,11 +247,11 @@ func VerifyAllWindowsOnDisplay(ctx context.Context, tconn *chrome.TestConn, exte
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var displayInfo *display.Info
 		if externalDisplay {
-			info, err := GetInternalAndExternalDisplays(ctx, tconn)
+			infos, err := GetInternalAndExternalDisplays(ctx, tconn)
 			if err != nil {
 				return err
 			}
-			displayInfo = &info.External
+			displayInfo = &infos.External
 		} else {
 			intDispInfo, err := display.GetInternalInfo(ctx, tconn)
 			if err != nil {
@@ -259,16 +259,12 @@ func VerifyAllWindowsOnDisplay(ctx context.Context, tconn *chrome.TestConn, exte
 			}
 			displayInfo = intDispInfo
 		}
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			return err
-		}
-		for _, w := range ws {
+		return ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
 			if w.DisplayID != displayInfo.ID && w.IsVisible && w.IsFrameVisible {
 				return errors.Errorf("window is not shown on certain display, got %s, want %s", w.DisplayID, displayInfo.ID)
 			}
-		}
-		return nil
+			return nil
+		})
 	}, &testing.PollOptions{
 		Timeout:  WindowTimeout,
 		Interval: WindowInterval,

@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -70,6 +70,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Dock1PersistentSettings,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test persistent settings of window bound placement across displays in one use session via a Dock",
 		Contacts:     []string{"flin@google.com", "newmanliu19020@allion.corp-partner.google.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -96,9 +97,12 @@ func Dock1PersistentSettings(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := utils.InitFixtures(ctx); err != nil {
+	cleanup, err := utils.InitFixtures(ctx)
+	if err != nil {
 		s.Fatal("Failed to initialize fixtures: ", err)
 	}
+	defer cleanup(ctx)
+	defer utils.DumpScreenshotOnError(ctx, s.HasError, []string{extDispID})
 
 	testing.ContextLog(ctx, "Step 1 - Boot-up and sign in to the device")
 

@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -24,7 +24,7 @@ func VerifyExternalAudio(ctx context.Context, isConnect bool) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create cras")
 	}
-	// Find out external audio device with USB type.
+	// Find an external audio device with USB type.
 	return testing.Poll(ctx, func(c context.Context) error {
 		nodes, err := cras.GetNodes(ctx)
 		if err != nil {
@@ -38,7 +38,7 @@ func VerifyExternalAudio(ctx context.Context, isConnect bool) error {
 			}
 		}
 		if extAudioState != isConnect {
-			return errors.Errorf("unexpected ext-audio presenting state: got %t, want %t", extAudioState, isConnect)
+			return errors.Errorf("unexpected external audio presenting state: got %t, want %t", extAudioState, isConnect)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: AudioTimeout, Interval: AudioInterval})
@@ -60,7 +60,7 @@ func VerifyEthernetStatus(ctx context.Context, isConnect bool) error {
 			if isConnect {
 				return errors.Wrap(err, "failed to get eth0 operstate")
 			}
-			// When eth0 is not exist, consider ethernet as disconnected.
+			// When eth0 does not exist, consider ethernet as disconnected.
 			return nil
 		}
 		currentState := strings.ToUpper(strings.TrimSpace(string(output)))
@@ -120,7 +120,7 @@ func VerifyExternalDisplay(ctx context.Context, tconn *chrome.TestConn, isConnec
 	}, &testing.PollOptions{Timeout: DisplayTimeout, Interval: DisplayInterval})
 }
 
-// VerifyPeripherals verifies all peripherals is connected or disconnected.
+// VerifyPeripherals verifies all peripherals are connected or disconnected.
 func VerifyPeripherals(ctx context.Context, tconn *chrome.TestConn, uc *UsbController, isConnect bool) error {
 	testing.ContextLog(ctx, "Start verifying all peripherals")
 
@@ -161,8 +161,8 @@ func VerifyDisplayCount(ctx context.Context, tconn *chrome.TestConn, count int) 
 }
 
 // VerifyDisplayState verifies display state.
-// Internal display show up as primary.
-// External display show up as extended.
+// Internal display shows up as primary.
+// External display shows up as extended.
 func VerifyDisplayState(ctx context.Context, tconn *chrome.TestConn) error {
 	return testing.Poll(ctx, func(c context.Context) error {
 		infos, err := GetInternalAndExternalDisplays(ctx, tconn)
@@ -170,10 +170,10 @@ func VerifyDisplayState(ctx context.Context, tconn *chrome.TestConn) error {
 			return errors.Wrap(err, "failed to get internal & external display")
 		}
 		if !infos.Internal.IsPrimary {
-			return errors.Wrap(err, "Internal display should show up as primary")
+			return errors.New("internal display should show up as primary")
 		}
 		if infos.External.IsPrimary {
-			return errors.Wrap(err, "External display should show up as extended")
+			return errors.New("external display should show up as extended")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: DisplayTimeout, Interval: DisplayInterval})
