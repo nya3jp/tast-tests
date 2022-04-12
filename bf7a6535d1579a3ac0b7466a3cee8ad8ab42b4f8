@@ -33,6 +33,23 @@
       "message": "Thanks Aya, adding tast owners.",
       "revId": "bf7a6535d1579a3ac0b7466a3cee8ad8ab42b4f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faea9af4_153e4b8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-04-12T13:56:00Z",
+      "side": 1,
+      "message": "LGTM for style",
+      "revId": "bf7a6535d1579a3ac0b7466a3cee8ad8ab42b4f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
