@@ -273,7 +273,7 @@ func VerifyAllWindowsOnDisplay(ctx context.Context, tconn *chrome.TestConn, exte
 			return err
 		}
 		for _, w := range ws {
-			if w.DisplayID != displayInfo.ID {
+			if w.DisplayID != displayInfo.ID && w.IsVisible && w.IsFrameVisible {
 				return errors.Errorf("window is not shown on certain display, got %s, want %s", w.DisplayID, displayInfo.ID)
 			}
 		}
