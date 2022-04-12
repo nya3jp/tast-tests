@@ -16,6 +16,24 @@
       "message": "you can\u0027t Cq-Depend on chromium change. Unfortunately, we have to wait for chromium uprev.",
       "revId": "cdbbc16396dbe4c69c79c591229b131101f78cb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047db2ee_55a146f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-04-12T06:03:49Z",
+      "side": 1,
+      "message": "Got it, removed the cq-depend",
+      "parentUuid": "faaea578_cd9eea2e",
+      "revId": "cdbbc16396dbe4c69c79c591229b131101f78cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
