@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2486b2d0_6fb34455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-12T16:14:37Z",
+      "side": 1,
+      "message": "The problem will come up when/if we have zone storage devices (one block for root and kernel partitions, one for stateful).\nIt is already a problem on herobrine when it has an extra NVMe device, as 2 devices are present: mmcblk1 and nvme0n1.\n\nOne way to avoid mitigate the problem is to exclide the device when devName matches |rootdev_base|/DEFAULT_ROOTDEV].",
+      "parentUuid": "af3943f3_4e37e4c7",
+      "revId": "ae475e989b9d07d20e000961b27f7ba632c738c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da97a265_d27a3dfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
         "patchSetId": 7
