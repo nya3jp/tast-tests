@@ -50,6 +50,23 @@
       "message": "Hidehiko, friendly ping.",
       "revId": "283700df7d40498ed39e55c194267a4c9b1ab5a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2062cf89_20fbbfc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-12T04:36:50Z",
+      "side": 1,
+      "message": "SLGTM. (I wasn\u0027t aware as I already CR+2\u0027ed and, as attention was not set. Could you set the bit for me next time?)",
+      "revId": "283700df7d40498ed39e55c194267a4c9b1ab5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
