@@ -30,6 +30,7 @@ const (
 const (
 	SimPropertySimIdentifier = "SimIdentifier"
 	SimPropertySimEid        = "Eid"
+	SimPropertyESIMStatus    = "EsimStatus"
 )
 
 // Wait times for modem at Modemmanager operations
@@ -107,4 +108,11 @@ const (
 const (
 	DefaultSimPin = "1234"
 	TempSimPin    = "1600"
+)
+
+// D-Bus path for empty sim slots
+const (
+	ESIMStatusUnknown      = 0
+	ESIMStatusNoProfile    = 1
+	ESIMStatusWithProfiles = 2
 )
