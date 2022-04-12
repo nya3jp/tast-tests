@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b69946_243a7715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-12T20:19:54Z",
+      "side": 0,
+      "message": "move downward after we get l instance.",
+      "range": {
+        "startLine": 138,
+        "startChar": 22,
+        "endLine": 138,
+        "endChar": 33
+      },
+      "revId": "3cbab91882c9b2e756e6ab1ad54a0a1deaddb2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
