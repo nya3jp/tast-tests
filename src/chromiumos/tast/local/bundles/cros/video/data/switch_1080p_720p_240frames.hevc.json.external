@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/switch_1080p_720p_240frames_20210301.hevc.json",
-  "size": 9762,
-  "sha256sum": "d4796e5f5a223aba0379164414afa6428795e1852b2f7b9b78be4d58b11b9691"
+  "sha256sum": "dfa76d7dd750de80b0c0fcf71b4647dea30fd2bb5c9210bb7e6730c401398c76",
+  "size": 9399,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/switch_1080p_720p_240frames_20220411.hevc.json"
 }
