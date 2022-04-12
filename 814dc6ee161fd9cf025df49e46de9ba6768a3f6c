@@ -51,6 +51,24 @@
       "parentUuid": "a580d0b3_301e886d",
       "revId": "814dc6ee161fd9cf025df49e46de9ba6768a3f6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e287a745_5dbd349e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-12T13:31:22Z",
+      "side": 1,
+      "message": "If the plan is to remove the API, I think you can leave TestAPIConn() here.",
+      "parentUuid": "61e16879_25b4f479",
+      "revId": "814dc6ee161fd9cf025df49e46de9ba6768a3f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
