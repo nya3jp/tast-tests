@@ -114,6 +114,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/wifi"
 	_ "chromiumos/tast/local/bundles/cros/wilco"
 	_ "chromiumos/tast/local/bundles/cros/wmp"
+	_ "chromiumos/tast/local/bundles/cros/wwcb"
 
 	// import fixtures for arc game performance testing.
 	// imports kioskLoggedIn fixtures. It is not referenced by tests as it
