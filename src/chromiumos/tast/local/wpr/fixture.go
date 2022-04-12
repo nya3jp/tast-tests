@@ -33,8 +33,8 @@ type fixtImpl struct {
 	wpr         *WPR // WPR instance.
 }
 
-// NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode,
-// Chrome options, and WPR archive.
+// NewFixture creates a new fixture that can launch Lacros chrome with the given
+// wpr archive and mode.
 func NewFixture(wprAchiveName string, mode Mode) testing.FixtureImpl {
 	return &fixtImpl{
 		archiveName: wprAchiveName,

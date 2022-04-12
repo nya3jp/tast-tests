@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -52,7 +53,7 @@ func init() {
 		Name:     "lacrosFastHistogramsAndBuiltinSmartDimModel",
 		Desc:     "Similar to chromeFastHistogramsAndBuiltinSmartDimModel but on lacros",
 		Contacts: []string{"alanlxl@google.com"},
-		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeQuickMetricsCollectionArg),
 				chrome.ExtraArgs(chromeSmartDimBuiltinModelArg),

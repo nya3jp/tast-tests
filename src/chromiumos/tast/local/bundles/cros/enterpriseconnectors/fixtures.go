@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtvals"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
@@ -124,7 +125,7 @@ func init() {
 
 func CreateFixture(policyParams fixtvals.PolicyParams, user, pw string) testing.FixtureImpl {
 	return lacrosfixt.NewComposedFixture(
-		lacrosfixt.Rootfs,
+		lacros.Rootfs,
 		func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
 			return &fixtvals.FixtValue{
 				PolicyParams: policyParams,

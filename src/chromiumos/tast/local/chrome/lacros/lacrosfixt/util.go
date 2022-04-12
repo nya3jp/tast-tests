@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 )
 
 // ExtensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
@@ -32,17 +33,17 @@ type TestingState interface {
 // LacrosConfig holds runtime vars or other variables needed to set up Lacros.
 // This will be passed in to DefaultOpts that returns common chrome options, and to WaitForReady that prepares Lacros for use by either fixture or test.
 type LacrosConfig struct {
-	SetupMode    SetupMode
-	LacrosMode   LacrosMode
+	Selection    lacros.Selection
+	Mode         lacros.Mode
 	deployed     bool
 	deployedPath string // dirpath to lacros executable file
 }
 
 // NewLacrosConfig creates a new LacrosConfig instance and returns a pointer.
-func NewLacrosConfig(setupMode SetupMode, lacrosMode LacrosMode) *LacrosConfig {
+func NewLacrosConfig(selection lacros.Selection, mode lacros.Mode) *LacrosConfig {
 	return &LacrosConfig{
-		SetupMode:  setupMode,
-		LacrosMode: lacrosMode,
+		Selection: selection,
+		Mode:      mode,
 	}
 }
 
@@ -54,14 +55,14 @@ func (cfg *LacrosConfig) WithVar(s TestingState) *LacrosConfig {
 	// lacros-chrome instead of always downloading from a gcs location.
 	deployedPath, deployed := s.Var(LacrosDeployedBinary)
 	return &LacrosConfig{
-		SetupMode:    cfg.SetupMode,
-		LacrosMode:   cfg.LacrosMode,
+		Selection:    cfg.Selection,
+		Mode:         cfg.Mode,
 		deployed:     deployed,
 		deployedPath: deployedPath,
 	}
 }
 
-// DefaultOpts returns common chrome options for Lacros given the cfg and setup mode passed in.
+// DefaultOpts returns common chrome options for Lacros given the cfg.
 func DefaultOpts(cfg *LacrosConfig) ([]chrome.Option, error) {
 	var opts []chrome.Option
 
@@ -98,28 +99,28 @@ func DefaultOpts(cfg *LacrosConfig) ([]chrome.Option, error) {
 	// Note that specifying the feature LacrosSupport has side-effects, so
 	// we specify it even if the lacros path is being overridden by lacrosDeployedBinary.
 	opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"))
-	switch cfg.SetupMode {
-	case Rootfs:
+	switch cfg.Selection {
+	case lacros.Rootfs:
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=rootfs"))
-	case Omaha:
+	case lacros.Omaha:
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=stateful"))
 	}
 	if cfg.deployed {
 		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+cfg.deployedPath))
 	}
 
-	// Set required options based on LacrosMode.
-	switch cfg.LacrosMode {
-	case NotSpecified, LacrosSideBySide:
+	// Set required options based on Mode.
+	switch cfg.Mode {
+	case lacros.NotSpecified, lacros.LacrosSideBySide:
 		// No-op since it's the system default for now.
-	case LacrosPrimary:
+	case lacros.LacrosPrimary:
 		opts = append(opts, chrome.EnableFeatures("LacrosPrimary"), chrome.ExtraArgs("--disable-lacros-keep-alive"))
-	case LacrosOnly:
+	case lacros.LacrosOnly:
 		return nil, errors.New("options for LacrosOnly not implemented")
 	}
 
 	// Throw an error if lacros has been deployed, but the var lacrosDeployedBinary is unset.
-	if !cfg.deployed && (cfg.SetupMode == Omaha || cfg.SetupMode == Rootfs) {
+	if !cfg.deployed && (cfg.Selection == lacros.Omaha || cfg.Selection == lacros.Rootfs) {
 		config, err := ioutil.ReadFile("/etc/chrome_dev.conf")
 		if err == nil {
 			for _, line := range strings.Split(string(config), "\n") {

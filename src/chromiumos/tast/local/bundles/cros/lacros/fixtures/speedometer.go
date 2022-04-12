@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -33,7 +34,7 @@ func init() {
 		Name:     "speedometerWPRLacros",
 		Desc:     "Composed fixture for speedometer with WPR",
 		Contacts: []string{"edcourtney@chromium.org", "hidehiko@chromium.org"},
-		Impl: wpr.NewLacrosFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: wpr.NewLacrosFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
@@ -50,7 +51,7 @@ func init() {
 		Name:     "speedometerWPRLacros2",
 		Desc:     "Composed fixture for speedometer with WPR",
 		Contacts: []string{"edcourtney@chromium.org", "hidehiko@chromium.org"},
-		Impl: wpr.NewLacrosFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: wpr.NewLacrosFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
