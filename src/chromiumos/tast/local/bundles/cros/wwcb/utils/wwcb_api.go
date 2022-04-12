@@ -105,23 +105,10 @@ func GetPiColorResult(ctx context.Context) (string, error) {
 
 // VideoRecord return filepath that server let camera record video that store in tast result folder
 // durations means how long camera record video time length
-// filepath means video path stored on host system
 // cameraID means the ID of camera
-func VideoRecord(ctx context.Context, durations, filepath, cameraID string) (string, error) {
-	api := fmt.Sprintf("api/VideoRecord?Durations=%s&Output=%s&id=%s&Width=1280&Height=720", durations, filepath, cameraID)
+func VideoRecord(ctx context.Context, durations, cameraID string) (string, error) {
+	api := fmt.Sprintf("api/VideoRecord?durations=%s&id=%s&file_name=record&width=1280&height=720", durations, cameraID)
 	return HTTPGet(ctx, api)
-}
-
-// GoldenPredict compare video with godlen sample
-// videoPath means relative path in tast result folder, like /result/20220524-151453
-// cameraID means the id of camera
-// audio is boolean, true means predict audio only, false means video and audio
-func GoldenPredict(ctx context.Context, videoPath, cameraID string, audio bool) error {
-	api := fmt.Sprintf("api/goldenpredict?Input=%s&id=%s&Audio=%t", videoPath, cameraID, audio)
-	if _, err := HTTPGet(ctx, api); err != nil {
-		return err
-	}
-	return nil
 }
 
 // GetFile get file from WWCB server
@@ -191,4 +178,22 @@ func UploadFile(ctx context.Context, filename string) (string, error) {
 		return "", errors.New("failed to get correct response")
 	}
 	return m["path"].(string), nil
+}
+
+// DetectAudio do audio comparison with recording audio file that upload to server
+func DetectAudio(ctx context.Context, filepath string) error {
+	api := fmt.Sprintf("api/detect_audio?file_path=%s", filepath)
+	if _, err := HTTPGet(ctx, api); err != nil {
+		return err
+	}
+	return nil
+}
+
+// DetectVideo do video comparison with recording video file by wwcb server
+func DetectVideo(ctx context.Context, filepath string) error {
+	api := fmt.Sprintf("api/detect_video?file_path=%s", filepath)
+	if _, err := HTTPGet(ctx, api); err != nil {
+		return err
+	}
+	return nil
 }
