@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -32,12 +33,12 @@ import (
 )
 
 var (
-	tmpFilename                      = "testfile.txt"
-	tmpFileCrosDownloadsPath         = filepath.Join(filesapp.DownloadPath, tmpFilename)
-	tmpFileCrostiniMountPath         = filepath.Join(sharedfolders.MountPathDownloads, tmpFilename)
-	tmpFileContents                  = "This is a text string in a text file in the Downloads folder."
-	geditContextMenuItem             = "Open with Text Editor"
-	defaultTextEditorContextMenuItem = "Text (default)"
+	tmpFilename              = "testfile.txt"
+	tmpFileCrosDownloadsPath = filepath.Join(filesapp.DownloadPath, tmpFilename)
+	tmpFileCrostiniMountPath = filepath.Join(sharedfolders.MountPathDownloads, tmpFilename)
+	tmpFileContents          = "This is a text string in a text file in the Downloads folder."
+	geditContextMenuItem     = "Open with Text Editor"
+	viewContextMenuItem      = "View"
 )
 
 func init() {
@@ -45,7 +46,10 @@ func init() {
 		Func:         AppGeditFilesharing,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test gedit in Terminal window",
-		Contacts:     []string{"zubinpratap@google.com", "cros-containers-dev@google.com"},
+		Contacts: []string{
+			"ashpakov@google.com", // until Oct 2022
+			"cros-containers-dev@google.com",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
@@ -165,13 +169,13 @@ func checkFilesharingBeforeRestart(
 		return errors.Wrap(err, "failed to find tmp file in crostini container after linux app is closed and before VM rebooted")
 	}
 
-	// Bring Downloads folder to foreground, open the file with non-linux (default) text app, validate file contents.
+	// Bring Downloads folder to foreground, open the file with Chrome (a non-linux app), validate file contents.
 	if _, err := ash.BringWindowToForeground(ctx, tconn, "Files - Downloads"); err != nil {
 		return errors.Wrap(err, "failed to bring the Filesapp Download window to foreground")
 	}
 
-	err := uiauto.Combine("validate contents of text file opened with default non-linux app",
-		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, defaultTextEditorContextMenuItem),
+	err := uiauto.Combine("validate contents of text file opened with Chrome (a non-linux app)",
+		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, viewContextMenuItem),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
 	)(ctx)
 	if err != nil {
@@ -196,8 +200,8 @@ func checkFilesharingWorksAfterRestart(
 		return errors.Wrap(err, "error verifying that file is no longer in container")
 	}
 
-	// Find and close the non-linux Text App window.
-	w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.Title == "Text" })
+	// Find and close the Chrome (a non-linux app) window.
+	w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.Title == fmt.Sprintf("Chrome - %s", tmpFilename) })
 	if err != nil {
 		return errors.Wrap(err, "failed to find Text App Window")
 	}
