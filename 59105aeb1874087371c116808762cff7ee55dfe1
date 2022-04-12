@@ -218,6 +218,24 @@
       "parentUuid": "0cb781a2_fb6d0638",
       "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8c23e3_36d5d74e",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T01:58:45Z",
+      "side": 1,
+      "message": "Does `pids` now include all child processes? If so, adding up rss will overcount for every page that is mapped into more than one crosvm. If it\u0027s only enumerating the root processes, it will undercount every page that is mapped into a child crosvm but not the root.\n\nI still think we need to use pss.",
+      "parentUuid": "5e5e185e_e4440c04",
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
