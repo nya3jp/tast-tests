@@ -534,6 +534,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d218756a_b1f7bda7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-12T05:22:59Z",
+      "side": 1,
+      "message": "In Chrome, this is done with a separate Close() and ResetState() function. Maybe in the future when we remove the lacros fixture, we could have chrome\u0027s ResetState function do the same for lacros?\n\nOr, we can provide ResetState and Close on Browser().\n\nBTW, currently looks like the implementation of browserfixt.SetUp closes tabs for lacros, but not for chrome? why is this different? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go;l\u003d30;drc\u003dea29a678bf10980f5e3d5f00a72ec45b3ad34ef5\n\nTangential, but I am not so keen on this return cleanup function for browserfixt. IMO we should do like defer br.Close() (closes resources), and defer br.ResetState() (closes browser - and most tests won\u0027t need this) to be consistent with Chrome.\n\nUntil then, what about just leaking the connection? We are restarting all chromes anyway.",
+      "parentUuid": "ebf44f5c_779b03c7",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e508caf_d2cdc5d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
