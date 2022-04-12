@@ -16,6 +16,24 @@
       "message": "Have you tried the test out on volteer-manatee?\n\nWe should make sure it passes before enabling it for that platform.",
       "revId": "296deba3e9ca439c690b0797bfa647888370b804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95e09d0_b2751c71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-04-12T23:51:37Z",
+      "side": 1,
+      "message": "not yet, I was thinking of letting the CQ test this change. I need to resolve the conflict first.",
+      "parentUuid": "217b475d_85ece3ea",
+      "revId": "296deba3e9ca439c690b0797bfa647888370b804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
