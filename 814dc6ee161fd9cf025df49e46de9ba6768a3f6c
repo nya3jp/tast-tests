@@ -87,6 +87,24 @@
       "parentUuid": "e287a745_5dbd349e",
       "revId": "814dc6ee161fd9cf025df49e46de9ba6768a3f6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0a4e37_d107a178",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-12T23:57:01Z",
+      "side": 1,
+      "message": "If we are fine with creating an extra TestConn we could use HasChrome in lacros.Setup only to get a TestConn via TestAPIConn(ctx)",
+      "parentUuid": "a79e0945_7b23a6c7",
+      "revId": "814dc6ee161fd9cf025df49e46de9ba6768a3f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
