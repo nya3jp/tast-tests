@@ -22,6 +22,30 @@
       },
       "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff730c01_3c42e05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-04-12T03:20:36Z",
+      "side": 1,
+      "message": "I think there\u0027s a little bit of setup within shill, but it\u0027s less expensive than resetting shill and waiting for ARC to boot. I can split it up into different test file if that\u0027s the recommended approach too. Are there ways to add multiple test cases within the same files or would it need to be 3 separate test files?\n\n+Jie, to confirm if my understanding is correct?",
+      "parentUuid": "f4e76195_8739c3e9",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
