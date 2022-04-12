@@ -112,11 +112,34 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	return res, nil
 }
 
-// Sort sorts a slice of Device by VendorID + DeviceID.
+// Sort sorts a slice of Devices.
 func Sort(d []Device) {
+	keys := func(d Device) []string {
+		dr := "(none)"
+		if d.Driver != nil {
+			dr = *d.Driver
+		}
+		return []string{
+			d.VendorID,
+			d.DeviceID,
+			d.Vendor,
+			d.Device,
+			d.Class,
+			d.ProgIf,
+			dr,
+		}
+	}
 	sort.Slice(d, func(i, j int) bool {
-		x := d[i]
-		y := d[j]
-		return x.VendorID+x.DeviceID < y.VendorID+y.DeviceID
+		x := keys(d[i])
+		y := keys(d[j])
+		if len(x) != len(y) {
+			return len(x) < len(y)
+		}
+		for i := range x {
+			if x[i] != y[i] {
+				return x[i] < y[i]
+			}
+		}
+		return false
 	})
 }
