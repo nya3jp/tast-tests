@@ -22,6 +22,30 @@
       },
       "revId": "abb5147ac79ccd0425992831836e96032274a783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bd0908_d08c09ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-12T07:27:33Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "d366c5ce_a835aa53",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "abb5147ac79ccd0425992831836e96032274a783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
