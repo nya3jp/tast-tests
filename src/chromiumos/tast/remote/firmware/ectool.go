@@ -140,6 +140,10 @@ type GpioName string
 const (
 	// ECCbiWp for the 'ectool gpioget ec_cbi_wp' cmd.
 	ECCbiWp GpioName = "ec_cbi_wp"
+	// ENPP3300POGO for the 'ectool gpioget EN_PP3300_POGO' cmd.
+	ENPP3300POGO GpioName = "EN_PP3300_POGO"
+	// ENBASE for the 'ectool gpioget EN_BASE' cmd.
+	ENBASE GpioName = "EN_BASE"
 )
 
 // FindBaseGpio iterates through a passed in list of gpios, relevant to control on a detachable base,
