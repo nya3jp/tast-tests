@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0e2585_61fa4922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-12T16:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dddc47cb_b8f192cb",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 4
+      },
+      "revId": "5aa7d0401e46769fe59cfce2526c14735e33a655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80798f5_9b86d3fb",
@@ -126,6 +150,30 @@
       "writtenOn": "2022-04-12T01:54:15Z",
       "side": 1,
       "message": "Maybe we should set closeMeet before we call meetConn.CloseTarget above, so that we don\u0027t attempt to close it twice as Yichen mentioned?",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 19
+      },
+      "revId": "5aa7d0401e46769fe59cfce2526c14735e33a655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746bd429_371cd609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-12T16:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80798f5_9b86d3fb",
       "range": {
         "startLine": 832,
         "startChar": 0,
