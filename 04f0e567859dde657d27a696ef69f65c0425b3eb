@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd57f01e_8556f3fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-04-12T17:06:12Z",
+      "side": 1,
+      "message": "nvm, switched to a negative test over \u0027vpn\u0027 network and will throw an error if it succeeds",
+      "parentUuid": "efe10616_056cfaa2",
+      "range": {
+        "startLine": 219,
+        "startChar": 9,
+        "endLine": 219,
+        "endChar": 66
+      },
+      "revId": "04f0e567859dde657d27a696ef69f65c0425b3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38e36250_1f116f6b",
