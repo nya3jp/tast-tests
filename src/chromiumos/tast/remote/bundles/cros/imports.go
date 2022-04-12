@@ -6,6 +6,7 @@ package main
 
 import (
 	// These packages register their tests via init functions.
+	_ "chromiumos/tast/remote/bundles/cros/apps"
 	_ "chromiumos/tast/remote/bundles/cros/arc"
 	_ "chromiumos/tast/remote/bundles/cros/audio"
 	_ "chromiumos/tast/remote/bundles/cros/autoupdate"

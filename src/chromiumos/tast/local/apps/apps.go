@@ -302,21 +302,29 @@ var VMWare = App{
 
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
+	_, err := getInstalledAppID(ctx, tconn, func(app *ash.ChromeApp) bool { return app.AppID == appID }, nil)
+	if err != nil {
+		return err
+	}
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchApp)`, appID)
+}
+
+func getInstalledAppID(ctx context.Context, tconn *chrome.TestConn, predicate func(*ash.ChromeApp) bool, pollOpts *testing.PollOptions) (string, error) {
+	appID := ""
+	err := testing.Poll(ctx, func(ctx context.Context) error {
 		capps, err := ash.ChromeApps(ctx, tconn)
 		if err != nil {
 			testing.PollBreak(err)
 		}
 		for _, capp := range capps {
-			if capp.AppID == appID {
+			if predicate(capp) {
+				appID = capp.AppID
 				return nil
 			}
 		}
-		return errors.New("App not yet found in available Chrome apps")
-	}, nil); err != nil {
-		return err
-	}
-	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchApp)`, appID)
+		return errors.New("App not yet found in available Chrome apps - have you added --enable-features=<app> to chrome options?")
+	}, pollOpts)
+	return appID, err
 }
 
 // LaunchSystemWebApp launches a system web app specifide by its name and URL.
