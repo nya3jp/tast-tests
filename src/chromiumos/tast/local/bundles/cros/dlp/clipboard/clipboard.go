@@ -48,7 +48,7 @@ func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) e
 	bubble := nodewith.Name(messageBlocked).Role(role.StaticText).Ancestor(bubbleClass)
 
 	if err := uiauto.Combine("find bubble ",
-		ui.WaitUntilExists(bubbleButton),
+		ui.WithTimeout(10*time.Second).WaitUntilExists(bubbleButton),
 		ui.WaitUntilExists(bubble))(ctx); err != nil {
 		return errors.Wrap(err, "failed to check for notification bubble's existence")
 	}
