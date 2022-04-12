@@ -39,20 +39,7 @@ type testingState interface {
 	HasError() bool
 }
 
-// NewScreenRecorder creates a ScreenRecorder.
-// It only needs to create one ScreenRecorder during one test.
-// It chooses the entire desktop as the media stream.
-// Example:
-//
-//   screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-//   if err != nil {
-//		s.Log("Failed to create ScreenRecorder: ", err)
-//   }
-//
-// To stop, save, and release the recorder:
-//    defer uiauto.ScreenRecorderStopSaveRelease(...)
-//
-func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenRecorder, error) {
+func requestScreenShare(ctx context.Context, tconn *chrome.TestConn) (*ScreenRecorder, error) {
 	expr := `({
 			chunks: [],
 			recorder: null,
@@ -120,6 +107,29 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 		return nil, errors.Wrap(err, "failed to request display media")
 	}
 
+	return sr, nil
+}
+
+// NewScreenRecorder creates a ScreenRecorder.
+// It only needs to create one ScreenRecorder during one test.
+// It chooses the entire desktop as the media stream.
+// Example:
+//
+//   screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+//   if err != nil {
+//		s.Log("Failed to create ScreenRecorder: ", err)
+//   }
+//
+// To stop, save, and release the recorder:
+//    defer uiauto.ScreenRecorderStopSaveRelease(...)
+//
+func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenRecorder, error) {
+	sr, err := requestScreenShare(ctx, tconn)
+
+	if err != nil {
+		return nil, err
+	}
+
 	// Choose to record the entire desktop/screen with no audio.
 	ui := New(tconn)
 	shareScreenDialog := nodewith.Name("Choose what to share").ClassName("DesktopMediaPickerDialogView")
@@ -129,6 +139,33 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 
 	if err := Combine("start screen recorder through ui",
 		ui.WithInterval(500*time.Millisecond).LeftClickUntil(entireDesktopButton, ui.Exists(shareButton)),
+		ui.LeftClick(shareButton),
+	)(ctx); err != nil {
+		return nil, err
+	}
+
+	return sr, nil
+}
+
+// NewWindowRecorder creates a ScreenRecorder, using a window as the media stream.
+// The specific window can be chosen with the windowIndex parameter.
+// For other information see the comment on the NewScreenRecorder function.
+func NewWindowRecorder(ctx context.Context, tconn *chrome.TestConn, windowIndex int) (*ScreenRecorder, error) {
+	sr, err := requestScreenShare(ctx, tconn)
+
+	if err != nil {
+		return nil, err
+	}
+
+	ui := New(tconn)
+	shareScreenDialog := nodewith.Name("Choose what to share").ClassName("DesktopMediaPickerDialogView")
+	windowTab := nodewith.Name("Window").ClassName("Tab").Ancestor(shareScreenDialog)
+	windowButton := nodewith.Role(role.Button).Ancestor(shareScreenDialog).Nth(windowIndex)
+	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog).Focusable()
+
+	if err := Combine("start screen recorder through ui",
+		ui.LeftClick(windowTab),
+		ui.WithInterval(500*time.Millisecond).LeftClickUntil(windowButton, ui.Exists(shareButton)),
 		ui.LeftClick(shareButton),
 	)(ctx); err != nil {
 		return nil, err
