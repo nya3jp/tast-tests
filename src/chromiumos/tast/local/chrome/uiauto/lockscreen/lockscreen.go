@@ -178,7 +178,7 @@ func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
 // ClickSmartLockArrowButton clicks the arrow button to login with Smart Lock.
 func ClickSmartLockArrowButton(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
-	return ui.WithTimeout(uiTimeout).WithInterval(time.Second).LeftClickUntil(SmartLockArrowButtonFinder, ui.Gone(SmartLockArrowButtonFinder))(ctx)
+	return ui.WithTimeout(uiTimeout).DoDefault(SmartLockArrowButtonFinder)(ctx)
 }
 
 // WaitForSmartLockReady waits for UI signal that the chromebook is ready to be unlocked by Smart Lock.
