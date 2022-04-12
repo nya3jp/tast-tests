@@ -33,6 +33,29 @@
       "message": "Thanks Aya, adding Tast owners.",
       "revId": "647ad70eb66761cda8fb0dddc38bc2158bbdffbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4930ddb9_da905afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-12T22:03:31Z",
+      "side": 1,
+      "message": "the default timeout is 15 seconds, this is actually decreasing the timeout. Could you confirm that this is what you need here?",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "647ad70eb66761cda8fb0dddc38bc2158bbdffbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
