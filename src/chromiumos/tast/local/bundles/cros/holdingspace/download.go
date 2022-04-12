@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -107,7 +108,7 @@ func Download(ctx context.Context, s *testing.State) {
 
 	// Connect to a fresh ash-chrome instance (cr) to ensure holding space first-run state,
 	// also get a browser instance (br) for browser functionality in common.
-	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, browserfixt.DefaultLacrosConfig.WithVar(s))
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfigFromState(s))
 	if err != nil {
 		s.Fatalf("Failed to connect to %v browser: %v", bt, err)
 	}
