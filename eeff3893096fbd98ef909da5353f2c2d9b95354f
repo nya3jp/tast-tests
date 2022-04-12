@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74464da_eee8d771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-12T01:48:19Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "eeff3893096fbd98ef909da5353f2c2d9b95354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008c70a5_1b11fece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apputil/apputil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-12T01:48:19Z",
+      "side": 1,
+      "message": "It would be nice to print the app name as well.",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 51
+      },
+      "revId": "eeff3893096fbd98ef909da5353f2c2d9b95354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
