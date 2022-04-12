@@ -36,6 +36,7 @@ const (
 const (
 	SimPropertySimIdentifier = "SimIdentifier"
 	SimPropertySimEid        = "Eid"
+	SimPropertyESimStatus    = "EsimStatus"
 )
 
 // ModemManager1.Bearer properties
@@ -119,4 +120,11 @@ const (
 const (
 	DefaultSimPin = "1234"
 	TempSimPin    = "1600"
+)
+
+// Possible values for ESimStatus
+const (
+	ESimStatusUnknown      = 0
+	ESimStatusNoProfile    = 1
+	ESimStatusWithProfiles = 2
 )

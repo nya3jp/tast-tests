@@ -218,11 +218,15 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to call GetProperties on modem")
 	}
-	sim, err := props.GetObjectPath(mmconst.ModemPropertySim)
+	simPath, err := props.GetObjectPath(mmconst.ModemPropertySim)
 	if err != nil {
 		return nil, errors.Wrap(err, "missing sim property")
 	}
-	if sim != mmconst.EmptySlotPath {
+	isValidSim, err := modem.isValidSim(ctx, simPath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if sim is valid")
+	}
+	if isValidSim {
 		return modem, nil
 	}
 
@@ -231,7 +235,11 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 		return nil, errors.Wrap(err, "failed to get simslots property")
 	}
 	for slotIndex, path := range simSlots {
-		if path == mmconst.EmptySlotPath {
+		isValidSim, err := modem.isValidSim(ctx, path)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to check if sim is valid")
+		}
+		if !isValidSim {
 			continue
 		}
 		testing.ContextLogf(ctx, "Primary slot doesn't have a SIM, switching to slot %d", slotIndex+1)
@@ -241,6 +249,22 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 		return PollModem(ctx, modem.String())
 	}
 	return nil, errors.New("failed to create modem: modemmanager D-Bus object has no valid SIM's")
+}
+
+// isValidSim checks if a simPath has a connectable sim card.
+func (m *Modem) isValidSim(ctx context.Context, simPath dbus.ObjectPath) (bool, error) {
+	if simPath == mmconst.EmptySlotPath {
+		return false, nil
+	}
+	simProps, err := m.GetSimProperties(ctx, simPath)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to read sim properties")
+	}
+	ESimStatus, err := simProps.GetUint32(mmconst.SimPropertyESimStatus)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get ESIMStatus property")
+	}
+	return ESimStatus != mmconst.ESimStatusNoProfile, nil
 }
 
 // IsEnabled checks modem state and returns a boolean.
