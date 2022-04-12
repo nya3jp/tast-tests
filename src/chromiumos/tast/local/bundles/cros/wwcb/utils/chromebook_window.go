@@ -25,43 +25,41 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// MoveWindowToDisplay use mouse to drag window to certain display
+// MoveWindowToDisplay uses the mouse to drag window to certain display.
 func MoveWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, win *ash.Window, destDisp *display.Info) error {
-	// window is already on display
 	if win.DisplayID == destDisp.ID {
 		return nil
 	}
 
 	testing.ContextLogf(ctx, "Moving window[%s] from [%s] to [%s]", win.Name, win.DisplayID, destDisp.ID)
 
-	// source display info
+	// Set up source display.
 	sourceDispID := win.DisplayID
 	sourceDispIndex, sourceDispType, err := getDispIndexAndType(ctx, tconn, sourceDispID)
 	if err != nil {
 		return errors.Wrap(err, "failed to find source display index and tpye")
 	}
 
-	// destination display info
+	// Set up destination display.
 	destDispID := destDisp.ID
 	destDispIndex, destDispType, err := getDispIndexAndType(ctx, tconn, destDispID)
 	if err != nil {
 		return errors.Wrap(err, "failed to find dest display index and tpye")
 	}
 
-	// Setup display layout.
+	// Set up display layout.
 	dispLayout, err := GetInternalAndExternalDisplays(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get interna & external display")
 	}
 
-	// if window state is not normal, then the window can't be moved
+	// Set window state as normal.
 	if win.State != ash.WindowStateNormal {
 		if _, err := ash.SetWindowState(ctx, tconn, win.ID, ash.WMEventNormal, true); err != nil {
 			return errors.Wrap(err, "failed to set window state to normal")
 		}
 	}
 
-	// window info might be changed after changing window state
 	if win, err = ash.GetARCAppWindowInfo(ctx, tconn, win.ARCPackageName); err != nil {
 		return errors.Wrap(err, "failed to get app's window info")
 	}
@@ -72,38 +70,35 @@ func MoveWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, win *ash.W
 		return err
 	}
 
-	// start from built-in display
 	cursor := cursorOnDisplay{arc.DefaultDisplayID, arc.InternalDisplay}
 
-	// move to source display
+	// Move cursor to source display.
 	if err := cursor.moveTo(ctx, tconn, m, sourceDispIndex, sourceDispType, dispLayout); err != nil {
 		return errors.Wrap(err, "failed to move cursor to source display")
 	}
 
-	// move to window header bar
+	// Move cursor to window header bar.
 	headerPoint := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
 	if err := mouse.Move(tconn, headerPoint, 5)(ctx); err != nil {
 		return errors.Wrap(err, "failed to move mouse to window header")
 	}
 
-	// press leftbutton
 	if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to press mouse on left button")
 	}
 
-	// move to destination display
+	// Move cursor to destination display
 	if err := cursor.moveTo(ctx, tconn, m, destDispIndex, destDispType, dispLayout); err != nil {
 		return errors.Wrap(err, "failed to move cursor to destination display")
 	}
 
-	// move to center of destination display
+	// Move cursor to center of destination display.
 	destDispBounds := dispLayout.DisplayInfo(arc.InternalDisplay).Bounds
 	destPt := coords.NewPoint(destDispBounds.Width/2, destDispBounds.Height/2)
 	if err := mouse.Move(tconn, destPt, time.Second)(ctx); err != nil {
 		return errors.Wrap(err, "failed to move mouse to center of destination display")
 	}
 
-	// release left button
 	if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to release mouse")
 	}
@@ -112,14 +107,14 @@ func MoveWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, win *ash.W
 		return errors.Wrap(err, "failed to ensure window stable")
 	}
 
-	// ensure window on display
+	// Ensure window on destination display.
 	if err := EnsureWindowOnDisplay(ctx, tconn, win.ARCPackageName, destDispID); err != nil {
 		return errors.Wrap(err, "failed to ensure window on display")
 	}
 	return nil
 }
 
-// getDispIndexAndType return display index and type, according display ID
+// getDispIndexAndType returns display index and type.
 func getDispIndexAndType(ctx context.Context, tconn *chrome.TestConn, dispID string) (int, arc.DisplayType, error) {
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
@@ -137,7 +132,7 @@ func getDispIndexAndType(ctx context.Context, tconn *chrome.TestConn, dispID str
 	return -1, "", nil
 }
 
-// EnsureWindowOnDisplay checks whether a window is on a certain display.
+// EnsureWindowOnDisplay checks whether a window is on the given display.
 func EnsureWindowOnDisplay(ctx context.Context, tconn *chrome.TestConn, pkgName, dispID string) error {
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
@@ -247,12 +242,8 @@ func extendedDisplayWindowClassName(ctx context.Context, tconn *chrome.TestConn)
 	return "", errors.New("failed to find any window with class name RootWindow-1 to RootWindow-10")
 }
 
-// VerifyAllWindowsOnDisplay verify all windows on certain display
+// VerifyAllWindowsOnDisplay verifies all windows on certain display.
 func VerifyAllWindowsOnDisplay(ctx context.Context, tconn *chrome.TestConn, externalDisplay bool) error {
-	const (
-		timeout  = time.Second * 30
-		interval = time.Second * 1
-	)
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var displayInfo *display.Info
 		if externalDisplay {
@@ -273,13 +264,13 @@ func VerifyAllWindowsOnDisplay(ctx context.Context, tconn *chrome.TestConn, exte
 			return err
 		}
 		for _, w := range ws {
-			if w.DisplayID != displayInfo.ID {
+			if w.DisplayID != displayInfo.ID && w.IsVisible && w.IsFrameVisible {
 				return errors.Errorf("window is not shown on certain display, got %s, want %s", w.DisplayID, displayInfo.ID)
 			}
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  timeout,
-		Interval: interval,
+		Timeout:  WindowTimeout,
+		Interval: WindowInterval,
 	})
 }
