@@ -16,6 +16,24 @@
       "message": "In general, it is better/recommended to minimize the retry in order not to hide issues in the parts which do not need \"polling\".\nIn this specific case, can we wait for the service to be running?\n\nThen, querying the package list to it?",
       "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340f90d9_0b2495a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-12T00:34:58Z",
+      "side": 1,
+      "message": "The previous code was attempting to just that but it doesn\u0027t work all the time. The command to list packages fails with error code 244 or 245 as well. These are usually temporary errors.\n\nIf package listing is completely broken, the test consuming this won\u0027t pass. If there is a reason to test adb or package listing, IMO it can have a separate test.\n\nTrying to reduce the flaky failures in the tests due to unrelated reasons listing packages failing is one of such failures. I\u0027ve reproduced this twice on my machine where the command succeeds after failing.\n\nEven if we were waiting for service to be up, we would be polling for it.",
+      "parentUuid": "211942f2_ae7d8943",
+      "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
