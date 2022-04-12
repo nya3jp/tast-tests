@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a4451a_fbd3c04b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-12T22:58:49Z",
+      "side": 1,
+      "message": "I ran it and it passed. Modified the commit message.",
+      "parentUuid": "beddce36_4703192f",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "5f71c0e239f8ff39f8650395dba1f7e55bd6163e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c71808d_cb3e2315",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-12T22:54:05Z",
       "side": 1,
       "message": "Are there similar changes that you could make for these?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 83
+      },
+      "revId": "5f71c0e239f8ff39f8650395dba1f7e55bd6163e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c46f78_132ec4b8",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-12T22:58:49Z",
+      "side": 1,
+      "message": "bond endpoint doesn\u0027t need to change and hangout endpoint doesn\u0027t matter as jawad said.",
+      "parentUuid": "8c71808d_cb3e2315",
       "range": {
         "startLine": 26,
         "startChar": 0,
