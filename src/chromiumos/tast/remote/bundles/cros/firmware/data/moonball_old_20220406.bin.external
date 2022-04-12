@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/moonball_old_20220406.bin",
+  "size": 131072,
+  "sha256sum": "3fd6a5a71762eddc68aac5874caa81c290de68d2f2ba8eb7ae00e01eed522e6c"
+}
