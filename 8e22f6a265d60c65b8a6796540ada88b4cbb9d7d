@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "169651eb_e0d8e930",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-04-12T20:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4aacbc_11443340",
+      "range": {
+        "startLine": 289,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 13
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d7c6c21_f116a83c",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1b032c_00797baa",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-04-12T20:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d7c6c21_f116a83c",
+      "range": {
+        "startLine": 291,
+        "startChar": 33,
+        "endLine": 291,
+        "endChar": 87
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13aa333a_7f914fcf",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-12T18:50:29Z",
       "side": 1,
       "message": "Nit: could not find child row",
+      "range": {
+        "startLine": 309,
+        "startChar": 36,
+        "endLine": 309,
+        "endChar": 46
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57e2107_2cc3acef",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-04-12T20:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13aa333a_7f914fcf",
       "range": {
         "startLine": 309,
         "startChar": 36,
