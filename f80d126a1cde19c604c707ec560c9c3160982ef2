@@ -16,6 +16,23 @@
       "message": "See https://tastboard.corp.google.com/test/debugd.DRMTraceTool\n\nFailures between 14676 and 14682 are unrelated to these tests (and would have been caught if this was not informational!)\n\n-kernelnext failures are tracked in http://b/227339558\n",
       "revId": "f80d126a1cde19c604c707ec560c9c3160982ef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d0e65a_5955d371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-04-12T21:07:13Z",
+      "side": 1,
+      "message": "Hmm, I think that I need to add some hwdeps or something to make this continue to be informational on the upstream boards. I\u0027ll revisit this.",
+      "revId": "f80d126a1cde19c604c707ec560c9c3160982ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
