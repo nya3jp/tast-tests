@@ -7,6 +7,7 @@ package firmware
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -18,6 +19,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/input"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -34,8 +38,9 @@ func init() {
 
 // UtilsService implements tast.cros.firmware.UtilsService.
 type UtilsService struct {
-	s  *testing.ServiceState
-	cr *chrome.Chrome
+	s     *testing.ServiceState
+	cr    *chrome.Chrome
+	tconn *chrome.TestConn
 }
 
 // BlockingSync syncs the root device and internal device.
@@ -209,4 +214,55 @@ func (us *UtilsService) EvalTabletMode(ctx context.Context, req *empty.Empty) (*
 		return nil, errors.Wrap(err, "failed to get tablet mode enabled status")
 	}
 	return &fwpb.EvalTabletModeResponse{TabletModeEnabled: tabletModeEnabled}, nil
+}
+
+// FindSingleNode finds the specific UI node based on the passed in element.
+func (us *UtilsService) FindSingleNode(ctx context.Context, req *fwpb.NodeElement) (*empty.Empty, error) {
+
+	if us.cr == nil {
+		return nil, errors.New("missing chrome instance")
+	}
+
+	var err error
+	us.tconn, err = us.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	uiauto := uiauto.New(us.tconn)
+	uiNode := nodewith.Name(req.Name).First()
+
+	if err := uiauto.WithTimeout(10 * time.Second).WaitUntilExists(uiNode)(ctx); err != nil {
+		return nil, errors.Wrapf(err, "could not find node: %s", req.Name)
+	}
+
+	return &empty.Empty{}, nil
+}
+
+// GetDetachableBaseValue retrieves the values of a few detachable-base attributes,
+// such as product-id, usb-path, and vendor-id. The values are saved and returned
+// in a list.
+func (us *UtilsService) GetDetachableBaseValue(ctx context.Context, req *empty.Empty) (*fwpb.CrosConfigResponse, error) {
+
+	paramsTable := map[string]string{
+		"--vendor_id=":  "vendor-id",
+		"--product_id=": "product-id",
+		"--usb_path=":   "usb-path",
+	}
+
+	var args []string
+	for k, v := range paramsTable {
+		value, err := crosconfig.Get(ctx, "/detachable-base", v)
+		if err != nil {
+			return nil, err
+		}
+		res := fmt.Sprintf(k+"%s", value)
+		args = append(args, res)
+	}
+
+	crosCfgRes := fwpb.CrosConfigResponse{
+		Values: args,
+	}
+
+	return &crosCfgRes, nil
 }
