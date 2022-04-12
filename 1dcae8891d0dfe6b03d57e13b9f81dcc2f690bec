@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e421b2e_4c8ce98d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-12T16:50:24Z",
+      "side": 1,
+      "message": "You renamed CryptohomeTPMLiveTestsTPM1 to CryptohomeTPMLiveTests. There is nothing here making this a remote test, it already was. Please fix the description of this change.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "1dcae8891d0dfe6b03d57e13b9f81dcc2f690bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
