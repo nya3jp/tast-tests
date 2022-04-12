@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -96,7 +96,7 @@ func Dock1PersistentSettings(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := utils.InitFixtures(ctx); err != nil {
+	if err != nil {
 		s.Fatal("Failed to initialize fixtures: ", err)
 	}
 
