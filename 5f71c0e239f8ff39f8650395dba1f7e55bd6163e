@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beddce36_4703192f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-12T22:54:05Z",
+      "side": 1,
+      "message": "I suggest actually running at least one of the tests. Does this CL affect the permission prompt relevant to this part:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003d22ec235f29526a278b62c83344f51df4e77ab502;l\u003d518",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "5f71c0e239f8ff39f8650395dba1f7e55bd6163e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c71808d_cb3e2315",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-12T22:54:05Z",
+      "side": 1,
+      "message": "Are there similar changes that you could make for these?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 83
+      },
+      "revId": "5f71c0e239f8ff39f8650395dba1f7e55bd6163e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
