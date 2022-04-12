@@ -236,6 +236,24 @@
       "parentUuid": "5e5e185e_e4440c04",
       "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d78e70_36e9628b",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-12T02:14:48Z",
+      "side": 1,
+      "message": "Pids won\u0027t include child proccesses.\n\nI don\u0027t think we\u0027ll end up undercounting. Guest accesses to pages are translated by KVM into regular accesses from the main crosvm process, so any memory the guest accesses should show up in the main process\u0027s RSS. The sandboxed device shouldn\u0027t be accessing any guest memory which the guest itself doesn\u0027t access. And if they are, then it\u0027s probably correct not to attribute it to the guest, anyway.",
+      "parentUuid": "4f8c23e3_36d5d74e",
+      "revId": "59105aeb1874087371c116808762cff7ee55dfe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
