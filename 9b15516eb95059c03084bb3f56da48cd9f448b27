@@ -33,6 +33,40 @@
       "message": "shadow reviewer lgtm",
       "revId": "9b15516eb95059c03084bb3f56da48cd9f448b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f12f983_3b8b2e0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-12T16:23:34Z",
+      "side": 1,
+      "message": "I think it will be better to have the manual testing done first. Please update this CL when testing is done.",
+      "revId": "9b15516eb95059c03084bb3f56da48cd9f448b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2133e8_e50f9bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/switch_1080p_720p_240frames.hevc.json.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-12T16:23:34Z",
+      "side": 1,
+      "message": "Why does the order change?",
+      "revId": "9b15516eb95059c03084bb3f56da48cd9f448b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
