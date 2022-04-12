@@ -17,20 +17,20 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CryptohomeTPMLiveTestsTPM1,
+		Func: CryptohomeTPMLiveTests,
 		Desc: "Runs cryptohome's TPM live tests, which test TPM keys, PCR, and NVRAM functionality",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
-			"yich@chromium.org",
+			"yich@google.com",
 		},
-		SoftwareDeps: []string{"tpm1", "reboot"},
+		SoftwareDeps: []string{"tpm", "reboot"},
 		Attr:         []string{"group:hwsec_destructive_func"},
 		Timeout:      15 * time.Minute,
 	})
 }
 
-// CryptohomeTPMLiveTestsTPM1 would check cryptohome-tpm-live-test running as expect.
-func CryptohomeTPMLiveTestsTPM1(ctx context.Context, s *testing.State) {
+// CryptohomeTPMLiveTests would check cryptohome-tpm-live-test running as expect.
+func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
 	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 
 	helper, err := hwsecremote.NewHelper(cmdRunner, s.DUT())
