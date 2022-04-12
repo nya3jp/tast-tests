@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f2a2ca_02869b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-12T00:34:29Z",
+      "side": 1,
+      "message": "Do we need this block? We close the meet window at L829 and if that fails, trying again probably won\u0027t help i think?",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 4
+      },
+      "revId": "5aa7d0401e46769fe59cfce2526c14735e33a655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
