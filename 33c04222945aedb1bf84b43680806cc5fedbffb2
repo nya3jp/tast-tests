@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d72b3dc_fcea0037",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-04-12T19:02:52Z",
+      "side": 1,
+      "message": "```\ntast-remote-tests-cros-0.0.2-r10235: # chromiumos/tast/remote/bundles/cros/firmware\ntast-remote-tests-cros-0.0.2-r10235: src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go:165:15: cmd.Start undefined (type error has no field or method Start)\ntast-remote-tests-cros-0.0.2-r10235: src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go:389:15: cmd.Start undefined (type error has no field or method Start)\n```",
+      "revId": "33c04222945aedb1bf84b43680806cc5fedbffb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
