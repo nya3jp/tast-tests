@@ -33,6 +33,24 @@
       "message": "Hmm, I think that I need to add some hwdeps or something to make this continue to be informational on the upstream boards. I\u0027ll revisit this.",
       "revId": "f80d126a1cde19c604c707ec560c9c3160982ef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3dd5711_670fe621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-04-12T21:53:52Z",
+      "side": 1,
+      "message": "sounds good, re-add me to the attention set when ready and I\u0027ll take a look",
+      "parentUuid": "d6d0e65a_5955d371",
+      "revId": "f80d126a1cde19c604c707ec560c9c3160982ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
