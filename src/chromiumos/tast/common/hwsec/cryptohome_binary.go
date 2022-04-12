@@ -276,9 +276,9 @@ func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string
 func (c *cryptohomeBinary) authenticateAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) ([]byte, error) {
 	args := []string{"--action=authenticate_auth_session", "--auth_session_id=" + authSessionID}
 	if publicMount {
-		args = append(args, "--public_mount")
+		args = append(args, "--public_mount", "--key_label=public_mount")
 	} else {
-		args = append(args, "--password="+password)
+		args = append(args, "--password="+password, "--key_label=fake_label")
 	}
 	return c.call(ctx, args...)
 }
