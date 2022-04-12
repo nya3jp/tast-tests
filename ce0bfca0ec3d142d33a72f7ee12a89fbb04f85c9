@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13d25f9a_69957886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-12T15:55:43Z",
+      "side": 1,
+      "message": "From the firmware version, it is a Phison controller.",
+      "parentUuid": "8436bdbe_94456198",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11dfac4c_53072da8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "In the past I thought that the VALUE was the value that might be wrong, that it might not change from 100? Should we parse for the Percentage Used Endurance Indicator instead?",
       "parentUuid": "cd386fc8_0c348301",
+      "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80dda43e_f01b5689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/usb_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-12T15:55:43Z",
+      "side": 1,
+      "message": "smart data, especially raw value, are defined by the vendor.\nthe wear out you are doing on one device will tell what to look for.\nhttps://www.smartmontools.org/ have gather some data to help decipher the data.",
+      "parentUuid": "eed72bd9_af0b7c26",
       "revId": "ce0bfca0ec3d142d33a72f7ee12a89fbb04f85c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
