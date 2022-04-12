@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -33,7 +32,7 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 	case browser.TypeAsh:
 		return cr, nil, cr, nil
 	case browser.TypeLacros:
-		f := f.(lacrosfixt.FixtValue)
+		f := f.(chrome.HasTestAPIConn)
 		l, err := Launch(ctx, f.TestAPIConn())
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")

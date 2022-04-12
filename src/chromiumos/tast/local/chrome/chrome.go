@@ -157,6 +157,12 @@ type HasChrome interface {
 	Chrome() *Chrome
 }
 
+// HasTestAPIConn is an interface for fixture values that contain a TestConn instance. It allows
+// retrieval of the underlying TestConn object.
+type HasTestAPIConn interface {
+	TestAPIConn() *TestConn
+}
+
 // Chrome returns the Chrome instance.
 // It implements the HasChrome interface.
 func (c *Chrome) Chrome() *Chrome { return c }

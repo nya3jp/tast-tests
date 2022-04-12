@@ -95,12 +95,6 @@ func (f FixtureData) TestAPIConn() *chrome.TestConn {
 	return f.LacrosFixt.TestAPIConn()
 }
 
-// Mode gets the mode used to get the lacros binary.
-// Implement lacrosfixt.FixtValue interface.
-func (f FixtureData) Mode() lacrosfixt.SetupMode {
-	return f.LacrosFixt.Mode()
-}
-
 type accountManagerTestFixture struct {
 	cr  *chrome.Chrome
 	arc *arc.ARC
