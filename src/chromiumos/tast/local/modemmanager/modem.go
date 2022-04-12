@@ -198,11 +198,21 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to call GetProperties on modem")
 	}
-	sim, err := props.GetObjectPath(mmconst.ModemPropertySim)
+	simPath, err := props.GetObjectPath(mmconst.ModemPropertySim)
 	if err != nil {
 		return nil, errors.Wrap(err, "missing sim property")
 	}
-	if sim != mmconst.EmptySlotPath {
+	simProps, err := modem.GetSimProperties(ctx, simPath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read sim properties")
+	}
+
+	ESIMStatus, err := simProps.GetUint32(mmconst.SimPropertyESIMStatus)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get ESIMStatus property")
+	}
+
+	if simPath != mmconst.EmptySlotPath && ESIMStatus != mmconst.ESIMStatusNoProfile {
 		return modem, nil
 	}
 
@@ -211,7 +221,7 @@ func NewModemWithSim(ctx context.Context) (*Modem, error) {
 		return nil, errors.Wrap(err, "failed to get simslots property")
 	}
 	for slotIndex, path := range simSlots {
-		if path == mmconst.EmptySlotPath {
+		if path == mmconst.EmptySlotPath || path == simPath {
 			continue
 		}
 		testing.ContextLogf(ctx, "Primary slot doesn't have a SIM, switching to slot %d", slotIndex+1)
