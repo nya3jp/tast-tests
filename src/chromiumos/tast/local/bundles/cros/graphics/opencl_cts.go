@@ -15003,8 +15003,6 @@ func OpenclCts(ctx context.Context, s *testing.State) {
 
 	// Allow to see clvk error and warn messages directly in test logFile.
 	os.Setenv("CLVK_LOG", "2")
-	// TODO(b/227211191): remove this when CL3.0 is the default in clvk.
-	os.Setenv("CLVK_CLSPV_OPTIONS", "-cl-std=CL3.0")
 
 	cmd := testexec.CommandContext(ctx, filepath.Join(testPath, test.executable), strings.Split(test.args, " ")[0:]...)
 	cmd.Stdout = f
