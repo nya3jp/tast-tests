@@ -390,6 +390,8 @@ func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *
 		if err := f.SelectMultipleFiles(kb, fileName)(ctx); err != nil {
 			return errors.Wrap(err, "failed to select the file for drag and drop")
 		}
+		// Focus back to FilesApp after drop.
+		defer f.LeftClick(nodewith.Role(role.ListBox))(ctx)
 
 		srcPoint, err := f.ui.Location(ctx, file(fileName))
 		if err != nil {

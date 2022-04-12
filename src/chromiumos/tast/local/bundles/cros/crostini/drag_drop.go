@@ -185,7 +185,6 @@ func dragFromFilesApp(ctx context.Context, pre crostini.FixtureData, files *file
 	if err = files.DragAndDropFile(path, dropPoint, kb)(ctx); err != nil {
 		return errors.Wrap(err, "drag and drop")
 	}
-	defer files.SelectFile(path)(ctx)
 
 	// Wait for drop app to close and write dropped filename.
 	if err = cmd.Wait(testexec.DumpLogOnError); err != nil {
