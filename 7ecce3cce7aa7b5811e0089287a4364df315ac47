@@ -16,6 +16,24 @@
       "message": "I uploaded a new one that matches. Verified against volteer and guybrush.",
       "revId": "7ecce3cce7aa7b5811e0089287a4364df315ac47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75967143_b29667ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2022-04-12T23:27:57Z",
+      "side": 1,
+      "message": "I hacked the reference decoder HM to print per-frame MD5 sums and the new file from Jeffrey matches the reference decoder!",
+      "parentUuid": "9f1d656d_b9444166",
+      "revId": "7ecce3cce7aa7b5811e0089287a4364df315ac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
