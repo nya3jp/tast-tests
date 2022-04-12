@@ -47,7 +47,7 @@ type cursorOnDisplay struct {
 // mouse.Move does not move the cursor outside of the display. To overcome the limitation, this method place a mouse cursor around display edge by mouse.Move, then moves cursor by raw input.MouseEventWriter to cross display boundary.
 // moveTo method assumes external display is placed on the right edge of the default display
 func (cursor *cursorOnDisplay) moveTo(ctx context.Context, tconn *chrome.TestConn, m *input.MouseEventWriter, dstDisp int, dstDispType arc.DisplayType, layout DisplayLayout) error {
-	// Validates display layout
+	// Validates display layout.
 	intBounds := layout.Internal.Bounds
 	extBounds := layout.External.Bounds
 	if intBounds.Left != 0 || intBounds.Top != 0 || extBounds.Left != intBounds.Width || extBounds.Top != 0 {
@@ -80,8 +80,7 @@ func (cursor *cursorOnDisplay) moveTo(ctx context.Context, tconn *chrome.TestCon
 		if err := m.Move(int32(delta.X), int32(delta.Y)); err != nil {
 			return err
 		}
-		// if remove this, drag window might be not smoothly
-		// high potentially, window could not move to specified area
+		// If remove this, cause dragging not smoothly, might fail.
 		testing.Sleep(ctx, 5*time.Millisecond)
 	}
 	cursor.currentDisp = dstDisp

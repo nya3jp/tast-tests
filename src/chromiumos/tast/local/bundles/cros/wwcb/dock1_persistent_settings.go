@@ -47,7 +47,7 @@
 // Note:
 // Known Issues: crbug.com/821611 , crbug.com/821614
 
-// Package wwcb contains local Tast tests that work with chromebook
+// Package wwcb contains local Tast tests that work with Chromebook
 package wwcb
 
 import (
@@ -102,37 +102,37 @@ func Dock1PersistentSettings(ctx context.Context, s *testing.State) {
 
 	testing.ContextLog(ctx, "Step 1 - Boot-up and Sign-In to the device")
 
-	// step 2 - plug ext-display into docking station
+	// Step 2 - Plug ext-display into docking station.
 	if err := dock1PersistentSettingsStep2(ctx, extDispID); err != nil {
 		s.Fatal("Failed to execute step2: ", err)
 	}
 
-	// step 3 - plug docking station into chromebook
+	// Step 3 - Plug docking station into Chromebook.
 	if err := dock1PersistentSettingsStep3(ctx, tconn, dockingID); err != nil {
 		s.Fatal("Failed to execute step3: ", err)
 	}
 
-	// step 4 - open two apps on external display
+	// step 4 - Open two chrome windows on ext-display.
 	if err := dock1PersistentSettingsStep4(ctx, tconn, cr, kb); err != nil {
 		s.Fatal("Failed to execute step4: ", err)
 	}
 
-	// step 5 - unplug and re-plug in, check window bounds on certain display
+	// step 5 - Unplug and re-plug in, check window bounds on certain display.
 	if err := dock1PersistentSettingsStep5(ctx, tconn, extDispID); err != nil {
 		s.Fatal("Failed to execute step5: ", err)
 	}
 
-	// step 6 - test primary mode, check windows on certain display
+	// step 6 - Test primary mode, check windows on certain display.
 	if err := dock1PersistentSettingsStep6(ctx, tconn, kb); err != nil {
 		s.Fatal("Failed to execute Step6: ", err)
 	}
 
-	// step 7 - unplug and re-plug in, check window bounds on certain display
+	// step 7 - Unplug and re-plug in, check window bounds on certain display.
 	if err := dock1PersistentSettingsStep7(ctx, tconn, extDispID); err != nil {
 		s.Fatal("Failed to execute step7: ", err)
 	}
 
-	// step 8 - test mirror mode, check display attributes and windows on display
+	// step 8 - Test mirror mode, check display attributes and windows on display
 	if err := dock1PersistentSettingsStep8(ctx, tconn, kb); err != nil {
 		s.Fatal("Failed to execute step8: ", err)
 	}
@@ -151,11 +151,11 @@ func dock1PersistentSettingsStep3(ctx context.Context, tconn *chrome.TestConn, d
 	if err := utils.SwitchFixture(ctx, dockingID, "on", "0"); err != nil {
 		return errors.Wrap(err, "failed to plug in docking station")
 	}
-	// verify display properly
-	if err := utils.VerifyDisplayProperly(ctx, tconn, 2); err != nil {
-		return errors.Wrap(err, "failed to verify display properly")
+	// Verify display count.
+	if err := utils.VerifyDisplayCount(ctx, tconn, 2); err != nil {
+		return errors.Wrap(err, "failed to verify display count")
 	}
-	// verify display state
+	// Verify display state.
 	if err := utils.VerifyDisplayState(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to verfiy display state")
 	}
@@ -163,9 +163,9 @@ func dock1PersistentSettingsStep3(ctx context.Context, tconn *chrome.TestConn, d
 }
 
 func dock1PersistentSettingsStep4(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, kb *input.KeyboardEventWriter) error {
-	testing.ContextLog(ctx, "Step 4 - Open two chrome windows")
+	testing.ContextLog(ctx, "Step 4 - Open two chrome windows on ext-display")
 
-	// launch apps
+	// Launch apps.
 	if _, err := filesapp.Launch(ctx, tconn); err != nil {
 		return err
 	}
@@ -173,7 +173,7 @@ func dock1PersistentSettingsStep4(ctx context.Context, tconn *chrome.TestConn, c
 		return err
 	}
 
-	// switch window to external display
+	// Switch window to external display.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
@@ -195,19 +195,19 @@ func dock1PersistentSettingsStep4(ctx context.Context, tconn *chrome.TestConn, c
 }
 
 func dock1PersistentSettingsStep5(ctx context.Context, tconn *chrome.TestConn, extDispID string) error {
-	testing.ContextLog(ctx, "Step 5 - Unplug and re-plug-in external display")
+	testing.ContextLog(ctx, "Step 5 - Unplug & plug-in external display")
 
-	// unplug then verify windows on internal display
+	// Unplug then verify windows on internal display.
 	if err := utils.SwitchFixture(ctx, extDispID, "off", "0"); err != nil {
-		return errors.Wrap(err, "failed to unplug ext-display ")
+		return errors.Wrap(err, "failed to unplug ext-display")
 	}
 	if err := utils.VerifyAllWindowsOnDisplay(ctx, tconn, false); err != nil {
 		return errors.Wrap(err, "failed to verify all windows on internal display")
 	}
 
-	// re-plug-in then verify windows on external display
+	// Plug-in then verify windows on external display.
 	if err := utils.SwitchFixture(ctx, extDispID, "on", "0"); err != nil {
-		return errors.Wrap(err, "failed to plug in ext-display ")
+		return errors.Wrap(err, "failed to plug in ext-display")
 	}
 	if err := utils.VerifyAllWindowsOnDisplay(ctx, tconn, true); err != nil {
 		return errors.Wrap(err, "failed to verify all windows on external display")
@@ -218,18 +218,18 @@ func dock1PersistentSettingsStep5(ctx context.Context, tconn *chrome.TestConn, e
 func dock1PersistentSettingsStep6(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) error {
 	testing.ContextLog(ctx, "Step 6 - Test primary mode")
 
-	// get display info
+	// Get internal & external display info.
 	info, err := utils.GetInternalAndExternalDisplays(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get internal and external display")
 	}
 
-	// ensure internal display is primary
+	// Ensure internal display is primary.
 	if err := utils.EnsureDisplayIsPrimary(ctx, tconn, &info.Internal); err != nil {
 		return errors.Wrap(err, "failed to ensure internal is primary")
 	}
 
-	// move windows to internal display
+	// Switch windows to internal display.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
@@ -245,15 +245,15 @@ func dock1PersistentSettingsStep6(ctx context.Context, tconn *chrome.TestConn, k
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 2 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to move windows to internal display")
+		return errors.Wrap(err, "failed to switch windows to internal display")
 	}
 
 	testing.ContextLog(ctx, "Change ext-display as primary display, then verify windows on ext-display")
-	// ensure external display is primary
+	// Ensure external display is primary.
 	if err := utils.EnsureDisplayIsPrimary(ctx, tconn, &info.External); err != nil {
-		return errors.Wrap(err, "failed to set ext-display to be primary")
+		return errors.Wrap(err, "failed to ensure ext-display is primary")
 	}
-	// verify windows on external display
+	// Verify windows on external display.
 	if err := utils.VerifyAllWindowsOnDisplay(ctx, tconn, true); err != nil {
 		return errors.Wrap(err, "failed to verify all windows on external display")
 	}
@@ -261,19 +261,19 @@ func dock1PersistentSettingsStep6(ctx context.Context, tconn *chrome.TestConn, k
 }
 
 func dock1PersistentSettingsStep7(ctx context.Context, tconn *chrome.TestConn, extDispID string) error {
-	testing.ContextLog(ctx, "Step 7 - Unplug and re-plug external display")
+	testing.ContextLog(ctx, "Step 7 - Unplug and plug-in external display")
 
-	// unplug then verify windows on internal display
+	// Unplug then verify windows on internal display.
 	if err := utils.SwitchFixture(ctx, extDispID, "off", "0"); err != nil {
-		return errors.Wrap(err, "failed to unplug ext-display ")
+		return errors.Wrap(err, "failed to unplug ext-display")
 	}
 	if err := utils.VerifyAllWindowsOnDisplay(ctx, tconn, false); err != nil {
 		return errors.Wrap(err, "failed to verify all windows on internal display")
 	}
 
-	// re-plug-in then verify windows on external display
+	// Plug-in then verify windows on external display.
 	if err := utils.SwitchFixture(ctx, extDispID, "on", "0"); err != nil {
-		return errors.Wrap(err, "failed to plug in ext-display ")
+		return errors.Wrap(err, "failed to plug in ext-display")
 	}
 	if err := utils.VerifyAllWindowsOnDisplay(ctx, tconn, true); err != nil {
 		return errors.Wrap(err, "failed to verify all windows on external display")
@@ -284,51 +284,50 @@ func dock1PersistentSettingsStep7(ctx context.Context, tconn *chrome.TestConn, e
 func dock1PersistentSettingsStep8(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) error {
 	testing.ContextLog(ctx, "Step 8 - Test mirror mode")
 
-	// make sure internal display is primary
+	// Ensure internal display is primary.
 	intDispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get internal display info")
 	}
 	if err := utils.EnsureDisplayIsPrimary(ctx, tconn, intDispInfo); err != nil {
-		return errors.Wrap(err, "failed to ensure internal is primary")
+		return errors.Wrap(err, "failed to ensure internal display is primary")
 	}
 
 	testing.ContextLog(ctx, "Enter mirror mode, then check display's mirror source id")
-	// enter mirror mode
+	// Enter mirror mode.
 	if err := utils.SetMirrorDisplay(ctx, tconn, checked.True); err != nil {
 		return errors.Wrap(err, "failed to enter mirror mode")
 	}
-	// verify number of display
-	if err := utils.VerifyDisplayProperly(ctx, tconn, 1); err != nil {
-		return errors.Wrap(err, "failed to verify display properly")
+	// Verify display count.
+	if err := utils.VerifyDisplayCount(ctx, tconn, 1); err != nil {
+		return errors.Wrap(err, "failed to verify display count")
 	}
-	// verify display attributes
+	// Verify mirror source ID.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get display infos in mirror mode")
 		}
-		// check mirror source id
 		for _, info := range infos {
 			if intDispInfo.ID != info.MirroringSourceID {
-				return errors.Wrap(err, "failed to check mirror source id")
+				return errors.Errorf("unexpected mirror source ID: got %s, want %d", intDispInfo.ID, info.MirroringSourceID)
 			}
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to verify display attributes")
+		return errors.Wrap(err, "failed to verify mirror source ID")
 	}
 
-	testing.ContextLog(ctx, "Exit mirror mode, then check display attributes and windows is on internal display")
-	// unset mirror mode
+	testing.ContextLog(ctx, "Exit mirror mode, then check display state and windows are on internal display")
+	// Exit mirror mode.
 	if err := utils.SetMirrorDisplay(ctx, tconn, checked.False); err != nil {
 		return errors.Wrap(err, "failed to exit mirror mode")
 	}
-	// verify display state
+	// Verify display state.
 	if err := utils.VerifyDisplayState(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to verfiy display state")
 	}
-	// verify windows on internal display
+	// Verify windows on internal display.
 	if err := utils.VerifyAllWindowsOnDisplay(ctx, tconn, false); err != nil {
 		return errors.Wrap(err, "failed to verify all windows on internal display")
 	}

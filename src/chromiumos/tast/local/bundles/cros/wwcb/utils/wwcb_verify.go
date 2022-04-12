@@ -8,7 +8,6 @@ import (
 	"context"
 	"io/ioutil"
 	"strings"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
@@ -18,175 +17,164 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ConnectState for connected status
-type ConnectState bool
-
-// fixture status
-const (
-	IsConnect    ConnectState = true
-	IsDisconnect ConnectState = false
-)
-
-// VerifyExternalAudio verfiy external audio is connected or disconnected
-// by finding out audio devices have "USB" type
-func VerifyExternalAudio(ctx context.Context, wantState ConnectState) error {
+// VerifyExternalAudio verifies external audio is connected or disconnected.
+func VerifyExternalAudio(ctx context.Context, isConnect bool) error {
 	testing.ContextLog(ctx, "Start verifying external audio")
-
-	// find audio device has "USB" type
-	var currentStatus bool
-	currentStatus = false
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create cras")
 	}
-	nodes, err := cras.GetNodes(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get nodes from cras")
-	}
-	for _, n := range nodes {
-		if n.Type == "USB" {
-			currentStatus = true
-			break
+	// Find out external audio device with USB type.
+	return testing.Poll(ctx, func(c context.Context) error {
+		nodes, err := cras.GetNodes(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get nodes from cras")
 		}
-	}
-
-	wantStatus := bool(wantState)
-	// check status
-	if currentStatus != wantStatus {
-		return errors.Errorf("Searching ext-audio result is not match; got %t, want %t", currentStatus, wantStatus)
-	}
-
-	return nil
-}
-
-// VerifyEthernetStatus verify ethernet is connected or disconnected https://www.cyberciti.biz/faq/how-to-check-network-adapter-status-in-linux/
-// default: set "eth0" as ethernet connect input
-// "eth0" only show up when docking station is connect
-// "wlan0" always show up no matter docking station is connect or disconnect
-func VerifyEthernetStatus(ctx context.Context, wantState ConnectState) error {
-	testing.ContextLog(ctx, "Start verifying ethernet status")
-	// get current ethernet status
-	output, err := ioutil.ReadFile("/sys/class/net/eth0/operstate")
-	if err != nil {
-		if wantState {
-			return errors.Wrap(err, "failed to get eth0 operstate")
-		}
-		// When chromebook eth0 is not exist, define as ethernet is disconnected
-		return nil
-	}
-
-	// when ethernet is connected, check ethernet status is "UP", not "DOWN"
-	if wantState {
-		if "UP" != string(output) {
-			return errors.Errorf("Ethernet status is not match; want up, got %s", string(output))
-		}
-	} else {
-		if "DOWN" != string(output) {
-			return errors.Errorf("Ethernet status is not match; want down, got %s", string(output))
-		}
-	}
-	return nil
-}
-
-// VerifyPowerStatus verfiy power is charging or discharging
-func VerifyPowerStatus(ctx context.Context, wantState ConnectState) error {
-	testing.ContextLog(ctx, "Start verifying power status")
-	var wantStatus string
-	if wantState {
-		wantStatus = "CHARGING"
-	} else {
-		wantStatus = "DISCHARGING"
-	}
-	// get current power status
-	output, err := ioutil.ReadFile("/sys/class/power_supply/BAT0/status")
-	if err != nil {
-		return errors.Wrap(err, "failed to get power state")
-	}
-	// when power is connected, check power status is "CHARGING", not "DISCHARGING"
-	currentStatus := strings.ToUpper(strings.TrimSpace(string(output)))
-	if wantStatus != currentStatus {
-		return errors.Errorf("Power status is not match; got %s, want %s", currentStatus, wantStatus)
-	}
-	return nil
-}
-
-// VerifyExternalDisplay verify external display is connected or disconnected
-func VerifyExternalDisplay(ctx context.Context, tconn *chrome.TestConn, wantState ConnectState) error {
-	testing.ContextLog(ctx, "Start verifying external display")
-
-	isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		return err
-	}
-
-	infos, err := display.GetInfo(ctx, tconn)
-	if err != nil {
-		return err
-	}
-
-	// check currect status is tablet mode
-	if isTabletModeEnabled {
-		testing.ContextLog(ctx, "Chromebook is in tablet mode, so there is no any external display")
-		if len(infos) > 1 {
-			return errors.New("Should unable to get any external display when chromebook is in tablet mode")
-		}
-	} else {
-		currentStatus := false
-		for _, info := range infos {
-			if !info.IsInternal {
-				currentStatus = true
+		extAudioState := false
+		for _, n := range nodes {
+			if n.Type == "USB" {
+				extAudioState = true
 				break
 			}
 		}
-		wantStatus := bool(wantState)
-		if currentStatus != wantStatus {
-			return errors.Errorf("failed to verify external display status; got %t, want %t", currentStatus, wantStatus)
-		}
-	}
-	return nil
-}
-
-// VerifyDisplayProperly verify display properly
-// use this func when face "Check the chromebook or external display properly by test fixture." due to testing requirements
-func VerifyDisplayProperly(ctx context.Context, tconn *chrome.TestConn, want int) error {
-	if err := testing.Poll(ctx, func(c context.Context) error {
-		infos, err := display.GetInfo(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get display info")
-		}
-		if len(infos) != want {
-			return errors.Errorf("failed to get correct number of display; got %d, want %d", len(infos), want)
+		if extAudioState != isConnect {
+			return errors.Errorf("unexpected ext-audio presenting state: got %t, want %t", extAudioState, isConnect)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to verify display properly")
-	}
-	return nil
+	}, &testing.PollOptions{Timeout: AudioTimeout, Interval: AudioInterval})
 }
 
-// VerifyDisplayState verify display state;
-// Internal display will show up as (Primary)
-// External display will show up as (Extended)
-func VerifyDisplayState(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := testing.Poll(ctx, func(c context.Context) error {
-		infos, err := display.GetInfo(ctx, tconn)
+// VerifyEthernetStatus verifies ethernet is connected or disconnected.
+func VerifyEthernetStatus(ctx context.Context, isConnect bool) error {
+	testing.ContextLog(ctx, "Start verifying ethernet status")
+	var wantEthOperState string
+	if isConnect {
+		wantEthOperState = "UP"
+	} else {
+		wantEthOperState = "DOWN"
+	}
+	// Find out eth0 operstate.
+	return testing.Poll(ctx, func(c context.Context) error {
+		output, err := ioutil.ReadFile("/sys/class/net/eth0/operstate")
 		if err != nil {
-			return errors.Wrap(err, "failed to get display info")
+			if isConnect {
+				return errors.Wrap(err, "failed to get eth0 operstate")
+			}
+			// When eth0 is not exist, consider ethernet as disconnected.
+			return nil
 		}
-		for _, info := range infos {
-			if info.IsInternal { // internal
-				if !info.IsPrimary {
-					return errors.Wrap(err, "Internal display should show up as primary")
-				}
-			} else { // external
-				if info.IsPrimary {
-					return errors.Wrap(err, "External display should show up as extended")
-				}
+		currentState := strings.ToUpper(strings.TrimSpace(string(output)))
+		if wantEthOperState != currentState {
+			return errors.Errorf("unexpected ethernet status: want %s, got %s", wantEthOperState, currentState)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: EthernetTimeout, Interval: EthernetInterval})
+}
+
+// VerifyPowerStatus verifies power is charging or discharging.
+func VerifyPowerStatus(ctx context.Context, isConnect bool) error {
+	testing.ContextLog(ctx, "Start verifying power status")
+	var wantPowerStatus string
+	if isConnect {
+		wantPowerStatus = "CHARGING"
+	} else {
+		wantPowerStatus = "DISCHARGING"
+	}
+	// Find out BAT0 status.
+	return testing.Poll(ctx, func(c context.Context) error {
+		output, err := ioutil.ReadFile("/sys/class/power_supply/BAT0/status")
+		if err != nil {
+			return errors.Wrap(err, "failed to get power status")
+		}
+		currentStatus := strings.ToUpper(strings.TrimSpace(string(output)))
+		if wantPowerStatus != currentStatus {
+			return errors.Errorf("unexpected power status: got %s, want %s", currentStatus, wantPowerStatus)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: PowerTimeout, Interval: PowerInterval})
+}
+
+// VerifyExternalDisplay verifies external display is connected or disconnected.
+func VerifyExternalDisplay(ctx context.Context, tconn *chrome.TestConn, isConnect bool) error {
+	testing.ContextLog(ctx, "Start verifying external display")
+	return testing.Poll(ctx, func(c context.Context) error {
+		// There is no external display info when Chromebook is into tablet mode.
+		isTabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			return err
+		} else if isTabletModeEnabled {
+			return nil
+		}
+
+		_, err = GetInternalAndExternalDisplays(ctx, tconn)
+		if isConnect {
+			if err != nil {
+				return err
+			}
+		} else {
+			if err == nil {
+				return errors.New("unexpected external display detected")
 			}
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to verify display state")
+	}, &testing.PollOptions{Timeout: DisplayTimeout, Interval: DisplayInterval})
+}
+
+// VerifyPeripherals verifies all peripherals is connected or disconnected.
+func VerifyPeripherals(ctx context.Context, tconn *chrome.TestConn, uc *UsbController, isConnect bool) error {
+	testing.ContextLog(ctx, "Start verifying all peripherals")
+
+	if err := VerifyPowerStatus(ctx, isConnect); err != nil {
+		return err
+	}
+
+	if err := VerifyEthernetStatus(ctx, isConnect); err != nil {
+		return err
+	}
+
+	if err := VerifyExternalDisplay(ctx, tconn, isConnect); err != nil {
+		return err
+	}
+
+	if err := VerifyExternalAudio(ctx, isConnect); err != nil {
+		return err
+	}
+
+	if err := uc.VerifyUsbCount(ctx, isConnect); err != nil {
+		return err
 	}
 	return nil
+}
+
+// VerifyDisplayCount verifies number of displays.
+func VerifyDisplayCount(ctx context.Context, tconn *chrome.TestConn, count int) error {
+	return testing.Poll(ctx, func(c context.Context) error {
+		infos, err := display.GetInfo(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get display info")
+		}
+		if len(infos) != count {
+			return errors.Errorf("unexpected number of displays: got %d, want %d", len(infos), count)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: DisplayTimeout, Interval: DisplayInterval})
+}
+
+// VerifyDisplayState verifies display state.
+// Internal display show up as primary.
+// External display show up as extended.
+func VerifyDisplayState(ctx context.Context, tconn *chrome.TestConn) error {
+	return testing.Poll(ctx, func(c context.Context) error {
+		infos, err := GetInternalAndExternalDisplays(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get internal & external display")
+		}
+		if !infos.Internal.IsPrimary {
+			return errors.Wrap(err, "Internal display should show up as primary")
+		}
+		if infos.External.IsPrimary {
+			return errors.Wrap(err, "External display should show up as extended")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: DisplayTimeout, Interval: DisplayInterval})
 }
