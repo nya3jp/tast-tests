@@ -41,7 +41,6 @@ func init() {
 			"xdai@chromium.org",
 			"sammiequon@chromium.org",
 			"chromeos-wmp@google.com",
-			"mukai@chromium.org", // Tast author
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromeLoggedIn",
@@ -225,7 +224,9 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		}
 		ui := uiauto.New(tconn)
 		// Tap the chrome icon in the app-list to re-activate the browser window.
-		button := nodewith.ClassName("AppListItemView").NameRegex(regexp.MustCompile("^(Chrome|Chromium)$"))
+		// "First()" is needed because chrome could be additionally listed in recent
+		// apps when "ProductivityLauncher" feature is enabled.
+		button := nodewith.ClassName("AppListItemView").NameRegex(regexp.MustCompile("^(Chrome|Chromium)$")).First()
 		if err := ui.WaitUntilExists(button)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find the Chrome icon")
 		}
