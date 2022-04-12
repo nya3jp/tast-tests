@@ -16,6 +16,23 @@
       "message": "lgtm thanks!",
       "revId": "2847457dc598eee94c3dd121b624649b08ab6875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e27f01_6546feff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-12T23:00:33Z",
+      "side": 1,
+      "message": "Thank you for the quick review.\n\nCalling owners.",
+      "revId": "2847457dc598eee94c3dd121b624649b08ab6875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
