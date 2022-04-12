@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "376051a7_8486725b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T14:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b90ee3_ba68dd4c",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eca60eb5_6f8b791a",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-11T19:35:21Z",
       "side": 1,
       "message": "As noted in testutil, this can just call a `start_game` utility function, and then perform its original test.",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6ec981_b17dbee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_minigame_gpu_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T14:08:08Z",
+      "side": 1,
+      "message": "I\u0027ve split it into two helpers: RobloxLogin and RobloxMinigame.\n\nIt might make sense to make it just one helper, but if we want to move to fixtures, this will make it simpler (since we\u0027ll probably want a \"robloxLogin\" fixture.",
+      "parentUuid": "eca60eb5_6f8b791a",
       "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93d32891_fec20bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_royale_high_divinia_park.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T14:08:08Z",
+      "side": 1,
+      "message": "I\u0027ve make it an option on the params as well, and have a long version that we only run sometimes (weekly? manually?) when we need to.",
+      "parentUuid": "76876eae_0f80d409",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c25417c1_14301c74",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_royale_high_divinia_park.go",
         "patchSetId": 3
@@ -82,6 +136,24 @@
       "writtenOn": "2022-04-11T19:35:21Z",
       "side": 1,
       "message": "nit: This comment is a bit too specific. \"Royale High has loud music that is unnecessary to play.\"?",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc732f5_4e79889f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_royale_high_divinia_park.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T14:08:08Z",
+      "side": 1,
+      "message": "That was just to stop annoying me during testing, removed.",
+      "parentUuid": "c25417c1_14301c74",
       "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f59c71_8926347a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_royale_high_divinia_park.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T14:08:08Z",
+      "side": 1,
+      "message": "moot",
+      "parentUuid": "d028478f_8193611c",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38442aab_f116ace8",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5760820_bc1243e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T14:08:08Z",
+      "side": 1,
+      "message": "It\u0027s now two helpers, RobloxLogin, and RobloxMinigame.\n\nAnd I\u0027ve refactored the RobloxLogin test to use the RobloxLogin helper.",
+      "parentUuid": "38442aab_f116ace8",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90bc8f2d_6d0af7bd",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-04-11T19:35:21Z",
       "side": 1,
       "message": "I originally went down this path as well but the code between `Start` and `Stop` may be different for each test (it just happens to be a sleep right now). Code duplication is OK for tests and in this case, explicitly marking the Start/Stop seems OK. The other solution is to have this method take a function which allows for interactions in between the `Start` and `Stop` but that introduces complexities without a lot of benefit.",
+      "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f732cde_0ce48649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-12T14:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90bc8f2d_6d0af7bd",
       "revId": "8bf07aae676e1f23b543092981c0223a45790a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
