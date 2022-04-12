@@ -117,12 +117,12 @@ var allAllowlistedOEMModels = []string{
 	"dorp",
 	"meep",
 
-	// "relm" board:
-	"locke",
-
 	// "puff" board:
 	"dooly",
 	"noibat",
+
+	// "relm" board:
+	"locke",
 
 	// "setzer" board:
 	"setzer",
