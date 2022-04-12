@@ -211,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5879ec_4463e805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/install_arc_app_with_app_list_sorted.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-12T16:46:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c1793d0_66684d21",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "cd3c9be94b0dacf28803f432fdcf3db579343855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c455355a_2d887ba4",

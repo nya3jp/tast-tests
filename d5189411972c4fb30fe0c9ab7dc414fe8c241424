@@ -16,6 +16,23 @@
       "message": "ricardoq@: friendly ping",
       "revId": "d5189411972c4fb30fe0c9ab7dc414fe8c241424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bff06e0_d58f440e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-12T16:46:42Z",
+      "side": 1,
+      "message": "oops, sorry for the delay... I thought I that already have given you +2",
+      "revId": "d5189411972c4fb30fe0c9ab7dc414fe8c241424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
