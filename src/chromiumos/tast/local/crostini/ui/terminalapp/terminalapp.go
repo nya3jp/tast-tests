@@ -10,6 +10,7 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -27,16 +28,21 @@ import (
 const uiTimeout = 15 * time.Second
 
 var (
-	rootWindow = nodewith.NameRegex(regexp.MustCompile(`\@penguin\: `)).Role(role.Window).ClassName("BrowserFrame")
+	linuxLink  = nodewith.Name("Linux").Role(role.Link)
+	linuxTab   = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
+	rootWindow = nodewith.NameStartingWith("Terminal").Role(role.Window).ClassName("BrowserFrame")
+	homeTab    = nodewith.Name("Terminal").Role(role.Window).ClassName("BrowserFrame")
+	sshWebArea = nodewith.Name("chronos@localhost:~").Role(role.RootWebArea)
 )
 
 // TerminalApp represents an instance of the Terminal App.
 type TerminalApp struct {
 	tconn *chrome.TestConn
 	ui    *uiauto.Context
+	kb    *input.KeyboardEventWriter
 }
 
-// Launch launches the Terminal App and returns it.
+// Launch launches the Terminal App connected to default penguin container and returns it.
 // An error is returned if the app fails to launch.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	// Launch the Terminal App.
@@ -53,10 +59,31 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	return ta, nil
 }
 
-// Find finds an open Terminal App. An error is returned if terminal cannot be found.
+// Find finds an open Terminal App and opens a Linux tab if not already open.
+// An error is returned if terminal cannot be found.
 func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 	ui := uiauto.New(tconn)
-	if err := ui.WaitUntilExists(rootWindow)(ctx); err != nil {
+
+	// Find either Linux tab or Home tab with Linux link.
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ui.Exists(linuxTab)(ctx); err == nil {
+			return nil
+		}
+		if err := ui.Exists(linuxLink)(ctx); err == nil {
+			return nil
+		}
+		return errors.New("waiting for Linux tab, or home tab with Linux link")
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+
+	// If this is Home tab with Linux link, open Linux tab.
+	if err = ui.Exists(linuxLink)(ctx); err == nil {
+		if err := ui.LeftClick(nodewith.Name("Linux").Role(role.Link))(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to click Terminal Home Linux")
+		}
+	}
+
+	// Ensure Linux tab is active and container is connected.
+	if err := ui.WaitUntilExists(linuxTab)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to find the Terminal App window")
 	}
 
@@ -65,12 +92,79 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 		return nil, errors.Wrap(err, "failed to find Terminal icon on shelf")
 	}
 
-	terminalApp := &TerminalApp{tconn: tconn, ui: ui}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find keyboard")
+	}
+
+	terminalApp := &TerminalApp{tconn: tconn, ui: ui, kb: kb}
 	if err := terminalApp.WaitForPrompt()(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for terminal prompt")
 	}
 
 	return terminalApp, nil
+}
+
+// LaunchSSH launches Terminal App and connects to usernameATHost
+// with the optional sshArgs. An error is returned if the app fails to launch.
+func LaunchSSH(ctx context.Context, tconn *chrome.TestConn, usernameAtHost, sshArgs, password string) (*TerminalApp, error) {
+	// Launch the Terminal App.
+	if err := apps.Launch(ctx, tconn, apps.Terminal.ID); err != nil {
+		return nil, errors.Wrap(err, "failed to launch the Terminal App through package apps")
+	}
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find keyboard")
+	}
+
+	// If an existing 'chronos@localhost' exists, delete it.
+	ui := uiauto.New(tconn)
+	var ta = &TerminalApp{tconn: tconn, ui: ui, kb: kb}
+
+	loggedInPrompt := nodewith.Name(" ~ $").Role(role.StaticText).Ancestor(sshWebArea)
+	if err := uiauto.Combine("launch ssh",
+		ta.DeleteSSHConnection(usernameAtHost),
+		ui.LeftClick(nodewith.Name("Add SSH").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Command").Role(role.TextField)),
+		kb.TypeAction(usernameAtHost+" -o StrictHostKeyChecking=no "+sshArgs),
+		ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
+		ui.LeftClick(nodewith.Name(usernameAtHost).Role(role.Link)),
+		ui.LeftClick(nodewith.Name("("+usernameAtHost+") Password:").Role(role.TextField)),
+		kb.TypeAction(password),
+		kb.AccelAction("Enter"),
+		ui.WaitUntilExists(loggedInPrompt),
+	)(ctx); err != nil {
+		return nil, err
+	}
+
+	return ta, nil
+}
+
+// DeleteSSHConnection deletes the specified connection link if it exists.
+func (ta *TerminalApp) DeleteSSHConnection(name string) uiauto.Action {
+	l := nodewith.Name(name).Role(role.Link)
+	return action.IfSuccessThen(ta.ui.WithTimeout(3*time.Second).WaitUntilExists(l),
+		uiauto.Combine("delete ssh link "+name,
+			ta.ui.LeftClick(nodewith.Name("Edit SSH").Role(role.Link)),
+			ta.ui.LeftClick(nodewith.Name("Delete").Role(role.Button)),
+			ta.ui.WaitUntilGone(l),
+		))
+}
+
+// ExitSSH exits the current connection and closes the app.
+func (ta *TerminalApp) ExitSSH() uiauto.Action {
+	exitDialog := nodewith.NameStartingWith("Program exited with status code").
+		Role(role.StaticText).Ancestor(nodewith.Role(role.Dialog))
+	terminalWebArea := nodewith.Name("Terminal").Role(role.RootWebArea)
+	return uiauto.Combine("exit ssh",
+		ta.ui.LeftClick(sshWebArea.First()),
+		ta.kb.TypeAction("exit"),
+		ta.kb.AccelAction("Enter"),
+		ta.ui.WaitUntilExists(exitDialog),
+		ta.kb.TypeAction("x"),
+		ta.ui.WaitUntilExists(terminalWebArea),
+		ta.kb.AccelAction("Ctrl+W"),
+	)
 }
 
 // WaitForPrompt waits until the terminal window shows a shell
@@ -177,7 +271,7 @@ func (ta *TerminalApp) ShutdownCrostini(cont *vm.Container) uiauto.Action {
 func (ta *TerminalApp) RunCommand(keyboard *input.KeyboardEventWriter, cmd string) uiauto.Action {
 	return uiauto.Combine("run command "+cmd,
 		// Focus on the Terminal window.
-		ta.ui.LeftClick(rootWindow),
+		ta.ui.LeftClick(linuxTab),
 		// Type command.
 		keyboard.TypeAction(cmd),
 		// Press Enter.
@@ -188,7 +282,7 @@ func (ta *TerminalApp) RunCommand(keyboard *input.KeyboardEventWriter, cmd strin
 func (ta *TerminalApp) Exit(keyboard *input.KeyboardEventWriter) uiauto.Action {
 	return uiauto.Combine("exit Terminal window",
 		ta.RunCommand(keyboard, "exit"),
-		ta.ui.WithTimeout(time.Minute).WaitUntilGone(rootWindow))
+		ta.ui.WithTimeout(time.Minute).WaitUntilGone(linuxTab))
 }
 
 // Close closes the Terminal App through clicking Close on shelf context menu.
