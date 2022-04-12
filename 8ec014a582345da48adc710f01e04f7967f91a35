@@ -16,6 +16,24 @@
       "message": "I should have been more clear: the reason this works is because of the next two lines (from the example):\n\n\tcleanupCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, TIME_TO_SAVE*time.Second)\n\tdefer cancel()\n\nwhich shortens the main context to give time for cleanup. `cleanupCtx` can then be used by all defers.",
       "revId": "8ec014a582345da48adc710f01e04f7967f91a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db29b6ea_7dc317d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_keyboard_connect_and_disconnect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-12T06:18:22Z",
+      "side": 1,
+      "message": "Done, sorry for the misunderstanding.",
+      "parentUuid": "ad6d98d7_0369c69d",
+      "revId": "8ec014a582345da48adc710f01e04f7967f91a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
