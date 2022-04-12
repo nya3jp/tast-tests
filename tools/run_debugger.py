@@ -84,7 +84,10 @@ def save_debugger_command() -> Optional[DebuggerCommand]:
     if test["pkg"] == expected_pkg:
       name = test["name"]
       test_name = TEST_FORMAT.match(name).group(1)
-      if test_name == expected_test_name:
+      # Initializations don't match properly without converting to lower.
+      # eg. service_grpc has test name ServiceGRPC, but we would normally
+      # expect ServiceGrpc.
+      if test_name.lower() == expected_test_name.lower():
         matches.append(name)
   matches = sorted(matches)
 
