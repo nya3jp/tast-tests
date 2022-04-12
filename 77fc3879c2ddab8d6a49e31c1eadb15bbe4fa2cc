@@ -16,6 +16,86 @@
       "message": "This is ready for review",
       "revId": "77fc3879c2ddab8d6a49e31c1eadb15bbe4fa2cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686be494_891b821c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-12T00:13:22Z",
+      "side": 1,
+      "message": "defer cryptohome.RemoveVault(ctx, userName);",
+      "revId": "77fc3879c2ddab8d6a49e31c1eadb15bbe4fa2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acba5e10_f36b3c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-12T00:13:22Z",
+      "side": 1,
+      "message": "cryptohome.UnmountVault(ctx, userName)",
+      "range": {
+        "startLine": 115,
+        "startChar": 7,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "77fc3879c2ddab8d6a49e31c1eadb15bbe4fa2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4481e7b_7e539baf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-12T00:13:22Z",
+      "side": 1,
+      "message": "you are creating unnecessary side effects here. Let\u0027s unmount what you mounted.",
+      "revId": "77fc3879c2ddab8d6a49e31c1eadb15bbe4fa2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17943aa_0e315c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/password_auth_factor_existing_vault_keyset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-04-12T00:13:22Z",
+      "side": 1,
+      "message": "with defer you do not need this",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "77fc3879c2ddab8d6a49e31c1eadb15bbe4fa2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
