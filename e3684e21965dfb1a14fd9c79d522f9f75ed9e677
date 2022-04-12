@@ -558,6 +558,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1da28f97_89ffac49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-04-12T19:57:43Z",
+      "side": 1,
+      "message": "Thanks for checking in, Eliot! That\u0027s clear for me now. Meanwhile, do you think something like this is okay?\n\n```\n--- a/src/chromiumos/tast/local/chrome/lacros/lacros.go\n+++ b/src/chromiumos/tast/local/chrome/lacros/lacros.go\n@@ -59,6 +59,15 @@ func (l *Lacros) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)\n        return l.sess.StopTracing(ctx)\n }\n \n+// ResetState TODO.\n+func (l *Lacros) ResetState(ctx context.Context) {\n+       testing.ContextLog(ctx, \"TIAGOOOOOOOOOO ResetState\")\n+       l.sess.Close(ctx)\n+       l.sess \u003d nil\n+       l.agg.Close()\n+       l.agg \u003d nil\n+}\n+\n // Close closes all lacros chrome targets and the dev session.\n func (l *Lacros) Close(ctx context.Context) error {\n        // Get all pages. Note that we can\u0027t get all targets, because one of them\n@@ -82,10 +91,7 @@ func (l *Lacros) Close(ctx context.Context) error {\n \n        // The browser may already be terminated by the time we try to close the\n        // dev session, so ignore any error.\n-       l.sess.Close(ctx)\n-       l.sess \u003d nil\n-       l.agg.Close()\n-       l.agg \u003d nil\n+       l.ResetState(ctx)\n \n        if l.cmd !\u003d nil {\n                if err :\u003d l.cmd.Kill(); err !\u003d nil {\n```\n\nI\u0027m fine with leaking otherwise. After all it\u0027d be just a leak internally to tast because lacros process resources are cleanup nicely when ash-chrome is killed during UI restart.",
+      "parentUuid": "d218756a_b1f7bda7",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e508caf_d2cdc5d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
