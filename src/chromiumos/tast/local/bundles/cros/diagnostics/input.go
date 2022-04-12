@@ -21,7 +21,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Can successfully navigate to the Input page",
 		Contacts: []string{
-			"hcutts@google.com",
+			"ashleydp@google.com",
+			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},

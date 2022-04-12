@@ -26,7 +26,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Diagnostics app session log saves to files successfully",
 		Contacts: []string{
-			"michaelcheco@google.com",
+			"ashleydp@google.com",
+			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
