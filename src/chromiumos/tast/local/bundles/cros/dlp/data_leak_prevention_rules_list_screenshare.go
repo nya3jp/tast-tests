@@ -33,11 +33,21 @@ const (
 	screenshareResumedIDContains = "screen_share_dlp_resumed-"
 )
 
+// screenshareTarget is an enum containing different possible ways a user can share their screen.
+type screenshareMediaStreamType int
+
+// See comment on the type above.
+const (
+	screen screenshareMediaStreamType = iota
+	window
+)
+
 // A struct containing parameters for different screenshare tests.
 type screenshareTestParams struct {
 	name        string
 	url         string
 	restriction restrictionlevel.RestrictionLevel
+	target      screenshareMediaStreamType
 	policyDLP   []policy.Policy
 	browserType browser.Type
 }
@@ -72,7 +82,12 @@ var screenshareWarnPolicy = []policy.Policy{&policy.DataLeakPreventionRulesList{
 			Description: "User should be warned before sharing the screen with confidential content visible",
 			Sources: &policy.DataLeakPreventionRulesListValueSources{
 				Urls: []string{
+					// We specify 2 URLs because different *warn_proceeded* tests need to
+					// use different URLs, as clicking on "Share anyway" in one test means
+					// the user would not be prompted in subsequent ones, and sharing would
+					// automatically be allowed for that URL.
 					"example.com",
+					"google.com",
 				},
 			},
 			Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
@@ -98,86 +113,186 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name:    "ash_blocked",
+			Name:    "ash_blocked_screen_share",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "blocked",
+				name:        "blocked_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.Blocked,
+				target:      screen,
 				policyDLP:   screenshareBlockPolicy,
 				browserType: browser.TypeAsh,
 			},
 		}, {
-			Name:    "ash_allowed",
+			Name:    "ash_allowed_screen_share",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "allowed",
+				name:        "allowed_screen_share",
 				url:         "https://www.chromium.org/",
 				restriction: restrictionlevel.Allowed,
+				target:      screen,
 				policyDLP:   screenshareBlockPolicy,
 				browserType: browser.TypeAsh,
 			},
 		}, {
-			Name:    "ash_warn_proceeded",
+			Name:    "ash_warn_proceeded_screen_share",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_proceded",
+				name:        "warn_proceded_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.WarnProceeded,
+				target:      screen,
 				policyDLP:   screenshareWarnPolicy,
 				browserType: browser.TypeAsh,
 			},
 		}, {
-			Name:    "ash_warn_cancelled",
+			Name:    "ash_warn_cancelled_screen_share",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_cancelled",
+				name:        "warn_cancelled_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.WarnCancelled,
+				target:      screen,
 				policyDLP:   screenshareWarnPolicy,
 				browserType: browser.TypeAsh,
 			},
 		}, {
-			Name:              "lacros_blocked",
+			Name:              "lacros_blocked_screen_share",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "blocked",
+				name:        "blocked_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.Blocked,
+				target:      screen,
 				policyDLP:   screenshareBlockPolicy,
 				browserType: browser.TypeLacros,
 			},
 		}, {
-			Name:              "lacros_allowed",
+			Name:              "lacros_allowed_screen_share",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "allowed",
+				name:        "allowed_screen_share",
 				url:         "https://www.chromium.org/",
 				restriction: restrictionlevel.Allowed,
+				target:      screen,
 				policyDLP:   screenshareBlockPolicy,
 				browserType: browser.TypeLacros,
 			},
 		}, {
-			Name:              "lacros_warn_proceeded",
+			Name:              "lacros_warn_proceeded_screen_share",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_proceded",
+				name:        "warn_proceded_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.WarnProceeded,
+				target:      screen,
 				policyDLP:   screenshareWarnPolicy,
 				browserType: browser.TypeLacros,
 			},
 		}, {
-			Name:              "lacros_warn_cancelled",
+			Name:              "lacros_warn_cancelled_screen_share",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshareTestParams{
-				name:        "warn_cancelled",
+				name:        "warn_cancelled_screen_share",
 				url:         "https://www.example.com/",
 				restriction: restrictionlevel.WarnCancelled,
+				target:      screen,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:    "ash_blocked_window_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "blocked_window_share",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.Blocked,
+				target:      window,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:    "ash_allowed_window_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "allowed_window_share",
+				url:         "https://www.chromium.org/",
+				restriction: restrictionlevel.Allowed,
+				target:      window,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:    "ash_warn_proceeded_window_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_proceded_window_share",
+				url:         "https://www.google.com/",
+				restriction: restrictionlevel.WarnProceeded,
+				target:      window,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:    "ash_warn_cancelled_window_share",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_cancelled_window_share",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.WarnCancelled,
+				target:      window,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:              "lacros_blocked_window_share",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "blocked_window_share",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.Blocked,
+				target:      window,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_allowed_window_share",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "allowed_window_share",
+				url:         "https://www.chromium.org/",
+				restriction: restrictionlevel.Allowed,
+				target:      window,
+				policyDLP:   screenshareBlockPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_warn_proceeded_window_share",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_proceded_window_share",
+				url:         "https://www.google.com/",
+				restriction: restrictionlevel.WarnProceeded,
+				target:      window,
+				policyDLP:   screenshareWarnPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_warn_cancelled_window_share",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: screenshareTestParams{
+				name:        "warn_cancelled_window_share",
+				url:         "https://www.example.com/",
+				restriction: restrictionlevel.WarnCancelled,
+				target:      window,
 				policyDLP:   screenshareWarnPolicy,
 				browserType: browser.TypeLacros,
 			},
@@ -205,20 +320,31 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), params.browserType)
-	if err != nil {
-		s.Fatal("Failed to open the browser: ", err)
-	}
-	defer closeBrowser(ctx)
-
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
 	}
 	defer keyboard.Close()
 
-	// Start screen recorder.
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), params.browserType)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+
+	const nonRestrictedSite = "https://www.chromium.org/"
+	if _, err := br.NewConn(ctx, nonRestrictedSite); err != nil {
+		s.Fatal("Failed to open page: ", err)
+	}
+
+	var screenRecorder *uiauto.ScreenRecorder
+
+	if params.target == screen {
+		screenRecorder, err = uiauto.NewScreenRecorder(ctx, tconn)
+	} else if params.target == window {
+		screenRecorder, err = uiauto.NewWindowRecorder(ctx, tconn /*windowIndex=*/, 0)
+	}
+
 	if err != nil {
 		s.Fatal("Failed to create ScreenRecorder: ", err)
 	}
@@ -229,14 +355,9 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 	screenRecorder.Start(ctx, tconn)
 	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "dlpScreenShare.mp4"))
 
-	const nonRestrictedSite = "https://www.chromium.org/"
 	wantAllowed := params.restriction == restrictionlevel.Allowed || params.restriction == restrictionlevel.WarnProceeded
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+params.name)
-
-	if _, err = br.NewConn(ctx, nonRestrictedSite); err != nil {
-		s.Fatal("Failed to open page: ", err)
-	}
 
 	// Screenshare should be allowed.
 	if err := checkFrameStatus(ctx, screenRecorder, true); err != nil {
@@ -263,7 +384,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		}
 
 		// Continuing screen sharing should result in a "Screen share resumed" notification.
-		if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains(screenshareResumedIDContains), ash.WaitTitle(screenshareResumedTitle)); err != nil {
+		if _, err := ash.WaitForNotification(ctx, tconn, 10*time.Second, ash.WaitIDContains(screenshareResumedIDContains), ash.WaitTitle(screenshareResumedTitle)); err != nil {
 			s.Errorf("Failed to wait for notification with title %q: %v", screenshareResumedTitle, err)
 		}
 	} else if params.restriction == restrictionlevel.WarnCancelled {
@@ -286,7 +407,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}); err != nil {
 		s.Fatal("Polling the frame status timed out: ", err)
 	}
 
