@@ -12,7 +12,7 @@ import (
 
 // These are the Cr50 Servo controls which can be get/set with a string value.
 const (
-	CR50CCDLevel   StringControl = "cr50_ccd_level"
+	GSCCCDLevel    StringControl = "gsc_ccd_level"
 	CR50Testlab    StringControl = "cr50_testlab"
 	CR50UARTCmd    StringControl = "cr50_uart_cmd"
 	CR50UARTRegexp StringControl = "cr50_uart_regexp"
