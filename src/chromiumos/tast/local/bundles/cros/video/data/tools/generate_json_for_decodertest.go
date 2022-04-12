@@ -58,6 +58,7 @@ const (
 	vp90
 	vp92
 	av1Main
+	hevcMain
 )
 
 // Codec represents a video codec.
@@ -68,6 +69,7 @@ const (
 	vp8
 	vp9
 	av1
+	hevc
 )
 
 func profileToString(p Profile) string {
@@ -88,6 +90,8 @@ func profileToString(p Profile) string {
 		return "VP9PROFILE_PROFILE2"
 	case av1Main:
 		return "AV1PROFILE_PROFILE_MAIN"
+	case hevcMain:
+		return "HEVCPROFILE_MAIN"
 	}
 	return ""
 }
@@ -102,6 +106,8 @@ func profileToCodec(p Profile) Codec {
 		return vp9
 	case av1Main:
 		return av1
+	case hevcMain:
+		return hevc
 	}
 	return -1
 }
@@ -134,6 +140,11 @@ func ffprobeCodecToProfile(codec, profile string) (Profile, error) {
 		switch profile {
 		case "Main":
 			return av1Main, nil
+		}
+	case "hevc":
+		switch profile {
+		case "Main":
+			return hevcMain, nil
 		}
 	}
 
@@ -270,7 +281,7 @@ func genMD5VPX(file, bin string) ([]string, error) {
 
 func genMD5(file string, profile Profile) ([]string, error) {
 	switch profileToCodec(profile) {
-	case h264:
+	case h264, hevc:
 		return genMD5H264(file)
 	case vp8, vp9:
 		return genMD5VPX(file, "vpxdec")
@@ -340,8 +351,8 @@ func main() {
 	var exitCode int
 	for _, file := range os.Args[1:] {
 		ext := filepath.Ext(file)
-		if ext != ".ivf" && ext != ".h264" {
-			fmt.Fprintf(os.Stderr, "The file's extension must be ivf or h264: %s\n", file)
+		if ext != ".ivf" && ext != ".h264" && ext != ".hevc" {
+			fmt.Fprintf(os.Stderr, "The file's extension must be ivf, h264 or hevc: %s\n", file)
 			exitCode = 1
 			continue
 		}
