@@ -46,6 +46,30 @@
       },
       "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbfa7500_2bdb599b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-04-12T03:54:53Z",
+      "side": 1,
+      "message": "I just take a look at the result of the current VPN tests:\n- reset shill and setup VPN server will take about 6 seconds (no ARC is envolved in my test but it is in this case);\n- time needed to connect to VPN server depends on VPN type, for the l2tp/ipsec used in this test, it needs about 3~4 seconds. (wireguard and ikev2-psk are the fastest, but they are not enabled on all the boards and thus not suitable for this test)\n\nDo we have a way to have several test cases with running fixture (and some other setup code) only once in tast?",
+      "parentUuid": "ff730c01_3c42e05a",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
