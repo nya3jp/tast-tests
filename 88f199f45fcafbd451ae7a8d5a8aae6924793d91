@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67065782_40c42912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-12T20:17:09Z",
+      "side": 0,
+      "message": "move recorder creation downward after we get l instance",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 96
+      },
+      "revId": "88f199f45fcafbd451ae7a8d5a8aae6924793d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db216a3c_328243c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-12T20:17:09Z",
+      "side": 0,
+      "message": "move GetBrowserStartTime out of recorder because we need the tconn of l to set up recorder.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 88
+      },
+      "revId": "88f199f45fcafbd451ae7a8d5a8aae6924793d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
