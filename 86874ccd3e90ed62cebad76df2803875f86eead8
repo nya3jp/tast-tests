@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c989a8_10127344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-12T12:40:23Z",
+      "side": 1,
+      "message": "it can be just \n\n```\nreturn x.VendorID \u003c y.VendorID \u0026\u0026 x.DeviceID \u003c y.DeviceID ...\n```\n\nI don\u0027t really like the idea of concatenating everything into a string and then compare strings, it might work unexpected.",
+      "range": {
+        "startLine": 140,
+        "startChar": 10,
+        "endLine": 140,
+        "endChar": 26
+      },
+      "revId": "86874ccd3e90ed62cebad76df2803875f86eead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
