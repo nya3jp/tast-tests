@@ -39,6 +39,30 @@
       },
       "revId": "e51bdcc03a633c91d44e1a43900493bf3c6e28ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98040572_f1667f47",
+        "filename": "src/chromiumos/tast/local/video/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-12T08:18:58Z",
+      "side": 1,
+      "message": "Thank you for the detailed explanation, `local/video/*` have been moved to `local/bundles/cros/ui/video/*`",
+      "parentUuid": "01e7e80b_a9ad5909",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "e51bdcc03a633c91d44e1a43900493bf3c6e28ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
