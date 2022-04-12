@@ -11,21 +11,41 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// InitFixtures resets all fixtures at the beginning of testing.
-// To avoid fixtures status are not unified then cause fail.
-func InitFixtures(ctx context.Context) error {
+// InitFixtures turns on dock power at the beginning, and returns
+// a function that restores the fixtures status setting.
+// To avoid peripherals’ status being cached on dock and causing testing inaccuracy.
+func InitFixtures(ctx context.Context) (func(context.Context) error, error) {
 	testing.ContextLog(ctx, "Initialize fixtures")
-	// Disconnect all fixtures.
-	if err := CloseAll(ctx); err != nil {
-		return err
-	}
-	// Docking station uses port 1.
-	// Turn off & on docking station power.
-	if err := ControlAviosys(ctx, "0", "1"); err != nil {
-		return errors.Wrap(err, "failed to turn off docking station power")
-	}
+
 	if err := ControlAviosys(ctx, "1", "1"); err != nil {
-		return errors.Wrap(err, "failed to turn on docking station power")
+		return nil, errors.Wrap(err, "failed to turn on docking station power")
 	}
-	return nil
+
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Disconnecting all fixtures and closing dock power")
+		// Disconnect all fixtures.
+		if err := CloseAll(ctx); err != nil {
+			return errors.Wrap(err, "failed to disconnect all fixtures")
+		}
+		// Turn off docking station power.
+		if err := ControlAviosys(ctx, "0", "1"); err != nil {
+			return errors.Wrap(err, "failed to turn off docking station power")
+		}
+		return nil
+	}, nil
+}
+
+// DumpScreenshotOnError checks the given hasError function and dumps each display screenshot in the WWCB server.
+func DumpScreenshotOnError(ctx context.Context, hasError func() bool, fixtureIDs []string) {
+	if !hasError() {
+		return
+	}
+
+	testing.ContextLog(ctx, "Start dumping screenshot")
+	fixtureIDs = append(fixtureIDs, "chromebook")
+	for _, id := range fixtureIDs {
+		if _, err := ScreenCapture(ctx, id); err != nil {
+			testing.ContextLog(ctx, "Failed to capture screenshot: ", err)
+		}
+	}
 }

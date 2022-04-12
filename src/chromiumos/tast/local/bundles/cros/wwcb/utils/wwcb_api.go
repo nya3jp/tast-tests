@@ -15,6 +15,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -26,7 +27,7 @@ var wwcbIP = testing.RegisterVarString(
 	"The ip of the wwcb server",
 )
 
-// HTTPGet sends HTTP request to server.
+// HTTPGet sends HTTP requests to the server.
 func HTTPGet(ctx context.Context, api string) (string, error) {
 	// Send API request.
 	url := fmt.Sprintf("http://%s:8585/%s", wwcbIP.Value(), api)
@@ -63,7 +64,7 @@ func CloseAll(ctx context.Context) error {
 }
 
 // SwitchFixture controls fixture to connect or disconnect.
-// FixtureID: the ID of fixture.
+// FixtureID: the ID of the fixture.
 // Action: control action, like "on", "off", "flip".
 // Interval: delay time to execute on WWCB server.
 func SwitchFixture(ctx context.Context, fixtureID, action, interval string) error {
@@ -85,8 +86,8 @@ func ControlAviosys(ctx context.Context, powerState, port string) error {
 	return nil
 }
 
-// GetPiColor returns color that WWCB server control camera to capture.
-// FixtureID: the ID of fixture which controls display.
+// GetPiColor returns the color that WWCB server control camera captures.
+// FixtureID: the ID of the fixture which controls display.
 // Interval: delay time to execute on WWCB server.
 func GetPiColor(ctx context.Context, fixtureID, interval string) (string, error) {
 	api := fmt.Sprintf("api/getpicolor?id=%s&Interval=%s", fixtureID, interval)
@@ -101,7 +102,7 @@ func GetPiColorResult(ctx context.Context) (string, error) {
 
 // VideoRecord returns filepath that WWCB server control camera to record video.
 // Durations: the lenght of time for recording video.
-// FixtureID: the ID of fixture which controls display.
+// FixtureID: the ID of the fixture which controls display.
 func VideoRecord(ctx context.Context, durations, fixtureID string) (string, error) {
 	api := fmt.Sprintf("api/VideoRecord?durations=%s&id=%s&file_name=record&width=1280&height=720", durations, fixtureID)
 	return HTTPGet(ctx, api)
@@ -113,7 +114,7 @@ func UploadFile(ctx context.Context, filePath string) (string, error) {
 	url := fmt.Sprintf("http://%s:8585/api/upload_file", wwcbIP.Value())
 	testing.ContextLogf(ctx, "request: %s", url)
 
-	// Create body.
+	// Create a body.
 	file, err := os.Open(filePath)
 	if err != nil {
 		return "", err
@@ -136,7 +137,7 @@ func UploadFile(ctx context.Context, filePath string) (string, error) {
 	}
 	request.Header.Add("Content-Type", writer.FormDataContentType())
 
-	// Send request.
+	// Send a request.
 	client := &http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
@@ -163,7 +164,7 @@ func UploadFile(ctx context.Context, filePath string) (string, error) {
 	return m["path"].(string), nil
 }
 
-// DetectAudio detect certain words in audio file.
+// DetectAudio checks whether certain words exist in the audio file.
 // FilePath: file path stored on WWCB server
 func DetectAudio(ctx context.Context, filepath string) error {
 	api := fmt.Sprintf("api/detect_audio?file_path=%s", filepath)
@@ -173,7 +174,7 @@ func DetectAudio(ctx context.Context, filepath string) error {
 	return nil
 }
 
-// DetectVideo detect certain screens in video file.
+// DetectVideo checks whether certain frames exist in the video file.
 // FilePath: file path stored on WWCB server.
 func DetectVideo(ctx context.Context, filepath string) error {
 	api := fmt.Sprintf("api/detect_video?file_path=%s", filepath)
@@ -181,4 +182,26 @@ func DetectVideo(ctx context.Context, filepath string) error {
 		return err
 	}
 	return nil
+}
+
+// ScreenCapture returns a filepath that use camera to capture a screenshot.
+// FixtureID: the ID of the fixture which controls display.
+func ScreenCapture(ctx context.Context, fixtureID string) (string, error) {
+	api := fmt.Sprintf("api/screen_capture?id=%s", fixtureID)
+	return HTTPGet(ctx, api)
+}
+
+// GetPiColorHotValue returns a hot value from a picture.
+// FilePath: file path stored on WWCB server.
+func GetPiColorHotValue(ctx context.Context, filePath string) (int, error) {
+	api := fmt.Sprintf("api/get_pic_color_hot_value?file_path=%s", filePath)
+	hotValue, err := HTTPGet(ctx, api)
+	if err != nil {
+		return 0, err
+	}
+	intHotValue, err := strconv.Atoi(hotValue)
+	if err != nil {
+		return 0, err
+	}
+	return intHotValue, err
 }
