@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
@@ -80,7 +81,7 @@ func init() {
 		Name:     "chromeLoggedInForCrostiniWithLacros",
 		Desc:     "Logged into a session and enable Lacros",
 		Contacts: []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts := generateChromeOpts(s)
 			if arc.Supported() {
 				opts = append(opts, chrome.ARCEnabled())

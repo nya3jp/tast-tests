@@ -95,7 +95,7 @@ var NewLacrosConfig = lacrosfixt.NewLacrosConfig
 
 // DefaultLacrosConfig defaults to using rootfs-lacros as a primary browser.
 // To support the deployed lacros-chrome from the command line, call WithVar(s) on this with the var lacrosDeployedBinary specified.
-var DefaultLacrosConfig = NewLacrosConfig(lacrosfixt.Rootfs, lacrosfixt.LacrosPrimary)
+var DefaultLacrosConfig = NewLacrosConfig(lacros.Rootfs, lacros.LacrosPrimary)
 
 // SetUpWithNewChrome returns a Browser instance along with a new Chrome instance created.
 // This is useful when no fixture is used but the new chrome needs to be instantiated in test for a fresh UI restart between tests.
