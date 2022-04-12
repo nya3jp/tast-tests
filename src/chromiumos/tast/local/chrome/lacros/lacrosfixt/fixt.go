@@ -23,9 +23,8 @@ const LacrosLogPath = "/home/chronos/user/lacros/lacros.log"
 //		...
 //	}
 type FixtValue interface {
-	Chrome() *chrome.Chrome        // The CrOS-chrome instance.
-	TestAPIConn() *chrome.TestConn // The CrOS-chrome test connection.
-	Mode() SetupMode               // Mode used to get the lacros binary.
+	chrome.HasChrome
+	TestAPIConn() *chrome.TestConn
 }
 
 // NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and

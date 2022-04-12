@@ -242,11 +242,6 @@ func (f *fixtValueImpl) TestAPIConn() *chrome.TestConn {
 	return f.testAPIConn
 }
 
-// Mode gets the mode used to get the lacros binary.
-func (f *fixtValueImpl) Mode() SetupMode {
-	return f.mode
-}
-
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
 type fixtImpl struct {
 	mode      SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
