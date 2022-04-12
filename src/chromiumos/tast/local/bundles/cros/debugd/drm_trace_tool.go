@@ -39,6 +39,16 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "drm_trace"},
+		Params: []testing.Param{
+			{
+				Name:              "stable",
+				ExtraSoftwareDeps: []string{"no_kernel_upstream"},
+			},
+			{
+				Name:      "unstable",
+				ExtraAttr: []string{"informational"},
+			},
+		},
 	})
 }
 
