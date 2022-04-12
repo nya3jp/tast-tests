@@ -25,6 +25,13 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type busInfoTestParams struct {
+	// Whether to check thunderbolt devices.
+	checkThunderbolt bool
+	// Workaround for b/200837194 to skip checking PCI ProgIf field.
+	checkProgIf bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProbeBusInfo,
@@ -35,25 +42,32 @@ func init() {
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},
-		Attr: []string{"group:mainline"},
-		Vars: []string{"ui.signinProfileTestExtensionManifestKey"},
-		// TODO(b/200837194): Remove this after the volteer2 issue fix.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("volteer2")),
+		Attr:         []string{"group:mainline"},
+		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Params: []testing.Param{{
 			Fixture: "crosHealthdRunning",
-			Val:     false,
+			Val: busInfoTestParams{
+				checkThunderbolt: false,
+				checkProgIf:      false,
+			},
 		}, {
-			Name:              "thunderbolt",
-			ExtraAttr:         []string{"informational"},
-			Val:               true,
+			Name:      "thunderbolt",
+			ExtraAttr: []string{"informational"},
+			Val: busInfoTestParams{
+				checkThunderbolt: true,
+				checkProgIf:      false,
+			},
 			ExtraData:         []string{"testcert.p12"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		}, {
-			Name:              "volteer2",
-			ExtraAttr:         []string{"informational"},
-			Val:               false,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("volteer2")),
+			// TODO(b/200837194): Remove this after the volteer2 issue fix.
+			Name:      "progif",
+			ExtraAttr: []string{"informational"},
+			Val: busInfoTestParams{
+				checkThunderbolt: false,
+				checkProgIf:      true,
+			},
 		}},
 	})
 }
@@ -61,9 +75,9 @@ func init() {
 func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	isDeviceConnected := false
 	isThunderboltSupport := false
-	isvProSupports := s.Param().(bool)
+	testParam := s.Param().(busInfoTestParams)
 
-	if isvProSupports {
+	if testParam.checkThunderbolt {
 		// Checking whether device supports thunderbolt or not.
 		outFiles, err := testexec.CommandContext(ctx, "ls", "/sys/bus/thunderbolt/devices").Output()
 		if err != nil {
@@ -141,7 +155,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if isvProSupports {
+	if testParam.checkThunderbolt {
 		if isThunderboltSupport {
 			if err := validateThundeboltDevices(ctx, tbtDevs, isDeviceConnected); err != nil {
 				s.Fatal("Failed to validate Thunderbolt devices: ", err)
@@ -154,7 +168,7 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	if err := validatePCIDevices(ctx, pciDevs); err != nil {
+	if err := validatePCIDevices(ctx, pciDevs, testParam.checkProgIf); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
 	if err := validateUSBDevices(ctx, usbDevs); err != nil {
@@ -165,25 +179,34 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 
 // validatePCIDevices validates the PCI devices with the expected PCI
 // devices extracted by the "lspci" command.
-func validatePCIDevices(ctx context.Context, devs []busDevice) error {
+func validatePCIDevices(ctx context.Context, devs []busDevice, checkProgIf bool) error {
 	var got []pci.Device
 	for _, d := range devs {
-		pd := d.BusInfo.PCIBusInfo
+		pciBusInfo := d.BusInfo.PCIBusInfo
 		// TODO:(b/199683963): Validation of busDevice.DeviceClass is skipped.
-		got = append(got, pci.Device{
-			VendorID: fmt.Sprintf("%04x", pd.VendorID),
-			DeviceID: fmt.Sprintf("%04x", pd.DeviceID),
+		pd := pci.Device{
+			VendorID: fmt.Sprintf("%04x", pciBusInfo.VendorID),
+			DeviceID: fmt.Sprintf("%04x", pciBusInfo.DeviceID),
 			Vendor:   d.VendorName,
 			Device:   d.ProductName,
-			Class:    fmt.Sprintf("%02x%02x", pd.ClassID, pd.SubClassID),
-			ProgIf:   fmt.Sprintf("%02x", pd.ProgIfID),
-			Driver:   pd.Driver,
-		})
+			Class:    fmt.Sprintf("%02x%02x", pciBusInfo.ClassID, pciBusInfo.SubClassID),
+			ProgIf:   fmt.Sprintf("%02x", pciBusInfo.ProgIfID),
+			Driver:   pciBusInfo.Driver,
+		}
+		if !checkProgIf {
+			pd.ProgIf = "(skip)"
+		}
+		got = append(got, pd)
 	}
 	pci.Sort(got)
 	exp, err := pci.ExpectedDevices(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected devices")
+	}
+	if !checkProgIf {
+		for i := range exp {
+			exp[i].ProgIf = "(skip)"
+		}
 	}
 	if d := cmp.Diff(exp, got); d != "" {
 		return errors.Errorf("unexpected PCI device data, (-expected + got): %s", d)
