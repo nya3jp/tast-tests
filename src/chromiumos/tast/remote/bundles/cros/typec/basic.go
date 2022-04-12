@@ -23,12 +23,10 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		// TODO(b/218874503): Merge the HpdWake and Basic common parts using fixtures.
-		Func:     Basic,
-		Desc:     "Checks basic typec kernel driver functionality",
-		Contacts: []string{"pmalani@chromium.org", "chromeos-power@google.com"},
-		Attr:     []string{"group:mainline", "group:typec", "informational"},
-		// TODO(b/213260357): Re-enable manatee once there is adequate EC support.
-		SoftwareDeps: []string{"no_manatee"},
+		Func:         Basic,
+		Desc:         "Checks basic typec kernel driver functionality",
+		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
+		Attr:         []string{"group:mainline", "group:typec", "informational"},
 		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.SkipOnModel("fievel", "habokay", "tiger"), hwdep.ChromeEC()),
 		Vars:         []string{"servo"},
 	})
