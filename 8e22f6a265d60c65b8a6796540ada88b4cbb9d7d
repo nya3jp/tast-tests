@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e572d229_d19c1148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-12T18:50:29Z",
+      "side": 1,
+      "message": "LGTM. Thanks for adding this test.",
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4aacbc_11443340",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-12T18:50:29Z",
+      "side": 1,
+      "message": "We should check that the row is found only once.\n    \n    if foundEmail {  \n      return errors.New(\"account row should only occur once\")\n    }\n\nHere and below.",
+      "range": {
+        "startLine": 289,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 13
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7c6c21_f116a83c",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-12T18:50:29Z",
+      "side": 1,
+      "message": "Please use fmt.Sprintf(\"user with email %s is not logged into browser\", email) instead of operator+ to concatenate strings.",
+      "range": {
+        "startLine": 291,
+        "startChar": 33,
+        "endLine": 291,
+        "endChar": 87
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13aa333a_7f914fcf",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-04-12T18:50:29Z",
+      "side": 1,
+      "message": "Nit: could not find child row",
+      "range": {
+        "startLine": 309,
+        "startChar": 36,
+        "endLine": 309,
+        "endChar": 46
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
