@@ -33,6 +33,23 @@
       "message": "shadow reviewer lgtm",
       "revId": "229ccaf42ef4b9dba24b9e96fcda7da7bd2b8e3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2712ad_c60bd6bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-04-12T12:01:23Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "229ccaf42ef4b9dba24b9e96fcda7da7bd2b8e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
