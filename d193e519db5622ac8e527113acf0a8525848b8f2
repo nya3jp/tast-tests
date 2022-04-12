@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd19cc43_6a1d79e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-04-12T22:30:00Z",
+      "side": 1,
+      "message": "This is the WIP CL for the receiving Wi-Fi credentials flow. This CL depends on cl/441284674, which implements the sending flowing.",
+      "revId": "d193e519db5622ac8e527113acf0a8525848b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
