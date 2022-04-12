@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0eb5016_ffccd5b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-12T18:26:57Z",
+      "side": 1,
+      "message": "I was following what has been done in src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go. It sounds useful for anyone who wants to look into a single iteration of the test locally.",
+      "parentUuid": "cd21f6bc_0f767c81",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 48
+      },
+      "revId": "875eea3ece62843de59af714cea653e2cd553f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a118623_bf50438e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-11T19:28:02Z",
       "side": 1,
       "message": "I think logically we should merge results in top level, PerfBoot\nWDYT?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 1
+      },
+      "revId": "875eea3ece62843de59af714cea653e2cd553f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8693b87e_d94022cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-12T18:26:57Z",
+      "side": 1,
+      "message": "Makes sense, I moved that logic to the top level.",
+      "parentUuid": "7a118623_bf50438e",
       "range": {
         "startLine": 97,
         "startChar": 0,
