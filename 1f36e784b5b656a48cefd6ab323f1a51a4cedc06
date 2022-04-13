@@ -50,6 +50,29 @@
       "message": "Having these as constant strings that are used here and when defining the tests, or adding a new `TestType` property on `test`, which is an enum, would be a better way to manage this in the future. Right now a misspelling could mess these cases up. It\u0027s OK for now but can you put a TODO here?",
       "revId": "1f36e784b5b656a48cefd6ab323f1a51a4cedc06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c7b3bc_791c4438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-04-13T20:57:58Z",
+      "side": 1,
+      "message": "IIUC, We have the individual app tests with longer timeout like 30 mins and we are trying to override that timeout of individual app tests here?\n\nIs it not same as setting the time out of apps to defaultTestCaseTimeout?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "1f36e784b5b656a48cefd6ab323f1a51a4cedc06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
