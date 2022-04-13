@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f79499b_e4b7b040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-04-13T09:17:38Z",
+      "side": 1,
+      "message": "Thanks for the initial review.",
+      "revId": "647ad70eb66761cda8fb0dddc38bc2158bbdffbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4930ddb9_da905afc",
@@ -48,6 +65,30 @@
       "writtenOn": "2022-04-12T22:03:31Z",
       "side": 1,
       "message": "the default timeout is 15 seconds, this is actually decreasing the timeout. Could you confirm that this is what you need here?",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "647ad70eb66761cda8fb0dddc38bc2158bbdffbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60a1bca_e65ccdb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-04-13T09:17:38Z",
+      "side": 1,
+      "message": "Oh interesting. We observed this test failing on Tastboard (https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2022-04-12/1c0848e3-6553-4e5a-be49-68b3d0dcb8f5/autoserv_test/tast/results/tests/dlp.DataLeakPreventionRulesListClipboardMixedTypeBrowsers/). I then ran it manually on a cave device and it would consistently fail, seemingly because the context deadline exceeded, with the following log (go/paste/5642567086505984). Although observing the test, the correct things were on screen etc. Adding the call to WithTimeout(10 * time.Second) made the test consistently pass.",
+      "parentUuid": "4930ddb9_da905afc",
       "range": {
         "startLine": 83,
         "startChar": 11,
