@@ -19,7 +19,7 @@ import (
 const ReleaseURI = "https://storage.googleapis.com/chromeos-localmirror/lvfs/test/3fab34cfa1ef97238fb24c5e40a979bc544bb2b0967b863e43e7d58e0d9a923f-fakedevice124.cab"
 
 // ChargingStateTimeout has the time needed for polling battery charging state changes.
-const ChargingStateTimeout = 19 * time.Minute
+const ChargingStateTimeout = 29 * time.Minute
 
 const (
 	// This is a string that appears when the computer is discharging.
