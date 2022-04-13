@@ -10,14 +10,12 @@ import (
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/mafredri/cdp/protocol/target"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
-	"chromiumos/tast/testing"
 )
 
 // UserDataDir is the directory that contains the user data of lacros.
@@ -26,7 +24,6 @@ const UserDataDir = "/home/chronos/user/lacros/"
 // Lacros contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type Lacros struct {
-	cmd  *testexec.Cmd // The command context used to start lacros-chrome.
 	agg  *jslog.Aggregator
 	sess *driver.Session // Debug session connected lacros-chrome.
 }
@@ -87,13 +84,6 @@ func (l *Lacros) Close(ctx context.Context) error {
 	l.agg.Close()
 	l.agg = nil
 
-	if l.cmd != nil {
-		if err := l.cmd.Kill(); err != nil {
-			testing.ContextLog(ctx, "Failed to kill lacros-chrome: ", err)
-		}
-		l.cmd.Wait()
-		l.cmd = nil
-	}
 	return nil
 }
 
