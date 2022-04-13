@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ee8055_905725c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-13T01:11:41Z",
+      "side": 1,
+      "message": "You can refactor all this connection setup code into a helper function that returns a cleanup function.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "47e615ad137279285ef10ac9f52936107a64600d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
