@@ -31,7 +31,7 @@ func init() {
 			"carpenterr@chromium.org", // test author.
 			"showoff-eng@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
