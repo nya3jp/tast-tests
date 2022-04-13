@@ -1,0 +1,5 @@
+{
+  "sha256sum": "cf5e5212fa7ccc7de047bd6fd4c64071c0b49d6c6b539501e54308d863629cdf",
+  "size": 306,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main_still_picture/IPRED_B_Nokia_3.hevc.json_20220407-222844"
+}

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "0028104ec09f7ef0f18f81387a12aa72479e64e50bdc498ac060716476c09c4e",
+  "size": 446,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/MVCLIP_A_qualcomm_3.hevc.json_20220407-222746"
+}

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "23c9959a0dd09d9a0b9c64b980794ca18214d7a3cb0fd091ca87f98dda75acf4",
+  "size": 1238476,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/TUSIZE_A_Samsung_1.hevc_20220407-220536"
+}

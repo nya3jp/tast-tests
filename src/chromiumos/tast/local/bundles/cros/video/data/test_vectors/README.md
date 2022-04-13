@@ -140,9 +140,29 @@ H.264 profile. I.e. baseline, main, extended, ...
 For most clips, metadata files are available and end with `_readme.txt`. These
 files may include source, resolution, and GOP structure information.
 
+## H.265
+
+> The files available here constitute part of the corresponding ITU-T
+> Recommendations and are protected by copyrights laws.  You may use them
+> during product or service development for the purpose of implementing the
+> corresponding ITU-T Recommendations.
+>
+> [ITU-T H.265.1]
+
+The directory holds test vectors from the file "Bitstreams for Conformance
+specification for ITU-T H.265 high efficiency video coding [2018-10] (254 MB)"
+The clips from this file are organized into subdirectories by
+H.265 profile. I.e. main, main\_10, 3d-hevc, ...
+
+For each clip, there is a metadata file it is available and ends with
+`_readme.txt`. These files may include a clip description, source, resolution,
+and GOP structure information.
+
+
 [video decoder compliance tests]: ../../README.md#video-decoder-compliance-tests
 [aomenc]: https://aomedia.googlesource.com/aom/
 [AOM license]: ../licenses/AOM-LICENSE
 [Creative Commons Attribution 3.0 Unported License]: ../licenses/CC-LICENSE
 [test-25fps.av1.ivf]: https://source.chromium.org/chromium/chromium/src/+/main:media/test/data/test-25fps.av1.ivf
 [ITU-T H.264.1]: https://www.itu.int/net/ITU-T/sigdb/spevideo/VideoForm-s.aspx?val=102002641
+[ITU-T H.265.1]: https://www.itu.int/net/ITU-T/sigdb/spevideo/VideoForm-s.aspx?val=102002651

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "ff3619cbfa9148f25a1497395f3266db62542ca98df0c1b01a2e6076d6b4e41d",
+  "size": 23074,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/rext/ExplicitRdpcm_A_BBC_1.hevc.json_20220418-190820"
+}

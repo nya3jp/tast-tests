@@ -1,0 +1,5 @@
+{
+  "sha256sum": "1a696ecc7520b23c89ac6daca7ab1f1f325a01dc01845ba352528be775456ed5",
+  "size": 12928,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/CIP_C_Panasonic_2.hevc_20220407-220457"
+}

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "1ee9f0ec6c9a338a29f1df02a7b88cf4a600f2f47df7b4f9f404bc2b743c8b83",
+  "size": 599,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/shvc/MAXTID_C_ETRI_2.hevc.json_20220407-222403"
+}

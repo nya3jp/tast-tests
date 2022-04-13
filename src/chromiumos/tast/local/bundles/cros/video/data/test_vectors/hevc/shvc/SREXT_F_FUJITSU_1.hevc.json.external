@@ -1,0 +1,5 @@
+{
+  "sha256sum": "354e7286cc873e08569482c0d40e310ee532eb58123cae09ab6431953b95e69e",
+  "size": 422,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/shvc/SREXT_F_FUJITSU_1.hevc.json_20220407-222442"
+}

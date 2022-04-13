@@ -1,0 +1,5 @@
+{
+  "sha256sum": "931db64702a056cddf66dab87e80598f16031bd147ed56c25d98b3f555424029",
+  "size": 110258,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/RAP_A_docomo_6.hevc_20220407-220940"
+}

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "972b94b1ea26c8b95b36539c0d6a42d3b6f41429faa64efc624d17cb4836a737",
+  "size": 646,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/shvc/ADAPTRES_A_ERICSSON_1.hevc.json_20220407-222418"
+}

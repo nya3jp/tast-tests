@@ -1,0 +1,5 @@
+{
+  "sha256sum": "5e1a69d29278e3e4cbd7695c7d3c229ac63c1e5e2b7af3b1c8f8062586ea1468",
+  "size": 707261,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/rext/PERSIST_RPARAM_A_RExt_Sony_3.hevc_20220418-190628"
+}

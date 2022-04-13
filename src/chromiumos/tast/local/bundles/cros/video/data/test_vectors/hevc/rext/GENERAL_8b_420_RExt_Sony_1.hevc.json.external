@@ -1,0 +1,5 @@
+{
+  "sha256sum": "fa8d36765306de185cca3560c6efbfe3553adfb6db53c1f885f6e18146f3ad08",
+  "size": 312,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/rext/GENERAL_8b_420_RExt_Sony_1.hevc.json_20220418-190802"
+}

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "688c2684539ffdca60335e7da650da0236f76c20179c844a33395cceaebb1ca3",
+  "size": 283483,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/CONFWIN_A_Sony_1.hevc_20220407-220515"
+}

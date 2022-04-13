@@ -1,0 +1,5 @@
+{
+  "sha256sum": "b7dd7c07f0a333e12bfbc8b12de6419313ceb6f19e08eb9ad62cf4c9868a7bc3",
+  "size": 367,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/EXT_A_ericsson_4.hevc.json_20220407-222623"
+}

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "5c0a11d4e8eda4d6643b285305c4016cb31a3bbb77e67c09b47ca11d09c17857",
+  "size": 1395,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/DELTAQP_C_SONY_3.hevc.json_20220407-222740"
+}

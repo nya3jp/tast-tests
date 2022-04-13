@@ -1,0 +1,5 @@
+{
+  "sha256sum": "dbad5ee9c095c0336deb4ab7c7785153da20f10ef941cac0fd27c04cb9c9ec95",
+  "size": 257348,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/IPRED_C_Mitsubishi_3.hevc_20220407-220935"
+}

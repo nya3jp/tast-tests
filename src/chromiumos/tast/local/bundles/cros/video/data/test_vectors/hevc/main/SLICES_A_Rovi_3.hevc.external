@@ -1,0 +1,5 @@
+{
+  "sha256sum": "7440908beaa68768ee66b7af5823a28ce0716d90aa1b49de630d2c5aa555d955",
+  "size": 65943,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/SLICES_A_Rovi_3.hevc_20220407-221007"
+}
