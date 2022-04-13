@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8675d9d_8e76d84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T09:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e80fa4_8e61a370",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0e9b6fd_1a68bd63",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-13T07:57:02Z",
       "side": 1,
       "message": "Optional: Personally I am not a fan of using hardcoded string in another file to reference this.\n\nI would suggest to make public variable here similar to what we do in precondition impl.\n\ne.g:\nvar ClamshellVK \u003d \"clamshellVK\"\nfixture.ClamshellVK",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5a691e_7f68aa09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T09:06:28Z",
+      "side": 1,
+      "message": "Done.\n\nI agree that it was a bad design to directly use the string names. I followed the convention as other fixtures, but it makes sense to try something new in our package.",
+      "parentUuid": "e0e9b6fd_1a68bd63",
       "range": {
         "startLine": 27,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c0c261_bdd9e700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T09:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf48c2b_0297356d",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b2dcf0b_cc08f057",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-13T07:57:02Z",
       "side": 1,
       "message": "Tablet without VK does not make sense. Any reason to create them? I cannot remember any existing tests use it.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33d101b_cfabe88b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T09:06:28Z",
+      "side": 1,
+      "message": "good catch, removed them.",
+      "parentUuid": "6b2dcf0b_cc08f057",
       "range": {
         "startLine": 82,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c6ea476_ed390184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T09:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4bcf7de_e7480eee",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10668877_2aa02e29",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-04-13T07:57:02Z",
       "side": 1,
       "message": "testName?",
+      "range": {
+        "startLine": 68,
+        "startChar": 35,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1881985_f4f681eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/inputactions/user_actions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T09:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10668877_2aa02e29",
       "range": {
         "startLine": 68,
         "startChar": 35,
