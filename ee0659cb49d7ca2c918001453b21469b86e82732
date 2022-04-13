@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c80273_eacb617c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dark_light_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2022-04-13T21:45:57Z",
+      "side": 1,
+      "message": "desc needs to be updated",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 72
+      },
+      "revId": "ee0659cb49d7ca2c918001453b21469b86e82732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
