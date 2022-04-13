@@ -157,7 +157,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 	// Launch browser and track the elapsed time.
 	// Browser is launched out side of recorder to get test API conns to set up metrics.
-	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, lFixtVal, true, tabletMode)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, lFixtVal != nil)
 	if err != nil {
 		s.Fatal("Failed to launch Chrome: ", err)
 	}

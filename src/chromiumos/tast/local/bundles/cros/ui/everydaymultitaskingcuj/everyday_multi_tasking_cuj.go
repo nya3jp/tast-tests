@@ -141,7 +141,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, lFixtVal lacrosfixt.FixtValue, 
 	defer uiHandler.Close()
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, lFixtVal, true, params.tabletMode)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, params.tabletMode, lFixtVal != nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}

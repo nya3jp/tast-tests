@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -57,7 +56,7 @@ func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
 // GetBrowserStartTime opens chrome browser and returns the browser start time.
 // If lfixtVal is given, it will open the lacros-Chrome, and return the lacros instance.
 func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
-	lFixtVal lacrosfixt.FixtValue, closeTabs, tabletMode bool) (*lacros.Lacros, time.Duration, error) {
+	closeTabs, tabletMode, isLacros bool) (*lacros.Lacros, time.Duration, error) {
 	var l *lacros.Lacros
 	chromeApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
@@ -106,7 +105,7 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 	// clean Chrome.
 	closeTabsFunc := CloseBrowserTabs
 	bTconn := tconn
-	if lFixtVal != nil {
+	if isLacros {
 		// Connect to lacros-Chrome started from UI.
 		l, err = lacros.Connect(ctx, tconn)
 		if err != nil {
