@@ -33,6 +33,98 @@
       "message": "Adding Keigo for owner approval.",
       "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c11839_9f97dbb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-13T07:29:06Z",
+      "side": 1,
+      "message": "iterations is not used?",
+      "range": {
+        "startLine": 52,
+        "startChar": 60,
+        "endLine": 52,
+        "endChar": 70
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ba2001_9e5d891b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-13T07:29:06Z",
+      "side": 1,
+      "message": "Instead of passing `i`, how about passing this directory as `saveDir` or something?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 68
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f449b81_9079ace8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-13T07:29:06Z",
+      "side": 1,
+      "message": "It looks a little weird to use a Metric struct as a key of a map.\nI\u0027m not sure what\u0027s the intention here. Could you add comments?",
+      "range": {
+        "startLine": 113,
+        "startChar": 32,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e8444f_f32f2f25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-13T07:29:06Z",
+      "side": 1,
+      "message": "nit: You can initialize the metric outside if, and use it in L119.",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
