@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a9728e_9a011cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-04-13T01:07:43Z",
+      "side": 1,
+      "message": "I have no concern from cros_healthd side. Please address or discuss with Oleh\u0027s comment.",
+      "revId": "86874ccd3e90ed62cebad76df2803875f86eead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92c989a8_10127344",
