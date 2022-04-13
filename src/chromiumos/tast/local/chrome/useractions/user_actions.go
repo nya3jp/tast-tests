@@ -89,6 +89,11 @@ func (uc *UserContext) InvalidUserAction(err error) *UserAction {
 	}, uc, nil)
 }
 
+// SetTestName sets the test name of the user context.
+func (uc *UserContext) SetTestName(testName string) {
+	uc.testName = testName
+}
+
 // SetAttribute set the value of an attribute of the user context.
 func (uc *UserContext) SetAttribute(name, value string) {
 	uc.attributes[name] = value
