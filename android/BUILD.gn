@@ -33,6 +33,7 @@ group("all") {
     "ArcInputCompatTest:ArcInputCompatMTest",
     "ArcInputLatencyTest:ArcInputLatencyTest",
     "ArcInputMethodTest:ArcInputMethodTest",
+    "ArcInputOverlayTest:ArcInputOverlayTest",
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
     "ArcLifecycleTest:ArcLifecycleTest",
