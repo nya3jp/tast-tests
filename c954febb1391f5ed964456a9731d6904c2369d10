@@ -22,6 +22,30 @@
       },
       "revId": "c954febb1391f5ed964456a9731d6904c2369d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a101574_3ec706a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-13T23:18:34Z",
+      "side": 1,
+      "message": "Good feedback. I added the constant.",
+      "parentUuid": "563bf73e_4b180234",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "c954febb1391f5ed964456a9731d6904c2369d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
