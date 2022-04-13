@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // How to create archived home data to be used by this test:
@@ -61,8 +62,13 @@ func init() {
 		// "no_qemu" is added for excluding betty from the target board list.
 		// TODO(b/179636279): Remove "no_qemu" after making the test pass on betty.
 		SoftwareDeps: []string{"chrome", "no_qemu"},
-		Timeout:      10 * time.Minute,
-		VarDeps:      []string{unmanagedUsernameVar, unmanagedPasswordVar, managedUsernameVar, managedPasswordVar},
+		// Skip running the test on some platforms to prevent the test account from reaching the
+		// play store installation rate limit. (b/216550154#comment14)
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
+			"coral-kernelnext", "grunt-kernelnext", "nami-kernelnext", "octopus-kernelnext", "dedede",
+		)),
+		Timeout: 10 * time.Minute,
+		VarDeps: []string{unmanagedUsernameVar, unmanagedPasswordVar, managedUsernameVar, managedPasswordVar},
 		Params: []testing.Param{{
 			// Launch ARC P with /data created on ARC N (for x86).
 			Name: "n_to_p_x86",
