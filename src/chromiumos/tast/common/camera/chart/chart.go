@@ -24,14 +24,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// displayScript is the script installed on chart tablet for displaying chart.
-const displayScript = "/usr/local/autotest/bin/display_chart.py"
+// DisplayScript is the script installed on chart tablet for displaying chart.
+const DisplayScript = "/usr/local/autotest/bin/display_chart.py"
 
 // displayOutputLog is path on chart tablet placing logs from stdout/stderr of display chart script.
 const displayOutputLog = "/tmp/chart_service.log"
 
 // DisplayDefaultLevel presents the default display level
 const DisplayDefaultLevel = -1
+
+// ChartReadyMsg is the key word to show display chart py works fine
+const ChartReadyMsg = "Chart is ready."
 
 // Chart displays chart files on the chart tablet in a camerabox setup.
 type Chart struct {
@@ -202,10 +205,17 @@ func SetUp(ctx context.Context, conn *ssh.Conn, outDir string, chartPaths []stri
 	}
 
 	// Start chart service.
+	//The bash trick here is inevitable due to
+	//the script will be run on another chart device instead of DUT without gRPC support.
+	//So we cannot completely start python script in golang library
+	//And since this test is kind of backing up for the remote test,
+	//it also make sense to make them share more code as possible.
+
 	displayCmd := fmt.Sprintf(
 		"(python %s %s > %s 2>&1) & echo -n $!",
-		shutil.Escape(displayScript), shutil.Escape(dir),
+		shutil.Escape(DisplayScript), shutil.Escape(dir),
 		shutil.Escape(displayOutputLog))
+
 	testing.ContextLog(ctx, "Start display chart process: ", displayCmd)
 	out, err = conn.CommandContext(ctx, "sh", "-c", displayCmd).Output()
 	if err != nil {
@@ -214,11 +224,10 @@ func SetUp(ctx context.Context, conn *ssh.Conn, outDir string, chartPaths []stri
 	pid = strings.TrimSpace(string(out))
 
 	testing.ContextLog(ctx, "Poll for 'is ready' message for ensuring chart is ready")
-	const chartReadyMsg = "Chart is ready."
 	var fifo string
-	fifoPathRegex := regexp.MustCompile(chartReadyMsg + ` Fifo:\s(\S+)`)
+	fifoPathRegex := regexp.MustCompile(ChartReadyMsg + ` Fifo:\s(\S+)`)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		output, err := conn.CommandContext(ctx, "grep", chartReadyMsg, displayOutputLog).Output()
+		output, err := conn.CommandContext(ctx, "grep", ChartReadyMsg, displayOutputLog).Output()
 		switch err.(type) {
 		case nil:
 			m := fifoPathRegex.FindSubmatch(output)
