@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/platform/memorystress"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/testing"
 )
@@ -193,7 +192,12 @@ func stressTestCase(ctx context.Context, localRand *rand.Rand, mbPerTab, switchC
 
 func lacrosMain(ctx context.Context, s *testing.State, localRand *rand.Rand, mbPerTab int, baseURL string, perfValues *perf.Values) error {
 	// TODO(b/191105438): Tune Lacros variation when Lacros tab discarder is mature.
-	lacros, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	lacros, err := lacros.Launch(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch lacros-chrome")
 	}

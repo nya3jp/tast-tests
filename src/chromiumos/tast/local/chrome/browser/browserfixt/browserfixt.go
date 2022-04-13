@@ -23,14 +23,18 @@ import (
 // after which the instance should not be used any further.
 // If browser type is TypeAsh, the fixture value must implement the HasChrome interface.
 // If browser type is TypeLacros, the fixture value must be of lacrosfixt.FixtValue type.
+// TODO(crbug.com/1315088): Replace f with just the HasChrome interface.
 func SetUp(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
+	cr := f.(chrome.HasChrome).Chrome()
 	switch bt {
 	case browser.TypeAsh:
-		cr := f.(chrome.HasChrome).Chrome()
 		return cr.Browser(), func(context.Context) {}, nil
 	case browser.TypeLacros:
-		f := f.(lacrosfixt.FixtValue)
-		l, err := lacros.Launch(ctx, f.TestAPIConn())
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to connect to test API")
+		}
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -47,10 +51,11 @@ func SetUp(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browse
 // blank tab in the case of Lacros. The caller is responsible for closing the
 // returned connection via its Close() method prior to calling the returned
 // closure.
+// TODO(crbug.com/1315088): Replace f with just the HasChrome interface.
 func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url string) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
+	cr := f.(chrome.HasChrome).Chrome()
 	switch bt {
 	case browser.TypeAsh:
-		cr := f.(chrome.HasChrome).Chrome()
 		conn, err := cr.NewConn(ctx, url)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
@@ -58,8 +63,12 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 		return conn, cr.Browser(), func(context.Context) {}, nil
 
 	case browser.TypeLacros:
-		f := f.(lacrosfixt.FixtValue)
-		l, err := lacros.LaunchWithURL(ctx, f.TestAPIConn(), url)
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to test API")
+		}
+
+		l, err := lacros.LaunchWithURL(ctx, tconn, url)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}

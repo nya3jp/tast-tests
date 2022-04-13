@@ -22,6 +22,7 @@ import (
 // Setup runs lacros-chrome if indicated by the given browser.Type and returns some objects and interfaces
 // useful in tests. If the browser.Type is Lacros, it will return a non-nil Lacros instance or an error.
 // If the browser.Type is Ash it will return a nil Lacros instance.
+// TODO(crbug.com/1315088): Replace f with just the HasChrome interface.
 func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome, *Lacros, ash.ConnSource, error) {
 	if _, ok := f.(chrome.HasChrome); !ok {
 		return nil, nil, nil, errors.Errorf("unrecognized FixtValue type: %v", f)
