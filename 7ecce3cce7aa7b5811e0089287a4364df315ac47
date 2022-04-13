@@ -68,6 +68,24 @@
       "message": "Miguel, actually my +1 is sufficient for the the owner approval. Next time, you don\u0027t have to wait for my +2. I will give +2 anyway, but don\u0027t need to wait in future. Thanks.",
       "revId": "7ecce3cce7aa7b5811e0089287a4364df315ac47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd43d37_d15a51ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-04-13T16:06:04Z",
+      "side": 1,
+      "message": "Thanks! I saw gerrit marked the CL as \"code-owners approved\" but \nthought it might have been an artifact of leaving a +2 with my\ngoogle.com account. Let\u0027s send this CL now.",
+      "parentUuid": "c82cd23e_3a629d4d",
+      "revId": "7ecce3cce7aa7b5811e0089287a4364df315ac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
