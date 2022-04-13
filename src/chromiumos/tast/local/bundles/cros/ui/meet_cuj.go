@@ -803,49 +803,110 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Tab renderer crashed: ", err)
 	}
 
+	webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals")
+	if err != nil {
+		s.Fatal("Failed to open chrome://webrtc-internals: ", err)
+	}
+	defer webrtcInternals.Close()
+
 	// Report what video codecs were used for decoding and encoding.
-	if webrtcInternals, err := cs.NewConn(ctx, "chrome://webrtc-internals"); err != nil {
-		s.Error("Failed to open chrome://webrtc-internals: ", err)
-		s.Logf("%s and %s will not be reported", decodingCodecMetricName, encodingCodecMetricName)
-	} else {
-		defer webrtcInternals.Close()
-		if err := ui.WithTimeout(10 * time.Minute).WaitUntilExists(nodewith.NameContaining("VideoStream").First())(ctx); err != nil {
-			s.Error("Failed to wait for video stream info to appear: ", err)
-		}
-		if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
-			s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
-		}
-		if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
-			s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
-		}
+	webRTCReportWaiter := ui.WithTimeout(10 * time.Minute)
+	videoStream := nodewith.NameContaining("VideoStream").First()
+	if err := webRTCReportWaiter.WaitUntilExists(videoStream)(ctx); err != nil {
+		s.Error("Failed to wait for video stream info to appear: ", err)
+	}
+	if err := reportCodec(ctx, ui, pv, decodingCodecMetricName, "(inbound-rtp, VP8)", "(inbound-rtp, VP9)"); err != nil {
+		s.Errorf("Failed to report %s: %v", decodingCodecMetricName, err)
+	}
+	if err := reportCodec(ctx, ui, pv, encodingCodecMetricName, "(outbound-rtp, VP8)", "(outbound-rtp, VP9)"); err != nil {
+		s.Errorf("Failed to report %s: %v", encodingCodecMetricName, err)
 	}
 
 	// Report WebRTC metrics for the sent video stream.
-	if hists, err := metrics.RunAndWaitAll(ctx, bTconn, timeout, func(ctx context.Context) error {
+	type histInfo struct {
+		unit      string
+		direction perf.Direction
+		outbound  bool
+	}
+	infoByName := map[string]histInfo{
+		"WebRTC.Video.BandwidthLimitedResolutionInPercent":             histInfo{"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.BandwidthLimitedResolutionsDisabled":             histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.CpuLimitedResolutionInPercent":                   histInfo{"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DecodedFramesPerSecond":                          histInfo{"fps", perf.BiggerIsBetter, false},
+		"WebRTC.Video.DroppedFrames.Capturer":                          histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.Encoder":                           histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.EncoderQueue":                      histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.Ratelimiter":                       histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.Receiver":                          histInfo{"count", perf.SmallerIsBetter, false},
+		"WebRTC.Video.InputFramesPerSecond":                            histInfo{"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.NumberResolutionDownswitchesPerMinute":           histInfo{"count_per_minute", perf.SmallerIsBetter, false},
+		"WebRTC.Video.QualityLimitedResolutionDownscales":              histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.QualityLimitedResolutionInPercent":               histInfo{"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.RenderFramesPerSecond":                           histInfo{"fps", perf.BiggerIsBetter, false},
+		"WebRTC.Video.Screenshare.BandwidthLimitedResolutionInPercent": histInfo{"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.BandwidthLimitedResolutionsDisabled": histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.InputFramesPerSecond":                histInfo{"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.Screenshare.QualityLimitedResolutionDownscales":  histInfo{"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.QualityLimitedResolutionInPercent":   histInfo{"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.SentFramesPerSecond":                 histInfo{"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.Screenshare.SentToInputFpsRatioPercent":          histInfo{"percent", perf.BiggerIsBetter, true},
+		"WebRTC.Video.SentFramesPerSecond":                             histInfo{"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.SentToInputFpsRatioPercent":                      histInfo{"percent", perf.BiggerIsBetter, true},
+		"WebRTC.Video.TimeInHdPercentage":                              histInfo{"percent", perf.BiggerIsBetter, false},
+	}
+	var names []string
+	for name := range infoByName {
+		names = append(names, name)
+	}
+	if hists, err := metrics.Run(ctx, bTconn, func(ctx context.Context) error {
 		// The histograms are recorded when the sent video stream is removed.
 		closedMeet = true
 		if err := meetConn.CloseTarget(closeCtx); err != nil {
 			return errors.Wrap(err, "failed to close the meeting")
 		}
+		if err := webRTCReportWaiter.WaitUntilGone(videoStream)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for video stream info to disappear")
+		}
 		return nil
-	},
-		"WebRTC.Video.DroppedFrames.Capturer",
-		"WebRTC.Video.DroppedFrames.Encoder",
-		"WebRTC.Video.DroppedFrames.EncoderQueue",
-		"WebRTC.Video.DroppedFrames.Ratelimiter",
-	); err != nil {
+	}, names...); err != nil {
 		s.Error("Failed to gather WebRTC metrics for video streams: ", err)
 	} else {
 		for _, hist := range hists {
-			if count := hist.TotalCount(); count != 1 {
-				s.Errorf("Got %d samples of %s; expected 1", count, hist.Name)
-			} else {
-				pv.Set(perf.Metric{
-					Name:      hist.Name,
-					Unit:      "count",
-					Direction: perf.SmallerIsBetter,
-				}, float64(hist.Sum))
+			count := hist.TotalCount()
+			if count == 0 {
+				continue
 			}
+
+			info := infoByName[hist.Name]
+			var expectedCount int64
+			if info.outbound {
+				expectedCount = 1
+			} else {
+				expectedCount = int64(meet.num)
+			}
+			if count != expectedCount {
+				s.Errorf("Unexpected sample count on %s: got %d; expected %d", hist.Name, count, expectedCount)
+				continue
+			}
+
+			total := float64(hist.Sum)
+			if info.outbound {
+				pv.Set(perf.Metric{hist.Name, "", info.unit, info.direction, false}, total)
+				continue
+			}
+
+			var bucketMinima []float64
+			var bucketMaxima []float64
+			for _, bucket := range hist.Buckets {
+				for i := int64(0); i < bucket.Count; i++ {
+					bucketMinima = append(bucketMinima, float64(bucket.Min))
+					bucketMaxima = append(bucketMaxima, float64(bucket.Max))
+				}
+			}
+			pv.Set(perf.Metric{hist.Name, "bucket_minima", info.unit, info.direction, true}, bucketMinima...)
+			pv.Set(perf.Metric{hist.Name, "bucket_maxima", info.unit, info.direction, true}, bucketMaxima...)
+			pv.Set(perf.Metric{hist.Name, "total", info.unit, info.direction, false}, total)
+			pv.Set(perf.Metric{hist.Name, "mean", info.unit, info.direction, false}, total/float64(count))
 		}
 	}
 
