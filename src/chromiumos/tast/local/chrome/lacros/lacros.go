@@ -6,6 +6,7 @@ package lacros
 
 import (
 	"context"
+	"time"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/mafredri/cdp/protocol/target"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/testing"
 )
 
 // UserDataDir is the directory that contains the user data of lacros.
@@ -24,8 +26,9 @@ const UserDataDir = "/home/chronos/user/lacros/"
 // Lacros contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type Lacros struct {
-	agg  *jslog.Aggregator
-	sess *driver.Session // Debug session connected lacros-chrome.
+	agg    *jslog.Aggregator
+	sess   *driver.Session  // Debug session connected lacros-chrome.
+	ctconn *chrome.TestConn // Ash TestConn.
 }
 
 // Browser returns a Browser instance.
@@ -71,9 +74,32 @@ func (l *Lacros) Close(ctx context.Context) error {
 		return errors.Wrap(err, "failed to query for all targets")
 	}
 
+	var sessErr error
 	for _, info := range ts {
+		// Ignore the error here, as closing the target may close lacros and
+		// cause an error.
 		if err := l.sess.CloseTarget(ctx, info.TargetID); err != nil {
-			return err
+			sessErr = err
+		}
+	}
+
+	// If keepalive is on, sessErr should only be non-nil in an error condition.
+	// In that case, we will timeout on this poll since lacros will still be
+	// running. If keepalive is false, then we will expect lacros to not be
+	// running soon if the error was due to CloseTarget trying to run on
+	// a closed browser.
+	if sessErr != nil {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			info, err := InfoSnapshot(ctx, l.ctconn)
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
+			}
+			if info.Running {
+				return errors.Wrap(err, "lacros still running")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return errors.Wrap(sessErr, "lacros unexpectedly still running")
 		}
 	}
 
