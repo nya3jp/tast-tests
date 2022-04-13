@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "a66bcb15f0b7acc500a48033ba0bdf7028c42e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2637726c_67ffdf71",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-13T16:45:19Z",
+      "side": 1,
+      "message": "could you keep the error here, and return it caller, as this is most informative error we\u0027d see?",
+      "revId": "a66bcb15f0b7acc500a48033ba0bdf7028c42e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da18f4b_59c1a928",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-13T16:45:19Z",
+      "side": 1,
+      "message": "can we get keep alive bit here, too, so that we do not need to wait for timeout on error w/ keepalive?",
+      "revId": "a66bcb15f0b7acc500a48033ba0bdf7028c42e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
