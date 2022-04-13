@@ -22,6 +22,30 @@
       },
       "revId": "b8a2054a484f5d03aee8924accd950eb9b4acf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "950db5b1_eb9dde18",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-13T15:39:31Z",
+      "side": 0,
+      "message": "Haha.. please disregard this as I just saw you\u0027re doing https://crrev.com/c/3585268 for that. :) LGTM, and resolving this.",
+      "parentUuid": "6f8639b4_2d131a59",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "b8a2054a484f5d03aee8924accd950eb9b4acf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
