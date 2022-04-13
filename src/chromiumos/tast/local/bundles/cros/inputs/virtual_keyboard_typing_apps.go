@@ -10,8 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -32,16 +34,26 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      5 * time.Minute,
-		Params: []testing.Param{{
-			Pre:               pre.VKEnabledTablet,
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			ExtraAttr:         []string{"group:input-tools-upstream"},
-		}, {
-			Name:              "informational",
-			Pre:               pre.VKEnabledTablet,
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-			ExtraAttr:         []string{"informational"},
-		}}})
+		Params: []testing.Param{
+			{
+				Pre:               pre.VKEnabledTablet,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "informational",
+				Pre:               pre.VKEnabledTablet,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "fixture",
+				Fixture:           fixture.TabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+			},
+		},
+	})
 }
 
 func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
@@ -49,9 +61,19 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 	// Input string should start with lower case letter because VK layout is not auto-capitalized in the settings search bar.
 	const typingKeys = "language"
 
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	var cr *chrome.Chrome
+	var tconn *chrome.TestConn
+	var uc *useractions.UserContext
+	if strings.Contains(s.TestName(), "fixture") {
+		cr = s.FixtValue().(fixture.FixtData).Chrome
+		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
+		uc = s.FixtValue().(fixture.FixtData).UserContext
+		uc.SetTestName(s.TestName())
+	} else {
+		cr = s.PreValue().(pre.PreData).Chrome
+		tconn = s.PreValue().(pre.PreData).TestAPIConn
+		uc = s.PreValue().(pre.PreData).UserContext
+	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
