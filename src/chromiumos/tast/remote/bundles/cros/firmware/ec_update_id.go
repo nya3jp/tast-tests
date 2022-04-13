@@ -101,7 +101,7 @@ func ECUpdateID(ctx context.Context, s *testing.State) {
 			s.Fatal("Requiring BiosServiceClient: ", err)
 		}
 
-		s.Log("Restore EC_RW firmware with backup from: ", ecrwbPath.Path)
+		s.Log("Restore EC_RW firmware with backup from: ", ecrwPath.Path)
 		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, ecrwPath); err != nil {
 			s.Fatal("Failed to restore EC_RW firmware: ", err)
 		}
