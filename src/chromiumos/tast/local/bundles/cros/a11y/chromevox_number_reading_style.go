@@ -106,7 +106,7 @@ func ChromevoxNumberReadingStyle(ctx context.Context, s *testing.State) {
 		},
 		{
 			chromevox.OpenOptionsPage,
-			[]a11y.SpeechExpectation{a11y.NewStringExpectation("Untitled, tab")},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("ChromeVox Options")},
 		},
 		{
 			[]string{chromevox.Find},
