@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bfb05a_dd1f43ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-13T12:34:47Z",
+      "side": 1,
+      "message": "I see that SkipOnPlatform is deprecated. Shall we introduce a new Software Dependency for experimental boards where the board name ends in kernelnext?",
+      "range": {
+        "startLine": 67,
+        "startChar": 30,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "260219ee882683846343ddb4300a7a8d12d4b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e1444da3_ae2eccc2",
@@ -14,6 +37,30 @@
       "writtenOn": "2022-04-13T12:27:04Z",
       "side": 1,
       "message": "Excluding dedede because it has too many (35) different models.\n\nhttps://tastboard.corp.google.com/test/arc.DataMigration.p_to_r_x86",
+      "range": {
+        "startLine": 68,
+        "startChar": 84,
+        "endLine": 68,
+        "endChar": 92
+      },
+      "revId": "260219ee882683846343ddb4300a7a8d12d4b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0014ba7a_62504b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-13T12:34:47Z",
+      "side": 1,
+      "message": "Can we add a comment to explain the reasoning?",
+      "parentUuid": "e1444da3_ae2eccc2",
       "range": {
         "startLine": 68,
         "startChar": 84,
