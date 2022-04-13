@@ -16,6 +16,24 @@
       "message": "could you avoid using Sleep, and use proper wait condition here?\nSleeping to wait for something is a source of flakiness and we should avoid that pattern.",
       "revId": "3f0d8119919d22b2592f86c7bbd2d4385cf48fbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc14429f_bff1f6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-04-13T09:29:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f183f899_238b0fba",
+      "revId": "3f0d8119919d22b2592f86c7bbd2d4385cf48fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
