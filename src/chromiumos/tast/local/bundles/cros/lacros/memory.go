@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -135,7 +134,12 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	// processes, but most will go away after 60 seconds.
 	testing.Sleep(ctx, 60*time.Second)
 
-	info, err := lacros.InfoSnapshot(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
+	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	info, err := lacros.InfoSnapshot(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get lacros info: ", err)
 	}
@@ -181,7 +185,12 @@ func Memory(ctx context.Context, s *testing.State) {
 		// Measure memory before launching lacros-chrome.
 		pmf1, pss1 := measureBothChrome(ctx, s)
 
-		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn())
+		tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to test API: ", err)
+		}
+
+		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
@@ -217,13 +226,13 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		var conns []*chrome.Conn
 		if params.mode == openTabMode {
-			conns, err = openTabsChromeOS(ctx, s.FixtValue().(lacrosfixt.FixtValue).Chrome(), params.numTabs)
+			conns, err = openTabsChromeOS(ctx, s.FixtValue().(chrome.HasChrome).Chrome(), params.numTabs)
 			if err != nil {
 				s.Fatal("Failed to open ash-chrome tabs: ", err)
 			}
 		} else {
 			// Open a new tab to url.
-			conn, err := s.FixtValue().(lacrosfixt.FixtValue).Chrome().NewConn(ctx, url)
+			conn, err := s.FixtValue().(chrome.HasChrome).Chrome().NewConn(ctx, url)
 			if err != nil {
 				s.Fatal("Failed to open ash-chrome tab: ", err)
 			}
@@ -233,7 +242,7 @@ func Memory(ctx context.Context, s *testing.State) {
 			defer conn.Close()
 		}
 
-		if err := setWindowSize(ctx, s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn()); err != nil {
+		if err := setWindowSize(ctx, tconn); err != nil {
 			s.Fatal("Failed to set lacros-chrome window size: ", err)
 		}
 

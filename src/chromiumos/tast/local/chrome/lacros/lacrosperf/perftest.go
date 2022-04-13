@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power/setup"
@@ -91,7 +90,7 @@ const (
 )
 
 // SetupCrosTestWithPage opens a cros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupCrosTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url string, stabilize StabilizeCondition) (*chrome.Conn, CleanupCallback, error) {
+func SetupCrosTestWithPage(ctx context.Context, cr *chrome.Chrome, url string, stabilize StabilizeCondition) (*chrome.Conn, CleanupCallback, error) {
 	// Depending on the page, opening it may cause continuous CPU usage (e.g. WebGL aquarium),
 	// so wait until stabilized before opening the tab if we are instructed to do so.
 	if stabilize == StabilizeBeforeOpeningURL {
@@ -100,7 +99,7 @@ func SetupCrosTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url stri
 		}
 	}
 
-	conn, err := f.Chrome().NewConn(ctx, url)
+	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to open new tab")
 	}
@@ -125,12 +124,17 @@ func SetupCrosTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url stri
 }
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupLacrosTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url string, stabilize StabilizeCondition) (
+func SetupLacrosTestWithPage(ctx context.Context, cr *chrome.Chrome, url string, stabilize StabilizeCondition) (
 	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *lacros.Lacros, retCleanup CleanupCallback, retErr error) {
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
 	// Since we also want to wait until the CPU is stabilized as much as possible,
 	// we first open with about:blank to remove startup cost as a variable as much as possible.
-	l, err := lacros.LaunchWithURL(ctx, f.TestAPIConn(), chrome.BlankURL)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, nil, nil, errors.Wrap(err, "failed to connect to test API")
+	}
+
+	l, err := lacros.LaunchWithURL(ctx, tconn, chrome.BlankURL)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
