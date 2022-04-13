@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3367d56_620646c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-13T05:29:43Z",
+      "side": 1,
+      "message": "How is this accomplished?",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "33d22a824b6666ca2c0500b96d4f41093a41e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cd8376_c32250e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-13T05:29:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "33d22a824b6666ca2c0500b96d4f41093a41e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89cc623_fc11290d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-13T05:29:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "33d22a824b6666ca2c0500b96d4f41093a41e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1736a92_cba1495d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-13T05:29:43Z",
+      "side": 1,
+      "message": "and it must not be wikipedia or yahoo?",
+      "range": {
+        "startLine": 367,
+        "startChar": 63,
+        "endLine": 367,
+        "endChar": 75
+      },
+      "revId": "33d22a824b6666ca2c0500b96d4f41093a41e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37da63c_ff6f5729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-04-13T05:29:43Z",
+      "side": 1,
+      "message": "This is a bit confusing, if (idx%tabNum)%2 \u003d\u003d 0 is true, then idx is even number? but the it is called isOddTab?",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 9
+      },
+      "revId": "33d22a824b6666ca2c0500b96d4f41093a41e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
