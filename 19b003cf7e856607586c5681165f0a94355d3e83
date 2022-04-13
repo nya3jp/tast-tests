@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dfcec2c_5a06021a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-04-13T00:08:28Z",
+      "side": 1,
+      "message": "I copied the approach used elsewhere; please let me know if there is a better/more idiomatic way to accomplish this.",
+      "revId": "19b003cf7e856607586c5681165f0a94355d3e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
