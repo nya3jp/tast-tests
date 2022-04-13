@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef66918_d6712c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2022-04-13T19:33:10Z",
+      "side": 1,
+      "message": "IIRC we also allow wildcards in this list: https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/settings/cros_settings.cc;drc\u003d4f6d4cc4d6d6b8a8852412013595e4458c2236f2;l\u003d239\nSo it makes sense to check for wildcards like \"*@gmail.com\" as well.",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 48
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
