@@ -33,6 +33,9 @@ const displayOutputLog = "/tmp/chart_service.log"
 // DisplayDefaultLevel presents the default display level
 const DisplayDefaultLevel = -1
 
+// ChartReadyMsg is the key word to show display chart py works fine
+const ChartReadyMsg = "Chart is ready."
+
 // Chart displays chart files on the chart tablet in a camerabox setup.
 type Chart struct {
 	// conn is the SSH connection to the chart tablet.
@@ -49,6 +52,15 @@ type Chart struct {
 // NamePath is the reference path to the chart to be displayed on the chart
 // service. The path is determined by the relative path to the chart directory.
 type NamePath string
+
+// Displaycmd mainly to run an display_chat.py
+// Also need to provide argument about output log and image location
+func Displaycmd(dir, outLog string) string {
+	return fmt.Sprintf(
+		"(python %s %s > %s 2>&1) & echo -n $!",
+		shutil.Escape(displayScript), shutil.Escape(dir),
+		shutil.Escape(outLog))
+}
 
 // cleanup cleans up chart's (half-)initialized members and saves logs of chart process to |outDir|.
 func cleanup(ctx context.Context, conn *ssh.Conn, dir, pid, outDir string) error {
@@ -202,10 +214,7 @@ func SetUp(ctx context.Context, conn *ssh.Conn, outDir string, chartPaths []stri
 	}
 
 	// Start chart service.
-	displayCmd := fmt.Sprintf(
-		"(python %s %s > %s 2>&1) & echo -n $!",
-		shutil.Escape(displayScript), shutil.Escape(dir),
-		shutil.Escape(displayOutputLog))
+	displayCmd := Displaycmd(dir, displayOutputLog)
 	testing.ContextLog(ctx, "Start display chart process: ", displayCmd)
 	out, err = conn.CommandContext(ctx, "sh", "-c", displayCmd).Output()
 	if err != nil {
@@ -214,11 +223,10 @@ func SetUp(ctx context.Context, conn *ssh.Conn, outDir string, chartPaths []stri
 	pid = strings.TrimSpace(string(out))
 
 	testing.ContextLog(ctx, "Poll for 'is ready' message for ensuring chart is ready")
-	const chartReadyMsg = "Chart is ready."
 	var fifo string
-	fifoPathRegex := regexp.MustCompile(chartReadyMsg + ` Fifo:\s(\S+)`)
+	fifoPathRegex := regexp.MustCompile(ChartReadyMsg + ` Fifo:\s(\S+)`)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		output, err := conn.CommandContext(ctx, "grep", chartReadyMsg, displayOutputLog).Output()
+		output, err := conn.CommandContext(ctx, "grep", ChartReadyMsg, displayOutputLog).Output()
 		switch err.(type) {
 		case nil:
 			m := fifoPathRegex.FindSubmatch(output)
