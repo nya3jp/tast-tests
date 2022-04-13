@@ -16,6 +16,121 @@
       "message": "Thanks for reviewing, Jason.\n\nHi Tast Owners, PTAL, thank you!\n",
       "revId": "ebcd7546aabcc4229c2c6103d3809cb3b9869d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc1fb20_2fec8eac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dark_light_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-13T22:51:27Z",
+      "side": 1,
+      "message": "huge nit (here and below): remove empty lines L46 and L50 so that everything related to `cr` is together",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "ebcd7546aabcc4229c2c6103d3809cb3b9869d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b052c95_cbef058f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dark_light_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-13T22:51:27Z",
+      "side": 1,
+      "message": "ditto above: remove L54 and L58",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 1
+      },
+      "revId": "ebcd7546aabcc4229c2c6103d3809cb3b9869d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789c7ca9_3ba61d5e",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-13T22:51:27Z",
+      "side": 1,
+      "message": "are these strings fixed? do they correspond to some hardcoded strings in Chrome?\nIf so, add a reference to the doc and/or source code where they are defined.",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "ebcd7546aabcc4229c2c6103d3809cb3b9869d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053baeb5_bdd32c35",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-13T22:51:27Z",
+      "side": 1,
+      "message": "ditto below: If not used, add it in a different commit, once there is a use for it",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "ebcd7546aabcc4229c2c6103d3809cb3b9869d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd26ad5_74f5b720",
+        "filename": "src/chromiumos/tast/local/personalization/personalization.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-13T22:51:27Z",
+      "side": 1,
+      "message": "not used ? if it not used in this test, I\u0027d add in a different commit, once it gets used",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "ebcd7546aabcc4229c2c6103d3809cb3b9869d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
