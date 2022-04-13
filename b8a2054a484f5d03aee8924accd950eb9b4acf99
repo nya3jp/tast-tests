@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8639b4_2d131a59",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-13T15:37:59Z",
+      "side": 0,
+      "message": "Would it be safe to at least check if the lacros process has terminated at this point? so, it can guarantee that all are cleared up on the call-site of Close() to avoid any lifecycle related test flakes.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "b8a2054a484f5d03aee8924accd950eb9b4acf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
