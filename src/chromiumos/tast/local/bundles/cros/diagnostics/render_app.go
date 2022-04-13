@@ -21,7 +21,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Diagnostics app launches and renders components",
 		Contacts: []string{
-			"joonbug@chromium.org",
+			"ashleydp@google.com",
+			"zentaro@google.com",
+			"menghuan@google.com",
 			"cros-peripherals@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
