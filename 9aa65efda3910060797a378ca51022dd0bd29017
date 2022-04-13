@@ -16,6 +16,40 @@
       "message": "No concern from cros_healthd side.",
       "revId": "9aa65efda3910060797a378ca51022dd0bd29017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ee2cf8_a0e7aad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-13T03:34:25Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "9aa65efda3910060797a378ca51022dd0bd29017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05e73fd_c5d9dc18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-13T03:34:25Z",
+      "side": 1,
+      "message": "I don\u0027t know what a \"ProgIf\" is, maybe add a comment?",
+      "revId": "9aa65efda3910060797a378ca51022dd0bd29017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
