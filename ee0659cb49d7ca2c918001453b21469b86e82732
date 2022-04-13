@@ -22,6 +22,30 @@
       },
       "revId": "ee0659cb49d7ca2c918001453b21469b86e82732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609ebda3_36f18040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_dark_light_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-04-13T21:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c80273_eacb617c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 72
+      },
+      "revId": "ee0659cb49d7ca2c918001453b21469b86e82732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
