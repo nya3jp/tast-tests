@@ -15,11 +15,15 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/testing"
 )
+
+type testParams struct {
+	cancelPrint bool
+	bt          browser.Type
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -38,25 +42,25 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "cancel",
-				Val:               true,
+				Val:               testParams{cancelPrint: true, bt: browser.TypeAsh},
 				ExtraSoftwareDeps: []string{"chrome"},
 				Fixture:           "chromeLoggedIn",
 			},
 			{
 				Name:              "complete",
-				Val:               false,
+				Val:               testParams{cancelPrint: false, bt: browser.TypeAsh},
 				ExtraSoftwareDeps: []string{"chrome"},
 				Fixture:           "chromeLoggedIn",
 			},
 			{
 				Name:              "lacros_cancel",
-				Val:               true,
+				Val:               testParams{cancelPrint: true, bt: browser.TypeLacros},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Fixture:           "lacros",
 			},
 			{
 				Name:              "lacros_complete",
-				Val:               false,
+				Val:               testParams{cancelPrint: false, bt: browser.TypeLacros},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Fixture:           "lacros",
 			},
@@ -93,38 +97,31 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 	}
 	defer printer.Close()
 
-	// ptconn is used to call autotestPrivate methods since
-	// Lacros Chrome does not support the autotestPrivate API.
-	var ptconn *chrome.TestConn
-	var tconn *chrome.TestConn
-	if ash, ok := s.FixtValue().(*chrome.Chrome); ok {
-		ptconn, err = ash.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("ash.TestAPIConn() failed: ", err)
-		}
-		tconn = ptconn
-	} else if lacros, ok := s.FixtValue().(lacrosfixt.FixtValue); ok {
-		ptconn = lacros.TestAPIConn()
-		lacrosBrowser, closeBrowser, err := browserfixt.SetUp(ctx, lacros, browser.TypeLacros)
-		if err != nil {
-			s.Fatal("Failed to launch lacros: ", err)
-		}
-		defer closeBrowser(ctx)
-		tconn, err = lacrosBrowser.TestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("lacrosBrowser.TestAPIConn() failed: ", err)
-		}
-	} else {
-		s.Fatal("Invalid fixture type")
+	params := s.Param().(testParams)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	// ctconn is the ash TestConn
+	ctconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to ash test API: ", err)
+	}
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)
+	if err != nil {
+		s.Fatal("Failed to launch browser: ", err)
+	}
+	defer closeBrowser(ctx)
+	tconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to browser test API: ", err)
 	}
 
 	s.Log("Registering a printer")
-	if err := ptconn.Call(ctx, nil, "chrome.autotestPrivate.updatePrinter", map[string]string{"printerName": printerName, "printerId": printerID, "printerDesc": printerDesc, "printerUri": "socket://localhost", "printerPpd": ppdFilePath}); err != nil {
+	if err := ctconn.Call(ctx, nil, "chrome.autotestPrivate.updatePrinter", map[string]string{"printerName": printerName, "printerId": printerID, "printerDesc": printerDesc, "printerUri": "socket://localhost", "printerPpd": ppdFilePath}); err != nil {
 		s.Fatal("autotestPrivate.updatePrinter() failed: ", err)
 	}
 
 	defer func() {
-		if err := ptconn.Call(ctx, nil, "chrome.autotestPrivate.removePrinter", printerID); err != nil {
+		if err := ctconn.Call(ctx, nil, "chrome.autotestPrivate.removePrinter", printerID); err != nil {
 			s.Fatal("autotestPrivate.removePrinter() failed: ", err)
 		}
 	}()
@@ -270,7 +267,7 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 	}
 
 	var expectedStatus string
-	if s.Param().(bool) {
+	if params.cancelPrint {
 		s.Log("Calling chrome.printing.cancelJob")
 		if err := tconn.Call(ctx, nil, "tast.promisify(chrome.printing.cancelJob)", job.JobID); err != nil {
 			s.Fatal("Failed to call cancelJob: ", err)
