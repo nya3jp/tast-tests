@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01e74b8_0c6e8525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-13T12:50:00Z",
+      "side": 1,
+      "message": "+yamaguchi@, who deprecated SkipOnPlatform.\n\nWhat is the recommended way to skip a list of boards?\nDoes SoftwareDeps support Skip?",
+      "parentUuid": "e8bfb05a_dd1f43ea",
+      "range": {
+        "startLine": 67,
+        "startChar": 30,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "260219ee882683846343ddb4300a7a8d12d4b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e1444da3_ae2eccc2",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Can we add a comment to explain the reasoning?",
       "parentUuid": "e1444da3_ae2eccc2",
+      "range": {
+        "startLine": 68,
+        "startChar": 84,
+        "endLine": 68,
+        "endChar": 92
+      },
+      "revId": "260219ee882683846343ddb4300a7a8d12d4b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d06c42_d2e4a2f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-13T12:50:00Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0014ba7a_62504b84",
       "range": {
         "startLine": 68,
         "startChar": 84,
