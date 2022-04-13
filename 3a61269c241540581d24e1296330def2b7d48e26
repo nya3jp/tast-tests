@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1963d3e_d96768c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-04-13T09:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b358230_9d97d8c0",
+      "range": {
+        "startLine": 171,
+        "startChar": 55,
+        "endLine": 171,
+        "endChar": 60
+      },
+      "revId": "3a61269c241540581d24e1296330def2b7d48e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2e7298b_8f6700a8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61bc559_5199a034",
+        "filename": "src/chromiumos/tast/local/camera/cca/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-04-13T09:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e7298b_8f6700a8",
+      "range": {
+        "startLine": 265,
+        "startChar": 14,
+        "endLine": 265,
+        "endChar": 25
+      },
+      "revId": "3a61269c241540581d24e1296330def2b7d48e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d576d52_62ce2254",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-13T08:56:58Z",
       "side": 1,
       "message": "This should be unnecessary since matches will be empty array when there\u0027s no match.",
+      "range": {
+        "startLine": 440,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 3
+      },
+      "revId": "3a61269c241540581d24e1296330def2b7d48e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea37535d_784e7792",
+        "filename": "src/chromiumos/tast/local/camera/cca/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-04-13T09:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d576d52_62ce2254",
       "range": {
         "startLine": 440,
         "startChar": 2,
