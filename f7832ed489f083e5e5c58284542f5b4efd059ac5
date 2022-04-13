@@ -3,6 +3,230 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a14948bc_fc8bfd3e",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "`On success`",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 204,
+        "endChar": 26
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134da393_01d225ac",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "nit: I think these should be in the opposite order unless the data comes from code that lists them in this order.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300cf4ad_8414980d",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "`On success`",
+      "range": {
+        "startLine": 252,
+        "startChar": 70,
+        "endLine": 252,
+        "endChar": 83
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf12dec_95f6115f",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "`IDs of bots` (because the comment should speak of `bots that failed to be removed` instead of `IDs that failed to be removed`)",
+      "range": {
+        "startLine": 253,
+        "startChar": 31,
+        "endLine": 253,
+        "endChar": 38
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d15514_96396f03",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "`IDs of bots`",
+      "range": {
+        "startLine": 254,
+        "startChar": 11,
+        "endLine": 254,
+        "endChar": 18
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255e18c3_e718b2b5",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "`that were`",
+      "range": {
+        "startLine": 254,
+        "startChar": 19,
+        "endLine": 254,
+        "endChar": 25
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b348fe8f_37c440b1",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "nit: Put this immediately before `resp`, with no blank line. `CreateConference` and `AddBots` contain similar code including response type definitions and you can make `RemoveAllBots` consistent with them.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 2
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec5a16d_d640ea7e",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "nit: I think these should be in the opposite order unless the data comes from code that lists them in this order.",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 37
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ee151a_97da1ab6",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "nit: Put this immediately before the corresponding `for` loop.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d4651a_8f785289",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "nit: Remove this blank line, because the above code is directly related to the below `return`.",
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95768d4f_ad43f628",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 4
@@ -37,6 +261,98 @@
       "writtenOn": "2022-04-13T16:21:04Z",
       "side": 1,
       "message": "Can we save these as metrics and upload them? Are we already doing this?",
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ff66a5_afc637a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "Would it help to call `RemoveAllBots` repeatedly, similarly to how you call `AddBots` repeatedly?",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 4
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a5af12_331042a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "This should go on line 313 because you definitely want the bots to be removed when line 333 is executed.",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 13
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582c7ad2_9370f6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "I think it may be a good idea to call `AddBots` repeatedly even if you only want 1 bot, because I have seen it return successfully and add 0 bots. For example, while running ui.MeetCUJ.16p:\n  2022-04-12T19:50:25.131617Z [19:50:24.537] 6 bots started\n  2022-04-12T19:50:32.694814Z [19:50:32.100] 5 bots started\n  2022-04-12T19:50:39.792207Z [19:50:39.198] 3 bots started\n  2022-04-12T19:50:42.832670Z [19:50:42.238] 1 bots started\n  2022-04-12T19:50:45.844747Z [19:50:45.250] 0 bots started\n  2022-04-12T19:50:50.894184Z [19:50:50.299] 1 bots started\n\nYou can make a function in bond.go based on the code in meet_cuj.go that invokes `AddBots` repeatedly. You can do it in a separate CL.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 2
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351f3468_9c915d36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T16:38:17Z",
+      "side": 1,
+      "message": "Same deal: consider calling `RemoveAllBots` repeatedly even though there should be only 1 bot, and make it a function in bond.go invoked from both meet_cuj.go and here.",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 3
+      },
       "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
