@@ -21,7 +21,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Can successfully navigate to the Connectivity page",
 		Contacts: []string{
-			"michaelcheco@google.com",
+			"ashleydp@google.com",
+			"zentaro@google.com",
+			"menghuan@google.com",
 			"cros-peripherals@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
