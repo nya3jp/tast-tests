@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dab935b_21725669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-13T16:48:42Z",
+      "side": 1,
+      "message": "WaitForLocation(confirm) returns immediately when conform is available.\nI don\u0027t think it\u0027s what you\u0027re waiting for conceptually?",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "5e73939ad11ba4520258ca5cfef23dcd0195f051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
