@@ -449,7 +449,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 
 	timeTabsOpenStart := time.Now()
 	// Launch browser and track the elapsed time.
-	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, lFixtVal, true, isTablet)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, isTablet, lFixtVal != nil)
 	if err != nil {
 		s.Fatal("Failed to launch Chrome: ", err)
 	}
