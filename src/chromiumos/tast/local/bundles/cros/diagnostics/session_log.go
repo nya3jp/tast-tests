@@ -27,6 +27,7 @@ func init() {
 		Desc:         "Diagnostics app session log saves to files successfully",
 		Contacts: []string{
 			"michaelcheco@google.com",
+			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
