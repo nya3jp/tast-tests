@@ -97,6 +97,53 @@
       },
       "revId": "647ad70eb66761cda8fb0dddc38bc2158bbdffbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e62aab_16506d1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T21:36:02Z",
+      "side": 1,
+      "message": "Decreasing timeout here may preserve some time for other operations. Could you try increasing the test overall timeout (see the other comment) to see if that solves the problem?",
+      "parentUuid": "f60a1bca_e65ccdb9",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 42
+      },
+      "revId": "647ad70eb66761cda8fb0dddc38bc2158bbdffbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c87391_eedc7e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T21:36:02Z",
+      "side": 1,
+      "message": "could you add the field `Timeout` with a reasonable value? The default test timeout is 3 minutes, which might be the root cause for your original issue. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dTests%20should%20always%20set%20the%20Timeout%20field%20to%20specify",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "647ad70eb66761cda8fb0dddc38bc2158bbdffbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
