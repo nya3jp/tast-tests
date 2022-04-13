@@ -22,6 +22,7 @@ func init() {
 		Desc:         "Can successfully navigate to the Connectivity page",
 		Contacts: []string{
 			"michaelcheco@google.com",
+			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
