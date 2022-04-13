@@ -152,7 +152,7 @@ func smapsRollups(ctx context.Context, processes []*process.Process, sharedInfoM
 // [2] The RSS for that mapping within this process, in kIB
 // [3] The PSS for that mapping within this process, in kIB
 // [4] The size of swapped out pages in the mapping, in kiB.
-var sharedSwapPssRE = regexp.MustCompile(`(?m)^[[:xdigit:]]+-[[:xdigit:]]+ [-r][-w][-x]s [[:xdigit:]]+ [[:xdigit:]]+:[[:xdigit:]]+ [\d]+ +(\S[^\n]*)$
+var sharedSwapPssRE = regexp.MustCompile(`(?m)^[[:xdigit:]]+-[[:xdigit:]]+ [-r][-w][-x]s [[:xdigit:]]+ [[:xdigit:]]+:[[:xdigit:]]+ ([\d]+) +(\S[^\n]*)$
 (?:^\w+: +[^\n]+$
 )*^Rss: +(\d+) kB$
 (?:^\w+: +[^\n]+$
@@ -162,10 +162,11 @@ var sharedSwapPssRE = regexp.MustCompile(`(?m)^[[:xdigit:]]+-[[:xdigit:]]+ [-r][
 
 // SharedMapping contains information parsed from a smaps entry. Numbers are KiB.
 type SharedMapping struct {
-	name string
-	swap uint64
-	pss  uint64
-	rss  uint64
+	name  string
+	swap  uint64
+	pss   uint64
+	rss   uint64
+	inode uint64
 }
 
 // ParseSmapsData parses the given smaps data.
@@ -173,23 +174,27 @@ func ParseSmapsData(data []byte) ([]SharedMapping, error) {
 	var swaps []SharedMapping
 	matches := sharedSwapPssRE.FindAllSubmatch(data, -1)
 	for _, match := range matches {
-		name := string(match[1])
-		rssKiB, err := strconv.ParseUint(string(match[2]), 10, 64)
+		inode, err := strconv.ParseUint(string(match[1]), 10, 64)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to parse rss value %q", match[2])
+			return nil, errors.Wrapf(err, "failed to parse inode %q", match[1])
 		}
-		pssKiB, err := strconv.ParseUint(string(match[3]), 10, 64)
+		name := string(match[2])
+		rssKiB, err := strconv.ParseUint(string(match[3]), 10, 64)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to parse pss value %q", match[3])
+			return nil, errors.Wrapf(err, "failed to parse rss value %q", match[3])
 		}
-		swapKiB, err := strconv.ParseUint(string(match[4]), 10, 64)
+		pssKiB, err := strconv.ParseUint(string(match[4]), 10, 64)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to parse swap value %q", match[4])
+			return nil, errors.Wrapf(err, "failed to parse pss value %q", match[4])
+		}
+		swapKiB, err := strconv.ParseUint(string(match[5]), 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parse swap value %q", match[5])
 		}
 		rss := rssKiB
 		pss := pssKiB
 		swap := swapKiB
-		swaps = append(swaps, SharedMapping{name, swap, pss, rss})
+		swaps = append(swaps, SharedMapping{name, swap, pss, rss, inode})
 	}
 	return swaps, nil
 }
