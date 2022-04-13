@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06771fb4_b168f3ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-04-13T14:39:51Z",
+      "side": 1,
+      "message": "Our plan re: adding the lacros fixture is to wait until go/lacros-tast-simplification is complete so that we don\u0027t need to directly use the lacros fixture/ there shouldn\u0027t be any variability in the interface of FixtValue. But will keep this suggestion in mind if it does turn out to be needed.",
+      "parentUuid": "5b8b2842_3446fb93",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd50cc8a_0f1b7920",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-12T21:23:26Z",
       "side": 1,
       "message": "nit: I\u0027d reserve different cleanupCtx\n\n// Reserve ten seconds for cleanup.\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()",
+      "range": {
+        "startLine": 256,
+        "startChar": 20,
+        "endLine": 256,
+        "endChar": 23
+      },
+      "revId": "8e22f6a265d60c65b8a6796540ada88b4cbb9d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241c042b_603ee2b9",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1534607
+      },
+      "writtenOn": "2022-04-13T14:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd50cc8a_0f1b7920",
       "range": {
         "startLine": 256,
         "startChar": 20,
