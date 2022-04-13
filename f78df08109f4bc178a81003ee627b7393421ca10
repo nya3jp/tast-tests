@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b824ad80_86683ad1",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-04-13T08:56:58Z",
+      "side": 0,
+      "message": "Isn\u0027t this needed for the old UI?",
+      "range": {
+        "startLine": 1143,
+        "startChar": 0,
+        "endLine": 1143,
+        "endChar": 48
+      },
+      "revId": "f78df08109f4bc178a81003ee627b7393421ca10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b358230_9d97d8c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-04-13T08:56:58Z",
+      "side": 1,
+      "message": "typo: panel",
+      "range": {
+        "startLine": 171,
+        "startChar": 55,
+        "endLine": 171,
+        "endChar": 60
+      },
+      "revId": "3a61269c241540581d24e1296330def2b7d48e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e7298b_8f6700a8",
+        "filename": "src/chromiumos/tast/local/camera/cca/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-04-13T08:56:58Z",
+      "side": 1,
+      "message": "nit: `OptionExist` or `HasOption`?",
+      "range": {
+        "startLine": 265,
+        "startChar": 14,
+        "endLine": 265,
+        "endChar": 25
+      },
+      "revId": "3a61269c241540581d24e1296330def2b7d48e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d576d52_62ce2254",
+        "filename": "src/chromiumos/tast/local/camera/cca/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-04-13T08:56:58Z",
+      "side": 1,
+      "message": "This should be unnecessary since matches will be empty array when there\u0027s no match.",
+      "range": {
+        "startLine": 440,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 3
+      },
+      "revId": "3a61269c241540581d24e1296330def2b7d48e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
