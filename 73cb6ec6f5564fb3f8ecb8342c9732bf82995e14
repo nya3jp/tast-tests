@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06327ac2_8400855b",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Remove this blank line, for consistency with `CreateConference` and `AddBots`.",
+      "revId": "73cb6ec6f5564fb3f8ecb8342c9732bf82995e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23802d4f_c52a83eb",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Remove this blank line, for consistency with `CreateConference` and `AddBots`.",
+      "revId": "73cb6ec6f5564fb3f8ecb8342c9732bf82995e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

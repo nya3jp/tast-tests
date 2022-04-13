@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c19efc_bed51116",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "50a52d75_fc6fb030",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "300cf4ad_8414980d",
@@ -330,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e0fb86_c7c6a1f2",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Marking as resolved.",
+      "parentUuid": "4aa9863c_78560b69",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 2
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec5a16d_d640ea7e",
@@ -367,6 +415,30 @@
       "side": 1,
       "message": "in this order in proto https://source.corp.google.com/piper///depot/google3/java/com/google/communication/meetings/testing/bots/service/proto/controller.proto;l\u003d171?q\u003daddBotsResponse",
       "parentUuid": "eec5a16d_d640ea7e",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 37
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343cac27_84379652",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60132570_beee4f9d",
       "range": {
         "startLine": 268,
         "startChar": 0,
@@ -588,6 +660,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3084a46_aa0b2124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "baa4385e_f0538478",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 4
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a5af12_331042a0",
@@ -625,6 +721,30 @@
       "side": 1,
       "message": "you mean L318? if codeOk \u003d\u003d true there won\u0027t be any bot to be added.",
       "parentUuid": "60a5af12_331042a0",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 13
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdcb2285_fe09c34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Yes, line 318 will be fine. Please put this there.",
+      "parentUuid": "07f1fb84_eb82fdcc",
       "range": {
         "startLine": 335,
         "startChar": 0,
@@ -682,6 +802,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43221faa_30b4d448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96208abd_3875a0dd",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 2
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "351f3468_9c915d36",
@@ -695,6 +839,30 @@
       "writtenOn": "2022-04-13T16:38:17Z",
       "side": 1,
       "message": "Same deal: consider calling `RemoveAllBots` repeatedly even though there should be only 1 bot, and make it a function in bond.go invoked from both meet_cuj.go and here.",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 3
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18ea471_ddbca8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-04-13T20:40:23Z",
+      "side": 1,
+      "message": "Marking as resolved.",
+      "parentUuid": "351f3468_9c915d36",
       "range": {
         "startLine": 200,
         "startChar": 2,
