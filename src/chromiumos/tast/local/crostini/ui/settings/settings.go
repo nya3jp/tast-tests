@@ -349,8 +349,11 @@ func (s *Settings) ResizeDisk(ctx context.Context, kb *input.KeyboardEventWriter
 	if err := uiauto.Combine("open resize dialog and focus on slider",
 		s.ui.LeftClick(resizeButton),
 		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
+		testing.ContextLog(ctx, "ret err")
 		return err
 	}
+	testing.ContextLog(ctx, "Let's go dump")
+	faillog.DumpUITreeAndScreenshot(ctx, s.tconn, "pouncival", errors.New("foo"))
 
 	if _, err := ChangeDiskSize(ctx, s.tconn, kb, ResizeDiskDialog.Slider, increase, targetSize); err != nil {
 		return errors.Wrap(err, "failed to resize disk")
@@ -446,8 +449,12 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 	if err := uiauto.Combine("launch resize dialog and focus on the slider",
 		s.ClickChange(),
 		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
+		testing.ContextLog(ctx, "Inside err?")
+		faillog.DumpUITreeAndScreenshot(ctx, s.tconn, "pouncival2", errors.New("asd"))
 		return 0, 0, err
 	}
+	testing.ContextLog(ctx, "Let's go dump")
+	faillog.DumpUITreeAndScreenshot(ctx, s.tconn, "pouncival3", errors.New("asd"))
 
 	// Get current size.
 	curSize, err = GetDiskSize(ctx, s.tconn, ResizeDiskDialog.Slider)
