@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684dd2a9_28409ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-13T12:23:43Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "2dea65c520ca28d934548fc22f48abce6b093edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d9718a_0fc830d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-04-13T12:23:43Z",
+      "side": 1,
+      "message": "since it\u0027s used only for sorting, maybe it makes sense to reduce scope of this function and move it inside Sort() function.\n\ni.e.\n\n```\nfunc Sort(d []Device) {\n\tfunc keys(d *Device) []string {\n\t    ...\n\t}\n\t\n\tsort.Slice(d, func(i, j int) bool {\n\t...\n}\n```",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "2dea65c520ca28d934548fc22f48abce6b093edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
