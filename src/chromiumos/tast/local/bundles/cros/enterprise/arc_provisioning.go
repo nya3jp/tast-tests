@@ -51,10 +51,22 @@ func init() {
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
+				Val:               true,
 			},
 			{
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
+				Val:               true,
+			},
+			{
+				Name:              "unstable",
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val:               false,
+			},
+			{
+				Name:              "vm_unstable",
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val:               false,
 			}},
 	})
 }
@@ -72,14 +84,19 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		timeoutWaitForPlayStore = 3 * time.Minute
 	)
 
-	// Indicates that the error is retryable and unrelated to core feature under test.
-	retry := func(desc string, err error) error {
-		return errors.Wrap(err, "failed to "+desc)
-	}
+	doRetries := s.Param().(bool)
 
 	// Indicates a failure in the core feature under test so the polling should stop.
 	exit := func(desc string, err error) error {
 		return testing.PollBreak(errors.Wrap(err, "failed to "+desc))
+	}
+
+	// Indicates that the error is retryable and unrelated to core feature under test.
+	retry := func(desc string, err error) error {
+		if doRetries {
+			return errors.Wrap(err, "failed to "+desc)
+		}
+		return exit(desc, err)
 	}
 
 	login := chrome.GAIALoginPool(s.RequiredVar(loginPoolVar))
