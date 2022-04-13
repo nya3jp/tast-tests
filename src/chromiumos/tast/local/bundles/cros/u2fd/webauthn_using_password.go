@@ -47,7 +47,6 @@ func init() {
 		}, {
 			Name:              "gsc",
 			ExtraSoftwareDeps: []string{"gsc"},
-			ExtraAttr:         []string{"informational"},
 			Fixture:           "chromeLoggedIn",
 			Val:               browser.TypeAsh,
 		}, {
