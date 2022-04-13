@@ -1,0 +1,5 @@
+{
+  "sha256sum": "dc04aa22adfb2bf7d039e635ea68bb8d7422138088aa0a77aed3ea61beb92a1c",
+  "size": 403,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/rext/ADJUST_IPRED_ANGLE_A_RExt_Mitsubishi_2.hevc.json_20220418-190817"
+}

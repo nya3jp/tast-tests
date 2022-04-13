@@ -1,0 +1,5 @@
+{
+  "sha256sum": "d6f34b4421cf69a2c905e702e82deed4b4189f76123f369a818a883c0ecfd4de",
+  "size": 11658,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/RPLM_B_qualcomm_4.hevc.json_20220407-222518"
+}

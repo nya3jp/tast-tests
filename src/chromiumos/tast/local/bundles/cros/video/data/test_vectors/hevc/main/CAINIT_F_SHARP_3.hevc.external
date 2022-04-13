@@ -1,0 +1,5 @@
+{
+  "sha256sum": "eac6cebd384d31fbcea7983b17bb76290d77f865a3932ff1f05a4412cbcf9cfc",
+  "size": 109770,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/CAINIT_F_SHARP_3.hevc_20220407-220429"
+}

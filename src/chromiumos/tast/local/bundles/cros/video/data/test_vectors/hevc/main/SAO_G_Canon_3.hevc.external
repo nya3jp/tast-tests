@@ -1,0 +1,5 @@
+{
+  "sha256sum": "74224b18c1864efadaf9c06427905e9cd6e847e324a100d2373e4c780726b305",
+  "size": 20038,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/SAO_G_Canon_3.hevc_20220407-221010"
+}

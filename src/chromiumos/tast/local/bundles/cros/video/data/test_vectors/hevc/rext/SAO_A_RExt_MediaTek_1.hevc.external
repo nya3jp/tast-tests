@@ -1,0 +1,5 @@
+{
+  "sha256sum": "6b0d45b5ca4d4919eaec5a98daf0eb4cebcc6d8b0a12b30b748386cc9358df13",
+  "size": 1466031,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/rext/SAO_A_RExt_MediaTek_1.hevc_20220418-190626"
+}

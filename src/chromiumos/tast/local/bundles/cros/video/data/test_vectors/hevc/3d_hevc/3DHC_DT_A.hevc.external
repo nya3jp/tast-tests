@@ -1,0 +1,5 @@
+{
+  "sha256sum": "4a7a4442bc558cc0181b5405e27f4d786d0a8e0e9f5d4fecf674aee64440cd90",
+  "size": 442238,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/3d-hevc/3DHC_DT_A.hevc_20220407-221045"
+}

@@ -1,0 +1,5 @@
+{
+  "sha256sum": "9ec330240c180fdad1abcf32c5eafa1424e6e9a6bbc969ed3baa3a4bff3c2b29",
+  "size": 2164,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/shvc/SRATIOS_B_SAMSUNG_2.hevc.json_20220407-222419"
+}

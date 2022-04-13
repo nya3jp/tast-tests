@@ -1,0 +1,5 @@
+{
+  "sha256sum": "e7e19e95c5881b94b24f0676995f7c887599dba191eecfc67522022f44328185",
+  "size": 2121,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/BUMPING_A_ericsson_1.hevc.json_20220407-222524"
+}

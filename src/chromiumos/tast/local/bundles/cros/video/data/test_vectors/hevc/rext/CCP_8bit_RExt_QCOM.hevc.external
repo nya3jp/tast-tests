@@ -1,0 +1,5 @@
+{
+  "sha256sum": "c5e0d9b5e0062c2f4bfb1ec9e8a6465fb715e3af498306d7d0e4bec0bc9bae5c",
+  "size": 46090,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/rext/CCP_8bit_RExt_QCOM.hevc_20220418-190654"
+}

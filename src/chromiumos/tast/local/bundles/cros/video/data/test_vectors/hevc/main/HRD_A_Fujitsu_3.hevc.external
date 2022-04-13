@@ -1,0 +1,5 @@
+{
+  "sha256sum": "61af83565147e9dc23842847111e748d32d95830d88cd3855a66143ea08d6915",
+  "size": 149080,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/HRD_A_Fujitsu_3.hevc_20220407-221000"
+}

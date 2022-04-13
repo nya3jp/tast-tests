@@ -1,0 +1,5 @@
+{
+  "sha256sum": "eff78a401ecccc21d995345988f1be60ee76604cf10fa39d421c3e00668a94d6",
+  "size": 484767,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/TILES_A_Cisco_2.hevc_20220407-220438"
+}

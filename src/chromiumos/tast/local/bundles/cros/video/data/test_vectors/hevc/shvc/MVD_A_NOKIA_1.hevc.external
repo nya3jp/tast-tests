@@ -1,0 +1,5 @@
+{
+  "sha256sum": "f5337c7d810200afaeebea7e34b8446351e61b3c0bf203d0fdfbb05668099529",
+  "size": 141443,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/shvc/MVD_A_NOKIA_1.hevc_20220407-220312"
+}

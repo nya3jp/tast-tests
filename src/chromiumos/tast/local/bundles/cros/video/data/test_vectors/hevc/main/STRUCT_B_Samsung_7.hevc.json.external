@@ -1,0 +1,5 @@
+{
+  "sha256sum": "1d1a2f26979546d83b5cc9072859f7e07d27f6f91814fd75e61d235f0ad4aa39",
+  "size": 2537,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/STRUCT_B_Samsung_7.hevc.json_20220407-222743"
+}

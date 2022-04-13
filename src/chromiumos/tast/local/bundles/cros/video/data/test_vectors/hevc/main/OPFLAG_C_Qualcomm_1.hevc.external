@@ -1,0 +1,5 @@
+{
+  "sha256sum": "17016c7abdec5fdda16fb92a6b6521adf4d9485070a00d662b44665c1e247824",
+  "size": 278706,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/OPFLAG_C_Qualcomm_1.hevc_20220407-220454"
+}

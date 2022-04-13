@@ -1,0 +1,16 @@
+OPFLAG_B_Qualcomm_1
+
+Specification version: HM13.0
+
+Category: Picture output
+
+Specification:
+- 480p60
+- 100 frames
+- All intra configuration
+- One slice per picture
+- Output flag present indicidation in PPS is set
+- Picture with POC 39 and 73 are set to be not for output.
+- MD5 checksum is included in the bitstream
+
+Purpose: Test picture output flag indication

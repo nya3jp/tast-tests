@@ -1,0 +1,5 @@
+{
+  "sha256sum": "efddf49ed997d5a0ddcc7c85fe8f609768d4e8ddd88b32532e0833144ec939e4",
+  "size": 442417,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/hevc/main/MAXBINS_A_TI_5.hevc_20220407-220450"
+}
