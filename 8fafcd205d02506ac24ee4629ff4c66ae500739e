@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb861fcb_c86c9e40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-13T03:35:53Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit",
+      "revId": "8fafcd205d02506ac24ee4629ff4c66ae500739e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eff055e_54a7d7e4",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-04-13T03:35:53Z",
+      "side": 1,
+      "message": "This seems like a double negative. What about EnableAudio, EnableBluetooth?",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "8fafcd205d02506ac24ee4629ff4c66ae500739e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
