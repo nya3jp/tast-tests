@@ -34,7 +34,9 @@ import (
 // error. Note that the wrapping closure is required to delay
 // evaluating |retErr| until return time.
 func DumpUITreeAndScreenshot(ctx context.Context, tconn *chrome.TestConn, name string, err interface{}) {
+	testing.ContextLog(ctx, "Dumping UI tree")
 	if err != nil {
+		testing.ContextLog(ctx, "err != nil")
 		outDir, ok := testing.ContextOutDir(ctx)
 		if !ok {
 			testing.ContextLog(ctx, "Failed to get out directory: ", err)
