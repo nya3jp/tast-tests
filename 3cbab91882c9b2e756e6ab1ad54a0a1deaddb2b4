@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ad1890_94c6db17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T12:42:01Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "3cbab91882c9b2e756e6ab1ad54a0a1deaddb2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e418a872_b481948b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T12:42:01Z",
+      "side": 1,
+      "message": "Nit: Please rephrase the comment to avoid first person like We, I.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 100
+      },
+      "revId": "3cbab91882c9b2e756e6ab1ad54a0a1deaddb2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
