@@ -34,6 +34,24 @@
       "parentUuid": "217b475d_85ece3ea",
       "revId": "296deba3e9ca439c690b0797bfa647888370b804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18cc33fe_241a3c12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-04-13T00:17:56Z",
+      "side": 1,
+      "message": "I would rather we try it out on skylab before enabling it on CQ. Getting the pass % of this test up has been an involved effort, and I\u0027d like us to only enable it (even if it is an informational test) when we have some confidence that it will pass.\n\nOnce your conflict resolution hits ToT, please LMK and I\u0027ll be happy to run this CL on skylab.\n\nI\u0027m going to provisionally mark this as V-1 till we have some evidence that it passes on volteer-manatee.",
+      "parentUuid": "b95e09d0_b2751c71",
+      "revId": "296deba3e9ca439c690b0797bfa647888370b804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
