@@ -58,8 +58,11 @@ func DownloadRecentPhoto(ctx context.Context, s *testing.State) {
 	if err := phonehub.Show(ctx, tconn); err != nil {
 		s.Fatal("Failed to open Phone Hub: ", err)
 	}
-	if err := phonehub.OptInRecentPhotos(ctx, tconn); err != nil {
+	if err := phonehub.OptInRecentPhotos(ctx, tconn, chrome); err != nil {
 		s.Fatal("Failed to enable Recent Photos via the opt-in view: ", err)
+	}
+	if err := androidDevice.TurnOnCameraRollFeature(ctx); err != nil {
+		s.Fatal("Failed to enable Recent Photos on the phone: ", err)
 	}
 
 	// Download the newly taken photo to Tote.
@@ -91,14 +94,6 @@ func DownloadRecentPhoto(ctx context.Context, s *testing.State) {
 	}
 	if err := phonehub.ToggleRecentPhotosSetting(ctx, tconn, chrome, false); err != nil {
 		s.Fatal("Failed to disable Recent Photos: ", err)
-	}
-
-	// Open Phone Hub and verify that the Recent Photos opt-in view is displayed.
-	if err := phonehub.Show(ctx, tconn); err != nil {
-		s.Fatal("Failed to open Phone Hub: ", err)
-	}
-	if err := ui.Exists(phonehub.FindRecentPhotosOptInButton())(ctx); err != nil {
-		s.Fatal("Recent Photos opt-in view is not displayed: ", err)
 	}
 }
 
