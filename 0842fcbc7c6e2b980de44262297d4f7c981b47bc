@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "197257c3_2f7ff13a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-13T19:09:34Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "00c11839_9f97dbb7",
+      "range": {
+        "startLine": 52,
+        "startChar": 60,
+        "endLine": 52,
+        "endChar": 70
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22ba2001_9e5d891b",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-13T07:29:06Z",
       "side": 1,
       "message": "Instead of passing `i`, how about passing this directory as `saveDir` or something?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 68
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4052f941_7aa9da34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-13T19:09:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ba2001_9e5d891b",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54866cd_159a616b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-13T19:09:34Z",
+      "side": 1,
+      "message": "The intention is to collect single metric values of the same metric (name/unit/direction) and then aggregate them at the end into the final result. Added a comment, let me know if it\u0027s still unclear or there\u0027s some better way of doing this.",
+      "parentUuid": "8f449b81_9079ace8",
+      "range": {
+        "startLine": 113,
+        "startChar": 32,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e8444f_f32f2f25",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-13T07:29:06Z",
       "side": 1,
       "message": "nit: You can initialize the metric outside if, and use it in L119.",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "0842fcbc7c6e2b980de44262297d4f7c981b47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec4b550_92f0d823",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-04-13T19:09:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e8444f_f32f2f25",
       "range": {
         "startLine": 126,
         "startChar": 11,
