@@ -32,8 +32,9 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
-			Name: "clamshell_mode",
-			Val:  false,
+			Name:      "clamshell_mode",
+			Val:       false,
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:              "tablet_mode",
 			Val:               true,

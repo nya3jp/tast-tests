@@ -591,7 +591,7 @@ func WaitForHotseatToUpdateAutoHideState(ctx context.Context, tconn *chrome.Test
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for the expected autohide state")
 	}
 
