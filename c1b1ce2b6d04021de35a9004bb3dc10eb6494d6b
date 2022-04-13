@@ -16,6 +16,24 @@
       "message": "LGTM (though you\u0027ll need someone else for +2 owners)",
       "revId": "c1b1ce2b6d04021de35a9004bb3dc10eb6494d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ecff39_a5ac948c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2022-04-13T21:59:45Z",
+      "side": 1,
+      "message": "\u003e LGTM (though you\u0027ll need someone else for +2 owners)\n\nThanks! Yeah, since you\u0027re the contact for this test, need your lg first according to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "parentUuid": "8e859876_da53d59f",
+      "revId": "c1b1ce2b6d04021de35a9004bb3dc10eb6494d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
