@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
+const ffmpegPath = "/usr/local/graphics/ffmpeg"
+
 // NB: If modifying any of the files or test specifications, be sure to
 // regenerate the test parameters by running the following in a chroot:
 // TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/local/bundles/cros/video
@@ -818,6 +820,45 @@ func TestPlatformDecodingParams(t *testing.T) {
 			Metadata:     genExtraData(files),
 			Attr:         []string{"graphics_video_vp8"},
 		})
+	}
+
+	// Generate ffmpeg VAAPI VP9 tests.
+	for i, profile := range []string{"profile_0"} {
+		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5_0", "level5_1"} {
+			for _, cat := range []string{
+				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
+			} {
+				files := vp9WebmFiles[profile][levelGroup][cat]
+				param := paramData{
+					Name:         fmt.Sprintf("ffmpeg_vaapi_vp9_%d_%s_%s", i, levelGroup, cat),
+					Decoder:      ffmpegPath,
+					CmdBuilder:   "ffmpegDecodeVAAPIargs",
+					Files:        files,
+					Timeout:      defaultTimeout,
+					SoftwareDeps: []string{"vaapi"},
+					Metadata:     genExtraData(files),
+					Attr:         []string{"graphics_video_vp9"},
+				}
+				if extension, ok := vp9GroupExtensions[levelGroup]; ok {
+					param.Timeout = extension
+				}
+
+				var hardwareDeps []string
+
+				switch levelGroup {
+				case "level5_0":
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
+				case "level5_1":
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
+					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(7169)")
+				default:
+					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
+				}
+
+				param.HardwareDeps = strings.Join(hardwareDeps, ", ")
+				params = append(params, param)
+			}
+		}
 	}
 
 	code := genparams.Template(t, `{{ range . }}{
