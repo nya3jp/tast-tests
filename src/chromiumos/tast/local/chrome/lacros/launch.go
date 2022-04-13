@@ -68,8 +68,9 @@ func Connect(ctx context.Context, tconn *chrome.TestConn) (l *Lacros, retErr err
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
 	return &Lacros{
-		agg:  agg,
-		sess: sess,
+		agg:    agg,
+		sess:   sess,
+		ctconn: tconn,
 	}, nil
 }
 
