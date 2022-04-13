@@ -16,6 +16,29 @@
       "message": "I copied the approach used elsewhere; please let me know if there is a better/more idiomatic way to accomplish this.",
       "revId": "19b003cf7e856607586c5681165f0a94355d3e83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f349ce_3f9543ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-04-13T00:09:53Z",
+      "side": 1,
+      "message": "Does this need to be removed for DRMTraceTool.stable to be non-informational? I\u0027m not sure how attributes propagate in this case.",
+      "range": {
+        "startLine": 40,
+        "startChar": 43,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "19b003cf7e856607586c5681165f0a94355d3e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
