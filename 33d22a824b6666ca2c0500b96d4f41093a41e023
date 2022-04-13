@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6da3105_b392823e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T22:28:55Z",
+      "side": 1,
+      "message": "Hi Judy, in order to generate LCP metric, we need to navigate away from an existing page to another page. Clicking anchor inside Yahoo and Wikipedia can achieve this. But clicking anchors inside, say reddit.com, will not. The reason is reddit.com and many other sides like google news are Singe Page Applications and their anchors will not cause page reload. See b/225206080 for some details.\n\nJane, please add this information in the commit message.",
+      "parentUuid": "c1736a92_cba1495d",
+      "range": {
+        "startLine": 367,
+        "startChar": 63,
+        "endLine": 367,
+        "endChar": 75
+      },
+      "revId": "33d22a824b6666ca2c0500b96d4f41093a41e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e37da63c_ff6f5729",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
         "patchSetId": 1
