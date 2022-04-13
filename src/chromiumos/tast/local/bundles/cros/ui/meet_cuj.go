@@ -315,13 +315,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	// Add 15 minutes to the bot duration, to ensure that the bots stay long enough
 	// for the test to detect the video codecs used for encoding and decoding.
 	if !codeOk {
+		defer func(ctx context.Context) {
+			s.Log("Removing all bots from the call")
+			if _, _, err := bc.RemoveAllBots(ctx, meetingCode); err != nil {
+				s.Fatal("Failed to remove all bots: ", err)
+			}
+		}(closeCtx)
 		addBotsCount := meet.num
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			botList, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...)
+			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+15*time.Minute, meet.botsOptions...)
 			if err != nil {
 				return testing.PollBreak(errors.Wrapf(err, "failed to create %d bots", addBotsCount))
 			}
-			s.Logf("%d bots started", len(botList))
+			s.Logf("%d bots started, %d bots failed", len(botList), numFailures)
 			// If there are fewer bots created than requested, send another request for more bots.
 			if len(botList) < addBotsCount {
 				err := errors.Errorf("failed to create bots; wanted %d bots, got %d", addBotsCount, len(botList))
