@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/testing"
 )
@@ -37,9 +36,13 @@ const (
 )
 
 func DocsCUJ(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(lacrosfixt.FixtValue)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
 
-	cleanup, err := lacrosperf.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.DocsCUJ")
+	cleanup, err := lacrosperf.SetupPerfTest(ctx, tconn, "lacros.DocsCUJ")
 	if err != nil {
 		s.Fatal("Failed to set up lacros perf test: ", err)
 	}
@@ -48,8 +51,8 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	// Run against ash-chrome.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		return lacrosperf.SetupCrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, tconn, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		return lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -67,8 +70,8 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Run against lacros.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, tconn, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchmark: ", err)

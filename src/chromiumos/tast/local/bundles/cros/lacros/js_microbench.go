@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/testing"
 )
@@ -50,9 +49,14 @@ const jsMicrobenchCode = `
   ` + "`" + `);`
 
 func JSMicrobench(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(lacrosfixt.FixtValue)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
-	cleanup, err := lacrosperf.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.JSMicrobench")
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	cleanup, err := lacrosperf.SetupPerfTest(ctx, tconn, "lacros.JSMicrobench")
 	if err != nil {
 		s.Fatal("Failed to set up lacros perf test: ", err)
 	}
@@ -83,7 +87,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against ash-chrome.
 	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		return lacrosperf.SetupCrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
+		return lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -96,7 +100,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against lacros-chrome.
 	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
+		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchrmark: ", err)
@@ -110,7 +114,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against ash-chrome.
 	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		return lacrosperf.SetupCrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
+		return lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -123,7 +127,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against lacros-chrome.
 	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
+		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchrmark: ", err)
