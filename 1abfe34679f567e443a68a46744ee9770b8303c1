@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27ae3ec_c5ed456a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-04-13T22:34:02Z",
+      "side": 1,
+      "message": "Seems like there are errors about perf metric?\n```\ntast-remote-tests-cros-0.0.2-r10259: src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go:894:12: chromiumos/tast/common/perf.Metric composite literal uses unkeyed fields\ntast-remote-tests-cros-0.0.2-r10259: src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go:906:11: chromiumos/tast/common/perf.Metric composite literal uses unkeyed fields\ntast-remote-tests-cros-0.0.2-r10259: src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go:907:11: chromiumos/tast/common/perf.Metric composite literal uses unkeyed fields\ntast-remote-tests-cros-0.0.2-r10259: src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go:908:11: chromiumos/tast/common/perf.Metric composite literal uses unkeyed fields\ntast-remote-tests-cros-0.0.2-r10259: src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go:909:11: chromiumos/tast/common/perf.Metric composite literal uses unkeyed fields\n```",
+      "revId": "1abfe34679f567e443a68a46744ee9770b8303c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
