@@ -330,5 +330,22 @@ func ModelsToTest() []string {
 		"kohaku",
 		"nightfury",
 		"helios",
+
+		// Nami.
+		"akali",
+		"akali360",
+		"bard",
+		"ekko",
+		"pantheon",
+		"sona",
+		"syndra",
+		"vayne",
+
+		// Fizz.
+		"jax",
+		"teemo",
+
+		// Kalista.
+		"karma",
 	}
 }
