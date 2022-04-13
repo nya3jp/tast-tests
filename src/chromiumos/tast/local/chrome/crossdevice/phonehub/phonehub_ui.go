@@ -24,6 +24,7 @@ import (
 const (
 	settingsURL                 = "chrome://os-settings/"
 	connectedDevicesSettingsURL = "multidevice/features"
+	setupDialogURL              = "chrome://os-settings/multidevice/features?showPhonePermissionSetupDialog"
 	multidevicePageJS           = `document.querySelector("os-settings-ui").shadowRoot` +
 		`.querySelector("os-settings-main").shadowRoot` +
 		`.querySelector("os-settings-page").shadowRoot` +
@@ -39,6 +40,9 @@ const (
 		`.shadowRoot.querySelector("settings-multidevice-feature-item")` +
 		`.shadowRoot.querySelector("settings-multidevice-feature-toggle")` +
 		`.shadowRoot.getElementById("toggle")`
+	setupDialogNextButtonJS = multidevicePageJS +
+		`.shadowRoot.querySelector("settings-multidevice-permissions-setup-dialog")` +
+		`.shadowRoot.getElementById("getStartedButton")`
 	featureCheckedJS               = `.checked`
 	connectedDeviceToggleVisibleJS = multidevicePageJS + `.shouldShowToggle_()`
 )
@@ -227,17 +231,30 @@ func ToggleLocatePhonePod(ctx context.Context, tconn *chrome.TestConn, enable bo
 	return togglePod(ctx, tconn, LocatePhonePod, enable)
 }
 
-// FindRecentPhotosOptInButton returns a finder which locates the opt-in button for the Recent Photos feature.
-func FindRecentPhotosOptInButton() *nodewith.Finder {
-	return nodewith.Ancestor(nodewith.ClassName("CameraRollView")).Name("Turn on").Role(role.Button)
+// FindRecentPhotosSetupButton returns a finder which locates the Set up button for the Recent Photos feature.
+func FindRecentPhotosSetupButton() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName("MultideviceFeatureOptInView")).Name("Set up").Role(role.Button)
 }
 
-// OptInRecentPhotos enables the Recent Photos feature by clicking on the opt-in button displayed in the Phone Hub bubble.
-func OptInRecentPhotos(ctx context.Context, tconn *chrome.TestConn) error {
+// OptInRecentPhotos enables the Recent Photos feature by clicking on the Set up button displayed in the Phone Hub bubble and run the set up flow right before user consent on the phone.
+func OptInRecentPhotos(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
 	ui := uiauto.New(tconn)
-	if err := ui.LeftClick(FindRecentPhotosOptInButton())(ctx); err != nil {
+	if err := ui.LeftClick(FindRecentPhotosSetupButton())(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on the Recent Photos opt-in button")
 	}
+
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURLPrefix(setupDialogURL))
+	if err != nil {
+		return errors.Wrap(err, "permissions set up dialog did not launch")
+	}
+	defer settingsConn.Close()
+	if err := settingsConn.WaitForExpr(ctx, setupDialogNextButtonJS); err != nil {
+		return errors.Wrap(err, "failed to wait for Permissions Setup Dialog to be visible")
+	}
+	if err := settingsConn.Eval(ctx, setupDialogNextButtonJS+`.click()`, nil); err != nil {
+		return errors.Wrap(err, "failed to click Next on Permissions Setup Dialog intro screen")
+	}
+
 	return nil
 }
 
@@ -246,10 +263,7 @@ func DownloadMostRecentPhoto(ctx context.Context, tconn *chrome.TestConn) error 
 	mostRecentPhotoThumbnail := nodewith.Ancestor(PhoneHubTray).ClassName("CameraRollThumbnail").First()
 	// It might take some time to receive and display the recent photo thumbnails.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
-	if err := uiauto.Combine("download the first photo displayed in the Recent Photos section",
-		ui.LeftClick(mostRecentPhotoThumbnail),
-		ui.LeftClick(nodewith.Role(role.MenuItem).Name("Download")),
-	)(ctx); err != nil {
+	if err := ui.LeftClick(mostRecentPhotoThumbnail)(ctx); err != nil {
 		return errors.Wrap(err, "failed to download recent photo")
 	}
 	return nil
