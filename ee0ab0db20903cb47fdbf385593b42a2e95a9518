@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e80fa4_8e61a370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T07:57:02Z",
+      "side": 1,
+      "message": "Can you move this fixture definition to pre package or a new package \"fixture\"?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e9b6fd_1a68bd63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T07:57:02Z",
+      "side": 1,
+      "message": "Optional: Personally I am not a fan of using hardcoded string in another file to reference this.\n\nI would suggest to make public variable here similar to what we do in precondition impl.\n\ne.g:\nvar ClamshellVK \u003d \"clamshellVK\"\nfixture.ClamshellVK",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf48c2b_0297356d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T07:57:02Z",
+      "side": 1,
+      "message": "nit: To be clear. Describe it as \"Clamshell mode with A11y VK enabled\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2dcf0b_cc08f057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T07:57:02Z",
+      "side": 1,
+      "message": "Tablet without VK does not make sense. Any reason to create them? I cannot remember any existing tests use it.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bcf7de_e7480eee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T07:57:02Z",
+      "side": 1,
+      "message": "Move this above resetIMEStatus. resetIMSStatus is not be required if Chrome is no longer reused.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10668877_2aa02e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/inputactions/user_actions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-13T07:57:02Z",
+      "side": 1,
+      "message": "testName?",
+      "range": {
+        "startLine": 68,
+        "startChar": 35,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "ee0ab0db20903cb47fdbf385593b42a2e95a9518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
