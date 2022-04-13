@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee34281_94ad2858",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T18:02:03Z",
+      "side": 1,
+      "message": "Hi Judy, thanks for your time reviewing the code. Replied your comments, and made a few more adjustments - mainly to change the NewYTWeb() function in youtube_web.go to use browser.Browser type instead of ash.CommSource. Hence other CUJs using this API is also modified accordingly.",
+      "revId": "6b027abb17cd154dada92f5134f1d1cc3fe94e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

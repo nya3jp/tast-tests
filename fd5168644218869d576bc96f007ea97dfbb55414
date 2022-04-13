@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e6827fc_96ac6430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T18:02:03Z",
+      "side": 1,
+      "message": "Same as in TabSwitchCUJ2, only using TypeLacros to determine if we need to apply lacros logic.",
+      "parentUuid": "63d6cbe1_de33ae6e",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 16
+      },
+      "revId": "fd5168644218869d576bc96f007ea97dfbb55414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "744cc52d_4bb694a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-13T01:28:36Z",
       "side": 1,
       "message": "Why l does not exist if there is no error?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 5
+      },
+      "revId": "fd5168644218869d576bc96f007ea97dfbb55414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644147fb_64c96a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T18:02:03Z",
+      "side": 1,
+      "message": "Same as in TabSwitchCUJ2, GetBrowserStartTime() will return l as nil if this is for ash-Chrome with no errors.",
+      "parentUuid": "744cc52d_4bb694a6",
       "range": {
         "startLine": 155,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4803f3_3df3b67a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T18:02:03Z",
+      "side": 1,
+      "message": "We found if we close all browser targets of lacros-Chrome, the lacros-Browser will exit and we have to launch it again. To keep the browser process alive for further testing, we need to keep one tab.\n\nThis is related to the arg of:\n```\nchrome.ExtraArgs(\"--disable-lacros-keep-alive\"),\n```\n\nwhich we used in the fixture. \n\nI added comments here and to the KeepNewTab definition.\n\nAlso made some adjustment (put into defer func, and close conn).",
+      "parentUuid": "0f960acc_918199de",
+      "range": {
+        "startLine": 263,
+        "startChar": 19,
+        "endLine": 263,
+        "endChar": 29
+      },
+      "revId": "fd5168644218869d576bc96f007ea97dfbb55414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4e01ef8_bc3142a6",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-13T01:28:36Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 292,
+        "startChar": 18,
+        "endLine": 292,
+        "endChar": 28
+      },
+      "revId": "fd5168644218869d576bc96f007ea97dfbb55414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cf22a9_29de6dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T18:02:03Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "a4e01ef8_bc3142a6",
       "range": {
         "startLine": 292,
         "startChar": 18,
