@@ -216,7 +216,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 		// Launch browser and track the elapsed time.
 		if err := uiauto.Retry(retryTimes, func(ctx context.Context) error {
-			_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, nil, true, tabletMode)
+			_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, false)
 			return err
 		})(ctx); err != nil {
 			return errors.Wrapf(err, "failed to launch Chrome with retryTimes %d", retryTimes)

@@ -156,7 +156,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	defer cleanupSetting(cleanupSettingsCtx)
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, nil, true, tabletMode)
+	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}

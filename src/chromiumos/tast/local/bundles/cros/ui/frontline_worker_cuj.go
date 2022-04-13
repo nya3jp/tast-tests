@@ -143,7 +143,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 
 	var browserStartTime, appStartTime time.Duration
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, nil, false, tabletMode)
+	_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, false, tabletMode, false)
 	if err != nil {
 		s.Fatal("Failed to get browser start time: ", err)
 	}
