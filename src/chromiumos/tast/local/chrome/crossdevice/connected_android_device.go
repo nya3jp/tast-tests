@@ -243,6 +243,25 @@ func (c *AndroidDevice) ToggleScreen(ctx context.Context) error {
 	return nil
 }
 
+// TurnOnCameraRollFeature confirms on the consent form of camera roll feature
+func (c *AndroidDevice) TurnOnCameraRollFeature(ctx context.Context) error {
+	uiDevice, err := ui.NewDeviceWithRetry(ctx, c.device)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the UI Automator server")
+	}
+	defer uiDevice.Close(ctx)
+
+	turnOnButton := uiDevice.Object(ui.ResourceIDMatches(".+?(/turn_on_feature_button)$"))
+	if err := turnOnButton.WaitForExists(ctx, 30*time.Second); err != nil {
+		return errors.Wrap(err, "consent form does not appeared")
+	}
+
+	if err := turnOnButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to turn on feature")
+	}
+	return nil
+}
+
 // TakePhoto takes a photo with Camera app and returns the name of the new photo taken.
 func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 	if err := c.device.SendIntentCommand(ctx, "android.media.action.STILL_IMAGE_CAMERA", "").Run(); err != nil {

@@ -302,6 +302,9 @@ func OverrideFeatureFlags(ctx context.Context, adbDevice *adb.Device, feature Fe
 		if err := adbDevice.OverridePhenotypeFlag(ctx, "com.google.android.gms.auth.proximity", "PhoneHub__set_camera_roll_host_supported", "true", "boolean"); err != nil {
 			return errors.Wrap(err, "failed to override required flag for Phone Hub")
 		}
+		if err := adbDevice.OverridePhenotypeFlag(ctx, "com.google.android.gms.auth.proximity", "PhoneHub__enable_feature_setup_request", "true", "boolean"); err != nil {
+			return errors.Wrap(err, "failed to override required flag for Phone Hub")
+		}
 		return nil
 	case SmartLock:
 		// These flags need to be overridden to ensure Nearby Share doesn't tear down Smart Lock's GATT connection when the phone's screen is unlocked (b/219981726).
