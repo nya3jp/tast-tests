@@ -201,8 +201,9 @@ func WithVP9(allow, send bool) AddBotsOption {
 }
 
 // AddBots add a number of bots to the specified conference room with the
-// duration. When succeeds, it also returns the list of bot IDs.
-func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, ttl time.Duration, opts ...AddBotsOption) ([]int, error) {
+// duration. On success, it also returns the list of bot IDs and the number
+// of bots that failed to join.
+func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, ttl time.Duration, opts ...AddBotsOption) ([]int, int, error) {
 	options := addBotsOptions{
 		sendFPS:         24,
 		requestedLayout: "BRADY_BUNCH_4_4",
@@ -214,7 +215,8 @@ func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, t
 	}
 
 	type addBotsResponse struct {
-		BotIDs []int `json:"botIds"`
+		NumberOfFailures int   `json:"numberOfFailures"`
+		BotIDs           []int `json:"botIds"`
 	}
 	req := map[string]interface{}{
 		"num_of_bots": numBots,
@@ -242,7 +244,43 @@ func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, t
 	}
 	resp := addBotsResponse{}
 	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:add", req, &resp); err != nil {
-		return nil, err
+		return nil, 0, err
 	}
-	return resp.BotIDs, nil
+	return resp.BotIDs, resp.NumberOfFailures, nil
+}
+
+// RemoveAllBots removes all bots from the specified conference room. On success,
+// it also returns the list of IDs of bots that failed to be removed and the
+// list of IDs of bots that were not found.
+func (c *Client) RemoveAllBots(ctx context.Context, meetingCode string) ([]int, []int, error) {
+
+	type botState struct {
+		BotId int `json:"botId"`
+	}
+	type removeAllBotsResponse struct {
+		NotFound []botState `json:"notFound"`
+		Failed   []botState `json:"failed"`
+	}
+
+	req := map[string]interface{}{
+		"conference": map[string]string{
+			"conference_code": meetingCode,
+		},
+		"bot_type":   "MEETINGS",
+		"remove_all": true,
+	}
+	resp := removeAllBotsResponse{}
+	if err := c.sendWithRetry(ctx, http.MethodPost, endpoint+"/v1/conference/"+meetingCode+"/bots:remove", req, &resp); err != nil {
+		return nil, nil, err
+	}
+
+	var failedBotIds []int
+	for _, state := range resp.Failed {
+		failedBotIds = append(failedBotIds, state.BotId)
+	}
+	var notFoundBotIds []int
+	for _, state := range resp.NotFound {
+		notFoundBotIds = append(notFoundBotIds, state.BotId)
+	}
+	return failedBotIds, notFoundBotIds, nil
 }

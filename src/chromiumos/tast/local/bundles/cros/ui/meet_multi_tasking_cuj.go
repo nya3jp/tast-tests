@@ -192,9 +192,15 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 	// Add 30 seconds to the bot duration to make sure that bots do not leave
 	// slightly earlier than the test scenario.
-	if _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Second); err != nil {
-		s.Fatal("Failed to create bots: ", err)
+	if _, _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Second); err != nil {
+		s.Fatal("Failed to create 1 bot: ", err)
 	}
+	defer func(ctx context.Context) {
+		s.Log("Removing all bots from the call")
+		if _, _, err := bc.RemoveAllBots(ctx, meetingCode); err != nil {
+			s.Fatal("Failed to remove all bots: ", err)
+		}
+	}(closeCtx)
 
 	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
 	if err != nil {
@@ -363,6 +369,14 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.setCameraMuted(false)", nil); err != nil {
 			return errors.Wrap(err, "failed to turn on camera")
+		}
+
+		var participantCount int
+		if err := meetConn.Eval(ctx, "hrTelemetryApi.getParticipantCount()", &participantCount); err != nil {
+			return errors.Wrap(err, "failed to get participant count")
+		}
+		if participantCount != 2 {
+			return errors.Errorf("got %d participants, expected 2", participantCount)
 		}
 
 		// Hide notifications so that they won't overlap with other UI components.
