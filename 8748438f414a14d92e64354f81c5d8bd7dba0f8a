@@ -16,6 +16,52 @@
       "message": "Thanks for the initial review",
       "revId": "8748438f414a14d92e64354f81c5d8bd7dba0f8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd28222_240ff2b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop_mixed_type_browsers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-04-13T19:04:30Z",
+      "side": 1,
+      "message": "Suggest create a method and call it twice for reuse.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 4
+      },
+      "revId": "8748438f414a14d92e64354f81c5d8bd7dba0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3bfd5b_000ae32f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop_mixed_type_browsers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-04-13T19:04:30Z",
+      "side": 1,
+      "message": "Same as above. Make it method for readability and reuse.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 4
+      },
+      "revId": "8748438f414a14d92e64354f81c5d8bd7dba0f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
