@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563bf73e_4b180234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-13T22:01:53Z",
+      "side": 1,
+      "message": "nit: improve readability, please either add comments for the bool values, or use meaningful vars, something like:\n```\nconst (\n    withRetries \u003d true\n    withoutRetries \u003d false\n)\n```\n\nthen use\n`Val: withRetries`",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "c954febb1391f5ed964456a9731d6904c2369d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
