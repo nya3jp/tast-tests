@@ -582,6 +582,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35f7fbee_079de487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-13T00:17:19Z",
+      "side": 1,
+      "message": "That diff does the opposite of what chrome does. ResetState closes tabs, Close closes resources. But, if you were to try to modify lacros Close to not close tabs it would break a lot of tests, so it needs to be migrated.\n\nWe could add a temporary CloseResources fn maybe with a TODO to make it ResetState/Close like chrome.\n\nhidehiko@, wdyt? also that browserfixt.SetUp closeBrowser closure closes tabs for lacros, but not for ash (seems extremely broken).",
+      "parentUuid": "1da28f97_89ffac49",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 192,
+        "endChar": 57
+      },
+      "revId": "e3684e21965dfb1a14fd9c79d522f9f75ed9e677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e508caf_d2cdc5d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/login_perf.go",
         "patchSetId": 21
