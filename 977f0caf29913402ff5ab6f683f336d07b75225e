@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "76304a2f_e65260ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-13T21:21:17Z",
+      "side": 1,
+      "message": "This doesn\u0027t work out of the box for me\n\n```\n$ tast run -build\u003dtrue ${DUT} wifi.Upload\n\u003csnio\u003e\nFailed to run tests: failed to run tests: no tests matched by pattern(s) wifi.Upload, please try tast list to find tests with similar pattern \n```\n\nCan you list the exact steps that you followed?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "491fa26d_2fff62d3",
@@ -31,6 +54,75 @@
       "writtenOn": "2022-04-08T07:05:47Z",
       "side": 1,
       "message": "shadow reviewer lgtm",
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91b8913_8bd59763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-13T21:21:17Z",
+      "side": 1,
+      "message": "Which test suite would that test be part of?",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571d90cf_a07df11d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-13T21:21:17Z",
+      "side": 1,
+      "message": "It would be good to avoid adding a dependency on Gmail into WiFi tests. If Gmail is down, or the Gmail UI changes and the test breaks, it\u0027s not a WiFi issue but this test would fail and be incorrectly routed to WiFi",
+      "range": {
+        "startLine": 26,
+        "startChar": 33,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe16a28_8506d781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-04-13T21:21:17Z",
+      "side": 1,
+      "message": "Where are those variables set? We had an issue where \nwifi.APBrowseInternet would fail to start http://issuetracker.google.com/223502256 \n\n```\nPanic: Required variable \"wifissid\" not supplied via -var or -varsfile\n```\n\nIt looks like we could have the same issue here",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 41
+      },
       "revId": "977f0caf29913402ff5ab6f683f336d07b75225e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
