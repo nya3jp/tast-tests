@@ -75,6 +75,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/oobe"
 	_ "chromiumos/tast/local/bundles/cros/palmrejection"
 	_ "chromiumos/tast/local/bundles/cros/peripherals"
+	_ "chromiumos/tast/local/bundles/cros/personalization"
 	_ "chromiumos/tast/local/bundles/cros/phonehub"
 	_ "chromiumos/tast/local/bundles/cros/platform"
 	_ "chromiumos/tast/local/bundles/cros/policy"
