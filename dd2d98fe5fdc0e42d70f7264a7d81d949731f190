@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29093c74_172db9ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-13T05:48:00Z",
+      "side": 1,
+      "message": "yee",
+      "parentUuid": "7ccf5d75_9c352492",
+      "revId": "dd2d98fe5fdc0e42d70f7264a7d81d949731f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a9689ac_9e569726",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-04-12T13:18:50Z",
       "side": 1,
       "message": "nit: NewConfigFromState",
+      "range": {
+        "startLine": 42,
+        "startChar": 35,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "dd2d98fe5fdc0e42d70f7264a7d81d949731f190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12734dd8_ee0e9da3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-13T05:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a9689ac_9e569726",
       "range": {
         "startLine": 42,
         "startChar": 35,
