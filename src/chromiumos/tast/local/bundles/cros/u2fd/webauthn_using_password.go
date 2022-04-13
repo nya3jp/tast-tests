@@ -37,7 +37,6 @@ func init() {
 		}, {
 			Name:              "gsc",
 			ExtraSoftwareDeps: []string{"gsc"},
-			ExtraAttr:         []string{"informational"},
 		}},
 		Timeout: 5 * time.Minute,
 	})
