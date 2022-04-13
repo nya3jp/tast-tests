@@ -118,6 +118,30 @@
       },
       "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f10524b4_101c0af5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-04-13T01:34:18Z",
+      "side": 1,
+      "message": "\u003e Each fixture will only run once, and all tests which rely on it will share the setup. Only the setup code at the start of this function would need to be run for each test case.\nAfter reading [1] again I realized that my previous understanding about fixture was wrong... Thanks for the explanation!\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#fixtures",
+      "parentUuid": "9c856394_ee78d206",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "9cc6b61e420b82151a1c2024965f04ae030dd979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
