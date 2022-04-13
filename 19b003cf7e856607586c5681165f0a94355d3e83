@@ -39,6 +39,30 @@
       },
       "revId": "19b003cf7e856607586c5681165f0a94355d3e83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f8cf55_4eb0846c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2022-04-13T00:13:53Z",
+      "side": 1,
+      "message": "Ignore this. I figured it out myself. The \"informational\" seems to propagate to the subtests.\n\nI checked with:\n`tast list $dut \u0027(!informational)\u0027 | grep debugd`",
+      "parentUuid": "99f349ce_3f9543ba",
+      "range": {
+        "startLine": 40,
+        "startChar": 43,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "19b003cf7e856607586c5681165f0a94355d3e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
