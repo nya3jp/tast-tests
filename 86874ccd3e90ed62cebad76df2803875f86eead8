@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2a93db_048ff298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-13T06:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42fd4f05_a5223d9c",
+      "revId": "86874ccd3e90ed62cebad76df2803875f86eead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92c989a8_10127344",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-04-12T12:40:23Z",
       "side": 1,
       "message": "it can be just \n\n```\nreturn x.VendorID \u003c y.VendorID \u0026\u0026 x.DeviceID \u003c y.DeviceID ...\n```\n\nI don\u0027t really like the idea of concatenating everything into a string and then compare strings, it might work unexpected.",
+      "range": {
+        "startLine": 140,
+        "startChar": 10,
+        "endLine": 140,
+        "endChar": 26
+      },
+      "revId": "86874ccd3e90ed62cebad76df2803875f86eead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76f87f9e_625e31da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-04-13T06:26:21Z",
+      "side": 1,
+      "message": "I don\u0027t think\n```\nreturn x.VendorID \u003c y.VendorID \u0026\u0026 x.DeviceID \u003c y.DeviceID ...\n```\nworks. (Consider sorting `{(1,2),(2,1)}`)\n\nI change it to compare two slice so we can avoid joining them to string.",
+      "parentUuid": "92c989a8_10127344",
       "range": {
         "startLine": 140,
         "startChar": 10,
