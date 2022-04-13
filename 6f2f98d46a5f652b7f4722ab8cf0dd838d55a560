@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7b2dca_7aa78b65",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-13T22:36:28Z",
+      "side": 1,
+      "message": "It\u0027s worth adding a comment to say that these strings come from the `IDS_KEYBOARD_DIAGRAM_ARIA_LABEL_NOT_PRESSED`, `IDS_KEYBOARD_DIAGRAM_ARIA_LABEL_PRESSED`, and `IDS_KEYBOARD_DIAGRAM_ARIA_LABEL_TESTED` in chromeos/chromeos_strings.grd. Might be useful for future reference.",
+      "revId": "6f2f98d46a5f652b7f4722ab8cf0dd838d55a560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7018a931_2ef98e98",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-13T22:36:28Z",
+      "side": 1,
+      "message": "Nit: I\u0027d refer to it as the \"tested (previously pressed)\" state for consistency with the Diagnostics app code.",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "6f2f98d46a5f652b7f4722ab8cf0dd838d55a560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c8e4a6_ca8d1ec1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2022-04-13T22:36:28Z",
+      "side": 1,
+      "message": "Nit: add a space after `//`",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "6f2f98d46a5f652b7f4722ab8cf0dd838d55a560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
