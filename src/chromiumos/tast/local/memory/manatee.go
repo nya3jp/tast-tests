@@ -42,6 +42,32 @@ func manateePgrep(ctx context.Context, args ...string) ([]int, error) {
 	return pids, nil
 }
 
+// getGuestMemoryRssSizes gets the RSS of all crosvm_guest memfds mapped into
+// |pid|, as identified by the memfd's inode.
+func getGuestMemoryRssSizes(ctx context.Context, pid int) (map[uint64]uint64, error) {
+	rssSizes := make(map[uint64]uint64)
+
+	smapsCmd := manateeCommand(ctx, "cat", fmt.Sprintf("/proc/%d/smaps", pid))
+	smapsOut, err := smapsCmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to cat smaps")
+	}
+	smaps, err := ParseSmapsData(smapsOut)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse smaps")
+	}
+	for _, smap := range smaps {
+		if strings.Contains(smap.name, "crosvm_guest") {
+			rssSizes[smap.inode] = rssSizes[smap.inode] + smap.rss
+		}
+	}
+	if len(rssSizes) == 0 {
+		return nil, errors.New("no guest memory found")
+	}
+
+	return rssSizes, nil
+}
+
 // ManaTEEMetrics generates metrics for ManaTEE hypervisor memory usage.
 func ManaTEEMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) error {
 	_, err := exec.LookPath("manatee")
@@ -56,6 +82,14 @@ func ManaTEEMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) 
 		return errors.Wrapf(err, "failed to find oldest crosvm: %v", pids)
 	}
 
+	// Sibling VM memory is mapped into the CrOS guest for virtio-vhost-user. We
+	// can use inode as a stable identifier for the memfds and then filter out
+	// the sibling memory when we process the sibling smaps later.
+	crosGuestRssSizes, err := getGuestMemoryRssSizes(ctx, pids[0])
+	if err != nil {
+		return errors.Wrap(err, "failed to get CrOS guest's info")
+	}
+
 	// Crosvm processes that are the direct child of trichechus are the main processes
 	// of sibling VMs. There are currently two trichechus processes - the older one reaps
 	// child processes, and the newer one is the main process.
@@ -68,28 +102,27 @@ func ManaTEEMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) 
 	if err != nil {
 		return errors.Wrap(err, "failed to find sibling crosvm")
 	}
-	pids = append(pids, siblingPids...)
 
 	var crosGuestRssKiB uint64
-	for _, pid := range pids {
-		smapsCmd := manateeCommand(ctx, "cat", fmt.Sprintf("/proc/%d/smaps", pid))
-		smapsOut, err := smapsCmd.Output(testexec.DumpLogOnError)
+	for _, pid := range siblingPids {
+		rssSizes, err := getGuestMemoryRssSizes(ctx, pid)
 		if err != nil {
-			return errors.Wrap(err, "failed to cat smaps")
+			return errors.Wrap(err, "failed to find guest memory size")
 		}
-		smaps, err := ParseSmapsData(smapsOut)
-		if err != nil {
-			return errors.Wrap(err, "failed to parse smaps")
+		if len(rssSizes) != 1 {
+			return errors.Errorf("Malformed sibling info: %v", rssSizes)
 		}
-		for _, smap := range smaps {
-			if strings.Contains(smap.name, "crosvm_guest") {
-				crosGuestRssKiB += smap.rss
-			}
+		for inode, rssSizeKiB := range rssSizes {
+			delete(crosGuestRssSizes, inode)
+			crosGuestRssKiB += rssSizeKiB
 		}
 	}
 
-	if crosGuestRssKiB == 0 {
-		return errors.Wrap(err, "failed to find crosvm guest memory")
+	if len(crosGuestRssSizes) != 1 {
+		return errors.Errorf("unexpected crosGuestRssSizes %v", crosGuestRssSizes)
+	}
+	for _, rssSizeKiB := range crosGuestRssSizes {
+		crosGuestRssKiB += rssSizeKiB
 	}
 
 	meminfoCmd := manateeCommand(ctx, "cat", "/proc/meminfo")
