@@ -145,6 +145,30 @@
       },
       "revId": "44acf0e6cbec2f2b9ab4ffebe1669890400884db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b1c80f9_d0b96a86",
+        "filename": "src/chromiumos/tast/local/media/devtools/devtools.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-13T01:38:45Z",
+      "side": 1,
+      "message": "Yes, creating a new timeout and set to min(original ctx timeout, time.Now() + 120 * time.Second).\n\nBy WithTimeout[1], it implicitly calls WithDealine[2], the new context\u0027s timeout is either the timeout you specified or the existing context\u0027s timeout, whichever comes first.\n\n\n[1] https://pkg.go.dev/context#WithTimeout\n[2] https://pkg.go.dev/context#WithDeadline",
+      "parentUuid": "f7f25e9c_914423bc",
+      "range": {
+        "startLine": 142,
+        "startChar": 26,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "44acf0e6cbec2f2b9ab4ffebe1669890400884db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
