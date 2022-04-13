@@ -88,6 +88,24 @@
       "parentUuid": "40a93494_36af5c77",
       "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ecb8065_5da004e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-13T11:54:00Z",
+      "side": 1,
+      "message": "\u003e Correct, the timeouts are happening due to failure of installing packages and are being investigated already and this change is not intended to address that.\n\u003e \n\u003e The intention for this change is to not fail the calling test due to failure to list packages which I\u0027ve observed in my local runs to happen when Play Store is updating and the call succeeds afterwards i.e. it is like a transient failure.\n\u003e \n\u003e I can add a check on the message to contain that status code 244 or 245 just like the existing code was doing. I figured, if I just remove the check and retry regardless, we\u0027ll cover all transient errors and non-transient ones are going to fail anyway and won\u0027t be missed.\n\u003e \n\nIt depends on why the transient errors (other than Play Store update) happen.\nIf it is very clear and has good reasons, we can do like this, but we should be more likely stricter to avoid passing tests incorrectly.\n\n\u003e I can also abandon this change and file a bug to investigate the transient adb failure during Play Store update but won\u0027t have the capacity to investigate it. Please let me know what do you prefer.\n\nI\u0027m ok to keep this CL opened, but investigation of the error is needed, I think.",
+      "parentUuid": "b01fd6b2_7dd8ddc1",
+      "revId": "0ad6f729c2086b29937161a9396849a5c6b1d1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
