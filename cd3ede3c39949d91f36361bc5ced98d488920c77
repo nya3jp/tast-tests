@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a34453_eeac4e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T02:02:23Z",
+      "side": 1,
+      "message": "We compare browserType with browser.TypeLacros in our test case like this:\n```\nif param.browserType \u003d\u003d browser.TypeLacros {\n    // Lacros logic\n}\n```\nWe don\u0027t assign it for ash-Chrome cases so it will not fall in the lacros code. We don\u0027t use API like lacros.Setup(), which requires browserType, so we don\u0027t see any problem.",
+      "parentUuid": "6fcc13b1_107cba98",
+      "range": {
+        "startLine": 70,
+        "startChar": 82,
+        "endLine": 70,
+        "endChar": 93
+      },
+      "revId": "cd3ede3c39949d91f36361bc5ced98d488920c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59e61de0_bd9b9573",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d1ca1b_de53818a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj_recorder2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T02:02:23Z",
+      "side": 1,
+      "message": "Added comments. Thanks for the review!",
+      "parentUuid": "59e61de0_bd9b9573",
+      "range": {
+        "startLine": 63,
+        "startChar": 59,
+        "endLine": 63,
+        "endChar": 62
+      },
+      "revId": "cd3ede3c39949d91f36361bc5ced98d488920c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd83d1af_e7c651cb",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-13T01:24:57Z",
       "side": 1,
       "message": "Why l could be nil if there is no error?",
+      "range": {
+        "startLine": 456,
+        "startChar": 4,
+        "endLine": 456,
+        "endChar": 5
+      },
+      "revId": "cd3ede3c39949d91f36361bc5ced98d488920c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6b9637_6ede8c8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-13T02:02:23Z",
+      "side": 1,
+      "message": "GetBrowserStartTime will return l only when lacros is enabled (lFixtVal is given). Otherwise it will launch ash-Chrome and a nil for l. So even no error is returned, l could also be nil. (details at [this review](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3577625/7/src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go#58))",
+      "parentUuid": "cd83d1af_e7c651cb",
       "range": {
         "startLine": 456,
         "startChar": 4,
