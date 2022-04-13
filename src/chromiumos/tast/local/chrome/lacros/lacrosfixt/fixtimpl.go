@@ -185,9 +185,8 @@ func init() {
 		Name:     "lacrosUIKeepAlive",
 		Desc:     "Lacros Chrome from a pre-built image using the UI and the Lacros chrome will stay alive even when the browser terminated",
 		Contacts: []string{"mxcai@chromium.org", "hidehiko@chromium.org"},
-		Impl: NewFixture(lacros.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary"),
-				chrome.LacrosExtraArgs("--no-first-run")}, nil
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfigFromState(s, KeepAlive(true), Mode(lacros.LacrosPrimary)).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -281,13 +280,13 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		opts = append(opts, extraOpts...)
 	}
-	// Set default opts for Lacros based on the selection and the runtime var.
+	// Set opts for Lacros based on the selection and the runtime var.
 	cfg := NewConfigFromState(s, Selection(f.selection))
-	defaultOpts, err := DefaultOpts(cfg)
+	lacrosOpts, err := cfg.Opts()
 	if err != nil {
 		s.Fatal("Failed to set default options: ", err)
 	}
-	opts = append(opts, defaultOpts...)
+	opts = append(opts, lacrosOpts...)
 
 	if f.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
