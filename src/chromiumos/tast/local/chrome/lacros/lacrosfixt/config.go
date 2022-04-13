@@ -30,10 +30,18 @@ func Mode(mode lacros.Mode) Option {
 	}
 }
 
+// KeepAlive returns an Option which sets lacros keep-alive to the desired value.
+func KeepAlive(on bool) Option {
+	return func(c *Config) {
+		c.keepAlive = on
+	}
+}
+
 // Config holds runtime vars or other variables needed to set up Lacros.
 type Config struct {
 	selection    lacros.Selection
 	mode         lacros.Mode
+	keepAlive    bool
 	deployed     bool
 	deployedPath string // dirpath to lacros executable file
 }
@@ -47,11 +55,11 @@ type TestingState interface {
 // NewConfigFromState creates a new LacrosConfig instance.
 // TestingState allows both testing.FixtState and testing.State to be passed in.
 func NewConfigFromState(s TestingState, ops ...Option) *Config {
-	// Default values are rootfs and notspecified.
 	// TODO(crbug.com/1260037): Make lacros.LacrosPrimary the default.
 	cfg := &Config{
 		selection: lacros.Rootfs,
 		mode:      lacros.NotSpecified,
+		keepAlive: false,
 	}
 
 	for _, op := range ops {
@@ -81,8 +89,8 @@ func ExtensionArgs(extID, extList string) []string {
 	}
 }
 
-// DefaultOpts returns common chrome options for Lacros given the cfg.
-func DefaultOpts(cfg *Config) ([]chrome.Option, error) {
+// Opts returns common chrome options for Lacros for the Config.
+func (cfg *Config) Opts() ([]chrome.Option, error) {
 	var opts []chrome.Option
 
 	// Disable launching lacros on login.
@@ -100,6 +108,9 @@ func DefaultOpts(cfg *Config) ([]chrome.Option, error) {
 	// Chrome to a different milestone. Disables the feature in testing to make the test
 	// expectations more predirectable, and thus make the tests more stable.
 	opts = append(opts, chrome.LacrosExtraArgs("--disable-features=ChromeWhatsNewUI"))
+
+	// Prevent showing up offer pages, e.g. google.com/chromebooks.
+	opts = append(opts, chrome.LacrosExtraArgs("--no-first-run"))
 
 	// Force color profile to sRGB regardless of device. See b/221643955 for details.
 	opts = append(opts, chrome.LacrosExtraArgs("--force-color-profile=srgb"))
@@ -153,6 +164,10 @@ func DefaultOpts(cfg *Config) ([]chrome.Option, error) {
 				}
 			}
 		}
+	}
+
+	if !cfg.keepAlive {
+		opts = append(opts, chrome.ExtraArgs("--disable-lacros-keep-alive"))
 	}
 
 	return opts, nil

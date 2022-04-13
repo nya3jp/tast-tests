@@ -103,11 +103,11 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Co
 		return cr, cr.Browser(), func(context.Context) {}, nil
 
 	case browser.TypeLacros:
-		defaultOpts, err := lacrosfixt.DefaultOpts(cfg)
+		lacrosOpts, err := cfg.Opts()
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to get default options")
 		}
-		opts = append(opts, defaultOpts...)
+		opts = append(opts, lacrosOpts...)
 
 		cr, err := chrome.New(ctx, opts...)
 		if err != nil {
