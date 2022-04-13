@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95768d4f_ad43f628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-13T16:21:04Z",
+      "side": 1,
+      "message": "numFailures?",
+      "range": {
+        "startLine": 320,
+        "startChar": 12,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "738530ec_421576e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-04-13T16:21:04Z",
+      "side": 1,
+      "message": "Can we save these as metrics and upload them? Are we already doing this?",
+      "revId": "f7832ed489f083e5e5c58284542f5b4efd059ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
