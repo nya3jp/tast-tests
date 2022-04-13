@@ -16,6 +16,23 @@
       "message": "tested on brya-manatee (most volteer models are marked to skip due to old firmware ... still?)",
       "revId": "c0fd908545427447206a6a8262c23315b26f17ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6376592c_1631293f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-04-13T01:44:45Z",
+      "side": 1,
+      "message": "David, ptal.",
+      "revId": "c0fd908545427447206a6a8262c23315b26f17ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
