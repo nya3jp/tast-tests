@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3690abd_e56e20d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-13T10:11:39Z",
+      "side": 1,
+      "message": "nit: \"Remove\" instead of \"Removed\"?",
+      "range": {
+        "startLine": 121,
+        "startChar": 23,
+        "endLine": 121,
+        "endChar": 44
+      },
+      "revId": "495276d1a48b47b1bb702b604bedaa58f38c7fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff620f0a_5e4fb331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-13T10:11:39Z",
+      "side": 1,
+      "message": "nit: \"Remove\"?",
+      "range": {
+        "startLine": 243,
+        "startChar": 23,
+        "endLine": 243,
+        "endChar": 30
+      },
+      "revId": "495276d1a48b47b1bb702b604bedaa58f38c7fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1782ae9f_e49ad930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-13T10:11:39Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\nI think this message can be omitted, unless this operation takes long time, because the next error messages have the same information.\nPerhaps, the next block with clickOptionAndWaitConfiguration() would take long time?",
+      "revId": "495276d1a48b47b1bb702b604bedaa58f38c7fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
