@@ -7,13 +7,16 @@ package inputs
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -48,23 +51,32 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		Data:         data.ExtractExternalFiles(voiceTestMessages, append(voiceTestIMEs, voiceTestIMEsNewData...)),
-		Pre:          pre.VKEnabledTabletReset,
 		Timeout:      time.Duration(len(voiceTestIMEs)+len(voiceTestIMEsNewData)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
+				Pre:               pre.VKEnabledTabletReset,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Val:               voiceTestIMEs,
 			},
 			{
 				Name:              "newdata", // This test will be merged into CQ once it is proved to be stable.
+				Pre:               pre.VKEnabledTabletReset,
 				Val:               voiceTestIMEsNewData,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "informational",
+				Pre:               pre.VKEnabledTabletReset,
 				Val:               append(voiceTestIMEs, voiceTestIMEsNewData...),
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "fixture",
+				Fixture:           fixture.TabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				Val:               voiceTestIMEs,
 				ExtraAttr:         []string{"informational"},
 			},
 		},
@@ -72,9 +84,19 @@ func init() {
 }
 
 func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	var cr *chrome.Chrome
+	var tconn *chrome.TestConn
+	var uc *useractions.UserContext
+	if strings.Contains(s.TestName(), "fixture") {
+		cr = s.FixtValue().(fixture.FixtData).Chrome
+		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
+		uc = s.FixtValue().(fixture.FixtData).UserContext
+		uc.SetTestName(s.TestName())
+	} else {
+		cr = s.PreValue().(pre.PreData).Chrome
+		tconn = s.PreValue().(pre.PreData).TestAPIConn
+		uc = s.PreValue().(pre.PreData).UserContext
+	}
 
 	testIMEs := s.Param().([]ime.InputMethod)
 
