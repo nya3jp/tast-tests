@@ -8,9 +8,11 @@ import (
 	"context"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -44,6 +46,16 @@ const (
 	// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
 	// Adding/removing accounts requires ADB root access, so this will automatically be set to true if root is not available.
 	skipAndroidLogin = "skipAndroidLogin"
+
+	// Per RF box GAIA accounts.
+	crossDevicePerBoxUsername1 = "crossdevice.perbox.user1"
+	crossDevicePerBoxUsername2 = "crossdevice.perbox.user2"
+	crossDevicePerBoxUsername3 = "crossdevice.perbox.user3"
+	crossDevicePerBoxUsername4 = "crossdevice.perbox.user4"
+	crossDevicePerBoxUsername5 = "crossdevice.perbox.user5"
+	crossDevicePerBoxUsername6 = "crossdevice.perbox.user6"
+	crossDevicePerBoxUsername7 = "crossdevice.perbox.user7"
+	crossDevicePerBoxPassword  = "crossdevice.perbox.password"
 )
 
 func init() {
@@ -60,6 +72,14 @@ func init() {
 			defaultCrossDeviceUsername,
 			defaultCrossDevicePassword,
 			skipAndroidLogin,
+			crossDevicePerBoxUsername1,
+			crossDevicePerBoxUsername2,
+			crossDevicePerBoxUsername3,
+			crossDevicePerBoxUsername4,
+			crossDevicePerBoxUsername5,
+			crossDevicePerBoxUsername6,
+			crossDevicePerBoxUsername7,
+			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -80,6 +100,14 @@ func init() {
 			smartLockUsername,
 			smartLockPassword,
 			skipAndroidLogin,
+			crossDevicePerBoxUsername1,
+			crossDevicePerBoxUsername2,
+			crossDevicePerBoxUsername3,
+			crossDevicePerBoxUsername4,
+			crossDevicePerBoxUsername5,
+			crossDevicePerBoxUsername6,
+			crossDevicePerBoxUsername7,
+			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -99,6 +127,14 @@ func init() {
 			smartLockLoginUsername,
 			smartLockLoginPassword,
 			skipAndroidLogin,
+			crossDevicePerBoxUsername1,
+			crossDevicePerBoxUsername2,
+			crossDevicePerBoxUsername3,
+			crossDevicePerBoxUsername4,
+			crossDevicePerBoxUsername5,
+			crossDevicePerBoxUsername6,
+			crossDevicePerBoxUsername7,
+			crossDevicePerBoxPassword,
 		},
 		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -153,7 +189,7 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 		loggedIn = b
 	}
-	androidUsername, androidPassword, err := GetLoginCredentials(f.feature)
+	androidUsername, androidPassword, err := GetLoginCredentials(ctx, s, f.feature)
 	if err != nil {
 		s.Fatal("Failed to get login credentials: ", err)
 	}
@@ -195,26 +231,62 @@ func (f *crossdeviceAndroidFixture) PreTest(ctx context.Context, s *testing.Fixt
 func (f *crossdeviceAndroidFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 // GetLoginCredentials returns the correct credentials to use based on the Cross Device feature being tested.
-func GetLoginCredentials(feature Feature) (string, string, error) {
-	var username, password string
-	switch feature.Name {
-	case SmartLock:
-		switch feature.SubFeature {
-		case SmartLockUnlock:
-			username = smartLockUsername
-			password = smartLockPassword
-		case SmartLockLogin:
-			username = smartLockLoginUsername
-			password = smartLockLoginPassword
-		default:
-			return "", "", errors.New("unknown subfeature specified for Smart Lock")
-		}
-	case PhoneHub:
-		username = defaultCrossDeviceUsername
-		password = defaultCrossDevicePassword
-	default:
-		return "", "", errors.New("unknown Cross Device feature specified")
+func GetLoginCredentials(ctx context.Context, s *testing.FixtState, feature Feature) (string, string, error) {
+	var username, password, ipaddress string
+
+	// Choose the account to use based on the IP address of the chromebook.
+	cmd := `ifconfig eth0 | grep "inet " | awk '{print $2}'`
+	out, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Log("Failed to get IP Address of Chromebook: ", err)
+		ipaddress = ""
+	} else {
+		ipaddress = strings.TrimSpace(string(out))
 	}
+	password = "crossdevice.perbox.password"
+	switch ipaddress {
+	// chromeos15-row3-metro1-unit2
+	case "100.115.21.13", "100.115.21.14":
+		username = crossDevicePerBoxUsername1
+	// chromeos15-row3-metro2-unit4
+	case "100.115.21.89", "100.115.21.90":
+		username = crossDevicePerBoxUsername2
+	// chromeos15-row3-metro3-unit1
+	case "172.27.212.175", "172.27.212.176":
+		username = crossDevicePerBoxUsername3
+	// chromeos15-row3-metro3-unit2
+	case "172.27.212.186", "172.27.212.187":
+		username = crossDevicePerBoxUsername4
+	// chromeos15-row3-metro3-unit3
+	case "172.27.212.197", "172.27.212.198":
+		username = crossDevicePerBoxUsername5
+	// chromeos15-row3-metro3-unit4
+	case "172.27.212.208", "172.27.212.209":
+		username = crossDevicePerBoxUsername6
+	// chromeos15-row3-metro4-unit1
+	case "172.27.212.253", "172.27.212.254":
+		username = crossDevicePerBoxUsername7
+	default:
+		switch feature.Name {
+		case SmartLock:
+			switch feature.SubFeature {
+			case SmartLockUnlock:
+				username = smartLockUsername
+				password = smartLockPassword
+			case SmartLockLogin:
+				username = smartLockLoginUsername
+				password = smartLockLoginPassword
+			default:
+				return "", "", errors.New("unknown subfeature specified for Smart Lock")
+			}
+		case PhoneHub:
+			username = defaultCrossDeviceUsername
+			password = defaultCrossDevicePassword
+		default:
+			return "", "", errors.New("unknown Cross Device feature specified")
+		}
+	}
+	s.Logf("GAIA account chosen: %s", username)
 	return username, password, nil
 
 }
