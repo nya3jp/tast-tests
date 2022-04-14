@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "508294e5_290da3af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-14T23:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1825841f_6db0d94b",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "25e21d84b6a42d5fbcc8f26814324a642793f1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebd835e5_d1f02505",
@@ -50,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85bb54a9_ba516a54",
+        "filename": "android/ArcInputOverlayTest/src/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-14T23:20:29Z",
+      "side": 1,
+      "message": "Oh I was trying to use tab key to remove focus for manual test. This can be removed. I use another way.",
+      "parentUuid": "ebd835e5_d1f02505",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "25e21d84b6a42d5fbcc8f26814324a642793f1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eaf545e_8497ff88",
         "filename": "android/ArcInputOverlayTest/src/MainActivity.java",
         "patchSetId": 6
@@ -61,6 +109,30 @@
       "writtenOn": "2022-04-14T19:45:37Z",
       "side": 1,
       "message": "nit: I guess this can be reduced to:\n\n  if (source \u0026 (InputDevice.SOURCE_GAMEPAD | InputDevice.SOURCE_JOYSTICK)) !\u003d 0)",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "25e21d84b6a42d5fbcc8f26814324a642793f1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30727324_d1d1ea77",
+        "filename": "android/ArcInputOverlayTest/src/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-14T23:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eaf545e_8497ff88",
       "range": {
         "startLine": 105,
         "startChar": 4,
