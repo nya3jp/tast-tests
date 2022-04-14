@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07dd6cb1_957b6846",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-04-14T23:47:05Z",
+      "side": 1,
+      "message": "For readability, I\u0027d recommend split the flow into two parts. One for OldUI and one for NewUI instead of mixing them together. It also easier maintain the code in the future once migrating to newUI.\n\ne.g.\n```\nuseOldUI, err :\u003d a.OptionExist(...)\n...\n\nif useOldUI {\n    active :\u003d state \u003d\u003d TimerOn\n    cur, err :\u003d a.State(...)\n    if err !\u003d nil {\n    }\n    if cur !\u003d active {\n      a.ToggleOption...\n    }\n    if active {\n    }\n} \n\n// NewUI\n\n```",
+      "revId": "15f288ec86289f2c92ab521de5192301519d7473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
