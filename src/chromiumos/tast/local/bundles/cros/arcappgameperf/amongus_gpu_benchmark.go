@@ -132,6 +132,16 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 			action.Sleep(waitForActiveInputTime),
 			uda.Tap(uidetection.TextBlock([]string{"Create", "Game"})),
 
+			// A failure to join a created session will be retried twice before being skipped.
+			action.IfSuccessThen(
+				uda.WithTimeout(playGamesClosePromptTimeout).WaitUntilExists(uidetection.Word("Failed")),
+				uiauto.Retry(2, uiauto.Combine("Close announcements and click 'Create game' again",
+					uda.Tap(uidetection.CustomIcon(s.DataPath("amongus-announcements-close-button.png"))),
+					uda.Tap(uidetection.TextBlock([]string{"Create", "Game"})),
+					uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("amongus-in-game-settings-button.png"))),
+				)),
+			),
+
 			// Poll created game loaded (wait until settings button appears).
 			uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("amongus-in-game-settings-button.png"))),
 		)(ctx); err != nil {
