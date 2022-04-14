@@ -21,10 +21,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SoundCardInit,
-		Desc: "Verifies sound_card_init boot time calibration logic",
-		// TODO(b/214459747): Re-enable manatee after VPD and cpufreq are plumbed through.
-		SoftwareDeps: []string{"no_manatee"},
+		Func:         SoundCardInit,
+		Desc:         "Verfies sound_card_init boot time calibration logic",
 		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2")),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline"},
