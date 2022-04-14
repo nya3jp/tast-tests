@@ -20,7 +20,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks if showing and hiding global actions work on ARC",
 		Contacts:     []string{"nergi@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      "arcBooted",
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Timeout:      3 * time.Minute,
