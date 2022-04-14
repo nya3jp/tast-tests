@@ -7,11 +7,14 @@ package inputs
 import (
 	"context"
 	"math"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -29,17 +32,32 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Validity check on floating virtual keyboard",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Params: []testing.Param{{
-			Name:              "tablet",
-			Pre:               pre.VKEnabledTabletReset,
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-		}, {
-			Name:              "clamshell",
-			Pre:               pre.VKEnabledClamshellReset,
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-		}}})
+		HardwareDeps: hwdep.D(pre.InputsStableModels),
+		Params: []testing.Param{
+			{
+				Name:      "tablet",
+				Pre:       pre.VKEnabledTabletReset,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:      "clamshell",
+				Pre:       pre.VKEnabledClamshellReset,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:      "tablet_fixture",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name:      "clamshell_fixture",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"informational"},
+			},
+		},
+	})
 }
 
 func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
@@ -48,9 +66,19 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	var cr *chrome.Chrome
+	var tconn *chrome.TestConn
+	var uc *useractions.UserContext
+	if strings.Contains(s.TestName(), "fixture") {
+		cr = s.FixtValue().(fixture.FixtData).Chrome
+		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
+		uc = s.FixtValue().(fixture.FixtData).UserContext
+		uc.SetTestName(s.TestName())
+	} else {
+		cr = s.PreValue().(pre.PreData).Chrome
+		tconn = s.PreValue().(pre.PreData).TestAPIConn
+		uc = s.PreValue().(pre.PreData).UserContext
+	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, s.TestName())
 
