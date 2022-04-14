@@ -6,12 +6,15 @@ package inputs
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -63,7 +66,8 @@ func init() {
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
-			}, {
+			},
+			{
 				Name:              "french_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
@@ -73,7 +77,8 @@ func init() {
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
-			}, {
+			},
+			{
 				Name:              "catalan",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
@@ -91,7 +96,8 @@ func init() {
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
-			}, {
+			},
+			{
 				Name:              "catalan_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
@@ -102,15 +108,65 @@ func init() {
 					expectedTypingResult: "á",
 				},
 			},
-		}})
+			{
+				Name:              "french_fixture",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+				// "French - French keyboard" input method uses a compact-layout VK for
+				// non-a11y mode where there's no dead keys, and a full-layout VK for
+				// a11y mode where there's dead keys. To test dead keys on the VK of
+				// this input method, a11y mode must be enabled.
+				Fixture: fixture.ClamshellVK,
+				Val: deadKeysTestCase{
+					// "French - French keyboard" input method is decoder-backed. Dead keys
+					// are implemented differently from those of a no-frills input method.
+					inputMethod: ime.FrenchFrance,
+					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
+					// based on Shift and Caps states, then add Shift and Caps related
+					// typing sequences to the test case.
+					typingKeys:           []string{circumflex, "a"},
+					expectedTypingResult: "â",
+				},
+			},
+			{
+				Name:              "catalan_fixture",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+				// "Catalan keyboard" input method uses the same full-layout VK (that
+				// has dead keys) for both a11y & non-a11y. Just use non-a11y here.
+				Fixture: fixture.TabletVK,
+				Val: deadKeysTestCase{
+					// "Catalan keyboard" input method is no-frills. Dead keys are
+					// implemented differently from those of a decoder-backed input method.
+					inputMethod: ime.Catalan,
+
+					// TODO(b/162292283): Make vkb.TapKeys() less flaky when the VK changes
+					// based on Shift and Caps states, then add Shift and Caps related
+					// typing sequences to the test case.
+					typingKeys:           []string{acuteAccent, "a"},
+					expectedTypingResult: "á",
+				},
+			},
+		},
+	})
 }
 
 func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(deadKeysTestCase)
 
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	var cr *chrome.Chrome
+	var tconn *chrome.TestConn
+	var uc *useractions.UserContext
+	if strings.Contains(s.TestName(), "fixture") {
+		cr = s.FixtValue().(fixture.FixtData).Chrome
+		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
+		uc = s.FixtValue().(fixture.FixtData).UserContext
+		uc.SetTestName(s.TestName())
+	} else {
+		cr = s.PreValue().(pre.PreData).Chrome
+		tconn = s.PreValue().(pre.PreData).TestAPIConn
+		uc = s.PreValue().(pre.PreData).UserContext
+	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

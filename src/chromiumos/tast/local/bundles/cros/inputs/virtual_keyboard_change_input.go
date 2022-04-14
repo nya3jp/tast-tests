@@ -7,13 +7,16 @@ package inputs
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -33,29 +36,55 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      3 * time.Minute,
-		Params: []testing.Param{{
-			Name:              "tablet",
-			Pre:               pre.VKEnabledTabletReset,
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			ExtraAttr:         []string{"group:input-tools-upstream"},
-		}, {
-			Name:              "a11y",
-			Pre:               pre.VKEnabledClamshellReset,
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			ExtraAttr:         []string{"group:input-tools-upstream"},
-		}, {
-			Name:              "informational",
-			ExtraAttr:         []string{"informational"},
-			Pre:               pre.VKEnabledTabletReset,
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-		}},
+		Params: []testing.Param{
+			{
+				Name:              "tablet",
+				Pre:               pre.VKEnabledTabletReset,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "a11y",
+				Pre:               pre.VKEnabledClamshellReset,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "informational",
+				ExtraAttr:         []string{"informational"},
+				Pre:               pre.VKEnabledTabletReset,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+			{
+				Name:              "tablet_fixture",
+				Fixture:           fixture.TabletVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "a11y_fixture",
+				Fixture:           fixture.ClamshellVK,
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"informational"},
+			},
+		},
 	})
 }
 
 func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	var cr *chrome.Chrome
+	var tconn *chrome.TestConn
+	var uc *useractions.UserContext
+	if strings.Contains(s.TestName(), "fixture") {
+		cr = s.FixtValue().(fixture.FixtData).Chrome
+		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
+		uc = s.FixtValue().(fixture.FixtData).UserContext
+		uc.SetTestName(s.TestName())
+	} else {
+		cr = s.PreValue().(pre.PreData).Chrome
+		tconn = s.PreValue().(pre.PreData).TestAPIConn
+		uc = s.PreValue().(pre.PreData).UserContext
+	}
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
