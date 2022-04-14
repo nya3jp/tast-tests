@@ -225,8 +225,18 @@ func (c *Config) LacrosExtraArgs() []string { return append([]string(nil), c.m.L
 // EnableFeatures returns extra Chrome features to enable.
 func (c *Config) EnableFeatures() []string { return append([]string(nil), c.m.EnableFeatures...) }
 
+// LacrosEnableFeatures returns extra Lacros Chrome features to enable.
+func (c *Config) LacrosEnableFeatures() []string {
+	return append([]string(nil), c.m.LacrosEnableFeatures...)
+}
+
 // DisableFeatures returns extra Chrome features to disable.
 func (c *Config) DisableFeatures() []string { return append([]string(nil), c.m.DisableFeatures...) }
+
+// LacrosDisableFeatures returns extra Lacros Chrome features to disable.
+func (c *Config) LacrosDisableFeatures() []string {
+	return append([]string(nil), c.m.LacrosDisableFeatures...)
+}
 
 // ExtraExtDirs returns directories containing extra unpacked extensions to load.
 func (c *Config) ExtraExtDirs() []string { return append([]string(nil), c.m.ExtraExtDirs...) }
@@ -304,7 +314,9 @@ type MutableConfig struct {
 	ExtraArgs                       []string   `reuse_match:"true"`
 	LacrosExtraArgs                 []string   `reuse_match:"true"`
 	EnableFeatures                  []string   `reuse_match:"true"`
+	LacrosEnableFeatures            []string   `reuse_match:"true"`
 	DisableFeatures                 []string   `reuse_match:"true"`
+	LacrosDisableFeatures           []string   `reuse_match:"true"`
 	ExtraExtDirs                    []string   `reuse_match:"customized"`
 	SigninExtKey                    string     `reuse_match:"customized"`
 	SkipForceOnlineSignInForTesting bool       `reuse_match:"true"`

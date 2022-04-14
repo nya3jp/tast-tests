@@ -286,7 +286,7 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string,
 	// Suppress experimental Lacros infobar and possible others as well.
 	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
 	// Disable whats-new page. See crbug.com/1271436.
-	opts = append(opts, chrome.LacrosExtraArgs("--disable-features=ChromeWhatsNewUI"))
+	opts = append(opts, chrome.LacrosDisableFeatures("ChromeWhatsNewUI"))
 
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()

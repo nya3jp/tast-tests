@@ -180,14 +180,31 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	if fs := cfg.EnableFeatures(); len(fs) != 0 {
 		args = append(args, "--enable-features="+strings.Join(fs, ","))
 	}
-
 	if fs := cfg.DisableFeatures(); len(fs) != 0 {
 		args = append(args, "--disable-features="+strings.Join(fs, ","))
 	}
 
-	// Lacros Chrome additional arguments are delimited by '####'. See browser_manager.cc in Chrome source.
-	if as := cfg.LacrosExtraArgs(); len(args) != 0 {
-		args = append(args, "--lacros-chrome-additional-args="+strings.Join(as, "####"))
+	// Lacros features and additional args used to launch lacros-chrome should be delimited by
+	// '####' and passed in from ash-chrome as a single argument with --lacros-chrome-additional-args.
+	// See browser_manager.cc in Chrome source.
+	// Example:
+	//   --lacros-chrome-additional-args="--enable-features=Feature1,Feature2####--disable-features=Feature3####--foo=bar"
+	// will result in multiple arguments passed to lacros-chrome:
+	//   --enable-features=Feature1,Feature2
+	//   --disable-features=Feature3
+	//   --foo=bar
+	var largs []string
+	if fs := cfg.LacrosEnableFeatures(); len(fs) != 0 {
+		largs = append(largs, "--enable-features="+strings.Join(fs, ","))
+	}
+	if fs := cfg.LacrosDisableFeatures(); len(fs) != 0 {
+		largs = append(largs, "--disable-features="+strings.Join(fs, ","))
+	}
+	if as := cfg.LacrosExtraArgs(); len(as) != 0 {
+		largs = append(largs, as...)
+	}
+	if len(largs) != 0 {
+		args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
 	}
 
 	// TODO(b/207576612): Remove this explicit override once all tests have migrated
