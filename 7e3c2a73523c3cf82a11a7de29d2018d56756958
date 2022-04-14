@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b1d5e0_1431b889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-14T17:45:45Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7e3c2a73523c3cf82a11a7de29d2018d56756958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf6aad2_e6dc4cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-14T17:45:45Z",
+      "side": 1,
+      "message": "If the Roblox account fixture were to be added, how would this fixture interact with that one? Would they both be included in the Roblox GPU Benchmark test as \"sibling\" fixtures?",
+      "revId": "7e3c2a73523c3cf82a11a7de29d2018d56756958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
