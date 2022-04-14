@@ -17,7 +17,7 @@ func init() {
 		Func:         H1Console,
 		Desc:         "Verifies that H1 console is working",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Attr:         []string{"group:firmware", "firmware_cr50", "firmware_bringup"},
 		Vars:         []string{"servo"},
 		HardwareDeps: hwdep.D(hwdep.GSCUART()),
 	})
