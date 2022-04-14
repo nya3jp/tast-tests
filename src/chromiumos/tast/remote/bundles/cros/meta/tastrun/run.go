@@ -29,8 +29,23 @@ func NewCommand(ctx context.Context, s *testing.State, subcmd string, flags, pat
 		return nil, errors.New("failed to get meta info from context")
 	}
 
+	var overrideFlags = make(map[string]struct{})
+	var runFlags []string
+
+	for _, f := range flags {
+		fv := strings.SplitN(f, "=", 2) // value can have "="
+		overrideFlags[strings.Trim(fv[0], " ")] = struct{}{}
+	}
+
+	for _, r := range meta.RunFlags {
+		fv := strings.SplitN(r, "=", 2) // value can have "="
+		if _, ok := overrideFlags[strings.Trim(fv[0], " ")]; !ok {
+			runFlags = append(runFlags, r)
+		}
+	}
+
 	args := append([]string{subcmd}, flags...)
-	args = append(args, meta.RunFlags...)
+	args = append(args, runFlags...)
 	args = append(args, meta.Target)
 	args = append(args, patterns...)
 	cmd := exec.CommandContext(ctx, meta.TastPath, args...)
