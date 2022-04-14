@@ -22,10 +22,15 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
-const cleanupTimeout = chrome.ResetTimeout + 20*time.Second
+const (
+	cleanupTimeout = chrome.ResetTimeout + 20*time.Second
+
+	crosHealthdJobName = "cros_healthd"
+)
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -39,6 +44,8 @@ func init() {
 		Impl:            newTelemetryExtensionFixture(),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -52,6 +59,8 @@ func init() {
 		Impl:            newTelemetryExtensionFixture(optionsPage()),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
 		Data:            extFiles(true),
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -66,6 +75,8 @@ func init() {
 		Parent:          fixture.FakeDMSEnrolled,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
 }
@@ -116,6 +127,8 @@ type telemetryExtensionFixture struct {
 
 	dir string
 	cr  *chrome.Chrome
+
+	healthdPID int
 
 	v Value
 }
@@ -186,6 +199,10 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	}
 	f.v.TConn = tconn
 
+	if err := upstart.EnsureJobRunning(ctx, crosHealthdJobName); err != nil {
+		s.Fatalf("Failed to start %s daemon", crosHealthdJobName)
+	}
+
 	return &f.v
 }
 
@@ -219,9 +236,25 @@ func (f *telemetryExtensionFixture) TearDown(ctx context.Context, s *testing.Fix
 	}
 }
 
-func (f *telemetryExtensionFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *telemetryExtensionFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	_, _, pid, err := upstart.JobStatus(ctx, crosHealthdJobName)
+	if err != nil {
+		s.Fatalf("Unable to get %s PID: %s", crosHealthdJobName, err)
+	}
 
-func (f *telemetryExtensionFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+	f.healthdPID = pid
+}
+
+func (f *telemetryExtensionFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	_, _, pid, err := upstart.JobStatus(ctx, crosHealthdJobName)
+	if err != nil {
+		s.Fatalf("Unable to get %s PID: %s", crosHealthdJobName, err)
+	}
+
+	if pid != f.healthdPID {
+		s.Fatalf("%s PID changed: got %d, want %d", crosHealthdJobName, pid, f.healthdPID)
+	}
+}
 
 func (f *telemetryExtensionFixture) Reset(ctx context.Context) error {
 	return nil
