@@ -85,7 +85,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouterWithFrameSenderSupport()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
@@ -145,9 +145,9 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Log("Starting frame sender on ", ap.Interface())
 			s.Log("SSID Prefix: ", ssidPrefix)
 			cleanupCtx := ctx
-			ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
+			ctx, cancel = router.ReserveForCloseFrameSender(ctx)
 			defer cancel()
-			sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
+			sender, err := router.NewFrameSender(ctx, ap.Interface())
 			if err != nil {
 				return nil, nil, errors.Wrap(err, "failed to create frame sender")
 			}
@@ -161,7 +161,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 				)
 			}(ctx)
 			defer func(ctx context.Context) {
-				if err := legacyRouter.CloseFrameSender(ctx, sender); err != nil {
+				if err := router.CloseFrameSender(ctx, sender); err != nil {
 					s.Error("Failed to close frame sender: ", err)
 				}
 				select {

@@ -93,11 +93,11 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 		}
 		return errors.New("Unexpectedly connected to AP")
 	}
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
-	pcapPath, err := wifiutil.CollectPcapForAction(ctx, legacyRouter, "mbo_assoc_disallow", channel, freqOpts, expectFailConnect)
+	pcapPath, err := wifiutil.CollectPcapForAction(ctx, router, "mbo_assoc_disallow", channel, freqOpts, expectFailConnect)
 	if err != nil {
 		s.Fatal("Failed to collect pcap: ", err)
 	}

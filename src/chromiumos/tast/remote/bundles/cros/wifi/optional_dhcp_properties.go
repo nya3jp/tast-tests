@@ -34,7 +34,7 @@ func init() {
 func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
@@ -84,16 +84,16 @@ func OptionalDHCPProperties(ctx context.Context, s *testing.State) {
 		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
 		defer cancel()
 
-		capturer, err := legacyRouter.StartRawCapturer(ctx, "dhcp", ap.Interface())
+		capturer, err := router.StartRawCapturer(ctx, "dhcp", ap.Interface())
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to start capturer")
 		}
 		defer func(ctx context.Context) {
-			if err := legacyRouter.StopRawCapturer(ctx, capturer); err != nil {
+			if err := router.StopRawCapturer(ctx, capturer); err != nil {
 				collectFirstErr(errors.Wrap(err, "failed to close capturer"))
 			}
 		}(ctx)
-		ctx, cancel = legacyRouter.ReserveForStopRawCapturer(ctx, capturer)
+		ctx, cancel = router.ReserveForStopRawCapturer(ctx, capturer)
 		defer cancel()
 
 		testing.ContextLog(ctx, "Connecting to WiFi")

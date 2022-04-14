@@ -47,7 +47,7 @@ func init() {
 func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouterWithFrameSenderSupport()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
@@ -131,16 +131,16 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		s.Logf("Connected. Sending channel switch frame (channel switch to %d)", alternateChannel)
-		sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
+		sender, err := router.NewFrameSender(ctx, ap.Interface())
 		if err != nil {
 			s.Fatal("Failed to create frame sender: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := legacyRouter.CloseFrameSender(ctx, sender); err != nil {
+			if err := router.CloseFrameSender(ctx, sender); err != nil {
 				s.Fatal("Failed to close frame sender: ", err)
 			}
 		}(ctx)
-		ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
+		ctx, cancel = router.ReserveForCloseFrameSender(ctx)
 		defer cancel()
 		if err := sender.Send(ctx, framesender.TypeChannelSwitch, alternateChannel); err != nil {
 			s.Fatal("Failed to send channel switch frame: ", err)

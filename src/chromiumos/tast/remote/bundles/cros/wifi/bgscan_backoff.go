@@ -89,7 +89,7 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
@@ -263,7 +263,7 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 		ctx, cancel = tf.ReserveForDeconfigAP(ctx, ap2)
 		defer cancel()
 
-		ap2MAC, err := legacyRouter.MAC(ctx, ap2.Interface())
+		ap2MAC, err := router.MAC(ctx, ap2.Interface())
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to get MAC address of %s on router", ap2.Interface())
 		}
