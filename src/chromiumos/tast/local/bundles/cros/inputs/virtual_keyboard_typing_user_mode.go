@@ -13,9 +13,11 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -49,22 +51,42 @@ func init() {
 				Name: "incognito",
 				Pre:  pre.VKEnabledReset,
 			},
+			{
+				Name:      "guest_fixture",
+				Fixture:   fixture.AnyVKInGuest,
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name:      "incognito_fixture",
+				Fixture:   fixture.AnyVK,
+				ExtraAttr: []string{"informational"},
+			},
 		},
 	})
 }
 
 func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	var cr *chrome.Chrome
+	var tconn *chrome.TestConn
+	var uc *useractions.UserContext
+	if strings.Contains(s.TestName(), "fixture") {
+		cr = s.FixtValue().(fixture.FixtData).Chrome
+		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
+		uc = s.FixtValue().(fixture.FixtData).UserContext
+		uc.SetTestName(s.TestName())
+	} else {
+		cr = s.PreValue().(pre.PreData).Chrome
+		tconn = s.PreValue().(pre.PreData).TestAPIConn
+		uc = s.PreValue().(pre.PreData).UserContext
+	}
 
-	its, err := testserver.LaunchInMode(ctx, cr, tconn, strings.HasSuffix(s.TestName(), "incognito"))
+	its, err := testserver.LaunchInMode(ctx, cr, tconn, strings.Contains(s.TestName(), "incognito"))
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
 
-	if strings.HasSuffix(s.TestName(), "incognito") {
+	if strings.Contains(s.TestName(), "incognito") {
 		uc.SetAttribute(useractions.AttributeIncognitoMode, strconv.FormatBool(true))
 	}
 
