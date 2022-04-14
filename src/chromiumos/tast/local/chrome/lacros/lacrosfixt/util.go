@@ -79,7 +79,7 @@ func DefaultOpts(cfg *LacrosConfig) ([]chrome.Option, error) {
 	// new feature if this is first time the user opens the browser or the user has upgraded
 	// Chrome to a different milestone. Disables the feature in testing to make the test
 	// expectations more predirectable, and thus make the tests more stable.
-	opts = append(opts, chrome.LacrosExtraArgs("--disable-features=ChromeWhatsNewUI"))
+	opts = append(opts, chrome.LacrosDisableFeatures("ChromeWhatsNewUI"))
 
 	// Force color profile to sRGB regardless of device. See b/221643955 for details.
 	opts = append(opts, chrome.LacrosExtraArgs("--force-color-profile=srgb"))

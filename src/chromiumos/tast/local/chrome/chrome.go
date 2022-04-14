@@ -196,6 +196,12 @@ func (c *Chrome) NormalizedUser() string { return c.cfg.NormalizedUser() }
 // LacrosExtraArgs returns the extra arguments that should be added to the Lacros command line.
 func (c *Chrome) LacrosExtraArgs() []string { return c.cfg.LacrosExtraArgs() }
 
+// // TODO: LacrosEnableFeatures returns the extra arguments that should be added to the Lacros command line.
+// func (c *Chrome) LacrosEnableFeatures() []string { return c.cfg.LacrosEnableFeatures() }
+
+// // TODO: LacrosDisableFeatures returns the extra arguments that should be added to the Lacros command line.
+// func (c *Chrome) LacrosDisableFeatures() []string { return c.cfg.LacrosDisableFeatures() }
+
 // DeprecatedExtDirs returns the directories holding the test extensions.
 // For reused Chrome session, deprecatedExtDirs is not set and this method will return nil.
 //

@@ -101,7 +101,7 @@ func init() {
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
 				chrome.LacrosExtraArgs("--no-first-run"),
-				chrome.LacrosExtraArgs("--enable-features=DelegatedCompositing")}, nil
+				chrome.LacrosEnableFeatures("DelegatedCompositing")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
