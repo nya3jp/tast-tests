@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4c50f4_75749048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-14T05:29:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a71e0e4191f17cb536534239a1a6225824981bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90440b95_1e2c82c5",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-04-14T05:29:28Z",
+      "side": 1,
+      "message": "is pids[0] always going to be the ChromeOS guest?",
+      "revId": "a71e0e4191f17cb536534239a1a6225824981bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
