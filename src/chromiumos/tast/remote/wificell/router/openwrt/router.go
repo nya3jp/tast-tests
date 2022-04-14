@@ -642,6 +642,19 @@ func (r *Router) ReserveForStopRawCapturer(ctx context.Context, capturer *pcap.C
 	return capturer.ReserveForClose(ctx)
 }
 
+// SetAPIfaceDown brings down the interface that the APIface uses.
+func (r *Router) SetAPIfaceDown(ctx context.Context, iface string) error {
+	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
+		return errors.Wrapf(err, "failed to set %s down", iface)
+	}
+	return nil
+}
+
+// MAC returns the MAC address of iface on this router.
+func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
+	return r.ipr.MAC(ctx, iface)
+}
+
 // HostIsOpenWrtRouter determines whether the remote host is an OpenWrt router.
 func HostIsOpenWrtRouter(ctx context.Context, host *ssh.Conn) (bool, error) {
 	deviceInfoPath := "/etc/device_info"
