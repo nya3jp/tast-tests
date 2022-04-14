@@ -30,7 +30,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome", "tpm2_simulator"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "",
 			// These data are generated on betty but could be used on both betty and
