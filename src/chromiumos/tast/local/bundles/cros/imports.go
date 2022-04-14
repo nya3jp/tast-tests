@@ -110,6 +110,8 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/wilco"
 	_ "chromiumos/tast/local/bundles/cros/wmp"
 
+	// import fixtures for arc game performance testing.
+	_ "chromiumos/tast/local/bundles/cros/arcappgameperf/fixtures"
 	// imports kioskLoggedIn fixtures. It is not referenced by tests as it
 	// returns FixtData type from policyutil/fixtures.
 	_ "chromiumos/tast/local/kioskmode/fixtures"

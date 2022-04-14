@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
+	"chromiumos/tast/local/bundles/cros/arcappgameperf/fixtures"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
@@ -34,14 +34,13 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
+		Fixture:      fixtures.ARCAppGamePerfFixture,
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
-				Pre:               pre.ArcAppGamePerfBooted,
 			}, {
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Pre:               pre.ArcAppGamePerfBooted,
 			}},
 		Timeout: 15 * time.Minute,
 		VarDeps: []string{"arcappgameperf.username", "arcappgameperf.password", "arcappgameperf.roblox_username", "arcappgameperf.roblox_password"},

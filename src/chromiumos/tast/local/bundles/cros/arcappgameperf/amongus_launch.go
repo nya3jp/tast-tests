@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
+	"chromiumos/tast/local/bundles/cros/arcappgameperf/fixtures"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -27,14 +27,13 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
+		Fixture:      fixtures.ARCAppGamePerfFixture,
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
-				Pre:               pre.ArcAppGamePerfBooted,
 			}, {
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Pre:               pre.ArcAppGamePerfBooted,
 			}},
 		Timeout: 15 * time.Minute,
 		VarDeps: []string{"arcappgameperf.username", "arcappgameperf.password"},

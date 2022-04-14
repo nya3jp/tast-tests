@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
+	"chromiumos/tast/local/bundles/cros/arcappgameperf/fixtures"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/uidetection"
@@ -30,10 +30,10 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"amongus-dob-ok-button.png", "amongus-in-game-settings-button.png", "amongus-announcements-close-button.png"},
 		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
+		Fixture:      fixtures.ARCAppGamePerfFixture,
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
-				Pre:               pre.ArcAppGamePerfBooted,
 			}, {
 				// The hardware dependency for the "vm" subtest and the entire "vm_zork" subtest
 				// are put in place to prevent this test from being run on 4GB zork devices with
@@ -45,12 +45,10 @@ func init() {
 				Name:              "vm",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("zork")),
-				Pre:               pre.ArcAppGamePerfBooted,
 			}, {
 				Name:              "vm_zork",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Platform("zork"), hwdep.MinMemory(5000)),
-				Pre:               pre.ArcAppGamePerfBooted,
 			}},
 		Timeout: 20 * time.Minute,
 		VarDeps: []string{"arcappgameperf.username", "arcappgameperf.password"},
