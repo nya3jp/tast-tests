@@ -43,6 +43,7 @@ func init() {
 			// software dependency.
 			if arc.Supported() {
 				opts = append(opts, chrome.ARCEnabled())
+				opts = append(opts, chrome.ExtraArgs(arc.DisableSyncFlags()...))
 			} else {
 				opts = append(opts, chrome.ARCDisabled())
 			}
@@ -83,6 +84,7 @@ func init() {
 			opts := generateChromeOpts(s)
 			if arc.Supported() {
 				opts = append(opts, chrome.ARCEnabled())
+				opts = append(opts, chrome.ExtraArgs(arc.DisableSyncFlags()...))
 			} else {
 				opts = append(opts, chrome.ARCDisabled())
 			}

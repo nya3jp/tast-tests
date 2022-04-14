@@ -366,10 +366,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	// software dependency.
 	if arc.Supported() {
 		if p.loginType == loginGaia {
-			opts = []chrome.Option{chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)}
+			opts = []chrome.Option{chrome.ARCSupported()}
 		} else {
 			opts = []chrome.Option{chrome.ARCEnabled()}
 		}
+		opts = append(opts, chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	}
 	opts = append(opts, chrome.ExtraArgs("--vmodule=crostini*=1"))
 
