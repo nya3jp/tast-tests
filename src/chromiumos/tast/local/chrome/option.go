@@ -384,10 +384,26 @@ func EnableFeatures(features ...string) Option {
 	}
 }
 
+// LacrosEnableFeatures returns an Option that can be passed to New to enable specific features in Lacros Chrome.
+func LacrosEnableFeatures(features ...string) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.LacrosEnableFeatures = append(cfg.LacrosEnableFeatures, features...)
+		return nil
+	}
+}
+
 // DisableFeatures returns an Option that can be passed to New to disable specific features in Chrome.
 func DisableFeatures(features ...string) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.DisableFeatures = append(cfg.DisableFeatures, features...)
+		return nil
+	}
+}
+
+// LacrosDisableFeatures returns an Option that can be passed to New to disable specific features in Lacros Chrome.
+func LacrosDisableFeatures(features ...string) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.LacrosDisableFeatures = append(cfg.LacrosDisableFeatures, features...)
 		return nil
 	}
 }
