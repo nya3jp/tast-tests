@@ -30,10 +30,6 @@ type elementCoordinates struct {
 
 // waitForStableElementByJs waits until location of the element defined by jsExpr is stable.
 func waitForStableElementByJs(ctx context.Context, conn *chrome.Conn, jsExpr string) (elementCoordinates, error) {
-	if err := conn.WaitForExprFailOnErrWithTimeout(ctx, fmt.Sprintf("%s != undefined", jsExpr), uiTimeout); err != nil {
-		return elementCoordinates{}, errors.Wrapf(err, "failed to wait for %q to be defined", jsExpr)
-	}
-
 	var previousLocation, currentLocation elementCoordinates
 	start := time.Now()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -73,6 +69,10 @@ func checkPresenceOfArcObject(uiAutomator *ui.Device, objectType, objectText str
 // which don't allow invoking billing actions via js interactions.
 func ClickElementByCDP(conn *chrome.Conn, jsExpr string) action.Action {
 	return func(ctx context.Context) error {
+		if err := conn.WaitForExprFailOnErrWithTimeout(ctx, fmt.Sprintf("%s != undefined", jsExpr), uiTimeout); err != nil {
+			return errors.Wrapf(err, "failed to wait for %q to be defined", jsExpr)
+		}
+
 		// Scroll the element into the view.
 		// Otherwise CDP event will fail to click it.
 		if err := conn.Eval(ctx, fmt.Sprintf("%s.scrollIntoViewIfNeeded()", jsExpr), nil); err != nil {
