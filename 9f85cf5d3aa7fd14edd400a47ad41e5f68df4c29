@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c123ef7d_a983b3b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_events.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-14T08:50:28Z",
+      "side": 1,
+      "message": "nit: const\n\nAlternatively we might want to use fmt.Sprintf with the literal inlined. It would make it slightly easier to read:\n\n tokenList[i] \u003d fmt.Sprintf(\"/tmp/chaps%d\", i)",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 15
+      },
+      "revId": "9f85cf5d3aa7fd14edd400a47ad41e5f68df4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a130e3_5a14be0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_events.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-14T08:50:28Z",
+      "side": 1,
+      "message": "First, let\u0027s avoid the global random object which is possibly used by other concurrent goroutines.\n\nAnd I\u0027m afraid it is difficult to reproduce the same patterns of events if we completely randomize it.\n\nIf you\u0027re okay with a determistic pattern, you can create a PRNG with a fixed seed.\n\n r :\u003d rand.New(rand.NewSource(42))\n\nIf you really want to make it random, I recommend printing the seed to the log for later reproduction at least.\n\n seed :\u003d time.Now.UnixNano()\n s.Logf(\"Random seed: %d\", seed)\n r :\u003d rand.New(rand.NewSource(seed))",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "9f85cf5d3aa7fd14edd400a47ad41e5f68df4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b23342_cf6df86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_under_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-14T08:50:28Z",
+      "side": 1,
+      "message": "I recommend filepath.Join().",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "9f85cf5d3aa7fd14edd400a47ad41e5f68df4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
