@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "310386c3_888bc5e5",
+        "filename": "android/ArcInputOverlayTest/src/EventListAdapter.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-14T18:24:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba01022c_98440320",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5968998d_690e4de0",
@@ -101,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0112d9fc_8afddcfe",
+        "filename": "android/ArcInputOverlayTest/src/MainActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-14T18:24:07Z",
+      "side": 1,
+      "message": "I prefer to leave it like this which is descriptive.",
+      "parentUuid": "5968998d_690e4de0",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76dab5bb_a2c8b1c0",
         "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
         "patchSetId": 5
@@ -112,6 +160,30 @@
       "writtenOn": "2022-04-14T05:07:55Z",
       "side": 1,
       "message": "nit: should we also log this or is it gonna be handled somewhere else?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40ea9b8_e3e75edd",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-14T18:24:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t need to handle. The app just prints whatever it receives.",
+      "parentUuid": "76dab5bb_a2c8b1c0",
       "range": {
         "startLine": 46,
         "startChar": 0,
