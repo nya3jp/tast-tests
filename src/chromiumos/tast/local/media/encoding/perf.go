@@ -58,24 +58,30 @@ func ParseQualityPerfMetrics(metricsPath, scalabilityMode string, p *perf.Values
 	}
 	defer f.Close()
 	var metrics struct {
-		SSIMAverage float64
-		PSNRAverage float64
+		SSIMAverage      float64
+		PSNRAverage      float64
+		BitrateDeviation float64
 	}
 	if err := json.NewDecoder(f).Decode(&metrics); err != nil {
 		return errors.Wrapf(err, "failed decoding %s", metricsPath)
 	}
 	if scalabilityMode != "" {
-		scalabilityMode += "."
+		scalabilityMode = "." + scalabilityMode
 	}
 	p.Set(perf.Metric{
-		Name:      "ssim." + scalabilityMode + "average",
+		Name:      "ssim" + scalabilityMode + ".average",
 		Unit:      "scalar",
 		Direction: perf.BiggerIsBetter,
 	}, metrics.SSIMAverage)
 	p.Set(perf.Metric{
-		Name:      "psnr." + scalabilityMode + "average",
+		Name:      "psnr" + scalabilityMode + ".average",
 		Unit:      "scalar",
 		Direction: perf.BiggerIsBetter,
 	}, metrics.PSNRAverage)
+	p.Set(perf.Metric{
+		Name:      "bitrate_deviation" + scalabilityMode,
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, metrics.BitrateDeviation)
 	return nil
 }
