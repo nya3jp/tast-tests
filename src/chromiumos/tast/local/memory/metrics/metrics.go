@@ -166,8 +166,8 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, a *arc.ARC, p *p
 		base.lateststate = basecopy
 	}
 
-	// Order is critical here: SmapsMetrics and CrosvmFincoreMetrics do heavy processing,
-	// and we don't want that processing to interfere in the earlier, cheaper stats.
+	// Order is critical here: SmapsMetrics does heavy processing, and we don't
+	// want that processing to interfere in the earlier, cheaper stats.
 	hostSummary, err := memory.GetHostMetrics(ctx, outdir, suffix)
 	if err != nil {
 		return errors.Wrap(err, "failed to collect host metrics")
@@ -175,10 +175,6 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, a *arc.ARC, p *p
 
 	if p != nil {
 		memory.ReportHostMetrics(hostSummary, p, suffix)
-	}
-
-	if err := memory.CrosvmFincoreMetrics(ctx, p, outdir, suffix); err != nil {
-		return errors.Wrap(err, "failed to collect crosvm fincore metrics")
 	}
 
 	var vmSummary *memoryarc.VMSummary
