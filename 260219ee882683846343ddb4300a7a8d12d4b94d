@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61989df1_28003531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-04-14T13:32:59Z",
+      "side": 1,
+      "message": "I was thinking of an alternative to this problem. Instead of skipping boards/models, how about we create a pool of accounts and their corresponding snapshots?\n\nWe can have a dedicated pool for this test and we can configure data directory name for them in the variables config",
+      "parentUuid": "02db273a_c53859b4",
+      "range": {
+        "startLine": 67,
+        "startChar": 30,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "260219ee882683846343ddb4300a7a8d12d4b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e1444da3_ae2eccc2",
