@@ -54,7 +54,7 @@ func init() {
 			},
 		}, {
 			Name:              "detachable",
-			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable), hwdep.Keyboard(), hwdep.Touchpad()),
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable), hwdep.Keyboard()),
 			Val: &testArgs{
 				formFactor:    "detachable",
 				setLaptopMode: "basestate attach",
@@ -104,18 +104,6 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 	}
 
 	args := s.Param().(*testArgs)
-	if args.formFactor == "detachable" {
-		// When base detached, a detachable would likely be stuck in tablet mode.
-		// Check whether base is attached/detached for debugging purposes.
-		// The hardware dependencies should have eliminated detachables with
-		// detached base at start. But, just in case that some DUTs got left
-		// out, explicitly log base-pogo pin's gpio value.
-		possibleNames := []string{"EN_PP3300_POGO", "EN_BASE"}
-		cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
-		if _, err := cmd.FindBaseGpio(ctx, possibleNames); err != nil {
-			s.Logf("While looking for %q: %v", possibleNames, err)
-		}
-	}
 	if args.formFactor != "clamshell" {
 		s.Log("Checking initial state of laptop mode")
 		if inTabletMode, err := checkLaptopMode(ctx); err != nil {
@@ -316,7 +304,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to check the power menu")
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 3 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 3 * time.Second, Interval: 10 * time.Second}); err != nil {
 			s.Fatal("Power menu was absent following a 1 second press on the power button: ", err)
 		}
 
