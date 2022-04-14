@@ -15010,6 +15010,8 @@ func OpenclCts(ctx context.Context, s *testing.State) {
 	err = cmd.Run(testexec.DumpLogOnError)
 	if err != nil && test.expectedPass {
 		s.Fatalf("%q: %s", test.executable, err)
+	} else if err != nil && !test.expectedPass {
+		s.Fatalf("%q: fail expected (%s)", test.executable, err)
 	} else if err == nil && !test.expectedPass {
 		s.Fatalf("%q: passed but expected to fail", test.executable)
 	}
