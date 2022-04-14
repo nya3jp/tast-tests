@@ -6,13 +6,16 @@ package inputs
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -35,35 +38,73 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "group:input-tools-upstream", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(3 * time.Minute),
 		Params: []testing.Param{
 			{
-				Name: "tablet_docked",
-				Pre:  pre.VKEnabledTabletReset,
+				Name:      "tablet_docked",
+				Pre:       pre.VKEnabledTabletReset,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
 				},
 			}, {
-				Name: "tablet_floating",
-				Pre:  pre.VKEnabledTabletReset,
+				Name:      "tablet_floating",
+				Pre:       pre.VKEnabledTabletReset,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: true,
 					inputMethod: ime.EnglishUSWithInternationalKeyboard,
 				},
 			}, {
-				Name: "clamshell_a11y_docked",
-				Pre:  pre.VKEnabledClamshellReset,
+				Name:      "clamshell_a11y_docked",
+				Pre:       pre.VKEnabledClamshellReset,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val: glideTypingTestParam{
 					floatLayout: false,
 					inputMethod: ime.Swedish,
 				},
 			},
 			{
-				Name: "clamshell_a11y_floating",
-				Pre:  pre.VKEnabledClamshellReset,
+				Name:      "clamshell_a11y_floating",
+				Pre:       pre.VKEnabledClamshellReset,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+				Val: glideTypingTestParam{
+					floatLayout: true,
+					inputMethod: ime.EnglishUS,
+				},
+			},
+			{
+				Name:      "tablet_docked_fixture",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"informational"},
+				Val: glideTypingTestParam{
+					floatLayout: false,
+					inputMethod: ime.EnglishUS,
+				},
+			}, {
+				Name:      "tablet_floating_fixture",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"informational"},
+				Val: glideTypingTestParam{
+					floatLayout: true,
+					inputMethod: ime.EnglishUSWithInternationalKeyboard,
+				},
+			}, {
+				Name:      "clamshell_a11y_docked_fixture",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"informational"},
+				Val: glideTypingTestParam{
+					floatLayout: false,
+					inputMethod: ime.Swedish,
+				},
+			},
+			{
+				Name:      "clamshell_a11y_floating_fixture",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"informational"},
 				Val: glideTypingTestParam{
 					floatLayout: true,
 					inputMethod: ime.EnglishUS,
@@ -74,9 +115,19 @@ func init() {
 }
 
 func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(pre.PreData).Chrome
-	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
+	var cr *chrome.Chrome
+	var tconn *chrome.TestConn
+	var uc *useractions.UserContext
+	if strings.Contains(s.TestName(), "fixture") {
+		cr = s.FixtValue().(fixture.FixtData).Chrome
+		tconn = s.FixtValue().(fixture.FixtData).TestAPIConn
+		uc = s.FixtValue().(fixture.FixtData).UserContext
+		uc.SetTestName(s.TestName())
+	} else {
+		cr = s.PreValue().(pre.PreData).Chrome
+		tconn = s.PreValue().(pre.PreData).TestAPIConn
+		uc = s.PreValue().(pre.PreData).UserContext
+	}
 
 	cleanupCtx := ctx
 	// Use a shortened context for test operations to reserve time for cleanup.
