@@ -33,15 +33,28 @@ func init() {
 			"zuan@chromium.org", // Test author
 			"cros-hwsec@google.com",
 		},
-		Attr:         []string{"informational", "group:mainline"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"tpm"},
 		Params: []testing.Param{
 			{
-				Val: testParam{pinWeaverSupported: false},
+				ExtraSoftwareDeps: []string{"no_qemu"},
+				Val:               testParam{pinWeaverSupported: false},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "pin_weaver",
-				ExtraSoftwareDeps: []string{"pinweaver"},
+				ExtraSoftwareDeps: []string{"pinweaver", "no_qemu"},
+				Val:               testParam{pinWeaverSupported: true},
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "vm",
+				ExtraSoftwareDeps: []string{"qemu"},
+				Val:               testParam{pinWeaverSupported: false},
+			},
+			{
+				Name:              "pin_weaver_vm",
+				ExtraSoftwareDeps: []string{"pinweaver", "qemu"},
 				Val:               testParam{pinWeaverSupported: true},
 			},
 		},
