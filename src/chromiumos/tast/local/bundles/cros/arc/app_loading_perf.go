@@ -40,6 +40,9 @@ var (
 
 	// arcAppLoadingDalvikMemoryProfileVMBooted enables ArcUseDalvikMemoryProfile chrome feature.
 	arcAppLoadingDalvikMemoryProfileVMBooted = arc.NewPrecondition("arcapploading_dalvik_memory_profile_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcUseDalvikMemoryProfile")...)
+
+	// arcAppLoadingVirtioBlkVMBooted adds feature to boot ARC with virtio-blk /data is enabled.
+	arcAppLoadingVirtioBlkVMBooted = arc.NewPrecondition("arcapploading_virtio_blk_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcEnableVirtioBlkForData")...)
 )
 
 func init() {
@@ -100,6 +103,15 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingDalvikMemoryProfileVMBooted,
+		}, {
+			Name:              "virtio_blk_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingVirtioBlkVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},

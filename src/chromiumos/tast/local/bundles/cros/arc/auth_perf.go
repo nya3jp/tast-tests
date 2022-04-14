@@ -101,6 +101,13 @@ func init() {
 				chromeArgs:        []string{"--enable-features=ArcUseDalvikMemoryProfile"},
 			},
 		}, {
+			Name:              "unmanaged_virtio_blk_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				maxErrorBootCount: 3,
+				chromeArgs:        []string{"--enable-features=ArcEnableVirtioBlkForData"},
+			},
+		}, {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
