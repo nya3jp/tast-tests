@@ -51,6 +51,24 @@
       "parentUuid": "6e9ca96a_1702e7a2",
       "revId": "47545c82f285ec69f576e4e57611824b30d6ac3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3b783e_71f85082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-14T08:10:26Z",
+      "side": 1,
+      "message": "The test isn\u0027t responsible for the failures, so I don\u0027t think they should be counted against this test. All of the failing runs have a ton of other tests that also failed with the same fixture failure. Most likely, there\u0027s something slightly flaky on the kenrelnext boards.",
+      "parentUuid": "e637e48c_dcbfa088",
+      "revId": "47545c82f285ec69f576e4e57611824b30d6ac3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
