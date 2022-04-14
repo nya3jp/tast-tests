@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2c8f3a_4aa130ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-04-14T16:16:03Z",
+      "side": 1,
+      "message": "OK.  So I\u0027ve managed to proceed with this bug.  If you agree with other workaround - at shill level - proposed in crrev/c/3585812 then I\u0027ll drop this one.\n\nTwo notes (for the other CL):\n- in the context of this bug this is still a workaround (don\u0027t know yet the reason why we are not getting reply for NL message) but overall this is an \"improvement to shill robustness\" so I would vote to keep it\n- I\u0027ve put some more info in the issue b:227582293",
+      "parentUuid": "f1c394d1_76c920cf",
+      "revId": "ff8440606d41e336feb040d56fa68f5822550c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d967d80_71053e56",
