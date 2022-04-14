@@ -26,7 +26,7 @@ func init() {
 			"cros-hwsec@chromium.org",
 			"zuan@chromium.org",
 		},
-		Attr:    []string{"group:mainline", "informational"},
+		Attr:    []string{"group:mainline"},
 		Data:    []string{"testcert.p12"},
 		Timeout: 3 * time.Minute,
 	})
