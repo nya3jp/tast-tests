@@ -16,6 +16,110 @@
       "message": "PTAL.",
       "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239940c3_52e37549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-04-14T05:07:55Z",
+      "side": 1,
+      "message": "this lgtm, but defer +2 to somebody with more expertise, anyways I lack owners superpowers here ",
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37828f7b_1fa6e03b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-04-14T05:07:55Z",
+      "side": 1,
+      "message": "I have minimum expertise working with tast-tests stuff, plz sync with somebody from src/platform/tast-tests/android/OWNERS as soon as you can as we need their +1.\n\nI\u0027ll take a look at your code tomorrow :)\n\nthanks Cici!",
+      "parentUuid": "08949b64_ece08f1e",
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba01022c_98440320",
+        "filename": "android/ArcInputOverlayTest/src/EventListAdapter.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-04-14T05:07:55Z",
+      "side": 1,
+      "message": "I ignore if Java code checked into the chromium codebase should follow Android\u0027s convention, if so plz keep sorted and separated as in https://source.android.com/setup/contribute/code-style#order-import-statements",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5968998d_690e4de0",
+        "filename": "android/ArcInputOverlayTest/src/MainActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-04-14T05:07:55Z",
+      "side": 1,
+      "message": "nit:\n\ncommon practice is to just use the name of the class https://source.corp.google.com/search?q\u003dTAG\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fandroid%2F\n\nalthough I agree TAG \u003d \"MainActivity\" is not a very descriptive name, up to you.",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76dab5bb_a2c8b1c0",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-04-14T05:07:55Z",
+      "side": 1,
+      "message": "nit: should we also log this or is it gonna be handled somewhere else?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "3dc8de98a77871222201d08d2ed4b5a91ccc3935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
