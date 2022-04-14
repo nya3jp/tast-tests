@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "02db273a_c53859b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-04-14T10:02:32Z",
+      "side": 1,
+      "message": "BOARD\u003ddedede has 35 different models and I want to skip them all.\n\nCan we use SkipOnModel() in this case?",
+      "parentUuid": "0513736e_adb01539",
+      "range": {
+        "startLine": 67,
+        "startChar": 30,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "260219ee882683846343ddb4300a7a8d12d4b94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e1444da3_ae2eccc2",
