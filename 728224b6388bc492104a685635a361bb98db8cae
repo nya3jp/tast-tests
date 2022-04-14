@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af44640_d33cfbf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-04-14T15:04:24Z",
+      "side": 1,
+      "message": "\u003e tast-remote-tests-cros-0.0.2-r10260: src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go:127:31: undefined: lacrosfixt.Rootfs\n",
+      "revId": "728224b6388bc492104a685635a361bb98db8cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6fda8dd_0dc8ae44",
