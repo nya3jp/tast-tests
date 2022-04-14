@@ -70,6 +70,7 @@ type screenWakeTabletModeArgs struct {
 	hasLid                  bool
 	tabletmodeON            string
 	tabletmodeOFF           string
+	tabletmodeReset         string
 	evTestdetectStylus      bool
 	evTestdetectKeyboard    bool
 	evTestdetectTouchpad    bool
@@ -90,6 +91,8 @@ var convertibleKeyboardScanned = []string{
 	"helios",
 	"kled",
 	"kasumi360",
+	"nightfury",
+	"foob",
 }
 
 func init() {
@@ -115,6 +118,7 @@ func init() {
 				hasLid:                  true,
 				tabletmodeON:            "tabletmode on",
 				tabletmodeOFF:           "tabletmode off",
+				tabletmodeReset:         "tabletmode reset",
 				evTestdetectStylus:      false,
 				evTestdetectKeyboard:    true,
 				evTestdetectTouchpad:    false,
@@ -145,6 +149,7 @@ func init() {
 				hasLid:                  true,
 				tabletmodeON:            "basestate detach",
 				tabletmodeOFF:           "basestate attach",
+				tabletmodeReset:         "basestate reset",
 				evTestdetectStylus:      false,
 				evTestdetectKeyboard:    false,
 				evTestdetectTouchpad:    false,
@@ -162,6 +167,7 @@ func init() {
 				hasLid:                  true,
 				tabletmodeON:            "tabletmode on",
 				tabletmodeOFF:           "tabletmode off",
+				tabletmodeReset:         "tabletmode reset",
 				evTestdetectStylus:      false,
 				evTestdetectKeyboard:    false,
 				evTestdetectTouchpad:    false,
@@ -181,6 +187,21 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
+	}
+
+	// Perform a hard reset on DUT to ensure removal of any
+	// old settings that might potentially have an impact on
+	// this test.
+	if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+		s.Fatal("Failed to cold reset DUT at the beginning of test: ", err)
+	}
+	h.DisconnectDUT(ctx)
+
+	// Wait for DUT to reconnect.
+	waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+	defer cancelWaitConnect()
+	if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
+		s.Fatal("Failed to reconnect to DUT: ", err)
 	}
 
 	// Connect to the RPC service on the DUT.
@@ -339,8 +360,10 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			tabletmodeStatus   = `\[\S+ tablet mode (enabled|disabled)\]`
 			basestateNotFound  = `Command 'basestate' not found or ambiguous`
 			basestateStatus    = `\[\S+ base state: (attached|detached)\]`
+			bdStatus           = `\[\S+ BD forced (connected|disconnected|reset)\]`
 			lidAccel           = `\[\S+ Lid Accel ODR:(?i)[^\n\r]*(?i)(1|0)\S+]`
-			checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound + `|` + basestateStatus + `|` + lidAccel + `)`
+			checkTabletMode    = `(` + tabletmodeNotFound + `|` + tabletmodeStatus + `|` + basestateNotFound +
+				`|` + basestateStatus + `|` + bdStatus + `|` + lidAccel + `)`
 		)
 		// Run EC command to turn on/off tablet mode.
 		s.Logf("Check command %q exists", action)
@@ -484,6 +507,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 				return errors.Wrap(err, "failed to get S0 powerstate")
 			}
+
+			// Delay for some time to ensure lid was properly opened.
+			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
 		}
 
 		// Verify that DUT's screen was awakened by one of the screenWakeTrigger options, except for screenWakeByScreenTouch.
@@ -498,8 +526,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 					return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOn)
 				}
 			}
+			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+				return errors.Wrap(err, "error in sleeping for 1 second")
+			}
 			return nil
-		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second}); err != nil {
+		}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 1 * time.Minute}); err != nil {
 			return errors.Wrapf(err, "after enforcing the screenWakeTrigger: %q", option)
 		}
 		return nil
@@ -521,6 +552,12 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}
 
 	if testArgs.hasLid {
+		// Before using EC command, make sure that CCD is open first.
+		// There's a chance that CCD could be left in a locked state by the
+		// preceding tests.
+		if err := h.Servo.OpenCCD(ctx); err != nil {
+			s.Fatal("Failed to open CCD: ", err)
+		}
 		s.Log("Put DUT in tablet mode")
 		if err := checkAndRunTabletMode(ctx, testArgs.tabletmodeON); err != nil {
 			s.Logf("Unable to switch DUT into tablet mode using: %s, and got: %v. Attempting to set tablet mode by emulating rotation angles with ectool", testArgs.tabletmodeON, err)
@@ -540,6 +577,13 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			if err := cmd.ForceTabletModeAngle(ctx, "0", "0"); err != nil {
 				s.Fatal("Failed to set tablet mode angle: ", err)
 			}
+		} else {
+			defer func() {
+				s.Log("Restoring EC tablet mode setting at the end of test")
+				if err := checkAndRunTabletMode(ctx, testArgs.tabletmodeReset); err != nil {
+					s.Fatal("Unable to reset EC tablet mode setting: ", err)
+				}
+			}()
 		}
 
 		// Allow some delay to ensure that DUT has completely transitioned into tablet mode.
