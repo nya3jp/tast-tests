@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d4f9a3_34519807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-14T06:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e38d73_85bfb6df",
+      "revId": "38f9c765e0387572cad5b453821cf1053d1c383a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61e400e3_550624c3",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-11T05:28:47Z",
       "side": 1,
       "message": "nit: redundant comment",
+      "revId": "38f9c765e0387572cad5b453821cf1053d1c383a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4cc386_057453f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/headphone_volume_slider.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-14T06:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e400e3_550624c3",
       "revId": "38f9c765e0387572cad5b453821cf1053d1c383a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
