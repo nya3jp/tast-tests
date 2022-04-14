@@ -16,6 +16,23 @@
       "message": "waiting for CQ results from volteer-manatee.",
       "revId": "6587e1c70810ed928905488f3cd269187f65d298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c5e70f_2761b027",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-04-14T21:19:35Z",
+      "side": 1,
+      "message": "volteer-manatee test passed in CQ.",
+      "revId": "6587e1c70810ed928905488f3cd269187f65d298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
