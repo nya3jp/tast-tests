@@ -28,7 +28,7 @@ func init() {
 }
 
 const (
-	user        = util.FirstUsername
+	username    = util.FirstUsername
 	oldPassword = util.FirstPassword
 	newPassword = util.SecondPassword
 	badPassword = util.ThirdPassword
@@ -38,14 +38,14 @@ const (
 // It uses testPassword to change the password, and changePasswordShouldFail represents the action of changing password should fail or not.
 func createAccountAndChangePassword(ctx context.Context, cryptohome *hwsec.CryptohomeClient, testPassword string, changePasswordShouldFail bool) error {
 	// Create the account.
-	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, oldPassword), true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(username, oldPassword), true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to mount vault")
 	}
-	if _, err := cryptohome.Unmount(ctx, user); err != nil {
+	if _, err := cryptohome.Unmount(ctx, username); err != nil {
 		return errors.Wrap(err, "failed to unmount vault")
 	}
 
-	err := cryptohome.ChangeVaultPassword(ctx, user, testPassword, util.PasswordLabel, newPassword)
+	err := cryptohome.ChangeVaultPassword(ctx, username, testPassword, util.PasswordLabel, newPassword)
 	if !changePasswordShouldFail && err != nil {
 		return errors.Wrap(err, "failed to change vault password")
 	}
@@ -63,12 +63,12 @@ func migrateGoodKeyTest(ctx context.Context, s *testing.State, cryptohome *hwsec
 	}
 
 	// We expect the mount should fail, because we are using old password.
-	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, oldPassword), true, hwsec.NewVaultConfig()); err == nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(username, oldPassword), true, hwsec.NewVaultConfig()); err == nil {
 		s.Fatal("Cryptohome was successfully mounted with the old password; want: should have failed")
 	}
 
 	// Try the correct password.
-	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(user, newPassword), true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(username, newPassword), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount vault with correct password: ", err)
 	}
 }
@@ -84,7 +84,7 @@ func migrateBadKeyTest(ctx context.Context, s *testing.State, cryptohome *hwsec.
 // migrateNonexistUserTest checks that migrating the key of non-exist user should fail.
 func migrateNonexistUserTest(ctx context.Context, s *testing.State, cryptohome *hwsec.CryptohomeClient) {
 	// Migrating the key of non-exist user should fail.
-	if err := cryptohome.ChangeVaultPassword(ctx, user, oldPassword, util.PasswordLabel, newPassword); err == nil {
+	if err := cryptohome.ChangeVaultPassword(ctx, username, oldPassword, util.PasswordLabel, newPassword); err == nil {
 		s.Fatal("Password was successfully changed for non-existent user; want: should have failed")
 	}
 }
@@ -95,10 +95,10 @@ func CryptohomeMigrateKey(ctx context.Context, s *testing.State) {
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Ensure clean cryptohome.
-	if _, err := cryptohome.Unmount(ctx, user); err != nil {
+	if _, err := cryptohome.Unmount(ctx, username); err != nil {
 		s.Fatal("Failed to unmount: ", err)
 	}
-	if _, err := cryptohome.RemoveVault(ctx, user); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, username); err != nil {
 		s.Fatal("Failed to remove vault: ", err)
 	}
 
@@ -125,10 +125,10 @@ func CryptohomeMigrateKey(ctx context.Context, s *testing.State) {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
 			defer func() {
 				// Ensure we remove the user account after each test.
-				if _, err := cryptohome.Unmount(ctx, user); err != nil {
+				if _, err := cryptohome.Unmount(ctx, username); err != nil {
 					s.Fatal("Failed to unmount: ", err)
 				}
-				if _, err := cryptohome.RemoveVault(ctx, user); err != nil {
+				if _, err := cryptohome.RemoveVault(ctx, username); err != nil {
 					s.Fatal("Failed to remove vault: ", err)
 				}
 			}()
