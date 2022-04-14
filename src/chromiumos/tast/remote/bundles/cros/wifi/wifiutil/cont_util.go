@@ -43,7 +43,7 @@ type ContParam struct {
 // ContTest hods all varibles to be accessible for the whole continuity test.
 type ContTest struct {
 	tf          *wificell.TestFixture
-	r           router.Standard
+	r           router.StandardWithBridgeAndVeth
 	clientMAC   string
 	br          [2]string
 	veth        [2]string
@@ -188,9 +188,9 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 		}
 	})
 
-	ct.r, err = tf.StandardRouter()
+	ct.r, err = tf.StandardRouterWithBridgeAndVethSupport()
 	if err != nil {
-		s.Fatal("Failed to get legacy router: ", err)
+		s.Fatal("Failed to get router: ", err)
 	}
 
 	ct.veth[0], ct.veth[1], err = ct.r.NewVethPair(ctx)

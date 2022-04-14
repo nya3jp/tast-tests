@@ -111,9 +111,9 @@ func RoamFT(ctx context.Context, s *testing.State) {
 	*/
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouterWithBridgeAndVethSupport()
 	if err != nil {
-		s.Fatal("Failed to get legacy router: ", err)
+		s.Fatal("Failed to get router: ", err)
 	}
 
 	// Shorten a second for releasing each network device.
@@ -139,12 +139,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		var err error
 		var br [2]string
 		for i := 0; i < 2; i++ {
-			br[i], err = legacyRouter.NewBridge(ctx)
+			br[i], err = router.NewBridge(ctx)
 			if err != nil {
 				s.Fatal("Failed to get a bridge: ", err)
 			}
 			defer func(ctx context.Context, b string) {
-				if err := legacyRouter.ReleaseBridge(ctx, b); err != nil {
+				if err := router.ReleaseBridge(ctx, b); err != nil {
 					s.Error("Failed to release bridge: ", err)
 				}
 			}(ctx, br[i])
@@ -153,12 +153,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		}
 
 		var veth [2]string
-		veth[0], veth[1], err = legacyRouter.NewVethPair(ctx)
+		veth[0], veth[1], err = router.NewVethPair(ctx)
 		if err != nil {
 			s.Fatal("Failed to get a veth pair: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := legacyRouter.ReleaseVethPair(ctx, veth[0]); err != nil {
+			if err := router.ReleaseVethPair(ctx, veth[0]); err != nil {
 				s.Error("Failed to release veth: ", err)
 			}
 		}(ctx)
@@ -167,11 +167,11 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		// Bind the two ends of the veth to the two bridges.
 		for i := 0; i < 2; i++ {
-			if err := legacyRouter.BindVethToBridge(ctx, veth[i], br[i]); err != nil {
+			if err := router.BindVethToBridge(ctx, veth[i], br[i]); err != nil {
 				s.Fatalf("Failed to bind the veth %q to bridge %q: %v", veth[i], br[i], err)
 			}
 			defer func(ctx context.Context, ve string) {
-				if err := legacyRouter.UnbindVeth(ctx, ve); err != nil {
+				if err := router.UnbindVeth(ctx, ve); err != nil {
 					s.Errorf("Failed to unbind %q: %v", ve, err)
 				}
 			}(ctx, veth[i])
@@ -233,12 +233,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		s.Log("Starting the first AP on ", br[0])
 		ap0Name := uniqueAPName()
-		ap0, err := legacyRouter.StartHostapd(ctx, ap0Name, ap0Conf)
+		ap0, err := router.StartHostapd(ctx, ap0Name, ap0Conf)
 		if err != nil {
 			s.Fatal("Failed to start the hostapd server on the first AP: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := legacyRouter.StopHostapd(ctx, ap0); err != nil {
+			if err := router.StopHostapd(ctx, ap0); err != nil {
 				s.Error("Failed to stop the hostapd server on the first AP: ", err)
 			}
 		}(ctx)
@@ -253,12 +253,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 			mask        = net.IPv4Mask(255, 255, 255, 0)
 		)
 		s.Logf("Starting the DHCP server on %s, serverIP=%s", br[0], serverIP)
-		ds, err := legacyRouter.StartDHCP(ctx, ap0Name, br[0], startIP, endIP, serverIP, broadcastIP, mask)
+		ds, err := router.StartDHCP(ctx, ap0Name, br[0], startIP, endIP, serverIP, broadcastIP, mask)
 		if err != nil {
 			s.Fatal("Failed to start the DHCP server: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := legacyRouter.StopDHCP(ctx, ds); err != nil {
+			if err := router.StopDHCP(ctx, ds); err != nil {
 				s.Error("Failed to stop the DHCP server: ", err)
 			}
 		}(ctx)
@@ -319,12 +319,12 @@ func RoamFT(ctx context.Context, s *testing.State) {
 
 		s.Log("Starting the second AP on ", br[1])
 		ap1Name := uniqueAPName()
-		ap1, err := legacyRouter.StartHostapd(ctx, ap1Name, ap1Conf)
+		ap1, err := router.StartHostapd(ctx, ap1Name, ap1Conf)
 		if err != nil {
 			s.Fatal("Failed to start the hostapd server on the second AP: ", err)
 		}
 		defer func(ctx context.Context) {
-			if err := legacyRouter.StopHostapd(ctx, ap1); err != nil {
+			if err := router.StopHostapd(ctx, ap1); err != nil {
 				s.Error("Failed to stop the hostapd server on the second AP: ", err)
 			}
 		}(ctx)

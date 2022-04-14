@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
@@ -1329,17 +1328,6 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		apIface, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
-		}
-
-		// Validate required router functionality.
-		type supportedRouter interface {
-			support.Logs
-			support.Hostapd
-			support.DHCP
-			support.Capture
-		}
-		if _, ok := apIface.Router().(supportedRouter); !ok {
-			s.Fatalf("Router type %q does not have sufficient support for this test: ", apIface.Router().RouterType().String())
 		}
 
 		defer func(ctx context.Context) {

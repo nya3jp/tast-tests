@@ -22,7 +22,8 @@ type Base interface {
 	support.Router
 }
 
-// Standard contains the functionality the standard WiFi testing router controller should support.
+// Standard contains the functionality the standard WiFi testing router
+// controller should support.
 //
 // Use this in tests if you are not specifically testing with a router that has
 // non-standard support. There is no guarantee of what type of router this is; it
@@ -37,9 +38,21 @@ type Standard interface {
 	support.Capture
 	support.Hostapd
 	support.DHCP
-	support.FrameSender
 	support.IfaceManipulation
-	support.VethBridgeBinding
+}
+
+// StandardWithFrameSender includes all the functionality in Standard as well
+// as support.FrameSender.
+type StandardWithFrameSender interface {
+	Standard
+	support.FrameSender
+}
+
+// StandardWithBridgeAndVeth includes all the functionality in Standard as well
+// as support.Bridge, support.Veth, and support.VethBridgeBinding.
+type StandardWithBridgeAndVeth interface {
+	Standard
 	support.Bridge
 	support.Veth
+	support.VethBridgeBinding
 }

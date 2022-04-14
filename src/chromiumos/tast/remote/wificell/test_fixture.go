@@ -1014,6 +1014,24 @@ func (tf *TestFixture) StandardRouter() (router.Standard, error) {
 	return r, nil
 }
 
+// StandardRouterWithFrameSenderSupport returns the Router as a router.StandardWithFrameSender.
+func (tf *TestFixture) StandardRouterWithFrameSenderSupport() (router.StandardWithFrameSender, error) {
+	r, ok := tf.Router().(router.StandardWithFrameSender)
+	if !ok {
+		return nil, errors.New("router is not a standard router with frame sender support")
+	}
+	return r, nil
+}
+
+// StandardRouterWithBridgeAndVethSupport returns the Router as a router.StandardWithBridgeAndVeth.
+func (tf *TestFixture) StandardRouterWithBridgeAndVethSupport() (router.StandardWithBridgeAndVeth, error) {
+	r, ok := tf.Router().(router.StandardWithBridgeAndVeth)
+	if !ok {
+		return nil, errors.New("router is not a standard router with bridge and veth support")
+	}
+	return r, nil
+}
+
 // LegacyRouter returns the Router as a legacy.Router.
 func (tf *TestFixture) LegacyRouter() (*legacy.Router, error) {
 	r, ok := tf.Router().(*legacy.Router)

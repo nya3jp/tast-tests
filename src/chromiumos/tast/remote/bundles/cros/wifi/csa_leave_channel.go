@@ -37,7 +37,7 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouterWithFrameSenderSupport()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
@@ -116,16 +116,16 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ping from DUT: ", err)
 	}
 
-	sender, err := legacyRouter.NewFrameSender(ctx, ap.Interface())
+	sender, err := router.NewFrameSender(ctx, ap.Interface())
 	if err != nil {
 		s.Fatal("Failed to create frame sender: ", err)
 	}
 	defer func(dCtx context.Context) {
-		if err := legacyRouter.CloseFrameSender(dCtx, sender); err != nil {
+		if err := router.CloseFrameSender(dCtx, sender); err != nil {
 			s.Error("Failed to close frame sender: ", err)
 		}
 	}(ctx)
-	ctx, cancel = legacyRouter.ReserveForCloseFrameSender(ctx)
+	ctx, cancel = router.ReserveForCloseFrameSender(ctx)
 	defer cancel()
 
 	ew, err := iw.NewEventWatcher(ctx, s.DUT())

@@ -215,7 +215,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 	defer cancel()
 	ap1Chan := uint8(ap1.Config().Channel)
 
-	legacyRouter, err := tf.StandardRouter()
+	router, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Unable to get legacy router: ", err)
 	}
@@ -265,7 +265,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		}
-		pcapPath, err := wifiutil.CollectPcapForAction(ctx, legacyRouter, name, int(ap0Chan), freqOpts, SendBeaconRequest)
+		pcapPath, err := wifiutil.CollectPcapForAction(ctx, router, name, int(ap0Chan), freqOpts, SendBeaconRequest)
 		if err != nil {
 			return err
 		}
