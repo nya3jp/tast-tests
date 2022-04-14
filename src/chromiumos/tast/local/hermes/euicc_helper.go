@@ -7,6 +7,7 @@ package hermes
 import (
 	"context"
 	"strconv"
+	"time"
 
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/errors"
@@ -150,6 +151,23 @@ func GetEUICC(ctx context.Context, findTestEuicc bool) (*EUICC, int, error) {
 	}
 
 	return nil, -1, errors.Wrapf(err, "no %s euicc found", euiccType)
+}
+
+// WaitForEUICC polls until Hermes exports an EUICC object on DBUS
+func WaitForEUICC(ctx context.Context, findTestEuicc bool) (*EUICC, int, error) {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, _, err := GetEUICC(ctx, findTestEuicc)
+		if err != nil {
+			return errors.Wrap(err, "failed to find EUICC")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: 200 * time.Millisecond,
+	}); err != nil {
+		return nil, -1, errors.Wrap(err, "failed to find EUICC")
+	}
+	return GetEUICC(ctx, findTestEuicc)
 }
 
 // Eid returns the profile's Eid.
