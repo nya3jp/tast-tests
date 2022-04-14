@@ -44,7 +44,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      8 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "one_at_a_time",
@@ -215,6 +215,18 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 							return nil
 						}, &testing.PollOptions{Timeout: uiTimeout}); err != nil {
 							return errors.Wrap(err, "failed to wait for clearing the notification")
+						}
+					}
+
+					// While clearing ARC notification, we interact with the testing app and there's a chance that
+					// quick settings gets closed because it looses focus. If that's the case, reopen quick settings.
+					if err := automationController.Exists(collapseButton)(ctx); err != nil {
+						if err := uiauto.Combine(
+							"open the uber tray",
+							automationController.LeftClick(statusArea),
+							automationController.WaitUntilExists(collapseButton),
+						)(ctx); err != nil {
+							s.Fatal("Failed to open the uber tray: ", err)
 						}
 					}
 				}
