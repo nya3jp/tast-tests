@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bbe9b1_2cae166d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T22:52:29Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "0a8b43180ba8b7467d6165b8cb3be8192e46a5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8873e164_25ba24a0",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T22:52:29Z",
+      "side": 1,
+      "message": "nit, optional: it seems that the list is not used... only the length of the list.",
+      "range": {
+        "startLine": 206,
+        "startChar": 122,
+        "endLine": 206,
+        "endChar": 127
+      },
+      "revId": "0a8b43180ba8b7467d6165b8cb3be8192e46a5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f00c1d_97dab09e",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T22:52:29Z",
+      "side": 1,
+      "message": "nit, named parameter, e.g:\n\n  (failedIDs, notFoundIDs []int, err error)\n  \n\nor something similar...\n\n\ngo/go-style/decisions#named-result-parameters",
+      "range": {
+        "startLine": 255,
+        "startChar": 73,
+        "endLine": 255,
+        "endChar": 86
+      },
+      "revId": "0a8b43180ba8b7467d6165b8cb3be8192e46a5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a21b31c_6528816d",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T22:52:29Z",
+      "side": 1,
+      "message": "nit, here and below: Id -\u003e ID\n\ngo/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 275,
+        "startChar": 14,
+        "endLine": 275,
+        "endChar": 18
+      },
+      "revId": "0a8b43180ba8b7467d6165b8cb3be8192e46a5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
