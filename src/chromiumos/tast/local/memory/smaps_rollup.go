@@ -14,7 +14,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/shirou/gopsutil/process"
+	"github.com/shirou/gopsutil/v3/process"
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/common/perf"

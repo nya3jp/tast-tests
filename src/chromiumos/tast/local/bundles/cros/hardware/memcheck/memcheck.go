@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/shirou/gopsutil/mem"
+	"github.com/shirou/gopsutil/v3/mem"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"

@@ -11,8 +11,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/shirou/gopsutil/net"
-	"github.com/shirou/gopsutil/process"
+	"github.com/shirou/gopsutil/v3/net"
+	"github.com/shirou/gopsutil/v3/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"

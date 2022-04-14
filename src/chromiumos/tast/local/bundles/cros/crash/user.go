@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/shirou/gopsutil/host"
+	"github.com/shirou/gopsutil/v3/host"
 
 	commoncrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/common/testexec"

@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/shirou/gopsutil/mem"
+	"github.com/shirou/gopsutil/v3/mem"
 
 	"chromiumos/tast/local/bundles/cros/hardware/memtester"
 	"chromiumos/tast/testing"

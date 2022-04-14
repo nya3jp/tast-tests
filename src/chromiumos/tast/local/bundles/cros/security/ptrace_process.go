@@ -16,7 +16,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
+	"github.com/shirou/gopsutil/v3/process"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
