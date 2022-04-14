@@ -352,3 +352,26 @@ func (s *Servo) CheckAndRunTabletModeCommand(ctx context.Context, command string
 	}
 	return string(out[0][1]), nil
 }
+
+// OpenCCD checks if a CCD connection exists, and then opens CCD if it's locked.
+func (s *Servo) OpenCCD(ctx context.Context) error {
+	if hasCCD, err := s.HasCCD(ctx); err != nil {
+		return errors.Wrap(err, "while checking if servo has a CCD connection")
+	} else if hasCCD {
+		if val, err := s.GetString(ctx, GSCCCDLevel); err != nil {
+			return errors.Wrap(err, "failed to get gsc_ccd_level")
+		} else if val != Open {
+			testing.ContextLogf(ctx, "CCD is not open, got %q. Attempting to unlock", val)
+			if err := s.SetString(ctx, CR50Testlab, Open); err != nil {
+				return errors.Wrap(err, "failed to unlock CCD")
+			}
+		}
+		// For debugging purposes, log CCD state after unlocking CCD.
+		checkedVal, err := s.GetString(ctx, GSCCCDLevel)
+		if err != nil {
+			return errors.Wrap(err, "failed to get gsc_ccd_level after unlocking CCD")
+		}
+		testing.ContextLogf(ctx, "CCD State: %q", checkedVal)
+	}
+	return nil
+}
