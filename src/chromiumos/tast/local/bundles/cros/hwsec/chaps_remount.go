@@ -92,6 +92,10 @@ func ChapsRemount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to re-mount the first user: ", err)
 	}
 
+	if err := cryptohome.WaitForUserToken(ctx, util.FirstUsername); err != nil {
+		s.Fatal("Failed to wait for user token: ", err)
+	}
+
 	// Test the various keys again.
 	for _, k := range keys {
 		// Test the various mechanisms.
