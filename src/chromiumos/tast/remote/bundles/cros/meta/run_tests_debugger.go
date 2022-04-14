@@ -141,6 +141,7 @@ func RunTestsDebugger(ctx context.Context, s *testing.State) {
 			}()
 
 			waitForTransition := func(expected state, timeout time.Duration) error {
+				s.Log("inside")
 				return testing.Poll(ctx, func(ctx context.Context) error {
 					if currentState != expected {
 						return errors.Errorf("Waiting for currentState to become %s, currently %s", expected, currentState)
@@ -149,7 +150,7 @@ func RunTestsDebugger(ctx context.Context, s *testing.State) {
 				}, &testing.PollOptions{Timeout: timeout, Interval: time.Millisecond * 100})
 			}
 
-			if err := waitForTransition(waitForDebugger, time.Minute); err != nil {
+			if err := waitForTransition(waitForDebugger, time.Minute*5); err != nil {
 				s.Fatal("Tast never started waiting for debugger: ", err)
 			}
 

@@ -29,12 +29,30 @@ func NewCommand(ctx context.Context, s *testing.State, subcmd string, flags, pat
 		return nil, errors.New("failed to get meta info from context")
 	}
 
+	// Only use runFlags not present in flags.
+	var runFlags []string
+	for _, runFlag := range meta.RunFlags {
+		if !contains(flags, runFlag) {
+			runFlags = append(runFlags, runFlag)
+		}
+	}
+
 	args := append([]string{subcmd}, flags...)
-	args = append(args, meta.RunFlags...)
+	args = append(args, runFlags...)
 	args = append(args, meta.Target)
 	args = append(args, patterns...)
 	cmd := exec.CommandContext(ctx, meta.TastPath, args...)
 	return cmd, nil
+}
+
+// contains checks if the string is present in the slice.
+func contains(s []string, c string) bool {
+	for _, a := range s {
+		if a == c {
+			return true
+		}
+	}
+	return false
 }
 
 // Exec execs the tast command using supplied arguments.
