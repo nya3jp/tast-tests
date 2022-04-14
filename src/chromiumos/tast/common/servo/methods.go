@@ -90,6 +90,7 @@ const (
 	DTSMode        OnOffControl = "servo_dts_mode"
 	RecMode        OnOffControl = "rec_mode"
 	USBKeyboard    OnOffControl = "init_usb_keyboard"
+	HubUSBReset    OnOffControl = "dut_hub1_rst1"
 )
 
 // An OnOffValue is a string value that would be accepted by an OnOffControl.
