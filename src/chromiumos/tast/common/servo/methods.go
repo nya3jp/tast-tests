@@ -92,6 +92,7 @@ const (
 	USBKeyboard    OnOffControl = "init_usb_keyboard"
 	I2CMuxEn       OnOffControl = "i2c_mux_en"
 	ColdReset      OnOffControl = "cold_reset"
+	HubUSBReset    OnOffControl = "dut_hub1_rst1"
 )
 
 // An OnOffValue is a string value that would be accepted by an OnOffControl.
