@@ -86,6 +86,24 @@
       "parentUuid": "5da18f4b_59c1a928",
       "revId": "a66bcb15f0b7acc500a48033ba0bdf7028c42e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d7c9be_868dbb15",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-14T04:05:11Z",
+      "side": 1,
+      "message": "Just had a discussion with neis@, apparently some tests are not opening a window becuase lacros is still terminating. We could fix some of those issues by adding a keepalive field and always polling running if it\u0027s not keepalive.",
+      "parentUuid": "e2ad1277_63c3b1f1",
+      "revId": "a66bcb15f0b7acc500a48033ba0bdf7028c42e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
