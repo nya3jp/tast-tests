@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fc9e54_21cec269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "+2 % nits\n\n\nNext time, please add tast-owners@ as reviewers.\nIt will assign a Tast reviewer directly, even for Java code\n\ngo/tast-reviews",
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34f62f0_38c4dfc0",
+        "filename": "android/ArcInputOverlayTest/src/EventListAdapter.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "nit: add comment describing purpose of the class",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8a085f_de2e698c",
+        "filename": "android/ArcInputOverlayTest/src/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "nit: this function is doing a bit more than just printing the event.\n\nperhaps `printAndDisplayEvent()` or similar (?)",
+      "range": {
+        "startLine": 96,
+        "startChar": 15,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c703c2a_b6eea8f1",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "nit add comment describing the purpose of the class",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cc9d53_c32ee997",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "nit (here and below): do they need to be public?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7f18bd_d73bdd0e",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "nit, consistency (here and below): in MainActivity # L104  you are using `final int source`... use it here as well... and in L52... perhaps there are more",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a639f6b2_acbce9c0",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "why 0? Add a comment explaining it",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f021052e_45a205d6",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-04-14T19:45:37Z",
+      "side": 1,
+      "message": "ditto: why \"0\"... add comment explaining it",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
