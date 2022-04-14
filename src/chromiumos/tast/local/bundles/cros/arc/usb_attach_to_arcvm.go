@@ -153,14 +153,14 @@ func attachUsbDeviceToARCVM(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 // |host| device is expected to be shown in host os.
 // |vm| device is expected to be shown in vm.
 func checkUsbDeviceStatus(ctx context.Context, host, vm bool) error {
-        return testing.Poll(ctx, func(context.Context) error {
+	return testing.Poll(ctx, func(context.Context) error {
 		// Check whether USB device presented as |VID:PID| exists in host
 		// If the specified device is not found, a non-zero exit code is returned
 		// by lsusb and err will not be nil
 		// |err == nil| indicates |lsusb -d XXXX:XXXX| finds the expected devices.
 		if err := testexec.CommandContext(ctx, "lsusb", "-d",
 			fmt.Sprintf("%s:%s", usbVID,
-			usbPID)).Run(testexec.DumpLogOnError); (err == nil) != host {
+				usbPID)).Run(testexec.DumpLogOnError); (err == nil) != host {
 			return errors.Wrap(err, "unexpected usb status in host os")
 		}
 
@@ -170,9 +170,9 @@ func checkUsbDeviceStatus(ctx context.Context, host, vm bool) error {
 		// |err == nil| indicates |grep| finds the expected device.
 		if err := testexec.CommandContext(ctx, "/usr/sbin/android-sh", "-c",
 			"lsusb | grep "+fmt.Sprintf("%s:%s", usbVID,
-			usbPID)).Run(testexec.DumpLogOnError); (err == nil) != vm {
+				usbPID)).Run(testexec.DumpLogOnError); (err == nil) != vm {
 			return errors.Wrap(err, "unexpected usb status in vm")
 		}
 		return nil
-        }, &testing.PollOptions{Timeout: time.Second})
+	}, &testing.PollOptions{Timeout: time.Second})
 }
