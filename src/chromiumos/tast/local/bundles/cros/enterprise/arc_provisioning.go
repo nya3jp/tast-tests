@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -84,8 +85,10 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		bootTimeout = 4 * time.Minute
 		// CloudDPC sign-in timeout set in code is 3 minutes.
 		timeoutWaitForPlayStore = 3 * time.Minute
+		maxAttempts             = 2
 	)
 
+	attempts := 1
 	doRetries := s.Param().(bool)
 
 	// Indicates a failure in the core feature under test so the polling should stop.
@@ -95,8 +98,11 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 
 	// Indicates that the error is retryable and unrelated to core feature under test.
 	retry := func(desc string, err error) error {
-		if doRetries {
-			return errors.Wrap(err, "failed to "+desc)
+		if doRetries && attempts < maxAttempts {
+			attempts++
+			err = errors.Wrap(err, "failed to "+desc)
+			s.Logf("%s. Retrying", err)
+			return err
 		}
 		return exit(desc, err)
 	}
@@ -137,6 +143,9 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		}
 		defer a.Close(ctx)
 		if err := optin.LaunchAndWaitForPlayStore(ctx, tconn, cr, timeoutWaitForPlayStore); err != nil {
+			if err := optin.DumpLogCat(ctx, strconv.Itoa(attempts)); err != nil {
+				s.Logf("WARNING: Failed to dump logcat: %s", err)
+			}
 			return retry("launch Play Store", err)
 		}
 
