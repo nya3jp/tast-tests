@@ -20,7 +20,7 @@ func init() {
 			"evanbenn@chromium.org", // Test author
 			"chromeos-hps-swe@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "informational"},
 		// TODO(b/227525135): re-enable when we have some brya DUTs with HPS
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("brya")),
 		SoftwareDeps: []string{"hps"},

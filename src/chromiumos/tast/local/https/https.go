@@ -202,7 +202,7 @@ func CertificateExists(ctx context.Context, cr *chrome.Chrome, br *browser.Brows
 		return false, nil
 	}
 
-  	// If collapsible panel entry exists, it means there is at least one cert under it,
+	// If collapsible panel entry exists, it means there is at least one cert under it,
 	// which means that "More actions" button must appear when the panel has been opened.
 	if err := uiauto.Combine("open collapsible panel to check if the cert is there",
 		ui.MakeVisible(certPanel),
