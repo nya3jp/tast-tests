@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6994923_304e9d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-14T00:00:54Z",
+      "side": 1,
+      "message": "Can you file a bug and follow up if we can pass through test name to fixture impl? It does not sound good to explicitly set TestName in each script.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "d9f37af9717177e24dc26b989150862fe4b5afa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d92acb7_e72b99e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-14T00:00:54Z",
+      "side": 1,
+      "message": "Thanks for doing this in a safe way.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "d9f37af9717177e24dc26b989150862fe4b5afa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
