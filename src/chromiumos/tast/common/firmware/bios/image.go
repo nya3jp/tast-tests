@@ -34,6 +34,9 @@ const (
 	// ECProgrammer is the flashrom programmer type used to operate with EC chip.
 	ECProgrammer FlashromProgrammer = "ec"
 
+	// BOOTSTUBImageSection is the named section for the Coreboot image.
+	BOOTSTUBImageSection ImageSection = "BOOT_STUB"
+
 	// GBBImageSection is the named section for GBB as output from dump_fmap.
 	GBBImageSection ImageSection = "GBB"
 

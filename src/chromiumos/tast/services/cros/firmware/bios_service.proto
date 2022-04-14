@@ -52,10 +52,11 @@ enum Programmer {
 
 // ImageSections enum for fw ImageSections
 enum ImageSection {
-  GBBImageSection = 0;
-  ECRWImageSection = 1;
-  ECRWBImageSection = 2;
-  EmptyImageSection = 3;
+  BOOTSTUBImageSection = 0;
+  GBBImageSection = 1;
+  ECRWImageSection = 2;
+  ECRWBImageSection = 3;
+  EmptyImageSection = 4;
 }
 
 // GBBFlagsState represents the a known state of GBB flags.  Set flags have precedence over cleared ones.
