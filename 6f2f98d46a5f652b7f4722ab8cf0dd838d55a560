@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa190e39_62da1ca7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-14T01:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc7b2dca_7aa78b65",
+      "revId": "6f2f98d46a5f652b7f4722ab8cf0dd838d55a560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7018a931_2ef98e98",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0acafc7d_4efe06e0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-14T01:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7018a931_2ef98e98",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "6f2f98d46a5f652b7f4722ab8cf0dd838d55a560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66c8e4a6_ca8d1ec1",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-04-13T22:36:28Z",
       "side": 1,
       "message": "Nit: add a space after `//`",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "6f2f98d46a5f652b7f4722ab8cf0dd838d55a560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "095758d4_d291c758",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-14T01:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66c8e4a6_ca8d1ec1",
       "range": {
         "startLine": 76,
         "startChar": 1,
