@@ -7,8 +7,10 @@ package telemetryextension
 import (
 	"context"
 	"io/ioutil"
+	"strings"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
@@ -39,9 +41,9 @@ func init() {
 
 // Compliance tests that DUT satisfies all requirements to run Telemetry Extension.
 func Compliance(ctx context.Context, s *testing.State) {
-	if vendorBytes, err := ioutil.ReadFile("/sys/devices/virtual/dmi/id/sys_vendor"); err != nil {
+	if vendor, err := readVendor(ctx); err != nil {
 		s.Error("Failed to read vendor name: ", err)
-	} else if got, want := string(vendorBytes), "HP\n"; got != want {
+	} else if got, want := vendor, "HP"; got != want {
 		s.Errorf("Unexpected vendor name = got %q, want %q", got, want)
 	}
 
@@ -80,4 +82,20 @@ func Compliance(ctx context.Context, s *testing.State) {
 	} else if want := "true"; got != want {
 		s.Errorf("Unexpected vendor name = got %q, want %q", got, want)
 	}
+}
+
+func readVendor(ctx context.Context) (string, error) {
+	if got, err := crosconfig.Get(ctx, "/branding", "oem-name"); err != nil && !crosconfig.IsNotFound(err) {
+		return "", errors.Wrap(err, "failed to get OEM name from CrOSConfig")
+	} else if err == nil {
+		return got, nil
+	}
+
+	vendorBytes, err := ioutil.ReadFile("/sys/devices/virtual/dmi/id/sys_vendor")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read vendor name")
+	}
+
+	vendor := strings.TrimSpace(string(vendorBytes))
+	return vendor, nil
 }
