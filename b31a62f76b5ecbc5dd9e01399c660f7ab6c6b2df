@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83206f6d_69059a4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/perf_boot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-04-14T03:29:00Z",
+      "side": 1,
+      "message": "nit: we can simplify the logic:\n\n```\nsingleMetrics[metric] \u003d append(singleMetrics[metric], m.Value...)\n```\n\ndemo: https://go.dev/play/p/W6xK-b_q1Ni",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "b31a62f76b5ecbc5dd9e01399c660f7ab6c6b2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
