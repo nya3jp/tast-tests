@@ -16,6 +16,24 @@
       "message": "How are these getting through the CQ and then failing later?",
       "revId": "7c5bfaff03fb1a62b691f947793ddccc1314b220",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d821a0_c2fb5af6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-04-14T18:52:28Z",
+      "side": 1,
+      "message": "I thought the same but I figured it out:\n\nThis CL I am reverting was built, then failed CQ for HW tests.\n\nTHEN \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3495428\nwas merged, changing the API of that method from []string to  []GpioName\n\nTHEN we re-ran this CL, but CQ recycled the builds from before, which had args for that method still as []string\n\n\nSo TLDR: CQ recycled a build, and a change happened between then and ToT. this is the risk we take when we re-cycle builds I guess",
+      "parentUuid": "6233a72a_fa269d2a",
+      "revId": "7c5bfaff03fb1a62b691f947793ddccc1314b220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
