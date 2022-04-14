@@ -81,6 +81,7 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		phys:           make(map[int]*iw.Phy),
 		activeServices: activeServices{},
 	}
+	r.ipr.SetImplementationFeatureSupport(ip.BriefLinkShow, false)
 	r.im = common.NewRouterIfaceManager(r, r.iwr)
 
 	shortCtx, cancel := ctxutil.Shorten(ctx, common.RouterCloseContextDuration)
@@ -640,6 +641,19 @@ func (r *Router) ReserveForStopCapture(ctx context.Context, capturer *pcap.Captu
 // reserve time for it.
 func (r *Router) ReserveForStopRawCapturer(ctx context.Context, capturer *pcap.Capturer) (context.Context, context.CancelFunc) {
 	return capturer.ReserveForClose(ctx)
+}
+
+// SetAPIfaceDown brings down the interface that the APIface uses.
+func (r *Router) SetAPIfaceDown(ctx context.Context, iface string) error {
+	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
+		return errors.Wrapf(err, "failed to set %s down", iface)
+	}
+	return nil
+}
+
+// MAC returns the MAC address of iface on this router.
+func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
+	return r.ipr.MAC(ctx, iface)
 }
 
 // HostIsOpenWrtRouter determines whether the remote host is an OpenWrt router.
