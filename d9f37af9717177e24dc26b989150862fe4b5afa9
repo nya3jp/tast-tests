@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b85f21fb_e43a614c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-04-14T00:05:26Z",
+      "side": 1,
+      "message": "Here is the bug: b/229059789 to track this.",
+      "parentUuid": "a6994923_304e9d5f",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "d9f37af9717177e24dc26b989150862fe4b5afa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3d92acb7_e72b99e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_apps.go",
         "patchSetId": 1
