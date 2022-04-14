@@ -109,6 +109,17 @@ func IfSuccessThen(preFunc, action Action) Action {
 	}
 }
 
+// Not returns a function that returns an error if the given action did not return
+// an error, and no error if the given action returned an error.
+func Not(action Action) Action {
+	return func(ctx context.Context) error {
+		if err := action(ctx); err == nil {
+			return errors.Wrap(err, "action succeeded unexpectedly")
+		}
+		return nil
+	}
+}
+
 // Sleep returns a function that sleeps for the specified duration.
 func Sleep(duration time.Duration) Action {
 	return func(ctx context.Context) error {

@@ -126,16 +126,29 @@ func AmongusGpuBenchmark(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "menu not loaded")
 		}
 
-		if err := uiauto.Combine("Load GPU Benchmark",
+		if err := uiauto.Combine("Click Local",
 			// Identify and click "Local".
 			uda.Tap(uidetection.Word("LOCAL")),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click past initial menu")
+		}
 
+		if err := uiauto.Combine("Load GPU Benchmark",
 			// Identify and click "Create Game".
 			action.Sleep(waitForActiveInputTime),
 			uda.Tap(uidetection.TextBlock([]string{"Create", "Game"})),
 
 			// Poll created game loaded (wait until settings button appears).
-			uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("amongus-in-game-settings-button.png"))),
+			// A failure to join a created session will be retried twice before being skipped.
+			action.IfSuccessThen(
+				action.Not(uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("amongus-in-game-settings-button.png")))),
+				uiauto.Retry(2, uiauto.Combine("Close announcements and click 'Create game' again",
+					uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("amongus-announcements-close-button.png"))),
+					uda.Tap(uidetection.CustomIcon(s.DataPath("amongus-announcements-close-button.png"))),
+					uda.Tap(uidetection.TextBlock([]string{"Create", "Game"})),
+					uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("amongus-in-game-settings-button.png"))),
+				)),
+			),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to finish test")
 		}
