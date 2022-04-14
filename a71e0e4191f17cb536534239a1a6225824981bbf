@@ -33,6 +33,24 @@
       "message": "is pids[0] always going to be the ChromeOS guest?",
       "revId": "a71e0e4191f17cb536534239a1a6225824981bbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79251a7a_6082f16a",
+        "filename": "src/chromiumos/tast/local/memory/manatee.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-14T05:38:27Z",
+      "side": 1,
+      "message": "It comes from `pgrep -o crosvm`, which will return the oldest crosvm process. That should always be the CrOS guest.",
+      "parentUuid": "90440b95_1e2c82c5",
+      "revId": "a71e0e4191f17cb536534239a1a6225824981bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
