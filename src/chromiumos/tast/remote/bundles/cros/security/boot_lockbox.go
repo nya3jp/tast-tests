@@ -29,9 +29,17 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Boot lockbox read/store test",
 		Contacts:     []string{"xzhou@chromium.org", "victorhsieh@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"tpm", "reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"no_qemu"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"qemu"},
+		}},
 	})
 }
 
