@@ -46,6 +46,30 @@
       },
       "revId": "b8a2054a484f5d03aee8924accd950eb9b4acf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76713e8a_f909f9aa",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-14T02:35:35Z",
+      "side": 0,
+      "message": "Also, this cmd is always nil at the moment anyway.",
+      "parentUuid": "950db5b1_eb9dde18",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "b8a2054a484f5d03aee8924accd950eb9b4acf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
