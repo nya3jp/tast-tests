@@ -16,6 +16,24 @@
       "message": "Adding nya@. IIRC we had a conversation that public tests (i.e. not in tast-tests-private) should not use the private bucket.",
       "revId": "013531188c092211ca21236f13b67f4a057ac2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e232d01_99a631f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-14T08:31:51Z",
+      "side": 1,
+      "message": "Yes, public tests should not depend on private data.",
+      "parentUuid": "0fd776ce_18aa23cc",
+      "revId": "013531188c092211ca21236f13b67f4a057ac2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
