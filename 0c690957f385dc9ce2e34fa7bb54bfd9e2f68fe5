@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a648af69_dd698852",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-04-14T16:49:12Z",
+      "side": 1,
+      "message": "PTAL, thank you!",
+      "revId": "0c690957f385dc9ce2e34fa7bb54bfd9e2f68fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a985eb_e00d5d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-04-14T16:49:12Z",
+      "side": 1,
+      "message": "These are currently failing on frm_resize and sub8x8_sf (like b/207057398 for ChromeStackDecoding), but since the tests are for reference against ffmpeg, we run them all here. Please let me know if you have other thoughts!",
+      "revId": "0c690957f385dc9ce2e34fa7bb54bfd9e2f68fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
