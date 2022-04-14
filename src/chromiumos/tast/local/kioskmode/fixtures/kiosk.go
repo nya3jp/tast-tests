@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
+	"github.com/shirou/gopsutil/v3/process"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"

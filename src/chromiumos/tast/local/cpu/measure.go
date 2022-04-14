@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/shirou/gopsutil/cpu"
+	"github.com/shirou/gopsutil/v3/cpu"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"

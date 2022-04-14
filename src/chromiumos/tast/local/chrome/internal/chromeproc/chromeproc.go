@@ -10,7 +10,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/shirou/gopsutil/process"
+	"github.com/shirou/gopsutil/v3/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/procutil"

@@ -12,7 +12,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/shirou/gopsutil/host"
+	"github.com/shirou/gopsutil/v3/host"
 	"golang.org/x/sys/unix"
 
 	commoncrash "chromiumos/tast/common/crash"
