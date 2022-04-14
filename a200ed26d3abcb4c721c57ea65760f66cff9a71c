@@ -3,6 +3,126 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae2c2d2d_c6e7f531",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-14T04:38:56Z",
+      "side": 1,
+      "message": "Test for restricted sign-in account",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ec2d71_afdf367b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-14T04:38:56Z",
+      "side": 1,
+      "message": "Extra whitespace",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9189b077_f1aca4af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-14T04:38:56Z",
+      "side": 1,
+      "message": "id or ids?",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5034456_de259b1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-14T04:38:56Z",
+      "side": 1,
+      "message": "Invalid user ID should not be signed in",
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b356ae1_82fee1ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-14T04:38:56Z",
+      "side": 1,
+      "message": "Failed to open \u0027Manage other people\u0027 section in OS Settings",
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6674068b_c8664995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-14T04:38:56Z",
+      "side": 1,
+      "message": "// Expected email to be added. If unspecified, use \"email\" field.",
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bef66918_d6712c9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
         "patchSetId": 2
@@ -20,6 +140,23 @@
         "endLine": 109,
         "endChar": 48
       },
+      "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36799bd8_53997c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin_add_user_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-04-14T04:38:56Z",
+      "side": 1,
+      "message": "Shall we check if the addButton is active to tell apart the case that the email is invalid (so Add cannot be clicked; should return false, nil) from the case that there\u0027s something wrong adding the user (should return false, err).",
       "revId": "a200ed26d3abcb4c721c57ea65760f66cff9a71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
