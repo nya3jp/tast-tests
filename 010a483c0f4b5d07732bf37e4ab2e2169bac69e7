@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a9404686_55c4e318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-14T07:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4d4879_92261563",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "010a483c0f4b5d07732bf37e4ab2e2169bac69e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe6fd8d_a5ecb12d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-14T07:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e3c7ab_097f4a12",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "010a483c0f4b5d07732bf37e4ab2e2169bac69e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cdd6452a_b053d5b4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -77,6 +125,30 @@
       "writtenOn": "2022-04-08T15:56:50Z",
       "side": 1,
       "message": "This error will occur not only in case of failure to `get` it, but also in case of successfully getting it and finding that it does not match `cca.FacingBack`. You could write `failed to verify camera facing back`",
+      "range": {
+        "startLine": 119,
+        "startChar": 27,
+        "endLine": 119,
+        "endChar": 54
+      },
+      "revId": "010a483c0f4b5d07732bf37e4ab2e2169bac69e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d86657_5af89ed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-04-14T07:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce2d5ca5_c883868f",
       "range": {
         "startLine": 119,
         "startChar": 27,
