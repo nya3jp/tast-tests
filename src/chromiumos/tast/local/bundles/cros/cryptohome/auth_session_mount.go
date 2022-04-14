@@ -84,6 +84,11 @@ func AuthSessionMount(ctx context.Context, s *testing.State) {
 		s.Log("Failed to unmount all before test starts: ", err)
 	}
 
+	// Ensure the vault had been removed.
+	if err := cryptohome.RemoveVault(ctx, userParam.testUser); err != nil {
+		s.Log("Failed to remove vault before test starts: ", err)
+	}
+
 	// Run AuthSession Mount Flow for creating user.
 	if err := cryptohome.AuthSessionMountFlow(ctx, userParam.isKioskUser, userParam.testUser, userParam.testPass, userParam.createUser); err != nil {
 		s.Fatal("Failed to Mount with AuthSession -: ", err)
