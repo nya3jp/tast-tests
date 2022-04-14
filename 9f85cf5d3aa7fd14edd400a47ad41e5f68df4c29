@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f239bba6_ae7ab0c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_events.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-04-14T10:14:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c123ef7d_a983b3b0",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 15
+      },
+      "revId": "9f85cf5d3aa7fd14edd400a47ad41e5f68df4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35a130e3_5a14be0f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e58ea2_4dc31e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_events.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-04-14T10:14:54Z",
+      "side": 1,
+      "message": "I use the second method, make it random and print the seed.",
+      "parentUuid": "35a130e3_5a14be0f",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "9f85cf5d3aa7fd14edd400a47ad41e5f68df4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b23342_cf6df86f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-14T08:50:28Z",
       "side": 1,
       "message": "I recommend filepath.Join().",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "9f85cf5d3aa7fd14edd400a47ad41e5f68df4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd60ae7b_50407eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/pkcs11_init_under_errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1528117
+      },
+      "writtenOn": "2022-04-14T10:14:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b23342_cf6df86f",
       "range": {
         "startLine": 87,
         "startChar": 1,
