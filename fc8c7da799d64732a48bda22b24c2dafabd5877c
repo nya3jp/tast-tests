@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59cc8d8a_8499cc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-14T16:34:51Z",
+      "side": 1,
+      "message": "do we also want to check VPD?",
+      "range": {
+        "startLine": 94,
+        "startChar": 38,
+        "endLine": 94,
+        "endChar": 77
+      },
+      "revId": "fc8c7da799d64732a48bda22b24c2dafabd5877c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
