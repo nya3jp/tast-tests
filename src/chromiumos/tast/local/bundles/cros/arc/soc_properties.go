@@ -29,6 +29,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel(
 			"banon",
 			"bob",
+			"kevin",
+			"scarlet",
 		)),
 
 		SoftwareDeps: []string{"arc", "chrome"},
