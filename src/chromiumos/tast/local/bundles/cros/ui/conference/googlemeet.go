@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -29,10 +30,12 @@ import (
 // GoogleMeetConference implements the Conference interface.
 type GoogleMeetConference struct {
 	cr              *chrome.Chrome
+	br              *browser.Browser
 	tconn           *chrome.TestConn
 	uiHandler       cuj.UIActionHandler
 	tabletMode      bool
 	extendedDisplay bool
+	isLacros        bool
 	roomSize        int
 	account         string
 	password        string
@@ -59,7 +62,8 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 	}
 	defer kb.Close()
 	openConference := func(ctx context.Context) error {
-		conn, err := conf.cr.NewConn(ctx, room)
+		// Set newWindow to true to launch zoom in the first Chrome tab.
+		conn, err := conf.uiHandler.NewChromeTab(ctx, conf.br, room, true)
 		if err != nil {
 			return CheckSignedOutError(ctx, tconn, errors.Wrap(err, "failed to create chrome connection to join the conference"))
 		}
@@ -190,7 +194,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		iAgree := nodewith.Name("I agree").Role(role.Button)
 		var actions []uiauto.Action
 		// If emailContent is not found, it should fill in the account.
-		if err := ui.WaitUntilExists(emailContent)(ctx); err != nil {
+		if err := ui.WithTimeout(shortUITimeout).WaitUntilExists(emailContent)(ctx); err != nil {
 			// Email has not been entered into the text box yet.
 			actions = append(actions,
 				// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
@@ -235,19 +239,23 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			if err := ash.CloseNotifications(ctx, tconn); err != nil {
 				return errors.Wrap(err, "failed to close notifications")
 			}
-
-			dontReminder := nodewith.Name("Don't remind me next time").Role(role.CheckBox)
-			if err := ui.LeftClick(dontReminder)(ctx); err != nil {
-				return errors.Wrap(err, `failed to click "Don't remind me next time"`)
-			}
-
-			signInWebArea := nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
-			okBtn := nodewith.Name("OK").Role(role.Button).Ancestor(signInWebArea)
-			if err := ui.LeftClick(okBtn)(ctx); err != nil {
-				return errors.Wrap(err, `failed to click "OK" for new account prompt`)
+			// The ui of Chrome and Lacros are different when adding account.
+			if conf.isLacros {
+				continueButton := nodewith.Name("Continue").Role(role.Button)
+				if err := ui.LeftClick(continueButton)(ctx); err != nil {
+					return err
+				}
+			} else {
+				dontReminder := nodewith.Name("Don't remind me next time").Role(role.CheckBox)
+				signInWebArea := nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
+				okBtn := nodewith.Name("OK").Role(role.Button).Ancestor(signInWebArea)
+				if err := uiauto.Combine("close dialog",
+					ui.LeftClick(dontReminder),
+					ui.LeftClick(okBtn))(ctx); err != nil {
+					return err
+				}
 			}
 		}
-
 		if err := enterAccount(ctx); err != nil {
 			return err
 		}
@@ -428,13 +436,15 @@ func (conf *GoogleMeetConference) SwitchTabs(ctx context.Context) error {
 	defer kb.Close()
 
 	testing.ContextLog(ctx, "Open wiki page")
-	wikiConn, err := conf.cr.NewConn(ctx, cuj.WikipediaURL)
+	// Set newWindow to false to make the tab in the same Chrome window.
+	wikiConn, err := conf.uiHandler.NewChromeTab(ctx, conf.br, cuj.WikipediaURL, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the wiki url")
 	}
 	defer wikiConn.Close()
 
 	// Switch tab.
+	// Because the new tab is in the same Chrome window, Ctrl+Tab can be used to switch back.
 	if err := kb.Accel(ctx, "Ctrl+Tab"); err != nil {
 		return errors.Wrap(err, "failed to switch tab")
 	}
@@ -608,7 +618,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		)(ctx)
 	}
 
-	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, conf.cr, shareScreen, stopPresenting,
+	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, conf.br, shareScreen, stopPresenting,
 		application, conf.outDir, conf.extendedDisplay); err != nil {
 		return errors.Wrapf(err, "failed to present %s", string(application))
 	}
@@ -620,17 +630,23 @@ func (conf *GoogleMeetConference) End(ctx context.Context) error {
 	return cuj.CloseAllWindows(ctx, conf.tconn)
 }
 
+// SetBrowser sets browser to chrome or lacros.
+func (conf *GoogleMeetConference) SetBrowser(br *browser.Browser) {
+	conf.br = br
+}
+
 var _ Conference = (*GoogleMeetConference)(nil)
 
 // NewGoogleMeetConference creates Google Meet conference room instance which implements Conference interface.
 func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler,
-	tabletMode, extendedDisplay bool, roomSize int, account, password, outDir string) *GoogleMeetConference {
+	tabletMode, extendedDisplay, isLacros bool, roomSize int, account, password, outDir string) *GoogleMeetConference {
 	return &GoogleMeetConference{
 		cr:              cr,
 		tconn:           tconn,
 		uiHandler:       uiHandler,
 		tabletMode:      tabletMode,
 		extendedDisplay: extendedDisplay,
+		isLacros:        isLacros,
 		roomSize:        roomSize,
 		account:         account,
 		password:        password,
