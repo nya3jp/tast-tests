@@ -16,6 +16,80 @@
       "message": "Hi Toni!\nPTAL",
       "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96893ef3_a58e635d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-15T22:01:16Z",
+      "side": 1,
+      "message": "add deferred task to clear these up",
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c203a6c4_47f39ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-15T22:01:16Z",
+      "side": 1,
+      "message": "is opening the files enough to get them to show up during tests, or will we have to modify them?",
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441eb96b_548537c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-15T22:01:16Z",
+      "side": 1,
+      "message": "should we make sure that we opened each of the files?\n(i.e. do this in a loop over test file names, and close the chrome after each iteration)",
+      "range": {
+        "startLine": 144,
+        "startChar": 15,
+        "endLine": 144,
+        "endChar": 25
+      },
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2556cf59_ddd43f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/show_continue_section.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-04-15T22:01:16Z",
+      "side": 1,
+      "message": "let\u0027s also try to launch the file.",
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
