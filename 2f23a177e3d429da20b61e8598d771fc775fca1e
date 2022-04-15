@@ -16,6 +16,23 @@
       "message": "lgtm\n\nNot sure whether power.setup would like to use enum instead of bool though.",
       "revId": "2f23a177e3d429da20b61e8598d771fc775fca1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0701d728_b0a83149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-15T03:11:19Z",
+      "side": 1,
+      "message": "These changes don\u0027t seem related to the rest of the CL. Do they need to be here, or can you move them into another CL?",
+      "revId": "2f23a177e3d429da20b61e8598d771fc775fca1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
