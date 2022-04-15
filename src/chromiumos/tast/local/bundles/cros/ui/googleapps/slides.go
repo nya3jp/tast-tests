@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -28,7 +29,7 @@ import (
 const slideName = "Google Slides"
 
 // NewGoogleSlides returns an action that creates a new google slides from web.
-func NewGoogleSlides(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) action.Action {
+func NewGoogleSlides(cs ash.ConnSource, tconn *chrome.TestConn, newWindow bool) action.Action {
 	const newSlidesURL = "https://slides.new"
 	ui := uiauto.New(tconn)
 	var opts []browser.CreateTargetOption
@@ -40,7 +41,7 @@ func NewGoogleSlides(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) 
 	return uiauto.Combine("create google slide",
 		func(ctx context.Context) error {
 			testing.ContextLog(ctx, "Start to create google slide")
-			conn, err := cr.NewConn(ctx, newSlidesURL, opts...)
+			conn, err := cs.NewConn(ctx, newSlidesURL, opts...)
 			if err != nil {
 				return err
 			}

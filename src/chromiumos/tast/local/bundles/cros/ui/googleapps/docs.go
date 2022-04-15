@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -25,7 +26,7 @@ import (
 const docsName = "Google Docs"
 
 // NewGoogleDocs returns an action to create a new google document.
-func NewGoogleDocs(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) action.Action {
+func NewGoogleDocs(cs ash.ConnSource, tconn *chrome.TestConn, newWindow bool) action.Action {
 	const newDocsURL = "https://docs.new"
 	var opts []browser.CreateTargetOption
 	if newWindow {
@@ -33,7 +34,7 @@ func NewGoogleDocs(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) ac
 	}
 	return func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start to create google document")
-		conn, err := cr.NewConn(ctx, newDocsURL, opts...)
+		conn, err := cs.NewConn(ctx, newDocsURL, opts...)
 		if err != nil {
 			return err
 		}
