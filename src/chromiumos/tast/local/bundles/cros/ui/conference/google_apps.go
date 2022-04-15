@@ -50,7 +50,7 @@ const (
 
 // presentApps creates Google Slides and Google Docs, shares screen and presents
 // the specified application to the conference.
-func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler, cr *chrome.Chrome,
+func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler, cr *chrome.Chrome, cs ash.ConnSource,
 	shareScreen, stopPresenting action.Action, application googleApplication, outDir string, extendedDisplay bool) (err error) {
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -122,7 +122,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	if err := googleapps.NewGoogleSlides(cr, tconn, extendedDisplay)(ctx); err != nil {
+	if err := googleapps.NewGoogleSlides(cs, tconn, extendedDisplay)(ctx); err != nil {
 		return CheckSignedOutError(ctx, tconn, err)
 	}
 	// Delete slide after presenting.
@@ -161,7 +161,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 		}
 	}
 
-	if err := googleapps.NewGoogleDocs(cr, tconn, extendedDisplay)(ctx); err != nil {
+	if err := googleapps.NewGoogleDocs(cs, tconn, extendedDisplay)(ctx); err != nil {
 		return CheckSignedOutError(ctx, tconn, err)
 	}
 	// Delete document after presenting.
