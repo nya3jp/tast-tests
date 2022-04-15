@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13346f4e_8aac9a51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-15T18:22:49Z",
+      "side": 1,
+      "message": "Hi reviewers, during the discussion of b/228689048, we found more controls should be applied for the PwerTest setup. We added more options to control every disable/enable actions.\n\nAlso, the new controls are added using ENUM instead of Bool, to avoid the confusion of double negatives.\n\nPlease review the changes. Thanks!",
+      "revId": "ccf971e433f41520830cd6edf538ad1c9836c62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "388e00d2_fd220ca7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-15T18:22:49Z",
+      "side": 1,
+      "message": "Use DoNotChangeSomething convention, instead of EnableSomething, to make it clear that no actions will be taken.",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 18
+      },
+      "revId": "ccf971e433f41520830cd6edf538ad1c9836c62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a218b8_2f5d26c3",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-15T18:22:49Z",
+      "side": 1,
+      "message": "Change the function name to avoid the confusion/conflict with the BluetoothMode value - DisableBluetooth.",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "ccf971e433f41520830cd6edf538ad1c9836c62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1988b5_b9ad31bf",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_network.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-04-15T18:22:49Z",
+      "side": 1,
+      "message": "Change the function name to avoid the confusion with the WiFiInterfaceMode value - DisableWifiInterfaces.",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "ccf971e433f41520830cd6edf538ad1c9836c62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
