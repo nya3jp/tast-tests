@@ -181,8 +181,10 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			return
 		}
 
-		// Get name of target
-		dst := filepath.Join(dir, "faillog")
+		// Get name of target. Use a timestamp in the name to avoid
+		// overwriting any existing files.
+		timeStr := time.Now().Format("20060102-150405.999999")
+		dst := filepath.Join(dir, "faillog", timeStr)
 
 		// Transfer the file from DUT to host machine.
 		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
