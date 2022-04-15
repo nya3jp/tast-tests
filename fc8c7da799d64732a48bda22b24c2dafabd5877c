@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "260a9777_1362893a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-04-15T00:54:06Z",
+      "side": 1,
+      "message": "LGTM. Please see Jack\u0027s comment before submission.",
+      "revId": "fc8c7da799d64732a48bda22b24c2dafabd5877c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59cc8d8a_8499cc37",
