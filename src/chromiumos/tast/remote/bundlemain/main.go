@@ -92,6 +92,11 @@ func hwsecCheckTPMState(ctx context.Context, s *testing.TestHookState, origStatu
 	return nil
 }
 
+func fileExists(path string) bool {
+	_, err := os.Stat(path)
+	return !os.IsNotExist(err)
+}
+
 // testHookRemote returns a function that performs post-run activity after a test run is done.
 func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx context.Context,
 	s *testing.TestHookState) {
@@ -181,8 +186,13 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			return
 		}
 
-		// Get name of target
+		// Get name of target. If a "faillog" directory already exists (because
+		// a remote service called a faillog function directly), copy the files
+		// to "faillog2" instead.
 		dst := filepath.Join(dir, "faillog")
+		if fileExists(dst) {
+			dst = filepath.Join(dir, "faillog2")
+		}
 
 		// Transfer the file from DUT to host machine.
 		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
