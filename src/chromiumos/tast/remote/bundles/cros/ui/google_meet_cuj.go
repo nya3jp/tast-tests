@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GoogleMeetCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Host a Google Meet video conference and do presentation to participants",
 		Contacts:     []string{"jane.yang@cienet.com", "xliu@cienet.com"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
@@ -37,11 +37,29 @@ func init() {
 					Size: conference.TwoRoomSize,
 				},
 			}, {
+				Name:              "basic_lacros_two",
+				Timeout:           time.Minute * 50,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.TwoRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "basic_small",
 				Timeout: time.Minute * 50,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.SmallRoomSize,
+				},
+			}, {
+				Name:              "basic_lacros_small",
+				Timeout:           time.Minute * 50,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.SmallRoomSize,
+					IsLacros: true,
 				},
 			}, {
 				Name:    "basic_large",
@@ -51,11 +69,29 @@ func init() {
 					Size: conference.LargeRoomSize,
 				},
 			}, {
+				Name:              "basic_lacros_large",
+				Timeout:           time.Minute * 50,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "basic_class",
 				Timeout: time.Minute * 50,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.ClassRoomSize,
+				},
+			}, {
+				Name:              "basic_lacros_class",
+				Timeout:           time.Minute * 50,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "basic",
+					Size:     conference.ClassRoomSize,
+					IsLacros: true,
 				},
 			}, {
 				Name:    "plus_large",
@@ -65,11 +101,29 @@ func init() {
 					Size: conference.LargeRoomSize,
 				},
 			}, {
+				Name:              "plus_lacros_large",
+				Timeout:           time.Minute * 50,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "plus",
+					Size:     conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "plus_class",
 				Timeout: time.Minute * 50,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.ClassRoomSize,
+				},
+			}, {
+				Name:              "plus_lacros_class",
+				Timeout:           time.Minute * 50,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "plus",
+					Size:     conference.ClassRoomSize,
+					IsLacros: true,
 				},
 			}, {
 				Name:    "premium_large",
@@ -79,6 +133,15 @@ func init() {
 					Size: conference.LargeRoomSize,
 				},
 			}, {
+				Name:              "premium_lacros_large",
+				Timeout:           time.Minute * 50,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "premium",
+					Size:     conference.LargeRoomSize,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "plus_no_meet",
 				Timeout: time.Minute * 10,
 				Val: conference.TestParameters{
@@ -86,11 +149,29 @@ func init() {
 					Size: conference.NoRoom,
 				},
 			}, {
+				Name:              "plus_lacros_no_meet",
+				Timeout:           time.Minute * 10,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "plus",
+					Size:     conference.NoRoom,
+					IsLacros: true,
+				},
+			}, {
 				Name:    "premium_no_meet",
 				Timeout: time.Minute * 10,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.NoRoom,
+				},
+			}, {
+				Name:              "premium_lacros_no_meet",
+				Timeout:           time.Minute * 10,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val: conference.TestParameters{
+					Tier:     "premium",
+					Size:     conference.NoRoom,
+					IsLacros: true,
 				},
 			},
 		},
@@ -128,6 +209,7 @@ func GoogleMeetCUJ(ctx context.Context, s *testing.State) {
 		RoomSize:        int64(param.Size),
 		ExtendedDisplay: false,
 		CameraVideoPath: remoteCameraVideoPath,
+		IsLacros:        param.IsLacros,
 	}); err != nil {
 		s.Fatal("Failed to run Meet Scenario: ", err)
 	}

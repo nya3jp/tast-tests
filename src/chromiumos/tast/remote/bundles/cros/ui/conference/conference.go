@@ -39,6 +39,8 @@ type TestParameters struct {
 	Size int
 	// Tier defines the test tier: basic, plus, or premium.
 	Tier string
+	// IsLacros defines the browser type is Lacros or not.
+	IsLacros bool
 }
 
 // PushFileToTmpDir copies the data file to the DUT tmp path, returning its path on the DUT.
