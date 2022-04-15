@@ -159,7 +159,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		var err error
 		f.cr, err = chrome.New(ctx, append(f.chromeOptions,
 			chrome.GAIALoginPool(s.RequiredVar("drivefs.accountPool")),
-			chrome.TestExtOAuthClientID(s.RequiredVar("drivefs.extensionClientID")),
+			chrome.ExtraArgs("--get-access-token-for-test"),
 			chrome.ARCDisabled())...)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
@@ -215,9 +215,9 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	f.tconn = tconn
 
 	// Perform Drive API authentication.
-	ts := NewExtensionTokenSourceForAccount(
+	ts := NewChromeOSTokenSourceForAccount(
 		s.FixtContext(),
-		f.cr, tconn, driveAPIScopes, f.cr.Creds().User)
+		tconn, driveAPIScopes, f.cr.Creds().User)
 	rts := RetryTokenSource(ts, WithContext(s.FixtContext()), WithDelay(time.Second*5))
 	apiClient, err := CreateAPIClient(ctx, rts)
 	if err != nil {
