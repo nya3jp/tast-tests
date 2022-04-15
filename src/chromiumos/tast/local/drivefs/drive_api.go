@@ -11,9 +11,9 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	drive "google.golang.org/api/drive/v3"
+	"google.golang.org/api/option"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -21,29 +21,15 @@ import (
 
 // APIClient contains the stored client and Drive API service.
 type APIClient struct {
-	token  *oauth2.Token
-	config *oauth2.Config
+	tokenSourceFactory *ChromeOSTokenSourceFactory
 }
 
 // CreateAPIClient is a factory method that authorizes the logged in user.
 // The factory returns a APIClient type that has helper methods to perform Drive API tasks.
-func CreateAPIClient(ctx context.Context, cr *chrome.Chrome, oauthCredentials, refreshToken string) (*APIClient, error) {
-	config, err := google.ConfigFromJSON([]byte(oauthCredentials), drive.DriveFileScope)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed parsing supplied oauth credentials")
-	}
-
-	// Reconstruct the oauth token using just the refresh token.
-	// Fortunately the refresh token never expires so it can continually be used
-	// to get a new access token.
-	token := &oauth2.Token{
-		RefreshToken: refreshToken,
-	}
-
+func CreateAPIClient(tokenSourceFactory *ChromeOSTokenSourceFactory) *APIClient {
 	return &APIClient{
-		token:  token,
-		config: config,
-	}, nil
+		tokenSourceFactory: tokenSourceFactory,
+	}
 }
 
 // createNewDriveService is used to initialize a new drive client.
@@ -51,11 +37,8 @@ func CreateAPIClient(ctx context.Context, cr *chrome.Chrome, oauthCredentials, r
 // is used in the *http.Client, otherwise it will take the fixture context and
 // emit a context deadline exceeded on every call.
 func (d *APIClient) createNewDriveService(ctx context.Context) (*drive.Service, error) {
-	// Generate a *http.Client from the retrieved oauth token.
-	client := d.config.Client(ctx, d.token)
-
-	// Generate the drive service with the supplied oauth client.
-	service, err := drive.New(client)
+	service, err := drive.NewService(ctx,
+		option.WithTokenSource(d.tokenSourceFactory.TokenSource(ctx)))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to initialise the drive client")
 	}
