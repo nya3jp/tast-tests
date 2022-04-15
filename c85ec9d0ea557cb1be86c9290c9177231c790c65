@@ -16,6 +16,46 @@
       "message": "Rebased. PTAL.",
       "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e165e8_343a9ca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-15T12:08:06Z",
+      "side": 1,
+      "message": "I understand this is introduced recently out side of your scope, but as this is moving out from bundles, I think it\u0027s better to cleaned up.\nIf you prefer, it can be done in another CL, but then could you rebase this CL on top it so that the code won\u0027t be leaked outside of the bundles?",
+      "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b65707_07d7f1c2",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-04-15T12:08:06Z",
+      "side": 1,
+      "message": "this parameter looks very weird. Specifically, there are many \"Ash.*\" metrics, so I think it can work only for ash?\nDo you need another set of Configs?\n\nAlso, taking tconns looks a bit unnatural as a part of Configs. Maybe browser.Type meets the use better?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 113
+      },
+      "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
