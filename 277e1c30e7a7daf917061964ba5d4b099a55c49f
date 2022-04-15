@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb238335_d51f94e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-15T00:04:27Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look.\n\nI also add Shuhei to the reviewer just in case he spots something that we missed.",
+      "revId": "277e1c30e7a7daf917061964ba5d4b099a55c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89f032b_6587f3b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-15T00:04:27Z",
+      "side": 1,
+      "message": "Remove this.",
+      "revId": "277e1c30e7a7daf917061964ba5d4b099a55c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62f39ce_1a2761f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-15T00:04:27Z",
+      "side": 1,
+      "message": "Do you need this change?",
+      "revId": "277e1c30e7a7daf917061964ba5d4b099a55c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632c6bb8_94eddc7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-15T00:04:27Z",
+      "side": 1,
+      "message": "If I understand correctly, flag is like \"-build\u003dtrue\".\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/tast/internal/run/driver/run_tests.go;rcl\u003dcfd6f6fa78557e69c3edcc73849d3b2d710fc97b;l\u003d320\n\nTherefore, I don\u0027t think \"\u003d\u003d\" will work here.\n\nI suggest that we put the \"flag\", but not the value of the runFlag to a map. Then we use it to decide to add it to the final flags list.\n\nSomething like this\n```\nvar overrideFlags \u003d map[string]struct{}\n\nfor _, flagAndValue :\u003d range flags {\n    fv :\u003d strings.SplitN(flagAndValve, \"\u003d\", 2) // value can have \"\u003d\"\n    overrideFlags[strings.Trim(fv[0], \" \")] \u003d struct{}{}\n}\n \nfor _, runFlag :\u003d range meta.RunFlags {\n    fv :\u003d strings.SplitN(runFlag, \"\u003d\", 2) // value can have \"\u003d\"\n    if _, ok :\u003d overrideFlags[strings.Trim(fv[0], \" \")]; !ok {\n        runFlags \u003d append(runFlags, runFlag)\n    }\n}\n\t\n```",
+      "revId": "277e1c30e7a7daf917061964ba5d4b099a55c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
