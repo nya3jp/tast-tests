@@ -76,6 +76,9 @@ type Info struct {
 	// particular time. That is, even if the info says lacros is running, it
 	// doesn't necessarily mean lacros is still running at any particular time.
 	Running bool `json:"isRunning"`
+	// True iff lacros has keep-alive enabled..  Note that this information is a
+	// snapshot at a particular time.
+	KeepAlive bool `json:"isKeepAlive"`
 	// Contains the path to the lacros directory - this is where lacros will be
 	// executed from. Note that this may change over time if omaha is used (even
 	// during a test). This also may be empty is lacros is not running.
