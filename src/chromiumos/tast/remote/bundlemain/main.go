@@ -92,6 +92,11 @@ func hwsecCheckTPMState(ctx context.Context, s *testing.TestHookState, origStatu
 	return nil
 }
 
+func fileExists(path string) bool {
+	_, err := os.Stat(path)
+	return !os.IsNotExist(err)
+}
+
 // testHookRemote returns a function that performs post-run activity after a test run is done.
 func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx context.Context,
 	s *testing.TestHookState) {
@@ -183,6 +188,11 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 
 		// Get name of target
 		dst := filepath.Join(dir, "faillog")
+		if fileExists(dst) {
+			// Add a timestamp in the path to avoid overwriting existing files.
+			timeStr := time.Now().Format("20060102-150405.999999")
+			dst = filepath.Join(dir, "faillog", timeStr)
+		}
 
 		// Transfer the file from DUT to host machine.
 		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
