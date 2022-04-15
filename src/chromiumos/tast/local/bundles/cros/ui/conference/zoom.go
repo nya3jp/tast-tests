@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -28,6 +29,7 @@ import (
 // ZoomConference implements the Conference interface.
 type ZoomConference struct {
 	cr         *chrome.Chrome
+	br         *browser.Browser
 	tconn      *chrome.TestConn
 	uiHandler  cuj.UIActionHandler
 	tabletMode bool
@@ -493,6 +495,11 @@ func (conf *ZoomConference) showInterface(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: mediumUITimeout})
+}
+
+// SetBrowser sets browser to chrome or lacros.
+func (conf *ZoomConference) SetBrowser(br *browser.Browser) {
+	conf.br = br
 }
 
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
