@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -39,10 +41,13 @@ func ImageDropFromDownloads(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	d := s.FixtValue().(*arc.PreData).UIDevice
 
-	const (
-		filename = "capybara.jpg"
-		crosPath = "/home/chronos/user/Downloads/" + filename
-	)
+	const filename = "capybara.jpg"
+
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.User())
+	if err != nil {
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.User(), err)
+	}
+	crosPath := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads", filename)
 
 	expected, err := ioutil.ReadFile(s.DataPath(filename))
 	if err != nil {
