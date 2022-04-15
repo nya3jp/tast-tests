@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5408e806_830b5898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-04-15T03:20:29Z",
+      "side": 1,
+      "message": "I think you can use the \"%+v\" specifier to print the struct with field names:\n\n testing.ContextLogf(\"GetComponentMemoryMarginsKB returns %+v\", componentMemoryMargins)",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 19
+      },
+      "revId": "e4097d4fbb5b399d6197e0cbdfa7fbe775abffb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
