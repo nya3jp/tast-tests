@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d6dd6e_5ab3e4f3",
+        "filename": "android/ArcInputOverlayTest/src/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-15T20:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bb54a9_ba516a54",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "25e21d84b6a42d5fbcc8f26814324a642793f1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eaf545e_8497ff88",

@@ -300,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfca13e7_72f144e0",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-15T20:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecbd158_de624b14",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f021052e_45a205d6",
@@ -337,6 +361,30 @@
       "side": 1,
       "message": "Replaced it with a more clear string.",
       "parentUuid": "f021052e_45a205d6",
+      "range": {
+        "startLine": 88,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "3cea30daaa4832e96d34a88fb4f8bac2aa39c721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb9e856e_bd778644",
+        "filename": "android/ArcInputOverlayTest/src/ReceivedEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-04-15T20:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7745086_0ded5b29",
       "range": {
         "startLine": 88,
         "startChar": 3,
