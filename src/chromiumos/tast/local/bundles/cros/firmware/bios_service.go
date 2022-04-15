@@ -43,6 +43,12 @@ var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_ECRWImageSection:     bios.ECRWImageSection,
 	pb.ImageSection_ECRWBImageSection:    bios.ECRWBImageSection,
 	pb.ImageSection_EmptyImageSection:    bios.EmptyImageSection,
+	pb.ImageSection_APROImageSection:     bios.APROImageSection,
+}
+
+// updateModeEnumtoMode maps the enum from FirmwareUpdateModeRequest to a bios FirmwareUpdateMode.
+var updateModeEnumtoMode = map[pb.UpdateMode]bios.FirmwareUpdateMode{
+	pb.UpdateMode_RecoveryMode: bios.RecoveryMode,
 }
 
 // BackupImageSection dumps the image region into temporary file locally and returns its path.
@@ -56,7 +62,7 @@ func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWBackUpSect
 
 // RestoreImageSection restores image region from temporary file locally and restores fw with it.
 func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWBackUpInfo) (*empty.Empty, error) {
-	if err := bios.WriteImageFromFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
+	if err := bios.WriteImageFromSingleSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
 		return nil, errors.Wrapf(err, "could not restore %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	}
 	return &empty.Empty{}, nil
@@ -100,6 +106,15 @@ func (bs *BiosService) EnableAPSoftwareWriteProtect(ctx context.Context, req *em
 	return &empty.Empty{}, nil
 }
 
+// DisableAPSoftwareWriteProtect disables the AP software write protect.
+// HW write protection needs to be disabled first.
+func (*BiosService) DisableAPSoftwareWriteProtect(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if err := bios.DisableAPSoftwareWriteProtect(ctx); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
 // CorruptFWSection writes garbage over part of the specified firmware section.
 func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
 	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
@@ -112,6 +127,29 @@ func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.CorruptSect
 	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
+	}
+	return &empty.Empty{}, nil
+}
+
+// WriteImageFromMultiSectionFile writes the provided multi section file in the specified section.
+func (bs *BiosService) WriteImageFromMultiSectionFile(ctx context.Context, req *pb.FWBackUpInfo) (*empty.Empty, error) {
+	if err := bios.WriteImageFromMultiSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
+		return nil, errors.Wrapf(err, "could not write %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
+	}
+	return &empty.Empty{}, nil
+}
+
+// ChromeosFirmwareUpdate will perform the firmware update in the desired mode.
+func (*BiosService) ChromeosFirmwareUpdate(ctx context.Context, req *pb.FirmwareUpdateModeRequest) (*empty.Empty, error) {
+	switch req.Options {
+	case "":
+		if err := bios.ChromeosFirmwareUpdate(ctx, updateModeEnumtoMode[req.Mode]); err != nil {
+			return nil, err
+		}
+	default:
+		if err := bios.ChromeosFirmwareUpdate(ctx, updateModeEnumtoMode[req.Mode], req.Options); err != nil {
+			return nil, err
+		}
 	}
 	return &empty.Empty{}, nil
 }

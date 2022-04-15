@@ -27,6 +27,9 @@ type ImageSection string
 // FlashromProgrammer is the type of programmer being passed to flashrom command line.
 type FlashromProgrammer string
 
+// FirmwareUpdateMode is the type of mode to perform firmware update.
+type FirmwareUpdateMode string
+
 const (
 	// HostProgrammer is the flashrom programmer type used to operate with AP firmware chip.
 	HostProgrammer FlashromProgrammer = "host"
@@ -60,6 +63,12 @@ const (
 
 	// EmptyImageSection is the empty string which will result in the whole AP/EC fw backup.
 	EmptyImageSection ImageSection = ""
+
+	// APROImageSection is the named readonly section for AP writable data as output from dump_fmap.
+	APROImageSection ImageSection = "RO_SECTION"
+
+	// RecoveryMode is the named chromeOS Firmware Updater to perform firmware recovery mode.
+	RecoveryMode FirmwareUpdateMode = "--mode=recovery"
 
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
@@ -206,8 +215,8 @@ func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection, programmer 
 	return nil
 }
 
-// WriteImageFromFile writes the provided path in the specified section of the firmware
-func WriteImageFromFile(ctx context.Context, path string, sec ImageSection, programmer FlashromProgrammer) error {
+// WriteImageFromSingleSectionFile writes the provided single section file in the specified section.
+func WriteImageFromSingleSectionFile(ctx context.Context, path string, sec ImageSection, programmer FlashromProgrammer) error {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		return errors.Wrap(err, "file does not exist")
 	} else if err != nil {
@@ -216,6 +225,30 @@ func WriteImageFromFile(ctx context.Context, path string, sec ImageSection, prog
 
 	if err := testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(programmer), "-i", fmt.Sprintf("%s:%s", sec, path), "-w").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "could not write host image")
+	}
+
+	return nil
+}
+
+// WriteImageFromMultiSectionFile writes the provided multi section file in the specified section.
+func WriteImageFromMultiSectionFile(ctx context.Context, path string, sec ImageSection, programmer FlashromProgrammer) error {
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		return errors.Wrap(err, "file does not exist")
+	} else if err != nil {
+		return errors.Wrap(err, "reading image from file")
+	}
+
+	// In case EmptyImageSection, no '-i' argument would be needed and the whole AP/EC will be targeted.
+	frArgs := []string{"-N", "-p", string(programmer)}
+	switch sec {
+	case EmptyImageSection:
+		frArgs = append(frArgs, "-w", path)
+	default:
+		frArgs = append(frArgs, "-i", string(sec), "-w", path)
+	}
+
+	if err := testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "could not write image")
 	}
 
 	return nil
@@ -354,6 +387,26 @@ func EnableAPSoftwareWriteProtect(ctx context.Context) error {
 	command := fmt.Sprintf("%v,%v", areaOffset, areaSize)
 	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-enable", "--wp-range", command).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "unable to run the declared write protection range in flashrom")
+	}
+	return nil
+}
+
+// DisableAPSoftwareWriteProtect disables the AP write protection.
+func DisableAPSoftwareWriteProtect(ctx context.Context) error {
+	if err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to disable AP software write protection")
+	}
+	return nil
+}
+
+// ChromeosFirmwareUpdate will perform the firmware update in the desired mode.
+func ChromeosFirmwareUpdate(ctx context.Context, mode FirmwareUpdateMode, options ...string) error {
+	args := []string{string(mode)}
+	if len(options) > 0 {
+		args = append(args, options...)
+	}
+	if err := testexec.CommandContext(ctx, "chromeos-firmwareupdate", args...).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to perform firmware update with %s", string(mode))
 	}
 	return nil
 }
