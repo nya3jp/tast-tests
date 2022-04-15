@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71fd11f_9b33dd53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-04-15T04:40:31Z",
+      "side": 1,
+      "message": "Also added the missing logic back for handling portrait orientation.",
+      "revId": "f8972ec4d925bd19ecf78fbd17ce9ddf1d3984ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
