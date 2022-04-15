@@ -58,7 +58,7 @@ func BrowserEndProcessDisabled(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	if err := uiauto.Combine("check end process state",
-		tm.SelectProcess(taskmanager.FindProcess().Name("Browser")),
+		tm.SelectProcess("Browser"),
 		uiauto.New(tconn).CheckRestriction(taskmanager.EndProcessFinder, restriction.Disabled),
 	)(ctx); err != nil {
 		s.Fatal("Failed to disable end process for Browser: ", err)
