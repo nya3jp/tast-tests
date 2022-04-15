@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7388beba_29b55519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-15T16:03:18Z",
+      "side": 1,
+      "message": "I want to understand this issue better. Do you have an example to show the issue? Thanks.",
+      "revId": "63b77fb26843538c5fc713e2b4a84459fa234e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
