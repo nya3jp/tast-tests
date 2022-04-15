@@ -38,6 +38,9 @@ service UtilsService {
 
   // GetDetachableBaseValue retrieves the values of relevant detachable-base properties.
   rpc GetDetachableBaseValue (google.protobuf.Empty) returns (CrosConfigResponse) {}
+
+  // PerformSpeedometerTest opens a speedometer test website, runs it and returns the result value.
+  rpc PerformSpeedometerTest (google.protobuf.Empty) returns (SpeedometerResponse) {}
 }
 
 // ReadServoKeyboardRequest listens the servo's keyboard emulator for a specified duration in seconds.
@@ -68,4 +71,9 @@ message NodeElement {
 // CrosConfigResponse provides relevant crosconfig values.
 message CrosConfigResponse {
   repeated string values = 1;
+}
+
+// SpeedometerResponse provides the result from running a speedometer test.
+message SpeedometerResponse {
+    string result = 1;
 }
