@@ -36,7 +36,6 @@ func init() {
 		Vars: []string{
 			"drivefs.accountPool",
 			"drivefs.clientCredentials",
-			"drivefs.refreshTokens",
 		},
 	})
 
@@ -56,7 +55,6 @@ func init() {
 		Vars: []string{
 			"drivefs.accountPool",
 			"drivefs.clientCredentials",
-			"drivefs.refreshTokens",
 		},
 	})
 }
@@ -174,8 +172,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	f.tconn = tconn
 
 	jsonCredentials := s.RequiredVar("drivefs.clientCredentials")
-	refreshTokens := s.RequiredVar("drivefs.refreshTokens")
-	token, err := getRefreshTokenForAccount(f.cr.NormalizedUser(), refreshTokens)
+	token, err := getRefreshToken(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get refresh token for account: ", err)
 	}
@@ -238,24 +235,14 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 	}
 }
 
-// getRefreshTokenForAccount returns the matching refresh token for the
-// supplied account. The tokens are stored in a multi line strings as key value
-// pairs separated by a ':' character.
-func getRefreshTokenForAccount(account, refreshTokens string) (string, error) {
-	for i, line := range strings.Split(refreshTokens, "\n") {
-		line = strings.TrimSpace(line)
-		if len(line) == 0 || strings.HasPrefix(line, "#") {
-			continue
-		}
-		ps := strings.SplitN(line, ":", 2)
-		if len(ps) != 2 {
-			return "", errors.Errorf("failed to parse refresh token list: line %d: does not contain a colon", i+1)
-		}
-		if ps[0] == account {
-			return ps[1], nil
-		}
+// getRefreshToken returns an OAuth2 access token for the logged in user's
+// primary account, with scope https://www.googleapis.com/auth/drive.
+func getRefreshToken(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	var token string
+	if err := tconn.Call(ctx, &token, "tast.promisify(chrome.autotestPrivate.getDriveFsToken)"); err != nil {
+		return "", errors.Wrap(err, "failed to get access token")
 	}
-	return "", errors.Errorf("failed to retrieve account token for %q", account)
+	return token, nil
 }
 
 // getPersistableToken derives the token from the mount path. This is used
