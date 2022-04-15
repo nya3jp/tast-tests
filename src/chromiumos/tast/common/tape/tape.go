@@ -31,6 +31,10 @@ const TokenFile = "tokensource.json"
 // MaxTimeout is the maximum timeout which is allowed when requesting a test account.
 const MaxTimeout = 172800 * time.Second
 
+// MaxGenericAccountTimeoutInSeconds is the maximum timeout which is allowed
+// when requesting a generic account (2 hours).
+const MaxGenericAccountTimeoutInSeconds = 60 * 60 * 2
+
 const tapeURL = "https://tape-307412.ey.r.appspot.com/"
 const tapeAudience = "770216225211-ihjn20dlehf94m9l4l5h0b0iilvd1vhc.apps.googleusercontent.com"
 
@@ -41,6 +45,23 @@ type Account struct {
 	Orgunit  string `json:"orgunit"`
 	Password string `json:"password"`
 	Timeout  int64  `json:"timeout"`
+}
+
+// GenericAccount stores information about a generic account in TAPE.
+type GenericAccount struct {
+	ID          int64   `json:"id"`
+	Username    string  `json:"username"`
+	Password    string  `json:"password"`
+	PoolID      string  `json:"pool_id"`
+	ReleaseTime float64 `json:"release_time"`
+	RequestID   string  `json:"request_id"`
+}
+
+// RequestGenericAccountParams holds the parameters for the
+// request generic account endpoint.
+type RequestGenericAccountParams struct {
+	TimeoutInSeconds int32   `json:"timeout"`
+	PoolID           *string `json:"pool_id"`
 }
 
 // TokenString creates a json string from an oauth.Token generated for a serviceAccount
@@ -132,9 +153,12 @@ func NewTapeClientLocal(ctx context.Context) (*http.Client, error) {
 
 // sendRequestWithTimeout makes a call to the specified REST endpoint of TAPE with the given http method and payload.
 func sendRequestWithTimeout(ctx context.Context, method, endpoint string, timeout time.Duration, payload *bytes.Reader, client *http.Client) (*http.Response, error) {
-	// Shorten the context as the call should not take longer than timeout.
-	ctx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
+	// Set the timeout of the client and return to the original after.
+	originalTimeout := client.Timeout
+	client.Timeout = timeout
+	defer func() {
+		client.Timeout = originalTimeout
+	}()
 
 	// Create a request.
 	req, err := http.NewRequestWithContext(ctx, method, tapeURL+endpoint, payload)
@@ -290,5 +314,70 @@ func Deprovision(ctx context.Context, request DeprovisionRequest, client *http.C
 		return errors.Wrap(err, "failed to make REST call")
 	}
 	defer response.Body.Close()
+	return nil
+}
+
+// RequestGenericAccount sends a request for leasing a generic account.
+func RequestGenericAccount(ctx context.Context, params RequestGenericAccountParams, client *http.Client) (*GenericAccount, error) {
+	// Validate the provided parameters.
+	if int64(params.TimeoutInSeconds) > int64(MaxGenericAccountTimeoutInSeconds) {
+		return nil, errors.Errorf("Timeout may not be larger than %v seconds", MaxGenericAccountTimeoutInSeconds)
+	}
+
+	if params.PoolID != nil && len(*params.PoolID) <= 0 {
+		return nil, errors.New("PoolID must not be empty when set")
+	}
+
+	// Make the request
+	payloadBytes, err := json.Marshal(params)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal data")
+	}
+	payload := bytes.NewReader(payloadBytes)
+	response, err := sendRequestWithTimeout(ctx, "POST", "GenericAccount/request", 30*time.Second, payload, client)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to make request")
+	}
+	defer response.Body.Close()
+
+	// Read the response.
+	respBody, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read response")
+	}
+	var acc GenericAccount
+	if err := json.Unmarshal([]byte(respBody), &acc); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal response")
+	}
+	return &acc, nil
+}
+
+// ReleaseGenericAccount sends a request for releasing a leased account.
+func ReleaseGenericAccount(ctx context.Context, account *GenericAccount, client *http.Client) error {
+	if account == nil {
+		return errors.New("account is not set")
+	}
+
+	if client == nil {
+		return errors.New("client is not set")
+	}
+
+	// Make the request
+	payloadBytes, err := json.Marshal(account)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal data")
+	}
+	payload := bytes.NewReader(payloadBytes)
+	response, err := sendRequestWithTimeout(ctx, "POST", "GenericAccount/release", 30*time.Second, payload, client)
+	if err != nil {
+		return errors.Wrap(err, "failed to make request")
+	}
+	defer response.Body.Close()
+
+	// Make sure the request was successful.
+	if response.StatusCode != 200 {
+		return errors.Errorf("failed to release account, status code: %d", response.StatusCode)
+	}
+
 	return nil
 }
