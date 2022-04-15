@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13206954_7063ed8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-15T07:48:29Z",
+      "side": 1,
+      "message": "Hmm, inserting a sleep is a classic wrong way to fix flakiness.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Sleep\n\nDo you know any other workarounds?",
+      "revId": "1a83e9df0ce78ec64a9c9392bbb485d1c5494142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec2c862f_f49d0a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-04-15T07:48:29Z",
+      "side": 1,
+      "message": "nit: Nice to always include err in the error message in case it contains some useful info.",
+      "range": {
+        "startLine": 83,
+        "startChar": 74,
+        "endLine": 83,
+        "endChar": 81
+      },
+      "revId": "1a83e9df0ce78ec64a9c9392bbb485d1c5494142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
