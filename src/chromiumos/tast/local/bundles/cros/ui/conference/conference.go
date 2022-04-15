@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
@@ -45,6 +46,7 @@ type Conference interface {
 	BackgroundChange(ctx context.Context) error
 	Presenting(ctx context.Context, application googleApplication) error
 	End(ctx context.Context) error
+	SetBrowser(br *browser.Browser)
 }
 
 const participantError = "number of participants is incorrect (ERROR - PARTICIPANT NUMBER)"

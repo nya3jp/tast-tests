@@ -21,4 +21,5 @@ message MeetScenarioRequest {
   int64 room_size = 2;
   bool extended_display = 3;
   string camera_video_path = 4;
+  bool isLacros = 5;
 }
