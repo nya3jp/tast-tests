@@ -608,7 +608,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		)(ctx)
 	}
 
-	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, shareScreen, stopPresenting,
+	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, conf.cr, shareScreen, stopPresenting,
 		application, conf.outDir, conf.extendedDisplay); err != nil {
 		return errors.Wrapf(err, "failed to present %s", string(application))
 	}
