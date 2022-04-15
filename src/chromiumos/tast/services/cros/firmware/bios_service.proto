@@ -89,6 +89,8 @@ enum ImageSection {
   FWSignBImageSection = 11;
   FWBodyAImageSection = 12;
   FWBodyBImageSection = 13;
+  APRWAImageSection = 14;
+  APRWBImageSection = 15;
 }
 
 enum UpdateMode {
