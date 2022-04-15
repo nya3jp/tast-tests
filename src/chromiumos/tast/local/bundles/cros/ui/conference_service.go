@@ -142,7 +142,8 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if !ok {
 			return errors.New("failed to get variable ui.cujAccountPool")
 		}
-		cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, false)
+		isLacros := req.IsLacros
+		cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, isLacros)
 		if err != nil {
 			return errors.Wrap(err, "failed to new Chrome")
 		}
@@ -217,13 +218,13 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 
 		// Creates a Google Meet conference instance which implements conference.Conference methods
 		// which provides conference operations.
-		gmcli := conference.NewGoogleMeetConference(cr, tconn, uiHandler, tabletMode, req.ExtendedDisplay, int(req.RoomSize), meet.Account, meet.Password, outDir)
+		gmcli := conference.NewGoogleMeetConference(cr, tconn, uiHandler, tabletMode, req.ExtendedDisplay, isLacros, int(req.RoomSize), meet.Account, meet.Password, outDir)
 		defer gmcli.End(ctx)
 		// Shorten context a bit to allow for cleanup if Run fails.
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 		defer cancel()
 
-		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, roomSize); err != nil {
+		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, isLacros, roomSize); err != nil {
 			return errors.Wrap(err, "failed to run Google Meet conference")
 		}
 		return nil
@@ -441,7 +442,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, int(req.RoomSize)); err != nil {
+	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, false, int(req.RoomSize)); err != nil {
 		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 
