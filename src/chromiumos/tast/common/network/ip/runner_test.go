@@ -59,11 +59,107 @@ wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAS
 		},
 	}
 	stub := &stubCmdRunner{}
-	r := &Runner{cmd: stub}
+	r := NewRunner(stub)
 	for i, tc := range testcases {
 		stub.out = []byte(tc.out)
 		// Test MAC function.
 		got, err := r.MAC(context.Background(), "wlan0")
+		if tc.shouldFail {
+			if err == nil {
+				t.Errorf("case#%d should have error", i)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("case#%d failed with err=%v", i, err)
+			continue
+		}
+		if !reflect.DeepEqual(got, tc.expect) {
+			t.Errorf("case#%d got MAC: %v, want: %v", i, got, tc.expect)
+		}
+	}
+}
+
+func TestShowLink(t *testing.T) {
+	testcases := []struct {
+		shouldFail             bool
+		briefLinkShowSupported bool
+		out                    string
+		expect                 []string
+	}{
+		// Invalid cases.
+		{
+			shouldFail:             true, // Empty.
+			briefLinkShowSupported: true,
+			out:                    "",
+		},
+		{
+			shouldFail:             true, // Empty.
+			briefLinkShowSupported: false,
+			out:                    "",
+		},
+		{
+			briefLinkShowSupported: true,
+			shouldFail:             true, // Multiple results.
+			out: `lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
+eth0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> 
+wlan0            DOWN           1a:2b:3c:4d:5e:6f <NO-CARRIER,BROADCAST,MULTICAST,UP> 
+`,
+		},
+		{
+			briefLinkShowSupported: false,
+			shouldFail:             true, // Incomplete results.
+			out:                    `1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000`,
+		},
+		{
+			shouldFail:             true, // Unmatched name.
+			briefLinkShowSupported: true,
+			out:                    "eth0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> \n",
+		},
+		{
+			shouldFail:             true, // Unmatched name.
+			briefLinkShowSupported: false,
+			out: `2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+		},
+		{
+			shouldFail:             true, // Format not supported.
+			briefLinkShowSupported: false,
+			out:                    "wlan0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> \n",
+		},
+
+		// Valid cases.
+		{
+			shouldFail:             false,
+			briefLinkShowSupported: true,
+			out:                    "wlan0             UP             01:02:03:04:05:06 <BROADCAST,MULTICAST,UP,LOWER_UP> \n",
+			expect:                 []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>"},
+		},
+		{
+			shouldFail:             false,
+			briefLinkShowSupported: false,
+			out: `2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+    altname enp2s0`,
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>"},
+		},
+		{
+			shouldFail:             false,
+			briefLinkShowSupported: false,
+			out: `2: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 01:02:03:04:05:06 ff:ff:ff:ff:ff:ff
+`,
+			expect: []string{"wlan0", "UP", "01:02:03:04:05:06", "<BROADCAST,MULTICAST,UP,LOWER_UP>"},
+		},
+	}
+	stub := &stubCmdRunner{}
+	r := NewRunner(stub)
+	for i, tc := range testcases {
+		stub.out = []byte(tc.out)
+		// Test showLink function.
+		r.SetImplementationFeatureSupport(BriefLinkShow, tc.briefLinkShowSupported)
+		got, err := r.showLink(context.Background(), "wlan0")
 		if tc.shouldFail {
 			if err == nil {
 				t.Errorf("case#%d should have error", i)
