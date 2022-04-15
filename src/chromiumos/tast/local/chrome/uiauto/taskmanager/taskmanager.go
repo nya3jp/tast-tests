@@ -7,6 +7,7 @@ package taskmanager
 
 import (
 	"context"
+	"reflect"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -86,11 +87,13 @@ func (tm *TaskManager) Close(ctx context.Context, tconn *chrome.TestConn) error 
 }
 
 // FindProcess returns the finder of a process node in the task manager.
-func FindProcess() *nodewith.Finder { return nodewith.HasClass("AXVirtualView").Role(role.Cell) }
+func FindProcess() *nodewith.Finder {
+	return nodewith.HasClass("AXVirtualView").Role(role.Cell).Ancestor(rootFinder)
+}
 
 // FindNthProcess returns the finder of the nth row and the first column of the process node in the task manager.
 func FindNthProcess(ctx context.Context, ui *uiauto.Context, nth int) (*nodewith.Finder, error) {
-	columnHeader := nodewith.HasClass("AXVirtualView").Role(role.ColumnHeader)
+	columnHeader := nodewith.HasClass("AXVirtualView").Role(role.ColumnHeader).Ancestor(rootFinder)
 	columns, err := ui.NodesInfo(ctx, columnHeader)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the information of the column header")
@@ -99,38 +102,51 @@ func FindNthProcess(ctx context.Context, ui *uiauto.Context, nth int) (*nodewith
 }
 
 // SelectProcess selects the specific process in the task manager.
-func (tm *TaskManager) SelectProcess(p *nodewith.Finder) uiauto.Action {
+func (tm *TaskManager) SelectProcess(nameInTaskManager string) uiauto.Action {
 	return func(ctx context.Context) error {
+		var lastFocusedNode *uiauto.NodeInfo
+		// The count of times that focused node unchanged.
+		count := 0
+		// The threshold of focused node unchanged times, used to examine if the taskmanager has scrolled to bottom.
+		const threshold = 3
+
 		return testing.Poll(ctx, func(c context.Context) error {
-			// Press down key to scroll down the task manager list until the chosen process entry is focused.
+			// Press down key to select process one by one in the task manager list until the target process is focused.
 			if err := tm.kb.AccelAction("Down")(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
-			return tm.processFocused(p)(ctx)
-		}, &testing.PollOptions{Timeout: time.Minute})
+
+			focusedProcess := FindProcess().Focused()
+			focusedInfo, err := tm.ui.Info(ctx, focusedProcess)
+			if err != nil {
+				return errors.Wrap(err, "failed to obtain the information of focused process node")
+			}
+
+			if focusedInfo.Name == nameInTaskManager {
+				return nil
+			}
+
+			if reflect.DeepEqual(focusedInfo, lastFocusedNode) {
+				// The taskmanager won't ever be stable, and the focused node might switch back to the previous one automatically.
+				// It is necessary to use a threshold to examine if the taskmanager has scrolled to the bottom.
+				if count >= threshold {
+					return testing.PollBreak(errors.New("scrolled to bottome"))
+				}
+				count++
+			} else {
+				count = 0
+			}
+
+			lastFocusedNode = focusedInfo
+			return errors.New("target is not focused")
+		}, &testing.PollOptions{Timeout: time.Minute, Interval: 500 * time.Millisecond})
 	}
 }
 
 // TerminateProcess terminates the process.
-func (tm *TaskManager) TerminateProcess(p *nodewith.Finder) uiauto.Action {
+func (tm *TaskManager) TerminateProcess(nameInTaskManager string) uiauto.Action {
 	return uiauto.Combine("end process",
-		tm.SelectProcess(p),
+		tm.SelectProcess(nameInTaskManager),
 		tm.ui.LeftClick(EndProcessFinder),
 	)
-}
-
-// processFocused ensures the given process node is focused.
-func (tm *TaskManager) processFocused(p *nodewith.Finder) uiauto.Action {
-	return tm.ui.RetrySilently(3, func(ctx context.Context) error {
-		targetProcessInfo, err := tm.ui.WithTimeout(time.Second).Info(ctx, p)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the information of the target process")
-		}
-
-		if !targetProcessInfo.State[state.Focused] {
-			return errors.New("target not focused")
-		}
-
-		return nil
-	})
 }

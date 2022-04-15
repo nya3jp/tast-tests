@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -68,16 +69,16 @@ func CloseTab(ctx context.Context, s *testing.State) {
 		ui:          uiauto.New(tconn),
 		taskManager: taskmanager.New(tconn, kb),
 		processes: []taskmanager.Process{
-			newBrowserTabInCloseTabTest("https://www.facebook.com", "Facebook"),
-			newBrowserTabInCloseTabTest("https://www.amazon.com", "Amazon"),
-			newBrowserTabInCloseTabTest("https://www.apple.com", "Apple"),
-			newBrowserTabInCloseTabTest("https://en.wikipedia.org/wiki/Main_Page", "Wikipedia"),
-			newBrowserTabInCloseTabTest("https://news.google.com", "Google News"),
-			newBrowserTabInCloseTabTest("https://www.youtube.com", "YouTube"),
-			newBrowserTabInCloseTabTest("https://help.netflix.com/en", "Netflix Help"),
-			newBrowserTabInCloseTabTest("https://news.ycombinator.com/news", "Hacker News"),
-			newBrowserTabInCloseTabTest("https://www.cbc.ca/lite/trending-news", "CBC Lite"),
-			newBrowserTabInCloseTabTest("https://translate.google.com/?hl=en", "Google Translate"),
+			newBrowserTabInCloseTabTest("https://www.facebook.com"),
+			newBrowserTabInCloseTabTest("https://www.amazon.com"),
+			newBrowserTabInCloseTabTest("https://www.apple.com"),
+			newBrowserTabInCloseTabTest("https://en.wikipedia.org/wiki/Main_Page"),
+			newBrowserTabInCloseTabTest("https://news.google.com"),
+			newBrowserTabInCloseTabTest("https://www.youtube.com"),
+			newBrowserTabInCloseTabTest("https://help.netflix.com/en"),
+			newBrowserTabInCloseTabTest("https://news.ycombinator.com/news"),
+			newBrowserTabInCloseTabTest("https://www.cbc.ca/lite/trending-news"),
+			newBrowserTabInCloseTabTest("https://translate.google.com/?hl=en"),
 		},
 	}
 	numberOfTabs := len(resources.processes)
@@ -99,6 +100,14 @@ func CloseTab(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// Close button on the tab will be hidden if DUT is in tablet mode.
+	// Therefore, force the test to run under clamshell mode.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure in tablet mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
 	for _, process := range resources.processes {
 		if err := process.Open(ctx, cr, tconn, kb); err != nil {
 			s.Fatal("Failed to open tab: ", err)
@@ -113,6 +122,11 @@ func CloseTab(ctx context.Context, s *testing.State) {
 
 	for _, process := range resources.processes {
 		if tab, ok := process.(*browserTabInCloseTabTest); ok && tab.needToClose {
+			name, err := process.NameInTaskManager(ctx, resources.tconn)
+			if err != nil {
+				s.Fatal("Failed to obtain the process name in task manager: ", err)
+			}
+			tab.name = name
 			targetTab := nodewith.Name(tab.Title).HasClass("Tab").Ancestor(nodewith.HasClass("BrowserView"))
 			if err := uiauto.Combine("active the target tab and close it",
 				tab.active(tconn),
@@ -149,14 +163,22 @@ func checkTabsInTaskManager(ctx context.Context, resources *closeTabTestResource
 
 	for _, process := range resources.processes {
 		if tab, ok := process.(*browserTabInCloseTabTest); ok {
-			if err := verify[tab.closed](nodewith.Name(process.NameInTaskManager()))(ctx); err != nil {
-				return errors.Wrapf(err, "failed to check the state of %q in task manager", process.NameInTaskManager())
+			name := tab.name
+			if !tab.closed {
+				var err error
+				name, err = process.NameInTaskManager(ctx, resources.tconn)
+				if err != nil {
+					return err
+				}
+			}
+			if err := verify[tab.closed](nodewith.Name(name))(ctx); err != nil {
+				return errors.Wrapf(err, "failed to check the state of %q in task manager", name)
 			}
 
 			if tab.closed {
-				testing.ContextLogf(ctx, "%q is closed", process.NameInTaskManager())
+				testing.ContextLogf(ctx, "%q is closed", name)
 			} else {
-				testing.ContextLogf(ctx, "%q is opened", process.NameInTaskManager())
+				testing.ContextLogf(ctx, "%q is opened", name)
 			}
 		}
 	}
@@ -168,9 +190,13 @@ type browserTabInCloseTabTest struct {
 	*taskmanager.ChromeTab
 	closed      bool
 	needToClose bool
+	// Tab name in task manager is dynamically fetched and stored in *taskmanager.ChromeTab.
+	// If the tab is truly closed, it will fail on fetching the tab name.
+	// Therefore, declare a field to store name for the tab which will be closed.
+	name string
 }
 
-func newBrowserTabInCloseTabTest(url, tabName string) *browserTabInCloseTabTest {
+func newBrowserTabInCloseTabTest(url string) *browserTabInCloseTabTest {
 	return &browserTabInCloseTabTest{
 		ChromeTab:   taskmanager.NewChromeTabProcess(url),
 		closed:      false,
