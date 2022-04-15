@@ -98,9 +98,9 @@ func DownloadManager(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to read %s: %v", sourcePath, err)
 	}
 
-	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.User())
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
 	if err != nil {
-		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.User(), err)
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
 	}
 	targetPathInCros := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads", filename)
 
