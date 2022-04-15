@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/input"
@@ -265,4 +266,50 @@ func (us *UtilsService) GetDetachableBaseValue(ctx context.Context, req *empty.E
 	}
 
 	return &crosCfgRes, nil
+}
+
+// PerformSpeedometerTest runs the speedometer test on one external website, and returns the result value.
+func (us *UtilsService) PerformSpeedometerTest(ctx context.Context, req *empty.Empty) (*fwpb.SpeedometerResponse, error) {
+	// Verify we have logged in.
+	if us.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	// Open the Speedometer website.
+	conn, err := us.cr.NewConn(ctx, "https://browserbench.org/Speedometer2.0/")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open Speedometer website")
+	}
+	defer conn.Close()
+
+	// Connect to Test API to use it with the UI library.
+	us.tconn, err = us.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	// Find and click on the 'Start Test' button.
+	uia := uiauto.New(us.tconn)
+	startButton := nodewith.Name("Start Test").Role(role.Button).Onscreen()
+	if err := uiauto.Combine("Click Start Test",
+		uia.WaitUntilExists(startButton),
+		uia.LeftClick(startButton),
+	)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to find and click the start button")
+	}
+
+	// Wait for the result to appear.
+	title := nodewith.Name("Runs / Minute").Role(role.Heading).Onscreen()
+	if err := uia.WithTimeout(10 * time.Minute).WaitUntilExists(title)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to find the title for speedometer test result value")
+	}
+
+	// Get the result from speedometer test.
+	result := nodewith.NameRegex(regexp.MustCompile(`^[0-9]+[.]?[0-9]*$`)).Role(role.StaticText).First()
+	resultInfo, err := uia.Info(ctx, result)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the result value")
+	}
+
+	return &fwpb.SpeedometerResponse{Result: resultInfo.Name}, err
 }
