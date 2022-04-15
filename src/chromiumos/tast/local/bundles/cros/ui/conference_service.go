@@ -26,6 +26,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -103,6 +105,27 @@ func chromeArgsWithFileCameraInput(fileName string) []string {
 	}
 }
 
+// newConferenceChrome returns a new Chrome instance with custom options for confernce cuj,
+// including setting whether to use fake camera and lacros browser.
+func newConferenceChrome(ctx context.Context, accountPool, cameraVideoPath string, isLacros bool) (cr *chrome.Chrome, err error) {
+	opts := confereceChromeOpts(accountPool, cameraVideoPath)
+	if isLacros {
+		cfg := lacrosfixt.NewLacrosConfig(lacros.Rootfs, lacros.LacrosPrimary)
+		defaultOpts, err := lacrosfixt.DefaultOpts(cfg)
+		if err != nil {
+			return cr, errors.Wrap(err, "failed to get default options")
+		}
+		opts = append(opts, defaultOpts...)
+		opts = append(opts, chrome.LacrosExtraArgs("--enable-features=WebUITabStrip")) // Enable TabStrip UI for lacros.
+	}
+	cr, err = chrome.New(ctx, opts...)
+	if err != nil {
+		return cr, errors.Wrap(err, "failed to restart Chrome")
+	}
+
+	return cr, nil
+}
+
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
 	roomSize := int(req.RoomSize)
 	meet, err := conference.GetGoogleMeetConfig(ctx, s.s, roomSize)
@@ -119,10 +142,9 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if !ok {
 			return errors.New("failed to get variable ui.cujAccountPool")
 		}
-		opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
-		cr, err := chrome.New(ctx, opts...)
+		cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, false)
 		if err != nil {
-			return errors.Wrap(err, "failed to restart Chrome")
+			return errors.Wrap(err, "failed to new Chrome")
 		}
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
@@ -323,8 +345,10 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 
 	testing.ContextLog(ctx, "Start zoom meet scenario")
-	opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
-	cr, err := chrome.New(ctx, opts...)
+	cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, false)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to new Chrome")
+	}
 	account := cr.Creds().User
 
 	tconn, err := cr.TestAPIConn(ctx)
