@@ -7,6 +7,7 @@ package taskmanager
 import (
 	"context"
 	"math/rand"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -34,7 +35,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
-		Timeout:      8 * time.Minute,
+		Timeout:      10 * time.Minute,
 	})
 }
 
@@ -74,7 +75,7 @@ func EndProcess(ctx context.Context, s *testing.State) {
 	} {
 		f := func(ctx context.Context, s *testing.State) {
 			cleanupCtx := ctx
-			ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
 			for _, process := range test.getProcesses() {
@@ -82,10 +83,12 @@ func EndProcess(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to open the process: ", err)
 				}
 				defer process.Close(cleanupCtx)
+				defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, test.getDescription()+"_before_closing_tab")
 
 				if tab, ok := process.(*pluginTab); ok {
-					if err := resources.ui.WaitUntilExists(tab.pluginNode)(ctx); err != nil {
-						defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "before_closing_plugin_page")
+					// Under some slow network connections or DUTs, the plugin node might not be loaded instantly.
+					// Therefore, give some time to wait until the target node exists.
+					if err := resources.ui.WithTimeout(time.Minute).WaitUntilExists(tab.pluginNode)(ctx); err != nil {
 						s.Fatal("Failed to find the plugin node: ", err)
 					}
 				}
@@ -95,9 +98,9 @@ func EndProcess(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the task manager: ", err)
 			}
 			defer resources.taskManager.Close(cleanupCtx, tconn)
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, test.getDescription())
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, test.getDescription()+"_before_closing_tm")
 
-			if resources.taskManager.WaitUntilStable(ctx); err != nil {
+			if err := resources.taskManager.WaitUntilStable(ctx); err != nil {
 				s.Fatal("Failed to wait until the Task Manager becomes stable: ", err)
 			}
 
@@ -161,8 +164,9 @@ func newPluginTab(url, pluginName string, pluginNode *nodewith.Finder) *pluginTa
 	}
 }
 
-func (pTab *pluginTab) NameInTaskManager() string {
-	return "Subframe: " + pTab.pluginName
+func (pTab *pluginTab) NameInTaskManager(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	// Plugin name is not changed dynamically. Just return its name directly.
+	return "Subframe: " + pTab.pluginName, nil
 }
 
 type pluginTest struct {
@@ -172,11 +176,11 @@ type pluginTest struct {
 
 func newPluginTest() *pluginTest {
 	processes := []taskmanager.Process{
-		newPluginTab("https://zoom.us/",
-			"https://ada.support/", nodewith.Name("Chat with bot").Role(role.Button),
+		newPluginTab("https://twitter.com/i/flow/signup",
+			"https://accounts.google.com/", nodewith.Name("Sign up with Google").Role(role.Button),
 		),
 		newPluginTab("https://www.virtualspirits.com",
-			"https://youtube.com/", nodewith.Name("YouTube").Role(role.RootWebArea),
+			"https://youtube.com/", nodewith.NameRegex(regexp.MustCompile("^VirtualSpirits.*YouTube")).Role(role.RootWebArea),
 		),
 		newPluginTab("https://www.oreilly.com",
 			"https://driftt.com/", nodewith.NameStartingWith("Chat message from O'Reilly Bot:").Role(role.Button),
@@ -195,9 +199,12 @@ func (pt *pluginTest) terminateAndVerify(ctx context.Context, res *endProcessTes
 		return errors.New("unexpected process")
 	}
 
-	testing.ContextLogf(ctx, "Terminate plugin process %q", p.NameInTaskManager())
-	processFinder := taskmanager.FindProcess().Name(p.NameInTaskManager())
-	if err := res.taskManager.TerminateProcess(processFinder)(ctx); err != nil {
+	name, err := p.NameInTaskManager(ctx, res.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the process name in task manager")
+	}
+	testing.ContextLogf(ctx, "Terminate plugin process %q", name)
+	if err := res.taskManager.TerminateProcess(name)(ctx); err != nil {
 		return errors.Wrap(err, "failed to verify 'End process' button works")
 	}
 
@@ -226,10 +233,7 @@ func newGroupedTabsTest() *groupedTabsTest {
 	const groupedTabsAmount = 5
 
 	for i := 0; i < groupedTabsAmount; i++ {
-		tab := taskmanager.NewChromeTabProcess("chrome://newtab/")
-		// The grouped tab test opens multiple new tabs. Need to set OpenInNewWindow to be true.
-		// Otherwise, it will fail on Ctrl+T and chrome.MatchTargetURL("chrome://newtab/") steps due to multiple "chrome://newtab/" opened.
-		tab.SetOpenInNewWindow()
+		tab := taskmanager.NewChromeTabProcess(chrome.NewTabURL)
 		processes = append(processes, tab)
 	}
 
@@ -252,19 +256,15 @@ func terminateAndVerify(ctx context.Context, test endProcessTest, res *endProces
 	rand.Seed(time.Now().UnixNano())
 	n := rand.Intn(len(test.getProcesses()))
 	p := test.getProcesses()[n]
-	processFinder := taskmanager.FindProcess().Name(p.NameInTaskManager())
 
 	var processesToBeVerified []taskmanager.Process
 	switch test.(type) {
 	case *nonPluginTest:
 		processesToBeVerified = append(processesToBeVerified, p)
-		testing.ContextLogf(ctx, "Terminate process %q", p.NameInTaskManager())
 	case *groupedTabsTest:
 		for _, process := range test.getProcesses() {
 			processesToBeVerified = append(processesToBeVerified, process)
 		}
-		processFinder = processFinder.Nth(n)
-		testing.ContextLogf(ctx, "Terminate No. %d %q (zero-based)", n, p.NameInTaskManager())
 	default:
 		return errors.New("unexpected test type")
 	}
@@ -277,7 +277,12 @@ func terminateAndVerify(ctx context.Context, test endProcessTest, res *endProces
 		}
 	}
 
-	if err := res.taskManager.TerminateProcess(processFinder)(ctx); err != nil {
+	name, err := p.NameInTaskManager(ctx, res.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the process name in task manager")
+	}
+	testing.ContextLogf(ctx, "Terminate process %q", name)
+	if err := res.taskManager.TerminateProcess(name)(ctx); err != nil {
 		return errors.Wrap(err, "failed to verify 'End process' button works")
 	}
 
@@ -290,7 +295,7 @@ func terminateAndVerify(ctx context.Context, test endProcessTest, res *endProces
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			return errors.Wrapf(err, "failed to verify the process %q is terminated", p.NameInTaskManager())
+			return errors.Wrapf(err, "failed to verify the process %q is terminated", name)
 		}
 	}
 
