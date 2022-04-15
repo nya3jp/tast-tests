@@ -26,8 +26,8 @@ func disableBluetoothAdapter(ctx context.Context, adapter *bluetooth.Adapter) (C
 	}, nil
 }
 
-// DisableBluetooth disables all bluetooth adapters on the DUT.
-func DisableBluetooth(ctx context.Context) (CleanupCallback, error) {
+// DisableBluetoothAdapters disables all bluetooth adapters on the DUT.
+func DisableBluetoothAdapters(ctx context.Context) (CleanupCallback, error) {
 	return Nested(ctx, "disable bluetooth", func(s *Setup) error {
 		adapters, err := bluetooth.Adapters(ctx)
 		if err != nil {
