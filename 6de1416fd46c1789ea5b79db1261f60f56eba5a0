@@ -69,6 +69,24 @@
       "parentUuid": "3986f4be_53a13cb6",
       "revId": "6de1416fd46c1789ea5b79db1261f60f56eba5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae168e6_e0aea846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-15T22:50:32Z",
+      "side": 1,
+      "message": "Also, do you have any thoughts about splitting up clicking the \"Local\" button and the \"Create game\" loop (in terms of uiauto.Combine calls)? I did it in the beginning of making this CL because I thought it was necessary, but it doesn\u0027t seem so",
+      "parentUuid": "82c4677d_22bc397e",
+      "revId": "6de1416fd46c1789ea5b79db1261f60f56eba5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
