@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cfc0927_05e6fa3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-15T18:57:40Z",
+      "side": 1,
+      "message": "Please make comments about the reference of this code. (eg. lacrosfixture\u0027s setup.)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 88
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370f1e6e_8b0ce570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-15T18:57:40Z",
+      "side": 1,
+      "message": "This no longer exist in R102 code. Can you check all the arguments and see which one is needed in R102?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 73
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb06f117_e550bf63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-15T18:57:40Z",
+      "side": 1,
+      "message": "add comments.\n\nAlso can you separate the change on this file to a new CL: lacros chrome setup in conference service.",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 14
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "896a32dc_bc35efda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-04-15T18:57:40Z",
+      "side": 1,
+      "message": "this logic is also changed in lacrosfixt setup.",
+      "range": {
+        "startLine": 163,
+        "startChar": 40,
+        "endLine": 163,
+        "endChar": 41
+      },
+      "revId": "e83d9d5686d342115bbddc459fac9823d5f5dfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
