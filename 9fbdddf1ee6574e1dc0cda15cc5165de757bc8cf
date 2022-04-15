@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6779044_f8e47ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-15T04:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c13e11_fc6ef4be",
+      "revId": "9fbdddf1ee6574e1dc0cda15cc5165de757bc8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d00e7e4_51f61875",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-14T01:43:02Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 58
+      },
+      "revId": "9fbdddf1ee6574e1dc0cda15cc5165de757bc8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd98841_94759d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-15T04:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d00e7e4_51f61875",
       "range": {
         "startLine": 31,
         "startChar": 16,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6097a2_5fcc36b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-15T04:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c0e05f0_845536e4",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "9fbdddf1ee6574e1dc0cda15cc5165de757bc8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44c7fc60_d7945181",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "818716ac_d16d6dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-15T04:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c7fc60_d7945181",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "9fbdddf1ee6574e1dc0cda15cc5165de757bc8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b599407_b457992c",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-04-14T01:43:02Z",
       "side": 1,
       "message": "Usually we will write this kind of clean up code in the defer block right after the something require clean up get created immediately to ensure the clean up will always run after leaving the function scope.\n\nExample:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/camera/camerabox_align.go;drc\u003d8739356bcb9a6bca68697a3a0a7b8b17be8b1718;l\u003d78\nIt create a tempfile and add defer to `rm` the directory right after that.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "9fbdddf1ee6574e1dc0cda15cc5165de757bc8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4596b374_1d5b8aa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/camerabox_displaychart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1539172
+      },
+      "writtenOn": "2022-04-15T04:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b599407_b457992c",
       "range": {
         "startLine": 78,
         "startChar": 0,
