@@ -346,7 +346,8 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 
 	testing.ContextLog(ctx, "Start zoom meet scenario")
-	cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, false)
+	isLacros := req.IsLacros
+	cr, err := newConferenceChrome(ctx, accountPool, req.CameraVideoPath, isLacros)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to new Chrome")
 	}
@@ -442,7 +443,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	// Shorten context a bit to allow for cleanup if Run fails.
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
-	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, false, int(req.RoomSize)); err != nil {
+	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, isLacros, int(req.RoomSize)); err != nil {
 		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 
