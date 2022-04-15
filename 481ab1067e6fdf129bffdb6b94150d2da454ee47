@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348c4e19_ba20bf8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-15T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e1d76bc_0366c0a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6c792ba_c8d99ae6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-15T00:01:28Z",
       "side": 1,
       "message": "`This test presses and releases various keys and verifies their states in\nthe diagnostics SWA.`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d478e270_da9d1db5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-15T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c792ba_c8d99ae6",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d4ee9b_2709a54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-15T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc68ea44_42ed80d9",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 92
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a7a3bc0_10b8ca8e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-15T00:01:28Z",
       "side": 1,
       "message": "What takes so long in this test? I guess that you should be able to omit the timeout because the default should be enough time.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7038406_c8548dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-15T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a7a3bc0_10b8ca8e",
       "range": {
         "startLine": 29,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f3b7ade_d495cee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-15T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24e02afd_bdd5e4d2",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 75
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e1a6b3e_28261a5c",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a188213_30989f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input_check_key_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-15T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e1a6b3e_28261a5c",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 44
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47123138_79c2d5e9",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-04-15T00:01:28Z",
       "side": 1,
       "message": "No `the`",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "481ab1067e6fdf129bffdb6b94150d2da454ee47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "322bc9b9_80133fbb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-04-15T03:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47123138_79c2d5e9",
       "range": {
         "startLine": 26,
         "startChar": 28,
