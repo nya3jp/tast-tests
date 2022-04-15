@@ -338,6 +338,11 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a new CUJ recorder: ", err)
 	}
+	defer func() {
+		if err := recorder.Close(closeCtx); err != nil {
+			s.Error("Failed to stop recorder: ", err)
+		}
+	}()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hide notifications so that they won't overlap with other UI components.
 		if err := ash.CloseNotifications(ctx, tconn); err != nil {
