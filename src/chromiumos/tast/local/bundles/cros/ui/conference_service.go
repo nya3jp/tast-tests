@@ -414,8 +414,11 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 
 	testing.ContextLog(ctx, "Start zoom meet scenario")
-	opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
-	cr, err := chrome.New(ctx, opts...)
+	isLacros := req.IsLacros
+	cr, err := newChrome(ctx, accountPool, req.CameraVideoPath, isLacros)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to restart Chrome")
+	}
 	account := cr.Creds().User
 
 	tconn, err := cr.TestAPIConn(ctx)

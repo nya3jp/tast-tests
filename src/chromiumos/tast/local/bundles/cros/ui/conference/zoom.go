@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -28,6 +29,7 @@ import (
 // ZoomConference implements the Conference interface.
 type ZoomConference struct {
 	cr         *chrome.Chrome
+	br         *browser.Browser
 	tconn      *chrome.TestConn
 	uiHandler  cuj.UIActionHandler
 	tabletMode bool
@@ -50,7 +52,8 @@ const (
 func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) error {
 	ui := uiauto.New(conf.tconn)
 	openZoomAndSignIn := func(ctx context.Context) error {
-		conn, err := conf.cr.NewConn(ctx, cuj.ZoomURL)
+		// Set newWindow to true to launch zoom in the first Chrome tab.
+		conn, err := conf.uiHandler.NewChromeTab(ctx, conf.br, cuj.ZoomURL, true)
 		if err != nil {
 			return errors.Wrap(err, "failed to open the zoom website")
 		}
@@ -275,12 +278,14 @@ func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
 	defer kb.Close()
 
 	testing.ContextLog(ctx, "Open wiki page")
-	wikiConn, err := conf.cr.NewConn(ctx, cuj.WikipediaURL)
+	// Set newWindow to false to make the tab in the same Chrome window.
+	wikiConn, err := conf.uiHandler.NewChromeTab(ctx, conf.br, cuj.WikipediaURL, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the wiki url")
 	}
 	defer wikiConn.Close()
 
+	// Because the new tab is in the same Chrome window, Ctrl+Tab can be used to switch back.
 	if err := kb.Accel(ctx, "Ctrl+Tab"); err != nil {
 		return errors.Wrap(err, "failed to switch tab")
 	}
@@ -444,7 +449,7 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 	}
 	// Present on internal display by default.
 	presentOnExtendedDisplay := false
-	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, shareScreen, stopPresenting,
+	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, conf.br, shareScreen, stopPresenting,
 		application, conf.outDir, presentOnExtendedDisplay); err != nil {
 		return errors.Wrapf(err, "failed to present %s", string(application))
 	}
@@ -493,6 +498,11 @@ func (conf *ZoomConference) showInterface(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: mediumUITimeout})
+}
+
+// SetBrowser sets browser to chrome or lacros.
+func (conf *ZoomConference) SetBrowser(br *browser.Browser) {
+	conf.br = br
 }
 
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.
