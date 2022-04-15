@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01854e43_215efb1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-15T19:57:33Z",
+      "side": 1,
+      "message": "Please add a description to the commit message between the `subject` and `BUG` lines. Otherwise LGTM from owner\u0027s perspective.",
+      "revId": "1d73ca456845ed449abea2a139ac2bfa1afc5e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
