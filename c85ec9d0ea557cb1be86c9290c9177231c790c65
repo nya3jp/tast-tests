@@ -56,6 +56,30 @@
       },
       "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fac640_632c9e25",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-04-15T16:35:11Z",
+      "side": 1,
+      "message": "This is rebased from CL:3581746. I agree with hidehiko@ that we should be more specific on where to get the metrics. But the code here is co-owned with SPERA team.\n\nFrom a recent cuj.Recorder refactoring CL:3572476, my impression is that SPERA team wants to grab metrics from all browsers. We might want to check with SPERA team.",
+      "parentUuid": "31b65707_07d7f1c2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 113
+      },
+      "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
