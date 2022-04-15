@@ -12,6 +12,7 @@ import (
 	"math"
 	"net/http"
 	"net/url"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -26,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -88,6 +90,42 @@ func confereceChromeOpts(accountPool, cameraVideoPath string) []chrome.Option {
 		chrome.ExtraArgs(chromeArgs...)}
 }
 
+func confereceLacrosOpts(accountPool, cameraVideoPath string) ([]chrome.Option, error) {
+	const (
+		// MojoSocketPath indicates the path of the unix socket that ash-chrome creates.
+		// This unix socket is used for getting the file descriptor needed to connect mojo
+		// from ash-chrome to lacros.
+		MojoSocketPath = "/tmp/lacros.socket"
+	)
+
+	// We reuse the custom extension from the chrome package for exposing private interfaces.
+	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
+	extDirs, err := chrome.DeprecatedPrepareExtensions()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to prepare extensions")
+	}
+	extList := strings.Join(extDirs, ",")
+
+	chromeArgs := chromeArgsWithFileCameraInput(cameraVideoPath)
+	return []chrome.Option{
+		chrome.ExtraArgs("--disable-lacros-keep-alive"),
+		chrome.ExtraArgs("--lacros-mojo-socket-for-testing=" + MojoSocketPath),
+		chrome.LacrosExtraArgs("--test-type"),
+		chrome.LacrosExtraArgs("--disable-features=ChromeWhatsNewUI"),
+		chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...),
+		chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
+		chrome.ExtraArgs("--lacros-selection=rootfs"),
+		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
+		// Remove this when new UI becomes default.
+		chrome.EnableFeatures("WebUITabStrip"),
+		chrome.EnableFeatures("LacrosPrimary"),
+		chrome.KeepState(),
+		chrome.ARCSupported(),
+		chrome.GAIALoginPool(accountPool),
+		chrome.ExtraArgs(chromeArgs...),
+	}, nil
+}
+
 // chromeArgsWithFileCameraInput returns Chrome extra args as string slice
 // for video test with a Y4M/MJPEG fileName streamed as live camera input.
 func chromeArgsWithFileCameraInput(fileName string) []string {
@@ -102,6 +140,58 @@ func chromeArgsWithFileCameraInput(fileName string) []string {
 		"--use-file-for-fake-video-capture=" + fileName,
 	}
 }
+
+func newChrome(ctx context.Context, accountPool, cameraVideoPath string, isLacros bool) (cr *chrome.Chrome, err error) {
+	opts := confereceChromeOpts(accountPool, cameraVideoPath)
+	if isLacros {
+		opts, err = confereceLacrosOpts(accountPool, cameraVideoPath)
+		if err != nil {
+			return cr, err
+		}
+	}
+	cr, err = chrome.New(ctx, opts...)
+	if err != nil {
+		return cr, errors.Wrap(err, "failed to restart Chrome")
+	}
+	if isLacros {
+		if _, err = cr.TestAPIConn(ctx); err != nil {
+			return cr, errors.Wrap(err, "failed to create test API connection")
+		}
+
+		// When launched from the rootfs partition, the lacros-chrome is already located
+		// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
+		matches, err := waitForPathToExist(ctx, "/run/lacros/chrome")
+		if err != nil {
+			return cr, errors.Wrap(err, "failed to find lacros binary")
+		}
+
+		lacrosPath := filepath.Dir(matches[0])
+		testing.ContextLog(ctx, "Using lacros located at ", lacrosPath)
+		if err := cr.ResetState(ctx); err != nil {
+			return cr, errors.Wrap(err, "failed to reset chrome's state")
+		}
+	}
+
+	return cr, nil
+}
+
+// waitForPathToExist is a helper method that waits the given binary path to be present
+// then returns the matching paths or it will be timed out if the ctx's timeout is reached.
+func waitForPathToExist(ctx context.Context, pattern string) (matches []string, err error) {
+	return matches, testing.Poll(ctx, func(ctx context.Context) error {
+		m, err := filepath.Glob(pattern)
+		if err != nil {
+			return errors.Wrapf(err, "binary path does not exist yet. expected: %v", pattern)
+		}
+		if len(m) == 0 {
+			return errors.New("binary path does not exist yet. expected: " + pattern)
+		}
+		matches = append(matches, m...)
+		return nil
+	}, &testing.PollOptions{Interval: 5 * time.Second})
+}
+
+const tmpDir = "/tmp"
 
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
 	roomSize := int(req.RoomSize)
@@ -119,11 +209,12 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if !ok {
 			return errors.New("failed to get variable ui.cujAccountPool")
 		}
-		opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
-		cr, err := chrome.New(ctx, opts...)
+		isLacros := req.IsLacros
+		cr, err := newChrome(ctx, accountPool, req.CameraVideoPath, isLacros)
 		if err != nil {
 			return errors.Wrap(err, "failed to restart Chrome")
 		}
+
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to test API")
@@ -201,7 +292,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 		defer cancel()
 
-		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, roomSize); err != nil {
+		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, isLacros, roomSize); err != nil {
 			return errors.Wrap(err, "failed to run Google Meet conference")
 		}
 		return nil
@@ -414,10 +505,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 
 		return room, cleanup, nil
 	}
-	// Shorten context a bit to allow for cleanup if Run fails.
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
-	defer cancel()
-	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, int(req.RoomSize)); err != nil {
+	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, isLacros, int(req.RoomSize)); err != nil {
 		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 
