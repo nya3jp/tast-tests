@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -57,6 +58,18 @@ const (
 
 	// EmptyImageSection is the empty string which will result in the whole AP/EC fw backup.
 	EmptyImageSection ImageSection = ""
+
+	// APRWAImageSection is the named section A for AP writable data as output from dump_fmap.
+	APRWAImageSection ImageSection = "RW_SECTION_A"
+
+	// APRWBImageSection is the named section B for AP writable data as output from dump_fmap.
+	APRWBImageSection ImageSection = "RW_SECTION_B"
+
+	// APROImageSection is the named readonly section for AP writable data as output from dump_fmap.
+	APROImageSection ImageSection = "RO_SECTION"
+
+	// FmapImageSection is the named section for fmap.
+	FmapImageSection ImageSection = "FMAP"
 
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
@@ -203,15 +216,45 @@ func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection, programmer 
 	return nil
 }
 
-// WriteImageFromFile writes the provided path in the specified section of the firmware
+// WriteImageFromFile writes the provided path in the specified section of the firmware.
 func WriteImageFromFile(ctx context.Context, path string, sec ImageSection, programmer FlashromProgrammer) error {
-	if _, err := os.Stat(path); os.IsNotExist(err) {
+	fileInfo, err := os.Stat(path)
+	if os.IsNotExist(err) {
 		return errors.Wrap(err, "file does not exist")
 	} else if err != nil {
 		return errors.Wrap(err, "reading image from file")
 	}
 
-	if err := testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(programmer), "-i", fmt.Sprintf("%s:%s", sec, path), "-w").Run(testexec.DumpLogOnError); err != nil {
+	// In case EmptyImageSection is used, the whole AP/EC will be targeted and no '-i' argument would be needed.
+	frArgs := []string{"-N", "-p", string(programmer)}
+	if sec != EmptyImageSection {
+		// Getting the FMAP image with respect to the programmer targeted.
+		fmapImage, err := NewImageToFile(ctx, FmapImageSection, programmer)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the FMAP image file")
+		}
+		// Getting the fmap from the image file.
+		fmap, err := testexec.CommandContext(ctx, "dump_fmap", "-p", fmapImage).Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrapf(err, "failed dump_fmap on firmware image from file %s", fmapImage)
+		}
+		fmapInfo, err := ParseSections(string(fmap))
+		if err != nil {
+			return errors.Wrap(err, "failed to parse dump_fmap output")
+		}
+		// Comparing the size of the file with the expected for the section.
+		if uint(fileInfo.Size()) > fmapInfo[sec].Length {
+			// If is bigger, then the file might contain more than one section.
+			frArgs = append(frArgs, "-i", string(sec), "-w", path)
+		} else {
+			// If is equal or smaller, then the file might contain only the required section.
+			frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", sec, path), "-w")
+		}
+	} else {
+		frArgs = append(frArgs, "-w", path)
+	}
+
+	if err := testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "could not write host image")
 	}
 
@@ -352,5 +395,67 @@ func EnableAPSoftwareWriteProtect(ctx context.Context) error {
 	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-enable", "--wp-range", command).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "unable to run the declared write protection range in flashrom")
 	}
+	return nil
+}
+
+// DisableAPSoftwareWriteProtect disables the AP write protection.
+func DisableAPSoftwareWriteProtect(ctx context.Context) error {
+	if err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to disable AP software write protection")
+	}
+	return nil
+}
+
+// FlashFromShellBall takes the binary files from the shellball and flashes them into DUT.
+func FlashFromShellBall(ctx context.Context, programmer FlashromProgrammer, model string, section ImageSection) error {
+	// Creating a new directory to unpack the shellball.
+	tmpDir, err := ioutil.TempDir("/var/tmp", "")
+	if err != nil {
+		return errors.Wrap(err, "creating tmpDir to unpack the shellball")
+	}
+	defer os.RemoveAll(tmpDir)
+
+	// Unpacking the firmware from the shellball.
+	if err := testexec.CommandContext(ctx, "chromeos-firmwareupdate", "--unpack", tmpDir).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to unpack the shellball")
+	}
+
+	// The file names will depend on the programmer we are targeting.
+	var prefix string
+	switch programmer {
+	case HostProgrammer:
+		prefix = "bios"
+	case ECProgrammer:
+		prefix = "ec"
+	}
+
+	// Searching for the 'images' directory among the unpacked files.
+	filepath := tmpDir + "/images/"
+	files, err := os.ReadDir(filepath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			filepath = tmpDir + "/" + prefix + ".bin"
+		} else {
+			return errors.Wrap(err, "unexpected error while searchig for 'images' directory")
+		}
+	} else {
+		// Searching for the corresponding bin file in the 'images' directory.
+		if len(files) == 0 {
+			return errors.Errorf("did not find any files under %s", filepath)
+		}
+		re := regexp.MustCompile(prefix + `-` + model + `.*`)
+		for _, file := range files {
+			filename := re.FindString(string(file.Name()))
+			if filename != "" {
+				filepath = filepath + filename
+				break
+			}
+		}
+	}
+
+	if err := WriteImageFromFile(ctx, filepath, section, programmer); err != nil {
+		return err
+	}
+
 	return nil
 }

@@ -43,6 +43,9 @@ var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_ECRWImageSection:     bios.ECRWImageSection,
 	pb.ImageSection_ECRWBImageSection:    bios.ECRWBImageSection,
 	pb.ImageSection_EmptyImageSection:    bios.EmptyImageSection,
+	pb.ImageSection_APRWAImageSection:    bios.APRWAImageSection,
+	pb.ImageSection_APRWBImageSection:    bios.APRWBImageSection,
+	pb.ImageSection_APROImageSection:     bios.APROImageSection,
 }
 
 // BackupImageSection dumps the image region into temporary file locally and returns its path.
@@ -100,6 +103,15 @@ func (bs *BiosService) EnableAPSoftwareWriteProtect(ctx context.Context, req *em
 	return &empty.Empty{}, nil
 }
 
+// DisableAPSoftwareWriteProtect disables the AP software write protect.
+// HW write protection needs to be disabled first.
+func (*BiosService) DisableAPSoftwareWriteProtect(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if err := bios.DisableAPSoftwareWriteProtect(ctx); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
 // CorruptECSection writes garbage over part of the specified firmware section.
 func (bs *BiosService) CorruptECSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
 	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), bios.ECProgrammer)
@@ -112,6 +124,14 @@ func (bs *BiosService) CorruptECSection(ctx context.Context, req *pb.CorruptSect
 	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), bios.ECProgrammer)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
+	}
+	return &empty.Empty{}, nil
+}
+
+// FlashFromShellBall will try to flash the specified programmer, model, image section obtained from the shellball into the DUT.
+func (*BiosService) FlashFromShellBall(ctx context.Context, req *pb.FlashFromShellBallRequest) (*empty.Empty, error) {
+	if err := bios.FlashFromShellBall(ctx, programmerEnumToProgrammer[req.Programmer], req.Model, sectionEnumToSection[req.Section]); err != nil {
+		return nil, err
 	}
 	return &empty.Empty{}, nil
 }
