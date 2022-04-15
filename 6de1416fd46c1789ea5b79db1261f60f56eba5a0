@@ -51,6 +51,24 @@
       "parentUuid": "30533792_5e29ee0a",
       "revId": "6de1416fd46c1789ea5b79db1261f60f56eba5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c4677d_22bc397e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-04-15T20:38:56Z",
+      "side": 1,
+      "message": "From a timing perspective, I don\u0027t think we\u0027re doing too bad - the average seems to be between 5-8 minutes for a run ([1]) with ~50-60% of the time happening in the setup/download of the APK. \n\nI think reducing flakiness, and making tests that are easy to follow are important as we build up the framework and look to onboard more test writers in the future. \n\n\n[1] - https://stainless.corp.google.com/search?view\u003dlist\u0026test\u003darcappgameperf%5C.AmongusGpuBenchmark%2A\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\u0026days\u003d7",
+      "parentUuid": "3986f4be_53a13cb6",
+      "revId": "6de1416fd46c1789ea5b79db1261f60f56eba5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
