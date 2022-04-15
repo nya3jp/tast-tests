@@ -74,21 +74,30 @@ func (l *Lacros) Close(ctx context.Context) error {
 		return errors.Wrap(err, "failed to query for all targets")
 	}
 
+	info, err := InfoSnapshot(ctx, l.ctconn)
+	if err != nil {
+		return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
+	}
+
 	var sessErr error
-	for _, info := range ts {
-		// Ignore the error here, as closing the target may close lacros and
-		// cause an error.
-		if err := l.sess.CloseTarget(ctx, info.TargetID); err != nil {
+	for _, t := range ts {
+		if err := l.sess.CloseTarget(ctx, t.TargetID); err != nil {
+			// CloseTarget should not error if keep-alive is on, since the browser
+			// won't die.
+			if info.KeepAlive {
+				return errors.Wrap(err, "failed to close target")
+			}
+			// Otherwise, ignore the error here, as closing the target may close
+			// lacros and cause an error.
 			sessErr = err
 		}
 	}
 
-	// If keepalive is on, sessErr should only be non-nil in an error condition.
-	// In that case, we will timeout on this poll since lacros will still be
-	// running. If keepalive is false, then we will expect lacros to not be
-	// running soon if the error was due to CloseTarget trying to run on
-	// a closed browser.
-	if sessErr != nil {
+	// If keep-alive is on, then if there was an error closing targets we would
+	// have returned it. If keepalive is false, then we will expect lacros to not
+	// be running soon if the error was due to CloseTarget trying to run on a
+	// closed browser. So, poll to make sure lacros actually closes.
+	if !info.KeepAlive {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			info, err := InfoSnapshot(ctx, l.ctconn)
 			if err != nil {
