@@ -103,7 +103,7 @@ func DefaultUIAndFunctionality(ctx context.Context, s *testing.State) {
 			defer resources.taskManager.Close(cleanupSubTestCtx, tconn)
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupSubTestCtx, s.OutDir(), s.HasError, cr, test.getDescription())
 
-			if resources.taskManager.WaitUntilStable(ctx); err != nil {
+			if err := resources.taskManager.WaitUntilStable(ctx); err != nil {
 				s.Fatal("Failed to wait until the Task Manager becomes stable: ", err)
 			}
 
@@ -155,11 +155,15 @@ func (f *processExistsVerifier) verify(ctx context.Context) error {
 	}
 
 	for _, process := range f.processes {
-		processFinder := taskmanager.FindProcess().Name(process.NameInTaskManager())
+		name, err := process.NameInTaskManager(ctx, f.tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to obtain the process name in task manager")
+		}
+		processFinder := taskmanager.FindProcess().Name(name)
 		if err := f.ui.WaitUntilExists(processFinder)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find the process")
 		}
-		testing.ContextLogf(ctx, "Found process %q", process.NameInTaskManager())
+		testing.ContextLogf(ctx, "Found process %q", name)
 	}
 
 	return nil
@@ -199,10 +203,15 @@ func (f *endProcessButtonEnabledVerifier) verify(ctx context.Context) error {
 		return errors.Wrap(err, "failed to find the nth process")
 	}
 
-	testing.ContextLogf(ctx, "Select process No. %d (zero-based)", nth)
+	info, err := f.ui.Info(ctx, process)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the information of the process")
+	}
+
+	testing.ContextLogf(ctx, "Select process No. %d (zero-based), %q", nth, info.Name)
 	return uiauto.Combine("ensure the state of 'End process' button",
 		ensureEndProcessButtonFocusable(f.ui, false),
-		f.taskManager.SelectProcess(process),
+		f.taskManager.SelectProcess(info.Name),
 		ensureEndProcessButtonFocusable(f.ui, true),
 	)(ctx)
 }
@@ -229,9 +238,12 @@ func (f *terminateProcessVerifier) verify(ctx context.Context) error {
 		return errors.Errorf("expecting the tab process to be alive, but got %q", status)
 	}
 
-	testing.ContextLogf(ctx, "Terminate process %q", p.NameInTaskManager())
-	processFinder := taskmanager.FindProcess().Name(p.NameInTaskManager())
-	if err := f.taskManager.TerminateProcess(processFinder)(ctx); err != nil {
+	name, err := p.NameInTaskManager(ctx, f.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the process name in task manager")
+	}
+	testing.ContextLogf(ctx, "Terminate process %q", name)
+	if err := f.taskManager.TerminateProcess(name)(ctx); err != nil {
 		return errors.Wrap(err, "failed to verify 'End process' button works")
 	}
 
@@ -243,7 +255,7 @@ func (f *terminateProcessVerifier) verify(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to verify the process %q is terminated", p.NameInTaskManager())
+		return errors.Wrapf(err, "failed to verify the process %q is terminated", name)
 	}
 
 	return nil

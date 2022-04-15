@@ -88,7 +88,7 @@ func DisplayAllTabs(ctx context.Context, s *testing.State) {
 	for _, browserWindow := range browserTabs {
 		for _, process := range browserWindow {
 			if err := process.Open(ctx, cr, tconn, kb); err != nil {
-				s.Fatalf("Failed to open %q: %v", process.NameInTaskManager(), err)
+				s.Fatal("Failed to open browser tab: ", err)
 			}
 			defer process.Close(cleanupCtx)
 		}
@@ -103,9 +103,13 @@ func DisplayAllTabs(ctx context.Context, s *testing.State) {
 
 	for _, browserWindow := range browserTabs {
 		for _, process := range browserWindow {
+			name, err := process.NameInTaskManager(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to obtain the process name in task manager: ", err)
+			}
 			// The processes might be grouped. Such as the extension "Speedtest" in this test.
-			if err := ui.WaitUntilExists(taskmanager.FindProcess().NameStartingWith(process.NameInTaskManager()).First())(ctx); err != nil {
-				s.Fatalf("Failed to find process %q in task manager: %v", process.NameInTaskManager(), err)
+			if err := ui.WaitUntilExists(taskmanager.FindProcess().NameStartingWith(name).First())(ctx); err != nil {
+				s.Fatalf("Failed to find process %q in task manager: %v", name, err)
 			}
 		}
 	}
@@ -155,8 +159,9 @@ func (extension *chromeExtension) Open(ctx context.Context, cr *chrome.Chrome, t
 	)(ctx)
 }
 
-func (extension *chromeExtension) NameInTaskManager() string {
-	return "Extension: " + extension.name
+func (extension *chromeExtension) NameInTaskManager(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	// Extension name is not changed dynamically. Just return its name directly.
+	return "Extension: " + extension.name, nil
 }
 
 type youtubeTab struct {
@@ -186,9 +191,15 @@ func (tab *youtubeTab) Open(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 	return nil
 }
 
-func (tab *youtubeTab) NameInTaskManager() string {
-	if tab.cwsAppInstalled {
-		return "App: " + tab.Title
+func (tab *youtubeTab) NameInTaskManager(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	// Tab name might dynamically change.
+	// Update the tab information to ensure the latest title returned.
+	if err := tab.UpdateInfo(ctx, tconn); err != nil {
+		return "", errors.Wrap(err, "failed to update tab information")
 	}
-	return tab.ChromeTab.NameInTaskManager()
+
+	if tab.cwsAppInstalled {
+		return "App: " + tab.Title, nil
+	}
+	return "Tab: " + tab.Title, nil
 }
