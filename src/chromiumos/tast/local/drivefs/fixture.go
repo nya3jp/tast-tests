@@ -35,8 +35,6 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
 			"drivefs.accountPool",
-			"drivefs.clientCredentials",
-			"drivefs.refreshTokens",
 		},
 	})
 
@@ -55,8 +53,6 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars: []string{
 			"drivefs.accountPool",
-			"drivefs.clientCredentials",
-			"drivefs.refreshTokens",
 		},
 	})
 }
@@ -172,20 +168,12 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		s.Fatal("Failed creating test API connection: ", err)
 	}
 	f.tconn = tconn
-
-	jsonCredentials := s.RequiredVar("drivefs.clientCredentials")
-	refreshTokens := s.RequiredVar("drivefs.refreshTokens")
-	token, err := getRefreshTokenForAccount(f.cr.NormalizedUser(), refreshTokens)
-	if err != nil {
-		s.Fatal("Failed to get refresh token for account: ", err)
+	scopes := []string{
+		"https://www.googleapis.com/auth/drive",
 	}
-
 	// Perform Drive API authentication.
-	APIClient, err := CreateAPIClient(ctx, f.cr, jsonCredentials, token)
-	if err != nil {
-		s.Fatal("Failed creating a APIClient instance: ", err)
-	}
-	f.APIClient = APIClient
+	tsf := NewChromeOSTokenSourceFactory(tconn, f.cr.User(), scopes)
+	f.APIClient = CreateAPIClient(tsf)
 
 	// Lock Chrome and make sure deferred function does not run cleanup.
 	chrome.Lock()
@@ -236,26 +224,6 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 		}
 		f.cr = nil
 	}
-}
-
-// getRefreshTokenForAccount returns the matching refresh token for the
-// supplied account. The tokens are stored in a multi line strings as key value
-// pairs separated by a ':' character.
-func getRefreshTokenForAccount(account, refreshTokens string) (string, error) {
-	for i, line := range strings.Split(refreshTokens, "\n") {
-		line = strings.TrimSpace(line)
-		if len(line) == 0 || strings.HasPrefix(line, "#") {
-			continue
-		}
-		ps := strings.SplitN(line, ":", 2)
-		if len(ps) != 2 {
-			return "", errors.Errorf("failed to parse refresh token list: line %d: does not contain a colon", i+1)
-		}
-		if ps[0] == account {
-			return ps[1], nil
-		}
-	}
-	return "", errors.Errorf("failed to retrieve account token for %q", account)
 }
 
 // getPersistableToken derives the token from the mount path. This is used
