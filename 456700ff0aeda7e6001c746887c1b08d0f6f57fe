@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0692ef76_21963a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-15T09:56:47Z",
+      "side": 1,
+      "message": "Thank you Ben.\nWe\u0027ll consider another approach if this test couldn\u0027t pass when running on `mainline`",
+      "parentUuid": "193daa8f_ee3e4657",
+      "range": {
+        "startLine": 54,
+        "startChar": 25,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "456700ff0aeda7e6001c746887c1b08d0f6f57fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cc4706d_d2e26786",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92aa3e6e_963467e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-15T09:56:47Z",
+      "side": 1,
+      "message": "The original sub-tests as parameterized tests now.",
+      "parentUuid": "9cc4706d_d2e26786",
+      "revId": "456700ff0aeda7e6001c746887c1b08d0f6f57fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e866e6cc_72210fea",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-03-30T03:55:13Z",
       "side": 1,
       "message": "Add a random string / int or something identifier to this file name. During any run you could have 100+ boards all running this test and are likely to have 2 accounts vying for the same file. This might lead to conflicts that are hard to track down.",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 60
+      },
+      "revId": "456700ff0aeda7e6001c746887c1b08d0f6f57fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c175d6_dd5e4253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-15T09:56:47Z",
+      "side": 1,
+      "message": "Fix, we now only deal with files created by this test and make the file name unique enough.\nThanks for the detailed explanation.",
+      "parentUuid": "e866e6cc_72210fea",
       "range": {
         "startLine": 71,
         "startChar": 17,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a71f56a_ff2a8d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-15T09:56:47Z",
+      "side": 1,
+      "message": "Fixed, the original sub-tests as parameterized tests now.",
+      "parentUuid": "210fcbad_dce4081c",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "456700ff0aeda7e6001c746887c1b08d0f6f57fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cc02c61_df388fb5",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-03-30T03:55:13Z",
       "side": 1,
       "message": "I\u0027ve mentioned it above, but let\u0027s get rid of this function.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "456700ff0aeda7e6001c746887c1b08d0f6f57fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42537f6e_77a2f145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_web_and_drive.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-04-15T09:56:47Z",
+      "side": 1,
+      "message": "Fixed, function removed",
+      "parentUuid": "0cc02c61_df388fb5",
       "range": {
         "startLine": 116,
         "startChar": 0,
