@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bddccb_bade79b4",
+        "filename": "src/chromiumos/tast/services/cros/camera/cca_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-04-15T15:12:18Z",
+      "side": 1,
+      "message": "I think we can replace these functions with existing functions in the chrome_service (under the UI directory). These seem to do a strict subset of what is provided there.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 76
+      },
+      "revId": "aea375aa557149fcafc4c0dd4762be3e13df2c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
