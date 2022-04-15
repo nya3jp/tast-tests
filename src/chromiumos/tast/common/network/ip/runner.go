@@ -15,15 +15,30 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// ImplementationFeature is a feature whose support may differ between different
+// implementations of ip.
+type ImplementationFeature int
+
+const (
+	// BriefLinkShow refers to the ability to set the "-br" flag for "ip -br link
+	// show <iface>"
+	BriefLinkShow ImplementationFeature = iota
+)
+
 // Runner contains methods rely on running "ip" command.
 type Runner struct {
-	cmd cmd.Runner
+	cmd               cmd.Runner
+	supportedFeatures map[ImplementationFeature]bool
 }
 
 // NewRunner creates an ip command utility runner.
 func NewRunner(cmd cmd.Runner) *Runner {
 	return &Runner{
 		cmd: cmd,
+		supportedFeatures: map[ImplementationFeature]bool{
+			// Default feature support.
+			BriefLinkShow: true,
+		},
 	}
 }
 
@@ -36,6 +51,12 @@ const (
 	LinkStateDown    LinkState = "DOWN"
 	LinkStateUnknown LinkState = "UNKNOWN"
 )
+
+// SetImplementationFeatureSupport sets the given feature as supported or not
+// based upon the value of isSupported.
+func (r *Runner) SetImplementationFeatureSupport(feature ImplementationFeature, isSupported bool) {
+	r.supportedFeatures[feature] = isSupported
+}
 
 // State returns the operation state of the interface.
 func (r *Runner) State(ctx context.Context, iface string) (LinkState, error) {
@@ -73,6 +94,14 @@ func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
 
 // showLink runs `ip -br link show <iface>` then splits and validity-checks the output.
 func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
+	if r.supportedFeatures[BriefLinkShow] {
+		return r.showLinkBrief(ctx, iface)
+	}
+	return r.showLinkFull(ctx, iface)
+}
+
+// showLinkBrief runs `ip -br link show <iface>` then splits and validity-checks the output.
+func (r *Runner) showLinkBrief(ctx context.Context, iface string) ([]string, error) {
 	// Let ip print brief output so that we can have less assumption on
 	// the output format.
 	// The brief format: (ref: print_linkinfo_brief in iproute2)
@@ -81,7 +110,7 @@ func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 	// lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
 	output, err := r.cmd.Output(ctx, "ip", "-br", "link", "show", iface)
 	if err != nil {
-		return nil, errors.Wrapf(err, `failed to run "ip link show %s"`, iface)
+		return nil, errors.Wrapf(err, `failed to run "ip -br link show %s"`, iface)
 	}
 	content := strings.TrimSpace(string(output))
 	lines := strings.Split(content, "\n")
@@ -96,6 +125,66 @@ func (r *Runner) showLink(ctx context.Context, iface string) ([]string, error) {
 		return nil, errors.Errorf("unmatched interface name, got %s, want %s", fields[0], iface)
 	}
 	return fields, nil
+}
+
+// showLinkFull runs `ip link show <iface>` and parses out the interface name,
+// state, mac address, and flags from the output. The result should match what
+// showLinkBrief returns, as this is intended to be used when there is no
+// support for BriefLinkShow.
+//
+// Example "ip link show" output:
+// 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+//    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+func (r *Runner) showLinkFull(ctx context.Context, iface string) ([]string, error) {
+	var outputIface string
+	var state string
+	var MAC string
+	var flags string
+
+	// Run command and get output lines.
+	output, err := r.cmd.Output(ctx, "ip", "link", "show", iface)
+	if err != nil {
+		return nil, errors.Wrapf(err, `failed to run "ip link show %s"`, iface)
+	}
+	content := strings.TrimSpace(string(output))
+	lines := strings.Split(content, "\n")
+	if len(lines) < 2 {
+		return nil, errors.Errorf("unexpected lines of results: got %d, want at least 2", len(lines))
+	}
+
+	// Parse first line for iface, flags, and state.
+	fields := strings.Fields(lines[0])
+	if len(fields) < 5 {
+		return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
+	}
+	outputIface = strings.TrimSuffix(fields[1], ":")
+	if outputIface != iface {
+		return nil, errors.Errorf("unmatched interface name, got %s, want %s", outputIface, iface)
+	}
+	flags = fields[2]
+	for i := 3; state == "" && i < (len(fields)-1); i++ {
+		if fields[i] == "state" {
+			state = fields[i+1]
+		}
+	}
+	if state == "" {
+		return nil, errors.Errorf(`failed to parse state from "ip link show" output: %q`, output)
+	}
+
+	// Parse second line for MAC.
+	fields = strings.Fields(lines[1])
+	if len(fields) < 2 {
+		return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
+	}
+	MAC = fields[1]
+
+	// Return values in the same order as the return of showLinkBrief.
+	return []string{
+		outputIface,
+		state,
+		MAC,
+		flags,
+	}, nil
 }
 
 // SetMAC sets MAC address of iface with command "ip link set $iface address $mac.
