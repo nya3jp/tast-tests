@@ -33,6 +33,23 @@
       "message": "Sorry, I missed one thing.\n",
       "revId": "a465b3ba52cddcd488e961863b3ae09a31492a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "778d753d_3e8c647b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-15T20:01:56Z",
+      "side": 1,
+      "message": "Sorry, I missed one thing in my last review. I really don\u0027t want the directory format to be change in most of the case. Please see my latest comment. Sorry for the confusion.",
+      "revId": "a465b3ba52cddcd488e961863b3ae09a31492a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -68,6 +68,24 @@
       "parentUuid": "807cd257_c654036f",
       "revId": "63b77fb26843538c5fc713e2b4a84459fa234e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d770969_3d69e69d",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-04-15T20:01:56Z",
+      "side": 1,
+      "message": "Sorry, I really meant:\n\n```\ndst :\u003d filepath.Join(dir, \"faillog\")\nif fileExists(dst) {\n    // Get name of target. Use a timestamp in the name to avoid\n    // overwriting any existing files.\n    timeStr :\u003d time.Now().Format(\"20060102-150405.999999\")\n    dst :\u003d filepath.Join(dir, \"faillog\", timeStr)\n}\n```",
+      "parentUuid": "3d206bb8_e28ee90e",
+      "revId": "63b77fb26843538c5fc713e2b4a84459fa234e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
