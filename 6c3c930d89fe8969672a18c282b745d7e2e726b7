@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df31a312_becc9adb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-04-15T20:24:31Z",
+      "side": 1,
+      "message": "Hi Toni!\nPTAL",
+      "revId": "6c3c930d89fe8969672a18c282b745d7e2e726b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
