@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f125972c_5e72ef25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpucuj/gpu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-04-15T15:40:39Z",
+      "side": 1,
+      "message": "This is not necessarily blocking this CL, but is about naming up for discussion. We have seen various tconn variables defined for each source in different contexts: tconn, ctconn, ltconn, bTconn.\n\nIn particular, `tconn` might have been used confusingly with lacros. Here it\u0027s for the browser with ctconn for ash-chrome, while some uses it for ash-chrome along with bTconn for the browser.\nIt would be great to make it clear on when to use what and have it documented in the guideline doc for users to avoid confusion. Any thoughts?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 36
+      },
+      "revId": "6427a03ff0e8647d58db6bbc5cc520e83f2267c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
