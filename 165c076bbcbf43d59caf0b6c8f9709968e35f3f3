@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fa7a58_c82dd51f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-04-15T22:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8252ceab_c82f337b",
+      "revId": "165c076bbcbf43d59caf0b6c8f9709968e35f3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f09c9523_22c2c49c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-13T13:16:55Z",
       "side": 1,
       "message": "is this the M102 eSIM bug on brya? If so, I thought we didn\u0027t have a workaround for that yet...",
+      "revId": "165c076bbcbf43d59caf0b6c8f9709968e35f3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fc56e4_c5d5f849",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-04-15T22:46:16Z",
+      "side": 1,
+      "message": "This is a work-around I made with Madhav\u0027s help.",
+      "parentUuid": "f09c9523_22c2c49c",
       "revId": "165c076bbcbf43d59caf0b6c8f9709968e35f3f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
