@@ -18,12 +18,18 @@ service BiosService {
   rpc ClearAndSetGBBFlags (GBBFlagsState) returns (google.protobuf.Empty) {}
   // EnableAPSoftwareWriteProtect enables the AP software write protect.
   rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // DisableAPSoftwareWriteProtect disables the AP software write protect.
+  rpc DisableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
   // CorruptFWSection writes garbage bytes to the entire section specified.
   rpc CorruptFWSection (CorruptSection) returns (google.protobuf.Empty) {}
   // BackupImageSection backs up the current fw region locally and returns its path.
   rpc BackupImageSection (FWBackUpSection) returns (FWBackUpInfo) {}
   // RestoreImageSection restores the fw region from path.
   rpc RestoreImageSection (FWBackUpInfo) returns (google.protobuf.Empty) {}
+  // WriteImageFromMultiSectionFile writes the provided multi section file in the specified section.
+  rpc WriteImageFromMultiSectionFile (FWBackUpInfo) returns (google.protobuf.Empty) {}
+  // ChromeosFirmwareUpdate will perform the firmware update in the desired mode.
+  rpc ChromeosFirmwareUpdate (FirmwareUpdateModeRequest) returns (google.protobuf.Empty) {}
 }
 
 // GBBFlag bit positions
@@ -61,6 +67,11 @@ enum ImageSection {
   ROVPDImageSection = 6;
   RWVPDImageSection = 7;
   RECOVERYMRCCACHEImageSection = 8;
+  APROImageSection = 9;
+}
+
+enum UpdateMode {
+  RecoveryMode = 0;
 }
 
 // GBBFlagsState represents the a known state of GBB flags.  Set flags have precedence over cleared ones.
@@ -88,3 +99,8 @@ message CorruptSection {
   Programmer Programmer = 2;
 }
 
+// FirmwareUpdateModeRequest represents the string containing the mode and options to performe the update.
+message FirmwareUpdateModeRequest {
+  UpdateMode Mode = 1;
+  string Options = 2;
+}
