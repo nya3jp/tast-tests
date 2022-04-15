@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087eab27_698e0841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-15T08:34:58Z",
+      "side": 1,
+      "message": "IIUC, so far all fixtures reboot Chrome by default. Do you want to add Reset to the fixture name to make it explicit? Otherwise when you start to share fixtures it can be confusing.",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "d72cffe28cb3a5839b06f55ddd4a9bfd3554f97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb455064_db11f434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-04-15T08:34:58Z",
+      "side": 1,
+      "message": "cr, tconn, uc are mostly used. It would be nice to shorten this block as below:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dfixture.go\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n(fixture.FixtData fixtData) Data() (*chrome.Chrome, *chrome.TestConn, *useractions.UserContext){\n    return fixtData.Chrome, fixtData.TestAPIConn, fixtData.UserContext\n}\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dfixture.go\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003dtest.go\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\ncr, tconn, uc :\u003d s.FixtValue().(fixture.FixtData).Data();\n\nMoreover, Chrome, TestAPIConn, UserContext can be renamed to private attributes.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "d72cffe28cb3a5839b06f55ddd4a9bfd3554f97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
