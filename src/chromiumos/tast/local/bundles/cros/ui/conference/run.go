@@ -26,7 +26,7 @@ type Cleanup func(context.Context) error
 type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, roomSize int) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode, isLacros bool, roomSize int) (retErr error) {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -48,10 +48,21 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	}
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, false)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, isLacros)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
+	br := cr.Browser()
+	tconns := []*chrome.TestConn{tconn}
+	if isLacros {
+		br = l.Browser()
+		bTconn, err := l.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros test API conn")
+		}
+		tconns = append(tconns, bTconn)
+	}
+	conf.SetBrowser(br)
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
@@ -72,7 +83,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 	testing.ContextLog(ctx, "Start recording actions")
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs([]*chrome.TestConn{tconn})...)
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.MetricConfigs(tconns)...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")
 	}
