@@ -33,6 +33,24 @@
       "message": "Is it possible to eliminate the new `Not` and use the existing methods? If you assume the entry point is:\n\n`uda.Tap(uidetection.TextBlock([]string{\"Create\", \"Game\"}))`\n\nand the exit criteria of that action is:\n\n`uda.Exists(uidetection.CustomIcon(s.DataPath(\"amongus-in-game-settings-button.png\")))`\n\nThen something like:\n\n```\naction.Retry(3, Combine(\n  // Click to start the game.\n  Tap(\"Create Game\"),\n  \n  // Did the \"Failed to join game session\" error appear? If so, close the prompt and try clicking again.\n  action.IfSuccessThen(\n     WaitUntilExists(\"Failed to join\"),\n     uiauto.Combine(\n        // Close the prompt.\n        Tap(Icon(\"Close-Button\")),\n        // Click Create Game Again\n        Tap(\"Create Game\")\n     )\n  )\n\n  // Create game succeeded if the in-game settings appeared.\n  return WaitUntilExists(Icon(\"In-Game-Settings\"))\n), time.Second * 5)\n```\n\nShould give the same behavior without introducing new logic. You\u0027d want to play with the timeouts of the wait\u0027s accordingly, though.",
       "revId": "6de1416fd46c1789ea5b79db1261f60f56eba5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3986f4be_53a13cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/amongus_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-04-15T20:00:38Z",
+      "side": 1,
+      "message": "I was mostly considering trying not to add more time onto the existing successful test cases/instances - what are your thoughts about that?",
+      "parentUuid": "30533792_5e29ee0a",
+      "revId": "6de1416fd46c1789ea5b79db1261f60f56eba5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
