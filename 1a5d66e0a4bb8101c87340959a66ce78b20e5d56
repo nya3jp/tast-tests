@@ -39,6 +39,30 @@
       },
       "revId": "1a5d66e0a4bb8101c87340959a66ce78b20e5d56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b8adbc_df0ca86c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-15T05:46:10Z",
+      "side": 1,
+      "message": "Ah nah good idea.",
+      "parentUuid": "6866bc17_04e057bd",
+      "range": {
+        "startLine": 193,
+        "startChar": 23,
+        "endLine": 193,
+        "endChar": 61
+      },
+      "revId": "1a5d66e0a4bb8101c87340959a66ce78b20e5d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
