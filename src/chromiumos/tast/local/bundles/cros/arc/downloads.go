@@ -9,9 +9,11 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -39,11 +41,17 @@ func init() {
 func Downloads(ctx context.Context, s *testing.State) {
 	const (
 		filename    = "capybara.jpg"
-		crosPath    = "/home/chronos/user/Downloads/" + filename
 		androidPath = "/storage/emulated/0/Download/" + filename
 	)
 
 	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+
+	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.User())
+	if err != nil {
+		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.User(), err)
+	}
+	crosPath := filepath.Join(cryptohomeUserPath, "MyFiles", "Downloads", filename)
 
 	expected, err := ioutil.ReadFile(s.DataPath(filename))
 	if err != nil {
