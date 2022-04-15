@@ -104,6 +104,24 @@
       "parentUuid": "e2ad1277_63c3b1f1",
       "revId": "a66bcb15f0b7acc500a48033ba0bdf7028c42e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c83a85_be4dde9b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-04-15T05:50:42Z",
+      "side": 1,
+      "message": "How about adding keepalive stuff in a followup CL?",
+      "parentUuid": "d5d7c9be_868dbb15",
+      "revId": "a66bcb15f0b7acc500a48033ba0bdf7028c42e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
