@@ -70,11 +70,7 @@ func init() {
 				// This leads to the situation when FS page caches are reclaimed and captured result
 				// does not properly reflect actual FS usage. Don't upload caches to server for
 				// devices lower than 8G.
-				hwdep.MinMemory(7500),
-				// TODO(b/225988257): Currently arc.DataCollector.vm is generating very small
-				// (<100kB) pack files on eve compared to hatch (>400kB). This is causing
-				// arc.UreadaheadValidation.vm to fail. For now we should skip eve for x86_64.
-				hwdep.SkipOnModel("eve")),
+				hwdep.MinMemory(7500)),
 			Val: testParam{
 				vmEnabled: true,
 				upload:    true,
