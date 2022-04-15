@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3654fbe1_68d3274d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/base_ec_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1534677
+      },
+      "writtenOn": "2022-04-15T08:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b2ef0b9_d8628e1d",
+      "range": {
+        "startLine": 37,
+        "startChar": 44,
+        "endLine": 37,
+        "endChar": 65
+      },
+      "revId": "a74305213e47869cc68922ff4edcc52e0ca8ba7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "640d0a0b_b4c4cb53",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-14T18:36:10Z",
       "side": 1,
       "message": "This is good for today, but maybe in the future we can try extracting the firmware from the base, editing the version -1 and the writing it back again. That would remove the dep on an old firmware needing to be archived for each different base.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 54
+      },
+      "revId": "a74305213e47869cc68922ff4edcc52e0ca8ba7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febaf2b9_9097bdbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/base_ec_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1534677
+      },
+      "writtenOn": "2022-04-15T08:49:40Z",
+      "side": 1,
+      "message": "Yes, it could be better if we not rely on the dep on an old firmware.\n\nWe have to investigate how to change the rw_version of base ec binary first, then check whether it can work properly.",
+      "parentUuid": "640d0a0b_b4c4cb53",
       "range": {
         "startLine": 75,
         "startChar": 1,
