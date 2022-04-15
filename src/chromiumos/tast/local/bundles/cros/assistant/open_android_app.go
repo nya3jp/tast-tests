@@ -78,6 +78,11 @@ func OpenAndroidApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC package to become ready: ", err)
 	}
 
+	s.Log("Sleep for a second as SyncDeviceAppsStatus async call ends: b/228644597")
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		s.Fatal("Failed to sleep for a second as SyncDeviceAppsStatus async call ends")
+	}
+
 	s.Log("Sending open Play Store query to the Assistant")
 	if _, err := assistant.SendTextQuery(ctx, tconn, "open Play Store"); err != nil {
 		s.Fatal("Failed to send the Assistant text query: ", err)
