@@ -67,6 +67,12 @@ const (
 	// APROImageSection is the named readonly section for AP writable data as output from dump_fmap.
 	APROImageSection ImageSection = "RO_SECTION"
 
+	// APRWAImageSection is the named section A for AP writable data as output from dump_fmap.
+	APRWAImageSection ImageSection = "RW_SECTION_A"
+
+	// APRWBImageSection is the named section B for AP writable data as output from dump_fmap.
+	APRWBImageSection ImageSection = "RW_SECTION_B"
+
 	// RecoveryMode is the named chromeOS Firmware Updater to perform firmware recovery mode.
 	RecoveryMode FirmwareUpdateMode = "--mode=recovery"
 
