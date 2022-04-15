@@ -49,6 +49,8 @@ type Router struct {
 	phys           map[int]*iw.Phy // map from phy idx to iw.Phy.
 	im             *common.IfaceManager
 	activeServices activeServices
+	nextBridgeID   int
+	nextVethID     int
 }
 
 // activeServices keeps a record of what services have been started and not yet
@@ -654,6 +656,41 @@ func (r *Router) SetAPIfaceDown(ctx context.Context, iface string) error {
 // MAC returns the MAC address of iface on this router.
 func (r *Router) MAC(ctx context.Context, iface string) (net.HardwareAddr, error) {
 	return r.ipr.MAC(ctx, iface)
+}
+
+// NewBridge returns a bridge name for tests to use. Note that the caller is responsible to call ReleaseBridge.
+func (r *Router) NewBridge(ctx context.Context) (string, error) {
+	bridgeID := r.nextBridgeID
+	r.nextBridgeID++
+	return common.NewBridge(ctx, r.ipr, bridgeID)
+}
+
+// ReleaseBridge releases the bridge.
+func (r *Router) ReleaseBridge(ctx context.Context, br string) error {
+	return common.ReleaseBridge(ctx, r.ipr, br)
+}
+
+// NewVethPair returns a veth pair for tests to use. Note that the caller is responsible to call ReleaseVethPair.
+func (r *Router) NewVethPair(ctx context.Context) (string, string, error) {
+	vethID := r.nextVethID
+	r.nextVethID++
+	return common.NewVethPair(ctx, r.ipr, vethID)
+}
+
+// ReleaseVethPair release the veth pair.
+// Note that each side of the pair can be passed to this method, but the test should only call the method once for each pair.
+func (r *Router) ReleaseVethPair(ctx context.Context, veth string) error {
+	return common.ReleaseVethPair(ctx, r.ipr, veth)
+}
+
+// BindVethToBridge binds the veth to bridge.
+func (r *Router) BindVethToBridge(ctx context.Context, veth, br string) error {
+	return common.BindVethToBridge(ctx, r.ipr, veth, br)
+}
+
+// UnbindVeth unbinds the veth to any other interface.
+func (r *Router) UnbindVeth(ctx context.Context, veth string) error {
+	return common.UnbindVeth(ctx, r.ipr, veth)
 }
 
 // HostIsOpenWrtRouter determines whether the remote host is an OpenWrt router.
