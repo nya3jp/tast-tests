@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94354178_66ce1b49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-04-16T00:30:47Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "1a83e9df0ce78ec64a9c9392bbb485d1c5494142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13206954_7063ed8c",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-04-15T07:48:29Z",
       "side": 1,
       "message": "Hmm, inserting a sleep is a classic wrong way to fix flakiness.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Sleep\n\nDo you know any other workarounds?",
+      "revId": "1a83e9df0ce78ec64a9c9392bbb485d1c5494142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855cc50a_873872ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_android_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-04-16T00:30:47Z",
+      "side": 1,
+      "message": "I agree. Let me try if we can wait it with `assistant.EnableAndWaitForReady`.",
+      "parentUuid": "13206954_7063ed8c",
       "revId": "1a83e9df0ce78ec64a9c9392bbb485d1c5494142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
