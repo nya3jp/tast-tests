@@ -61,6 +61,7 @@ func init() {
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline"},
+		Timeout:      2 * time.Minute, // Must set up Chrome and then wait 30 seconds for histogram updates and crash files
 		Params: []testing.Param{{
 			Name:              "miss_breakpad",
 			ExtraSoftwareDeps: []string{"breakpad"},
