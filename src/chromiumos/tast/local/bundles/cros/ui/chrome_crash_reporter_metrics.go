@@ -31,6 +31,13 @@ const (
 	// callFromKernelBucket is the bucket inside the CrashReporterHistogramName
 	// histogram that counts the number of Chrome crashes noticed by the kernel.
 	callFromKernelBucket = 25
+
+	// missTimeout is the amount of time anomaly detector waits before recording
+	// a miss as a miss.
+	missTimeout = 30 * time.Second
+
+	// cleanupTimeout is the amount of time we reserve for cleanup.
+	cleanupTimeout = 5 * time.Second
 )
 
 // chromeCrashReporterMetricsParams contains the test parameters which are different
@@ -61,6 +68,7 @@ func init() {
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline"},
+		Timeout:      chrome.LoginTimeout + missTimeout + cleanupTimeout + time.Minute,
 		Params: []testing.Param{{
 			Name:              "miss_breakpad",
 			ExtraSoftwareDeps: []string{"breakpad"},
@@ -113,7 +121,7 @@ func init() {
 func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	// Give enough time for the anomaly_detector restart.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTimeout)
 	defer cancel()
 
 	// Make sure anomaly_detector isn't running, and then clear pending metrics.
