@@ -45,4 +45,5 @@ import (
 
 	_ "chromiumos/tast/remote/bundles/cros/factory/fixture"
 	_ "chromiumos/tast/remote/meta" // import fixture for meta tests
+	_ "chromiumos/tast/remote/tape" // import fixture for tape tests
 )
