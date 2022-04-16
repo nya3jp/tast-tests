@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -24,6 +25,10 @@ const (
 	// ARCAppGamePerfFixture is a fixture name that will be registered to tast.
 	// The fixture brings up Chrome and ARC with the Play Store opted in to.
 	ARCAppGamePerfFixture = "arcAppGamePerfFixture"
+
+	// ARCAppGamePerfRobloxLeasedAccountFixture is a fixture that is used for Roblox
+	// tests which require a leased account.
+	ARCAppGamePerfRobloxLeasedAccountFixture = "arcAppGamePerfRobloxLeasedAccountFixture"
 
 	// resetTimeout indicates how long the fixture has to reset, and tear down.
 	resetTimeout = 30 * time.Second
@@ -43,6 +48,19 @@ func init() {
 		Desc:            "The fixture starts chrome with ARC supported",
 		Contacts:        []string{"davidwelling@google.com", "arc-engprod@google.com"},
 		Impl:            arc.NewArcBootedWithPlayStoreFixture(arcAppGamePerfFixtureOptions),
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: arc.PostTestTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            []string{usernameVar, passwordVar},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            ARCAppGamePerfRobloxLeasedAccountFixture,
+		Desc:            "The fixture starts chrome with ARC supported and loads the leased account",
+		Contacts:        []string{"davidwelling@google.com", "arc-engprod@google.com"},
+		Impl:            arc.NewArcBootedWithPlayStoreFixture(arcAppGamePerfFixtureOptions),
+		Parent:          tape.RemoteComRobloxClientLeasedAccountFixture,
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		PostTestTimeout: arc.PostTestTimeout,
