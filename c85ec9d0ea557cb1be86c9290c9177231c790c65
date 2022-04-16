@@ -80,6 +80,30 @@
       },
       "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7d7a6a_82657822",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-04-16T08:56:45Z",
+      "side": 1,
+      "message": "Let\u0027s address this in a different CL, because it seems that moving code is the most complicated part of creating a shared cujrecorder.",
+      "parentUuid": "c3fac640_632c9e25",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 113
+      },
+      "revId": "c85ec9d0ea557cb1be86c9290c9177231c790c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
