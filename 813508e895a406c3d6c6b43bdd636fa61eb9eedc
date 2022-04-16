@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0e65de_dbb8b858",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_bmpblk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-16T00:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf60985_d7a0d496",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 64
+      },
+      "revId": "813508e895a406c3d6c6b43bdd636fa61eb9eedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf02a8b_9cda8807",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03644f1_9c406cee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_bmpblk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-16T00:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf02a8b_9cda8807",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "813508e895a406c3d6c6b43bdd636fa61eb9eedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df8b166a_9b156535",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-15T16:59:12Z",
       "side": 1,
       "message": "These 3 regexps are not actually patterns, so please use strings.Contains() instead",
+      "range": {
+        "startLine": 73,
+        "startChar": 22,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "813508e895a406c3d6c6b43bdd636fa61eb9eedc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02195bb0_c3652053",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_bmpblk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-04-16T00:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8b166a_9b156535",
       "range": {
         "startLine": 73,
         "startChar": 22,
