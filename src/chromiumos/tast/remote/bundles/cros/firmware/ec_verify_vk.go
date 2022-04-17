@@ -21,17 +21,26 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// TODO: Find a home for browserType that could be referenced by both remote and local tests.
+type browserType string
+
+const (
+	typeAsh    browserType = "ash"
+	typeLacros browserType = "lacros"
+)
+
 type testParamsTablet struct {
 	canDoTabletSwitch bool
 	formFactor        string
 	tabletModeOn      string
 	tabletModeOff     string
+	browserType       browserType
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECVerifyVK,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify whether virtual keyboard window is present during change in tablet mode",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
@@ -46,6 +55,7 @@ func init() {
 				formFactor:        "convertible",
 				tabletModeOn:      "tabletmode on",
 				tabletModeOff:     "tabletmode off",
+				browserType:       typeAsh,
 			},
 		}, {
 			Name:              "detachable",
@@ -55,6 +65,7 @@ func init() {
 				formFactor:        "detachable",
 				tabletModeOn:      "basestate detach",
 				tabletModeOff:     "basestate attach",
+				browserType:       typeAsh,
 			},
 		}, {
 			Name:              "chromeslate",
@@ -62,7 +73,20 @@ func init() {
 			Val: &testParamsTablet{
 				canDoTabletSwitch: false,
 				formFactor:        "chromeslate",
+				browserType:       typeAsh,
 			},
+		}, {
+			Name:              "lacros",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val: &testParamsTablet{
+				canDoTabletSwitch: true,
+				formFactor:        "convertible",
+				tabletModeOn:      "tabletmode on",
+				tabletModeOff:     "tabletmode off",
+				browserType:       typeLacros,
+			},
+			// TODO(b/228326787): Add lacros variants for detachable and chromeslate.
 		}},
 	})
 }
@@ -97,18 +121,24 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 	}
 
 	cvkc := pb.NewCheckVirtualKeyboardServiceClient(h.RPCClient.Conn)
+	args := s.Param().(*testParamsTablet)
+	bt := args.browserType
 	s.Log("Starting a new Chrome session and logging in as test user")
-	if _, err := cvkc.NewChromeLoggedIn(ctx, &empty.Empty{}); err != nil {
+	if _, err := cvkc.NewChromeLoggedIn(ctx, newBrowserRequest(bt)); err != nil {
 		s.Fatal("Failed to login: ", err)
 	}
+
 	defer cvkc.CloseChrome(ctx, &empty.Empty{})
 
-	s.Log("Opening a Chrome page")
-	if _, err := cvkc.OpenChromePage(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to open chrome: ", err)
+	// Open a new tab page.
+	// Note that this could be skipped for lacros-chrome that has already opened the one when initializing the browser in NewChromeLoggedIn.
+	if bt != typeLacros {
+		s.Log("Opening a Chrome page for ash-chrome")
+		if _, err := cvkc.OpenChromePage(ctx, &empty.Empty{}); err != nil {
+			s.Fatal("Failed to open chrome: ", err)
+		}
 	}
 
-	args := s.Param().(*testParamsTablet)
 	// Chromeslates are already in tablet mode, and for this reason,
 	// we could skip switching to tablet mode, and just verify that
 	// virtual keyboard is present after a click on the address bar.
@@ -201,13 +231,13 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 
 	// Create a Chrome instance for the utilsService by reusing one that's
 	// already been created above under cvkc. The utilsService is required
-	// by EvalTabletMode in checking tablet mode status. Close this chrome
-	// at the end of verifyVKIsPresent.
+	// by EvalTabletMode in checking tablet mode status.
+	// Do not close the reused ash-chrome by calling utilsService.CloseChrome
+	// since CheckVirtualKeyboardService manages its lifecycle.
 	utilsService := fwpb.NewUtilsServiceClient(h.RPCClient.Conn)
 	if _, err := utilsService.ReuseChrome(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to reuse Chrome session for the utils service")
 	}
-	defer utilsService.CloseChrome(ctx, &empty.Empty{})
 
 	// Log tablet mode status from the ChromeOS perspective.
 	res, err := utilsService.EvalTabletMode(ctx, &empty.Empty{})
@@ -224,7 +254,7 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 	if err := triggerAndCheckVK(ctx, h, cvkc, tabletMode, "byTouchScreen"); err != nil {
 		testing.ContextLogf(ctx, "Checking virtual keyboard in tablet mode failed: %v. Retry a few more times with a left click", err)
 		testing.ContextLog(ctx, "Restarting UI and logging in again")
-		if err := refreshChromeAndLogin(ctx, h, cvkc); err != nil {
+		if err := refreshChromeAndLogin(ctx, h, cvkc, s.Param().(*testParamsTablet).browserType); err != nil {
 			return err
 		}
 		testing.ContextLog(ctx, "Opening a new Chrome page")
@@ -244,6 +274,14 @@ func triggerAndCheckVK(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 	req := pb.CheckVirtualKeyboardRequest{
 		IsDutTabletMode: tabletMode,
 	}
+	// Check if the virtual keyboard is present first for the tablet mode.
+	// Note that lacros-chrome brings it up automatically when a new tab is open, while ash-chrome doesn't.
+	res, err := cvkc.CheckVirtualKeyboardIsPresent(ctx, &req)
+	if err == nil && tabletMode == res.IsVirtualKeyboardPresent {
+		return nil
+	}
+
+	// If the VK is not present, try to bring it up by either touching or clicking the address bar.
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		switch option {
 		case "byTouchScreen":
@@ -272,7 +310,7 @@ func triggerAndCheckVK(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 	}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 3 * time.Second})
 }
 
-func refreshChromeAndLogin(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient) error {
+func refreshChromeAndLogin(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, bt browserType) error {
 	// Before restarting UI, close the chrome instance that was previously initiated.
 	if _, err := cvkc.CloseChrome(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to close chrome")
@@ -287,8 +325,15 @@ func refreshChromeAndLogin(ctx context.Context, h *firmware.Helper, cvkc pb.Chec
 		return errors.Wrap(err, "failed to sleep")
 	}
 	// Log in again.
-	if _, err := cvkc.NewChromeLoggedIn(ctx, &empty.Empty{}); err != nil {
+	if _, err := cvkc.NewChromeLoggedIn(ctx, newBrowserRequest(bt)); err != nil {
 		return errors.Wrap(err, "failed to log in")
 	}
 	return nil
+}
+
+func newBrowserRequest(bt browserType) *pb.NewBrowserRequest {
+	if bt == typeLacros {
+		return &pb.NewBrowserRequest{BrowserType: pb.NewBrowserRequest_LACROS}
+	}
+	return &pb.NewBrowserRequest{BrowserType: pb.NewBrowserRequest_ASH}
 }

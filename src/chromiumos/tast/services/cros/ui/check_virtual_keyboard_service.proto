@@ -13,7 +13,7 @@ option go_package = "chromiumos/tast/services/cros/ui";
 // CheckVirtualKeyboardService checks whether the virtual keyboard is present.
 service CheckVirtualKeyboardService {
     // NewChromeLoggedIn Logs into a user session.
-    rpc NewChromeLoggedIn (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc NewChromeLoggedIn (NewBrowserRequest) returns (google.protobuf.Empty) {}
     // CloseChrome releases the resources obtained by NewChrome.
     rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
     // OpenChromePage opens a chrome page.
@@ -24,6 +24,15 @@ service CheckVirtualKeyboardService {
     rpc TouchChromeAddressBar (google.protobuf.Empty) returns (google.protobuf.Empty) {}
     // CheckVirtualKeyboardIsPresent checks whether the virtual keyboard is present.
     rpc CheckVirtualKeyboardIsPresent (CheckVirtualKeyboardRequest) returns (CheckVirtualKeyboardResponse) {}
+}
+
+// NewBrowserRequest to login to Chrome with a desired browser enabled.
+message NewBrowserRequest {
+    enum BrowserType {
+        ASH = 0;
+        LACROS = 1;
+    }
+    BrowserType browser_type = 1;
 }
 
 message CheckVirtualKeyboardRequest {
