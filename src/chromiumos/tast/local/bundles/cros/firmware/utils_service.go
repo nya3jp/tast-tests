@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/common"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/input"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -27,15 +28,19 @@ import (
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			fwpb.RegisterUtilsServiceServer(srv, &UtilsService{s: s})
+			fwpb.RegisterUtilsServiceServer(srv, &UtilsService{
+				s:            s,
+				sharedObject: common.SharedObjectsForServiceSingleton,
+			})
 		},
 	})
 }
 
 // UtilsService implements tast.cros.firmware.UtilsService.
 type UtilsService struct {
-	s  *testing.ServiceState
-	cr *chrome.Chrome
+	s            *testing.ServiceState
+	cr           *chrome.Chrome
+	sharedObject *common.SharedObjectsForService
 }
 
 // BlockingSync syncs the root device and internal device.
@@ -183,14 +188,21 @@ func (us *UtilsService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 // ReuseChrome reuses the existing Chrome session if there's already one.
 func (us *UtilsService) ReuseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if us.cr != nil {
-		return nil, errors.New("Chrome already available")
+		testing.ContextLog(ctx, "Chrome already available")
+		return &empty.Empty{}, nil
 	}
 
-	cr, err := chrome.New(ctx, chrome.TryReuseSession())
-	if err != nil {
-		return nil, err
+	// First, look up the shared Chrome instance set by CheckVirtualKeyboarService (or other services).
+	// Otherwise, reuse the one set by NewChrome in this service.
+	if us.sharedObject.Chrome != nil {
+		us.cr = us.sharedObject.Chrome
+	} else {
+		cr, err := chrome.New(ctx, chrome.TryReuseSession())
+		if err != nil {
+			return nil, err
+		}
+		us.cr = cr
 	}
-	us.cr = cr
 	return &empty.Empty{}, nil
 }
 
